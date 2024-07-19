@@ -69,12 +69,13 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
     name = "AcceptReservedNodeExchange",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$accept_reserved_node_exchange_input(ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId)
   output <- .redshift$accept_reserved_node_exchange_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -127,12 +128,13 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
     name = "AddPartner",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$add_partner_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
   output <- .redshift$add_partner_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -211,12 +213,13 @@ redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntire
     name = "AssociateDataShareConsumer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$associate_data_share_consumer_input(DataShareArn = DataShareArn, AssociateEntireAccount = AssociateEntireAccount, ConsumerArn = ConsumerArn, ConsumerRegion = ConsumerRegion, AllowWrites = AllowWrites)
   output <- .redshift$associate_data_share_consumer_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -326,12 +329,13 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
     name = "AuthorizeClusterSecurityGroupIngress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$authorize_cluster_security_group_ingress_input(ClusterSecurityGroupName = ClusterSecurityGroupName, CIDRIP = CIDRIP, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .redshift$authorize_cluster_security_group_ingress_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -403,12 +407,13 @@ redshift_authorize_data_share <- function(DataShareArn, ConsumerIdentifier, Allo
     name = "AuthorizeDataShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$authorize_data_share_input(DataShareArn = DataShareArn, ConsumerIdentifier = ConsumerIdentifier, AllowWrites = AllowWrites)
   output <- .redshift$authorize_data_share_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -468,12 +473,13 @@ redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account
     name = "AuthorizeEndpointAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$authorize_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, Account = Account, VpcIds = VpcIds)
   output <- .redshift$authorize_endpoint_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -598,12 +604,13 @@ redshift_authorize_snapshot_access <- function(SnapshotIdentifier = NULL, Snapsh
     name = "AuthorizeSnapshotAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$authorize_snapshot_access_input(SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, AccountWithRestoreAccess = AccountWithRestoreAccess)
   output <- .redshift$authorize_snapshot_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -660,12 +667,13 @@ redshift_batch_delete_cluster_snapshots <- function(Identifiers) {
     name = "BatchDeleteClusterSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$batch_delete_cluster_snapshots_input(Identifiers = Identifiers)
   output <- .redshift$batch_delete_cluster_snapshots_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -733,12 +741,13 @@ redshift_batch_modify_cluster_snapshots <- function(SnapshotIdentifierList, Manu
     name = "BatchModifyClusterSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$batch_modify_cluster_snapshots_input(SnapshotIdentifierList = SnapshotIdentifierList, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Force = Force)
   output <- .redshift$batch_modify_cluster_snapshots_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -802,12 +811,13 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
     name = "CancelResize",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$cancel_resize_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$cancel_resize_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -958,12 +968,13 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
     name = "CopyClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$copy_cluster_snapshot_input(SourceSnapshotIdentifier = SourceSnapshotIdentifier, SourceSnapshotClusterIdentifier = SourceSnapshotClusterIdentifier, TargetSnapshotIdentifier = TargetSnapshotIdentifier, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod)
   output <- .redshift$copy_cluster_snapshot_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1010,12 +1021,13 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
     name = "CreateAuthenticationProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_authentication_profile_input(AuthenticationProfileName = AuthenticationProfileName, AuthenticationProfileContent = AuthenticationProfileContent)
   output <- .redshift$create_authentication_profile_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1101,9 +1113,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
-#' Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`
-#' | `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge` |
-#' `ra3.16xlarge`
+#' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge`
+#' | `ra3.16xlarge`
 #' @param MasterUsername &#91;required&#93; The user name associated with the admin user account for the cluster
 #' that is being created.
 #' 
@@ -1222,7 +1233,7 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'     ra3 nodes, it isn't required that you change the port to these
 #'     ranges.)
 #' 
-#' -   For clusters with ds2 or dc2 nodes - Select a port within the range
+#' -   For clusters with dc2 nodes - Select a port within the range
 #'     `1150-65535`.
 #' @param ClusterVersion The version of the Amazon Redshift engine software that you want to
 #' deploy on the cluster.
@@ -1599,12 +1610,13 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, RedshiftIdcApplicationArn = RedshiftIdcApplicationArn)
   output <- .redshift$create_cluster_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1702,12 +1714,13 @@ redshift_create_cluster_parameter_group <- function(ParameterGroupName, Paramete
     name = "CreateClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_cluster_parameter_group_input(ParameterGroupName = ParameterGroupName, ParameterGroupFamily = ParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .redshift$create_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1811,12 +1824,13 @@ redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Des
     name = "CreateClusterSecurityGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_cluster_security_group_input(ClusterSecurityGroupName = ClusterSecurityGroupName, Description = Description, Tags = Tags)
   output <- .redshift$create_cluster_security_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1951,12 +1965,13 @@ redshift_create_cluster_snapshot <- function(SnapshotIdentifier, ClusterIdentifi
     name = "CreateClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_cluster_snapshot_input(SnapshotIdentifier = SnapshotIdentifier, ClusterIdentifier = ClusterIdentifier, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Tags = Tags)
   output <- .redshift$create_cluster_snapshot_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2060,12 +2075,13 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
     name = "CreateClusterSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_cluster_subnet_group_input(ClusterSubnetGroupName = ClusterSubnetGroupName, Description = Description, SubnetIds = SubnetIds, Tags = Tags)
   output <- .redshift$create_cluster_subnet_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2118,12 +2134,13 @@ redshift_create_custom_domain_association <- function(CustomDomainName, CustomDo
     name = "CreateCustomDomainAssociation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_custom_domain_association_input(CustomDomainName = CustomDomainName, CustomDomainCertificateArn = CustomDomainCertificateArn, ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$create_custom_domain_association_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2211,12 +2228,13 @@ redshift_create_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOw
     name = "CreateEndpointAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, ResourceOwner = ResourceOwner, EndpointName = EndpointName, SubnetGroupName = SubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds)
   output <- .redshift$create_endpoint_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2362,12 +2380,13 @@ redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, So
     name = "CreateEventSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, SourceIds = SourceIds, EventCategories = EventCategories, Severity = Severity, Enabled = Enabled, Tags = Tags)
   output <- .redshift$create_event_subscription_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2440,12 +2459,13 @@ redshift_create_hsm_client_certificate <- function(HsmClientCertificateIdentifie
     name = "CreateHsmClientCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_hsm_client_certificate_input(HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, Tags = Tags)
   output <- .redshift$create_hsm_client_certificate_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2532,12 +2552,13 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
     name = "CreateHsmConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_hsm_configuration_input(HsmConfigurationIdentifier = HsmConfigurationIdentifier, Description = Description, HsmIpAddress = HsmIpAddress, HsmPartitionName = HsmPartitionName, HsmPartitionPassword = HsmPartitionPassword, HsmServerPublicCertificate = HsmServerPublicCertificate, Tags = Tags)
   output <- .redshift$create_hsm_configuration_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2646,12 +2667,13 @@ redshift_create_redshift_idc_application <- function(IdcInstanceArn, RedshiftIdc
     name = "CreateRedshiftIdcApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_redshift_idc_application_input(IdcInstanceArn = IdcInstanceArn, RedshiftIdcApplicationName = RedshiftIdcApplicationName, IdentityNamespace = IdentityNamespace, IdcDisplayName = IdcDisplayName, IamRoleArn = IamRoleArn, AuthorizedTokenIssuerList = AuthorizedTokenIssuerList, ServiceIntegrations = ServiceIntegrations)
   output <- .redshift$create_redshift_idc_application_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2775,12 +2797,13 @@ redshift_create_scheduled_action <- function(ScheduledActionName, TargetAction, 
     name = "CreateScheduledAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_scheduled_action_input(ScheduledActionName = ScheduledActionName, TargetAction = TargetAction, Schedule = Schedule, IamRole = IamRole, ScheduledActionDescription = ScheduledActionDescription, StartTime = StartTime, EndTime = EndTime, Enable = Enable)
   output <- .redshift$create_scheduled_action_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2866,12 +2889,13 @@ redshift_create_snapshot_copy_grant <- function(SnapshotCopyGrantName, KmsKeyId 
     name = "CreateSnapshotCopyGrant",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_snapshot_copy_grant_input(SnapshotCopyGrantName = SnapshotCopyGrantName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .redshift$create_snapshot_copy_grant_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2957,12 +2981,13 @@ redshift_create_snapshot_schedule <- function(ScheduleDefinitions = NULL, Schedu
     name = "CreateSnapshotSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_snapshot_schedule_input(ScheduleDefinitions = ScheduleDefinitions, ScheduleIdentifier = ScheduleIdentifier, ScheduleDescription = ScheduleDescription, Tags = Tags, DryRun = DryRun, NextInvocations = NextInvocations)
   output <- .redshift$create_snapshot_schedule_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3019,12 +3044,13 @@ redshift_create_tags <- function(ResourceName, Tags) {
     name = "CreateTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_tags_input(ResourceName = ResourceName, Tags = Tags)
   output <- .redshift$create_tags_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3108,12 +3134,13 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
     name = "CreateUsageLimit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$create_usage_limit_input(ClusterIdentifier = ClusterIdentifier, FeatureType = FeatureType, LimitType = LimitType, Amount = Amount, Period = Period, BreachAction = BreachAction, Tags = Tags)
   output <- .redshift$create_usage_limit_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3180,12 +3207,13 @@ redshift_deauthorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
     name = "DeauthorizeDataShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$deauthorize_data_share_input(DataShareArn = DataShareArn, ConsumerIdentifier = ConsumerIdentifier)
   output <- .redshift$deauthorize_data_share_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3227,12 +3255,13 @@ redshift_delete_authentication_profile <- function(AuthenticationProfileName) {
     name = "DeleteAuthenticationProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_authentication_profile_input(AuthenticationProfileName = AuthenticationProfileName)
   output <- .redshift$delete_authentication_profile_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3537,12 +3566,13 @@ redshift_delete_cluster <- function(ClusterIdentifier, SkipFinalClusterSnapshot 
     name = "DeleteCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_cluster_input(ClusterIdentifier = ClusterIdentifier, SkipFinalClusterSnapshot = SkipFinalClusterSnapshot, FinalClusterSnapshotIdentifier = FinalClusterSnapshotIdentifier, FinalClusterSnapshotRetentionPeriod = FinalClusterSnapshotRetentionPeriod)
   output <- .redshift$delete_cluster_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3587,12 +3617,13 @@ redshift_delete_cluster_parameter_group <- function(ParameterGroupName) {
     name = "DeleteClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_cluster_parameter_group_input(ParameterGroupName = ParameterGroupName)
   output <- .redshift$delete_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3637,12 +3668,13 @@ redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
     name = "DeleteClusterSecurityGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_cluster_security_group_input(ClusterSecurityGroupName = ClusterSecurityGroupName)
   output <- .redshift$delete_cluster_security_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3760,12 +3792,13 @@ redshift_delete_cluster_snapshot <- function(SnapshotIdentifier, SnapshotCluster
     name = "DeleteClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_cluster_snapshot_input(SnapshotIdentifier = SnapshotIdentifier, SnapshotClusterIdentifier = SnapshotClusterIdentifier)
   output <- .redshift$delete_cluster_snapshot_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3802,12 +3835,13 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
     name = "DeleteClusterSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_cluster_subnet_group_input(ClusterSubnetGroupName = ClusterSubnetGroupName)
   output <- .redshift$delete_cluster_subnet_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3849,12 +3883,13 @@ redshift_delete_custom_domain_association <- function(ClusterIdentifier, CustomD
     name = "DeleteCustomDomainAssociation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_custom_domain_association_input(ClusterIdentifier = ClusterIdentifier, CustomDomainName = CustomDomainName)
   output <- .redshift$delete_custom_domain_association_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3924,12 +3959,13 @@ redshift_delete_endpoint_access <- function(EndpointName) {
     name = "DeleteEndpointAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_endpoint_access_input(EndpointName = EndpointName)
   output <- .redshift$delete_endpoint_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3967,12 +4003,13 @@ redshift_delete_event_subscription <- function(SubscriptionName) {
     name = "DeleteEventSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_event_subscription_input(SubscriptionName = SubscriptionName)
   output <- .redshift$delete_event_subscription_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4009,12 +4046,13 @@ redshift_delete_hsm_client_certificate <- function(HsmClientCertificateIdentifie
     name = "DeleteHsmClientCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_hsm_client_certificate_input(HsmClientCertificateIdentifier = HsmClientCertificateIdentifier)
   output <- .redshift$delete_hsm_client_certificate_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4051,12 +4089,13 @@ redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
     name = "DeleteHsmConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_hsm_configuration_input(HsmConfigurationIdentifier = HsmConfigurationIdentifier)
   output <- .redshift$delete_hsm_configuration_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4108,12 +4147,13 @@ redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, 
     name = "DeletePartner",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_partner_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
   output <- .redshift$delete_partner_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4150,12 +4190,13 @@ redshift_delete_redshift_idc_application <- function(RedshiftIdcApplicationArn) 
     name = "DeleteRedshiftIdcApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_redshift_idc_application_input(RedshiftIdcApplicationArn = RedshiftIdcApplicationArn)
   output <- .redshift$delete_redshift_idc_application_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4193,12 +4234,13 @@ redshift_delete_resource_policy <- function(ResourceArn) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .redshift$delete_resource_policy_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4235,12 +4277,13 @@ redshift_delete_scheduled_action <- function(ScheduledActionName) {
     name = "DeleteScheduledAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_scheduled_action_input(ScheduledActionName = ScheduledActionName)
   output <- .redshift$delete_scheduled_action_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4277,12 +4320,13 @@ redshift_delete_snapshot_copy_grant <- function(SnapshotCopyGrantName) {
     name = "DeleteSnapshotCopyGrant",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_snapshot_copy_grant_input(SnapshotCopyGrantName = SnapshotCopyGrantName)
   output <- .redshift$delete_snapshot_copy_grant_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4319,12 +4363,13 @@ redshift_delete_snapshot_schedule <- function(ScheduleIdentifier) {
     name = "DeleteSnapshotSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_snapshot_schedule_input(ScheduleIdentifier = ScheduleIdentifier)
   output <- .redshift$delete_snapshot_schedule_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4367,12 +4412,13 @@ redshift_delete_tags <- function(ResourceName, TagKeys) {
     name = "DeleteTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_tags_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .redshift$delete_tags_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4409,12 +4455,13 @@ redshift_delete_usage_limit <- function(UsageLimitId) {
     name = "DeleteUsageLimit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$delete_usage_limit_input(UsageLimitId = UsageLimitId)
   output <- .redshift$delete_usage_limit_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4467,12 +4514,13 @@ redshift_describe_account_attributes <- function(AttributeNames = NULL) {
     name = "DescribeAccountAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$describe_account_attributes_input(AttributeNames = AttributeNames)
   output <- .redshift$describe_account_attributes_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4520,12 +4568,13 @@ redshift_describe_authentication_profiles <- function(AuthenticationProfileName 
     name = "DescribeAuthenticationProfiles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$describe_authentication_profiles_input(AuthenticationProfileName = AuthenticationProfileName)
   output <- .redshift$describe_authentication_profiles_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4609,12 +4658,13 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
     name = "DescribeClusterDbRevisions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterDbRevisions")
   )
   input <- .redshift$describe_cluster_db_revisions_input(ClusterIdentifier = ClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_db_revisions_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4730,12 +4780,13 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
     name = "DescribeClusterParameterGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ParameterGroups")
   )
   input <- .redshift$describe_cluster_parameter_groups_input(ParameterGroupName = ParameterGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_cluster_parameter_groups_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4832,12 +4883,13 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
     name = "DescribeClusterParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .redshift$describe_cluster_parameters_input(ParameterGroupName = ParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_parameters_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4978,12 +5030,13 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
     name = "DescribeClusterSecurityGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterSecurityGroups")
   )
   input <- .redshift$describe_cluster_security_groups_input(ClusterSecurityGroupName = ClusterSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_cluster_security_groups_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5200,12 +5253,13 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
     name = "DescribeClusterSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots")
   )
   input <- .redshift$describe_cluster_snapshots_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotType = SnapshotType, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, Marker = Marker, OwnerAccount = OwnerAccount, TagKeys = TagKeys, TagValues = TagValues, ClusterExists = ClusterExists, SortingEntities = SortingEntities)
   output <- .redshift$describe_cluster_snapshots_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5330,12 +5384,13 @@ redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NUL
     name = "DescribeClusterSubnetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterSubnetGroups")
   )
   input <- .redshift$describe_cluster_subnet_groups_input(ClusterSubnetGroupName = ClusterSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_cluster_subnet_groups_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5405,12 +5460,13 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
     name = "DescribeClusterTracks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "MaintenanceTracks")
   )
   input <- .redshift$describe_cluster_tracks_input(MaintenanceTrackName = MaintenanceTrackName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_tracks_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5496,12 +5552,13 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
     name = "DescribeClusterVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterVersions")
   )
   input <- .redshift$describe_cluster_versions_input(ClusterVersion = ClusterVersion, ClusterParameterGroupFamily = ClusterParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_versions_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5809,12 +5866,13 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
     name = "DescribeClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Clusters")
   )
   input <- .redshift$describe_clusters_input(ClusterIdentifier = ClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_clusters_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5878,12 +5936,13 @@ redshift_describe_custom_domain_associations <- function(CustomDomainName = NULL
     name = "DescribeCustomDomainAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Associations")
   )
   input <- .redshift$describe_custom_domain_associations_input(CustomDomainName = CustomDomainName, CustomDomainCertificateArn = CustomDomainCertificateArn, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_custom_domain_associations_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5964,12 +6023,13 @@ redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL
     name = "DescribeDataShares",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DataShares")
   )
   input <- .redshift$describe_data_shares_input(DataShareArn = DataShareArn, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_data_shares_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6056,12 +6116,13 @@ redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Statu
     name = "DescribeDataSharesForConsumer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DataShares")
   )
   input <- .redshift$describe_data_shares_for_consumer_input(ConsumerArn = ConsumerArn, Status = Status, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_data_shares_for_consumer_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6148,12 +6209,13 @@ redshift_describe_data_shares_for_producer <- function(ProducerArn = NULL, Statu
     name = "DescribeDataSharesForProducer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DataShares")
   )
   input <- .redshift$describe_data_shares_for_producer_input(ProducerArn = ProducerArn, Status = Status, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_data_shares_for_producer_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6237,12 +6299,13 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
     name = "DescribeDefaultClusterParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "DefaultClusterParameters.Marker", result_key = "DefaultClusterParameters.Parameters")
   )
   input <- .redshift$describe_default_cluster_parameters_input(ParameterGroupFamily = ParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_default_cluster_parameters_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6335,12 +6398,13 @@ redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, Resource
     name = "DescribeEndpointAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EndpointAccessList")
   )
   input <- .redshift$describe_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, ResourceOwner = ResourceOwner, EndpointName = EndpointName, VpcId = VpcId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_endpoint_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6420,12 +6484,13 @@ redshift_describe_endpoint_authorization <- function(ClusterIdentifier = NULL, A
     name = "DescribeEndpointAuthorization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EndpointAuthorizationList")
   )
   input <- .redshift$describe_endpoint_authorization_input(ClusterIdentifier = ClusterIdentifier, Account = Account, Grantee = Grantee, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_endpoint_authorization_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6489,12 +6554,13 @@ redshift_describe_event_categories <- function(SourceType = NULL) {
     name = "DescribeEventCategories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$describe_event_categories_input(SourceType = SourceType)
   output <- .redshift$describe_event_categories_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6615,12 +6681,13 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
     name = "DescribeEventSubscriptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList")
   )
   input <- .redshift$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_event_subscriptions_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6759,12 +6826,13 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .redshift$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_events_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6872,12 +6940,13 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
     name = "DescribeHsmClientCertificates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "HsmClientCertificates")
   )
   input <- .redshift$describe_hsm_client_certificates_input(HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_hsm_client_certificates_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6988,12 +7057,13 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
     name = "DescribeHsmConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "HsmConfigurations")
   )
   input <- .redshift$describe_hsm_configurations_input(HsmConfigurationIdentifier = HsmConfigurationIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_hsm_configurations_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7073,12 +7143,13 @@ redshift_describe_inbound_integrations <- function(IntegrationArn = NULL, Target
     name = "DescribeInboundIntegrations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "InboundIntegrations")
   )
   input <- .redshift$describe_inbound_integrations_input(IntegrationArn = IntegrationArn, TargetArn = TargetArn, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_inbound_integrations_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7137,12 +7208,13 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
     name = "DescribeLoggingStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$describe_logging_status_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$describe_logging_status_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7242,12 +7314,13 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
     name = "DescribeNodeConfigurationOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "NodeConfigurationOptionList")
   )
   input <- .redshift$describe_node_configuration_options_input(ActionType = ActionType, ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, OwnerAccount = OwnerAccount, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .redshift$describe_node_configuration_options_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7344,12 +7417,13 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
     name = "DescribeOrderableClusterOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableClusterOptions")
   )
   input <- .redshift$describe_orderable_cluster_options_input(ClusterVersion = ClusterVersion, NodeType = NodeType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_orderable_cluster_options_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7416,12 +7490,13 @@ redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseNam
     name = "DescribePartners",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$describe_partners_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
   output <- .redshift$describe_partners_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7509,12 +7584,13 @@ redshift_describe_redshift_idc_applications <- function(RedshiftIdcApplicationAr
     name = "DescribeRedshiftIdcApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "RedshiftIdcApplications")
   )
   input <- .redshift$describe_redshift_idc_applications_input(RedshiftIdcApplicationArn = RedshiftIdcApplicationArn, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_redshift_idc_applications_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7592,12 +7668,13 @@ redshift_describe_reserved_node_exchange_status <- function(ReservedNodeId = NUL
     name = "DescribeReservedNodeExchangeStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeExchangeStatusDetails")
   )
   input <- .redshift$describe_reserved_node_exchange_status_input(ReservedNodeId = ReservedNodeId, ReservedNodeExchangeRequestId = ReservedNodeExchangeRequestId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_reserved_node_exchange_status_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7691,12 +7768,13 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
     name = "DescribeReservedNodeOfferings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeOfferings")
   )
   input <- .redshift$describe_reserved_node_offerings_input(ReservedNodeOfferingId = ReservedNodeOfferingId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_reserved_node_offerings_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7780,12 +7858,13 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
     name = "DescribeReservedNodes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodes")
   )
   input <- .redshift$describe_reserved_nodes_input(ReservedNodeId = ReservedNodeId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_reserved_nodes_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7861,12 +7940,13 @@ redshift_describe_resize <- function(ClusterIdentifier) {
     name = "DescribeResize",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$describe_resize_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$describe_resize_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7989,12 +8069,13 @@ redshift_describe_scheduled_actions <- function(ScheduledActionName = NULL, Targ
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ScheduledActions")
   )
   input <- .redshift$describe_scheduled_actions_input(ScheduledActionName = ScheduledActionName, TargetActionType = TargetActionType, StartTime = StartTime, EndTime = EndTime, Active = Active, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .redshift$describe_scheduled_actions_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8094,12 +8175,13 @@ redshift_describe_snapshot_copy_grants <- function(SnapshotCopyGrantName = NULL,
     name = "DescribeSnapshotCopyGrants",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "SnapshotCopyGrants")
   )
   input <- .redshift$describe_snapshot_copy_grants_input(SnapshotCopyGrantName = SnapshotCopyGrantName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_snapshot_copy_grants_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8193,12 +8275,13 @@ redshift_describe_snapshot_schedules <- function(ClusterIdentifier = NULL, Sched
     name = "DescribeSnapshotSchedules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "SnapshotSchedules")
   )
   input <- .redshift$describe_snapshot_schedules_input(ClusterIdentifier = ClusterIdentifier, ScheduleIdentifier = ScheduleIdentifier, TagKeys = TagKeys, TagValues = TagValues, Marker = Marker, MaxRecords = MaxRecords)
   output <- .redshift$describe_snapshot_schedules_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8236,12 +8319,13 @@ redshift_describe_storage <- function() {
     name = "DescribeStorage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$describe_storage_input()
   output <- .redshift$describe_storage_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8329,12 +8413,13 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
     name = "DescribeTableRestoreStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "TableRestoreStatusDetails")
   )
   input <- .redshift$describe_table_restore_status_input(ClusterIdentifier = ClusterIdentifier, TableRestoreRequestId = TableRestoreRequestId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_table_restore_status_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8472,12 +8557,13 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "TaggedResources")
   )
   input <- .redshift$describe_tags_input(ResourceName = ResourceName, ResourceType = ResourceType, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_tags_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8595,12 +8681,13 @@ redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifie
     name = "DescribeUsageLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UsageLimits")
   )
   input <- .redshift$describe_usage_limits_input(UsageLimitId = UsageLimitId, ClusterIdentifier = ClusterIdentifier, FeatureType = FeatureType, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_usage_limits_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8659,12 +8746,13 @@ redshift_disable_logging <- function(ClusterIdentifier) {
     name = "DisableLogging",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$disable_logging_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$disable_logging_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8920,12 +9008,13 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
     name = "DisableSnapshotCopy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$disable_snapshot_copy_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$disable_snapshot_copy_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8999,12 +9088,13 @@ redshift_disassociate_data_share_consumer <- function(DataShareArn, Disassociate
     name = "DisassociateDataShareConsumer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$disassociate_data_share_consumer_input(DataShareArn = DataShareArn, DisassociateEntireAccount = DisassociateEntireAccount, ConsumerArn = ConsumerArn, ConsumerRegion = ConsumerRegion)
   output <- .redshift$disassociate_data_share_consumer_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9100,12 +9190,13 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyP
     name = "EnableLogging",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$enable_logging_input(ClusterIdentifier = ClusterIdentifier, BucketName = BucketName, S3KeyPrefix = S3KeyPrefix, LogDestinationType = LogDestinationType, LogExports = LogExports)
   output <- .redshift$enable_logging_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9380,12 +9471,13 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
     name = "EnableSnapshotCopy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$enable_snapshot_copy_input(ClusterIdentifier = ClusterIdentifier, DestinationRegion = DestinationRegion, RetentionPeriod = RetentionPeriod, SnapshotCopyGrantName = SnapshotCopyGrantName, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod)
   output <- .redshift$enable_snapshot_copy_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9632,12 +9724,13 @@ redshift_failover_primary_compute <- function(ClusterIdentifier) {
     name = "FailoverPrimaryCompute",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$failover_primary_compute_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$failover_primary_compute_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9795,12 +9888,13 @@ redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdent
     name = "GetClusterCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$get_cluster_credentials_input(DbUser = DbUser, DbName = DbName, ClusterIdentifier = ClusterIdentifier, DurationSeconds = DurationSeconds, AutoCreate = AutoCreate, DbGroups = DbGroups, CustomDomainName = CustomDomainName)
   output <- .redshift$get_cluster_credentials_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9876,12 +9970,13 @@ redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIden
     name = "GetClusterCredentialsWithIAM",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$get_cluster_credentials_with_iam_input(DbName = DbName, ClusterIdentifier = ClusterIdentifier, DurationSeconds = DurationSeconds, CustomDomainName = CustomDomainName)
   output <- .redshift$get_cluster_credentials_with_iam_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9991,12 +10086,13 @@ redshift_get_reserved_node_exchange_configuration_options <- function(ActionType
     name = "GetReservedNodeExchangeConfigurationOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeConfigurationOptionList")
   )
   input <- .redshift$get_reserved_node_exchange_configuration_options_input(ActionType = ActionType, ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$get_reserved_node_exchange_configuration_options_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10066,12 +10162,13 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
     name = "GetReservedNodeExchangeOfferings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeOfferings")
   )
   input <- .redshift$get_reserved_node_exchange_offerings_input(ReservedNodeId = ReservedNodeId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$get_reserved_node_exchange_offerings_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10117,12 +10214,13 @@ redshift_get_resource_policy <- function(ResourceArn) {
     name = "GetResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .redshift$get_resource_policy_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10219,12 +10317,13 @@ redshift_list_recommendations <- function(ClusterIdentifier = NULL, NamespaceArn
     name = "ListRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Recommendations")
   )
   input <- .redshift$list_recommendations_input(ClusterIdentifier = ClusterIdentifier, NamespaceArn = NamespaceArn, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$list_recommendations_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10275,12 +10374,13 @@ redshift_modify_aqua_configuration <- function(ClusterIdentifier, AquaConfigurat
     name = "ModifyAquaConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_aqua_configuration_input(ClusterIdentifier = ClusterIdentifier, AquaConfigurationStatus = AquaConfigurationStatus)
   output <- .redshift$modify_aqua_configuration_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10328,12 +10428,13 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
     name = "ModifyAuthenticationProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_authentication_profile_input(AuthenticationProfileName = AuthenticationProfileName, AuthenticationProfileContent = AuthenticationProfileContent)
   output <- .redshift$modify_authentication_profile_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10392,9 +10493,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
-#' Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`
-#' | `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge` |
-#' `ra3.16xlarge`
+#' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge`
+#' | `ra3.16xlarge`
 #' @param NumberOfNodes The new number of nodes of the cluster. If you specify a new number of
 #' nodes, you must also specify the node type parameter.
 #' 
@@ -10576,7 +10676,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #'     ra3 nodes, it isn't required that you change the port to these
 #'     ranges.)
 #' 
-#' -   For clusters with ds2 or dc2 nodes - Select a port within the range
+#' -   For clusters with dc2 nodes - Select a port within the range
 #'     `1150-65535`.
 #' @param ManageMasterPassword If `true`, Amazon Redshift uses Secrets Manager to manage this cluster's
 #' admin credentials. You can't use `MasterUserPassword` if
@@ -10851,12 +10951,13 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
     name = "ModifyCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, MasterUserPassword = MasterUserPassword, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, NewClusterIdentifier = NewClusterIdentifier, PubliclyAccessible = PubliclyAccessible, ElasticIp = ElasticIp, EnhancedVpcRouting = EnhancedVpcRouting, MaintenanceTrackName = MaintenanceTrackName, Encrypted = Encrypted, KmsKeyId = KmsKeyId, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AvailabilityZone = AvailabilityZone, Port = Port, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
   output <- .redshift$modify_cluster_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11109,12 +11210,13 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
     name = "ModifyClusterDbRevision",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_db_revision_input(ClusterIdentifier = ClusterIdentifier, RevisionTarget = RevisionTarget)
   output <- .redshift$modify_cluster_db_revision_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11379,12 +11481,13 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
     name = "ModifyClusterIamRoles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_iam_roles_input(ClusterIdentifier = ClusterIdentifier, AddIamRoles = AddIamRoles, RemoveIamRoles = RemoveIamRoles, DefaultIamRoleArn = DefaultIamRoleArn)
   output <- .redshift$modify_cluster_iam_roles_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11648,12 +11751,13 @@ redshift_modify_cluster_maintenance <- function(ClusterIdentifier, DeferMaintena
     name = "ModifyClusterMaintenance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_maintenance_input(ClusterIdentifier = ClusterIdentifier, DeferMaintenance = DeferMaintenance, DeferMaintenanceIdentifier = DeferMaintenanceIdentifier, DeferMaintenanceStartTime = DeferMaintenanceStartTime, DeferMaintenanceEndTime = DeferMaintenanceEndTime, DeferMaintenanceDuration = DeferMaintenanceDuration)
   output <- .redshift$modify_cluster_maintenance_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11724,12 +11828,13 @@ redshift_modify_cluster_parameter_group <- function(ParameterGroupName, Paramete
     name = "ModifyClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_parameter_group_input(ParameterGroupName = ParameterGroupName, Parameters = Parameters)
   output <- .redshift$modify_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11842,12 +11947,13 @@ redshift_modify_cluster_snapshot <- function(SnapshotIdentifier, ManualSnapshotR
     name = "ModifyClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_snapshot_input(SnapshotIdentifier = SnapshotIdentifier, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Force = Force)
   output <- .redshift$modify_cluster_snapshot_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11892,12 +11998,13 @@ redshift_modify_cluster_snapshot_schedule <- function(ClusterIdentifier, Schedul
     name = "ModifyClusterSnapshotSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_snapshot_schedule_input(ClusterIdentifier = ClusterIdentifier, ScheduleIdentifier = ScheduleIdentifier, DisassociateSchedule = DisassociateSchedule)
   output <- .redshift$modify_cluster_snapshot_schedule_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11978,12 +12085,13 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
     name = "ModifyClusterSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_cluster_subnet_group_input(ClusterSubnetGroupName = ClusterSubnetGroupName, Description = Description, SubnetIds = SubnetIds)
   output <- .redshift$modify_cluster_subnet_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12034,12 +12142,13 @@ redshift_modify_custom_domain_association <- function(CustomDomainName, CustomDo
     name = "ModifyCustomDomainAssociation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_custom_domain_association_input(CustomDomainName = CustomDomainName, CustomDomainCertificateArn = CustomDomainCertificateArn, ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$modify_custom_domain_association_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12114,12 +12223,13 @@ redshift_modify_endpoint_access <- function(EndpointName, VpcSecurityGroupIds = 
     name = "ModifyEndpointAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_endpoint_access_input(EndpointName = EndpointName, VpcSecurityGroupIds = VpcSecurityGroupIds)
   output <- .redshift$modify_endpoint_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12225,12 +12335,13 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
     name = "ModifyEventSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, SourceIds = SourceIds, EventCategories = EventCategories, Severity = Severity, Enabled = Enabled)
   output <- .redshift$modify_event_subscription_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12336,12 +12447,13 @@ redshift_modify_redshift_idc_application <- function(RedshiftIdcApplicationArn, 
     name = "ModifyRedshiftIdcApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_redshift_idc_application_input(RedshiftIdcApplicationArn = RedshiftIdcApplicationArn, IdentityNamespace = IdentityNamespace, IamRoleArn = IamRoleArn, IdcDisplayName = IdcDisplayName, AuthorizedTokenIssuerList = AuthorizedTokenIssuerList, ServiceIntegrations = ServiceIntegrations)
   output <- .redshift$modify_redshift_idc_application_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12457,12 +12569,13 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
     name = "ModifyScheduledAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_scheduled_action_input(ScheduledActionName = ScheduledActionName, TargetAction = TargetAction, Schedule = Schedule, IamRole = IamRole, ScheduledActionDescription = ScheduledActionDescription, StartTime = StartTime, EndTime = EndTime, Enable = Enable)
   output <- .redshift$modify_scheduled_action_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12750,12 +12863,13 @@ redshift_modify_snapshot_copy_retention_period <- function(ClusterIdentifier, Re
     name = "ModifySnapshotCopyRetentionPeriod",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_snapshot_copy_retention_period_input(ClusterIdentifier = ClusterIdentifier, RetentionPeriod = RetentionPeriod, Manual = Manual)
   output <- .redshift$modify_snapshot_copy_retention_period_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12827,12 +12941,13 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
     name = "ModifySnapshotSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_snapshot_schedule_input(ScheduleIdentifier = ScheduleIdentifier, ScheduleDefinitions = ScheduleDefinitions)
   output <- .redshift$modify_snapshot_schedule_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12893,12 +13008,13 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
     name = "ModifyUsageLimit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$modify_usage_limit_input(UsageLimitId = UsageLimitId, Amount = Amount, BreachAction = BreachAction)
   output <- .redshift$modify_usage_limit_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13142,12 +13258,13 @@ redshift_pause_cluster <- function(ClusterIdentifier) {
     name = "PauseCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$pause_cluster_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$pause_cluster_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13227,12 +13344,13 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
     name = "PurchaseReservedNodeOffering",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$purchase_reserved_node_offering_input(ReservedNodeOfferingId = ReservedNodeOfferingId, NodeCount = NodeCount)
   output <- .redshift$purchase_reserved_node_offering_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13280,12 +13398,13 @@ redshift_put_resource_policy <- function(ResourceArn, Policy) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .redshift$put_resource_policy_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13536,12 +13655,13 @@ redshift_reboot_cluster <- function(ClusterIdentifier) {
     name = "RebootCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$reboot_cluster_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$reboot_cluster_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13601,12 +13721,13 @@ redshift_reject_data_share <- function(DataShareArn) {
     name = "RejectDataShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$reject_data_share_input(DataShareArn = DataShareArn)
   output <- .redshift$reject_data_share_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13679,12 +13800,13 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
     name = "ResetClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$reset_cluster_parameter_group_input(ParameterGroupName = ParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .redshift$reset_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13704,17 +13826,9 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #' 
 #' -   You can only resize clusters of the following types:
 #' 
-#'     -   dc1.large (if your cluster is in a VPC)
-#' 
-#'     -   dc1.8xlarge (if your cluster is in a VPC)
-#' 
 #'     -   dc2.large
 #' 
 #'     -   dc2.8xlarge
-#' 
-#'     -   ds2.xlarge
-#' 
-#'     -   ds2.8xlarge
 #' 
 #'     -   ra3.xlplus
 #' 
@@ -13974,12 +14088,13 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
     name = "ResizeCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$resize_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, Classic = Classic, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId)
   output <- .redshift$resize_cluster_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14053,9 +14168,9 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' 
 #' Default: The same port as the original cluster.
 #' 
-#' Valid values: For clusters with ds2 or dc2 nodes, must be within the
-#' range `1150`-`65535`. For clusters with ra3 nodes, must be within the
-#' ranges `5431`-`5455` or `8191`-`8215`.
+#' Valid values: For clusters with DC2 nodes, must be within the range
+#' `1150`-`65535`. For clusters with ra3 nodes, must be within the ranges
+#' `5431`-`5455` or `8191`-`8215`.
 #' @param AvailabilityZone The Amazon EC2 Availability Zone in which to restore the cluster.
 #' 
 #' Default: A random, system-chosen Availability Zone.
@@ -14146,16 +14261,10 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' encrypted with the new KMS key ID.
 #' @param NodeType The node type that the restored cluster will be provisioned with.
 #' 
-#' Default: The node type of the cluster from which the snapshot was taken.
-#' You can modify this if you are using any DS node type. In that case, you
-#' can choose to restore into another DS node type of the same size. For
-#' example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge
-#' into ds2.xlarge. If you have a DC instance type, you must restore into
-#' that same instance type and size. In other words, you can only restore a
-#' dc1.large instance type into another dc1.large instance type or
-#' dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge.
-#' First restore to a dc1.8xlarge cluster, then resize to a dc2.8large
-#' cluster. For more information about node types, see [About Clusters and
+#' If you have a DC instance type, you must restore into that same instance
+#' type and size. In other words, you can only restore a dc2.large node
+#' type into another dc2 type. For more information about node types, see
+#' [About Clusters and
 #' Nodes](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' @param EnhancedVpcRouting An option that specifies whether to create the cluster with enhanced VPC
@@ -14478,12 +14587,13 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
     name = "RestoreFromClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId, Encrypted = Encrypted, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
   output <- .redshift$restore_from_cluster_snapshot_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14587,12 +14697,13 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
     name = "RestoreTableFromClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$restore_table_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SourceDatabaseName = SourceDatabaseName, SourceSchemaName = SourceSchemaName, SourceTableName = SourceTableName, TargetDatabaseName = TargetDatabaseName, TargetSchemaName = TargetSchemaName, NewTableName = NewTableName, EnableCaseSensitiveIdentifier = EnableCaseSensitiveIdentifier)
   output <- .redshift$restore_table_from_cluster_snapshot_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14836,12 +14947,13 @@ redshift_resume_cluster <- function(ClusterIdentifier) {
     name = "ResumeCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$resume_cluster_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$resume_cluster_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14943,12 +15055,13 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
     name = "RevokeClusterSecurityGroupIngress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$revoke_cluster_security_group_ingress_input(ClusterSecurityGroupName = ClusterSecurityGroupName, CIDRIP = CIDRIP, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .redshift$revoke_cluster_security_group_ingress_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15014,12 +15127,13 @@ redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = 
     name = "RevokeEndpointAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$revoke_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, Account = Account, VpcIds = VpcIds, Force = Force)
   output <- .redshift$revoke_endpoint_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15137,12 +15251,13 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotA
     name = "RevokeSnapshotAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$revoke_snapshot_access_input(SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, AccountWithRestoreAccess = AccountWithRestoreAccess)
   output <- .redshift$revoke_snapshot_access_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15390,12 +15505,13 @@ redshift_rotate_encryption_key <- function(ClusterIdentifier) {
     name = "RotateEncryptionKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$rotate_encryption_key_input(ClusterIdentifier = ClusterIdentifier)
   output <- .redshift$rotate_encryption_key_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15451,12 +15567,13 @@ redshift_update_partner_status <- function(AccountId, ClusterIdentifier, Databas
     name = "UpdatePartnerStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshift$update_partner_status_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName, Status = Status, StatusMessage = StatusMessage)
   output <- .redshift$update_partner_status_output()
   config <- get_config()
-  svc <- .redshift$service(config)
+  svc <- .redshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

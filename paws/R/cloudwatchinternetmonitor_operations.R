@@ -140,12 +140,13 @@ cloudwatchinternetmonitor_create_monitor <- function(MonitorName, Resources = NU
     name = "CreateMonitor",
     http_method = "POST",
     http_path = "/v20210603/Monitors",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$create_monitor_input(MonitorName = MonitorName, Resources = Resources, ClientToken = ClientToken, Tags = Tags, MaxCityNetworksToMonitor = MaxCityNetworksToMonitor, InternetMeasurementsLogDelivery = InternetMeasurementsLogDelivery, TrafficPercentageToMonitor = TrafficPercentageToMonitor, HealthEventsConfig = HealthEventsConfig)
   output <- .cloudwatchinternetmonitor$create_monitor_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -182,12 +183,13 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
     name = "DeleteMonitor",
     http_method = "DELETE",
     http_path = "/v20210603/Monitors/{MonitorName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$delete_monitor_input(MonitorName = MonitorName)
   output <- .cloudwatchinternetmonitor$delete_monitor_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -320,12 +322,13 @@ cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId, Lin
     name = "GetHealthEvent",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/HealthEvents/{EventId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_health_event_input(MonitorName = MonitorName, EventId = EventId, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$get_health_event_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -395,12 +398,13 @@ cloudwatchinternetmonitor_get_internet_event <- function(EventId) {
     name = "GetInternetEvent",
     http_method = "GET",
     http_path = "/v20210603/InternetEvents/{EventId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_internet_event_input(EventId = EventId)
   output <- .cloudwatchinternetmonitor$get_internet_event_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -492,12 +496,13 @@ cloudwatchinternetmonitor_get_monitor <- function(MonitorName, LinkedAccountId =
     name = "GetMonitor",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_monitor_input(MonitorName = MonitorName, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$get_monitor_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -567,12 +572,13 @@ cloudwatchinternetmonitor_get_query_results <- function(MonitorName, QueryId, Ne
     name = "GetQueryResults",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Results",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudwatchinternetmonitor$get_query_results_input(MonitorName = MonitorName, QueryId = QueryId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatchinternetmonitor$get_query_results_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -631,12 +637,13 @@ cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
     name = "GetQueryStatus",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_query_status_input(MonitorName = MonitorName, QueryId = QueryId)
   output <- .cloudwatchinternetmonitor$get_query_status_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -782,12 +789,13 @@ cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime 
     name = "ListHealthEvents",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/HealthEvents",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HealthEvents")
   )
   input <- .cloudwatchinternetmonitor$list_health_events_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults, EventStatus = EventStatus, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$list_health_events_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -885,12 +893,13 @@ cloudwatchinternetmonitor_list_internet_events <- function(NextToken = NULL, Max
     name = "ListInternetEvents",
     http_method = "GET",
     http_path = "/v20210603/InternetEvents",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InternetEvents")
   )
   input <- .cloudwatchinternetmonitor$list_internet_events_input(NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, EventType = EventType)
   output <- .cloudwatchinternetmonitor$list_internet_events_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -962,12 +971,13 @@ cloudwatchinternetmonitor_list_monitors <- function(NextToken = NULL, MaxResults
     name = "ListMonitors",
     http_method = "GET",
     http_path = "/v20210603/Monitors",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Monitors")
   )
   input <- .cloudwatchinternetmonitor$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, MonitorStatus = MonitorStatus, IncludeLinkedAccounts = IncludeLinkedAccounts)
   output <- .cloudwatchinternetmonitor$list_monitors_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1012,12 +1022,13 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cloudwatchinternetmonitor$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1127,12 +1138,13 @@ cloudwatchinternetmonitor_start_query <- function(MonitorName, StartTime, EndTim
     name = "StartQuery",
     http_method = "POST",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$start_query_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, QueryType = QueryType, FilterParameters = FilterParameters, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$start_query_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1172,12 +1184,13 @@ cloudwatchinternetmonitor_stop_query <- function(MonitorName, QueryId) {
     name = "StopQuery",
     http_method = "DELETE",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$stop_query_input(MonitorName = MonitorName, QueryId = QueryId)
   output <- .cloudwatchinternetmonitor$stop_query_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1227,12 +1240,13 @@ cloudwatchinternetmonitor_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cloudwatchinternetmonitor$tag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1273,12 +1287,13 @@ cloudwatchinternetmonitor_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cloudwatchinternetmonitor$untag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1408,12 +1423,13 @@ cloudwatchinternetmonitor_update_monitor <- function(MonitorName, ResourcesToAdd
     name = "UpdateMonitor",
     http_method = "PATCH",
     http_path = "/v20210603/Monitors/{MonitorName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchinternetmonitor$update_monitor_input(MonitorName = MonitorName, ResourcesToAdd = ResourcesToAdd, ResourcesToRemove = ResourcesToRemove, Status = Status, ClientToken = ClientToken, MaxCityNetworksToMonitor = MaxCityNetworksToMonitor, InternetMeasurementsLogDelivery = InternetMeasurementsLogDelivery, TrafficPercentageToMonitor = TrafficPercentageToMonitor, HealthEventsConfig = HealthEventsConfig)
   output <- .cloudwatchinternetmonitor$update_monitor_output()
   config <- get_config()
-  svc <- .cloudwatchinternetmonitor$service(config)
+  svc <- .cloudwatchinternetmonitor$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

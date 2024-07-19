@@ -146,7 +146,7 @@ sagemakerfeaturestoreruntime <- function(config = list(), credentials = list(), 
   target_prefix = ""
 )
 
-.sagemakerfeaturestoreruntime$service <- function(config = list()) {
+.sagemakerfeaturestoreruntime$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.sagemakerfeaturestoreruntime$metadata, handlers, config)
+  new_service(.sagemakerfeaturestoreruntime$metadata, handlers, config, op)
 }

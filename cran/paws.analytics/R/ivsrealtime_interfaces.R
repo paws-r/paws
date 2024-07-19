@@ -5,37 +5,37 @@ NULL
 
 .ivsrealtime$create_encoder_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), video = structure(list(bitrate = structure(logical(0), tags = list(type = "integer", box = TRUE)), framerate = structure(logical(0), tags = list(type = "float", box = TRUE)), height = structure(logical(0), tags = list(type = "integer", box = TRUE)), width = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), video = structure(list(width = structure(logical(0), tags = list(type = "integer", box = TRUE)), height = structure(logical(0), tags = list(type = "integer", box = TRUE)), framerate = structure(logical(0), tags = list(type = "float", box = TRUE)), bitrate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$create_encoder_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(encoderConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), video = structure(list(bitrate = structure(logical(0), tags = list(type = "integer", box = TRUE)), framerate = structure(logical(0), tags = list(type = "float", box = TRUE)), height = structure(logical(0), tags = list(type = "integer", box = TRUE)), width = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(encoderConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), video = structure(list(width = structure(logical(0), tags = list(type = "integer", box = TRUE)), height = structure(logical(0), tags = list(type = "integer", box = TRUE)), framerate = structure(logical(0), tags = list(type = "float", box = TRUE)), bitrate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$create_participant_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), stageArn = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), userId = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$create_participant_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(participantToken = structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), expirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), participantId = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(participantToken = structure(list(participantId = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userId = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), expirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$create_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), participantTokenConfigurations = structure(list(structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), userId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), participantTokenConfigurations = structure(list(structure(list(duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), userId = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoParticipantRecordingConfiguration = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), mediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$create_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(participantTokens = structure(list(structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), expirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), participantId = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), stage = structure(list(activeSessionId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(stage = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), activeSessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoParticipantRecordingConfiguration = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), mediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), endpoints = structure(list(events = structure(logical(0), tags = list(type = "string")), whip = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), participantTokens = structure(list(structure(list(participantId = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userId = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), duration = structure(logical(0), tags = list(type = "integer", box = TRUE)), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), expirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -58,6 +58,18 @@ NULL
 }
 
 .ivsrealtime$delete_encoder_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivsrealtime$delete_public_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivsrealtime$delete_public_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -89,7 +101,7 @@ NULL
 
 .ivsrealtime$disconnect_participant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(participantId = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), participantId = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,7 +119,7 @@ NULL
 
 .ivsrealtime$get_composition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(composition = structure(list(arn = structure(logical(0), tags = list(type = "string")), destinations = structure(list(structure(list(configuration = structure(list(channel = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), s3 = structure(list(encoderConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), detail = structure(list(s3 = structure(list(recordingPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), layout = structure(list(grid = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoAspectRatio = structure(logical(0), tags = list(type = "string")), videoFillMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pip = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), pipBehavior = structure(logical(0), tags = list(type = "string")), pipHeight = structure(logical(0), tags = list(type = "integer", box = TRUE)), pipOffset = structure(logical(0), tags = list(type = "integer")), pipParticipantAttribute = structure(logical(0), tags = list(type = "string")), pipPosition = structure(logical(0), tags = list(type = "string")), pipWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), videoFillMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), stageArn = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(composition = structure(list(arn = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), layout = structure(list(grid = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoAspectRatio = structure(logical(0), tags = list(type = "string")), videoFillMode = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), pip = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoFillMode = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), pipParticipantAttribute = structure(logical(0), tags = list(type = "string")), pipBehavior = structure(logical(0), tags = list(type = "string")), pipOffset = structure(logical(0), tags = list(type = "integer")), pipPosition = structure(logical(0), tags = list(type = "string")), pipWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), pipHeight = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), destinations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuration = structure(list(name = structure(logical(0), tags = list(type = "string")), channel = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3 = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), detail = structure(list(s3 = structure(list(recordingPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,19 +131,31 @@ NULL
 
 .ivsrealtime$get_encoder_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(encoderConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), video = structure(list(bitrate = structure(logical(0), tags = list(type = "integer", box = TRUE)), framerate = structure(logical(0), tags = list(type = "float", box = TRUE)), height = structure(logical(0), tags = list(type = "integer", box = TRUE)), width = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(encoderConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), video = structure(list(width = structure(logical(0), tags = list(type = "integer", box = TRUE)), height = structure(logical(0), tags = list(type = "integer", box = TRUE)), framerate = structure(logical(0), tags = list(type = "float", box = TRUE)), bitrate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$get_participant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(participantId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), participantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$get_participant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(participant = structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), browserName = structure(logical(0), tags = list(type = "string")), browserVersion = structure(logical(0), tags = list(type = "string")), firstJoinTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ispName = structure(logical(0), tags = list(type = "string")), osName = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), participantId = structure(logical(0), tags = list(type = "string")), published = structure(logical(0), tags = list(type = "boolean")), sdkVersion = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(participant = structure(list(participantId = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), firstJoinTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), published = structure(logical(0), tags = list(type = "boolean")), ispName = structure(logical(0), tags = list(type = "string")), osName = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), browserName = structure(logical(0), tags = list(type = "string")), browserVersion = structure(logical(0), tags = list(type = "string")), sdkVersion = structure(logical(0), tags = list(type = "string")), recordingS3BucketName = structure(logical(0), tags = list(type = "string")), recordingS3Prefix = structure(logical(0), tags = list(type = "string")), recordingState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivsrealtime$get_public_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivsrealtime$get_public_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(publicKey = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), publicKeyMaterial = structure(logical(0), tags = list(type = "string")), fingerprint = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -143,19 +167,19 @@ NULL
 
 .ivsrealtime$get_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stage = structure(list(activeSessionId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(stage = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), activeSessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoParticipantRecordingConfiguration = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), mediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), endpoints = structure(list(events = structure(logical(0), tags = list(type = "string")), whip = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$get_stage_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sessionId = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$get_stage_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stageSession = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), sessionId = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(stageSession = structure(list(sessionId = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -171,21 +195,33 @@ NULL
   return(populate(args, shape))
 }
 
+.ivsrealtime$import_public_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(publicKeyMaterial = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivsrealtime$import_public_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(publicKey = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), publicKeyMaterial = structure(logical(0), tags = list(type = "string")), fingerprint = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ivsrealtime$list_compositions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filterByEncoderConfigurationArn = structure(logical(0), tags = list(type = "string")), filterByStageArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(filterByStageArn = structure(logical(0), tags = list(type = "string")), filterByEncoderConfigurationArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_compositions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(compositions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), destinations = structure(list(structure(list(endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stageArn = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(compositions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string")), destinations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_encoder_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -197,61 +233,73 @@ NULL
 
 .ivsrealtime$list_participant_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), participantId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), participantId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_participant_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(events = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), eventTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), participantId = structure(logical(0), tags = list(type = "string")), remoteParticipantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(events = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), participantId = structure(logical(0), tags = list(type = "string")), eventTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), remoteParticipantId = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_participants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filterByPublished = structure(logical(0), tags = list(type = "boolean")), filterByState = structure(logical(0), tags = list(type = "string")), filterByUserId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), filterByUserId = structure(logical(0), tags = list(type = "string")), filterByPublished = structure(logical(0), tags = list(type = "boolean")), filterByState = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filterByRecordingState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_participants_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), participants = structure(list(structure(list(firstJoinTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), participantId = structure(logical(0), tags = list(type = "string")), published = structure(logical(0), tags = list(type = "boolean")), state = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(participants = structure(list(structure(list(participantId = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), firstJoinTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), published = structure(logical(0), tags = list(type = "boolean")), recordingState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivsrealtime$list_public_keys_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivsrealtime$list_public_keys_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(publicKeys = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_stage_sessions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_stage_sessions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), stageSessions = structure(list(structure(list(endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), sessionId = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(stageSessions = structure(list(structure(list(sessionId = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_stages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_stages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), stages = structure(list(structure(list(activeSessionId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(stages = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), activeSessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_storage_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$list_storage_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), storageConfigurations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(storageConfigurations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -269,13 +317,13 @@ NULL
 
 .ivsrealtime$start_composition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(destinations = structure(list(structure(list(channel = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), s3 = structure(list(encoderConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), idempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), layout = structure(list(grid = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoAspectRatio = structure(logical(0), tags = list(type = "string")), videoFillMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pip = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), pipBehavior = structure(logical(0), tags = list(type = "string")), pipHeight = structure(logical(0), tags = list(type = "integer", box = TRUE)), pipOffset = structure(logical(0), tags = list(type = "integer")), pipParticipantAttribute = structure(logical(0), tags = list(type = "string")), pipPosition = structure(logical(0), tags = list(type = "string")), pipWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), videoFillMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), stageArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(stageArn = structure(logical(0), tags = list(type = "string")), idempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), layout = structure(list(grid = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoAspectRatio = structure(logical(0), tags = list(type = "string")), videoFillMode = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), pip = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoFillMode = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), pipParticipantAttribute = structure(logical(0), tags = list(type = "string")), pipBehavior = structure(logical(0), tags = list(type = "string")), pipOffset = structure(logical(0), tags = list(type = "integer")), pipPosition = structure(logical(0), tags = list(type = "string")), pipWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), pipHeight = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), destinations = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), channel = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3 = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$start_composition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(composition = structure(list(arn = structure(logical(0), tags = list(type = "string")), destinations = structure(list(structure(list(configuration = structure(list(channel = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), s3 = structure(list(encoderConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), detail = structure(list(s3 = structure(list(recordingPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), layout = structure(list(grid = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoAspectRatio = structure(logical(0), tags = list(type = "string")), videoFillMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pip = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), pipBehavior = structure(logical(0), tags = list(type = "string")), pipHeight = structure(logical(0), tags = list(type = "integer", box = TRUE)), pipOffset = structure(logical(0), tags = list(type = "integer")), pipParticipantAttribute = structure(logical(0), tags = list(type = "string")), pipPosition = structure(logical(0), tags = list(type = "string")), pipWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), videoFillMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), stageArn = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(composition = structure(list(arn = structure(logical(0), tags = list(type = "string")), stageArn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), layout = structure(list(grid = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoAspectRatio = structure(logical(0), tags = list(type = "string")), videoFillMode = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), pip = structure(list(featuredParticipantAttribute = structure(logical(0), tags = list(type = "string")), omitStoppedVideo = structure(logical(0), tags = list(type = "boolean")), videoFillMode = structure(logical(0), tags = list(type = "string")), gridGap = structure(logical(0), tags = list(type = "integer")), pipParticipantAttribute = structure(logical(0), tags = list(type = "string")), pipBehavior = structure(logical(0), tags = list(type = "string")), pipOffset = structure(logical(0), tags = list(type = "integer")), pipPosition = structure(logical(0), tags = list(type = "string")), pipWidth = structure(logical(0), tags = list(type = "integer", box = TRUE)), pipHeight = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), destinations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuration = structure(list(name = structure(logical(0), tags = list(type = "string")), channel = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3 = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), encoderConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), detail = structure(list(s3 = structure(list(recordingPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -317,12 +365,12 @@ NULL
 
 .ivsrealtime$update_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), autoParticipantRecordingConfiguration = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), mediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivsrealtime$update_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stage = structure(list(activeSessionId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(stage = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), activeSessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoParticipantRecordingConfiguration = structure(list(storageConfigurationArn = structure(logical(0), tags = list(type = "string")), mediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), endpoints = structure(list(events = structure(logical(0), tags = list(type = "string")), whip = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

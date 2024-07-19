@@ -5,14 +5,14 @@
 \title{Gets summary information about all storage configurations in your
 account, in the AWS region where the API request is processed}
 \usage{
-ivsrealtime_list_storage_configurations(maxResults = NULL, nextToken = NULL)
+ivsrealtime_list_storage_configurations(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{Maximum number of storage configurations to return. Default: your
-service quota or 100, whichever is smaller.}
-
 \item{nextToken}{The first storage configuration to retrieve. This is used for
 pagination; see the \code{nextToken} response field.}
+
+\item{maxResults}{Maximum number of storage configurations to return. Default: your
+service quota or 100, whichever is smaller.}
 }
 \description{
 Gets summary information about all storage configurations in your account, in the AWS region where the API request is processed.

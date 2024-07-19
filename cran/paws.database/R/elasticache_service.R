@@ -174,7 +174,7 @@ NULL
 #'  \link[=elasticache_reset_cache_parameter_group]{reset_cache_parameter_group} \tab Modifies the parameters of a cache parameter group to the engine or system default value\cr
 #'  \link[=elasticache_revoke_cache_security_group_ingress]{revoke_cache_security_group_ingress} \tab Revokes ingress from a cache security group\cr
 #'  \link[=elasticache_start_migration]{start_migration} \tab Start the migration of data\cr
-#'  \link[=elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)\cr
+#'  \link[=elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which tests automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)\cr
 #'  \link[=elasticache_test_migration]{test_migration} \tab Async API to test connection between source and target replication group
 #' }
 #'
@@ -215,7 +215,7 @@ elasticache <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = ""
 )
 
-.elasticache$service <- function(config = list()) {
+.elasticache$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.elasticache$metadata, handlers, config)
+  new_service(.elasticache$metadata, handlers, config, op)
 }

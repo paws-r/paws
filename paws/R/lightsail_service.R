@@ -311,7 +311,7 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = "Lightsail_20161128"
 )
 
-.lightsail$service <- function(config = list()) {
+.lightsail$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.lightsail$metadata, handlers, config)
+  new_service(.lightsail$metadata, handlers, config, op)
 }

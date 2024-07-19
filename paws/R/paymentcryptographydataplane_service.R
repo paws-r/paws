@@ -108,7 +108,7 @@ NULL
 #'  \link[=paymentcryptographydataplane_generate_card_validation_data]{generate_card_validation_data} \tab Generates card-related validation data using algorithms such as Card Verification Values (CVV/CVV2), Dynamic Card Verification Values (dCVV/dCVV2), or Card Security Codes (CSC)\cr
 #'  \link[=paymentcryptographydataplane_generate_mac]{generate_mac} \tab Generates a Message Authentication Code (MAC) cryptogram within Amazon Web Services Payment Cryptography\cr
 #'  \link[=paymentcryptographydataplane_generate_pin_data]{generate_pin_data} \tab Generates pin-related data such as PIN, PIN Verification Value (PVV), PIN Block, and PIN Offset during new card issuance or reissuance\cr
-#'  \link[=paymentcryptographydataplane_re_encrypt_data]{re_encrypt_data} \tab Re-encrypt ciphertext using DUKPT, Symmetric and Asymmetric Data Encryption Keys\cr
+#'  \link[=paymentcryptographydataplane_re_encrypt_data]{re_encrypt_data} \tab Re-encrypt ciphertext using DUKPT or Symmetric data encryption keys\cr
 #'  \link[=paymentcryptographydataplane_translate_pin_data]{translate_pin_data} \tab Translates encrypted PIN block from and to ISO 9564 formats 0,1,3,4\cr
 #'  \link[=paymentcryptographydataplane_verify_auth_request_cryptogram]{verify_auth_request_cryptogram} \tab Verifies Authorization Request Cryptogram (ARQC) for a EMV chip payment card authorization\cr
 #'  \link[=paymentcryptographydataplane_verify_card_validation_data]{verify_card_validation_data} \tab Verifies card-related validation data using algorithms such as Card Verification Values (CVV/CVV2), Dynamic Card Verification Values (dCVV/dCVV2) and Card Security Codes (CSC)\cr
@@ -149,11 +149,11 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
   service_id = "Payment Cryptography Data",
   api_version = "2022-02-03",
   signing_name = "payment-cryptography",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 
-.paymentcryptographydataplane$service <- function(config = list()) {
+.paymentcryptographydataplane$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.paymentcryptographydataplane$metadata, handlers, config)
+  new_service(.paymentcryptographydataplane$metadata, handlers, config, op)
 }

@@ -225,7 +225,7 @@ backup <- function(config = list(), credentials = list(), endpoint = NULL, regio
   target_prefix = ""
 )
 
-.backup$service <- function(config = list()) {
+.backup$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.backup$metadata, handlers, config)
+  new_service(.backup$metadata, handlers, config, op)
 }

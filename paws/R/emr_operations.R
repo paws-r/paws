@@ -65,7 +65,8 @@ NULL
 #'             )
 #'           )
 #'         ),
-#'         CustomAmiId = "string"
+#'         CustomAmiId = "string",
+#'         Priority = 123.0
 #'       )
 #'     ),
 #'     LaunchSpecifications = list(
@@ -73,10 +74,10 @@ NULL
 #'         TimeoutDurationMinutes = 123,
 #'         TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'         BlockDurationMinutes = 123,
-#'         AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
+#'         AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"|"capacity-optimized-prioritized"
 #'       ),
 #'       OnDemandSpecification = list(
-#'         AllocationStrategy = "lowest-price",
+#'         AllocationStrategy = "lowest-price"|"prioritized",
 #'         CapacityReservationOptions = list(
 #'           UsageStrategy = "use-capacity-reservations-first",
 #'           CapacityReservationPreference = "open"|"none",
@@ -106,12 +107,13 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
     name = "AddInstanceFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$add_instance_fleet_input(ClusterId = ClusterId, InstanceFleet = InstanceFleet)
   output <- .emr$add_instance_fleet_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -230,12 +232,13 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
     name = "AddInstanceGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$add_instance_groups_input(InstanceGroups = InstanceGroups, JobFlowId = JobFlowId)
   output <- .emr$add_instance_groups_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -333,12 +336,13 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps, ExecutionRoleArn = NULL) {
     name = "AddJobFlowSteps",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$add_job_flow_steps_input(JobFlowId = JobFlowId, Steps = Steps, ExecutionRoleArn = ExecutionRoleArn)
   output <- .emr$add_job_flow_steps_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -391,12 +395,13 @@ emr_add_tags <- function(ResourceId, Tags) {
     name = "AddTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$add_tags_input(ResourceId = ResourceId, Tags = Tags)
   output <- .emr$add_tags_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -461,12 +466,13 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
     name = "CancelSteps",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$cancel_steps_input(ClusterId = ClusterId, StepIds = StepIds, StepCancellationOption = StepCancellationOption)
   output <- .emr$cancel_steps_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -518,12 +524,13 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
     name = "CreateSecurityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$create_security_configuration_input(Name = Name, SecurityConfiguration = SecurityConfiguration)
   output <- .emr$create_security_configuration_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -641,12 +648,13 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
     name = "CreateStudio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$create_studio_input(Name = Name, Description = Description, AuthMode = AuthMode, VpcId = VpcId, SubnetIds = SubnetIds, ServiceRole = ServiceRole, UserRole = UserRole, WorkspaceSecurityGroupId = WorkspaceSecurityGroupId, EngineSecurityGroupId = EngineSecurityGroupId, DefaultS3Location = DefaultS3Location, IdpAuthUrl = IdpAuthUrl, IdpRelayStateParameterName = IdpRelayStateParameterName, Tags = Tags, TrustedIdentityPropagationEnabled = TrustedIdentityPropagationEnabled, IdcUserAssignment = IdcUserAssignment, IdcInstanceArn = IdcInstanceArn, EncryptionKeyArn = EncryptionKeyArn)
   output <- .emr$create_studio_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -718,12 +726,13 @@ emr_create_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
     name = "CreateStudioSessionMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$create_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType, SessionPolicyArn = SessionPolicyArn)
   output <- .emr$create_studio_session_mapping_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -760,12 +769,13 @@ emr_delete_security_configuration <- function(Name) {
     name = "DeleteSecurityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$delete_security_configuration_input(Name = Name)
   output <- .emr$delete_security_configuration_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -802,12 +812,13 @@ emr_delete_studio <- function(StudioId) {
     name = "DeleteStudio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$delete_studio_input(StudioId = StudioId)
   output <- .emr$delete_studio_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -864,12 +875,13 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
     name = "DeleteStudioSessionMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$delete_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType)
   output <- .emr$delete_studio_session_mapping_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1031,12 +1043,13 @@ emr_describe_cluster <- function(ClusterId) {
     name = "DescribeCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$describe_cluster_input(ClusterId = ClusterId)
   output <- .emr$describe_cluster_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1241,12 +1254,13 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
     name = "DescribeJobFlows",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "JobFlows")
   )
   input <- .emr$describe_job_flows_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, JobFlowIds = JobFlowIds, JobFlowStates = JobFlowStates)
   output <- .emr$describe_job_flows_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1328,12 +1342,13 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
     name = "DescribeNotebookExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$describe_notebook_execution_input(NotebookExecutionId = NotebookExecutionId)
   output <- .emr$describe_notebook_execution_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1396,12 +1411,13 @@ emr_describe_release_label <- function(ReleaseLabel = NULL, NextToken = NULL, Ma
     name = "DescribeReleaseLabel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$describe_release_label_input(ReleaseLabel = ReleaseLabel, NextToken = NextToken, MaxResults = MaxResults)
   output <- .emr$describe_release_label_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1449,12 +1465,13 @@ emr_describe_security_configuration <- function(Name) {
     name = "DescribeSecurityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$describe_security_configuration_input(Name = Name)
   output <- .emr$describe_security_configuration_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1536,12 +1553,13 @@ emr_describe_step <- function(ClusterId, StepId) {
     name = "DescribeStep",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$describe_step_input(ClusterId = ClusterId, StepId = StepId)
   output <- .emr$describe_step_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1616,12 +1634,13 @@ emr_describe_studio <- function(StudioId) {
     name = "DescribeStudio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$describe_studio_input(StudioId = StudioId)
   output <- .emr$describe_studio_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1666,12 +1685,13 @@ emr_get_auto_termination_policy <- function(ClusterId) {
     name = "GetAutoTerminationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$get_auto_termination_policy_input(ClusterId = ClusterId)
   output <- .emr$get_auto_termination_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1730,12 +1750,13 @@ emr_get_block_public_access_configuration <- function() {
     name = "GetBlockPublicAccessConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$get_block_public_access_configuration_input()
   output <- .emr$get_block_public_access_configuration_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1796,12 +1817,13 @@ emr_get_cluster_session_credentials <- function(ClusterId, ExecutionRoleArn = NU
     name = "GetClusterSessionCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$get_cluster_session_credentials_input(ClusterId = ClusterId, ExecutionRoleArn = ExecutionRoleArn)
   output <- .emr$get_cluster_session_credentials_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1852,12 +1874,13 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
     name = "GetManagedScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$get_managed_scaling_policy_input(ClusterId = ClusterId)
   output <- .emr$get_managed_scaling_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1931,12 +1954,13 @@ emr_get_studio_session_mapping <- function(StudioId, IdentityId = NULL, Identity
     name = "GetStudioSessionMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$get_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType)
   output <- .emr$get_studio_session_mapping_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1991,12 +2015,13 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
     name = "ListBootstrapActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "BootstrapActions")
   )
   input <- .emr$list_bootstrap_actions_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_bootstrap_actions_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2096,12 +2121,13 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
     name = "ListClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Clusters")
   )
   input <- .emr$list_clusters_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, ClusterStates = ClusterStates, Marker = Marker)
   output <- .emr$list_clusters_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2180,7 +2206,8 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'             )
 #'           ),
 #'           EbsOptimized = TRUE|FALSE,
-#'           CustomAmiId = "string"
+#'           CustomAmiId = "string",
+#'           Priority = 123.0
 #'         )
 #'       ),
 #'       LaunchSpecifications = list(
@@ -2188,10 +2215,10 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'           TimeoutDurationMinutes = 123,
 #'           TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'           BlockDurationMinutes = 123,
-#'           AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
+#'           AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"|"capacity-optimized-prioritized"
 #'         ),
 #'         OnDemandSpecification = list(
-#'           AllocationStrategy = "lowest-price",
+#'           AllocationStrategy = "lowest-price"|"prioritized",
 #'           CapacityReservationOptions = list(
 #'             UsageStrategy = "use-capacity-reservations-first",
 #'             CapacityReservationPreference = "open"|"none",
@@ -2231,12 +2258,13 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
     name = "ListInstanceFleets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceFleets")
   )
   input <- .emr$list_instance_fleets_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_fleets_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2400,12 +2428,13 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
     name = "ListInstanceGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceGroups")
   )
   input <- .emr$list_instance_groups_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_groups_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2507,12 +2536,13 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Instances")
   )
   input <- .emr$list_instances_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId, InstanceGroupTypes = InstanceGroupTypes, InstanceFleetId = InstanceFleetId, InstanceFleetType = InstanceFleetType, InstanceStates = InstanceStates, Marker = Marker)
   output <- .emr$list_instances_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2626,12 +2656,13 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
     name = "ListNotebookExecutions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "NotebookExecutions")
   )
   input <- .emr$list_notebook_executions_input(EditorId = EditorId, Status = Status, From = From, To = To, Marker = Marker, ExecutionEngineId = ExecutionEngineId)
   output <- .emr$list_notebook_executions_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2695,12 +2726,13 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
     name = "ListReleaseLabels",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .emr$list_release_labels_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .emr$list_release_labels_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2755,12 +2787,13 @@ emr_list_security_configurations <- function(Marker = NULL) {
     name = "ListSecurityConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SecurityConfigurations")
   )
   input <- .emr$list_security_configurations_input(Marker = Marker)
   output <- .emr$list_security_configurations_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2864,12 +2897,13 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
     name = "ListSteps",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Steps")
   )
   input <- .emr$list_steps_input(ClusterId = ClusterId, StepStates = StepStates, StepIds = StepIds, Marker = Marker)
   output <- .emr$list_steps_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2931,12 +2965,13 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
     name = "ListStudioSessionMappings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SessionMappings")
   )
   input <- .emr$list_studio_session_mappings_input(StudioId = StudioId, IdentityType = IdentityType, Marker = Marker)
   output <- .emr$list_studio_session_mappings_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2994,12 +3029,13 @@ emr_list_studios <- function(Marker = NULL) {
     name = "ListStudios",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Studios")
   )
   input <- .emr$list_studios_input(Marker = Marker)
   output <- .emr$list_studios_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3065,12 +3101,13 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
     name = "ListSupportedInstanceTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker")
   )
   input <- .emr$list_supported_instance_types_input(ReleaseLabel = ReleaseLabel, Marker = Marker)
   output <- .emr$list_supported_instance_types_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3120,12 +3157,13 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
     name = "ModifyCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$modify_cluster_input(ClusterId = ClusterId, StepConcurrencyLevel = StepConcurrencyLevel)
   output <- .emr$modify_cluster_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3183,12 +3221,13 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
     name = "ModifyInstanceFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$modify_instance_fleet_input(ClusterId = ClusterId, InstanceFleet = InstanceFleet)
   output <- .emr$modify_instance_fleet_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3261,12 +3300,13 @@ emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) 
     name = "ModifyInstanceGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$modify_instance_groups_input(ClusterId = ClusterId, InstanceGroups = InstanceGroups)
   output <- .emr$modify_instance_groups_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3403,12 +3443,13 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
     name = "PutAutoScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$put_auto_scaling_policy_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId, AutoScalingPolicy = AutoScalingPolicy)
   output <- .emr$put_auto_scaling_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3458,12 +3499,13 @@ emr_put_auto_termination_policy <- function(ClusterId, AutoTerminationPolicy = N
     name = "PutAutoTerminationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$put_auto_termination_policy_input(ClusterId = ClusterId, AutoTerminationPolicy = AutoTerminationPolicy)
   output <- .emr$put_auto_termination_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3530,12 +3572,13 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
     name = "PutBlockPublicAccessConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$put_block_public_access_configuration_input(BlockPublicAccessConfiguration = BlockPublicAccessConfiguration)
   output <- .emr$put_block_public_access_configuration_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3587,12 +3630,13 @@ emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
     name = "PutManagedScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$put_managed_scaling_policy_input(ClusterId = ClusterId, ManagedScalingPolicy = ManagedScalingPolicy)
   output <- .emr$put_managed_scaling_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3635,12 +3679,13 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
     name = "RemoveAutoScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$remove_auto_scaling_policy_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId)
   output <- .emr$remove_auto_scaling_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3678,12 +3723,13 @@ emr_remove_auto_termination_policy <- function(ClusterId) {
     name = "RemoveAutoTerminationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$remove_auto_termination_policy_input(ClusterId = ClusterId)
   output <- .emr$remove_auto_termination_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3721,12 +3767,13 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
     name = "RemoveManagedScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$remove_managed_scaling_policy_input(ClusterId = ClusterId)
   output <- .emr$remove_managed_scaling_policy_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3776,12 +3823,13 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
     name = "RemoveTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$remove_tags_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .emr$remove_tags_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4121,7 +4169,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'                 )
 #'               )
 #'             ),
-#'             CustomAmiId = "string"
+#'             CustomAmiId = "string",
+#'             Priority = 123.0
 #'           )
 #'         ),
 #'         LaunchSpecifications = list(
@@ -4129,10 +4178,10 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'             TimeoutDurationMinutes = 123,
 #'             TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'             BlockDurationMinutes = 123,
-#'             AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
+#'             AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"|"capacity-optimized-prioritized"
 #'           ),
 #'           OnDemandSpecification = list(
-#'             AllocationStrategy = "lowest-price",
+#'             AllocationStrategy = "lowest-price"|"prioritized",
 #'             CapacityReservationOptions = list(
 #'               UsageStrategy = "use-capacity-reservations-first",
 #'               CapacityReservationPreference = "open"|"none",
@@ -4294,12 +4343,13 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
     name = "RunJobFlow",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput)
   output <- .emr$run_job_flow_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4358,12 +4408,13 @@ emr_set_keep_job_flow_alive_when_no_steps <- function(JobFlowIds, KeepJobFlowAli
     name = "SetKeepJobFlowAliveWhenNoSteps",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$set_keep_job_flow_alive_when_no_steps_input(JobFlowIds = JobFlowIds, KeepJobFlowAliveWhenNoSteps = KeepJobFlowAliveWhenNoSteps)
   output <- .emr$set_keep_job_flow_alive_when_no_steps_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4431,12 +4482,13 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
     name = "SetTerminationProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$set_termination_protection_input(JobFlowIds = JobFlowIds, TerminationProtected = TerminationProtected)
   output <- .emr$set_termination_protection_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4498,12 +4550,13 @@ emr_set_unhealthy_node_replacement <- function(JobFlowIds, UnhealthyNodeReplacem
     name = "SetUnhealthyNodeReplacement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$set_unhealthy_node_replacement_input(JobFlowIds = JobFlowIds, UnhealthyNodeReplacement = UnhealthyNodeReplacement)
   output <- .emr$set_unhealthy_node_replacement_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4568,12 +4621,13 @@ emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
     name = "SetVisibleToAllUsers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$set_visible_to_all_users_input(JobFlowIds = JobFlowIds, VisibleToAllUsers = VisibleToAllUsers)
   output <- .emr$set_visible_to_all_users_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4673,12 +4727,13 @@ emr_start_notebook_execution <- function(EditorId = NULL, RelativePath = NULL, N
     name = "StartNotebookExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$start_notebook_execution_input(EditorId = EditorId, RelativePath = RelativePath, NotebookExecutionName = NotebookExecutionName, NotebookParams = NotebookParams, ExecutionEngine = ExecutionEngine, ServiceRole = ServiceRole, NotebookInstanceSecurityGroupId = NotebookInstanceSecurityGroupId, Tags = Tags, NotebookS3Location = NotebookS3Location, OutputNotebookS3Location = OutputNotebookS3Location, OutputNotebookFormat = OutputNotebookFormat, EnvironmentVariables = EnvironmentVariables)
   output <- .emr$start_notebook_execution_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4715,12 +4770,13 @@ emr_stop_notebook_execution <- function(NotebookExecutionId) {
     name = "StopNotebookExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$stop_notebook_execution_input(NotebookExecutionId = NotebookExecutionId)
   output <- .emr$stop_notebook_execution_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4769,12 +4825,13 @@ emr_terminate_job_flows <- function(JobFlowIds) {
     name = "TerminateJobFlows",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$terminate_job_flows_input(JobFlowIds = JobFlowIds)
   output <- .emr$terminate_job_flows_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4832,12 +4889,13 @@ emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetI
     name = "UpdateStudio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$update_studio_input(StudioId = StudioId, Name = Name, Description = Description, SubnetIds = SubnetIds, DefaultS3Location = DefaultS3Location, EncryptionKeyArn = EncryptionKeyArn)
   output <- .emr$update_studio_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4897,12 +4955,13 @@ emr_update_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
     name = "UpdateStudioSessionMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emr$update_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType, SessionPolicyArn = SessionPolicyArn)
   output <- .emr$update_studio_session_mapping_output()
   config <- get_config()
-  svc <- .emr$service(config)
+  svc <- .emr$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

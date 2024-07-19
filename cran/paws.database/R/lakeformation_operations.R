@@ -25,12 +25,13 @@ lakeformation_add_lf_tags_to_resource <- function(CatalogId = NULL, Resource, LF
     name = "AddLFTagsToResource",
     http_method = "POST",
     http_path = "/AddLFTagsToResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$add_lf_tags_to_resource_input(CatalogId = CatalogId, Resource = Resource, LFTags = LFTags)
   output <- .lakeformation$add_lf_tags_to_resource_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -65,12 +66,13 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
     name = "AssumeDecoratedRoleWithSAML",
     http_method = "POST",
     http_path = "/AssumeDecoratedRoleWithSAML",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$assume_decorated_role_with_saml_input(SAMLAssertion = SAMLAssertion, RoleArn = RoleArn, PrincipalArn = PrincipalArn, DurationSeconds = DurationSeconds)
   output <- .lakeformation$assume_decorated_role_with_saml_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -99,12 +101,13 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
     name = "BatchGrantPermissions",
     http_method = "POST",
     http_path = "/BatchGrantPermissions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$batch_grant_permissions_input(CatalogId = CatalogId, Entries = Entries)
   output <- .lakeformation$batch_grant_permissions_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -133,12 +136,13 @@ lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
     name = "BatchRevokePermissions",
     http_method = "POST",
     http_path = "/BatchRevokePermissions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$batch_revoke_permissions_input(CatalogId = CatalogId, Entries = Entries)
   output <- .lakeformation$batch_revoke_permissions_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -162,12 +166,13 @@ lakeformation_cancel_transaction <- function(TransactionId) {
     name = "CancelTransaction",
     http_method = "POST",
     http_path = "/CancelTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$cancel_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$cancel_transaction_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -191,12 +196,13 @@ lakeformation_commit_transaction <- function(TransactionId) {
     name = "CommitTransaction",
     http_method = "POST",
     http_path = "/CommitTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$commit_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$commit_transaction_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -222,12 +228,13 @@ lakeformation_create_data_cells_filter <- function(TableData) {
     name = "CreateDataCellsFilter",
     http_method = "POST",
     http_path = "/CreateDataCellsFilter",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$create_data_cells_filter_input(TableData = TableData)
   output <- .lakeformation$create_data_cells_filter_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -256,12 +263,13 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
     name = "CreateLFTag",
     http_method = "POST",
     http_path = "/CreateLFTag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$create_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey, TagValues = TagValues)
   output <- .lakeformation$create_lf_tag_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -304,12 +312,13 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
     name = "CreateLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
     http_path = "/CreateLakeFormationIdentityCenterConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$create_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, InstanceArn = InstanceArn, ExternalFiltering = ExternalFiltering, ShareRecipients = ShareRecipients)
   output <- .lakeformation$create_lake_formation_identity_center_configuration_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -335,12 +344,13 @@ lakeformation_create_lake_formation_opt_in <- function(Principal, Resource) {
     name = "CreateLakeFormationOptIn",
     http_method = "POST",
     http_path = "/CreateLakeFormationOptIn",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$create_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
   output <- .lakeformation$create_lake_formation_opt_in_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -367,12 +377,13 @@ lakeformation_delete_data_cells_filter <- function(TableCatalogId = NULL, Databa
     name = "DeleteDataCellsFilter",
     http_method = "POST",
     http_path = "/DeleteDataCellsFilter",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$delete_data_cells_filter_input(TableCatalogId = TableCatalogId, DatabaseName = DatabaseName, TableName = TableName, Name = Name)
   output <- .lakeformation$delete_data_cells_filter_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -400,12 +411,13 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
     name = "DeleteLFTag",
     http_method = "POST",
     http_path = "/DeleteLFTag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$delete_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey)
   output <- .lakeformation$delete_lf_tag_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -432,12 +444,13 @@ lakeformation_delete_lake_formation_identity_center_configuration <- function(Ca
     name = "DeleteLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
     http_path = "/DeleteLakeFormationIdentityCenterConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$delete_lake_formation_identity_center_configuration_input(CatalogId = CatalogId)
   output <- .lakeformation$delete_lake_formation_identity_center_configuration_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -463,12 +476,13 @@ lakeformation_delete_lake_formation_opt_in <- function(Principal, Resource) {
     name = "DeleteLakeFormationOptIn",
     http_method = "POST",
     http_path = "/DeleteLakeFormationOptIn",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$delete_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
   output <- .lakeformation$delete_lake_formation_opt_in_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -500,12 +514,13 @@ lakeformation_delete_objects_on_cancel <- function(CatalogId = NULL, DatabaseNam
     name = "DeleteObjectsOnCancel",
     http_method = "POST",
     http_path = "/DeleteObjectsOnCancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$delete_objects_on_cancel_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, Objects = Objects)
   output <- .lakeformation$delete_objects_on_cancel_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -530,12 +545,13 @@ lakeformation_deregister_resource <- function(ResourceArn) {
     name = "DeregisterResource",
     http_method = "POST",
     http_path = "/DeregisterResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$deregister_resource_input(ResourceArn = ResourceArn)
   output <- .lakeformation$deregister_resource_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -562,12 +578,13 @@ lakeformation_describe_lake_formation_identity_center_configuration <- function(
     name = "DescribeLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
     http_path = "/DescribeLakeFormationIdentityCenterConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$describe_lake_formation_identity_center_configuration_input(CatalogId = CatalogId)
   output <- .lakeformation$describe_lake_formation_identity_center_configuration_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -592,12 +609,13 @@ lakeformation_describe_resource <- function(ResourceArn) {
     name = "DescribeResource",
     http_method = "POST",
     http_path = "/DescribeResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$describe_resource_input(ResourceArn = ResourceArn)
   output <- .lakeformation$describe_resource_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -621,12 +639,13 @@ lakeformation_describe_transaction <- function(TransactionId) {
     name = "DescribeTransaction",
     http_method = "POST",
     http_path = "/DescribeTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$describe_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$describe_transaction_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -651,12 +670,13 @@ lakeformation_extend_transaction <- function(TransactionId = NULL) {
     name = "ExtendTransaction",
     http_method = "POST",
     http_path = "/ExtendTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$extend_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$extend_transaction_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -683,17 +703,48 @@ lakeformation_get_data_cells_filter <- function(TableCatalogId, DatabaseName, Ta
     name = "GetDataCellsFilter",
     http_method = "POST",
     http_path = "/GetDataCellsFilter",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$get_data_cells_filter_input(TableCatalogId = TableCatalogId, DatabaseName = DatabaseName, TableName = TableName, Name = Name)
   output <- .lakeformation$get_data_cells_filter_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .lakeformation$operations$get_data_cells_filter <- lakeformation_get_data_cells_filter
+
+#' Returns the identity of the invoking principal
+#'
+#' @description
+#' Returns the identity of the invoking principal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_data_lake_principal/](https://www.paws-r-sdk.com/docs/lakeformation_get_data_lake_principal/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_get_data_lake_principal
+lakeformation_get_data_lake_principal <- function() {
+  op <- new_operation(
+    name = "GetDataLakePrincipal",
+    http_method = "POST",
+    http_path = "/GetDataLakePrincipal",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .lakeformation$get_data_lake_principal_input()
+  output <- .lakeformation$get_data_lake_principal_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$get_data_lake_principal <- lakeformation_get_data_lake_principal
 
 #' Retrieves the list of the data lake administrators of a Lake
 #' Formation-managed data lake
@@ -716,12 +767,13 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
     name = "GetDataLakeSettings",
     http_method = "POST",
     http_path = "/GetDataLakeSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$get_data_lake_settings_input(CatalogId = CatalogId)
   output <- .lakeformation$get_data_lake_settings_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -754,12 +806,13 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
     name = "GetEffectivePermissionsForPath",
     http_method = "POST",
     http_path = "/GetEffectivePermissionsForPath",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$get_effective_permissions_for_path_input(CatalogId = CatalogId, ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lakeformation$get_effective_permissions_for_path_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -787,12 +840,13 @@ lakeformation_get_lf_tag <- function(CatalogId = NULL, TagKey) {
     name = "GetLFTag",
     http_method = "POST",
     http_path = "/GetLFTag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$get_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey)
   output <- .lakeformation$get_lf_tag_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -816,12 +870,13 @@ lakeformation_get_query_state <- function(QueryId) {
     name = "GetQueryState",
     http_method = "POST",
     http_path = "/GetQueryState",
+    host_prefix = "query-",
     paginator = list()
   )
   input <- .lakeformation$get_query_state_input(QueryId = QueryId)
   output <- .lakeformation$get_query_state_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -845,12 +900,13 @@ lakeformation_get_query_statistics <- function(QueryId) {
     name = "GetQueryStatistics",
     http_method = "POST",
     http_path = "/GetQueryStatistics",
+    host_prefix = "query-",
     paginator = list()
   )
   input <- .lakeformation$get_query_statistics_input(QueryId = QueryId)
   output <- .lakeformation$get_query_statistics_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -880,12 +936,13 @@ lakeformation_get_resource_lf_tags <- function(CatalogId = NULL, Resource, ShowA
     name = "GetResourceLFTags",
     http_method = "POST",
     http_path = "/GetResourceLFTags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$get_resource_lf_tags_input(CatalogId = CatalogId, Resource = Resource, ShowAssignedLFTags = ShowAssignedLFTags)
   output <- .lakeformation$get_resource_lf_tags_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -933,12 +990,13 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
     name = "GetTableObjects",
     http_method = "POST",
     http_path = "/GetTableObjects",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$get_table_objects_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, PartitionPredicate = PartitionPredicate, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$get_table_objects_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -972,12 +1030,13 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
     name = "GetTemporaryGluePartitionCredentials",
     http_method = "POST",
     http_path = "/GetTemporaryGluePartitionCredentials",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$get_temporary_glue_partition_credentials_input(TableArn = TableArn, Partition = Partition, Permissions = Permissions, DurationSeconds = DurationSeconds, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes)
   output <- .lakeformation$get_temporary_glue_partition_credentials_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1015,12 +1074,13 @@ lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permiss
     name = "GetTemporaryGlueTableCredentials",
     http_method = "POST",
     http_path = "/GetTemporaryGlueTableCredentials",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$get_temporary_glue_table_credentials_input(TableArn = TableArn, Permissions = Permissions, DurationSeconds = DurationSeconds, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, S3Path = S3Path, QuerySessionContext = QuerySessionContext)
   output <- .lakeformation$get_temporary_glue_table_credentials_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1050,12 +1110,13 @@ lakeformation_get_work_unit_results <- function(QueryId, WorkUnitId, WorkUnitTok
     name = "GetWorkUnitResults",
     http_method = "POST",
     http_path = "/GetWorkUnitResults",
+    host_prefix = "data-",
     paginator = list()
   )
   input <- .lakeformation$get_work_unit_results_input(QueryId = QueryId, WorkUnitId = WorkUnitId, WorkUnitToken = WorkUnitToken)
   output <- .lakeformation$get_work_unit_results_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1085,12 +1146,13 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
     name = "GetWorkUnits",
     http_method = "POST",
     http_path = "/GetWorkUnits",
+    host_prefix = "query-",
     paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken", result_key = "WorkUnitRanges")
   )
   input <- .lakeformation$get_work_units_input(NextToken = NextToken, PageSize = PageSize, QueryId = QueryId)
   output <- .lakeformation$get_work_units_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1135,12 +1197,13 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
     name = "GrantPermissions",
     http_method = "POST",
     http_path = "/GrantPermissions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$grant_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, PermissionsWithGrantOption = PermissionsWithGrantOption)
   output <- .lakeformation$grant_permissions_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1166,12 +1229,13 @@ lakeformation_list_data_cells_filter <- function(Table = NULL, NextToken = NULL,
     name = "ListDataCellsFilter",
     http_method = "POST",
     http_path = "/ListDataCellsFilter",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCellsFilters")
   )
   input <- .lakeformation$list_data_cells_filter_input(Table = Table, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lakeformation$list_data_cells_filter_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1206,12 +1270,13 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
     name = "ListLFTags",
     http_method = "POST",
     http_path = "/ListLFTags",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LFTags")
   )
   input <- .lakeformation$list_lf_tags_input(CatalogId = CatalogId, ResourceShareType = ResourceShareType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_lf_tags_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1240,12 +1305,13 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
     name = "ListLakeFormationOptIns",
     http_method = "POST",
     http_path = "/ListLakeFormationOptIns",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_lake_formation_opt_ins_input(Principal = Principal, Resource = Resource, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_lake_formation_opt_ins_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1284,12 +1350,13 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/ListPermissions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_permissions_input(CatalogId = CatalogId, Principal = Principal, ResourceType = ResourceType, Resource = Resource, NextToken = NextToken, MaxResults = MaxResults, IncludeRelated = IncludeRelated)
   output <- .lakeformation$list_permissions_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1317,12 +1384,13 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
     name = "ListResources",
     http_method = "POST",
     http_path = "/ListResources",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_resources_input(FilterConditionList = FilterConditionList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_resources_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1353,12 +1421,13 @@ lakeformation_list_table_storage_optimizers <- function(CatalogId = NULL, Databa
     name = "ListTableStorageOptimizers",
     http_method = "POST",
     http_path = "/ListTableStorageOptimizers",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_table_storage_optimizers_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, StorageOptimizerType = StorageOptimizerType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_table_storage_optimizers_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1388,12 +1457,13 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
     name = "ListTransactions",
     http_method = "POST",
     http_path = "/ListTransactions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_transactions_input(CatalogId = CatalogId, StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_transactions_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1423,12 +1493,13 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
     name = "PutDataLakeSettings",
     http_method = "POST",
     http_path = "/PutDataLakeSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$put_data_lake_settings_input(CatalogId = CatalogId, DataLakeSettings = DataLakeSettings)
   output <- .lakeformation$put_data_lake_settings_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1464,12 +1535,13 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
     name = "RegisterResource",
     http_method = "POST",
     http_path = "/RegisterResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
   output <- .lakeformation$register_resource_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1499,12 +1571,13 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
     name = "RemoveLFTagsFromResource",
     http_method = "POST",
     http_path = "/RemoveLFTagsFromResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$remove_lf_tags_from_resource_input(CatalogId = CatalogId, Resource = Resource, LFTags = LFTags)
   output <- .lakeformation$remove_lf_tags_from_resource_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1540,12 +1613,13 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
     name = "RevokePermissions",
     http_method = "POST",
     http_path = "/RevokePermissions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$revoke_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, PermissionsWithGrantOption = PermissionsWithGrantOption)
   output <- .lakeformation$revoke_permissions_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1577,12 +1651,13 @@ lakeformation_search_databases_by_lf_tags <- function(NextToken = NULL, MaxResul
     name = "SearchDatabasesByLFTags",
     http_method = "POST",
     http_path = "/SearchDatabasesByLFTags",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList")
   )
   input <- .lakeformation$search_databases_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
   output <- .lakeformation$search_databases_by_lf_tags_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1614,12 +1689,13 @@ lakeformation_search_tables_by_lf_tags <- function(NextToken = NULL, MaxResults 
     name = "SearchTablesByLFTags",
     http_method = "POST",
     http_path = "/SearchTablesByLFTags",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableList")
   )
   input <- .lakeformation$search_tables_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
   output <- .lakeformation$search_tables_by_lf_tags_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1644,12 +1720,13 @@ lakeformation_start_query_planning <- function(QueryPlanningContext, QueryString
     name = "StartQueryPlanning",
     http_method = "POST",
     http_path = "/StartQueryPlanning",
+    host_prefix = "query-",
     paginator = list()
   )
   input <- .lakeformation$start_query_planning_input(QueryPlanningContext = QueryPlanningContext, QueryString = QueryString)
   output <- .lakeformation$start_query_planning_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1675,12 +1752,13 @@ lakeformation_start_transaction <- function(TransactionType = NULL) {
     name = "StartTransaction",
     http_method = "POST",
     http_path = "/StartTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$start_transaction_input(TransactionType = TransactionType)
   output <- .lakeformation$start_transaction_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1705,12 +1783,13 @@ lakeformation_update_data_cells_filter <- function(TableData) {
     name = "UpdateDataCellsFilter",
     http_method = "POST",
     http_path = "/UpdateDataCellsFilter",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$update_data_cells_filter_input(TableData = TableData)
   output <- .lakeformation$update_data_cells_filter_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1740,12 +1819,13 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
     name = "UpdateLFTag",
     http_method = "POST",
     http_path = "/UpdateLFTag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$update_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey, TagValuesToDelete = TagValuesToDelete, TagValuesToAdd = TagValuesToAdd)
   output <- .lakeformation$update_lf_tag_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1788,12 +1868,13 @@ lakeformation_update_lake_formation_identity_center_configuration <- function(Ca
     name = "UpdateLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
     http_path = "/UpdateLakeFormationIdentityCenterConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$update_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, ShareRecipients = ShareRecipients, ApplicationStatus = ApplicationStatus, ExternalFiltering = ExternalFiltering)
   output <- .lakeformation$update_lake_formation_identity_center_configuration_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1823,12 +1904,13 @@ lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation =
     name = "UpdateResource",
     http_method = "POST",
     http_path = "/UpdateResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
   output <- .lakeformation$update_resource_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1859,12 +1941,13 @@ lakeformation_update_table_objects <- function(CatalogId = NULL, DatabaseName, T
     name = "UpdateTableObjects",
     http_method = "POST",
     http_path = "/UpdateTableObjects",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$update_table_objects_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, WriteOperations = WriteOperations)
   output <- .lakeformation$update_table_objects_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1891,12 +1974,13 @@ lakeformation_update_table_storage_optimizer <- function(CatalogId = NULL, Datab
     name = "UpdateTableStorageOptimizer",
     http_method = "POST",
     http_path = "/UpdateTableStorageOptimizer",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lakeformation$update_table_storage_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, StorageOptimizerConfig = StorageOptimizerConfig)
   output <- .lakeformation$update_table_storage_optimizer_output()
   config <- get_config()
-  svc <- .lakeformation$service(config)
+  svc <- .lakeformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

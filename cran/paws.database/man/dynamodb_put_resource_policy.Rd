@@ -26,28 +26,35 @@ or both, you can define multiple \code{Statement} fields in your policy
 document.}
 
 \item{Policy}{[required] An Amazon Web Services resource-based policy document in JSON format.
+\itemize{
+\item The maximum size supported for a resource-based policy document is
+20 KB. DynamoDB counts whitespaces when calculating the size of a
+policy against this limit.
+\item Within a resource-based policy, if the action for a DynamoDB
+service-linked role (SLR) to replicate data for a global table is
+denied, adding or deleting a replica will fail with an error.
+}
 
-The maximum size supported for a resource-based policy document is 20
-KB. DynamoDB counts whitespaces when calculating the size of a policy
-against this limit. For a full list of all considerations that you
-should keep in mind while attaching a resource-based policy, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html}{Resource-based policy considerations}.}
+For a full list of all considerations that apply while attaching a
+resource-based policy, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html}{Resource-based policy considerations}.}
 
 \item{ExpectedRevisionId}{A string value that you can use to conditionally update your policy. You
 can provide the revision ID of your existing policy to make mutating
-requests against that policy. When you provide an expected revision ID,
-if the revision ID of the existing policy on the resource doesn't match
-or if there's no policy attached to the resource, your request will be
-rejected with a \code{PolicyNotFoundException}.
+requests against that policy.
 
-To conditionally put a policy when no policy exists for the resource,
+When you provide an expected revision ID, if the revision ID of the
+existing policy on the resource doesn't match or if there's no policy
+attached to the resource, your request will be rejected with a
+\code{PolicyNotFoundException}.
+
+To conditionally attach a policy when no policy exists for the resource,
 specify \code{NO_POLICY} for the revision ID.}
 
 \item{ConfirmRemoveSelfResourceAccess}{Set this parameter to \code{true} to confirm that you want to remove your
 permissions to change the policy of this resource in the future.}
 }
 \description{
-Attaches a resource-based policy document to the resource, which can be a table or stream. When you attach a resource-based policy using this API, the policy application is \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html}{\emph{eventually consistent}} .
+Attaches a resource-based policy document to the resource, which can be a table or stream. When you attach a resource-based policy using this API, the policy application is \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html}{\emph{eventually consistent}} .
 
 See \url{https://www.paws-r-sdk.com/docs/dynamodb_put_resource_policy/} for full documentation.
 }

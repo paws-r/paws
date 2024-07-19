@@ -214,7 +214,7 @@ directoryservice <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = "DirectoryService_20150416"
 )
 
-.directoryservice$service <- function(config = list()) {
+.directoryservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.directoryservice$metadata, handlers, config)
+  new_service(.directoryservice$metadata, handlers, config, op)
 }

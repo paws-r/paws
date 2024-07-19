@@ -73,7 +73,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 The valid values are \code{EC2}, \code{ELB}, and \code{VPC_LATTICE}. \code{EC2} is the
 default health check and cannot be disabled. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html}{Health checks for Auto Scaling instances}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html}{Health checks for instances in an Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Only specify \code{EC2} if you must clear a value that was previously set.}
@@ -99,7 +99,7 @@ that you specify must reside in those Availability Zones.}
 
 \item{TerminationPolicies}{A policy or a list of policies that are used to select the instances to
 terminate. The policies are executed in the order that you list them.
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html}{Work with Amazon EC2 Auto Scaling termination policies}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html}{Configure termination policies for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Valid values: \code{Default} | \code{AllocationStrategy} |
@@ -110,7 +110,7 @@ Valid values: \code{Default} | \code{AllocationStrategy} |
 \item{NewInstancesProtectedFromScaleIn}{Indicates whether newly launched instances are protected from
 termination by Amazon EC2 Auto Scaling when scaling in. For more
 information about preventing instances from terminating on scale in, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html}{Using instance scale-in protection}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html}{Use instance scale-in protection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{ServiceLinkedRoleARN}{The Amazon Resource Name (ARN) of the service-linked role that the Auto
@@ -133,7 +133,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \item{DesiredCapacityType}{The unit of measurement for the value specified for desired capacity.
 Amazon EC2 Auto Scaling supports \code{DesiredCapacityType} for
 attribute-based instance type selection only. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html}{Creating an Auto Scaling group using attribute-based instance type selection}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html}{Create a mixed instances group using attribute-based instance type selection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 By default, Amazon EC2 Auto Scaling specifies \code{units}, which translates

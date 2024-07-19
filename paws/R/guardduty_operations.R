@@ -42,12 +42,13 @@ guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorI
     name = "AcceptAdministratorInvitation",
     http_method = "POST",
     http_path = "/detector/{detectorId}/administrator",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$accept_administrator_invitation_input(DetectorId = DetectorId, AdministratorId = AdministratorId, InvitationId = InvitationId)
   output <- .guardduty$accept_administrator_invitation_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -92,12 +93,13 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
     name = "AcceptInvitation",
     http_method = "POST",
     http_path = "/detector/{detectorId}/master",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$accept_invitation_input(DetectorId = DetectorId, MasterId = MasterId, InvitationId = InvitationId)
   output <- .guardduty$accept_invitation_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -144,12 +146,13 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
     name = "ArchiveFindings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings/archive",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$archive_findings_input(DetectorId = DetectorId, FindingIds = FindingIds)
   output <- .guardduty$archive_findings_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -269,12 +272,13 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
     name = "CreateDetector",
     http_method = "POST",
     http_path = "/detector",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Tags = Tags, Features = Features)
   output <- .guardduty$create_detector_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -581,12 +585,13 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
     name = "CreateFilter",
     http_method = "POST",
     http_path = "/detector/{detectorId}/filter",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$create_filter_input(DetectorId = DetectorId, Name = Name, Description = Description, Action = Action, Rank = Rank, FindingCriteria = FindingCriteria, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_filter_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -654,17 +659,98 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
     name = "CreateIPSet",
     http_method = "POST",
     http_path = "/detector/{detectorId}/ipset",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$create_ip_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_ip_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .guardduty$operations$create_ip_set <- guardduty_create_ip_set
+
+#' Creates a new Malware Protection plan for the protected resource
+#'
+#' @description
+#' Creates a new Malware Protection plan for the protected resource.
+#' 
+#' When you create a Malware Protection plan, the Amazon Web Services
+#' service terms for GuardDuty Malware Protection apply. For more
+#' information, see [Amazon Web Services service terms for GuardDuty
+#' Malware
+#' Protection](https://aws.amazon.com/service-terms/#87._Amazon_GuardDuty).
+#'
+#' @usage
+#' guardduty_create_malware_protection_plan(ClientToken, Role,
+#'   ProtectedResource, Actions, Tags)
+#'
+#' @param ClientToken The idempotency token for the create request.
+#' @param Role &#91;required&#93; IAM role with permissions required to scan and add tags to the
+#' associated protected resource.
+#' @param ProtectedResource &#91;required&#93; Information about the protected resource that is associated with the
+#' created Malware Protection plan. Presently, `S3Bucket` is the only
+#' supported protected resource.
+#' @param Actions Information about whether the tags will be added to the S3 object after
+#' scanning.
+#' @param Tags Tags added to the Malware Protection plan resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MalwareProtectionPlanId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_malware_protection_plan(
+#'   ClientToken = "string",
+#'   Role = "string",
+#'   ProtectedResource = list(
+#'     S3Bucket = list(
+#'       BucketName = "string",
+#'       ObjectPrefixes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Actions = list(
+#'     Tagging = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_malware_protection_plan
+#'
+#' @aliases guardduty_create_malware_protection_plan
+guardduty_create_malware_protection_plan <- function(ClientToken = NULL, Role, ProtectedResource, Actions = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateMalwareProtectionPlan",
+    http_method = "POST",
+    http_path = "/malware-protection-plan",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .guardduty$create_malware_protection_plan_input(ClientToken = ClientToken, Role = Role, ProtectedResource = ProtectedResource, Actions = Actions, Tags = Tags)
+  output <- .guardduty$create_malware_protection_plan_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_malware_protection_plan <- guardduty_create_malware_protection_plan
 
 #' Creates member accounts of the current Amazon Web Services account by
 #' specifying a list of Amazon Web Services account IDs
@@ -746,12 +832,13 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
     name = "CreateMembers",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$create_members_input(DetectorId = DetectorId, AccountDetails = AccountDetails)
   output <- .guardduty$create_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -807,12 +894,13 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
     name = "CreatePublishingDestination",
     http_method = "POST",
     http_path = "/detector/{detectorId}/publishingDestination",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$create_publishing_destination_input(DetectorId = DetectorId, DestinationType = DestinationType, DestinationProperties = DestinationProperties, ClientToken = ClientToken)
   output <- .guardduty$create_publishing_destination_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -856,12 +944,13 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
     name = "CreateSampleFindings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$create_sample_findings_input(DetectorId = DetectorId, FindingTypes = FindingTypes)
   output <- .guardduty$create_sample_findings_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -924,12 +1013,13 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
     name = "CreateThreatIntelSet",
     http_method = "POST",
     http_path = "/detector/{detectorId}/threatintelset",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$create_threat_intel_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_threat_intel_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -982,12 +1072,13 @@ guardduty_decline_invitations <- function(AccountIds) {
     name = "DeclineInvitations",
     http_method = "POST",
     http_path = "/invitation/decline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$decline_invitations_input(AccountIds = AccountIds)
   output <- .guardduty$decline_invitations_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1026,12 +1117,13 @@ guardduty_delete_detector <- function(DetectorId) {
     name = "DeleteDetector",
     http_method = "DELETE",
     http_path = "/detector/{detectorId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$delete_detector_input(DetectorId = DetectorId)
   output <- .guardduty$delete_detector_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1070,12 +1162,13 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
     name = "DeleteFilter",
     http_method = "DELETE",
     http_path = "/detector/{detectorId}/filter/{filterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$delete_filter_input(DetectorId = DetectorId, FilterName = FilterName)
   output <- .guardduty$delete_filter_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1115,12 +1208,13 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
     name = "DeleteIPSet",
     http_method = "DELETE",
     http_path = "/detector/{detectorId}/ipset/{ipSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$delete_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId)
   output <- .guardduty$delete_ip_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1173,17 +1267,64 @@ guardduty_delete_invitations <- function(AccountIds) {
     name = "DeleteInvitations",
     http_method = "POST",
     http_path = "/invitation/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$delete_invitations_input(AccountIds = AccountIds)
   output <- .guardduty$delete_invitations_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .guardduty$operations$delete_invitations <- guardduty_delete_invitations
+
+#' Deletes the Malware Protection plan ID associated with the Malware
+#' Protection plan resource
+#'
+#' @description
+#' Deletes the Malware Protection plan ID associated with the Malware
+#' Protection plan resource. Use this API only when you no longer want to
+#' protect the resource associated with this Malware Protection plan ID.
+#'
+#' @usage
+#' guardduty_delete_malware_protection_plan(MalwareProtectionPlanId)
+#'
+#' @param MalwareProtectionPlanId &#91;required&#93; A unique identifier associated with Malware Protection plan resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_malware_protection_plan(
+#'   MalwareProtectionPlanId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_malware_protection_plan
+#'
+#' @aliases guardduty_delete_malware_protection_plan
+guardduty_delete_malware_protection_plan <- function(MalwareProtectionPlanId) {
+  op <- new_operation(
+    name = "DeleteMalwareProtectionPlan",
+    http_method = "DELETE",
+    http_path = "/malware-protection-plan/{malwareProtectionPlanId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .guardduty$delete_malware_protection_plan_input(MalwareProtectionPlanId = MalwareProtectionPlanId)
+  output <- .guardduty$delete_malware_protection_plan_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_malware_protection_plan <- guardduty_delete_malware_protection_plan
 
 #' Deletes GuardDuty member accounts (to the current GuardDuty
 #' administrator account) specified by the account IDs
@@ -1237,12 +1378,13 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
     name = "DeleteMembers",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$delete_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$delete_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1282,12 +1424,13 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
     name = "DeletePublishingDestination",
     http_method = "DELETE",
     http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$delete_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId)
   output <- .guardduty$delete_publishing_destination_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1327,12 +1470,13 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
     name = "DeleteThreatIntelSet",
     http_method = "DELETE",
     http_path = "/detector/{detectorId}/threatintelset/{threatIntelSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$delete_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId)
   output <- .guardduty$delete_threat_intel_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1452,12 +1596,13 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
     name = "DescribeMalwareScans",
     http_method = "POST",
     http_path = "/detector/{detectorId}/malware-scans",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scans")
   )
   input <- .guardduty$describe_malware_scans_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$describe_malware_scans_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1549,12 +1694,13 @@ guardduty_describe_organization_configuration <- function(DetectorId, MaxResults
     name = "DescribeOrganizationConfiguration",
     http_method = "GET",
     http_path = "/detector/{detectorId}/admin",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$describe_organization_configuration_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$describe_organization_configuration_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1608,12 +1754,13 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
     name = "DescribePublishingDestination",
     http_method = "GET",
     http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$describe_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId)
   output <- .guardduty$describe_publishing_destination_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1654,12 +1801,13 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
     name = "DisableOrganizationAdminAccount",
     http_method = "POST",
     http_path = "/admin/disable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$disable_organization_admin_account_input(AdminAccountId = AdminAccountId)
   output <- .guardduty$disable_organization_admin_account_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1712,12 +1860,13 @@ guardduty_disassociate_from_administrator_account <- function(DetectorId) {
     name = "DisassociateFromAdministratorAccount",
     http_method = "POST",
     http_path = "/detector/{detectorId}/administrator/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$disassociate_from_administrator_account_input(DetectorId = DetectorId)
   output <- .guardduty$disassociate_from_administrator_account_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1766,12 +1915,13 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
     name = "DisassociateFromMasterAccount",
     http_method = "POST",
     http_path = "/detector/{detectorId}/master/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$disassociate_from_master_account_input(DetectorId = DetectorId)
   output <- .guardduty$disassociate_from_master_account_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1854,12 +2004,13 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
     name = "DisassociateMembers",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$disassociate_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$disassociate_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1900,12 +2051,13 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
     name = "EnableOrganizationAdminAccount",
     http_method = "POST",
     http_path = "/admin/enable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$enable_organization_admin_account_input(AdminAccountId = AdminAccountId)
   output <- .guardduty$enable_organization_admin_account_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1957,12 +2109,13 @@ guardduty_get_administrator_account <- function(DetectorId) {
     name = "GetAdministratorAccount",
     http_method = "GET",
     http_path = "/detector/{detectorId}/administrator",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_administrator_account_input(DetectorId = DetectorId)
   output <- .guardduty$get_administrator_account_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2037,12 +2190,13 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
     name = "GetCoverageStatistics",
     http_method = "POST",
     http_path = "/detector/{detectorId}/coverage/statistics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_coverage_statistics_input(DetectorId = DetectorId, FilterCriteria = FilterCriteria, StatisticsType = StatisticsType)
   output <- .guardduty$get_coverage_statistics_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2142,12 +2296,13 @@ guardduty_get_detector <- function(DetectorId) {
     name = "GetDetector",
     http_method = "GET",
     http_path = "/detector/{detectorId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_detector_input(DetectorId = DetectorId)
   output <- .guardduty$get_detector_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2223,12 +2378,13 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
     name = "GetFilter",
     http_method = "GET",
     http_path = "/detector/{detectorId}/filter/{filterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_filter_input(DetectorId = DetectorId, FilterName = FilterName)
   output <- .guardduty$get_filter_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2318,6 +2474,15 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 )
 #'               ),
 #'               EffectivePermission = "string"
+#'             ),
+#'             S3ObjectDetails = list(
+#'               list(
+#'                 ObjectArn = "string",
+#'                 Key = "string",
+#'                 ETag = "string",
+#'                 Hash = "string",
+#'                 VersionId = "string"
+#'               )
 #'             )
 #'           )
 #'         ),
@@ -3035,6 +3200,20 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         MalwareScanDetails = list(
+#'           Threats = list(
+#'             list(
+#'               Name = "string",
+#'               Source = "string",
+#'               ItemPaths = list(
+#'                 list(
+#'                   NestedItemPath = "string",
+#'                   Hash = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       Severity = 123.0,
@@ -3070,12 +3249,13 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
     name = "GetFindings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_findings_input(DetectorId = DetectorId, FindingIds = FindingIds, SortCriteria = SortCriteria)
   output <- .guardduty$get_findings_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3160,12 +3340,13 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes,
     name = "GetFindingsStatistics",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings/statistics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_findings_statistics_input(DetectorId = DetectorId, FindingStatisticTypes = FindingStatisticTypes, FindingCriteria = FindingCriteria)
   output <- .guardduty$get_findings_statistics_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3215,12 +3396,13 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
     name = "GetIPSet",
     http_method = "GET",
     http_path = "/detector/{detectorId}/ipset/{ipSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId)
   output <- .guardduty$get_ip_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3262,17 +3444,95 @@ guardduty_get_invitations_count <- function() {
     name = "GetInvitationsCount",
     http_method = "GET",
     http_path = "/invitation/count",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_invitations_count_input()
   output <- .guardduty$get_invitations_count_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .guardduty$operations$get_invitations_count <- guardduty_get_invitations_count
+
+#' Retrieves the Malware Protection plan details associated with a Malware
+#' Protection plan ID
+#'
+#' @description
+#' Retrieves the Malware Protection plan details associated with a Malware
+#' Protection plan ID.
+#'
+#' @usage
+#' guardduty_get_malware_protection_plan(MalwareProtectionPlanId)
+#'
+#' @param MalwareProtectionPlanId &#91;required&#93; A unique identifier associated with Malware Protection plan resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Role = "string",
+#'   ProtectedResource = list(
+#'     S3Bucket = list(
+#'       BucketName = "string",
+#'       ObjectPrefixes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Actions = list(
+#'     Tagging = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "ACTIVE"|"WARNING"|"ERROR",
+#'   StatusReasons = list(
+#'     list(
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_malware_protection_plan(
+#'   MalwareProtectionPlanId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_malware_protection_plan
+#'
+#' @aliases guardduty_get_malware_protection_plan
+guardduty_get_malware_protection_plan <- function(MalwareProtectionPlanId) {
+  op <- new_operation(
+    name = "GetMalwareProtectionPlan",
+    http_method = "GET",
+    http_path = "/malware-protection-plan/{malwareProtectionPlanId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .guardduty$get_malware_protection_plan_input(MalwareProtectionPlanId = MalwareProtectionPlanId)
+  output <- .guardduty$get_malware_protection_plan_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_malware_protection_plan <- guardduty_get_malware_protection_plan
 
 #' Returns the details of the malware scan settings
 #'
@@ -3336,12 +3596,13 @@ guardduty_get_malware_scan_settings <- function(DetectorId) {
     name = "GetMalwareScanSettings",
     http_method = "GET",
     http_path = "/detector/{detectorId}/malware-scan-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_malware_scan_settings_input(DetectorId = DetectorId)
   output <- .guardduty$get_malware_scan_settings_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3390,12 +3651,13 @@ guardduty_get_master_account <- function(DetectorId) {
     name = "GetMasterAccount",
     http_method = "GET",
     http_path = "/detector/{detectorId}/master",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_master_account_input(DetectorId = DetectorId)
   output <- .guardduty$get_master_account_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3504,12 +3766,13 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
     name = "GetMemberDetectors",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/detector/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$get_member_detectors_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3576,12 +3839,13 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
     name = "GetMembers",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$get_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3646,12 +3910,13 @@ guardduty_get_organization_statistics <- function() {
     name = "GetOrganizationStatistics",
     http_method = "GET",
     http_path = "/organization/statistics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_organization_statistics_input()
   output <- .guardduty$get_organization_statistics_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3739,12 +4004,13 @@ guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NUL
     name = "GetRemainingFreeTrialDays",
     http_method = "POST",
     http_path = "/detector/{detectorId}/freeTrial/daysRemaining",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_remaining_free_trial_days_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$get_remaining_free_trial_days_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3795,12 +4061,13 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
     name = "GetThreatIntelSet",
     http_method = "GET",
     http_path = "/detector/{detectorId}/threatintelset/{threatIntelSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$get_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId)
   output <- .guardduty$get_threat_intel_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3939,12 +4206,13 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
     name = "GetUsageStatistics",
     http_method = "POST",
     http_path = "/detector/{detectorId}/usage/statistics",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$get_usage_statistics_input(DetectorId = DetectorId, UsageStatisticType = UsageStatisticType, UsageCriteria = UsageCriteria, Unit = Unit, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$get_usage_statistics_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4046,12 +4314,13 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
     name = "InviteMembers",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/invite",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$invite_members_input(DetectorId = DetectorId, AccountIds = AccountIds, DisableEmailNotification = DisableEmailNotification, Message = Message)
   output <- .guardduty$invite_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4175,12 +4444,13 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
     name = "ListCoverage",
     http_method = "POST",
     http_path = "/detector/{detectorId}/coverage",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources")
   )
   input <- .guardduty$list_coverage_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$list_coverage_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4234,12 +4504,13 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListDetectors",
     http_method = "GET",
     http_path = "/detector",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DetectorIds")
   )
   input <- .guardduty$list_detectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_detectors_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4293,12 +4564,13 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListFilters",
     http_method = "GET",
     http_path = "/detector/{detectorId}/filter",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FilterNames")
   )
   input <- .guardduty$list_filters_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_filters_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4496,12 +4768,13 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
     name = "ListFindings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FindingIds")
   )
   input <- .guardduty$list_findings_input(DetectorId = DetectorId, FindingCriteria = FindingCriteria, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_findings_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4556,12 +4829,13 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListIPSets",
     http_method = "GET",
     http_path = "/detector/{detectorId}/ipset",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpSetIds")
   )
   input <- .guardduty$list_ip_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_ip_sets_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4620,17 +4894,77 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListInvitations",
     http_method = "GET",
     http_path = "/invitation",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Invitations")
   )
   input <- .guardduty$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_invitations_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .guardduty$operations$list_invitations <- guardduty_list_invitations
+
+#' Lists the Malware Protection plan IDs associated with the protected
+#' resources in your Amazon Web Services account
+#'
+#' @description
+#' Lists the Malware Protection plan IDs associated with the protected
+#' resources in your Amazon Web Services account.
+#'
+#' @usage
+#' guardduty_list_malware_protection_plans(NextToken)
+#'
+#' @param NextToken You can use this parameter when paginating results. Set the value of
+#' this parameter to null on your first call to the list action. For
+#' subsequent calls to the action, fill nextToken in the request with the
+#' value of `NextToken` from the previous response to continue listing
+#' data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MalwareProtectionPlans = list(
+#'     list(
+#'       MalwareProtectionPlanId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_malware_protection_plans(
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_malware_protection_plans
+#'
+#' @aliases guardduty_list_malware_protection_plans
+guardduty_list_malware_protection_plans <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "ListMalwareProtectionPlans",
+    http_method = "GET",
+    http_path = "/malware-protection-plan",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .guardduty$list_malware_protection_plans_input(NextToken = NextToken)
+  output <- .guardduty$list_malware_protection_plans_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_malware_protection_plans <- guardduty_list_malware_protection_plans
 
 #' Lists details about all member accounts for the current GuardDuty
 #' administrator account
@@ -4697,12 +5031,13 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListMembers",
     http_method = "GET",
     http_path = "/detector/{detectorId}/member",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Members")
   )
   input <- .guardduty$list_members_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken, OnlyAssociated = OnlyAssociated)
   output <- .guardduty$list_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4756,12 +5091,13 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
     http_path = "/admin",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts")
   )
   input <- .guardduty$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_organization_admin_accounts_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4820,12 +5156,13 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
     name = "ListPublishingDestinations",
     http_method = "GET",
     http_path = "/detector/{detectorId}/publishingDestination",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$list_publishing_destinations_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_publishing_destinations_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4872,12 +5209,13 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .guardduty$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4936,12 +5274,13 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
     name = "ListThreatIntelSets",
     http_method = "GET",
     http_path = "/detector/{detectorId}/threatintelset",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ThreatIntelSetIds")
   )
   input <- .guardduty$list_threat_intel_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_threat_intel_sets_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4991,12 +5330,13 @@ guardduty_start_malware_scan <- function(ResourceArn) {
     name = "StartMalwareScan",
     http_method = "POST",
     http_path = "/malware-scan/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$start_malware_scan_input(ResourceArn = ResourceArn)
   output <- .guardduty$start_malware_scan_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5052,12 +5392,13 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
     name = "StartMonitoringMembers",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$start_monitoring_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$start_monitoring_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5115,12 +5456,13 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
     name = "StopMonitoringMembers",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$stop_monitoring_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$stop_monitoring_members_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5162,12 +5504,13 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .guardduty$tag_resource_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5208,12 +5551,13 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
     name = "UnarchiveFindings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings/unarchive",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$unarchive_findings_input(DetectorId = DetectorId, FindingIds = FindingIds)
   output <- .guardduty$unarchive_findings_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5254,12 +5598,13 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .guardduty$untag_resource_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5348,12 +5693,13 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
     name = "UpdateDetector",
     http_method = "POST",
     http_path = "/detector/{detectorId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_detector_input(DetectorId = DetectorId, Enable = Enable, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Features = Features)
   output <- .guardduty$update_detector_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5439,12 +5785,13 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
     name = "UpdateFilter",
     http_method = "POST",
     http_path = "/detector/{detectorId}/filter/{filterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_filter_input(DetectorId = DetectorId, FilterName = FilterName, Description = Description, Action = Action, Rank = Rank, FindingCriteria = FindingCriteria)
   output <- .guardduty$update_filter_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5491,12 +5838,13 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
     name = "UpdateFindingsFeedback",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings/feedback",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_findings_feedback_input(DetectorId = DetectorId, FindingIds = FindingIds, Feedback = Feedback, Comments = Comments)
   output <- .guardduty$update_findings_feedback_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5543,17 +5891,82 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
     name = "UpdateIPSet",
     http_method = "POST",
     http_path = "/detector/{detectorId}/ipset/{ipSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId, Name = Name, Location = Location, Activate = Activate)
   output <- .guardduty$update_ip_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .guardduty$operations$update_ip_set <- guardduty_update_ip_set
+
+#' Updates an existing Malware Protection plan resource
+#'
+#' @description
+#' Updates an existing Malware Protection plan resource.
+#'
+#' @usage
+#' guardduty_update_malware_protection_plan(MalwareProtectionPlanId, Role,
+#'   Actions, ProtectedResource)
+#'
+#' @param MalwareProtectionPlanId &#91;required&#93; A unique identifier associated with the Malware Protection plan.
+#' @param Role IAM role with permissions required to scan and add tags to the
+#' associated protected resource.
+#' @param Actions Information about whether the tags will be added to the S3 object after
+#' scanning.
+#' @param ProtectedResource Information about the protected resource that is associated with the
+#' created Malware Protection plan. Presently, `S3Bucket` is the only
+#' supported protected resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_malware_protection_plan(
+#'   MalwareProtectionPlanId = "string",
+#'   Role = "string",
+#'   Actions = list(
+#'     Tagging = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   ProtectedResource = list(
+#'     S3Bucket = list(
+#'       ObjectPrefixes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_malware_protection_plan
+#'
+#' @aliases guardduty_update_malware_protection_plan
+guardduty_update_malware_protection_plan <- function(MalwareProtectionPlanId, Role = NULL, Actions = NULL, ProtectedResource = NULL) {
+  op <- new_operation(
+    name = "UpdateMalwareProtectionPlan",
+    http_method = "PATCH",
+    http_path = "/malware-protection-plan/{malwareProtectionPlanId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .guardduty$update_malware_protection_plan_input(MalwareProtectionPlanId = MalwareProtectionPlanId, Role = Role, Actions = Actions, ProtectedResource = ProtectedResource)
+  output <- .guardduty$update_malware_protection_plan_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_malware_protection_plan <- guardduty_update_malware_protection_plan
 
 #' Updates the malware scan settings
 #'
@@ -5618,12 +6031,13 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
     name = "UpdateMalwareScanSettings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/malware-scan-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_malware_scan_settings_input(DetectorId = DetectorId, ScanResourceCriteria = ScanResourceCriteria, EbsSnapshotPreservation = EbsSnapshotPreservation)
   output <- .guardduty$update_malware_scan_settings_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5717,12 +6131,13 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
     name = "UpdateMemberDetectors",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/detector/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds, DataSources = DataSources, Features = Features)
   output <- .guardduty$update_member_detectors_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5842,12 +6257,13 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable =
     name = "UpdateOrganizationConfiguration",
     http_method = "POST",
     http_path = "/detector/{detectorId}/admin",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_organization_configuration_input(DetectorId = DetectorId, AutoEnable = AutoEnable, DataSources = DataSources, Features = Features, AutoEnableOrganizationMembers = AutoEnableOrganizationMembers)
   output <- .guardduty$update_organization_configuration_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5896,12 +6312,13 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
     name = "UpdatePublishingDestination",
     http_method = "POST",
     http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId, DestinationProperties = DestinationProperties)
   output <- .guardduty$update_publishing_destination_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5949,12 +6366,13 @@ guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name
     name = "UpdateThreatIntelSet",
     http_method = "POST",
     http_path = "/detector/{detectorId}/threatintelset/{threatIntelSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .guardduty$update_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId, Name = Name, Location = Location, Activate = Activate)
   output <- .guardduty$update_threat_intel_set_output()
   config <- get_config()
-  svc <- .guardduty$service(config)
+  svc <- .guardduty$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

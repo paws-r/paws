@@ -184,7 +184,7 @@ nimblestudio <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.nimblestudio$service <- function(config = list()) {
+.nimblestudio$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.nimblestudio$metadata, handlers, config)
+  new_service(.nimblestudio$metadata, handlers, config, op)
 }

@@ -5,14 +5,14 @@
 \title{A batch request to retrieve all device positions}
 \usage{
 locationservice_list_device_positions(
-  FilterGeometry = NULL,
+  TrackerName,
   MaxResults = NULL,
   NextToken = NULL,
-  TrackerName
+  FilterGeometry = NULL
 )
 }
 \arguments{
-\item{FilterGeometry}{The geometry used to filter device positions.}
+\item{TrackerName}{[required] The tracker resource containing the requested devices.}
 
 \item{MaxResults}{An optional limit for the number of entries returned in a single call.
 
@@ -23,7 +23,7 @@ response. If no token is provided, the default page is the first page.
 
 Default value: \code{null}}
 
-\item{TrackerName}{[required] The tracker resource containing the requested devices.}
+\item{FilterGeometry}{The geometry used to filter device positions.}
 }
 \description{
 A batch request to retrieve all device positions.

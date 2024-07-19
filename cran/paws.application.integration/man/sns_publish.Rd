@@ -84,9 +84,8 @@ partial delivery).
 delivered to email endpoints. This field will also be included, if
 present, in the standard JSON messages delivered to other endpoints.
 
-Constraints: Subjects must be ASCII text that begins with a letter,
-number, or punctuation mark; must not include line breaks or control
-characters; and must be less than 100 characters long.}
+Constraints: Subjects must be UTF-8 text with no line breaks or control
+characters, and less than 100 characters long.}
 
 \item{MessageStructure}{Set \code{MessageStructure} to \code{json} if you want to send a different message
 for each protocol. For example, using one publish action, you can send a

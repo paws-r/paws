@@ -27,12 +27,13 @@ macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId
     name = "AcceptInvitation",
     http_method = "POST",
     http_path = "/invitations/accept",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$accept_invitation_input(administratorAccountId = administratorAccountId, invitationId = invitationId, masterAccount = masterAccount)
   output <- .macie2$accept_invitation_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -57,17 +58,52 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
     name = "BatchGetCustomDataIdentifiers",
     http_method = "POST",
     http_path = "/custom-data-identifiers/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$batch_get_custom_data_identifiers_input(ids = ids)
   output <- .macie2$batch_get_custom_data_identifiers_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .macie2$operations$batch_get_custom_data_identifiers <- macie2_batch_get_custom_data_identifiers
+
+#' Changes the status of automated sensitive data discovery for one or more
+#' accounts
+#'
+#' @description
+#' Changes the status of automated sensitive data discovery for one or more accounts.
+#'
+#' See [https://www.paws-r-sdk.com/docs/macie2_batch_update_automated_discovery_accounts/](https://www.paws-r-sdk.com/docs/macie2_batch_update_automated_discovery_accounts/) for full documentation.
+#'
+#' @param accounts An array of objects, one for each account to change the status of
+#' automated sensitive data discovery for. Each object specifies the Amazon
+#' Web Services account ID for an account and a new status for that
+#' account.
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_batch_update_automated_discovery_accounts
+macie2_batch_update_automated_discovery_accounts <- function(accounts = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateAutomatedDiscoveryAccounts",
+    http_method = "PATCH",
+    http_path = "/automated-discovery/accounts",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .macie2$batch_update_automated_discovery_accounts_input(accounts = accounts)
+  output <- .macie2$batch_update_automated_discovery_accounts_output()
+  config <- get_config()
+  svc <- .macie2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$batch_update_automated_discovery_accounts <- macie2_batch_update_automated_discovery_accounts
 
 #' Creates and defines the settings for an allow list
 #'
@@ -101,12 +137,13 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
     name = "CreateAllowList",
     http_method = "POST",
     http_path = "/allow-lists",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$create_allow_list_input(clientToken = clientToken, criteria = criteria, description = description, name = name, tags = tags)
   output <- .macie2$create_allow_list_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -143,8 +180,8 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #'     specify a value for the scheduleFrequency property.
 #' 
 #' -   SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
-#'     specify this value, use the scheduleFrequency property to define the
-#'     recurrence pattern for the job.
+#'     specify this value, use the scheduleFrequency property to specify
+#'     the recurrence pattern for the job.
 #' @param managedDataIdentifierIds An array of unique identifiers, one for each managed data identifier for
 #' the job to include (use) or exclude (not use) when it analyzes data.
 #' Inclusion or exclusion depends on the managed data identifier selection
@@ -183,10 +220,10 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #' managed data identifiers that are in the recommended set when the run
 #' starts.
 #' 
-#' For information about individual managed data identifiers or to
-#' determine which ones are in the recommended set, see [Using managed data
+#' To learn about individual managed data identifiers or determine which
+#' ones are in the recommended set, see [Using managed data
 #' identifiers](https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html)
-#' and [Recommended managed data
+#' or [Recommended managed data
 #' identifiers](https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html)
 #' in the *Amazon Macie User Guide*.
 #' @param name &#91;required&#93; A custom name for the job. The name can contain as many as 500
@@ -216,12 +253,13 @@ macie2_create_classification_job <- function(allowListIds = NULL, clientToken, c
     name = "CreateClassificationJob",
     http_method = "POST",
     http_path = "/jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$create_classification_job_input(allowListIds = allowListIds, clientToken = clientToken, customDataIdentifierIds = customDataIdentifierIds, description = description, initialRun = initialRun, jobType = jobType, managedDataIdentifierIds = managedDataIdentifierIds, managedDataIdentifierSelector = managedDataIdentifierSelector, name = name, s3JobDefinition = s3JobDefinition, samplingPercentage = samplingPercentage, scheduleFrequency = scheduleFrequency, tags = tags)
   output <- .macie2$create_classification_job_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -300,12 +338,13 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
     name = "CreateCustomDataIdentifier",
     http_method = "POST",
     http_path = "/custom-data-identifiers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$create_custom_data_identifier_input(clientToken = clientToken, description = description, ignoreWords = ignoreWords, keywords = keywords, maximumMatchDistance = maximumMatchDistance, name = name, regex = regex, severityLevels = severityLevels, tags = tags)
   output <- .macie2$create_custom_data_identifier_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -360,12 +399,13 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
     name = "CreateFindingsFilter",
     http_method = "POST",
     http_path = "/findingsfilters",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$create_findings_filter_input(action = action, clientToken = clientToken, description = description, findingCriteria = findingCriteria, name = name, position = position, tags = tags)
   output <- .macie2$create_findings_filter_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -397,12 +437,13 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
     name = "CreateInvitations",
     http_method = "POST",
     http_path = "/invitations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$create_invitations_input(accountIds = accountIds, disableEmailNotification = disableEmailNotification, message = message)
   output <- .macie2$create_invitations_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -432,12 +473,13 @@ macie2_create_member <- function(account, tags = NULL) {
     name = "CreateMember",
     http_method = "POST",
     http_path = "/members",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$create_member_input(account = account, tags = tags)
   output <- .macie2$create_member_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -463,12 +505,13 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
     name = "CreateSampleFindings",
     http_method = "POST",
     http_path = "/findings/sample",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$create_sample_findings_input(findingTypes = findingTypes)
   output <- .macie2$create_sample_findings_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -494,12 +537,13 @@ macie2_decline_invitations <- function(accountIds) {
     name = "DeclineInvitations",
     http_method = "POST",
     http_path = "/invitations/decline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$decline_invitations_input(accountIds = accountIds)
   output <- .macie2$decline_invitations_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -533,12 +577,13 @@ macie2_delete_allow_list <- function(id, ignoreJobChecks = NULL) {
     name = "DeleteAllowList",
     http_method = "DELETE",
     http_path = "/allow-lists/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$delete_allow_list_input(id = id, ignoreJobChecks = ignoreJobChecks)
   output <- .macie2$delete_allow_list_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -563,12 +608,13 @@ macie2_delete_custom_data_identifier <- function(id) {
     name = "DeleteCustomDataIdentifier",
     http_method = "DELETE",
     http_path = "/custom-data-identifiers/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$delete_custom_data_identifier_input(id = id)
   output <- .macie2$delete_custom_data_identifier_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -593,12 +639,13 @@ macie2_delete_findings_filter <- function(id) {
     name = "DeleteFindingsFilter",
     http_method = "DELETE",
     http_path = "/findingsfilters/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$delete_findings_filter_input(id = id)
   output <- .macie2$delete_findings_filter_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -624,12 +671,13 @@ macie2_delete_invitations <- function(accountIds) {
     name = "DeleteInvitations",
     http_method = "POST",
     http_path = "/invitations/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$delete_invitations_input(accountIds = accountIds)
   output <- .macie2$delete_invitations_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -655,12 +703,13 @@ macie2_delete_member <- function(id) {
     name = "DeleteMember",
     http_method = "DELETE",
     http_path = "/members/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$delete_member_input(id = id)
   output <- .macie2$delete_member_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -690,12 +739,13 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
     name = "DescribeBuckets",
     http_method = "POST",
     http_path = "/datasources/s3",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "buckets")
   )
   input <- .macie2$describe_buckets_input(criteria = criteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$describe_buckets_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -719,12 +769,13 @@ macie2_describe_classification_job <- function(jobId) {
     name = "DescribeClassificationJob",
     http_method = "GET",
     http_path = "/jobs/{jobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$describe_classification_job_input(jobId = jobId)
   output <- .macie2$describe_classification_job_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -749,12 +800,13 @@ macie2_describe_organization_configuration <- function() {
     name = "DescribeOrganizationConfiguration",
     http_method = "GET",
     http_path = "/admin/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$describe_organization_configuration_input()
   output <- .macie2$describe_organization_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -779,12 +831,13 @@ macie2_disable_macie <- function() {
     name = "DisableMacie",
     http_method = "DELETE",
     http_path = "/macie",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$disable_macie_input()
   output <- .macie2$disable_macie_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -810,12 +863,13 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
     name = "DisableOrganizationAdminAccount",
     http_method = "DELETE",
     http_path = "/admin",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$disable_organization_admin_account_input(adminAccountId = adminAccountId)
   output <- .macie2$disable_organization_admin_account_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -840,12 +894,13 @@ macie2_disassociate_from_administrator_account <- function() {
     name = "DisassociateFromAdministratorAccount",
     http_method = "POST",
     http_path = "/administrator/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$disassociate_from_administrator_account_input()
   output <- .macie2$disassociate_from_administrator_account_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -870,12 +925,13 @@ macie2_disassociate_from_master_account <- function() {
     name = "DisassociateFromMasterAccount",
     http_method = "POST",
     http_path = "/master/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$disassociate_from_master_account_input()
   output <- .macie2$disassociate_from_master_account_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -901,12 +957,13 @@ macie2_disassociate_member <- function(id) {
     name = "DisassociateMember",
     http_method = "POST",
     http_path = "/members/disassociate/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$disassociate_member_input(id = id)
   output <- .macie2$disassociate_member_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -937,12 +994,13 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
     name = "EnableMacie",
     http_method = "POST",
     http_path = "/macie",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$enable_macie_input(clientToken = clientToken, findingPublishingFrequency = findingPublishingFrequency, status = status)
   output <- .macie2$enable_macie_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -970,12 +1028,13 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
     name = "EnableOrganizationAdminAccount",
     http_method = "POST",
     http_path = "/admin",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$enable_organization_admin_account_input(adminAccountId = adminAccountId, clientToken = clientToken)
   output <- .macie2$enable_organization_admin_account_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1000,12 +1059,13 @@ macie2_get_administrator_account <- function() {
     name = "GetAdministratorAccount",
     http_method = "GET",
     http_path = "/administrator",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_administrator_account_input()
   output <- .macie2$get_administrator_account_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1090,13 @@ macie2_get_allow_list <- function(id) {
     name = "GetAllowList",
     http_method = "GET",
     http_path = "/allow-lists/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_allow_list_input(id = id)
   output <- .macie2$get_allow_list_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1043,10 +1104,10 @@ macie2_get_allow_list <- function(id) {
 .macie2$operations$get_allow_list <- macie2_get_allow_list
 
 #' Retrieves the configuration settings and status of automated sensitive
-#' data discovery for an account
+#' data discovery for an organization or standalone account
 #'
 #' @description
-#' Retrieves the configuration settings and status of automated sensitive data discovery for an account.
+#' Retrieves the configuration settings and status of automated sensitive data discovery for an organization or standalone account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_automated_discovery_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_automated_discovery_configuration/) for full documentation.
 #'
@@ -1060,12 +1121,13 @@ macie2_get_automated_discovery_configuration <- function() {
     name = "GetAutomatedDiscoveryConfiguration",
     http_method = "GET",
     http_path = "/automated-discovery/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_automated_discovery_configuration_input()
   output <- .macie2$get_automated_discovery_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1090,12 +1152,13 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
     name = "GetBucketStatistics",
     http_method = "POST",
     http_path = "/datasources/s3/statistics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_bucket_statistics_input(accountId = accountId)
   output <- .macie2$get_bucket_statistics_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1120,12 +1183,13 @@ macie2_get_classification_export_configuration <- function() {
     name = "GetClassificationExportConfiguration",
     http_method = "GET",
     http_path = "/classification-export-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_classification_export_configuration_input()
   output <- .macie2$get_classification_export_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1150,12 +1214,13 @@ macie2_get_classification_scope <- function(id) {
     name = "GetClassificationScope",
     http_method = "GET",
     http_path = "/classification-scopes/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_classification_scope_input(id = id)
   output <- .macie2$get_classification_scope_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1180,12 +1245,13 @@ macie2_get_custom_data_identifier <- function(id) {
     name = "GetCustomDataIdentifier",
     http_method = "GET",
     http_path = "/custom-data-identifiers/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_custom_data_identifier_input(id = id)
   output <- .macie2$get_custom_data_identifier_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1225,12 +1291,13 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
     name = "GetFindingStatistics",
     http_method = "POST",
     http_path = "/findings/statistics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_finding_statistics_input(findingCriteria = findingCriteria, groupBy = groupBy, size = size, sortCriteria = sortCriteria)
   output <- .macie2$get_finding_statistics_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1257,12 +1324,13 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
     name = "GetFindings",
     http_method = "POST",
     http_path = "/findings/describe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_findings_input(findingIds = findingIds, sortCriteria = sortCriteria)
   output <- .macie2$get_findings_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1287,12 +1355,13 @@ macie2_get_findings_filter <- function(id) {
     name = "GetFindingsFilter",
     http_method = "GET",
     http_path = "/findingsfilters/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_findings_filter_input(id = id)
   output <- .macie2$get_findings_filter_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1317,12 +1386,13 @@ macie2_get_findings_publication_configuration <- function() {
     name = "GetFindingsPublicationConfiguration",
     http_method = "GET",
     http_path = "/findings-publication-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_findings_publication_configuration_input()
   output <- .macie2$get_findings_publication_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1347,12 +1417,13 @@ macie2_get_invitations_count <- function() {
     name = "GetInvitationsCount",
     http_method = "GET",
     http_path = "/invitations/count",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_invitations_count_input()
   output <- .macie2$get_invitations_count_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1377,12 +1448,13 @@ macie2_get_macie_session <- function() {
     name = "GetMacieSession",
     http_method = "GET",
     http_path = "/macie",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_macie_session_input()
   output <- .macie2$get_macie_session_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1407,12 +1479,13 @@ macie2_get_master_account <- function() {
     name = "GetMasterAccount",
     http_method = "GET",
     http_path = "/master",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_master_account_input()
   output <- .macie2$get_master_account_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1438,12 +1511,13 @@ macie2_get_member <- function(id) {
     name = "GetMember",
     http_method = "GET",
     http_path = "/members/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_member_input(id = id)
   output <- .macie2$get_member_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1469,12 +1543,13 @@ macie2_get_resource_profile <- function(resourceArn) {
     name = "GetResourceProfile",
     http_method = "GET",
     http_path = "/resource-profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_resource_profile_input(resourceArn = resourceArn)
   output <- .macie2$get_resource_profile_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1499,12 +1574,13 @@ macie2_get_reveal_configuration <- function() {
     name = "GetRevealConfiguration",
     http_method = "GET",
     http_path = "/reveal-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_reveal_configuration_input()
   output <- .macie2$get_reveal_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1528,12 +1604,13 @@ macie2_get_sensitive_data_occurrences <- function(findingId) {
     name = "GetSensitiveDataOccurrences",
     http_method = "GET",
     http_path = "/findings/{findingId}/reveal",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_sensitive_data_occurrences_input(findingId = findingId)
   output <- .macie2$get_sensitive_data_occurrences_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1558,12 +1635,13 @@ macie2_get_sensitive_data_occurrences_availability <- function(findingId) {
     name = "GetSensitiveDataOccurrencesAvailability",
     http_method = "GET",
     http_path = "/findings/{findingId}/reveal/availability",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_sensitive_data_occurrences_availability_input(findingId = findingId)
   output <- .macie2$get_sensitive_data_occurrences_availability_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1589,12 +1667,13 @@ macie2_get_sensitivity_inspection_template <- function(id) {
     name = "GetSensitivityInspectionTemplate",
     http_method = "GET",
     http_path = "/templates/sensitivity-inspections/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_sensitivity_inspection_template_input(id = id)
   output <- .macie2$get_sensitivity_inspection_template_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1629,12 +1708,13 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
     name = "GetUsageStatistics",
     http_method = "POST",
     http_path = "/usage/statistics",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "records")
   )
   input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, timeRange = timeRange)
   output <- .macie2$get_usage_statistics_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1662,12 +1742,13 @@ macie2_get_usage_totals <- function(timeRange = NULL) {
     name = "GetUsageTotals",
     http_method = "GET",
     http_path = "/usage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$get_usage_totals_input(timeRange = timeRange)
   output <- .macie2$get_usage_totals_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1695,17 +1776,57 @@ macie2_list_allow_lists <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListAllowLists",
     http_method = "GET",
     http_path = "/allow-lists",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "allowLists")
   )
   input <- .macie2$list_allow_lists_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_allow_lists_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .macie2$operations$list_allow_lists <- macie2_list_allow_lists
+
+#' Retrieves the status of automated sensitive data discovery for one or
+#' more accounts
+#'
+#' @description
+#' Retrieves the status of automated sensitive data discovery for one or more accounts.
+#'
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_automated_discovery_accounts/](https://www.paws-r-sdk.com/docs/macie2_list_automated_discovery_accounts/) for full documentation.
+#'
+#' @param accountIds The Amazon Web Services account ID for each account, for as many as 50
+#' accounts. To retrieve the status for multiple accounts, append the
+#' accountIds parameter and argument for each account, separated by an
+#' ampersand (&). To retrieve the status for all the accounts in an
+#' organization, omit this parameter.
+#' @param maxResults The maximum number of items to include in each page of a paginated
+#' response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a
+#' paginated response.
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_list_automated_discovery_accounts
+macie2_list_automated_discovery_accounts <- function(accountIds = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAutomatedDiscoveryAccounts",
+    http_method = "GET",
+    http_path = "/automated-discovery/accounts",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .macie2$list_automated_discovery_accounts_input(accountIds = accountIds, maxResults = maxResults, nextToken = nextToken)
+  output <- .macie2$list_automated_discovery_accounts_output()
+  config <- get_config()
+  svc <- .macie2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$list_automated_discovery_accounts <- macie2_list_automated_discovery_accounts
 
 #' Retrieves a subset of information about one or more classification jobs
 #'
@@ -1728,12 +1849,13 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
     name = "ListClassificationJobs",
     http_method = "POST",
     http_path = "/jobs/list",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .macie2$list_classification_jobs_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$list_classification_jobs_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1761,12 +1883,13 @@ macie2_list_classification_scopes <- function(name = NULL, nextToken = NULL) {
     name = "ListClassificationScopes",
     http_method = "GET",
     http_path = "/classification-scopes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "classificationScopes")
   )
   input <- .macie2$list_classification_scopes_input(name = name, nextToken = nextToken)
   output <- .macie2$list_classification_scopes_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1793,12 +1916,13 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
     name = "ListCustomDataIdentifiers",
     http_method = "POST",
     http_path = "/custom-data-identifiers/list",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .macie2$list_custom_data_identifiers_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_custom_data_identifiers_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1826,12 +1950,13 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
     name = "ListFindings",
     http_method = "POST",
     http_path = "/findings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingIds")
   )
   input <- .macie2$list_findings_input(findingCriteria = findingCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$list_findings_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1859,23 +1984,24 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListFindingsFilters",
     http_method = "GET",
     http_path = "/findingsfilters",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsFilterListItems")
   )
   input <- .macie2$list_findings_filters_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_findings_filters_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .macie2$operations$list_findings_filters <- macie2_list_findings_filters
 
-#' Retrieves information about the Amazon Macie membership invitations that
+#' Retrieves information about Amazon Macie membership invitations that
 #' were received by an account
 #'
 #' @description
-#' Retrieves information about the Amazon Macie membership invitations that were received by an account.
+#' Retrieves information about Amazon Macie membership invitations that were received by an account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_invitations/](https://www.paws-r-sdk.com/docs/macie2_list_invitations/) for full documentation.
 #'
@@ -1892,12 +2018,13 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListInvitations",
     http_method = "GET",
     http_path = "/invitations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invitations")
   )
   input <- .macie2$list_invitations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_invitations_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1923,12 +2050,13 @@ macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
     name = "ListManagedDataIdentifiers",
     http_method = "POST",
     http_path = "/managed-data-identifiers/list",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "items")
   )
   input <- .macie2$list_managed_data_identifiers_input(nextToken = nextToken)
   output <- .macie2$list_managed_data_identifiers_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1960,12 +2088,13 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
     name = "ListMembers",
     http_method = "GET",
     http_path = "/members",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .macie2$list_members_input(maxResults = maxResults, nextToken = nextToken, onlyAssociated = onlyAssociated)
   output <- .macie2$list_members_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1993,23 +2122,24 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
     http_path = "/admin",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "adminAccounts")
   )
   input <- .macie2$list_organization_admin_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_organization_admin_accounts_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .macie2$operations$list_organization_admin_accounts <- macie2_list_organization_admin_accounts
 
-#' Retrieves information about objects that were selected from an S3 bucket
-#' for automated sensitive data discovery
+#' Retrieves information about objects that Amazon Macie selected from an
+#' S3 bucket for automated sensitive data discovery
 #'
 #' @description
-#' Retrieves information about objects that were selected from an S3 bucket for automated sensitive data discovery.
+#' Retrieves information about objects that Amazon Macie selected from an S3 bucket for automated sensitive data discovery.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/](https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/) for full documentation.
 #'
@@ -2026,12 +2156,13 @@ macie2_list_resource_profile_artifacts <- function(nextToken = NULL, resourceArn
     name = "ListResourceProfileArtifacts",
     http_method = "GET",
     http_path = "/resource-profiles/artifacts",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "artifacts")
   )
   input <- .macie2$list_resource_profile_artifacts_input(nextToken = nextToken, resourceArn = resourceArn)
   output <- .macie2$list_resource_profile_artifacts_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2061,12 +2192,13 @@ macie2_list_resource_profile_detections <- function(maxResults = NULL, nextToken
     name = "ListResourceProfileDetections",
     http_method = "GET",
     http_path = "/resource-profiles/detections",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "detections")
   )
   input <- .macie2$list_resource_profile_detections_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .macie2$list_resource_profile_detections_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2094,12 +2226,13 @@ macie2_list_sensitivity_inspection_templates <- function(maxResults = NULL, next
     name = "ListSensitivityInspectionTemplates",
     http_method = "GET",
     http_path = "/templates/sensitivity-inspections",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sensitivityInspectionTemplates")
   )
   input <- .macie2$list_sensitivity_inspection_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_sensitivity_inspection_templates_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2124,23 +2257,24 @@ macie2_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .macie2$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .macie2$operations$list_tags_for_resource <- macie2_list_tags_for_resource
 
-#' Creates or updates the configuration settings for storing data
+#' Adds or updates the configuration settings for storing data
 #' classification results
 #'
 #' @description
-#' Creates or updates the configuration settings for storing data classification results.
+#' Adds or updates the configuration settings for storing data classification results.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/](https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/) for full documentation.
 #'
@@ -2155,12 +2289,13 @@ macie2_put_classification_export_configuration <- function(configuration) {
     name = "PutClassificationExportConfiguration",
     http_method = "PUT",
     http_path = "/classification-export-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$put_classification_export_configuration_input(configuration = configuration)
   output <- .macie2$put_classification_export_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2188,12 +2323,13 @@ macie2_put_findings_publication_configuration <- function(clientToken = NULL, se
     name = "PutFindingsPublicationConfiguration",
     http_method = "PUT",
     http_path = "/findings-publication-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$put_findings_publication_configuration_input(clientToken = clientToken, securityHubConfiguration = securityHubConfiguration)
   output <- .macie2$put_findings_publication_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2224,12 +2360,13 @@ macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, ne
     name = "SearchResources",
     http_method = "POST",
     http_path = "/datasources/search-resources",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "matchingResources")
   )
   input <- .macie2$search_resources_input(bucketCriteria = bucketCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$search_resources_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2260,22 +2397,23 @@ macie2_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .macie2$tag_resource_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .macie2$operations$tag_resource <- macie2_tag_resource
 
-#' Tests a custom data identifier
+#' Tests criteria for a custom data identifier
 #'
 #' @description
-#' Tests a custom data identifier.
+#' Tests criteria for a custom data identifier.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_test_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_test_custom_data_identifier/) for full documentation.
 #'
@@ -2308,12 +2446,13 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
     name = "TestCustomDataIdentifier",
     http_method = "POST",
     http_path = "/custom-data-identifiers/test",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$test_custom_data_identifier_input(ignoreWords = ignoreWords, keywords = keywords, maximumMatchDistance = maximumMatchDistance, regex = regex, sampleText = sampleText)
   output <- .macie2$test_custom_data_identifier_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2340,12 +2479,13 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .macie2$untag_resource_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2382,52 +2522,62 @@ macie2_update_allow_list <- function(criteria, description = NULL, id, name) {
     name = "UpdateAllowList",
     http_method = "PUT",
     http_path = "/allow-lists/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_allow_list_input(criteria = criteria, description = description, id = id, name = name)
   output <- .macie2$update_allow_list_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .macie2$operations$update_allow_list <- macie2_update_allow_list
 
-#' Enables or disables automated sensitive data discovery for an account
+#' Changes the configuration settings and status of automated sensitive
+#' data discovery for an organization or standalone account
 #'
 #' @description
-#' Enables or disables automated sensitive data discovery for an account.
+#' Changes the configuration settings and status of automated sensitive data discovery for an organization or standalone account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_automated_discovery_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_automated_discovery_configuration/) for full documentation.
 #'
-#' @param status &#91;required&#93; The new status of automated sensitive data discovery for the account.
-#' Valid values are: ENABLED, start or resume automated sensitive data
-#' discovery activities for the account; and, DISABLED, stop performing
-#' automated sensitive data discovery activities for the account.
+#' @param autoEnableOrganizationMembers Specifies whether to automatically enable automated sensitive data
+#' discovery for accounts in the organization. Valid values are: ALL
+#' (default), enable it for all existing accounts and new member accounts;
+#' NEW, enable it only for new member accounts; and, NONE, don't enable it
+#' for any accounts.
 #' 
-#' When you enable automated sensitive data discovery for the first time,
-#' Amazon Macie uses default configuration settings to determine which data
-#' sources to analyze and which managed data identifiers to use. To change
-#' these settings, use the UpdateClassificationScope and
-#' UpdateSensitivityInspectionTemplate operations, respectively. If you
-#' change the settings and subsequently disable the configuration, Amazon
-#' Macie retains your changes.
+#' If you specify NEW or NONE, automated sensitive data discovery continues
+#' to be enabled for any existing accounts that it's currently enabled for.
+#' To enable or disable it for individual member accounts, specify NEW or
+#' NONE, and then enable or disable it for each account by using the
+#' BatchUpdateAutomatedDiscoveryAccounts operation.
+#' @param status &#91;required&#93; The new status of automated sensitive data discovery for the
+#' organization or account. Valid values are: ENABLED, start or resume all
+#' automated sensitive data discovery activities; and, DISABLED, stop
+#' performing all automated sensitive data discovery activities.
+#' 
+#' If you specify DISABLED for an administrator account, you also disable
+#' automated sensitive data discovery for all member accounts in the
+#' organization.
 #'
 #' @keywords internal
 #'
 #' @rdname macie2_update_automated_discovery_configuration
-macie2_update_automated_discovery_configuration <- function(status) {
+macie2_update_automated_discovery_configuration <- function(autoEnableOrganizationMembers = NULL, status) {
   op <- new_operation(
     name = "UpdateAutomatedDiscoveryConfiguration",
     http_method = "PUT",
     http_path = "/automated-discovery/configuration",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .macie2$update_automated_discovery_configuration_input(status = status)
+  input <- .macie2$update_automated_discovery_configuration_input(autoEnableOrganizationMembers = autoEnableOrganizationMembers, status = status)
   output <- .macie2$update_automated_discovery_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2481,12 +2631,13 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
     name = "UpdateClassificationJob",
     http_method = "PATCH",
     http_path = "/jobs/{jobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_classification_job_input(jobId = jobId, jobStatus = jobStatus)
   output <- .macie2$update_classification_job_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2513,12 +2664,13 @@ macie2_update_classification_scope <- function(id, s3 = NULL) {
     name = "UpdateClassificationScope",
     http_method = "PATCH",
     http_path = "/classification-scopes/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_classification_scope_input(id = id, s3 = s3)
   output <- .macie2$update_classification_scope_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2568,12 +2720,13 @@ macie2_update_findings_filter <- function(action = NULL, clientToken = NULL, des
     name = "UpdateFindingsFilter",
     http_method = "PATCH",
     http_path = "/findingsfilters/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_findings_filter_input(action = action, clientToken = clientToken, description = description, findingCriteria = findingCriteria, id = id, name = name, position = position)
   output <- .macie2$update_findings_filter_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2603,12 +2756,13 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
     name = "UpdateMacieSession",
     http_method = "PATCH",
     http_path = "/macie",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_macie_session_input(findingPublishingFrequency = findingPublishingFrequency, status = status)
   output <- .macie2$update_macie_session_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2637,12 +2791,13 @@ macie2_update_member_session <- function(id, status) {
     name = "UpdateMemberSession",
     http_method = "PATCH",
     http_path = "/macie/members/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_member_session_input(id = id, status = status)
   output <- .macie2$update_member_session_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2657,8 +2812,8 @@ macie2_update_member_session <- function(id, status) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_organization_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_organization_configuration/) for full documentation.
 #'
-#' @param autoEnable &#91;required&#93; Specifies whether to enable Amazon Macie automatically for an account
-#' when the account is added to the organization in Organizations.
+#' @param autoEnable &#91;required&#93; Specifies whether to enable Amazon Macie automatically for accounts that
+#' are added to the organization in Organizations.
 #'
 #' @keywords internal
 #'
@@ -2668,12 +2823,13 @@ macie2_update_organization_configuration <- function(autoEnable) {
     name = "UpdateOrganizationConfiguration",
     http_method = "PATCH",
     http_path = "/admin/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_organization_configuration_input(autoEnable = autoEnable)
   output <- .macie2$update_organization_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2702,12 +2858,13 @@ macie2_update_resource_profile <- function(resourceArn, sensitivityScoreOverride
     name = "UpdateResourceProfile",
     http_method = "PATCH",
     http_path = "/resource-profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_resource_profile_input(resourceArn = resourceArn, sensitivityScoreOverride = sensitivityScoreOverride)
   output <- .macie2$update_resource_profile_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2736,12 +2893,13 @@ macie2_update_resource_profile_detections <- function(resourceArn, suppressDataI
     name = "UpdateResourceProfileDetections",
     http_method = "PATCH",
     http_path = "/resource-profiles/detections",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_resource_profile_detections_input(resourceArn = resourceArn, suppressDataIdentifiers = suppressDataIdentifiers)
   output <- .macie2$update_resource_profile_detections_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2769,12 +2927,13 @@ macie2_update_reveal_configuration <- function(configuration, retrievalConfigura
     name = "UpdateRevealConfiguration",
     http_method = "PUT",
     http_path = "/reveal-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_reveal_configuration_input(configuration = configuration, retrievalConfiguration = retrievalConfiguration)
   output <- .macie2$update_reveal_configuration_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2792,7 +2951,7 @@ macie2_update_reveal_configuration <- function(configuration, retrievalConfigura
 #' @param description A custom description of the template. The description can contain as
 #' many as 200 characters.
 #' @param excludes The managed data identifiers to explicitly exclude (not use) when
-#' analyzing data.
+#' performing automated sensitive data discovery.
 #' 
 #' To exclude an allow list or custom data identifier that's currently
 #' included by the template, update the values for the
@@ -2802,7 +2961,8 @@ macie2_update_reveal_configuration <- function(configuration, retrievalConfigura
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
 #' @param includes The allow lists, custom data identifiers, and managed data identifiers
-#' to explicitly include (use) when analyzing data.
+#' to explicitly include (use) when performing automated sensitive data
+#' discovery.
 #'
 #' @keywords internal
 #'
@@ -2812,12 +2972,13 @@ macie2_update_sensitivity_inspection_template <- function(description = NULL, ex
     name = "UpdateSensitivityInspectionTemplate",
     http_method = "PUT",
     http_path = "/templates/sensitivity-inspections/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .macie2$update_sensitivity_inspection_template_input(description = description, excludes = excludes, id = id, includes = includes)
   output <- .macie2$update_sensitivity_inspection_template_output()
   config <- get_config()
-  svc <- .macie2$service(config)
+  svc <- .macie2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -7,13 +7,14 @@
 vpclattice_put_auth_policy(policy, resourceIdentifier)
 }
 \arguments{
-\item{policy}{[required] The auth policy.}
+\item{policy}{[required] The auth policy. The policy string in JSON must not contain newlines or
+blank lines.}
 
 \item{resourceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network or service
 for which the policy is created.}
 }
 \description{
-Creates or updates the auth policy.
+Creates or updates the auth policy. The policy string in JSON must not contain newlines or blank lines.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_put_auth_policy/} for full documentation.
 }

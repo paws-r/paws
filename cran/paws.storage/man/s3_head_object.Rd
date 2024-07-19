@@ -13,6 +13,12 @@ s3_head_object(
   IfUnmodifiedSince = NULL,
   Key,
   Range = NULL,
+  ResponseCacheControl = NULL,
+  ResponseContentDisposition = NULL,
+  ResponseContentEncoding = NULL,
+  ResponseContentLanguage = NULL,
+  ResponseContentType = NULL,
+  ResponseExpires = NULL,
   VersionId = NULL,
   SSECustomerAlgorithm = NULL,
   SSECustomerKey = NULL,
@@ -121,6 +127,18 @@ For more information about conditional requests, see \href{https://datatracker.i
 satisfiable, only the \code{ContentLength} is affected in the response. If
 the Range is not satisfiable, S3 returns a
 \verb{416 - Requested Range Not Satisfiable} error.}
+
+\item{ResponseCacheControl}{Sets the \code{Cache-Control} header of the response.}
+
+\item{ResponseContentDisposition}{Sets the \code{Content-Disposition} header of the response.}
+
+\item{ResponseContentEncoding}{Sets the \code{Content-Encoding} header of the response.}
+
+\item{ResponseContentLanguage}{Sets the \code{Content-Language} header of the response.}
+
+\item{ResponseContentType}{Sets the \code{Content-Type} header of the response.}
+
+\item{ResponseExpires}{Sets the \code{Expires} header of the response.}
 
 \item{VersionId}{Version ID used to reference a specific version of the object.
 

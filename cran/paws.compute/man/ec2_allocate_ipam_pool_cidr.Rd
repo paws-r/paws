@@ -50,7 +50,7 @@ Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask
 lengths for IPv6 addresses are 0 - 128.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{Description}{A description for the allocation.}
 

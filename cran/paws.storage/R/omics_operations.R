@@ -21,12 +21,13 @@ omics_abort_multipart_read_set_upload <- function(sequenceStoreId, uploadId) {
     name = "AbortMultipartReadSetUpload",
     http_method = "DELETE",
     http_path = "/sequencestore/{sequenceStoreId}/upload/{uploadId}/abort",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$abort_multipart_read_set_upload_input(sequenceStoreId = sequenceStoreId, uploadId = uploadId)
   output <- .omics$abort_multipart_read_set_upload_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -50,12 +51,13 @@ omics_accept_share <- function(shareId) {
     name = "AcceptShare",
     http_method = "POST",
     http_path = "/share/{shareId}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$accept_share_input(shareId = shareId)
   output <- .omics$accept_share_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -80,12 +82,13 @@ omics_batch_delete_read_set <- function(ids, sequenceStoreId) {
     name = "BatchDeleteReadSet",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/readset/batch/delete",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$batch_delete_read_set_input(ids = ids, sequenceStoreId = sequenceStoreId)
   output <- .omics$batch_delete_read_set_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -109,12 +112,13 @@ omics_cancel_annotation_import_job <- function(jobId) {
     name = "CancelAnnotationImportJob",
     http_method = "DELETE",
     http_path = "/import/annotation/{jobId}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$cancel_annotation_import_job_input(jobId = jobId)
   output <- .omics$cancel_annotation_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -138,12 +142,13 @@ omics_cancel_run <- function(id) {
     name = "CancelRun",
     http_method = "POST",
     http_path = "/run/{id}/cancel",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$cancel_run_input(id = id)
   output <- .omics$cancel_run_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -167,12 +172,13 @@ omics_cancel_variant_import_job <- function(jobId) {
     name = "CancelVariantImportJob",
     http_method = "DELETE",
     http_path = "/import/variant/{jobId}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$cancel_variant_import_job_input(jobId = jobId)
   output <- .omics$cancel_variant_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -198,12 +204,13 @@ omics_complete_multipart_read_set_upload <- function(sequenceStoreId, uploadId, 
     name = "CompleteMultipartReadSetUpload",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/upload/{uploadId}/complete",
+    host_prefix = "storage-",
     paginator = list()
   )
   input <- .omics$complete_multipart_read_set_upload_input(sequenceStoreId = sequenceStoreId, uploadId = uploadId, parts = parts)
   output <- .omics$complete_multipart_read_set_upload_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -235,12 +242,13 @@ omics_create_annotation_store <- function(reference = NULL, name = NULL, descrip
     name = "CreateAnnotationStore",
     http_method = "POST",
     http_path = "/annotationStore",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$create_annotation_store_input(reference = reference, name = name, description = description, tags = tags, versionName = versionName, sseConfig = sseConfig, storeFormat = storeFormat, storeOptions = storeOptions)
   output <- .omics$create_annotation_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -270,12 +278,13 @@ omics_create_annotation_store_version <- function(name, versionName, description
     name = "CreateAnnotationStoreVersion",
     http_method = "POST",
     http_path = "/annotationStore/{name}/version",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$create_annotation_store_version_input(name = name, versionName = versionName, description = description, versionOptions = versionOptions, tags = tags)
   output <- .omics$create_annotation_store_version_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -310,12 +319,13 @@ omics_create_multipart_read_set_upload <- function(sequenceStoreId, clientToken 
     name = "CreateMultipartReadSetUpload",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/upload",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$create_multipart_read_set_upload_input(sequenceStoreId = sequenceStoreId, clientToken = clientToken, sourceFileType = sourceFileType, subjectId = subjectId, sampleId = sampleId, generatedFrom = generatedFrom, referenceArn = referenceArn, name = name, description = description, tags = tags)
   output <- .omics$create_multipart_read_set_upload_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -344,12 +354,13 @@ omics_create_reference_store <- function(name, description = NULL, sseConfig = N
     name = "CreateReferenceStore",
     http_method = "POST",
     http_path = "/referencestore",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$create_reference_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken)
   output <- .omics$create_reference_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -380,12 +391,13 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
     name = "CreateRunGroup",
     http_method = "POST",
     http_path = "/runGroup",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$create_run_group_input(name = name, maxCpus = maxCpus, maxRuns = maxRuns, maxDuration = maxDuration, tags = tags, requestId = requestId, maxGpus = maxGpus)
   output <- .omics$create_run_group_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -417,12 +429,13 @@ omics_create_sequence_store <- function(name, description = NULL, sseConfig = NU
     name = "CreateSequenceStore",
     http_method = "POST",
     http_path = "/sequencestore",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$create_sequence_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken, fallbackLocation = fallbackLocation, eTagAlgorithmFamily = eTagAlgorithmFamily)
   output <- .omics$create_sequence_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -449,12 +462,13 @@ omics_create_share <- function(resourceArn, principalSubscriber, shareName = NUL
     name = "CreateShare",
     http_method = "POST",
     http_path = "/share",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$create_share_input(resourceArn = resourceArn, principalSubscriber = principalSubscriber, shareName = shareName)
   output <- .omics$create_share_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -482,12 +496,13 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
     name = "CreateVariantStore",
     http_method = "POST",
     http_path = "/variantStore",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$create_variant_store_input(reference = reference, name = name, description = description, tags = tags, sseConfig = sseConfig)
   output <- .omics$create_variant_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -522,12 +537,13 @@ omics_create_workflow <- function(name = NULL, description = NULL, engine = NULL
     name = "CreateWorkflow",
     http_method = "POST",
     http_path = "/workflow",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$create_workflow_input(name = name, description = description, engine = engine, definitionZip = definitionZip, definitionUri = definitionUri, main = main, parameterTemplate = parameterTemplate, storageCapacity = storageCapacity, tags = tags, requestId = requestId, accelerators = accelerators)
   output <- .omics$create_workflow_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -552,12 +568,13 @@ omics_delete_annotation_store <- function(name, force = NULL) {
     name = "DeleteAnnotationStore",
     http_method = "DELETE",
     http_path = "/annotationStore/{name}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$delete_annotation_store_input(name = name, force = force)
   output <- .omics$delete_annotation_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -584,12 +601,13 @@ omics_delete_annotation_store_versions <- function(name, versions, force = NULL)
     name = "DeleteAnnotationStoreVersions",
     http_method = "POST",
     http_path = "/annotationStore/{name}/versions/delete",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$delete_annotation_store_versions_input(name = name, versions = versions, force = force)
   output <- .omics$delete_annotation_store_versions_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -614,12 +632,13 @@ omics_delete_reference <- function(id, referenceStoreId) {
     name = "DeleteReference",
     http_method = "DELETE",
     http_path = "/referencestore/{referenceStoreId}/reference/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$delete_reference_input(id = id, referenceStoreId = referenceStoreId)
   output <- .omics$delete_reference_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -643,12 +662,13 @@ omics_delete_reference_store <- function(id) {
     name = "DeleteReferenceStore",
     http_method = "DELETE",
     http_path = "/referencestore/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$delete_reference_store_input(id = id)
   output <- .omics$delete_reference_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -672,12 +692,13 @@ omics_delete_run <- function(id) {
     name = "DeleteRun",
     http_method = "DELETE",
     http_path = "/run/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$delete_run_input(id = id)
   output <- .omics$delete_run_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -701,12 +722,13 @@ omics_delete_run_group <- function(id) {
     name = "DeleteRunGroup",
     http_method = "DELETE",
     http_path = "/runGroup/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$delete_run_group_input(id = id)
   output <- .omics$delete_run_group_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -730,12 +752,13 @@ omics_delete_sequence_store <- function(id) {
     name = "DeleteSequenceStore",
     http_method = "DELETE",
     http_path = "/sequencestore/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$delete_sequence_store_input(id = id)
   output <- .omics$delete_sequence_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -759,12 +782,13 @@ omics_delete_share <- function(shareId) {
     name = "DeleteShare",
     http_method = "DELETE",
     http_path = "/share/{shareId}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$delete_share_input(shareId = shareId)
   output <- .omics$delete_share_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -789,12 +813,13 @@ omics_delete_variant_store <- function(name, force = NULL) {
     name = "DeleteVariantStore",
     http_method = "DELETE",
     http_path = "/variantStore/{name}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$delete_variant_store_input(name = name, force = force)
   output <- .omics$delete_variant_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -818,12 +843,13 @@ omics_delete_workflow <- function(id) {
     name = "DeleteWorkflow",
     http_method = "DELETE",
     http_path = "/workflow/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$delete_workflow_input(id = id)
   output <- .omics$delete_workflow_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -847,12 +873,13 @@ omics_get_annotation_import_job <- function(jobId) {
     name = "GetAnnotationImportJob",
     http_method = "GET",
     http_path = "/import/annotation/{jobId}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$get_annotation_import_job_input(jobId = jobId)
   output <- .omics$get_annotation_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -876,12 +903,13 @@ omics_get_annotation_store <- function(name) {
     name = "GetAnnotationStore",
     http_method = "GET",
     http_path = "/annotationStore/{name}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$get_annotation_store_input(name = name)
   output <- .omics$get_annotation_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -908,12 +936,13 @@ omics_get_annotation_store_version <- function(name, versionName) {
     name = "GetAnnotationStoreVersion",
     http_method = "GET",
     http_path = "/annotationStore/{name}/version/{versionName}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$get_annotation_store_version_input(name = name, versionName = versionName)
   output <- .omics$get_annotation_store_version_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -940,12 +969,13 @@ omics_get_read_set <- function(id, sequenceStoreId, file = NULL, partNumber) {
     name = "GetReadSet",
     http_method = "GET",
     http_path = "/sequencestore/{sequenceStoreId}/readset/{id}",
+    host_prefix = "storage-",
     paginator = list()
   )
   input <- .omics$get_read_set_input(id = id, sequenceStoreId = sequenceStoreId, file = file, partNumber = partNumber)
   output <- .omics$get_read_set_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -970,12 +1000,13 @@ omics_get_read_set_activation_job <- function(id, sequenceStoreId) {
     name = "GetReadSetActivationJob",
     http_method = "GET",
     http_path = "/sequencestore/{sequenceStoreId}/activationjob/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_read_set_activation_job_input(id = id, sequenceStoreId = sequenceStoreId)
   output <- .omics$get_read_set_activation_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1000,12 +1031,13 @@ omics_get_read_set_export_job <- function(sequenceStoreId, id) {
     name = "GetReadSetExportJob",
     http_method = "GET",
     http_path = "/sequencestore/{sequenceStoreId}/exportjob/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_read_set_export_job_input(sequenceStoreId = sequenceStoreId, id = id)
   output <- .omics$get_read_set_export_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1062,13 @@ omics_get_read_set_import_job <- function(id, sequenceStoreId) {
     name = "GetReadSetImportJob",
     http_method = "GET",
     http_path = "/sequencestore/{sequenceStoreId}/importjob/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_read_set_import_job_input(id = id, sequenceStoreId = sequenceStoreId)
   output <- .omics$get_read_set_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1060,12 +1093,13 @@ omics_get_read_set_metadata <- function(id, sequenceStoreId) {
     name = "GetReadSetMetadata",
     http_method = "GET",
     http_path = "/sequencestore/{sequenceStoreId}/readset/{id}/metadata",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_read_set_metadata_input(id = id, sequenceStoreId = sequenceStoreId)
   output <- .omics$get_read_set_metadata_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1093,12 +1127,13 @@ omics_get_reference <- function(id, referenceStoreId, range = NULL, partNumber, 
     name = "GetReference",
     http_method = "GET",
     http_path = "/referencestore/{referenceStoreId}/reference/{id}",
+    host_prefix = "storage-",
     paginator = list()
   )
   input <- .omics$get_reference_input(id = id, referenceStoreId = referenceStoreId, range = range, partNumber = partNumber, file = file)
   output <- .omics$get_reference_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1123,12 +1158,13 @@ omics_get_reference_import_job <- function(id, referenceStoreId) {
     name = "GetReferenceImportJob",
     http_method = "GET",
     http_path = "/referencestore/{referenceStoreId}/importjob/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_reference_import_job_input(id = id, referenceStoreId = referenceStoreId)
   output <- .omics$get_reference_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1153,12 +1189,13 @@ omics_get_reference_metadata <- function(id, referenceStoreId) {
     name = "GetReferenceMetadata",
     http_method = "GET",
     http_path = "/referencestore/{referenceStoreId}/reference/{id}/metadata",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_reference_metadata_input(id = id, referenceStoreId = referenceStoreId)
   output <- .omics$get_reference_metadata_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1182,12 +1219,13 @@ omics_get_reference_store <- function(id) {
     name = "GetReferenceStore",
     http_method = "GET",
     http_path = "/referencestore/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_reference_store_input(id = id)
   output <- .omics$get_reference_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1212,12 +1250,13 @@ omics_get_run <- function(id, export = NULL) {
     name = "GetRun",
     http_method = "GET",
     http_path = "/run/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$get_run_input(id = id, export = export)
   output <- .omics$get_run_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1241,12 +1280,13 @@ omics_get_run_group <- function(id) {
     name = "GetRunGroup",
     http_method = "GET",
     http_path = "/runGroup/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$get_run_group_input(id = id)
   output <- .omics$get_run_group_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1271,12 +1311,13 @@ omics_get_run_task <- function(id, taskId) {
     name = "GetRunTask",
     http_method = "GET",
     http_path = "/run/{id}/task/{taskId}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$get_run_task_input(id = id, taskId = taskId)
   output <- .omics$get_run_task_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1300,12 +1341,13 @@ omics_get_sequence_store <- function(id) {
     name = "GetSequenceStore",
     http_method = "GET",
     http_path = "/sequencestore/{id}",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$get_sequence_store_input(id = id)
   output <- .omics$get_sequence_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1329,12 +1371,13 @@ omics_get_share <- function(shareId) {
     name = "GetShare",
     http_method = "GET",
     http_path = "/share/{shareId}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$get_share_input(shareId = shareId)
   output <- .omics$get_share_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1358,12 +1401,13 @@ omics_get_variant_import_job <- function(jobId) {
     name = "GetVariantImportJob",
     http_method = "GET",
     http_path = "/import/variant/{jobId}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$get_variant_import_job_input(jobId = jobId)
   output <- .omics$get_variant_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1387,12 +1431,13 @@ omics_get_variant_store <- function(name) {
     name = "GetVariantStore",
     http_method = "GET",
     http_path = "/variantStore/{name}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$get_variant_store_input(name = name)
   output <- .omics$get_variant_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1419,12 +1464,13 @@ omics_get_workflow <- function(id, type = NULL, export = NULL, workflowOwnerId =
     name = "GetWorkflow",
     http_method = "GET",
     http_path = "/workflow/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$get_workflow_input(id = id, type = type, export = export, workflowOwnerId = workflowOwnerId)
   output <- .omics$get_workflow_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1452,12 +1498,13 @@ omics_list_annotation_import_jobs <- function(maxResults = NULL, ids = NULL, nex
     name = "ListAnnotationImportJobs",
     http_method = "POST",
     http_path = "/import/annotations",
+    host_prefix = "analytics-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "annotationImportJobs")
   )
   input <- .omics$list_annotation_import_jobs_input(maxResults = maxResults, ids = ids, nextToken = nextToken, filter = filter)
   output <- .omics$list_annotation_import_jobs_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1486,12 +1533,13 @@ omics_list_annotation_store_versions <- function(name, maxResults = NULL, nextTo
     name = "ListAnnotationStoreVersions",
     http_method = "POST",
     http_path = "/annotationStore/{name}/versions",
+    host_prefix = "analytics-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "annotationStoreVersions")
   )
   input <- .omics$list_annotation_store_versions_input(name = name, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_annotation_store_versions_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1519,12 +1567,13 @@ omics_list_annotation_stores <- function(ids = NULL, maxResults = NULL, nextToke
     name = "ListAnnotationStores",
     http_method = "POST",
     http_path = "/annotationStores",
+    host_prefix = "analytics-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "annotationStores")
   )
   input <- .omics$list_annotation_stores_input(ids = ids, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_annotation_stores_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1551,12 +1600,13 @@ omics_list_multipart_read_set_uploads <- function(sequenceStoreId, maxResults = 
     name = "ListMultipartReadSetUploads",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/uploads",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "uploads")
   )
   input <- .omics$list_multipart_read_set_uploads_input(sequenceStoreId = sequenceStoreId, maxResults = maxResults, nextToken = nextToken)
   output <- .omics$list_multipart_read_set_uploads_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1585,12 +1635,13 @@ omics_list_read_set_activation_jobs <- function(sequenceStoreId, maxResults = NU
     name = "ListReadSetActivationJobs",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/activationjobs",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "activationJobs")
   )
   input <- .omics$list_read_set_activation_jobs_input(sequenceStoreId = sequenceStoreId, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_read_set_activation_jobs_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1618,12 +1669,13 @@ omics_list_read_set_export_jobs <- function(sequenceStoreId, maxResults = NULL, 
     name = "ListReadSetExportJobs",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/exportjobs",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "exportJobs")
   )
   input <- .omics$list_read_set_export_jobs_input(sequenceStoreId = sequenceStoreId, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_read_set_export_jobs_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1651,12 +1703,13 @@ omics_list_read_set_import_jobs <- function(maxResults = NULL, nextToken = NULL,
     name = "ListReadSetImportJobs",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/importjobs",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "importJobs")
   )
   input <- .omics$list_read_set_import_jobs_input(maxResults = maxResults, nextToken = nextToken, sequenceStoreId = sequenceStoreId, filter = filter)
   output <- .omics$list_read_set_import_jobs_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1689,12 +1742,13 @@ omics_list_read_set_upload_parts <- function(sequenceStoreId, uploadId, partSour
     name = "ListReadSetUploadParts",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/upload/{uploadId}/parts",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "parts")
   )
   input <- .omics$list_read_set_upload_parts_input(sequenceStoreId = sequenceStoreId, uploadId = uploadId, partSource = partSource, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_read_set_upload_parts_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1722,12 +1776,13 @@ omics_list_read_sets <- function(sequenceStoreId, maxResults = NULL, nextToken =
     name = "ListReadSets",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/readsets",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "readSets")
   )
   input <- .omics$list_read_sets_input(sequenceStoreId = sequenceStoreId, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_read_sets_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1755,12 +1810,13 @@ omics_list_reference_import_jobs <- function(maxResults = NULL, nextToken = NULL
     name = "ListReferenceImportJobs",
     http_method = "POST",
     http_path = "/referencestore/{referenceStoreId}/importjobs",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "importJobs")
   )
   input <- .omics$list_reference_import_jobs_input(maxResults = maxResults, nextToken = nextToken, referenceStoreId = referenceStoreId, filter = filter)
   output <- .omics$list_reference_import_jobs_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1787,12 +1843,13 @@ omics_list_reference_stores <- function(maxResults = NULL, nextToken = NULL, fil
     name = "ListReferenceStores",
     http_method = "POST",
     http_path = "/referencestores",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "referenceStores")
   )
   input <- .omics$list_reference_stores_input(maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_reference_stores_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1820,12 +1877,13 @@ omics_list_references <- function(referenceStoreId, maxResults = NULL, nextToken
     name = "ListReferences",
     http_method = "POST",
     http_path = "/referencestore/{referenceStoreId}/references",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "references")
   )
   input <- .omics$list_references_input(referenceStoreId = referenceStoreId, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_references_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1852,12 +1910,13 @@ omics_list_run_groups <- function(name = NULL, startingToken = NULL, maxResults 
     name = "ListRunGroups",
     http_method = "GET",
     http_path = "/runGroup",
+    host_prefix = "workflows-",
     paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .omics$list_run_groups_input(name = name, startingToken = startingToken, maxResults = maxResults)
   output <- .omics$list_run_groups_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1885,12 +1944,13 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
     name = "ListRunTasks",
     http_method = "GET",
     http_path = "/run/{id}/task",
+    host_prefix = "workflows-",
     paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .omics$list_run_tasks_input(id = id, status = status, startingToken = startingToken, maxResults = maxResults)
   output <- .omics$list_run_tasks_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1919,12 +1979,13 @@ omics_list_runs <- function(name = NULL, runGroupId = NULL, startingToken = NULL
     name = "ListRuns",
     http_method = "GET",
     http_path = "/run",
+    host_prefix = "workflows-",
     paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .omics$list_runs_input(name = name, runGroupId = runGroupId, startingToken = startingToken, maxResults = maxResults, status = status)
   output <- .omics$list_runs_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1951,12 +2012,13 @@ omics_list_sequence_stores <- function(maxResults = NULL, nextToken = NULL, filt
     name = "ListSequenceStores",
     http_method = "POST",
     http_path = "/sequencestores",
+    host_prefix = "control-storage-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sequenceStores")
   )
   input <- .omics$list_sequence_stores_input(maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .omics$list_sequence_stores_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1986,12 +2048,13 @@ omics_list_shares <- function(resourceOwner, filter = NULL, nextToken = NULL, ma
     name = "ListShares",
     http_method = "POST",
     http_path = "/shares",
+    host_prefix = "analytics-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "shares")
   )
   input <- .omics$list_shares_input(resourceOwner = resourceOwner, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .omics$list_shares_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2015,12 +2078,13 @@ omics_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "tags-",
     paginator = list()
   )
   input <- .omics$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .omics$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2048,12 +2112,13 @@ omics_list_variant_import_jobs <- function(maxResults = NULL, ids = NULL, nextTo
     name = "ListVariantImportJobs",
     http_method = "POST",
     http_path = "/import/variants",
+    host_prefix = "analytics-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "variantImportJobs")
   )
   input <- .omics$list_variant_import_jobs_input(maxResults = maxResults, ids = ids, nextToken = nextToken, filter = filter)
   output <- .omics$list_variant_import_jobs_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2081,12 +2146,13 @@ omics_list_variant_stores <- function(maxResults = NULL, ids = NULL, nextToken =
     name = "ListVariantStores",
     http_method = "POST",
     http_path = "/variantStores",
+    host_prefix = "analytics-",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "variantStores")
   )
   input <- .omics$list_variant_stores_input(maxResults = maxResults, ids = ids, nextToken = nextToken, filter = filter)
   output <- .omics$list_variant_stores_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2114,12 +2180,13 @@ omics_list_workflows <- function(type = NULL, name = NULL, startingToken = NULL,
     name = "ListWorkflows",
     http_method = "GET",
     http_path = "/workflow",
+    host_prefix = "workflows-",
     paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .omics$list_workflows_input(type = type, name = name, startingToken = startingToken, maxResults = maxResults)
   output <- .omics$list_workflows_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2149,12 +2216,13 @@ omics_start_annotation_import_job <- function(destinationName, roleArn, items, v
     name = "StartAnnotationImportJob",
     http_method = "POST",
     http_path = "/import/annotation",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$start_annotation_import_job_input(destinationName = destinationName, roleArn = roleArn, items = items, versionName = versionName, formatOptions = formatOptions, runLeftNormalization = runLeftNormalization, annotationFields = annotationFields)
   output <- .omics$start_annotation_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2181,12 +2249,13 @@ omics_start_read_set_activation_job <- function(sequenceStoreId, clientToken = N
     name = "StartReadSetActivationJob",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/activationjob",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$start_read_set_activation_job_input(sequenceStoreId = sequenceStoreId, clientToken = clientToken, sources = sources)
   output <- .omics$start_read_set_activation_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2215,12 +2284,13 @@ omics_start_read_set_export_job <- function(sequenceStoreId, destination, roleAr
     name = "StartReadSetExportJob",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/exportjob",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$start_read_set_export_job_input(sequenceStoreId = sequenceStoreId, destination = destination, roleArn = roleArn, clientToken = clientToken, sources = sources)
   output <- .omics$start_read_set_export_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2248,12 +2318,13 @@ omics_start_read_set_import_job <- function(sequenceStoreId, roleArn, clientToke
     name = "StartReadSetImportJob",
     http_method = "POST",
     http_path = "/sequencestore/{sequenceStoreId}/importjob",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$start_read_set_import_job_input(sequenceStoreId = sequenceStoreId, roleArn = roleArn, clientToken = clientToken, sources = sources)
   output <- .omics$start_read_set_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2281,12 +2352,13 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
     name = "StartReferenceImportJob",
     http_method = "POST",
     http_path = "/referencestore/{referenceStoreId}/importjob",
+    host_prefix = "control-storage-",
     paginator = list()
   )
   input <- .omics$start_reference_import_job_input(referenceStoreId = referenceStoreId, roleArn = roleArn, clientToken = clientToken, sources = sources)
   output <- .omics$start_reference_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2331,12 +2403,13 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
     name = "StartRun",
     http_method = "POST",
     http_path = "/run",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId)
   output <- .omics$start_run_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2364,12 +2437,13 @@ omics_start_variant_import_job <- function(destinationName, roleArn, items, runL
     name = "StartVariantImportJob",
     http_method = "POST",
     http_path = "/import/variant",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$start_variant_import_job_input(destinationName = destinationName, roleArn = roleArn, items = items, runLeftNormalization = runLeftNormalization, annotationFields = annotationFields)
   output <- .omics$start_variant_import_job_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2394,12 +2468,13 @@ omics_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "tags-",
     paginator = list()
   )
   input <- .omics$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .omics$tag_resource_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2424,12 +2499,13 @@ omics_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "tags-",
     paginator = list()
   )
   input <- .omics$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .omics$untag_resource_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2454,12 +2530,13 @@ omics_update_annotation_store <- function(name, description = NULL) {
     name = "UpdateAnnotationStore",
     http_method = "POST",
     http_path = "/annotationStore/{name}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$update_annotation_store_input(name = name, description = description)
   output <- .omics$update_annotation_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2485,12 +2562,13 @@ omics_update_annotation_store_version <- function(name, versionName, description
     name = "UpdateAnnotationStoreVersion",
     http_method = "POST",
     http_path = "/annotationStore/{name}/version/{versionName}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$update_annotation_store_version_input(name = name, versionName = versionName, description = description)
   output <- .omics$update_annotation_store_version_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2519,12 +2597,13 @@ omics_update_run_group <- function(id, name = NULL, maxCpus = NULL, maxRuns = NU
     name = "UpdateRunGroup",
     http_method = "POST",
     http_path = "/runGroup/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$update_run_group_input(id = id, name = name, maxCpus = maxCpus, maxRuns = maxRuns, maxDuration = maxDuration, maxGpus = maxGpus)
   output <- .omics$update_run_group_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2549,12 +2628,13 @@ omics_update_variant_store <- function(name, description = NULL) {
     name = "UpdateVariantStore",
     http_method = "POST",
     http_path = "/variantStore/{name}",
+    host_prefix = "analytics-",
     paginator = list()
   )
   input <- .omics$update_variant_store_input(name = name, description = description)
   output <- .omics$update_variant_store_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2580,12 +2660,13 @@ omics_update_workflow <- function(id, name = NULL, description = NULL) {
     name = "UpdateWorkflow",
     http_method = "POST",
     http_path = "/workflow/{id}",
+    host_prefix = "workflows-",
     paginator = list()
   )
   input <- .omics$update_workflow_input(id = id, name = name, description = description)
   output <- .omics$update_workflow_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2613,12 +2694,13 @@ omics_upload_read_set_part <- function(sequenceStoreId, uploadId, partSource, pa
     name = "UploadReadSetPart",
     http_method = "PUT",
     http_path = "/sequencestore/{sequenceStoreId}/upload/{uploadId}/part",
+    host_prefix = "storage-",
     paginator = list()
   )
   input <- .omics$upload_read_set_part_input(sequenceStoreId = sequenceStoreId, uploadId = uploadId, partSource = partSource, partNumber = partNumber, payload = payload)
   output <- .omics$upload_read_set_part_output()
   config <- get_config()
-  svc <- .omics$service(config)
+  svc <- .omics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

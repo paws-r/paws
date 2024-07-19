@@ -22,12 +22,13 @@ securitylake_create_aws_log_source <- function(sources) {
     name = "CreateAwsLogSource",
     http_method = "POST",
     http_path = "/v1/datalake/logsources/aws",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$create_aws_log_source_input(sources = sources)
   output <- .securitylake$create_aws_log_source_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -117,12 +118,13 @@ securitylake_create_custom_log_source <- function(configuration, eventClasses = 
     name = "CreateCustomLogSource",
     http_method = "POST",
     http_path = "/v1/datalake/logsources/custom",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$create_custom_log_source_input(configuration = configuration, eventClasses = eventClasses, sourceName = sourceName, sourceVersion = sourceVersion)
   output <- .securitylake$create_custom_log_source_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -154,12 +156,13 @@ securitylake_create_data_lake <- function(configurations, metaStoreManagerRoleAr
     name = "CreateDataLake",
     http_method = "POST",
     http_path = "/v1/datalake",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$create_data_lake_input(configurations = configurations, metaStoreManagerRoleArn = metaStoreManagerRoleArn, tags = tags)
   output <- .securitylake$create_data_lake_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -187,12 +190,13 @@ securitylake_create_data_lake_exception_subscription <- function(exceptionTimeTo
     name = "CreateDataLakeExceptionSubscription",
     http_method = "POST",
     http_path = "/v1/datalake/exceptions/subscription",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$create_data_lake_exception_subscription_input(exceptionTimeToLive = exceptionTimeToLive, notificationEndpoint = notificationEndpoint, subscriptionProtocol = subscriptionProtocol)
   output <- .securitylake$create_data_lake_exception_subscription_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -218,12 +222,13 @@ securitylake_create_data_lake_organization_configuration <- function(autoEnableN
     name = "CreateDataLakeOrganizationConfiguration",
     http_method = "POST",
     http_path = "/v1/datalake/organization/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$create_data_lake_organization_configuration_input(autoEnableNewAccount = autoEnableNewAccount)
   output <- .securitylake$create_data_lake_organization_configuration_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -243,7 +248,7 @@ securitylake_create_data_lake_organization_configuration <- function(autoEnableN
 #' collected. Security Lake supports log and event collection for natively
 #' supported Amazon Web Services.
 #' @param subscriberDescription The description for your subscriber account in Security Lake.
-#' @param subscriberIdentity &#91;required&#93; The AWS identity used to access your data.
+#' @param subscriberIdentity &#91;required&#93; The Amazon Web Services identity used to access your data.
 #' @param subscriberName &#91;required&#93; The name of your Security Lake subscriber account.
 #' @param tags An array of objects, one for each tag to associate with the subscriber.
 #' For each tag, you must specify both a tag key and a tag value. A tag
@@ -257,12 +262,13 @@ securitylake_create_subscriber <- function(accessTypes = NULL, sources, subscrib
     name = "CreateSubscriber",
     http_method = "POST",
     http_path = "/v1/subscribers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$create_subscriber_input(accessTypes = accessTypes, sources = sources, subscriberDescription = subscriberDescription, subscriberIdentity = subscriberIdentity, subscriberName = subscriberName, tags = tags)
   output <- .securitylake$create_subscriber_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -289,12 +295,13 @@ securitylake_create_subscriber_notification <- function(configuration, subscribe
     name = "CreateSubscriberNotification",
     http_method = "POST",
     http_path = "/v1/subscribers/{subscriberId}/notification",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$create_subscriber_notification_input(configuration = configuration, subscriberId = subscriberId)
   output <- .securitylake$create_subscriber_notification_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -320,12 +327,13 @@ securitylake_delete_aws_log_source <- function(sources) {
     name = "DeleteAwsLogSource",
     http_method = "POST",
     http_path = "/v1/datalake/logsources/aws/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$delete_aws_log_source_input(sources = sources)
   output <- .securitylake$delete_aws_log_source_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -352,12 +360,13 @@ securitylake_delete_custom_log_source <- function(sourceName, sourceVersion = NU
     name = "DeleteCustomLogSource",
     http_method = "DELETE",
     http_path = "/v1/datalake/logsources/custom/{sourceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$delete_custom_log_source_input(sourceName = sourceName, sourceVersion = sourceVersion)
   output <- .securitylake$delete_custom_log_source_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -383,12 +392,13 @@ securitylake_delete_data_lake <- function(regions) {
     name = "DeleteDataLake",
     http_method = "POST",
     http_path = "/v1/datalake/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$delete_data_lake_input(regions = regions)
   output <- .securitylake$delete_data_lake_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -413,12 +423,13 @@ securitylake_delete_data_lake_exception_subscription <- function() {
     name = "DeleteDataLakeExceptionSubscription",
     http_method = "DELETE",
     http_path = "/v1/datalake/exceptions/subscription",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$delete_data_lake_exception_subscription_input()
   output <- .securitylake$delete_data_lake_exception_subscription_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -444,12 +455,13 @@ securitylake_delete_data_lake_organization_configuration <- function(autoEnableN
     name = "DeleteDataLakeOrganizationConfiguration",
     http_method = "POST",
     http_path = "/v1/datalake/organization/configuration/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$delete_data_lake_organization_configuration_input(autoEnableNewAccount = autoEnableNewAccount)
   output <- .securitylake$delete_data_lake_organization_configuration_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -475,12 +487,13 @@ securitylake_delete_subscriber <- function(subscriberId) {
     name = "DeleteSubscriber",
     http_method = "DELETE",
     http_path = "/v1/subscribers/{subscriberId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$delete_subscriber_input(subscriberId = subscriberId)
   output <- .securitylake$delete_subscriber_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -505,12 +518,13 @@ securitylake_delete_subscriber_notification <- function(subscriberId) {
     name = "DeleteSubscriberNotification",
     http_method = "DELETE",
     http_path = "/v1/subscribers/{subscriberId}/notification",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$delete_subscriber_notification_input(subscriberId = subscriberId)
   output <- .securitylake$delete_subscriber_notification_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -535,12 +549,13 @@ securitylake_deregister_data_lake_delegated_administrator <- function() {
     name = "DeregisterDataLakeDelegatedAdministrator",
     http_method = "DELETE",
     http_path = "/v1/datalake/delegate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$deregister_data_lake_delegated_administrator_input()
   output <- .securitylake$deregister_data_lake_delegated_administrator_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -565,12 +580,13 @@ securitylake_get_data_lake_exception_subscription <- function() {
     name = "GetDataLakeExceptionSubscription",
     http_method = "GET",
     http_path = "/v1/datalake/exceptions/subscription",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$get_data_lake_exception_subscription_input()
   output <- .securitylake$get_data_lake_exception_subscription_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -596,12 +612,13 @@ securitylake_get_data_lake_organization_configuration <- function() {
     name = "GetDataLakeOrganizationConfiguration",
     http_method = "GET",
     http_path = "/v1/datalake/organization/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$get_data_lake_organization_configuration_input()
   output <- .securitylake$get_data_lake_organization_configuration_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -639,12 +656,13 @@ securitylake_get_data_lake_sources <- function(accounts = NULL, maxResults = NUL
     name = "GetDataLakeSources",
     http_method = "POST",
     http_path = "/v1/datalake/sources",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataLakeSources")
   )
   input <- .securitylake$get_data_lake_sources_input(accounts = accounts, maxResults = maxResults, nextToken = nextToken)
   output <- .securitylake$get_data_lake_sources_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -669,12 +687,13 @@ securitylake_get_subscriber <- function(subscriberId) {
     name = "GetSubscriber",
     http_method = "GET",
     http_path = "/v1/subscribers/{subscriberId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$get_subscriber_input(subscriberId = subscriberId)
   output <- .securitylake$get_subscriber_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -707,12 +726,13 @@ securitylake_list_data_lake_exceptions <- function(maxResults = NULL, nextToken 
     name = "ListDataLakeExceptions",
     http_method = "POST",
     http_path = "/v1/datalake/exceptions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "exceptions")
   )
   input <- .securitylake$list_data_lake_exceptions_input(maxResults = maxResults, nextToken = nextToken, regions = regions)
   output <- .securitylake$list_data_lake_exceptions_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -737,12 +757,13 @@ securitylake_list_data_lakes <- function(regions = NULL) {
     name = "ListDataLakes",
     http_method = "GET",
     http_path = "/v1/datalakes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$list_data_lakes_input(regions = regions)
   output <- .securitylake$list_data_lakes_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -772,12 +793,13 @@ securitylake_list_log_sources <- function(accounts = NULL, maxResults = NULL, ne
     name = "ListLogSources",
     http_method = "POST",
     http_path = "/v1/datalake/logsources/list",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sources")
   )
   input <- .securitylake$list_log_sources_input(accounts = accounts, maxResults = maxResults, nextToken = nextToken, regions = regions, sources = sources)
   output <- .securitylake$list_log_sources_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -803,12 +825,13 @@ securitylake_list_subscribers <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListSubscribers",
     http_method = "GET",
     http_path = "/v1/subscribers",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "subscribers")
   )
   input <- .securitylake$list_subscribers_input(maxResults = maxResults, nextToken = nextToken)
   output <- .securitylake$list_subscribers_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -836,12 +859,13 @@ securitylake_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/v1/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .securitylake$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -867,12 +891,13 @@ securitylake_register_data_lake_delegated_administrator <- function(accountId) {
     name = "RegisterDataLakeDelegatedAdministrator",
     http_method = "POST",
     http_path = "/v1/datalake/delegate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$register_data_lake_delegated_administrator_input(accountId = accountId)
   output <- .securitylake$register_data_lake_delegated_administrator_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -904,12 +929,13 @@ securitylake_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/v1/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .securitylake$tag_resource_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -938,12 +964,13 @@ securitylake_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/v1/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .securitylake$untag_resource_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -971,12 +998,13 @@ securitylake_update_data_lake <- function(configurations, metaStoreManagerRoleAr
     name = "UpdateDataLake",
     http_method = "PUT",
     http_path = "/v1/datalake",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$update_data_lake_input(configurations = configurations, metaStoreManagerRoleArn = metaStoreManagerRoleArn)
   output <- .securitylake$update_data_lake_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1003,12 +1031,13 @@ securitylake_update_data_lake_exception_subscription <- function(exceptionTimeTo
     name = "UpdateDataLakeExceptionSubscription",
     http_method = "PUT",
     http_path = "/v1/datalake/exceptions/subscription",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$update_data_lake_exception_subscription_input(exceptionTimeToLive = exceptionTimeToLive, notificationEndpoint = notificationEndpoint, subscriptionProtocol = subscriptionProtocol)
   output <- .securitylake$update_data_lake_exception_subscription_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1041,12 +1070,13 @@ securitylake_update_subscriber <- function(sources = NULL, subscriberDescription
     name = "UpdateSubscriber",
     http_method = "PUT",
     http_path = "/v1/subscribers/{subscriberId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$update_subscriber_input(sources = sources, subscriberDescription = subscriberDescription, subscriberId = subscriberId, subscriberIdentity = subscriberIdentity, subscriberName = subscriberName)
   output <- .securitylake$update_subscriber_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1074,12 +1104,13 @@ securitylake_update_subscriber_notification <- function(configuration, subscribe
     name = "UpdateSubscriberNotification",
     http_method = "PUT",
     http_path = "/v1/subscribers/{subscriberId}/notification",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securitylake$update_subscriber_notification_input(configuration = configuration, subscriberId = subscriberId)
   output <- .securitylake$update_subscriber_notification_output()
   config <- get_config()
-  svc <- .securitylake$service(config)
+  svc <- .securitylake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -23,9 +23,8 @@ instance.}
 respects the grace period. Set this to \code{False}, to have the call not
 respect the grace period associated with the group.
 
-For more information about the health check grace period, see
-\code{\link[=autoscaling_create_auto_scaling_group]{create_auto_scaling_group}} in
-the \emph{Amazon EC2 Auto Scaling API Reference}.}
+For more information about the health check grace period, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-check-grace-period.html}{Set the health check grace period for an Auto Scaling group}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Sets the health status of the specified instance.

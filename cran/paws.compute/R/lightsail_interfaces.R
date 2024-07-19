@@ -1661,7 +1661,7 @@ NULL
 
 .lightsail$set_ip_address_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string")), acceptBundleUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

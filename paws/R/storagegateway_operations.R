@@ -36,10 +36,11 @@ NULL
 #' Gateway User Guide*.
 #' @param GatewayName &#91;required&#93; The name you configured for your gateway.
 #' @param GatewayTimezone &#91;required&#93; A value that indicates the time zone you want to set for the gateway.
-#' The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example,
-#' GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates
-#' the time is 2 hours ahead of GMT. The time zone is used, for example,
-#' for scheduling snapshots and your gateway's maintenance schedule.
+#' The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For
+#' example, GMT indicates Greenwich Mean Time without any offset. GMT-4:00
+#' indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is
+#' 2 hours ahead of GMT. The time zone is used, for example, for scheduling
+#' snapshots and your gateway's maintenance schedule.
 #' @param GatewayRegion &#91;required&#93; A value that indicates the Amazon Web Services Region where you want to
 #' store your data. The gateway Amazon Web Services Region specified must
 #' be the same Amazon Web Services Region as the Amazon Web Services Region
@@ -56,8 +57,7 @@ NULL
 #' is critical to all later functions of the gateway and cannot be changed
 #' after activation. The default value is `CACHED`.
 #' 
-#' Valid Values: `STORED` | `CACHED` | `VTL` | `VTL_SNOW` | `FILE_S3` |
-#' `FILE_FSX_SMB`
+#' Valid Values: `STORED` | `CACHED` | `VTL` | `FILE_S3` | `FILE_FSX_SMB`
 #' @param TapeDriveType The value that indicates the type of tape drive to use for tape gateway.
 #' This field is optional.
 #' 
@@ -125,12 +125,13 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
     name = "ActivateGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$activate_gateway_input(ActivationKey = ActivationKey, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, GatewayRegion = GatewayRegion, GatewayType = GatewayType, TapeDriveType = TapeDriveType, MediumChangerType = MediumChangerType, Tags = Tags)
   output <- .storagegateway$activate_gateway_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -199,12 +200,13 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
     name = "AddCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$add_cache_input(GatewayARN = GatewayARN, DiskIds = DiskIds)
   output <- .storagegateway$add_cache_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -290,12 +292,13 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
     name = "AddTagsToResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$add_tags_to_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .storagegateway$add_tags_to_resource_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -364,12 +367,13 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
     name = "AddUploadBuffer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$add_upload_buffer_input(GatewayARN = GatewayARN, DiskIds = DiskIds)
   output <- .storagegateway$add_upload_buffer_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -444,12 +448,13 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
     name = "AddWorkingStorage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$add_working_storage_input(GatewayARN = GatewayARN, DiskIds = DiskIds)
   output <- .storagegateway$add_working_storage_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -512,12 +517,13 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
     name = "AssignTapePool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$assign_tape_pool_input(TapeARN = TapeARN, PoolId = PoolId, BypassGovernanceRetention = BypassGovernanceRetention)
   output <- .storagegateway$assign_tape_pool_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -600,12 +606,13 @@ storagegateway_associate_file_system <- function(UserName, Password, ClientToken
     name = "AssociateFileSystem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$associate_file_system_input(UserName = UserName, Password = Password, ClientToken = ClientToken, GatewayARN = GatewayARN, LocationARN = LocationARN, Tags = Tags, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes, EndpointNetworkConfiguration = EndpointNetworkConfiguration)
   output <- .storagegateway$associate_file_system_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -678,12 +685,13 @@ storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeAR
     name = "AttachVolume",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$attach_volume_input(GatewayARN = GatewayARN, TargetName = TargetName, VolumeARN = VolumeARN, NetworkInterfaceId = NetworkInterfaceId, DiskId = DiskId)
   output <- .storagegateway$attach_volume_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -741,12 +749,13 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
     name = "CancelArchival",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$cancel_archival_input(GatewayARN = GatewayARN, TapeARN = TapeARN)
   output <- .storagegateway$cancel_archival_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -805,12 +814,13 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
     name = "CancelRetrieval",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$cancel_retrieval_input(GatewayARN = GatewayARN, TapeARN = TapeARN)
   output <- .storagegateway$cancel_retrieval_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -943,12 +953,13 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
     name = "CreateCachediSCSIVolume",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_cachedi_scsi_volume_input(GatewayARN = GatewayARN, VolumeSizeInBytes = VolumeSizeInBytes, SnapshotId = SnapshotId, TargetName = TargetName, SourceVolumeARN = SourceVolumeARN, NetworkInterfaceId = NetworkInterfaceId, ClientToken = ClientToken, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Tags = Tags)
   output <- .storagegateway$create_cachedi_scsi_volume_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1167,12 +1178,13 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
     name = "CreateNFSFileShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$create_nfs_file_share_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1428,12 +1440,13 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
     name = "CreateSMBFileShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, Authentication = Authentication, CaseSensitivity = CaseSensitivity, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$create_smb_file_share_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1536,12 +1549,13 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
     name = "CreateSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_snapshot_input(VolumeARN = VolumeARN, SnapshotDescription = SnapshotDescription, Tags = Tags)
   output <- .storagegateway$create_snapshot_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1638,12 +1652,13 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
     name = "CreateSnapshotFromVolumeRecoveryPoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_snapshot_from_volume_recovery_point_input(VolumeARN = VolumeARN, SnapshotDescription = SnapshotDescription, Tags = Tags)
   output <- .storagegateway$create_snapshot_from_volume_recovery_point_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1769,12 +1784,13 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
     name = "CreateStorediSCSIVolume",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_storedi_scsi_volume_input(GatewayARN = GatewayARN, DiskId = DiskId, SnapshotId = SnapshotId, PreserveExistingData = PreserveExistingData, TargetName = TargetName, NetworkInterfaceId = NetworkInterfaceId, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Tags = Tags)
   output <- .storagegateway$create_storedi_scsi_volume_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1846,12 +1862,13 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
     name = "CreateTapePool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_tape_pool_input(PoolName = PoolName, StorageClass = StorageClass, RetentionLockType = RetentionLockType, RetentionLockTimeInDays = RetentionLockTimeInDays, Tags = Tags)
   output <- .storagegateway$create_tape_pool_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1956,12 +1973,13 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
     name = "CreateTapeWithBarcode",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_tape_with_barcode_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, TapeBarcode = TapeBarcode, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId, Worm = Worm, Tags = Tags)
   output <- .storagegateway$create_tape_with_barcode_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2078,12 +2096,13 @@ storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken
     name = "CreateTapes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$create_tapes_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, ClientToken = ClientToken, NumTapesToCreate = NumTapesToCreate, TapeBarcodePrefix = TapeBarcodePrefix, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId, Worm = Worm, Tags = Tags)
   output <- .storagegateway$create_tapes_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2127,12 +2146,13 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
     name = "DeleteAutomaticTapeCreationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_automatic_tape_creation_policy_input(GatewayARN = GatewayARN)
   output <- .storagegateway$delete_automatic_tape_creation_policy_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2194,12 +2214,13 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
     name = "DeleteBandwidthRateLimit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_bandwidth_rate_limit_input(GatewayARN = GatewayARN, BandwidthType = BandwidthType)
   output <- .storagegateway$delete_bandwidth_rate_limit_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2259,12 +2280,13 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
     name = "DeleteChapCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_chap_credentials_input(TargetARN = TargetARN, InitiatorName = InitiatorName)
   output <- .storagegateway$delete_chap_credentials_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2315,12 +2337,13 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
     name = "DeleteFileShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_file_share_input(FileShareARN = FileShareARN, ForceDelete = ForceDelete)
   output <- .storagegateway$delete_file_share_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2388,12 +2411,13 @@ storagegateway_delete_gateway <- function(GatewayARN) {
     name = "DeleteGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$delete_gateway_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2456,12 +2480,13 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
     name = "DeleteSnapshotSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_snapshot_schedule_input(VolumeARN = VolumeARN)
   output <- .storagegateway$delete_snapshot_schedule_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2524,12 +2549,13 @@ storagegateway_delete_tape <- function(GatewayARN, TapeARN, BypassGovernanceRete
     name = "DeleteTape",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_tape_input(GatewayARN = GatewayARN, TapeARN = TapeARN, BypassGovernanceRetention = BypassGovernanceRetention)
   output <- .storagegateway$delete_tape_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2586,12 +2612,13 @@ storagegateway_delete_tape_archive <- function(TapeARN, BypassGovernanceRetentio
     name = "DeleteTapeArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_tape_archive_input(TapeARN = TapeARN, BypassGovernanceRetention = BypassGovernanceRetention)
   output <- .storagegateway$delete_tape_archive_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2635,12 +2662,13 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
     name = "DeleteTapePool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_tape_pool_input(PoolARN = PoolARN)
   output <- .storagegateway$delete_tape_pool_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2713,12 +2741,13 @@ storagegateway_delete_volume <- function(VolumeARN) {
     name = "DeleteVolume",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$delete_volume_input(VolumeARN = VolumeARN)
   output <- .storagegateway$delete_volume_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2767,12 +2796,13 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
     name = "DescribeAvailabilityMonitorTest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_availability_monitor_test_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_availability_monitor_test_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2836,12 +2866,13 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
     name = "DescribeBandwidthRateLimit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_bandwidth_rate_limit_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_bandwidth_rate_limit_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2915,12 +2946,13 @@ storagegateway_describe_bandwidth_rate_limit_schedule <- function(GatewayARN) {
     name = "DescribeBandwidthRateLimitSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_bandwidth_rate_limit_schedule_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_bandwidth_rate_limit_schedule_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2982,12 +3014,13 @@ storagegateway_describe_cache <- function(GatewayARN) {
     name = "DescribeCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_cache_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_cache_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3075,12 +3108,13 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
     name = "DescribeCachediSCSIVolumes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "CachediSCSIVolumes")
   )
   input <- .storagegateway$describe_cachedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
   output <- .storagegateway$describe_cachedi_scsi_volumes_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3146,12 +3180,13 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
     name = "DescribeChapCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_chap_credentials_input(TargetARN = TargetARN)
   output <- .storagegateway$describe_chap_credentials_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3225,12 +3260,13 @@ storagegateway_describe_file_system_associations <- function(FileSystemAssociati
     name = "DescribeFileSystemAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_file_system_associations_input(FileSystemAssociationARNList = FileSystemAssociationARNList)
   output <- .storagegateway$describe_file_system_associations_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3320,25 +3356,28 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
     name = "DescribeGatewayInformation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_gateway_information_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_gateway_information_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .storagegateway$operations$describe_gateway_information <- storagegateway_describe_gateway_information
 
-#' Returns your gateway's weekly maintenance start time including the day
-#' and time of the week
+#' Returns your gateway's maintenance window schedule information, with
+#' values for monthly or weekly cadence, specific day and time to begin
+#' maintenance, and which types of updates to apply
 #'
 #' @description
-#' Returns your gateway's weekly maintenance start time including the day
-#' and time of the week. Note that values are in terms of the gateway's
-#' time zone.
+#' Returns your gateway's maintenance window schedule information, with
+#' values for monthly or weekly cadence, specific day and time to begin
+#' maintenance, and which types of updates to apply. Time values returned
+#' are for the gateway's time zone.
 #'
 #' @usage
 #' storagegateway_describe_maintenance_start_time(GatewayARN)
@@ -3354,7 +3393,10 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
 #'   MinuteOfHour = 123,
 #'   DayOfWeek = 123,
 #'   DayOfMonth = 123,
-#'   Timezone = "string"
+#'   Timezone = "string",
+#'   SoftwareUpdatePreferences = list(
+#'     AutomaticUpdatePolicy = "ALL_VERSIONS"|"EMERGENCY_VERSIONS_ONLY"
+#'   )
 #' )
 #' ```
 #'
@@ -3384,12 +3426,13 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
     name = "DescribeMaintenanceStartTime",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_maintenance_start_time_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_maintenance_start_time_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3478,12 +3521,13 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
     name = "DescribeNFSFileShares",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_nfs_file_shares_input(FileShareARNList = FileShareARNList)
   output <- .storagegateway$describe_nfs_file_shares_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3576,12 +3620,13 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
     name = "DescribeSMBFileShares",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_smb_file_shares_input(FileShareARNList = FileShareARNList)
   output <- .storagegateway$describe_smb_file_shares_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3608,7 +3653,7 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
 #'   DomainName = "string",
 #'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR",
 #'   SMBGuestPasswordSet = TRUE|FALSE,
-#'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption",
+#'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption"|"MandatoryEncryptionNoAes128",
 #'   FileSharesVisible = TRUE|FALSE,
 #'   SMBLocalGroups = list(
 #'     GatewayAdmins = list(
@@ -3635,12 +3680,13 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
     name = "DescribeSMBSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_smb_settings_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_smb_settings_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3706,12 +3752,13 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
     name = "DescribeSnapshotSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_snapshot_schedule_input(VolumeARN = VolumeARN)
   output <- .storagegateway$describe_snapshot_schedule_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3800,12 +3847,13 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
     name = "DescribeStorediSCSIVolumes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "StorediSCSIVolumes")
   )
   input <- .storagegateway$describe_storedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
   output <- .storagegateway$describe_storedi_scsi_volumes_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3901,12 +3949,13 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
     name = "DescribeTapeArchives",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeArchives")
   )
   input <- .storagegateway$describe_tape_archives_input(TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tape_archives_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3983,12 +4032,13 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
     name = "DescribeTapeRecoveryPoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeRecoveryPointInfos")
   )
   input <- .storagegateway$describe_tape_recovery_points_input(GatewayARN = GatewayARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tape_recovery_points_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4098,12 +4148,13 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
     name = "DescribeTapes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Tapes")
   )
   input <- .storagegateway$describe_tapes_input(GatewayARN = GatewayARN, TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tapes_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4171,12 +4222,13 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
     name = "DescribeUploadBuffer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_upload_buffer_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_upload_buffer_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4266,12 +4318,13 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
     name = "DescribeVTLDevices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "VTLDevices")
   )
   input <- .storagegateway$describe_vtl_devices_input(GatewayARN = GatewayARN, VTLDeviceARNs = VTLDeviceARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_vtl_devices_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4338,12 +4391,13 @@ storagegateway_describe_working_storage <- function(GatewayARN) {
     name = "DescribeWorkingStorage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$describe_working_storage_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_working_storage_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4398,12 +4452,13 @@ storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
     name = "DetachVolume",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$detach_volume_input(VolumeARN = VolumeARN, ForceDetach = ForceDetach)
   output <- .storagegateway$detach_volume_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4461,12 +4516,13 @@ storagegateway_disable_gateway <- function(GatewayARN) {
     name = "DisableGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$disable_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$disable_gateway_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4519,12 +4575,13 @@ storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, Fo
     name = "DisassociateFileSystem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$disassociate_file_system_input(FileSystemAssociationARN = FileSystemAssociationARN, ForceDelete = ForceDelete)
   output <- .storagegateway$disassociate_file_system_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4606,12 +4663,13 @@ storagegateway_join_domain <- function(GatewayARN, DomainName, OrganizationalUni
     name = "JoinDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$join_domain_input(GatewayARN = GatewayARN, DomainName = DomainName, OrganizationalUnit = OrganizationalUnit, DomainControllers = DomainControllers, TimeoutInSeconds = TimeoutInSeconds, UserName = UserName, Password = Password)
   output <- .storagegateway$join_domain_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4670,12 +4728,13 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
     name = "ListAutomaticTapeCreationPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$list_automatic_tape_creation_policies_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_automatic_tape_creation_policies_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4740,12 +4799,13 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
     name = "ListFileShares",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "Marker"), output_token = "NextMarker", result_key = "FileShareInfoList")
   )
   input <- .storagegateway$list_file_shares_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
   output <- .storagegateway$list_file_shares_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4809,12 +4869,13 @@ storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limi
     name = "ListFileSystemAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "Marker"), output_token = "NextMarker", result_key = "FileSystemAssociationSummaryList")
   )
   input <- .storagegateway$list_file_system_associations_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
   output <- .storagegateway$list_file_system_associations_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4898,12 +4959,13 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
     name = "ListGateways",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Gateways")
   )
   input <- .storagegateway$list_gateways_input(Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_gateways_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4978,12 +5040,13 @@ storagegateway_list_local_disks <- function(GatewayARN) {
     name = "ListLocalDisks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "Disks")
   )
   input <- .storagegateway$list_local_disks_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_local_disks_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5050,12 +5113,13 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "ResourceARN"), output_token = "Marker", result_key = "Tags")
   )
   input <- .storagegateway$list_tags_for_resource_input(ResourceARN = ResourceARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5126,12 +5190,13 @@ storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit
     name = "ListTapePools",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "PoolInfos")
   )
   input <- .storagegateway$list_tape_pools_input(PoolARNs = PoolARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tape_pools_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5209,12 +5274,13 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
     name = "ListTapes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeInfos")
   )
   input <- .storagegateway$list_tapes_input(TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tapes_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5263,12 +5329,13 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
     name = "ListVolumeInitiators",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$list_volume_initiators_input(VolumeARN = VolumeARN)
   output <- .storagegateway$list_volume_initiators_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5335,12 +5402,13 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
     name = "ListVolumeRecoveryPoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "VolumeRecoveryPointInfos")
   )
   input <- .storagegateway$list_volume_recovery_points_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_volume_recovery_points_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5426,12 +5494,13 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
     name = "ListVolumes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "VolumeInfos")
   )
   input <- .storagegateway$list_volumes_input(GatewayARN = GatewayARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_volumes_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5489,12 +5558,13 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
     name = "NotifyWhenUploaded",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$notify_when_uploaded_input(FileShareARN = FileShareARN)
   output <- .storagegateway$notify_when_uploaded_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5557,6 +5627,9 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' The default is \[`"/"`\]. The default refreshes objects and folders at
 #' the root of the Amazon S3 bucket. If `Recursive` is set to `true`, the
 #' entire S3 bucket that the file share has access to is refreshed.
+#' 
+#' Do not include `/` when specifying folder names. For example, you would
+#' specify `samplefolder` rather than `samplefolder/`.
 #' @param Recursive A value that specifies whether to recursively refresh folders in the
 #' cache. The refresh includes folders that were in the cache the last time
 #' the gateway listed the folder's contents. If this value set to `true`,
@@ -5597,12 +5670,13 @@ storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recurs
     name = "RefreshCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$refresh_cache_input(FileShareARN = FileShareARN, FolderList = FolderList, Recursive = Recursive)
   output <- .storagegateway$refresh_cache_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5664,12 +5738,13 @@ storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
     name = "RemoveTagsFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$remove_tags_from_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .storagegateway$remove_tags_from_resource_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5734,12 +5809,13 @@ storagegateway_reset_cache <- function(GatewayARN) {
     name = "ResetCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$reset_cache_input(GatewayARN = GatewayARN)
   output <- .storagegateway$reset_cache_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5811,12 +5887,13 @@ storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
     name = "RetrieveTapeArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$retrieve_tape_archive_input(TapeARN = TapeARN, GatewayARN = GatewayARN)
   output <- .storagegateway$retrieve_tape_archive_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5879,12 +5956,13 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
     name = "RetrieveTapeRecoveryPoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$retrieve_tape_recovery_point_input(TapeARN = TapeARN, GatewayARN = GatewayARN)
   output <- .storagegateway$retrieve_tape_recovery_point_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5941,12 +6019,13 @@ storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePa
     name = "SetLocalConsolePassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$set_local_console_password_input(GatewayARN = GatewayARN, LocalConsolePassword = LocalConsolePassword)
   output <- .storagegateway$set_local_console_password_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5993,12 +6072,13 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
     name = "SetSMBGuestPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$set_smb_guest_password_input(GatewayARN = GatewayARN, Password = Password)
   output <- .storagegateway$set_smb_guest_password_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6079,12 +6159,13 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
     name = "ShutdownGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$shutdown_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$shutdown_gateway_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6136,12 +6217,13 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
     name = "StartAvailabilityMonitorTest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$start_availability_monitor_test_input(GatewayARN = GatewayARN)
   output <- .storagegateway$start_availability_monitor_test_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6205,12 +6287,13 @@ storagegateway_start_gateway <- function(GatewayARN) {
     name = "StartGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$start_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$start_gateway_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6271,12 +6354,13 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
     name = "UpdateAutomaticTapeCreationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_automatic_tape_creation_policy_input(AutomaticTapeCreationRules = AutomaticTapeCreationRules, GatewayARN = GatewayARN)
   output <- .storagegateway$update_automatic_tape_creation_policy_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6350,12 +6434,13 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
     name = "UpdateBandwidthRateLimit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_bandwidth_rate_limit_input(GatewayARN = GatewayARN, AverageUploadRateLimitInBitsPerSec = AverageUploadRateLimitInBitsPerSec, AverageDownloadRateLimitInBitsPerSec = AverageDownloadRateLimitInBitsPerSec)
   output <- .storagegateway$update_bandwidth_rate_limit_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6420,12 +6505,13 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
     name = "UpdateBandwidthRateLimitSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_bandwidth_rate_limit_schedule_input(GatewayARN = GatewayARN, BandwidthRateLimitIntervals = BandwidthRateLimitIntervals)
   output <- .storagegateway$update_bandwidth_rate_limit_schedule_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6505,12 +6591,13 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
     name = "UpdateChapCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_chap_credentials_input(TargetARN = TargetARN, SecretToAuthenticateInitiator = SecretToAuthenticateInitiator, InitiatorName = InitiatorName, SecretToAuthenticateTarget = SecretToAuthenticateTarget)
   output <- .storagegateway$update_chap_credentials_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6567,25 +6654,26 @@ storagegateway_update_file_system_association <- function(FileSystemAssociationA
     name = "UpdateFileSystemAssociation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_file_system_association_input(FileSystemAssociationARN = FileSystemAssociationARN, UserName = UserName, Password = Password, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes)
   output <- .storagegateway$update_file_system_association_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .storagegateway$operations$update_file_system_association <- storagegateway_update_file_system_association
 
-#' Updates a gateway's metadata, which includes the gateway's name and time
-#' zone
+#' Updates a gateway's metadata, which includes the gateway's name, time
+#' zone, and metadata cache size
 #'
 #' @description
-#' Updates a gateway's metadata, which includes the gateway's name and time
-#' zone. To specify which gateway to update, use the Amazon Resource Name
-#' (ARN) of the gateway in your request.
+#' Updates a gateway's metadata, which includes the gateway's name, time
+#' zone, and metadata cache size. To specify which gateway to update, use
+#' the Amazon Resource Name (ARN) of the gateway in your request.
 #' 
 #' For gateways activated after September 2, 2015, the gateway's ARN
 #' contains the gateway ID rather than the gateway name. However, changing
@@ -6603,7 +6691,11 @@ storagegateway_update_file_system_association <- function(FileSystemAssociationA
 #' 
 #' For more information, see [What is Amazon CloudWatch
 #' Logs?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
-#' @param GatewayCapacity Specifies the size of the gateway's metadata cache.
+#' @param GatewayCapacity Specifies the size of the gateway's metadata cache. This setting impacts
+#' gateway performance and hardware recommendations. For more information,
+#' see [Performance guidance for gateways with multiple file
+#' shares](https://docs.aws.amazon.com/filegateway/latest/files3/Performance.html#performance-multiple-file-shares)
+#' in the *Amazon S3 File Gateway User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6646,12 +6738,13 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
     name = "UpdateGatewayInformation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_gateway_information_input(GatewayARN = GatewayARN, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, CloudWatchLogGroupARN = CloudWatchLogGroupARN, GatewayCapacity = GatewayCapacity)
   output <- .storagegateway$update_gateway_information_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6719,43 +6812,68 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
     name = "UpdateGatewaySoftwareNow",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_gateway_software_now_input(GatewayARN = GatewayARN)
   output <- .storagegateway$update_gateway_software_now_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .storagegateway$operations$update_gateway_software_now <- storagegateway_update_gateway_software_now
 
-#' Updates a gateway's weekly maintenance start time information, including
-#' day and time of the week
+#' Updates a gateway's maintenance window schedule, with settings for
+#' monthly or weekly cadence, specific day and time to begin maintenance,
+#' and which types of updates to apply
 #'
 #' @description
-#' Updates a gateway's weekly maintenance start time information, including
-#' day and time of the week. The maintenance time is the time in your
-#' gateway's time zone.
+#' Updates a gateway's maintenance window schedule, with settings for
+#' monthly or weekly cadence, specific day and time to begin maintenance,
+#' and which types of updates to apply. Time configuration uses the
+#' gateway's time zone. You can pass values for a complete maintenance
+#' schedule, or update policy, or both. Previous values will persist for
+#' whichever setting you choose not to modify. If an incomplete or invalid
+#' maintenance schedule is passed, the entire request will be rejected with
+#' an error and no changes will occur.
+#' 
+#' A complete maintenance schedule must include values for *both*
+#' `MinuteOfHour` and `HourOfDay`, and *either* `DayOfMonth` *or*
+#' `DayOfWeek`.
+#' 
+#' We recommend keeping maintenance updates turned on, except in specific
+#' use cases where the brief disruptions caused by updating the gateway
+#' could critically impact your deployment.
 #'
 #' @usage
 #' storagegateway_update_maintenance_start_time(GatewayARN, HourOfDay,
-#'   MinuteOfHour, DayOfWeek, DayOfMonth)
+#'   MinuteOfHour, DayOfWeek, DayOfMonth, SoftwareUpdatePreferences)
 #'
 #' @param GatewayARN &#91;required&#93; 
-#' @param HourOfDay &#91;required&#93; The hour component of the maintenance start time represented as *hh*,
+#' @param HourOfDay The hour component of the maintenance start time represented as *hh*,
 #' where *hh* is the hour (00 to 23). The hour of the day is in the time
 #' zone of the gateway.
-#' @param MinuteOfHour &#91;required&#93; The minute component of the maintenance start time represented as *mm*,
+#' @param MinuteOfHour The minute component of the maintenance start time represented as *mm*,
 #' where *mm* is the minute (00 to 59). The minute of the hour is in the
 #' time zone of the gateway.
 #' @param DayOfWeek The day of the week component of the maintenance start time week
 #' represented as an ordinal number from 0 to 6, where 0 represents Sunday
-#' and 6 Saturday.
+#' and 6 represents Saturday.
 #' @param DayOfMonth The day of the month component of the maintenance start time represented
 #' as an ordinal number from 1 to 28, where 1 represents the first day of
-#' the month and 28 represents the last day of the month.
+#' the month. It is not possible to set the maintenance schedule to start
+#' on days 29 through 31.
+#' @param SoftwareUpdatePreferences A set of variables indicating the software update preferences for the
+#' gateway.
+#' 
+#' Includes `AutomaticUpdatePolicy` field with the following inputs:
+#' 
+#' `ALL_VERSIONS` - Enables regular gateway maintenance updates.
+#' 
+#' `EMERGENCY_VERSIONS_ONLY` - Disables regular gateway maintenance
+#' updates.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6772,7 +6890,10 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #'   HourOfDay = 123,
 #'   MinuteOfHour = 123,
 #'   DayOfWeek = 123,
-#'   DayOfMonth = 123
+#'   DayOfMonth = 123,
+#'   SoftwareUpdatePreferences = list(
+#'     AutomaticUpdatePolicy = "ALL_VERSIONS"|"EMERGENCY_VERSIONS_ONLY"
+#'   )
 #' )
 #' ```
 #'
@@ -6794,17 +6915,18 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' @rdname storagegateway_update_maintenance_start_time
 #'
 #' @aliases storagegateway_update_maintenance_start_time
-storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, MinuteOfHour, DayOfWeek = NULL, DayOfMonth = NULL) {
+storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay = NULL, MinuteOfHour = NULL, DayOfWeek = NULL, DayOfMonth = NULL, SoftwareUpdatePreferences = NULL) {
   op <- new_operation(
     name = "UpdateMaintenanceStartTime",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .storagegateway$update_maintenance_start_time_input(GatewayARN = GatewayARN, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour, DayOfWeek = DayOfWeek, DayOfMonth = DayOfMonth)
+  input <- .storagegateway$update_maintenance_start_time_input(GatewayARN = GatewayARN, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour, DayOfWeek = DayOfWeek, DayOfMonth = DayOfMonth, SoftwareUpdatePreferences = SoftwareUpdatePreferences)
   output <- .storagegateway$update_maintenance_start_time_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6959,12 +7081,13 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
     name = "UpdateNFSFileShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_nfs_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, NFSFileShareDefaults = NFSFileShareDefaults, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$update_nfs_file_share_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7153,12 +7276,13 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
     name = "UpdateSMBFileShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, CaseSensitivity = CaseSensitivity, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$update_smb_file_share_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7206,12 +7330,13 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
     name = "UpdateSMBFileShareVisibility",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_smb_file_share_visibility_input(GatewayARN = GatewayARN, FileSharesVisible = FileSharesVisible)
   output <- .storagegateway$update_smb_file_share_visibility_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7262,27 +7387,31 @@ storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
     name = "UpdateSMBLocalGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_smb_local_groups_input(GatewayARN = GatewayARN, SMBLocalGroups = SMBLocalGroups)
   output <- .storagegateway$update_smb_local_groups_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .storagegateway$operations$update_smb_local_groups <- storagegateway_update_smb_local_groups
 
-#' Updates the SMB security strategy on a file gateway
+#' Updates the SMB security strategy level for an Amazon S3 file gateway
 #'
 #' @description
-#' Updates the SMB security strategy on a file gateway. This action is only
-#' supported in file gateways.
+#' Updates the SMB security strategy level for an Amazon S3 file gateway.
+#' This action is only supported for Amazon S3 file gateways.
 #' 
-#' This API is called Security level in the User Guide.
+#' For information about configuring this setting using the Amazon Web
+#' Services console, see [Setting a security level for your
+#' gateway](https://docs.aws.amazon.com/filegateway/latest/files3/edit-smb-access-settings.html#security-strategy)
+#' in the *Amazon S3 File Gateway User Guide*.
 #' 
-#' A higher security level can affect performance of the gateway.
+#' A higher security strategy level can affect performance of the gateway.
 #'
 #' @usage
 #' storagegateway_update_smb_security_strategy(GatewayARN,
@@ -7291,21 +7420,27 @@ storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
 #' @param GatewayARN &#91;required&#93; 
 #' @param SMBSecurityStrategy &#91;required&#93; Specifies the type of security strategy.
 #' 
-#' ClientSpecified: if you use this option, requests are established based
-#' on what is negotiated by the client. This option is recommended when you
-#' want to maximize compatibility across different clients in your
-#' environment. Supported only in S3 File Gateway.
+#' `ClientSpecified`: If you choose this option, requests are established
+#' based on what is negotiated by the client. This option is recommended
+#' when you want to maximize compatibility across different clients in your
+#' environment. Supported only for S3 File Gateway.
 #' 
-#' MandatorySigning: if you use this option, file gateway only allows
+#' `MandatorySigning`: If you choose this option, File Gateway only allows
 #' connections from SMBv2 or SMBv3 clients that have signing enabled. This
 #' option works with SMB clients on Microsoft Windows Vista, Windows Server
 #' 2008 or newer.
 #' 
-#' MandatoryEncryption: if you use this option, file gateway only allows
-#' connections from SMBv3 clients that have encryption enabled. This option
-#' is highly recommended for environments that handle sensitive data. This
+#' `MandatoryEncryption`: If you choose this option, File Gateway only
+#' allows connections from SMBv3 clients that have encryption enabled. This
+#' option is recommended for environments that handle sensitive data. This
 #' option works with SMB clients on Microsoft Windows 8, Windows Server
 #' 2012 or newer.
+#' 
+#' `MandatoryEncryptionNoAes128`: If you choose this option, File Gateway
+#' only allows connections from SMBv3 clients that use 256-bit AES
+#' encryption algorithms. 128-bit algorithms are not allowed. This option
+#' is recommended for environments that handle sensitive data. It works
+#' with SMB clients on Microsoft Windows 8, Windows Server 2012, or later.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7319,7 +7454,7 @@ storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
 #' ```
 #' svc$update_smb_security_strategy(
 #'   GatewayARN = "string",
-#'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption"
+#'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption"|"MandatoryEncryptionNoAes128"
 #' )
 #' ```
 #'
@@ -7333,12 +7468,13 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
     name = "UpdateSMBSecurityStrategy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_smb_security_strategy_input(GatewayARN = GatewayARN, SMBSecurityStrategy = SMBSecurityStrategy)
   output <- .storagegateway$update_smb_security_strategy_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7427,12 +7563,13 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
     name = "UpdateSnapshotSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_snapshot_schedule_input(VolumeARN = VolumeARN, StartAt = StartAt, RecurrenceInHours = RecurrenceInHours, Description = Description, Tags = Tags)
   output <- .storagegateway$update_snapshot_schedule_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7492,12 +7629,13 @@ storagegateway_update_vtl_device_type <- function(VTLDeviceARN, DeviceType) {
     name = "UpdateVTLDeviceType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .storagegateway$update_vtl_device_type_input(VTLDeviceARN = VTLDeviceARN, DeviceType = DeviceType)
   output <- .storagegateway$update_vtl_device_type_output()
   config <- get_config()
-  svc <- .storagegateway$service(config)
+  svc <- .storagegateway$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -147,7 +147,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = "QLDBSession"
 )
 
-.qldbsession$service <- function(config = list()) {
+.qldbsession$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.qldbsession$metadata, handlers, config)
+  new_service(.qldbsession$metadata, handlers, config, op)
 }

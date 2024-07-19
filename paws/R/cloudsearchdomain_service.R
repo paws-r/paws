@@ -145,7 +145,7 @@ cloudsearchdomain <- function(config = list(), credentials = list(), endpoint = 
   target_prefix = ""
 )
 
-.cloudsearchdomain$service <- function(config = list()) {
+.cloudsearchdomain$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.cloudsearchdomain$metadata, handlers, config)
+  new_service(.cloudsearchdomain$metadata, handlers, config, op)
 }

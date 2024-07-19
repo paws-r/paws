@@ -11,7 +11,7 @@ bedrock_create_guardrail_version(
 )
 }
 \arguments{
-\item{guardrailIdentifier}{[required] The unique identifier of the guardrail.}
+\item{guardrailIdentifier}{[required] The unique identifier of the guardrail. This can be an ID or the ARN.}
 
 \item{description}{A description of the guardrail version.}
 

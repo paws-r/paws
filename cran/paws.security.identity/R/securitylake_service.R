@@ -199,7 +199,7 @@ securitylake <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.securitylake$service <- function(config = list()) {
+.securitylake$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.securitylake$metadata, handlers, config)
+  new_service(.securitylake$metadata, handlers, config, op)
 }

@@ -89,12 +89,12 @@ error returned is \code{InvalidInstanceAttributeValue}.}
 \item{Kernel}{Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
 see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
+\href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}.}
 
 \item{Ramdisk}{Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
 information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
+\href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}.}
 
 \item{SriovNetSupport}{Set to \code{simple} to enable enhanced networking with the Intel 82599
 Virtual Function interface for the instance.
@@ -105,17 +105,17 @@ Virtual Function interface at this time.
 This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.}
 
-\item{UserData}{Changes the instance's user data to the specified value. If you are
-using an Amazon Web Services SDK or command line tool, base64-encoding
-is performed for you, and you can load the text from a file. Otherwise,
-you must provide base64-encoded text.}
+\item{UserData}{Changes the instance's user data to the specified value. User data must
+be base64-encoded. Depending on the tool or SDK that you're using, the
+base64-encoding might be performed for you. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-add-user-data.html}{Work with instance user data}.}
 
 \item{Value}{A new value for the attribute. Use only with the \code{kernel}, \code{ramdisk},
 \code{userData}, \code{disableApiTermination}, or
 \code{instanceInitiatedShutdownBehavior} attribute.}
 
 \item{DisableApiStop}{Indicates whether an instance is enabled for stop protection. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#Using_StopProtection}{Stop Protection}.}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html}{Enable stop protection for your instance}.}
 }
 \description{
 Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.

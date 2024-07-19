@@ -51,6 +51,26 @@ NULL
   return(populate(args, shape))
 }
 
+.swf$delete_activity_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), activityType = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$delete_activity_type_output <- function(...) {
+  list()
+}
+
+.swf$delete_workflow_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), workflowType = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$delete_workflow_type_output <- function(...) {
+  list()
+}
+
 .swf$deprecate_activity_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), activityType = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))

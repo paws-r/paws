@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_route_tables}
 \alias{ec2_describe_route_tables}
-\title{Describes one or more of your route tables}
+\title{Describes your route tables}
 \usage{
 ec2_describe_route_tables(
   Filters = NULL,
@@ -73,9 +73,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{RouteTableIds}{The IDs of the route tables.
-
-Default: Describes all your route tables.}
+\item{RouteTableIds}{The IDs of the route tables.}
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
@@ -86,7 +84,7 @@ output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes one or more of your route tables.
+Describes your route tables. The default is to describe all your route tables. Alternatively, you can specify specific route table IDs or filter the results to include only the route tables that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_route_tables/} for full documentation.
 }

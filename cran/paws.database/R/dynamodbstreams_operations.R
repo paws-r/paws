@@ -26,12 +26,13 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
     name = "DescribeStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodbstreams$describe_stream_input(StreamArn = StreamArn, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId)
   output <- .dynamodbstreams$describe_stream_output()
   config <- get_config()
-  svc <- .dynamodbstreams$service(config)
+  svc <- .dynamodbstreams$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -59,12 +60,13 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
     name = "GetRecords",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodbstreams$get_records_input(ShardIterator = ShardIterator, Limit = Limit)
   output <- .dynamodbstreams$get_records_output()
   config <- get_config()
-  svc <- .dynamodbstreams$service(config)
+  svc <- .dynamodbstreams$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -110,12 +112,13 @@ dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIterator
     name = "GetShardIterator",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodbstreams$get_shard_iterator_input(StreamArn = StreamArn, ShardId = ShardId, ShardIteratorType = ShardIteratorType, SequenceNumber = SequenceNumber)
   output <- .dynamodbstreams$get_shard_iterator_output()
   config <- get_config()
-  svc <- .dynamodbstreams$service(config)
+  svc <- .dynamodbstreams$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -145,12 +148,13 @@ dynamodbstreams_list_streams <- function(TableName = NULL, Limit = NULL, Exclusi
     name = "ListStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodbstreams$list_streams_input(TableName = TableName, Limit = Limit, ExclusiveStartStreamArn = ExclusiveStartStreamArn)
   output <- .dynamodbstreams$list_streams_output()
   config <- get_config()
-  svc <- .dynamodbstreams$service(config)
+  svc <- .dynamodbstreams$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

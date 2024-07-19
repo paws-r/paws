@@ -75,12 +75,13 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
     name = "CreateKeyspace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags, replicationSpecification = replicationSpecification)
   output <- .keyspaces$create_keyspace_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -376,12 +377,13 @@ keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, co
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$create_table_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -419,12 +421,13 @@ keyspaces_delete_keyspace <- function(keyspaceName) {
     name = "DeleteKeyspace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$delete_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$delete_keyspace_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -471,12 +474,13 @@ keyspaces_delete_table <- function(keyspaceName, tableName) {
     name = "DeleteTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$delete_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$delete_table_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -525,12 +529,13 @@ keyspaces_get_keyspace <- function(keyspaceName) {
     name = "GetKeyspace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$get_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$get_keyspace_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -652,12 +657,13 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
     name = "GetTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$get_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -787,12 +793,13 @@ keyspaces_get_table_auto_scaling_settings <- function(keyspaceName, tableName) {
     name = "GetTableAutoScalingSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$get_table_auto_scaling_settings_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_auto_scaling_settings_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -850,12 +857,13 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListKeyspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces")
   )
   input <- .keyspaces$list_keyspaces_input(nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_keyspaces_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -912,12 +920,13 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables")
   )
   input <- .keyspaces$list_tables_input(nextToken = nextToken, maxResults = maxResults, keyspaceName = keyspaceName)
   output <- .keyspaces$list_tables_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -975,12 +984,13 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .keyspaces$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1203,12 +1213,13 @@ keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetK
     name = "RestoreTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$restore_table_input(sourceKeyspaceName = sourceKeyspaceName, sourceTableName = sourceTableName, targetKeyspaceName = targetKeyspaceName, targetTableName = targetTableName, restoreTimestamp = restoreTimestamp, capacitySpecificationOverride = capacitySpecificationOverride, encryptionSpecificationOverride = encryptionSpecificationOverride, pointInTimeRecoveryOverride = pointInTimeRecoveryOverride, tagsOverride = tagsOverride, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$restore_table_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1264,12 +1275,13 @@ keyspaces_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$tag_resource_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1315,12 +1327,13 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$untag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$untag_resource_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1534,12 +1547,13 @@ keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, c
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$update_table_output()
   config <- get_config()
-  svc <- .keyspaces$service(config)
+  svc <- .keyspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

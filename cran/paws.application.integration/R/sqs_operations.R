@@ -47,12 +47,13 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
     name = "AddPermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$add_permission_input(QueueUrl = QueueUrl, Label = Label, AWSAccountIds = AWSAccountIds, Actions = Actions)
   output <- .sqs$add_permission_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -76,12 +77,13 @@ sqs_cancel_message_move_task <- function(TaskHandle) {
     name = "CancelMessageMoveTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$cancel_message_move_task_input(TaskHandle = TaskHandle)
   output <- .sqs$cancel_message_move_task_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -113,12 +115,13 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
     name = "ChangeMessageVisibility",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$change_message_visibility_input(QueueUrl = QueueUrl, ReceiptHandle = ReceiptHandle, VisibilityTimeout = VisibilityTimeout)
   output <- .sqs$change_message_visibility_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -146,12 +149,13 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
     name = "ChangeMessageVisibilityBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$change_message_visibility_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$change_message_visibility_batch_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -409,12 +413,13 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
     name = "CreateQueue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$create_queue_input(QueueName = QueueName, Attributes = Attributes, tags = tags)
   output <- .sqs$create_queue_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -441,12 +446,13 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
     name = "DeleteMessage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$delete_message_input(QueueUrl = QueueUrl, ReceiptHandle = ReceiptHandle)
   output <- .sqs$delete_message_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -473,12 +479,13 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
     name = "DeleteMessageBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$delete_message_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$delete_message_batch_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -505,12 +512,13 @@ sqs_delete_queue <- function(QueueUrl) {
     name = "DeleteQueue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$delete_queue_input(QueueUrl = QueueUrl)
   output <- .sqs$delete_queue_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -719,12 +727,13 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
     name = "GetQueueAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$get_queue_attributes_input(QueueUrl = QueueUrl, AttributeNames = AttributeNames)
   output <- .sqs$get_queue_attributes_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -754,12 +763,13 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
     name = "GetQueueUrl",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$get_queue_url_input(QueueName = QueueName, QueueOwnerAWSAccountId = QueueOwnerAWSAccountId)
   output <- .sqs$get_queue_url_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -790,12 +800,13 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     name = "ListDeadLetterSourceQueues",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "queueUrls")
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -823,12 +834,13 @@ sqs_list_message_move_tasks <- function(SourceArn, MaxResults = NULL) {
     name = "ListMessageMoveTasks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$list_message_move_tasks_input(SourceArn = SourceArn, MaxResults = MaxResults)
   output <- .sqs$list_message_move_tasks_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -852,12 +864,13 @@ sqs_list_queue_tags <- function(QueueUrl) {
     name = "ListQueueTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$list_queue_tags_input(QueueUrl = QueueUrl)
   output <- .sqs$list_queue_tags_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -888,12 +901,13 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     name = "ListQueues",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "QueueUrls")
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -921,12 +935,13 @@ sqs_purge_queue <- function(QueueUrl) {
     name = "PurgeQueue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$purge_queue_input(QueueUrl = QueueUrl)
   output <- .sqs$purge_queue_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -943,7 +958,52 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue from which messages are received.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param AttributeNames A list of attributes that need to be returned along with each message.
+#' @param AttributeNames This parameter has been deprecated but will be supported for backward
+#' compatibility. To provide attribute names, you are encouraged to use
+#' `MessageSystemAttributeNames`.
+#' 
+#' A list of attributes that need to be returned along with each message.
+#' These attributes include:
+#' 
+#' -   `All` – Returns all values.
+#' 
+#' -   `ApproximateFirstReceiveTimestamp` – Returns the time the message
+#'     was first received from the queue ([epoch
+#'     time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds).
+#' 
+#' -   `ApproximateReceiveCount` – Returns the number of times a message
+#'     has been received across all queues but not deleted.
+#' 
+#' -   `AWSTraceHeader` – Returns the X-Ray trace header string.
+#' 
+#' -   `SenderId`
+#' 
+#'     -   For a user, returns the user ID, for example
+#'         `ABCDEFGHI1JKLMNOPQ23R`.
+#' 
+#'     -   For an IAM role, returns the IAM role ID, for example
+#'         `ABCDE1F2GH3I4JK5LMNOP:i-a123b456`.
+#' 
+#' -   `SentTimestamp` – Returns the time the message was sent to the queue
+#'     ([epoch time](https://en.wikipedia.org/wiki/Unix_time) in
+#'     milliseconds).
+#' 
+#' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
+#'     SQS owned encryption keys. Only one server-side encryption option is
+#'     supported per queue (for example,
+#'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
+#'     or
+#'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
+#' 
+#' -   `MessageDeduplicationId` – Returns the value provided by the
+#'     producer that calls the [`send_message`][sqs_send_message] action.
+#' 
+#' -   `MessageGroupId` – Returns the value provided by the producer that
+#'     calls the [`send_message`][sqs_send_message] action. Messages with
+#'     the same `MessageGroupId` are returned in sequence.
+#' 
+#' -   `SequenceNumber` – Returns the value provided by Amazon SQS.
+#' @param MessageSystemAttributeNames A list of attributes that need to be returned along with each message.
 #' These attributes include:
 #' 
 #' -   `All` – Returns all values.
@@ -1013,8 +1073,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @param WaitTimeSeconds The duration (in seconds) for which the call waits for a message to
 #' arrive in the queue before returning. If a message is available, the
 #' call returns sooner than `WaitTimeSeconds`. If no messages are available
-#' and the wait time expires, the call returns successfully with an empty
-#' list of messages.
+#' and the wait time expires, the call does not return a message list.
 #' 
 #' To avoid HTTP errors, ensure that the HTTP response timeout for
 #' [`receive_message`][sqs_receive_message] requests is longer than the
@@ -1040,10 +1099,6 @@ sqs_purge_queue <- function(QueueUrl) {
 #' -   When you set `FifoQueue`, a caller of the
 #'     [`receive_message`][sqs_receive_message] action can provide a
 #'     `ReceiveRequestAttemptId` explicitly.
-#' 
-#' -   If a caller of the [`receive_message`][sqs_receive_message] action
-#'     doesn't provide a `ReceiveRequestAttemptId`, Amazon SQS generates a
-#'     `ReceiveRequestAttemptId`.
 #' 
 #' -   It is possible to retry the [`receive_message`][sqs_receive_message]
 #'     action with the same `ReceiveRequestAttemptId` if none of the
@@ -1092,17 +1147,18 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @keywords internal
 #'
 #' @rdname sqs_receive_message
-sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttributeNames = NULL, MaxNumberOfMessages = NULL, VisibilityTimeout = NULL, WaitTimeSeconds = NULL, ReceiveRequestAttemptId = NULL) {
+sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageSystemAttributeNames = NULL, MessageAttributeNames = NULL, MaxNumberOfMessages = NULL, VisibilityTimeout = NULL, WaitTimeSeconds = NULL, ReceiveRequestAttemptId = NULL) {
   op <- new_operation(
     name = "ReceiveMessage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .sqs$receive_message_input(QueueUrl = QueueUrl, AttributeNames = AttributeNames, MessageAttributeNames = MessageAttributeNames, MaxNumberOfMessages = MaxNumberOfMessages, VisibilityTimeout = VisibilityTimeout, WaitTimeSeconds = WaitTimeSeconds, ReceiveRequestAttemptId = ReceiveRequestAttemptId)
+  input <- .sqs$receive_message_input(QueueUrl = QueueUrl, AttributeNames = AttributeNames, MessageSystemAttributeNames = MessageSystemAttributeNames, MessageAttributeNames = MessageAttributeNames, MaxNumberOfMessages = MaxNumberOfMessages, VisibilityTimeout = VisibilityTimeout, WaitTimeSeconds = WaitTimeSeconds, ReceiveRequestAttemptId = ReceiveRequestAttemptId)
   output <- .sqs$receive_message_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1131,12 +1187,13 @@ sqs_remove_permission <- function(QueueUrl, Label) {
     name = "RemovePermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$remove_permission_input(QueueUrl = QueueUrl, Label = Label)
   output <- .sqs$remove_permission_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1157,14 +1214,17 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' is 256 KiB.
 #' 
 #' A message can include only XML, JSON, and unformatted text. The
-#' following Unicode characters are allowed:
+#' following Unicode characters are allowed. For more information, see the
+#' [W3C specification for
+#' characters](https://www.w3.org/TR/REC-xml/#charsets).
 #' 
 #' `#x9` | `#xA` | `#xD` | `#x20` to `#xD7FF` | `#xE000` to `#xFFFD` |
 #' `#x10000` to `#x10FFFF`
 #' 
-#' Any characters not included in this list will be rejected. For more
-#' information, see the [W3C specification for
-#' characters](https://www.w3.org/TR/REC-xml/#charsets).
+#' Amazon SQS does not throw an exception or completely reject the message
+#' if it contains invalid characters. Instead, it replaces those invalid
+#' characters with `U+FFFD` before storing the message in the queue, as
+#' long as the message body contains at least one valid character.
 #' @param DelaySeconds The length of time, in seconds, for which to delay a specific message.
 #' Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive
 #' `DelaySeconds` value become available for processing after the delay
@@ -1260,7 +1320,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #'     messages are sorted by time sent. The caller can't specify a
 #'     `MessageGroupId`.
 #' 
-#' The length of `MessageGroupId` is 128 characters. Valid values:
+#' The maximum length of `MessageGroupId` is 128 characters. Valid values:
 #' alphanumeric characters and punctuation
 #' `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
 #' 
@@ -1280,12 +1340,13 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
     name = "SendMessage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$send_message_input(QueueUrl = QueueUrl, MessageBody = MessageBody, DelaySeconds = DelaySeconds, MessageAttributes = MessageAttributes, MessageSystemAttributes = MessageSystemAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
   output <- .sqs$send_message_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1314,22 +1375,23 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
     name = "SendMessageBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$send_message_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$send_message_batch_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .sqs$operations$send_message_batch <- sqs_send_message_batch
 
-#' Sets the value of one or more queue attributes
+#' Sets the value of one or more queue attributes, like a policy
 #'
 #' @description
-#' Sets the value of one or more queue attributes. When you change a queue's attributes, the change can take up to 60 seconds for most of the attributes to propagate throughout the Amazon SQS system. Changes made to the `MessageRetentionPeriod` attribute can take up to 15 minutes and will impact existing messages in the queue potentially causing them to be expired and deleted if the `MessageRetentionPeriod` is reduced below the age of existing messages.
+#' Sets the value of one or more queue attributes, like a policy. When you change a queue's attributes, the change can take up to 60 seconds for most of the attributes to propagate throughout the Amazon SQS system. Changes made to the `MessageRetentionPeriod` attribute can take up to 15 minutes and will impact existing messages in the queue potentially causing them to be expired and deleted if the `MessageRetentionPeriod` is reduced below the age of existing messages.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sqs_set_queue_attributes/](https://www.paws-r-sdk.com/docs/sqs_set_queue_attributes/) for full documentation.
 #'
@@ -1530,12 +1592,13 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
     name = "SetQueueAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$set_queue_attributes_input(QueueUrl = QueueUrl, Attributes = Attributes)
   output <- .sqs$set_queue_attributes_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1574,12 +1637,13 @@ sqs_start_message_move_task <- function(SourceArn, DestinationArn = NULL, MaxNum
     name = "StartMessageMoveTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$start_message_move_task_input(SourceArn = SourceArn, DestinationArn = DestinationArn, MaxNumberOfMessagesPerSecond = MaxNumberOfMessagesPerSecond)
   output <- .sqs$start_message_move_task_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1604,12 +1668,13 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
     name = "TagQueue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$tag_queue_input(QueueUrl = QueueUrl, Tags = Tags)
   output <- .sqs$tag_queue_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1634,12 +1699,13 @@ sqs_untag_queue <- function(QueueUrl, TagKeys) {
     name = "UntagQueue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sqs$untag_queue_input(QueueUrl = QueueUrl, TagKeys = TagKeys)
   output <- .sqs$untag_queue_output()
   config <- get_config()
-  svc <- .sqs$service(config)
+  svc <- .sqs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

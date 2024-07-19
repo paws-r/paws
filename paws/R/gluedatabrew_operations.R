@@ -78,12 +78,13 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
     name = "BatchDeleteRecipeVersion",
     http_method = "POST",
     http_path = "/recipes/{name}/batchDeleteRecipeVersion",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$batch_delete_recipe_version_input(Name = Name, RecipeVersions = RecipeVersions)
   output <- .gluedatabrew$batch_delete_recipe_version_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -217,12 +218,13 @@ gluedatabrew_create_dataset <- function(Name, Format = NULL, FormatOptions = NUL
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/datasets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$create_dataset_input(Name = Name, Format = Format, FormatOptions = FormatOptions, Input = Input, PathOptions = PathOptions, Tags = Tags)
   output <- .gluedatabrew$create_dataset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -378,12 +380,13 @@ gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL
     name = "CreateProfileJob",
     http_method = "POST",
     http_path = "/profileJobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$create_profile_job_input(DatasetName = DatasetName, EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, OutputLocation = OutputLocation, Configuration = Configuration, ValidationConfigurations = ValidationConfigurations, RoleArn = RoleArn, Tags = Tags, Timeout = Timeout, JobSample = JobSample)
   output <- .gluedatabrew$create_profile_job_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -443,12 +446,13 @@ gluedatabrew_create_project <- function(DatasetName, Name, RecipeName, Sample = 
     name = "CreateProject",
     http_method = "POST",
     http_path = "/projects",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$create_project_input(DatasetName = DatasetName, Name = Name, RecipeName = RecipeName, Sample = Sample, RoleArn = RoleArn, Tags = Tags)
   output <- .gluedatabrew$create_project_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -517,12 +521,13 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
     name = "CreateRecipe",
     http_method = "POST",
     http_path = "/recipes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$create_recipe_input(Description = Description, Name = Name, Steps = Steps, Tags = Tags)
   output <- .gluedatabrew$create_recipe_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -670,12 +675,13 @@ gluedatabrew_create_recipe_job <- function(DatasetName = NULL, EncryptionKeyArn 
     name = "CreateRecipeJob",
     http_method = "POST",
     http_path = "/recipeJobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$create_recipe_job_input(DatasetName = DatasetName, EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, Outputs = Outputs, DataCatalogOutputs = DataCatalogOutputs, DatabaseOutputs = DatabaseOutputs, ProjectName = ProjectName, RecipeReference = RecipeReference, RoleArn = RoleArn, Tags = Tags, Timeout = Timeout)
   output <- .gluedatabrew$create_recipe_job_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -752,12 +758,13 @@ gluedatabrew_create_ruleset <- function(Name, Description = NULL, TargetArn, Rul
     name = "CreateRuleset",
     http_method = "POST",
     http_path = "/rulesets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$create_ruleset_input(Name = Name, Description = Description, TargetArn = TargetArn, Rules = Rules, Tags = Tags)
   output <- .gluedatabrew$create_ruleset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -814,12 +821,13 @@ gluedatabrew_create_schedule <- function(JobNames = NULL, CronExpression, Tags =
     name = "CreateSchedule",
     http_method = "POST",
     http_path = "/schedules",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$create_schedule_input(JobNames = JobNames, CronExpression = CronExpression, Tags = Tags, Name = Name)
   output <- .gluedatabrew$create_schedule_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -861,12 +869,13 @@ gluedatabrew_delete_dataset <- function(Name) {
     name = "DeleteDataset",
     http_method = "DELETE",
     http_path = "/datasets/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$delete_dataset_input(Name = Name)
   output <- .gluedatabrew$delete_dataset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -908,12 +917,13 @@ gluedatabrew_delete_job <- function(Name) {
     name = "DeleteJob",
     http_method = "DELETE",
     http_path = "/jobs/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$delete_job_input(Name = Name)
   output <- .gluedatabrew$delete_job_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -955,12 +965,13 @@ gluedatabrew_delete_project <- function(Name) {
     name = "DeleteProject",
     http_method = "DELETE",
     http_path = "/projects/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$delete_project_input(Name = Name)
   output <- .gluedatabrew$delete_project_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1007,12 +1018,13 @@ gluedatabrew_delete_recipe_version <- function(Name, RecipeVersion) {
     name = "DeleteRecipeVersion",
     http_method = "DELETE",
     http_path = "/recipes/{name}/recipeVersion/{recipeVersion}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$delete_recipe_version_input(Name = Name, RecipeVersion = RecipeVersion)
   output <- .gluedatabrew$delete_recipe_version_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1054,12 +1066,13 @@ gluedatabrew_delete_ruleset <- function(Name) {
     name = "DeleteRuleset",
     http_method = "DELETE",
     http_path = "/rulesets/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$delete_ruleset_input(Name = Name)
   output <- .gluedatabrew$delete_ruleset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1101,12 +1114,13 @@ gluedatabrew_delete_schedule <- function(Name) {
     name = "DeleteSchedule",
     http_method = "DELETE",
     http_path = "/schedules/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$delete_schedule_input(Name = Name)
   output <- .gluedatabrew$delete_schedule_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1241,12 +1255,13 @@ gluedatabrew_describe_dataset <- function(Name) {
     name = "DescribeDataset",
     http_method = "GET",
     http_path = "/datasets/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$describe_dataset_input(Name = Name)
   output <- .gluedatabrew$describe_dataset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1438,12 +1453,13 @@ gluedatabrew_describe_job <- function(Name) {
     name = "DescribeJob",
     http_method = "GET",
     http_path = "/jobs/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$describe_job_input(Name = Name)
   output <- .gluedatabrew$describe_job_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1630,12 +1646,13 @@ gluedatabrew_describe_job_run <- function(Name, RunId) {
     name = "DescribeJobRun",
     http_method = "GET",
     http_path = "/jobs/{name}/jobRun/{runId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$describe_job_run_input(Name = Name, RunId = RunId)
   output <- .gluedatabrew$describe_job_run_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1701,12 +1718,13 @@ gluedatabrew_describe_project <- function(Name) {
     name = "DescribeProject",
     http_method = "GET",
     http_path = "/projects/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$describe_project_input(Name = Name)
   output <- .gluedatabrew$describe_project_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1789,12 +1807,13 @@ gluedatabrew_describe_recipe <- function(Name, RecipeVersion = NULL) {
     name = "DescribeRecipe",
     http_method = "GET",
     http_path = "/recipes/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$describe_recipe_input(Name = Name, RecipeVersion = RecipeVersion)
   output <- .gluedatabrew$describe_recipe_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1871,12 +1890,13 @@ gluedatabrew_describe_ruleset <- function(Name) {
     name = "DescribeRuleset",
     http_method = "GET",
     http_path = "/rulesets/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$describe_ruleset_input(Name = Name)
   output <- .gluedatabrew$describe_ruleset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1934,12 +1954,13 @@ gluedatabrew_describe_schedule <- function(Name) {
     name = "DescribeSchedule",
     http_method = "GET",
     http_path = "/schedules/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$describe_schedule_input(Name = Name)
   output <- .gluedatabrew$describe_schedule_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2083,12 +2104,13 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListDatasets",
     http_method = "GET",
     http_path = "/datasets",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Datasets")
   )
   input <- .gluedatabrew$list_datasets_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_datasets_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2227,12 +2249,13 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/jobs/{name}/jobRuns",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobRuns")
   )
   input <- .gluedatabrew$list_job_runs_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_job_runs_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2385,12 +2408,13 @@ gluedatabrew_list_jobs <- function(DatasetName = NULL, MaxResults = NULL, NextTo
     name = "ListJobs",
     http_method = "GET",
     http_path = "/jobs",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Jobs")
   )
   input <- .gluedatabrew$list_jobs_input(DatasetName = DatasetName, MaxResults = MaxResults, NextToken = NextToken, ProjectName = ProjectName)
   output <- .gluedatabrew$list_jobs_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2464,12 +2488,13 @@ gluedatabrew_list_projects <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListProjects",
     http_method = "GET",
     http_path = "/projects",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Projects")
   )
   input <- .gluedatabrew$list_projects_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .gluedatabrew$list_projects_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2559,12 +2584,13 @@ gluedatabrew_list_recipe_versions <- function(MaxResults = NULL, NextToken = NUL
     name = "ListRecipeVersions",
     http_method = "GET",
     http_path = "/recipeVersions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Recipes")
   )
   input <- .gluedatabrew$list_recipe_versions_input(MaxResults = MaxResults, NextToken = NextToken, Name = Name)
   output <- .gluedatabrew$list_recipe_versions_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2657,12 +2683,13 @@ gluedatabrew_list_recipes <- function(MaxResults = NULL, NextToken = NULL, Recip
     name = "ListRecipes",
     http_method = "GET",
     http_path = "/recipes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Recipes")
   )
   input <- .gluedatabrew$list_recipes_input(MaxResults = MaxResults, NextToken = NextToken, RecipeVersion = RecipeVersion)
   output <- .gluedatabrew$list_recipes_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2736,12 +2763,13 @@ gluedatabrew_list_rulesets <- function(TargetArn = NULL, MaxResults = NULL, Next
     name = "ListRulesets",
     http_method = "GET",
     http_path = "/rulesets",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Rulesets")
   )
   input <- .gluedatabrew$list_rulesets_input(TargetArn = TargetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_rulesets_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2810,12 +2838,13 @@ gluedatabrew_list_schedules <- function(JobName = NULL, MaxResults = NULL, NextT
     name = "ListSchedules",
     http_method = "GET",
     http_path = "/schedules",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schedules")
   )
   input <- .gluedatabrew$list_schedules_input(JobName = JobName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_schedules_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2860,12 +2889,13 @@ gluedatabrew_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .gluedatabrew$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2910,12 +2940,13 @@ gluedatabrew_publish_recipe <- function(Description = NULL, Name) {
     name = "PublishRecipe",
     http_method = "POST",
     http_path = "/recipes/{name}/publishRecipe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$publish_recipe_input(Description = Description, Name = Name)
   output <- .gluedatabrew$publish_recipe_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2999,12 +3030,13 @@ gluedatabrew_send_project_session_action <- function(Preview = NULL, Name, Recip
     name = "SendProjectSessionAction",
     http_method = "PUT",
     http_path = "/projects/{name}/sendProjectSessionAction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$send_project_session_action_input(Preview = Preview, Name = Name, RecipeStep = RecipeStep, StepIndex = StepIndex, ClientSessionId = ClientSessionId, ViewFrame = ViewFrame)
   output <- .gluedatabrew$send_project_session_action_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3046,12 +3078,13 @@ gluedatabrew_start_job_run <- function(Name) {
     name = "StartJobRun",
     http_method = "POST",
     http_path = "/jobs/{name}/startJobRun",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$start_job_run_input(Name = Name)
   output <- .gluedatabrew$start_job_run_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3099,12 +3132,13 @@ gluedatabrew_start_project_session <- function(Name, AssumeControl = NULL) {
     name = "StartProjectSession",
     http_method = "PUT",
     http_path = "/projects/{name}/startProjectSession",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$start_project_session_input(Name = Name, AssumeControl = AssumeControl)
   output <- .gluedatabrew$start_project_session_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3148,12 +3182,13 @@ gluedatabrew_stop_job_run <- function(Name, RunId) {
     name = "StopJobRun",
     http_method = "POST",
     http_path = "/jobs/{name}/jobRun/{runId}/stopJobRun",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$stop_job_run_input(Name = Name, RunId = RunId)
   output <- .gluedatabrew$stop_job_run_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3198,12 +3233,13 @@ gluedatabrew_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .gluedatabrew$tag_resource_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3245,12 +3281,13 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .gluedatabrew$untag_resource_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3379,12 +3416,13 @@ gluedatabrew_update_dataset <- function(Name, Format = NULL, FormatOptions = NUL
     name = "UpdateDataset",
     http_method = "PUT",
     http_path = "/datasets/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$update_dataset_input(Name = Name, Format = Format, FormatOptions = FormatOptions, Input = Input, PathOptions = PathOptions)
   output <- .gluedatabrew$update_dataset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3532,12 +3570,13 @@ gluedatabrew_update_profile_job <- function(Configuration = NULL, EncryptionKeyA
     name = "UpdateProfileJob",
     http_method = "PUT",
     http_path = "/profileJobs/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$update_profile_job_input(Configuration = Configuration, EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, OutputLocation = OutputLocation, ValidationConfigurations = ValidationConfigurations, RoleArn = RoleArn, Timeout = Timeout, JobSample = JobSample)
   output <- .gluedatabrew$update_profile_job_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3590,12 +3629,13 @@ gluedatabrew_update_project <- function(Sample = NULL, RoleArn, Name) {
     name = "UpdateProject",
     http_method = "PUT",
     http_path = "/projects/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$update_project_input(Sample = Sample, RoleArn = RoleArn, Name = Name)
   output <- .gluedatabrew$update_project_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3660,12 +3700,13 @@ gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
     name = "UpdateRecipe",
     http_method = "PUT",
     http_path = "/recipes/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$update_recipe_input(Description = Description, Name = Name, Steps = Steps)
   output <- .gluedatabrew$update_recipe_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3795,12 +3836,13 @@ gluedatabrew_update_recipe_job <- function(EncryptionKeyArn = NULL, EncryptionMo
     name = "UpdateRecipeJob",
     http_method = "PUT",
     http_path = "/recipeJobs/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$update_recipe_job_input(EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, Outputs = Outputs, DataCatalogOutputs = DataCatalogOutputs, DatabaseOutputs = DatabaseOutputs, RoleArn = RoleArn, Timeout = Timeout)
   output <- .gluedatabrew$update_recipe_job_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3867,12 +3909,13 @@ gluedatabrew_update_ruleset <- function(Name, Description = NULL, Rules) {
     name = "UpdateRuleset",
     http_method = "PUT",
     http_path = "/rulesets/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$update_ruleset_input(Name = Name, Description = Description, Rules = Rules)
   output <- .gluedatabrew$update_ruleset_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3923,12 +3966,13 @@ gluedatabrew_update_schedule <- function(JobNames = NULL, CronExpression, Name) 
     name = "UpdateSchedule",
     http_method = "PUT",
     http_path = "/schedules/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .gluedatabrew$update_schedule_input(JobNames = JobNames, CronExpression = CronExpression, Name = Name)
   output <- .gluedatabrew$update_schedule_output()
   config <- get_config()
-  svc <- .gluedatabrew$service(config)
+  svc <- .gluedatabrew$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

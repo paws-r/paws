@@ -147,12 +147,13 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
     name = "CreateEnvironmentEC2",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, imageId = imageId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags, connectionType = connectionType, dryRun = dryRun)
   output <- .cloud9$create_environment_ec2_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -224,12 +225,13 @@ cloud9_create_environment_membership <- function(environmentId, userArn, permiss
     name = "CreateEnvironmentMembership",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$create_environment_membership_input(environmentId = environmentId, userArn = userArn, permissions = permissions)
   output <- .cloud9$create_environment_membership_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -275,12 +277,13 @@ cloud9_delete_environment <- function(environmentId) {
     name = "DeleteEnvironment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$delete_environment_input(environmentId = environmentId)
   output <- .cloud9$delete_environment_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -329,12 +332,13 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
     name = "DeleteEnvironmentMembership",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$delete_environment_membership_input(environmentId = environmentId, userArn = userArn)
   output <- .cloud9$delete_environment_membership_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -441,12 +445,13 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
     name = "DescribeEnvironmentMemberships",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .cloud9$describe_environment_memberships_input(userArn = userArn, environmentId = environmentId, permissions = permissions, nextToken = nextToken, maxResults = maxResults)
   output <- .cloud9$describe_environment_memberships_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -497,12 +502,13 @@ cloud9_describe_environment_status <- function(environmentId) {
     name = "DescribeEnvironmentStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$describe_environment_status_input(environmentId = environmentId)
   output <- .cloud9$describe_environment_status_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -573,12 +579,13 @@ cloud9_describe_environments <- function(environmentIds) {
     name = "DescribeEnvironments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$describe_environments_input(environmentIds = environmentIds)
   output <- .cloud9$describe_environments_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -636,12 +643,13 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListEnvironments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .cloud9$list_environments_input(nextToken = nextToken, maxResults = maxResults)
   output <- .cloud9$list_environments_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -691,12 +699,13 @@ cloud9_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .cloud9$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -744,12 +753,13 @@ cloud9_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .cloud9$tag_resource_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -792,12 +802,13 @@ cloud9_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .cloud9$untag_resource_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -862,12 +873,13 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
     name = "UpdateEnvironment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$update_environment_input(environmentId = environmentId, name = name, description = description, managedCredentialsAction = managedCredentialsAction)
   output <- .cloud9$update_environment_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -941,12 +953,13 @@ cloud9_update_environment_membership <- function(environmentId, userArn, permiss
     name = "UpdateEnvironmentMembership",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloud9$update_environment_membership_input(environmentId = environmentId, userArn = userArn, permissions = permissions)
   output <- .cloud9$update_environment_membership_output()
   config <- get_config()
-  svc <- .cloud9$service(config)
+  svc <- .cloud9$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

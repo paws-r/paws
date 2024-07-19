@@ -7,9 +7,9 @@
 opsworks_deregister_volume(VolumeId)
 }
 \arguments{
-\item{VolumeId}{[required] The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks
-Stacks assigned to the instance when you registered the volume with the
-stack, not the Amazon EC2 volume ID.}
+\item{VolumeId}{[required] The OpsWorks Stacks volume ID, which is the GUID that OpsWorks Stacks
+assigned to the instance when you registered the volume with the stack,
+not the Amazon EC2 volume ID.}
 }
 \description{
 Deregisters an Amazon EBS volume. The volume can then be registered by another stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.

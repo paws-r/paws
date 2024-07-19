@@ -30,12 +30,13 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
     name = "AddProfileKey",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/keys",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$add_profile_key_input(ProfileId = ProfileId, KeyName = KeyName, Values = Values, DomainName = DomainName)
   output <- .customerprofiles$add_profile_key_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -68,12 +69,13 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
     name = "CreateCalculatedAttributeDefinition",
     http_method = "POST",
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Statistic = Statistic, Tags = Tags)
   output <- .customerprofiles$create_calculated_attribute_definition_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -128,12 +130,13 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/domains/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
   output <- .customerprofiles$create_domain_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -163,12 +166,13 @@ customerprofiles_create_event_stream <- function(DomainName, Uri, EventStreamNam
     name = "CreateEventStream",
     http_method = "POST",
     http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$create_event_stream_input(DomainName = DomainName, Uri = Uri, EventStreamName = EventStreamName, Tags = Tags)
   output <- .customerprofiles$create_event_stream_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -199,12 +203,13 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
     name = "CreateIntegrationWorkflow",
     http_method = "POST",
     http_path = "/domains/{DomainName}/workflows/integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$create_integration_workflow_input(DomainName = DomainName, WorkflowType = WorkflowType, IntegrationConfig = IntegrationConfig, ObjectTypeName = ObjectTypeName, RoleArn = RoleArn, Tags = Tags)
   output <- .customerprofiles$create_integration_workflow_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -219,7 +224,7 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_profile/](https://www.paws-r-sdk.com/docs/customerprofiles_create_profile/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param AccountNumber A unique account number that you have given to the customer.
+#' @param AccountNumber An account number that you have given to the customer.
 #' @param AdditionalInformation Any additional information relevant to the customer’s profile.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
@@ -254,12 +259,13 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
     name = "CreateProfile",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$create_profile_input(DomainName = DomainName, AccountNumber = AccountNumber, AdditionalInformation = AdditionalInformation, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString)
   output <- .customerprofiles$create_profile_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -284,12 +290,13 @@ customerprofiles_delete_calculated_attribute_definition <- function(DomainName, 
     name = "DeleteCalculatedAttributeDefinition",
     http_method = "DELETE",
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
   output <- .customerprofiles$delete_calculated_attribute_definition_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -314,12 +321,13 @@ customerprofiles_delete_domain <- function(DomainName) {
     name = "DeleteDomain",
     http_method = "DELETE",
     http_path = "/domains/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_domain_input(DomainName = DomainName)
   output <- .customerprofiles$delete_domain_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -344,12 +352,13 @@ customerprofiles_delete_event_stream <- function(DomainName, EventStreamName) {
     name = "DeleteEventStream",
     http_method = "DELETE",
     http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
   output <- .customerprofiles$delete_event_stream_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -374,12 +383,13 @@ customerprofiles_delete_integration <- function(DomainName, Uri) {
     name = "DeleteIntegration",
     http_method = "POST",
     http_path = "/domains/{DomainName}/integrations/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_integration_input(DomainName = DomainName, Uri = Uri)
   output <- .customerprofiles$delete_integration_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -405,12 +415,13 @@ customerprofiles_delete_profile <- function(ProfileId, DomainName) {
     name = "DeleteProfile",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_profile_input(ProfileId = ProfileId, DomainName = DomainName)
   output <- .customerprofiles$delete_profile_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -437,12 +448,13 @@ customerprofiles_delete_profile_key <- function(ProfileId, KeyName, Values, Doma
     name = "DeleteProfileKey",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/keys/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_profile_key_input(ProfileId = ProfileId, KeyName = KeyName, Values = Values, DomainName = DomainName)
   output <- .customerprofiles$delete_profile_key_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -469,12 +481,13 @@ customerprofiles_delete_profile_object <- function(ProfileId, ProfileObjectUniqu
     name = "DeleteProfileObject",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/objects/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_profile_object_input(ProfileId = ProfileId, ProfileObjectUniqueKey = ProfileObjectUniqueKey, ObjectTypeName = ObjectTypeName, DomainName = DomainName)
   output <- .customerprofiles$delete_profile_object_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -500,12 +513,13 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
     name = "DeleteProfileObjectType",
     http_method = "DELETE",
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
   output <- .customerprofiles$delete_profile_object_type_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -530,12 +544,13 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
     name = "DeleteWorkflow",
     http_method = "DELETE",
     http_path = "/domains/{DomainName}/workflows/{WorkflowId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$delete_workflow_input(DomainName = DomainName, WorkflowId = WorkflowId)
   output <- .customerprofiles$delete_workflow_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -561,12 +576,13 @@ customerprofiles_detect_profile_object_type <- function(Objects, DomainName) {
     name = "DetectProfileObjectType",
     http_method = "POST",
     http_path = "/domains/{DomainName}/detect/object-types",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$detect_profile_object_type_input(Objects = Objects, DomainName = DomainName)
   output <- .customerprofiles$detect_profile_object_type_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -596,12 +612,13 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
     name = "GetAutoMergingPreview",
     http_method = "POST",
     http_path = "/domains/{DomainName}/identity-resolution-jobs/auto-merging-preview",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_auto_merging_preview_input(DomainName = DomainName, Consolidation = Consolidation, ConflictResolution = ConflictResolution, MinAllowedConfidenceScoreForMerging = MinAllowedConfidenceScoreForMerging)
   output <- .customerprofiles$get_auto_merging_preview_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -627,12 +644,13 @@ customerprofiles_get_calculated_attribute_definition <- function(DomainName, Cal
     name = "GetCalculatedAttributeDefinition",
     http_method = "GET",
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
   output <- .customerprofiles$get_calculated_attribute_definition_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -658,12 +676,13 @@ customerprofiles_get_calculated_attribute_for_profile <- function(DomainName, Pr
     name = "GetCalculatedAttributeForProfile",
     http_method = "GET",
     http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes/{CalculatedAttributeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_calculated_attribute_for_profile_input(DomainName = DomainName, ProfileId = ProfileId, CalculatedAttributeName = CalculatedAttributeName)
   output <- .customerprofiles$get_calculated_attribute_for_profile_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -687,12 +706,13 @@ customerprofiles_get_domain <- function(DomainName) {
     name = "GetDomain",
     http_method = "GET",
     http_path = "/domains/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_domain_input(DomainName = DomainName)
   output <- .customerprofiles$get_domain_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -718,12 +738,13 @@ customerprofiles_get_event_stream <- function(DomainName, EventStreamName) {
     name = "GetEventStream",
     http_method = "GET",
     http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
   output <- .customerprofiles$get_event_stream_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -749,12 +770,13 @@ customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
     name = "GetIdentityResolutionJob",
     http_method = "GET",
     http_path = "/domains/{DomainName}/identity-resolution-jobs/{JobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_identity_resolution_job_input(DomainName = DomainName, JobId = JobId)
   output <- .customerprofiles$get_identity_resolution_job_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -779,12 +801,13 @@ customerprofiles_get_integration <- function(DomainName, Uri) {
     name = "GetIntegration",
     http_method = "POST",
     http_path = "/domains/{DomainName}/integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_integration_input(DomainName = DomainName, Uri = Uri)
   output <- .customerprofiles$get_integration_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -813,12 +836,13 @@ customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, Do
     name = "GetMatches",
     http_method = "GET",
     http_path = "/domains/{DomainName}/matches",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
   output <- .customerprofiles$get_matches_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -843,12 +867,13 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
     name = "GetProfileObjectType",
     http_method = "GET",
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
   output <- .customerprofiles$get_profile_object_type_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -872,12 +897,13 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
     name = "GetProfileObjectTypeTemplate",
     http_method = "GET",
     http_path = "/templates/{TemplateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_profile_object_type_template_input(TemplateId = TemplateId)
   output <- .customerprofiles$get_profile_object_type_template_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -909,12 +935,13 @@ customerprofiles_get_similar_profiles <- function(NextToken = NULL, MaxResults =
     name = "GetSimilarProfiles",
     http_method = "POST",
     http_path = "/domains/{DomainName}/matches",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_similar_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, MatchType = MatchType, SearchKey = SearchKey, SearchValue = SearchValue)
   output <- .customerprofiles$get_similar_profiles_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -939,12 +966,13 @@ customerprofiles_get_workflow <- function(DomainName, WorkflowId) {
     name = "GetWorkflow",
     http_method = "GET",
     http_path = "/domains/{DomainName}/workflows/{WorkflowId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_workflow_input(DomainName = DomainName, WorkflowId = WorkflowId)
   output <- .customerprofiles$get_workflow_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -973,12 +1001,13 @@ customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToke
     name = "GetWorkflowSteps",
     http_method = "GET",
     http_path = "/domains/{DomainName}/workflows/{WorkflowId}/steps",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$get_workflow_steps_input(DomainName = DomainName, WorkflowId = WorkflowId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$get_workflow_steps_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1007,12 +1036,13 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
     name = "ListAccountIntegrations",
     http_method = "POST",
     http_path = "/integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_account_integrations_input(Uri = Uri, NextToken = NextToken, MaxResults = MaxResults, IncludeHidden = IncludeHidden)
   output <- .customerprofiles$list_account_integrations_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1040,12 +1070,13 @@ customerprofiles_list_calculated_attribute_definitions <- function(DomainName, N
     name = "ListCalculatedAttributeDefinitions",
     http_method = "GET",
     http_path = "/domains/{DomainName}/calculated-attributes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_calculated_attribute_definitions_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_calculated_attribute_definitions_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1073,12 +1104,13 @@ customerprofiles_list_calculated_attributes_for_profile <- function(NextToken = 
     name = "ListCalculatedAttributesForProfile",
     http_method = "GET",
     http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_calculated_attributes_for_profile_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ProfileId = ProfileId)
   output <- .customerprofiles$list_calculated_attributes_for_profile_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1104,12 +1136,13 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListDomains",
     http_method = "GET",
     http_path = "/domains",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_domains_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_domains_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1135,12 +1168,13 @@ customerprofiles_list_event_streams <- function(DomainName, NextToken = NULL, Ma
     name = "ListEventStreams",
     http_method = "GET",
     http_path = "/domains/{DomainName}/event-streams",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items")
   )
   input <- .customerprofiles$list_event_streams_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_event_streams_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1168,12 +1202,13 @@ customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken
     name = "ListIdentityResolutionJobs",
     http_method = "GET",
     http_path = "/domains/{DomainName}/identity-resolution-jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_identity_resolution_jobs_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_identity_resolution_jobs_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1201,12 +1236,13 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
     name = "ListIntegrations",
     http_method = "GET",
     http_path = "/domains/{DomainName}/integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_integrations_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults, IncludeHidden = IncludeHidden)
   output <- .customerprofiles$list_integrations_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1231,12 +1267,13 @@ customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL
     name = "ListProfileObjectTypeTemplates",
     http_method = "GET",
     http_path = "/templates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_profile_object_type_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_profile_object_type_templates_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1262,12 +1299,13 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
     name = "ListProfileObjectTypes",
     http_method = "GET",
     http_path = "/domains/{DomainName}/object-types",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_profile_object_types_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_profile_object_types_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1298,12 +1336,13 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
     name = "ListProfileObjects",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/objects",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_profile_objects_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName, ProfileId = ProfileId, ObjectFilter = ObjectFilter)
   output <- .customerprofiles$list_profile_objects_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1331,12 +1370,13 @@ customerprofiles_list_rule_based_matches <- function(NextToken = NULL, MaxResult
     name = "ListRuleBasedMatches",
     http_method = "GET",
     http_path = "/domains/{DomainName}/profiles/ruleBasedMatches",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_rule_based_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
   output <- .customerprofiles$list_rule_based_matches_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1361,12 +1401,13 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .customerprofiles$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1398,12 +1439,13 @@ customerprofiles_list_workflows <- function(DomainName, WorkflowType = NULL, Sta
     name = "ListWorkflows",
     http_method = "POST",
     http_path = "/domains/{DomainName}/workflows",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$list_workflows_input(DomainName = DomainName, WorkflowType = WorkflowType, Status = Status, QueryStartDate = QueryStartDate, QueryEndDate = QueryEndDate, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_workflows_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1433,12 +1475,13 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
     name = "MergeProfiles",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/objects/merge",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$merge_profiles_input(DomainName = DomainName, MainProfileId = MainProfileId, ProfileIdsToBeMerged = ProfileIdsToBeMerged, FieldSourceProfileIds = FieldSourceProfileIds)
   output <- .customerprofiles$merge_profiles_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1475,12 +1518,13 @@ customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeN
     name = "PutIntegration",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags, FlowDefinition = FlowDefinition, ObjectTypeNames = ObjectTypeNames)
   output <- .customerprofiles$put_integration_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1506,12 +1550,13 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
     name = "PutProfileObject",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/profiles/objects",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$put_profile_object_input(ObjectTypeName = ObjectTypeName, Object = Object, DomainName = DomainName)
   output <- .customerprofiles$put_profile_object_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1547,6 +1592,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' creates a new standard profile.
 #' @param SourceLastUpdatedTimestampFormat The format of your `sourceLastUpdatedTimestamp` that was previously set
 #' up.
+#' @param MaxProfileObjectCount The amount of profile object max count assigned to the object type
 #' @param Fields A map of the name and ObjectType field.
 #' @param Keys A list of unique keys that can be used to map data to the profile.
 #' @param Tags The tags used to organize, track, or control access for this resource.
@@ -1554,17 +1600,18 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_profile_object_type
-customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
+customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, MaxProfileObjectCount = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutProfileObjectType",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, Fields = Fields, Keys = Keys, Tags = Tags)
+  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, MaxProfileObjectCount = MaxProfileObjectCount, Fields = Fields, Keys = Keys, Tags = Tags)
   output <- .customerprofiles$put_profile_object_type_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1624,12 +1671,13 @@ customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL
     name = "SearchProfiles",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/search",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$search_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, KeyName = KeyName, Values = Values, AdditionalSearchKeys = AdditionalSearchKeys, LogicalOperator = LogicalOperator)
   output <- .customerprofiles$search_profiles_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1655,12 +1703,13 @@ customerprofiles_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .customerprofiles$tag_resource_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1686,12 +1735,13 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .customerprofiles$untag_resource_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1720,12 +1770,13 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
     name = "UpdateCalculatedAttributeDefinition",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$update_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, Conditions = Conditions)
   output <- .customerprofiles$update_calculated_attribute_definition_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1781,12 +1832,13 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
     name = "UpdateDomain",
     http_method = "PUT",
     http_path = "/domains/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
   output <- .customerprofiles$update_domain_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1803,7 +1855,7 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param AdditionalInformation Any additional information relevant to the customer’s profile.
-#' @param AccountNumber A unique account number that you have given to the customer.
+#' @param AccountNumber An account number that you have given to the customer.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
 #' @param FirstName The customer’s first name.
@@ -1837,12 +1889,13 @@ customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInf
     name = "UpdateProfile",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .customerprofiles$update_profile_input(DomainName = DomainName, ProfileId = ProfileId, AdditionalInformation = AdditionalInformation, AccountNumber = AccountNumber, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString)
   output <- .customerprofiles$update_profile_output()
   config <- get_config()
-  svc <- .customerprofiles$service(config)
+  svc <- .customerprofiles$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

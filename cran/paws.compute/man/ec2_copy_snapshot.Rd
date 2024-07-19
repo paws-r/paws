@@ -47,10 +47,9 @@ parameter and encryption by default is not enabled. You cannot set this
 parameter to false. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS encryption}
 in the \emph{Amazon EBS User Guide}.}
 
-\item{KmsKeyId}{The identifier of the Key Management Service (KMS) KMS key to use for
-Amazon EBS encryption. If this parameter is not specified, your KMS key
-for Amazon EBS is used. If \code{KmsKeyId} is specified, the encrypted state
-must be \code{true}.
+\item{KmsKeyId}{The identifier of the KMS key to use for Amazon EBS encryption. If this
+parameter is not specified, your KMS key for Amazon EBS is used. If
+\code{KmsKeyId} is specified, the encrypted state must be \code{true}.
 
 You can specify the KMS key using any of the following:
 \itemize{
@@ -77,9 +76,9 @@ The \code{PresignedUrl} must be signed using Amazon Web Services Signature
 Version 4. Because EBS snapshots are stored in Amazon S3, the signing
 algorithm for this parameter uses the same logic that is described in
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)}
-in the \emph{Amazon Simple Storage Service API Reference}. An invalid or
-improperly signed \code{PresignedUrl} will cause the copy operation to fail
-asynchronously, and the snapshot will move to an \code{error} state.}
+in the \emph{Amazon S3 API Reference}. An invalid or improperly signed
+\code{PresignedUrl} will cause the copy operation to fail asynchronously, and
+the snapshot will move to an \code{error} state.}
 
 \item{SourceRegion}{[required] The ID of the Region that contains the snapshot to be copied.}
 

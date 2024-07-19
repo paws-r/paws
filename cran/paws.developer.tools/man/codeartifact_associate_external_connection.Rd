@@ -30,6 +30,8 @@ following values are supported:
 \item \code{public:maven-gradleplugins} - for the Gradle plugins repository.
 \item \code{public:maven-commonsware} - for the CommonsWare Android repository.
 \item \code{public:maven-clojars} - for the Clojars repository.
+\item \code{public:ruby-gems-org} - for RubyGems.org.
+\item \code{public:crates-io} - for Crates.io.
 }}
 }
 \description{

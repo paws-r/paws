@@ -57,7 +57,7 @@ ID.
 \item{IncludeMarketplace}{Include Reserved Instance Marketplace offerings in the response.}
 
 \item{InstanceType}{The instance type that the reservation will cover (for example,
-\code{m1.small}). For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
+\code{m1.small}). For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Amazon EC2 instance types}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{MaxDuration}{The maximum duration (in seconds) to filter when searching for

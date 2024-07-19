@@ -164,7 +164,7 @@ pricing <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = "AWSPriceListService"
 )
 
-.pricing$service <- function(config = list()) {
+.pricing$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.pricing$metadata, handlers, config)
+  new_service(.pricing$metadata, handlers, config, op)
 }

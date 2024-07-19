@@ -5,16 +5,16 @@
 \title{Disconnects a specified participant and revokes the participant
 permanently from a specified stage}
 \usage{
-ivsrealtime_disconnect_participant(participantId, reason = NULL, stageArn)
+ivsrealtime_disconnect_participant(stageArn, participantId, reason = NULL)
 }
 \arguments{
+\item{stageArn}{[required] ARN of the stage to which the participant is attached.}
+
 \item{participantId}{[required] Identifier of the participant to be disconnected. This is assigned by
 IVS and returned by
 \code{\link[=ivsrealtime_create_participant_token]{create_participant_token}}.}
 
 \item{reason}{Description of why this participant is being disconnected.}
-
-\item{stageArn}{[required] ARN of the stage to which the participant is attached.}
 }
 \description{
 Disconnects a specified participant and revokes the participant permanently from a specified stage.

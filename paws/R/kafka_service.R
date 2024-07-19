@@ -181,7 +181,7 @@ kafka <- function(config = list(), credentials = list(), endpoint = NULL, region
   target_prefix = ""
 )
 
-.kafka$service <- function(config = list()) {
+.kafka$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.kafka$metadata, handlers, config)
+  new_service(.kafka$metadata, handlers, config, op)
 }

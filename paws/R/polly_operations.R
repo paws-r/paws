@@ -49,12 +49,13 @@ polly_delete_lexicon <- function(Name) {
     name = "DeleteLexicon",
     http_method = "DELETE",
     http_path = "/v1/lexicons/{LexiconName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$delete_lexicon_input(Name = Name)
   output <- .polly$delete_lexicon_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -91,8 +92,8 @@ polly_delete_lexicon <- function(Name) {
 #' polly_describe_voices(Engine, LanguageCode,
 #'   IncludeAdditionalLanguageCodes, NextToken)
 #'
-#' @param Engine Specifies the engine (`standard`, `neural` or `long-form`) used by
-#' Amazon Polly when processing input text for speech synthesis.
+#' @param Engine Specifies the engine (`standard`, `neural`, `long-form` or `generative`)
+#' used by Amazon Polly when processing input text for speech synthesis.
 #' @param LanguageCode The language identification tag (ISO 639 code for the language name-ISO
 #' 3166 country code) for filtering the list of voices returned. If you
 #' don't specify this optional parameter, all available voices are
@@ -121,7 +122,7 @@ polly_delete_lexicon <- function(Name) {
 #'         "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE"
 #'       ),
 #'       SupportedEngines = list(
-#'         "standard"|"neural"|"long-form"
+#'         "standard"|"neural"|"long-form"|"generative"
 #'       )
 #'     )
 #'   ),
@@ -132,7 +133,7 @@ polly_delete_lexicon <- function(Name) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_voices(
-#'   Engine = "standard"|"neural"|"long-form",
+#'   Engine = "standard"|"neural"|"long-form"|"generative",
 #'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE",
 #'   IncludeAdditionalLanguageCodes = TRUE|FALSE,
 #'   NextToken = "string"
@@ -160,12 +161,13 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
     name = "DescribeVoices",
     http_method = "GET",
     http_path = "/v1/voices",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$describe_voices_input(Engine = Engine, LanguageCode = LanguageCode, IncludeAdditionalLanguageCodes = IncludeAdditionalLanguageCodes, NextToken = NextToken)
   output <- .polly$describe_voices_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -232,12 +234,13 @@ polly_get_lexicon <- function(Name) {
     name = "GetLexicon",
     http_method = "GET",
     http_path = "/v1/lexicons/{LexiconName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$get_lexicon_input(Name = Name)
   output <- .polly$get_lexicon_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -262,7 +265,7 @@ polly_get_lexicon <- function(Name) {
 #' ```
 #' list(
 #'   SynthesisTask = list(
-#'     Engine = "standard"|"neural"|"long-form",
+#'     Engine = "standard"|"neural"|"long-form"|"generative",
 #'     TaskId = "string",
 #'     TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
 #'     TaskStatusReason = "string",
@@ -304,12 +307,13 @@ polly_get_speech_synthesis_task <- function(TaskId) {
     name = "GetSpeechSynthesisTask",
     http_method = "GET",
     http_path = "/v1/synthesisTasks/{TaskId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$get_speech_synthesis_task_input(TaskId = TaskId)
   output <- .polly$get_speech_synthesis_task_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -377,12 +381,13 @@ polly_list_lexicons <- function(NextToken = NULL) {
     name = "ListLexicons",
     http_method = "GET",
     http_path = "/v1/lexicons",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$list_lexicons_input(NextToken = NextToken)
   output <- .polly$list_lexicons_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -412,7 +417,7 @@ polly_list_lexicons <- function(NextToken = NULL) {
 #'   NextToken = "string",
 #'   SynthesisTasks = list(
 #'     list(
-#'       Engine = "standard"|"neural"|"long-form",
+#'       Engine = "standard"|"neural"|"long-form"|"generative",
 #'       TaskId = "string",
 #'       TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
 #'       TaskStatusReason = "string",
@@ -457,12 +462,13 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
     name = "ListSpeechSynthesisTasks",
     http_method = "GET",
     http_path = "/v1/synthesisTasks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .polly$list_speech_synthesis_tasks_input(MaxResults = MaxResults, NextToken = NextToken, Status = Status)
   output <- .polly$list_speech_synthesis_tasks_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -519,12 +525,13 @@ polly_put_lexicon <- function(Name, Content) {
     name = "PutLexicon",
     http_method = "PUT",
     http_path = "/v1/lexicons/{LexiconName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$put_lexicon_input(Name = Name, Content = Content)
   output <- .polly$put_lexicon_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -550,10 +557,10 @@ polly_put_lexicon <- function(Name, Content) {
 #'   OutputFormat, OutputS3BucketName, OutputS3KeyPrefix, SampleRate,
 #'   SnsTopicArn, SpeechMarkTypes, Text, TextType, VoiceId)
 #'
-#' @param Engine Specifies the engine (`standard`, `neural` or `long-form`) for Amazon
-#' Polly to use when processing input text for speech synthesis. Using a
-#' voice that is not supported for the engine selected will result in an
-#' error.
+#' @param Engine Specifies the engine (`standard`, `neural`, `long-form` or `generative`)
+#' for Amazon Polly to use when processing input text for speech synthesis.
+#' Using a voice that is not supported for the engine selected will result
+#' in an error.
 #' @param LanguageCode Optional language code for the Speech Synthesis request. This is only
 #' necessary if using a bilingual voice, such as Aditi, which can be used
 #' for either Indian English (en-IN) or Hindi (hi-IN).
@@ -577,7 +584,8 @@ polly_put_lexicon <- function(Name, Content) {
 #' The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
 #' and "24000". The default value for standard voices is "22050". The
 #' default value for neural voices is "24000". The default value for
-#' long-form voices is "24000".
+#' long-form voices is "24000". The default value for generative voices is
+#' "24000".
 #' 
 #' Valid values for pcm are "8000" and "16000" The default value is
 #' "16000".
@@ -595,7 +603,7 @@ polly_put_lexicon <- function(Name, Content) {
 #' ```
 #' list(
 #'   SynthesisTask = list(
-#'     Engine = "standard"|"neural"|"long-form",
+#'     Engine = "standard"|"neural"|"long-form"|"generative",
 #'     TaskId = "string",
 #'     TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
 #'     TaskStatusReason = "string",
@@ -623,7 +631,7 @@ polly_put_lexicon <- function(Name, Content) {
 #' @section Request syntax:
 #' ```
 #' svc$start_speech_synthesis_task(
-#'   Engine = "standard"|"neural"|"long-form",
+#'   Engine = "standard"|"neural"|"long-form"|"generative",
 #'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE",
 #'   LexiconNames = list(
 #'     "string"
@@ -652,12 +660,13 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
     name = "StartSpeechSynthesisTask",
     http_method = "POST",
     http_path = "/v1/synthesisTasks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$start_speech_synthesis_task_input(Engine = Engine, LanguageCode = LanguageCode, LexiconNames = LexiconNames, OutputFormat = OutputFormat, OutputS3BucketName = OutputS3BucketName, OutputS3KeyPrefix = OutputS3KeyPrefix, SampleRate = SampleRate, SnsTopicArn = SnsTopicArn, SpeechMarkTypes = SpeechMarkTypes, Text = Text, TextType = TextType, VoiceId = VoiceId)
   output <- .polly$start_speech_synthesis_task_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -678,36 +687,20 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' polly_synthesize_speech(Engine, LanguageCode, LexiconNames,
 #'   OutputFormat, SampleRate, SpeechMarkTypes, Text, TextType, VoiceId)
 #'
-#' @param Engine Specifies the engine (`standard`, `neural` or `long-form`) for Amazon
-#' Polly to use when processing input text for speech synthesis. For
-#' information on Amazon Polly voices and which voices are available for
-#' each engine, see [Available
-#' Voices](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html).
-#' 
-#' **NTTS-only voices**
-#' 
-#' When using NTTS-only voices such as Kevin (en-US), this parameter is
-#' required and must be set to `neural`. If the engine is not specified, or
-#' is set to `standard`, this will result in an error.
-#' 
-#' **long-form-only voices**
-#' 
-#' When using long-form-only voices such as Danielle (en-US), this
-#' parameter is required and must be set to `long-form`. If the engine is
-#' not specified, or is set to `standard` or `neural`, this will result in
-#' an error.
+#' @param Engine Specifies the engine (`standard`, `neural`, `long-form`, or
+#' `generative`) for Amazon Polly to use when processing input text for
+#' speech synthesis. Provide an engine that is supported by the voice you
+#' select. If you don't provide an engine, the standard engine is selected
+#' by default. If a chosen voice isn't supported by the standard engine,
+#' this will result in an error. For information on Amazon Polly voices and
+#' which voices are available for each engine, see [Available
+#' Voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html).
 #' 
 #' Type: String
 #' 
-#' Valid Values: `standard` | `neural` | `long-form`
+#' Valid Values: `standard` | `neural` | `long-form` | `generative`
 #' 
 #' Required: Yes
-#' 
-#' **Standard voices**
-#' 
-#' For standard voices, this is not required; the engine parameter defaults
-#' to `standard`. If the engine is not specified, or is set to `standard`
-#' and an NTTS-only voice is selected, this will result in an error.
 #' @param LanguageCode Optional language code for the Synthesize Speech request. This is only
 #' necessary if using a bilingual voice, such as Aditi, which can be used
 #' for either Indian English (en-IN) or Hindi (hi-IN).
@@ -733,7 +726,8 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
 #' and "24000". The default value for standard voices is "22050". The
 #' default value for neural voices is "24000". The default value for
-#' long-form voices is "24000".
+#' long-form voices is "24000". The default value for generative voices is
+#' "24000".
 #' 
 #' Valid values for pcm are "8000" and "16000" The default value is
 #' "16000".
@@ -759,7 +753,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' @section Request syntax:
 #' ```
 #' svc$synthesize_speech(
-#'   Engine = "standard"|"neural"|"long-form",
+#'   Engine = "standard"|"neural"|"long-form"|"generative",
 #'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE",
 #'   LexiconNames = list(
 #'     "string"
@@ -800,12 +794,13 @@ polly_synthesize_speech <- function(Engine = NULL, LanguageCode = NULL, LexiconN
     name = "SynthesizeSpeech",
     http_method = "POST",
     http_path = "/v1/speech",
+    host_prefix = "",
     paginator = list()
   )
   input <- .polly$synthesize_speech_input(Engine = Engine, LanguageCode = LanguageCode, LexiconNames = LexiconNames, OutputFormat = OutputFormat, SampleRate = SampleRate, SpeechMarkTypes = SpeechMarkTypes, Text = Text, TextType = TextType, VoiceId = VoiceId)
   output <- .polly$synthesize_speech_output()
   config <- get_config()
-  svc <- .polly$service(config)
+  svc <- .polly$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

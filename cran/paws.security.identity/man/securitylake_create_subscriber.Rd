@@ -23,7 +23,7 @@ supported Amazon Web Services.}
 
 \item{subscriberDescription}{The description for your subscriber account in Security Lake.}
 
-\item{subscriberIdentity}{[required] The AWS identity used to access your data.}
+\item{subscriberIdentity}{[required] The Amazon Web Services identity used to access your data.}
 
 \item{subscriberName}{[required] The name of your Security Lake subscriber account.}
 

@@ -169,7 +169,7 @@ pi <- function(config = list(), credentials = list(), endpoint = NULL, region = 
   target_prefix = "PerformanceInsightsv20180227"
 )
 
-.pi$service <- function(config = list()) {
+.pi$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.pi$metadata, handlers, config)
+  new_service(.pi$metadata, handlers, config, op)
 }

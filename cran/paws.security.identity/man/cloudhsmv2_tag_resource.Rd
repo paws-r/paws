@@ -2,8 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_tag_resource}
 \alias{cloudhsmv2_tag_resource}
-\title{Adds or overwrites one or more tags for the specified AWS CloudHSM
-cluster}
+\title{Adds or overwrites one or more tags for the specified CloudHSM cluster}
 \usage{
 cloudhsmv2_tag_resource(ResourceId, TagList)
 }
@@ -15,7 +14,7 @@ find the cluster ID, use
 \item{TagList}{[required] A list of one or more tags.}
 }
 \description{
-Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.
+Adds or overwrites one or more tags for the specified CloudHSM cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/} for full documentation.
 }

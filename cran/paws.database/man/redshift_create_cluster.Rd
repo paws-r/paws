@@ -96,9 +96,8 @@ Default: \code{multi-node}}
 node types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
-Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{dc1.8xlarge}
-| \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{ra3.4xlarge} |
-\code{ra3.16xlarge}}
+Valid Values: \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{ra3.4xlarge}
+| \code{ra3.16xlarge}}
 
 \item{MasterUsername}{[required] The user name associated with the admin user account for the cluster
 that is being created.
@@ -216,7 +215,7 @@ Valid Values:
 \code{5431-5455} or \code{8191-8215}. (If you have an existing cluster with
 ra3 nodes, it isn't required that you change the port to these
 ranges.)
-\item For clusters with ds2 or dc2 nodes - Select a port within the range
+\item For clusters with dc2 nodes - Select a port within the range
 \code{1150-65535}.
 }}
 

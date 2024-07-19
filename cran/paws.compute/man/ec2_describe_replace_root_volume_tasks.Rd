@@ -35,7 +35,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes a root volume replacement task. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html}{Replace a root volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Describes a root volume replacement task. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html}{Replace a root volume} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_replace_root_volume_tasks/} for full documentation.
 }

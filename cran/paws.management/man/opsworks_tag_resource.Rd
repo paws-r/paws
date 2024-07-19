@@ -2,7 +2,7 @@
 % Please edit documentation in R/opsworks_operations.R
 \name{opsworks_tag_resource}
 \alias{opsworks_tag_resource}
-\title{Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks
+\title{Apply cost-allocation tags to a specified stack or layer in OpsWorks
 Stacks}
 \usage{
 opsworks_tag_resource(ResourceArn, Tags)
@@ -26,7 +26,7 @@ value.
 }}
 }
 \description{
-Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags} in the AWS OpsWorks User Guide.
+Apply cost-allocation tags to a specified stack or layer in OpsWorks Stacks. For more information about how tagging works, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags} in the OpsWorks User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/opsworks_tag_resource/} for full documentation.
 }

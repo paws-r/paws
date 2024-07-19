@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_test_failover}
 \alias{elasticache_test_failover}
-\title{Represents the input of a TestFailover operation which test automatic
+\title{Represents the input of a TestFailover operation which tests automatic
 failover on a specified node group (called shard in the console) in a
 replication group (called cluster in the console)}
 \usage{
@@ -14,11 +14,11 @@ failover is being tested by this operation.}
 
 \item{NodeGroupId}{[required] The name of the node group (called shard in the console) in this
 replication group on which automatic failover is to be tested. You may
-test automatic failover on up to 5 node groups in any rolling 24-hour
+test automatic failover on up to 15 node groups in any rolling 24-hour
 period.}
 }
 \description{
-Represents the input of a \code{\link[=elasticache_test_failover]{test_failover}} operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console).
+Represents the input of a \code{\link[=elasticache_test_failover]{test_failover}} operation which tests automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console).
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_test_failover/} for full documentation.
 }

@@ -21,12 +21,13 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
     name = "BatchGetTraces",
     http_method = "POST",
     http_path = "/Traces",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", non_aggregate_keys = list("UnprocessedTraceIds"), output_token = "NextToken", result_key = "Traces")
   )
   input <- .xray$batch_get_traces_input(TraceIds = TraceIds, NextToken = NextToken)
   output <- .xray$batch_get_traces_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -81,12 +82,13 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/CreateGroup",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$create_group_input(GroupName = GroupName, FilterExpression = FilterExpression, InsightsConfiguration = InsightsConfiguration, Tags = Tags)
   output <- .xray$create_group_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -132,12 +134,13 @@ xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
     name = "CreateSamplingRule",
     http_method = "POST",
     http_path = "/CreateSamplingRule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$create_sampling_rule_input(SamplingRule = SamplingRule, Tags = Tags)
   output <- .xray$create_sampling_rule_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -162,12 +165,13 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
     name = "DeleteGroup",
     http_method = "POST",
     http_path = "/DeleteGroup",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$delete_group_input(GroupName = GroupName, GroupARN = GroupARN)
   output <- .xray$delete_group_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -195,12 +199,13 @@ xray_delete_resource_policy <- function(PolicyName, PolicyRevisionId = NULL) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/DeleteResourcePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$delete_resource_policy_input(PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId)
   output <- .xray$delete_resource_policy_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -227,12 +232,13 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
     name = "DeleteSamplingRule",
     http_method = "POST",
     http_path = "/DeleteSamplingRule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$delete_sampling_rule_input(RuleName = RuleName, RuleARN = RuleARN)
   output <- .xray$delete_sampling_rule_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -256,12 +262,13 @@ xray_get_encryption_config <- function() {
     name = "GetEncryptionConfig",
     http_method = "POST",
     http_path = "/EncryptionConfig",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$get_encryption_config_input()
   output <- .xray$get_encryption_config_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -286,12 +293,13 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
     name = "GetGroup",
     http_method = "POST",
     http_path = "/GetGroup",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$get_group_input(GroupName = GroupName, GroupARN = GroupARN)
   output <- .xray$get_group_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -315,12 +323,13 @@ xray_get_groups <- function(NextToken = NULL) {
     name = "GetGroups",
     http_method = "POST",
     http_path = "/Groups",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Groups")
   )
   input <- .xray$get_groups_input(NextToken = NextToken)
   output <- .xray$get_groups_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -345,12 +354,13 @@ xray_get_insight <- function(InsightId) {
     name = "GetInsight",
     http_method = "POST",
     http_path = "/Insight",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$get_insight_input(InsightId = InsightId)
   output <- .xray$get_insight_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -379,12 +389,13 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
     name = "GetInsightEvents",
     http_method = "POST",
     http_path = "/InsightEvents",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .xray$get_insight_events_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .xray$get_insight_events_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -417,12 +428,13 @@ xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextTok
     name = "GetInsightImpactGraph",
     http_method = "POST",
     http_path = "/InsightImpactGraph",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$get_insight_impact_graph_input(InsightId = InsightId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken)
   output <- .xray$get_insight_impact_graph_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -456,12 +468,13 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
     name = "GetInsightSummaries",
     http_method = "POST",
     http_path = "/InsightSummaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .xray$get_insight_summaries_input(States = States, GroupARN = GroupARN, GroupName = GroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .xray$get_insight_summaries_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -485,12 +498,13 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
     name = "GetSamplingRules",
     http_method = "POST",
     http_path = "/GetSamplingRules",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingRuleRecords")
   )
   input <- .xray$get_sampling_rules_input(NextToken = NextToken)
   output <- .xray$get_sampling_rules_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -515,12 +529,13 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
     name = "GetSamplingStatisticSummaries",
     http_method = "POST",
     http_path = "/SamplingStatisticSummaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingStatisticSummaries")
   )
   input <- .xray$get_sampling_statistic_summaries_input(NextToken = NextToken)
   output <- .xray$get_sampling_statistic_summaries_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -545,12 +560,13 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
     name = "GetSamplingTargets",
     http_method = "POST",
     http_path = "/SamplingTargets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$get_sampling_targets_input(SamplingStatisticsDocuments = SamplingStatisticsDocuments)
   output <- .xray$get_sampling_targets_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -580,12 +596,13 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
     name = "GetServiceGraph",
     http_method = "POST",
     http_path = "/ServiceGraph",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", non_aggregate_keys = list("StartTime", "EndTime", "ContainsOldGroupVersions"), output_token = "NextToken", result_key = "Services")
   )
   input <- .xray$get_service_graph_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, NextToken = NextToken)
   output <- .xray$get_service_graph_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -621,12 +638,13 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
     name = "GetTimeSeriesServiceStatistics",
     http_method = "POST",
     http_path = "/TimeSeriesServiceStatistics",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", non_aggregate_keys = list("ContainsOldGroupVersions"), output_token = "NextToken", result_key = "TimeSeriesServiceStatistics")
   )
   input <- .xray$get_time_series_service_statistics_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, EntitySelectorExpression = EntitySelectorExpression, Period = Period, ForecastStatistics = ForecastStatistics, NextToken = NextToken)
   output <- .xray$get_time_series_service_statistics_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -651,12 +669,13 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
     name = "GetTraceGraph",
     http_method = "POST",
     http_path = "/TraceGraph",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Services")
   )
   input <- .xray$get_trace_graph_input(TraceIds = TraceIds, NextToken = NextToken)
   output <- .xray$get_trace_graph_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -691,12 +710,13 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
     name = "GetTraceSummaries",
     http_method = "POST",
     http_path = "/TraceSummaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", non_aggregate_keys = list("TracesProcessedCount", "ApproximateTime"), output_token = "NextToken", result_key = "TraceSummaries")
   )
   input <- .xray$get_trace_summaries_input(StartTime = StartTime, EndTime = EndTime, TimeRangeType = TimeRangeType, Sampling = Sampling, SamplingStrategy = SamplingStrategy, FilterExpression = FilterExpression, NextToken = NextToken)
   output <- .xray$get_trace_summaries_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -721,12 +741,13 @@ xray_list_resource_policies <- function(NextToken = NULL) {
     name = "ListResourcePolicies",
     http_method = "POST",
     http_path = "/ListResourcePolicies",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourcePolicies")
   )
   input <- .xray$list_resource_policies_input(NextToken = NextToken)
   output <- .xray$list_resource_policies_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -754,12 +775,13 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/ListTagsForResource",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
   )
   input <- .xray$list_tags_for_resource_input(ResourceARN = ResourceARN, NextToken = NextToken)
   output <- .xray$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -798,12 +820,13 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
     name = "PutEncryptionConfig",
     http_method = "POST",
     http_path = "/PutEncryptionConfig",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$put_encryption_config_input(KeyId = KeyId, Type = Type)
   output <- .xray$put_encryption_config_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -851,12 +874,13 @@ xray_put_resource_policy <- function(PolicyName, PolicyDocument, PolicyRevisionI
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/PutResourcePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$put_resource_policy_input(PolicyName = PolicyName, PolicyDocument = PolicyDocument, PolicyRevisionId = PolicyRevisionId, BypassPolicyLockoutCheck = BypassPolicyLockoutCheck)
   output <- .xray$put_resource_policy_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -883,12 +907,13 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
     name = "PutTelemetryRecords",
     http_method = "POST",
     http_path = "/TelemetryRecords",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$put_telemetry_records_input(TelemetryRecords = TelemetryRecords, EC2InstanceId = EC2InstanceId, Hostname = Hostname, ResourceARN = ResourceARN)
   output <- .xray$put_telemetry_records_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -913,12 +938,13 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
     name = "PutTraceSegments",
     http_method = "POST",
     http_path = "/TraceSegments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$put_trace_segments_input(TraceSegmentDocuments = TraceSegmentDocuments)
   output <- .xray$put_trace_segments_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -964,12 +990,13 @@ xray_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/TagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .xray$tag_resource_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -995,12 +1022,13 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/UntagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .xray$untag_resource_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1035,12 +1063,13 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/UpdateGroup",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$update_group_input(GroupName = GroupName, GroupARN = GroupARN, FilterExpression = FilterExpression, InsightsConfiguration = InsightsConfiguration)
   output <- .xray$update_group_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1064,12 +1093,13 @@ xray_update_sampling_rule <- function(SamplingRuleUpdate) {
     name = "UpdateSamplingRule",
     http_method = "POST",
     http_path = "/UpdateSamplingRule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .xray$update_sampling_rule_input(SamplingRuleUpdate = SamplingRuleUpdate)
   output <- .xray$update_sampling_rule_output()
   config <- get_config()
-  svc <- .xray$service(config)
+  svc <- .xray$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

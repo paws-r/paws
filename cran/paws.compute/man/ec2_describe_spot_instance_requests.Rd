@@ -74,7 +74,7 @@ launched to fulfill the request.
 | \code{closed} | \code{cancelled} | \code{failed}). Spot request status
 information can help you track your Amazon EC2 Spot Instance
 requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-request-status.html}{Spot request status}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
+in the \emph{Amazon EC2 User Guide}.
 \item \code{status-code} - The short code describing the most recent evaluation
 of your Spot Instance request.
 \item \code{status-message} - The message explaining the status of the Spot

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_modify_cluster}
 \alias{cloudhsmv2_modify_cluster}
-\title{Modifies AWS CloudHSM cluster}
+\title{Modifies CloudHSM cluster}
 \usage{
 cloudhsmv2_modify_cluster(BackupRetentionPolicy, ClusterId)
 }
@@ -13,7 +13,7 @@ cloudhsmv2_modify_cluster(BackupRetentionPolicy, ClusterId)
 cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 }
 \description{
-Modifies AWS CloudHSM cluster.
+Modifies CloudHSM cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/} for full documentation.
 }

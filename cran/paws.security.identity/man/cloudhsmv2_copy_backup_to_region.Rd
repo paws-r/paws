@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_copy_backup_to_region}
 \alias{cloudhsmv2_copy_backup_to_region}
-\title{Copy an AWS CloudHSM cluster backup to a different region}
+\title{Copy an CloudHSM cluster backup to a different region}
 \usage{
 cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId, TagList = NULL)
 }
@@ -17,7 +17,7 @@ do not specify tags, the service copies tags from the source backup to
 the destination backup.}
 }
 \description{
-Copy an AWS CloudHSM cluster backup to a different region.
+Copy an CloudHSM cluster backup to a different region.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_copy_backup_to_region/} for full documentation.
 }

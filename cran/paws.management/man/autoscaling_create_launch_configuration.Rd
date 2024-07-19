@@ -31,16 +31,16 @@ autoscaling_create_launch_configuration(
 Region per account.}
 
 \item{ImageId}{The ID of the Amazon Machine Image (AMI) that was assigned during
-registration. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Finding a Linux AMI}
+registration. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Find a Linux AMI}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
 If you specify \code{InstanceId}, an \code{ImageId} is not required.}
 
-\item{KeyName}{The name of the key pair. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Amazon EC2 key pairs and Linux instances}
+\item{KeyName}{The name of the key pair. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Amazon EC2 key pairs and Amazon EC2 instances}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{SecurityGroups}{A list that contains the security group IDs to assign to the instances
-in the Auto Scaling group. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html}{Control traffic to resources using security groups}
+in the Auto Scaling group. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html}{Control traffic to your Amazon Web Services resources using security groups}
 in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
 \item{ClassicLinkVPCId}{Available for backward compatibility.}
@@ -49,7 +49,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
 \item{UserData}{The user data to make available to the launched EC2 instances. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
-(Linux) and \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html}{Instance metadata and user data}
+(Linux) and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
 (Windows). If you are using a command line tool, base64-encoding is
 performed for you, and you can load the text from a file. Otherwise, you
 must provide base64-encoded text. User data is limited to 16 KB.}
@@ -61,7 +61,7 @@ for the block device mapping.
 To create a launch configuration with a block device mapping or override
 any other instance attributes, specify them as part of the same request.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html}{Creating a launch configuration using an EC2 instance}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html}{Create a launch configuration}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{InstanceType}{Specifies the instance type of the EC2 instance. For information about
@@ -73,13 +73,13 @@ If you specify \code{InstanceId}, an \code{InstanceType} is not required.}
 \item{KernelId}{The ID of the kernel associated with the AMI.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{User provided kernels}
+more information, see \href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{User provided kernels}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{RamdiskId}{The ID of the RAM disk to select.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{User provided kernels}
+more information, see \href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{User provided kernels}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{BlockDeviceMappings}{The block device mapping entries that define the block devices to attach
@@ -96,7 +96,7 @@ The default value is \code{true} (enabled).
 When detailed monitoring is enabled, Amazon CloudWatch generates metrics
 every minute and your account is charged a fee. When you disable
 detailed monitoring, CloudWatch generates metrics every 5 minutes. For
-more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/enable-as-instance-metrics.html}{Configure Monitoring for Auto Scaling Instances}
+more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/enable-as-instance-metrics.html}{Configure monitoring for Auto Scaling instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{SpotPrice}{The maximum hourly price to be paid for any Spot Instance launched to
@@ -137,7 +137,7 @@ IPv4 address, unless you enabled the option to assign a public IPv4
 address on the subnet.
 
 If you specify \code{true}, each instance in the Auto Scaling group receives
-a unique public IPv4 address. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling instances in a VPC}
+a unique public IPv4 address. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Provide network connectivity for your Auto Scaling instances using Amazon VPC}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 If you specify this property, you must specify at least one subnet for
@@ -148,8 +148,7 @@ instance with \code{dedicated} tenancy runs on isolated, single-tenant
 hardware and can only be launched into a VPC. To launch dedicated
 instances into a shared tenancy VPC (a VPC with the instance placement
 tenancy attribute set to \code{default}), you must set the value of this
-property to \code{dedicated}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/advanced-settings-for-your-launch-template.html}{Configuring instance tenancy with Amazon EC2 Auto Scaling}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
+property to \code{dedicated}.
 
 If you specify \code{PlacementTenancy}, you must specify at least one subnet
 for \code{VPCZoneIdentifier} when you create your group.
@@ -157,7 +156,7 @@ for \code{VPCZoneIdentifier} when you create your group.
 Valid values: \code{default} | \code{dedicated}}
 
 \item{MetadataOptions}{The metadata options for the instances. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds}{Configuring the Instance Metadata Options}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds}{Configure the instance metadata options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{

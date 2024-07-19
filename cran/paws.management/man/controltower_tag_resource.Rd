@@ -12,7 +12,7 @@ controltower_tag_resource(resourceArn, tags)
 \item{tags}{[required] Tags to be applied to the resource.}
 }
 \description{
-Applies tags to a resource. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
+Applies tags to a resource. For usage examples, see the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{Controls Reference Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_tag_resource/} for full documentation.
 }

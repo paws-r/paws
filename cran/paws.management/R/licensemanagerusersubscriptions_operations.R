@@ -24,12 +24,13 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
     name = "AssociateUser",
     http_method = "POST",
     http_path = "/user/AssociateUser",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerusersubscriptions$associate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Username = Username)
   output <- .licensemanagerusersubscriptions$associate_user_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -55,12 +56,13 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
     name = "DeregisterIdentityProvider",
     http_method = "POST",
     http_path = "/identity-provider/DeregisterIdentityProvider",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerusersubscriptions$deregister_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product)
   output <- .licensemanagerusersubscriptions$deregister_identity_provider_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -88,12 +90,13 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
     name = "DisassociateUser",
     http_method = "POST",
     http_path = "/user/DisassociateUser",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerusersubscriptions$disassociate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Username = Username)
   output <- .licensemanagerusersubscriptions$disassociate_user_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -118,12 +121,13 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
     name = "ListIdentityProviders",
     http_method = "POST",
     http_path = "/identity-provider/ListIdentityProviders",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityProviderSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_identity_providers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_identity_providers_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -150,12 +154,13 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
     name = "ListInstances",
     http_method = "POST",
     http_path = "/instance/ListInstances",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_instances_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_instances_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -185,12 +190,13 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
     name = "ListProductSubscriptions",
     http_method = "POST",
     http_path = "/user/ListProductSubscriptions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductUserSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_product_subscriptions_input(Filters = Filters, IdentityProvider = IdentityProvider, MaxResults = MaxResults, NextToken = NextToken, Product = Product)
   output <- .licensemanagerusersubscriptions$list_product_subscriptions_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -219,12 +225,13 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
     name = "ListUserAssociations",
     http_method = "POST",
     http_path = "/user/ListUserAssociations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceUserSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_user_associations_input(Filters = Filters, IdentityProvider = IdentityProvider, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_user_associations_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -251,12 +258,13 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
     name = "RegisterIdentityProvider",
     http_method = "POST",
     http_path = "/identity-provider/RegisterIdentityProvider",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, Settings = Settings)
   output <- .licensemanagerusersubscriptions$register_identity_provider_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -284,12 +292,13 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
     name = "StartProductSubscription",
     http_method = "POST",
     http_path = "/user/StartProductSubscription",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerusersubscriptions$start_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Username = Username)
   output <- .licensemanagerusersubscriptions$start_product_subscription_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -317,12 +326,13 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
     name = "StopProductSubscription",
     http_method = "POST",
     http_path = "/user/StopProductSubscription",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerusersubscriptions$stop_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Username = Username)
   output <- .licensemanagerusersubscriptions$stop_product_subscription_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -357,12 +367,13 @@ licensemanagerusersubscriptions_update_identity_provider_settings <- function(Id
     name = "UpdateIdentityProviderSettings",
     http_method = "POST",
     http_path = "/identity-provider/UpdateIdentityProviderSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, Product = Product, UpdateSettings = UpdateSettings)
   output <- .licensemanagerusersubscriptions$update_identity_provider_settings_output()
   config <- get_config()
-  svc <- .licensemanagerusersubscriptions$service(config)
+  svc <- .licensemanagerusersubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

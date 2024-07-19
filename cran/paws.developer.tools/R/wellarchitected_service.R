@@ -208,7 +208,7 @@ wellarchitected <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = ""
 )
 
-.wellarchitected$service <- function(config = list()) {
+.wellarchitected$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.wellarchitected$metadata, handlers, config)
+  new_service(.wellarchitected$metadata, handlers, config, op)
 }

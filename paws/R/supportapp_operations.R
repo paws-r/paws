@@ -98,12 +98,13 @@ supportapp_create_slack_channel_configuration <- function(channelId, channelName
     name = "CreateSlackChannelConfiguration",
     http_method = "POST",
     http_path = "/control/create-slack-channel-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$create_slack_channel_configuration_input(channelId = channelId, channelName = channelName, channelRoleArn = channelRoleArn, notifyOnAddCorrespondenceToCase = notifyOnAddCorrespondenceToCase, notifyOnCaseSeverity = notifyOnCaseSeverity, notifyOnCreateOrReopenCase = notifyOnCreateOrReopenCase, notifyOnResolveCase = notifyOnResolveCase, teamId = teamId)
   output <- .supportapp$create_slack_channel_configuration_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -141,12 +142,13 @@ supportapp_delete_account_alias <- function() {
     name = "DeleteAccountAlias",
     http_method = "POST",
     http_path = "/control/delete-account-alias",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$delete_account_alias_input()
   output <- .supportapp$delete_account_alias_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -189,12 +191,13 @@ supportapp_delete_slack_channel_configuration <- function(channelId, teamId) {
     name = "DeleteSlackChannelConfiguration",
     http_method = "POST",
     http_path = "/control/delete-slack-channel-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$delete_slack_channel_configuration_input(channelId = channelId, teamId = teamId)
   output <- .supportapp$delete_slack_channel_configuration_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -234,12 +237,13 @@ supportapp_delete_slack_workspace_configuration <- function(teamId) {
     name = "DeleteSlackWorkspaceConfiguration",
     http_method = "POST",
     http_path = "/control/delete-slack-workspace-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$delete_slack_workspace_configuration_input(teamId = teamId)
   output <- .supportapp$delete_slack_workspace_configuration_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -282,12 +286,13 @@ supportapp_get_account_alias <- function() {
     name = "GetAccountAlias",
     http_method = "POST",
     http_path = "/control/get-account-alias",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$get_account_alias_input()
   output <- .supportapp$get_account_alias_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -347,12 +352,13 @@ supportapp_list_slack_channel_configurations <- function(nextToken = NULL) {
     name = "ListSlackChannelConfigurations",
     http_method = "POST",
     http_path = "/control/list-slack-channel-configurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken")
   )
   input <- .supportapp$list_slack_channel_configurations_input(nextToken = nextToken)
   output <- .supportapp$list_slack_channel_configurations_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -407,12 +413,13 @@ supportapp_list_slack_workspace_configurations <- function(nextToken = NULL) {
     name = "ListSlackWorkspaceConfigurations",
     http_method = "POST",
     http_path = "/control/list-slack-workspace-configurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken")
   )
   input <- .supportapp$list_slack_workspace_configurations_input(nextToken = nextToken)
   output <- .supportapp$list_slack_workspace_configurations_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -453,12 +460,13 @@ supportapp_put_account_alias <- function(accountAlias) {
     name = "PutAccountAlias",
     http_method = "POST",
     http_path = "/control/put-account-alias",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$put_account_alias_input(accountAlias = accountAlias)
   output <- .supportapp$put_account_alias_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -537,12 +545,13 @@ supportapp_register_slack_workspace_for_organization <- function(teamId) {
     name = "RegisterSlackWorkspaceForOrganization",
     http_method = "POST",
     http_path = "/control/register-slack-workspace-for-organization",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$register_slack_workspace_for_organization_input(teamId = teamId)
   output <- .supportapp$register_slack_workspace_for_organization_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -639,12 +648,13 @@ supportapp_update_slack_channel_configuration <- function(channelId, channelName
     name = "UpdateSlackChannelConfiguration",
     http_method = "POST",
     http_path = "/control/update-slack-channel-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .supportapp$update_slack_channel_configuration_input(channelId = channelId, channelName = channelName, channelRoleArn = channelRoleArn, notifyOnAddCorrespondenceToCase = notifyOnAddCorrespondenceToCase, notifyOnCaseSeverity = notifyOnCaseSeverity, notifyOnCreateOrReopenCase = notifyOnCreateOrReopenCase, notifyOnResolveCase = notifyOnResolveCase, teamId = teamId)
   output <- .supportapp$update_slack_channel_configuration_output()
   config <- get_config()
-  svc <- .supportapp$service(config)
+  svc <- .supportapp$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

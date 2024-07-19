@@ -3,6 +3,18 @@
 #' @include account_service.R
 NULL
 
+.account$accept_primary_email_update_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Otp = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$accept_primary_email_update_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .account$delete_alternate_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), AlternateContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -57,6 +69,18 @@ NULL
   return(populate(args, shape))
 }
 
+.account$get_primary_email_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$get_primary_email_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .account$get_region_opt_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -99,4 +123,16 @@ NULL
 
 .account$put_contact_information_output <- function(...) {
   list()
+}
+
+.account$start_primary_email_update_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$start_primary_email_update_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }

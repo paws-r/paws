@@ -157,7 +157,7 @@ machinelearning <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "AmazonML_20141212"
 )
 
-.machinelearning$service <- function(config = list()) {
+.machinelearning$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.machinelearning$metadata, handlers, config)
+  new_service(.machinelearning$metadata, handlers, config, op)
 }

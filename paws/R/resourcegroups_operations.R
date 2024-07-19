@@ -140,12 +140,13 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/groups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$create_group_input(Name = Name, Description = Description, ResourceQuery = ResourceQuery, Tags = Tags, Configuration = Configuration)
   output <- .resourcegroups$create_group_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -201,12 +202,13 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
     name = "DeleteGroup",
     http_method = "POST",
     http_path = "/delete-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$delete_group_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$delete_group_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -247,12 +249,13 @@ resourcegroups_get_account_settings <- function() {
     name = "GetAccountSettings",
     http_method = "POST",
     http_path = "/get-account-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$get_account_settings_input()
   output <- .resourcegroups$get_account_settings_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -306,12 +309,13 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
     name = "GetGroup",
     http_method = "POST",
     http_path = "/get-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$get_group_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$get_group_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -393,12 +397,13 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
     name = "GetGroupConfiguration",
     http_method = "POST",
     http_path = "/get-group-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$get_group_configuration_input(Group = Group)
   output <- .resourcegroups$get_group_configuration_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -458,12 +463,13 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
     name = "GetGroupQuery",
     http_method = "POST",
     http_path = "/get-group-query",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$get_group_query_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$get_group_query_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -516,12 +522,13 @@ resourcegroups_get_tags <- function(Arn) {
     name = "GetTags",
     http_method = "GET",
     http_path = "/resources/{Arn}/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$get_tags_input(Arn = Arn)
   output <- .resourcegroups$get_tags_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -597,12 +604,13 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
     name = "GroupResources",
     http_method = "POST",
     http_path = "/group-resources",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$group_resources_input(Group = Group, ResourceArns = ResourceArns)
   output <- .resourcegroups$group_resources_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -738,12 +746,13 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
     name = "ListGroupResources",
     http_method = "POST",
     http_path = "/list-group-resources",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = list("ResourceIdentifiers", "Resources"))
   )
   input <- .resourcegroups$list_group_resources_input(GroupName = GroupName, Group = Group, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_group_resources_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -851,12 +860,13 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
     name = "ListGroups",
     http_method = "POST",
     http_path = "/groups-list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupIdentifiers")
   )
   input <- .resourcegroups$list_groups_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_groups_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -928,12 +938,13 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
     name = "PutGroupConfiguration",
     http_method = "POST",
     http_path = "/put-group-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$put_group_configuration_input(Group = Group, Configuration = Configuration)
   output <- .resourcegroups$put_group_configuration_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1025,12 +1036,13 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
     name = "SearchResources",
     http_method = "POST",
     http_path = "/resources/search",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceIdentifiers")
   )
   input <- .resourcegroups$search_resources_input(ResourceQuery = ResourceQuery, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$search_resources_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1093,12 +1105,13 @@ resourcegroups_tag <- function(Arn, Tags) {
     name = "Tag",
     http_method = "PUT",
     http_path = "/resources/{Arn}/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$tag_input(Arn = Arn, Tags = Tags)
   output <- .resourcegroups$tag_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1169,12 +1182,13 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
     name = "UngroupResources",
     http_method = "POST",
     http_path = "/ungroup-resources",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$ungroup_resources_input(Group = Group, ResourceArns = ResourceArns)
   output <- .resourcegroups$ungroup_resources_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1231,12 +1245,13 @@ resourcegroups_untag <- function(Arn, Keys) {
     name = "Untag",
     http_method = "PATCH",
     http_path = "/resources/{Arn}/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$untag_input(Arn = Arn, Keys = Keys)
   output <- .resourcegroups$untag_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1291,12 +1306,13 @@ resourcegroups_update_account_settings <- function(GroupLifecycleEventsDesiredSt
     name = "UpdateAccountSettings",
     http_method = "POST",
     http_path = "/update-account-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$update_account_settings_input(GroupLifecycleEventsDesiredStatus = GroupLifecycleEventsDesiredStatus)
   output <- .resourcegroups$update_account_settings_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1355,12 +1371,13 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/update-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$update_group_input(GroupName = GroupName, Group = Group, Description = Description)
   output <- .resourcegroups$update_group_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1427,12 +1444,13 @@ resourcegroups_update_group_query <- function(GroupName = NULL, Group = NULL, Re
     name = "UpdateGroupQuery",
     http_method = "POST",
     http_path = "/update-group-query",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroups$update_group_query_input(GroupName = GroupName, Group = Group, ResourceQuery = ResourceQuery)
   output <- .resourcegroups$update_group_query_output()
   config <- get_config()
-  svc <- .resourcegroups$service(config)
+  svc <- .resourcegroups$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -53,7 +53,8 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-For more information about AWS CloudHSM, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM} and the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}.
+For more information about CloudHSM, see
+\href{https://aws.amazon.com/cloudhsm/}{CloudHSM} and the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{CloudHSM User Guide}.
 }
 \section{Service syntax}{
 
@@ -94,21 +95,24 @@ For more information about AWS CloudHSM, see \href{https://aws.amazon.com/cloudh
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity:cloudhsmv2_copy_backup_to_region]{copy_backup_to_region} \tab Copy an AWS CloudHSM cluster backup to a different region\cr
-\link[paws.security.identity:cloudhsmv2_create_cluster]{create_cluster} \tab Creates a new AWS CloudHSM cluster\cr
-\link[paws.security.identity:cloudhsmv2_create_hsm]{create_hsm} \tab Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster\cr
-\link[paws.security.identity:cloudhsmv2_delete_backup]{delete_backup} \tab Deletes a specified AWS CloudHSM backup\cr
-\link[paws.security.identity:cloudhsmv2_delete_cluster]{delete_cluster} \tab Deletes the specified AWS CloudHSM cluster\cr
+\link[paws.security.identity:cloudhsmv2_copy_backup_to_region]{copy_backup_to_region} \tab Copy an CloudHSM cluster backup to a different region\cr
+\link[paws.security.identity:cloudhsmv2_create_cluster]{create_cluster} \tab Creates a new CloudHSM cluster\cr
+\link[paws.security.identity:cloudhsmv2_create_hsm]{create_hsm} \tab Creates a new hardware security module (HSM) in the specified CloudHSM cluster\cr
+\link[paws.security.identity:cloudhsmv2_delete_backup]{delete_backup} \tab Deletes a specified CloudHSM backup\cr
+\link[paws.security.identity:cloudhsmv2_delete_cluster]{delete_cluster} \tab Deletes the specified CloudHSM cluster\cr
 \link[paws.security.identity:cloudhsmv2_delete_hsm]{delete_hsm} \tab Deletes the specified HSM\cr
-\link[paws.security.identity:cloudhsmv2_describe_backups]{describe_backups} \tab Gets information about backups of AWS CloudHSM clusters\cr
-\link[paws.security.identity:cloudhsmv2_describe_clusters]{describe_clusters} \tab Gets information about AWS CloudHSM clusters\cr
-\link[paws.security.identity:cloudhsmv2_initialize_cluster]{initialize_cluster} \tab Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate\cr
-\link[paws.security.identity:cloudhsmv2_list_tags]{list_tags} \tab Gets a list of tags for the specified AWS CloudHSM cluster\cr
-\link[paws.security.identity:cloudhsmv2_modify_backup_attributes]{modify_backup_attributes} \tab Modifies attributes for AWS CloudHSM backup\cr
-\link[paws.security.identity:cloudhsmv2_modify_cluster]{modify_cluster} \tab Modifies AWS CloudHSM cluster\cr
-\link[paws.security.identity:cloudhsmv2_restore_backup]{restore_backup} \tab Restores a specified AWS CloudHSM backup that is in the PENDING_DELETION state\cr
-\link[paws.security.identity:cloudhsmv2_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified AWS CloudHSM cluster\cr
-\link[paws.security.identity:cloudhsmv2_untag_resource]{untag_resource} \tab Removes the specified tag or tags from the specified AWS CloudHSM cluster
+\link[paws.security.identity:cloudhsmv2_delete_resource_policy]{delete_resource_policy} \tab Deletes an CloudHSM resource policy\cr
+\link[paws.security.identity:cloudhsmv2_describe_backups]{describe_backups} \tab Gets information about backups of CloudHSM clusters\cr
+\link[paws.security.identity:cloudhsmv2_describe_clusters]{describe_clusters} \tab Gets information about CloudHSM clusters\cr
+\link[paws.security.identity:cloudhsmv2_get_resource_policy]{get_resource_policy} \tab Retrieves the resource policy document attached to a given resource\cr
+\link[paws.security.identity:cloudhsmv2_initialize_cluster]{initialize_cluster} \tab Claims an CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate\cr
+\link[paws.security.identity:cloudhsmv2_list_tags]{list_tags} \tab Gets a list of tags for the specified CloudHSM cluster\cr
+\link[paws.security.identity:cloudhsmv2_modify_backup_attributes]{modify_backup_attributes} \tab Modifies attributes for CloudHSM backup\cr
+\link[paws.security.identity:cloudhsmv2_modify_cluster]{modify_cluster} \tab Modifies CloudHSM cluster\cr
+\link[paws.security.identity:cloudhsmv2_put_resource_policy]{put_resource_policy} \tab Creates or updates an CloudHSM resource policy\cr
+\link[paws.security.identity:cloudhsmv2_restore_backup]{restore_backup} \tab Restores a specified CloudHSM backup that is in the PENDING_DELETION state\cr
+\link[paws.security.identity:cloudhsmv2_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified CloudHSM cluster\cr
+\link[paws.security.identity:cloudhsmv2_untag_resource]{untag_resource} \tab Removes the specified tag or tags from the specified CloudHSM cluster
 }
 }
 

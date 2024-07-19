@@ -12,7 +12,7 @@ controltower_list_baselines(maxResults = NULL, nextToken = NULL)
 \item{nextToken}{A pagination token.}
 }
 \description{
-Returns a summary list of all available baselines.
+Returns a summary list of all available baselines. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_list_baselines/} for full documentation.
 }

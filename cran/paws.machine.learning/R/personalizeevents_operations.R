@@ -25,12 +25,13 @@ personalizeevents_put_action_interactions <- function(trackingId, actionInteract
     name = "PutActionInteractions",
     http_method = "POST",
     http_path = "/action-interactions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeevents$put_action_interactions_input(trackingId = trackingId, actionInteractions = actionInteractions)
   output <- .personalizeevents$put_action_interactions_output()
   config <- get_config()
-  svc <- .personalizeevents$service(config)
+  svc <- .personalizeevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -56,12 +57,13 @@ personalizeevents_put_actions <- function(datasetArn, actions) {
     name = "PutActions",
     http_method = "POST",
     http_path = "/actions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeevents$put_actions_input(datasetArn = datasetArn, actions = actions)
   output <- .personalizeevents$put_actions_output()
   config <- get_config()
-  svc <- .personalizeevents$service(config)
+  svc <- .personalizeevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -95,12 +97,13 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
     name = "PutEvents",
     http_method = "POST",
     http_path = "/events",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeevents$put_events_input(trackingId = trackingId, userId = userId, sessionId = sessionId, eventList = eventList)
   output <- .personalizeevents$put_events_output()
   config <- get_config()
-  svc <- .personalizeevents$service(config)
+  svc <- .personalizeevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -126,12 +129,13 @@ personalizeevents_put_items <- function(datasetArn, items) {
     name = "PutItems",
     http_method = "POST",
     http_path = "/items",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeevents$put_items_input(datasetArn = datasetArn, items = items)
   output <- .personalizeevents$put_items_output()
   config <- get_config()
-  svc <- .personalizeevents$service(config)
+  svc <- .personalizeevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -157,12 +161,13 @@ personalizeevents_put_users <- function(datasetArn, users) {
     name = "PutUsers",
     http_method = "POST",
     http_path = "/users",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeevents$put_users_input(datasetArn = datasetArn, users = users)
   output <- .personalizeevents$put_users_output()
   config <- get_config()
-  svc <- .personalizeevents$service(config)
+  svc <- .personalizeevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

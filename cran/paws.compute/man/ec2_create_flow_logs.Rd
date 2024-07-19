@@ -103,7 +103,7 @@ and aggregated into a flow log record. The possible values are 60
 seconds (1 minute) or 600 seconds (10 minutes). This parameter must be
 60 seconds for transit gateway resource types.
 
-When a network interface is attached to a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instance},
+When a network interface is attached to a \href{https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html}{Nitro-based instance},
 the aggregation interval is always 60 seconds or less, regardless of the
 value that you specify.
 

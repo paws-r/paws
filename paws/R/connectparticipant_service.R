@@ -149,7 +149,7 @@ connectparticipant <- function(config = list(), credentials = list(), endpoint =
   target_prefix = ""
 )
 
-.connectparticipant$service <- function(config = list()) {
+.connectparticipant$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.connectparticipant$metadata, handlers, config)
+  new_service(.connectparticipant$metadata, handlers, config, op)
 }

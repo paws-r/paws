@@ -188,7 +188,7 @@ route53recoverycluster <- function(config = list(), credentials = list(), endpoi
   target_prefix = "ToggleCustomerAPI"
 )
 
-.route53recoverycluster$service <- function(config = list()) {
+.route53recoverycluster$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.route53recoverycluster$metadata, handlers, config)
+  new_service(.route53recoverycluster$metadata, handlers, config, op)
 }

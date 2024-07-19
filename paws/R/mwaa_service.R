@@ -175,11 +175,11 @@ mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region 
   service_id = "MWAA",
   api_version = "2020-07-01",
   signing_name = "airflow",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 
-.mwaa$service <- function(config = list()) {
+.mwaa$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.mwaa$metadata, handlers, config)
+  new_service(.mwaa$metadata, handlers, config, op)
 }

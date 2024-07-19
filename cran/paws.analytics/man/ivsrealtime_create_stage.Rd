@@ -7,7 +7,8 @@
 ivsrealtime_create_stage(
   name = NULL,
   participantTokenConfigurations = NULL,
-  tags = NULL
+  tags = NULL,
+  autoParticipantRecordingConfiguration = NULL
 )
 }
 \arguments{
@@ -21,6 +22,9 @@ stage.}
 for details, including restrictions that apply to tags and "Tag naming
 limits and requirements"; Amazon IVS has no constraints on tags beyond
 what is documented there.}
+
+\item{autoParticipantRecordingConfiguration}{Configuration object for individual participant recording, to attach to
+the new stage.}
 }
 \description{
 Creates a new stage (and optionally participant tokens).

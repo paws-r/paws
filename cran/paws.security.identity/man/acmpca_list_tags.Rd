@@ -5,24 +5,24 @@
 \title{Lists the tags, if any, that are associated with your private CA or one
 that has been shared with you}
 \usage{
-acmpca_list_tags(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL)
+acmpca_list_tags(MaxResults = NULL, NextToken = NULL, CertificateAuthorityArn)
 }
 \arguments{
-\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
-\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
-action. This must be of the form:
-
-\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
-
-\item{NextToken}{Use this parameter when paginating results in a subsequent request after
-you receive a response with truncated results. Set it to the value of
-\strong{NextToken} from the response you just received.}
-
 \item{MaxResults}{Use this parameter when paginating results to specify the maximum number
 of items to return in the response. If additional items exist beyond the
 number you specify, the \strong{NextToken} element is sent in the response.
 Use this \strong{NextToken} value in a subsequent request to retrieve
 additional items.}
+
+\item{NextToken}{Use this parameter when paginating results in a subsequent request after
+you receive a response with truncated results. Set it to the value of
+\strong{NextToken} from the response you just received.}
+
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
+action. This must be of the form:
+
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }
 \description{
 Lists the tags, if any, that are associated with your private CA or one that has been shared with you. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key and an optional value. Call the \code{\link[=acmpca_tag_certificate_authority]{tag_certificate_authority}} action to add one or more tags to your CA. Call the \code{\link[=acmpca_untag_certificate_authority]{untag_certificate_authority}} action to remove tags.

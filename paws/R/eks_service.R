@@ -210,7 +210,7 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.eks$service <- function(config = list()) {
+.eks$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.eks$metadata, handlers, config)
+  new_service(.eks$metadata, handlers, config, op)
 }

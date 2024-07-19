@@ -4,7 +4,12 @@
 \alias{rekognition_create_dataset}
 \title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
-rekognition_create_dataset(DatasetSource = NULL, DatasetType, ProjectArn)
+rekognition_create_dataset(
+  DatasetSource = NULL,
+  DatasetType,
+  ProjectArn,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DatasetSource}{The source files for the dataset. You can specify the ARN of an existing
@@ -19,6 +24,8 @@ Specify \code{TEST} to create a test dataset.}
 
 \item{ProjectArn}{[required] The ARN of the Amazon Rekognition Custom Labels project to which you
 want to asssign the dataset.}
+
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the dataset.}
 }
 \description{
 This operation applies only to Amazon Rekognition Custom Labels.

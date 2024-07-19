@@ -8,7 +8,8 @@ principals access to your secret}
 secretsmanager_validate_resource_policy(SecretId = NULL, ResourcePolicy)
 }
 \arguments{
-\item{SecretId}{This field is reserved for internal use.}
+\item{SecretId}{The ARN or name of the secret with the resource-based policy you want to
+validate.}
 
 \item{ResourcePolicy}{[required] A JSON-formatted string that contains an Amazon Web Services
 resource-based policy. The policy in the string identifies who can

@@ -104,12 +104,13 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
     name = "CreateBotVersion",
     http_method = "POST",
     http_path = "/bots/{name}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$create_bot_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_bot_version_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -303,12 +304,13 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
     name = "CreateIntentVersion",
     http_method = "POST",
     http_path = "/intents/{name}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$create_intent_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_intent_version_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -400,12 +402,13 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
     name = "CreateSlotTypeVersion",
     http_method = "POST",
     http_path = "/slottypes/{name}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$create_slot_type_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_slot_type_version_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -463,12 +466,13 @@ lexmodelbuildingservice_delete_bot <- function(name) {
     name = "DeleteBot",
     http_method = "DELETE",
     http_path = "/bots/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_input(name = name)
   output <- .lexmodelbuildingservice$delete_bot_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -517,12 +521,13 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
     name = "DeleteBotAlias",
     http_method = "DELETE",
     http_path = "/bots/{botName}/aliases/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_alias_input(name = name, botName = botName)
   output <- .lexmodelbuildingservice$delete_bot_alias_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -570,12 +575,13 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
     name = "DeleteBotChannelAssociation",
     http_method = "DELETE",
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_channel_association_input(name = name, botName = botName, botAlias = botAlias)
   output <- .lexmodelbuildingservice$delete_bot_channel_association_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -620,12 +626,13 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
     name = "DeleteBotVersion",
     http_method = "DELETE",
     http_path = "/bots/{name}/versions/{version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_bot_version_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -678,12 +685,13 @@ lexmodelbuildingservice_delete_intent <- function(name) {
     name = "DeleteIntent",
     http_method = "DELETE",
     http_path = "/intents/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_intent_input(name = name)
   output <- .lexmodelbuildingservice$delete_intent_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -729,12 +737,13 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
     name = "DeleteIntentVersion",
     http_method = "DELETE",
     http_path = "/intents/{name}/versions/{version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_intent_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_intent_version_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -789,12 +798,13 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
     name = "DeleteSlotType",
     http_method = "DELETE",
     http_path = "/slottypes/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_slot_type_input(name = name)
   output <- .lexmodelbuildingservice$delete_slot_type_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -842,12 +852,13 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
     name = "DeleteSlotTypeVersion",
     http_method = "DELETE",
     http_path = "/slottypes/{name}/version/{version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_slot_type_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_slot_type_version_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -909,12 +920,13 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
     name = "DeleteUtterances",
     http_method = "DELETE",
     http_path = "/bots/{botName}/utterances/{userId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_utterances_input(botName = botName, userId = userId)
   output <- .lexmodelbuildingservice$delete_utterances_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1015,12 +1027,13 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
     name = "GetBot",
     http_method = "GET",
     http_path = "/bots/{name}/versions/{versionoralias}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_bot_input(name = name, versionOrAlias = versionOrAlias)
   output <- .lexmodelbuildingservice$get_bot_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1089,12 +1102,13 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
     name = "GetBotAlias",
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_bot_alias_input(name = name, botName = botName)
   output <- .lexmodelbuildingservice$get_bot_alias_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1178,12 +1192,13 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
     name = "GetBotAliases",
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_aliases_input(botName = botName, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_aliases_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1249,12 +1264,13 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
     name = "GetBotChannelAssociation",
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_bot_channel_association_input(name = name, botName = botName, botAlias = botAlias)
   output <- .lexmodelbuildingservice$get_bot_channel_association_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1335,12 +1351,13 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
     name = "GetBotChannelAssociations",
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_channel_associations_input(botName = botName, botAlias = botAlias, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_channel_associations_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1416,12 +1433,13 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
     name = "GetBotVersions",
     http_method = "GET",
     http_path = "/bots/{name}/versions/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_bot_versions_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1505,12 +1523,13 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
     name = "GetBots",
     http_method = "GET",
     http_path = "/bots/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bots_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bots_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1566,12 +1585,13 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
     name = "GetBuiltinIntent",
     http_method = "GET",
     http_path = "/builtins/intents/{signature}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_builtin_intent_input(signature = signature)
   output <- .lexmodelbuildingservice$get_builtin_intent_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1640,12 +1660,13 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
     name = "GetBuiltinIntents",
     http_method = "GET",
     http_path = "/builtins/intents/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_builtin_intents_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_intents_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1715,12 +1736,13 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
     name = "GetBuiltinSlotTypes",
     http_method = "GET",
     http_path = "/builtins/slottypes/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_builtin_slot_types_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_slot_types_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1775,12 +1797,13 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
     name = "GetExport",
     http_method = "GET",
     http_path = "/exports/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_export_input(name = name, version = version, resourceType = resourceType, exportType = exportType)
   output <- .lexmodelbuildingservice$get_export_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1834,12 +1857,13 @@ lexmodelbuildingservice_get_import <- function(importId) {
     name = "GetImport",
     http_method = "GET",
     http_path = "/imports/{importId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_import_input(importId = importId)
   output <- .lexmodelbuildingservice$get_import_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2024,12 +2048,13 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
     name = "GetIntent",
     http_method = "GET",
     http_path = "/intents/{name}/versions/{version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_intent_input(name = name, version = version)
   output <- .lexmodelbuildingservice$get_intent_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2105,12 +2130,13 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
     name = "GetIntentVersions",
     http_method = "GET",
     http_path = "/intents/{name}/versions/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_intent_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_intent_versions_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2193,12 +2219,13 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
     name = "GetIntents",
     http_method = "GET",
     http_path = "/intents/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_intents_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_intents_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2266,12 +2293,13 @@ lexmodelbuildingservice_get_migration <- function(migrationId) {
     name = "GetMigration",
     http_method = "GET",
     http_path = "/migrations/{migrationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_migration_input(migrationId = migrationId)
   output <- .lexmodelbuildingservice$get_migration_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2345,12 +2373,13 @@ lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortB
     name = "GetMigrations",
     http_method = "GET",
     http_path = "/migrations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_migrations_input(sortByAttribute = sortByAttribute, sortByOrder = sortByOrder, v1BotNameContains = v1BotNameContains, migrationStatusEquals = migrationStatusEquals, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelbuildingservice$get_migrations_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2433,12 +2462,13 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
     name = "GetSlotType",
     http_method = "GET",
     http_path = "/slottypes/{name}/versions/{version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_slot_type_input(name = name, version = version)
   output <- .lexmodelbuildingservice$get_slot_type_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2517,12 +2547,13 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
     name = "GetSlotTypeVersions",
     http_method = "GET",
     http_path = "/slottypes/{name}/versions/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_slot_type_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_slot_type_versions_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2606,12 +2637,13 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
     name = "GetSlotTypes",
     http_method = "GET",
     http_path = "/slottypes/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_slot_types_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_slot_types_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2711,12 +2743,13 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
     name = "GetUtterancesView",
     http_method = "GET",
     http_path = "/bots/{botname}/utterances?view=aggregation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$get_utterances_view_input(botName = botName, botVersions = botVersions, statusType = statusType)
   output <- .lexmodelbuildingservice$get_utterances_view_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2765,12 +2798,13 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .lexmodelbuildingservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2949,8 +2983,8 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' @param voiceId The Amazon Polly voice ID that you want Amazon Lex to use for voice
 #' interactions with the user. The locale configured for the voice must
 #' match the locale of the bot. For more information, see [Voices in Amazon
-#' Polly](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in
-#' the *Amazon Polly Developer Guide*.
+#' Polly](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
+#' in the *Amazon Polly Developer Guide*.
 #' @param checksum Identifies a specific revision of the `$LATEST` version.
 #' 
 #' When you create a new bot, leave the `checksum` field blank. If you
@@ -3171,12 +3205,13 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
     name = "PutBot",
     http_method = "PUT",
     http_path = "/bots/{name}/versions/$LATEST",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, enableModelImprovements = enableModelImprovements, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3293,12 +3328,13 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
     name = "PutBotAlias",
     http_method = "PUT",
     http_path = "/bots/{botName}/aliases/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$put_bot_alias_input(name = name, description = description, botVersion = botVersion, botName = botName, checksum = checksum, conversationLogs = conversationLogs, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_alias_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3887,12 +3923,13 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
     name = "PutIntent",
     http_method = "PUT",
     http_path = "/intents/{name}/versions/$LATEST",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$put_intent_input(name = name, description = description, slots = slots, sampleUtterances = sampleUtterances, confirmationPrompt = confirmationPrompt, rejectionStatement = rejectionStatement, followUpPrompt = followUpPrompt, conclusionStatement = conclusionStatement, dialogCodeHook = dialogCodeHook, fulfillmentActivity = fulfillmentActivity, parentIntentSignature = parentIntentSignature, checksum = checksum, createVersion = createVersion, kendraConfiguration = kendraConfiguration, inputContexts = inputContexts, outputContexts = outputContexts)
   output <- .lexmodelbuildingservice$put_intent_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4074,12 +4111,13 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
     name = "PutSlotType",
     http_method = "PUT",
     http_path = "/slottypes/{name}/versions/$LATEST",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$put_slot_type_input(name = name, description = description, enumerationValues = enumerationValues, checksum = checksum, valueSelectionStrategy = valueSelectionStrategy, createVersion = createVersion, parentSlotTypeSignature = parentSlotTypeSignature, slotTypeConfigurations = slotTypeConfigurations)
   output <- .lexmodelbuildingservice$put_slot_type_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4166,12 +4204,13 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
     name = "StartImport",
     http_method = "POST",
     http_path = "/imports/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$start_import_input(payload = payload, resourceType = resourceType, mergeStrategy = mergeStrategy, tags = tags)
   output <- .lexmodelbuildingservice$start_import_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4254,12 +4293,13 @@ lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2B
     name = "StartMigration",
     http_method = "POST",
     http_path = "/migrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$start_migration_input(v1BotName = v1BotName, v1BotVersion = v1BotVersion, v2BotName = v2BotName, v2BotRole = v2BotRole, migrationStrategy = migrationStrategy)
   output <- .lexmodelbuildingservice$start_migration_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4306,12 +4346,13 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .lexmodelbuildingservice$tag_resource_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4353,12 +4394,13 @@ lexmodelbuildingservice_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelbuildingservice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .lexmodelbuildingservice$untag_resource_output()
   config <- get_config()
-  svc <- .lexmodelbuildingservice$service(config)
+  svc <- .lexmodelbuildingservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

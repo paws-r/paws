@@ -194,7 +194,7 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = "AppRunner"
 )
 
-.apprunner$service <- function(config = list()) {
+.apprunner$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.apprunner$metadata, handlers, config)
+  new_service(.apprunner$metadata, handlers, config, op)
 }

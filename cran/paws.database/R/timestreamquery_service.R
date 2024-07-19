@@ -144,7 +144,7 @@ timestreamquery <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "Timestream_20181101"
 )
 
-.timestreamquery$service <- function(config = list()) {
+.timestreamquery$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.timestreamquery$metadata, handlers, config)
+  new_service(.timestreamquery$metadata, handlers, config, op)
 }

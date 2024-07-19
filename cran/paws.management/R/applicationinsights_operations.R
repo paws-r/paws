@@ -23,12 +23,13 @@ applicationinsights_add_workload <- function(ResourceGroupName, ComponentName, W
     name = "AddWorkload",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$add_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadConfiguration = WorkloadConfiguration)
   output <- .applicationinsights$add_workload_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -72,12 +73,13 @@ applicationinsights_create_application <- function(ResourceGroupName = NULL, Ops
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags, AutoConfigEnabled = AutoConfigEnabled, AutoCreate = AutoCreate, GroupingType = GroupingType, AttachMissingPermission = AttachMissingPermission)
   output <- .applicationinsights$create_application_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -104,12 +106,13 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
     name = "CreateComponent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$create_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, ResourceList = ResourceList)
   output <- .applicationinsights$create_component_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -148,12 +151,13 @@ applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSet
     name = "CreateLogPattern",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$create_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName, Pattern = Pattern, Rank = Rank)
   output <- .applicationinsights$create_log_pattern_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -177,12 +181,13 @@ applicationinsights_delete_application <- function(ResourceGroupName) {
     name = "DeleteApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$delete_application_input(ResourceGroupName = ResourceGroupName)
   output <- .applicationinsights$delete_application_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -207,12 +212,13 @@ applicationinsights_delete_component <- function(ResourceGroupName, ComponentNam
     name = "DeleteComponent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$delete_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName)
   output <- .applicationinsights$delete_component_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -238,12 +244,13 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
     name = "DeleteLogPattern",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$delete_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName)
   output <- .applicationinsights$delete_log_pattern_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -268,12 +275,13 @@ applicationinsights_describe_application <- function(ResourceGroupName, AccountI
     name = "DescribeApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_application_input(ResourceGroupName = ResourceGroupName, AccountId = AccountId)
   output <- .applicationinsights$describe_application_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -300,12 +308,13 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
     name = "DescribeComponent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, AccountId = AccountId)
   output <- .applicationinsights$describe_component_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -331,12 +340,13 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
     name = "DescribeComponentConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, AccountId = AccountId)
   output <- .applicationinsights$describe_component_configuration_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -364,12 +374,13 @@ applicationinsights_describe_component_configuration_recommendation <- function(
     name = "DescribeComponentConfigurationRecommendation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_component_configuration_recommendation_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Tier = Tier, WorkloadName = WorkloadName, RecommendationType = RecommendationType)
   output <- .applicationinsights$describe_component_configuration_recommendation_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -396,12 +407,13 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
     name = "DescribeLogPattern",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName, AccountId = AccountId)
   output <- .applicationinsights$describe_log_pattern_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -426,12 +438,13 @@ applicationinsights_describe_observation <- function(ObservationId, AccountId = 
     name = "DescribeObservation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_observation_input(ObservationId = ObservationId, AccountId = AccountId)
   output <- .applicationinsights$describe_observation_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -457,12 +470,13 @@ applicationinsights_describe_problem <- function(ProblemId, AccountId = NULL) {
     name = "DescribeProblem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_problem_input(ProblemId = ProblemId, AccountId = AccountId)
   output <- .applicationinsights$describe_problem_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -487,12 +501,13 @@ applicationinsights_describe_problem_observations <- function(ProblemId, Account
     name = "DescribeProblemObservations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_problem_observations_input(ProblemId = ProblemId, AccountId = AccountId)
   output <- .applicationinsights$describe_problem_observations_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -519,12 +534,13 @@ applicationinsights_describe_workload <- function(ResourceGroupName, ComponentNa
     name = "DescribeWorkload",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$describe_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId, AccountId = AccountId)
   output <- .applicationinsights$describe_workload_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -552,12 +568,13 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
     name = "ListApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .applicationinsights$list_applications_input(MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_applications_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -587,12 +604,13 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
     name = "ListComponents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .applicationinsights$list_components_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_components_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -640,12 +658,13 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
     name = "ListConfigurationHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_configuration_history_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -674,12 +693,13 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
     name = "ListLogPatternSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_log_pattern_sets_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -709,12 +729,13 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
     name = "ListLogPatterns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_log_patterns_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -751,12 +772,13 @@ applicationinsights_list_problems <- function(AccountId = NULL, ResourceGroupNam
     name = "ListProblems",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .applicationinsights$list_problems_input(AccountId = AccountId, ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName, Visibility = Visibility)
   output <- .applicationinsights$list_problems_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -782,12 +804,13 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .applicationinsights$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -817,12 +840,13 @@ applicationinsights_list_workloads <- function(ResourceGroupName, ComponentName,
     name = "ListWorkloads",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .applicationinsights$list_workloads_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_workloads_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -848,12 +872,13 @@ applicationinsights_remove_workload <- function(ResourceGroupName, ComponentName
     name = "RemoveWorkload",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$remove_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId)
   output <- .applicationinsights$remove_workload_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -882,12 +907,13 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .applicationinsights$tag_resource_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -919,12 +945,13 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .applicationinsights$untag_resource_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -961,12 +988,13 @@ applicationinsights_update_application <- function(ResourceGroupName, OpsCenterE
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic, AutoConfigEnabled = AutoConfigEnabled, AttachMissingPermission = AttachMissingPermission)
   output <- .applicationinsights$update_application_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -994,12 +1022,13 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
     name = "UpdateComponent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$update_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, NewComponentName = NewComponentName, ResourceList = ResourceList)
   output <- .applicationinsights$update_component_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1037,12 +1066,13 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
     name = "UpdateComponentConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$update_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Monitor = Monitor, Tier = Tier, ComponentConfiguration = ComponentConfiguration, AutoConfigEnabled = AutoConfigEnabled)
   output <- .applicationinsights$update_component_configuration_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1081,12 +1111,13 @@ applicationinsights_update_log_pattern <- function(ResourceGroupName, PatternSet
     name = "UpdateLogPattern",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$update_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName, Pattern = Pattern, Rank = Rank)
   output <- .applicationinsights$update_log_pattern_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1117,12 +1148,13 @@ applicationinsights_update_problem <- function(ProblemId, UpdateStatus = NULL, V
     name = "UpdateProblem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$update_problem_input(ProblemId = ProblemId, UpdateStatus = UpdateStatus, Visibility = Visibility)
   output <- .applicationinsights$update_problem_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1150,12 +1182,13 @@ applicationinsights_update_workload <- function(ResourceGroupName, ComponentName
     name = "UpdateWorkload",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationinsights$update_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId, WorkloadConfiguration = WorkloadConfiguration)
   output <- .applicationinsights$update_workload_output()
   config <- get_config()
-  svc <- .applicationinsights$service(config)
+  svc <- .applicationinsights$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

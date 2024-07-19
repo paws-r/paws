@@ -159,7 +159,7 @@ pcaconnectorad <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.pcaconnectorad$service <- function(config = list()) {
+.pcaconnectorad$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.pcaconnectorad$metadata, handlers, config)
+  new_service(.pcaconnectorad$metadata, handlers, config, op)
 }

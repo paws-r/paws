@@ -56,12 +56,13 @@ wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
     name = "AssociateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$associate_web_acl_input(WebACLId = WebACLId, ResourceArn = ResourceArn)
   output <- .wafregional$associate_web_acl_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -165,12 +166,13 @@ wafregional_create_byte_match_set <- function(Name, ChangeToken) {
     name = "CreateByteMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_byte_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_byte_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -262,12 +264,13 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
     name = "CreateGeoMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_geo_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_geo_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -368,12 +371,13 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
     name = "CreateIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_ip_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_ip_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -548,12 +552,13 @@ wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLi
     name = "CreateRateBasedRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_rate_based_rule_input(Name = Name, MetricName = MetricName, RateKey = RateKey, RateLimit = RateLimit, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rate_based_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -657,12 +662,13 @@ wafregional_create_regex_match_set <- function(Name, ChangeToken) {
     name = "CreateRegexMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_regex_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_regex_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -755,12 +761,13 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
     name = "CreateRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_regex_pattern_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -893,12 +900,13 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
     name = "CreateRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_rule_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -990,12 +998,13 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_rule_group_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rule_group_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1110,12 +1119,13 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
     name = "CreateSizeConstraintSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_size_constraint_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_size_constraint_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1225,12 +1235,13 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
     name = "CreateSqlInjectionMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_sql_injection_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_sql_injection_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1391,12 +1402,13 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
     name = "CreateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_web_acl_input(Name = Name, MetricName = MetricName, DefaultAction = DefaultAction, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_web_acl_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1472,12 +1484,13 @@ wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, I
     name = "CreateWebACLMigrationStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_web_acl_migration_stack_input(WebACLId = WebACLId, S3BucketName = S3BucketName, IgnoreUnsupportedType = IgnoreUnsupportedType)
   output <- .wafregional$create_web_acl_migration_stack_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1581,12 +1594,13 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
     name = "CreateXssMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$create_xss_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_xss_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1675,12 +1689,13 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
     name = "DeleteByteMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_byte_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1757,12 +1772,13 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
     name = "DeleteGeoMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_geo_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1846,12 +1862,13 @@ wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
     name = "DeleteIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_ip_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1900,12 +1917,13 @@ wafregional_delete_logging_configuration <- function(ResourceArn) {
     name = "DeleteLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .wafregional$delete_logging_configuration_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1958,12 +1976,13 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
     name = "DeletePermissionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafregional$delete_permission_policy_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2043,12 +2062,13 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
     name = "DeleteRateBasedRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rate_based_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2127,12 +2147,13 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
     name = "DeleteRegexMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_regex_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2193,12 +2214,13 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
     name = "DeleteRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2282,12 +2304,13 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
     name = "DeleteRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2364,12 +2387,13 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
     name = "DeleteRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_rule_group_input(RuleGroupId = RuleGroupId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rule_group_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2460,12 +2484,13 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
     name = "DeleteSizeConstraintSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_size_constraint_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2557,12 +2582,13 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
     name = "DeleteSqlInjectionMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_sql_injection_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2642,12 +2668,13 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
     name = "DeleteWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_web_acl_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2735,12 +2762,13 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
     name = "DeleteXssMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$delete_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_xss_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2799,12 +2827,13 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
     name = "DisassociateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$disassociate_web_acl_input(ResourceArn = ResourceArn)
   output <- .wafregional$disassociate_web_acl_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2883,12 +2912,13 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
     name = "GetByteMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_byte_match_set_input(ByteMatchSetId = ByteMatchSetId)
   output <- .wafregional$get_byte_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2964,12 +2994,13 @@ wafregional_get_change_token <- function() {
     name = "GetChangeToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_change_token_input()
   output <- .wafregional$get_change_token_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3045,12 +3076,13 @@ wafregional_get_change_token_status <- function(ChangeToken) {
     name = "GetChangeTokenStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_change_token_status_input(ChangeToken = ChangeToken)
   output <- .wafregional$get_change_token_status_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3115,12 +3147,13 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
     name = "GetGeoMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_geo_match_set_input(GeoMatchSetId = GeoMatchSetId)
   output <- .wafregional$get_geo_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3193,12 +3226,13 @@ wafregional_get_ip_set <- function(IPSetId) {
     name = "GetIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_ip_set_input(IPSetId = IPSetId)
   output <- .wafregional$get_ip_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3263,12 +3297,13 @@ wafregional_get_logging_configuration <- function(ResourceArn) {
     name = "GetLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_logging_configuration_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3322,12 +3357,13 @@ wafregional_get_permission_policy <- function(ResourceArn) {
     name = "GetPermissionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_permission_policy_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3398,12 +3434,13 @@ wafregional_get_rate_based_rule <- function(RuleId) {
     name = "GetRateBasedRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_rate_based_rule_input(RuleId = RuleId)
   output <- .wafregional$get_rate_based_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3469,12 +3506,13 @@ wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NU
     name = "GetRateBasedRuleManagedKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_rate_based_rule_managed_keys_input(RuleId = RuleId, NextMarker = NextMarker)
   output <- .wafregional$get_rate_based_rule_managed_keys_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3543,12 +3581,13 @@ wafregional_get_regex_match_set <- function(RegexMatchSetId) {
     name = "GetRegexMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_regex_match_set_input(RegexMatchSetId = RegexMatchSetId)
   output <- .wafregional$get_regex_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3610,12 +3649,13 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
     name = "GetRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId)
   output <- .wafregional$get_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3691,12 +3731,13 @@ wafregional_get_rule <- function(RuleId) {
     name = "GetRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_rule_input(RuleId = RuleId)
   output <- .wafregional$get_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3759,12 +3800,13 @@ wafregional_get_rule_group <- function(RuleGroupId) {
     name = "GetRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_rule_group_input(RuleGroupId = RuleGroupId)
   output <- .wafregional$get_rule_group_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3911,12 +3953,13 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
     name = "GetSampledRequests",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_sampled_requests_input(WebAclId = WebAclId, RuleId = RuleId, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .wafregional$get_sampled_requests_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3996,12 +4039,13 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
     name = "GetSizeConstraintSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId)
   output <- .wafregional$get_size_constraint_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4080,12 +4124,13 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
     name = "GetSqlInjectionMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId)
   output <- .wafregional$get_sql_injection_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4175,12 +4220,13 @@ wafregional_get_web_acl <- function(WebACLId) {
     name = "GetWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_web_acl_input(WebACLId = WebACLId)
   output <- .wafregional$get_web_acl_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4246,12 +4292,13 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
     name = "GetWebACLForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_web_acl_for_resource_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_web_acl_for_resource_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4328,12 +4375,13 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
     name = "GetXssMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$get_xss_match_set_input(XssMatchSetId = XssMatchSetId)
   output <- .wafregional$get_xss_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4419,12 +4467,13 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
     name = "ListActivatedRulesInRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_activated_rules_in_rule_group_input(RuleGroupId = RuleGroupId, NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_activated_rules_in_rule_group_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4494,12 +4543,13 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListByteMatchSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_byte_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_byte_match_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4569,12 +4619,13 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListGeoMatchSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_geo_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_geo_match_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4650,12 +4701,13 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListIPSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_ip_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_ip_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4735,12 +4787,13 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
     name = "ListLoggingConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_logging_configurations_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_logging_configurations_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4809,12 +4862,13 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListRateBasedRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_rate_based_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rate_based_rules_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4884,12 +4938,13 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListRegexMatchSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_regex_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_regex_match_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4960,12 +5015,13 @@ wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL)
     name = "ListRegexPatternSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_regex_pattern_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_regex_pattern_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5024,12 +5080,13 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
     name = "ListResourcesForWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_resources_for_web_acl_input(WebACLId = WebACLId, ResourceType = ResourceType)
   output <- .wafregional$list_resources_for_web_acl_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5098,12 +5155,13 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListRuleGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rule_groups_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5180,12 +5238,13 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rules_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5265,12 +5324,13 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
     name = "ListSizeConstraintSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_size_constraint_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_size_constraint_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5349,12 +5409,13 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
     name = "ListSqlInjectionMatchSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_sql_injection_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_sql_injection_match_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5425,12 +5486,13 @@ wafregional_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = N
     name = "ListSubscribedRuleGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_subscribed_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_subscribed_rule_groups_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5506,12 +5568,13 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .wafregional$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5589,12 +5652,13 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListWebACLs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_web_ac_ls_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_web_ac_ls_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5672,12 +5736,13 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     name = "ListXssMatchSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$list_xss_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_xss_match_sets_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5781,12 +5846,13 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
     name = "PutLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .wafregional$put_logging_configuration_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5869,12 +5935,13 @@ wafregional_put_permission_policy <- function(ResourceArn, Policy) {
     name = "PutPermissionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .wafregional$put_permission_policy_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5938,12 +6005,13 @@ wafregional_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .wafregional$tag_resource_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5993,12 +6061,13 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .wafregional$untag_resource_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6149,12 +6218,13 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
     name = "UpdateByteMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_byte_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6264,12 +6334,13 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
     name = "UpdateGeoMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_geo_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6419,12 +6490,13 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
     name = "UpdateIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_ip_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6542,12 +6614,13 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
     name = "UpdateRateBasedRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates, RateLimit = RateLimit)
   output <- .wafregional$update_rate_based_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6663,12 +6736,13 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
     name = "UpdateRegexMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_regex_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6773,12 +6847,13 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
     name = "UpdateRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6913,12 +6988,13 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
     name = "UpdateRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_rule_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7034,12 +7110,13 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_rule_group_input(RuleGroupId = RuleGroupId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_rule_group_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7199,12 +7276,13 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
     name = "UpdateSizeConstraintSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_size_constraint_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7353,12 +7431,13 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
     name = "UpdateSqlInjectionMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_sql_injection_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7557,12 +7636,13 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
     name = "UpdateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken, Updates = Updates, DefaultAction = DefaultAction)
   output <- .wafregional$update_web_acl_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7702,12 +7782,13 @@ wafregional_update_xss_match_set <- function(XssMatchSetId, ChangeToken, Updates
     name = "UpdateXssMatchSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafregional$update_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_xss_match_set_output()
   config <- get_config()
-  svc <- .wafregional$service(config)
+  svc <- .wafregional$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

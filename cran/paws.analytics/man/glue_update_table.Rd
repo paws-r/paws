@@ -10,7 +10,9 @@ glue_update_table(
   TableInput,
   SkipArchive = NULL,
   TransactionId = NULL,
-  VersionId = NULL
+  VersionId = NULL,
+  ViewUpdateAction = NULL,
+  Force = NULL
 )
 }
 \arguments{
@@ -31,6 +33,11 @@ not create the archived version.}
 \item{TransactionId}{The transaction ID at which to update the table contents.}
 
 \item{VersionId}{The version ID at which to update the table contents.}
+
+\item{ViewUpdateAction}{The operation to be performed when updating the view.}
+
+\item{Force}{A flag that can be set to true to ignore matching storage descriptor and
+subobject matching requirements.}
 }
 \description{
 Updates a metadata table in the Data Catalog.

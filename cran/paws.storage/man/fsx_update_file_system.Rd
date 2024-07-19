@@ -57,7 +57,7 @@ in the \emph{FSx for OpenZFS User Guide}.
 For Windows file systems, the storage capacity target value must be at
 least 10 percent greater than the current storage capacity value. To
 increase storage capacity, the file system must have at least 16 MBps of
-throughput capacity. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing storage capacity}
+throughput capacity. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#managing-storage-capacity}{Managing storage capacity}
 in the \emph{Amazon FSxfor Windows File Server User Guide}.
 
 For ONTAP file systems, the storage capacity target value must be at

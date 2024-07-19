@@ -69,12 +69,13 @@ route53recoverycluster_get_routing_control_state <- function(RoutingControlArn) 
     name = "GetRoutingControlState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycluster$get_routing_control_state_input(RoutingControlArn = RoutingControlArn)
   output <- .route53recoverycluster$get_routing_control_state_output()
   config <- get_config()
-  svc <- .route53recoverycluster$service(config)
+  svc <- .route53recoverycluster$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -167,12 +168,13 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
     name = "ListRoutingControls",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingControls")
   )
   input <- .route53recoverycluster$list_routing_controls_input(ControlPanelArn = ControlPanelArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53recoverycluster$list_routing_controls_output()
   config <- get_config()
-  svc <- .route53recoverycluster$service(config)
+  svc <- .route53recoverycluster$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -257,12 +259,13 @@ route53recoverycluster_update_routing_control_state <- function(RoutingControlAr
     name = "UpdateRoutingControlState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycluster$update_routing_control_state_input(RoutingControlArn = RoutingControlArn, RoutingControlState = RoutingControlState, SafetyRulesToOverride = SafetyRulesToOverride)
   output <- .route53recoverycluster$update_routing_control_state_output()
   config <- get_config()
-  svc <- .route53recoverycluster$service(config)
+  svc <- .route53recoverycluster$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -349,12 +352,13 @@ route53recoverycluster_update_routing_control_states <- function(UpdateRoutingCo
     name = "UpdateRoutingControlStates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycluster$update_routing_control_states_input(UpdateRoutingControlStateEntries = UpdateRoutingControlStateEntries, SafetyRulesToOverride = SafetyRulesToOverride)
   output <- .route53recoverycluster$update_routing_control_states_output()
   config <- get_config()
-  svc <- .route53recoverycluster$service(config)
+  svc <- .route53recoverycluster$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

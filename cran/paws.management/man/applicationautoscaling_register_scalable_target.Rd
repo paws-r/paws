@@ -26,7 +26,7 @@ target. This string consists of the resource type and unique identifier.
 \itemize{
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
-\code{service/default/sample-webapp}.
+\code{service/my-cluster/my-service}.
 \item Spot Fleet - The resource type is \code{spot-fleet-request} and the
 unique identifier is the Spot Fleet request ID. Example:
 \verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
@@ -72,25 +72,27 @@ specified using the cluster ARN. Example:
 group name. Example: \code{replication-group/mycluster}.
 \item Neptune cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:mycluster}.
-\item SageMaker Serverless endpoint - The resource type is \code{variant} and
+\item SageMaker serverless endpoint - The resource type is \code{variant} and
 the unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item SageMaker inference component - The resource type is
 \code{inference-component} and the unique identifier is the resource ID.
 Example: \code{inference-component/my-inference-component}.
+\item Pool of WorkSpaces - The resource type is \code{workspacespool} and the
+unique identifier is the pool ID. Example:
+\code{workspacespool/wspool-123456}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
 consists of the service namespace, resource type, and scaling property.
 \itemize{
-\item \code{ecs:service:DesiredCount} - The desired task count of an ECS
-service.
+\item \code{ecs:service:DesiredCount} - The task count of an ECS service.
 \item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
 of an EMR Instance Group.
 \item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
 Spot Fleet.
-\item \code{appstream:fleet:DesiredCapacity} - The desired capacity of an
-AppStream 2.0 fleet.
+\item \code{appstream:fleet:DesiredCapacity} - The capacity of an AppStream 2.0
+fleet.
 \item \code{dynamodb:table:ReadCapacityUnits} - The provisioned read capacity
 for a DynamoDB table.
 \item \code{dynamodb:table:WriteCapacityUnits} - The provisioned write capacity
@@ -127,9 +129,11 @@ per node group for an Amazon ElastiCache replication group.
 \item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
 an Amazon Neptune DB cluster.
 \item \code{sagemaker:variant:DesiredProvisionedConcurrency} - The provisioned
-concurrency for a SageMaker Serverless endpoint.
+concurrency for a SageMaker serverless endpoint.
 \item \code{sagemaker:inference-component:DesiredCopyCount} - The number of
 copies across an endpoint for a SageMaker inference component.
+\item \code{workspaces:workspacespool:DesiredUserSessions} - The number of user
+sessions for the WorkSpaces in the pool.
 }}
 
 \item{MinCapacity}{The minimum value that you plan to scale in to. When a scaling policy is
@@ -145,7 +149,8 @@ For the following resources, the minimum value allowed is 0.
 \item EMR clusters
 \item Lambda provisioned concurrency
 \item SageMaker endpoint variants
-\item SageMaker Serverless endpoint provisioned concurrency
+\item SageMaker inference components
+\item SageMaker serverless endpoint provisioned concurrency
 \item Spot Fleets
 \item custom resources
 }
@@ -181,7 +186,7 @@ scalable target on your behalf.
 
 If the service supports service-linked roles, Application Auto Scaling
 uses a service-linked role, which it creates if it does not yet exist.
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles}{Application Auto Scaling IAM roles}.}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html}{How Application Auto Scaling works with IAM}.}
 
 \item{SuspendedState}{An embedded object that contains attributes and attribute values that
 are used to suspend and resume automatic scaling. Setting the value of
@@ -201,7 +206,7 @@ suspended.
 all scaling activities that involve scheduled actions are suspended.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspending and resuming scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspend and resume scaling}
 in the \emph{Application Auto Scaling User Guide}.}
 
 \item{Tags}{Assigns one or more tags to the scalable target. Use this parameter to

@@ -27,12 +27,13 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$create_connection_input(ProviderType = ProviderType, ConnectionName = ConnectionName, Tags = Tags, HostArn = HostArn)
   output <- .codestarconnections$create_connection_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -67,12 +68,13 @@ codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint
     name = "CreateHost",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$create_host_input(Name = Name, ProviderType = ProviderType, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration, Tags = Tags)
   output <- .codestarconnections$create_host_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -103,12 +105,13 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
     name = "CreateRepositoryLink",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$create_repository_link_input(ConnectionArn = ConnectionArn, OwnerId = OwnerId, RepositoryName = RepositoryName, EncryptionKeyArn = EncryptionKeyArn, Tags = Tags)
   output <- .codestarconnections$create_repository_link_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -150,12 +153,13 @@ codestarconnections_create_sync_configuration <- function(Branch, ConfigFile, Re
     name = "CreateSyncConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$create_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$create_sync_configuration_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -181,12 +185,13 @@ codestarconnections_delete_connection <- function(ConnectionArn) {
     name = "DeleteConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$delete_connection_input(ConnectionArn = ConnectionArn)
   output <- .codestarconnections$delete_connection_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -210,12 +215,13 @@ codestarconnections_delete_host <- function(HostArn) {
     name = "DeleteHost",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$delete_host_input(HostArn = HostArn)
   output <- .codestarconnections$delete_host_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -240,12 +246,13 @@ codestarconnections_delete_repository_link <- function(RepositoryLinkId) {
     name = "DeleteRepositoryLink",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$delete_repository_link_input(RepositoryLinkId = RepositoryLinkId)
   output <- .codestarconnections$delete_repository_link_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +278,13 @@ codestarconnections_delete_sync_configuration <- function(SyncType, ResourceName
     name = "DeleteSyncConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$delete_sync_configuration_input(SyncType = SyncType, ResourceName = ResourceName)
   output <- .codestarconnections$delete_sync_configuration_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -301,12 +309,13 @@ codestarconnections_get_connection <- function(ConnectionArn) {
     name = "GetConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$get_connection_input(ConnectionArn = ConnectionArn)
   output <- .codestarconnections$get_connection_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -331,12 +340,13 @@ codestarconnections_get_host <- function(HostArn) {
     name = "GetHost",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$get_host_input(HostArn = HostArn)
   output <- .codestarconnections$get_host_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -360,12 +370,13 @@ codestarconnections_get_repository_link <- function(RepositoryLinkId) {
     name = "GetRepositoryLink",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$get_repository_link_input(RepositoryLinkId = RepositoryLinkId)
   output <- .codestarconnections$get_repository_link_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -392,12 +403,13 @@ codestarconnections_get_repository_sync_status <- function(Branch, RepositoryLin
     name = "GetRepositorySyncStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$get_repository_sync_status_input(Branch = Branch, RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
   output <- .codestarconnections$get_repository_sync_status_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -424,12 +436,13 @@ codestarconnections_get_resource_sync_status <- function(ResourceName, SyncType)
     name = "GetResourceSyncStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$get_resource_sync_status_input(ResourceName = ResourceName, SyncType = SyncType)
   output <- .codestarconnections$get_resource_sync_status_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -455,12 +468,13 @@ codestarconnections_get_sync_blocker_summary <- function(SyncType, ResourceName)
     name = "GetSyncBlockerSummary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$get_sync_blocker_summary_input(SyncType = SyncType, ResourceName = ResourceName)
   output <- .codestarconnections$get_sync_blocker_summary_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -488,12 +502,13 @@ codestarconnections_get_sync_configuration <- function(SyncType, ResourceName) {
     name = "GetSyncConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$get_sync_configuration_input(SyncType = SyncType, ResourceName = ResourceName)
   output <- .codestarconnections$get_sync_configuration_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -526,12 +541,13 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
     name = "ListConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codestarconnections$list_connections_input(ProviderTypeFilter = ProviderTypeFilter, HostArnFilter = HostArnFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_connections_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -560,12 +576,13 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
     name = "ListHosts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codestarconnections$list_hosts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_hosts_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -592,12 +609,13 @@ codestarconnections_list_repository_links <- function(MaxResults = NULL, NextTok
     name = "ListRepositoryLinks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codestarconnections$list_repository_links_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_repository_links_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -625,12 +643,13 @@ codestarconnections_list_repository_sync_definitions <- function(RepositoryLinkI
     name = "ListRepositorySyncDefinitions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$list_repository_sync_definitions_input(RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
   output <- .codestarconnections$list_repository_sync_definitions_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -660,12 +679,13 @@ codestarconnections_list_sync_configurations <- function(MaxResults = NULL, Next
     name = "ListSyncConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codestarconnections$list_sync_configurations_input(MaxResults = MaxResults, NextToken = NextToken, RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
   output <- .codestarconnections$list_sync_configurations_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -691,12 +711,13 @@ codestarconnections_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .codestarconnections$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -722,12 +743,13 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .codestarconnections$tag_resource_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -752,12 +774,13 @@ codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .codestarconnections$untag_resource_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -785,12 +808,13 @@ codestarconnections_update_host <- function(HostArn, ProviderEndpoint = NULL, Vp
     name = "UpdateHost",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$update_host_input(HostArn = HostArn, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration)
   output <- .codestarconnections$update_host_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -821,12 +845,13 @@ codestarconnections_update_repository_link <- function(ConnectionArn = NULL, Enc
     name = "UpdateRepositoryLink",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$update_repository_link_input(ConnectionArn = ConnectionArn, EncryptionKeyArn = EncryptionKeyArn, RepositoryLinkId = RepositoryLinkId)
   output <- .codestarconnections$update_repository_link_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -854,12 +879,13 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
     name = "UpdateSyncBlocker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$update_sync_blocker_input(Id = Id, SyncType = SyncType, ResourceName = ResourceName, ResolvedReason = ResolvedReason)
   output <- .codestarconnections$update_sync_blocker_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -893,12 +919,13 @@ codestarconnections_update_sync_configuration <- function(Branch = NULL, ConfigF
     name = "UpdateSyncConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarconnections$update_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$update_sync_configuration_output()
   config <- get_config()
-  svc <- .codestarconnections$service(config)
+  svc <- .codestarconnections$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

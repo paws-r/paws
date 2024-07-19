@@ -32,14 +32,12 @@ you have the required permissions, the error response is
 
 \item{IpamScopeId}{[required] The ID of the scope in which you would like to create the IPAM pool.}
 
-\item{Locale}{In IPAM, the locale is the Amazon Web Services Region where you want to
-make an IPAM pool available for allocations. Only resources in the same
-Region as the locale of the pool can get IP address allocations from the
-pool. You can only allocate a CIDR for a VPC, for example, from an IPAM
-pool that shares a locale with the VPC’s Region. Note that once you
-choose a Locale for a pool, you cannot modify it. If you do not choose a
-locale, resources in Regions others than the IPAM's home region cannot
-use CIDRs from this pool.
+\item{Locale}{In IPAM, the locale is the Amazon Web Services Region or, for IPAM IPv4
+pools in the public scope, the network border group for an Amazon Web
+Services Local Zone where you want to make an IPAM pool available for
+allocations (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail}{supported Local Zones}).
+If you do not choose a locale, resources in Regions others than the
+IPAM's home region cannot use CIDRs from this pool.
 
 Possible values: Any Amazon Web Services Region, such as us-east-1.}
 
@@ -95,7 +93,7 @@ the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{T
 for the filter value.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{AwsService}{Limits which service in Amazon Web Services that the pool can be used
 in. "ec2", for example, allows users to use space for Elastic IP

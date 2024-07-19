@@ -90,12 +90,13 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/applications",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$create_application_input(Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, LicenseBody = LicenseBody, LicenseUrl = LicenseUrl, Name = Name, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, SpdxLicenseId = SpdxLicenseId, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -128,12 +129,13 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
     name = "CreateApplicationVersion",
     http_method = "PUT",
     http_path = "/applications/{applicationId}/versions/{semanticVersion}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$create_application_version_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_version_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -227,12 +229,13 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
     name = "CreateCloudFormationChangeSet",
     http_method = "POST",
     http_path = "/applications/{applicationId}/changesets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$create_cloud_formation_change_set_input(ApplicationId = ApplicationId, Capabilities = Capabilities, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, NotificationArns = NotificationArns, ParameterOverrides = ParameterOverrides, ResourceTypes = ResourceTypes, RollbackConfiguration = RollbackConfiguration, SemanticVersion = SemanticVersion, StackName = StackName, Tags = Tags, TemplateId = TemplateId)
   output <- .serverlessapplicationrepository$create_cloud_formation_change_set_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -259,12 +262,13 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
     name = "CreateCloudFormationTemplate",
     http_method = "POST",
     http_path = "/applications/{applicationId}/templates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$create_cloud_formation_template_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$create_cloud_formation_template_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -288,12 +292,13 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
     name = "DeleteApplication",
     http_method = "DELETE",
     http_path = "/applications/{applicationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$delete_application_input(ApplicationId = ApplicationId)
   output <- .serverlessapplicationrepository$delete_application_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -318,12 +323,13 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
     name = "GetApplication",
     http_method = "GET",
     http_path = "/applications/{applicationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$get_application_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$get_application_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -347,12 +353,13 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
     name = "GetApplicationPolicy",
     http_method = "GET",
     http_path = "/applications/{applicationId}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$get_application_policy_input(ApplicationId = ApplicationId)
   output <- .serverlessapplicationrepository$get_application_policy_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -380,12 +387,13 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
     name = "GetCloudFormationTemplate",
     http_method = "GET",
     http_path = "/applications/{applicationId}/templates/{templateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$get_cloud_formation_template_input(ApplicationId = ApplicationId, TemplateId = TemplateId)
   output <- .serverlessapplicationrepository$get_cloud_formation_template_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -412,12 +420,13 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
     name = "ListApplicationDependencies",
     http_method = "GET",
     http_path = "/applications/{applicationId}/dependencies",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_dependencies_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$list_application_dependencies_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -443,12 +452,13 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
     name = "ListApplicationVersions",
     http_method = "GET",
     http_path = "/applications/{applicationId}/versions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_versions_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_application_versions_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -473,12 +483,13 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_applications_input(MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_applications_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -503,12 +514,13 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
     name = "PutApplicationPolicy",
     http_method = "PUT",
     http_path = "/applications/{applicationId}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$put_application_policy_input(ApplicationId = ApplicationId, Statements = Statements)
   output <- .serverlessapplicationrepository$put_application_policy_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -533,12 +545,13 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
     name = "UnshareApplication",
     http_method = "POST",
     http_path = "/applications/{applicationId}/unshare",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$unshare_application_input(ApplicationId = ApplicationId, OrganizationId = OrganizationId)
   output <- .serverlessapplicationrepository$unshare_application_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -585,12 +598,13 @@ serverlessapplicationrepository_update_application <- function(ApplicationId, Au
     name = "UpdateApplication",
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .serverlessapplicationrepository$update_application_input(ApplicationId = ApplicationId, Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl)
   output <- .serverlessapplicationrepository$update_application_output()
   config <- get_config()
-  svc <- .serverlessapplicationrepository$service(config)
+  svc <- .serverlessapplicationrepository$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

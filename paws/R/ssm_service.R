@@ -296,7 +296,7 @@ ssm <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "AmazonSSM"
 )
 
-.ssm$service <- function(config = list()) {
+.ssm$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.ssm$metadata, handlers, config)
+  new_service(.ssm$metadata, handlers, config, op)
 }

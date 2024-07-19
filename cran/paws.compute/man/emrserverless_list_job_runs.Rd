@@ -10,7 +10,8 @@ emrserverless_list_job_runs(
   maxResults = NULL,
   createdAtAfter = NULL,
   createdAtBefore = NULL,
-  states = NULL
+  states = NULL,
+  mode = NULL
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ emrserverless_list_job_runs(
 
 \item{states}{An optional filter for job run states. Note that if this filter contains
 multiple states, the resulting list will be grouped by the state.}
+
+\item{mode}{The mode of the job runs to list.}
 }
 \description{
 Lists job runs based on a set of parameters.

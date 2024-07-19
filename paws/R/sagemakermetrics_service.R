@@ -134,7 +134,7 @@ sagemakermetrics <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.sagemakermetrics$service <- function(config = list()) {
+.sagemakermetrics$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.sagemakermetrics$metadata, handlers, config)
+  new_service(.sagemakermetrics$metadata, handlers, config, op)
 }

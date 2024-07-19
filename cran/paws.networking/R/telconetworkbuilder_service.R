@@ -166,7 +166,7 @@ telconetworkbuilder <- function(config = list(), credentials = list(), endpoint 
   target_prefix = ""
 )
 
-.telconetworkbuilder$service <- function(config = list()) {
+.telconetworkbuilder$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.telconetworkbuilder$metadata, handlers, config)
+  new_service(.telconetworkbuilder$metadata, handlers, config, op)
 }

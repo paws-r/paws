@@ -12,10 +12,13 @@ NULL
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
 #' default is SIMPLE.
-#' @param AutoMinorVersionUpgrade &#91;required&#93; Enables automatic upgrades to new minor versions for brokers, as new
+#' @param AutoMinorVersionUpgrade Enables automatic upgrades to new patch versions for brokers as new
 #' versions are released and supported by Amazon MQ. Automatic upgrades
-#' occur during the scheduled maintenance window of the broker or after a
-#' manual broker reboot. Set to true by default, if no value is specified.
+#' occur during the scheduled maintenance window or after a manual broker
+#' reboot. Set to true by default, if no value is specified.
+#' 
+#' Must be set to true for ActiveMQ brokers version 5.18 and above and for
+#' RabbitMQ brokers version 3.13 and above.
 #' @param BrokerName &#91;required&#93; Required. The broker's name. This value must be unique in your Amazon
 #' Web Services account, 1-50 characters long, must contain only letters,
 #' numbers, dashes, and underscores, and must not contain white spaces,
@@ -37,9 +40,13 @@ NULL
 #' @param EncryptionOptions Encryption options for the broker.
 #' @param EngineType &#91;required&#93; Required. The type of broker engine. Currently, Amazon MQ supports
 #' ACTIVEMQ and RABBITMQ.
-#' @param EngineVersion &#91;required&#93; Required. The broker engine's version. For a list of supported engine
-#' versions, see [Supported
-#' engines](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/).
+#' @param EngineVersion The broker engine version. Defaults to the latest available version for
+#' the specified broker engine type. For more information, see the
+#' [ActiveMQ version
+#' management](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html)
+#' and the [RabbitMQ version
+#' management](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-management.html)
+#' sections in the Amazon MQ Developer Guide.
 #' @param HostInstanceType &#91;required&#93; Required. The broker's instance type.
 #' @param LdapServerMetadata Optional. The metadata of the LDAP server used to authenticate and
 #' authorize connections to the broker. Does not apply to RabbitMQ brokers.
@@ -81,17 +88,18 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion = NULL, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
     http_path = "/v1/brokers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users, DataReplicationMode = DataReplicationMode, DataReplicationPrimaryBrokerArn = DataReplicationPrimaryBrokerArn)
   output <- .mq$create_broker_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -109,9 +117,13 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' The default is SIMPLE.
 #' @param EngineType &#91;required&#93; Required. The type of broker engine. Currently, Amazon MQ supports
 #' ACTIVEMQ and RABBITMQ.
-#' @param EngineVersion &#91;required&#93; Required. The broker engine's version. For a list of supported engine
-#' versions, see [Supported
-#' engines](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/).
+#' @param EngineVersion The broker engine version. Defaults to the latest available version for
+#' the specified broker engine type. For more information, see the
+#' [ActiveMQ version
+#' management](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html)
+#' and the [RabbitMQ version
+#' management](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-management.html)
+#' sections in the Amazon MQ Developer Guide.
 #' @param Name &#91;required&#93; Required. The name of the configuration. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 1-150 characters long.
@@ -120,17 +132,18 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @keywords internal
 #'
 #' @rdname mq_create_configuration
-mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, EngineVersion, Name, Tags = NULL) {
+mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, EngineVersion = NULL, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfiguration",
     http_method = "POST",
     http_path = "/v1/configurations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$create_configuration_input(AuthenticationStrategy = AuthenticationStrategy, EngineType = EngineType, EngineVersion = EngineVersion, Name = Name, Tags = Tags)
   output <- .mq$create_configuration_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -155,12 +168,13 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
     name = "CreateTags",
     http_method = "POST",
     http_path = "/v1/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$create_tags_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .mq$create_tags_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -196,12 +210,13 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
     name = "CreateUser",
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$create_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$create_user_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -225,12 +240,13 @@ mq_delete_broker <- function(BrokerId) {
     name = "DeleteBroker",
     http_method = "DELETE",
     http_path = "/v1/brokers/{broker-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$delete_broker_input(BrokerId = BrokerId)
   output <- .mq$delete_broker_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -255,12 +271,13 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
     name = "DeleteTags",
     http_method = "DELETE",
     http_path = "/v1/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$delete_tags_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .mq$delete_tags_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -287,12 +304,13 @@ mq_delete_user <- function(BrokerId, Username) {
     name = "DeleteUser",
     http_method = "DELETE",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$delete_user_input(BrokerId = BrokerId, Username = Username)
   output <- .mq$delete_user_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -316,12 +334,13 @@ mq_describe_broker <- function(BrokerId) {
     name = "DescribeBroker",
     http_method = "GET",
     http_path = "/v1/brokers/{broker-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$describe_broker_input(BrokerId = BrokerId)
   output <- .mq$describe_broker_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -349,12 +368,13 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
     name = "DescribeBrokerEngineTypes",
     http_method = "GET",
     http_path = "/v1/broker-engine-types",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$describe_broker_engine_types_input(EngineType = EngineType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$describe_broker_engine_types_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -384,12 +404,13 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
     name = "DescribeBrokerInstanceOptions",
     http_method = "GET",
     http_path = "/v1/broker-instance-options",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$describe_broker_instance_options_input(EngineType = EngineType, HostInstanceType = HostInstanceType, MaxResults = MaxResults, NextToken = NextToken, StorageType = StorageType)
   output <- .mq$describe_broker_instance_options_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -413,12 +434,13 @@ mq_describe_configuration <- function(ConfigurationId) {
     name = "DescribeConfiguration",
     http_method = "GET",
     http_path = "/v1/configurations/{configuration-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$describe_configuration_input(ConfigurationId = ConfigurationId)
   output <- .mq$describe_configuration_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -444,12 +466,13 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
     name = "DescribeConfigurationRevision",
     http_method = "GET",
     http_path = "/v1/configurations/{configuration-id}/revisions/{configuration-revision}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$describe_configuration_revision_input(ConfigurationId = ConfigurationId, ConfigurationRevision = ConfigurationRevision)
   output <- .mq$describe_configuration_revision_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -476,12 +499,13 @@ mq_describe_user <- function(BrokerId, Username) {
     name = "DescribeUser",
     http_method = "GET",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$describe_user_input(BrokerId = BrokerId, Username = Username)
   output <- .mq$describe_user_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -508,12 +532,13 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListBrokers",
     http_method = "GET",
     http_path = "/v1/brokers",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BrokerSummaries")
   )
   input <- .mq$list_brokers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_brokers_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -541,12 +566,13 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
     name = "ListConfigurationRevisions",
     http_method = "GET",
     http_path = "/v1/configurations/{configuration-id}/revisions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$list_configuration_revisions_input(ConfigurationId = ConfigurationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_configuration_revisions_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -573,12 +599,13 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListConfigurations",
     http_method = "GET",
     http_path = "/v1/configurations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$list_configurations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_configurations_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -602,12 +629,13 @@ mq_list_tags <- function(ResourceArn) {
     name = "ListTags",
     http_method = "GET",
     http_path = "/v1/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$list_tags_input(ResourceArn = ResourceArn)
   output <- .mq$list_tags_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -635,12 +663,13 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
     name = "ListUsers",
     http_method = "GET",
     http_path = "/v1/brokers/{broker-id}/users",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$list_users_input(BrokerId = BrokerId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_users_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -666,12 +695,13 @@ mq_promote <- function(BrokerId, Mode) {
     name = "Promote",
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/promote",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$promote_input(BrokerId = BrokerId, Mode = Mode)
   output <- .mq$promote_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -695,12 +725,13 @@ mq_reboot_broker <- function(BrokerId) {
     name = "RebootBroker",
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/reboot",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$reboot_broker_input(BrokerId = BrokerId)
   output <- .mq$reboot_broker_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -716,15 +747,25 @@ mq_reboot_broker <- function(BrokerId) {
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
 #' default is SIMPLE.
-#' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as new
+#' @param AutoMinorVersionUpgrade Enables automatic upgrades to new patch versions for brokers as new
 #' versions are released and supported by Amazon MQ. Automatic upgrades
-#' occur during the scheduled maintenance window of the broker or after a
-#' manual broker reboot.
+#' occur during the scheduled maintenance window or after a manual broker
+#' reboot.
+#' 
+#' Must be set to true for ActiveMQ brokers version 5.18 and above and for
+#' RabbitMQ brokers version 3.13 and above.
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Configuration A list of information about the configuration.
-#' @param EngineVersion The broker engine version. For a list of supported engine versions, see
-#' [Supported
-#' engines](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/).
+#' @param EngineVersion The broker engine version. For more information, see the [ActiveMQ
+#' version
+#' management](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html)
+#' and the [RabbitMQ version
+#' management](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-management.html)
+#' sections in the Amazon MQ Developer Guide.
+#' 
+#' When upgrading to ActiveMQ version 5.18 and above or RabbitMQ version
+#' 3.13 and above, you must have autoMinorVersionUpgrade set to true for
+#' the broker.
 #' @param HostInstanceType The broker's host instance type to upgrade to. For a list of supported
 #' instance types, see [Broker instance
 #' types](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker.html#broker-instance-types).
@@ -744,12 +785,13 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
     name = "UpdateBroker",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups, DataReplicationMode = DataReplicationMode)
   output <- .mq$update_broker_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -776,12 +818,13 @@ mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
     name = "UpdateConfiguration",
     http_method = "PUT",
     http_path = "/v1/configurations/{configuration-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$update_configuration_input(ConfigurationId = ConfigurationId, Data = Data, Description = Description)
   output <- .mq$update_configuration_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -817,12 +860,13 @@ mq_update_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
     name = "UpdateUser",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mq$update_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$update_user_output()
   config <- get_config()
-  svc <- .mq$service(config)
+  svc <- .mq$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

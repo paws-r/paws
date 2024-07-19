@@ -192,7 +192,7 @@ forecastservice <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "AmazonForecast"
 )
 
-.forecastservice$service <- function(config = list()) {
+.forecastservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.forecastservice$metadata, handlers, config)
+  new_service(.forecastservice$metadata, handlers, config, op)
 }

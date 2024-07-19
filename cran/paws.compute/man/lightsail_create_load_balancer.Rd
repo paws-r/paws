@@ -51,8 +51,8 @@ resource after it's created.}
 
 \item{ipAddressType}{The IP address type for the load balancer.
 
-The possible values are \code{ipv4} for IPv4 only, and \code{dualstack} for IPv4
-and IPv6.
+The possible values are \code{ipv4} for IPv4 only, \code{ipv6} for IPv6 only, and
+\code{dualstack} for IPv4 and IPv6.
 
 The default value is \code{dualstack}.}
 

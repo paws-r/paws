@@ -31,40 +31,31 @@ networkmanager_get_network_resources(
 
 The following are the supported resource types for Direct Connect:
 \itemize{
-\item \code{dxcon} - The definition model is
-\href{https://docs.aws.amazon.com/directconnect/latest/APIReference/API_Connection.html}{Connection}.
-\item \code{dx-gateway} - The definition model is
-\href{https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DirectConnectGateway.html}{DirectConnectGateway}.
-\item \code{dx-vif} - The definition model is
-\href{https://docs.aws.amazon.com/directconnect/latest/APIReference/API_VirtualInterface.html}{VirtualInterface}.
+\item \code{dxcon}
+\item \code{dx-gateway}
+\item \code{dx-vif}
 }
 
 The following are the supported resource types for Network Manager:
 \itemize{
-\item \code{connection} - The definition model is
-\href{https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Connection.html}{Connection}.
-\item \code{device} - The definition model is
-\href{https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Device.html}{Device}.
-\item \code{link} - The definition model is
-\href{https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Link.html}{Link}.
-\item \code{site} - The definition model is
-\href{https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Site.html}{Site}.
+\item \code{attachment}
+\item \code{connect-peer}
+\item \code{connection}
+\item \code{core-network}
+\item \code{device}
+\item \code{link}
+\item \code{peering}
+\item \code{site}
 }
 
 The following are the supported resource types for Amazon VPC:
 \itemize{
-\item \code{customer-gateway} - The definition model is
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CustomerGateway.html}{CustomerGateway}.
-\item \code{transit-gateway} - The definition model is
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGateway.html}{TransitGateway}.
-\item \code{transit-gateway-attachment} - The definition model is
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachment.html}{TransitGatewayAttachment}.
-\item \code{transit-gateway-connect-peer} - The definition model is
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnectPeer.html}{TransitGatewayConnectPeer}.
-\item \code{transit-gateway-route-table} - The definition model is
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTable.html}{TransitGatewayRouteTable}.
-\item \code{vpn-connection} - The definition model is
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConnection.html}{VpnConnection}.
+\item \code{customer-gateway}
+\item \code{transit-gateway}
+\item \code{transit-gateway-attachment}
+\item \code{transit-gateway-connect-peer}
+\item \code{transit-gateway-route-table}
+\item \code{vpn-connection}
 }}
 
 \item{ResourceArn}{The ARN of the resource.}

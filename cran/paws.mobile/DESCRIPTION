@@ -1,6 +1,6 @@
 Package: paws.mobile
 Title: 'Amazon Web Services' Mobile Services
-Version: 0.6.0
+Version: 0.7.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),

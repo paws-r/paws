@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_vpc_peering_connections}
 \alias{ec2_describe_vpc_peering_connections}
-\title{Describes one or more of your VPC peering connections}
+\title{Describes your VPC peering connections}
 \usage{
 ec2_describe_vpc_peering_connections(
   Filters = NULL,
@@ -61,7 +61,7 @@ output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes one or more of your VPC peering connections.
+Describes your VPC peering connections. The default is to describe all your VPC peering connections. Alternatively, you can specify specific VPC peering connection IDs or filter the results to include only the VPC peering connections that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_peering_connections/} for full documentation.
 }

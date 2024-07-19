@@ -167,7 +167,7 @@ appfabric <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = ""
 )
 
-.appfabric$service <- function(config = list()) {
+.appfabric$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.appfabric$metadata, handlers, config)
+  new_service(.appfabric$metadata, handlers, config, op)
 }

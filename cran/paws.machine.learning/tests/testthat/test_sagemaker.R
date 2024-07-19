@@ -248,6 +248,14 @@ test_that("list_lineage_groups", {
   expect_error(svc$list_lineage_groups(MaxResults = 20), NA)
 })
 
+test_that("list_mlflow_tracking_servers", {
+  expect_error(svc$list_mlflow_tracking_servers(), NA)
+})
+
+test_that("list_mlflow_tracking_servers", {
+  expect_error(svc$list_mlflow_tracking_servers(MaxResults = 20), NA)
+})
+
 test_that("list_model_bias_job_definitions", {
   expect_error(svc$list_model_bias_job_definitions(), NA)
 })
@@ -350,6 +358,14 @@ test_that("list_notebook_instances", {
 
 test_that("list_notebook_instances", {
   expect_error(svc$list_notebook_instances(MaxResults = 20), NA)
+})
+
+test_that("list_optimization_jobs", {
+  expect_error(svc$list_optimization_jobs(), NA)
+})
+
+test_that("list_optimization_jobs", {
+  expect_error(svc$list_optimization_jobs(MaxResults = 20), NA)
 })
 
 test_that("list_pipeline_execution_steps", {

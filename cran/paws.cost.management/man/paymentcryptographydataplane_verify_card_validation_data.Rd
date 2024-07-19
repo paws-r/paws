@@ -9,8 +9,8 @@ Verification Values (CVV/CVV2), Dynamic Card Verification Values
 paymentcryptographydataplane_verify_card_validation_data(
   KeyIdentifier,
   PrimaryAccountNumber,
-  ValidationData,
-  VerificationAttributes
+  VerificationAttributes,
+  ValidationData
 )
 }
 \arguments{
@@ -21,11 +21,11 @@ Cryptography uses to verify card data.}
 credit or debit card that associates the card with a specific account
 holder.}
 
-\item{ValidationData}{[required] The CVV or CSC value for use for card data verification within Amazon
-Web Services Payment Cryptography.}
-
 \item{VerificationAttributes}{[required] The algorithm to use for verification of card data within Amazon Web
 Services Payment Cryptography.}
+
+\item{ValidationData}{[required] The CVV or CSC value for use for card data verification within Amazon
+Web Services Payment Cryptography.}
 }
 \description{
 Verifies card-related validation data using algorithms such as Card Verification Values (CVV/CVV2), Dynamic Card Verification Values (dCVV/dCVV2) and Card Security Codes (CSC). For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/verify-card-data.html}{Verify card data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

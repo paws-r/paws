@@ -138,7 +138,7 @@ personalizeevents <- function(config = list(), credentials = list(), endpoint = 
   target_prefix = ""
 )
 
-.personalizeevents$service <- function(config = list()) {
+.personalizeevents$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.personalizeevents$metadata, handlers, config)
+  new_service(.personalizeevents$metadata, handlers, config, op)
 }

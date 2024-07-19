@@ -162,12 +162,13 @@ qldbsession_send_command <- function(SessionToken = NULL, StartSession = NULL, S
     name = "SendCommand",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldbsession$send_command_input(SessionToken = SessionToken, StartSession = StartSession, StartTransaction = StartTransaction, EndSession = EndSession, CommitTransaction = CommitTransaction, AbortTransaction = AbortTransaction, ExecuteStatement = ExecuteStatement, FetchPage = FetchPage)
   output <- .qldbsession$send_command_output()
   config <- get_config()
-  svc <- .qldbsession$service(config)
+  svc <- .qldbsession$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

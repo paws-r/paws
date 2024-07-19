@@ -5,21 +5,21 @@
 \title{Updates the specified properties of a given place index resource}
 \usage{
 locationservice_update_place_index(
-  DataSourceConfiguration = NULL,
-  Description = NULL,
   IndexName,
-  PricingPlan = NULL
+  PricingPlan = NULL,
+  Description = NULL,
+  DataSourceConfiguration = NULL
 )
 }
 \arguments{
-\item{DataSourceConfiguration}{Updates the data storage option for the place index resource.}
-
-\item{Description}{Updates the description for the place index resource.}
-
 \item{IndexName}{[required] The name of the place index resource to update.}
 
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
+
+\item{Description}{Updates the description for the place index resource.}
+
+\item{DataSourceConfiguration}{Updates the data storage option for the place index resource.}
 }
 \description{
 Updates the specified properties of a given place index resource.

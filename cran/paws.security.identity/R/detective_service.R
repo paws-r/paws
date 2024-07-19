@@ -73,7 +73,7 @@ NULL
 #' 
 #' All API actions are logged as CloudTrail events. See [Logging Detective
 #' API Calls with
-#' CloudTrail](https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html).
+#' CloudTrail](https://docs.aws.amazon.com/detective/latest/userguide/).
 #' 
 #' We replaced the term "master account" with the term "administrator
 #' account". An administrator account is used to centrally manage multiple
@@ -231,7 +231,7 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = ""
 )
 
-.detective$service <- function(config = list()) {
+.detective$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.detective$metadata, handlers, config)
+  new_service(.detective$metadata, handlers, config, op)
 }

@@ -17,12 +17,13 @@ bedrockruntime_invoke_model_with_response_stream(
 }
 \arguments{
 \item{body}{[required] The prompt and inference parameters in the format specified in the
-\code{contentType} in the header. To see the format and content of the
-request and response bodies for different models, refer to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.
+\code{contentType} in the header. You must provide the body in JSON format.
+To see the format and content of the request and response bodies for
+different models, refer to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.
 For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html}{Run inference}
 in the Bedrock User Guide.}
 
-\item{contentType}{The MIME type of the input data in the request. The default value is
+\item{contentType}{The MIME type of the input data in the request. You must specify
 \code{application/json}.}
 
 \item{accept}{The desired MIME type of the inference body in the response. The default

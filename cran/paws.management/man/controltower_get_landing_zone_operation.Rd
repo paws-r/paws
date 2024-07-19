@@ -10,7 +10,7 @@ controltower_get_landing_zone_operation(operationIdentifier)
 \item{operationIdentifier}{[required] A unique identifier assigned to a landing zone operation.}
 }
 \description{
-Returns the status of the specified landing zone operation. Details for an operation are available for 60 days.
+Returns the status of the specified landing zone operation. Details for an operation are available for 90 days.
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_get_landing_zone_operation/} for full documentation.
 }

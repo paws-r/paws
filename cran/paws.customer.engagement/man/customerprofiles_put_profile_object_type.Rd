@@ -13,6 +13,7 @@ customerprofiles_put_profile_object_type(
   EncryptionKey = NULL,
   AllowProfileCreation = NULL,
   SourceLastUpdatedTimestampFormat = NULL,
+  MaxProfileObjectCount = NULL,
   Fields = NULL,
   Keys = NULL,
   Tags = NULL
@@ -48,6 +49,8 @@ creates a new standard profile.}
 
 \item{SourceLastUpdatedTimestampFormat}{The format of your \code{sourceLastUpdatedTimestamp} that was previously set
 up.}
+
+\item{MaxProfileObjectCount}{The amount of profile object max count assigned to the object type}
 
 \item{Fields}{A map of the name and ObjectType field.}
 

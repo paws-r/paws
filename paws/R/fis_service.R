@@ -156,7 +156,7 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.fis$service <- function(config = list()) {
+.fis$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.fis$metadata, handlers, config)
+  new_service(.fis$metadata, handlers, config, op)
 }

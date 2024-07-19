@@ -10,7 +10,12 @@ accessanalyzer_check_access_not_granted(policyDocument, access, policyType)
 \item{policyDocument}{[required] The JSON policy document to use as the content for the policy.}
 
 \item{access}{[required] An access object containing the permissions that shouldn't be granted by
-the specified policy.}
+the specified policy. If only actions are specified, IAM Access Analyzer
+checks for access of the actions on all resources in the policy. If only
+resources are specified, then IAM Access Analyzer checks which actions
+have access to the specified resources. If both actions and resources
+are specified, then IAM Access Analyzer checks which of the specified
+actions have access to the specified resources.}
 
 \item{policyType}{[required] The type of policy. Identity policies grant permissions to IAM
 principals. Identity policies include managed and inline policies for

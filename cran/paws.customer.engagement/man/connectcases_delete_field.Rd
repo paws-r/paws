@@ -9,7 +9,7 @@ connectcases_delete_field(domainId, fieldId)
 \arguments{
 \item{domainId}{[required] The unique identifier of the Cases domain.}
 
-\item{fieldId}{[required] The unique identifier of a field.}
+\item{fieldId}{[required] Unique identifier of the field.}
 }
 \description{
 Deletes a field from a cases template. You can delete up to 100 fields per domain.

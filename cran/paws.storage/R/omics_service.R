@@ -214,7 +214,7 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
   target_prefix = ""
 )
 
-.omics$service <- function(config = list()) {
+.omics$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.omics$metadata, handlers, config)
+  new_service(.omics$metadata, handlers, config, op)
 }

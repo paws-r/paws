@@ -52,7 +52,7 @@ items.}
 from a prior call.)}
 }
 \description{
-Describes your VPC endpoints.
+Describes your VPC endpoints. The default is to describe all your VPC endpoints. Alternatively, you can specify specific VPC endpoint IDs or filter the results to include only the VPC endpoints that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoints/} for full documentation.
 }

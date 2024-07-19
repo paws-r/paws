@@ -104,7 +104,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_apply_security_groups_to_client_vpn_target_network]{apply_security_groups_to_client_vpn_target_network} \tab Applies a security group to the association between the target network and the Client VPN endpoint\cr
 \link[paws.compute:ec2_assign_ipv_6_addresses]{assign_ipv_6_addresses} \tab Assigns one or more IPv6 addresses to the specified network interface\cr
 \link[paws.compute:ec2_assign_private_ip_addresses]{assign_private_ip_addresses} \tab Assigns one or more secondary private IP addresses to the specified network interface\cr
-\link[paws.compute:ec2_assign_private_nat_gateway_address]{assign_private_nat_gateway_address} \tab Assigns one or more private IPv4 addresses to a private NAT gateway\cr
+\link[paws.compute:ec2_assign_private_nat_gateway_address]{assign_private_nat_gateway_address} \tab Assigns private IPv4 addresses to a private NAT gateway\cr
 \link[paws.compute:ec2_associate_address]{associate_address} \tab Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface\cr
 \link[paws.compute:ec2_associate_client_vpn_target_network]{associate_client_vpn_target_network} \tab Associates a target network with a Client VPN endpoint\cr
 \link[paws.compute:ec2_associate_dhcp_options]{associate_dhcp_options} \tab Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC\cr
@@ -331,8 +331,8 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_coip_pools]{describe_coip_pools} \tab Describes the specified customer-owned address pools or all of your customer-owned address pools\cr
 \link[paws.compute:ec2_describe_conversion_tasks]{describe_conversion_tasks} \tab Describes the specified conversion tasks or all your conversion tasks\cr
 \link[paws.compute:ec2_describe_customer_gateways]{describe_customer_gateways} \tab Describes one or more of your VPN customer gateways\cr
-\link[paws.compute:ec2_describe_dhcp_options]{describe_dhcp_options} \tab Describes one or more of your DHCP options sets\cr
-\link[paws.compute:ec2_describe_egress_only_internet_gateways]{describe_egress_only_internet_gateways} \tab Describes one or more of your egress-only internet gateways\cr
+\link[paws.compute:ec2_describe_dhcp_options]{describe_dhcp_options} \tab Describes your DHCP option sets\cr
+\link[paws.compute:ec2_describe_egress_only_internet_gateways]{describe_egress_only_internet_gateways} \tab Describes your egress-only internet gateways\cr
 \link[paws.compute:ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Amazon Elastic Graphics reached end of life on January 8, 2024\cr
 \link[paws.compute:ec2_describe_export_image_tasks]{describe_export_image_tasks} \tab Describes the specified export image tasks or all of your export image tasks\cr
 \link[paws.compute:ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export instance tasks or all of your export instance tasks\cr
@@ -364,7 +364,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_instance_topology]{describe_instance_topology} \tab Describes a tree-based hierarchy that represents the physical host placement of your EC2 instances within an Availability Zone or Local Zone\cr
 \link[paws.compute:ec2_describe_instance_type_offerings]{describe_instance_type_offerings} \tab Lists the instance types that are offered for the specified location\cr
 \link[paws.compute:ec2_describe_instance_types]{describe_instance_types} \tab Describes the specified instance types\cr
-\link[paws.compute:ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes one or more of your internet gateways\cr
+\link[paws.compute:ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes your internet gateways\cr
 \link[paws.compute:ec2_describe_ipam_byoasn]{describe_ipam_byoasn} \tab Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated\cr
 \link[paws.compute:ec2_describe_ipam_pools]{describe_ipam_pools} \tab Get information about your IPAM pools\cr
 \link[paws.compute:ec2_describe_ipam_resource_discoveries]{describe_ipam_resource_discoveries} \tab Describes IPAM resource discoveries\cr
@@ -385,8 +385,8 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_mac_hosts]{describe_mac_hosts} \tab Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac Dedicated Hosts\cr
 \link[paws.compute:ec2_describe_managed_prefix_lists]{describe_managed_prefix_lists} \tab Describes your managed prefix lists and any Amazon Web Services-managed prefix lists\cr
 \link[paws.compute:ec2_describe_moving_addresses]{describe_moving_addresses} \tab This action is deprecated\cr
-\link[paws.compute:ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes one or more of your NAT gateways\cr
-\link[paws.compute:ec2_describe_network_acls]{describe_network_acls} \tab Describes one or more of your network ACLs\cr
+\link[paws.compute:ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes your NAT gateways\cr
+\link[paws.compute:ec2_describe_network_acls]{describe_network_acls} \tab Describes your network ACLs\cr
 \link[paws.compute:ec2_describe_network_insights_access_scope_analyses]{describe_network_insights_access_scope_analyses} \tab Describes the specified Network Access Scope analyses\cr
 \link[paws.compute:ec2_describe_network_insights_access_scopes]{describe_network_insights_access_scopes} \tab Describes the specified Network Access Scopes\cr
 \link[paws.compute:ec2_describe_network_insights_analyses]{describe_network_insights_analyses} \tab Describes one or more of your network insights analyses\cr
@@ -404,7 +404,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_reserved_instances_listings]{describe_reserved_instances_listings} \tab Describes your account's Reserved Instance listings in the Reserved Instance Marketplace\cr
 \link[paws.compute:ec2_describe_reserved_instances_modifications]{describe_reserved_instances_modifications} \tab Describes the modifications made to your Reserved Instances\cr
 \link[paws.compute:ec2_describe_reserved_instances_offerings]{describe_reserved_instances_offerings} \tab Describes Reserved Instance offerings that are available for purchase\cr
-\link[paws.compute:ec2_describe_route_tables]{describe_route_tables} \tab Describes one or more of your route tables\cr
+\link[paws.compute:ec2_describe_route_tables]{describe_route_tables} \tab Describes your route tables\cr
 \link[paws.compute:ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 \link[paws.compute:ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
 \link[paws.compute:ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
@@ -421,8 +421,9 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_spot_price_history]{describe_spot_price_history} \tab Describes the Spot price history\cr
 \link[paws.compute:ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab Describes the stale security group rules for security groups in a specified VPC\cr
 \link[paws.compute:ec2_describe_store_image_tasks]{describe_store_image_tasks} \tab Describes the progress of the AMI store tasks\cr
-\link[paws.compute:ec2_describe_subnets]{describe_subnets} \tab Describes one or more of your subnets\cr
+\link[paws.compute:ec2_describe_subnets]{describe_subnets} \tab Describes your subnets\cr
 \link[paws.compute:ec2_describe_tags]{describe_tags} \tab Describes the specified tags for your EC2 resources\cr
+\link[paws.compute:ec2_describe_traffic_mirror_filter_rules]{describe_traffic_mirror_filter_rules} \tab Describe traffic mirror filters that determine the traffic that is mirrored\cr
 \link[paws.compute:ec2_describe_traffic_mirror_filters]{describe_traffic_mirror_filters} \tab Describes one or more Traffic Mirror filters\cr
 \link[paws.compute:ec2_describe_traffic_mirror_sessions]{describe_traffic_mirror_sessions} \tab Describes one or more Traffic Mirror sessions\cr
 \link[paws.compute:ec2_describe_traffic_mirror_targets]{describe_traffic_mirror_targets} \tab Information about one or more Traffic Mirror targets\cr
@@ -455,8 +456,8 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_vpc_endpoint_service_configurations]{describe_vpc_endpoint_service_configurations} \tab Describes the VPC endpoint service configurations in your account (your services)\cr
 \link[paws.compute:ec2_describe_vpc_endpoint_service_permissions]{describe_vpc_endpoint_service_permissions} \tab Describes the principals (service consumers) that are permitted to discover your VPC endpoint service\cr
 \link[paws.compute:ec2_describe_vpc_endpoint_services]{describe_vpc_endpoint_services} \tab Describes available services to which you can create a VPC endpoint\cr
-\link[paws.compute:ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections} \tab Describes one or more of your VPC peering connections\cr
-\link[paws.compute:ec2_describe_vpcs]{describe_vpcs} \tab Describes one or more of your VPCs\cr
+\link[paws.compute:ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections} \tab Describes your VPC peering connections\cr
+\link[paws.compute:ec2_describe_vpcs]{describe_vpcs} \tab Describes your VPCs\cr
 \link[paws.compute:ec2_describe_vpn_connections]{describe_vpn_connections} \tab Describes one or more of your VPN connections\cr
 \link[paws.compute:ec2_describe_vpn_gateways]{describe_vpn_gateways} \tab Describes one or more of your virtual private gateways\cr
 \link[paws.compute:ec2_detach_classic_link_vpc]{detach_classic_link_vpc} \tab This action is deprecated\cr
@@ -533,6 +534,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host\cr
 \link[paws.compute:ec2_get_image_block_public_access_state]{get_image_block_public_access_state} \tab Gets the current state of block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 \link[paws.compute:ec2_get_instance_metadata_defaults]{get_instance_metadata_defaults} \tab Gets the default instance metadata service (IMDS) settings that are set at the account level in the specified Amazon Web Services Region\cr
+\link[paws.compute:ec2_get_instance_tpm_ek_pub]{get_instance_tpm_ek_pub} \tab Gets the public endorsement key associated with the Nitro Trusted Platform Module (NitroTPM) for the specified instance\cr
 \link[paws.compute:ec2_get_instance_types_from_instance_requirements]{get_instance_types_from_instance_requirements} \tab Returns a list of instance types with the specified instance attributes\cr
 \link[paws.compute:ec2_get_instance_uefi_data]{get_instance_uefi_data} \tab A binary representation of the UEFI variable store\cr
 \link[paws.compute:ec2_get_ipam_address_history]{get_ipam_address_history} \tab Retrieve historical information about a CIDR within an IPAM scope\cr
@@ -576,7 +578,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_list_snapshots_in_recycle_bin]{list_snapshots_in_recycle_bin} \tab Lists one or more snapshots that are currently in the Recycle Bin\cr
 \link[paws.compute:ec2_lock_snapshot]{lock_snapshot} \tab Locks an Amazon EBS snapshot in either governance or compliance mode to protect it against accidental or malicious deletions for a specific duration\cr
 \link[paws.compute:ec2_modify_address_attribute]{modify_address_attribute} \tab Modifies an attribute of the specified Elastic IP address\cr
-\link[paws.compute:ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Changes the opt-in status of the Local Zone and Wavelength Zone group for your account\cr
+\link[paws.compute:ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Changes the opt-in status of the specified zone group for your account\cr
 \link[paws.compute:ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity and the conditions under which it is to be released\cr
 \link[paws.compute:ec2_modify_capacity_reservation_fleet]{modify_capacity_reservation_fleet} \tab Modifies a Capacity Reservation Fleet\cr
 \link[paws.compute:ec2_modify_client_vpn_endpoint]{modify_client_vpn_endpoint} \tab Modifies the specified Client VPN endpoint\cr

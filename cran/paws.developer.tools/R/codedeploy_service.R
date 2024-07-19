@@ -254,7 +254,7 @@ codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = "CodeDeploy_20141006"
 )
 
-.codedeploy$service <- function(config = list()) {
+.codedeploy$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.codedeploy$metadata, handlers, config)
+  new_service(.codedeploy$metadata, handlers, config, op)
 }

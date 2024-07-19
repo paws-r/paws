@@ -5,7 +5,7 @@ NULL
 
 .ssooidc$create_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), grantType = structure(logical(0), tags = list(type = "string")), deviceCode = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), grantType = structure(logical(0), tags = list(type = "string")), deviceCode = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUri = structure(logical(0), tags = list(type = "string")), codeVerifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .ssooidc$create_token_with_iam_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), grantType = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assertion = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUri = structure(logical(0), tags = list(type = "string")), subjectToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), subjectTokenType = structure(logical(0), tags = list(type = "string")), requestedTokenType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), grantType = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assertion = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUri = structure(logical(0), tags = list(type = "string")), subjectToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), subjectTokenType = structure(logical(0), tags = list(type = "string")), requestedTokenType = structure(logical(0), tags = list(type = "string")), codeVerifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .ssooidc$register_client_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientName = structure(logical(0), tags = list(type = "string")), clientType = structure(logical(0), tags = list(type = "string")), scopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(clientName = structure(logical(0), tags = list(type = "string")), clientType = structure(logical(0), tags = list(type = "string")), scopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUris = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), grantTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), issuerUrl = structure(logical(0), tags = list(type = "string")), entitledApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -5,7 +5,7 @@
 \title{Lists the recommendation templates for the Resilience Hub applications}
 \usage{
 resiliencehub_list_recommendation_templates(
-  assessmentArn,
+  assessmentArn = NULL,
   maxResults = NULL,
   name = NULL,
   nextToken = NULL,
@@ -15,7 +15,7 @@ resiliencehub_list_recommendation_templates(
 )
 }
 \arguments{
-\item{assessmentArn}{[required] Amazon Resource Name (ARN) of the assessment. The format for this ARN
+\item{assessmentArn}{Amazon Resource Name (ARN) of the assessment. The format for this ARN
 is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}

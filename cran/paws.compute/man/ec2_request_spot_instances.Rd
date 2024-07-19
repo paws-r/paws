@@ -46,8 +46,8 @@ Default: Instances are launched in any available Availability Zone.}
 \item{BlockDurationMinutes}{Deprecated.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{How to Ensure Idempotency}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency in Amazon EC2 API requests}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

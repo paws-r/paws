@@ -289,7 +289,7 @@ redshift <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = ""
 )
 
-.redshift$service <- function(config = list()) {
+.redshift$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.redshift$metadata, handlers, config)
+  new_service(.redshift$metadata, handlers, config, op)
 }

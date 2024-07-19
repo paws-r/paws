@@ -49,7 +49,7 @@ latest \code{ACTIVE} revision is used.
 A task definition must be specified if the service uses either the \code{ECS}
 or \code{CODE_DEPLOY} deployment controllers.
 
-For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types}.}
+For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Amazon ECS deployment types}.}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service load balancing}

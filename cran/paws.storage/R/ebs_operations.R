@@ -33,12 +33,13 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
     name = "CompleteSnapshot",
     http_method = "POST",
     http_path = "/snapshots/completion/{snapshotId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ebs$complete_snapshot_input(SnapshotId = SnapshotId, ChangedBlocksCount = ChangedBlocksCount, Checksum = Checksum, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumAggregationMethod = ChecksumAggregationMethod)
   output <- .ebs$complete_snapshot_output()
   config <- get_config()
-  svc <- .ebs$service(config)
+  svc <- .ebs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -77,12 +78,13 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
     name = "GetSnapshotBlock",
     http_method = "GET",
     http_path = "/snapshots/{snapshotId}/blocks/{blockIndex}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ebs$get_snapshot_block_input(SnapshotId = SnapshotId, BlockIndex = BlockIndex, BlockToken = BlockToken)
   output <- .ebs$get_snapshot_block_output()
   config <- get_config()
-  svc <- .ebs$service(config)
+  svc <- .ebs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -132,12 +134,13 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
     name = "ListChangedBlocks",
     http_method = "GET",
     http_path = "/snapshots/{secondSnapshotId}/changedblocks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_changed_blocks_input(FirstSnapshotId = FirstSnapshotId, SecondSnapshotId = SecondSnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_changed_blocks_output()
   config <- get_config()
-  svc <- .ebs$service(config)
+  svc <- .ebs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -179,12 +182,13 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
     name = "ListSnapshotBlocks",
     http_method = "GET",
     http_path = "/snapshots/{snapshotId}/blocks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_snapshot_blocks_input(SnapshotId = SnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_snapshot_blocks_output()
   config <- get_config()
-  svc <- .ebs$service(config)
+  svc <- .ebs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -242,12 +246,13 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
     name = "PutSnapshotBlock",
     http_method = "PUT",
     http_path = "/snapshots/{snapshotId}/blocks/{blockIndex}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ebs$put_snapshot_block_input(SnapshotId = SnapshotId, BlockIndex = BlockIndex, BlockData = BlockData, DataLength = DataLength, Progress = Progress, Checksum = Checksum, ChecksumAlgorithm = ChecksumAlgorithm)
   output <- .ebs$put_snapshot_block_output()
   config <- get_config()
-  svc <- .ebs$service(config)
+  svc <- .ebs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -351,12 +356,13 @@ ebs_start_snapshot <- function(VolumeSize, ParentSnapshotId = NULL, Tags = NULL,
     name = "StartSnapshot",
     http_method = "POST",
     http_path = "/snapshots",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ebs$start_snapshot_input(VolumeSize = VolumeSize, ParentSnapshotId = ParentSnapshotId, Tags = Tags, Description = Description, ClientToken = ClientToken, Encrypted = Encrypted, KmsKeyArn = KmsKeyArn, Timeout = Timeout)
   output <- .ebs$start_snapshot_output()
   config <- get_config()
-  svc <- .ebs$service(config)
+  svc <- .ebs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -19,11 +19,13 @@ networkmanager_create_connect_peer(
 \arguments{
 \item{ConnectAttachmentId}{[required] The ID of the connection attachment.}
 
-\item{CoreNetworkAddress}{A Connect peer core network address.}
+\item{CoreNetworkAddress}{A Connect peer core network address. This only applies only when the
+protocol is \code{GRE}.}
 
 \item{PeerAddress}{[required] The Connect peer address.}
 
-\item{BgpOptions}{The Connect peer BGP options.}
+\item{BgpOptions}{The Connect peer BGP options. This only applies only when the protocol
+is \code{GRE}.}
 
 \item{InsideCidrBlocks}{The inside IP addresses used for BGP peering.}
 
@@ -31,7 +33,8 @@ networkmanager_create_connect_peer(
 
 \item{ClientToken}{The client token associated with the request.}
 
-\item{SubnetArn}{The subnet ARN for the Connect peer.}
+\item{SubnetArn}{The subnet ARN for the Connect peer. This only applies only when the
+protocol is NO_ENCAP.}
 }
 \description{
 Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance. The peer address and transit gateway address must be the same IP address family (IPv4 or IPv6).

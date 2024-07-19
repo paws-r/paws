@@ -43,12 +43,13 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
     name = "DescribeReportCreation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroupstaggingapi$describe_report_creation_input()
   output <- .resourcegroupstaggingapi$describe_report_creation_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -177,12 +178,13 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
     name = "GetComplianceSummary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PaginationToken", limit_key = "MaxResults", output_token = "PaginationToken", result_key = "SummaryList")
   )
   input <- .resourcegroupstaggingapi$get_compliance_summary_input(TargetIdFilters = TargetIdFilters, RegionFilters = RegionFilters, ResourceTypeFilters = ResourceTypeFilters, TagKeyFilters = TagKeyFilters, GroupBy = GroupBy, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_compliance_summary_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -395,12 +397,13 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
     name = "GetResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PaginationToken", limit_key = "ResourcesPerPage", output_token = "PaginationToken", result_key = "ResourceTagMappingList")
   )
   input <- .resourcegroupstaggingapi$get_resources_input(PaginationToken = PaginationToken, TagFilters = TagFilters, ResourcesPerPage = ResourcesPerPage, TagsPerPage = TagsPerPage, ResourceTypeFilters = ResourceTypeFilters, IncludeComplianceDetails = IncludeComplianceDetails, ExcludeCompliantResources = ExcludeCompliantResources, ResourceARNList = ResourceARNList)
   output <- .resourcegroupstaggingapi$get_resources_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -457,12 +460,13 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
     name = "GetTagKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagKeys")
   )
   input <- .resourcegroupstaggingapi$get_tag_keys_input(PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_tag_keys_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -523,12 +527,13 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
     name = "GetTagValues",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagValues")
   )
   input <- .resourcegroupstaggingapi$get_tag_values_input(PaginationToken = PaginationToken, Key = Key)
   output <- .resourcegroupstaggingapi$get_tag_values_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -583,12 +588,13 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
     name = "StartReportCreation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroupstaggingapi$start_report_creation_input(S3Bucket = S3Bucket)
   output <- .resourcegroupstaggingapi$start_report_creation_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -689,12 +695,13 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
     name = "TagResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroupstaggingapi$tag_resources_input(ResourceARNList = ResourceARNList, Tags = Tags)
   output <- .resourcegroupstaggingapi$tag_resources_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -780,12 +787,13 @@ resourcegroupstaggingapi_untag_resources <- function(ResourceARNList, TagKeys) {
     name = "UntagResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .resourcegroupstaggingapi$untag_resources_input(ResourceARNList = ResourceARNList, TagKeys = TagKeys)
   output <- .resourcegroupstaggingapi$untag_resources_output()
   config <- get_config()
-  svc <- .resourcegroupstaggingapi$service(config)
+  svc <- .resourcegroupstaggingapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

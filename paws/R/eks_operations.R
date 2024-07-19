@@ -73,12 +73,13 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
     name = "AssociateAccessPolicy",
     http_method = "POST",
     http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$associate_access_policy_input(clusterName = clusterName, principalArn = principalArn, policyArn = policyArn, accessScope = accessScope)
   output <- .eks$associate_access_policy_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -114,7 +115,7 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -162,12 +163,13 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
     name = "AssociateEncryptionConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/encryption-config/associate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$associate_encryption_config_input(clusterName = clusterName, encryptionConfig = encryptionConfig, clientRequestToken = clientRequestToken)
   output <- .eks$associate_encryption_config_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -211,7 +213,7 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -267,12 +269,13 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
     name = "AssociateIdentityProviderConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/identity-provider-configs/associate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$associate_identity_provider_config_input(clusterName = clusterName, oidc = oidc, tags = tags, clientRequestToken = clientRequestToken)
   output <- .eks$associate_identity_provider_config_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -423,12 +426,13 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
     name = "CreateAccessEntry",
     http_method = "POST",
     http_path = "/clusters/{name}/access-entries",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$create_access_entry_input(clusterName = clusterName, principalArn = principalArn, kubernetesGroups = kubernetesGroups, tags = tags, clientRequestToken = clientRequestToken, username = username, type = type)
   output <- .eks$create_access_entry_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -449,7 +453,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @usage
 #' eks_create_addon(clusterName, addonName, addonVersion,
 #'   serviceAccountRoleArn, resolveConflicts, clientRequestToken, tags,
-#'   configurationValues)
+#'   configurationValues, podIdentityAssociations)
 #'
 #' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
@@ -502,6 +506,13 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @param configurationValues The set of configuration values for the add-on that's created. The
 #' values that you provide are validated against the schema returned by
 #' [`describe_addon_configuration`][eks_describe_addon_configuration].
+#' @param podIdentityAssociations An array of Pod Identity Assocations to be created. Each EKS Pod
+#' Identity association maps a Kubernetes service account to an IAM Role.
+#' 
+#' For more information, see [Attach an IAM Role to an Amazon EKS add-on
+#' using Pod
+#' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
+#' in the EKS User Guide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -515,7 +526,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound",
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound"|"AddonSubscriptionNeeded"|"AddonPermissionFailure",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -540,7 +551,10 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'       productId = "string",
 #'       productUrl = "string"
 #'     ),
-#'     configurationValues = "string"
+#'     configurationValues = "string",
+#'     podIdentityAssociations = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -557,7 +571,13 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   configurationValues = "string"
+#'   configurationValues = "string",
+#'   podIdentityAssociations = list(
+#'     list(
+#'       serviceAccount = "string",
+#'       roleArn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -566,17 +586,18 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @rdname eks_create_addon
 #'
 #' @aliases eks_create_addon
-eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, tags = NULL, configurationValues = NULL) {
+eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, tags = NULL, configurationValues = NULL, podIdentityAssociations = NULL) {
   op <- new_operation(
     name = "CreateAddon",
     http_method = "POST",
     http_path = "/clusters/{name}/addons",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eks$create_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, tags = tags, configurationValues = configurationValues)
+  input <- .eks$create_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, tags = tags, configurationValues = configurationValues, podIdentityAssociations = podIdentityAssociations)
   output <- .eks$create_addon_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -628,8 +649,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' In most cases, it takes several minutes to create a cluster. After you
 #' create an Amazon EKS cluster, you must configure your Kubernetes tooling
 #' to communicate with the API server and launch nodes into your cluster.
-#' For more information, see [Managing Cluster
-#' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/cluster-auth.html)
+#' For more information, see [Allowing users to access your
+#' cluster](https://docs.aws.amazon.com/eks/latest/userguide/cluster-auth.html)
 #' and [Launching Amazon EKS
 #' nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 #' in the *Amazon EKS User Guide*.
@@ -637,7 +658,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @usage
 #' eks_create_cluster(name, version, roleArn, resourcesVpcConfig,
 #'   kubernetesNetworkConfig, logging, clientRequestToken, tags,
-#'   encryptionConfig, outpostConfig, accessConfig)
+#'   encryptionConfig, outpostConfig, accessConfig,
+#'   bootstrapSelfManagedAddons)
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a
@@ -684,6 +706,13 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' in the *Amazon EKS User Guide*. This object isn't available for creating
 #' Amazon EKS clusters on the Amazon Web Services cloud.
 #' @param accessConfig The access configuration for the cluster.
+#' @param bootstrapSelfManagedAddons If you set this value to `False` when creating a cluster, the default
+#' networking add-ons will not be installed.
+#' 
+#' The default networking addons include vpc-cni, coredns, and kube-proxy.
+#' 
+#' Use this option when you plan to install third-party alternative add-ons
+#' or self-manage the default networking add-ons.
 #'
 #' @return
 #' A list with the following syntax:
@@ -849,7 +878,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'   accessConfig = list(
 #'     bootstrapClusterCreatorAdminPermissions = TRUE|FALSE,
 #'     authenticationMode = "API"|"API_AND_CONFIG_MAP"|"CONFIG_MAP"
-#'   )
+#'   ),
+#'   bootstrapSelfManagedAddons = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -878,17 +908,18 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @rdname eks_create_cluster
 #'
 #' @aliases eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/clusters",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons)
   output <- .eks$create_cluster_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -995,12 +1026,13 @@ eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = N
     name = "CreateEksAnywhereSubscription",
     http_method = "POST",
     http_path = "/eks-anywhere-subscriptions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$create_eks_anywhere_subscription_input(name = name, term = term, licenseQuantity = licenseQuantity, licenseType = licenseType, autoRenew = autoRenew, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$create_eks_anywhere_subscription_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1100,6 +1132,17 @@ eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = N
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "PodExecutionRoleAlreadyInUse"|"AccessDenied"|"ClusterUnreachable"|"InternalFailure",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1139,12 +1182,13 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
     name = "CreateFargateProfile",
     http_method = "POST",
     http_path = "/clusters/{name}/fargate-profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$create_fargate_profile_input(fargateProfileName = fargateProfileName, clusterName = clusterName, podExecutionRoleArn = podExecutionRoleArn, subnets = subnets, selectors = selectors, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$create_fargate_profile_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1160,9 +1204,9 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' current Kubernetes version for the cluster. All node groups are created
 #' with the latest AMI release version for the respective minor Kubernetes
 #' version of the cluster, unless you deploy a custom AMI using a launch
-#' template. For more information about using launch templates, see [Launch
-#' template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
+#' template. For more information about using launch templates, see
+#' [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
 #' 
 #' An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 #' associated Amazon EC2 instances that are managed by Amazon Web Services
@@ -1187,16 +1231,16 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' default disk size is 20 GiB for Linux and Bottlerocket. The default disk
 #' size is 50 GiB for Windows. If you specify `launchTemplate`, then don't
 #' specify `diskSize`, or the node group deployment will fail. For more
-#' information about using launch templates with Amazon EKS, see [Launch
-#' template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' information about using launch templates with Amazon EKS, see
+#' [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param subnets &#91;required&#93; The subnets to use for the Auto Scaling group that is created for your
 #' node group. If you specify `launchTemplate`, then don't specify
 #' ` SubnetId ` in your launch template, or the node group deployment will
 #' fail. For more information about using launch templates with Amazon EKS,
-#' see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' see [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param instanceTypes Specify the instance types for a node group. If you specify a GPU
 #' instance type, make sure to also specify an applicable GPU AMI type with
@@ -1210,23 +1254,24 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' `capacityType`, then we recommend specifying multiple values for
 #' `instanceTypes`. For more information, see [Managed node group capacity
 #' types](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types)
-#' and [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' and [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param amiType The AMI type for your node group. If you specify `launchTemplate`, and
 #' your launch template uses a custom AMI, then don't specify `amiType`, or
 #' the node group deployment will fail. If your launch template uses a
 #' Windows custom AMI, then add `eks:kube-proxy-windows` to your Windows
 #' nodes `rolearn` in the `aws-auth` `ConfigMap`. For more information
-#' about using launch templates with Amazon EKS, see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' about using launch templates with Amazon EKS, see [Customizing managed
+#' nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param remoteAccess The remote access configuration to use with your node group. For Linux,
 #' the protocol is SSH. For Windows, the protocol is RDP. If you specify
 #' `launchTemplate`, then don't specify `remoteAccess`, or the node group
 #' deployment will fail. For more information about using launch templates
-#' with Amazon EKS, see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' with Amazon EKS, see [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param nodeRole &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with your
 #' node group. The Amazon EKS worker node `kubelet` daemon makes calls to
@@ -1239,8 +1284,8 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' in the *Amazon EKS User Guide* . If you specify `launchTemplate`, then
 #' don't specify ` IamInstanceProfile ` in your launch template, or the
 #' node group deployment will fail. For more information about using launch
-#' templates with Amazon EKS, see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' templates with Amazon EKS, see [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param labels The Kubernetes `labels` to apply to the nodes in the node group when
 #' they are created.
@@ -1252,10 +1297,13 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' propagate to any other cluster or Amazon Web Services resources.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#' @param launchTemplate An object representing a node group's launch template specification. If
-#' specified, then do not specify `instanceTypes`, `diskSize`, or
-#' `remoteAccess` and make sure that the launch template meets the
-#' requirements in `launchTemplateSpecification`.
+#' @param launchTemplate An object representing a node group's launch template specification.
+#' When using this object, don't directly specify `instanceTypes`,
+#' `diskSize`, or `remoteAccess`. Make sure that the launch template meets
+#' the requirements in `launchTemplateSpecification`. Also refer to
+#' [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' in the *Amazon EKS User Guide*.
 #' @param updateConfig The node group update configuration.
 #' @param capacityType The capacity type for your node group.
 #' @param version The Kubernetes version to use for your managed nodes. By default, the
@@ -1263,8 +1311,8 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' specified value. If you specify `launchTemplate`, and your launch
 #' template uses a custom AMI, then don't specify `version`, or the node
 #' group deployment will fail. For more information about using launch
-#' templates with Amazon EKS, see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' templates with Amazon EKS, see [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param releaseVersion The AMI version of the Amazon EKS optimized AMI to use with your node
 #' group. By default, the latest available AMI version for the node group's
@@ -1281,8 +1329,8 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' If you specify `launchTemplate`, and your launch template uses a custom
 #' AMI, then don't specify `releaseVersion`, or the node group deployment
 #' will fail. For more information about using launch templates with Amazon
-#' EKS, see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' EKS, see [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #'
 #' @return
@@ -1302,7 +1350,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'       "2015-01-01"
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
-#'     capacityType = "ON_DEMAND"|"SPOT",
+#'     capacityType = "ON_DEMAND"|"SPOT"|"CAPACITY_BLOCK",
 #'     scalingConfig = list(
 #'       minSize = 123,
 #'       maxSize = 123,
@@ -1416,7 +1464,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'     maxUnavailable = 123,
 #'     maxUnavailablePercentage = 123
 #'   ),
-#'   capacityType = "ON_DEMAND"|"SPOT",
+#'   capacityType = "ON_DEMAND"|"SPOT"|"CAPACITY_BLOCK",
 #'   version = "string",
 #'   releaseVersion = "string"
 #' )
@@ -1432,12 +1480,13 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
     name = "CreateNodegroup",
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
   output <- .eks$create_nodegroup_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1531,7 +1580,8 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #'     ),
 #'     modifiedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     ownerArn = "string"
 #'   )
 #' )
 #' ```
@@ -1560,12 +1610,13 @@ eks_create_pod_identity_association <- function(clusterName, namespace, serviceA
     name = "CreatePodIdentityAssociation",
     http_method = "POST",
     http_path = "/clusters/{name}/pod-identity-associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$create_pod_identity_association_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1608,12 +1659,13 @@ eks_delete_access_entry <- function(clusterName, principalArn) {
     name = "DeleteAccessEntry",
     http_method = "DELETE",
     http_path = "/clusters/{name}/access-entries/{principalArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$delete_access_entry_input(clusterName = clusterName, principalArn = principalArn)
   output <- .eks$delete_access_entry_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1651,7 +1703,7 @@ eks_delete_access_entry <- function(clusterName, principalArn) {
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound",
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound"|"AddonSubscriptionNeeded"|"AddonPermissionFailure",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -1676,7 +1728,10 @@ eks_delete_access_entry <- function(clusterName, principalArn) {
 #'       productId = "string",
 #'       productUrl = "string"
 #'     ),
-#'     configurationValues = "string"
+#'     configurationValues = "string",
+#'     podIdentityAssociations = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1700,12 +1755,13 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
     name = "DeleteAddon",
     http_method = "DELETE",
     http_path = "/clusters/{name}/addons/{addonName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$delete_addon_input(clusterName = clusterName, addonName = addonName, preserve = preserve)
   output <- .eks$delete_addon_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1866,12 +1922,13 @@ eks_delete_cluster <- function(name) {
     name = "DeleteCluster",
     http_method = "DELETE",
     http_path = "/clusters/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$delete_cluster_input(name = name)
   output <- .eks$delete_cluster_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1943,12 +2000,13 @@ eks_delete_eks_anywhere_subscription <- function(id) {
     name = "DeleteEksAnywhereSubscription",
     http_method = "DELETE",
     http_path = "/eks-anywhere-subscriptions/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$delete_eks_anywhere_subscription_input(id = id)
   output <- .eks$delete_eks_anywhere_subscription_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2002,6 +2060,17 @@ eks_delete_eks_anywhere_subscription <- function(id) {
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "PodExecutionRoleAlreadyInUse"|"AccessDenied"|"ClusterUnreachable"|"InternalFailure",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2025,12 +2094,13 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
     name = "DeleteFargateProfile",
     http_method = "DELETE",
     http_path = "/clusters/{name}/fargate-profiles/{fargateProfileName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$delete_fargate_profile_input(clusterName = clusterName, fargateProfileName = fargateProfileName)
   output <- .eks$delete_fargate_profile_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2065,7 +2135,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'       "2015-01-01"
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
-#'     capacityType = "ON_DEMAND"|"SPOT",
+#'     capacityType = "ON_DEMAND"|"SPOT"|"CAPACITY_BLOCK",
 #'     scalingConfig = list(
 #'       minSize = 123,
 #'       maxSize = 123,
@@ -2149,12 +2219,13 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
     name = "DeleteNodegroup",
     http_method = "DELETE",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$delete_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName)
   output <- .eks$delete_nodegroup_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2196,7 +2267,8 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #'     ),
 #'     modifiedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     ownerArn = "string"
 #'   )
 #' )
 #' ```
@@ -2219,12 +2291,13 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
     name = "DeletePodIdentityAssociation",
     http_method = "DELETE",
     http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$delete_pod_identity_association_input(clusterName = clusterName, associationId = associationId)
   output <- .eks$delete_pod_identity_association_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2369,12 +2442,13 @@ eks_deregister_cluster <- function(name) {
     name = "DeregisterCluster",
     http_method = "DELETE",
     http_path = "/cluster-registrations/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$deregister_cluster_input(name = name)
   output <- .eks$deregister_cluster_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2436,12 +2510,13 @@ eks_describe_access_entry <- function(clusterName, principalArn) {
     name = "DescribeAccessEntry",
     http_method = "GET",
     http_path = "/clusters/{name}/access-entries/{principalArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_access_entry_input(clusterName = clusterName, principalArn = principalArn)
   output <- .eks$describe_access_entry_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2473,7 +2548,7 @@ eks_describe_access_entry <- function(clusterName, principalArn) {
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound",
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound"|"AddonSubscriptionNeeded"|"AddonPermissionFailure",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -2498,7 +2573,10 @@ eks_describe_access_entry <- function(clusterName, principalArn) {
 #'       productId = "string",
 #'       productUrl = "string"
 #'     ),
-#'     configurationValues = "string"
+#'     configurationValues = "string",
+#'     podIdentityAssociations = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2521,12 +2599,13 @@ eks_describe_addon <- function(clusterName, addonName) {
     name = "DescribeAddon",
     http_method = "GET",
     http_path = "/clusters/{name}/addons/{addonName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_addon_input(clusterName = clusterName, addonName = addonName)
   output <- .eks$describe_addon_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2554,7 +2633,15 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' list(
 #'   addonName = "string",
 #'   addonVersion = "string",
-#'   configurationSchema = "string"
+#'   configurationSchema = "string",
+#'   podIdentityConfiguration = list(
+#'     list(
+#'       serviceAccount = "string",
+#'       recommendedManagedPolicies = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2576,12 +2663,13 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
     name = "DescribeAddonConfiguration",
     http_method = "GET",
     http_path = "/addons/configuration-schemas",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_addon_configuration_input(addonName = addonName, addonVersion = addonVersion)
   output <- .eks$describe_addon_configuration_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2650,7 +2738,8 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
 #'               defaultVersion = TRUE|FALSE
 #'             )
 #'           ),
-#'           requiresConfiguration = TRUE|FALSE
+#'           requiresConfiguration = TRUE|FALSE,
+#'           requiresIamPermissions = TRUE|FALSE
 #'         )
 #'       ),
 #'       publisher = "string",
@@ -2694,12 +2783,13 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
     name = "DescribeAddonVersions",
     http_method = "GET",
     http_path = "/addons/supported-versions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons")
   )
   input <- .eks$describe_addon_versions_input(kubernetesVersion = kubernetesVersion, maxResults = maxResults, nextToken = nextToken, addonName = addonName, types = types, publishers = publishers, owners = owners)
   output <- .eks$describe_addon_versions_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2856,12 +2946,13 @@ eks_describe_cluster <- function(name) {
     name = "DescribeCluster",
     http_method = "GET",
     http_path = "/clusters/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_cluster_input(name = name)
   output <- .eks$describe_cluster_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2929,12 +3020,13 @@ eks_describe_eks_anywhere_subscription <- function(id) {
     name = "DescribeEksAnywhereSubscription",
     http_method = "GET",
     http_path = "/eks-anywhere-subscriptions/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_eks_anywhere_subscription_input(id = id)
   output <- .eks$describe_eks_anywhere_subscription_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2978,6 +3070,17 @@ eks_describe_eks_anywhere_subscription <- function(id) {
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "PodExecutionRoleAlreadyInUse"|"AccessDenied"|"ClusterUnreachable"|"InternalFailure",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3001,12 +3104,13 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
     name = "DescribeFargateProfile",
     http_method = "GET",
     http_path = "/clusters/{name}/fargate-profiles/{fargateProfileName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_fargate_profile_input(clusterName = clusterName, fargateProfileName = fargateProfileName)
   output <- .eks$describe_fargate_profile_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3073,12 +3177,13 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
     name = "DescribeIdentityProviderConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/identity-provider-configs/describe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig)
   output <- .eks$describe_identity_provider_config_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3171,12 +3276,13 @@ eks_describe_insight <- function(clusterName, id) {
     name = "DescribeInsight",
     http_method = "GET",
     http_path = "/clusters/{name}/insights/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_insight_input(clusterName = clusterName, id = id)
   output <- .eks$describe_insight_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3211,7 +3317,7 @@ eks_describe_insight <- function(clusterName, id) {
 #'       "2015-01-01"
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
-#'     capacityType = "ON_DEMAND"|"SPOT",
+#'     capacityType = "ON_DEMAND"|"SPOT"|"CAPACITY_BLOCK",
 #'     scalingConfig = list(
 #'       minSize = 123,
 #'       maxSize = 123,
@@ -3295,12 +3401,13 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
     name = "DescribeNodegroup",
     http_method = "GET",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName)
   output <- .eks$describe_nodegroup_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3343,7 +3450,8 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #'     ),
 #'     modifiedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     ownerArn = "string"
 #'   )
 #' )
 #' ```
@@ -3366,12 +3474,13 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
     name = "DescribePodIdentityAssociation",
     http_method = "GET",
     http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_pod_identity_association_input(clusterName = clusterName, associationId = associationId)
   output <- .eks$describe_pod_identity_association_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3408,7 +3517,7 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -3448,12 +3557,13 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
     name = "DescribeUpdate",
     http_method = "GET",
     http_path = "/clusters/{name}/updates/{updateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$describe_update_input(name = name, updateId = updateId, nodegroupName = nodegroupName, addonName = addonName)
   output <- .eks$describe_update_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3496,12 +3606,13 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
     name = "DisassociateAccessPolicy",
     http_method = "DELETE",
     http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies/{policyArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$disassociate_access_policy_input(clusterName = clusterName, principalArn = principalArn, policyArn = policyArn)
   output <- .eks$disassociate_access_policy_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3536,7 +3647,7 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -3578,12 +3689,13 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
     name = "DisassociateIdentityProviderConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/identity-provider-configs/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$disassociate_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig, clientRequestToken = clientRequestToken)
   output <- .eks$disassociate_identity_provider_config_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3651,12 +3763,13 @@ eks_list_access_entries <- function(clusterName, associatedPolicyArn = NULL, max
     name = "ListAccessEntries",
     http_method = "GET",
     http_path = "/clusters/{name}/access-entries",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessEntries")
   )
   input <- .eks$list_access_entries_input(clusterName = clusterName, associatedPolicyArn = associatedPolicyArn, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_access_entries_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3719,12 +3832,13 @@ eks_list_access_policies <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListAccessPolicies",
     http_method = "GET",
     http_path = "/access-policies",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessPolicies")
   )
   input <- .eks$list_access_policies_input(maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_access_policies_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3786,12 +3900,13 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
     name = "ListAddons",
     http_method = "GET",
     http_path = "/clusters/{name}/addons",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons")
   )
   input <- .eks$list_addons_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_addons_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3872,12 +3987,13 @@ eks_list_associated_access_policies <- function(clusterName, principalArn, maxRe
     name = "ListAssociatedAccessPolicies",
     http_method = "GET",
     http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "clusterName", "principalArn"), output_token = "nextToken", result_key = "associatedAccessPolicies")
   )
   input <- .eks$list_associated_access_policies_input(clusterName = clusterName, principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_associated_access_policies_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3954,12 +4070,13 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
     name = "ListClusters",
     http_method = "GET",
     http_path = "/clusters",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusters")
   )
   input <- .eks$list_clusters_input(maxResults = maxResults, nextToken = nextToken, include = include)
   output <- .eks$list_clusters_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4049,12 +4166,13 @@ eks_list_eks_anywhere_subscriptions <- function(maxResults = NULL, nextToken = N
     name = "ListEksAnywhereSubscriptions",
     http_method = "GET",
     http_path = "/eks-anywhere-subscriptions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "subscriptions")
   )
   input <- .eks$list_eks_anywhere_subscriptions_input(maxResults = maxResults, nextToken = nextToken, includeStatus = includeStatus)
   output <- .eks$list_eks_anywhere_subscriptions_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4118,12 +4236,13 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
     name = "ListFargateProfiles",
     http_method = "GET",
     http_path = "/clusters/{name}/fargate-profiles",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "fargateProfileNames")
   )
   input <- .eks$list_fargate_profiles_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_fargate_profiles_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4188,12 +4307,13 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
     name = "ListIdentityProviderConfigs",
     http_method = "GET",
     http_path = "/clusters/{name}/identity-provider-configs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "identityProviderConfigs")
   )
   input <- .eks$list_identity_provider_configs_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_identity_provider_configs_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4286,12 +4406,13 @@ eks_list_insights <- function(clusterName, filter = NULL, maxResults = NULL, nex
     name = "ListInsights",
     http_method = "POST",
     http_path = "/clusters/{name}/insights",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "insights")
   )
   input <- .eks$list_insights_input(clusterName = clusterName, filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_insights_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4357,12 +4478,13 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
     name = "ListNodegroups",
     http_method = "GET",
     http_path = "/clusters/{name}/node-groups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "nodegroups")
   )
   input <- .eks$list_nodegroups_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_nodegroups_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4416,7 +4538,8 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #'       namespace = "string",
 #'       serviceAccount = "string",
 #'       associationArn = "string",
-#'       associationId = "string"
+#'       associationId = "string",
+#'       ownerArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4444,12 +4567,13 @@ eks_list_pod_identity_associations <- function(clusterName, namespace = NULL, se
     name = "ListPodIdentityAssociations",
     http_method = "GET",
     http_path = "/clusters/{name}/pod-identity-associations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "associations")
   )
   input <- .eks$list_pod_identity_associations_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_pod_identity_associations_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4502,12 +4626,13 @@ eks_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .eks$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4575,12 +4700,13 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
     name = "ListUpdates",
     http_method = "GET",
     http_path = "/clusters/{name}/updates",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "updateIds")
   )
   input <- .eks$list_updates_input(name = name, nodegroupName = nodegroupName, addonName = addonName, nextToken = nextToken, maxResults = maxResults)
   output <- .eks$list_updates_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4752,12 +4878,13 @@ eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NUL
     name = "RegisterCluster",
     http_method = "POST",
     http_path = "/cluster-registrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$register_cluster_input(name = name, connectorConfig = connectorConfig, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$register_cluster_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4808,12 +4935,13 @@ eks_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .eks$tag_resource_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4854,12 +4982,13 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .eks$untag_resource_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4956,12 +5085,13 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
     name = "UpdateAccessEntry",
     http_method = "POST",
     http_path = "/clusters/{name}/access-entries/{principalArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$update_access_entry_input(clusterName = clusterName, principalArn = principalArn, kubernetesGroups = kubernetesGroups, clientRequestToken = clientRequestToken, username = username)
   output <- .eks$update_access_entry_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4976,7 +5106,7 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @usage
 #' eks_update_addon(clusterName, addonName, addonVersion,
 #'   serviceAccountRoleArn, resolveConflicts, clientRequestToken,
-#'   configurationValues)
+#'   configurationValues, podIdentityAssociations)
 #'
 #' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
@@ -5018,6 +5148,15 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @param configurationValues The set of configuration values for the add-on that's created. The
 #' values that you provide are validated against the schema returned by
 #' [`describe_addon_configuration`][eks_describe_addon_configuration].
+#' @param podIdentityAssociations An array of Pod Identity Assocations to be updated. Each EKS Pod
+#' Identity association maps a Kubernetes service account to an IAM Role.
+#' If this value is left blank, no change. If an empty array is provided,
+#' existing Pod Identity Assocations owned by the Addon are deleted.
+#' 
+#' For more information, see [Attach an IAM Role to an Amazon EKS add-on
+#' using Pod
+#' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
+#' in the EKS User Guide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5029,7 +5168,7 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5058,7 +5197,13 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'   serviceAccountRoleArn = "string",
 #'   resolveConflicts = "OVERWRITE"|"NONE"|"PRESERVE",
 #'   clientRequestToken = "string",
-#'   configurationValues = "string"
+#'   configurationValues = "string",
+#'   podIdentityAssociations = list(
+#'     list(
+#'       serviceAccount = "string",
+#'       roleArn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -5067,17 +5212,18 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @rdname eks_update_addon
 #'
 #' @aliases eks_update_addon
-eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, configurationValues = NULL) {
+eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, configurationValues = NULL, podIdentityAssociations = NULL) {
   op <- new_operation(
     name = "UpdateAddon",
     http_method = "POST",
     http_path = "/clusters/{name}/addons/{addonName}/update",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eks$update_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, configurationValues = configurationValues)
+  input <- .eks$update_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, configurationValues = configurationValues, podIdentityAssociations = podIdentityAssociations)
   output <- .eks$update_addon_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5154,7 +5300,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5218,12 +5364,13 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     name = "UpdateClusterConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/update-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5266,7 +5413,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5305,12 +5452,13 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
     name = "UpdateClusterVersion",
     http_method = "POST",
     http_path = "/clusters/{name}/updates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken)
   output <- .eks$update_cluster_version_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5385,12 +5533,13 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
     name = "UpdateEksAnywhereSubscription",
     http_method = "POST",
     http_path = "/eks-anywhere-subscriptions/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$update_eks_anywhere_subscription_input(id = id, autoRenew = autoRenew, clientRequestToken = clientRequestToken)
   output <- .eks$update_eks_anywhere_subscription_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5434,7 +5583,7 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5506,12 +5655,13 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
     name = "UpdateNodegroupConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_config_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5567,8 +5717,8 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' specify `launchTemplate`, and your launch template uses a custom AMI,
 #' then don't specify `version`, or the node group update will fail. For
 #' more information about using launch templates with Amazon EKS, see
-#' [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param releaseVersion The AMI version of the Amazon EKS optimized AMI to use for the update.
 #' By default, the latest available AMI version for the node group's
@@ -5585,8 +5735,8 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' If you specify `launchTemplate`, and your launch template uses a custom
 #' AMI, then don't specify `releaseVersion`, or the node group update will
 #' fail. For more information about using launch templates with Amazon EKS,
-#' see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+#' see [Customizing managed nodes with launch
+#' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param launchTemplate An object representing a node group's launch template specification. You
 #' can only update a node group using a launch template if the node group
@@ -5609,7 +5759,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5656,12 +5806,13 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
     name = "UpdateNodegroupVersion",
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-version",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$update_nodegroup_version_input(clusterName = clusterName, nodegroupName = nodegroupName, version = version, releaseVersion = releaseVersion, launchTemplate = launchTemplate, force = force, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_version_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5706,7 +5857,8 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
 #'     ),
 #'     modifiedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     ownerArn = "string"
 #'   )
 #' )
 #' ```
@@ -5731,12 +5883,13 @@ eks_update_pod_identity_association <- function(clusterName, associationId, role
     name = "UpdatePodIdentityAssociation",
     http_method = "POST",
     http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken)
   output <- .eks$update_pod_identity_association_output()
   config <- get_config()
-  svc <- .eks$service(config)
+  svc <- .eks$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

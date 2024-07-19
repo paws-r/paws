@@ -128,7 +128,7 @@ in the \emph{Amazon EC2 Auto Scaling API Reference}.
 Required if the policy type is \code{TargetTrackingScaling}.}
 
 \item{Enabled}{Indicates whether the scaling policy is enabled or disabled. The default
-is enabled. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html}{Disabling a scaling policy for an Auto Scaling group}
+is enabled. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html}{Disable a scaling policy for an Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{PredictiveScalingConfiguration}{A predictive scaling policy. Provides support for predefined and custom

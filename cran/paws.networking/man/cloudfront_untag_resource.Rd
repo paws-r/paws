@@ -12,7 +12,7 @@ cloudfront_untag_resource(Resource, TagKeys)
 \item{TagKeys}{[required] A complex type that contains zero or more \code{Tag} key elements.}
 }
 \description{
-Remove tags from a CloudFront resource.
+Remove tags from a CloudFront resource. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/tagging.html}{Tagging a distribution} in the \emph{Amazon CloudFront Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_untag_resource/} for full documentation.
 }

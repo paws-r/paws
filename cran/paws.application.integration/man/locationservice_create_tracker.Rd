@@ -6,44 +6,54 @@
 lets you retrieve current and historical location of devices}
 \usage{
 locationservice_create_tracker(
-  Description = NULL,
-  EventBridgeEnabled = NULL,
-  KmsKeyEnableGeospatialQueries = NULL,
-  KmsKeyId = NULL,
-  PositionFiltering = NULL,
+  TrackerName,
   PricingPlan = NULL,
+  KmsKeyId = NULL,
   PricingPlanDataSource = NULL,
+  Description = NULL,
   Tags = NULL,
-  TrackerName
+  PositionFiltering = NULL,
+  EventBridgeEnabled = NULL,
+  KmsKeyEnableGeospatialQueries = NULL
 )
 }
 \arguments{
-\item{Description}{An optional description for the tracker resource.}
+\item{TrackerName}{[required] The name for the tracker resource.
 
-\item{EventBridgeEnabled}{Whether to enable position \code{UPDATE} events from this tracker to be sent
-to EventBridge.
+Requirements:
+\itemize{
+\item Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-),
+periods (.), and underscores (_).
+\item Must be a unique tracker resource name.
+\item No spaces allowed. For example, \code{ExampleTracker}.
+}}
 
-You do not need enable this feature to get \code{ENTER} and \code{EXIT} events for
-geofences with this tracker. Those events are always sent to
-EventBridge.}
-
-\item{KmsKeyEnableGeospatialQueries}{Enables \code{GeospatialQueries} for a tracker that uses a \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
-
-This parameter is only used if you are using a KMS customer managed key.
-
-If you wish to encrypt your data using your own KMS customer managed
-key, then the Bounding Polygon Queries feature will be disabled by
-default. This is because by using this feature, a representation of your
-device positions will not be encrypted using the your KMS managed key.
-The exact device position, however; is still encrypted using your
-managed key.
-
-You can choose to opt-in to the Bounding Polygon Quseries feature. This
-is done by setting the \code{KmsKeyEnableGeospatialQueries} parameter to true
-when creating or updating a Tracker.}
+\item{PricingPlan}{No longer used. If included, the only allowed value is
+\code{RequestBasedUsage}.}
 
 \item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
 Enter a key ID, key ARN, alias name, or alias ARN.}
+
+\item{PricingPlanDataSource}{This parameter is no longer used.}
+
+\item{Description}{An optional description for the tracker resource.}
+
+\item{Tags}{Applies one or more tags to the tracker resource. A tag is a key-value
+pair helps manage, identify, search, and filter your resources by
+labelling them.
+
+Format: \code{"key" : "value"}
+
+Restrictions:
+\itemize{
+\item Maximum 50 tags per resource
+\item Each resource tag must be unique with a maximum of one value.
+\item Maximum key length: 128 Unicode characters in UTF-8
+\item Maximum value length: 256 Unicode characters in UTF-8
+\item Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+characters: + - = . _ : / @.
+\item Cannot use "aws:" as a prefix for a key.
+}}
 
 \item{PositionFiltering}{Specifies the position filtering for the tracker resource.
 
@@ -74,37 +84,27 @@ evaluations.
 This field is optional. If not specified, the default value is
 \code{TimeBased}.}
 
-\item{PricingPlan}{No longer used. If included, the only allowed value is
-\code{RequestBasedUsage}.}
+\item{EventBridgeEnabled}{Whether to enable position \code{UPDATE} events from this tracker to be sent
+to EventBridge.
 
-\item{PricingPlanDataSource}{This parameter is no longer used.}
+You do not need enable this feature to get \code{ENTER} and \code{EXIT} events for
+geofences with this tracker. Those events are always sent to
+EventBridge.}
 
-\item{Tags}{Applies one or more tags to the tracker resource. A tag is a key-value
-pair helps manage, identify, search, and filter your resources by
-labelling them.
+\item{KmsKeyEnableGeospatialQueries}{Enables \code{GeospatialQueries} for a tracker that uses a \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
 
-Format: \code{"key" : "value"}
+This parameter is only used if you are using a KMS customer managed key.
 
-Restrictions:
-\itemize{
-\item Maximum 50 tags per resource
-\item Each resource tag must be unique with a maximum of one value.
-\item Maximum key length: 128 Unicode characters in UTF-8
-\item Maximum value length: 256 Unicode characters in UTF-8
-\item Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
-characters: + - = . _ : / @.
-\item Cannot use "aws:" as a prefix for a key.
-}}
+If you wish to encrypt your data using your own KMS customer managed
+key, then the Bounding Polygon Queries feature will be disabled by
+default. This is because by using this feature, a representation of your
+device positions will not be encrypted using the your KMS managed key.
+The exact device position, however; is still encrypted using your
+managed key.
 
-\item{TrackerName}{[required] The name for the tracker resource.
-
-Requirements:
-\itemize{
-\item Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-),
-periods (.), and underscores (_).
-\item Must be a unique tracker resource name.
-\item No spaces allowed. For example, \code{ExampleTracker}.
-}}
+You can choose to opt-in to the Bounding Polygon Quseries feature. This
+is done by setting the \code{KmsKeyEnableGeospatialQueries} parameter to true
+when creating or updating a Tracker.}
 }
 \description{
 Creates a tracker resource in your Amazon Web Services account, which lets you retrieve current and historical location of devices.

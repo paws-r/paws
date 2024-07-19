@@ -190,7 +190,7 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.inspector2$service <- function(config = list()) {
+.inspector2$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.inspector2$metadata, handlers, config)
+  new_service(.inspector2$metadata, handlers, config, op)
 }

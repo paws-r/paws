@@ -11,8 +11,9 @@ securityhub_start_configuration_policy_association(
 )
 }
 \arguments{
-\item{ConfigurationPolicyIdentifier}{[required] The Amazon Resource Name (ARN) or universally unique identifier (UUID)
-of the configuration policy.}
+\item{ConfigurationPolicyIdentifier}{[required] The Amazon Resource Name (ARN) of a configuration policy, the
+universally unique identifier (UUID) of a configuration policy, or a
+value of \code{SELF_MANAGED_SECURITY_HUB} for a self-managed configuration.}
 
 \item{Target}{[required] The identifier of the target account, organizational unit, or the root
 to associate with the specified configuration.}

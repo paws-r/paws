@@ -30,12 +30,13 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
     name = "CreateExperimentTemplate",
     http_method = "POST",
     http_path = "/experimentTemplates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$create_experiment_template_input(clientToken = clientToken, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, tags = tags, logConfiguration = logConfiguration, experimentOptions = experimentOptions)
   output <- .fis$create_experiment_template_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -64,12 +65,13 @@ fis_create_target_account_configuration <- function(clientToken = NULL, experime
     name = "CreateTargetAccountConfiguration",
     http_method = "POST",
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$create_target_account_configuration_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, accountId = accountId, roleArn = roleArn, description = description)
   output <- .fis$create_target_account_configuration_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -93,12 +95,13 @@ fis_delete_experiment_template <- function(id) {
     name = "DeleteExperimentTemplate",
     http_method = "DELETE",
     http_path = "/experimentTemplates/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$delete_experiment_template_input(id = id)
   output <- .fis$delete_experiment_template_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -124,12 +127,13 @@ fis_delete_target_account_configuration <- function(experimentTemplateId, accoun
     name = "DeleteTargetAccountConfiguration",
     http_method = "DELETE",
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$delete_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId)
   output <- .fis$delete_target_account_configuration_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -153,12 +157,13 @@ fis_get_action <- function(id) {
     name = "GetAction",
     http_method = "GET",
     http_path = "/actions/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$get_action_input(id = id)
   output <- .fis$get_action_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -182,12 +187,13 @@ fis_get_experiment <- function(id) {
     name = "GetExperiment",
     http_method = "GET",
     http_path = "/experiments/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$get_experiment_input(id = id)
   output <- .fis$get_experiment_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -213,12 +219,13 @@ fis_get_experiment_target_account_configuration <- function(experimentId, accoun
     name = "GetExperimentTargetAccountConfiguration",
     http_method = "GET",
     http_path = "/experiments/{id}/targetAccountConfigurations/{accountId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$get_experiment_target_account_configuration_input(experimentId = experimentId, accountId = accountId)
   output <- .fis$get_experiment_target_account_configuration_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -242,12 +249,13 @@ fis_get_experiment_template <- function(id) {
     name = "GetExperimentTemplate",
     http_method = "GET",
     http_path = "/experimentTemplates/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$get_experiment_template_input(id = id)
   output <- .fis$get_experiment_template_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -273,12 +281,13 @@ fis_get_target_account_configuration <- function(experimentTemplateId, accountId
     name = "GetTargetAccountConfiguration",
     http_method = "GET",
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$get_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId)
   output <- .fis$get_target_account_configuration_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -302,12 +311,13 @@ fis_get_target_resource_type <- function(resourceType) {
     name = "GetTargetResourceType",
     http_method = "GET",
     http_path = "/targetResourceTypes/{resourceType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$get_target_resource_type_input(resourceType = resourceType)
   output <- .fis$get_target_resource_type_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -334,12 +344,13 @@ fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListActions",
     http_method = "GET",
     http_path = "/actions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_actions_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_actions_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -368,12 +379,13 @@ fis_list_experiment_resolved_targets <- function(experimentId, maxResults = NULL
     name = "ListExperimentResolvedTargets",
     http_method = "GET",
     http_path = "/experiments/{id}/resolvedTargets",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_experiment_resolved_targets_input(experimentId = experimentId, maxResults = maxResults, nextToken = nextToken, targetName = targetName)
   output <- .fis$list_experiment_resolved_targets_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -398,12 +410,13 @@ fis_list_experiment_target_account_configurations <- function(experimentId, next
     name = "ListExperimentTargetAccountConfigurations",
     http_method = "GET",
     http_path = "/experiments/{id}/targetAccountConfigurations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$list_experiment_target_account_configurations_input(experimentId = experimentId, nextToken = nextToken)
   output <- .fis$list_experiment_target_account_configurations_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -430,12 +443,13 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListExperimentTemplates",
     http_method = "GET",
     http_path = "/experimentTemplates",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_experiment_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_experiment_templates_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -463,12 +477,13 @@ fis_list_experiments <- function(maxResults = NULL, nextToken = NULL, experiment
     name = "ListExperiments",
     http_method = "GET",
     http_path = "/experiments",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken, experimentTemplateId = experimentTemplateId)
   output <- .fis$list_experiments_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -492,12 +507,13 @@ fis_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .fis$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -526,12 +542,13 @@ fis_list_target_account_configurations <- function(experimentTemplateId, maxResu
     name = "ListTargetAccountConfigurations",
     http_method = "GET",
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_target_account_configurations_input(experimentTemplateId = experimentTemplateId, maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_target_account_configurations_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -558,12 +575,13 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
     name = "ListTargetResourceTypes",
     http_method = "GET",
     http_path = "/targetResourceTypes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_target_resource_types_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_target_resource_types_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -591,12 +609,13 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, experimentOp
     name = "StartExperiment",
     http_method = "POST",
     http_path = "/experiments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$start_experiment_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, experimentOptions = experimentOptions, tags = tags)
   output <- .fis$start_experiment_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -620,12 +639,13 @@ fis_stop_experiment <- function(id) {
     name = "StopExperiment",
     http_method = "DELETE",
     http_path = "/experiments/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$stop_experiment_input(id = id)
   output <- .fis$stop_experiment_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -650,12 +670,13 @@ fis_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .fis$tag_resource_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -680,12 +701,13 @@ fis_untag_resource <- function(resourceArn, tagKeys = NULL) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .fis$untag_resource_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -717,12 +739,13 @@ fis_update_experiment_template <- function(id, description = NULL, stopCondition
     name = "UpdateExperimentTemplate",
     http_method = "PATCH",
     http_path = "/experimentTemplates/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$update_experiment_template_input(id = id, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, logConfiguration = logConfiguration, experimentOptions = experimentOptions)
   output <- .fis$update_experiment_template_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -750,12 +773,13 @@ fis_update_target_account_configuration <- function(experimentTemplateId, accoun
     name = "UpdateTargetAccountConfiguration",
     http_method = "PATCH",
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fis$update_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId, roleArn = roleArn, description = description)
   output <- .fis$update_target_account_configuration_output()
   config <- get_config()
-  svc <- .fis$service(config)
+  svc <- .fis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

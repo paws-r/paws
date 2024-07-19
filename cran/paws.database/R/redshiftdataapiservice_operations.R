@@ -42,12 +42,13 @@ redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, C
     name = "BatchExecuteStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshiftdataapiservice$batch_execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, SecretArn = SecretArn, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -75,12 +76,13 @@ redshiftdataapiservice_cancel_statement <- function(Id) {
     name = "CancelStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshiftdataapiservice$cancel_statement_input(Id = Id)
   output <- .redshiftdataapiservice$cancel_statement_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -112,12 +114,13 @@ redshiftdataapiservice_describe_statement <- function(Id) {
     name = "DescribeStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshiftdataapiservice$describe_statement_input(Id = Id)
   output <- .redshiftdataapiservice$describe_statement_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -171,12 +174,13 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
     name = "DescribeTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ColumnList")
   )
   input <- .redshiftdataapiservice$describe_table_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, Schema = Schema, SecretArn = SecretArn, Table = Table, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$describe_table_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -221,12 +225,13 @@ redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, Cluster
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .redshiftdataapiservice$execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, SecretArn = SecretArn, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$execute_statement_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -262,12 +267,13 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
     name = "GetStatementResult",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Records")
   )
   input <- .redshiftdataapiservice$get_statement_result_input(Id = Id, NextToken = NextToken)
   output <- .redshiftdataapiservice$get_statement_result_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -312,12 +318,13 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Data
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Databases")
   )
   input <- .redshiftdataapiservice$list_databases_input(ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SecretArn = SecretArn, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_databases_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -369,12 +376,13 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
     name = "ListSchemas",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Schemas")
   )
   input <- .redshiftdataapiservice$list_schemas_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_schemas_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -435,12 +443,13 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
     name = "ListStatements",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Statements")
   )
   input <- .redshiftdataapiservice$list_statements_input(MaxResults = MaxResults, NextToken = NextToken, RoleLevel = RoleLevel, StatementName = StatementName, Status = Status)
   output <- .redshiftdataapiservice$list_statements_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -500,12 +509,13 @@ redshiftdataapiservice_list_tables <- function(ClusterIdentifier = NULL, Connect
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tables")
   )
   input <- .redshiftdataapiservice$list_tables_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn, TablePattern = TablePattern, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_tables_output()
   config <- get_config()
-  svc <- .redshiftdataapiservice$service(config)
+  svc <- .redshiftdataapiservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

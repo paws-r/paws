@@ -21,12 +21,13 @@ wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
     name = "AssociateLenses",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/associateLenses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$associate_lenses_input(WorkloadId = WorkloadId, LensAliases = LensAliases)
   output <- .wellarchitected$associate_lenses_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -51,12 +52,13 @@ wellarchitected_associate_profiles <- function(WorkloadId, ProfileArns) {
     name = "AssociateProfiles",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/associateProfiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$associate_profiles_input(WorkloadId = WorkloadId, ProfileArns = ProfileArns)
   output <- .wellarchitected$associate_profiles_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -82,12 +84,13 @@ wellarchitected_create_lens_share <- function(LensAlias, SharedWith, ClientReque
     name = "CreateLensShare",
     http_method = "POST",
     http_path = "/lenses/{LensAlias}/shares",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_lens_share_input(LensAlias = LensAlias, SharedWith = SharedWith, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$create_lens_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -114,12 +117,13 @@ wellarchitected_create_lens_version <- function(LensAlias, LensVersion, IsMajorV
     name = "CreateLensVersion",
     http_method = "POST",
     http_path = "/lenses/{LensAlias}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_lens_version_input(LensAlias = LensAlias, LensVersion = LensVersion, IsMajorVersion = IsMajorVersion, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$create_lens_version_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -145,12 +149,13 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
     name = "CreateMilestone",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/milestones",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_milestone_input(WorkloadId = WorkloadId, MilestoneName = MilestoneName, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$create_milestone_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -178,12 +183,13 @@ wellarchitected_create_profile <- function(ProfileName, ProfileDescription, Prof
     name = "CreateProfile",
     http_method = "POST",
     http_path = "/profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_profile_input(ProfileName = ProfileName, ProfileDescription = ProfileDescription, ProfileQuestions = ProfileQuestions, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .wellarchitected$create_profile_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -209,12 +215,13 @@ wellarchitected_create_profile_share <- function(ProfileArn, SharedWith, ClientR
     name = "CreateProfileShare",
     http_method = "POST",
     http_path = "/profiles/{ProfileArn}/shares",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_profile_share_input(ProfileArn = ProfileArn, SharedWith = SharedWith, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$create_profile_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -243,12 +250,13 @@ wellarchitected_create_review_template <- function(TemplateName, Description, Le
     name = "CreateReviewTemplate",
     http_method = "POST",
     http_path = "/reviewTemplates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_review_template_input(TemplateName = TemplateName, Description = Description, Lenses = Lenses, Notes = Notes, Tags = Tags, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$create_review_template_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -274,12 +282,13 @@ wellarchitected_create_template_share <- function(TemplateArn, SharedWith, Clien
     name = "CreateTemplateShare",
     http_method = "POST",
     http_path = "/templates/shares/{TemplateArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_template_share_input(TemplateArn = TemplateArn, SharedWith = SharedWith, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$create_template_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -323,12 +332,13 @@ wellarchitected_create_workload <- function(WorkloadName, Description, Environme
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications, ProfileArns = ProfileArns, ReviewTemplateArns = ReviewTemplateArns, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -355,12 +365,13 @@ wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, Permis
     name = "CreateWorkloadShare",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/shares",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$create_workload_share_input(WorkloadId = WorkloadId, SharedWith = SharedWith, PermissionType = PermissionType, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$create_workload_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -386,12 +397,13 @@ wellarchitected_delete_lens <- function(LensAlias, ClientRequestToken, LensStatu
     name = "DeleteLens",
     http_method = "DELETE",
     http_path = "/lenses/{LensAlias}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_lens_input(LensAlias = LensAlias, ClientRequestToken = ClientRequestToken, LensStatus = LensStatus)
   output <- .wellarchitected$delete_lens_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -417,12 +429,13 @@ wellarchitected_delete_lens_share <- function(ShareId, LensAlias, ClientRequestT
     name = "DeleteLensShare",
     http_method = "DELETE",
     http_path = "/lenses/{LensAlias}/shares/{ShareId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_lens_share_input(ShareId = ShareId, LensAlias = LensAlias, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$delete_lens_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -447,12 +460,13 @@ wellarchitected_delete_profile <- function(ProfileArn, ClientRequestToken) {
     name = "DeleteProfile",
     http_method = "DELETE",
     http_path = "/profiles/{ProfileArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_profile_input(ProfileArn = ProfileArn, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$delete_profile_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -478,12 +492,13 @@ wellarchitected_delete_profile_share <- function(ShareId, ProfileArn, ClientRequ
     name = "DeleteProfileShare",
     http_method = "DELETE",
     http_path = "/profiles/{ProfileArn}/shares/{ShareId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_profile_share_input(ShareId = ShareId, ProfileArn = ProfileArn, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$delete_profile_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -508,12 +523,13 @@ wellarchitected_delete_review_template <- function(TemplateArn, ClientRequestTok
     name = "DeleteReviewTemplate",
     http_method = "DELETE",
     http_path = "/reviewTemplates/{TemplateArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_review_template_input(TemplateArn = TemplateArn, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$delete_review_template_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -539,12 +555,13 @@ wellarchitected_delete_template_share <- function(ShareId, TemplateArn, ClientRe
     name = "DeleteTemplateShare",
     http_method = "DELETE",
     http_path = "/templates/shares/{TemplateArn}/{ShareId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_template_share_input(ShareId = ShareId, TemplateArn = TemplateArn, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$delete_template_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -569,12 +586,13 @@ wellarchitected_delete_workload <- function(WorkloadId, ClientRequestToken) {
     name = "DeleteWorkload",
     http_method = "DELETE",
     http_path = "/workloads/{WorkloadId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_workload_input(WorkloadId = WorkloadId, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$delete_workload_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -600,12 +618,13 @@ wellarchitected_delete_workload_share <- function(ShareId, WorkloadId, ClientReq
     name = "DeleteWorkloadShare",
     http_method = "DELETE",
     http_path = "/workloads/{WorkloadId}/shares/{ShareId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$delete_workload_share_input(ShareId = ShareId, WorkloadId = WorkloadId, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$delete_workload_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -630,12 +649,13 @@ wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
     name = "DisassociateLenses",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/disassociateLenses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$disassociate_lenses_input(WorkloadId = WorkloadId, LensAliases = LensAliases)
   output <- .wellarchitected$disassociate_lenses_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -660,12 +680,13 @@ wellarchitected_disassociate_profiles <- function(WorkloadId, ProfileArns) {
     name = "DisassociateProfiles",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/disassociateProfiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$disassociate_profiles_input(WorkloadId = WorkloadId, ProfileArns = ProfileArns)
   output <- .wellarchitected$disassociate_profiles_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -690,12 +711,13 @@ wellarchitected_export_lens <- function(LensAlias, LensVersion = NULL) {
     name = "ExportLens",
     http_method = "GET",
     http_path = "/lenses/{LensAlias}/export",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$export_lens_input(LensAlias = LensAlias, LensVersion = LensVersion)
   output <- .wellarchitected$export_lens_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -722,12 +744,13 @@ wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, Milest
     name = "GetAnswer",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/answers/{QuestionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_answer_input(WorkloadId = WorkloadId, LensAlias = LensAlias, QuestionId = QuestionId, MilestoneNumber = MilestoneNumber)
   output <- .wellarchitected$get_answer_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -757,12 +780,13 @@ wellarchitected_get_consolidated_report <- function(Format, IncludeSharedResourc
     name = "GetConsolidatedReport",
     http_method = "GET",
     http_path = "/consolidatedReport",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$get_consolidated_report_input(Format = Format, IncludeSharedResources = IncludeSharedResources, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$get_consolidated_report_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -786,12 +810,13 @@ wellarchitected_get_global_settings <- function() {
     name = "GetGlobalSettings",
     http_method = "GET",
     http_path = "/global-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_global_settings_input()
   output <- .wellarchitected$get_global_settings_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -816,12 +841,13 @@ wellarchitected_get_lens <- function(LensAlias, LensVersion = NULL) {
     name = "GetLens",
     http_method = "GET",
     http_path = "/lenses/{LensAlias}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_lens_input(LensAlias = LensAlias, LensVersion = LensVersion)
   output <- .wellarchitected$get_lens_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -847,12 +873,13 @@ wellarchitected_get_lens_review <- function(WorkloadId, LensAlias, MilestoneNumb
     name = "GetLensReview",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_lens_review_input(WorkloadId = WorkloadId, LensAlias = LensAlias, MilestoneNumber = MilestoneNumber)
   output <- .wellarchitected$get_lens_review_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -878,12 +905,13 @@ wellarchitected_get_lens_review_report <- function(WorkloadId, LensAlias, Milest
     name = "GetLensReviewReport",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/report",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_lens_review_report_input(WorkloadId = WorkloadId, LensAlias = LensAlias, MilestoneNumber = MilestoneNumber)
   output <- .wellarchitected$get_lens_review_report_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -909,12 +937,13 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
     name = "GetLensVersionDifference",
     http_method = "GET",
     http_path = "/lenses/{LensAlias}/versionDifference",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_lens_version_difference_input(LensAlias = LensAlias, BaseLensVersion = BaseLensVersion, TargetLensVersion = TargetLensVersion)
   output <- .wellarchitected$get_lens_version_difference_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -939,12 +968,13 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
     name = "GetMilestone",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/milestones/{MilestoneNumber}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_milestone_input(WorkloadId = WorkloadId, MilestoneNumber = MilestoneNumber)
   output <- .wellarchitected$get_milestone_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -969,12 +999,13 @@ wellarchitected_get_profile <- function(ProfileArn, ProfileVersion = NULL) {
     name = "GetProfile",
     http_method = "GET",
     http_path = "/profiles/{ProfileArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_profile_input(ProfileArn = ProfileArn, ProfileVersion = ProfileVersion)
   output <- .wellarchitected$get_profile_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -998,12 +1029,13 @@ wellarchitected_get_profile_template <- function() {
     name = "GetProfileTemplate",
     http_method = "GET",
     http_path = "/profileTemplate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_profile_template_input()
   output <- .wellarchitected$get_profile_template_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1027,12 +1059,13 @@ wellarchitected_get_review_template <- function(TemplateArn) {
     name = "GetReviewTemplate",
     http_method = "GET",
     http_path = "/reviewTemplates/{TemplateArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_review_template_input(TemplateArn = TemplateArn)
   output <- .wellarchitected$get_review_template_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1058,12 +1091,13 @@ wellarchitected_get_review_template_answer <- function(TemplateArn, LensAlias, Q
     name = "GetReviewTemplateAnswer",
     http_method = "GET",
     http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/answers/{QuestionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_review_template_answer_input(TemplateArn = TemplateArn, LensAlias = LensAlias, QuestionId = QuestionId)
   output <- .wellarchitected$get_review_template_answer_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1088,12 +1122,13 @@ wellarchitected_get_review_template_lens_review <- function(TemplateArn, LensAli
     name = "GetReviewTemplateLensReview",
     http_method = "GET",
     http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_review_template_lens_review_input(TemplateArn = TemplateArn, LensAlias = LensAlias)
   output <- .wellarchitected$get_review_template_lens_review_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1117,12 +1152,13 @@ wellarchitected_get_workload <- function(WorkloadId) {
     name = "GetWorkload",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$get_workload_input(WorkloadId = WorkloadId)
   output <- .wellarchitected$get_workload_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1149,12 +1185,13 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
     name = "ImportLens",
     http_method = "PUT",
     http_path = "/importLens",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$import_lens_input(LensAlias = LensAlias, JSONString = JSONString, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .wellarchitected$import_lens_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1184,12 +1221,13 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
     name = "ListAnswers",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/answers",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_answers_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
   output <- .wellarchitected$list_answers_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1219,12 +1257,13 @@ wellarchitected_list_check_details <- function(WorkloadId, NextToken = NULL, Max
     name = "ListCheckDetails",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/checks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_check_details_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
   output <- .wellarchitected$list_check_details_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1255,12 +1294,13 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
     name = "ListCheckSummaries",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/checkSummaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_check_summaries_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
   output <- .wellarchitected$list_check_summaries_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1290,12 +1330,13 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
     name = "ListLensReviewImprovements",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/improvements",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_lens_review_improvements_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
   output <- .wellarchitected$list_lens_review_improvements_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1322,12 +1363,13 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
     name = "ListLensReviews",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_lens_reviews_input(WorkloadId = WorkloadId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_lens_reviews_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1356,12 +1398,13 @@ wellarchitected_list_lens_shares <- function(LensAlias, SharedWithPrefix = NULL,
     name = "ListLensShares",
     http_method = "GET",
     http_path = "/lenses/{LensAlias}/shares",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_lens_shares_input(LensAlias = LensAlias, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
   output <- .wellarchitected$list_lens_shares_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1389,12 +1432,13 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL, Len
     name = "ListLenses",
     http_method = "GET",
     http_path = "/lenses",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_lenses_input(NextToken = NextToken, MaxResults = MaxResults, LensType = LensType, LensStatus = LensStatus, LensName = LensName)
   output <- .wellarchitected$list_lenses_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1420,12 +1464,13 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
     name = "ListMilestones",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/milestonesSummaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_milestones_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_milestones_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1454,12 +1499,13 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
     name = "ListNotifications",
     http_method = "POST",
     http_path = "/notifications",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .wellarchitected$list_notifications_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1485,12 +1531,13 @@ wellarchitected_list_profile_notifications <- function(WorkloadId = NULL, NextTo
     name = "ListProfileNotifications",
     http_method = "GET",
     http_path = "/profileNotifications/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_profile_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_profile_notifications_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1519,12 +1566,13 @@ wellarchitected_list_profile_shares <- function(ProfileArn, SharedWithPrefix = N
     name = "ListProfileShares",
     http_method = "GET",
     http_path = "/profiles/{ProfileArn}/shares",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_profile_shares_input(ProfileArn = ProfileArn, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
   output <- .wellarchitected$list_profile_shares_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1552,12 +1600,13 @@ wellarchitected_list_profiles <- function(ProfileNamePrefix = NULL, ProfileOwner
     name = "ListProfiles",
     http_method = "GET",
     http_path = "/profileSummaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_profiles_input(ProfileNamePrefix = ProfileNamePrefix, ProfileOwnerType = ProfileOwnerType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_profiles_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1585,12 +1634,13 @@ wellarchitected_list_review_template_answers <- function(TemplateArn, LensAlias,
     name = "ListReviewTemplateAnswers",
     http_method = "GET",
     http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/answers",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_review_template_answers_input(TemplateArn = TemplateArn, LensAlias = LensAlias, PillarId = PillarId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_review_template_answers_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1615,12 +1665,13 @@ wellarchitected_list_review_templates <- function(NextToken = NULL, MaxResults =
     name = "ListReviewTemplates",
     http_method = "GET",
     http_path = "/reviewTemplates",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_review_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_review_templates_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1653,12 +1704,13 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Le
     name = "ListShareInvitations",
     http_method = "GET",
     http_path = "/shareInvitations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults, ProfileNamePrefix = ProfileNamePrefix, TemplateNamePrefix = TemplateNamePrefix)
   output <- .wellarchitected$list_share_invitations_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1682,12 +1734,13 @@ wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{WorkloadArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$list_tags_for_resource_input(WorkloadArn = WorkloadArn)
   output <- .wellarchitected$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1716,12 +1769,13 @@ wellarchitected_list_template_shares <- function(TemplateArn, SharedWithPrefix =
     name = "ListTemplateShares",
     http_method = "GET",
     http_path = "/templates/shares/{TemplateArn}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_template_shares_input(TemplateArn = TemplateArn, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
   output <- .wellarchitected$list_template_shares_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1750,12 +1804,13 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
     name = "ListWorkloadShares",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/shares",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_workload_shares_input(WorkloadId = WorkloadId, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
   output <- .wellarchitected$list_workload_shares_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1781,12 +1836,13 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
     name = "ListWorkloads",
     http_method = "POST",
     http_path = "/workloadsSummaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_workloads_input(WorkloadNamePrefix = WorkloadNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_workloads_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1811,12 +1867,13 @@ wellarchitected_tag_resource <- function(WorkloadArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{WorkloadArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$tag_resource_input(WorkloadArn = WorkloadArn, Tags = Tags)
   output <- .wellarchitected$tag_resource_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1842,12 +1899,13 @@ wellarchitected_untag_resource <- function(WorkloadArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{WorkloadArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$untag_resource_input(WorkloadArn = WorkloadArn, TagKeys = TagKeys)
   output <- .wellarchitected$untag_resource_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1879,12 +1937,13 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
     name = "UpdateAnswer",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/answers/{QuestionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_answer_input(WorkloadId = WorkloadId, LensAlias = LensAlias, QuestionId = QuestionId, SelectedChoices = SelectedChoices, ChoiceUpdates = ChoiceUpdates, Notes = Notes, IsApplicable = IsApplicable, Reason = Reason)
   output <- .wellarchitected$update_answer_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1911,12 +1970,13 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
     name = "UpdateGlobalSettings",
     http_method = "PATCH",
     http_path = "/global-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_global_settings_input(OrganizationSharingStatus = OrganizationSharingStatus, DiscoveryIntegrationStatus = DiscoveryIntegrationStatus, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$update_global_settings_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1942,12 +2002,13 @@ wellarchitected_update_integration <- function(WorkloadId, ClientRequestToken, I
     name = "UpdateIntegration",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/updateIntegration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_integration_input(WorkloadId = WorkloadId, ClientRequestToken = ClientRequestToken, IntegratingService = IntegratingService)
   output <- .wellarchitected$update_integration_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1975,12 +2036,13 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
     name = "UpdateLensReview",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_lens_review_input(WorkloadId = WorkloadId, LensAlias = LensAlias, LensNotes = LensNotes, PillarNotes = PillarNotes, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$update_lens_review_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2006,12 +2068,13 @@ wellarchitected_update_profile <- function(ProfileArn, ProfileDescription = NULL
     name = "UpdateProfile",
     http_method = "PATCH",
     http_path = "/profiles/{ProfileArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_profile_input(ProfileArn = ProfileArn, ProfileDescription = ProfileDescription, ProfileQuestions = ProfileQuestions)
   output <- .wellarchitected$update_profile_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2041,12 +2104,13 @@ wellarchitected_update_review_template <- function(TemplateArn, TemplateName = N
     name = "UpdateReviewTemplate",
     http_method = "PATCH",
     http_path = "/reviewTemplates/{TemplateArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_review_template_input(TemplateArn = TemplateArn, TemplateName = TemplateName, Description = Description, Notes = Notes, LensesToAssociate = LensesToAssociate, LensesToDisassociate = LensesToDisassociate)
   output <- .wellarchitected$update_review_template_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2077,12 +2141,13 @@ wellarchitected_update_review_template_answer <- function(TemplateArn, LensAlias
     name = "UpdateReviewTemplateAnswer",
     http_method = "PATCH",
     http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/answers/{QuestionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_review_template_answer_input(TemplateArn = TemplateArn, LensAlias = LensAlias, QuestionId = QuestionId, SelectedChoices = SelectedChoices, ChoiceUpdates = ChoiceUpdates, Notes = Notes, IsApplicable = IsApplicable, Reason = Reason)
   output <- .wellarchitected$update_review_template_answer_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2109,12 +2174,13 @@ wellarchitected_update_review_template_lens_review <- function(TemplateArn, Lens
     name = "UpdateReviewTemplateLensReview",
     http_method = "PATCH",
     http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_review_template_lens_review_input(TemplateArn = TemplateArn, LensAlias = LensAlias, LensNotes = LensNotes, PillarNotes = PillarNotes)
   output <- .wellarchitected$update_review_template_lens_review_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2139,12 +2205,13 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
     name = "UpdateShareInvitation",
     http_method = "PATCH",
     http_path = "/shareInvitations/{ShareInvitationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_share_invitation_input(ShareInvitationId = ShareInvitationId, ShareInvitationAction = ShareInvitationAction)
   output <- .wellarchitected$update_share_invitation_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2191,12 +2258,13 @@ wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Des
     name = "UpdateWorkload",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_workload_input(WorkloadId = WorkloadId, WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IsReviewOwnerUpdateAcknowledged = IsReviewOwnerUpdateAcknowledged, IndustryType = IndustryType, Industry = Industry, Notes = Notes, ImprovementStatus = ImprovementStatus, DiscoveryConfig = DiscoveryConfig, Applications = Applications, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$update_workload_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2222,12 +2290,13 @@ wellarchitected_update_workload_share <- function(ShareId, WorkloadId, Permissio
     name = "UpdateWorkloadShare",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/shares/{ShareId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$update_workload_share_input(ShareId = ShareId, WorkloadId = WorkloadId, PermissionType = PermissionType)
   output <- .wellarchitected$update_workload_share_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2254,12 +2323,13 @@ wellarchitected_upgrade_lens_review <- function(WorkloadId, LensAlias, Milestone
     name = "UpgradeLensReview",
     http_method = "PUT",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/upgrade",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$upgrade_lens_review_input(WorkloadId = WorkloadId, LensAlias = LensAlias, MilestoneName = MilestoneName, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$upgrade_lens_review_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2286,12 +2356,13 @@ wellarchitected_upgrade_profile_version <- function(WorkloadId, ProfileArn, Mile
     name = "UpgradeProfileVersion",
     http_method = "PUT",
     http_path = "/workloads/{WorkloadId}/profiles/{ProfileArn}/upgrade",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$upgrade_profile_version_input(WorkloadId = WorkloadId, ProfileArn = ProfileArn, MilestoneName = MilestoneName, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$upgrade_profile_version_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2317,12 +2388,13 @@ wellarchitected_upgrade_review_template_lens_review <- function(TemplateArn, Len
     name = "UpgradeReviewTemplateLensReview",
     http_method = "PUT",
     http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/upgrade",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wellarchitected$upgrade_review_template_lens_review_input(TemplateArn = TemplateArn, LensAlias = LensAlias, ClientRequestToken = ClientRequestToken)
   output <- .wellarchitected$upgrade_review_template_lens_review_output()
   config <- get_config()
-  svc <- .wellarchitected$service(config)
+  svc <- .wellarchitected$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

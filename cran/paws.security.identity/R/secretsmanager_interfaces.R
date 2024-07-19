@@ -149,7 +149,7 @@ NULL
 
 .secretsmanager$put_secret_value_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RotationToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

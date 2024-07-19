@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_delete_backup}
 \alias{cloudhsmv2_delete_backup}
-\title{Deletes a specified AWS CloudHSM backup}
+\title{Deletes a specified CloudHSM backup}
 \usage{
 cloudhsmv2_delete_backup(BackupId)
 }
@@ -11,7 +11,7 @@ cloudhsmv2_delete_backup(BackupId)
 \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
 \description{
-Deletes a specified AWS CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see \code{\link[=cloudhsmv2_restore_backup]{restore_backup}}.
+Deletes a specified CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see \code{\link[=cloudhsmv2_restore_backup]{restore_backup}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/} for full documentation.
 }

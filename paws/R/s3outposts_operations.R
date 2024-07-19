@@ -63,12 +63,13 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId, Acc
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/S3Outposts/CreateEndpoint",
+    host_prefix = "",
     paginator = list()
   )
   input <- .s3outposts$create_endpoint_input(OutpostId = OutpostId, SubnetId = SubnetId, SecurityGroupId = SecurityGroupId, AccessType = AccessType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool)
   output <- .s3outposts$create_endpoint_output()
   config <- get_config()
-  svc <- .s3outposts$service(config)
+  svc <- .s3outposts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -115,12 +116,13 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
     name = "DeleteEndpoint",
     http_method = "DELETE",
     http_path = "/S3Outposts/DeleteEndpoint",
+    host_prefix = "",
     paginator = list()
   )
   input <- .s3outposts$delete_endpoint_input(EndpointId = EndpointId, OutpostId = OutpostId)
   output <- .s3outposts$delete_endpoint_output()
   config <- get_config()
-  svc <- .s3outposts$service(config)
+  svc <- .s3outposts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -196,12 +198,13 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListEndpoints",
     http_method = "GET",
     http_path = "/S3Outposts/ListEndpoints",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Endpoints")
   )
   input <- .s3outposts$list_endpoints_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3outposts$list_endpoints_output()
   config <- get_config()
-  svc <- .s3outposts$service(config)
+  svc <- .s3outposts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -261,12 +264,13 @@ s3outposts_list_outposts_with_s3 <- function(NextToken = NULL, MaxResults = NULL
     name = "ListOutpostsWithS3",
     http_method = "GET",
     http_path = "/S3Outposts/ListOutpostsWithS3",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Outposts")
   )
   input <- .s3outposts$list_outposts_with_s3_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3outposts$list_outposts_with_s3_output()
   config <- get_config()
-  svc <- .s3outposts$service(config)
+  svc <- .s3outposts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -346,12 +350,13 @@ s3outposts_list_shared_endpoints <- function(NextToken = NULL, MaxResults = NULL
     name = "ListSharedEndpoints",
     http_method = "GET",
     http_path = "/S3Outposts/ListSharedEndpoints",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Endpoints")
   )
   input <- .s3outposts$list_shared_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
   output <- .s3outposts$list_shared_endpoints_output()
   config <- get_config()
-  svc <- .s3outposts$service(config)
+  svc <- .s3outposts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

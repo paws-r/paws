@@ -17,7 +17,7 @@ macie2_update_sensitivity_inspection_template(
 many as 200 characters.}
 
 \item{excludes}{The managed data identifiers to explicitly exclude (not use) when
-analyzing data.
+performing automated sensitive data discovery.
 
 To exclude an allow list or custom data identifier that's currently
 included by the template, update the values for the
@@ -29,7 +29,8 @@ properties, respectively.}
 applies to.}
 
 \item{includes}{The allow lists, custom data identifiers, and managed data identifiers
-to explicitly include (use) when analyzing data.}
+to explicitly include (use) when performing automated sensitive data
+discovery.}
 }
 \description{
 Updates the settings for the sensitivity inspection template for an account.

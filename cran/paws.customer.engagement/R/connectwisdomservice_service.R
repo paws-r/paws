@@ -175,7 +175,7 @@ connectwisdomservice <- function(config = list(), credentials = list(), endpoint
   target_prefix = ""
 )
 
-.connectwisdomservice$service <- function(config = list()) {
+.connectwisdomservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.connectwisdomservice$metadata, handlers, config)
+  new_service(.connectwisdomservice$metadata, handlers, config, op)
 }

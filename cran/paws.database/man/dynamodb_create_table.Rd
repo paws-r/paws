@@ -17,7 +17,8 @@ dynamodb_create_table(
   Tags = NULL,
   TableClass = NULL,
   DeletionProtectionEnabled = NULL,
-  ResourcePolicy = NULL
+  ResourcePolicy = NULL,
+  OnDemandThroughput = NULL
 )
 }
 \arguments{
@@ -138,10 +139,10 @@ units.
 manage capacity. This setting can be changed later.
 \itemize{
 \item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
-workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual}{Provisioned Mode}.
+workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html}{Provisioned capacity mode}.
 \item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
 unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand}{On-Demand Mode}.
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html}{On-demand capacity mode}.
 }}
 
 \item{ProvisionedThroughput}{Represents the provisioned throughput settings for a specified table or
@@ -191,13 +192,20 @@ disabled (false) on the table.}
 that will be attached to the table.
 
 When you attach a resource-based policy while creating a table, the
-policy creation is \emph{strongly consistent}.
+policy application is \emph{strongly consistent}.
 
 The maximum size supported for a resource-based policy document is 20
 KB. DynamoDB counts whitespaces when calculating the size of a policy
-against this limit. You can’t request an increase for this limit. For a
-full list of all considerations that you should keep in mind while
-attaching a resource-based policy, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html}{Resource-based policy considerations}.}
+against this limit. For a full list of all considerations that apply for
+resource-based policies, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html}{Resource-based policy considerations}.
+
+You need to specify the \code{\link[=dynamodb_create_table]{create_table}} and
+\code{\link[=dynamodb_put_resource_policy]{put_resource_policy}} IAM actions for
+authorizing a user to create a table with a resource-based policy.}
+
+\item{OnDemandThroughput}{Sets the maximum number of read and write units for the specified table
+in on-demand capacity mode. If you use this parameter, you must specify
+\code{MaxReadRequestUnits}, \code{MaxWriteRequestUnits}, or both.}
 }
 \description{
 The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.

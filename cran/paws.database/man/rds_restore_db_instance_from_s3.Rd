@@ -55,7 +55,8 @@ rds_restore_db_instance_from_s3(
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
   DedicatedLogVolume = NULL,
-  CACertificateIdentifier = NULL
+  CACertificateIdentifier = NULL,
+  EngineLifecycleSupport = NULL
 )
 }
 \arguments{
@@ -307,8 +308,10 @@ file.}
 
 \item{S3Prefix}{The prefix of your Amazon S3 bucket.}
 
-\item{S3IngestionRoleArn}{[required] An Amazon Web Services Identity and Access Management (IAM) role to
-allow Amazon RDS to access your Amazon S3 bucket.}
+\item{S3IngestionRoleArn}{[required] An Amazon Web Services Identity and Access Management (IAM) role with a
+trust policy and a permissions policy that allows Amazon RDS to access
+your Amazon S3 bucket. For information about this role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html#MySQL.Procedural.Importing.Enabling.IAM}{Creating an IAM role manually}
+in the \emph{Amazon RDS User Guide.}}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
 
@@ -431,6 +434,31 @@ This setting doesn't apply to RDS Custom DB instances.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
 in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
 in the \emph{Amazon Aurora User Guide}.}
+
+\item{EngineLifecycleSupport}{The life cycle type for this DB instance.
+
+By default, this value is set to \code{open-source-rds-extended-support},
+which enrolls your DB instance into Amazon RDS Extended Support. At the
+end of standard support, you can avoid charges for Extended Support by
+setting the value to \code{open-source-rds-extended-support-disabled}. In
+this case, RDS automatically upgrades your restored DB instance to a
+higher engine version, if the major engine version is past its end of
+standard support date.
+
+You can use this setting to enroll your DB instance into Amazon RDS
+Extended Support. With RDS Extended Support, you can run the selected
+major engine version on your DB instance past the end of standard
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon RDS User Guide}.
+
+This setting applies only to RDS for MySQL and RDS for PostgreSQL. For
+Amazon Aurora DB instances, the life cycle type is managed by the DB
+cluster.
+
+Valid Values:
+\code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
+
+Default: \code{open-source-rds-extended-support}}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}

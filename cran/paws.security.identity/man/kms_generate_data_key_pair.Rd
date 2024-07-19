@@ -77,8 +77,11 @@ to use with the enclave's public key. The only valid encryption
 algorithm is \code{RSAES_OAEP_SHA_256}.
 
 This parameter only supports attestation documents for Amazon Web
-Services Nitro Enclaves. To include this parameter, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
-or any Amazon Web Services SDK.
+Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
+Services Nitro Enclaves, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
+to generate the attestation document and then use the Recipient
+parameter from any Amazon Web Services SDK to provide the attestation
+document for the enclave.
 
 When you use this parameter, instead of returning a plaintext copy of
 the private data key, KMS encrypts the plaintext private data key under

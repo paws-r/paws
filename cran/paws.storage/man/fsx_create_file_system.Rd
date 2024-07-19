@@ -36,7 +36,7 @@ gibibytes (GiB).
 you can configure depends on the value that you set for \code{StorageType}
 and the Lustre \code{DeploymentType}, as follows:
 \itemize{
-\item For \code{SCRATCH_2}, \code{PERSISTENT_2} and \code{PERSISTENT_1} deployment types
+\item For \code{SCRATCH_2}, \code{PERSISTENT_2}, and \code{PERSISTENT_1} deployment types
 using SSD storage type, the valid values are 1200 GiB, 2400 GiB, and
 increments of 2400 GiB.
 \item For \code{PERSISTENT_1} HDD file systems, valid values are increments of
@@ -72,7 +72,7 @@ all Windows, Lustre, ONTAP, and OpenZFS deployment types.
 and on \code{PERSISTENT_1} Lustre file system deployment types.
 }
 
-Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options}{Storage type options}
+Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/#storage-type-options}{Storage type options}
 in the \emph{FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
 in the \emph{FSx for Lustre User Guide}.}
 
@@ -109,23 +109,25 @@ created.}
 
 \item{OntapConfiguration}{}
 
-\item{FileSystemTypeVersion}{(Optional) For FSx for Lustre file systems, sets the Lustre version for
-the file system that you're creating. Valid values are \code{2.10}, \code{2.12},
-and \code{2.15}:
+\item{FileSystemTypeVersion}{For FSx for Lustre file systems, sets the Lustre version for the file
+system that you're creating. Valid values are \code{2.10}, \code{2.12}, and
+\code{2.15}:
 \itemize{
-\item 2.10 is supported by the Scratch and Persistent_1 Lustre deployment
-types.
-\item 2.12 and 2.15 are supported by all Lustre deployment types. \code{2.12}
-or \code{2.15} is required when setting FSx for Lustre \code{DeploymentType}
-to \code{PERSISTENT_2}.
+\item \code{2.10} is supported by the Scratch and Persistent_1 Lustre
+deployment types.
+\item \code{2.12} is supported by all Lustre deployment types, except for
+\code{PERSISTENT_2} with a metadata configuration mode.
+\item \code{2.15} is supported by all Lustre deployment types and is
+recommended for all new file systems.
 }
 
-Default value = \code{2.10}, except when \code{DeploymentType} is set to
-\code{PERSISTENT_2}, then the default is \code{2.12}.
-
-If you set \code{FileSystemTypeVersion} to \code{2.10} for a \code{PERSISTENT_2} Lustre
-deployment type, the \code{\link[=fsx_create_file_system]{create_file_system}}
-operation fails.}
+Default value is \code{2.10}, except for the following deployments:
+\itemize{
+\item Default value is \code{2.12} when \code{DeploymentType} is set to
+\code{PERSISTENT_2} without a metadata configuration mode.
+\item Default value is \code{2.15} when \code{DeploymentType} is set to
+\code{PERSISTENT_2} with a metadata configuration mode.
+}}
 
 \item{OpenZFSConfiguration}{The OpenZFS configuration for the file system that's being created.}
 }

@@ -6,22 +6,22 @@
 Web Services Payment Cryptography}
 \usage{
 paymentcryptographydataplane_generate_mac(
-  GenerationAttributes,
   KeyIdentifier,
-  MacLength = NULL,
-  MessageData
+  MessageData,
+  GenerationAttributes,
+  MacLength = NULL
 )
 }
 \arguments{
-\item{GenerationAttributes}{[required] The attributes and data values to use for MAC generation within Amazon
-Web Services Payment Cryptography.}
-
 \item{KeyIdentifier}{[required] The \code{keyARN} of the MAC generation encryption key.}
-
-\item{MacLength}{The length of a MAC under generation.}
 
 \item{MessageData}{[required] The data for which a MAC is under generation. This value must be
 hexBinary.}
+
+\item{GenerationAttributes}{[required] The attributes and data values to use for MAC generation within Amazon
+Web Services Payment Cryptography.}
+
+\item{MacLength}{The length of a MAC under generation.}
 }
 \description{
 Generates a Message Authentication Code (MAC) cryptogram within Amazon Web Services Payment Cryptography.

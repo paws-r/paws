@@ -22,12 +22,13 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
     name = "BatchUpdateRule",
     http_method = "PATCH",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$batch_update_rule_input(listenerIdentifier = listenerIdentifier, rules = rules, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$batch_update_rule_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -38,7 +39,7 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
 #' Amazon Kinesis Data Firehose
 #'
 #' @description
-#' Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose. The service network owner can use the access logs to audit the services in the network. The service network owner will only see access logs from clients and services that are associated with their service network. Access log entries represent traffic originated from VPCs associated with that network. For more information, see [Access logs](https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html) in the *Amazon VPC Lattice User Guide*.
+#' Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose. The service network owner can use the access logs to audit the services in the network. The service network owner can only see access logs from clients and services that are associated with their service network. Access log entries represent traffic originated from VPCs associated with that network. For more information, see [Access logs](https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html) in the *Amazon VPC Lattice User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_access_log_subscription/](https://www.paws-r-sdk.com/docs/vpclattice_create_access_log_subscription/) for full documentation.
 #'
@@ -61,12 +62,13 @@ vpclattice_create_access_log_subscription <- function(clientToken = NULL, destin
     name = "CreateAccessLogSubscription",
     http_method = "POST",
     http_path = "/accesslogsubscriptions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_access_log_subscription_input(clientToken = clientToken, destinationArn = destinationArn, resourceIdentifier = resourceIdentifier, tags = tags)
   output <- .vpclattice$create_access_log_subscription_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -85,19 +87,15 @@ vpclattice_create_access_log_subscription <- function(clientToken = NULL, destin
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param defaultAction &#91;required&#93; The action for the default rule. Each listener has a default rule. Each
-#' rule consists of a priority, one or more actions, and one or more
-#' conditions. The default rule is the rule that's used if no other rules
-#' match. Each rule must include exactly one of the following types of
-#' actions: `forward `or `fixed-response`, and it must be the last action
-#' to be performed.
+#' @param defaultAction &#91;required&#93; The action for the default rule. Each listener has a default rule. The
+#' default rule is used if no other rules match.
 #' @param name &#91;required&#93; The name of the listener. A listener name must be unique within a
 #' service. The valid characters are a-z, 0-9, and hyphens (-). You can't
 #' use a hyphen as the first or last character, or immediately after
 #' another hyphen.
-#' @param port The listener port. You can specify a value from `1` to `65535`. For
-#' HTTP, the default is `80`. For HTTPS, the default is `443`.
-#' @param protocol &#91;required&#93; The listener protocol HTTP or HTTPS.
+#' @param port The listener port. You can specify a value from 1 to 65535. For HTTP,
+#' the default is 80. For HTTPS, the default is 443.
+#' @param protocol &#91;required&#93; The listener protocol.
 #' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
 #' @param tags The tags for the listener.
 #'
@@ -109,12 +107,13 @@ vpclattice_create_listener <- function(clientToken = NULL, defaultAction, name, 
     name = "CreateListener",
     http_method = "POST",
     http_path = "/services/{serviceIdentifier}/listeners",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_listener_input(clientToken = clientToken, defaultAction = defaultAction, name = name, port = port, protocol = protocol, serviceIdentifier = serviceIdentifier, tags = tags)
   output <- .vpclattice$create_listener_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -153,12 +152,13 @@ vpclattice_create_rule <- function(action, clientToken = NULL, listenerIdentifie
     name = "CreateRule",
     http_method = "POST",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_rule_input(action = action, clientToken = clientToken, listenerIdentifier = listenerIdentifier, match = match, name = name, priority = priority, serviceIdentifier = serviceIdentifier, tags = tags)
   output <- .vpclattice$create_rule_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -199,12 +199,13 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
     name = "CreateService",
     http_method = "POST",
     http_path = "/services",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_service_input(authType = authType, certificateArn = certificateArn, clientToken = clientToken, customDomainName = customDomainName, name = name, tags = tags)
   output <- .vpclattice$create_service_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -244,12 +245,13 @@ vpclattice_create_service_network <- function(authType = NULL, clientToken = NUL
     name = "CreateServiceNetwork",
     http_method = "POST",
     http_path = "/servicenetworks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_service_network_input(authType = authType, clientToken = clientToken, name = name, tags = tags)
   output <- .vpclattice$create_service_network_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -259,7 +261,7 @@ vpclattice_create_service_network <- function(authType = NULL, clientToken = NUL
 #' Associates a service with a service network
 #'
 #' @description
-#' Associates a service with a service network.
+#' Associates a service with a service network. For more information, see [Manage service associations](https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations) in the *Amazon VPC Lattice User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_service_network_service_association/](https://www.paws-r-sdk.com/docs/vpclattice_create_service_network_service_association/) for full documentation.
 #'
@@ -282,12 +284,13 @@ vpclattice_create_service_network_service_association <- function(clientToken = 
     name = "CreateServiceNetworkServiceAssociation",
     http_method = "POST",
     http_path = "/servicenetworkserviceassociations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_service_network_service_association_input(clientToken = clientToken, serviceIdentifier = serviceIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier, tags = tags)
   output <- .vpclattice$create_service_network_service_association_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -327,12 +330,13 @@ vpclattice_create_service_network_vpc_association <- function(clientToken = NULL
     name = "CreateServiceNetworkVpcAssociation",
     http_method = "POST",
     http_path = "/servicenetworkvpcassociations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_service_network_vpc_association_input(clientToken = clientToken, securityGroupIds = securityGroupIds, serviceNetworkIdentifier = serviceNetworkIdentifier, tags = tags, vpcIdentifier = vpcIdentifier)
   output <- .vpclattice$create_service_network_vpc_association_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -351,8 +355,7 @@ vpclattice_create_service_network_vpc_association <- function(clientToken = NULL
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param config The target group configuration. If `type` is set to `LAMBDA`, this
-#' parameter doesn't apply.
+#' @param config The target group configuration.
 #' @param name &#91;required&#93; The name of the target group. The name must be unique within the
 #' account. The valid characters are a-z, 0-9, and hyphens (-). You can't
 #' use a hyphen as the first or last character, or immediately after
@@ -368,12 +371,13 @@ vpclattice_create_target_group <- function(clientToken = NULL, config = NULL, na
     name = "CreateTargetGroup",
     http_method = "POST",
     http_path = "/targetgroups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$create_target_group_input(clientToken = clientToken, config = config, name = name, tags = tags, type = type)
   output <- .vpclattice$create_target_group_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -397,12 +401,13 @@ vpclattice_delete_access_log_subscription <- function(accessLogSubscriptionIdent
     name = "DeleteAccessLogSubscription",
     http_method = "DELETE",
     http_path = "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_access_log_subscription_input(accessLogSubscriptionIdentifier = accessLogSubscriptionIdentifier)
   output <- .vpclattice$delete_access_log_subscription_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -412,7 +417,7 @@ vpclattice_delete_access_log_subscription <- function(accessLogSubscriptionIdent
 #' Deletes the specified auth policy
 #'
 #' @description
-#' Deletes the specified auth policy. If an auth is set to `Amazon Web Services_IAM` and the auth policy is deleted, all requests will be denied by default. If you are trying to remove the auth policy completely, you must set the auth_type to `NONE`. If auth is enabled on the resource, but no auth policy is set, all requests will be denied.
+#' Deletes the specified auth policy. If an auth is set to `AWS_IAM` and the auth policy is deleted, all requests are denied. If you are trying to remove the auth policy completely, you must set the auth type to `NONE`. If auth is enabled on the resource, but no auth policy is set, all requests are denied.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_delete_auth_policy/](https://www.paws-r-sdk.com/docs/vpclattice_delete_auth_policy/) for full documentation.
 #'
@@ -426,12 +431,13 @@ vpclattice_delete_auth_policy <- function(resourceIdentifier) {
     name = "DeleteAuthPolicy",
     http_method = "DELETE",
     http_path = "/authpolicy/{resourceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_auth_policy_input(resourceIdentifier = resourceIdentifier)
   output <- .vpclattice$delete_auth_policy_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -456,12 +462,13 @@ vpclattice_delete_listener <- function(listenerIdentifier, serviceIdentifier) {
     name = "DeleteListener",
     http_method = "DELETE",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_listener_input(listenerIdentifier = listenerIdentifier, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$delete_listener_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -485,12 +492,13 @@ vpclattice_delete_resource_policy <- function(resourceArn) {
     name = "DeleteResourcePolicy",
     http_method = "DELETE",
     http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_resource_policy_input(resourceArn = resourceArn)
   output <- .vpclattice$delete_resource_policy_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -516,12 +524,13 @@ vpclattice_delete_rule <- function(listenerIdentifier, ruleIdentifier, serviceId
     name = "DeleteRule",
     http_method = "DELETE",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules/{ruleIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_rule_input(listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$delete_rule_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -545,12 +554,13 @@ vpclattice_delete_service <- function(serviceIdentifier) {
     name = "DeleteService",
     http_method = "DELETE",
     http_path = "/services/{serviceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_service_input(serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$delete_service_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -574,12 +584,13 @@ vpclattice_delete_service_network <- function(serviceNetworkIdentifier) {
     name = "DeleteServiceNetwork",
     http_method = "DELETE",
     http_path = "/servicenetworks/{serviceNetworkIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_service_network_input(serviceNetworkIdentifier = serviceNetworkIdentifier)
   output <- .vpclattice$delete_service_network_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -590,7 +601,7 @@ vpclattice_delete_service_network <- function(serviceNetworkIdentifier) {
 #' service network
 #'
 #' @description
-#' Deletes the association between a specified service and the specific service network. This request will fail if an association is still in progress.
+#' Deletes the association between a specified service and the specific service network. This operation fails if an association is still in progress.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_delete_service_network_service_association/](https://www.paws-r-sdk.com/docs/vpclattice_delete_service_network_service_association/) for full documentation.
 #'
@@ -604,12 +615,13 @@ vpclattice_delete_service_network_service_association <- function(serviceNetwork
     name = "DeleteServiceNetworkServiceAssociation",
     http_method = "DELETE",
     http_path = "/servicenetworkserviceassociations/{serviceNetworkServiceAssociationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_service_network_service_association_input(serviceNetworkServiceAssociationIdentifier = serviceNetworkServiceAssociationIdentifier)
   output <- .vpclattice$delete_service_network_service_association_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -633,12 +645,13 @@ vpclattice_delete_service_network_vpc_association <- function(serviceNetworkVpcA
     name = "DeleteServiceNetworkVpcAssociation",
     http_method = "DELETE",
     http_path = "/servicenetworkvpcassociations/{serviceNetworkVpcAssociationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier)
   output <- .vpclattice$delete_service_network_vpc_association_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -662,12 +675,13 @@ vpclattice_delete_target_group <- function(targetGroupIdentifier) {
     name = "DeleteTargetGroup",
     http_method = "DELETE",
     http_path = "/targetgroups/{targetGroupIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$delete_target_group_input(targetGroupIdentifier = targetGroupIdentifier)
   output <- .vpclattice$delete_target_group_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -692,12 +706,13 @@ vpclattice_deregister_targets <- function(targetGroupIdentifier, targets) {
     name = "DeregisterTargets",
     http_method = "POST",
     http_path = "/targetgroups/{targetGroupIdentifier}/deregistertargets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$deregister_targets_input(targetGroupIdentifier = targetGroupIdentifier, targets = targets)
   output <- .vpclattice$deregister_targets_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -721,12 +736,13 @@ vpclattice_get_access_log_subscription <- function(accessLogSubscriptionIdentifi
     name = "GetAccessLogSubscription",
     http_method = "GET",
     http_path = "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_access_log_subscription_input(accessLogSubscriptionIdentifier = accessLogSubscriptionIdentifier)
   output <- .vpclattice$get_access_log_subscription_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -751,12 +767,13 @@ vpclattice_get_auth_policy <- function(resourceIdentifier) {
     name = "GetAuthPolicy",
     http_method = "GET",
     http_path = "/authpolicy/{resourceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_auth_policy_input(resourceIdentifier = resourceIdentifier)
   output <- .vpclattice$get_auth_policy_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -782,12 +799,13 @@ vpclattice_get_listener <- function(listenerIdentifier, serviceIdentifier) {
     name = "GetListener",
     http_method = "GET",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_listener_input(listenerIdentifier = listenerIdentifier, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$get_listener_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -797,11 +815,11 @@ vpclattice_get_listener <- function(listenerIdentifier, serviceIdentifier) {
 #' Retrieves information about the resource policy
 #'
 #' @description
-#' Retrieves information about the resource policy. The resource policy is an IAM policy created by AWS RAM on behalf of the resource owner when they share a resource.
+#' Retrieves information about the resource policy. The resource policy is an IAM policy created on behalf of the resource owner when they share a resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_get_resource_policy/](https://www.paws-r-sdk.com/docs/vpclattice_get_resource_policy/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; An IAM policy.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the service network or service.
 #'
 #' @keywords internal
 #'
@@ -811,12 +829,13 @@ vpclattice_get_resource_policy <- function(resourceArn) {
     name = "GetResourcePolicy",
     http_method = "GET",
     http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_resource_policy_input(resourceArn = resourceArn)
   output <- .vpclattice$get_resource_policy_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -842,12 +861,13 @@ vpclattice_get_rule <- function(listenerIdentifier, ruleIdentifier, serviceIdent
     name = "GetRule",
     http_method = "GET",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules/{ruleIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_rule_input(listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$get_rule_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -871,12 +891,13 @@ vpclattice_get_service <- function(serviceIdentifier) {
     name = "GetService",
     http_method = "GET",
     http_path = "/services/{serviceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_service_input(serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$get_service_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -900,12 +921,13 @@ vpclattice_get_service_network <- function(serviceNetworkIdentifier) {
     name = "GetServiceNetwork",
     http_method = "GET",
     http_path = "/servicenetworks/{serviceNetworkIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_service_network_input(serviceNetworkIdentifier = serviceNetworkIdentifier)
   output <- .vpclattice$get_service_network_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -930,12 +952,13 @@ vpclattice_get_service_network_service_association <- function(serviceNetworkSer
     name = "GetServiceNetworkServiceAssociation",
     http_method = "GET",
     http_path = "/servicenetworkserviceassociations/{serviceNetworkServiceAssociationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_service_network_service_association_input(serviceNetworkServiceAssociationIdentifier = serviceNetworkServiceAssociationIdentifier)
   output <- .vpclattice$get_service_network_service_association_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -960,12 +983,13 @@ vpclattice_get_service_network_vpc_association <- function(serviceNetworkVpcAsso
     name = "GetServiceNetworkVpcAssociation",
     http_method = "GET",
     http_path = "/servicenetworkvpcassociations/{serviceNetworkVpcAssociationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier)
   output <- .vpclattice$get_service_network_vpc_association_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -989,12 +1013,13 @@ vpclattice_get_target_group <- function(targetGroupIdentifier) {
     name = "GetTargetGroup",
     http_method = "GET",
     http_path = "/targetgroups/{targetGroupIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$get_target_group_input(targetGroupIdentifier = targetGroupIdentifier)
   output <- .vpclattice$get_target_group_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1021,12 +1046,13 @@ vpclattice_list_access_log_subscriptions <- function(maxResults = NULL, nextToke
     name = "ListAccessLogSubscriptions",
     http_method = "GET",
     http_path = "/accesslogsubscriptions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_access_log_subscriptions_input(maxResults = maxResults, nextToken = nextToken, resourceIdentifier = resourceIdentifier)
   output <- .vpclattice$list_access_log_subscriptions_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1052,12 +1078,13 @@ vpclattice_list_listeners <- function(maxResults = NULL, nextToken = NULL, servi
     name = "ListListeners",
     http_method = "GET",
     http_path = "/services/{serviceIdentifier}/listeners",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_listeners_input(maxResults = maxResults, nextToken = nextToken, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$list_listeners_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1084,12 +1111,13 @@ vpclattice_list_rules <- function(listenerIdentifier, maxResults = NULL, nextTok
     name = "ListRules",
     http_method = "GET",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_rules_input(listenerIdentifier = listenerIdentifier, maxResults = maxResults, nextToken = nextToken, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$list_rules_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1116,12 +1144,13 @@ vpclattice_list_service_network_service_associations <- function(maxResults = NU
     name = "ListServiceNetworkServiceAssociations",
     http_method = "GET",
     http_path = "/servicenetworkserviceassociations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_service_network_service_associations_input(maxResults = maxResults, nextToken = nextToken, serviceIdentifier = serviceIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier)
   output <- .vpclattice$list_service_network_service_associations_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1148,12 +1177,13 @@ vpclattice_list_service_network_vpc_associations <- function(maxResults = NULL, 
     name = "ListServiceNetworkVpcAssociations",
     http_method = "GET",
     http_path = "/servicenetworkvpcassociations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_service_network_vpc_associations_input(maxResults = maxResults, nextToken = nextToken, serviceNetworkIdentifier = serviceNetworkIdentifier, vpcIdentifier = vpcIdentifier)
   output <- .vpclattice$list_service_network_vpc_associations_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1179,12 +1209,13 @@ vpclattice_list_service_networks <- function(maxResults = NULL, nextToken = NULL
     name = "ListServiceNetworks",
     http_method = "GET",
     http_path = "/servicenetworks",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_service_networks_input(maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_networks_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1210,12 +1241,13 @@ vpclattice_list_services <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListServices",
     http_method = "GET",
     http_path = "/services",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_services_input(maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_services_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1239,12 +1271,13 @@ vpclattice_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .vpclattice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1261,7 +1294,7 @@ vpclattice_list_tags_for_resource <- function(resourceArn) {
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
 #' @param targetGroupType The target group type.
-#' @param vpcIdentifier The ID or Amazon Resource Name (ARN) of the service.
+#' @param vpcIdentifier The ID or Amazon Resource Name (ARN) of the VPC.
 #'
 #' @keywords internal
 #'
@@ -1271,12 +1304,13 @@ vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, t
     name = "ListTargetGroups",
     http_method = "GET",
     http_path = "/targetgroups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_target_groups_input(maxResults = maxResults, nextToken = nextToken, targetGroupType = targetGroupType, vpcIdentifier = vpcIdentifier)
   output <- .vpclattice$list_target_groups_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1293,7 +1327,7 @@ vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, t
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
 #' @param targetGroupIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the target group.
-#' @param targets The targets to list.
+#' @param targets The targets.
 #'
 #' @keywords internal
 #'
@@ -1303,12 +1337,13 @@ vpclattice_list_targets <- function(maxResults = NULL, nextToken = NULL, targetG
     name = "ListTargets",
     http_method = "POST",
     http_path = "/targetgroups/{targetGroupIdentifier}/listtargets",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .vpclattice$list_targets_input(maxResults = maxResults, nextToken = nextToken, targetGroupIdentifier = targetGroupIdentifier, targets = targets)
   output <- .vpclattice$list_targets_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1318,11 +1353,12 @@ vpclattice_list_targets <- function(maxResults = NULL, nextToken = NULL, targetG
 #' Creates or updates the auth policy
 #'
 #' @description
-#' Creates or updates the auth policy.
+#' Creates or updates the auth policy. The policy string in JSON must not contain newlines or blank lines.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_put_auth_policy/](https://www.paws-r-sdk.com/docs/vpclattice_put_auth_policy/) for full documentation.
 #'
-#' @param policy &#91;required&#93; The auth policy.
+#' @param policy &#91;required&#93; The auth policy. The policy string in JSON must not contain newlines or
+#' blank lines.
 #' @param resourceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network or service
 #' for which the policy is created.
 #'
@@ -1334,12 +1370,13 @@ vpclattice_put_auth_policy <- function(policy, resourceIdentifier) {
     name = "PutAuthPolicy",
     http_method = "PUT",
     http_path = "/authpolicy/{resourceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$put_auth_policy_input(policy = policy, resourceIdentifier = resourceIdentifier)
   output <- .vpclattice$put_auth_policy_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1354,7 +1391,8 @@ vpclattice_put_auth_policy <- function(policy, resourceIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_put_resource_policy/](https://www.paws-r-sdk.com/docs/vpclattice_put_resource_policy/) for full documentation.
 #'
-#' @param policy &#91;required&#93; An IAM policy.
+#' @param policy &#91;required&#93; An IAM policy. The policy string in JSON must not contain newlines or
+#' blank lines.
 #' @param resourceArn &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network or service
 #' for which the policy is created.
 #'
@@ -1366,12 +1404,13 @@ vpclattice_put_resource_policy <- function(policy, resourceArn) {
     name = "PutResourcePolicy",
     http_method = "PUT",
     http_path = "/resourcepolicy/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
   output <- .vpclattice$put_resource_policy_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1396,12 +1435,13 @@ vpclattice_register_targets <- function(targetGroupIdentifier, targets) {
     name = "RegisterTargets",
     http_method = "POST",
     http_path = "/targetgroups/{targetGroupIdentifier}/registertargets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$register_targets_input(targetGroupIdentifier = targetGroupIdentifier, targets = targets)
   output <- .vpclattice$register_targets_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1426,12 +1466,13 @@ vpclattice_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .vpclattice$tag_resource_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1456,12 +1497,13 @@ vpclattice_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .vpclattice$untag_resource_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1486,12 +1528,13 @@ vpclattice_update_access_log_subscription <- function(accessLogSubscriptionIdent
     name = "UpdateAccessLogSubscription",
     http_method = "PATCH",
     http_path = "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$update_access_log_subscription_input(accessLogSubscriptionIdentifier = accessLogSubscriptionIdentifier, destinationArn = destinationArn)
   output <- .vpclattice$update_access_log_subscription_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1517,12 +1560,13 @@ vpclattice_update_listener <- function(defaultAction, listenerIdentifier, servic
     name = "UpdateListener",
     http_method = "PATCH",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$update_listener_input(defaultAction = defaultAction, listenerIdentifier = listenerIdentifier, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$update_listener_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1552,12 +1596,13 @@ vpclattice_update_rule <- function(action = NULL, listenerIdentifier, match = NU
     name = "UpdateRule",
     http_method = "PATCH",
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules/{ruleIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$update_rule_input(action = action, listenerIdentifier = listenerIdentifier, match = match, priority = priority, ruleIdentifier = ruleIdentifier, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$update_rule_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1589,12 +1634,13 @@ vpclattice_update_service <- function(authType = NULL, certificateArn = NULL, se
     name = "UpdateService",
     http_method = "PATCH",
     http_path = "/services/{serviceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$update_service_input(authType = authType, certificateArn = certificateArn, serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$update_service_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1625,12 +1671,13 @@ vpclattice_update_service_network <- function(authType, serviceNetworkIdentifier
     name = "UpdateServiceNetwork",
     http_method = "PATCH",
     http_path = "/servicenetworks/{serviceNetworkIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$update_service_network_input(authType = authType, serviceNetworkIdentifier = serviceNetworkIdentifier)
   output <- .vpclattice$update_service_network_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1640,12 +1687,11 @@ vpclattice_update_service_network <- function(authType, serviceNetworkIdentifier
 #' Updates the service network and VPC association
 #'
 #' @description
-#' Updates the service network and VPC association. Once you add a security group, it cannot be removed.
+#' Updates the service network and VPC association. If you add a security group to the service network and VPC association, the association must continue to always have at least one security group. You can add or edit security groups at any time. However, to remove all security groups, you must first delete the association and recreate it without security groups.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_service_network_vpc_association/](https://www.paws-r-sdk.com/docs/vpclattice_update_service_network_vpc_association/) for full documentation.
 #'
-#' @param securityGroupIds &#91;required&#93; The IDs of the security groups. Once you add a security group, it cannot
-#' be removed.
+#' @param securityGroupIds &#91;required&#93; The IDs of the security groups.
 #' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the association.
 #'
 #' @keywords internal
@@ -1656,12 +1702,13 @@ vpclattice_update_service_network_vpc_association <- function(securityGroupIds, 
     name = "UpdateServiceNetworkVpcAssociation",
     http_method = "PATCH",
     http_path = "/servicenetworkvpcassociations/{serviceNetworkVpcAssociationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$update_service_network_vpc_association_input(securityGroupIds = securityGroupIds, serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier)
   output <- .vpclattice$update_service_network_vpc_association_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1686,12 +1733,13 @@ vpclattice_update_target_group <- function(healthCheck, targetGroupIdentifier) {
     name = "UpdateTargetGroup",
     http_method = "PATCH",
     http_path = "/targetgroups/{targetGroupIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .vpclattice$update_target_group_input(healthCheck = healthCheck, targetGroupIdentifier = targetGroupIdentifier)
   output <- .vpclattice$update_target_group_output()
   config <- get_config()
-  svc <- .vpclattice$service(config)
+  svc <- .vpclattice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

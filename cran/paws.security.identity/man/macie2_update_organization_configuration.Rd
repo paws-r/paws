@@ -8,8 +8,8 @@ Organizations}
 macie2_update_organization_configuration(autoEnable)
 }
 \arguments{
-\item{autoEnable}{[required] Specifies whether to enable Amazon Macie automatically for an account
-when the account is added to the organization in Organizations.}
+\item{autoEnable}{[required] Specifies whether to enable Amazon Macie automatically for accounts that
+are added to the organization in Organizations.}
 }
 \description{
 Updates the Amazon Macie configuration settings for an organization in Organizations.

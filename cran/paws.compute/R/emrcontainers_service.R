@@ -175,7 +175,7 @@ emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = ""
 )
 
-.emrcontainers$service <- function(config = list()) {
+.emrcontainers$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.emrcontainers$metadata, handlers, config)
+  new_service(.emrcontainers$metadata, handlers, config, op)
 }

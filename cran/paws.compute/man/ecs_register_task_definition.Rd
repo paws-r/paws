@@ -284,10 +284,7 @@ platforms:
 }}
 
 \item{runtimePlatform}{The operating system that your tasks definitions run on. A platform
-family is specified only for tasks using the Fargate launch type.
-
-When you specify a task definition in a service, this value must match
-the \code{runtimePlatform} value of the service.}
+family is specified only for tasks using the Fargate launch type.}
 }
 \description{
 Registers a new task definition from the supplied \code{family} and \code{containerDefinitions}. Optionally, you can add data volumes to your containers with the \code{volumes} parameter. For more information about task definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html}{Amazon ECS Task Definitions} in the \emph{Amazon Elastic Container Service Developer Guide}.

@@ -53,6 +53,54 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
+Amazon Web Services Control Tower offers application programming
+interface (API) operations that support programmatic interaction with
+these types of resources:
+\itemize{
+\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html}{\emph{Controls}}
+\itemize{
+\item \code{disable_control}
+\item \code{enable_control}
+\item \code{get_enabled_control}
+\item \code{list_control_operations}
+\item \code{list_enabled_controls}
+\item \code{update_enabled_control}
+}
+\item \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{\emph{Landing zones}}
+\itemize{
+\item \code{create_landing_zone}
+\item \code{delete_landing_zone}
+\item \code{get_landing_zone}
+\item \code{get_landing_zone_operation}
+\item \code{list_landing_zones}
+\item \code{reset_landing_zone}
+\item \code{update_landing_zone}
+}
+\item \href{https://docs.aws.amazon.com/controltower/latest/userguide/types-of-baselines.html}{\emph{Baselines}}
+\itemize{
+\item \code{disable_baseline}
+\item \code{enable_baseline}
+\item \code{get_baseline}
+\item \code{get_baseline_operation}
+\item \code{get_enabled_baseline}
+\item \code{list_baselines}
+\item \code{list_enabled_baselines}
+\item \code{reset_enabled_baseline}
+\item \code{update_enabled_baseline}
+}
+\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html}{Tagging}
+\itemize{
+\item \code{list_tags_for_resource}
+\item \code{tag_resource}
+\item \code{untag_resource}
+}
+}
+
+For more information about these types of resources, see the \href{https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html}{\emph{Amazon Web Services Control Tower User Guide}}
+.
+
+\strong{About control APIs}
+
 These interfaces allow you to apply the Amazon Web Services library of
 pre-defined \emph{controls} to your organizational units, programmatically.
 In Amazon Web Services Control Tower, the terms "control" and
@@ -77,14 +125,14 @@ details} page, as well as in the documentation.
 The \code{controlIdentifier} is unique in each Amazon Web Services Region for
 each control. You can find the \code{controlIdentifier} for each Region and
 control in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html}{Tables of control metadata}
-in the \emph{Amazon Web Services Control Tower User Guide.}
+or the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html}{Control availability by Region tables}
+in the \emph{Amazon Web Services Control Tower Controls Reference Guide}.
 
 A quick-reference list of control identifers for the Amazon Web Services
 Control Tower legacy \emph{Strongly recommended} and \emph{Elective} controls is
-given in \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html}{Resource identifiers for APIs and controls}
-in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html}{Controls reference guide section}
-of the \emph{Amazon Web Services Control Tower User Guide}. Remember that
-\emph{Mandatory} controls cannot be added or removed.
+given in \href{https://docs.aws.amazon.com/controltower/latest/controlreference/}{Resource identifiers for APIs and controls}
+in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html}{\emph{Amazon Web Services Control Tower Controls Reference Guide}}
+. Remember that \emph{Mandatory} controls cannot be added or removed.
 
 \strong{ARN format:} \verb{arn:aws:controltower:\{REGION\}::control/\{CONTROL_NAME\}}
 
@@ -104,11 +152,40 @@ that OU.
 
 \verb{arn:$\{Partition\}:organizations::$\{MasterAccountId\}:ou/o-$\{OrganizationId\}/ou-$\{OrganizationalUnitId\}}
 
+\strong{About landing zone APIs}
+
+You can configure and launch an Amazon Web Services Control Tower
+landing zone with APIs. For an introduction and steps, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html}{Getting started with Amazon Web Services Control Tower using APIs}.
+
+For an overview of landing zone API operations, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis}{Amazon Web Services Control Tower supports landing zone APIs}.
+The individual API operations for landing zones are detailed in this
+document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual},
+in the "Actions" section.
+
+\strong{About baseline APIs}
+
+You can apply the \code{AWSControlTowerBaseline} baseline to an
+organizational unit (OU) as a way to register the OU with Amazon Web
+Services Control Tower, programmatically. For a general overview of this
+capability, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis}{Amazon Web Services Control Tower supports APIs for OU registration and configuration with baselines}.
+
+You can call the baseline API operations to view the baselines that
+Amazon Web Services Control Tower enables for your landing zone, on your
+behalf, when setting up the landing zone. These baselines are read-only
+baselines.
+
+The individual API operations for baselines are detailed in this
+document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual},
+in the "Actions" section. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{Baseline API input and output examples with CLI}.
+
 \strong{Details and examples}
 \itemize{
 \item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{Control API input and output examples with CLI}
+\item \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{Baseline API input and output examples with CLI}
 \item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/enable-controls.html}{Enable controls with CloudFormation}
-\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html}{Control metadata tables}
+\item \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html}{Launch a landing zone with CloudFormation}
+\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html}{Control metadata tables (large page)}
+\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html}{Control availability by Region tables (large page)}
 \item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html}{List of identifiers for legacy controls}
 \item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html}{Controls reference guide}
 \item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/controls-reference.html}{Controls library groupings}
@@ -184,8 +261,10 @@ Amazon Web Services CloudTrail User Guide.
 \link[paws.management:controltower_get_landing_zone]{get_landing_zone} \tab Returns details about the landing zone\cr
 \link[paws.management:controltower_get_landing_zone_operation]{get_landing_zone_operation} \tab Returns the status of the specified landing zone operation\cr
 \link[paws.management:controltower_list_baselines]{list_baselines} \tab Returns a summary list of all available baselines\cr
+\link[paws.management:controltower_list_control_operations]{list_control_operations} \tab Provides a list of operations in progress or queued\cr
 \link[paws.management:controltower_list_enabled_baselines]{list_enabled_baselines} \tab Returns a list of summaries describing EnabledBaseline resources\cr
 \link[paws.management:controltower_list_enabled_controls]{list_enabled_controls} \tab Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains\cr
+\link[paws.management:controltower_list_landing_zone_operations]{list_landing_zone_operations} \tab Lists all landing zone operations from the past 90 days\cr
 \link[paws.management:controltower_list_landing_zones]{list_landing_zones} \tab Returns the landing zone ARN for the landing zone deployed in your managed account\cr
 \link[paws.management:controltower_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with the resource\cr
 \link[paws.management:controltower_reset_enabled_baseline]{reset_enabled_baseline} \tab Re-enables an EnabledBaseline resource\cr

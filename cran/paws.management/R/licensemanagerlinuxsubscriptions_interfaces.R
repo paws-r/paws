@@ -3,6 +3,30 @@
 #' @include licensemanagerlinuxsubscriptions_service.R
 NULL
 
+.licensemanagerlinuxsubscriptions$deregister_subscription_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$deregister_subscription_provider_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$get_registered_subscription_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$get_registered_subscription_provider_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LastSuccessfulDataRetrievalTime = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), SubscriptionProviderArn = structure(logical(0), tags = list(type = "string")), SubscriptionProviderSource = structure(logical(0), tags = list(type = "string")), SubscriptionProviderStatus = structure(logical(0), tags = list(type = "string")), SubscriptionProviderStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .licensemanagerlinuxsubscriptions$get_service_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -23,7 +47,7 @@ NULL
 
 .licensemanagerlinuxsubscriptions$list_linux_subscription_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(AccountID = structure(logical(0), tags = list(type = "string")), AmiId = structure(logical(0), tags = list(type = "string")), InstanceID = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "string")), ProductCode = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Region = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionName = structure(logical(0), tags = list(type = "string")), UsageOperation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Instances = structure(list(structure(list(AccountID = structure(logical(0), tags = list(type = "string")), AmiId = structure(logical(0), tags = list(type = "string")), DualSubscription = structure(logical(0), tags = list(type = "string")), InstanceID = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "string")), OsVersion = structure(logical(0), tags = list(type = "string")), ProductCode = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Region = structure(logical(0), tags = list(type = "string")), RegisteredWithSubscriptionProvider = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionName = structure(logical(0), tags = list(type = "string")), SubscriptionProviderCreateTime = structure(logical(0), tags = list(type = "string")), SubscriptionProviderUpdateTime = structure(logical(0), tags = list(type = "string")), UsageOperation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -36,6 +60,66 @@ NULL
 .licensemanagerlinuxsubscriptions$list_linux_subscriptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Subscriptions = structure(list(structure(list(InstanceCount = structure(logical(0), tags = list(type = "long", box = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$list_registered_subscription_providers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), SubscriptionProviderSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$list_registered_subscription_providers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RegisteredSubscriptionProviders = structure(list(structure(list(LastSuccessfulDataRetrievalTime = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), SubscriptionProviderArn = structure(logical(0), tags = list(type = "string")), SubscriptionProviderSource = structure(logical(0), tags = list(type = "string")), SubscriptionProviderStatus = structure(logical(0), tags = list(type = "string")), SubscriptionProviderStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$register_subscription_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SecretArn = structure(logical(0), tags = list(type = "string")), SubscriptionProviderSource = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$register_subscription_provider_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionProviderArn = structure(logical(0), tags = list(type = "string")), SubscriptionProviderSource = structure(logical(0), tags = list(type = "string")), SubscriptionProviderStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerlinuxsubscriptions$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

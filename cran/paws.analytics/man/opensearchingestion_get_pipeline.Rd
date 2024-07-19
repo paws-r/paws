@@ -7,7 +7,7 @@
 opensearchingestion_get_pipeline(PipelineName)
 }
 \arguments{
-\item{PipelineName}{[required] The name of the pipeline to get information about.}
+\item{PipelineName}{[required] The name of the pipeline.}
 }
 \description{
 Retrieves information about an OpenSearch Ingestion pipeline.

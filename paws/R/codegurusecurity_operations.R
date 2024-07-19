@@ -3,10 +3,10 @@
 #' @include codegurusecurity_service.R
 NULL
 
-#' Returns a list of all requested findings
+#' Returns a list of requested findings from standard scans
 #'
 #' @description
-#' Returns a list of all requested findings.
+#' Returns a list of requested findings from standard scans.
 #'
 #' @usage
 #' codegurusecurity_batch_get_findings(findingIdentifiers)
@@ -113,22 +113,23 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
     name = "BatchGetFindings",
     http_method = "POST",
     http_path = "/batchGetFindings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$batch_get_findings_input(findingIdentifiers = findingIdentifiers)
   output <- .codegurusecurity$batch_get_findings_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .codegurusecurity$operations$batch_get_findings <- codegurusecurity_batch_get_findings
 
-#' Use to create a scan using code uploaded to an S3 bucket
+#' Use to create a scan using code uploaded to an Amazon S3 bucket
 #'
 #' @description
-#' Use to create a scan using code uploaded to an S3 bucket.
+#' Use to create a scan using code uploaded to an Amazon S3 bucket.
 #'
 #' @usage
 #' codegurusecurity_create_scan(analysisType, clientToken, resourceId,
@@ -141,10 +142,10 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' @param clientToken The idempotency token for the request. Amazon CodeGuru Security uses
 #' this value to prevent the accidental creation of duplicate scans if
 #' there are failures and retries.
-#' @param resourceId &#91;required&#93; The identifier for an input resource used to create a scan.
+#' @param resourceId &#91;required&#93; The identifier for the resource object to be scanned.
 #' @param scanName &#91;required&#93; The unique name that CodeGuru Security uses to track revisions across
 #' multiple scans of the same resource. Only allowed for a `STANDARD` scan
-#' type. If not specified, it will be auto generated.
+#' type.
 #' @param scanType The type of scan, either `Standard` or `Express`. Defaults to `Standard`
 #' type if missing.
 #' 
@@ -202,26 +203,27 @@ codegurusecurity_create_scan <- function(analysisType = NULL, clientToken = NULL
     name = "CreateScan",
     http_method = "POST",
     http_path = "/scans",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$create_scan_input(analysisType = analysisType, clientToken = clientToken, resourceId = resourceId, scanName = scanName, scanType = scanType, tags = tags)
   output <- .codegurusecurity$create_scan_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .codegurusecurity$operations$create_scan <- codegurusecurity_create_scan
 
-#' Generates a pre-signed URL and request headers used to upload a code
-#' resource
+#' Generates a pre-signed URL, request headers used to upload a code
+#' resource, and code artifact identifier for the uploaded resource
 #'
 #' @description
-#' Generates a pre-signed URL and request headers used to upload a code
-#' resource.
+#' Generates a pre-signed URL, request headers used to upload a code
+#' resource, and code artifact identifier for the uploaded resource.
 #' 
-#' You can upload your code resource to the URL and add the request headers
+#' You can upload your code resource to the URL with the request headers
 #' using any HTTP client.
 #'
 #' @usage
@@ -262,22 +264,23 @@ codegurusecurity_create_upload_url <- function(scanName) {
     name = "CreateUploadUrl",
     http_method = "POST",
     http_path = "/uploadUrl",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$create_upload_url_input(scanName = scanName)
   output <- .codegurusecurity$create_upload_url_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .codegurusecurity$operations$create_upload_url <- codegurusecurity_create_upload_url
 
-#' Use to get account level configuration
+#' Use to get the encryption configuration for an account
 #'
 #' @description
-#' Use to get account level configuration.
+#' Use to get the encryption configuration for an account.
 #'
 #' @usage
 #' codegurusecurity_get_account_configuration()
@@ -309,12 +312,13 @@ codegurusecurity_get_account_configuration <- function() {
     name = "GetAccountConfiguration",
     http_method = "GET",
     http_path = "/accountConfiguration/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$get_account_configuration_input()
   output <- .codegurusecurity$get_account_configuration_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -333,7 +337,7 @@ codegurusecurity_get_account_configuration <- function() {
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
-#' results.
+#' results. If not specified, returns 1000 results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request. For
 #' subsequent calls, use the `nextToken` value returned from the previous
@@ -431,25 +435,26 @@ codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, s
     name = "GetFindings",
     http_method = "GET",
     http_path = "/findings/{scanName}",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .codegurusecurity$get_findings_input(maxResults = maxResults, nextToken = nextToken, scanName = scanName, status = status)
   output <- .codegurusecurity$get_findings_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .codegurusecurity$operations$get_findings <- codegurusecurity_get_findings
 
-#' Returns top level metrics about an account from a specified date,
+#' Returns a summary of metrics for an account from a specified date,
 #' including number of open findings, the categories with most findings,
 #' the scans with most open findings, and scans with most open critical
 #' findings
 #'
 #' @description
-#' Returns top level metrics about an account from a specified date,
+#' Returns a summary of metrics for an account from a specified date,
 #' including number of open findings, the categories with most findings,
 #' the scans with most open findings, and scans with most open critical
 #' findings.
@@ -458,9 +463,7 @@ codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, s
 #' codegurusecurity_get_metrics_summary(date)
 #'
 #' @param date &#91;required&#93; The date you want to retrieve summary metrics from, rounded to the
-#' nearest day. The date must be within the past two years since metrics
-#' data is only stored for two years. If a date outside of this range is
-#' passed, the response will be empty.
+#' nearest day. The date must be within the past two years.
 #'
 #' @return
 #' A list with the following syntax:
@@ -518,12 +521,13 @@ codegurusecurity_get_metrics_summary <- function(date) {
     name = "GetMetricsSummary",
     http_method = "GET",
     http_path = "/metrics/summary",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$get_metrics_summary_input(date = date)
   output <- .codegurusecurity$get_metrics_summary_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -554,6 +558,7 @@ codegurusecurity_get_metrics_summary <- function(date) {
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   errorMessage = "string",
 #'   numberOfRevisions = 123,
 #'   runId = "string",
 #'   scanName = "string",
@@ -583,12 +588,13 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
     name = "GetScan",
     http_method = "GET",
     http_path = "/scans/{scanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$get_scan_input(runId = runId, scanName = scanName)
   output <- .codegurusecurity$get_scan_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -607,16 +613,18 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
 #'   startDate)
 #'
 #' @param endDate &#91;required&#93; The end date of the interval which you want to retrieve metrics from.
+#' Round to the nearest day.
 #' @param maxResults The maximum number of results to return in the response. Use this
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
-#' results.
+#' results. If not specified, returns 1000 results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request. For
 #' subsequent calls, use the `nextToken` value returned from the previous
 #' request to continue listing results after the first page.
 #' @param startDate &#91;required&#93; The start date of the interval which you want to retrieve metrics from.
+#' Rounds to the nearest day.
 #'
 #' @return
 #' A list with the following syntax:
@@ -685,23 +693,24 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
     name = "ListFindingsMetrics",
     http_method = "GET",
     http_path = "/metrics/findings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsMetrics")
   )
   input <- .codegurusecurity$list_findings_metrics_input(endDate = endDate, maxResults = maxResults, nextToken = nextToken, startDate = startDate)
   output <- .codegurusecurity$list_findings_metrics_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .codegurusecurity$operations$list_findings_metrics <- codegurusecurity_list_findings_metrics
 
-#' Returns a list of all the standard scans in an account
+#' Returns a list of all scans in an account
 #'
 #' @description
-#' Returns a list of all the standard scans in an account. Does not return
-#' express scans.
+#' Returns a list of all scans in an account. Does not return `EXPRESS`
+#' scans.
 #'
 #' @usage
 #' codegurusecurity_list_scans(maxResults, nextToken)
@@ -710,7 +719,7 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
-#' results.
+#' results. If not specified, returns 100 results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request. For
 #' subsequent calls, use the `nextToken` value returned from the previous
@@ -756,12 +765,13 @@ codegurusecurity_list_scans <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListScans",
     http_method = "GET",
     http_path = "/scans",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "summaries")
   )
   input <- .codegurusecurity$list_scans_input(maxResults = maxResults, nextToken = nextToken)
   output <- .codegurusecurity$list_scans_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -777,7 +787,8 @@ codegurusecurity_list_scans <- function(maxResults = NULL, nextToken = NULL) {
 #' codegurusecurity_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the `ScanName` object. You can retrieve this ARN by calling
-#' [`list_scans`][codegurusecurity_list_scans] or
+#' [`create_scan`][codegurusecurity_create_scan],
+#' [`list_scans`][codegurusecurity_list_scans], or
 #' [`get_scan`][codegurusecurity_get_scan].
 #'
 #' @return
@@ -807,12 +818,13 @@ codegurusecurity_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codegurusecurity$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -828,7 +840,8 @@ codegurusecurity_list_tags_for_resource <- function(resourceArn) {
 #' codegurusecurity_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the `ScanName` object. You can retrieve this ARN by calling
-#' [`list_scans`][codegurusecurity_list_scans] or
+#' [`create_scan`][codegurusecurity_create_scan],
+#' [`list_scans`][codegurusecurity_list_scans], or
 #' [`get_scan`][codegurusecurity_get_scan].
 #' @param tags &#91;required&#93; An array of key-value pairs used to tag an existing scan. A tag is a
 #' custom attribute label with two parts:
@@ -863,12 +876,13 @@ codegurusecurity_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codegurusecurity$tag_resource_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -884,7 +898,8 @@ codegurusecurity_tag_resource <- function(resourceArn, tags) {
 #' codegurusecurity_untag_resource(resourceArn, tagKeys)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the `ScanName` object. You can retrieve this ARN by calling
-#' [`list_scans`][codegurusecurity_list_scans] or
+#' [`create_scan`][codegurusecurity_create_scan],
+#' [`list_scans`][codegurusecurity_list_scans], or
 #' [`get_scan`][codegurusecurity_get_scan].
 #' @param tagKeys &#91;required&#93; A list of keys for each tag you want to remove from a scan.
 #'
@@ -911,28 +926,31 @@ codegurusecurity_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codegurusecurity$untag_resource_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .codegurusecurity$operations$untag_resource <- codegurusecurity_untag_resource
 
-#' Use to update account-level configuration with an encryption key
+#' Use to update the encryption configuration for an account
 #'
 #' @description
-#' Use to update account-level configuration with an encryption key.
+#' Use to update the encryption configuration for an account.
 #'
 #' @usage
 #' codegurusecurity_update_account_configuration(encryptionConfig)
 #'
-#' @param encryptionConfig &#91;required&#93; The KMS key ARN you want to use for encryption. Defaults to service-side
-#' encryption if missing.
+#' @param encryptionConfig &#91;required&#93; The customer-managed KMS key ARN you want to use for encryption. If not
+#' specified, CodeGuru Security will use an AWS-managed key for encryption.
+#' If you previously specified a customer-managed KMS key and want CodeGuru
+#' Security to use an AWS-managed key for encryption instead, pass nothing.
 #'
 #' @return
 #' A list with the following syntax:
@@ -963,12 +981,13 @@ codegurusecurity_update_account_configuration <- function(encryptionConfig) {
     name = "UpdateAccountConfiguration",
     http_method = "PUT",
     http_path = "/updateAccountConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurusecurity$update_account_configuration_input(encryptionConfig = encryptionConfig)
   output <- .codegurusecurity$update_account_configuration_output()
   config <- get_config()
-  svc <- .codegurusecurity$service(config)
+  svc <- .codegurusecurity$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

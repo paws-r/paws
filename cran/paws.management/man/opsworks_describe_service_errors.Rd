@@ -2,7 +2,7 @@
 % Please edit documentation in R/opsworks_operations.R
 \name{opsworks_describe_service_errors}
 \alias{opsworks_describe_service_errors}
-\title{Describes AWS OpsWorks Stacks service errors}
+\title{Describes OpsWorks Stacks service errors}
 \usage{
 opsworks_describe_service_errors(
   StackId = NULL,
@@ -25,7 +25,7 @@ descriptions of the specified errors. Otherwise, it returns a
 description of every error.}
 }
 \description{
-Describes AWS OpsWorks Stacks service errors.
+Describes OpsWorks Stacks service errors.
 
 See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_service_errors/} for full documentation.
 }

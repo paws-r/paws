@@ -660,6 +660,14 @@ test_that("describe_tags", {
   expect_error(svc$describe_tags(MaxResults = 20), NA)
 })
 
+test_that("describe_traffic_mirror_filter_rules", {
+  expect_error(svc$describe_traffic_mirror_filter_rules(), NA)
+})
+
+test_that("describe_traffic_mirror_filter_rules", {
+  expect_error(svc$describe_traffic_mirror_filter_rules(MaxResults = 20), NA)
+})
+
 test_that("describe_traffic_mirror_filters", {
   expect_error(svc$describe_traffic_mirror_filters(), NA)
 })

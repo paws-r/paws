@@ -161,7 +161,7 @@ ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = "SpencerFrontendService"
 )
 
-.ecrpublic$service <- function(config = list()) {
+.ecrpublic$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.ecrpublic$metadata, handlers, config)
+  new_service(.ecrpublic$metadata, handlers, config, op)
 }

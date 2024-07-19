@@ -157,7 +157,7 @@ kinesisanalytics <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = "KinesisAnalytics_20150814"
 )
 
-.kinesisanalytics$service <- function(config = list()) {
+.kinesisanalytics$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.kinesisanalytics$metadata, handlers, config)
+  new_service(.kinesisanalytics$metadata, handlers, config, op)
 }

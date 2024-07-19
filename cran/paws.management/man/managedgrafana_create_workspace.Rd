@@ -44,7 +44,7 @@ information about the format and configuration options available, see
 \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html}{Working in your Grafana workspace}.}
 
 \item{grafanaVersion}{Specifies the version of Grafana to support in the new workspace. If not
-specified, defaults to the latest version (for example, 9.4).
+specified, defaults to the latest version (for example, 10.4).
 
 To get a list of supported versions, use the
 \code{\link[=managedgrafana_list_versions]{list_versions}} operation.}

@@ -20,12 +20,13 @@ servicequotas_associate_service_quota_template <- function() {
     name = "AssociateServiceQuotaTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$associate_service_quota_template_input()
   output <- .servicequotas$associate_service_quota_template_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -58,12 +59,13 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
     name = "DeleteServiceQuotaIncreaseRequestFromTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$delete_service_quota_increase_request_from_template_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, AwsRegion = AwsRegion)
   output <- .servicequotas$delete_service_quota_increase_request_from_template_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -87,12 +89,13 @@ servicequotas_disassociate_service_quota_template <- function() {
     name = "DisassociateServiceQuotaTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$disassociate_service_quota_template_input()
   output <- .servicequotas$disassociate_service_quota_template_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -123,12 +126,13 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
     name = "GetAWSDefaultServiceQuota",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$get_aws_default_service_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode)
   output <- .servicequotas$get_aws_default_service_quota_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -152,12 +156,13 @@ servicequotas_get_association_for_service_quota_template <- function() {
     name = "GetAssociationForServiceQuotaTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$get_association_for_service_quota_template_input()
   output <- .servicequotas$get_association_for_service_quota_template_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -181,12 +186,13 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
     name = "GetRequestedServiceQuotaChange",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$get_requested_service_quota_change_input(RequestId = RequestId)
   output <- .servicequotas$get_requested_service_quota_change_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -220,12 +226,13 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode, ContextId = 
     name = "GetServiceQuota",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$get_service_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, ContextId = ContextId)
   output <- .servicequotas$get_service_quota_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -258,12 +265,13 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
     name = "GetServiceQuotaIncreaseRequestFromTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$get_service_quota_increase_request_from_template_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, AwsRegion = AwsRegion)
   output <- .servicequotas$get_service_quota_increase_request_from_template_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -306,12 +314,13 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
     name = "ListAWSDefaultServiceQuotas",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas")
   )
   input <- .servicequotas$list_aws_default_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_aws_default_service_quotas_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -358,12 +367,13 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
     name = "ListRequestedServiceQuotaChangeHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
   input <- .servicequotas$list_requested_service_quota_change_history_input(ServiceCode = ServiceCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults, QuotaRequestedAtLevel = QuotaRequestedAtLevel)
   output <- .servicequotas$list_requested_service_quota_change_history_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -414,12 +424,13 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
     name = "ListRequestedServiceQuotaChangeHistoryByQuota",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
   input <- .servicequotas$list_requested_service_quota_change_history_by_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults, QuotaRequestedAtLevel = QuotaRequestedAtLevel)
   output <- .servicequotas$list_requested_service_quota_change_history_by_quota_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -463,12 +474,13 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
     name = "ListServiceQuotaIncreaseRequestsInTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceQuotaIncreaseRequestInTemplateList")
   )
   input <- .servicequotas$list_service_quota_increase_requests_in_template_input(ServiceCode = ServiceCode, AwsRegion = AwsRegion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_service_quota_increase_requests_in_template_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -516,12 +528,13 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
     name = "ListServiceQuotas",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas")
   )
   input <- .servicequotas$list_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults, QuotaCode = QuotaCode, QuotaAppliedAtLevel = QuotaAppliedAtLevel)
   output <- .servicequotas$list_service_quotas_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -561,12 +574,13 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Services")
   )
   input <- .servicequotas$list_services_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_services_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -596,12 +610,13 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .servicequotas$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -634,12 +649,13 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
     name = "PutServiceQuotaIncreaseRequestIntoTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$put_service_quota_increase_request_into_template_input(QuotaCode = QuotaCode, ServiceCode = ServiceCode, AwsRegion = AwsRegion, DesiredValue = DesiredValue)
   output <- .servicequotas$put_service_quota_increase_request_into_template_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -674,12 +690,13 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
     name = "RequestServiceQuotaIncrease",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue, ContextId = ContextId)
   output <- .servicequotas$request_service_quota_increase_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -710,12 +727,13 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .servicequotas$tag_resource_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -746,12 +764,13 @@ servicequotas_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicequotas$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .servicequotas$untag_resource_output()
   config <- get_config()
-  svc <- .servicequotas$service(config)
+  svc <- .servicequotas$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

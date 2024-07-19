@@ -75,13 +75,13 @@ NULL
 
 .eventbridge$create_event_bus_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventSourceName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventSourceName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), DeadLetterConfig = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .eventbridge$create_event_bus_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventBusArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EventBusArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), DeadLetterConfig = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -253,7 +253,7 @@ NULL
 
 .eventbridge$describe_event_bus_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), DeadLetterConfig = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Policy = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -381,7 +381,7 @@ NULL
 
 .eventbridge$list_event_buses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventBuses = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EventBuses = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -654,5 +654,17 @@ NULL
 .eventbridge$update_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RoutingConfig = structure(list(FailoverConfig = structure(list(Primary = structure(list(HealthCheck = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Secondary = structure(list(Route = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ReplicationConfig = structure(list(State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EventBuses = structure(list(structure(list(EventBusArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), EndpointUrl = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$update_event_bus_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeadLetterConfig = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$update_event_bus_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeadLetterConfig = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

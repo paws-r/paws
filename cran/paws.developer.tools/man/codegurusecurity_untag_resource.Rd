@@ -8,7 +8,8 @@ codegurusecurity_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
 \item{resourceArn}{[required] The ARN of the \code{ScanName} object. You can retrieve this ARN by calling
-\code{\link[=codegurusecurity_list_scans]{list_scans}} or
+\code{\link[=codegurusecurity_create_scan]{create_scan}},
+\code{\link[=codegurusecurity_list_scans]{list_scans}}, or
 \code{\link[=codegurusecurity_get_scan]{get_scan}}.}
 
 \item{tagKeys}{[required] A list of keys for each tag you want to remove from a scan.}

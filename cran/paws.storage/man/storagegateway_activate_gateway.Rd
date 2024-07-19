@@ -31,10 +31,11 @@ Gateway User Guide}.}
 \item{GatewayName}{[required] The name you configured for your gateway.}
 
 \item{GatewayTimezone}{[required] A value that indicates the time zone you want to set for the gateway.
-The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example,
-GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates
-the time is 2 hours ahead of GMT. The time zone is used, for example,
-for scheduling snapshots and your gateway's maintenance schedule.}
+The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For
+example, GMT indicates Greenwich Mean Time without any offset. GMT-4:00
+indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is
+2 hours ahead of GMT. The time zone is used, for example, for scheduling
+snapshots and your gateway's maintenance schedule.}
 
 \item{GatewayRegion}{[required] A value that indicates the Amazon Web Services Region where you want to
 store your data. The gateway Amazon Web Services Region specified must
@@ -51,8 +52,7 @@ Valid Values: See \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{S
 is critical to all later functions of the gateway and cannot be changed
 after activation. The default value is \code{CACHED}.
 
-Valid Values: \code{STORED} | \code{CACHED} | \code{VTL} | \code{VTL_SNOW} | \code{FILE_S3} |
-\code{FILE_FSX_SMB}}
+Valid Values: \code{STORED} | \code{CACHED} | \code{VTL} | \code{FILE_S3} | \code{FILE_FSX_SMB}}
 
 \item{TapeDriveType}{The value that indicates the type of tape drive to use for tape gateway.
 This field is optional.

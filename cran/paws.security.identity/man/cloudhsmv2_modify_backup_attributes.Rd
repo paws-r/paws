@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_modify_backup_attributes}
 \alias{cloudhsmv2_modify_backup_attributes}
-\title{Modifies attributes for AWS CloudHSM backup}
+\title{Modifies attributes for CloudHSM backup}
 \usage{
 cloudhsmv2_modify_backup_attributes(BackupId, NeverExpires)
 }
@@ -16,7 +16,7 @@ policy. \code{False} means the service applies the backup retention policy
 defined at the cluster.}
 }
 \description{
-Modifies attributes for AWS CloudHSM backup.
+Modifies attributes for CloudHSM backup.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/} for full documentation.
 }

@@ -7,7 +7,7 @@
 bedrock_delete_guardrail(guardrailIdentifier, guardrailVersion = NULL)
 }
 \arguments{
-\item{guardrailIdentifier}{[required] The unique identifier of the guardrail.}
+\item{guardrailIdentifier}{[required] The unique identifier of the guardrail. This can be an ID or the ARN.}
 
 \item{guardrailVersion}{The version of the guardrail.}
 }

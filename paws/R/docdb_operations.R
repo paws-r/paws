@@ -69,12 +69,13 @@ docdb_add_source_identifier_to_subscription <- function(SubscriptionName, Source
     name = "AddSourceIdentifierToSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .docdb$add_source_identifier_to_subscription_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -122,12 +123,13 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
     name = "AddTagsToResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .docdb$add_tags_to_resource_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -208,12 +210,13 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
     name = "ApplyPendingMaintenanceAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$apply_pending_maintenance_action_input(ResourceIdentifier = ResourceIdentifier, ApplyAction = ApplyAction, OptInType = OptInType)
   output <- .docdb$apply_pending_maintenance_action_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -301,12 +304,13 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
     name = "CopyDBClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$copy_db_cluster_parameter_group_input(SourceDBClusterParameterGroupIdentifier = SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier = TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription = TargetDBClusterParameterGroupDescription, Tags = Tags)
   output <- .docdb$copy_db_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -478,12 +482,13 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
     name = "CopyDBClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$copy_db_cluster_snapshot_input(SourceDBClusterSnapshotIdentifier = SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier = TargetDBClusterSnapshotIdentifier, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, CopyTags = CopyTags, Tags = Tags)
   output <- .docdb$copy_db_cluster_snapshot_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -747,12 +752,13 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -836,12 +842,13 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
     name = "CreateDBClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$create_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .docdb$create_db_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -936,12 +943,13 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
     name = "CreateDBClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$create_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, DBClusterIdentifier = DBClusterIdentifier, Tags = Tags)
   output <- .docdb$create_db_cluster_snapshot_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1168,12 +1176,13 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
     name = "CreateDBInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CACertificateIdentifier = CACertificateIdentifier)
   output <- .docdb$create_db_instance_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1252,12 +1261,13 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
     name = "CreateDBSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$create_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .docdb$create_db_subnet_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1390,12 +1400,13 @@ docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sourc
     name = "CreateEventSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
   output <- .docdb$create_event_subscription_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1487,12 +1498,13 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
     name = "CreateGlobalCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, StorageEncrypted = StorageEncrypted)
   output <- .docdb$create_global_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1629,12 +1641,13 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
     name = "DeleteDBCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .docdb$delete_db_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1680,12 +1693,13 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
     name = "DeleteDBClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$delete_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .docdb$delete_db_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1758,12 +1772,13 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
     name = "DeleteDBClusterSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$delete_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .docdb$delete_db_cluster_snapshot_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1905,12 +1920,13 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
     name = "DeleteDBInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$delete_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .docdb$delete_db_instance_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1958,12 +1974,13 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
     name = "DeleteDBSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$delete_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName)
   output <- .docdb$delete_db_subnet_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2021,12 +2038,13 @@ docdb_delete_event_subscription <- function(SubscriptionName) {
     name = "DeleteEventSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$delete_event_subscription_input(SubscriptionName = SubscriptionName)
   output <- .docdb$delete_event_subscription_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2091,12 +2109,13 @@ docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
     name = "DeleteGlobalCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .docdb$delete_global_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2189,12 +2208,13 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
     name = "DescribeCertificates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Certificates")
   )
   input <- .docdb$describe_certificates_input(CertificateIdentifier = CertificateIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_certificates_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2274,12 +2294,13 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
     name = "DescribeDBClusterParameterGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups")
   )
   input <- .docdb$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameter_groups_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2369,12 +2390,13 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
     name = "DescribeDBClusterParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .docdb$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameters_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2437,12 +2459,13 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
     name = "DescribeDBClusterSnapshotAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$describe_db_cluster_snapshot_attributes_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .docdb$describe_db_cluster_snapshot_attributes_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2591,12 +2614,13 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
     name = "DescribeDBClusterSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots")
   )
   input <- .docdb$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
   output <- .docdb$describe_db_cluster_snapshots_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2744,12 +2768,13 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
     name = "DescribeDBClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters")
   )
   input <- .docdb$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_clusters_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2864,12 +2889,13 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
     name = "DescribeDBEngineVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions")
   )
   input <- .docdb$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
   output <- .docdb$describe_db_engine_versions_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3050,12 +3076,13 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
     name = "DescribeDBInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances")
   )
   input <- .docdb$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_instances_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3140,12 +3167,13 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
     name = "DescribeDBSubnetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups")
   )
   input <- .docdb$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_subnet_groups_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3230,12 +3258,13 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
     name = "DescribeEngineDefaultClusterParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$describe_engine_default_cluster_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_engine_default_cluster_parameters_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3297,12 +3326,13 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
     name = "DescribeEventCategories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$describe_event_categories_input(SourceType = SourceType, Filters = Filters)
   output <- .docdb$describe_event_categories_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3392,12 +3422,13 @@ docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters 
     name = "DescribeEventSubscriptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList")
   )
   input <- .docdb$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_event_subscriptions_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3527,12 +3558,13 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .docdb$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_events_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3625,12 +3657,13 @@ docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filte
     name = "DescribeGlobalClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters")
   )
   input <- .docdb$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_global_clusters_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3722,12 +3755,13 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
     name = "DescribeOrderableDBInstanceOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions")
   )
   input <- .docdb$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_orderable_db_instance_options_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3826,12 +3860,13 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
     name = "DescribePendingMaintenanceActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions")
   )
   input <- .docdb$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .docdb$describe_pending_maintenance_actions_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3956,12 +3991,13 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
     name = "FailoverDBCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$failover_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier)
   output <- .docdb$failover_db_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4018,12 +4054,13 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "TagList")
   )
   input <- .docdb$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .docdb$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4269,12 +4306,13 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType)
   output <- .docdb$modify_db_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4348,12 +4386,13 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
     name = "ModifyDBClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$modify_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Parameters = Parameters)
   output <- .docdb$modify_db_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4451,12 +4490,13 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
     name = "ModifyDBClusterSnapshotAttribute",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$modify_db_cluster_snapshot_attribute_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AttributeName = AttributeName, ValuesToAdd = ValuesToAdd, ValuesToRemove = ValuesToRemove)
   output <- .docdb$modify_db_cluster_snapshot_attribute_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4704,12 +4744,13 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CertificateRotationRestart = CertificateRotationRestart)
   output <- .docdb$modify_db_instance_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4781,12 +4822,13 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
     name = "ModifyDBSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$modify_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .docdb$modify_db_subnet_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4862,12 +4904,13 @@ docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL
     name = "ModifyEventSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
   output <- .docdb$modify_event_subscription_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4953,12 +4996,13 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
     name = "ModifyGlobalCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection)
   output <- .docdb$modify_global_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5111,12 +5155,13 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
     name = "RebootDBInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$reboot_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, ForceFailover = ForceFailover)
   output <- .docdb$reboot_db_instance_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5187,12 +5232,13 @@ docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterI
     name = "RemoveFromGlobalCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
   output <- .docdb$remove_from_global_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5256,12 +5302,13 @@ docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, S
     name = "RemoveSourceIdentifierFromSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .docdb$remove_source_identifier_from_subscription_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5303,12 +5350,13 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     name = "RemoveTagsFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .docdb$remove_tags_from_resource_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5382,12 +5430,13 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
     name = "ResetDBClusterParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$reset_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .docdb$reset_db_cluster_parameter_group_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5614,12 +5663,13 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName, StorageType = StorageType)
   output <- .docdb$restore_db_cluster_from_snapshot_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5860,12 +5910,13 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, StorageType = StorageType)
   output <- .docdb$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5973,12 +6024,13 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
     name = "StartDBCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$start_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .docdb$start_db_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6087,12 +6139,13 @@ docdb_stop_db_cluster <- function(DBClusterIdentifier) {
     name = "StopDBCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$stop_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .docdb$stop_db_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6182,12 +6235,13 @@ docdb_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
     name = "SwitchoverGlobalCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdb$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
   output <- .docdb$switchover_global_cluster_output()
   config <- get_config()
-  svc <- .docdb$service(config)
+  svc <- .docdb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

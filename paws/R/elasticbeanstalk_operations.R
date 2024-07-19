@@ -49,12 +49,13 @@ elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, Envi
     name = "AbortEnvironmentUpdate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$abort_environment_update_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$abort_environment_update_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -107,12 +108,13 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
     name = "ApplyEnvironmentManagedAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$apply_environment_managed_action_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, ActionId = ActionId)
   output <- .elasticbeanstalk$apply_environment_managed_action_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -158,12 +160,13 @@ elasticbeanstalk_associate_environment_operations_role <- function(EnvironmentNa
     name = "AssociateEnvironmentOperationsRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$associate_environment_operations_role_input(EnvironmentName = EnvironmentName, OperationsRole = OperationsRole)
   output <- .elasticbeanstalk$associate_environment_operations_role_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -215,12 +218,13 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
     name = "CheckDNSAvailability",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$check_dns_availability_input(CNAMEPrefix = CNAMEPrefix)
   output <- .elasticbeanstalk$check_dns_availability_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -336,12 +340,13 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
     name = "ComposeEnvironments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$compose_environments_input(ApplicationName = ApplicationName, GroupName = GroupName, VersionLabels = VersionLabels)
   output <- .elasticbeanstalk$compose_environments_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -455,12 +460,13 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$create_application_input(ApplicationName = ApplicationName, Description = Description, ResourceLifecycleConfig = ResourceLifecycleConfig, Tags = Tags)
   output <- .elasticbeanstalk$create_application_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -626,12 +632,13 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
     name = "CreateApplicationVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$create_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, Description = Description, SourceBuildInformation = SourceBuildInformation, SourceBundle = SourceBundle, BuildConfiguration = BuildConfiguration, AutoCreateApplication = AutoCreateApplication, Process = Process, Tags = Tags)
   output <- .elasticbeanstalk$create_application_version_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -795,12 +802,13 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
     name = "CreateConfigurationTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$create_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, SourceConfiguration = SourceConfiguration, EnvironmentId = EnvironmentId, Description = Description, OptionSettings = OptionSettings, Tags = Tags)
   output <- .elasticbeanstalk$create_configuration_template_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1004,12 +1012,13 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
     name = "CreateEnvironment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$create_environment_input(ApplicationName = ApplicationName, EnvironmentName = EnvironmentName, GroupName = GroupName, Description = Description, CNAMEPrefix = CNAMEPrefix, Tier = Tier, Tags = Tags, VersionLabel = VersionLabel, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove, OperationsRole = OperationsRole)
   output <- .elasticbeanstalk$create_environment_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1101,12 +1110,13 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
     name = "CreatePlatformVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$create_platform_version_input(PlatformName = PlatformName, PlatformVersion = PlatformVersion, PlatformDefinitionBundle = PlatformDefinitionBundle, EnvironmentName = EnvironmentName, OptionSettings = OptionSettings, Tags = Tags)
   output <- .elasticbeanstalk$create_platform_version_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1156,12 +1166,13 @@ elasticbeanstalk_create_storage_location <- function() {
     name = "CreateStorageLocation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$create_storage_location_input()
   output <- .elasticbeanstalk$create_storage_location_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1215,12 +1226,13 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
     name = "DeleteApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$delete_application_input(ApplicationName = ApplicationName, TerminateEnvByForce = TerminateEnvByForce)
   output <- .elasticbeanstalk$delete_application_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1278,12 +1290,13 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
     name = "DeleteApplicationVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$delete_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, DeleteSourceBundle = DeleteSourceBundle)
   output <- .elasticbeanstalk$delete_application_version_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1338,12 +1351,13 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
     name = "DeleteConfigurationTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$delete_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName)
   output <- .elasticbeanstalk$delete_configuration_template_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1401,12 +1415,13 @@ elasticbeanstalk_delete_environment_configuration <- function(ApplicationName, E
     name = "DeleteEnvironmentConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$delete_environment_configuration_input(ApplicationName = ApplicationName, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$delete_environment_configuration_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1465,12 +1480,13 @@ elasticbeanstalk_delete_platform_version <- function(PlatformArn = NULL) {
     name = "DeletePlatformVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$delete_platform_version_input(PlatformArn = PlatformArn)
   output <- .elasticbeanstalk$delete_platform_version_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1527,12 +1543,13 @@ elasticbeanstalk_describe_account_attributes <- function() {
     name = "DescribeAccountAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$describe_account_attributes_input()
   output <- .elasticbeanstalk$describe_account_attributes_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1629,12 +1646,13 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
     name = "DescribeApplicationVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "ApplicationVersions")
   )
   input <- .elasticbeanstalk$describe_application_versions_input(ApplicationName = ApplicationName, VersionLabels = VersionLabels, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_application_versions_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1719,12 +1737,13 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
     name = "DescribeApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "Applications")
   )
   input <- .elasticbeanstalk$describe_applications_input(ApplicationNames = ApplicationNames)
   output <- .elasticbeanstalk$describe_applications_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1826,12 +1845,13 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
     name = "DescribeConfigurationOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "Options")
   )
   input <- .elasticbeanstalk$describe_configuration_options_input(ApplicationName = ApplicationName, TemplateName = TemplateName, EnvironmentName = EnvironmentName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, Options = Options)
   output <- .elasticbeanstalk$describe_configuration_options_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1937,12 +1957,13 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
     name = "DescribeConfigurationSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$describe_configuration_settings_input(ApplicationName = ApplicationName, TemplateName = TemplateName, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$describe_configuration_settings_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2051,12 +2072,13 @@ elasticbeanstalk_describe_environment_health <- function(EnvironmentName = NULL,
     name = "DescribeEnvironmentHealth",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$describe_environment_health_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, AttributeNames = AttributeNames)
   output <- .elasticbeanstalk$describe_environment_health_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2121,12 +2143,13 @@ elasticbeanstalk_describe_environment_managed_action_history <- function(Environ
     name = "DescribeEnvironmentManagedActionHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "ManagedActionHistoryItems")
   )
   input <- .elasticbeanstalk$describe_environment_managed_action_history_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, NextToken = NextToken, MaxItems = MaxItems)
   output <- .elasticbeanstalk$describe_environment_managed_action_history_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2183,12 +2206,13 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
     name = "DescribeEnvironmentManagedActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$describe_environment_managed_actions_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, Status = Status)
   output <- .elasticbeanstalk$describe_environment_managed_actions_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2288,12 +2312,13 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
     name = "DescribeEnvironmentResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$describe_environment_resources_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$describe_environment_resources_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2435,12 +2460,13 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
     name = "DescribeEnvironments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "Environments")
   )
   input <- .elasticbeanstalk$describe_environments_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, EnvironmentIds = EnvironmentIds, EnvironmentNames = EnvironmentNames, IncludeDeleted = IncludeDeleted, IncludedDeletedBackTo = IncludedDeletedBackTo, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_environments_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2552,12 +2578,13 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Events")
   )
   input <- .elasticbeanstalk$describe_events_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, TemplateName = TemplateName, EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, PlatformArn = PlatformArn, RequestId = RequestId, Severity = Severity, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_events_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2686,12 +2713,13 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
     name = "DescribeInstancesHealth",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$describe_instances_health_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, AttributeNames = AttributeNames, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_instances_health_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2784,12 +2812,13 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
     name = "DescribePlatformVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$describe_platform_version_input(PlatformArn = PlatformArn)
   output <- .elasticbeanstalk$describe_platform_version_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2833,12 +2862,13 @@ elasticbeanstalk_disassociate_environment_operations_role <- function(Environmen
     name = "DisassociateEnvironmentOperationsRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$disassociate_environment_operations_role_input(EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$disassociate_environment_operations_role_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2895,12 +2925,13 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
     name = "ListAvailableSolutionStacks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "SolutionStacks")
   )
   input <- .elasticbeanstalk$list_available_solution_stacks_input()
   output <- .elasticbeanstalk$list_available_solution_stacks_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3007,12 +3038,13 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
     name = "ListPlatformBranches",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .elasticbeanstalk$list_platform_branches_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$list_platform_branches_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3099,12 +3131,13 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
     name = "ListPlatformVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "PlatformSummaryList")
   )
   input <- .elasticbeanstalk$list_platform_versions_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$list_platform_versions_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3160,12 +3193,13 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .elasticbeanstalk$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3224,12 +3258,13 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
     name = "RebuildEnvironment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$rebuild_environment_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$rebuild_environment_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3314,12 +3349,13 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
     name = "RequestEnvironmentInfo",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$request_environment_info_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, InfoType = InfoType)
   output <- .elasticbeanstalk$request_environment_info_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3377,12 +3413,13 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
     name = "RestartAppServer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$restart_app_server_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$restart_app_server_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3468,12 +3505,13 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
     name = "RetrieveEnvironmentInfo",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$retrieve_environment_info_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, InfoType = InfoType)
   output <- .elasticbeanstalk$retrieve_environment_info_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3546,12 +3584,13 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
     name = "SwapEnvironmentCNAMEs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$swap_environment_cnam_es_input(SourceEnvironmentId = SourceEnvironmentId, SourceEnvironmentName = SourceEnvironmentName, DestinationEnvironmentId = DestinationEnvironmentId, DestinationEnvironmentName = DestinationEnvironmentName)
   output <- .elasticbeanstalk$swap_environment_cnam_es_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3677,12 +3716,13 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
     name = "TerminateEnvironment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$terminate_environment_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, TerminateResources = TerminateResources, ForceTerminate = ForceTerminate)
   output <- .elasticbeanstalk$terminate_environment_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3775,12 +3815,13 @@ elasticbeanstalk_update_application <- function(ApplicationName, Description = N
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$update_application_input(ApplicationName = ApplicationName, Description = Description)
   output <- .elasticbeanstalk$update_application_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3854,12 +3895,13 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
     name = "UpdateApplicationResourceLifecycle",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$update_application_resource_lifecycle_input(ApplicationName = ApplicationName, ResourceLifecycleConfig = ResourceLifecycleConfig)
   output <- .elasticbeanstalk$update_application_resource_lifecycle_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3952,12 +3994,13 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
     name = "UpdateApplicationVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$update_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, Description = Description)
   output <- .elasticbeanstalk$update_application_version_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4080,12 +4123,13 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
     name = "UpdateConfigurationTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$update_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName, Description = Description, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove)
   output <- .elasticbeanstalk$update_configuration_template_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4297,12 +4341,13 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
     name = "UpdateEnvironment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$update_environment_input(ApplicationName = ApplicationName, EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, GroupName = GroupName, Description = Description, Tier = Tier, VersionLabel = VersionLabel, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove)
   output <- .elasticbeanstalk$update_environment_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4385,12 +4430,13 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
     name = "UpdateTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$update_tags_for_resource_input(ResourceArn = ResourceArn, TagsToAdd = TagsToAdd, TagsToRemove = TagsToRemove)
   output <- .elasticbeanstalk$update_tags_for_resource_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4481,12 +4527,13 @@ elasticbeanstalk_validate_configuration_settings <- function(ApplicationName, Te
     name = "ValidateConfigurationSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticbeanstalk$validate_configuration_settings_input(ApplicationName = ApplicationName, TemplateName = TemplateName, EnvironmentName = EnvironmentName, OptionSettings = OptionSettings)
   output <- .elasticbeanstalk$validate_configuration_settings_output()
   config <- get_config()
-  svc <- .elasticbeanstalk$service(config)
+  svc <- .elasticbeanstalk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

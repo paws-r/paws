@@ -232,7 +232,7 @@ s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = 
   target_prefix = ""
 )
 
-.s3$service <- function(config = list()) {
+.s3$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restxml", "s3")
-  new_service(.s3$metadata, handlers, config)
+  new_service(.s3$metadata, handlers, config, op)
 }

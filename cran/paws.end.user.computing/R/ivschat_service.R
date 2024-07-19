@@ -328,7 +328,7 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = ""
 )
 
-.ivschat$service <- function(config = list()) {
+.ivschat$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.ivschat$metadata, handlers, config)
+  new_service(.ivschat$metadata, handlers, config, op)
 }

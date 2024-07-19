@@ -29,12 +29,13 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
     name = "CreateHttpNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$create_http_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, Description = Description, Tags = Tags)
   output <- .servicediscovery$create_http_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -72,12 +73,13 @@ servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId
     name = "CreatePrivateDnsNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$create_private_dns_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, Description = Description, Vpc = Vpc, Tags = Tags, Properties = Properties)
   output <- .servicediscovery$create_private_dns_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -115,12 +117,13 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
     name = "CreatePublicDnsNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$create_public_dns_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, Description = Description, Tags = Tags, Properties = Properties)
   output <- .servicediscovery$create_public_dns_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -205,12 +208,13 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
     name = "CreateService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$create_service_input(Name = Name, NamespaceId = NamespaceId, CreatorRequestId = CreatorRequestId, Description = Description, DnsConfig = DnsConfig, HealthCheckConfig = HealthCheckConfig, HealthCheckCustomConfig = HealthCheckCustomConfig, Tags = Tags, Type = Type)
   output <- .servicediscovery$create_service_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -234,12 +238,13 @@ servicediscovery_delete_namespace <- function(Id) {
     name = "DeleteNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$delete_namespace_input(Id = Id)
   output <- .servicediscovery$delete_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -263,12 +268,13 @@ servicediscovery_delete_service <- function(Id) {
     name = "DeleteService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$delete_service_input(Id = Id)
   output <- .servicediscovery$delete_service_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -295,12 +301,13 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
     name = "DeregisterInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$deregister_instance_input(ServiceId = ServiceId, InstanceId = InstanceId)
   output <- .servicediscovery$deregister_instance_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -364,12 +371,13 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
     name = "DiscoverInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "data-",
     paginator = list()
   )
   input <- .servicediscovery$discover_instances_input(NamespaceName = NamespaceName, ServiceName = ServiceName, MaxResults = MaxResults, QueryParameters = QueryParameters, OptionalParameters = OptionalParameters, HealthStatus = HealthStatus)
   output <- .servicediscovery$discover_instances_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -396,12 +404,13 @@ servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceN
     name = "DiscoverInstancesRevision",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "data-",
     paginator = list()
   )
   input <- .servicediscovery$discover_instances_revision_input(NamespaceName = NamespaceName, ServiceName = ServiceName)
   output <- .servicediscovery$discover_instances_revision_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -426,12 +435,13 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
     name = "GetInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$get_instance_input(ServiceId = ServiceId, InstanceId = InstanceId)
   output <- .servicediscovery$get_instance_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -479,12 +489,13 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
     name = "GetInstancesHealthStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$get_instances_health_status_input(ServiceId = ServiceId, Instances = Instances, MaxResults = MaxResults, NextToken = NextToken)
   output <- .servicediscovery$get_instances_health_status_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -508,12 +519,13 @@ servicediscovery_get_namespace <- function(Id) {
     name = "GetNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$get_namespace_input(Id = Id)
   output <- .servicediscovery$get_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -538,12 +550,13 @@ servicediscovery_get_operation <- function(OperationId) {
     name = "GetOperation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$get_operation_input(OperationId = OperationId)
   output <- .servicediscovery$get_operation_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -567,12 +580,13 @@ servicediscovery_get_service <- function(Id) {
     name = "GetService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$get_service_input(Id = Id)
   output <- .servicediscovery$get_service_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -608,12 +622,13 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_instances_input(ServiceId = ServiceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicediscovery$list_instances_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -659,12 +674,13 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
     name = "ListNamespaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_namespaces_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_namespaces_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -710,12 +726,13 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_operations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_operations_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -761,12 +778,13 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_services_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_services_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -791,12 +809,13 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .servicediscovery$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -966,12 +985,13 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
     name = "RegisterInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$register_instance_input(ServiceId = ServiceId, InstanceId = InstanceId, CreatorRequestId = CreatorRequestId, Attributes = Attributes)
   output <- .servicediscovery$register_instance_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -999,12 +1019,13 @@ servicediscovery_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .servicediscovery$tag_resource_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1051,13 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .servicediscovery$untag_resource_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1065,12 +1087,13 @@ servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, 
     name = "UpdateHttpNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$update_http_namespace_input(Id = Id, UpdaterRequestId = UpdaterRequestId, Namespace = Namespace)
   output <- .servicediscovery$update_http_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1098,12 +1121,13 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
     name = "UpdateInstanceCustomHealthStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$update_instance_custom_health_status_input(ServiceId = ServiceId, InstanceId = InstanceId, Status = Status)
   output <- .servicediscovery$update_instance_custom_health_status_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1133,12 +1157,13 @@ servicediscovery_update_private_dns_namespace <- function(Id, UpdaterRequestId =
     name = "UpdatePrivateDnsNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$update_private_dns_namespace_input(Id = Id, UpdaterRequestId = UpdaterRequestId, Namespace = Namespace)
   output <- .servicediscovery$update_private_dns_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1168,12 +1193,13 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
     name = "UpdatePublicDnsNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$update_public_dns_namespace_input(Id = Id, UpdaterRequestId = UpdaterRequestId, Namespace = Namespace)
   output <- .servicediscovery$update_public_dns_namespace_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1198,12 +1224,13 @@ servicediscovery_update_service <- function(Id, Service) {
     name = "UpdateService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicediscovery$update_service_input(Id = Id, Service = Service)
   output <- .servicediscovery$update_service_output()
   config <- get_config()
-  svc <- .servicediscovery$service(config)
+  svc <- .servicediscovery$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

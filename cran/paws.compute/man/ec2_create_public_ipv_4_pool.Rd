@@ -4,7 +4,11 @@
 \alias{ec2_create_public_ipv_4_pool}
 \title{Creates a public IPv4 address pool}
 \usage{
-ec2_create_public_ipv_4_pool(DryRun = NULL, TagSpecifications = NULL)
+ec2_create_public_ipv_4_pool(
+  DryRun = NULL,
+  TagSpecifications = NULL,
+  NetworkBorderGroup = NULL
+)
 }
 \arguments{
 \item{DryRun}{A check for whether you have the required permissions for the action
@@ -17,6 +21,12 @@ key in the filter name and the tag value as the filter value. For
 example, to find all resources that have a tag with the key \code{Owner} and
 the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA}
 for the filter value.}
+
+\item{NetworkBorderGroup}{The Availability Zone (AZ) or Local Zone (LZ) network border group that
+the resource that the IP address is assigned to is in. Defaults to an AZ
+network border group. For more information on available Local Zones, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail}{Local Zone availability}
+in the \emph{Amazon EC2 User Guide}.}
 }
 \description{
 Creates a public IPv4 address pool. A public IPv4 pool is an EC2 IP address pool required for the public IPv4 CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools only. To monitor the status of pool creation, use \code{\link[=ec2_describe_public_ipv_4_pools]{describe_public_ipv_4_pools}}.

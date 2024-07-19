@@ -27,7 +27,7 @@ accounts.}
 \item{tags}{The tags for the association.}
 }
 \description{
-Associates a service with a service network.
+Associates a service with a service network. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations}{Manage service associations} in the \emph{Amazon VPC Lattice User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_create_service_network_service_association/} for full documentation.
 }

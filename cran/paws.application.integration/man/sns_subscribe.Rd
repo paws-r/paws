@@ -80,19 +80,18 @@ service that powers the subscribed endpoint becomes unavailable) are
 held in the dead-letter queue for further analysis or reprocessing.
 }
 
-The following attribute applies only to Amazon Kinesis Data Firehose
-delivery stream subscriptions:
+The following attribute applies only to Amazon Data Firehose delivery
+stream subscriptions:
 \itemize{
 \item \code{SubscriptionRoleArn} – The ARN of the IAM role that has the
 following:
 \itemize{
-\item Permission to write to the Kinesis Data Firehose delivery stream
+\item Permission to write to the Firehose delivery stream
 \item Amazon SNS listed as a trusted entity
 }
 
-Specifying a valid ARN for this attribute is required for Kinesis
-Data Firehose delivery stream subscriptions. For more information,
-see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html}{Fanout to Kinesis Data Firehose delivery streams}
+Specifying a valid ARN for this attribute is required for Firehose
+delivery stream subscriptions. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html}{Fanout to Firehose delivery streams}
 in the \emph{Amazon SNS Developer Guide}.
 }
 

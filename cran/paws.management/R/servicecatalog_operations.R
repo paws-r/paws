@@ -38,12 +38,13 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     name = "AcceptPortfolioShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$accept_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$accept_portfolio_share_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -68,12 +69,13 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
     name = "AssociateBudgetWithResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$associate_budget_with_resource_input(BudgetName = BudgetName, ResourceId = ResourceId)
   output <- .servicecatalog$associate_budget_with_resource_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -159,12 +161,13 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
     name = "AssociatePrincipalWithPortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$associate_principal_with_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN, PrincipalType = PrincipalType)
   output <- .servicecatalog$associate_principal_with_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -195,12 +198,13 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
     name = "AssociateProductWithPortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$associate_product_with_portfolio_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PortfolioId = PortfolioId, SourcePortfolioId = SourcePortfolioId)
   output <- .servicecatalog$associate_product_with_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -236,12 +240,13 @@ servicecatalog_associate_service_action_with_provisioning_artifact <- function(P
     name = "AssociateServiceActionWithProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$associate_service_action_with_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$associate_service_action_with_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -267,12 +272,13 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
     name = "AssociateTagOptionWithResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$associate_tag_option_with_resource_input(ResourceId = ResourceId, TagOptionId = TagOptionId)
   output <- .servicecatalog$associate_tag_option_with_resource_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -302,12 +308,13 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
     name = "BatchAssociateServiceActionWithProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$batch_associate_service_action_with_provisioning_artifact_input(ServiceActionAssociations = ServiceActionAssociations, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$batch_associate_service_action_with_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -338,12 +345,13 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
     name = "BatchDisassociateServiceActionFromProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$batch_disassociate_service_action_from_provisioning_artifact_input(ServiceActionAssociations = ServiceActionAssociations, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$batch_disassociate_service_action_from_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -385,12 +393,13 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
     name = "CopyProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$copy_product_input(AcceptLanguage = AcceptLanguage, SourceProductArn = SourceProductArn, TargetProductId = TargetProductId, TargetProductName = TargetProductName, SourceProvisioningArtifactIdentifiers = SourceProvisioningArtifactIdentifiers, CopyOptions = CopyOptions, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$copy_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -499,12 +508,13 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
     name = "CreateConstraint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_constraint_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, ProductId = ProductId, Parameters = Parameters, Type = Type, Description = Description, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_constraint_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -539,12 +549,13 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
     name = "CreatePortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_portfolio_input(AcceptLanguage = AcceptLanguage, DisplayName = DisplayName, Description = Description, ProviderName = ProviderName, Tags = Tags, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -595,12 +606,13 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     name = "CreatePortfolioShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$create_portfolio_share_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -651,12 +663,13 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
     name = "CreateProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_product_input(AcceptLanguage = AcceptLanguage, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, ProductType = ProductType, Tags = Tags, ProvisioningArtifactParameters = ProvisioningArtifactParameters, IdempotencyToken = IdempotencyToken, SourceConnection = SourceConnection)
   output <- .servicecatalog$create_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -707,12 +720,13 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
     name = "CreateProvisionedProductPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanName = PlanName, PlanType = PlanType, NotificationArns = NotificationArns, PathId = PathId, ProductId = ProductId, ProvisionedProductName = ProvisionedProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningParameters = ProvisioningParameters, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .servicecatalog$create_provisioned_product_plan_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -746,12 +760,13 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
     name = "CreateProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, Parameters = Parameters, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -815,12 +830,13 @@ servicecatalog_create_service_action <- function(Name, DefinitionType, Definitio
     name = "CreateServiceAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_service_action_input(Name = Name, DefinitionType = DefinitionType, Definition = Definition, Description = Description, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_service_action_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -845,12 +861,13 @@ servicecatalog_create_tag_option <- function(Key, Value) {
     name = "CreateTagOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$create_tag_option_input(Key = Key, Value = Value)
   output <- .servicecatalog$create_tag_option_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -879,12 +896,13 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
     name = "DeleteConstraint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$delete_constraint_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -913,12 +931,13 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
     name = "DeletePortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_portfolio_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$delete_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -950,12 +969,13 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     name = "DeletePortfolioShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode)
   output <- .servicecatalog$delete_portfolio_share_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -984,12 +1004,13 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
     name = "DeleteProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_product_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$delete_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1020,12 +1041,13 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
     name = "DeleteProvisionedProductPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanId = PlanId, IgnoreErrors = IgnoreErrors)
   output <- .servicecatalog$delete_provisioned_product_plan_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1056,12 +1078,13 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
     name = "DeleteProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId)
   output <- .servicecatalog$delete_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1094,12 +1117,13 @@ servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL, Idem
     name = "DeleteServiceAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_service_action_input(Id = Id, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$delete_service_action_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1123,12 +1147,13 @@ servicecatalog_delete_tag_option <- function(Id) {
     name = "DeleteTagOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$delete_tag_option_input(Id = Id)
   output <- .servicecatalog$delete_tag_option_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1157,12 +1182,13 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
     name = "DescribeConstraint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$describe_constraint_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1192,12 +1218,13 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
     name = "DescribeCopyProductStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_copy_product_status_input(AcceptLanguage = AcceptLanguage, CopyProductToken = CopyProductToken)
   output <- .servicecatalog$describe_copy_product_status_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1226,12 +1253,13 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
     name = "DescribePortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_portfolio_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$describe_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1256,12 +1284,13 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
     name = "DescribePortfolioShareStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_portfolio_share_status_input(PortfolioShareToken = PortfolioShareToken)
   output <- .servicecatalog$describe_portfolio_share_status_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1303,12 +1332,13 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
     name = "DescribePortfolioShares",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$describe_portfolio_shares_input(PortfolioId = PortfolioId, Type = Type, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$describe_portfolio_shares_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1338,12 +1368,13 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
     name = "DescribeProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name)
   output <- .servicecatalog$describe_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1381,12 +1412,13 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
     name = "DescribeProductAsAdmin",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_product_as_admin_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, SourcePortfolioId = SourcePortfolioId)
   output <- .servicecatalog$describe_product_as_admin_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1415,12 +1447,13 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
     name = "DescribeProductView",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_product_view_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$describe_product_view_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1458,12 +1491,13 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
     name = "DescribeProvisionedProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_provisioned_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name)
   output <- .servicecatalog$describe_provisioned_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1495,12 +1529,13 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
     name = "DescribeProvisionedProductPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanId = PlanId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$describe_provisioned_product_plan_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1536,12 +1571,13 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
     name = "DescribeProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProvisioningArtifactId = ProvisioningArtifactId, ProductId = ProductId, ProvisioningArtifactName = ProvisioningArtifactName, ProductName = ProductName, Verbose = Verbose, IncludeProvisioningArtifactParameters = IncludeProvisioningArtifactParameters)
   output <- .servicecatalog$describe_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1583,12 +1619,13 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
     name = "DescribeProvisioningParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_provisioning_parameters_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProductName = ProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningArtifactName = ProvisioningArtifactName, PathId = PathId, PathName = PathName)
   output <- .servicecatalog$describe_provisioning_parameters_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1621,12 +1658,13 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
     name = "DescribeRecord",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_record_input(AcceptLanguage = AcceptLanguage, Id = Id, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$describe_record_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1655,12 +1693,13 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
     name = "DescribeServiceAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_service_action_input(Id = Id, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$describe_service_action_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1692,12 +1731,13 @@ servicecatalog_describe_service_action_execution_parameters <- function(Provisio
     name = "DescribeServiceActionExecutionParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_service_action_execution_parameters_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$describe_service_action_execution_parameters_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1721,12 +1761,13 @@ servicecatalog_describe_tag_option <- function(Id) {
     name = "DescribeTagOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$describe_tag_option_input(Id = Id)
   output <- .servicecatalog$describe_tag_option_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1750,12 +1791,13 @@ servicecatalog_disable_aws_organizations_access <- function() {
     name = "DisableAWSOrganizationsAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$disable_aws_organizations_access_input()
   output <- .servicecatalog$disable_aws_organizations_access_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1781,12 +1823,13 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
     name = "DisassociateBudgetFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$disassociate_budget_from_resource_input(BudgetName = BudgetName, ResourceId = ResourceId)
   output <- .servicecatalog$disassociate_budget_from_resource_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1822,12 +1865,13 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
     name = "DisassociatePrincipalFromPortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$disassociate_principal_from_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN, PrincipalType = PrincipalType)
   output <- .servicecatalog$disassociate_principal_from_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1857,12 +1901,13 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
     name = "DisassociateProductFromPortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$disassociate_product_from_portfolio_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PortfolioId = PortfolioId)
   output <- .servicecatalog$disassociate_product_from_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1899,12 +1944,13 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact <- functio
     name = "DisassociateServiceActionFromProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$disassociate_service_action_from_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$disassociate_service_action_from_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1929,12 +1975,13 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
     name = "DisassociateTagOptionFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$disassociate_tag_option_from_resource_input(ResourceId = ResourceId, TagOptionId = TagOptionId)
   output <- .servicecatalog$disassociate_tag_option_from_resource_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1958,12 +2005,13 @@ servicecatalog_enable_aws_organizations_access <- function() {
     name = "EnableAWSOrganizationsAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$enable_aws_organizations_access_input()
   output <- .servicecatalog$enable_aws_organizations_access_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1996,12 +2044,13 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
     name = "ExecuteProvisionedProductPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$execute_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanId = PlanId, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$execute_provisioned_product_plan_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2038,12 +2087,13 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
     name = "ExecuteProvisionedProductServiceAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$execute_provisioned_product_service_action_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, ExecuteToken = ExecuteToken, AcceptLanguage = AcceptLanguage, Parameters = Parameters)
   output <- .servicecatalog$execute_provisioned_product_service_action_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2067,12 +2117,13 @@ servicecatalog_get_aws_organizations_access_status <- function() {
     name = "GetAWSOrganizationsAccessStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$get_aws_organizations_access_status_input()
   output <- .servicecatalog$get_aws_organizations_access_status_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2111,12 +2162,13 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
     name = "GetProvisionedProductOutputs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$get_provisioned_product_outputs_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductName = ProvisionedProductName, OutputKeys = OutputKeys, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$get_provisioned_product_outputs_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2156,12 +2208,13 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
     name = "ImportAsProvisionedProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$import_as_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ProvisionedProductName = ProvisionedProductName, PhysicalId = PhysicalId, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$import_as_provisioned_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2204,12 +2257,13 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
     name = "ListAcceptedPortfolioShares",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_accepted_portfolio_shares_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$list_accepted_portfolio_shares_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2241,12 +2295,13 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
     name = "ListBudgetsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_budgets_for_resource_input(AcceptLanguage = AcceptLanguage, ResourceId = ResourceId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_budgets_for_resource_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2279,12 +2334,13 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
     name = "ListConstraintsForPortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_constraints_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_constraints_for_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2316,12 +2372,13 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
     name = "ListLaunchPaths",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_launch_paths_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_launch_paths_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2362,12 +2419,13 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
     name = "ListOrganizationPortfolioAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_organization_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationNodeType = OrganizationNodeType, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_organization_portfolio_access_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2402,12 +2460,13 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
     name = "ListPortfolioAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationParentId = OrganizationParentId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolio_access_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2438,12 +2497,13 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
     name = "ListPortfolios",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2475,12 +2535,13 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
     name = "ListPortfoliosForProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_for_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_for_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2513,12 +2574,13 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
     name = "ListPrincipalsForPortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_principals_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_principals_for_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2552,12 +2614,13 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
     name = "ListProvisionedProductPlans",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$list_provisioned_product_plans_input(AcceptLanguage = AcceptLanguage, ProvisionProductId = ProvisionProductId, PageSize = PageSize, PageToken = PageToken, AccessLevelFilter = AccessLevelFilter)
   output <- .servicecatalog$list_provisioned_product_plans_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2587,12 +2650,13 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
     name = "ListProvisioningArtifacts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$list_provisioning_artifacts_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId)
   output <- .servicecatalog$list_provisioning_artifacts_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2625,12 +2689,13 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
     name = "ListProvisioningArtifactsForServiceAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_provisioning_artifacts_for_service_action_input(ServiceActionId = ServiceActionId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_provisioning_artifacts_for_service_action_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2663,12 +2728,13 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
     name = "ListRecordHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$list_record_history_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, SearchFilter = SearchFilter, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_record_history_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2700,12 +2766,13 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
     name = "ListResourcesForTagOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_resources_for_tag_option_input(TagOptionId = TagOptionId, ResourceType = ResourceType, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_resources_for_tag_option_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2736,12 +2803,13 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
     name = "ListServiceActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_input(AcceptLanguage = AcceptLanguage, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_service_actions_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2776,12 +2844,13 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
     name = "ListServiceActionsForProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_for_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_service_actions_for_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2814,12 +2883,13 @@ servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLa
     name = "ListStackInstancesForProvisionedProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$list_stack_instances_for_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_stack_instances_for_provisioned_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2847,12 +2917,13 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
     name = "ListTagOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_tag_options_input(Filters = Filters, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_tag_options_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2885,12 +2956,13 @@ servicecatalog_notify_provision_product_engine_workflow_result <- function(Workf
     name = "NotifyProvisionProductEngineWorkflowResult",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$notify_provision_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, ResourceIdentifier = ResourceIdentifier, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$notify_provision_product_engine_workflow_result_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2920,12 +2992,13 @@ servicecatalog_notify_terminate_provisioned_product_engine_workflow_result <- fu
     name = "NotifyTerminateProvisionedProductEngineWorkflowResult",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2956,12 +3029,13 @@ servicecatalog_notify_update_provisioned_product_engine_workflow_result <- funct
     name = "NotifyUpdateProvisionedProductEngineWorkflowResult",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3012,12 +3086,13 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
     name = "ProvisionProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$provision_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProductName = ProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningArtifactName = ProvisioningArtifactName, PathId = PathId, PathName = PathName, ProvisionedProductName = ProvisionedProductName, ProvisioningParameters = ProvisioningParameters, ProvisioningPreferences = ProvisioningPreferences, Tags = Tags, NotificationArns = NotificationArns, ProvisionToken = ProvisionToken)
   output <- .servicecatalog$provision_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3059,12 +3134,13 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     name = "RejectPortfolioShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$reject_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$reject_portfolio_share_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3096,12 +3172,13 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
     name = "ScanProvisionedProducts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$scan_provisioned_products_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$scan_provisioned_products_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3136,12 +3213,13 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
     name = "SearchProducts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_input(AcceptLanguage = AcceptLanguage, Filters = Filters, PageSize = PageSize, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken)
   output <- .servicecatalog$search_products_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3179,12 +3257,13 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
     name = "SearchProductsAsAdmin",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_as_admin_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken, PageSize = PageSize, ProductSource = ProductSource)
   output <- .servicecatalog$search_products_as_admin_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3230,12 +3309,13 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
     name = "SearchProvisionedProducts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_provisioned_products_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$search_provisioned_products_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3279,12 +3359,13 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
     name = "TerminateProvisionedProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$terminate_provisioned_product_input(ProvisionedProductName = ProvisionedProductName, ProvisionedProductId = ProvisionedProductId, TerminateToken = TerminateToken, IgnoreErrors = IgnoreErrors, AcceptLanguage = AcceptLanguage, RetainPhysicalResources = RetainPhysicalResources)
   output <- .servicecatalog$terminate_provisioned_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3378,12 +3459,13 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
     name = "UpdateConstraint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id, Description = Description, Parameters = Parameters)
   output <- .servicecatalog$update_constraint_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3417,12 +3499,13 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
     name = "UpdatePortfolio",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_portfolio_input(AcceptLanguage = AcceptLanguage, Id = Id, DisplayName = DisplayName, Description = Description, ProviderName = ProviderName, AddTags = AddTags, RemoveTags = RemoveTags)
   output <- .servicecatalog$update_portfolio_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3461,12 +3544,13 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     name = "UpdatePortfolioShare",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$update_portfolio_share_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3512,12 +3596,13 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
     name = "UpdateProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, AddTags = AddTags, RemoveTags = RemoveTags, SourceConnection = SourceConnection)
   output <- .servicecatalog$update_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3568,12 +3653,13 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
     name = "UpdateProvisionedProduct",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProvisionedProductName = ProvisionedProductName, ProvisionedProductId = ProvisionedProductId, ProductId = ProductId, ProductName = ProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningArtifactName = ProvisioningArtifactName, PathId = PathId, PathName = PathName, ProvisioningParameters = ProvisioningParameters, ProvisioningPreferences = ProvisioningPreferences, Tags = Tags, UpdateToken = UpdateToken)
   output <- .servicecatalog$update_provisioned_product_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3639,12 +3725,13 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
     name = "UpdateProvisionedProductProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_provisioned_product_properties_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductProperties = ProvisionedProductProperties, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$update_provisioned_product_properties_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3691,12 +3778,13 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
     name = "UpdateProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, Name = Name, Description = Description, Active = Active, Guidance = Guidance)
   output <- .servicecatalog$update_provisioning_artifact_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3728,12 +3816,13 @@ servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = N
     name = "UpdateServiceAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_service_action_input(Id = Id, Name = Name, Definition = Definition, Description = Description, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$update_service_action_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3759,12 +3848,13 @@ servicecatalog_update_tag_option <- function(Id, Value = NULL, Active = NULL) {
     name = "UpdateTagOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .servicecatalog$update_tag_option_input(Id = Id, Value = Value, Active = Active)
   output <- .servicecatalog$update_tag_option_output()
   config <- get_config()
-  svc <- .servicecatalog$service(config)
+  svc <- .servicecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

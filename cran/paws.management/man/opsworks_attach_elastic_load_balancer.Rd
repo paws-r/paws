@@ -13,7 +13,7 @@ opsworks_attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 be attached.}
 }
 \description{
-Attaches an Elastic Load Balancing load balancer to a specified layer. AWS OpsWorks Stacks does not support Application Load Balancer. You can only use Classic Load Balancer with AWS OpsWorks Stacks. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html}{Elastic Load Balancing}.
+Attaches an Elastic Load Balancing load balancer to a specified layer. OpsWorks Stacks does not support Application Load Balancer. You can only use Classic Load Balancer with OpsWorks Stacks. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html}{Elastic Load Balancing}.
 
 See \url{https://www.paws-r-sdk.com/docs/opsworks_attach_elastic_load_balancer/} for full documentation.
 }

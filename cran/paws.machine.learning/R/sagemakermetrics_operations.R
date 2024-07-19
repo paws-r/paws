@@ -21,12 +21,13 @@ sagemakermetrics_batch_put_metrics <- function(TrialComponentName, MetricData) {
     name = "BatchPutMetrics",
     http_method = "PUT",
     http_path = "/BatchPutMetrics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sagemakermetrics$batch_put_metrics_input(TrialComponentName = TrialComponentName, MetricData = MetricData)
   output <- .sagemakermetrics$batch_put_metrics_output()
   config <- get_config()
-  svc <- .sagemakermetrics$service(config)
+  svc <- .sagemakermetrics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

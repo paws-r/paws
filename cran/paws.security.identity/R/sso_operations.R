@@ -26,12 +26,13 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
     name = "GetRoleCredentials",
     http_method = "GET",
     http_path = "/federation/credentials",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sso$get_role_credentials_input(roleName = roleName, accountId = accountId, accessToken = accessToken)
   output <- .sso$get_role_credentials_output()
   config <- get_config()
-  svc <- .sso$service(config)
+  svc <- .sso$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -62,12 +63,13 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
     name = "ListAccountRoles",
     http_method = "GET",
     http_path = "/assignment/roles",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "roleList")
   )
   input <- .sso$list_account_roles_input(nextToken = nextToken, maxResults = maxResults, accessToken = accessToken, accountId = accountId)
   output <- .sso$list_account_roles_output()
   config <- get_config()
-  svc <- .sso$service(config)
+  svc <- .sso$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -97,12 +99,13 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
     name = "ListAccounts",
     http_method = "GET",
     http_path = "/assignment/accounts",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountList")
   )
   input <- .sso$list_accounts_input(nextToken = nextToken, maxResults = maxResults, accessToken = accessToken)
   output <- .sso$list_accounts_output()
   config <- get_config()
-  svc <- .sso$service(config)
+  svc <- .sso$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -131,12 +134,13 @@ sso_logout <- function(accessToken) {
     name = "Logout",
     http_method = "POST",
     http_path = "/logout",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sso$logout_input(accessToken = accessToken)
   output <- .sso$logout_output()
   config <- get_config()
-  svc <- .sso$service(config)
+  svc <- .sso$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

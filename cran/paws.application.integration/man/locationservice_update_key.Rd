@@ -5,19 +5,24 @@
 \title{Updates the specified properties of a given API key resource}
 \usage{
 locationservice_update_key(
+  KeyName,
   Description = NULL,
   ExpireTime = NULL,
-  ForceUpdate = NULL,
-  KeyName,
   NoExpiry = NULL,
+  ForceUpdate = NULL,
   Restrictions = NULL
 )
 }
 \arguments{
+\item{KeyName}{[required] The name of the API key resource to update.}
+
 \item{Description}{Updates the description for the API key resource.}
 
 \item{ExpireTime}{Updates the timestamp for when the API key resource will expire in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
 \code{YYYY-MM-DDThh:mm:ss.sssZ}.}
+
+\item{NoExpiry}{Whether the API key should expire. Set to \code{true} to set the API key to
+have no expiration time.}
 
 \item{ForceUpdate}{The boolean flag to be included for updating \code{ExpireTime} or
 \code{Restrictions} details.
@@ -28,11 +33,6 @@ in the past 7 days.
 \code{False} if force update is not preferred
 
 Default value: \code{False}}
-
-\item{KeyName}{[required] The name of the API key resource to update.}
-
-\item{NoExpiry}{Whether the API key should expire. Set to \code{true} to set the API key to
-have no expiration time.}
 
 \item{Restrictions}{Updates the API key restrictions for the API key resource.}
 }

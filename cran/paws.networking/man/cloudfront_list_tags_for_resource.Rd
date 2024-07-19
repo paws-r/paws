@@ -10,7 +10,7 @@ cloudfront_list_tags_for_resource(Resource)
 \item{Resource}{[required] An ARN of a CloudFront resource.}
 }
 \description{
-List tags for a CloudFront resource.
+List tags for a CloudFront resource. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/tagging.html}{Tagging a distribution} in the \emph{Amazon CloudFront Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_tags_for_resource/} for full documentation.
 }

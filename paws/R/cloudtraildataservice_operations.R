@@ -68,12 +68,13 @@ cloudtraildataservice_put_audit_events <- function(auditEvents, channelArn, exte
     name = "PutAuditEvents",
     http_method = "POST",
     http_path = "/PutAuditEvents",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudtraildataservice$put_audit_events_input(auditEvents = auditEvents, channelArn = channelArn, externalId = externalId)
   output <- .cloudtraildataservice$put_audit_events_output()
   config <- get_config()
-  svc <- .cloudtraildataservice$service(config)
+  svc <- .cloudtraildataservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

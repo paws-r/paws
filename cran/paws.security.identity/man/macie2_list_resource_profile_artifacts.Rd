@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_list_resource_profile_artifacts}
 \alias{macie2_list_resource_profile_artifacts}
-\title{Retrieves information about objects that were selected from an S3 bucket
-for automated sensitive data discovery}
+\title{Retrieves information about objects that Amazon Macie selected from an
+S3 bucket for automated sensitive data discovery}
 \usage{
 macie2_list_resource_profile_artifacts(nextToken = NULL, resourceArn)
 }
@@ -15,7 +15,7 @@ paginated response.}
 to.}
 }
 \description{
-Retrieves information about objects that were selected from an S3 bucket for automated sensitive data discovery.
+Retrieves information about objects that Amazon Macie selected from an S3 bucket for automated sensitive data discovery.
 
 See \url{https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/} for full documentation.
 }

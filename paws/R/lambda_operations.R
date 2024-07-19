@@ -70,12 +70,13 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
     name = "AddLayerVersionPermission",
     http_method = "POST",
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$add_layer_version_permission_input(LayerName = LayerName, VersionNumber = VersionNumber, StatementId = StatementId, Action = Action, Principal = Principal, OrganizationId = OrganizationId, RevisionId = RevisionId)
   output <- .lambda$add_layer_version_permission_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -198,12 +199,13 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
     name = "AddPermission",
     http_method = "POST",
     http_path = "/2015-03-31/functions/{FunctionName}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId, PrincipalOrgID = PrincipalOrgID, FunctionUrlAuthType = FunctionUrlAuthType)
   output <- .lambda$add_permission_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -288,12 +290,13 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
     name = "CreateAlias",
     http_method = "POST",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$create_alias_input(FunctionName = FunctionName, Name = Name, FunctionVersion = FunctionVersion, Description = Description, RoutingConfig = RoutingConfig)
   output <- .lambda$create_alias_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -364,12 +367,13 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
     name = "CreateCodeSigningConfig",
     http_method = "POST",
     http_path = "/2020-04-22/code-signing-configs/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$create_code_signing_config_input(Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies)
   output <- .lambda$create_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -734,12 +738,13 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     name = "CreateEventSourceMapping",
     http_method = "POST",
     http_path = "/2015-03-31/event-source-mappings/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -750,8 +755,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'
 #' @description
 #' Creates a Lambda function. To create a function, you need a [deployment
-#' package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html)
-#' and an [execution
+#' package](https://docs.aws.amazon.com/lambda/latest/dg/) and an
+#' [execution
 #' role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role).
 #' The deployment package is a .zip file archive or container image that
 #' contains your function code. The execution role grants the function
@@ -766,7 +771,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' properties.
 #' 
 #' If the deployment package is a [.zip file
-#' archive](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip),
+#' archive](https://docs.aws.amazon.com/lambda/latest/dg/#gettingstarted-package-zip),
 #' then you set the package type to `Zip`. For a .zip file archive, the
 #' code property specifies the location of the .zip file. You must also
 #' specify the handler and runtime properties. The code in the deployment
@@ -1123,12 +1128,13 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
     name = "CreateFunction",
     http_method = "POST",
     http_path = "/2015-03-31/functions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, CodeSigningConfigArn = CodeSigningConfigArn, Architectures = Architectures, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig)
   output <- .lambda$create_function_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1248,12 +1254,13 @@ lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, Au
     name = "CreateFunctionUrlConfig",
     http_method = "POST",
     http_path = "/2021-10-31/functions/{FunctionName}/url",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$create_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier, AuthType = AuthType, Cors = Cors, InvokeMode = InvokeMode)
   output <- .lambda$create_function_url_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1305,12 +1312,13 @@ lambda_delete_alias <- function(FunctionName, Name) {
     name = "DeleteAlias",
     http_method = "DELETE",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_alias_input(FunctionName = FunctionName, Name = Name)
   output <- .lambda$delete_alias_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1348,12 +1356,13 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
     name = "DeleteCodeSigningConfig",
     http_method = "DELETE",
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn)
   output <- .lambda$delete_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1471,12 +1480,13 @@ lambda_delete_event_source_mapping <- function(UUID) {
     name = "DeleteEventSourceMapping",
     http_method = "DELETE",
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_event_source_mapping_input(UUID = UUID)
   output <- .lambda$delete_event_source_mapping_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1538,12 +1548,13 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
     name = "DeleteFunction",
     http_method = "DELETE",
     http_path = "/2015-03-31/functions/{FunctionName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_function_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_function_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1592,12 +1603,13 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
     name = "DeleteFunctionCodeSigningConfig",
     http_method = "DELETE",
     http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_function_code_signing_config_input(FunctionName = FunctionName)
   output <- .lambda$delete_function_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1646,12 +1658,13 @@ lambda_delete_function_concurrency <- function(FunctionName) {
     name = "DeleteFunctionConcurrency",
     http_method = "DELETE",
     http_path = "/2017-10-31/functions/{FunctionName}/concurrency",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_function_concurrency_input(FunctionName = FunctionName)
   output <- .lambda$delete_function_concurrency_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1709,12 +1722,13 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
     name = "DeleteFunctionEventInvokeConfig",
     http_method = "DELETE",
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_function_event_invoke_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1767,12 +1781,13 @@ lambda_delete_function_url_config <- function(FunctionName, Qualifier = NULL) {
     name = "DeleteFunctionUrlConfig",
     http_method = "DELETE",
     http_path = "/2021-10-31/functions/{FunctionName}/url",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_function_url_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1815,12 +1830,13 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
     name = "DeleteLayerVersion",
     http_method = "DELETE",
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_layer_version_input(LayerName = LayerName, VersionNumber = VersionNumber)
   output <- .lambda$delete_layer_version_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1871,12 +1887,13 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
     name = "DeleteProvisionedConcurrencyConfig",
     http_method = "DELETE",
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$delete_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_provisioned_concurrency_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1929,12 +1946,13 @@ lambda_get_account_settings <- function() {
     name = "GetAccountSettings",
     http_method = "GET",
     http_path = "/2016-08-19/account-settings/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_account_settings_input()
   output <- .lambda$get_account_settings_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2000,12 +2018,13 @@ lambda_get_alias <- function(FunctionName, Name) {
     name = "GetAlias",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_alias_input(FunctionName = FunctionName, Name = Name)
   output <- .lambda$get_alias_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2060,12 +2079,13 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
     name = "GetCodeSigningConfig",
     http_method = "GET",
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn)
   output <- .lambda$get_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2179,12 +2199,13 @@ lambda_get_event_source_mapping <- function(UUID) {
     name = "GetEventSourceMapping",
     http_method = "GET",
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_event_source_mapping_input(UUID = UUID)
   output <- .lambda$get_event_source_mapping_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2361,12 +2382,13 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
     name = "GetFunction",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_function_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2421,12 +2443,13 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
     name = "GetFunctionCodeSigningConfig",
     http_method = "GET",
     http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_function_code_signing_config_input(FunctionName = FunctionName)
   output <- .lambda$get_function_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2483,12 +2506,13 @@ lambda_get_function_concurrency <- function(FunctionName) {
     name = "GetFunctionConcurrency",
     http_method = "GET",
     http_path = "/2019-09-30/functions/{FunctionName}/concurrency",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_function_concurrency_input(FunctionName = FunctionName)
   output <- .lambda$get_function_concurrency_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2653,12 +2677,13 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
     name = "GetFunctionConfiguration",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_function_configuration_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_configuration_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2734,12 +2759,13 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
     name = "GetFunctionEventInvokeConfig",
     http_method = "GET",
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_event_invoke_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2816,12 +2842,13 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
     name = "GetFunctionUrlConfig",
     http_method = "GET",
     http_path = "/2021-10-31/functions/{FunctionName}/url",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_url_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2886,12 +2913,13 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
     name = "GetLayerVersion",
     http_method = "GET",
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_layer_version_input(LayerName = LayerName, VersionNumber = VersionNumber)
   output <- .lambda$get_layer_version_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2954,12 +2982,13 @@ lambda_get_layer_version_by_arn <- function(Arn) {
     name = "GetLayerVersionByArn",
     http_method = "GET",
     http_path = "/2018-10-31/layers?find=LayerVersion",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_layer_version_by_arn_input(Arn = Arn)
   output <- .lambda$get_layer_version_by_arn_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3007,12 +3036,13 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
     name = "GetLayerVersionPolicy",
     http_method = "GET",
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_layer_version_policy_input(LayerName = LayerName, VersionNumber = VersionNumber)
   output <- .lambda$get_layer_version_policy_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3073,12 +3103,13 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
     name = "GetPolicy",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_policy_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_policy_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3141,12 +3172,13 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
     name = "GetProvisionedConcurrencyConfig",
     http_method = "GET",
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_provisioned_concurrency_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3212,12 +3244,13 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
     name = "GetRuntimeManagementConfig",
     http_method = "GET",
     http_path = "/2021-07-20/functions/{FunctionName}/runtime-management-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$get_runtime_management_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_runtime_management_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3360,12 +3393,13 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
     name = "Invoke",
     http_method = "POST",
     http_path = "/2015-03-31/functions/{FunctionName}/invocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$invoke_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, Payload = Payload, Qualifier = Qualifier)
   output <- .lambda$invoke_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3427,12 +3461,13 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
     name = "InvokeAsync",
     http_method = "POST",
     http_path = "/2014-11-13/functions/{FunctionName}/invoke-async/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$invoke_async_input(FunctionName = FunctionName, InvokeArgs = InvokeArgs)
   output <- .lambda$invoke_async_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3533,12 +3568,13 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
     name = "InvokeWithResponseStream",
     http_method = "POST",
     http_path = "/2021-11-15/functions/{FunctionName}/response-streaming-invocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$invoke_with_response_stream_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, Qualifier = Qualifier, Payload = Payload)
   output <- .lambda$invoke_with_response_stream_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3616,12 +3652,13 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
     name = "ListAliases",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Aliases")
   )
   input <- .lambda$list_aliases_input(FunctionName = FunctionName, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_aliases_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3685,12 +3722,13 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListCodeSigningConfigs",
     http_method = "GET",
     http_path = "/2020-04-22/code-signing-configs/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "CodeSigningConfigs")
   )
   input <- .lambda$list_code_signing_configs_input(Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_code_signing_configs_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3848,12 +3886,13 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
     name = "ListEventSourceMappings",
     http_method = "GET",
     http_path = "/2015-03-31/event-source-mappings/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "EventSourceMappings")
   )
   input <- .lambda$list_event_source_mappings_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_event_source_mappings_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3936,12 +3975,13 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
     name = "ListFunctionEventInvokeConfigs",
     http_method = "GET",
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config/list",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionEventInvokeConfigs")
   )
   input <- .lambda$list_function_event_invoke_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_function_event_invoke_configs_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4029,12 +4069,13 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
     name = "ListFunctionUrlConfigs",
     http_method = "GET",
     http_path = "/2021-10-31/functions/{FunctionName}/urls",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionUrlConfigs")
   )
   input <- .lambda$list_function_url_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_function_url_configs_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4207,12 +4248,13 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
     name = "ListFunctions",
     http_method = "GET",
     http_path = "/2015-03-31/functions/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Functions")
   )
   input <- .lambda$list_functions_input(MasterRegion = MasterRegion, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_functions_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4265,12 +4307,13 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
     name = "ListFunctionsByCodeSigningConfig",
     http_method = "GET",
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}/functions",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionArns")
   )
   input <- .lambda$list_functions_by_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_functions_by_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4347,12 +4390,13 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
     name = "ListLayerVersions",
     http_method = "GET",
     http_path = "/2018-10-31/layers/{LayerName}/versions",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "LayerVersions")
   )
   input <- .lambda$list_layer_versions_input(CompatibleRuntime = CompatibleRuntime, LayerName = LayerName, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
   output <- .lambda$list_layer_versions_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4434,12 +4478,13 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
     name = "ListLayers",
     http_method = "GET",
     http_path = "/2018-10-31/layers",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Layers")
   )
   input <- .lambda$list_layers_input(CompatibleRuntime = CompatibleRuntime, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
   output <- .lambda$list_layers_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4512,12 +4557,13 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
     name = "ListProvisionedConcurrencyConfigs",
     http_method = "GET",
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency?List=ALL",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "ProvisionedConcurrencyConfigs")
   )
   input <- .lambda$list_provisioned_concurrency_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_provisioned_concurrency_configs_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4564,12 +4610,13 @@ lambda_list_tags <- function(Resource) {
     name = "ListTags",
     http_method = "GET",
     http_path = "/2017-03-31/tags/{ARN}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$list_tags_input(Resource = Resource)
   output <- .lambda$list_tags_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4740,12 +4787,13 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
     name = "ListVersionsByFunction",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/versions",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Versions")
   )
   input <- .lambda$list_versions_by_function_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_versions_by_function_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4849,12 +4897,13 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
     name = "PublishLayerVersion",
     http_method = "POST",
     http_path = "/2018-10-31/layers/{LayerName}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$publish_layer_version_input(LayerName = LayerName, Description = Description, Content = Content, CompatibleRuntimes = CompatibleRuntimes, LicenseInfo = LicenseInfo, CompatibleArchitectures = CompatibleArchitectures)
   output <- .lambda$publish_layer_version_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5035,12 +5084,13 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
     name = "PublishVersion",
     http_method = "POST",
     http_path = "/2015-03-31/functions/{FunctionName}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$publish_version_input(FunctionName = FunctionName, CodeSha256 = CodeSha256, Description = Description, RevisionId = RevisionId)
   output <- .lambda$publish_version_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5100,12 +5150,13 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
     name = "PutFunctionCodeSigningConfig",
     http_method = "PUT",
     http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$put_function_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, FunctionName = FunctionName)
   output <- .lambda$put_function_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5178,12 +5229,13 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
     name = "PutFunctionConcurrency",
     http_method = "PUT",
     http_path = "/2017-10-31/functions/{FunctionName}/concurrency",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$put_function_concurrency_input(FunctionName = FunctionName, ReservedConcurrentExecutions = ReservedConcurrentExecutions)
   output <- .lambda$put_function_concurrency_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5302,12 +5354,13 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
     name = "PutFunctionEventInvokeConfig",
     http_method = "PUT",
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$put_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier, MaximumRetryAttempts = MaximumRetryAttempts, MaximumEventAgeInSeconds = MaximumEventAgeInSeconds, DestinationConfig = DestinationConfig)
   output <- .lambda$put_function_event_invoke_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5374,12 +5427,13 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
     name = "PutProvisionedConcurrencyConfig",
     http_method = "PUT",
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$put_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier, ProvisionedConcurrentExecutions = ProvisionedConcurrentExecutions)
   output <- .lambda$put_provisioned_concurrency_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5471,12 +5525,13 @@ lambda_put_runtime_management_config <- function(FunctionName, Qualifier = NULL,
     name = "PutRuntimeManagementConfig",
     http_method = "PUT",
     http_path = "/2021-07-20/functions/{FunctionName}/runtime-management-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$put_runtime_management_config_input(FunctionName = FunctionName, Qualifier = Qualifier, UpdateRuntimeOn = UpdateRuntimeOn, RuntimeVersionArn = RuntimeVersionArn)
   output <- .lambda$put_runtime_management_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5527,12 +5582,13 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
     name = "RemoveLayerVersionPermission",
     http_method = "DELETE",
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy/{StatementId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$remove_layer_version_permission_input(LayerName = LayerName, VersionNumber = VersionNumber, StatementId = StatementId, RevisionId = RevisionId)
   output <- .lambda$remove_layer_version_permission_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5596,12 +5652,13 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
     name = "RemovePermission",
     http_method = "DELETE",
     http_path = "/2015-03-31/functions/{FunctionName}/policy/{StatementId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$remove_permission_input(FunctionName = FunctionName, StatementId = StatementId, Qualifier = Qualifier, RevisionId = RevisionId)
   output <- .lambda$remove_permission_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5644,12 +5701,13 @@ lambda_tag_resource <- function(Resource, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/2017-03-31/tags/{ARN}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$tag_resource_input(Resource = Resource, Tags = Tags)
   output <- .lambda$tag_resource_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5692,12 +5750,13 @@ lambda_untag_resource <- function(Resource, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/2017-03-31/tags/{ARN}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$untag_resource_input(Resource = Resource, TagKeys = TagKeys)
   output <- .lambda$untag_resource_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5780,12 +5839,13 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
     name = "UpdateAlias",
     http_method = "PUT",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$update_alias_input(FunctionName = FunctionName, Name = Name, FunctionVersion = FunctionVersion, Description = Description, RoutingConfig = RoutingConfig, RevisionId = RevisionId)
   output <- .lambda$update_alias_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5855,12 +5915,13 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
     name = "UpdateCodeSigningConfig",
     http_method = "PUT",
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$update_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies)
   output <- .lambda$update_code_signing_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6170,12 +6231,13 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6197,7 +6259,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' 
 #' If the function's package type is `Zip`, then you must specify the
 #' deployment package as a [.zip file
-#' archive](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip).
+#' archive](https://docs.aws.amazon.com/lambda/latest/dg/#gettingstarted-package-zip).
 #' Enter the Amazon S3 bucket and key of the code .zip file location. You
 #' can also provide the function code inline using the `ZipFile` field.
 #' 
@@ -6389,12 +6451,13 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
     name = "UpdateFunctionCode",
     http_method = "PUT",
     http_path = "/2015-03-31/functions/{FunctionName}/code",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures)
   output <- .lambda$update_function_code_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6700,12 +6763,13 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
     name = "UpdateFunctionConfiguration",
     http_method = "PUT",
     http_path = "/2015-03-31/functions/{FunctionName}/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig)
   output <- .lambda$update_function_configuration_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6807,12 +6871,13 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
     name = "UpdateFunctionEventInvokeConfig",
     http_method = "POST",
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$update_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier, MaximumRetryAttempts = MaximumRetryAttempts, MaximumEventAgeInSeconds = MaximumEventAgeInSeconds, DestinationConfig = DestinationConfig)
   output <- .lambda$update_function_event_invoke_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6930,12 +6995,13 @@ lambda_update_function_url_config <- function(FunctionName, Qualifier = NULL, Au
     name = "UpdateFunctionUrlConfig",
     http_method = "PUT",
     http_path = "/2021-10-31/functions/{FunctionName}/url",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lambda$update_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier, AuthType = AuthType, Cors = Cors, InvokeMode = InvokeMode)
   output <- .lambda$update_function_url_config_output()
   config <- get_config()
-  svc <- .lambda$service(config)
+  svc <- .lambda$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

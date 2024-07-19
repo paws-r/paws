@@ -27,16 +27,18 @@ opsworks_update_layer(
 \arguments{
 \item{LayerId}{[required] The layer ID.}
 
-\item{Name}{The layer name, which is used by the console.}
+\item{Name}{The layer name, which is used by the console. Layer names can be a
+maximum of 32 characters.}
 
 \item{Shortname}{For custom layers only, use this parameter to specify the layer's short
-name, which is used internally by AWS OpsWorks Stacks and by Chef. The
-short name is also used as the name for the directory where your app
-files are installed. It can have a maximum of 200 characters and must be
-in the following format: /\\A[a-z0-9\\-_\\.]+\\Z/.
+name, which is used internally by OpsWorks Stacks and by Chef. The short
+name is also used as the name for the directory where your app files are
+installed. It can have a maximum of 32 characters and must be in the
+following format: /\\A[a-z0-9\\-_\\.]+\\Z/.
 
-The built-in layers' short names are defined by AWS OpsWorks Stacks. For
-more information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}}
+Built-in layer short names are defined by OpsWorks Stacks. For more
+information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer reference}
+in the OpsWorks User Guide.}
 
 \item{Attributes}{One or more user-defined key/value pairs to be added to the stack
 attributes.}

@@ -27,30 +27,10 @@ networkmanager_get_network_telemetry(
 
 \item{AccountId}{The Amazon Web Services account ID.}
 
-\item{ResourceType}{The resource type.
-
-The following are the supported resource types for Direct Connect:
+\item{ResourceType}{The resource type. The following are the supported resource types:
 \itemize{
-\item \code{dxcon}
-\item \code{dx-gateway}
-\item \code{dx-vif}
-}
-
-The following are the supported resource types for Network Manager:
-\itemize{
-\item \code{connection}
-\item \code{device}
-\item \code{link}
-\item \code{site}
-}
-
-The following are the supported resource types for Amazon VPC:
-\itemize{
-\item \code{customer-gateway}
-\item \code{transit-gateway}
-\item \code{transit-gateway-attachment}
+\item \code{connect-peer}
 \item \code{transit-gateway-connect-peer}
-\item \code{transit-gateway-route-table}
 \item \code{vpn-connection}
 }}
 

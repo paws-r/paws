@@ -24,12 +24,13 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
     name = "AddTagsToOnPremisesInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$add_tags_to_on_premises_instances_input(tags = tags, instanceNames = instanceNames)
   output <- .codedeploy$add_tags_to_on_premises_instances_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -57,12 +58,13 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
     name = "BatchGetApplicationRevisions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$batch_get_application_revisions_input(applicationName = applicationName, revisions = revisions)
   output <- .codedeploy$batch_get_application_revisions_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -87,12 +89,13 @@ codedeploy_batch_get_applications <- function(applicationNames) {
     name = "BatchGetApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$batch_get_applications_input(applicationNames = applicationNames)
   output <- .codedeploy$batch_get_applications_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -118,12 +121,13 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
     name = "BatchGetDeploymentGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$batch_get_deployment_groups_input(applicationName = applicationName, deploymentGroupNames = deploymentGroupNames)
   output <- .codedeploy$batch_get_deployment_groups_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -149,12 +153,13 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
     name = "BatchGetDeploymentInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$batch_get_deployment_instances_input(deploymentId = deploymentId, instanceIds = instanceIds)
   output <- .codedeploy$batch_get_deployment_instances_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -198,12 +203,13 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId, targetIds) {
     name = "BatchGetDeploymentTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$batch_get_deployment_targets_input(deploymentId = deploymentId, targetIds = targetIds)
   output <- .codedeploy$batch_get_deployment_targets_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -228,12 +234,13 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
     name = "BatchGetDeployments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$batch_get_deployments_input(deploymentIds = deploymentIds)
   output <- .codedeploy$batch_get_deployments_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -258,12 +265,13 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
     name = "BatchGetOnPremisesInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$batch_get_on_premises_instances_input(instanceNames = instanceNames)
   output <- .codedeploy$batch_get_on_premises_instances_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -295,12 +303,13 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
     name = "ContinueDeployment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$continue_deployment_input(deploymentId = deploymentId, deploymentWaitType = deploymentWaitType)
   output <- .codedeploy$continue_deployment_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -330,12 +339,13 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$create_application_input(applicationName = applicationName, computePlatform = computePlatform, tags = tags)
   output <- .codedeploy$create_application_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -433,12 +443,13 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
     name = "CreateDeployment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$create_deployment_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, revision = revision, deploymentConfigName = deploymentConfigName, description = description, ignoreApplicationStopFailures = ignoreApplicationStopFailures, targetInstances = targetInstances, autoRollbackConfiguration = autoRollbackConfiguration, updateOutdatedInstancesOnly = updateOutdatedInstancesOnly, fileExistsBehavior = fileExistsBehavior, overrideAlarmConfiguration = overrideAlarmConfiguration)
   output <- .codedeploy$create_deployment_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -492,12 +503,13 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
     name = "CreateDeploymentConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$create_deployment_config_input(deploymentConfigName = deploymentConfigName, minimumHealthyHosts = minimumHealthyHosts, trafficRoutingConfig = trafficRoutingConfig, computePlatform = computePlatform, zonalConfig = zonalConfig)
   output <- .codedeploy$create_deployment_config_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -601,12 +613,13 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
     name = "CreateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$create_deployment_group_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -631,12 +644,13 @@ codedeploy_delete_application <- function(applicationName) {
     name = "DeleteApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$delete_application_input(applicationName = applicationName)
   output <- .codedeploy$delete_application_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -661,12 +675,13 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
     name = "DeleteDeploymentConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$delete_deployment_config_input(deploymentConfigName = deploymentConfigName)
   output <- .codedeploy$delete_deployment_config_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -692,12 +707,13 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
     name = "DeleteDeploymentGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$delete_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName)
   output <- .codedeploy$delete_deployment_group_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -721,12 +737,13 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
     name = "DeleteGitHubAccountToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$delete_git_hub_account_token_input(tokenName = tokenName)
   output <- .codedeploy$delete_git_hub_account_token_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -751,12 +768,13 @@ codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
     name = "DeleteResourcesByExternalId",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$delete_resources_by_external_id_input(externalId = externalId)
   output <- .codedeploy$delete_resources_by_external_id_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -780,12 +798,13 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
     name = "DeregisterOnPremisesInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$deregister_on_premises_instance_input(instanceName = instanceName)
   output <- .codedeploy$deregister_on_premises_instance_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -810,12 +829,13 @@ codedeploy_get_application <- function(applicationName) {
     name = "GetApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_application_input(applicationName = applicationName)
   output <- .codedeploy$get_application_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -841,12 +861,13 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
     name = "GetApplicationRevision",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_application_revision_input(applicationName = applicationName, revision = revision)
   output <- .codedeploy$get_application_revision_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -871,12 +892,13 @@ codedeploy_get_deployment <- function(deploymentId) {
     name = "GetDeployment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_deployment_input(deploymentId = deploymentId)
   output <- .codedeploy$get_deployment_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -901,12 +923,13 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
     name = "GetDeploymentConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_deployment_config_input(deploymentConfigName = deploymentConfigName)
   output <- .codedeploy$get_deployment_config_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -932,12 +955,13 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
     name = "GetDeploymentGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName)
   output <- .codedeploy$get_deployment_group_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -962,12 +986,13 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
     name = "GetDeploymentInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_deployment_instance_input(deploymentId = deploymentId, instanceId = instanceId)
   output <- .codedeploy$get_deployment_instance_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -992,12 +1017,13 @@ codedeploy_get_deployment_target <- function(deploymentId, targetId) {
     name = "GetDeploymentTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_deployment_target_input(deploymentId = deploymentId, targetId = targetId)
   output <- .codedeploy$get_deployment_target_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1021,12 +1047,13 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
     name = "GetOnPremisesInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$get_on_premises_instance_input(instanceName = instanceName)
   output <- .codedeploy$get_on_premises_instance_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1091,12 +1118,13 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
     name = "ListApplicationRevisions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "revisions")
   )
   input <- .codedeploy$list_application_revisions_input(applicationName = applicationName, sortBy = sortBy, sortOrder = sortOrder, s3Bucket = s3Bucket, s3KeyPrefix = s3KeyPrefix, deployed = deployed, nextToken = nextToken)
   output <- .codedeploy$list_application_revisions_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1122,12 +1150,13 @@ codedeploy_list_applications <- function(nextToken = NULL) {
     name = "ListApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "applications")
   )
   input <- .codedeploy$list_applications_input(nextToken = nextToken)
   output <- .codedeploy$list_applications_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1155,12 +1184,13 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
     name = "ListDeploymentConfigs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentConfigsList")
   )
   input <- .codedeploy$list_deployment_configs_input(nextToken = nextToken)
   output <- .codedeploy$list_deployment_configs_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1188,12 +1218,13 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
     name = "ListDeploymentGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentGroups")
   )
   input <- .codedeploy$list_deployment_groups_input(applicationName = applicationName, nextToken = nextToken)
   output <- .codedeploy$list_deployment_groups_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1239,12 +1270,13 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
     name = "ListDeploymentInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "instancesList")
   )
   input <- .codedeploy$list_deployment_instances_input(deploymentId = deploymentId, nextToken = nextToken, instanceStatusFilter = instanceStatusFilter, instanceTypeFilter = instanceTypeFilter)
   output <- .codedeploy$list_deployment_instances_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1279,12 +1311,13 @@ codedeploy_list_deployment_targets <- function(deploymentId, nextToken = NULL, t
     name = "ListDeploymentTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$list_deployment_targets_input(deploymentId = deploymentId, nextToken = nextToken, targetFilters = targetFilters)
   output <- .codedeploy$list_deployment_targets_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1339,12 +1372,13 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
     name = "ListDeployments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deployments")
   )
   input <- .codedeploy$list_deployments_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, externalId = externalId, includeOnlyStatuses = includeOnlyStatuses, createTimeRange = createTimeRange, nextToken = nextToken)
   output <- .codedeploy$list_deployments_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1370,12 +1404,13 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
     name = "ListGitHubAccountTokenNames",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$list_git_hub_account_token_names_input(nextToken = nextToken)
   output <- .codedeploy$list_git_hub_account_token_names_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1410,12 +1445,13 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
     name = "ListOnPremisesInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$list_on_premises_instances_input(registrationStatus = registrationStatus, tagFilters = tagFilters, nextToken = nextToken)
   output <- .codedeploy$list_on_premises_instances_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1446,12 +1482,13 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .codedeploy$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1482,12 +1519,13 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
     name = "PutLifecycleEventHookExecutionStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$put_lifecycle_event_hook_execution_status_input(deploymentId = deploymentId, lifecycleEventHookExecutionId = lifecycleEventHookExecutionId, status = status)
   output <- .codedeploy$put_lifecycle_event_hook_execution_status_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1515,12 +1553,13 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
     name = "RegisterApplicationRevision",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$register_application_revision_input(applicationName = applicationName, description = description, revision = revision)
   output <- .codedeploy$register_application_revision_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1546,12 +1585,13 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
     name = "RegisterOnPremisesInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$register_on_premises_instance_input(instanceName = instanceName, iamSessionArn = iamSessionArn, iamUserArn = iamUserArn)
   output <- .codedeploy$register_on_premises_instance_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1576,12 +1616,13 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
     name = "RemoveTagsFromOnPremisesInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$remove_tags_from_on_premises_instances_input(tags = tags, instanceNames = instanceNames)
   output <- .codedeploy$remove_tags_from_on_premises_instances_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1607,12 +1648,13 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
     name = "SkipWaitTimeForInstanceTermination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$skip_wait_time_for_instance_termination_input(deploymentId = deploymentId)
   output <- .codedeploy$skip_wait_time_for_instance_termination_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1639,12 +1681,13 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
     name = "StopDeployment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$stop_deployment_input(deploymentId = deploymentId, autoRollbackEnabled = autoRollbackEnabled)
   output <- .codedeploy$stop_deployment_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1673,12 +1716,13 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .codedeploy$tag_resource_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1706,12 +1750,13 @@ codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .codedeploy$untag_resource_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1736,12 +1781,13 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$update_application_input(applicationName = applicationName, newApplicationName = newApplicationName)
   output <- .codedeploy$update_application_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1840,12 +1886,13 @@ codedeploy_update_deployment_group <- function(applicationName, currentDeploymen
     name = "UpdateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$update_deployment_group_output()
   config <- get_config()
-  svc <- .codedeploy$service(config)
+  svc <- .codedeploy$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

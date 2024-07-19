@@ -119,12 +119,13 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
     name = "CreateCapacityProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$create_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider, tags = tags)
   output <- .ecs$create_capacity_provider_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -261,6 +262,10 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #'           s3EncryptionEnabled = TRUE|FALSE,
 #'           s3KeyPrefix = "string"
 #'         )
+#'       ),
+#'       managedStorageConfiguration = list(
+#'         kmsKeyId = "string",
+#'         fargateEphemeralStorageKmsKeyId = "string"
 #'       )
 #'     ),
 #'     status = "string",
@@ -344,6 +349,10 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #'         s3EncryptionEnabled = TRUE|FALSE,
 #'         s3KeyPrefix = "string"
 #'       )
+#'     ),
+#'     managedStorageConfiguration = list(
+#'       kmsKeyId = "string",
+#'       fargateEphemeralStorageKmsKeyId = "string"
 #'     )
 #'   ),
 #'   capacityProviders = list(
@@ -380,12 +389,13 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$create_cluster_input(clusterName = clusterName, tags = tags, settings = settings, configuration = configuration, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$create_cluster_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -500,8 +510,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' level. The only required parameter is the service name. You control your
 #' services using the [`create_task_set`][ecs_create_task_set] operation.
 #' For more information, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
+#' the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' When the service scheduler launches new tasks, it determines task
 #' placement. For information about task placement and task placement
@@ -542,7 +552,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' or `CODE_DEPLOY` deployment controllers.
 #' 
 #' For more information about deployment types, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
@@ -917,6 +927,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'             key = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         fargateEphemeralStorage = list(
+#'           kmsKeyId = "string"
 #'         )
 #'       )
 #'     ),
@@ -1031,6 +1044,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'               filesystemType = "ext3"|"ext4"|"xfs"
 #'             )
 #'           )
+#'         ),
+#'         fargateEphemeralStorage = list(
+#'           kmsKeyId = "string"
 #'         )
 #'       )
 #'     ),
@@ -1286,12 +1302,13 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
     name = "CreateService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$create_service_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1304,8 +1321,8 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' Create a task set in the specified cluster and service. This is used
 #' when a service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
+#' the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' On March 21, 2024, a change was made to resolve the task definition
 #' revision before authorization. When a task definition revision is not
@@ -1486,6 +1503,9 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'         key = "string",
 #'         value = "string"
 #'       )
+#'     ),
+#'     fargateEphemeralStorage = list(
+#'       kmsKeyId = "string"
 #'     )
 #'   )
 #' )
@@ -1558,12 +1578,13 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
     name = "CreateTaskSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$create_task_set_input(service = service, cluster = cluster, externalId = externalId, taskDefinition = taskDefinition, networkConfiguration = networkConfiguration, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, scale = scale, clientToken = clientToken, tags = tags)
   output <- .ecs$create_task_set_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1642,12 +1663,13 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
     name = "DeleteAccountSetting",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$delete_account_setting_input(name = name, principalArn = principalArn)
   output <- .ecs$delete_account_setting_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1711,12 +1733,13 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
     name = "DeleteAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$delete_attributes_input(cluster = cluster, attributes = attributes)
   output <- .ecs$delete_attributes_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1802,12 +1825,13 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
     name = "DeleteCapacityProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$delete_capacity_provider_input(capacityProvider = capacityProvider)
   output <- .ecs$delete_capacity_provider_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1853,6 +1877,10 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
 #'           s3EncryptionEnabled = TRUE|FALSE,
 #'           s3KeyPrefix = "string"
 #'         )
+#'       ),
+#'       managedStorageConfiguration = list(
+#'         kmsKeyId = "string",
+#'         fargateEphemeralStorageKmsKeyId = "string"
 #'       )
 #'     ),
 #'     status = "string",
@@ -1934,12 +1962,13 @@ ecs_delete_cluster <- function(cluster) {
     name = "DeleteCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$delete_cluster_input(cluster = cluster)
   output <- .ecs$delete_cluster_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2104,6 +2133,9 @@ ecs_delete_cluster <- function(cluster) {
 #'             key = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         fargateEphemeralStorage = list(
+#'           kmsKeyId = "string"
 #'         )
 #'       )
 #'     ),
@@ -2218,6 +2250,9 @@ ecs_delete_cluster <- function(cluster) {
 #'               filesystemType = "ext3"|"ext4"|"xfs"
 #'             )
 #'           )
+#'         ),
+#'         fargateEphemeralStorage = list(
+#'           kmsKeyId = "string"
 #'         )
 #'       )
 #'     ),
@@ -2304,12 +2339,13 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
     name = "DeleteService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$delete_service_input(cluster = cluster, service = service, force = force)
   output <- .ecs$delete_service_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2670,12 +2706,13 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
     name = "DeleteTaskDefinitions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$delete_task_definitions_input(taskDefinitions = taskDefinitions)
   output <- .ecs$delete_task_definitions_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2688,8 +2725,8 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
 #' Deletes a specified task set within a service. This is used when a
 #' service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
+#' the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_delete_task_set(cluster, service, taskSet, force)
@@ -2775,6 +2812,9 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
 #'         key = "string",
 #'         value = "string"
 #'       )
+#'     ),
+#'     fargateEphemeralStorage = list(
+#'       kmsKeyId = "string"
 #'     )
 #'   )
 #' )
@@ -2800,12 +2840,13 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
     name = "DeleteTaskSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$delete_task_set_input(cluster = cluster, service = service, taskSet = taskSet, force = force)
   output <- .ecs$delete_task_set_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2983,12 +3024,13 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
     name = "DeregisterContainerInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$deregister_container_instance_input(cluster = cluster, containerInstance = containerInstance, force = force)
   output <- .ecs$deregister_container_instance_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3331,12 +3373,13 @@ ecs_deregister_task_definition <- function(taskDefinition) {
     name = "DeregisterTaskDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$deregister_task_definition_input(taskDefinition = taskDefinition)
   output <- .ecs$deregister_task_definition_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3447,12 +3490,13 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
     name = "DescribeCapacityProviders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$describe_capacity_providers_input(capacityProviders = capacityProviders, include = include, maxResults = maxResults, nextToken = nextToken)
   output <- .ecs$describe_capacity_providers_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3508,6 +3552,10 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #'             s3EncryptionEnabled = TRUE|FALSE,
 #'             s3KeyPrefix = "string"
 #'           )
+#'         ),
+#'         managedStorageConfiguration = list(
+#'           kmsKeyId = "string",
+#'           fargateEphemeralStorageKmsKeyId = "string"
 #'         )
 #'       ),
 #'       status = "string",
@@ -3605,12 +3653,13 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
     name = "DescribeClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$describe_clusters_input(clusters = clusters, include = include)
   output <- .ecs$describe_clusters_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3777,12 +3826,13 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
     name = "DescribeContainerInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$describe_container_instances_input(cluster = cluster, containerInstances = containerInstances, include = include)
   output <- .ecs$describe_container_instances_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3932,6 +3982,9 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'               key = "string",
 #'               value = "string"
 #'             )
+#'           ),
+#'           fargateEphemeralStorage = list(
+#'             kmsKeyId = "string"
 #'           )
 #'         )
 #'       ),
@@ -4046,6 +4099,9 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'                 filesystemType = "ext3"|"ext4"|"xfs"
 #'               )
 #'             )
+#'           ),
+#'           fargateEphemeralStorage = list(
+#'             kmsKeyId = "string"
 #'           )
 #'         )
 #'       ),
@@ -4146,12 +4202,13 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
     name = "DescribeServices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$describe_services_input(cluster = cluster, services = services, include = include)
   output <- .ecs$describe_services_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4498,12 +4555,13 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
     name = "DescribeTaskDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$describe_task_definition_input(taskDefinition = taskDefinition, include = include)
   output <- .ecs$describe_task_definition_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4516,8 +4574,8 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' Describes the task sets in the specified cluster and service. This is
 #' used when a service uses the `EXTERNAL` deployment controller type. For
 #' more information, see [Amazon ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
+#' the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_describe_task_sets(cluster, service, taskSets, include)
@@ -4604,6 +4662,9 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #'           key = "string",
 #'           value = "string"
 #'         )
+#'       ),
+#'       fargateEphemeralStorage = list(
+#'         kmsKeyId = "string"
 #'       )
 #'     )
 #'   ),
@@ -4641,12 +4702,13 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
     name = "DescribeTaskSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$describe_task_sets_input(cluster = cluster, service = service, taskSets = taskSets, include = include)
   output <- .ecs$describe_task_sets_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4856,6 +4918,10 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #'       version = 123,
 #'       ephemeralStorage = list(
 #'         sizeInGiB = 123
+#'       ),
+#'       fargateEphemeralStorage = list(
+#'         sizeInGiB = 123,
+#'         kmsKeyId = "string"
 #'       )
 #'     )
 #'   ),
@@ -4903,12 +4969,13 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
     name = "DescribeTasks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$describe_tasks_input(cluster = cluster, tasks = tasks, include = include)
   output <- .ecs$describe_tasks_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4962,12 +5029,13 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
     name = "DiscoverPollEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$discover_poll_endpoint_input(containerInstance = containerInstance, cluster = cluster)
   output <- .ecs$discover_poll_endpoint_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5040,12 +5108,13 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
     name = "ExecuteCommand",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$execute_command_input(cluster = cluster, container = container, command = command, interactive = interactive, task = task)
   output <- .ecs$execute_command_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5118,12 +5187,13 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
     name = "GetTaskProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$get_task_protection_input(cluster = cluster, tasks = tasks)
   output <- .ecs$get_task_protection_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5227,12 +5297,13 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
     name = "ListAccountSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "settings")
   )
   input <- .ecs$list_account_settings_input(name = name, value = value, principalArn = principalArn, effectiveSettings = effectiveSettings, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_account_settings_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5321,12 +5392,13 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
     name = "ListAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "attributes")
   )
   input <- .ecs$list_attributes_input(cluster = cluster, targetType = targetType, attributeName = attributeName, attributeValue = attributeValue, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_attributes_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5397,12 +5469,13 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns")
   )
   input <- .ecs$list_clusters_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_clusters_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5502,12 +5575,13 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
     name = "ListContainerInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns")
   )
   input <- .ecs$list_container_instances_input(cluster = cluster, filter = filter, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .ecs$list_container_instances_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5590,12 +5664,13 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
   )
   input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy)
   output <- .ecs$list_services_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5677,12 +5752,13 @@ ecs_list_services_by_namespace <- function(namespace, nextToken = NULL, maxResul
     name = "ListServicesByNamespace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
   )
   input <- .ecs$list_services_by_namespace_input(namespace = namespace, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_services_by_namespace_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5739,12 +5815,13 @@ ecs_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ecs$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5845,12 +5922,13 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
     name = "ListTaskDefinitionFamilies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families")
   )
   input <- .ecs$list_task_definition_families_input(familyPrefix = familyPrefix, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definition_families_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5949,12 +6027,13 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
     name = "ListTaskDefinitions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns")
   )
   input <- .ecs$list_task_definitions_input(familyPrefix = familyPrefix, status = status, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definitions_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6077,12 +6156,13 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
     name = "ListTasks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns")
   )
   input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType)
   output <- .ecs$list_tasks_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6274,12 +6354,13 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
     name = "PutAccountSetting",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$put_account_setting_input(name = name, value = value, principalArn = principalArn)
   output <- .ecs$put_account_setting_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6444,12 +6525,13 @@ ecs_put_account_setting_default <- function(name, value) {
     name = "PutAccountSettingDefault",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$put_account_setting_default_input(name = name, value = value)
   output <- .ecs$put_account_setting_default_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6516,12 +6598,13 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
     name = "PutAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$put_attributes_input(cluster = cluster, attributes = attributes)
   output <- .ecs$put_attributes_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6615,6 +6698,10 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #'           s3EncryptionEnabled = TRUE|FALSE,
 #'           s3KeyPrefix = "string"
 #'         )
+#'       ),
+#'       managedStorageConfiguration = list(
+#'         kmsKeyId = "string",
+#'         fargateEphemeralStorageKmsKeyId = "string"
 #'       )
 #'     ),
 #'     status = "string",
@@ -6698,12 +6785,13 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
     name = "PutClusterCapacityProviders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$put_cluster_capacity_providers_input(cluster = cluster, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy)
   output <- .ecs$put_cluster_capacity_providers_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6922,12 +7010,13 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
     name = "RegisterContainerInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$register_container_instance_input(cluster = cluster, instanceIdentityDocument = instanceIdentityDocument, instanceIdentityDocumentSignature = instanceIdentityDocumentSignature, totalResources = totalResources, versionInfo = versionInfo, containerInstanceArn = containerInstanceArn, attributes = attributes, platformDevices = platformDevices, tags = tags)
   output <- .ecs$register_container_instance_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7240,9 +7329,6 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   Windows platform version `1.0.0` or later.
 #' @param runtimePlatform The operating system that your tasks definitions run on. A platform
 #' family is specified only for tasks using the Fargate launch type.
-#' 
-#' When you specify a task definition in a service, this value must match
-#' the `runtimePlatform` value of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7837,12 +7923,13 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
     name = "RegisterTaskDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration, inferenceAccelerators = inferenceAccelerators, ephemeralStorage = ephemeralStorage, runtimePlatform = runtimePlatform)
   output <- .ecs$register_task_definition_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8250,6 +8337,10 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'       version = 123,
 #'       ephemeralStorage = list(
 #'         sizeInGiB = 123
+#'       ),
+#'       fargateEphemeralStorage = list(
+#'         sizeInGiB = 123,
+#'         kmsKeyId = "string"
 #'       )
 #'     )
 #'   ),
@@ -8411,12 +8502,13 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
     name = "RunTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, clientToken = clientToken, volumeConfigurations = volumeConfigurations)
   output <- .ecs$run_task_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8718,6 +8810,10 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'       version = 123,
 #'       ephemeralStorage = list(
 #'         sizeInGiB = 123
+#'       ),
+#'       fargateEphemeralStorage = list(
+#'         sizeInGiB = 123,
+#'         kmsKeyId = "string"
 #'       )
 #'     )
 #'   ),
@@ -8850,12 +8946,13 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
     name = "StartTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$start_task_input(cluster = cluster, containerInstances = containerInstances, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, networkConfiguration = networkConfiguration, overrides = overrides, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, volumeConfigurations = volumeConfigurations)
   output <- .ecs$start_task_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8873,6 +8970,11 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' which the `SIGKILL` value is sent and the containers are forcibly
 #' stopped. If the container handles the `SIGTERM` value gracefully and
 #' exits within 30 seconds from receiving it, no `SIGKILL` value is sent.
+#' 
+#' For Windows containers, POSIX signals do not work and runtime stops the
+#' container by sending a `CTRL_SHUTDOWN_EVENT`. For more information, see
+#' [Unable to react to graceful shutdown of (Windows) container
+#' #25982](https://github.com/moby/moby/issues/25982) on GitHub.
 #' 
 #' The default 30-second timeout can be configured on the Amazon ECS
 #' container agent with the `ECS_CONTAINER_STOP_TIMEOUT` variable. For more
@@ -9069,6 +9171,10 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #'     version = 123,
 #'     ephemeralStorage = list(
 #'       sizeInGiB = 123
+#'     ),
+#'     fargateEphemeralStorage = list(
+#'       sizeInGiB = 123,
+#'       kmsKeyId = "string"
 #'     )
 #'   )
 #' )
@@ -9093,12 +9199,13 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
     name = "StopTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$stop_task_input(cluster = cluster, task = task, reason = reason)
   output <- .ecs$stop_task_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9152,12 +9259,13 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
     name = "SubmitAttachmentStateChanges",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$submit_attachment_state_changes_input(cluster = cluster, attachments = attachments)
   output <- .ecs$submit_attachment_state_changes_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9228,12 +9336,13 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
     name = "SubmitContainerStateChange",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$submit_container_state_change_input(cluster = cluster, task = task, containerName = containerName, runtimeId = runtimeId, status = status, exitCode = exitCode, reason = reason, networkBindings = networkBindings)
   output <- .ecs$submit_container_state_change_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9337,12 +9446,13 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
     name = "SubmitTaskStateChange",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$submit_task_state_change_input(cluster = cluster, task = task, status = status, reason = reason, containers = containers, attachments = attachments, managedAgents = managedAgents, pullStartedAt = pullStartedAt, pullStoppedAt = pullStoppedAt, executionStoppedAt = executionStoppedAt)
   output <- .ecs$submit_task_state_change_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9431,12 +9541,13 @@ ecs_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ecs$tag_resource_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9490,12 +9601,13 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ecs$untag_resource_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9574,12 +9686,13 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
     name = "UpdateCapacityProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider)
   output <- .ecs$update_capacity_provider_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9634,6 +9747,10 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 #'           s3EncryptionEnabled = TRUE|FALSE,
 #'           s3KeyPrefix = "string"
 #'         )
+#'       ),
+#'       managedStorageConfiguration = list(
+#'         kmsKeyId = "string",
+#'         fargateEphemeralStorageKmsKeyId = "string"
 #'       )
 #'     ),
 #'     status = "string",
@@ -9711,6 +9828,10 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 #'         s3EncryptionEnabled = TRUE|FALSE,
 #'         s3KeyPrefix = "string"
 #'       )
+#'     ),
+#'     managedStorageConfiguration = list(
+#'       kmsKeyId = "string",
+#'       fargateEphemeralStorageKmsKeyId = "string"
 #'     )
 #'   ),
 #'   serviceConnectDefaults = list(
@@ -9729,12 +9850,13 @@ ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL, s
     name = "UpdateCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_cluster_input(cluster = cluster, settings = settings, configuration = configuration, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$update_cluster_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9781,6 +9903,10 @@ ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL, s
 #'           s3EncryptionEnabled = TRUE|FALSE,
 #'           s3KeyPrefix = "string"
 #'         )
+#'       ),
+#'       managedStorageConfiguration = list(
+#'         kmsKeyId = "string",
+#'         fargateEphemeralStorageKmsKeyId = "string"
 #'       )
 #'     ),
 #'     status = "string",
@@ -9860,12 +9986,13 @@ ecs_update_cluster_settings <- function(cluster, settings) {
     name = "UpdateClusterSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_cluster_settings_input(cluster = cluster, settings = settings)
   output <- .ecs$update_cluster_settings_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10024,12 +10151,13 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
     name = "UpdateContainerAgent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_container_agent_input(cluster = cluster, containerInstance = containerInstance)
   output <- .ecs$update_container_agent_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10231,12 +10359,13 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
     name = "UpdateContainerInstancesState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_container_instances_state_input(cluster = cluster, containerInstances = containerInstances, status = status)
   output <- .ecs$update_container_instances_state_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10690,6 +10819,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'             key = "string",
 #'             value = "string"
 #'           )
+#'         ),
+#'         fargateEphemeralStorage = list(
+#'           kmsKeyId = "string"
 #'         )
 #'       )
 #'     ),
@@ -10804,6 +10936,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'               filesystemType = "ext3"|"ext4"|"xfs"
 #'             )
 #'           )
+#'         ),
+#'         fargateEphemeralStorage = list(
+#'           kmsKeyId = "string"
 #'         )
 #'       )
 #'     ),
@@ -11034,12 +11169,13 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
     name = "UpdateService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$update_service_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11054,8 +11190,8 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' transition to the service. This is used when a service uses the
 #' `EXTERNAL` deployment controller type. For more information, see [Amazon
 #' ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
+#' the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_update_service_primary_task_set(cluster, service, primaryTaskSet)
@@ -11139,6 +11275,9 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #'         key = "string",
 #'         value = "string"
 #'       )
+#'     ),
+#'     fargateEphemeralStorage = list(
+#'       kmsKeyId = "string"
 #'     )
 #'   )
 #' )
@@ -11163,12 +11302,13 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
     name = "UpdateServicePrimaryTaskSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_service_primary_task_set_input(cluster = cluster, service = service, primaryTaskSet = primaryTaskSet)
   output <- .ecs$update_service_primary_task_set_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11183,7 +11323,7 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' from [Service
 #' Autoscaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
 #' or
-#' [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
+#' [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
 #' 
 #' Task-protection, by default, expires after 2 hours at which point Amazon
 #' ECS clears the `protectionEnabled` property making the task eligible for
@@ -11307,12 +11447,13 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
     name = "UpdateTaskProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_task_protection_input(cluster = cluster, tasks = tasks, protectionEnabled = protectionEnabled, expiresInMinutes = expiresInMinutes)
   output <- .ecs$update_task_protection_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11325,8 +11466,8 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
 #' Modifies a task set. This is used when a service uses the `EXTERNAL`
 #' deployment controller type. For more information, see [Amazon ECS
 #' Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
+#' the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_update_task_set(cluster, service, taskSet, scale)
@@ -11412,6 +11553,9 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
 #'         key = "string",
 #'         value = "string"
 #'       )
+#'     ),
+#'     fargateEphemeralStorage = list(
+#'       kmsKeyId = "string"
 #'     )
 #'   )
 #' )
@@ -11440,12 +11584,13 @@ ecs_update_task_set <- function(cluster, service, taskSet, scale) {
     name = "UpdateTaskSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecs$update_task_set_input(cluster = cluster, service = service, taskSet = taskSet, scale = scale)
   output <- .ecs$update_task_set_output()
   config <- get_config()
-  svc <- .ecs$service(config)
+  svc <- .ecs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

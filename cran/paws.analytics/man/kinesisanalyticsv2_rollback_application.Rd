@@ -17,7 +17,7 @@ version ID using
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 }
 \description{
-Reverts the application to the previous running version. You can roll back an application if you suspect it is stuck in a transient status.
+Reverts the application to the previous running version. You can roll back an application if you suspect it is stuck in a transient status or in the running status.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_rollback_application/} for full documentation.
 }

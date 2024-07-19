@@ -27,12 +27,13 @@ panorama_create_application_instance <- function(ApplicationInstanceIdToReplace 
     name = "CreateApplicationInstance",
     http_method = "POST",
     http_path = "/application-instances",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$create_application_instance_input(ApplicationInstanceIdToReplace = ApplicationInstanceIdToReplace, DefaultRuntimeContextDevice = DefaultRuntimeContextDevice, Description = Description, ManifestOverridesPayload = ManifestOverridesPayload, ManifestPayload = ManifestPayload, Name = Name, RuntimeRoleArn = RuntimeRoleArn, Tags = Tags)
   output <- .panorama$create_application_instance_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -58,12 +59,13 @@ panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig = NULL, J
     name = "CreateJobForDevices",
     http_method = "POST",
     http_path = "/jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$create_job_for_devices_input(DeviceIds = DeviceIds, DeviceJobConfig = DeviceJobConfig, JobType = JobType)
   output <- .panorama$create_job_for_devices_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -93,12 +95,13 @@ panorama_create_node_from_template_job <- function(JobTags = NULL, NodeDescripti
     name = "CreateNodeFromTemplateJob",
     http_method = "POST",
     http_path = "/packages/template-job",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$create_node_from_template_job_input(JobTags = JobTags, NodeDescription = NodeDescription, NodeName = NodeName, OutputPackageName = OutputPackageName, OutputPackageVersion = OutputPackageVersion, TemplateParameters = TemplateParameters, TemplateType = TemplateType)
   output <- .panorama$create_node_from_template_job_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -123,12 +126,13 @@ panorama_create_package <- function(PackageName, Tags = NULL) {
     name = "CreatePackage",
     http_method = "POST",
     http_path = "/packages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$create_package_input(PackageName = PackageName, Tags = Tags)
   output <- .panorama$create_package_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -156,12 +160,13 @@ panorama_create_package_import_job <- function(ClientToken, InputConfig, JobTags
     name = "CreatePackageImportJob",
     http_method = "POST",
     http_path = "/packages/import-jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$create_package_import_job_input(ClientToken = ClientToken, InputConfig = InputConfig, JobTags = JobTags, JobType = JobType, OutputConfig = OutputConfig)
   output <- .panorama$create_package_import_job_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -185,12 +190,13 @@ panorama_delete_device <- function(DeviceId) {
     name = "DeleteDevice",
     http_method = "DELETE",
     http_path = "/devices/{DeviceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$delete_device_input(DeviceId = DeviceId)
   output <- .panorama$delete_device_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -216,12 +222,13 @@ panorama_delete_package <- function(ForceDelete = NULL, PackageId) {
     name = "DeletePackage",
     http_method = "DELETE",
     http_path = "/packages/{PackageId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$delete_package_input(ForceDelete = ForceDelete, PackageId = PackageId)
   output <- .panorama$delete_package_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -249,12 +256,13 @@ panorama_deregister_package_version <- function(OwnerAccount = NULL, PackageId, 
     name = "DeregisterPackageVersion",
     http_method = "DELETE",
     http_path = "/packages/{PackageId}/versions/{PackageVersion}/patch/{PatchVersion}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$deregister_package_version_input(OwnerAccount = OwnerAccount, PackageId = PackageId, PackageVersion = PackageVersion, PatchVersion = PatchVersion, UpdatedLatestPatchVersion = UpdatedLatestPatchVersion)
   output <- .panorama$deregister_package_version_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -278,12 +286,13 @@ panorama_describe_application_instance <- function(ApplicationInstanceId) {
     name = "DescribeApplicationInstance",
     http_method = "GET",
     http_path = "/application-instances/{ApplicationInstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_application_instance_input(ApplicationInstanceId = ApplicationInstanceId)
   output <- .panorama$describe_application_instance_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -308,12 +317,13 @@ panorama_describe_application_instance_details <- function(ApplicationInstanceId
     name = "DescribeApplicationInstanceDetails",
     http_method = "GET",
     http_path = "/application-instances/{ApplicationInstanceId}/details",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_application_instance_details_input(ApplicationInstanceId = ApplicationInstanceId)
   output <- .panorama$describe_application_instance_details_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -337,12 +347,13 @@ panorama_describe_device <- function(DeviceId) {
     name = "DescribeDevice",
     http_method = "GET",
     http_path = "/devices/{DeviceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_device_input(DeviceId = DeviceId)
   output <- .panorama$describe_device_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -366,12 +377,13 @@ panorama_describe_device_job <- function(JobId) {
     name = "DescribeDeviceJob",
     http_method = "GET",
     http_path = "/jobs/{JobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_device_job_input(JobId = JobId)
   output <- .panorama$describe_device_job_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -396,12 +408,13 @@ panorama_describe_node <- function(NodeId, OwnerAccount = NULL) {
     name = "DescribeNode",
     http_method = "GET",
     http_path = "/nodes/{NodeId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_node_input(NodeId = NodeId, OwnerAccount = OwnerAccount)
   output <- .panorama$describe_node_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -425,12 +438,13 @@ panorama_describe_node_from_template_job <- function(JobId) {
     name = "DescribeNodeFromTemplateJob",
     http_method = "GET",
     http_path = "/packages/template-job/{JobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_node_from_template_job_input(JobId = JobId)
   output <- .panorama$describe_node_from_template_job_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -454,12 +468,13 @@ panorama_describe_package <- function(PackageId) {
     name = "DescribePackage",
     http_method = "GET",
     http_path = "/packages/metadata/{PackageId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_package_input(PackageId = PackageId)
   output <- .panorama$describe_package_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -483,12 +498,13 @@ panorama_describe_package_import_job <- function(JobId) {
     name = "DescribePackageImportJob",
     http_method = "GET",
     http_path = "/packages/import-jobs/{JobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_package_import_job_input(JobId = JobId)
   output <- .panorama$describe_package_import_job_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -515,12 +531,13 @@ panorama_describe_package_version <- function(OwnerAccount = NULL, PackageId, Pa
     name = "DescribePackageVersion",
     http_method = "GET",
     http_path = "/packages/metadata/{PackageId}/versions/{PackageVersion}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$describe_package_version_input(OwnerAccount = OwnerAccount, PackageId = PackageId, PackageVersion = PackageVersion, PatchVersion = PatchVersion)
   output <- .panorama$describe_package_version_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -548,12 +565,13 @@ panorama_list_application_instance_dependencies <- function(ApplicationInstanceI
     name = "ListApplicationInstanceDependencies",
     http_method = "GET",
     http_path = "/application-instances/{ApplicationInstanceId}/package-dependencies",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_application_instance_dependencies_input(ApplicationInstanceId = ApplicationInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_application_instance_dependencies_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -580,12 +598,13 @@ panorama_list_application_instance_node_instances <- function(ApplicationInstanc
     name = "ListApplicationInstanceNodeInstances",
     http_method = "GET",
     http_path = "/application-instances/{ApplicationInstanceId}/node-instances",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_application_instance_node_instances_input(ApplicationInstanceId = ApplicationInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_application_instance_node_instances_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -614,12 +633,13 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
     name = "ListApplicationInstances",
     http_method = "GET",
     http_path = "/application-instances",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_application_instances_input(DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken, StatusFilter = StatusFilter)
   output <- .panorama$list_application_instances_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -650,12 +670,13 @@ panorama_list_devices <- function(DeviceAggregatedStatusFilter = NULL, MaxResult
     name = "ListDevices",
     http_method = "GET",
     http_path = "/devices",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_devices_input(DeviceAggregatedStatusFilter = DeviceAggregatedStatusFilter, MaxResults = MaxResults, NameFilter = NameFilter, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .panorama$list_devices_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -682,12 +703,13 @@ panorama_list_devices_jobs <- function(DeviceId = NULL, MaxResults = NULL, NextT
     name = "ListDevicesJobs",
     http_method = "GET",
     http_path = "/jobs",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_devices_jobs_input(DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_devices_jobs_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -714,12 +736,13 @@ panorama_list_node_from_template_jobs <- function(MaxResults = NULL, NextToken =
     name = "ListNodeFromTemplateJobs",
     http_method = "GET",
     http_path = "/packages/template-job",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_node_from_template_jobs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_node_from_template_jobs_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -750,12 +773,13 @@ panorama_list_nodes <- function(Category = NULL, MaxResults = NULL, NextToken = 
     name = "ListNodes",
     http_method = "GET",
     http_path = "/nodes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_nodes_input(Category = Category, MaxResults = MaxResults, NextToken = NextToken, OwnerAccount = OwnerAccount, PackageName = PackageName, PackageVersion = PackageVersion, PatchVersion = PatchVersion)
   output <- .panorama$list_nodes_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -782,12 +806,13 @@ panorama_list_package_import_jobs <- function(MaxResults = NULL, NextToken = NUL
     name = "ListPackageImportJobs",
     http_method = "GET",
     http_path = "/packages/import-jobs",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_package_import_jobs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_package_import_jobs_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -813,12 +838,13 @@ panorama_list_packages <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListPackages",
     http_method = "GET",
     http_path = "/packages",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_packages_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_packages_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -842,12 +868,13 @@ panorama_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .panorama$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +901,13 @@ panorama_provision_device <- function(Description = NULL, Name, NetworkingConfig
     name = "ProvisionDevice",
     http_method = "POST",
     http_path = "/devices",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$provision_device_input(Description = Description, Name = Name, NetworkingConfiguration = NetworkingConfiguration, Tags = Tags)
   output <- .panorama$provision_device_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -907,12 +935,13 @@ panorama_register_package_version <- function(MarkLatest = NULL, OwnerAccount = 
     name = "RegisterPackageVersion",
     http_method = "PUT",
     http_path = "/packages/{PackageId}/versions/{PackageVersion}/patch/{PatchVersion}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$register_package_version_input(MarkLatest = MarkLatest, OwnerAccount = OwnerAccount, PackageId = PackageId, PackageVersion = PackageVersion, PatchVersion = PatchVersion)
   output <- .panorama$register_package_version_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -936,12 +965,13 @@ panorama_remove_application_instance <- function(ApplicationInstanceId) {
     name = "RemoveApplicationInstance",
     http_method = "DELETE",
     http_path = "/application-instances/{ApplicationInstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$remove_application_instance_input(ApplicationInstanceId = ApplicationInstanceId)
   output <- .panorama$remove_application_instance_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -966,12 +996,13 @@ panorama_signal_application_instance_node_instances <- function(ApplicationInsta
     name = "SignalApplicationInstanceNodeInstances",
     http_method = "PUT",
     http_path = "/application-instances/{ApplicationInstanceId}/node-signals",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$signal_application_instance_node_instances_input(ApplicationInstanceId = ApplicationInstanceId, NodeSignals = NodeSignals)
   output <- .panorama$signal_application_instance_node_instances_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -996,12 +1027,13 @@ panorama_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .panorama$tag_resource_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1026,12 +1058,13 @@ panorama_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .panorama$untag_resource_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1056,12 +1089,13 @@ panorama_update_device_metadata <- function(Description = NULL, DeviceId) {
     name = "UpdateDeviceMetadata",
     http_method = "PUT",
     http_path = "/devices/{DeviceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .panorama$update_device_metadata_input(Description = Description, DeviceId = DeviceId)
   output <- .panorama$update_device_metadata_output()
   config <- get_config()
-  svc <- .panorama$service(config)
+  svc <- .panorama$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

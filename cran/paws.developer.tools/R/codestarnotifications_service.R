@@ -199,7 +199,7 @@ codestarnotifications <- function(config = list(), credentials = list(), endpoin
   target_prefix = ""
 )
 
-.codestarnotifications$service <- function(config = list()) {
+.codestarnotifications$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.codestarnotifications$metadata, handlers, config)
+  new_service(.codestarnotifications$metadata, handlers, config, op)
 }

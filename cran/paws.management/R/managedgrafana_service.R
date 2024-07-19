@@ -104,8 +104,12 @@ NULL
 #'  \link[=managedgrafana_associate_license]{associate_license} \tab Assigns a Grafana Enterprise license to a workspace\cr
 #'  \link[=managedgrafana_create_workspace]{create_workspace} \tab Creates a workspace\cr
 #'  \link[=managedgrafana_create_workspace_api_key]{create_workspace_api_key} \tab Creates a Grafana API key for the workspace\cr
+#'  \link[=managedgrafana_create_workspace_service_account]{create_workspace_service_account} \tab Creates a service account for the workspace\cr
+#'  \link[=managedgrafana_create_workspace_service_account_token]{create_workspace_service_account_token} \tab Creates a token that can be used to authenticate and authorize Grafana HTTP API operations for the given workspace service account\cr
 #'  \link[=managedgrafana_delete_workspace]{delete_workspace} \tab Deletes an Amazon Managed Grafana workspace\cr
 #'  \link[=managedgrafana_delete_workspace_api_key]{delete_workspace_api_key} \tab Deletes a Grafana API key for the workspace\cr
+#'  \link[=managedgrafana_delete_workspace_service_account]{delete_workspace_service_account} \tab Deletes a workspace service account from the workspace\cr
+#'  \link[=managedgrafana_delete_workspace_service_account_token]{delete_workspace_service_account_token} \tab Deletes a token for the workspace service account\cr
 #'  \link[=managedgrafana_describe_workspace]{describe_workspace} \tab Displays information about one Amazon Managed Grafana workspace\cr
 #'  \link[=managedgrafana_describe_workspace_authentication]{describe_workspace_authentication} \tab Displays information about the authentication methods used in one Amazon Managed Grafana workspace\cr
 #'  \link[=managedgrafana_describe_workspace_configuration]{describe_workspace_configuration} \tab Gets the current configuration string for the given workspace\cr
@@ -114,6 +118,8 @@ NULL
 #'  \link[=managedgrafana_list_tags_for_resource]{list_tags_for_resource} \tab The ListTagsForResource operation returns the tags that are associated with the Amazon Managed Service for Grafana resource specified by the resourceArn\cr
 #'  \link[=managedgrafana_list_versions]{list_versions} \tab Lists available versions of Grafana\cr
 #'  \link[=managedgrafana_list_workspaces]{list_workspaces} \tab Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each workspace\cr
+#'  \link[=managedgrafana_list_workspace_service_accounts]{list_workspace_service_accounts} \tab Returns a list of service accounts for a workspace\cr
+#'  \link[=managedgrafana_list_workspace_service_account_tokens]{list_workspace_service_account_tokens} \tab Returns a list of tokens for a workspace service account\cr
 #'  \link[=managedgrafana_tag_resource]{tag_resource} \tab The TagResource operation associates tags with an Amazon Managed Grafana resource\cr
 #'  \link[=managedgrafana_untag_resource]{untag_resource} \tab The UntagResource operation removes the association of the tag with the Amazon Managed Grafana resource\cr
 #'  \link[=managedgrafana_update_permissions]{update_permissions} \tab Updates which users in a workspace have the Grafana Admin or Editor roles\cr
@@ -159,7 +165,7 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.managedgrafana$service <- function(config = list()) {
+.managedgrafana$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.managedgrafana$metadata, handlers, config)
+  new_service(.managedgrafana$metadata, handlers, config, op)
 }

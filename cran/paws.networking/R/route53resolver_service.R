@@ -237,7 +237,7 @@ route53resolver <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "Route53Resolver"
 )
 
-.route53resolver$service <- function(config = list()) {
+.route53resolver$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.route53resolver$metadata, handlers, config)
+  new_service(.route53resolver$metadata, handlers, config, op)
 }

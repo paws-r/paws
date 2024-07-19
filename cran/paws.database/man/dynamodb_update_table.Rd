@@ -15,7 +15,8 @@ dynamodb_update_table(
   SSESpecification = NULL,
   ReplicaUpdates = NULL,
   TableClass = NULL,
-  DeletionProtectionEnabled = NULL
+  DeletionProtectionEnabled = NULL,
+  OnDemandThroughput = NULL
 )
 }
 \arguments{
@@ -34,10 +35,10 @@ write capacity of your table and global secondary indexes over the past
 30 minutes.
 \itemize{
 \item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
-workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual}{Provisioned Mode}.
+workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html}{Provisioned capacity mode}.
 \item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
 unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand}{On-Demand Mode}.
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html}{On-demand capacity mode}.
 }}
 
 \item{ProvisionedThroughput}{The new provisioned throughput settings for the specified table or
@@ -69,14 +70,18 @@ table that doesn't have a stream.}
 \item{ReplicaUpdates}{A list of replica update actions (create, delete, or update) for the
 table.
 
-This property only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/}{Version 2019.11.21 (Current)}
-of global tables.}
+For global tables, this property only applies to global tables using
+Version 2019.11.21 (Current version).}
 
 \item{TableClass}{The table class of the table to be updated. Valid values are \code{STANDARD}
 and \code{STANDARD_INFREQUENT_ACCESS}.}
 
 \item{DeletionProtectionEnabled}{Indicates whether deletion protection is to be enabled (true) or
 disabled (false) on the table.}
+
+\item{OnDemandThroughput}{Updates the maximum number of read and write units for the specified
+table in on-demand capacity mode. If you use this parameter, you must
+specify \code{MaxReadRequestUnits}, \code{MaxWriteRequestUnits}, or both.}
 }
 \description{
 Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.

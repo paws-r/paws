@@ -247,7 +247,7 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = "StarlingDoveService"
 )
 
-.configservice$service <- function(config = list()) {
+.configservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.configservice$metadata, handlers, config)
+  new_service(.configservice$metadata, handlers, config, op)
 }

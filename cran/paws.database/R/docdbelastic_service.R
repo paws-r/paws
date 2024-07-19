@@ -163,7 +163,7 @@ docdbelastic <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.docdbelastic$service <- function(config = list()) {
+.docdbelastic$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.docdbelastic$metadata, handlers, config)
+  new_service(.docdbelastic$metadata, handlers, config, op)
 }

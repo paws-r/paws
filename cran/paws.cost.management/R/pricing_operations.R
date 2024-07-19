@@ -30,12 +30,13 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
     name = "DescribeServices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services")
   )
   input <- .pricing$describe_services_input(ServiceCode = ServiceCode, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$describe_services_output()
   config <- get_config()
-  svc <- .pricing$service(config)
+  svc <- .pricing$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -65,12 +66,13 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
     name = "GetAttributeValues",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AttributeValues")
   )
   input <- .pricing$get_attribute_values_input(ServiceCode = ServiceCode, AttributeName = AttributeName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$get_attribute_values_output()
   config <- get_config()
-  svc <- .pricing$service(config)
+  svc <- .pricing$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -99,12 +101,13 @@ pricing_get_price_list_file_url <- function(PriceListArn, FileFormat) {
     name = "GetPriceListFileUrl",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pricing$get_price_list_file_url_input(PriceListArn = PriceListArn, FileFormat = FileFormat)
   output <- .pricing$get_price_list_file_url_output()
   config <- get_config()
-  svc <- .pricing$service(config)
+  svc <- .pricing$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -136,12 +139,13 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
     name = "GetProducts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList")
   )
   input <- .pricing$get_products_input(ServiceCode = ServiceCode, Filters = Filters, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$get_products_output()
   config <- get_config()
-  svc <- .pricing$service(config)
+  svc <- .pricing$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -187,12 +191,13 @@ pricing_list_price_lists <- function(ServiceCode, EffectiveDate, RegionCode = NU
     name = "ListPriceLists",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceLists")
   )
   input <- .pricing$list_price_lists_input(ServiceCode = ServiceCode, EffectiveDate = EffectiveDate, RegionCode = RegionCode, CurrencyCode = CurrencyCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$list_price_lists_output()
   config <- get_config()
-  svc <- .pricing$service(config)
+  svc <- .pricing$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

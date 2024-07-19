@@ -192,7 +192,7 @@ sfn <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "AWSStepFunctions"
 )
 
-.sfn$service <- function(config = list()) {
+.sfn$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.sfn$metadata, handlers, config)
+  new_service(.sfn$metadata, handlers, config, op)
 }

@@ -7,20 +7,14 @@ provides map tiles of different styles sourced from global location data
 providers}
 \usage{
 locationservice_create_map(
-  Configuration,
-  Description = NULL,
   MapName,
+  Configuration,
   PricingPlan = NULL,
+  Description = NULL,
   Tags = NULL
 )
 }
 \arguments{
-\item{Configuration}{[required] Specifies the \code{MapConfiguration}, including the map style, for the map
-resource that you create. The map style defines the look of maps and the
-data provider for your map resource.}
-
-\item{Description}{An optional description for the map resource.}
-
 \item{MapName}{[required] The name for the map resource.
 
 Requirements:
@@ -31,8 +25,14 @@ Requirements:
 \item No spaces allowed. For example, \code{ExampleMap}.
 }}
 
+\item{Configuration}{[required] Specifies the \code{MapConfiguration}, including the map style, for the map
+resource that you create. The map style defines the look of maps and the
+data provider for your map resource.}
+
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
+
+\item{Description}{An optional description for the map resource.}
 
 \item{Tags}{Applies one or more tags to the map resource. A tag is a key-value pair
 helps manage, identify, search, and filter your resources by labelling

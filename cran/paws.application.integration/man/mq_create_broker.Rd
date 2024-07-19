@@ -6,14 +6,14 @@
 \usage{
 mq_create_broker(
   AuthenticationStrategy = NULL,
-  AutoMinorVersionUpgrade,
+  AutoMinorVersionUpgrade = NULL,
   BrokerName,
   Configuration = NULL,
   CreatorRequestId = NULL,
   DeploymentMode,
   EncryptionOptions = NULL,
   EngineType,
-  EngineVersion,
+  EngineVersion = NULL,
   HostInstanceType,
   LdapServerMetadata = NULL,
   Logs = NULL,
@@ -32,10 +32,13 @@ mq_create_broker(
 \item{AuthenticationStrategy}{Optional. The authentication strategy used to secure the broker. The
 default is SIMPLE.}
 
-\item{AutoMinorVersionUpgrade}{[required] Enables automatic upgrades to new minor versions for brokers, as new
+\item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new patch versions for brokers as new
 versions are released and supported by Amazon MQ. Automatic upgrades
-occur during the scheduled maintenance window of the broker or after a
-manual broker reboot. Set to true by default, if no value is specified.}
+occur during the scheduled maintenance window or after a manual broker
+reboot. Set to true by default, if no value is specified.
+
+Must be set to true for ActiveMQ brokers version 5.18 and above and for
+RabbitMQ brokers version 3.13 and above.}
 
 \item{BrokerName}{[required] Required. The broker's name. This value must be unique in your Amazon
 Web Services account, 1-50 characters long, must contain only letters,
@@ -64,8 +67,11 @@ doesn't require idempotency.}
 \item{EngineType}{[required] Required. The type of broker engine. Currently, Amazon MQ supports
 ACTIVEMQ and RABBITMQ.}
 
-\item{EngineVersion}{[required] Required. The broker engine's version. For a list of supported engine
-versions, see \href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/}{Supported engines}.}
+\item{EngineVersion}{The broker engine version. Defaults to the latest available version for
+the specified broker engine type. For more information, see the
+\href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html}{ActiveMQ version management}
+and the \href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-management.html}{RabbitMQ version management}
+sections in the Amazon MQ Developer Guide.}
 
 \item{HostInstanceType}{[required] Required. The broker's instance type.}
 

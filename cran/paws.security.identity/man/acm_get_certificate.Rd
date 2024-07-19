@@ -2,7 +2,7 @@
 % Please edit documentation in R/acm_operations.R
 \name{acm_get_certificate}
 \alias{acm_get_certificate}
-\title{Retrieves an Amazon-issued certificate and its certificate chain}
+\title{Retrieves a certificate and its certificate chain}
 \usage{
 acm_get_certificate(CertificateArn)
 }
@@ -14,7 +14,7 @@ acm_get_certificate(CertificateArn)
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
-Retrieves an Amazon-issued certificate and its certificate chain. The chain consists of the certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded. You can use \href{https://wiki.openssl.org/index.php/Command_Line_Utilities}{OpenSSL} to decode the certificates and inspect individual fields.
+Retrieves a certificate and its certificate chain. The certificate may be either a public or private certificate issued using the ACM \code{\link[=acm_request_certificate]{request_certificate}} action, or a certificate imported into ACM using the \code{\link[=acm_import_certificate]{import_certificate}} action. The chain consists of the certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded. You can use \href{https://wiki.openssl.org/index.php/Command_Line_Utilities}{OpenSSL} to decode the certificates and inspect individual fields.
 
 See \url{https://www.paws-r-sdk.com/docs/acm_get_certificate/} for full documentation.
 }

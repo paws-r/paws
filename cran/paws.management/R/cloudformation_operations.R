@@ -20,12 +20,13 @@ cloudformation_activate_organizations_access <- function() {
     name = "ActivateOrganizationsAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$activate_organizations_access_input()
   output <- .cloudformation$activate_organizations_access_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -96,12 +97,13 @@ cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, Publ
     name = "ActivateType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$activate_type_input(Type = Type, PublicTypeArn = PublicTypeArn, PublisherId = PublisherId, TypeName = TypeName, TypeNameAlias = TypeNameAlias, AutoUpdate = AutoUpdate, LoggingConfig = LoggingConfig, ExecutionRoleArn = ExecutionRoleArn, VersionBump = VersionBump, MajorVersion = MajorVersion)
   output <- .cloudformation$activate_type_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -126,12 +128,13 @@ cloudformation_batch_describe_type_configurations <- function(TypeConfigurationI
     name = "BatchDescribeTypeConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$batch_describe_type_configurations_input(TypeConfigurationIdentifiers = TypeConfigurationIdentifiers)
   output <- .cloudformation$batch_describe_type_configurations_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -171,12 +174,13 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
     name = "CancelUpdateStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$cancel_update_stack_input(StackName = StackName, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$cancel_update_stack_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -264,12 +268,13 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
     name = "ContinueUpdateRollback",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$continue_update_rollback_input(StackName = StackName, RoleARN = RoleARN, ResourcesToSkip = ResourcesToSkip, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$continue_update_rollback_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -497,12 +502,13 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
     name = "CreateChangeSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure, ImportExistingResources = ImportExistingResources)
   output <- .cloudformation$create_change_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -537,12 +543,13 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
     name = "CreateGeneratedTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$create_generated_template_input(Resources = Resources, GeneratedTemplateName = GeneratedTemplateName, StackName = StackName, TemplateConfiguration = TemplateConfiguration)
   output <- .cloudformation$create_generated_template_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -772,12 +779,13 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
     name = "CreateStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$create_stack_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -873,12 +881,13 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
     name = "CreateStackInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$create_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$create_stack_instances_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1071,12 +1080,13 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
     name = "CreateStackSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$create_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackId = StackId, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, CallAs = CallAs, ClientRequestToken = ClientRequestToken, ManagedExecution = ManagedExecution)
   output <- .cloudformation$create_stack_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1100,12 +1110,13 @@ cloudformation_deactivate_organizations_access <- function() {
     name = "DeactivateOrganizationsAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$deactivate_organizations_access_input()
   output <- .cloudformation$deactivate_organizations_access_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1141,12 +1152,13 @@ cloudformation_deactivate_type <- function(TypeName = NULL, Type = NULL, Arn = N
     name = "DeactivateType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$deactivate_type_input(TypeName = TypeName, Type = Type, Arn = Arn)
   output <- .cloudformation$deactivate_type_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1173,12 +1185,13 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
     name = "DeleteChangeSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$delete_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName)
   output <- .cloudformation$delete_change_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1202,12 +1215,13 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
     name = "DeleteGeneratedTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$delete_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$delete_generated_template_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1257,21 +1271,29 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
 #' the console, each stack event would be assigned the same token in the
 #' following format:
 #' `Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002`.
+#' @param DeletionMode Specifies the deletion mode for the stack. Possible values are:
+#' 
+#' -   `STANDARD` - Use the standard behavior. Specifying this value is the
+#'     same as not specifying this parameter.
+#' 
+#' -   `FORCE_DELETE_STACK` - Delete the stack if it's stuck in a
+#'     `DELETE_FAILED` state due to resource deletion failure.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_delete_stack
-cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleARN = NULL, ClientRequestToken = NULL) {
+cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleARN = NULL, ClientRequestToken = NULL, DeletionMode = NULL) {
   op <- new_operation(
     name = "DeleteStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .cloudformation$delete_stack_input(StackName = StackName, RetainResources = RetainResources, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken)
+  input <- .cloudformation$delete_stack_input(StackName = StackName, RetainResources = RetainResources, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, DeletionMode = DeletionMode)
   output <- .cloudformation$delete_stack_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1343,12 +1365,13 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
     name = "DeleteStackInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$delete_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, OperationPreferences = OperationPreferences, RetainStacks = RetainStacks, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$delete_stack_instances_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1391,12 +1414,13 @@ cloudformation_delete_stack_set <- function(StackSetName, CallAs = NULL) {
     name = "DeleteStackSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$delete_stack_set_input(StackSetName = StackSetName, CallAs = CallAs)
   output <- .cloudformation$delete_stack_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1432,12 +1456,13 @@ cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = N
     name = "DeregisterType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$deregister_type_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
   output <- .cloudformation$deregister_type_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1463,12 +1488,13 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
     name = "DescribeAccountLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AccountLimits")
   )
   input <- .cloudformation$describe_account_limits_input(NextToken = NextToken)
   output <- .cloudformation$describe_account_limits_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1502,12 +1528,13 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
     name = "DescribeChangeSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, IncludePropertyValues = IncludePropertyValues)
   output <- .cloudformation$describe_change_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1541,12 +1568,13 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
     name = "DescribeChangeSetHooks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_change_set_hooks_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$describe_change_set_hooks_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1570,12 +1598,13 @@ cloudformation_describe_generated_template <- function(GeneratedTemplateName) {
     name = "DescribeGeneratedTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$describe_generated_template_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1614,12 +1643,13 @@ cloudformation_describe_organizations_access <- function(CallAs = NULL) {
     name = "DescribeOrganizationsAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_organizations_access_input(CallAs = CallAs)
   output <- .cloudformation$describe_organizations_access_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1648,12 +1678,13 @@ cloudformation_describe_publisher <- function(PublisherId = NULL) {
     name = "DescribePublisher",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_publisher_input(PublisherId = PublisherId)
   output <- .cloudformation$describe_publisher_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1677,12 +1708,13 @@ cloudformation_describe_resource_scan <- function(ResourceScanId) {
     name = "DescribeResourceScan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_resource_scan_input(ResourceScanId = ResourceScanId)
   output <- .cloudformation$describe_resource_scan_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1710,12 +1742,13 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
     name = "DescribeStackDriftDetectionStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_stack_drift_detection_status_input(StackDriftDetectionId = StackDriftDetectionId)
   output <- .cloudformation$describe_stack_drift_detection_status_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1750,12 +1783,13 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
     name = "DescribeStackEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackEvents")
   )
   input <- .cloudformation$describe_stack_events_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stack_events_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1801,12 +1835,13 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
     name = "DescribeStackInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_stack_instance_input(StackSetName = StackSetName, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$describe_stack_instance_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1841,12 +1876,13 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
     name = "DescribeStackResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_stack_resource_input(StackName = StackName, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$describe_stack_resource_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1889,12 +1925,13 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
     name = "DescribeStackResourceDrifts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$describe_stack_resource_drifts_input(StackName = StackName, StackResourceDriftStatusFilters = StackResourceDriftStatusFilters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$describe_stack_resource_drifts_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1947,12 +1984,13 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
     name = "DescribeStackResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "StackResources")
   )
   input <- .cloudformation$describe_stack_resources_input(StackName = StackName, LogicalResourceId = LogicalResourceId, PhysicalResourceId = PhysicalResourceId)
   output <- .cloudformation$describe_stack_resources_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1993,12 +2031,13 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
     name = "DescribeStackSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_stack_set_input(StackSetName = StackSetName, CallAs = CallAs)
   output <- .cloudformation$describe_stack_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2041,12 +2080,13 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
     name = "DescribeStackSetOperation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_stack_set_operation_input(StackSetName = StackSetName, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$describe_stack_set_operation_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2097,12 +2137,13 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
     name = "DescribeStacks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks")
   )
   input <- .cloudformation$describe_stacks_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stacks_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2147,12 +2188,13 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
     name = "DescribeType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_type_input(Type = Type, TypeName = TypeName, Arn = Arn, VersionId = VersionId, PublisherId = PublisherId, PublicVersionNumber = PublicVersionNumber)
   output <- .cloudformation$describe_type_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2181,12 +2223,13 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
     name = "DescribeTypeRegistration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$describe_type_registration_input(RegistrationToken = RegistrationToken)
   output <- .cloudformation$describe_type_registration_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2213,12 +2256,13 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
     name = "DetectStackDrift",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$detect_stack_drift_input(StackName = StackName, LogicalResourceIds = LogicalResourceIds)
   output <- .cloudformation$detect_stack_drift_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2245,12 +2289,13 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
     name = "DetectStackResourceDrift",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$detect_stack_resource_drift_input(StackName = StackName, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$detect_stack_resource_drift_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2299,12 +2344,13 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
     name = "DetectStackSetDrift",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$detect_stack_set_drift_input(StackSetName = StackSetName, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$detect_stack_set_drift_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2345,12 +2391,13 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
     name = "EstimateTemplateCost",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$estimate_template_cost_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters)
   output <- .cloudformation$estimate_template_cost_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2409,12 +2456,13 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
     name = "ExecuteChangeSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$execute_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, ClientRequestToken = ClientRequestToken, DisableRollback = DisableRollback, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$execute_change_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2448,12 +2496,13 @@ cloudformation_get_generated_template <- function(Format = NULL, GeneratedTempla
     name = "GetGeneratedTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$get_generated_template_input(Format = Format, GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$get_generated_template_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2478,12 +2527,13 @@ cloudformation_get_stack_policy <- function(StackName) {
     name = "GetStackPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$get_stack_policy_input(StackName = StackName)
   output <- .cloudformation$get_stack_policy_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2526,12 +2576,13 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
     name = "GetTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$get_template_input(StackName = StackName, ChangeSetName = ChangeSetName, TemplateStage = TemplateStage)
   output <- .cloudformation$get_template_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2603,12 +2654,13 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
     name = "GetTemplateSummary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$get_template_summary_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackName = StackName, StackSetName = StackSetName, CallAs = CallAs, TemplateSummaryConfig = TemplateSummaryConfig)
   output <- .cloudformation$get_template_summary_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2655,12 +2707,13 @@ cloudformation_import_stacks_to_stack_set <- function(StackSetName, StackIds = N
     name = "ImportStacksToStackSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$import_stacks_to_stack_set_input(StackSetName = StackSetName, StackIds = StackIds, StackIdsUrl = StackIdsUrl, OrganizationalUnitIds = OrganizationalUnitIds, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$import_stacks_to_stack_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2688,12 +2741,13 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
     name = "ListChangeSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_change_sets_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_change_sets_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2720,12 +2774,13 @@ cloudformation_list_exports <- function(NextToken = NULL) {
     name = "ListExports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Exports")
   )
   input <- .cloudformation$list_exports_input(NextToken = NextToken)
   output <- .cloudformation$list_exports_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2755,12 +2810,13 @@ cloudformation_list_generated_templates <- function(NextToken = NULL, MaxResults
     name = "ListGeneratedTemplates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_generated_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_generated_templates_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2788,12 +2844,13 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
     name = "ListImports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Imports")
   )
   input <- .cloudformation$list_imports_input(ExportName = ExportName, NextToken = NextToken)
   output <- .cloudformation$list_imports_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2826,12 +2883,13 @@ cloudformation_list_resource_scan_related_resources <- function(ResourceScanId, 
     name = "ListResourceScanRelatedResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RelatedResources")
   )
   input <- .cloudformation$list_resource_scan_related_resources_input(ResourceScanId = ResourceScanId, Resources = Resources, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scan_related_resources_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2869,12 +2927,13 @@ cloudformation_list_resource_scan_resources <- function(ResourceScanId, Resource
     name = "ListResourceScanResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Resources")
   )
   input <- .cloudformation$list_resource_scan_resources_input(ResourceScanId = ResourceScanId, ResourceIdentifier = ResourceIdentifier, ResourceTypePrefix = ResourceTypePrefix, TagKey = TagKey, TagValue = TagValue, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scan_resources_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2902,12 +2961,13 @@ cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NU
     name = "ListResourceScans",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceScanSummaries")
   )
   input <- .cloudformation$list_resource_scans_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scans_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2975,12 +3035,13 @@ cloudformation_list_stack_instance_resource_drifts <- function(StackSetName, Nex
     name = "ListStackInstanceResourceDrifts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$list_stack_instance_resource_drifts_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, StackInstanceResourceDriftStatuses = StackInstanceResourceDriftStatuses, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$list_stack_instance_resource_drifts_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3038,12 +3099,13 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
     name = "ListStackInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$list_stack_instances_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3077,12 +3139,13 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
     name = "ListStackResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackResourceSummaries")
   )
   input <- .cloudformation$list_stack_resources_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_stack_resources_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3130,12 +3193,13 @@ cloudformation_list_stack_set_auto_deployment_targets <- function(StackSetName, 
     name = "ListStackSetAutoDeploymentTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$list_stack_set_auto_deployment_targets_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_auto_deployment_targets_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3190,12 +3254,13 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
     name = "ListStackSetOperationResults",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
   output <- .cloudformation$list_stack_set_operation_results_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3248,12 +3313,13 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
     name = "ListStackSetOperations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_set_operations_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_operations_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3307,12 +3373,13 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListStackSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_sets_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, CallAs = CallAs)
   output <- .cloudformation$list_stack_sets_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3342,12 +3409,13 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
     name = "ListStacks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackSummaries")
   )
   input <- .cloudformation$list_stacks_input(NextToken = NextToken, StackStatusFilter = StackStatusFilter)
   output <- .cloudformation$list_stacks_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3392,12 +3460,13 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
     name = "ListTypeRegistrations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$list_type_registrations_input(Type = Type, TypeName = TypeName, TypeArn = TypeArn, RegistrationStatusFilter = RegistrationStatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_type_registrations_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3457,12 +3526,13 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
     name = "ListTypeVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$list_type_versions_input(Type = Type, TypeName = TypeName, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, DeprecatedStatus = DeprecatedStatus, PublisherId = PublisherId)
   output <- .cloudformation$list_type_versions_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3550,12 +3620,13 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
     name = "ListTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TypeSummaries")
   )
   input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, Type = Type, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_types_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3604,12 +3675,13 @@ cloudformation_publish_type <- function(Type = NULL, Arn = NULL, TypeName = NULL
     name = "PublishType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$publish_type_input(Type = Type, Arn = Arn, TypeName = TypeName, PublicVersionNumber = PublicVersionNumber)
   output <- .cloudformation$publish_type_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3646,12 +3718,13 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
     name = "RecordHandlerProgress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$record_handler_progress_input(BearerToken = BearerToken, OperationStatus = OperationStatus, CurrentOperationStatus = CurrentOperationStatus, StatusMessage = StatusMessage, ErrorCode = ErrorCode, ResourceModel = ResourceModel, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$record_handler_progress_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3690,12 +3763,13 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
     name = "RegisterPublisher",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$register_publisher_input(AcceptTermsAndConditions = AcceptTermsAndConditions, ConnectionArn = ConnectionArn)
   output <- .cloudformation$register_publisher_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3782,12 +3856,13 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
     name = "RegisterType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$register_type_input(Type = Type, TypeName = TypeName, SchemaHandlerPackage = SchemaHandlerPackage, LoggingConfig = LoggingConfig, ExecutionRoleArn = ExecutionRoleArn, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$register_type_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3821,12 +3896,13 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
     name = "RollbackStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$rollback_stack_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3860,12 +3936,13 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
     name = "SetStackPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$set_stack_policy_input(StackName = StackName, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL)
   output <- .cloudformation$set_stack_policy_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3922,12 +3999,13 @@ cloudformation_set_type_configuration <- function(TypeArn = NULL, Configuration,
     name = "SetTypeConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$set_type_configuration_input(TypeArn = TypeArn, Configuration = Configuration, ConfigurationAlias = ConfigurationAlias, TypeName = TypeName, Type = Type)
   output <- .cloudformation$set_type_configuration_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3963,12 +4041,13 @@ cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, Typ
     name = "SetTypeDefaultVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$set_type_default_version_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
   output <- .cloudformation$set_type_default_version_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4003,12 +4082,13 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
     name = "SignalResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$signal_resource_input(StackName = StackName, LogicalResourceId = LogicalResourceId, UniqueId = UniqueId, Status = Status)
   output <- .cloudformation$signal_resource_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4035,12 +4115,13 @@ cloudformation_start_resource_scan <- function(ClientRequestToken = NULL) {
     name = "StartResourceScan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$start_resource_scan_input(ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$start_resource_scan_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4084,12 +4165,13 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
     name = "StopStackSetOperation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$stop_stack_set_operation_input(StackSetName = StackSetName, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$stop_stack_set_operation_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4148,12 +4230,13 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
     name = "TestType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$test_type_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId, LogDeliveryBucket = LogDeliveryBucket)
   output <- .cloudformation$test_type_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4188,12 +4271,13 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
     name = "UpdateGeneratedTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$update_generated_template_input(GeneratedTemplateName = GeneratedTemplateName, NewGeneratedTemplateName = NewGeneratedTemplateName, AddResources = AddResources, RemoveResources = RemoveResources, RefreshAllResources = RefreshAllResources, TemplateConfiguration = TemplateConfiguration)
   output <- .cloudformation$update_generated_template_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4430,12 +4514,13 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
     name = "UpdateStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$update_stack_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4542,12 +4627,13 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
     name = "UpdateStackInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$update_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$update_stack_instances_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4816,12 +4902,13 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
     name = "UpdateStackSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$update_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, OperationPreferences = OperationPreferences, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, DeploymentTargets = DeploymentTargets, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, OperationId = OperationId, Accounts = Accounts, Regions = Regions, CallAs = CallAs, ManagedExecution = ManagedExecution)
   output <- .cloudformation$update_stack_set_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4847,12 +4934,13 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
     name = "UpdateTerminationProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$update_termination_protection_input(EnableTerminationProtection = EnableTerminationProtection, StackName = StackName)
   output <- .cloudformation$update_termination_protection_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4893,12 +4981,13 @@ cloudformation_validate_template <- function(TemplateBody = NULL, TemplateURL = 
     name = "ValidateTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudformation$validate_template_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL)
   output <- .cloudformation$validate_template_output()
   config <- get_config()
-  svc <- .cloudformation$service(config)
+  svc <- .cloudformation$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

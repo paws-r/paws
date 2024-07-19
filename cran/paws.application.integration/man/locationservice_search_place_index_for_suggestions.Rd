@@ -6,18 +6,23 @@
 partial or misspelled free-form text}
 \usage{
 locationservice_search_place_index_for_suggestions(
+  IndexName,
+  Text,
   BiasPosition = NULL,
   FilterBBox = NULL,
-  FilterCategories = NULL,
   FilterCountries = NULL,
-  IndexName,
-  Key = NULL,
-  Language = NULL,
   MaxResults = NULL,
-  Text
+  Language = NULL,
+  FilterCategories = NULL,
+  Key = NULL
 )
 }
 \arguments{
+\item{IndexName}{[required] The name of the place index resource you want to use for the search.}
+
+\item{Text}{[required] The free-form partial text to use to generate place suggestions. For
+example, \verb{eiffel tow}.}
+
 \item{BiasPosition}{An optional parameter that indicates a preference for place suggestions
 that are closer to a specified position.
 
@@ -49,14 +54,6 @@ and latitude \code{-36.9542}.
 \code{FilterBBox} and \code{BiasPosition} are mutually exclusive. Specifying both
 options results in an error.}
 
-\item{FilterCategories}{A list of one or more Amazon Location categories to filter the returned
-places. If you include more than one category, the results will include
-results that match \emph{any} of the categories listed.
-
-For more information about using categories, including a list of Amazon
-Location categories, see \href{https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html}{Categories and filtering},
-in the \emph{Amazon Location Service Developer Guide}.}
-
 \item{FilterCountries}{An optional parameter that limits the search results by returning only
 suggestions within the provided list of countries.
 \itemize{
@@ -65,10 +62,10 @@ suggestions within the provided list of countries.
 characters: \code{AUS}.
 }}
 
-\item{IndexName}{[required] The name of the place index resource you want to use for the search.}
+\item{MaxResults}{An optional parameter. The maximum number of results returned per
+request.
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
-to authorize the request.}
+The default: \code{5}}
 
 \item{Language}{The preferred language used to return results. The value must be a valid
 BCP 47 language tag, for example, \code{en} for English.
@@ -88,13 +85,16 @@ found will more likely be returned as \eqn{A\Theta\eta\nu\sigma, E\lambda\lambda
 If the data provider does not have a value for Greek, the result will be
 in a language that the provider does support.}
 
-\item{MaxResults}{An optional parameter. The maximum number of results returned per
-request.
+\item{FilterCategories}{A list of one or more Amazon Location categories to filter the returned
+places. If you include more than one category, the results will include
+results that match \emph{any} of the categories listed.
 
-The default: \code{5}}
+For more information about using categories, including a list of Amazon
+Location categories, see \href{https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html}{Categories and filtering},
+in the \emph{Amazon Location Service Developer Guide}.}
 
-\item{Text}{[required] The free-form partial text to use to generate place suggestions. For
-example, \verb{eiffel tow}.}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 }
 \description{
 Generates suggestions for addresses and points of interest based on partial or misspelled free-form text. This operation is also known as autocomplete, autosuggest, or fuzzy matching.

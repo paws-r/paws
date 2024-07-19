@@ -5,16 +5,21 @@
 \title{Registers the specified directory}
 \usage{
 workspaces_register_workspace_directory(
-  DirectoryId,
+  DirectoryId = NULL,
   SubnetIds = NULL,
-  EnableWorkDocs,
+  EnableWorkDocs = NULL,
   EnableSelfService = NULL,
   Tenancy = NULL,
-  Tags = NULL
+  Tags = NULL,
+  WorkspaceDirectoryName = NULL,
+  WorkspaceDirectoryDescription = NULL,
+  UserIdentityType = NULL,
+  WorkspaceType = NULL,
+  ActiveDirectoryConfig = NULL
 )
 }
 \arguments{
-\item{DirectoryId}{[required] The identifier of the directory. You cannot register a directory if it
+\item{DirectoryId}{The identifier of the directory. You cannot register a directory if it
 does not have a status of Active. If the directory does not have a
 status of Active, you will receive an InvalidResourceStateException
 error. If you have already registered the maximum number of directories
@@ -27,7 +32,7 @@ Make sure that the subnets are in supported Availability Zones. The
 subnets must also be in separate Availability Zones. If these conditions
 are not met, you will receive an OperationNotSupportedException error.}
 
-\item{EnableWorkDocs}{[required] Indicates whether Amazon WorkDocs is enabled or disabled. If you have
+\item{EnableWorkDocs}{Indicates whether Amazon WorkDocs is enabled or disabled. If you have
 enabled this parameter and WorkDocs is not available in the Region, you
 will receive an OperationNotSupportedException error. Set
 \code{EnableWorkDocs} to disabled, and try again.}
@@ -42,6 +47,16 @@ InvalidParameterValuesException error. For more information about BYOL
 images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Images}.}
 
 \item{Tags}{The tags associated with the directory.}
+
+\item{WorkspaceDirectoryName}{The name of the directory to register.}
+
+\item{WorkspaceDirectoryDescription}{Description of the directory to register.}
+
+\item{UserIdentityType}{The type of identity management the user is using.}
+
+\item{WorkspaceType}{Indicates whether the directory's WorkSpace type is personal or pools.}
+
+\item{ActiveDirectoryConfig}{The active directory config of the directory.}
 }
 \description{
 Registers the specified directory. This operation is asynchronous and returns before the WorkSpace directory is registered. If this is the first time you are registering a directory, you will need to create the workspaces_DefaultRole role before you can register a directory. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role}{Creating the workspaces_DefaultRole Role}.

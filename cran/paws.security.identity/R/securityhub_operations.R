@@ -24,12 +24,13 @@ securityhub_accept_administrator_invitation <- function(AdministratorId, Invitat
     name = "AcceptAdministratorInvitation",
     http_method = "POST",
     http_path = "/administrator",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$accept_administrator_invitation_input(AdministratorId = AdministratorId, InvitationId = InvitationId)
   output <- .securityhub$accept_administrator_invitation_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -56,12 +57,13 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
     name = "AcceptInvitation",
     http_method = "POST",
     http_path = "/master",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$accept_invitation_input(MasterId = MasterId, InvitationId = InvitationId)
   output <- .securityhub$accept_invitation_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -86,12 +88,13 @@ securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
     name = "BatchDeleteAutomationRules",
     http_method = "POST",
     http_path = "/automationrules/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_delete_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
   output <- .securityhub$batch_delete_automation_rules_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -116,12 +119,13 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
     name = "BatchDisableStandards",
     http_method = "POST",
     http_path = "/standards/deregister",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_disable_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns)
   output <- .securityhub$batch_disable_standards_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -145,12 +149,13 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
     name = "BatchEnableStandards",
     http_method = "POST",
     http_path = "/standards/register",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_enable_standards_input(StandardsSubscriptionRequests = StandardsSubscriptionRequests)
   output <- .securityhub$batch_enable_standards_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -175,12 +180,13 @@ securityhub_batch_get_automation_rules <- function(AutomationRulesArns) {
     name = "BatchGetAutomationRules",
     http_method = "POST",
     http_path = "/automationrules/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_get_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
   output <- .securityhub$batch_get_automation_rules_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -206,12 +212,13 @@ securityhub_batch_get_configuration_policy_associations <- function(Configuratio
     name = "BatchGetConfigurationPolicyAssociations",
     http_method = "POST",
     http_path = "/configurationPolicyAssociation/batchget",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_get_configuration_policy_associations_input(ConfigurationPolicyAssociationIdentifiers = ConfigurationPolicyAssociationIdentifiers)
   output <- .securityhub$batch_get_configuration_policy_associations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -238,12 +245,13 @@ securityhub_batch_get_security_controls <- function(SecurityControlIds) {
     name = "BatchGetSecurityControls",
     http_method = "POST",
     http_path = "/securityControls/batchGet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_get_security_controls_input(SecurityControlIds = SecurityControlIds)
   output <- .securityhub$batch_get_security_controls_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -272,12 +280,13 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
     name = "BatchGetStandardsControlAssociations",
     http_method = "POST",
     http_path = "/associations/batchGet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_get_standards_control_associations_input(StandardsControlAssociationIds = StandardsControlAssociationIds)
   output <- .securityhub$batch_get_standards_control_associations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -305,12 +314,13 @@ securityhub_batch_import_findings <- function(Findings) {
     name = "BatchImportFindings",
     http_method = "POST",
     http_path = "/findings/import",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_import_findings_input(Findings = Findings)
   output <- .securityhub$batch_import_findings_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -336,12 +346,13 @@ securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesReque
     name = "BatchUpdateAutomationRules",
     http_method = "PATCH",
     http_path = "/automationrules/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_update_automation_rules_input(UpdateAutomationRulesRequestItems = UpdateAutomationRulesRequestItems)
   output <- .securityhub$batch_update_automation_rules_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -418,12 +429,13 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
     name = "BatchUpdateFindings",
     http_method = "PATCH",
     http_path = "/findings/batchupdate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_update_findings_input(FindingIdentifiers = FindingIdentifiers, Note = Note, Severity = Severity, VerificationState = VerificationState, Confidence = Confidence, Criticality = Criticality, Types = Types, UserDefinedFields = UserDefinedFields, Workflow = Workflow, RelatedFindings = RelatedFindings)
   output <- .securityhub$batch_update_findings_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -449,12 +461,13 @@ securityhub_batch_update_standards_control_associations <- function(StandardsCon
     name = "BatchUpdateStandardsControlAssociations",
     http_method = "PATCH",
     http_path = "/associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$batch_update_standards_control_associations_input(StandardsControlAssociationUpdates = StandardsControlAssociationUpdates)
   output <- .securityhub$batch_update_standards_control_associations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -481,12 +494,13 @@ securityhub_create_action_target <- function(Name, Description, Id) {
     name = "CreateActionTarget",
     http_method = "POST",
     http_path = "/actionTargets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$create_action_target_input(Name = Name, Description = Description, Id = Id)
   output <- .securityhub$create_action_target_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -533,12 +547,13 @@ securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, R
     name = "CreateAutomationRule",
     http_method = "POST",
     http_path = "/automationrules/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$create_automation_rule_input(Tags = Tags, RuleStatus = RuleStatus, RuleOrder = RuleOrder, RuleName = RuleName, Description = Description, IsTerminal = IsTerminal, Criteria = Criteria, Actions = Actions)
   output <- .securityhub$create_automation_rule_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -577,12 +592,13 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
     name = "CreateConfigurationPolicy",
     http_method = "POST",
     http_path = "/configurationPolicy/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$create_configuration_policy_input(Name = Name, Description = Description, ConfigurationPolicy = ConfigurationPolicy, Tags = Tags)
   output <- .securityhub$create_configuration_policy_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -636,12 +652,13 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
     name = "CreateFindingAggregator",
     http_method = "POST",
     http_path = "/findingAggregator/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$create_finding_aggregator_input(RegionLinkingMode = RegionLinkingMode, Regions = Regions)
   output <- .securityhub$create_finding_aggregator_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -672,12 +689,13 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
     name = "CreateInsight",
     http_method = "POST",
     http_path = "/insights",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$create_insight_input(Name = Name, Filters = Filters, GroupByAttribute = GroupByAttribute)
   output <- .securityhub$create_insight_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -705,12 +723,13 @@ securityhub_create_members <- function(AccountDetails) {
     name = "CreateMembers",
     http_method = "POST",
     http_path = "/members",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$create_members_input(AccountDetails = AccountDetails)
   output <- .securityhub$create_members_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -735,12 +754,13 @@ securityhub_decline_invitations <- function(AccountIds) {
     name = "DeclineInvitations",
     http_method = "POST",
     http_path = "/invitations/decline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$decline_invitations_input(AccountIds = AccountIds)
   output <- .securityhub$decline_invitations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -764,12 +784,13 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
     name = "DeleteActionTarget",
     http_method = "DELETE",
     http_path = "/actionTargets/{ActionTargetArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$delete_action_target_input(ActionTargetArn = ActionTargetArn)
   output <- .securityhub$delete_action_target_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -794,12 +815,13 @@ securityhub_delete_configuration_policy <- function(Identifier) {
     name = "DeleteConfigurationPolicy",
     http_method = "DELETE",
     http_path = "/configurationPolicy/{Identifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$delete_configuration_policy_input(Identifier = Identifier)
   output <- .securityhub$delete_configuration_policy_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -824,12 +846,13 @@ securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
     name = "DeleteFindingAggregator",
     http_method = "DELETE",
     http_path = "/findingAggregator/delete/{FindingAggregatorArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$delete_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn)
   output <- .securityhub$delete_finding_aggregator_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -853,12 +876,13 @@ securityhub_delete_insight <- function(InsightArn) {
     name = "DeleteInsight",
     http_method = "DELETE",
     http_path = "/insights/{InsightArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$delete_insight_input(InsightArn = InsightArn)
   output <- .securityhub$delete_insight_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -884,12 +908,13 @@ securityhub_delete_invitations <- function(AccountIds) {
     name = "DeleteInvitations",
     http_method = "POST",
     http_path = "/invitations/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$delete_invitations_input(AccountIds = AccountIds)
   output <- .securityhub$delete_invitations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -913,12 +938,13 @@ securityhub_delete_members <- function(AccountIds) {
     name = "DeleteMembers",
     http_method = "POST",
     http_path = "/members/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$delete_members_input(AccountIds = AccountIds)
   output <- .securityhub$delete_members_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -952,12 +978,13 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
     name = "DescribeActionTargets",
     http_method = "POST",
     http_path = "/actionTargets/get",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ActionTargets")
   )
   input <- .securityhub$describe_action_targets_input(ActionTargetArns = ActionTargetArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_action_targets_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -982,12 +1009,13 @@ securityhub_describe_hub <- function(HubArn = NULL) {
     name = "DescribeHub",
     http_method = "GET",
     http_path = "/accounts",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$describe_hub_input(HubArn = HubArn)
   output <- .securityhub$describe_hub_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1012,12 +1040,13 @@ securityhub_describe_organization_configuration <- function() {
     name = "DescribeOrganizationConfiguration",
     http_method = "GET",
     http_path = "/organization/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$describe_organization_configuration_input()
   output <- .securityhub$describe_organization_configuration_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1049,12 +1078,13 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
     name = "DescribeProducts",
     http_method = "GET",
     http_path = "/products",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Products")
   )
   input <- .securityhub$describe_products_input(NextToken = NextToken, MaxResults = MaxResults, ProductArn = ProductArn)
   output <- .securityhub$describe_products_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1085,12 +1115,13 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
     name = "DescribeStandards",
     http_method = "GET",
     http_path = "/standards",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Standards")
   )
   input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_standards_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1125,12 +1156,13 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
     name = "DescribeStandardsControls",
     http_method = "GET",
     http_path = "/standards/controls/{StandardsSubscriptionArn+}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Controls")
   )
   input <- .securityhub$describe_standards_controls_input(StandardsSubscriptionArn = StandardsSubscriptionArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_standards_controls_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1154,12 +1186,13 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
     name = "DisableImportFindingsForProduct",
     http_method = "DELETE",
     http_path = "/productSubscriptions/{ProductSubscriptionArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$disable_import_findings_for_product_input(ProductSubscriptionArn = ProductSubscriptionArn)
   output <- .securityhub$disable_import_findings_for_product_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1184,12 +1217,13 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
     name = "DisableOrganizationAdminAccount",
     http_method = "POST",
     http_path = "/organization/admin/disable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$disable_organization_admin_account_input(AdminAccountId = AdminAccountId)
   output <- .securityhub$disable_organization_admin_account_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1214,12 +1248,13 @@ securityhub_disable_security_hub <- function() {
     name = "DisableSecurityHub",
     http_method = "DELETE",
     http_path = "/accounts",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$disable_security_hub_input()
   output <- .securityhub$disable_security_hub_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1244,12 +1279,13 @@ securityhub_disassociate_from_administrator_account <- function() {
     name = "DisassociateFromAdministratorAccount",
     http_method = "POST",
     http_path = "/administrator/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$disassociate_from_administrator_account_input()
   output <- .securityhub$disassociate_from_administrator_account_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1273,12 +1309,13 @@ securityhub_disassociate_from_master_account <- function() {
     name = "DisassociateFromMasterAccount",
     http_method = "POST",
     http_path = "/master/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$disassociate_from_master_account_input()
   output <- .securityhub$disassociate_from_master_account_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1304,12 +1341,13 @@ securityhub_disassociate_members <- function(AccountIds) {
     name = "DisassociateMembers",
     http_method = "POST",
     http_path = "/members/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$disassociate_members_input(AccountIds = AccountIds)
   output <- .securityhub$disassociate_members_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1333,12 +1371,13 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
     name = "EnableImportFindingsForProduct",
     http_method = "POST",
     http_path = "/productSubscriptions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$enable_import_findings_for_product_input(ProductArn = ProductArn)
   output <- .securityhub$enable_import_findings_for_product_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1363,12 +1402,13 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
     name = "EnableOrganizationAdminAccount",
     http_method = "POST",
     http_path = "/organization/admin/enable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$enable_organization_admin_account_input(AdminAccountId = AdminAccountId)
   output <- .securityhub$enable_organization_admin_account_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1412,12 +1452,13 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
     name = "EnableSecurityHub",
     http_method = "POST",
     http_path = "/accounts",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$enable_security_hub_input(Tags = Tags, EnableDefaultStandards = EnableDefaultStandards, ControlFindingGenerator = ControlFindingGenerator)
   output <- .securityhub$enable_security_hub_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1442,12 +1483,13 @@ securityhub_get_administrator_account <- function() {
     name = "GetAdministratorAccount",
     http_method = "GET",
     http_path = "/administrator",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_administrator_account_input()
   output <- .securityhub$get_administrator_account_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1472,12 +1514,13 @@ securityhub_get_configuration_policy <- function(Identifier) {
     name = "GetConfigurationPolicy",
     http_method = "GET",
     http_path = "/configurationPolicy/get/{Identifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_configuration_policy_input(Identifier = Identifier)
   output <- .securityhub$get_configuration_policy_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1503,12 +1546,13 @@ securityhub_get_configuration_policy_association <- function(Target) {
     name = "GetConfigurationPolicyAssociation",
     http_method = "POST",
     http_path = "/configurationPolicyAssociation/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_configuration_policy_association_input(Target = Target)
   output <- .securityhub$get_configuration_policy_association_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1541,12 +1585,13 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
     name = "GetEnabledStandards",
     http_method = "POST",
     http_path = "/standards/get",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StandardsSubscriptions")
   )
   input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_enabled_standards_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1572,12 +1617,13 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
     name = "GetFindingAggregator",
     http_method = "GET",
     http_path = "/findingAggregator/get/{FindingAggregatorArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn)
   output <- .securityhub$get_finding_aggregator_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1674,12 +1720,13 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
     name = "GetFindingHistory",
     http_method = "POST",
     http_path = "/findingHistory/get",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Records")
   )
   input <- .securityhub$get_finding_history_input(FindingIdentifier = FindingIdentifier, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_finding_history_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1720,12 +1767,13 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
     name = "GetFindings",
     http_method = "POST",
     http_path = "/findings",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Findings")
   )
   input <- .securityhub$get_findings_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_findings_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1750,12 +1798,13 @@ securityhub_get_insight_results <- function(InsightArn) {
     name = "GetInsightResults",
     http_method = "GET",
     http_path = "/insights/results/{InsightArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_insight_results_input(InsightArn = InsightArn)
   output <- .securityhub$get_insight_results_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1789,12 +1838,13 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
     name = "GetInsights",
     http_method = "POST",
     http_path = "/insights/get",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Insights")
   )
   input <- .securityhub$get_insights_input(InsightArns = InsightArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_insights_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1820,12 +1870,13 @@ securityhub_get_invitations_count <- function() {
     name = "GetInvitationsCount",
     http_method = "GET",
     http_path = "/invitations/count",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_invitations_count_input()
   output <- .securityhub$get_invitations_count_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1849,12 +1900,13 @@ securityhub_get_master_account <- function() {
     name = "GetMasterAccount",
     http_method = "GET",
     http_path = "/master",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_master_account_input()
   output <- .securityhub$get_master_account_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1880,12 +1932,13 @@ securityhub_get_members <- function(AccountIds) {
     name = "GetMembers",
     http_method = "POST",
     http_path = "/members/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_members_input(AccountIds = AccountIds)
   output <- .securityhub$get_members_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1910,12 +1963,13 @@ securityhub_get_security_control_definition <- function(SecurityControlId) {
     name = "GetSecurityControlDefinition",
     http_method = "GET",
     http_path = "/securityControl/definition",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$get_security_control_definition_input(SecurityControlId = SecurityControlId)
   output <- .securityhub$get_security_control_definition_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1941,12 +1995,13 @@ securityhub_invite_members <- function(AccountIds) {
     name = "InviteMembers",
     http_method = "POST",
     http_path = "/members/invite",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$invite_members_input(AccountIds = AccountIds)
   output <- .securityhub$invite_members_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1975,12 +2030,13 @@ securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NUL
     name = "ListAutomationRules",
     http_method = "GET",
     http_path = "/automationrules/list",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$list_automation_rules_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_automation_rules_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2022,12 +2078,13 @@ securityhub_list_configuration_policies <- function(NextToken = NULL, MaxResults
     name = "ListConfigurationPolicies",
     http_method = "GET",
     http_path = "/configurationPolicy/list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationPolicySummaries")
   )
   input <- .securityhub$list_configuration_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_configuration_policies_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2072,12 +2129,13 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
     name = "ListConfigurationPolicyAssociations",
     http_method = "POST",
     http_path = "/configurationPolicyAssociation/list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationPolicyAssociationSummaries")
   )
   input <- .securityhub$list_configuration_policy_associations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .securityhub$list_configuration_policy_associations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2109,12 +2167,13 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
     name = "ListEnabledProductsForImport",
     http_method = "GET",
     http_path = "/productSubscriptions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductSubscriptions")
   )
   input <- .securityhub$list_enabled_products_for_import_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_enabled_products_for_import_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2142,12 +2201,13 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
     name = "ListFindingAggregators",
     http_method = "GET",
     http_path = "/findingAggregator/list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FindingAggregators")
   )
   input <- .securityhub$list_finding_aggregators_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_finding_aggregators_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2179,12 +2239,13 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListInvitations",
     http_method = "GET",
     http_path = "/invitations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Invitations")
   )
   input <- .securityhub$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_invitations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2226,12 +2287,13 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
     name = "ListMembers",
     http_method = "GET",
     http_path = "/members",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Members")
   )
   input <- .securityhub$list_members_input(OnlyAssociated = OnlyAssociated, MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_members_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2260,12 +2322,13 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
     http_path = "/organization/admin",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts")
   )
   input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_organization_admin_accounts_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2297,12 +2360,13 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
     name = "ListSecurityControlDefinitions",
     http_method = "GET",
     http_path = "/securityControls/definitions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecurityControlDefinitions")
   )
   input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_security_control_definitions_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2338,12 +2402,13 @@ securityhub_list_standards_control_associations <- function(SecurityControlId, N
     name = "ListStandardsControlAssociations",
     http_method = "GET",
     http_path = "/associations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StandardsControlAssociationSummaries")
   )
   input <- .securityhub$list_standards_control_associations_input(SecurityControlId = SecurityControlId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_standards_control_associations_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2367,12 +2432,13 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .securityhub$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2387,8 +2453,9 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_start_configuration_policy_association/](https://www.paws-r-sdk.com/docs/securityhub_start_configuration_policy_association/) for full documentation.
 #'
-#' @param ConfigurationPolicyIdentifier &#91;required&#93; The Amazon Resource Name (ARN) or universally unique identifier (UUID)
-#' of the configuration policy.
+#' @param ConfigurationPolicyIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of a configuration policy, the
+#' universally unique identifier (UUID) of a configuration policy, or a
+#' value of `SELF_MANAGED_SECURITY_HUB` for a self-managed configuration.
 #' @param Target &#91;required&#93; The identifier of the target account, organizational unit, or the root
 #' to associate with the specified configuration.
 #'
@@ -2400,12 +2467,13 @@ securityhub_start_configuration_policy_association <- function(ConfigurationPoli
     name = "StartConfigurationPolicyAssociation",
     http_method = "POST",
     http_path = "/configurationPolicyAssociation/associate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$start_configuration_policy_association_input(ConfigurationPolicyIdentifier = ConfigurationPolicyIdentifier, Target = Target)
   output <- .securityhub$start_configuration_policy_association_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2422,8 +2490,9 @@ securityhub_start_configuration_policy_association <- function(ConfigurationPoli
 #'
 #' @param Target The identifier of the target account, organizational unit, or the root
 #' to disassociate from the specified configuration.
-#' @param ConfigurationPolicyIdentifier &#91;required&#93; The Amazon Resource Name (ARN) or universally unique identifier (UUID)
-#' of the configuration policy.
+#' @param ConfigurationPolicyIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of a configuration policy, the
+#' universally unique identifier (UUID) of a configuration policy, or a
+#' value of `SELF_MANAGED_SECURITY_HUB` for a self-managed configuration.
 #'
 #' @keywords internal
 #'
@@ -2433,12 +2502,13 @@ securityhub_start_configuration_policy_disassociation <- function(Target = NULL,
     name = "StartConfigurationPolicyDisassociation",
     http_method = "POST",
     http_path = "/configurationPolicyAssociation/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$start_configuration_policy_disassociation_input(Target = Target, ConfigurationPolicyIdentifier = ConfigurationPolicyIdentifier)
   output <- .securityhub$start_configuration_policy_disassociation_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2465,12 +2535,13 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .securityhub$tag_resource_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2496,12 +2567,13 @@ securityhub_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .securityhub$untag_resource_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2528,12 +2600,13 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
     name = "UpdateActionTarget",
     http_method = "PATCH",
     http_path = "/actionTargets/{ActionTargetArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_action_target_input(ActionTargetArn = ActionTargetArn, Name = Name, Description = Description)
   output <- .securityhub$update_action_target_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2576,12 +2649,13 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
     name = "UpdateConfigurationPolicy",
     http_method = "PATCH",
     http_path = "/configurationPolicy/{Identifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_configuration_policy_input(Identifier = Identifier, Name = Name, Description = Description, UpdatedReason = UpdatedReason, ConfigurationPolicy = ConfigurationPolicy)
   output <- .securityhub$update_configuration_policy_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2637,22 +2711,23 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
     name = "UpdateFindingAggregator",
     http_method = "PATCH",
     http_path = "/findingAggregator/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn, RegionLinkingMode = RegionLinkingMode, Regions = Regions)
   output <- .securityhub$update_finding_aggregator_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .securityhub$operations$update_finding_aggregator <- securityhub_update_finding_aggregator
 
-#' UpdateFindings is deprecated
+#' UpdateFindings is a deprecated operation
 #'
 #' @description
-#' [`update_findings`][securityhub_update_findings] is deprecated. Instead of [`update_findings`][securityhub_update_findings], use [`batch_update_findings`][securityhub_batch_update_findings].
+#' [`update_findings`][securityhub_update_findings] is a deprecated operation. Instead of [`update_findings`][securityhub_update_findings], use the [`batch_update_findings`][securityhub_batch_update_findings] operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_update_findings/](https://www.paws-r-sdk.com/docs/securityhub_update_findings/) for full documentation.
 #'
@@ -2669,12 +2744,13 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
     name = "UpdateFindings",
     http_method = "PATCH",
     http_path = "/findings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_findings_input(Filters = Filters, Note = Note, RecordState = RecordState)
   output <- .securityhub$update_findings_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2701,12 +2777,13 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
     name = "UpdateInsight",
     http_method = "PATCH",
     http_path = "/insights/{InsightArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_insight_input(InsightArn = InsightArn, Name = Name, Filters = Filters, GroupByAttribute = GroupByAttribute)
   output <- .securityhub$update_insight_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2757,12 +2834,13 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
     name = "UpdateOrganizationConfiguration",
     http_method = "POST",
     http_path = "/organization/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_organization_configuration_input(AutoEnable = AutoEnable, AutoEnableStandards = AutoEnableStandards, OrganizationConfiguration = OrganizationConfiguration)
   output <- .securityhub$update_organization_configuration_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2790,12 +2868,13 @@ securityhub_update_security_control <- function(SecurityControlId, Parameters, L
     name = "UpdateSecurityControl",
     http_method = "PATCH",
     http_path = "/securityControl/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_security_control_input(SecurityControlId = SecurityControlId, Parameters = Parameters, LastUpdateReason = LastUpdateReason)
   output <- .securityhub$update_security_control_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2835,12 +2914,13 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
     name = "UpdateSecurityHubConfiguration",
     http_method = "PATCH",
     http_path = "/accounts",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_security_hub_configuration_input(AutoEnableControls = AutoEnableControls, ControlFindingGenerator = ControlFindingGenerator)
   output <- .securityhub$update_security_hub_configuration_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2868,12 +2948,13 @@ securityhub_update_standards_control <- function(StandardsControlArn, ControlSta
     name = "UpdateStandardsControl",
     http_method = "PATCH",
     http_path = "/standards/control/{StandardsControlArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .securityhub$update_standards_control_input(StandardsControlArn = StandardsControlArn, ControlStatus = ControlStatus, DisabledReason = DisabledReason)
   output <- .securityhub$update_standards_control_output()
   config <- get_config()
-  svc <- .securityhub$service(config)
+  svc <- .securityhub$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

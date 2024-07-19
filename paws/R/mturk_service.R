@@ -168,7 +168,7 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
   target_prefix = "MTurkRequesterServiceV20170117"
 )
 
-.mturk$service <- function(config = list()) {
+.mturk$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.mturk$metadata, handlers, config)
+  new_service(.mturk$metadata, handlers, config, op)
 }

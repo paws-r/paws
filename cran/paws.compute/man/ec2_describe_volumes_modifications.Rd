@@ -41,8 +41,8 @@ is to be enabled (true | false).
 \item \code{volume-id} - The ID of the volume.
 }}
 
-\item{NextToken}{The token returned by a previous paginated request. Pagination continues
-from the end of the items returned by the previous request.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{MaxResults}{The maximum number of results (up to a limit of 500) to be returned in a
 paginated request. For more information, see

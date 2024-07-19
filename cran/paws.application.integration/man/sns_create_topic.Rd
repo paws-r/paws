@@ -23,7 +23,7 @@ For a FIFO (first-in-first-out) topic, the name must end with the
 
 \item{Attributes}{A map of attributes with their corresponding values.
 
-The following lists the names, descriptions, and values of the special
+The following lists names, descriptions, and values of the special
 request parameters that the \code{\link[=sns_create_topic]{create_topic}} action
 uses:
 \itemize{

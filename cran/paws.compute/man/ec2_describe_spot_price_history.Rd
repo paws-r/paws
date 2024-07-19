@@ -63,7 +63,7 @@ retrieving the price history data, in UTC format (for example,
 \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \description{
-Describes the Spot price history. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html}{Spot Instance pricing history} in the \emph{Amazon EC2 User Guide for Linux Instances}.
+Describes the Spot price history. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html}{Spot Instance pricing history} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_spot_price_history/} for full documentation.
 }

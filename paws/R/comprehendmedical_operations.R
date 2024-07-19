@@ -68,12 +68,13 @@ comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
     name = "DescribeEntitiesDetectionV2Job",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$describe_entities_detection_v2_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_entities_detection_v2_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -145,12 +146,13 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
     name = "DescribeICD10CMInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$describe_icd10cm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_icd10cm_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -223,12 +225,13 @@ comprehendmedical_describe_phi_detection_job <- function(JobId) {
     name = "DescribePHIDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$describe_phi_detection_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_phi_detection_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -300,12 +303,13 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
     name = "DescribeRxNormInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$describe_rx_norm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_rx_norm_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -377,12 +381,13 @@ comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
     name = "DescribeSNOMEDCTInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$describe_snomedct_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_snomedct_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -491,12 +496,13 @@ comprehendmedical_detect_entities <- function(Text) {
     name = "DetectEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$detect_entities_input(Text = Text)
   output <- .comprehendmedical$detect_entities_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -616,12 +622,13 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
     name = "DetectEntitiesV2",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$detect_entities_v2_input(Text = Text)
   output <- .comprehendmedical$detect_entities_v2_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -706,12 +713,13 @@ comprehendmedical_detect_phi <- function(Text) {
     name = "DetectPHI",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$detect_phi_input(Text = Text)
   output <- .comprehendmedical$detect_phi_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -803,12 +811,13 @@ comprehendmedical_infer_icd10cm <- function(Text) {
     name = "InferICD10CM",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$infer_icd10cm_input(Text = Text)
   output <- .comprehendmedical$infer_icd10cm_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -897,12 +906,13 @@ comprehendmedical_infer_rx_norm <- function(Text) {
     name = "InferRxNorm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$infer_rx_norm_input(Text = Text)
   output <- .comprehendmedical$infer_rx_norm_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1007,12 +1017,13 @@ comprehendmedical_infer_snomedct <- function(Text) {
     name = "InferSNOMEDCT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$infer_snomedct_input(Text = Text)
   output <- .comprehendmedical$infer_snomedct_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1101,12 +1112,13 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
     name = "ListEntitiesDetectionV2Jobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$list_entities_detection_v2_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_entities_detection_v2_jobs_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1195,12 +1207,13 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
     name = "ListICD10CMInferenceJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$list_icd10cm_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_icd10cm_inference_jobs_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1290,12 +1303,13 @@ comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken =
     name = "ListPHIDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$list_phi_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_phi_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1383,12 +1397,13 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
     name = "ListRxNormInferenceJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$list_rx_norm_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_rx_norm_inference_jobs_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1475,12 +1490,13 @@ comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextTo
     name = "ListSNOMEDCTInferenceJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$list_snomedct_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_snomedct_inference_jobs_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1554,12 +1570,13 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
     name = "StartEntitiesDetectionV2Job",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$start_entities_detection_v2_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_entities_detection_v2_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1632,12 +1649,13 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
     name = "StartICD10CMInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$start_icd10cm_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_icd10cm_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1709,12 +1727,13 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
     name = "StartPHIDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$start_phi_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_phi_detection_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1787,12 +1806,13 @@ comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, Outpu
     name = "StartRxNormInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$start_rx_norm_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_rx_norm_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1862,12 +1882,13 @@ comprehendmedical_start_snomedct_inference_job <- function(InputDataConfig, Outp
     name = "StartSNOMEDCTInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$start_snomedct_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_snomedct_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1909,12 +1930,13 @@ comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
     name = "StopEntitiesDetectionV2Job",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$stop_entities_detection_v2_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_entities_detection_v2_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1956,12 +1978,13 @@ comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
     name = "StopICD10CMInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$stop_icd10cm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_icd10cm_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2003,12 +2026,13 @@ comprehendmedical_stop_phi_detection_job <- function(JobId) {
     name = "StopPHIDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$stop_phi_detection_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_phi_detection_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2050,12 +2074,13 @@ comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
     name = "StopRxNormInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$stop_rx_norm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_rx_norm_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2097,12 +2122,13 @@ comprehendmedical_stop_snomedct_inference_job <- function(JobId) {
     name = "StopSNOMEDCTInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehendmedical$stop_snomedct_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_snomedct_inference_job_output()
   config <- get_config()
-  svc <- .comprehendmedical$service(config)
+  svc <- .comprehendmedical$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

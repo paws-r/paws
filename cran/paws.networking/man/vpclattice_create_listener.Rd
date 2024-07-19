@@ -21,22 +21,18 @@ successfully using the same client token and parameters, the retry
 succeeds without performing any actions. If the parameters aren't
 identical, the retry fails.}
 
-\item{defaultAction}{[required] The action for the default rule. Each listener has a default rule. Each
-rule consists of a priority, one or more actions, and one or more
-conditions. The default rule is the rule that's used if no other rules
-match. Each rule must include exactly one of the following types of
-actions: \code{forward }or \code{fixed-response}, and it must be the last action
-to be performed.}
+\item{defaultAction}{[required] The action for the default rule. Each listener has a default rule. The
+default rule is used if no other rules match.}
 
 \item{name}{[required] The name of the listener. A listener name must be unique within a
 service. The valid characters are a-z, 0-9, and hyphens (-). You can't
 use a hyphen as the first or last character, or immediately after
 another hyphen.}
 
-\item{port}{The listener port. You can specify a value from \code{1} to \code{65535}. For
-HTTP, the default is \code{80}. For HTTPS, the default is \code{443}.}
+\item{port}{The listener port. You can specify a value from 1 to 65535. For HTTP,
+the default is 80. For HTTPS, the default is 443.}
 
-\item{protocol}{[required] The listener protocol HTTP or HTTPS.}
+\item{protocol}{[required] The listener protocol.}
 
 \item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
 

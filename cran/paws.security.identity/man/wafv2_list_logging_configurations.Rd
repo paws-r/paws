@@ -4,7 +4,12 @@
 \alias{wafv2_list_logging_configurations}
 \title{Retrieves an array of your LoggingConfiguration objects}
 \usage{
-wafv2_list_logging_configurations(Scope, NextMarker = NULL, Limit = NULL)
+wafv2_list_logging_configurations(
+  Scope,
+  NextMarker = NULL,
+  Limit = NULL,
+  LogScope = NULL
+)
 }
 \arguments{
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
@@ -30,6 +35,17 @@ of objects, provide the marker from the prior call in your next request.}
 request. If more objects are available, in the response, WAF provides a
 \code{NextMarker} value that you can use in a subsequent call to get the next
 batch of objects.}
+
+\item{LogScope}{The owner of the logging configuration, which must be set to \code{CUSTOMER}
+for the configurations that you manage.
+
+The log scope \code{SECURITY_LAKE} indicates a configuration that is managed
+through Amazon Security Lake. You can use Security Lake to collect log
+and event data from various sources for normalization, analysis, and
+management. For information, see \href{https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html}{Collecting data from Amazon Web Services services}
+in the \emph{Amazon Security Lake user guide}.
+
+Default: \code{CUSTOMER}}
 }
 \description{
 Retrieves an array of your LoggingConfiguration objects.

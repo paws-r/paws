@@ -176,7 +176,7 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
   target_prefix = "ACMPrivateCA"
 )
 
-.acmpca$service <- function(config = list()) {
+.acmpca$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.acmpca$metadata, handlers, config)
+  new_service(.acmpca$metadata, handlers, config, op)
 }

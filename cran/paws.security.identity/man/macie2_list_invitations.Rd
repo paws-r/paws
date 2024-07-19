@@ -2,7 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_list_invitations}
 \alias{macie2_list_invitations}
-\title{Retrieves information about the Amazon Macie membership invitations that
+\title{Retrieves information about Amazon Macie membership invitations that
 were received by an account}
 \usage{
 macie2_list_invitations(maxResults = NULL, nextToken = NULL)
@@ -15,7 +15,7 @@ response.}
 paginated response.}
 }
 \description{
-Retrieves information about the Amazon Macie membership invitations that were received by an account.
+Retrieves information about Amazon Macie membership invitations that were received by an account.
 
 See \url{https://www.paws-r-sdk.com/docs/macie2_list_invitations/} for full documentation.
 }

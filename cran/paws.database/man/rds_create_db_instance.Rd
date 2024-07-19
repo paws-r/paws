@@ -66,7 +66,8 @@ rds_create_db_instance(
   CACertificateIdentifier = NULL,
   DBSystemId = NULL,
   DedicatedLogVolume = NULL,
-  MultiTenant = NULL
+  MultiTenant = NULL,
+  EngineLifecycleSupport = NULL
 )
 }
 \arguments{
@@ -89,9 +90,9 @@ Constraints:
 \strong{Amazon Aurora PostgreSQL}
 
 The name of the database to create when the primary DB instance of the
-Aurora PostgreSQL DB cluster is created. If this parameter isn't
-specified for an Aurora PostgreSQL DB cluster, a database named
-\code{postgres} is created in the DB cluster.
+Aurora PostgreSQL DB cluster is created. A database named \code{postgres} is
+always created. If this parameter is specified, an additional database
+with this name is created.
 
 Constraints:
 \itemize{
@@ -179,9 +180,9 @@ Constraints:
 
 \strong{RDS for PostgreSQL}
 
-The name of the database to create when the DB instance is created. If
-this parameter isn't specified, a database named \code{postgres} is created
-in the DB instance.
+The name of the database to create when the DB instance is created. A
+database named \code{postgres} is always created. If this parameter is
+specified, an additional database with this name is created.
 
 Constraints:
 \itemize{
@@ -599,11 +600,20 @@ If you create an RDS Custom DB instance, you must set
 
 \item{LicenseModel}{The license model information for this DB instance.
 
+License models for RDS for Db2 require additional configuration. The
+Bring Your Own License (BYOL) model requires a custom parameter group.
+The Db2 license through Amazon Web Services Marketplace model requires
+an Amazon Web Services Marketplace subscription. For more information,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html}{RDS for Db2 licensing options}
+in the \emph{Amazon RDS User Guide}.
+
+The default for RDS for Db2 is \code{bring-your-own-license}.
+
 This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.
 
 Valid Values:
 \itemize{
-\item RDS for Db2 - \code{bring-your-own-license}
+\item RDS for Db2 - \code{bring-your-own-license | marketplace-license}
 \item RDS for MariaDB - \code{general-public-license}
 \item RDS for Microsoft SQL Server - \code{license-included}
 \item RDS for MySQL - \code{general-public-license}
@@ -1079,6 +1089,30 @@ the request fails.
 DB instance, you can't later modify this DB instance to use the
 single-tenant configuration.
 }}
+
+\item{EngineLifecycleSupport}{The life cycle type for this DB instance.
+
+By default, this value is set to \code{open-source-rds-extended-support},
+which enrolls your DB instance into Amazon RDS Extended Support. At the
+end of standard support, you can avoid charges for Extended Support by
+setting the value to \code{open-source-rds-extended-support-disabled}. In
+this case, creating the DB instance will fail if the DB major version is
+past its end of standard support date.
+
+This setting applies only to RDS for MySQL and RDS for PostgreSQL. For
+Amazon Aurora DB instances, the life cycle type is managed by the DB
+cluster.
+
+You can use this setting to enroll your DB instance into Amazon RDS
+Extended Support. With RDS Extended Support, you can run the selected
+major engine version on your DB instance past the end of standard
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon RDS User Guide}.
+
+Valid Values:
+\code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
+
+Default: \code{open-source-rds-extended-support}}
 }
 \description{
 Creates a new DB instance.

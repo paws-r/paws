@@ -88,12 +88,13 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
     name = "CreateLifecyclePolicy",
     http_method = "POST",
     http_path = "/policies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails, Tags = Tags, DefaultPolicy = DefaultPolicy, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$create_lifecycle_policy_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -118,12 +119,13 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
     name = "DeleteLifecyclePolicy",
     http_method = "DELETE",
     http_path = "/policies/{policyId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$delete_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$delete_lifecycle_policy_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -167,12 +169,13 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
     name = "GetLifecyclePolicies",
     http_method = "GET",
     http_path = "/policies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$get_lifecycle_policies_input(PolicyIds = PolicyIds, State = State, ResourceTypes = ResourceTypes, TargetTags = TargetTags, TagsToAdd = TagsToAdd, DefaultPolicyType = DefaultPolicyType)
   output <- .dlm$get_lifecycle_policies_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -196,12 +199,13 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
     name = "GetLifecyclePolicy",
     http_method = "GET",
     http_path = "/policies/{policyId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$get_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$get_lifecycle_policy_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -225,12 +229,13 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .dlm$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -255,12 +260,13 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .dlm$tag_resource_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -285,12 +291,13 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .dlm$untag_resource_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -359,12 +366,13 @@ dlm_update_lifecycle_policy <- function(PolicyId, ExecutionRoleArn = NULL, State
     name = "UpdateLifecyclePolicy",
     http_method = "PATCH",
     http_path = "/policies/{policyId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dlm$update_lifecycle_policy_input(PolicyId = PolicyId, ExecutionRoleArn = ExecutionRoleArn, State = State, Description = Description, PolicyDetails = PolicyDetails, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$update_lifecycle_policy_output()
   config <- get_config()
-  svc <- .dlm$service(config)
+  svc <- .dlm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -8,6 +8,7 @@ workspacesweb_update_user_settings(
   clientToken = NULL,
   cookieSynchronizationConfiguration = NULL,
   copyAllowed = NULL,
+  deepLinkAllowed = NULL,
   disconnectTimeoutInMinutes = NULL,
   downloadAllowed = NULL,
   idleDisconnectTimeoutInMinutes = NULL,
@@ -35,6 +36,9 @@ null.}
 
 \item{copyAllowed}{Specifies whether the user can copy text from the streaming session to
 the local device.}
+
+\item{deepLinkAllowed}{Specifies whether the user can use deep links that open automatically
+when connecting to a session.}
 
 \item{disconnectTimeoutInMinutes}{The amount of time that a streaming session remains active after users
 disconnect.}

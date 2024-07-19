@@ -179,7 +179,7 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "AWSFMS_20180101"
 )
 
-.fms$service <- function(config = list()) {
+.fms$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.fms$metadata, handlers, config)
+  new_service(.fms$metadata, handlers, config, op)
 }

@@ -34,12 +34,13 @@ pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NUL
     name = "CreateConfigurationSet",
     http_method = "POST",
     http_path = "/v1/sms-voice/configuration-sets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoice$create_configuration_set_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -97,12 +98,13 @@ pinpointsmsvoice_create_configuration_set_event_destination <- function(Configur
     name = "CreateConfigurationSetEventDestination",
     http_method = "POST",
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$create_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination, EventDestinationName = EventDestinationName)
   output <- .pinpointsmsvoice$create_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -139,12 +141,13 @@ pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
     name = "DeleteConfigurationSet",
     http_method = "DELETE",
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$delete_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoice$delete_configuration_set_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -184,12 +187,13 @@ pinpointsmsvoice_delete_configuration_set_event_destination <- function(Configur
     name = "DeleteConfigurationSetEventDestination",
     http_method = "DELETE",
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$delete_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName)
   output <- .pinpointsmsvoice$delete_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -255,12 +259,13 @@ pinpointsmsvoice_get_configuration_set_event_destinations <- function(Configurat
     name = "GetConfigurationSetEventDestinations",
     http_method = "GET",
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$get_configuration_set_event_destinations_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoice$get_configuration_set_event_destinations_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -311,12 +316,13 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
     name = "ListConfigurationSets",
     http_method = "GET",
     http_path = "/v1/sms-voice/configuration-sets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$list_configuration_sets_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointsmsvoice$list_configuration_sets_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -386,12 +392,13 @@ pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSe
     name = "SendVoiceMessage",
     http_method = "POST",
     http_path = "/v1/sms-voice/voice/message",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$send_voice_message_input(CallerId = CallerId, ConfigurationSetName = ConfigurationSetName, Content = Content, DestinationPhoneNumber = DestinationPhoneNumber, OriginationPhoneNumber = OriginationPhoneNumber)
   output <- .pinpointsmsvoice$send_voice_message_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -452,12 +459,13 @@ pinpointsmsvoice_update_configuration_set_event_destination <- function(Configur
     name = "UpdateConfigurationSetEventDestination",
     http_method = "PUT",
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointsmsvoice$update_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination, EventDestinationName = EventDestinationName)
   output <- .pinpointsmsvoice$update_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .pinpointsmsvoice$service(config)
+  svc <- .pinpointsmsvoice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

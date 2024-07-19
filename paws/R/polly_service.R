@@ -145,7 +145,7 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
   target_prefix = ""
 )
 
-.polly$service <- function(config = list()) {
+.polly$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.polly$metadata, handlers, config)
+  new_service(.polly$metadata, handlers, config, op)
 }

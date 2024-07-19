@@ -26,12 +26,13 @@ connect_activate_evaluation_form <- function(InstanceId, EvaluationFormId, Evalu
     name = "ActivateEvaluationForm",
     http_method = "POST",
     http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}/activate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$activate_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
   output <- .connect$activate_evaluation_form_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -64,12 +65,13 @@ connect_associate_analytics_data_set <- function(InstanceId, DataSetId, TargetAc
     name = "AssociateAnalyticsDataSet",
     http_method = "PUT",
     http_path = "/analytics-data/instance/{InstanceId}/association",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_analytics_data_set_input(InstanceId = InstanceId, DataSetId = DataSetId, TargetAccountId = TargetAccountId)
   output <- .connect$associate_analytics_data_set_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -98,12 +100,13 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
     name = "AssociateApprovedOrigin",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/approved-origin",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_approved_origin_input(InstanceId = InstanceId, Origin = Origin)
   output <- .connect$associate_approved_origin_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -133,12 +136,13 @@ connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
     name = "AssociateBot",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/bot",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_bot_input(InstanceId = InstanceId, LexBot = LexBot, LexV2Bot = LexV2Bot)
   output <- .connect$associate_bot_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -170,12 +174,13 @@ connect_associate_default_vocabulary <- function(InstanceId, LanguageCode, Vocab
     name = "AssociateDefaultVocabulary",
     http_method = "PUT",
     http_path = "/default-vocabulary/{InstanceId}/{LanguageCode}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_default_vocabulary_input(InstanceId = InstanceId, LanguageCode = LanguageCode, VocabularyId = VocabularyId)
   output <- .connect$associate_default_vocabulary_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -205,12 +210,13 @@ connect_associate_flow <- function(InstanceId, ResourceId, FlowId, ResourceType)
     name = "AssociateFlow",
     http_method = "PUT",
     http_path = "/flow-associations/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_flow_input(InstanceId = InstanceId, ResourceId = ResourceId, FlowId = FlowId, ResourceType = ResourceType)
   output <- .connect$associate_flow_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -255,12 +261,13 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
     name = "AssociateInstanceStorageConfig",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/storage-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_instance_storage_config_input(InstanceId = InstanceId, ResourceType = ResourceType, StorageConfig = StorageConfig)
   output <- .connect$associate_instance_storage_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -290,12 +297,13 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
     name = "AssociateLambdaFunction",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/lambda-function",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_lambda_function_input(InstanceId = InstanceId, FunctionArn = FunctionArn)
   output <- .connect$associate_lambda_function_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -324,12 +332,13 @@ connect_associate_lex_bot <- function(InstanceId, LexBot) {
     name = "AssociateLexBot",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/lex-bot",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_lex_bot_input(InstanceId = InstanceId, LexBot = LexBot)
   output <- .connect$associate_lex_bot_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -359,12 +368,13 @@ connect_associate_phone_number_contact_flow <- function(PhoneNumberId, InstanceI
     name = "AssociatePhoneNumberContactFlow",
     http_method = "PUT",
     http_path = "/phone-number/{PhoneNumberId}/contact-flow",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_phone_number_contact_flow_input(PhoneNumberId = PhoneNumberId, InstanceId = InstanceId, ContactFlowId = ContactFlowId)
   output <- .connect$associate_phone_number_contact_flow_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -394,12 +404,13 @@ connect_associate_queue_quick_connects <- function(InstanceId, QueueId, QuickCon
     name = "AssociateQueueQuickConnects",
     http_method = "POST",
     http_path = "/queues/{InstanceId}/{QueueId}/associate-quick-connects",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_queue_quick_connects_input(InstanceId = InstanceId, QueueId = QueueId, QuickConnectIds = QuickConnectIds)
   output <- .connect$associate_queue_quick_connects_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -428,12 +439,13 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
     name = "AssociateRoutingProfileQueues",
     http_method = "POST",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/associate-queues",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_routing_profile_queues_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, QueueConfigs = QueueConfigs)
   output <- .connect$associate_routing_profile_queues_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -462,12 +474,13 @@ connect_associate_security_key <- function(InstanceId, Key) {
     name = "AssociateSecurityKey",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/security-key",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_security_key_input(InstanceId = InstanceId, Key = Key)
   output <- .connect$associate_security_key_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -500,12 +513,13 @@ connect_associate_traffic_distribution_group_user <- function(TrafficDistributio
     name = "AssociateTrafficDistributionGroupUser",
     http_method = "PUT",
     http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}/user",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_traffic_distribution_group_user_input(TrafficDistributionGroupId = TrafficDistributionGroupId, UserId = UserId, InstanceId = InstanceId)
   output <- .connect$associate_traffic_distribution_group_user_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -532,12 +546,13 @@ connect_associate_user_proficiencies <- function(InstanceId, UserId, UserProfici
     name = "AssociateUserProficiencies",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/associate-proficiencies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$associate_user_proficiencies_input(InstanceId = InstanceId, UserId = UserId, UserProficiencies = UserProficiencies)
   output <- .connect$associate_user_proficiencies_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -570,12 +585,13 @@ connect_batch_associate_analytics_data_set <- function(InstanceId, DataSetIds, T
     name = "BatchAssociateAnalyticsDataSet",
     http_method = "PUT",
     http_path = "/analytics-data/instance/{InstanceId}/associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$batch_associate_analytics_data_set_input(InstanceId = InstanceId, DataSetIds = DataSetIds, TargetAccountId = TargetAccountId)
   output <- .connect$batch_associate_analytics_data_set_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -608,17 +624,55 @@ connect_batch_disassociate_analytics_data_set <- function(InstanceId, DataSetIds
     name = "BatchDisassociateAnalyticsDataSet",
     http_method = "POST",
     http_path = "/analytics-data/instance/{InstanceId}/associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$batch_disassociate_analytics_data_set_input(InstanceId = InstanceId, DataSetIds = DataSetIds, TargetAccountId = TargetAccountId)
   output <- .connect$batch_disassociate_analytics_data_set_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$batch_disassociate_analytics_data_set <- connect_batch_disassociate_analytics_data_set
+
+#' Allows you to retrieve metadata about multiple attached files on an
+#' associated resource
+#'
+#' @description
+#' Allows you to retrieve metadata about multiple attached files on an associated resource. Each attached file provided in the input list must be associated with the input AssociatedResourceArn.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_batch_get_attached_file_metadata/](https://www.paws-r-sdk.com/docs/connect_batch_get_attached_file_metadata/) for full documentation.
+#'
+#' @param FileIds &#91;required&#93; The unique identifiers of the attached file resource.
+#' @param InstanceId &#91;required&#93; The unique identifier of the Connect instance.
+#' @param AssociatedResourceArn &#91;required&#93; The resource to which the attached file is (being) uploaded to.
+#' [Cases](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html)
+#' are the only current supported resource.
+#' 
+#' This value must be a valid ARN.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_batch_get_attached_file_metadata
+connect_batch_get_attached_file_metadata <- function(FileIds, InstanceId, AssociatedResourceArn) {
+  op <- new_operation(
+    name = "BatchGetAttachedFileMetadata",
+    http_method = "POST",
+    http_path = "/attached-files/{InstanceId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .connect$batch_get_attached_file_metadata_input(FileIds = FileIds, InstanceId = InstanceId, AssociatedResourceArn = AssociatedResourceArn)
+  output <- .connect$batch_get_attached_file_metadata_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$batch_get_attached_file_metadata <- connect_batch_get_attached_file_metadata
 
 #' Retrieve the flow associations for the given resources
 #'
@@ -642,12 +696,13 @@ connect_batch_get_flow_association <- function(InstanceId, ResourceIds, Resource
     name = "BatchGetFlowAssociation",
     http_method = "POST",
     http_path = "/flow-associations-batch/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$batch_get_flow_association_input(InstanceId = InstanceId, ResourceIds = ResourceIds, ResourceType = ResourceType)
   output <- .connect$batch_get_flow_association_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -681,12 +736,13 @@ connect_batch_put_contact <- function(ClientToken = NULL, InstanceId, ContactDat
     name = "BatchPutContact",
     http_method = "PUT",
     http_path = "/contact/batch/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$batch_put_contact_input(ClientToken = ClientToken, InstanceId = InstanceId, ContactDataRequestList = ContactDataRequestList)
   output <- .connect$batch_put_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -731,17 +787,55 @@ connect_claim_phone_number <- function(TargetArn = NULL, InstanceId = NULL, Phon
     name = "ClaimPhoneNumber",
     http_method = "POST",
     http_path = "/phone-number/claim",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$claim_phone_number_input(TargetArn = TargetArn, InstanceId = InstanceId, PhoneNumber = PhoneNumber, PhoneNumberDescription = PhoneNumberDescription, Tags = Tags, ClientToken = ClientToken)
   output <- .connect$claim_phone_number_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$claim_phone_number <- connect_claim_phone_number
+
+#' Allows you to confirm that the attached file has been uploaded using the
+#' pre-signed URL provided in the StartAttachedFileUpload API
+#'
+#' @description
+#' Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in the StartAttachedFileUpload API.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_complete_attached_file_upload/](https://www.paws-r-sdk.com/docs/connect_complete_attached_file_upload/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The unique identifier of the Amazon Connect instance.
+#' @param FileId &#91;required&#93; The unique identifier of the attached file resource.
+#' @param AssociatedResourceArn &#91;required&#93; The resource to which the attached file is (being) uploaded to.
+#' [Cases](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html)
+#' are the only current supported resource.
+#' 
+#' This value must be a valid ARN.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_complete_attached_file_upload
+connect_complete_attached_file_upload <- function(InstanceId, FileId, AssociatedResourceArn) {
+  op <- new_operation(
+    name = "CompleteAttachedFileUpload",
+    http_method = "POST",
+    http_path = "/attached-files/{InstanceId}/{FileId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .connect$complete_attached_file_upload_input(InstanceId = InstanceId, FileId = FileId, AssociatedResourceArn = AssociatedResourceArn)
+  output <- .connect$complete_attached_file_upload_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$complete_attached_file_upload <- connect_complete_attached_file_upload
 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
@@ -770,12 +864,13 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
     name = "CreateAgentStatus",
     http_method = "PUT",
     http_path = "/agent-status/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_agent_status_input(InstanceId = InstanceId, Name = Name, Description = Description, State = State, DisplayOrder = DisplayOrder, Tags = Tags)
   output <- .connect$create_agent_status_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -801,23 +896,28 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html).
 #' 
 #' Length Constraints: Minimum length of 1. Maximum length of 256000.
+#' @param Status Indicates the flow status as either `SAVED` or `PUBLISHED`. The
+#' `PUBLISHED` status will initiate validation on the content. the `SAVED`
+#' status does not initiate validation of the content. `SAVED` |
+#' `PUBLISHED`.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #' For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @keywords internal
 #'
 #' @rdname connect_create_contact_flow
-connect_create_contact_flow <- function(InstanceId, Name, Type, Description = NULL, Content, Tags = NULL) {
+connect_create_contact_flow <- function(InstanceId, Name, Type, Description = NULL, Content, Status = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateContactFlow",
     http_method = "PUT",
     http_path = "/contact-flows/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .connect$create_contact_flow_input(InstanceId = InstanceId, Name = Name, Type = Type, Description = Description, Content = Content, Tags = Tags)
+  input <- .connect$create_contact_flow_input(InstanceId = InstanceId, Name = Name, Type = Type, Description = Description, Content = Content, Status = Status, Tags = Tags)
   output <- .connect$create_contact_flow_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -856,12 +956,13 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
     name = "CreateContactFlowModule",
     http_method = "PUT",
     http_path = "/contact-flow-modules/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_contact_flow_module_input(InstanceId = InstanceId, Name = Name, Description = Description, Content = Content, Tags = Tags, ClientToken = ClientToken)
   output <- .connect$create_contact_flow_module_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -899,12 +1000,13 @@ connect_create_evaluation_form <- function(InstanceId, Title, Description = NULL
     name = "CreateEvaluationForm",
     http_method = "PUT",
     http_path = "/evaluation-forms/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_evaluation_form_input(InstanceId = InstanceId, Title = Title, Description = Description, Items = Items, ScoringStrategy = ScoringStrategy, ClientToken = ClientToken)
   output <- .connect$create_evaluation_form_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -939,12 +1041,13 @@ connect_create_hours_of_operation <- function(InstanceId, Name, Description = NU
     name = "CreateHoursOfOperation",
     http_method = "PUT",
     http_path = "/hours-of-operations/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_hours_of_operation_input(InstanceId = InstanceId, Name = Name, Description = Description, TimeZone = TimeZone, Config = Config, Tags = Tags)
   output <- .connect$create_hours_of_operation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -976,12 +1079,13 @@ connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, 
     name = "CreateInstance",
     http_method = "PUT",
     http_path = "/instance",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_instance_input(ClientToken = ClientToken, IdentityManagementType = IdentityManagementType, InstanceAlias = InstanceAlias, DirectoryId = DirectoryId, InboundCallsEnabled = InboundCallsEnabled, OutboundCallsEnabled = OutboundCallsEnabled, Tags = Tags)
   output <- .connect$create_instance_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1022,12 +1126,13 @@ connect_create_integration_association <- function(InstanceId, IntegrationType, 
     name = "CreateIntegrationAssociation",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/integration-associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_integration_association_input(InstanceId = InstanceId, IntegrationType = IntegrationType, IntegrationArn = IntegrationArn, SourceApplicationUrl = SourceApplicationUrl, SourceApplicationName = SourceApplicationName, SourceType = SourceType, Tags = Tags)
   output <- .connect$create_integration_association_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1066,12 +1171,13 @@ connect_create_participant <- function(InstanceId, ContactId, ClientToken = NULL
     name = "CreateParticipant",
     http_method = "POST",
     http_path = "/contact/create-participant",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_participant_input(InstanceId = InstanceId, ContactId = ContactId, ClientToken = ClientToken, ParticipantDetails = ParticipantDetails)
   output <- .connect$create_participant_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1168,12 +1274,13 @@ connect_create_persistent_contact_association <- function(InstanceId, InitialCon
     name = "CreatePersistentContactAssociation",
     http_method = "POST",
     http_path = "/contact/persistent-contact-association/{InstanceId}/{InitialContactId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_persistent_contact_association_input(InstanceId = InstanceId, InitialContactId = InitialContactId, RehydrationType = RehydrationType, SourceContactId = SourceContactId, ClientToken = ClientToken)
   output <- .connect$create_persistent_contact_association_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1201,12 +1308,13 @@ connect_create_predefined_attribute <- function(InstanceId, Name, Values) {
     name = "CreatePredefinedAttribute",
     http_method = "PUT",
     http_path = "/predefined-attributes/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_predefined_attribute_input(InstanceId = InstanceId, Name = Name, Values = Values)
   output <- .connect$create_predefined_attribute_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1216,7 +1324,7 @@ connect_create_predefined_attribute <- function(InstanceId, Name, Values) {
 #' Creates a prompt
 #'
 #' @description
-#' Creates a prompt. For more information about prompts, such as supported file types and maximum length, see [Create prompts](https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html) in the *Amazon Connect Administrator's Guide*.
+#' Creates a prompt. For more information about prompts, such as supported file types and maximum length, see [Create prompts](https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html) in the *Amazon Connect Administrator Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connect_create_prompt/](https://www.paws-r-sdk.com/docs/connect_create_prompt/) for full documentation.
 #'
@@ -1241,12 +1349,13 @@ connect_create_prompt <- function(InstanceId, Name, Description = NULL, S3Uri, T
     name = "CreatePrompt",
     http_method = "PUT",
     http_path = "/prompts/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_prompt_input(InstanceId = InstanceId, Name = Name, Description = Description, S3Uri = S3Uri, Tags = Tags)
   output <- .connect$create_prompt_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1283,12 +1392,13 @@ connect_create_queue <- function(InstanceId, Name, Description = NULL, OutboundC
     name = "CreateQueue",
     http_method = "PUT",
     http_path = "/queues/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_queue_input(InstanceId = InstanceId, Name = Name, Description = Description, OutboundCallerConfig = OutboundCallerConfig, HoursOfOperationId = HoursOfOperationId, MaxContacts = MaxContacts, QuickConnectIds = QuickConnectIds, Tags = Tags)
   output <- .connect$create_queue_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1320,12 +1430,13 @@ connect_create_quick_connect <- function(InstanceId, Name, Description = NULL, Q
     name = "CreateQuickConnect",
     http_method = "PUT",
     http_path = "/quick-connects/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_quick_connect_input(InstanceId = InstanceId, Name = Name, Description = Description, QuickConnectConfig = QuickConnectConfig, Tags = Tags)
   output <- .connect$create_quick_connect_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1372,12 +1483,13 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
     name = "CreateRoutingProfile",
     http_method = "PUT",
     http_path = "/routing-profiles/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_routing_profile_input(InstanceId = InstanceId, Name = Name, Description = Description, DefaultOutboundQueueId = DefaultOutboundQueueId, QueueConfigs = QueueConfigs, MediaConcurrencies = MediaConcurrencies, Tags = Tags, AgentAvailabilityTimer = AgentAvailabilityTimer)
   output <- .connect$create_routing_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1414,12 +1526,13 @@ connect_create_rule <- function(InstanceId, Name, TriggerEventSource, Function, 
     name = "CreateRule",
     http_method = "POST",
     http_path = "/rules/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_rule_input(InstanceId = InstanceId, Name = Name, TriggerEventSource = TriggerEventSource, Function = Function, Actions = Actions, PublishStatus = PublishStatus, ClientToken = ClientToken)
   output <- .connect$create_rule_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1465,12 +1578,13 @@ connect_create_security_profile <- function(SecurityProfileName, Description = N
     name = "CreateSecurityProfile",
     http_method = "PUT",
     http_path = "/security-profiles/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_security_profile_input(SecurityProfileName = SecurityProfileName, Description = Description, Permissions = Permissions, InstanceId = InstanceId, Tags = Tags, AllowedAccessControlTags = AllowedAccessControlTags, TagRestrictedResources = TagRestrictedResources, Applications = Applications, HierarchyRestrictedResources = HierarchyRestrictedResources, AllowedAccessControlHierarchyGroupId = AllowedAccessControlHierarchyGroupId)
   output <- .connect$create_security_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1514,12 +1628,13 @@ connect_create_task_template <- function(InstanceId, Name, Description = NULL, C
     name = "CreateTaskTemplate",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/task/template",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_task_template_input(InstanceId = InstanceId, Name = Name, Description = Description, ContactFlowId = ContactFlowId, Constraints = Constraints, Defaults = Defaults, Status = Status, Fields = Fields, ClientToken = ClientToken)
   output <- .connect$create_task_template_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1554,12 +1669,13 @@ connect_create_traffic_distribution_group <- function(Name, Description = NULL, 
     name = "CreateTrafficDistributionGroup",
     http_method = "PUT",
     http_path = "/traffic-distribution-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_traffic_distribution_group_input(Name = Name, Description = Description, InstanceId = InstanceId, ClientToken = ClientToken, Tags = Tags)
   output <- .connect$create_traffic_distribution_group_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1591,12 +1707,13 @@ connect_create_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
     name = "CreateUseCase",
     http_method = "PUT",
     http_path = "/instance/{InstanceId}/integration-associations/{IntegrationAssociationId}/use-cases",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_use_case_input(InstanceId = InstanceId, IntegrationAssociationId = IntegrationAssociationId, UseCaseType = UseCaseType, Tags = Tags)
   output <- .connect$create_use_case_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1656,12 +1773,13 @@ connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, 
     name = "CreateUser",
     http_method = "PUT",
     http_path = "/users/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_user_input(Username = Username, Password = Password, IdentityInfo = IdentityInfo, PhoneConfig = PhoneConfig, DirectoryUserId = DirectoryUserId, SecurityProfileIds = SecurityProfileIds, RoutingProfileId = RoutingProfileId, HierarchyGroupId = HierarchyGroupId, InstanceId = InstanceId, Tags = Tags)
   output <- .connect$create_user_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1694,12 +1812,13 @@ connect_create_user_hierarchy_group <- function(Name, ParentGroupId = NULL, Inst
     name = "CreateUserHierarchyGroup",
     http_method = "PUT",
     http_path = "/user-hierarchy-groups/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_user_hierarchy_group_input(Name = Name, ParentGroupId = ParentGroupId, InstanceId = InstanceId, Tags = Tags)
   output <- .connect$create_user_hierarchy_group_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1738,12 +1857,13 @@ connect_create_view <- function(InstanceId, ClientToken = NULL, Status, Content,
     name = "CreateView",
     http_method = "PUT",
     http_path = "/views/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_view_input(InstanceId = InstanceId, ClientToken = ClientToken, Status = Status, Content = Content, Description = Description, Name = Name, Tags = Tags)
   output <- .connect$create_view_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1771,12 +1891,13 @@ connect_create_view_version <- function(InstanceId, ViewId, VersionDescription =
     name = "CreateViewVersion",
     http_method = "PUT",
     http_path = "/views/{InstanceId}/{ViewId}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_view_version_input(InstanceId = InstanceId, ViewId = ViewId, VersionDescription = VersionDescription, ViewContentSha256 = ViewContentSha256)
   output <- .connect$create_view_version_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1823,12 +1944,13 @@ connect_create_vocabulary <- function(ClientToken = NULL, InstanceId, Vocabulary
     name = "CreateVocabulary",
     http_method = "POST",
     http_path = "/vocabulary/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$create_vocabulary_input(ClientToken = ClientToken, InstanceId = InstanceId, VocabularyName = VocabularyName, LanguageCode = LanguageCode, Content = Content, Tags = Tags)
   output <- .connect$create_vocabulary_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1858,17 +1980,54 @@ connect_deactivate_evaluation_form <- function(InstanceId, EvaluationFormId, Eva
     name = "DeactivateEvaluationForm",
     http_method = "POST",
     http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}/deactivate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$deactivate_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
   output <- .connect$deactivate_evaluation_form_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$deactivate_evaluation_form <- connect_deactivate_evaluation_form
+
+#' Deletes an attached file along with the underlying S3 Object
+#'
+#' @description
+#' Deletes an attached file along with the underlying S3 Object.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_delete_attached_file/](https://www.paws-r-sdk.com/docs/connect_delete_attached_file/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The unique identifier of the Connect instance.
+#' @param FileId &#91;required&#93; The unique identifier of the attached file resource.
+#' @param AssociatedResourceArn &#91;required&#93; The resource to which the attached file is (being) uploaded to.
+#' [Cases](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html)
+#' are the only current supported resource.
+#' 
+#' This value must be a valid ARN.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_attached_file
+connect_delete_attached_file <- function(InstanceId, FileId, AssociatedResourceArn) {
+  op <- new_operation(
+    name = "DeleteAttachedFile",
+    http_method = "DELETE",
+    http_path = "/attached-files/{InstanceId}/{FileId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .connect$delete_attached_file_input(InstanceId = InstanceId, FileId = FileId, AssociatedResourceArn = AssociatedResourceArn)
+  output <- .connect$delete_attached_file_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_attached_file <- connect_delete_attached_file
 
 #' Deletes a contact evaluation in the specified Amazon Connect instance
 #'
@@ -1891,12 +2050,13 @@ connect_delete_contact_evaluation <- function(InstanceId, EvaluationId) {
     name = "DeleteContactEvaluation",
     http_method = "DELETE",
     http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId)
   output <- .connect$delete_contact_evaluation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1924,12 +2084,13 @@ connect_delete_contact_flow <- function(InstanceId, ContactFlowId) {
     name = "DeleteContactFlow",
     http_method = "DELETE",
     http_path = "/contact-flows/{InstanceId}/{ContactFlowId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_contact_flow_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId)
   output <- .connect$delete_contact_flow_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1957,12 +2118,13 @@ connect_delete_contact_flow_module <- function(InstanceId, ContactFlowModuleId) 
     name = "DeleteContactFlowModule",
     http_method = "DELETE",
     http_path = "/contact-flow-modules/{InstanceId}/{ContactFlowModuleId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_contact_flow_module_input(InstanceId = InstanceId, ContactFlowModuleId = ContactFlowModuleId)
   output <- .connect$delete_contact_flow_module_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1991,12 +2153,13 @@ connect_delete_evaluation_form <- function(InstanceId, EvaluationFormId, Evaluat
     name = "DeleteEvaluationForm",
     http_method = "DELETE",
     http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
   output <- .connect$delete_evaluation_form_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2025,12 +2188,13 @@ connect_delete_hours_of_operation <- function(InstanceId, HoursOfOperationId) {
     name = "DeleteHoursOfOperation",
     http_method = "DELETE",
     http_path = "/hours-of-operations/{InstanceId}/{HoursOfOperationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_hours_of_operation_input(InstanceId = InstanceId, HoursOfOperationId = HoursOfOperationId)
   output <- .connect$delete_hours_of_operation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2058,12 +2222,13 @@ connect_delete_instance <- function(InstanceId) {
     name = "DeleteInstance",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_instance_input(InstanceId = InstanceId)
   output <- .connect$delete_instance_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2092,12 +2257,13 @@ connect_delete_integration_association <- function(InstanceId, IntegrationAssoci
     name = "DeleteIntegrationAssociation",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/integration-associations/{IntegrationAssociationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_integration_association_input(InstanceId = InstanceId, IntegrationAssociationId = IntegrationAssociationId)
   output <- .connect$delete_integration_association_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2124,12 +2290,13 @@ connect_delete_predefined_attribute <- function(InstanceId, Name) {
     name = "DeletePredefinedAttribute",
     http_method = "DELETE",
     http_path = "/predefined-attributes/{InstanceId}/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_predefined_attribute_input(InstanceId = InstanceId, Name = Name)
   output <- .connect$delete_predefined_attribute_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2157,12 +2324,13 @@ connect_delete_prompt <- function(InstanceId, PromptId) {
     name = "DeletePrompt",
     http_method = "DELETE",
     http_path = "/prompts/{InstanceId}/{PromptId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_prompt_input(InstanceId = InstanceId, PromptId = PromptId)
   output <- .connect$delete_prompt_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2190,12 +2358,13 @@ connect_delete_queue <- function(InstanceId, QueueId) {
     name = "DeleteQueue",
     http_method = "DELETE",
     http_path = "/queues/{InstanceId}/{QueueId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_queue_input(InstanceId = InstanceId, QueueId = QueueId)
   output <- .connect$delete_queue_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2223,12 +2392,13 @@ connect_delete_quick_connect <- function(InstanceId, QuickConnectId) {
     name = "DeleteQuickConnect",
     http_method = "DELETE",
     http_path = "/quick-connects/{InstanceId}/{QuickConnectId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_quick_connect_input(InstanceId = InstanceId, QuickConnectId = QuickConnectId)
   output <- .connect$delete_quick_connect_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2256,12 +2426,13 @@ connect_delete_routing_profile <- function(InstanceId, RoutingProfileId) {
     name = "DeleteRoutingProfile",
     http_method = "DELETE",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_routing_profile_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId)
   output <- .connect$delete_routing_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2289,12 +2460,13 @@ connect_delete_rule <- function(InstanceId, RuleId) {
     name = "DeleteRule",
     http_method = "DELETE",
     http_path = "/rules/{InstanceId}/{RuleId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_rule_input(InstanceId = InstanceId, RuleId = RuleId)
   output <- .connect$delete_rule_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2322,12 +2494,13 @@ connect_delete_security_profile <- function(InstanceId, SecurityProfileId) {
     name = "DeleteSecurityProfile",
     http_method = "DELETE",
     http_path = "/security-profiles/{InstanceId}/{SecurityProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_security_profile_input(InstanceId = InstanceId, SecurityProfileId = SecurityProfileId)
   output <- .connect$delete_security_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2355,12 +2528,13 @@ connect_delete_task_template <- function(InstanceId, TaskTemplateId) {
     name = "DeleteTaskTemplate",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/task/template/{TaskTemplateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_task_template_input(InstanceId = InstanceId, TaskTemplateId = TaskTemplateId)
   output <- .connect$delete_task_template_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2387,12 +2561,13 @@ connect_delete_traffic_distribution_group <- function(TrafficDistributionGroupId
     name = "DeleteTrafficDistributionGroup",
     http_method = "DELETE",
     http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_traffic_distribution_group_input(TrafficDistributionGroupId = TrafficDistributionGroupId)
   output <- .connect$delete_traffic_distribution_group_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2421,12 +2596,13 @@ connect_delete_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
     name = "DeleteUseCase",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/integration-associations/{IntegrationAssociationId}/use-cases/{UseCaseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_use_case_input(InstanceId = InstanceId, IntegrationAssociationId = IntegrationAssociationId, UseCaseId = UseCaseId)
   output <- .connect$delete_use_case_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2454,12 +2630,13 @@ connect_delete_user <- function(InstanceId, UserId) {
     name = "DeleteUser",
     http_method = "DELETE",
     http_path = "/users/{InstanceId}/{UserId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_user_input(InstanceId = InstanceId, UserId = UserId)
   output <- .connect$delete_user_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2487,12 +2664,13 @@ connect_delete_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) {
     name = "DeleteUserHierarchyGroup",
     http_method = "DELETE",
     http_path = "/user-hierarchy-groups/{InstanceId}/{HierarchyGroupId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_user_hierarchy_group_input(HierarchyGroupId = HierarchyGroupId, InstanceId = InstanceId)
   output <- .connect$delete_user_hierarchy_group_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2518,12 +2696,13 @@ connect_delete_view <- function(InstanceId, ViewId) {
     name = "DeleteView",
     http_method = "DELETE",
     http_path = "/views/{InstanceId}/{ViewId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_view_input(InstanceId = InstanceId, ViewId = ViewId)
   output <- .connect$delete_view_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2550,12 +2729,13 @@ connect_delete_view_version <- function(InstanceId, ViewId, ViewVersion) {
     name = "DeleteViewVersion",
     http_method = "DELETE",
     http_path = "/views/{InstanceId}/{ViewId}/versions/{ViewVersion}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_view_version_input(InstanceId = InstanceId, ViewId = ViewId, ViewVersion = ViewVersion)
   output <- .connect$delete_view_version_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2583,12 +2763,13 @@ connect_delete_vocabulary <- function(InstanceId, VocabularyId) {
     name = "DeleteVocabulary",
     http_method = "POST",
     http_path = "/vocabulary-remove/{InstanceId}/{VocabularyId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$delete_vocabulary_input(InstanceId = InstanceId, VocabularyId = VocabularyId)
   output <- .connect$delete_vocabulary_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2617,17 +2798,53 @@ connect_describe_agent_status <- function(InstanceId, AgentStatusId) {
     name = "DescribeAgentStatus",
     http_method = "GET",
     http_path = "/agent-status/{InstanceId}/{AgentStatusId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_agent_status_input(InstanceId = InstanceId, AgentStatusId = AgentStatusId)
   output <- .connect$describe_agent_status_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$describe_agent_status <- connect_describe_agent_status
+
+#' This API is in preview release for Amazon Connect and is subject to
+#' change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_describe_authentication_profile/](https://www.paws-r-sdk.com/docs/connect_describe_authentication_profile/) for full documentation.
+#'
+#' @param AuthenticationProfileId &#91;required&#93; A unique identifier for the authentication profile.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_describe_authentication_profile
+connect_describe_authentication_profile <- function(AuthenticationProfileId, InstanceId) {
+  op <- new_operation(
+    name = "DescribeAuthenticationProfile",
+    http_method = "GET",
+    http_path = "/authentication-profiles/{InstanceId}/{AuthenticationProfileId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .connect$describe_authentication_profile_input(AuthenticationProfileId = AuthenticationProfileId, InstanceId = InstanceId)
+  output <- .connect$describe_authentication_profile_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$describe_authentication_profile <- connect_describe_authentication_profile
 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
@@ -2651,12 +2868,13 @@ connect_describe_contact <- function(InstanceId, ContactId) {
     name = "DescribeContact",
     http_method = "GET",
     http_path = "/contacts/{InstanceId}/{ContactId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_contact_input(InstanceId = InstanceId, ContactId = ContactId)
   output <- .connect$describe_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2684,12 +2902,13 @@ connect_describe_contact_evaluation <- function(InstanceId, EvaluationId) {
     name = "DescribeContactEvaluation",
     http_method = "GET",
     http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId)
   output <- .connect$describe_contact_evaluation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2714,12 +2933,13 @@ connect_describe_contact_flow <- function(InstanceId, ContactFlowId) {
     name = "DescribeContactFlow",
     http_method = "GET",
     http_path = "/contact-flows/{InstanceId}/{ContactFlowId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_contact_flow_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId)
   output <- .connect$describe_contact_flow_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2747,12 +2967,13 @@ connect_describe_contact_flow_module <- function(InstanceId, ContactFlowModuleId
     name = "DescribeContactFlowModule",
     http_method = "GET",
     http_path = "/contact-flow-modules/{InstanceId}/{ContactFlowModuleId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_contact_flow_module_input(InstanceId = InstanceId, ContactFlowModuleId = ContactFlowModuleId)
   output <- .connect$describe_contact_flow_module_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2781,12 +3002,13 @@ connect_describe_evaluation_form <- function(InstanceId, EvaluationFormId, Evalu
     name = "DescribeEvaluationForm",
     http_method = "GET",
     http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
   output <- .connect$describe_evaluation_form_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2815,12 +3037,13 @@ connect_describe_hours_of_operation <- function(InstanceId, HoursOfOperationId) 
     name = "DescribeHoursOfOperation",
     http_method = "GET",
     http_path = "/hours-of-operations/{InstanceId}/{HoursOfOperationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_hours_of_operation_input(InstanceId = InstanceId, HoursOfOperationId = HoursOfOperationId)
   output <- .connect$describe_hours_of_operation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2848,12 +3071,13 @@ connect_describe_instance <- function(InstanceId) {
     name = "DescribeInstance",
     http_method = "GET",
     http_path = "/instance/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_instance_input(InstanceId = InstanceId)
   output <- .connect$describe_instance_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2882,12 +3106,13 @@ connect_describe_instance_attribute <- function(InstanceId, AttributeType) {
     name = "DescribeInstanceAttribute",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/attribute/{AttributeType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_instance_attribute_input(InstanceId = InstanceId, AttributeType = AttributeType)
   output <- .connect$describe_instance_attribute_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2918,12 +3143,13 @@ connect_describe_instance_storage_config <- function(InstanceId, AssociationId, 
     name = "DescribeInstanceStorageConfig",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/storage-config/{AssociationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_instance_storage_config_input(InstanceId = InstanceId, AssociationId = AssociationId, ResourceType = ResourceType)
   output <- .connect$describe_instance_storage_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2948,12 +3174,13 @@ connect_describe_phone_number <- function(PhoneNumberId) {
     name = "DescribePhoneNumber",
     http_method = "GET",
     http_path = "/phone-number/{PhoneNumberId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_phone_number_input(PhoneNumberId = PhoneNumberId)
   output <- .connect$describe_phone_number_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2980,12 +3207,13 @@ connect_describe_predefined_attribute <- function(InstanceId, Name) {
     name = "DescribePredefinedAttribute",
     http_method = "GET",
     http_path = "/predefined-attributes/{InstanceId}/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_predefined_attribute_input(InstanceId = InstanceId, Name = Name)
   output <- .connect$describe_predefined_attribute_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3013,12 +3241,13 @@ connect_describe_prompt <- function(InstanceId, PromptId) {
     name = "DescribePrompt",
     http_method = "GET",
     http_path = "/prompts/{InstanceId}/{PromptId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_prompt_input(InstanceId = InstanceId, PromptId = PromptId)
   output <- .connect$describe_prompt_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3047,12 +3276,13 @@ connect_describe_queue <- function(InstanceId, QueueId) {
     name = "DescribeQueue",
     http_method = "GET",
     http_path = "/queues/{InstanceId}/{QueueId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_queue_input(InstanceId = InstanceId, QueueId = QueueId)
   output <- .connect$describe_queue_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3080,12 +3310,13 @@ connect_describe_quick_connect <- function(InstanceId, QuickConnectId) {
     name = "DescribeQuickConnect",
     http_method = "GET",
     http_path = "/quick-connects/{InstanceId}/{QuickConnectId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_quick_connect_input(InstanceId = InstanceId, QuickConnectId = QuickConnectId)
   output <- .connect$describe_quick_connect_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3113,12 +3344,13 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
     name = "DescribeRoutingProfile",
     http_method = "GET",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_routing_profile_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId)
   output <- .connect$describe_routing_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3146,12 +3378,13 @@ connect_describe_rule <- function(InstanceId, RuleId) {
     name = "DescribeRule",
     http_method = "GET",
     http_path = "/rules/{InstanceId}/{RuleId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_rule_input(InstanceId = InstanceId, RuleId = RuleId)
   output <- .connect$describe_rule_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3179,12 +3412,13 @@ connect_describe_security_profile <- function(SecurityProfileId, InstanceId) {
     name = "DescribeSecurityProfile",
     http_method = "GET",
     http_path = "/security-profiles/{InstanceId}/{SecurityProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_security_profile_input(SecurityProfileId = SecurityProfileId, InstanceId = InstanceId)
   output <- .connect$describe_security_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3211,12 +3445,13 @@ connect_describe_traffic_distribution_group <- function(TrafficDistributionGroup
     name = "DescribeTrafficDistributionGroup",
     http_method = "GET",
     http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_traffic_distribution_group_input(TrafficDistributionGroupId = TrafficDistributionGroupId)
   output <- .connect$describe_traffic_distribution_group_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3244,12 +3479,13 @@ connect_describe_user <- function(UserId, InstanceId) {
     name = "DescribeUser",
     http_method = "GET",
     http_path = "/users/{InstanceId}/{UserId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_user_input(UserId = UserId, InstanceId = InstanceId)
   output <- .connect$describe_user_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3277,12 +3513,13 @@ connect_describe_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) 
     name = "DescribeUserHierarchyGroup",
     http_method = "GET",
     http_path = "/user-hierarchy-groups/{InstanceId}/{HierarchyGroupId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_user_hierarchy_group_input(HierarchyGroupId = HierarchyGroupId, InstanceId = InstanceId)
   output <- .connect$describe_user_hierarchy_group_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3310,12 +3547,13 @@ connect_describe_user_hierarchy_structure <- function(InstanceId) {
     name = "DescribeUserHierarchyStructure",
     http_method = "GET",
     http_path = "/user-hierarchy-structure/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_user_hierarchy_structure_input(InstanceId = InstanceId)
   output <- .connect$describe_user_hierarchy_structure_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3343,12 +3581,13 @@ connect_describe_view <- function(InstanceId, ViewId) {
     name = "DescribeView",
     http_method = "GET",
     http_path = "/views/{InstanceId}/{ViewId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_view_input(InstanceId = InstanceId, ViewId = ViewId)
   output <- .connect$describe_view_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3376,12 +3615,13 @@ connect_describe_vocabulary <- function(InstanceId, VocabularyId) {
     name = "DescribeVocabulary",
     http_method = "GET",
     http_path = "/vocabulary/{InstanceId}/{VocabularyId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$describe_vocabulary_input(InstanceId = InstanceId, VocabularyId = VocabularyId)
   output <- .connect$describe_vocabulary_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3414,12 +3654,13 @@ connect_disassociate_analytics_data_set <- function(InstanceId, DataSetId, Targe
     name = "DisassociateAnalyticsDataSet",
     http_method = "POST",
     http_path = "/analytics-data/instance/{InstanceId}/association",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_analytics_data_set_input(InstanceId = InstanceId, DataSetId = DataSetId, TargetAccountId = TargetAccountId)
   output <- .connect$disassociate_analytics_data_set_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3448,12 +3689,13 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
     name = "DisassociateApprovedOrigin",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/approved-origin",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_approved_origin_input(InstanceId = InstanceId, Origin = Origin)
   output <- .connect$disassociate_approved_origin_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3483,12 +3725,13 @@ connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL)
     name = "DisassociateBot",
     http_method = "POST",
     http_path = "/instance/{InstanceId}/bot",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_bot_input(InstanceId = InstanceId, LexBot = LexBot, LexV2Bot = LexV2Bot)
   output <- .connect$disassociate_bot_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3517,12 +3760,13 @@ connect_disassociate_flow <- function(InstanceId, ResourceId, ResourceType) {
     name = "DisassociateFlow",
     http_method = "DELETE",
     http_path = "/flow-associations/{InstanceId}/{ResourceId}/{ResourceType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_flow_input(InstanceId = InstanceId, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .connect$disassociate_flow_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3553,12 +3797,13 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
     name = "DisassociateInstanceStorageConfig",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/storage-config/{AssociationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_instance_storage_config_input(InstanceId = InstanceId, AssociationId = AssociationId, ResourceType = ResourceType)
   output <- .connect$disassociate_instance_storage_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3588,12 +3833,13 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
     name = "DisassociateLambdaFunction",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/lambda-function",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_lambda_function_input(InstanceId = InstanceId, FunctionArn = FunctionArn)
   output <- .connect$disassociate_lambda_function_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3624,12 +3870,13 @@ connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion) {
     name = "DisassociateLexBot",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/lex-bot",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_lex_bot_input(InstanceId = InstanceId, BotName = BotName, LexRegion = LexRegion)
   output <- .connect$disassociate_lex_bot_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3658,12 +3905,13 @@ connect_disassociate_phone_number_contact_flow <- function(PhoneNumberId, Instan
     name = "DisassociatePhoneNumberContactFlow",
     http_method = "DELETE",
     http_path = "/phone-number/{PhoneNumberId}/contact-flow",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_phone_number_contact_flow_input(PhoneNumberId = PhoneNumberId, InstanceId = InstanceId)
   output <- .connect$disassociate_phone_number_contact_flow_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3693,12 +3941,13 @@ connect_disassociate_queue_quick_connects <- function(InstanceId, QueueId, Quick
     name = "DisassociateQueueQuickConnects",
     http_method = "POST",
     http_path = "/queues/{InstanceId}/{QueueId}/disassociate-quick-connects",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_queue_quick_connects_input(InstanceId = InstanceId, QueueId = QueueId, QuickConnectIds = QuickConnectIds)
   output <- .connect$disassociate_queue_quick_connects_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3727,12 +3976,13 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
     name = "DisassociateRoutingProfileQueues",
     http_method = "POST",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/disassociate-queues",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_routing_profile_queues_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, QueueReferences = QueueReferences)
   output <- .connect$disassociate_routing_profile_queues_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3762,12 +4012,13 @@ connect_disassociate_security_key <- function(InstanceId, AssociationId) {
     name = "DisassociateSecurityKey",
     http_method = "DELETE",
     http_path = "/instance/{InstanceId}/security-key/{AssociationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_security_key_input(InstanceId = InstanceId, AssociationId = AssociationId)
   output <- .connect$disassociate_security_key_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3799,12 +4050,13 @@ connect_disassociate_traffic_distribution_group_user <- function(TrafficDistribu
     name = "DisassociateTrafficDistributionGroupUser",
     http_method = "DELETE",
     http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}/user",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_traffic_distribution_group_user_input(TrafficDistributionGroupId = TrafficDistributionGroupId, UserId = UserId, InstanceId = InstanceId)
   output <- .connect$disassociate_traffic_distribution_group_user_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3831,12 +4083,13 @@ connect_disassociate_user_proficiencies <- function(InstanceId, UserId, UserProf
     name = "DisassociateUserProficiencies",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/disassociate-proficiencies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$disassociate_user_proficiencies_input(InstanceId = InstanceId, UserId = UserId, UserProficiencies = UserProficiencies)
   output <- .connect$disassociate_user_proficiencies_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3864,17 +4117,56 @@ connect_dismiss_user_contact <- function(UserId, InstanceId, ContactId) {
     name = "DismissUserContact",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/contact",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$dismiss_user_contact_input(UserId = UserId, InstanceId = InstanceId, ContactId = ContactId)
   output <- .connect$dismiss_user_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$dismiss_user_contact <- connect_dismiss_user_contact
+
+#' Provides a pre-signed URL for download of an approved attached file
+#'
+#' @description
+#' Provides a pre-signed URL for download of an approved attached file. This API also returns metadata about the attached file. It will only return a downloadURL if the status of the attached file is `APPROVED`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_get_attached_file/](https://www.paws-r-sdk.com/docs/connect_get_attached_file/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The unique identifier of the Connect instance.
+#' @param FileId &#91;required&#93; The unique identifier of the attached file resource.
+#' @param UrlExpiryInSeconds Optional override for the expiry of the pre-signed S3 URL in seconds.
+#' The default value is 300.
+#' @param AssociatedResourceArn &#91;required&#93; The resource to which the attached file is (being) uploaded to.
+#' [Cases](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html)
+#' are the only current supported resource.
+#' 
+#' This value must be a valid ARN.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_get_attached_file
+connect_get_attached_file <- function(InstanceId, FileId, UrlExpiryInSeconds = NULL, AssociatedResourceArn) {
+  op <- new_operation(
+    name = "GetAttachedFile",
+    http_method = "GET",
+    http_path = "/attached-files/{InstanceId}/{FileId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .connect$get_attached_file_input(InstanceId = InstanceId, FileId = FileId, UrlExpiryInSeconds = UrlExpiryInSeconds, AssociatedResourceArn = AssociatedResourceArn)
+  output <- .connect$get_attached_file_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$get_attached_file <- connect_get_attached_file
 
 #' Retrieves the contact attributes for the specified contact
 #'
@@ -3894,12 +4186,13 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
     name = "GetContactAttributes",
     http_method = "GET",
     http_path = "/contact/attributes/{InstanceId}/{InitialContactId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$get_contact_attributes_input(InstanceId = InstanceId, InitialContactId = InitialContactId)
   output <- .connect$get_contact_attributes_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4095,12 +4388,13 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
     name = "GetCurrentMetricData",
     http_method = "POST",
     http_path = "/metrics/current/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .connect$get_current_metric_data_input(InstanceId = InstanceId, Filters = Filters, Groupings = Groupings, CurrentMetrics = CurrentMetrics, NextToken = NextToken, MaxResults = MaxResults, SortCriteria = SortCriteria)
   output <- .connect$get_current_metric_data_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4151,12 +4445,13 @@ connect_get_current_user_data <- function(InstanceId, Filters, NextToken = NULL,
     name = "GetCurrentUserData",
     http_method = "POST",
     http_path = "/metrics/userdata/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .connect$get_current_user_data_input(InstanceId = InstanceId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$get_current_user_data_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4183,12 +4478,13 @@ connect_get_federation_token <- function(InstanceId) {
     name = "GetFederationToken",
     http_method = "GET",
     http_path = "/user/federate/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$get_federation_token_input(InstanceId = InstanceId)
   output <- .connect$get_federation_token_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4217,12 +4513,13 @@ connect_get_flow_association <- function(InstanceId, ResourceId, ResourceType) {
     name = "GetFlowAssociation",
     http_method = "GET",
     http_path = "/flow-associations/{InstanceId}/{ResourceId}/{ResourceType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$get_flow_association_input(InstanceId = InstanceId, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .connect$get_flow_association_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4452,12 +4749,13 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
     name = "GetMetricData",
     http_method = "POST",
     http_path = "/metrics/historical/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .connect$get_metric_data_input(InstanceId = InstanceId, StartTime = StartTime, EndTime = EndTime, Filters = Filters, Groupings = Groupings, HistoricalMetrics = HistoricalMetrics, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$get_metric_data_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4520,37 +4818,40 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' @param Filters &#91;required&#93; The filters to apply to returned metrics. You can filter on the
 #' following resources:
 #' 
-#' -   Queues
-#' 
-#' -   Routing profiles
-#' 
 #' -   Agents
 #' 
 #' -   Channels
 #' 
-#' -   User hierarchy groups
-#' 
 #' -   Feature
 #' 
+#' -   Queues
+#' 
+#' -   Routing profiles
+#' 
 #' -   Routing step expression
+#' 
+#' -   User hierarchy groups
 #' 
 #' At least one filter must be passed from queues, routing profiles,
 #' agents, or user hierarchy groups.
 #' 
 #' To filter by phone number, see [Create a historical metrics
 #' report](https://docs.aws.amazon.com/connect/latest/adminguide/create-historical-metrics-report.html)
-#' in the *Amazon Connect Administrator's Guide*.
+#' in the *Amazon Connect Administrator Guide*.
 #' 
 #' Note the following limits:
 #' 
 #' -   **Filter keys**: A maximum of 5 filter keys are supported in a
-#'     single request. Valid filter keys: `QUEUE` | `ROUTING_PROFILE` |
-#'     `AGENT` | `CHANNEL` | `AGENT_HIERARCHY_LEVEL_ONE` |
-#'     `AGENT_HIERARCHY_LEVEL_TWO` | `AGENT_HIERARCHY_LEVEL_THREE` |
-#'     `AGENT_HIERARCHY_LEVEL_FOUR` | `AGENT_HIERARCHY_LEVEL_FIVE` |
-#'     `FEATURE` | `CASE_TEMPLATE_ARN` | `CASE_STATUS` |
-#'     `contact/segmentAttributes/connect:Subtype` |
-#'     `ROUTING_STEP_EXPRESSION`
+#'     single request. Valid filter keys: `AGENT` |
+#'     `AGENT_HIERARCHY_LEVEL_ONE` | `AGENT_HIERARCHY_LEVEL_TWO` |
+#'     `AGENT_HIERARCHY_LEVEL_THREE` | `AGENT_HIERARCHY_LEVEL_FOUR` |
+#'     `AGENT_HIERARCHY_LEVEL_FIVE` | `CASE_TEMPLATE_ARN` | `CASE_STATUS` |
+#'     `CHANNEL` | `contact/segmentAttributes/connect:Subtype` | `FEATURE`
+#'     | `FLOW_TYPE` | `FLOWS_NEXT_RESOURCE_ID` |
+#'     `FLOWS_NEXT_RESOURCE_QUEUE_ID` | `FLOWS_OUTCOME_TYPE` |
+#'     `FLOWS_RESOURCE_ID` | `INITIATION_METHOD` |
+#'     `RESOURCE_PUBLISHED_TIMESTAMP` | `ROUTING_PROFILE` |
+#'     `ROUTING_STEP_EXPRESSION` | `QUEUE` | `Q_CONNECT_ENABLED` |
 #' 
 #' -   **Filter values**: A maximum of 100 filter values are supported in a
 #'     single request. VOICE, CHAT, and TASK are valid `filterValue` for
@@ -4571,6 +4872,17 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #'     up to 3000 length. This filter is case and order sensitive. JSON
 #'     string fields must be sorted in ascending order and JSON array order
 #'     should be kept as is.
+#' 
+#'     `Q_CONNECT_ENABLED`. TRUE and FALSE are the only valid filterValues
+#'     for the `Q_CONNECT_ENABLED` filter key.
+#' 
+#'     -   TRUE includes all contacts that had Amazon Q in Connect enabled
+#'         as part of the flow.
+#' 
+#'     -   FALSE includes all contacts that did not have Amazon Q in
+#'         Connect enabled as part of the flow
+#' 
+#'     This filter is available only for contact record-driven metrics.
 #' @param Groupings The grouping applied to the metrics that are returned. For example, when
 #' results are grouped by queue, the metrics returned are grouped by queue.
 #' The values that are returned apply to the metrics for each queue. They
@@ -4578,23 +4890,28 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' If no grouping is specified, a summary of all metrics is returned.
 #' 
-#' Valid grouping keys: `QUEUE` | `ROUTING_PROFILE` | `AGENT` | `CHANNEL` |
-#' `AGENT_HIERARCHY_LEVEL_ONE` | `AGENT_HIERARCHY_LEVEL_TWO` |
-#' `AGENT_HIERARCHY_LEVEL_THREE` | `AGENT_HIERARCHY_LEVEL_FOUR` |
-#' `AGENT_HIERARCHY_LEVEL_FIVE` | `CASE_TEMPLATE_ARN` | `CASE_STATUS` |
-#' `contact/segmentAttributes/connect:Subtype` | `ROUTING_STEP_EXPRESSION`
+#' Valid grouping keys: `AGENT` | `AGENT_HIERARCHY_LEVEL_ONE` |
+#' `AGENT_HIERARCHY_LEVEL_TWO` | `AGENT_HIERARCHY_LEVEL_THREE` |
+#' `AGENT_HIERARCHY_LEVEL_FOUR` | `AGENT_HIERARCHY_LEVEL_FIVE` |
+#' `CASE_TEMPLATE_ARN` | `CASE_STATUS` | `CHANNEL` |
+#' `contact/segmentAttributes/connect:Subtype` | `FLOWS_RESOURCE_ID` |
+#' `FLOWS_MODULE_RESOURCE_ID` | `FLOW_TYPE` | `FLOWS_OUTCOME_TYPE` |
+#' `INITIATION_METHOD` | `Q_CONNECT_ENABLED` | `QUEUE` |
+#' `RESOURCE_PUBLISHED_TIMESTAMP` | `ROUTING_PROFILE` |
+#' `ROUTING_STEP_EXPRESSION`
 #' @param Metrics &#91;required&#93; The metrics to retrieve. Specify the name, groupings, and filters for
 #' each metric. The following historical metrics are available. For a
 #' description of each metric, see [Historical metrics
 #' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
-#' in the *Amazon Connect Administrator's Guide*.
+#' in the *Amazon Connect Administrator Guide*.
 #' 
 #' **ABANDONMENT_RATE**
 #' 
 #' Unit: Percent
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Abandonment
 #' rate](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#abandonment-rate-historical)
@@ -4701,7 +5018,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Average queue abandon
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-queue-abandon-time-historical)
@@ -4711,7 +5029,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Average active
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-active-time-historical)
@@ -4723,7 +5041,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid metric filter key: `INITIATION_METHOD`
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Average after contact work
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-acw-time-historical)
@@ -4752,7 +5071,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Average agent pause
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-pause-time-historical)
@@ -4784,7 +5103,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Average contact
 #' duration](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-contact-duration-historical)
@@ -4796,10 +5116,24 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Average conversation
 #' duration](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-conversation-duration-historical)
+#' 
+#' **AVG_FLOW_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Channel,
+#' contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+#' resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+#' outcome type, Flows resource ID, Initiation method, Resource published
+#' timestamp
+#' 
+#' UI name: [Average flow
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-flow-time-historical)
 #' 
 #' **AVG_GREETING_TIME_AGENT**
 #' 
@@ -4809,10 +5143,10 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Average greeting time
-#' agent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-greeting-time-agent-historical)
+#' UI name: [Average agent greeting
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-greeting-time-agent-historical)
 #' 
 #' **AVG_HANDLE_TIME**
 #' 
@@ -4832,7 +5166,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Average customer hold
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-customer-hold-time-historical)
@@ -4844,7 +5179,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average customer hold time all
 #' contacts](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#avg-customer-hold-time-all-contacts-historical)
@@ -4854,7 +5189,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Average
 #' holds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-holds-historical)
@@ -4866,7 +5202,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent interaction and customer hold
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-interaction-customer-hold-time-historical)
@@ -4878,7 +5214,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid metric filter key: `INITIATION_METHOD`
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent interaction
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-interaction-time-historical)
@@ -4893,10 +5229,10 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Average interruptions
-#' agent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-agent-historical)
+#' UI name: [Average agent
+#' interruptions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-agent-historical)
 #' 
 #' **AVG_INTERRUPTION_TIME_AGENT**
 #' 
@@ -4906,10 +5242,10 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Average interruption time
-#' agent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-time-agent-historical)
+#' UI name: [Average agent interruption
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-time-agent-historical)
 #' 
 #' **AVG_NON_TALK_TIME**
 #' 
@@ -4919,7 +5255,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average non-talk
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html##average-non-talk-time-historical)
@@ -4929,7 +5265,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average queue answer
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-queue-answer-time-historical)
@@ -4941,7 +5277,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average resolution
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-resolution-time-historical)
@@ -4954,7 +5290,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average talk
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-historical)
@@ -4967,10 +5303,10 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Average talk time
-#' agent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-agent-historical)
+#' UI name: [Average agent talk
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-agent-historical)
 #' 
 #' **AVG_TALK_TIME_CUSTOMER**
 #' 
@@ -4980,10 +5316,10 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Average talk time
-#' customer](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-customer-historical)
+#' UI name: [Average customer talk
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-customer-historical)
 #' 
 #' **CASES_CREATED**
 #' 
@@ -4996,17 +5332,6 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' UI name: [Cases
 #' created](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html##cases-created-historical)
 #' 
-#' **CONTACTS_ABANDONED**
-#' 
-#' Unit: Count
-#' 
-#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype,
-#' RoutingStepExpression
-#' 
-#' UI name: [Contact
-#' abandoned](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-historical)
-#' 
 #' **CONTACTS_CREATED**
 #' 
 #' Unit: Count
@@ -5014,7 +5339,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid metric filter key: `INITIATION_METHOD`
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts
 #' created](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-created-historical)
@@ -5029,7 +5354,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 #' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype,
-#' RoutingStepExpression
+#' RoutingStepExpression, Q in Connect
 #' 
 #' UI name: [API contacts
 #' handled](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#api-contacts-handled-historical)
@@ -5043,17 +5368,17 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid metric filter key: `INITIATION_METHOD`
 #' 
 #' Valid groupings and filters: Queue, Channel, Agent, Agent Hierarchy,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Contacts handled by Connected to
-#' agent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical)
+#' UI name: [Contacts handled (connected to agent
+#' timestamp)](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical)
 #' 
 #' **CONTACTS_HOLD_ABANDONS**
 #' 
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts hold
 #' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical)
@@ -5063,7 +5388,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts hold agent
 #' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-agent-disconnect-historical)
@@ -5073,7 +5398,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts hold customer
 #' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-customer-disconnect-historical)
@@ -5083,7 +5408,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts put on
 #' hold](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-customer-disconnect-historical)
@@ -5093,7 +5418,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts transferred out
 #' external](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-external-historical)
@@ -5103,7 +5428,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Percent
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts transferred out
 #' internal](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-internal-historical)
@@ -5113,7 +5438,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts
 #' queued](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-historical)
@@ -5125,15 +5450,28 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Queue, Channel, Agent, Agent Hierarchy,
 #' contact/segmentAttributes/connect:Subtype
 #' 
-#' UI name: [Contacts queued by
-#' Enqueue](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-by-enqueue-historical)
+#' UI name: [Contacts queued (enqueue
+#' timestamp)](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-by-enqueue-historical)
+#' 
+#' **CONTACTS_REMOVED_FROM_QUEUE_IN_X**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Q in
+#' Connect
+#' 
+#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
+#' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
+#' "Less than").
+#' 
+#' UI name: This metric is not available in Amazon Connect admin website.
 #' 
 #' **CONTACTS_RESOLVED_IN_X**
 #' 
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' Threshold: For `ThresholdValue` enter any whole number from 1 to 604800
 #' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
@@ -5147,7 +5485,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+#' in Connect
 #' 
 #' UI name: [Contacts transferred
 #' out](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-historical)
@@ -5159,7 +5498,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts transferred out by
 #' agent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-by-agent-historical)
@@ -5169,7 +5508,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts transferred out
 #' queue](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-by-agent-historical)
@@ -5185,15 +5524,66 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' UI name: [Current
 #' cases](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#current-cases-historical)
 #' 
+#' **FLOWS_OUTCOME**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Channel,
+#' contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+#' resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+#' outcome type, Flows resource ID, Initiation method, Resource published
+#' timestamp
+#' 
+#' UI name: [Flows
+#' outcome](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-outcome-historical)
+#' 
+#' **FLOWS_STARTED**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Channel,
+#' contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+#' resource ID, Flows resource ID, Initiation method, Resource published
+#' timestamp
+#' 
+#' UI name: [Flows
+#' started](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-started-historical)
+#' 
+#' **MAX_FLOW_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Channel,
+#' contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+#' resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+#' outcome type, Flows resource ID, Initiation method, Resource published
+#' timestamp
+#' 
+#' UI name: [Maximum flow
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#maximum-flow-time-historical)
+#' 
 #' **MAX_QUEUED_TIME**
 #' 
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Maximum queued
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#maximum-queued-time-historical)
+#' 
+#' **MIN_FLOW_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Channel,
+#' contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+#' resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+#' outcome type, Flows resource ID, Initiation method, Resource published
+#' timestamp
+#' 
+#' UI name: [Minimum flow
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#minimum-flow-time-historical)
 #' 
 #' **PERCENT_CASES_FIRST_CONTACT_RESOLVED**
 #' 
@@ -5212,7 +5602,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' Valid groupings and filters: Queue, RoutingStepExpression
 #' 
-#' UI name: Not available
+#' UI name: This metric is available in Real-time Metrics UI but not on the
+#' Historical Metrics UI.
 #' 
 #' **PERCENT_CONTACTS_STEP_JOINED**
 #' 
@@ -5220,7 +5611,25 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' Valid groupings and filters: Queue, RoutingStepExpression
 #' 
-#' UI name: Not available
+#' UI name: This metric is available in Real-time Metrics UI but not on the
+#' Historical Metrics UI.
+#' 
+#' **PERCENT_FLOWS_OUTCOME**
+#' 
+#' Unit: Percent
+#' 
+#' Valid metric filter key: `FLOWS_OUTCOME_TYPE`
+#' 
+#' Valid groupings and filters: Channel,
+#' contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+#' resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+#' outcome type, Flows resource ID, Initiation method, Resource published
+#' timestamp
+#' 
+#' UI name: [Flows outcome
+#' percentage](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-outcome-percentage-historical).
+#' 
+#' The `FLOWS_OUTCOME_TYPE` is not a valid grouping.
 #' 
 #' **PERCENT_NON_TALK_TIME**
 #' 
@@ -5230,7 +5639,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Percentage
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Non-talk time
 #' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ntt-historical)
@@ -5243,7 +5652,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Percentage
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Talk time
 #' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#tt-historical)
@@ -5256,9 +5665,9 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Percentage
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Talk time agent
+#' UI name: [Agent talk time
 #' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttagent-historical)
 #' 
 #' **PERCENT_TALK_TIME_CUSTOMER**
@@ -5269,9 +5678,9 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Percentage
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
-#' UI name: [Talk time customer
+#' UI name: [Customer talk time
 #' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttcustomer-historical)
 #' 
 #' **REOPENED_CASE_ACTIONS**
@@ -5294,7 +5703,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Cases
-#' resolved](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-resolved-historicall)
+#' resolved](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-resolved-historical)
 #' 
 #' **SERVICE_LEVEL**
 #' 
@@ -5302,7 +5711,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' Unit: Percent
 #' 
-#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Q in
+#' Connect
 #' 
 #' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
 #' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
@@ -5317,14 +5727,15 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' Valid groupings and filters: Queue, RoutingStepExpression
 #' 
-#' UI name: Not available
+#' UI name: This metric is available in Real-time Metrics UI but not on the
+#' Historical Metrics UI.
 #' 
 #' **SUM_AFTER_CONTACT_WORK_TIME**
 #' 
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [After contact work
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#acw-historical)
@@ -5346,46 +5757,28 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' The `Negate` key in Metric Level Filters is not applicable for this
 #' metric.
 #' 
-#' **SUM_CONTACT_FLOW_TIME**
-#' 
-#' Unit: Seconds
-#' 
-#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
-#' 
-#' UI name: [Contact flow
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-flow-time-historical)
-#' 
-#' **SUM_CONTACT_TIME_AGENT**
-#' 
-#' Unit: Seconds
-#' 
-#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
-#' 
-#' UI name: [Agent on contact
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-on-contact-time-historical)
-#' 
-#' **SUM_CONTACTS_ANSWERED_IN_X**
+#' **SUM_CONTACTS_ABANDONED**
 #' 
 #' Unit: Count
 #' 
-#' Valid groupings and filters: Queue, Channel, Routing Profile,
-#' contact/segmentAttributes/connect:Subtype
+#' Metric filter:
 #' 
-#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
-#' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
-#' "Less than").
+#' -   Valid values: `API`| `Incoming` | `Outbound` | `Transfer` |
+#'     `Callback` | `Queue_Transfer`| `Disconnect`
 #' 
-#' UI name: [Contacts answered in X
-#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-answered-x-historical)
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype,
+#' RoutingStepExpression, Q in Connect
+#' 
+#' UI name: [Contact
+#' abandoned](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-historical)
 #' 
 #' **SUM_CONTACTS_ABANDONED_IN_X**
 #' 
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
 #' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
@@ -5394,6 +5787,39 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' UI name: [Contacts abandoned in X
 #' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-x-historical)
 #' 
+#' **SUM_CONTACTS_ANSWERED_IN_X**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile,
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
+#' 
+#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
+#' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
+#' "Less than").
+#' 
+#' UI name: [Contacts answered in X
+#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-answered-x-historical)
+#' 
+#' **SUM_CONTACT_FLOW_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy, Q in Connect
+#' 
+#' UI name: [Contact flow
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-flow-time-historical)
+#' 
+#' **SUM_CONTACT_TIME_AGENT**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
+#' 
+#' UI name: [Agent on contact
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-on-contact-time-historical)
+#' 
 #' **SUM_CONTACTS_DISCONNECTED**
 #' 
 #' Valid metric filter key: `DISCONNECT_REASON`
@@ -5401,7 +5827,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+#' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contact
 #' disconnected](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-disconnected-historical)
@@ -5410,8 +5836,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' Unit: Seconds
 #' 
-#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 #' 
 #' UI name: [Error status
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#error-status-time-historical)
@@ -5421,7 +5846,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contact handle
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-handle-time-historical)
@@ -5431,7 +5856,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Customer hold
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#customer-hold-time-historical)
@@ -5450,7 +5875,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Seconds
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-#' Agent Hierarchy
+#' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Agent interaction and hold
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-interaction-hold-time-historical)
@@ -5488,7 +5913,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Unit: Count
 #' 
 #' Valid groupings and filters: Queue, Channel, Routing Profile,
-#' contact/segmentAttributes/connect:Subtype
+#' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Callback
 #' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#callback-attempts-historical)
@@ -5505,12 +5930,13 @@ connect_get_metric_data_v2 <- function(ResourceArn, StartTime, EndTime, Interval
     name = "GetMetricDataV2",
     http_method = "POST",
     http_path = "/metrics/data",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .connect$get_metric_data_v2_input(ResourceArn = ResourceArn, StartTime = StartTime, EndTime = EndTime, Interval = Interval, Filters = Filters, Groupings = Groupings, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$get_metric_data_v2_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5538,12 +5964,13 @@ connect_get_prompt_file <- function(InstanceId, PromptId) {
     name = "GetPromptFile",
     http_method = "GET",
     http_path = "/prompts/{InstanceId}/{PromptId}/file",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$get_prompt_file_input(InstanceId = InstanceId, PromptId = PromptId)
   output <- .connect$get_prompt_file_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5574,12 +6001,13 @@ connect_get_task_template <- function(InstanceId, TaskTemplateId, SnapshotVersio
     name = "GetTaskTemplate",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/task/template/{TaskTemplateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$get_task_template_input(InstanceId = InstanceId, TaskTemplateId = TaskTemplateId, SnapshotVersion = SnapshotVersion)
   output <- .connect$get_task_template_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5607,12 +6035,13 @@ connect_get_traffic_distribution <- function(Id) {
     name = "GetTrafficDistribution",
     http_method = "GET",
     http_path = "/traffic-distribution/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$get_traffic_distribution_input(Id = Id)
   output <- .connect$get_traffic_distribution_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5651,12 +6080,13 @@ connect_import_phone_number <- function(InstanceId, SourcePhoneNumberArn, PhoneN
     name = "ImportPhoneNumber",
     http_method = "POST",
     http_path = "/phone-number/import",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$import_phone_number_input(InstanceId = InstanceId, SourcePhoneNumberArn = SourcePhoneNumberArn, PhoneNumberDescription = PhoneNumberDescription, Tags = Tags, ClientToken = ClientToken)
   output <- .connect$import_phone_number_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5689,12 +6119,13 @@ connect_list_agent_statuses <- function(InstanceId, NextToken = NULL, MaxResults
     name = "ListAgentStatuses",
     http_method = "GET",
     http_path = "/agent-status/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AgentStatusSummaryList")
   )
   input <- .connect$list_agent_statuses_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, AgentStatusTypes = AgentStatusTypes)
   output <- .connect$list_agent_statuses_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5727,12 +6158,13 @@ connect_list_analytics_data_associations <- function(InstanceId, DataSetId = NUL
     name = "ListAnalyticsDataAssociations",
     http_method = "GET",
     http_path = "/analytics-data/instance/{InstanceId}/association",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$list_analytics_data_associations_input(InstanceId = InstanceId, DataSetId = DataSetId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_analytics_data_associations_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5764,17 +6196,56 @@ connect_list_approved_origins <- function(InstanceId, NextToken = NULL, MaxResul
     name = "ListApprovedOrigins",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/approved-origins",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Origins")
   )
   input <- .connect$list_approved_origins_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_approved_origins_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$list_approved_origins <- connect_list_approved_origins
+
+#' This API is in preview release for Amazon Connect and is subject to
+#' change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_list_authentication_profiles/](https://www.paws-r-sdk.com/docs/connect_list_authentication_profiles/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_authentication_profiles
+connect_list_authentication_profiles <- function(InstanceId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAuthenticationProfiles",
+    http_method = "GET",
+    http_path = "/authentication-profiles-summary/{InstanceId}",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthenticationProfileSummaryList")
+  )
+  input <- .connect$list_authentication_profiles_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .connect$list_authentication_profiles_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_authentication_profiles <- connect_list_authentication_profiles
 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
@@ -5802,12 +6273,13 @@ connect_list_bots <- function(InstanceId, NextToken = NULL, MaxResults = NULL, L
     name = "ListBots",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/bots",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LexBots")
   )
   input <- .connect$list_bots_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, LexVersion = LexVersion)
   output <- .connect$list_bots_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5841,12 +6313,13 @@ connect_list_contact_evaluations <- function(InstanceId, ContactId, NextToken = 
     name = "ListContactEvaluations",
     http_method = "GET",
     http_path = "/contact-evaluations/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "EvaluationSummaryList")
   )
   input <- .connect$list_contact_evaluations_input(InstanceId = InstanceId, ContactId = ContactId, NextToken = NextToken)
   output <- .connect$list_contact_evaluations_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5879,12 +6352,13 @@ connect_list_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxR
     name = "ListContactFlowModules",
     http_method = "GET",
     http_path = "/contact-flow-modules-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ContactFlowModulesSummaryList")
   )
   input <- .connect$list_contact_flow_modules_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, ContactFlowModuleState = ContactFlowModuleState)
   output <- .connect$list_contact_flow_modules_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5918,12 +6392,13 @@ connect_list_contact_flows <- function(InstanceId, ContactFlowTypes = NULL, Next
     name = "ListContactFlows",
     http_method = "GET",
     http_path = "/contact-flows-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ContactFlowSummaryList")
   )
   input <- .connect$list_contact_flows_input(InstanceId = InstanceId, ContactFlowTypes = ContactFlowTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_contact_flows_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5959,12 +6434,13 @@ connect_list_contact_references <- function(InstanceId, ContactId, ReferenceType
     name = "ListContactReferences",
     http_method = "GET",
     http_path = "/contact/references/{InstanceId}/{ContactId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ReferenceSummaryList")
   )
   input <- .connect$list_contact_references_input(InstanceId = InstanceId, ContactId = ContactId, ReferenceTypes = ReferenceTypes, NextToken = NextToken)
   output <- .connect$list_contact_references_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5998,12 +6474,13 @@ connect_list_default_vocabularies <- function(InstanceId, LanguageCode = NULL, M
     name = "ListDefaultVocabularies",
     http_method = "POST",
     http_path = "/default-vocabulary-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DefaultVocabularyList")
   )
   input <- .connect$list_default_vocabularies_input(InstanceId = InstanceId, LanguageCode = LanguageCode, MaxResults = MaxResults, NextToken = NextToken)
   output <- .connect$list_default_vocabularies_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6036,12 +6513,13 @@ connect_list_evaluation_form_versions <- function(InstanceId, EvaluationFormId, 
     name = "ListEvaluationFormVersions",
     http_method = "GET",
     http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}/versions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EvaluationFormVersionSummaryList")
   )
   input <- .connect$list_evaluation_form_versions_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .connect$list_evaluation_form_versions_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6072,12 +6550,13 @@ connect_list_evaluation_forms <- function(InstanceId, MaxResults = NULL, NextTok
     name = "ListEvaluationForms",
     http_method = "GET",
     http_path = "/evaluation-forms/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EvaluationFormSummaryList")
   )
   input <- .connect$list_evaluation_forms_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .connect$list_evaluation_forms_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6109,12 +6588,13 @@ connect_list_flow_associations <- function(InstanceId, ResourceType = NULL, Next
     name = "ListFlowAssociations",
     http_method = "GET",
     http_path = "/flow-associations-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FlowAssociationSummaryList")
   )
   input <- .connect$list_flow_associations_input(InstanceId = InstanceId, ResourceType = ResourceType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_flow_associations_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6147,12 +6627,13 @@ connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxRe
     name = "ListHoursOfOperations",
     http_method = "GET",
     http_path = "/hours-of-operations-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HoursOfOperationSummaryList")
   )
   input <- .connect$list_hours_of_operations_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_hours_of_operations_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6184,12 +6665,13 @@ connect_list_instance_attributes <- function(InstanceId, NextToken = NULL, MaxRe
     name = "ListInstanceAttributes",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/attributes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Attributes")
   )
   input <- .connect$list_instance_attributes_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_instance_attributes_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6222,12 +6704,13 @@ connect_list_instance_storage_configs <- function(InstanceId, ResourceType, Next
     name = "ListInstanceStorageConfigs",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/storage-configs",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StorageConfigs")
   )
   input <- .connect$list_instance_storage_configs_input(InstanceId = InstanceId, ResourceType = ResourceType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_instance_storage_configs_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6255,12 +6738,13 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListInstances",
     http_method = "GET",
     http_path = "/instance",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceSummaryList")
   )
   input <- .connect$list_instances_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_instances_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6294,12 +6778,13 @@ connect_list_integration_associations <- function(InstanceId, IntegrationType = 
     name = "ListIntegrationAssociations",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/integration-associations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IntegrationAssociationSummaryList")
   )
   input <- .connect$list_integration_associations_input(InstanceId = InstanceId, IntegrationType = IntegrationType, NextToken = NextToken, MaxResults = MaxResults, IntegrationArn = IntegrationArn)
   output <- .connect$list_integration_associations_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6331,12 +6816,13 @@ connect_list_lambda_functions <- function(InstanceId, NextToken = NULL, MaxResul
     name = "ListLambdaFunctions",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/lambda-functions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LambdaFunctions")
   )
   input <- .connect$list_lambda_functions_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_lambda_functions_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6369,12 +6855,13 @@ connect_list_lex_bots <- function(InstanceId, NextToken = NULL, MaxResults = NUL
     name = "ListLexBots",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/lex-bots",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LexBots")
   )
   input <- .connect$list_lex_bots_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_lex_bots_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6415,12 +6902,13 @@ connect_list_phone_numbers <- function(InstanceId, PhoneNumberTypes = NULL, Phon
     name = "ListPhoneNumbers",
     http_method = "GET",
     http_path = "/phone-numbers-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumberSummaryList")
   )
   input <- .connect$list_phone_numbers_input(InstanceId = InstanceId, PhoneNumberTypes = PhoneNumberTypes, PhoneNumberCountryCodes = PhoneNumberCountryCodes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_phone_numbers_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6464,12 +6952,13 @@ connect_list_phone_numbers_v2 <- function(TargetArn = NULL, InstanceId = NULL, M
     name = "ListPhoneNumbersV2",
     http_method = "POST",
     http_path = "/phone-number/list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ListPhoneNumbersSummaryList")
   )
   input <- .connect$list_phone_numbers_v2_input(TargetArn = TargetArn, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, PhoneNumberCountryCodes = PhoneNumberCountryCodes, PhoneNumberTypes = PhoneNumberTypes, PhoneNumberPrefix = PhoneNumberPrefix)
   output <- .connect$list_phone_numbers_v2_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6498,12 +6987,13 @@ connect_list_predefined_attributes <- function(InstanceId, NextToken = NULL, Max
     name = "ListPredefinedAttributes",
     http_method = "GET",
     http_path = "/predefined-attributes/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredefinedAttributeSummaryList")
   )
   input <- .connect$list_predefined_attributes_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_predefined_attributes_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6533,12 +7023,13 @@ connect_list_prompts <- function(InstanceId, NextToken = NULL, MaxResults = NULL
     name = "ListPrompts",
     http_method = "GET",
     http_path = "/prompts-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PromptSummaryList")
   )
   input <- .connect$list_prompts_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_prompts_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6572,12 +7063,13 @@ connect_list_queue_quick_connects <- function(InstanceId, QueueId, NextToken = N
     name = "ListQueueQuickConnects",
     http_method = "GET",
     http_path = "/queues/{InstanceId}/{QueueId}/quick-connects",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "LastModifiedRegion", "LastModifiedTime"), output_token = "NextToken", result_key = "QuickConnectSummaryList")
   )
   input <- .connect$list_queue_quick_connects_input(InstanceId = InstanceId, QueueId = QueueId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_queue_quick_connects_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6611,12 +7103,13 @@ connect_list_queues <- function(InstanceId, QueueTypes = NULL, NextToken = NULL,
     name = "ListQueues",
     http_method = "GET",
     http_path = "/queues-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueueSummaryList")
   )
   input <- .connect$list_queues_input(InstanceId = InstanceId, QueueTypes = QueueTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_queues_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6652,12 +7145,13 @@ connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults
     name = "ListQuickConnects",
     http_method = "GET",
     http_path = "/quick-connects/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QuickConnectSummaryList")
   )
   input <- .connect$list_quick_connects_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, QuickConnectTypes = QuickConnectTypes)
   output <- .connect$list_quick_connects_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6694,12 +7188,13 @@ connect_list_realtime_contact_analysis_segments_v2 <- function(InstanceId, Conta
     name = "ListRealtimeContactAnalysisSegmentsV2",
     http_method = "POST",
     http_path = "/contact/list-real-time-analysis-segments-v2/{InstanceId}/{ContactId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .connect$list_realtime_contact_analysis_segments_v2_input(InstanceId = InstanceId, ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, OutputType = OutputType, SegmentTypes = SegmentTypes)
   output <- .connect$list_realtime_contact_analysis_segments_v2_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6732,12 +7227,13 @@ connect_list_routing_profile_queues <- function(InstanceId, RoutingProfileId, Ne
     name = "ListRoutingProfileQueues",
     http_method = "GET",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/queues",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "LastModifiedRegion", "LastModifiedTime"), output_token = "NextToken", result_key = "RoutingProfileQueueConfigSummaryList")
   )
   input <- .connect$list_routing_profile_queues_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_routing_profile_queues_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6770,12 +7266,13 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
     name = "ListRoutingProfiles",
     http_method = "GET",
     http_path = "/routing-profiles-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RoutingProfileSummaryList")
   )
   input <- .connect$list_routing_profiles_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_routing_profiles_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6808,12 +7305,13 @@ connect_list_rules <- function(InstanceId, PublishStatus = NULL, EventSourceName
     name = "ListRules",
     http_method = "GET",
     http_path = "/rules/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RuleSummaryList")
   )
   input <- .connect$list_rules_input(InstanceId = InstanceId, PublishStatus = PublishStatus, EventSourceName = EventSourceName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .connect$list_rules_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6845,12 +7343,13 @@ connect_list_security_keys <- function(InstanceId, NextToken = NULL, MaxResults 
     name = "ListSecurityKeys",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/security-keys",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityKeys")
   )
   input <- .connect$list_security_keys_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_security_keys_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6883,12 +7382,13 @@ connect_list_security_profile_applications <- function(SecurityProfileId, Instan
     name = "ListSecurityProfileApplications",
     http_method = "GET",
     http_path = "/security-profiles-applications/{InstanceId}/{SecurityProfileId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "LastModifiedRegion", "LastModifiedTime"), output_token = "NextToken", result_key = "Applications")
   )
   input <- .connect$list_security_profile_applications_input(SecurityProfileId = SecurityProfileId, InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_security_profile_applications_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6920,12 +7420,13 @@ connect_list_security_profile_permissions <- function(SecurityProfileId, Instanc
     name = "ListSecurityProfilePermissions",
     http_method = "GET",
     http_path = "/security-profiles-permissions/{InstanceId}/{SecurityProfileId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "LastModifiedRegion", "LastModifiedTime"), output_token = "NextToken", result_key = "Permissions")
   )
   input <- .connect$list_security_profile_permissions_input(SecurityProfileId = SecurityProfileId, InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_security_profile_permissions_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6958,12 +7459,13 @@ connect_list_security_profiles <- function(InstanceId, NextToken = NULL, MaxResu
     name = "ListSecurityProfiles",
     http_method = "GET",
     http_path = "/security-profiles-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityProfileSummaryList")
   )
   input <- .connect$list_security_profiles_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_security_profiles_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6991,12 +7493,13 @@ connect_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .connect$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7037,12 +7540,13 @@ connect_list_task_templates <- function(InstanceId, NextToken = NULL, MaxResults
     name = "ListTaskTemplates",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/task/template",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TaskTemplates")
   )
   input <- .connect$list_task_templates_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, Status = Status, Name = Name)
   output <- .connect$list_task_templates_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7073,12 +7577,13 @@ connect_list_traffic_distribution_group_users <- function(TrafficDistributionGro
     name = "ListTrafficDistributionGroupUsers",
     http_method = "GET",
     http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}/user",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficDistributionGroupUserSummaryList")
   )
   input <- .connect$list_traffic_distribution_group_users_input(TrafficDistributionGroupId = TrafficDistributionGroupId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .connect$list_traffic_distribution_group_users_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7109,12 +7614,13 @@ connect_list_traffic_distribution_groups <- function(MaxResults = NULL, NextToke
     name = "ListTrafficDistributionGroups",
     http_method = "GET",
     http_path = "/traffic-distribution-groups",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficDistributionGroupSummaryList")
   )
   input <- .connect$list_traffic_distribution_groups_input(MaxResults = MaxResults, NextToken = NextToken, InstanceId = InstanceId)
   output <- .connect$list_traffic_distribution_groups_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7146,12 +7652,13 @@ connect_list_use_cases <- function(InstanceId, IntegrationAssociationId, NextTok
     name = "ListUseCases",
     http_method = "GET",
     http_path = "/instance/{InstanceId}/integration-associations/{IntegrationAssociationId}/use-cases",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UseCaseSummaryList")
   )
   input <- .connect$list_use_cases_input(InstanceId = InstanceId, IntegrationAssociationId = IntegrationAssociationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_use_cases_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7184,12 +7691,13 @@ connect_list_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, Max
     name = "ListUserHierarchyGroups",
     http_method = "GET",
     http_path = "/user-hierarchy-groups-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserHierarchyGroupSummaryList")
   )
   input <- .connect$list_user_hierarchy_groups_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_user_hierarchy_groups_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7219,12 +7727,13 @@ connect_list_user_proficiencies <- function(InstanceId, UserId, NextToken = NULL
     name = "ListUserProficiencies",
     http_method = "GET",
     http_path = "/users/{InstanceId}/{UserId}/proficiencies",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "LastModifiedTime", "LastModifiedRegion"), output_token = "NextToken", result_key = "UserProficiencyList")
   )
   input <- .connect$list_user_proficiencies_input(InstanceId = InstanceId, UserId = UserId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_user_proficiencies_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7257,12 +7766,13 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
     name = "ListUsers",
     http_method = "GET",
     http_path = "/users-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserSummaryList")
   )
   input <- .connect$list_users_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_users_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7294,12 +7804,13 @@ connect_list_view_versions <- function(InstanceId, ViewId, NextToken = NULL, Max
     name = "ListViewVersions",
     http_method = "GET",
     http_path = "/views/{InstanceId}/{ViewId}/versions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ViewVersionSummaryList")
   )
   input <- .connect$list_view_versions_input(InstanceId = InstanceId, ViewId = ViewId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_view_versions_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7330,12 +7841,13 @@ connect_list_views <- function(InstanceId, Type = NULL, NextToken = NULL, MaxRes
     name = "ListViews",
     http_method = "GET",
     http_path = "/views/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ViewsSummaryList")
   )
   input <- .connect$list_views_input(InstanceId = InstanceId, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .connect$list_views_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7370,12 +7882,13 @@ connect_monitor_contact <- function(InstanceId, ContactId, UserId, AllowedMonito
     name = "MonitorContact",
     http_method = "POST",
     http_path = "/contact/monitor",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$monitor_contact_input(InstanceId = InstanceId, ContactId = ContactId, UserId = UserId, AllowedMonitorCapabilities = AllowedMonitorCapabilities, ClientToken = ClientToken)
   output <- .connect$monitor_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7402,12 +7915,13 @@ connect_pause_contact <- function(ContactId, InstanceId, ContactFlowId = NULL) {
     name = "PauseContact",
     http_method = "POST",
     http_path = "/contact/pause",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$pause_contact_input(ContactId = ContactId, InstanceId = InstanceId, ContactFlowId = ContactFlowId)
   output <- .connect$pause_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7436,12 +7950,13 @@ connect_put_user_status <- function(UserId, InstanceId, AgentStatusId) {
     name = "PutUserStatus",
     http_method = "PUT",
     http_path = "/users/{InstanceId}/{UserId}/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$put_user_status_input(UserId = UserId, InstanceId = InstanceId, AgentStatusId = AgentStatusId)
   output <- .connect$put_user_status_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7471,12 +7986,13 @@ connect_release_phone_number <- function(PhoneNumberId, ClientToken = NULL) {
     name = "ReleasePhoneNumber",
     http_method = "DELETE",
     http_path = "/phone-number/{PhoneNumberId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$release_phone_number_input(PhoneNumberId = PhoneNumberId, ClientToken = ClientToken)
   output <- .connect$release_phone_number_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7515,12 +8031,13 @@ connect_replicate_instance <- function(InstanceId, ReplicaRegion, ClientToken = 
     name = "ReplicateInstance",
     http_method = "POST",
     http_path = "/instance/{InstanceId}/replicate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$replicate_instance_input(InstanceId = InstanceId, ReplicaRegion = ReplicaRegion, ClientToken = ClientToken, ReplicaAlias = ReplicaAlias)
   output <- .connect$replicate_instance_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7547,12 +8064,13 @@ connect_resume_contact <- function(ContactId, InstanceId, ContactFlowId = NULL) 
     name = "ResumeContact",
     http_method = "POST",
     http_path = "/contact/resume",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$resume_contact_input(ContactId = ContactId, InstanceId = InstanceId, ContactFlowId = ContactFlowId)
   output <- .connect$resume_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7584,12 +8102,13 @@ connect_resume_contact_recording <- function(InstanceId, ContactId, InitialConta
     name = "ResumeContactRecording",
     http_method = "POST",
     http_path = "/contact/resume-recording",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$resume_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId)
   output <- .connect$resume_contact_recording_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7629,17 +8148,102 @@ connect_search_available_phone_numbers <- function(TargetArn = NULL, InstanceId 
     name = "SearchAvailablePhoneNumbers",
     http_method = "POST",
     http_path = "/phone-number/search-available",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AvailableNumbersList")
   )
   input <- .connect$search_available_phone_numbers_input(TargetArn = TargetArn, InstanceId = InstanceId, PhoneNumberCountryCode = PhoneNumberCountryCode, PhoneNumberType = PhoneNumberType, PhoneNumberPrefix = PhoneNumberPrefix, MaxResults = MaxResults, NextToken = NextToken)
   output <- .connect$search_available_phone_numbers_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$search_available_phone_numbers <- connect_search_available_phone_numbers
+
+#' Searches the flow modules in an Amazon Connect instance, with optional
+#' filtering
+#'
+#' @description
+#' Searches the flow modules in an Amazon Connect instance, with optional filtering.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_search_contact_flow_modules/](https://www.paws-r-sdk.com/docs/connect_search_contact_flow_modules/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the instance
+#' ID in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return contact flow modules.
+#' 
+#' The `name` and `description` fields support "contains" queries with a
+#' minimum of 2 characters and a maximum of 25 characters. Any queries with
+#' character lengths outside of this range will result in invalid results.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_contact_flow_modules
+connect_search_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchContactFlowModules",
+    http_method = "POST",
+    http_path = "/search-contact-flow-modules",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "ContactFlowModules")
+  )
+  input <- .connect$search_contact_flow_modules_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_contact_flow_modules_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_contact_flow_modules <- connect_search_contact_flow_modules
+
+#' Searches the contact flows in an Amazon Connect instance, with optional
+#' filtering
+#'
+#' @description
+#' Searches the contact flows in an Amazon Connect instance, with optional filtering.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_search_contact_flows/](https://www.paws-r-sdk.com/docs/connect_search_contact_flows/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the instance
+#' ID in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return flows.
+#' 
+#' The `name` and `description` fields support "contains" queries with a
+#' minimum of 2 characters and a maximum of 25 characters. Any queries with
+#' character lengths outside of this range will result in invalid results.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_contact_flows
+connect_search_contact_flows <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchContactFlows",
+    http_method = "POST",
+    http_path = "/search-contact-flows",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "ContactFlows")
+  )
+  input <- .connect$search_contact_flows_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_contact_flows_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_contact_flows <- connect_search_contact_flows
 
 #' Searches contacts in an Amazon Connect instance
 #'
@@ -7666,12 +8270,13 @@ connect_search_contacts <- function(InstanceId, TimeRange, SearchCriteria = NULL
     name = "SearchContacts",
     http_method = "POST",
     http_path = "/search-contacts",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "TotalCount"), output_token = "NextToken", result_key = "Contacts")
   )
   input <- .connect$search_contacts_input(InstanceId = InstanceId, TimeRange = TimeRange, SearchCriteria = SearchCriteria, MaxResults = MaxResults, NextToken = NextToken, Sort = Sort)
   output <- .connect$search_contacts_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7705,12 +8310,13 @@ connect_search_hours_of_operations <- function(InstanceId, NextToken = NULL, Max
     name = "SearchHoursOfOperations",
     http_method = "POST",
     http_path = "/search-hours-of-operations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "HoursOfOperations")
   )
   input <- .connect$search_hours_of_operations_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
   output <- .connect$search_hours_of_operations_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7740,12 +8346,13 @@ connect_search_predefined_attributes <- function(InstanceId, NextToken = NULL, M
     name = "SearchPredefinedAttributes",
     http_method = "POST",
     http_path = "/search-predefined-attributes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "PredefinedAttributes")
   )
   input <- .connect$search_predefined_attributes_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchCriteria = SearchCriteria)
   output <- .connect$search_predefined_attributes_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7778,12 +8385,13 @@ connect_search_prompts <- function(InstanceId, NextToken = NULL, MaxResults = NU
     name = "SearchPrompts",
     http_method = "POST",
     http_path = "/search-prompts",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "Prompts")
   )
   input <- .connect$search_prompts_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
   output <- .connect$search_prompts_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7820,12 +8428,13 @@ connect_search_queues <- function(InstanceId, NextToken = NULL, MaxResults = NUL
     name = "SearchQueues",
     http_method = "POST",
     http_path = "/search-queues",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "Queues")
   )
   input <- .connect$search_queues_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
   output <- .connect$search_queues_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7859,12 +8468,13 @@ connect_search_quick_connects <- function(InstanceId, NextToken = NULL, MaxResul
     name = "SearchQuickConnects",
     http_method = "POST",
     http_path = "/search-quick-connects",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "QuickConnects")
   )
   input <- .connect$search_quick_connects_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
   output <- .connect$search_quick_connects_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7898,12 +8508,13 @@ connect_search_resource_tags <- function(InstanceId, ResourceTypes = NULL, NextT
     name = "SearchResourceTags",
     http_method = "POST",
     http_path = "/search-resource-tags",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .connect$search_resource_tags_input(InstanceId = InstanceId, ResourceTypes = ResourceTypes, NextToken = NextToken, MaxResults = MaxResults, SearchCriteria = SearchCriteria)
   output <- .connect$search_resource_tags_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7941,12 +8552,13 @@ connect_search_routing_profiles <- function(InstanceId, NextToken = NULL, MaxRes
     name = "SearchRoutingProfiles",
     http_method = "POST",
     http_path = "/search-routing-profiles",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "RoutingProfiles")
   )
   input <- .connect$search_routing_profiles_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
   output <- .connect$search_routing_profiles_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7986,12 +8598,13 @@ connect_search_security_profiles <- function(InstanceId, NextToken = NULL, MaxRe
     name = "SearchSecurityProfiles",
     http_method = "POST",
     http_path = "/search-security-profiles",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "SecurityProfiles")
   )
   input <- .connect$search_security_profiles_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchCriteria = SearchCriteria, SearchFilter = SearchFilter)
   output <- .connect$search_security_profiles_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8026,12 +8639,13 @@ connect_search_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL
     name = "SearchUsers",
     http_method = "POST",
     http_path = "/search-users",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "Users")
   )
   input <- .connect$search_users_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
   output <- .connect$search_users_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8068,12 +8682,13 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
     name = "SearchVocabularies",
     http_method = "POST",
     http_path = "/vocabulary-summary/{InstanceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VocabularySummaryList")
   )
   input <- .connect$search_vocabularies_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, State = State, NameStartsWith = NameStartsWith, LanguageCode = LanguageCode)
   output <- .connect$search_vocabularies_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8111,17 +8726,67 @@ connect_send_chat_integration_event <- function(SourceId, DestinationId, Subtype
     name = "SendChatIntegrationEvent",
     http_method = "POST",
     http_path = "/chat-integration-event",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$send_chat_integration_event_input(SourceId = SourceId, DestinationId = DestinationId, Subtype = Subtype, Event = Event, NewSessionDetails = NewSessionDetails)
   output <- .connect$send_chat_integration_event_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$send_chat_integration_event <- connect_send_chat_integration_event
+
+#' Provides a pre-signed Amazon S3 URL in response for uploading your
+#' content
+#'
+#' @description
+#' Provides a pre-signed Amazon S3 URL in response for uploading your content.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_start_attached_file_upload/](https://www.paws-r-sdk.com/docs/connect_start_attached_file_upload/) for full documentation.
+#'
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' @param InstanceId &#91;required&#93; The unique identifier of the Amazon Connect instance.
+#' @param FileName &#91;required&#93; A case-sensitive name of the attached file being uploaded.
+#' @param FileSizeInBytes &#91;required&#93; The size of the attached file in bytes.
+#' @param UrlExpiryInSeconds Optional override for the expiry of the pre-signed S3 URL in seconds.
+#' The default value is 300.
+#' @param FileUseCaseType &#91;required&#93; The use case for the file.
+#' @param AssociatedResourceArn &#91;required&#93; The resource to which the attached file is (being) uploaded to.
+#' [Cases](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html)
+#' are the only current supported resource.
+#' 
+#' This value must be a valid ARN.
+#' @param CreatedBy Represents the identity that created the file.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, `{ "Tags": {"key1":"value1", "key2":"value2"} }`.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_start_attached_file_upload
+connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, FileName, FileSizeInBytes, UrlExpiryInSeconds = NULL, FileUseCaseType, AssociatedResourceArn, CreatedBy = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "StartAttachedFileUpload",
+    http_method = "PUT",
+    http_path = "/attached-files/{InstanceId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .connect$start_attached_file_upload_input(ClientToken = ClientToken, InstanceId = InstanceId, FileName = FileName, FileSizeInBytes = FileSizeInBytes, UrlExpiryInSeconds = UrlExpiryInSeconds, FileUseCaseType = FileUseCaseType, AssociatedResourceArn = AssociatedResourceArn, CreatedBy = CreatedBy, Tags = Tags)
+  output <- .connect$start_attached_file_upload_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$start_attached_file_upload <- connect_start_attached_file_upload
 
 #' Initiates a flow to start a new chat for the customer
 #'
@@ -8208,12 +8873,13 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
     name = "StartChatContact",
     http_method = "PUT",
     http_path = "/contact/chat",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$start_chat_contact_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Attributes = Attributes, ParticipantDetails = ParticipantDetails, InitialMessage = InitialMessage, ClientToken = ClientToken, ChatDurationInMinutes = ChatDurationInMinutes, SupportedMessagingContentTypes = SupportedMessagingContentTypes, PersistentChat = PersistentChat, RelatedContactId = RelatedContactId, SegmentAttributes = SegmentAttributes)
   output <- .connect$start_chat_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8248,12 +8914,13 @@ connect_start_contact_evaluation <- function(InstanceId, ContactId, EvaluationFo
     name = "StartContactEvaluation",
     http_method = "PUT",
     http_path = "/contact-evaluations/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$start_contact_evaluation_input(InstanceId = InstanceId, ContactId = ContactId, EvaluationFormId = EvaluationFormId, ClientToken = ClientToken)
   output <- .connect$start_contact_evaluation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8284,12 +8951,13 @@ connect_start_contact_recording <- function(InstanceId, ContactId, InitialContac
     name = "StartContactRecording",
     http_method = "POST",
     http_path = "/contact/start-recording",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$start_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId, VoiceRecordingConfiguration = VoiceRecordingConfiguration)
   output <- .connect$start_contact_recording_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8324,12 +8992,13 @@ connect_start_contact_streaming <- function(InstanceId, ContactId, ChatStreaming
     name = "StartContactStreaming",
     http_method = "POST",
     http_path = "/contact/start-streaming",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$start_contact_streaming_input(InstanceId = InstanceId, ContactId = ContactId, ChatStreamingConfiguration = ChatStreamingConfiguration, ClientToken = ClientToken)
   output <- .connect$start_contact_streaming_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8406,12 +9075,13 @@ connect_start_outbound_voice_contact <- function(Name = NULL, Description = NULL
     name = "StartOutboundVoiceContact",
     http_method = "PUT",
     http_path = "/contact/outbound-voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$start_outbound_voice_contact_input(Name = Name, Description = Description, References = References, RelatedContactId = RelatedContactId, DestinationPhoneNumber = DestinationPhoneNumber, ContactFlowId = ContactFlowId, InstanceId = InstanceId, ClientToken = ClientToken, SourcePhoneNumber = SourcePhoneNumber, QueueId = QueueId, Attributes = Attributes, AnswerMachineDetectionConfig = AnswerMachineDetectionConfig, CampaignId = CampaignId, TrafficType = TrafficType)
   output <- .connect$start_outbound_voice_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8491,12 +9161,13 @@ connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, Con
     name = "StartTaskContact",
     http_method = "PUT",
     http_path = "/contact/task",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$start_task_contact_input(InstanceId = InstanceId, PreviousContactId = PreviousContactId, ContactFlowId = ContactFlowId, Attributes = Attributes, Name = Name, References = References, Description = Description, ClientToken = ClientToken, ScheduledTime = ScheduledTime, TaskTemplateId = TaskTemplateId, QuickConnectId = QuickConnectId, RelatedContactId = RelatedContactId)
   output <- .connect$start_task_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8528,9 +9199,9 @@ connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, Con
 #' started, the contact ID is returned.
 #' @param ContactFlowId &#91;required&#93; The identifier of the flow for the call. To see the ContactFlowId in the
 #' Amazon Connect admin website, on the navigation menu go to **Routing**,
-#' **Contact Flows**. Choose the flow. On the flow page, under the name of
-#' the flow, choose **Show additional flow information**. The ContactFlowId
-#' is the last part of the ARN, shown here in bold:
+#' **Flows**. Choose the flow. On the flow page, under the name of the
+#' flow, choose **Show additional flow information**. The ContactFlowId is
+#' the last part of the ARN, shown here in bold:
 #' 
 #' arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/**846ec553-a005-41c0-8341-xxxxxxxxxxxx**
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
@@ -8557,12 +9228,13 @@ connect_start_web_rtc_contact <- function(Attributes = NULL, ClientToken = NULL,
     name = "StartWebRTCContact",
     http_method = "PUT",
     http_path = "/contact/webrtc",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$start_web_rtc_contact_input(Attributes = Attributes, ClientToken = ClientToken, ContactFlowId = ContactFlowId, InstanceId = InstanceId, AllowedCapabilities = AllowedCapabilities, ParticipantDetails = ParticipantDetails, RelatedContactId = RelatedContactId, References = References, Description = Description)
   output <- .connect$start_web_rtc_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8592,12 +9264,13 @@ connect_stop_contact <- function(ContactId, InstanceId, DisconnectReason = NULL)
     name = "StopContact",
     http_method = "POST",
     http_path = "/contact/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$stop_contact_input(ContactId = ContactId, InstanceId = InstanceId, DisconnectReason = DisconnectReason)
   output <- .connect$stop_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8627,12 +9300,13 @@ connect_stop_contact_recording <- function(InstanceId, ContactId, InitialContact
     name = "StopContactRecording",
     http_method = "POST",
     http_path = "/contact/stop-recording",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$stop_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId)
   output <- .connect$stop_contact_recording_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8662,12 +9336,13 @@ connect_stop_contact_streaming <- function(InstanceId, ContactId, StreamingId) {
     name = "StopContactStreaming",
     http_method = "POST",
     http_path = "/contact/stop-streaming",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$stop_contact_streaming_input(InstanceId = InstanceId, ContactId = ContactId, StreamingId = StreamingId)
   output <- .connect$stop_contact_streaming_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8697,12 +9372,13 @@ connect_submit_contact_evaluation <- function(InstanceId, EvaluationId, Answers 
     name = "SubmitContactEvaluation",
     http_method = "POST",
     http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}/submit",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$submit_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId, Answers = Answers, Notes = Notes)
   output <- .connect$submit_contact_evaluation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8733,12 +9409,13 @@ connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialCont
     name = "SuspendContactRecording",
     http_method = "POST",
     http_path = "/contact/suspend-recording",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$suspend_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId)
   output <- .connect$suspend_contact_recording_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8770,12 +9447,13 @@ connect_tag_contact <- function(ContactId, InstanceId, Tags) {
     name = "TagContact",
     http_method = "POST",
     http_path = "/contact/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$tag_contact_input(ContactId = ContactId, InstanceId = InstanceId, Tags = Tags)
   output <- .connect$tag_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8801,12 +9479,13 @@ connect_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .connect$tag_resource_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8843,12 +9522,13 @@ connect_transfer_contact <- function(InstanceId, ContactId, QueueId = NULL, User
     name = "TransferContact",
     http_method = "POST",
     http_path = "/contact/transfer",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$transfer_contact_input(InstanceId = InstanceId, ContactId = ContactId, QueueId = QueueId, UserId = UserId, ContactFlowId = ContactFlowId, ClientToken = ClientToken)
   output <- .connect$transfer_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8878,12 +9558,13 @@ connect_untag_contact <- function(ContactId, InstanceId, TagKeys) {
     name = "UntagContact",
     http_method = "DELETE",
     http_path = "/contact/tags/{InstanceId}/{ContactId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$untag_contact_input(ContactId = ContactId, InstanceId = InstanceId, TagKeys = TagKeys)
   output <- .connect$untag_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8908,12 +9589,13 @@ connect_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .connect$untag_resource_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8947,17 +9629,72 @@ connect_update_agent_status <- function(InstanceId, AgentStatusId, Name = NULL, 
     name = "UpdateAgentStatus",
     http_method = "POST",
     http_path = "/agent-status/{InstanceId}/{AgentStatusId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_agent_status_input(InstanceId = InstanceId, AgentStatusId = AgentStatusId, Name = Name, Description = Description, State = State, DisplayOrder = DisplayOrder, ResetOrderNumber = ResetOrderNumber)
   output <- .connect$update_agent_status_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$update_agent_status <- connect_update_agent_status
+
+#' This API is in preview release for Amazon Connect and is subject to
+#' change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_update_authentication_profile/](https://www.paws-r-sdk.com/docs/connect_update_authentication_profile/) for full documentation.
+#'
+#' @param AuthenticationProfileId &#91;required&#93; A unique identifier for the authentication profile.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Name The name for the authentication profile.
+#' @param Description The description for the authentication profile.
+#' @param AllowedIps A list of IP address range strings that are allowed to access the
+#' instance. For more information on how to configure IP addresses,
+#' see[Configure session
+#' timeouts](https://docs.aws.amazon.com/connect/latest/adminguide/authentication-profiles.html#configure-session-timeouts)
+#' in the *Amazon Connect Administrator Guide*.
+#' @param BlockedIps A list of IP address range strings that are blocked from accessing the
+#' instance. For more information on how to configure IP addresses, For
+#' more information on how to configure IP addresses, see [Configure
+#' IP-based access
+#' control](https://docs.aws.amazon.com/connect/latest/adminguide/authentication-profiles.html#configure-ip-based-ac)
+#' in the *Amazon Connect Administrator Guide*.
+#' @param PeriodicSessionDuration The short lived session duration configuration for users logged in to
+#' Amazon Connect, in minutes. This value determines the maximum possible
+#' time before an agent is authenticated. For more information, For more
+#' information on how to configure IP addresses, see [Configure session
+#' timeouts](https://docs.aws.amazon.com/connect/latest/adminguide/authentication-profiles.html#configure-session-timeouts)
+#' in the *Amazon Connect Administrator Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_authentication_profile
+connect_update_authentication_profile <- function(AuthenticationProfileId, InstanceId, Name = NULL, Description = NULL, AllowedIps = NULL, BlockedIps = NULL, PeriodicSessionDuration = NULL) {
+  op <- new_operation(
+    name = "UpdateAuthenticationProfile",
+    http_method = "POST",
+    http_path = "/authentication-profiles/{InstanceId}/{AuthenticationProfileId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .connect$update_authentication_profile_input(AuthenticationProfileId = AuthenticationProfileId, InstanceId = InstanceId, Name = Name, Description = Description, AllowedIps = AllowedIps, BlockedIps = BlockedIps, PeriodicSessionDuration = PeriodicSessionDuration)
+  output <- .connect$update_authentication_profile_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_authentication_profile <- connect_update_authentication_profile
 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
@@ -8986,12 +9723,13 @@ connect_update_contact <- function(InstanceId, ContactId, Name = NULL, Descripti
     name = "UpdateContact",
     http_method = "POST",
     http_path = "/contacts/{InstanceId}/{ContactId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_input(InstanceId = InstanceId, ContactId = ContactId, Name = Name, Description = Description, References = References)
   output <- .connect$update_contact_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9018,6 +9756,20 @@ connect_update_contact <- function(InstanceId, ContactId, Name = NULL, Descripti
 #' You can have up to 32,768 UTF-8 bytes across all attributes for a
 #' contact. Attribute keys can include only alphanumeric, dash, and
 #' underscore characters.
+#' 
+#' When the attributes for a contact exceed 32 KB, the contact is routed
+#' down the Error branch of the flow. As a mitigation, consider the
+#' following options:
+#' 
+#' -   Remove unnecessary attributes by setting their values to empty.
+#' 
+#' -   If the attributes are only used in one flow and don't need to be
+#'     referred to outside of that flow (for example, by a Lambda or
+#'     another flow), then use flow attributes. This way you aren't
+#'     needlessly persisting the 32 KB of information from one flow to
+#'     another. For more information, see [Flow block: Set contact
+#'     attributes](https://docs.aws.amazon.com/connect/latest/adminguide/set-contact-attributes.html)
+#'     in the *Amazon Connect Administrator Guide*.
 #'
 #' @keywords internal
 #'
@@ -9027,12 +9779,13 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
     name = "UpdateContactAttributes",
     http_method = "POST",
     http_path = "/contact/attributes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_attributes_input(InitialContactId = InitialContactId, InstanceId = InstanceId, Attributes = Attributes)
   output <- .connect$update_contact_attributes_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9063,12 +9816,13 @@ connect_update_contact_evaluation <- function(InstanceId, EvaluationId, Answers 
     name = "UpdateContactEvaluation",
     http_method = "POST",
     http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId, Answers = Answers, Notes = Notes)
   output <- .connect$update_contact_evaluation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9098,12 +9852,13 @@ connect_update_contact_flow_content <- function(InstanceId, ContactFlowId, Conte
     name = "UpdateContactFlowContent",
     http_method = "POST",
     http_path = "/contact-flows/{InstanceId}/{ContactFlowId}/content",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_flow_content_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Content = Content)
   output <- .connect$update_contact_flow_content_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9134,12 +9889,13 @@ connect_update_contact_flow_metadata <- function(InstanceId, ContactFlowId, Name
     name = "UpdateContactFlowMetadata",
     http_method = "POST",
     http_path = "/contact-flows/{InstanceId}/{ContactFlowId}/metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_flow_metadata_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Name = Name, Description = Description, ContactFlowState = ContactFlowState)
   output <- .connect$update_contact_flow_metadata_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9170,12 +9926,13 @@ connect_update_contact_flow_module_content <- function(InstanceId, ContactFlowMo
     name = "UpdateContactFlowModuleContent",
     http_method = "POST",
     http_path = "/contact-flow-modules/{InstanceId}/{ContactFlowModuleId}/content",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_flow_module_content_input(InstanceId = InstanceId, ContactFlowModuleId = ContactFlowModuleId, Content = Content)
   output <- .connect$update_contact_flow_module_content_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9206,12 +9963,13 @@ connect_update_contact_flow_module_metadata <- function(InstanceId, ContactFlowM
     name = "UpdateContactFlowModuleMetadata",
     http_method = "POST",
     http_path = "/contact-flow-modules/{InstanceId}/{ContactFlowModuleId}/metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_flow_module_metadata_input(InstanceId = InstanceId, ContactFlowModuleId = ContactFlowModuleId, Name = Name, Description = Description, State = State)
   output <- .connect$update_contact_flow_module_metadata_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9238,23 +9996,24 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
     name = "UpdateContactFlowName",
     http_method = "POST",
     http_path = "/contact-flows/{InstanceId}/{ContactFlowId}/name",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_flow_name_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Name = Name, Description = Description)
   output <- .connect$update_contact_flow_name_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .connect$operations$update_contact_flow_name <- connect_update_contact_flow_name
 
-#' This API is in preview release for Amazon Connect and is subject to
-#' change
+#' Updates routing priority and age on the contact (QueuePriority and
+#' QueueTimeAdjustmentInSeconds)
 #'
 #' @description
-#' This API is in preview release for Amazon Connect and is subject to change.
+#' Updates routing priority and age on the contact (**QueuePriority** and **QueueTimeAdjustmentInSeconds**). These properties can be used to change a customer's position in the queue. For example, you can move a contact to the back of the queue by setting a lower routing priority relative to other contacts in queue; or you can move a contact to the front of the queue by increasing the routing age which will make the contact look artificially older and therefore higher up in the first-in-first-out routing order. Note that adjusting the routing age of a contact affects only its position in queue, and not its actual queue wait time as reported through metrics. These properties can also be updated by using [the Set routing priority / age flow block](https://docs.aws.amazon.com/connect/latest/adminguide/change-routing-priority.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/connect_update_contact_routing_data/](https://www.paws-r-sdk.com/docs/connect_update_contact_routing_data/) for full documentation.
 #'
@@ -9280,12 +10039,13 @@ connect_update_contact_routing_data <- function(InstanceId, ContactId, QueueTime
     name = "UpdateContactRoutingData",
     http_method = "POST",
     http_path = "/contacts/{InstanceId}/{ContactId}/routing-data",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_routing_data_input(InstanceId = InstanceId, ContactId = ContactId, QueueTimeAdjustmentSeconds = QueueTimeAdjustmentSeconds, QueuePriority = QueuePriority)
   output <- .connect$update_contact_routing_data_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9316,12 +10076,13 @@ connect_update_contact_schedule <- function(InstanceId, ContactId, ScheduledTime
     name = "UpdateContactSchedule",
     http_method = "POST",
     http_path = "/contact/schedule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_contact_schedule_input(InstanceId = InstanceId, ContactId = ContactId, ScheduledTime = ScheduledTime)
   output <- .connect$update_contact_schedule_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9363,12 +10124,13 @@ connect_update_evaluation_form <- function(InstanceId, EvaluationFormId, Evaluat
     name = "UpdateEvaluationForm",
     http_method = "PUT",
     http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion, CreateNewVersion = CreateNewVersion, Title = Title, Description = Description, Items = Items, ScoringStrategy = ScoringStrategy, ClientToken = ClientToken)
   output <- .connect$update_evaluation_form_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9401,12 +10163,13 @@ connect_update_hours_of_operation <- function(InstanceId, HoursOfOperationId, Na
     name = "UpdateHoursOfOperation",
     http_method = "POST",
     http_path = "/hours-of-operations/{InstanceId}/{HoursOfOperationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_hours_of_operation_input(InstanceId = InstanceId, HoursOfOperationId = HoursOfOperationId, Name = Name, Description = Description, TimeZone = TimeZone, Config = Config)
   output <- .connect$update_hours_of_operation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9439,12 +10202,13 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
     name = "UpdateInstanceAttribute",
     http_method = "POST",
     http_path = "/instance/{InstanceId}/attribute/{AttributeType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_instance_attribute_input(InstanceId = InstanceId, AttributeType = AttributeType, Value = Value)
   output <- .connect$update_instance_attribute_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9476,12 +10240,13 @@ connect_update_instance_storage_config <- function(InstanceId, AssociationId, Re
     name = "UpdateInstanceStorageConfig",
     http_method = "POST",
     http_path = "/instance/{InstanceId}/storage-config/{AssociationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_instance_storage_config_input(InstanceId = InstanceId, AssociationId = AssociationId, ResourceType = ResourceType, StorageConfig = StorageConfig)
   output <- .connect$update_instance_storage_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9512,12 +10277,13 @@ connect_update_participant_role_config <- function(InstanceId, ContactId, Channe
     name = "UpdateParticipantRoleConfig",
     http_method = "PUT",
     http_path = "/contact/participant-role-config/{InstanceId}/{ContactId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_participant_role_config_input(InstanceId = InstanceId, ContactId = ContactId, ChannelConfiguration = ChannelConfiguration)
   output <- .connect$update_participant_role_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9557,12 +10323,13 @@ connect_update_phone_number <- function(PhoneNumberId, TargetArn = NULL, Instanc
     name = "UpdatePhoneNumber",
     http_method = "PUT",
     http_path = "/phone-number/{PhoneNumberId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_phone_number_input(PhoneNumberId = PhoneNumberId, TargetArn = TargetArn, InstanceId = InstanceId, ClientToken = ClientToken)
   output <- .connect$update_phone_number_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9592,12 +10359,13 @@ connect_update_phone_number_metadata <- function(PhoneNumberId, PhoneNumberDescr
     name = "UpdatePhoneNumberMetadata",
     http_method = "PUT",
     http_path = "/phone-number/{PhoneNumberId}/metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_phone_number_metadata_input(PhoneNumberId = PhoneNumberId, PhoneNumberDescription = PhoneNumberDescription, ClientToken = ClientToken)
   output <- .connect$update_phone_number_metadata_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9624,12 +10392,13 @@ connect_update_predefined_attribute <- function(InstanceId, Name, Values = NULL)
     name = "UpdatePredefinedAttribute",
     http_method = "POST",
     http_path = "/predefined-attributes/{InstanceId}/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_predefined_attribute_input(InstanceId = InstanceId, Name = Name, Values = Values)
   output <- .connect$update_predefined_attribute_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9663,12 +10432,13 @@ connect_update_prompt <- function(InstanceId, PromptId, Name = NULL, Description
     name = "UpdatePrompt",
     http_method = "POST",
     http_path = "/prompts/{InstanceId}/{PromptId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_prompt_input(InstanceId = InstanceId, PromptId = PromptId, Name = Name, Description = Description, S3Uri = S3Uri)
   output <- .connect$update_prompt_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9698,12 +10468,13 @@ connect_update_queue_hours_of_operation <- function(InstanceId, QueueId, HoursOf
     name = "UpdateQueueHoursOfOperation",
     http_method = "POST",
     http_path = "/queues/{InstanceId}/{QueueId}/hours-of-operation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_queue_hours_of_operation_input(InstanceId = InstanceId, QueueId = QueueId, HoursOfOperationId = HoursOfOperationId)
   output <- .connect$update_queue_hours_of_operation_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9734,12 +10505,13 @@ connect_update_queue_max_contacts <- function(InstanceId, QueueId, MaxContacts =
     name = "UpdateQueueMaxContacts",
     http_method = "POST",
     http_path = "/queues/{InstanceId}/{QueueId}/max-contacts",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_queue_max_contacts_input(InstanceId = InstanceId, QueueId = QueueId, MaxContacts = MaxContacts)
   output <- .connect$update_queue_max_contacts_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9770,12 +10542,13 @@ connect_update_queue_name <- function(InstanceId, QueueId, Name = NULL, Descript
     name = "UpdateQueueName",
     http_method = "POST",
     http_path = "/queues/{InstanceId}/{QueueId}/name",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_queue_name_input(InstanceId = InstanceId, QueueId = QueueId, Name = Name, Description = Description)
   output <- .connect$update_queue_name_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9805,12 +10578,13 @@ connect_update_queue_outbound_caller_config <- function(InstanceId, QueueId, Out
     name = "UpdateQueueOutboundCallerConfig",
     http_method = "POST",
     http_path = "/queues/{InstanceId}/{QueueId}/outbound-caller-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_queue_outbound_caller_config_input(InstanceId = InstanceId, QueueId = QueueId, OutboundCallerConfig = OutboundCallerConfig)
   output <- .connect$update_queue_outbound_caller_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9840,12 +10614,13 @@ connect_update_queue_status <- function(InstanceId, QueueId, Status) {
     name = "UpdateQueueStatus",
     http_method = "POST",
     http_path = "/queues/{InstanceId}/{QueueId}/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_queue_status_input(InstanceId = InstanceId, QueueId = QueueId, Status = Status)
   output <- .connect$update_queue_status_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9874,12 +10649,13 @@ connect_update_quick_connect_config <- function(InstanceId, QuickConnectId, Quic
     name = "UpdateQuickConnectConfig",
     http_method = "POST",
     http_path = "/quick-connects/{InstanceId}/{QuickConnectId}/config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_quick_connect_config_input(InstanceId = InstanceId, QuickConnectId = QuickConnectId, QuickConnectConfig = QuickConnectConfig)
   output <- .connect$update_quick_connect_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9909,12 +10685,13 @@ connect_update_quick_connect_name <- function(InstanceId, QuickConnectId, Name =
     name = "UpdateQuickConnectName",
     http_method = "POST",
     http_path = "/quick-connects/{InstanceId}/{QuickConnectId}/name",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_quick_connect_name_input(InstanceId = InstanceId, QuickConnectId = QuickConnectId, Name = Name, Description = Description)
   output <- .connect$update_quick_connect_name_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9947,12 +10724,13 @@ connect_update_routing_profile_agent_availability_timer <- function(InstanceId, 
     name = "UpdateRoutingProfileAgentAvailabilityTimer",
     http_method = "POST",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/agent-availability-timer",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_routing_profile_agent_availability_timer_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, AgentAvailabilityTimer = AgentAvailabilityTimer)
   output <- .connect$update_routing_profile_agent_availability_timer_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9982,12 +10760,13 @@ connect_update_routing_profile_concurrency <- function(InstanceId, RoutingProfil
     name = "UpdateRoutingProfileConcurrency",
     http_method = "POST",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/concurrency",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_routing_profile_concurrency_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, MediaConcurrencies = MediaConcurrencies)
   output <- .connect$update_routing_profile_concurrency_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10016,12 +10795,13 @@ connect_update_routing_profile_default_outbound_queue <- function(InstanceId, Ro
     name = "UpdateRoutingProfileDefaultOutboundQueue",
     http_method = "POST",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/default-outbound-queue",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_routing_profile_default_outbound_queue_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, DefaultOutboundQueueId = DefaultOutboundQueueId)
   output <- .connect$update_routing_profile_default_outbound_queue_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10052,12 +10832,13 @@ connect_update_routing_profile_name <- function(InstanceId, RoutingProfileId, Na
     name = "UpdateRoutingProfileName",
     http_method = "POST",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/name",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_routing_profile_name_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, Name = Name, Description = Description)
   output <- .connect$update_routing_profile_name_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10089,12 +10870,13 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
     name = "UpdateRoutingProfileQueues",
     http_method = "POST",
     http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/queues",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_routing_profile_queues_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, QueueConfigs = QueueConfigs)
   output <- .connect$update_routing_profile_queues_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10129,12 +10911,13 @@ connect_update_rule <- function(RuleId, InstanceId, Name, Function, Actions, Pub
     name = "UpdateRule",
     http_method = "PUT",
     http_path = "/rules/{InstanceId}/{RuleId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_rule_input(RuleId = RuleId, InstanceId = InstanceId, Name = Name, Function = Function, Actions = Actions, PublishStatus = PublishStatus)
   output <- .connect$update_rule_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10176,12 +10959,13 @@ connect_update_security_profile <- function(Description = NULL, Permissions = NU
     name = "UpdateSecurityProfile",
     http_method = "POST",
     http_path = "/security-profiles/{InstanceId}/{SecurityProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_security_profile_input(Description = Description, Permissions = Permissions, SecurityProfileId = SecurityProfileId, InstanceId = InstanceId, AllowedAccessControlTags = AllowedAccessControlTags, TagRestrictedResources = TagRestrictedResources, Applications = Applications, HierarchyRestrictedResources = HierarchyRestrictedResources, AllowedAccessControlHierarchyGroupId = AllowedAccessControlHierarchyGroupId)
   output <- .connect$update_security_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10222,12 +11006,13 @@ connect_update_task_template <- function(TaskTemplateId, InstanceId, Name = NULL
     name = "UpdateTaskTemplate",
     http_method = "POST",
     http_path = "/instance/{InstanceId}/task/template/{TaskTemplateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_task_template_input(TaskTemplateId = TaskTemplateId, InstanceId = InstanceId, Name = Name, Description = Description, ContactFlowId = ContactFlowId, Constraints = Constraints, Defaults = Defaults, Status = Status, Fields = Fields)
   output <- .connect$update_task_template_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10259,12 +11044,13 @@ connect_update_traffic_distribution <- function(Id, TelephonyConfig = NULL, Sign
     name = "UpdateTrafficDistribution",
     http_method = "PUT",
     http_path = "/traffic-distribution/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_traffic_distribution_input(Id = Id, TelephonyConfig = TelephonyConfig, SignInConfig = SignInConfig, AgentConfig = AgentConfig)
   output <- .connect$update_traffic_distribution_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10293,12 +11079,13 @@ connect_update_user_hierarchy <- function(HierarchyGroupId = NULL, UserId, Insta
     name = "UpdateUserHierarchy",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/hierarchy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_hierarchy_input(HierarchyGroupId = HierarchyGroupId, UserId = UserId, InstanceId = InstanceId)
   output <- .connect$update_user_hierarchy_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10327,12 +11114,13 @@ connect_update_user_hierarchy_group_name <- function(Name, HierarchyGroupId, Ins
     name = "UpdateUserHierarchyGroupName",
     http_method = "POST",
     http_path = "/user-hierarchy-groups/{InstanceId}/{HierarchyGroupId}/name",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_hierarchy_group_name_input(Name = Name, HierarchyGroupId = HierarchyGroupId, InstanceId = InstanceId)
   output <- .connect$update_user_hierarchy_group_name_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10361,12 +11149,13 @@ connect_update_user_hierarchy_structure <- function(HierarchyStructure, Instance
     name = "UpdateUserHierarchyStructure",
     http_method = "POST",
     http_path = "/user-hierarchy-structure/{InstanceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_hierarchy_structure_input(HierarchyStructure = HierarchyStructure, InstanceId = InstanceId)
   output <- .connect$update_user_hierarchy_structure_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10395,12 +11184,13 @@ connect_update_user_identity_info <- function(IdentityInfo, UserId, InstanceId) 
     name = "UpdateUserIdentityInfo",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/identity-info",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_identity_info_input(IdentityInfo = IdentityInfo, UserId = UserId, InstanceId = InstanceId)
   output <- .connect$update_user_identity_info_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10429,12 +11219,13 @@ connect_update_user_phone_config <- function(PhoneConfig, UserId, InstanceId) {
     name = "UpdateUserPhoneConfig",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/phone-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_phone_config_input(PhoneConfig = PhoneConfig, UserId = UserId, InstanceId = InstanceId)
   output <- .connect$update_user_phone_config_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10463,12 +11254,13 @@ connect_update_user_proficiencies <- function(InstanceId, UserId, UserProficienc
     name = "UpdateUserProficiencies",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/proficiencies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_proficiencies_input(InstanceId = InstanceId, UserId = UserId, UserProficiencies = UserProficiencies)
   output <- .connect$update_user_proficiencies_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10497,12 +11289,13 @@ connect_update_user_routing_profile <- function(RoutingProfileId, UserId, Instan
     name = "UpdateUserRoutingProfile",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/routing-profile",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_routing_profile_input(RoutingProfileId = RoutingProfileId, UserId = UserId, InstanceId = InstanceId)
   output <- .connect$update_user_routing_profile_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10531,12 +11324,13 @@ connect_update_user_security_profiles <- function(SecurityProfileIds, UserId, In
     name = "UpdateUserSecurityProfiles",
     http_method = "POST",
     http_path = "/users/{InstanceId}/{UserId}/security-profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_user_security_profiles_input(SecurityProfileIds = SecurityProfileIds, UserId = UserId, InstanceId = InstanceId)
   output <- .connect$update_user_security_profiles_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10570,12 +11364,13 @@ connect_update_view_content <- function(InstanceId, ViewId, Status, Content) {
     name = "UpdateViewContent",
     http_method = "POST",
     http_path = "/views/{InstanceId}/{ViewId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_view_content_input(InstanceId = InstanceId, ViewId = ViewId, Status = Status, Content = Content)
   output <- .connect$update_view_content_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10603,12 +11398,13 @@ connect_update_view_metadata <- function(InstanceId, ViewId, Name = NULL, Descri
     name = "UpdateViewMetadata",
     http_method = "POST",
     http_path = "/views/{InstanceId}/{ViewId}/metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connect$update_view_metadata_input(InstanceId = InstanceId, ViewId = ViewId, Name = Name, Description = Description)
   output <- .connect$update_view_metadata_output()
   config <- get_config()
-  svc <- .connect$service(config)
+  svc <- .connect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

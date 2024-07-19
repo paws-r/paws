@@ -48,10 +48,10 @@ NULL
 #' 
 #' -   **Package**: A *package* is a bundle of software and the metadata
 #'     required to resolve dependencies and install the software.
-#'     CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, and
-#'     generic package formats. For more information about the supported
-#'     package formats and how to use CodeArtifact with them, see the
-#'     [CodeArtifact User
+#'     CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, Cargo,
+#'     and generic package formats. For more information about the
+#'     supported package formats and how to use CodeArtifact with them, see
+#'     the [CodeArtifact User
 #'     Guide](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html).
 #' 
 #'     In CodeArtifact, a package consists of:
@@ -188,6 +188,8 @@ NULL
 #' -   [`get_repository_endpoint`][codeartifact_get_repository_endpoint]:
 #'     Returns the endpoint of a repository for a specific package format.
 #'     A repository has one endpoint for each package format:
+#' 
+#'     -   `cargo`
 #' 
 #'     -   `generic`
 #' 
@@ -442,7 +444,7 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.codeartifact$service <- function(config = list()) {
+.codeartifact$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.codeartifact$metadata, handlers, config)
+  new_service(.codeartifact$metadata, handlers, config, op)
 }

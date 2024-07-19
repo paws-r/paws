@@ -66,12 +66,13 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
     name = "BatchGetNamedQuery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$batch_get_named_query_input(NamedQueryIds = NamedQueryIds)
   output <- .athena$batch_get_named_query_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -141,12 +142,13 @@ athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGrou
     name = "BatchGetPreparedStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$batch_get_prepared_statement_input(PreparedStatementNames = PreparedStatementNames, WorkGroup = WorkGroup)
   output <- .athena$batch_get_prepared_statement_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -275,12 +277,13 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
     name = "BatchGetQueryExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$batch_get_query_execution_input(QueryExecutionIds = QueryExecutionIds)
   output <- .athena$batch_get_query_execution_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -321,12 +324,13 @@ athena_cancel_capacity_reservation <- function(Name) {
     name = "CancelCapacityReservation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$cancel_capacity_reservation_input(Name = Name)
   output <- .athena$cancel_capacity_reservation_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -374,12 +378,13 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
     name = "CreateCapacityReservation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$create_capacity_reservation_input(TargetDpus = TargetDpus, Name = Name, Tags = Tags)
   output <- .athena$create_capacity_reservation_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -473,12 +478,13 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
     name = "CreateDataCatalog",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$create_data_catalog_input(Name = Name, Type = Type, Description = Description, Parameters = Parameters, Tags = Tags)
   output <- .athena$create_data_catalog_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -543,12 +549,13 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
     name = "CreateNamedQuery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$create_named_query_input(Name = Name, Description = Description, Database = Database, QueryString = QueryString, ClientRequestToken = ClientRequestToken, WorkGroup = WorkGroup)
   output <- .athena$create_named_query_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -606,12 +613,13 @@ athena_create_notebook <- function(WorkGroup, Name, ClientRequestToken = NULL) {
     name = "CreateNotebook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$create_notebook_input(WorkGroup = WorkGroup, Name = Name, ClientRequestToken = ClientRequestToken)
   output <- .athena$create_notebook_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -655,12 +663,13 @@ athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStat
     name = "CreatePreparedStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$create_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
   output <- .athena$create_prepared_statement_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -710,12 +719,13 @@ athena_create_presigned_notebook_url <- function(SessionId) {
     name = "CreatePresignedNotebookUrl",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$create_presigned_notebook_url_input(SessionId = SessionId)
   output <- .athena$create_presigned_notebook_url_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -808,12 +818,13 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
     name = "CreateWorkGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$create_work_group_input(Name = Name, Configuration = Configuration, Description = Description, Tags = Tags)
   output <- .athena$create_work_group_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -856,12 +867,13 @@ athena_delete_capacity_reservation <- function(Name) {
     name = "DeleteCapacityReservation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$delete_capacity_reservation_input(Name = Name)
   output <- .athena$delete_capacity_reservation_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -898,12 +910,13 @@ athena_delete_data_catalog <- function(Name) {
     name = "DeleteDataCatalog",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$delete_data_catalog_input(Name = Name)
   output <- .athena$delete_data_catalog_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -942,12 +955,13 @@ athena_delete_named_query <- function(NamedQueryId) {
     name = "DeleteNamedQuery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$delete_named_query_input(NamedQueryId = NamedQueryId)
   output <- .athena$delete_named_query_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -984,12 +998,13 @@ athena_delete_notebook <- function(NotebookId) {
     name = "DeleteNotebook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$delete_notebook_input(NotebookId = NotebookId)
   output <- .athena$delete_notebook_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1045,13 @@ athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
     name = "DeletePreparedStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$delete_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
   output <- .athena$delete_prepared_statement_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1076,12 +1092,13 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
     name = "DeleteWorkGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$delete_work_group_input(WorkGroup = WorkGroup, RecursiveDeleteOption = RecursiveDeleteOption)
   output <- .athena$delete_work_group_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1135,12 +1152,13 @@ athena_export_notebook <- function(NotebookId) {
     name = "ExportNotebook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$export_notebook_input(NotebookId = NotebookId)
   output <- .athena$export_notebook_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1205,12 +1223,13 @@ athena_get_calculation_execution <- function(CalculationExecutionId) {
     name = "GetCalculationExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_calculation_execution_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$get_calculation_execution_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1252,12 +1271,13 @@ athena_get_calculation_execution_code <- function(CalculationExecutionId) {
     name = "GetCalculationExecutionCode",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_calculation_execution_code_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$get_calculation_execution_code_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1312,12 +1332,13 @@ athena_get_calculation_execution_status <- function(CalculationExecutionId) {
     name = "GetCalculationExecutionStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_calculation_execution_status_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$get_calculation_execution_status_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1371,12 +1392,13 @@ athena_get_capacity_assignment_configuration <- function(CapacityReservationName
     name = "GetCapacityAssignmentConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_capacity_assignment_configuration_input(CapacityReservationName = CapacityReservationName)
   output <- .athena$get_capacity_assignment_configuration_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1441,12 +1463,13 @@ athena_get_capacity_reservation <- function(Name) {
     name = "GetCapacityReservation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_capacity_reservation_input(Name = Name)
   output <- .athena$get_capacity_reservation_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1498,12 +1521,13 @@ athena_get_data_catalog <- function(Name, WorkGroup = NULL) {
     name = "GetDataCatalog",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_data_catalog_input(Name = Name, WorkGroup = WorkGroup)
   output <- .athena$get_data_catalog_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1556,12 +1580,13 @@ athena_get_database <- function(CatalogName, DatabaseName, WorkGroup = NULL) {
     name = "GetDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_database_input(CatalogName = CatalogName, DatabaseName = DatabaseName, WorkGroup = WorkGroup)
   output <- .athena$get_database_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1612,12 +1637,13 @@ athena_get_named_query <- function(NamedQueryId) {
     name = "GetNamedQuery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_named_query_input(NamedQueryId = NamedQueryId)
   output <- .athena$get_named_query_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1670,12 +1696,13 @@ athena_get_notebook_metadata <- function(NotebookId) {
     name = "GetNotebookMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_notebook_metadata_input(NotebookId = NotebookId)
   output <- .athena$get_notebook_metadata_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1729,12 +1756,13 @@ athena_get_prepared_statement <- function(StatementName, WorkGroup) {
     name = "GetPreparedStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
   output <- .athena$get_prepared_statement_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1848,12 +1876,13 @@ athena_get_query_execution <- function(QueryExecutionId) {
     name = "GetQueryExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_query_execution_input(QueryExecutionId = QueryExecutionId)
   output <- .athena$get_query_execution_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1950,12 +1979,13 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
     name = "GetQueryResults",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$get_query_results_input(QueryExecutionId = QueryExecutionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$get_query_results_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1968,10 +1998,13 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 #' @description
 #' Returns query execution runtime statistics related to a single execution
 #' of a query if you have access to the workgroup in which the query ran.
-#' Query execution runtime statistics are returned only when
-#' QueryExecutionStatus$State is in a SUCCEEDED or FAILED state.
-#' Stage-level input and output row count and data size statistics are not
-#' shown when a query has row-level filters defined in Lake Formation.
+#' Statistics from the `Timeline` section of the response object are
+#' available as soon as QueryExecutionStatus$State is in a SUCCEEDED or
+#' FAILED state. The remaining non-timeline statistics in the response
+#' (like stage-level input and output row count and data size) are updated
+#' asynchronously and may not be available immediately after a query
+#' completes. The non-timeline statistics are also not included when a
+#' query has row-level filters defined in Lake Formation.
 #'
 #' @usage
 #' athena_get_query_runtime_statistics(QueryExecutionId)
@@ -2040,12 +2073,13 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
     name = "GetQueryRuntimeStatistics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_query_runtime_statistics_input(QueryExecutionId = QueryExecutionId)
   output <- .athena$get_query_runtime_statistics_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2132,12 +2166,13 @@ athena_get_session <- function(SessionId) {
     name = "GetSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_session_input(SessionId = SessionId)
   output <- .athena$get_session_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2195,12 +2230,13 @@ athena_get_session_status <- function(SessionId) {
     name = "GetSessionStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_session_status_input(SessionId = SessionId)
   output <- .athena$get_session_status_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2277,12 +2313,13 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName, Work
     name = "GetTableMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, TableName = TableName, WorkGroup = WorkGroup)
   output <- .athena$get_table_metadata_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2368,12 +2405,13 @@ athena_get_work_group <- function(WorkGroup) {
     name = "GetWorkGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$get_work_group_input(WorkGroup = WorkGroup)
   output <- .athena$get_work_group_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2440,12 +2478,13 @@ athena_import_notebook <- function(WorkGroup, Name, Payload = NULL, Type, Notebo
     name = "ImportNotebook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$import_notebook_input(WorkGroup = WorkGroup, Name = Name, Payload = Payload, Type = Type, NotebookS3LocationUri = NotebookS3LocationUri, ClientRequestToken = ClientRequestToken)
   output <- .athena$import_notebook_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2500,12 +2539,13 @@ athena_list_application_dpu_sizes <- function(MaxResults = NULL, NextToken = NUL
     name = "ListApplicationDPUSizes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_application_dpu_sizes_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_application_dpu_sizes_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2595,12 +2635,13 @@ athena_list_calculation_executions <- function(SessionId, StateFilter = NULL, Ma
     name = "ListCalculationExecutions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_calculation_executions_input(SessionId = SessionId, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_calculation_executions_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2669,12 +2710,13 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
     name = "ListCapacityReservations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_capacity_reservations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_capacity_reservations_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2733,12 +2775,13 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL, WorkG
     name = "ListDataCatalogs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCatalogsSummary")
   )
   input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_data_catalogs_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2799,12 +2842,13 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList")
   )
   input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_databases_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2859,12 +2903,13 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListEngineVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_engine_versions_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_engine_versions_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2943,12 +2988,13 @@ athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResu
     name = "ListExecutors",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_executors_input(SessionId = SessionId, ExecutorStateFilter = ExecutorStateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_executors_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3006,12 +3052,13 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
     name = "ListNamedQueries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_named_queries_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_named_queries_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3079,12 +3126,13 @@ athena_list_notebook_metadata <- function(Filters = NULL, NextToken = NULL, MaxR
     name = "ListNotebookMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$list_notebook_metadata_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_notebook_metadata_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3146,12 +3194,13 @@ athena_list_notebook_sessions <- function(NotebookId, MaxResults = NULL, NextTok
     name = "ListNotebookSessions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$list_notebook_sessions_input(NotebookId = NotebookId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_notebook_sessions_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3208,12 +3257,13 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
     name = "ListPreparedStatements",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_prepared_statements_input(WorkGroup = WorkGroup, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_prepared_statements_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3272,12 +3322,13 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
     name = "ListQueryExecutions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_query_executions_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_query_executions_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3378,12 +3429,13 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
     name = "ListSessions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_sessions_input(WorkGroup = WorkGroup, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_sessions_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3472,12 +3524,13 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
     name = "ListTableMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableMetadataList")
   )
   input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_table_metadata_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3532,12 +3585,13 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .athena$list_tags_for_resource_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3599,12 +3653,13 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListWorkGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_work_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_work_groups_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3655,12 +3710,13 @@ athena_put_capacity_assignment_configuration <- function(CapacityReservationName
     name = "PutCapacityAssignmentConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$put_capacity_assignment_configuration_input(CapacityReservationName = CapacityReservationName, CapacityAssignments = CapacityAssignments)
   output <- .athena$put_capacity_assignment_configuration_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3732,12 +3788,13 @@ athena_start_calculation_execution <- function(SessionId, Description = NULL, Ca
     name = "StartCalculationExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$start_calculation_execution_input(SessionId = SessionId, Description = Description, CalculationConfiguration = CalculationConfiguration, CodeBlock = CodeBlock, ClientRequestToken = ClientRequestToken)
   output <- .athena$start_calculation_execution_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3843,12 +3900,13 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
     name = "StartQueryExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup, ExecutionParameters = ExecutionParameters, ResultReuseConfiguration = ResultReuseConfiguration)
   output <- .athena$start_query_execution_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3929,12 +3987,13 @@ athena_start_session <- function(Description = NULL, WorkGroup, EngineConfigurat
     name = "StartSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$start_session_input(Description = Description, WorkGroup = WorkGroup, EngineConfiguration = EngineConfiguration, NotebookVersion = NotebookVersion, SessionIdleTimeoutInMinutes = SessionIdleTimeoutInMinutes, ClientRequestToken = ClientRequestToken)
   output <- .athena$start_session_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3985,12 +4044,13 @@ athena_stop_calculation_execution <- function(CalculationExecutionId) {
     name = "StopCalculationExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$stop_calculation_execution_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$stop_calculation_execution_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4028,12 +4088,13 @@ athena_stop_query_execution <- function(QueryExecutionId) {
     name = "StopQueryExecution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$stop_query_execution_input(QueryExecutionId = QueryExecutionId)
   output <- .athena$stop_query_execution_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4090,12 +4151,13 @@ athena_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .athena$tag_resource_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4143,12 +4205,13 @@ athena_terminate_session <- function(SessionId) {
     name = "TerminateSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$terminate_session_input(SessionId = SessionId)
   output <- .athena$terminate_session_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4190,12 +4253,13 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .athena$untag_resource_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4236,12 +4300,13 @@ athena_update_capacity_reservation <- function(TargetDpus, Name) {
     name = "UpdateCapacityReservation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$update_capacity_reservation_input(TargetDpus = TargetDpus, Name = Name)
   output <- .athena$update_capacity_reservation_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4314,12 +4379,13 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
     name = "UpdateDataCatalog",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$update_data_catalog_input(Name = Name, Type = Type, Description = Description, Parameters = Parameters)
   output <- .athena$update_data_catalog_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4363,12 +4429,13 @@ athena_update_named_query <- function(NamedQueryId, Name, Description = NULL, Qu
     name = "UpdateNamedQuery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$update_named_query_input(NamedQueryId = NamedQueryId, Name = Name, Description = Description, QueryString = QueryString)
   output <- .athena$update_named_query_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4422,12 +4489,13 @@ athena_update_notebook <- function(NotebookId, Payload, Type, SessionId = NULL, 
     name = "UpdateNotebook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$update_notebook_input(NotebookId = NotebookId, Payload = Payload, Type = Type, SessionId = SessionId, ClientRequestToken = ClientRequestToken)
   output <- .athena$update_notebook_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4475,12 +4543,13 @@ athena_update_notebook_metadata <- function(NotebookId, ClientRequestToken = NUL
     name = "UpdateNotebookMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$update_notebook_metadata_input(NotebookId = NotebookId, ClientRequestToken = ClientRequestToken, Name = Name)
   output <- .athena$update_notebook_metadata_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4524,12 +4593,13 @@ athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStat
     name = "UpdatePreparedStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$update_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
   output <- .athena$update_prepared_statement_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4611,12 +4681,13 @@ athena_update_work_group <- function(WorkGroup, Description = NULL, Configuratio
     name = "UpdateWorkGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .athena$update_work_group_input(WorkGroup = WorkGroup, Description = Description, ConfigurationUpdates = ConfigurationUpdates, State = State)
   output <- .athena$update_work_group_output()
   config <- get_config()
-  svc <- .athena$service(config)
+  svc <- .athena$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

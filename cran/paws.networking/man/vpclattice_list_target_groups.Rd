@@ -18,7 +18,7 @@ vpclattice_list_target_groups(
 
 \item{targetGroupType}{The target group type.}
 
-\item{vpcIdentifier}{The ID or Amazon Resource Name (ARN) of the service.}
+\item{vpcIdentifier}{The ID or Amazon Resource Name (ARN) of the VPC.}
 }
 \description{
 Lists your target groups. You can narrow your search by using the filters below in your request.

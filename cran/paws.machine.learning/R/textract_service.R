@@ -156,7 +156,7 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = "Textract"
 )
 
-.textract$service <- function(config = list()) {
+.textract$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.textract$metadata, handlers, config)
+  new_service(.textract$metadata, handlers, config, op)
 }

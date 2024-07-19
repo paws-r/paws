@@ -30,12 +30,13 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
     name = "AddTagsToResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .elasticache$add_tags_to_resource_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -64,12 +65,13 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
     name = "AuthorizeCacheSecurityGroupIngress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$authorize_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$authorize_cache_security_group_ingress_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -95,12 +97,13 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
     name = "BatchApplyUpdateAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$batch_apply_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_apply_update_action_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -126,12 +129,13 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
     name = "BatchStopUpdateAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$batch_stop_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_stop_update_action_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -158,12 +162,13 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
     name = "CompleteMigration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$complete_migration_input(ReplicationGroupId = ReplicationGroupId, Force = Force)
   output <- .elasticache$complete_migration_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -193,12 +198,13 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
     name = "CopyServerlessCacheSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$copy_serverless_cache_snapshot_input(SourceServerlessCacheSnapshotName = SourceServerlessCacheSnapshotName, TargetServerlessCacheSnapshotName = TargetServerlessCacheSnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_serverless_cache_snapshot_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -240,12 +246,13 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
     name = "CopySnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$copy_snapshot_input(SourceSnapshotName = SourceSnapshotName, TargetSnapshotName = TargetSnapshotName, TargetBucket = TargetBucket, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_snapshot_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -521,7 +528,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see AUTH password at
+#' For more information, see [AUTH
+#' password](https://redis.io/docs/latest/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -546,12 +554,13 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
     name = "CreateCacheCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns, LogDeliveryConfigurations = LogDeliveryConfigurations, TransitEncryptionEnabled = TransitEncryptionEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery)
   output <- .elasticache$create_cache_cluster_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -584,12 +593,13 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
     name = "CreateCacheParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, CacheParameterGroupFamily = CacheParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_parameter_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -622,12 +632,13 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
     name = "CreateCacheSecurityGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_security_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -661,12 +672,13 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     name = "CreateCacheSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .elasticache$create_cache_subnet_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -705,12 +717,13 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
     name = "CreateGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_global_replication_group_input(GlobalReplicationGroupIdSuffix = GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
   output <- .elasticache$create_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1032,7 +1045,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see AUTH password at
+#' For more information, see [AUTH
+#' password](https://redis.io/docs/latest/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
@@ -1107,12 +1121,13 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
     name = "CreateReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$create_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1169,12 +1184,13 @@ elasticache_create_serverless_cache <- function(ServerlessCacheName, Description
     name = "CreateServerlessCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
   output <- .elasticache$create_serverless_cache_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1206,12 +1222,13 @@ elasticache_create_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     name = "CreateServerlessCacheSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, ServerlessCacheName = ServerlessCacheName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_serverless_cache_snapshot_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1243,12 +1260,13 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
     name = "CreateSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_snapshot_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_snapshot_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1281,12 +1299,13 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired, Tags = Tags, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$create_user_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1315,12 +1334,13 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, T
     name = "CreateUserGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$create_user_group_input(UserGroupId = UserGroupId, Engine = Engine, UserIds = UserIds, Tags = Tags)
   output <- .elasticache$create_user_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1358,12 +1378,13 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
     name = "DecreaseNodeGroupsInGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$decrease_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, GlobalNodeGroupsToRemove = GlobalNodeGroupsToRemove, GlobalNodeGroupsToRetain = GlobalNodeGroupsToRetain, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_node_groups_in_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1415,12 +1436,13 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
     name = "DecreaseReplicaCount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$decrease_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ReplicasToRemove = ReplicasToRemove, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_replica_count_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1448,12 +1470,13 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
     name = "DeleteCacheCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_cache_cluster_input(CacheClusterId = CacheClusterId, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_cache_cluster_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1480,12 +1503,13 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
     name = "DeleteCacheParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName)
   output <- .elasticache$delete_cache_parameter_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1511,12 +1535,13 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
     name = "DeleteCacheSecurityGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName)
   output <- .elasticache$delete_cache_security_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1543,12 +1568,13 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
     name = "DeleteCacheSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName)
   output <- .elasticache$delete_cache_subnet_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1574,12 +1600,13 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
     name = "DeleteGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, RetainPrimaryReplicationGroup = RetainPrimaryReplicationGroup)
   output <- .elasticache$delete_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1611,12 +1638,13 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
     name = "DeleteReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_replication_group_input(ReplicationGroupId = ReplicationGroupId, RetainPrimaryCluster = RetainPrimaryCluster, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1643,12 +1671,13 @@ elasticache_delete_serverless_cache <- function(ServerlessCacheName, FinalSnapsh
     name = "DeleteServerlessCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, FinalSnapshotName = FinalSnapshotName)
   output <- .elasticache$delete_serverless_cache_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1672,12 +1701,13 @@ elasticache_delete_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     name = "DeleteServerlessCacheSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$delete_serverless_cache_snapshot_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1701,12 +1731,13 @@ elasticache_delete_snapshot <- function(SnapshotName) {
     name = "DeleteSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_snapshot_input(SnapshotName = SnapshotName)
   output <- .elasticache$delete_snapshot_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1730,12 +1761,13 @@ elasticache_delete_user <- function(UserId) {
     name = "DeleteUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_user_input(UserId = UserId)
   output <- .elasticache$delete_user_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1759,12 +1791,13 @@ elasticache_delete_user_group <- function(UserGroupId) {
     name = "DeleteUserGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$delete_user_group_input(UserGroupId = UserGroupId)
   output <- .elasticache$delete_user_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1809,12 +1842,13 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
     name = "DescribeCacheClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheClusters")
   )
   input <- .elasticache$describe_cache_clusters_input(CacheClusterId = CacheClusterId, MaxRecords = MaxRecords, Marker = Marker, ShowCacheNodeInfo = ShowCacheNodeInfo, ShowCacheClustersNotInReplicationGroups = ShowCacheClustersNotInReplicationGroups)
   output <- .elasticache$describe_cache_clusters_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1868,12 +1902,13 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
     name = "DescribeCacheEngineVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheEngineVersions")
   )
   input <- .elasticache$describe_cache_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly)
   output <- .elasticache$describe_cache_engine_versions_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1908,12 +1943,13 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
     name = "DescribeCacheParameterGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheParameterGroups")
   )
   input <- .elasticache$describe_cache_parameter_groups_input(CacheParameterGroupName = CacheParameterGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameter_groups_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1952,12 +1988,13 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
     name = "DescribeCacheParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .elasticache$describe_cache_parameters_input(CacheParameterGroupName = CacheParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameters_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1992,12 +2029,13 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
     name = "DescribeCacheSecurityGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSecurityGroups")
   )
   input <- .elasticache$describe_cache_security_groups_input(CacheSecurityGroupName = CacheSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_security_groups_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2032,12 +2070,13 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
     name = "DescribeCacheSubnetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSubnetGroups")
   )
   input <- .elasticache$describe_cache_subnet_groups_input(CacheSubnetGroupName = CacheSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_subnet_groups_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2077,12 +2116,13 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
     name = "DescribeEngineDefaultParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters")
   )
   input <- .elasticache$describe_engine_default_parameters_input(CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_engine_default_parameters_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2130,12 +2170,13 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .elasticache$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_events_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2167,12 +2208,13 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
     name = "DescribeGlobalReplicationGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups")
   )
   input <- .elasticache$describe_global_replication_groups_input(GlobalReplicationGroupId = GlobalReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker, ShowMemberInfo = ShowMemberInfo)
   output <- .elasticache$describe_global_replication_groups_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2211,12 +2253,13 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
     name = "DescribeReplicationGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReplicationGroups")
   )
   input <- .elasticache$describe_replication_groups_input(ReplicationGroupId = ReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_replication_groups_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2376,12 +2419,13 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
     name = "DescribeReservedCacheNodes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodes")
   )
   input <- .elasticache$describe_reserved_cache_nodes_input(ReservedCacheNodeId = ReservedCacheNodeId, ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2541,12 +2585,13 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
     name = "DescribeReservedCacheNodesOfferings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodesOfferings")
   )
   input <- .elasticache$describe_reserved_cache_nodes_offerings_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_offerings_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2584,12 +2629,13 @@ elasticache_describe_serverless_cache_snapshots <- function(ServerlessCacheName 
     name = "DescribeServerlessCacheSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCacheSnapshots")
   )
   input <- .elasticache$describe_serverless_cache_snapshots_input(ServerlessCacheName = ServerlessCacheName, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, SnapshotType = SnapshotType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .elasticache$describe_serverless_cache_snapshots_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2622,12 +2668,13 @@ elasticache_describe_serverless_caches <- function(ServerlessCacheName = NULL, M
     name = "DescribeServerlessCaches",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCaches")
   )
   input <- .elasticache$describe_serverless_caches_input(ServerlessCacheName = ServerlessCacheName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticache$describe_serverless_caches_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2657,12 +2704,13 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
     name = "DescribeServiceUpdates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates")
   )
   input <- .elasticache$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ServiceUpdateStatus = ServiceUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_service_updates_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2709,12 +2757,13 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots")
   )
   input <- .elasticache$describe_snapshots_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, SnapshotSource = SnapshotSource, Marker = Marker, MaxRecords = MaxRecords, ShowNodeGroupConfig = ShowNodeGroupConfig)
   output <- .elasticache$describe_snapshots_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2752,12 +2801,13 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
     name = "DescribeUpdateActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions")
   )
   input <- .elasticache$describe_update_actions_input(ServiceUpdateName = ServiceUpdateName, ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, Engine = Engine, ServiceUpdateStatus = ServiceUpdateStatus, ServiceUpdateTimeRange = ServiceUpdateTimeRange, UpdateActionStatus = UpdateActionStatus, ShowNodeLevelUpdateStatus = ShowNodeLevelUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_update_actions_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2788,12 +2838,13 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
     name = "DescribeUserGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups")
   )
   input <- .elasticache$describe_user_groups_input(UserGroupId = UserGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_user_groups_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2826,12 +2877,13 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
     name = "DescribeUsers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users")
   )
   input <- .elasticache$describe_users_input(Engine = Engine, UserId = UserId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_users_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2860,12 +2912,13 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
     name = "DisassociateGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$disassociate_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ReplicationGroupId = ReplicationGroupId, ReplicationGroupRegion = ReplicationGroupRegion)
   output <- .elasticache$disassociate_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2894,12 +2947,13 @@ elasticache_export_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     name = "ExportServerlessCacheSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$export_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, S3BucketName = S3BucketName)
   output <- .elasticache$export_serverless_cache_snapshot_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2925,12 +2979,13 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
     name = "FailoverGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$failover_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryRegion = PrimaryRegion, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
   output <- .elasticache$failover_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2960,12 +3015,13 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
     name = "IncreaseNodeGroupsInGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$increase_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, RegionalConfigurations = RegionalConfigurations, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_node_groups_in_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3003,12 +3059,13 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
     name = "IncreaseReplicaCount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$increase_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_replica_count_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3046,12 +3103,13 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
     name = "ListAllowedNodeTypeModifications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$list_allowed_node_type_modifications_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId)
   output <- .elasticache$list_allowed_node_type_modifications_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3082,12 +3140,13 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$list_tags_for_resource_input(ResourceName = ResourceName)
   output <- .elasticache$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3334,13 +3393,16 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at AUTH.
+#' For more information, see AUTH password at
+#' [AUTH](https://redis.io/docs/latest/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
-#' -   Rotate
+#' -   ROTATE - default, if no update strategy is provided
 #' 
-#' -   Set
+#' -   SET - allowed only after ROTATE
+#' 
+#' -   DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis
 #' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
@@ -3358,12 +3420,13 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
     name = "ModifyCacheCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery)
   output <- .elasticache$modify_cache_cluster_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3390,12 +3453,13 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
     name = "ModifyCacheParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$modify_cache_parameter_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3427,12 +3491,13 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     name = "ModifyCacheSubnetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .elasticache$modify_cache_subnet_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3469,12 +3534,13 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
     name = "ModifyGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately, CacheNodeType = CacheNodeType, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, AutomaticFailoverEnabled = AutomaticFailoverEnabled)
   output <- .elasticache$modify_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3606,13 +3672,16 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at AUTH.
+#' For more information, see AUTH password at
+#' [AUTH](https://redis.io/docs/latest/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
-#' -   Rotate
+#' -   ROTATE - default, if no update strategy is provided
 #' 
-#' -   Set
+#' -   SET - allowed only after ROTATE
+#' 
+#' -   DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis
 #' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
@@ -3657,12 +3726,13 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
     name = "ModifyReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery, TransitEncryptionEnabled = TransitEncryptionEnabled, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode)
   output <- .elasticache$modify_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3717,12 +3787,13 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
     name = "ModifyReplicationGroupShardConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_replication_group_shard_configuration_input(ReplicationGroupId = ReplicationGroupId, NodeGroupCount = NodeGroupCount, ApplyImmediately = ApplyImmediately, ReshardingConfiguration = ReshardingConfiguration, NodeGroupsToRemove = NodeGroupsToRemove, NodeGroupsToRetain = NodeGroupsToRetain)
   output <- .elasticache$modify_replication_group_shard_configuration_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3768,12 +3839,13 @@ elasticache_modify_serverless_cache <- function(ServerlessCacheName, Description
     name = "ModifyServerlessCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, CacheUsageLimits = CacheUsageLimits, RemoveUserGroup = RemoveUserGroup, UserGroupId = UserGroupId, SecurityGroupIds = SecurityGroupIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
   output <- .elasticache$modify_serverless_cache_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3802,12 +3874,13 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
     name = "ModifyUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_user_input(UserId = UserId, AccessString = AccessString, AppendAccessString = AppendAccessString, Passwords = Passwords, NoPasswordRequired = NoPasswordRequired, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$modify_user_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3833,12 +3906,13 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
     name = "ModifyUserGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$modify_user_group_input(UserGroupId = UserGroupId, UserIdsToAdd = UserIdsToAdd, UserIdsToRemove = UserIdsToRemove)
   output <- .elasticache$modify_user_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3876,12 +3950,13 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
     name = "PurchaseReservedCacheNodesOffering",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$purchase_reserved_cache_nodes_offering_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, ReservedCacheNodeId = ReservedCacheNodeId, CacheNodeCount = CacheNodeCount, Tags = Tags)
   output <- .elasticache$purchase_reserved_cache_nodes_offering_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3907,12 +3982,13 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
     name = "RebalanceSlotsInGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$rebalance_slots_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$rebalance_slots_in_global_replication_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3939,12 +4015,13 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
     name = "RebootCacheCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$reboot_cache_cluster_input(CacheClusterId = CacheClusterId, CacheNodeIdsToReboot = CacheNodeIdsToReboot)
   output <- .elasticache$reboot_cache_cluster_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3977,12 +4054,13 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     name = "RemoveTagsFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .elasticache$remove_tags_from_resource_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4016,12 +4094,13 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
     name = "ResetCacheParameterGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$reset_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ResetAllParameters = ResetAllParameters, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$reset_cache_parameter_group_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4049,12 +4128,13 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
     name = "RevokeCacheSecurityGroupIngress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$revoke_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$revoke_cache_security_group_ingress_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4080,24 +4160,25 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
     name = "StartMigration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$start_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$start_migration_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .elasticache$operations$start_migration <- elasticache_start_migration
 
-#' Represents the input of a TestFailover operation which test automatic
+#' Represents the input of a TestFailover operation which tests automatic
 #' failover on a specified node group (called shard in the console) in a
 #' replication group (called cluster in the console)
 #'
 #' @description
-#' Represents the input of a [`test_failover`][elasticache_test_failover] operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console).
+#' Represents the input of a [`test_failover`][elasticache_test_failover] operation which tests automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_test_failover/](https://www.paws-r-sdk.com/docs/elasticache_test_failover/) for full documentation.
 #'
@@ -4105,7 +4186,7 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #' failover is being tested by this operation.
 #' @param NodeGroupId &#91;required&#93; The name of the node group (called shard in the console) in this
 #' replication group on which automatic failover is to be tested. You may
-#' test automatic failover on up to 5 node groups in any rolling 24-hour
+#' test automatic failover on up to 15 node groups in any rolling 24-hour
 #' period.
 #'
 #' @keywords internal
@@ -4116,12 +4197,13 @@ elasticache_test_failover <- function(ReplicationGroupId, NodeGroupId) {
     name = "TestFailover",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$test_failover_input(ReplicationGroupId = ReplicationGroupId, NodeGroupId = NodeGroupId)
   output <- .elasticache$test_failover_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4147,12 +4229,13 @@ elasticache_test_migration <- function(ReplicationGroupId, CustomerNodeEndpointL
     name = "TestMigration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticache$test_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$test_migration_output()
   config <- get_config()
-  svc <- .elasticache$service(config)
+  svc <- .elasticache$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

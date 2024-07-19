@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_dhcp_options}
 \alias{ec2_describe_dhcp_options}
-\title{Describes one or more of your DHCP options sets}
+\title{Describes your DHCP option sets}
 \usage{
 ec2_describe_dhcp_options(
   DhcpOptionsIds = NULL,
@@ -13,9 +13,7 @@ ec2_describe_dhcp_options(
 )
 }
 \arguments{
-\item{DhcpOptionsIds}{The IDs of one or more DHCP options sets.
-
-Default: Describes all your DHCP options sets.}
+\item{DhcpOptionsIds}{The IDs of DHCP option sets.}
 
 \item{Filters}{The filters.
 \itemize{
@@ -48,7 +46,7 @@ output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes one or more of your DHCP options sets.
+Describes your DHCP option sets. The default is to describe all your DHCP option sets. Alternatively, you can specify specific DHCP option set IDs or filter the results to include only the DHCP option sets that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_dhcp_options/} for full documentation.
 }

@@ -253,7 +253,7 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
   target_prefix = "GlobalAccelerator_V20180706"
 )
 
-.globalaccelerator$service <- function(config = list()) {
+.globalaccelerator$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.globalaccelerator$metadata, handlers, config)
+  new_service(.globalaccelerator$metadata, handlers, config, op)
 }

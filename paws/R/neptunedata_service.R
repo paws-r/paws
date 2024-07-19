@@ -179,7 +179,7 @@ neptunedata <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = ""
 )
 
-.neptunedata$service <- function(config = list()) {
+.neptunedata$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.neptunedata$metadata, handlers, config)
+  new_service(.neptunedata$metadata, handlers, config, op)
 }

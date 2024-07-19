@@ -3,7 +3,7 @@
 \name{verifiedpermissions_update_identity_source}
 \alias{verifiedpermissions_update_identity_source}
 \title{Updates the specified identity source to use a new identity provider
-(IdP) source, or to change the mapping of identities from the IdP to a
+(IdP), or to change the mapping of identities from the IdP to a
 different principal entity type}
 \usage{
 verifiedpermissions_update_identity_source(
@@ -31,7 +31,7 @@ You must specify a \code{userPoolArn}, and optionally, a \code{ClientId}.}
 authenticated by the identity source.}
 }
 \description{
-Updates the specified identity source to use a new identity provider (IdP) source, or to change the mapping of identities from the IdP to a different principal entity type.
+Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type.
 
 See \url{https://www.paws-r-sdk.com/docs/verifiedpermissions_update_identity_source/} for full documentation.
 }

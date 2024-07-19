@@ -74,12 +74,13 @@ networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, Firewa
     name = "AssociateFirewallPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$associate_firewall_policy_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn)
   output <- .networkfirewall$associate_firewall_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -170,12 +171,13 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
     name = "AssociateSubnets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$associate_subnets_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, SubnetMappings = SubnetMappings)
   output <- .networkfirewall$associate_subnets_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -355,12 +357,13 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
     name = "CreateFirewall",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$create_firewall_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -517,12 +520,13 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
     name = "CreateFirewallPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$create_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$create_firewall_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -841,12 +845,13 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$create_rule_group_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1035,13 @@ networkfirewall_create_tls_inspection_configuration <- function(TLSInspectionCon
     name = "CreateTLSInspectionConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$create_tls_inspection_configuration_input(TLSInspectionConfigurationName = TLSInspectionConfigurationName, TLSInspectionConfiguration = TLSInspectionConfiguration, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$create_tls_inspection_configuration_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1157,12 +1163,13 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
     name = "DeleteFirewall",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$delete_firewall_input(FirewallName = FirewallName, FirewallArn = FirewallArn)
   output <- .networkfirewall$delete_firewall_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1234,12 +1241,13 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
     name = "DeleteFirewallPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$delete_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicyArn = FirewallPolicyArn)
   output <- .networkfirewall$delete_firewall_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1279,12 +1287,13 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .networkfirewall$delete_resource_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1377,12 +1386,13 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
     name = "DeleteRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$delete_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
   output <- .networkfirewall$delete_rule_group_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1466,12 +1476,13 @@ networkfirewall_delete_tls_inspection_configuration <- function(TLSInspectionCon
     name = "DeleteTLSInspectionConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$delete_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName)
   output <- .networkfirewall$delete_tls_inspection_configuration_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1578,12 +1589,13 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
     name = "DescribeFirewall",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$describe_firewall_input(FirewallName = FirewallName, FirewallArn = FirewallArn)
   output <- .networkfirewall$describe_firewall_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1710,12 +1722,13 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
     name = "DescribeFirewallPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$describe_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicyArn = FirewallPolicyArn)
   output <- .networkfirewall$describe_firewall_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1776,12 +1789,13 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
     name = "DescribeLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$describe_logging_configuration_input(FirewallArn = FirewallArn, FirewallName = FirewallName)
   output <- .networkfirewall$describe_logging_configuration_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1826,12 +1840,13 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
     name = "DescribeResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$describe_resource_policy_input(ResourceArn = ResourceArn)
   output <- .networkfirewall$describe_resource_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2054,12 +2069,13 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
     name = "DescribeRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$describe_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$describe_rule_group_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2132,12 +2148,13 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
     name = "DescribeRuleGroupMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$describe_rule_group_metadata_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
   output <- .networkfirewall$describe_rule_group_metadata_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2267,12 +2284,13 @@ networkfirewall_describe_tls_inspection_configuration <- function(TLSInspectionC
     name = "DescribeTLSInspectionConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$describe_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName)
   output <- .networkfirewall$describe_tls_inspection_configuration_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2354,12 +2372,13 @@ networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn
     name = "DisassociateSubnets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$disassociate_subnets_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, SubnetIds = SubnetIds)
   output <- .networkfirewall$disassociate_subnets_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2418,12 +2437,13 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
     name = "ListFirewallPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallPolicies")
   )
   input <- .networkfirewall$list_firewall_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewall_policies_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2491,12 +2511,13 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
     name = "ListFirewalls",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Firewalls")
   )
   input <- .networkfirewall$list_firewalls_input(NextToken = NextToken, VpcIds = VpcIds, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewalls_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2567,12 +2588,13 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
     name = "ListRuleGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleGroups")
   )
   input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults, Scope = Scope, ManagedType = ManagedType, Type = Type)
   output <- .networkfirewall$list_rule_groups_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2634,12 +2656,13 @@ networkfirewall_list_tls_inspection_configurations <- function(NextToken = NULL,
     name = "ListTLSInspectionConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TLSInspectionConfigurations")
   )
   input <- .networkfirewall$list_tls_inspection_configurations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_tls_inspection_configurations_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2707,12 +2730,13 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
   input <- .networkfirewall$list_tags_for_resource_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .networkfirewall$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2798,12 +2822,13 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .networkfirewall$put_resource_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2855,12 +2880,13 @@ networkfirewall_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .networkfirewall$tag_resource_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2910,12 +2936,13 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .networkfirewall$untag_resource_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2996,12 +3023,13 @@ networkfirewall_update_firewall_delete_protection <- function(UpdateToken = NULL
     name = "UpdateFirewallDeleteProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_firewall_delete_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, DeleteProtection = DeleteProtection)
   output <- .networkfirewall$update_firewall_delete_protection_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3076,12 +3104,13 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
     name = "UpdateFirewallDescription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_firewall_description_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, Description = Description)
   output <- .networkfirewall$update_firewall_description_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3158,12 +3187,13 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
     name = "UpdateFirewallEncryptionConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_firewall_encryption_configuration_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$update_firewall_encryption_configuration_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3329,12 +3359,13 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
     name = "UpdateFirewallPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_firewall_policy_input(UpdateToken = UpdateToken, FirewallPolicyArn = FirewallPolicyArn, FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$update_firewall_policy_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3415,12 +3446,13 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
     name = "UpdateFirewallPolicyChangeProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_firewall_policy_change_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection)
   output <- .networkfirewall$update_firewall_policy_change_protection_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3519,12 +3551,13 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
     name = "UpdateLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_logging_configuration_input(FirewallArn = FirewallArn, FirewallName = FirewallName, LoggingConfiguration = LoggingConfiguration)
   output <- .networkfirewall$update_logging_configuration_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3814,12 +3847,13 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$update_rule_group_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3896,12 +3930,13 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
     name = "UpdateSubnetChangeProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_subnet_change_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, SubnetChangeProtection = SubnetChangeProtection)
   output <- .networkfirewall$update_subnet_change_protection_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4081,12 +4116,13 @@ networkfirewall_update_tls_inspection_configuration <- function(TLSInspectionCon
     name = "UpdateTLSInspectionConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkfirewall$update_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName, TLSInspectionConfiguration = TLSInspectionConfiguration, Description = Description, EncryptionConfiguration = EncryptionConfiguration, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_tls_inspection_configuration_output()
   config <- get_config()
-  svc <- .networkfirewall$service(config)
+  svc <- .networkfirewall$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -161,7 +161,7 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
   target_prefix = ""
 )
 
-.cloudwatchobservabilityaccessmanager$service <- function(config = list()) {
+.cloudwatchobservabilityaccessmanager$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.cloudwatchobservabilityaccessmanager$metadata, handlers, config)
+  new_service(.cloudwatchobservabilityaccessmanager$metadata, handlers, config, op)
 }

@@ -214,7 +214,7 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
   target_prefix = ""
 )
 
-.elbv2$service <- function(config = list()) {
+.elbv2$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.elbv2$metadata, handlers, config)
+  new_service(.elbv2$metadata, handlers, config, op)
 }

@@ -41,12 +41,13 @@ backup_cancel_legal_hold <- function(LegalHoldId, CancelDescription, RetainRecor
     name = "CancelLegalHold",
     http_method = "DELETE",
     http_path = "/legal-holds/{legalHoldId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$cancel_legal_hold_input(LegalHoldId = LegalHoldId, CancelDescription = CancelDescription, RetainRecordInDays = RetainRecordInDays)
   output <- .backup$cancel_legal_hold_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -161,12 +162,13 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
     name = "CreateBackupPlan",
     http_method = "PUT",
     http_path = "/backup/plans/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_backup_plan_input(BackupPlan = BackupPlan, BackupPlanTags = BackupPlanTags, CreatorRequestId = CreatorRequestId)
   output <- .backup$create_backup_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -269,12 +271,13 @@ backup_create_backup_selection <- function(BackupPlanId, BackupSelection, Creato
     name = "CreateBackupSelection",
     http_method = "PUT",
     http_path = "/backup/plans/{backupPlanId}/selections/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_backup_selection_input(BackupPlanId = BackupPlanId, BackupSelection = BackupSelection, CreatorRequestId = CreatorRequestId)
   output <- .backup$create_backup_selection_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -346,12 +349,13 @@ backup_create_backup_vault <- function(BackupVaultName, BackupVaultTags = NULL, 
     name = "CreateBackupVault",
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultTags = BackupVaultTags, EncryptionKeyArn = EncryptionKeyArn, CreatorRequestId = CreatorRequestId)
   output <- .backup$create_backup_vault_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -438,12 +442,13 @@ backup_create_framework <- function(FrameworkName, FrameworkDescription = NULL, 
     name = "CreateFramework",
     http_method = "POST",
     http_path = "/audit/frameworks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_framework_input(FrameworkName = FrameworkName, FrameworkDescription = FrameworkDescription, FrameworkControls = FrameworkControls, IdempotencyToken = IdempotencyToken, FrameworkTags = FrameworkTags)
   output <- .backup$create_framework_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -544,12 +549,13 @@ backup_create_legal_hold <- function(Title, Description, IdempotencyToken = NULL
     name = "CreateLegalHold",
     http_method = "POST",
     http_path = "/legal-holds/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_legal_hold_input(Title = Title, Description = Description, IdempotencyToken = IdempotencyToken, RecoveryPointSelection = RecoveryPointSelection, Tags = Tags)
   output <- .backup$create_legal_hold_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -635,12 +641,13 @@ backup_create_logically_air_gapped_backup_vault <- function(BackupVaultName, Bac
     name = "CreateLogicallyAirGappedBackupVault",
     http_method = "PUT",
     http_path = "/logically-air-gapped-backup-vaults/{backupVaultName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_logically_air_gapped_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultTags = BackupVaultTags, CreatorRequestId = CreatorRequestId, MinRetentionDays = MinRetentionDays, MaxRetentionDays = MaxRetentionDays)
   output <- .backup$create_logically_air_gapped_backup_vault_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -742,12 +749,13 @@ backup_create_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
     name = "CreateReportPlan",
     http_method = "POST",
     http_path = "/audit/report-plans",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_report_plan_input(ReportPlanName = ReportPlanName, ReportPlanDescription = ReportPlanDescription, ReportDeliveryChannel = ReportDeliveryChannel, ReportSetting = ReportSetting, ReportPlanTags = ReportPlanTags, IdempotencyToken = IdempotencyToken)
   output <- .backup$create_report_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -838,12 +846,13 @@ backup_create_restore_testing_plan <- function(CreatorRequestId = NULL, RestoreT
     name = "CreateRestoreTestingPlan",
     http_method = "PUT",
     http_path = "/restore-testing/plans",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_restore_testing_plan_input(CreatorRequestId = CreatorRequestId, RestoreTestingPlan = RestoreTestingPlan, Tags = Tags)
   output <- .backup$create_restore_testing_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -956,12 +965,13 @@ backup_create_restore_testing_selection <- function(CreatorRequestId = NULL, Res
     name = "CreateRestoreTestingSelection",
     http_method = "PUT",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$create_restore_testing_selection_input(CreatorRequestId = CreatorRequestId, RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelection = RestoreTestingSelection)
   output <- .backup$create_restore_testing_selection_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1011,12 +1021,13 @@ backup_delete_backup_plan <- function(BackupPlanId) {
     name = "DeleteBackupPlan",
     http_method = "DELETE",
     http_path = "/backup/plans/{backupPlanId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_backup_plan_input(BackupPlanId = BackupPlanId)
   output <- .backup$delete_backup_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1058,12 +1069,13 @@ backup_delete_backup_selection <- function(BackupPlanId, SelectionId) {
     name = "DeleteBackupSelection",
     http_method = "DELETE",
     http_path = "/backup/plans/{backupPlanId}/selections/{selectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_backup_selection_input(BackupPlanId = BackupPlanId, SelectionId = SelectionId)
   output <- .backup$delete_backup_selection_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1104,12 +1116,13 @@ backup_delete_backup_vault <- function(BackupVaultName) {
     name = "DeleteBackupVault",
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_backup_vault_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1149,12 +1162,13 @@ backup_delete_backup_vault_access_policy <- function(BackupVaultName) {
     name = "DeleteBackupVaultAccessPolicy",
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/access-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_backup_vault_access_policy_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_access_policy_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1200,12 +1214,13 @@ backup_delete_backup_vault_lock_configuration <- function(BackupVaultName) {
     name = "DeleteBackupVaultLockConfiguration",
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/vault-lock",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_backup_vault_lock_configuration_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_lock_configuration_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1245,12 +1260,13 @@ backup_delete_backup_vault_notifications <- function(BackupVaultName) {
     name = "DeleteBackupVaultNotifications",
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/notification-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_backup_vault_notifications_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_notifications_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1287,12 +1303,13 @@ backup_delete_framework <- function(FrameworkName) {
     name = "DeleteFramework",
     http_method = "DELETE",
     http_path = "/audit/frameworks/{frameworkName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_framework_input(FrameworkName = FrameworkName)
   output <- .backup$delete_framework_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1353,12 +1370,13 @@ backup_delete_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
     name = "DeleteRecoveryPoint",
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$delete_recovery_point_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1395,12 +1413,13 @@ backup_delete_report_plan <- function(ReportPlanName) {
     name = "DeleteReportPlan",
     http_method = "DELETE",
     http_path = "/audit/report-plans/{reportPlanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_report_plan_input(ReportPlanName = ReportPlanName)
   output <- .backup$delete_report_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1440,12 +1459,13 @@ backup_delete_restore_testing_plan <- function(RestoreTestingPlanName) {
     name = "DeleteRestoreTestingPlan",
     http_method = "DELETE",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_restore_testing_plan_input(RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$delete_restore_testing_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1490,12 +1510,13 @@ backup_delete_restore_testing_selection <- function(RestoreTestingPlanName, Rest
     name = "DeleteRestoreTestingSelection",
     http_method = "DELETE",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$delete_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelectionName = RestoreTestingSelectionName)
   output <- .backup$delete_restore_testing_selection_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1582,12 +1603,13 @@ backup_describe_backup_job <- function(BackupJobId) {
     name = "DescribeBackupJob",
     http_method = "GET",
     http_path = "/backup-jobs/{backupJobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_backup_job_input(BackupJobId = BackupJobId)
   output <- .backup$describe_backup_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1648,12 +1670,13 @@ backup_describe_backup_vault <- function(BackupVaultName, BackupVaultAccountId =
     name = "DescribeBackupVault",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$describe_backup_vault_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1729,12 +1752,13 @@ backup_describe_copy_job <- function(CopyJobId) {
     name = "DescribeCopyJob",
     http_method = "GET",
     http_path = "/copy-jobs/{copyJobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_copy_job_input(CopyJobId = CopyJobId)
   output <- .backup$describe_copy_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1806,12 +1830,13 @@ backup_describe_framework <- function(FrameworkName) {
     name = "DescribeFramework",
     http_method = "GET",
     http_path = "/audit/frameworks/{frameworkName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_framework_input(FrameworkName = FrameworkName)
   output <- .backup$describe_framework_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1860,12 +1885,13 @@ backup_describe_global_settings <- function() {
     name = "DescribeGlobalSettings",
     http_method = "GET",
     http_path = "/global-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_global_settings_input()
   output <- .backup$describe_global_settings_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1926,12 +1952,13 @@ backup_describe_protected_resource <- function(ResourceArn) {
     name = "DescribeProtectedResource",
     http_method = "GET",
     http_path = "/resources/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_protected_resource_input(ResourceArn = ResourceArn)
   output <- .backup$describe_protected_resource_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2030,12 +2057,13 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn, Ba
     name = "DescribeRecoveryPoint",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$describe_recovery_point_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2084,12 +2112,13 @@ backup_describe_region_settings <- function() {
     name = "DescribeRegionSettings",
     http_method = "GET",
     http_path = "/account-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_region_settings_input()
   output <- .backup$describe_region_settings_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2153,12 +2182,13 @@ backup_describe_report_job <- function(ReportJobId) {
     name = "DescribeReportJob",
     http_method = "GET",
     http_path = "/audit/report-jobs/{reportJobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_report_job_input(ReportJobId = ReportJobId)
   output <- .backup$describe_report_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2239,12 +2269,13 @@ backup_describe_report_plan <- function(ReportPlanName) {
     name = "DescribeReportPlan",
     http_method = "GET",
     http_path = "/audit/report-plans/{reportPlanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_report_plan_input(ReportPlanName = ReportPlanName)
   output <- .backup$describe_report_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2314,12 +2345,13 @@ backup_describe_restore_job <- function(RestoreJobId) {
     name = "DescribeRestoreJob",
     http_method = "GET",
     http_path = "/restore-jobs/{restoreJobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$describe_restore_job_input(RestoreJobId = RestoreJobId)
   output <- .backup$describe_restore_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2367,12 +2399,13 @@ backup_disassociate_recovery_point <- function(BackupVaultName, RecoveryPointArn
     name = "DisassociateRecoveryPoint",
     http_method = "POST",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$disassociate_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$disassociate_recovery_point_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2422,12 +2455,13 @@ backup_disassociate_recovery_point_from_parent <- function(BackupVaultName, Reco
     name = "DisassociateRecoveryPointFromParent",
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/parentAssociation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$disassociate_recovery_point_from_parent_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$disassociate_recovery_point_from_parent_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2471,12 +2505,13 @@ backup_export_backup_plan_template <- function(BackupPlanId) {
     name = "ExportBackupPlanTemplate",
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/toTemplate/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$export_backup_plan_template_input(BackupPlanId = BackupPlanId)
   output <- .backup$export_backup_plan_template_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2584,12 +2619,13 @@ backup_get_backup_plan <- function(BackupPlanId, VersionId = NULL) {
     name = "GetBackupPlan",
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_backup_plan_input(BackupPlanId = BackupPlanId, VersionId = VersionId)
   output <- .backup$get_backup_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2671,12 +2707,13 @@ backup_get_backup_plan_from_json <- function(BackupPlanTemplateJson) {
     name = "GetBackupPlanFromJSON",
     http_method = "POST",
     http_path = "/backup/template/json/toPlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_backup_plan_from_json_input(BackupPlanTemplateJson = BackupPlanTemplateJson)
   output <- .backup$get_backup_plan_from_json_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2758,12 +2795,13 @@ backup_get_backup_plan_from_template <- function(BackupPlanTemplateId) {
     name = "GetBackupPlanFromTemplate",
     http_method = "GET",
     http_path = "/backup/template/plans/{templateId}/toPlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_backup_plan_from_template_input(BackupPlanTemplateId = BackupPlanTemplateId)
   output <- .backup$get_backup_plan_from_template_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2858,12 +2896,13 @@ backup_get_backup_selection <- function(BackupPlanId, SelectionId) {
     name = "GetBackupSelection",
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/selections/{selectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_backup_selection_input(BackupPlanId = BackupPlanId, SelectionId = SelectionId)
   output <- .backup$get_backup_selection_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2912,12 +2951,13 @@ backup_get_backup_vault_access_policy <- function(BackupVaultName) {
     name = "GetBackupVaultAccessPolicy",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/access-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_backup_vault_access_policy_input(BackupVaultName = BackupVaultName)
   output <- .backup$get_backup_vault_access_policy_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2967,12 +3007,13 @@ backup_get_backup_vault_notifications <- function(BackupVaultName) {
     name = "GetBackupVaultNotifications",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/notification-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_backup_vault_notifications_input(BackupVaultName = BackupVaultName)
   output <- .backup$get_backup_vault_notifications_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3047,12 +3088,13 @@ backup_get_legal_hold <- function(LegalHoldId) {
     name = "GetLegalHold",
     http_method = "GET",
     http_path = "/legal-holds/{legalHoldId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_legal_hold_input(LegalHoldId = LegalHoldId)
   output <- .backup$get_legal_hold_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3111,12 +3153,13 @@ backup_get_recovery_point_restore_metadata <- function(BackupVaultName, Recovery
     name = "GetRecoveryPointRestoreMetadata",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/restore-metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_recovery_point_restore_metadata_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$get_recovery_point_restore_metadata_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3161,12 +3204,13 @@ backup_get_restore_job_metadata <- function(RestoreJobId) {
     name = "GetRestoreJobMetadata",
     http_method = "GET",
     http_path = "/restore-jobs/{restoreJobId}/metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_restore_job_metadata_input(RestoreJobId = RestoreJobId)
   output <- .backup$get_restore_job_metadata_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3224,12 +3268,13 @@ backup_get_restore_testing_inferred_metadata <- function(BackupVaultAccountId = 
     name = "GetRestoreTestingInferredMetadata",
     http_method = "GET",
     http_path = "/restore-testing/inferred-metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_restore_testing_inferred_metadata_input(BackupVaultAccountId = BackupVaultAccountId, BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$get_restore_testing_inferred_metadata_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3303,12 +3348,13 @@ backup_get_restore_testing_plan <- function(RestoreTestingPlanName) {
     name = "GetRestoreTestingPlan",
     http_method = "GET",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_restore_testing_plan_input(RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$get_restore_testing_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3385,12 +3431,13 @@ backup_get_restore_testing_selection <- function(RestoreTestingPlanName, Restore
     name = "GetRestoreTestingSelection",
     http_method = "GET",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelectionName = RestoreTestingSelectionName)
   output <- .backup$get_restore_testing_selection_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3429,12 +3476,13 @@ backup_get_supported_resource_types <- function() {
     name = "GetSupportedResourceTypes",
     http_method = "GET",
     http_path = "/supported-resource-types",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$get_supported_resource_types_input()
   output <- .backup$get_supported_resource_types_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3576,12 +3624,13 @@ backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, Res
     name = "ListBackupJobSummaries",
     http_method = "GET",
     http_path = "/audit/backup-job-summaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_backup_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_backup_job_summaries_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3778,12 +3827,13 @@ backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResou
     name = "ListBackupJobs",
     http_method = "GET",
     http_path = "/backup-jobs/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupJobs")
   )
   input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId, ByCompleteAfter = ByCompleteAfter, ByCompleteBefore = ByCompleteBefore, ByParentJobId = ByParentJobId, ByMessageCategory = ByMessageCategory)
   output <- .backup$list_backup_jobs_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3838,12 +3888,13 @@ backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NUL
     name = "ListBackupPlanTemplates",
     http_method = "GET",
     http_path = "/backup/template/plans",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanTemplatesList")
   )
   input <- .backup$list_backup_plan_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_plan_templates_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3922,12 +3973,13 @@ backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, Max
     name = "ListBackupPlanVersions",
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/versions/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanVersionsList")
   )
   input <- .backup$list_backup_plan_versions_input(BackupPlanId = BackupPlanId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_plan_versions_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4006,12 +4058,13 @@ backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, Includ
     name = "ListBackupPlans",
     http_method = "GET",
     http_path = "/backup/plans/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlansList")
   )
   input <- .backup$list_backup_plans_input(NextToken = NextToken, MaxResults = MaxResults, IncludeDeleted = IncludeDeleted)
   output <- .backup$list_backup_plans_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4074,12 +4127,13 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
     name = "ListBackupSelections",
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/selections/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupSelectionsList")
   )
   input <- .backup$list_backup_selections_input(BackupPlanId = BackupPlanId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_selections_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4150,12 +4204,13 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
     name = "ListBackupVaults",
     http_method = "GET",
     http_path = "/backup-vaults/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupVaultList")
   )
   input <- .backup$list_backup_vaults_input(ByVaultType = ByVaultType, ByShared = ByShared, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_vaults_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4282,12 +4337,13 @@ backup_list_copy_job_summaries <- function(AccountId = NULL, State = NULL, Resou
     name = "ListCopyJobSummaries",
     http_method = "GET",
     http_path = "/audit/copy-job-summaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_copy_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_copy_job_summaries_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4455,12 +4511,13 @@ backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourc
     name = "ListCopyJobs",
     http_method = "GET",
     http_path = "/copy-jobs/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CopyJobs")
   )
   input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByParentJobId = ByParentJobId, ByMessageCategory = ByMessageCategory)
   output <- .backup$list_copy_jobs_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4521,12 +4578,13 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListFrameworks",
     http_method = "GET",
     http_path = "/audit/frameworks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_frameworks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_frameworks_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4588,12 +4646,13 @@ backup_list_legal_holds <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListLegalHolds",
     http_method = "GET",
     http_path = "/legal-holds/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LegalHolds")
   )
   input <- .backup$list_legal_holds_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_legal_holds_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4656,12 +4715,13 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
     name = "ListProtectedResources",
     http_method = "GET",
     http_path = "/resources/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
   )
   input <- .backup$list_protected_resources_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_protected_resources_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4729,12 +4789,13 @@ backup_list_protected_resources_by_backup_vault <- function(BackupVaultName, Bac
     name = "ListProtectedResourcesByBackupVault",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/resources/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
   )
   input <- .backup$list_protected_resources_by_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_protected_resources_by_backup_vault_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4897,12 +4958,13 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, BackupV
     name = "ListRecoveryPointsByBackupVault",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId, NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByResourceType = ByResourceType, ByBackupPlanId = ByBackupPlanId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByParentRecoveryPointArn = ByParentRecoveryPointArn)
   output <- .backup$list_recovery_points_by_backup_vault_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4962,12 +5024,13 @@ backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = N
     name = "ListRecoveryPointsByLegalHold",
     http_method = "GET",
     http_path = "/legal-holds/{legalHoldId}/recovery-points",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_legal_hold_input(LegalHoldId = LegalHoldId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_recovery_points_by_legal_hold_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5052,12 +5115,13 @@ backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NUL
     name = "ListRecoveryPointsByResource",
     http_method = "GET",
     http_path = "/resources/{resourceArn}/recovery-points/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults, ManagedByAWSBackupOnly = ManagedByAWSBackupOnly)
   output <- .backup$list_recovery_points_by_resource_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5147,12 +5211,13 @@ backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = 
     name = "ListReportJobs",
     http_method = "GET",
     http_path = "/audit/report-jobs",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_report_jobs_input(ByReportPlanName = ByReportPlanName, ByCreationBefore = ByCreationBefore, ByCreationAfter = ByCreationAfter, ByStatus = ByStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_report_jobs_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5241,12 +5306,13 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListReportPlans",
     http_method = "GET",
     http_path = "/audit/report-plans",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_report_plans_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_report_plans_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5362,12 +5428,13 @@ backup_list_restore_job_summaries <- function(AccountId = NULL, State = NULL, Re
     name = "ListRestoreJobSummaries",
     http_method = "GET",
     http_path = "/audit/restore-job-summaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_restore_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_restore_job_summaries_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5510,12 +5577,13 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
     name = "ListRestoreJobs",
     http_method = "GET",
     http_path = "/restore-jobs/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs")
   )
   input <- .backup$list_restore_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByAccountId = ByAccountId, ByResourceType = ByResourceType, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByStatus = ByStatus, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByRestoreTestingPlanArn = ByRestoreTestingPlanArn)
   output <- .backup$list_restore_jobs_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5614,12 +5682,13 @@ backup_list_restore_jobs_by_protected_resource <- function(ResourceArn, ByStatus
     name = "ListRestoreJobsByProtectedResource",
     http_method = "GET",
     http_path = "/resources/{resourceArn}/restore-jobs/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs")
   )
   input <- .backup$list_restore_jobs_by_protected_resource_input(ResourceArn = ResourceArn, ByStatus = ByStatus, ByRecoveryPointCreationDateAfter = ByRecoveryPointCreationDateAfter, ByRecoveryPointCreationDateBefore = ByRecoveryPointCreationDateBefore, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_restore_jobs_by_protected_resource_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5684,12 +5753,13 @@ backup_list_restore_testing_plans <- function(MaxResults = NULL, NextToken = NUL
     name = "ListRestoreTestingPlans",
     http_method = "GET",
     http_path = "/restore-testing/plans",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingPlans")
   )
   input <- .backup$list_restore_testing_plans_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_restore_testing_plans_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5753,12 +5823,13 @@ backup_list_restore_testing_selections <- function(MaxResults = NULL, NextToken 
     name = "ListRestoreTestingSelections",
     http_method = "GET",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingSelections")
   )
   input <- .backup$list_restore_testing_selections_input(MaxResults = MaxResults, NextToken = NextToken, RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$list_restore_testing_selections_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5822,12 +5893,13 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
     name = "ListTags",
     http_method = "GET",
     http_path = "/tags/{resourceArn}/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_tags_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5872,12 +5944,13 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
     name = "PutBackupVaultAccessPolicy",
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}/access-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$put_backup_vault_access_policy_input(BackupVaultName = BackupVaultName, Policy = Policy)
   output <- .backup$put_backup_vault_access_policy_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5986,12 +6059,13 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
     name = "PutBackupVaultLockConfiguration",
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}/vault-lock",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$put_backup_vault_lock_configuration_input(BackupVaultName = BackupVaultName, MinRetentionDays = MinRetentionDays, MaxRetentionDays = MaxRetentionDays, ChangeableForDays = ChangeableForDays)
   output <- .backup$put_backup_vault_lock_configuration_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6062,12 +6136,13 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
     name = "PutBackupVaultNotifications",
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}/notification-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$put_backup_vault_notifications_input(BackupVaultName = BackupVaultName, SNSTopicArn = SNSTopicArn, BackupVaultEvents = BackupVaultEvents)
   output <- .backup$put_backup_vault_notifications_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6113,12 +6188,13 @@ backup_put_restore_validation_result <- function(RestoreJobId, ValidationStatus,
     name = "PutRestoreValidationResult",
     http_method = "PUT",
     http_path = "/restore-jobs/{restoreJobId}/validations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$put_restore_validation_result_input(RestoreJobId = RestoreJobId, ValidationStatus = ValidationStatus, ValidationStatusMessage = ValidationStatusMessage)
   output <- .backup$put_restore_validation_result_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6244,12 +6320,13 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
     name = "StartBackupJob",
     http_method = "PUT",
     http_path = "/backup-jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$start_backup_job_input(BackupVaultName = BackupVaultName, ResourceArn = ResourceArn, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, StartWindowMinutes = StartWindowMinutes, CompleteWindowMinutes = CompleteWindowMinutes, Lifecycle = Lifecycle, RecoveryPointTags = RecoveryPointTags, BackupOptions = BackupOptions)
   output <- .backup$start_backup_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6323,12 +6400,13 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
     name = "StartCopyJob",
     http_method = "PUT",
     http_path = "/copy-jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$start_copy_job_input(RecoveryPointArn = RecoveryPointArn, SourceBackupVaultName = SourceBackupVaultName, DestinationBackupVaultArn = DestinationBackupVaultArn, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, Lifecycle = Lifecycle)
   output <- .backup$start_copy_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6375,12 +6453,13 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
     name = "StartReportJob",
     http_method = "POST",
     http_path = "/audit/report-jobs/{reportPlanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$start_report_job_input(ReportPlanName = ReportPlanName, IdempotencyToken = IdempotencyToken)
   output <- .backup$start_report_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6514,12 +6593,13 @@ backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn = NU
     name = "StartRestoreJob",
     http_method = "PUT",
     http_path = "/restore-jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$start_restore_job_input(RecoveryPointArn = RecoveryPointArn, Metadata = Metadata, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, ResourceType = ResourceType, CopySourceTagsToRestoredResource = CopySourceTagsToRestoredResource)
   output <- .backup$start_restore_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6561,12 +6641,13 @@ backup_stop_backup_job <- function(BackupJobId) {
     name = "StopBackupJob",
     http_method = "POST",
     http_path = "/backup-jobs/{backupJobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$stop_backup_job_input(BackupJobId = BackupJobId)
   output <- .backup$stop_backup_job_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6612,12 +6693,13 @@ backup_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .backup$tag_resource_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6662,12 +6744,13 @@ backup_untag_resource <- function(ResourceArn, TagKeyList) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/untag/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$untag_resource_input(ResourceArn = ResourceArn, TagKeyList = TagKeyList)
   output <- .backup$untag_resource_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6767,12 +6850,13 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
     name = "UpdateBackupPlan",
     http_method = "POST",
     http_path = "/backup/plans/{backupPlanId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_backup_plan_input(BackupPlanId = BackupPlanId, BackupPlan = BackupPlan)
   output <- .backup$update_backup_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6855,12 +6939,13 @@ backup_update_framework <- function(FrameworkName, FrameworkDescription = NULL, 
     name = "UpdateFramework",
     http_method = "PUT",
     http_path = "/audit/frameworks/{frameworkName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_framework_input(FrameworkName = FrameworkName, FrameworkDescription = FrameworkDescription, FrameworkControls = FrameworkControls, IdempotencyToken = IdempotencyToken)
   output <- .backup$update_framework_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6905,12 +6990,13 @@ backup_update_global_settings <- function(GlobalSettings = NULL) {
     name = "UpdateGlobalSettings",
     http_method = "PUT",
     http_path = "/global-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_global_settings_input(GlobalSettings = GlobalSettings)
   output <- .backup$update_global_settings_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7006,12 +7092,13 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
     name = "UpdateRecoveryPointLifecycle",
     http_method = "POST",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_recovery_point_lifecycle_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, Lifecycle = Lifecycle)
   output <- .backup$update_recovery_point_lifecycle_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7073,12 +7160,13 @@ backup_update_region_settings <- function(ResourceTypeOptInPreference = NULL, Re
     name = "UpdateRegionSettings",
     http_method = "PUT",
     http_path = "/account-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_region_settings_input(ResourceTypeOptInPreference = ResourceTypeOptInPreference, ResourceTypeManagementPreference = ResourceTypeManagementPreference)
   output <- .backup$update_region_settings_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7171,12 +7259,13 @@ backup_update_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
     name = "UpdateReportPlan",
     http_method = "PUT",
     http_path = "/audit/report-plans/{reportPlanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_report_plan_input(ReportPlanName = ReportPlanName, ReportPlanDescription = ReportPlanDescription, ReportDeliveryChannel = ReportDeliveryChannel, ReportSetting = ReportSetting, IdempotencyToken = IdempotencyToken)
   output <- .backup$update_report_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7258,12 +7347,13 @@ backup_update_restore_testing_plan <- function(RestoreTestingPlan, RestoreTestin
     name = "UpdateRestoreTestingPlan",
     http_method = "PUT",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_restore_testing_plan_input(RestoreTestingPlan = RestoreTestingPlan, RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$update_restore_testing_plan_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7353,12 +7443,13 @@ backup_update_restore_testing_selection <- function(RestoreTestingPlanName, Rest
     name = "UpdateRestoreTestingSelection",
     http_method = "PUT",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .backup$update_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelection = RestoreTestingSelection, RestoreTestingSelectionName = RestoreTestingSelectionName)
   output <- .backup$update_restore_testing_selection_output()
   config <- get_config()
-  svc <- .backup$service(config)
+  svc <- .backup$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

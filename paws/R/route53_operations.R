@@ -51,12 +51,13 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
     name = "ActivateKeySigningKey",
     http_method = "POST",
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$activate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$activate_key_signing_key_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -160,12 +161,13 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
     name = "AssociateVPCWithHostedZone",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/associatevpc",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$associate_vpc_with_hosted_zone_input(HostedZoneId = HostedZoneId, VPC = VPC, Comment = Comment)
   output <- .route53$associate_vpc_with_hosted_zone_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -254,12 +256,13 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
     name = "ChangeCidrCollection",
     http_method = "POST",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$change_cidr_collection_input(Id = Id, CollectionVersion = CollectionVersion, Changes = Changes)
   output <- .route53$change_cidr_collection_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -924,12 +927,13 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
     name = "ChangeResourceRecordSets",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$change_resource_record_sets_input(HostedZoneId = HostedZoneId, ChangeBatch = ChangeBatch)
   output <- .route53$change_resource_record_sets_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1019,12 +1023,13 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
     name = "ChangeTagsForResource",
     http_method = "POST",
     http_path = "/2013-04-01/tags/{ResourceType}/{ResourceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$change_tags_for_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, AddTags = AddTags, RemoveTagKeys = RemoveTagKeys)
   output <- .route53$change_tags_for_resource_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1077,12 +1082,13 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
     name = "CreateCidrCollection",
     http_method = "POST",
     http_path = "/2013-04-01/cidrcollection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_cidr_collection_input(Name = Name, CallerReference = CallerReference)
   output <- .route53$create_cidr_collection_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1264,12 +1270,13 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
     name = "CreateHealthCheck",
     http_method = "POST",
     http_path = "/2013-04-01/healthcheck",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_health_check_input(CallerReference = CallerReference, HealthCheckConfig = HealthCheckConfig)
   output <- .route53$create_health_check_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1463,12 +1470,13 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
     name = "CreateHostedZone",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_hosted_zone_input(Name = Name, VPC = VPC, CallerReference = CallerReference, HostedZoneConfig = HostedZoneConfig, DelegationSetId = DelegationSetId)
   output <- .route53$create_hosted_zone_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1590,12 +1598,13 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
     name = "CreateKeySigningKey",
     http_method = "POST",
     http_path = "/2013-04-01/keysigningkey",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_key_signing_key_input(CallerReference = CallerReference, HostedZoneId = HostedZoneId, KeyManagementServiceArn = KeyManagementServiceArn, Name = Name, Status = Status)
   output <- .route53$create_key_signing_key_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1790,12 +1799,13 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
     name = "CreateQueryLoggingConfig",
     http_method = "POST",
     http_path = "/2013-04-01/queryloggingconfig",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_query_logging_config_input(HostedZoneId = HostedZoneId, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn)
   output <- .route53$create_query_logging_config_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1907,12 +1917,13 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
     name = "CreateReusableDelegationSet",
     http_method = "POST",
     http_path = "/2013-04-01/delegationset",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_reusable_delegation_set_input(CallerReference = CallerReference, HostedZoneId = HostedZoneId)
   output <- .route53$create_reusable_delegation_set_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1972,12 +1983,13 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
     name = "CreateTrafficPolicy",
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_traffic_policy_input(Name = Name, Document = Document, Comment = Comment)
   output <- .route53$create_traffic_policy_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2066,12 +2078,13 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
     name = "CreateTrafficPolicyInstance",
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicyinstance",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_traffic_policy_instance_input(HostedZoneId = HostedZoneId, Name = Name, TTL = TTL, TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion)
   output <- .route53$create_traffic_policy_instance_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2138,12 +2151,13 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
     name = "CreateTrafficPolicyVersion",
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicy/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_traffic_policy_version_input(Id = Id, Document = Document, Comment = Comment)
   output <- .route53$create_traffic_policy_version_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2212,12 +2226,13 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
     name = "CreateVPCAssociationAuthorization",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$create_vpc_association_authorization_input(HostedZoneId = HostedZoneId, VPC = VPC)
   output <- .route53$create_vpc_association_authorization_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2270,12 +2285,13 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
     name = "DeactivateKeySigningKey",
     http_method = "POST",
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$deactivate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$deactivate_key_signing_key_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2313,12 +2329,13 @@ route53_delete_cidr_collection <- function(Id) {
     name = "DeleteCidrCollection",
     http_method = "DELETE",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_cidr_collection_input(Id = Id)
   output <- .route53$delete_cidr_collection_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2372,12 +2389,13 @@ route53_delete_health_check <- function(HealthCheckId) {
     name = "DeleteHealthCheck",
     http_method = "DELETE",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_health_check_input(HealthCheckId = HealthCheckId)
   output <- .route53$delete_health_check_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2477,12 +2495,13 @@ route53_delete_hosted_zone <- function(Id) {
     name = "DeleteHostedZone",
     http_method = "DELETE",
     http_path = "/2013-04-01/hostedzone/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_hosted_zone_input(Id = Id)
   output <- .route53$delete_hosted_zone_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2542,12 +2561,13 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
     name = "DeleteKeySigningKey",
     http_method = "DELETE",
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$delete_key_signing_key_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2590,12 +2610,13 @@ route53_delete_query_logging_config <- function(Id) {
     name = "DeleteQueryLoggingConfig",
     http_method = "DELETE",
     http_path = "/2013-04-01/queryloggingconfig/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_query_logging_config_input(Id = Id)
   output <- .route53$delete_query_logging_config_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2641,12 +2662,13 @@ route53_delete_reusable_delegation_set <- function(Id) {
     name = "DeleteReusableDelegationSet",
     http_method = "DELETE",
     http_path = "/2013-04-01/delegationset/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_reusable_delegation_set_input(Id = Id)
   output <- .route53$delete_reusable_delegation_set_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2698,12 +2720,13 @@ route53_delete_traffic_policy <- function(Id, Version) {
     name = "DeleteTrafficPolicy",
     http_method = "DELETE",
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_traffic_policy_input(Id = Id, Version = Version)
   output <- .route53$delete_traffic_policy_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2749,12 +2772,13 @@ route53_delete_traffic_policy_instance <- function(Id) {
     name = "DeleteTrafficPolicyInstance",
     http_method = "DELETE",
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_traffic_policy_instance_input(Id = Id)
   output <- .route53$delete_traffic_policy_instance_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2818,12 +2842,13 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
     name = "DeleteVPCAssociationAuthorization",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$delete_vpc_association_authorization_input(HostedZoneId = HostedZoneId, VPC = VPC)
   output <- .route53$delete_vpc_association_authorization_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2874,12 +2899,13 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
     name = "DisableHostedZoneDNSSEC",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/disable-dnssec",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$disable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$disable_hosted_zone_dnssec_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2979,12 +3005,13 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
     name = "DisassociateVPCFromHostedZone",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/disassociatevpc",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$disassociate_vpc_from_hosted_zone_input(HostedZoneId = HostedZoneId, VPC = VPC, Comment = Comment)
   output <- .route53$disassociate_vpc_from_hosted_zone_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3033,12 +3060,13 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
     name = "EnableHostedZoneDNSSEC",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/enable-dnssec",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$enable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$enable_hosted_zone_dnssec_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3115,12 +3143,13 @@ route53_get_account_limit <- function(Type) {
     name = "GetAccountLimit",
     http_method = "GET",
     http_path = "/2013-04-01/accountlimit/{Type}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_account_limit_input(Type = Type)
   output <- .route53$get_account_limit_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3180,12 +3209,13 @@ route53_get_change <- function(Id) {
     name = "GetChange",
     http_method = "GET",
     http_path = "/2013-04-01/change/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_change_input(Id = Id)
   output <- .route53$get_change_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3236,12 +3266,13 @@ route53_get_checker_ip_ranges <- function() {
     name = "GetCheckerIpRanges",
     http_method = "GET",
     http_path = "/2013-04-01/checkeripranges",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_checker_ip_ranges_input()
   output <- .route53$get_checker_ip_ranges_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3312,12 +3343,13 @@ route53_get_dnssec <- function(HostedZoneId) {
     name = "GetDNSSEC",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/dnssec",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$get_dnssec_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3414,12 +3446,13 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
     name = "GetGeoLocation",
     http_method = "GET",
     http_path = "/2013-04-01/geolocation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_geo_location_input(ContinentCode = ContinentCode, CountryCode = CountryCode, SubdivisionCode = SubdivisionCode)
   output <- .route53$get_geo_location_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3514,12 +3547,13 @@ route53_get_health_check <- function(HealthCheckId) {
     name = "GetHealthCheck",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_health_check_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3561,12 +3595,13 @@ route53_get_health_check_count <- function() {
     name = "GetHealthCheckCount",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheckcount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_health_check_count_input()
   output <- .route53$get_health_check_count_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3628,12 +3663,13 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
     name = "GetHealthCheckLastFailureReason",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_health_check_last_failure_reason_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_last_failure_reason_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3698,12 +3734,13 @@ route53_get_health_check_status <- function(HealthCheckId) {
     name = "GetHealthCheckStatus",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_health_check_status_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_status_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3782,12 +3819,13 @@ route53_get_hosted_zone <- function(Id) {
     name = "GetHostedZone",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_hosted_zone_input(Id = Id)
   output <- .route53$get_hosted_zone_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3829,12 +3867,13 @@ route53_get_hosted_zone_count <- function() {
     name = "GetHostedZoneCount",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonecount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_hosted_zone_count_input()
   output <- .route53$get_hosted_zone_count_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3895,12 +3934,13 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
     name = "GetHostedZoneLimit",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonelimit/{Id}/{Type}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_hosted_zone_limit_input(Type = Type, HostedZoneId = HostedZoneId)
   output <- .route53$get_hosted_zone_limit_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3952,12 +3992,13 @@ route53_get_query_logging_config <- function(Id) {
     name = "GetQueryLoggingConfig",
     http_method = "GET",
     http_path = "/2013-04-01/queryloggingconfig/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_query_logging_config_input(Id = Id)
   output <- .route53$get_query_logging_config_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4008,12 +4049,13 @@ route53_get_reusable_delegation_set <- function(Id) {
     name = "GetReusableDelegationSet",
     http_method = "GET",
     http_path = "/2013-04-01/delegationset/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_reusable_delegation_set_input(Id = Id)
   output <- .route53$get_reusable_delegation_set_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4070,12 +4112,13 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
     name = "GetReusableDelegationSetLimit",
     http_method = "GET",
     http_path = "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_reusable_delegation_set_limit_input(Type = Type, DelegationSetId = DelegationSetId)
   output <- .route53$get_reusable_delegation_set_limit_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4131,12 +4174,13 @@ route53_get_traffic_policy <- function(Id, Version) {
     name = "GetTrafficPolicy",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_traffic_policy_input(Id = Id, Version = Version)
   output <- .route53$get_traffic_policy_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4200,12 +4244,13 @@ route53_get_traffic_policy_instance <- function(Id) {
     name = "GetTrafficPolicyInstance",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_traffic_policy_instance_input(Id = Id)
   output <- .route53$get_traffic_policy_instance_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4247,12 +4292,13 @@ route53_get_traffic_policy_instance_count <- function() {
     name = "GetTrafficPolicyInstanceCount",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstancecount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$get_traffic_policy_instance_count_input()
   output <- .route53$get_traffic_policy_instance_count_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4308,12 +4354,13 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
     name = "ListCidrBlocks",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrBlocks")
   )
   input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_blocks_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4371,12 +4418,13 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListCidrCollections",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrCollections")
   )
   input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_collections_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4434,12 +4482,13 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
     name = "ListCidrLocations",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrLocations")
   )
   input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_locations_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4537,12 +4586,13 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
     name = "ListGeoLocations",
     http_method = "GET",
     http_path = "/2013-04-01/geolocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_geo_locations_input(StartContinentCode = StartContinentCode, StartCountryCode = StartCountryCode, StartSubdivisionCode = StartSubdivisionCode, MaxItems = MaxItems)
   output <- .route53$list_geo_locations_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4657,12 +4707,13 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListHealthChecks",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks")
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_health_checks_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4752,12 +4803,13 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     name = "ListHostedZones",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones")
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId, HostedZoneType = HostedZoneType)
   output <- .route53$list_hosted_zones_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4904,12 +4956,13 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
     name = "ListHostedZonesByName",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonesbyname",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_hosted_zones_by_name_input(DNSName = DNSName, HostedZoneId = HostedZoneId, MaxItems = MaxItems)
   output <- .route53$list_hosted_zones_by_name_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5014,12 +5067,13 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
     name = "ListHostedZonesByVPC",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonesbyvpc",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_hosted_zones_by_vpc_input(VPCId = VPCId, VPCRegion = VPCRegion, MaxItems = MaxItems, NextToken = NextToken)
   output <- .route53$list_hosted_zones_by_vpc_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5107,12 +5161,13 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
     name = "ListQueryLoggingConfigs",
     http_method = "GET",
     http_path = "/2013-04-01/queryloggingconfig",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueryLoggingConfigs")
   )
   input <- .route53$list_query_logging_configs_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_query_logging_configs_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5321,12 +5376,13 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     name = "ListResourceRecordSets",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
+    host_prefix = "",
     paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets")
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
   output <- .route53$list_resource_record_sets_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5396,12 +5452,13 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
     name = "ListReusableDelegationSets",
     http_method = "GET",
     http_path = "/2013-04-01/delegationset",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_reusable_delegation_sets_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_reusable_delegation_sets_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5463,12 +5520,13 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/2013-04-01/tags/{ResourceType}/{ResourceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_tags_for_resource_input(ResourceType = ResourceType, ResourceId = ResourceId)
   output <- .route53$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5535,12 +5593,13 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
     name = "ListTagsForResources",
     http_method = "POST",
     http_path = "/2013-04-01/tags/{ResourceType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_tags_for_resources_input(ResourceType = ResourceType, ResourceIds = ResourceIds)
   output <- .route53$list_tags_for_resources_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5617,12 +5676,13 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
     name = "ListTrafficPolicies",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_traffic_policies_input(TrafficPolicyIdMarker = TrafficPolicyIdMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policies_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5738,12 +5798,13 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
     name = "ListTrafficPolicyInstances",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstances",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_traffic_policy_instances_input(HostedZoneIdMarker = HostedZoneIdMarker, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5850,12 +5911,13 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
     name = "ListTrafficPolicyInstancesByHostedZone",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstances/hostedzone",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_traffic_policy_instances_by_hosted_zone_input(HostedZoneId = HostedZoneId, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_by_hosted_zone_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5986,12 +6048,13 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
     name = "ListTrafficPolicyInstancesByPolicy",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstances/trafficpolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_traffic_policy_instances_by_policy_input(TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion, HostedZoneIdMarker = HostedZoneIdMarker, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_by_policy_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6071,12 +6134,13 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
     name = "ListTrafficPolicyVersions",
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicies/{Id}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_traffic_policy_versions_input(Id = Id, TrafficPolicyVersionMarker = TrafficPolicyVersionMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_versions_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6147,12 +6211,13 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
     name = "ListVPCAssociationAuthorizations",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$list_vpc_association_authorizations_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_vpc_association_authorizations_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6243,12 +6308,13 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
     name = "TestDNSAnswer",
     http_method = "GET",
     http_path = "/2013-04-01/testdnsanswer",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$test_dns_answer_input(HostedZoneId = HostedZoneId, RecordName = RecordName, RecordType = RecordType, ResolverIP = ResolverIP, EDNS0ClientSubnetIP = EDNS0ClientSubnetIP, EDNS0ClientSubnetMask = EDNS0ClientSubnetMask)
   output <- .route53$test_dns_answer_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6326,7 +6392,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     in the *Amazon EC2 User Guide for Linux Instances*
 #' 
 #' -   Windows: [Elastic IP Addresses
-#'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+#'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #'     in the *Amazon EC2 User Guide for Windows Instances*
 #' 
 #' If a health check already has a value for `IPAddress`, you can change
@@ -6647,12 +6713,13 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
     name = "UpdateHealthCheck",
     http_method = "POST",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$update_health_check_input(HealthCheckId = HealthCheckId, HealthCheckVersion = HealthCheckVersion, IPAddress = IPAddress, Port = Port, ResourcePath = ResourcePath, FullyQualifiedDomainName = FullyQualifiedDomainName, SearchString = SearchString, FailureThreshold = FailureThreshold, Inverted = Inverted, Disabled = Disabled, HealthThreshold = HealthThreshold, ChildHealthChecks = ChildHealthChecks, EnableSNI = EnableSNI, Regions = Regions, AlarmIdentifier = AlarmIdentifier, InsufficientDataHealthStatus = InsufficientDataHealthStatus, ResetElements = ResetElements)
   output <- .route53$update_health_check_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6711,12 +6778,13 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
     name = "UpdateHostedZoneComment",
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$update_hosted_zone_comment_input(Id = Id, Comment = Comment)
   output <- .route53$update_hosted_zone_comment_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6771,12 +6839,13 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
     name = "UpdateTrafficPolicyComment",
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$update_traffic_policy_comment_input(Id = Id, Version = Version, Comment = Comment)
   output <- .route53$update_traffic_policy_comment_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6869,12 +6938,13 @@ route53_update_traffic_policy_instance <- function(Id, TTL, TrafficPolicyId, Tra
     name = "UpdateTrafficPolicyInstance",
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53$update_traffic_policy_instance_input(Id = Id, TTL = TTL, TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion)
   output <- .route53$update_traffic_policy_instance_output()
   config <- get_config()
-  svc <- .route53$service(config)
+  svc <- .route53$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

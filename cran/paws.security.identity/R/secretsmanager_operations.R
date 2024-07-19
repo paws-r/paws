@@ -35,12 +35,13 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
     name = "BatchGetSecretValue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .secretsmanager$batch_get_secret_value_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -69,12 +70,13 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
     name = "CancelRotateSecret",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$cancel_rotate_secret_input(SecretId = SecretId)
   output <- .secretsmanager$cancel_rotate_secret_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -157,6 +159,10 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Either `SecretString` or `SecretBinary` must have a value, but not both.
 #' 
 #' This parameter is not available in the Secrets Manager console.
+#' 
+#' Sensitive: This field contains sensitive information, so the service
+#' does not include it in CloudTrail log entries. If you create your own
+#' log entries, you must also avoid logging the information in this field.
 #' @param SecretString The text data to encrypt and store in this new version of the secret. We
 #' recommend you use a JSON structure of key/value pairs for your secret
 #' value.
@@ -167,6 +173,10 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Manager puts the protected secret text in only the `SecretString`
 #' parameter. The Secrets Manager console stores the information as a JSON
 #' structure of key/value pairs that a Lambda rotation function can parse.
+#' 
+#' Sensitive: This field contains sensitive information, so the service
+#' does not include it in CloudTrail log entries. If you create your own
+#' log entries, you must also avoid logging the information in this field.
 #' @param Tags A list of tags to attach to the secret. Each tag is a key and value pair
 #' of strings in a JSON text string, for example:
 #' 
@@ -207,12 +217,13 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
     name = "CreateSecret",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$create_secret_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -241,12 +252,13 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$delete_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$delete_resource_policy_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -297,12 +309,13 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
     name = "DeleteSecret",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$delete_secret_input(SecretId = SecretId, RecoveryWindowInDays = RecoveryWindowInDays, ForceDeleteWithoutRecovery = ForceDeleteWithoutRecovery)
   output <- .secretsmanager$delete_secret_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -330,12 +343,13 @@ secretsmanager_describe_secret <- function(SecretId) {
     name = "DescribeSecret",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$describe_secret_input(SecretId = SecretId)
   output <- .secretsmanager$describe_secret_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -376,12 +390,13 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
     name = "GetRandomPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$get_random_password_input(PasswordLength = PasswordLength, ExcludeCharacters = ExcludeCharacters, ExcludeNumbers = ExcludeNumbers, ExcludePunctuation = ExcludePunctuation, ExcludeUppercase = ExcludeUppercase, ExcludeLowercase = ExcludeLowercase, IncludeSpace = IncludeSpace, RequireEachIncludedType = RequireEachIncludedType)
   output <- .secretsmanager$get_random_password_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -411,12 +426,13 @@ secretsmanager_get_resource_policy <- function(SecretId) {
     name = "GetResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$get_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$get_resource_policy_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -432,7 +448,8 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_get_secret_value/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve.
+#' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve. To retrieve a secret from
+#' another account, you must use an ARN.
 #' 
 #' For an ARN, we recommend that you specify a complete ARN rather than a
 #' partial ARN. See [Finding a secret from a partial
@@ -462,12 +479,13 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
     name = "GetSecretValue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$get_secret_value_input(SecretId = SecretId, VersionId = VersionId, VersionStage = VersionStage)
   output <- .secretsmanager$get_secret_value_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -509,12 +527,13 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     name = "ListSecretVersionIds",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
   output <- .secretsmanager$list_secret_version_ids_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -551,12 +570,13 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     name = "ListSecrets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -606,12 +626,13 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$put_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy, BlockPublicPolicy = BlockPublicPolicy)
   output <- .secretsmanager$put_resource_policy_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -673,12 +694,20 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' You must include `SecretBinary` or `SecretString`, but not both.
 #' 
 #' You can't access this value from the Secrets Manager console.
+#' 
+#' Sensitive: This field contains sensitive information, so the service
+#' does not include it in CloudTrail log entries. If you create your own
+#' log entries, you must also avoid logging the information in this field.
 #' @param SecretString The text to encrypt and store in the new version of the secret.
 #' 
 #' You must include `SecretBinary` or `SecretString`, but not both.
 #' 
 #' We recommend you create the secret string as JSON key/value pairs, as
 #' shown in the example.
+#' 
+#' Sensitive: This field contains sensitive information, so the service
+#' does not include it in CloudTrail log entries. If you create your own
+#' log entries, you must also avoid logging the information in this field.
 #' @param VersionStages A list of staging labels to attach to this version of the secret.
 #' Secrets Manager uses staging labels to track versions of a secret
 #' through the rotation process.
@@ -692,21 +721,33 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' If you don't include `VersionStages`, then Secrets Manager automatically
 #' moves the staging label `AWSCURRENT` to this version.
+#' @param RotationToken A unique identifier that indicates the source of the request. For
+#' cross-account rotation (when you rotate a secret in one account by using
+#' a Lambda rotation function in another account) and the Lambda rotation
+#' function assumes an IAM role to call Secrets Manager, Secrets Manager
+#' validates the identity with the rotation token. For more information,
+#' see [How rotation
+#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html).
+#' 
+#' Sensitive: This field contains sensitive information, so the service
+#' does not include it in CloudTrail log entries. If you create your own
+#' log entries, you must also avoid logging the information in this field.
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_put_secret_value
-secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL, SecretBinary = NULL, SecretString = NULL, VersionStages = NULL) {
+secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL, SecretBinary = NULL, SecretString = NULL, VersionStages = NULL, RotationToken = NULL) {
   op <- new_operation(
     name = "PutSecretValue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .secretsmanager$put_secret_value_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, SecretBinary = SecretBinary, SecretString = SecretString, VersionStages = VersionStages)
+  input <- .secretsmanager$put_secret_value_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, SecretBinary = SecretBinary, SecretString = SecretString, VersionStages = VersionStages, RotationToken = RotationToken)
   output <- .secretsmanager$put_secret_value_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -732,12 +773,13 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
     name = "RemoveRegionsFromReplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$remove_regions_from_replication_input(SecretId = SecretId, RemoveReplicaRegions = RemoveReplicaRegions)
   output <- .secretsmanager$remove_regions_from_replication_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -764,12 +806,13 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
     name = "ReplicateSecretToRegions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$replicate_secret_to_regions_input(SecretId = SecretId, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$replicate_secret_to_regions_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -798,12 +841,13 @@ secretsmanager_restore_secret <- function(SecretId) {
     name = "RestoreSecret",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$restore_secret_input(SecretId = SecretId)
   output <- .secretsmanager$restore_secret_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -856,7 +900,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' For secrets that use a Lambda rotation function to rotate, if you don't
 #' immediately rotate the secret, Secrets Manager tests the rotation
 #' configuration by running the [`testSecret`
-#' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how)
+#' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda-functions.html#rotate-secrets_lambda-functions-code)
 #' of the Lambda rotation function. The test creates an `AWSPENDING`
 #' version of the secret and then removes it.
 #' 
@@ -870,12 +914,13 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
     name = "RotateSecret",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, RotateImmediately = RotateImmediately)
   output <- .secretsmanager$rotate_secret_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -900,12 +945,13 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
     name = "StopReplicationToReplica",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$stop_replication_to_replica_input(SecretId = SecretId)
   output <- .secretsmanager$stop_replication_to_replica_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -942,12 +988,13 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$tag_resource_input(SecretId = SecretId, Tags = Tags)
   output <- .secretsmanager$tag_resource_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -985,12 +1032,13 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$untag_resource_input(SecretId = SecretId, TagKeys = TagKeys)
   output <- .secretsmanager$untag_resource_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1063,11 +1111,19 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' Either `SecretBinary` or `SecretString` must have a value, but not both.
 #' 
 #' You can't access this parameter in the Secrets Manager console.
+#' 
+#' Sensitive: This field contains sensitive information, so the service
+#' does not include it in CloudTrail log entries. If you create your own
+#' log entries, you must also avoid logging the information in this field.
 #' @param SecretString The text data to encrypt and store in the new version of the secret. We
 #' recommend you use a JSON structure of key/value pairs for your secret
 #' value.
 #' 
 #' Either `SecretBinary` or `SecretString` must have a value, but not both.
+#' 
+#' Sensitive: This field contains sensitive information, so the service
+#' does not include it in CloudTrail log entries. If you create your own
+#' log entries, you must also avoid logging the information in this field.
 #'
 #' @keywords internal
 #'
@@ -1077,12 +1133,13 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
     name = "UpdateSecret",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString)
   output <- .secretsmanager$update_secret_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1123,12 +1180,13 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
     name = "UpdateSecretVersionStage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$update_secret_version_stage_input(SecretId = SecretId, VersionStage = VersionStage, RemoveFromVersionId = RemoveFromVersionId, MoveToVersionId = MoveToVersionId)
   output <- .secretsmanager$update_secret_version_stage_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1143,7 +1201,8 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_validate_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_validate_resource_policy/) for full documentation.
 #'
-#' @param SecretId This field is reserved for internal use.
+#' @param SecretId The ARN or name of the secret with the resource-based policy you want to
+#' validate.
 #' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that contains an Amazon Web Services
 #' resource-based policy. The policy in the string identifies who can
 #' access or manage this secret and its versions. For example policies, see
@@ -1158,12 +1217,13 @@ secretsmanager_validate_resource_policy <- function(SecretId = NULL, ResourcePol
     name = "ValidateResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .secretsmanager$validate_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy)
   output <- .secretsmanager$validate_resource_policy_output()
   config <- get_config()
-  svc <- .secretsmanager$service(config)
+  svc <- .secretsmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

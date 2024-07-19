@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_contact_routing_data}
 \alias{connect_update_contact_routing_data}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Updates routing priority and age on the contact (QueuePriority and
+QueueTimeAdjustmentInSeconds)}
 \usage{
 connect_update_contact_routing_data(
   InstanceId,
@@ -29,7 +29,7 @@ contacts in the queue by assigning them a higher priority, such as 1 or
 2.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Updates routing priority and age on the contact (\strong{QueuePriority} and \strong{QueueTimeAdjustmentInSeconds}). These properties can be used to change a customer's position in the queue. For example, you can move a contact to the back of the queue by setting a lower routing priority relative to other contacts in queue; or you can move a contact to the front of the queue by increasing the routing age which will make the contact look artificially older and therefore higher up in the first-in-first-out routing order. Note that adjusting the routing age of a contact affects only its position in queue, and not its actual queue wait time as reported through metrics. These properties can also be updated by using \href{https://docs.aws.amazon.com/connect/latest/adminguide/change-routing-priority.html}{the Set routing priority / age flow block}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_update_contact_routing_data/} for full documentation.
 }

@@ -21,12 +21,13 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
     name = "AddTagsToResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$add_tags_to_resource_input(ResourceArn = ResourceArn, TagList = TagList)
   output <- .cloudhsm$add_tags_to_resource_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -50,12 +51,13 @@ cloudhsm_create_hapg <- function(Label) {
     name = "CreateHapg",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$create_hapg_input(Label = Label)
   output <- .cloudhsm$create_hapg_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -92,12 +94,13 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
     name = "CreateHsm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$create_hsm_input(SubnetId = SubnetId, SshKey = SshKey, EniIp = EniIp, IamRoleArn = IamRoleArn, ExternalId = ExternalId, SubscriptionType = SubscriptionType, ClientToken = ClientToken, SyslogIp = SyslogIp)
   output <- .cloudhsm$create_hsm_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -123,12 +126,13 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
     name = "CreateLunaClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$create_luna_client_input(Label = Label, Certificate = Certificate)
   output <- .cloudhsm$create_luna_client_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -152,12 +156,13 @@ cloudhsm_delete_hapg <- function(HapgArn) {
     name = "DeleteHapg",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$delete_hapg_input(HapgArn = HapgArn)
   output <- .cloudhsm$delete_hapg_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -181,12 +186,13 @@ cloudhsm_delete_hsm <- function(HsmArn) {
     name = "DeleteHsm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$delete_hsm_input(HsmArn = HsmArn)
   output <- .cloudhsm$delete_hsm_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -210,12 +216,13 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
     name = "DeleteLunaClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$delete_luna_client_input(ClientArn = ClientArn)
   output <- .cloudhsm$delete_luna_client_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -239,12 +246,13 @@ cloudhsm_describe_hapg <- function(HapgArn) {
     name = "DescribeHapg",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$describe_hapg_input(HapgArn = HapgArn)
   output <- .cloudhsm$describe_hapg_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +279,13 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
     name = "DescribeHsm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$describe_hsm_input(HsmArn = HsmArn, HsmSerialNumber = HsmSerialNumber)
   output <- .cloudhsm$describe_hsm_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -301,12 +310,13 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
     name = "DescribeLunaClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$describe_luna_client_input(ClientArn = ClientArn, CertificateFingerprint = CertificateFingerprint)
   output <- .cloudhsm$describe_luna_client_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -333,12 +343,13 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
     name = "GetConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$get_config_input(ClientArn = ClientArn, ClientVersion = ClientVersion, HapgList = HapgList)
   output <- .cloudhsm$get_config_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -362,12 +373,13 @@ cloudhsm_list_available_zones <- function() {
     name = "ListAvailableZones",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$list_available_zones_input()
   output <- .cloudhsm$list_available_zones_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -393,12 +405,13 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
     name = "ListHapgs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$list_hapgs_input(NextToken = NextToken)
   output <- .cloudhsm$list_hapgs_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -423,12 +436,13 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
     name = "ListHsms",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$list_hsms_input(NextToken = NextToken)
   output <- .cloudhsm$list_hsms_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -454,12 +468,13 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
     name = "ListLunaClients",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$list_luna_clients_input(NextToken = NextToken)
   output <- .cloudhsm$list_luna_clients_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -483,12 +498,13 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cloudhsm$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -515,12 +531,13 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
     name = "ModifyHapg",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$modify_hapg_input(HapgArn = HapgArn, Label = Label, PartitionSerialList = PartitionSerialList)
   output <- .cloudhsm$modify_hapg_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -556,12 +573,13 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
     name = "ModifyHsm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$modify_hsm_input(HsmArn = HsmArn, SubnetId = SubnetId, EniIp = EniIp, IamRoleArn = IamRoleArn, ExternalId = ExternalId, SyslogIp = SyslogIp)
   output <- .cloudhsm$modify_hsm_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -586,12 +604,13 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
     name = "ModifyLunaClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$modify_luna_client_input(ClientArn = ClientArn, Certificate = Certificate)
   output <- .cloudhsm$modify_luna_client_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -620,12 +639,13 @@ cloudhsm_remove_tags_from_resource <- function(ResourceArn, TagKeyList) {
     name = "RemoveTagsFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsm$remove_tags_from_resource_input(ResourceArn = ResourceArn, TagKeyList = TagKeyList)
   output <- .cloudhsm$remove_tags_from_resource_output()
   config <- get_config()
-  svc <- .cloudhsm$service(config)
+  svc <- .cloudhsm$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

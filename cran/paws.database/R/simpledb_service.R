@@ -157,7 +157,7 @@ simpledb <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = ""
 )
 
-.simpledb$service <- function(config = list()) {
+.simpledb$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v2")
-  new_service(.simpledb$metadata, handlers, config)
+  new_service(.simpledb$metadata, handlers, config, op)
 }

@@ -177,7 +177,7 @@ gluedatabrew <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.gluedatabrew$service <- function(config = list()) {
+.gluedatabrew$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.gluedatabrew$metadata, handlers, config)
+  new_service(.gluedatabrew$metadata, handlers, config, op)
 }

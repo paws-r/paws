@@ -73,13 +73,21 @@ contents of the file as a parameter.
 
 Either \code{SecretBinary} or \code{SecretString} must have a value, but not both.
 
-You can't access this parameter in the Secrets Manager console.}
+You can't access this parameter in the Secrets Manager console.
+
+Sensitive: This field contains sensitive information, so the service
+does not include it in CloudTrail log entries. If you create your own
+log entries, you must also avoid logging the information in this field.}
 
 \item{SecretString}{The text data to encrypt and store in the new version of the secret. We
 recommend you use a JSON structure of key/value pairs for your secret
 value.
 
-Either \code{SecretBinary} or \code{SecretString} must have a value, but not both.}
+Either \code{SecretBinary} or \code{SecretString} must have a value, but not both.
+
+Sensitive: This field contains sensitive information, so the service
+does not include it in CloudTrail log entries. If you create your own
+log entries, you must also avoid logging the information in this field.}
 }
 \description{
 Modifies the details of a secret, including metadata and the secret value. To change the secret value, you can also use \code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.

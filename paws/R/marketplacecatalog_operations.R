@@ -60,12 +60,13 @@ marketplacecatalog_batch_describe_entities <- function(EntityRequestList) {
     name = "BatchDescribeEntities",
     http_method = "POST",
     http_path = "/BatchDescribeEntities",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$batch_describe_entities_input(EntityRequestList = EntityRequestList)
   output <- .marketplacecatalog$batch_describe_entities_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -116,12 +117,13 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
     name = "CancelChangeSet",
     http_method = "PATCH",
     http_path = "/CancelChangeSet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$cancel_change_set_input(Catalog = Catalog, ChangeSetId = ChangeSetId)
   output <- .marketplacecatalog$cancel_change_set_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -161,12 +163,13 @@ marketplacecatalog_delete_resource_policy <- function(ResourceArn) {
     name = "DeleteResourcePolicy",
     http_method = "DELETE",
     http_path = "/DeleteResourcePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .marketplacecatalog$delete_resource_policy_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -239,12 +242,13 @@ marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
     name = "DescribeChangeSet",
     http_method = "GET",
     http_path = "/DescribeChangeSet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$describe_change_set_input(Catalog = Catalog, ChangeSetId = ChangeSetId)
   output <- .marketplacecatalog$describe_change_set_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -294,12 +298,13 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
     name = "DescribeEntity",
     http_method = "GET",
     http_path = "/DescribeEntity",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$describe_entity_input(Catalog = Catalog, EntityId = EntityId)
   output <- .marketplacecatalog$describe_entity_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -344,12 +349,13 @@ marketplacecatalog_get_resource_policy <- function(ResourceArn) {
     name = "GetResourcePolicy",
     http_method = "GET",
     http_path = "/GetResourcePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .marketplacecatalog$get_resource_policy_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -434,12 +440,13 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
     name = "ListChangeSets",
     http_method = "POST",
     http_path = "/ListChangeSets",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ChangeSetSummaryList")
   )
   input <- .marketplacecatalog$list_change_sets_input(Catalog = Catalog, FilterList = FilterList, Sort = Sort, MaxResults = MaxResults, NextToken = NextToken)
   output <- .marketplacecatalog$list_change_sets_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -836,12 +843,13 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
     name = "ListEntities",
     http_method = "POST",
     http_path = "/ListEntities",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EntitySummaryList")
   )
   input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType, EntityTypeFilters = EntityTypeFilters, EntityTypeSort = EntityTypeSort)
   output <- .marketplacecatalog$list_entities_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -894,12 +902,13 @@ marketplacecatalog_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/ListTagsForResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .marketplacecatalog$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -940,12 +949,13 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/PutResourcePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .marketplacecatalog$put_resource_policy_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1048,12 +1058,13 @@ marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetNam
     name = "StartChangeSet",
     http_method = "POST",
     http_path = "/StartChangeSet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken, ChangeSetTags = ChangeSetTags, Intent = Intent)
   output <- .marketplacecatalog$start_change_set_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1102,12 +1113,13 @@ marketplacecatalog_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/TagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .marketplacecatalog$tag_resource_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1154,12 +1166,13 @@ marketplacecatalog_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/UntagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecatalog$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .marketplacecatalog$untag_resource_output()
   config <- get_config()
-  svc <- .marketplacecatalog$service(config)
+  svc <- .marketplacecatalog$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

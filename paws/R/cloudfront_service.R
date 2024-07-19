@@ -258,7 +258,7 @@ cloudfront <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.cloudfront$service <- function(config = list()) {
+.cloudfront$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restxml", "v4")
-  new_service(.cloudfront$metadata, handlers, config)
+  new_service(.cloudfront$metadata, handlers, config, op)
 }

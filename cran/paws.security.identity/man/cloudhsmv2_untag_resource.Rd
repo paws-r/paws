@@ -2,8 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_untag_resource}
 \alias{cloudhsmv2_untag_resource}
-\title{Removes the specified tag or tags from the specified AWS CloudHSM
-cluster}
+\title{Removes the specified tag or tags from the specified CloudHSM cluster}
 \usage{
 cloudhsmv2_untag_resource(ResourceId, TagKeyList)
 }
@@ -16,7 +15,7 @@ To find the cluster ID, use
 Specify only the tag keys, not the tag values.}
 }
 \description{
-Removes the specified tag or tags from the specified AWS CloudHSM cluster.
+Removes the specified tag or tags from the specified CloudHSM cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/} for full documentation.
 }

@@ -240,7 +240,7 @@ networkfirewall <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "NetworkFirewall_20201112"
 )
 
-.networkfirewall$service <- function(config = list()) {
+.networkfirewall$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.networkfirewall$metadata, handlers, config)
+  new_service(.networkfirewall$metadata, handlers, config, op)
 }

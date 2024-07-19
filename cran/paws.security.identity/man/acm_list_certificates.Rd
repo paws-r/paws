@@ -36,7 +36,7 @@ must also specify \code{SortOrder}.}
 must also specify \code{SortBy}.}
 }
 \description{
-Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only \code{RSA_2048} certificates. For more information, see Filters.
+Retrieves a list of certificate ARNs and domain names. By default, the API returns RSA_2048 certificates. To return all certificates in the account, include the \code{keyType} filter with the values \verb{[RSA_1024, RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1]}.
 
 See \url{https://www.paws-r-sdk.com/docs/acm_list_certificates/} for full documentation.
 }

@@ -11,7 +11,8 @@ sagemaker_list_model_package_groups(
   NameContains = NULL,
   NextToken = NULL,
   SortBy = NULL,
-  SortOrder = NULL
+  SortOrder = NULL,
+  CrossAccountFilterOption = NULL
 )
 }
 \arguments{
@@ -34,6 +35,12 @@ the next set of model groups, use the token in the next request.}
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
+
+\item{CrossAccountFilterOption}{A filter that returns either model groups shared with you or model
+groups in your own account. When the value is \code{CrossAccount}, the
+results show the resources made discoverable to you from other accounts.
+When the value is \code{SameAccount} or \code{null}, the results show resources
+from your account. The default is \code{SameAccount}.}
 }
 \description{
 Gets a list of the model groups in your Amazon Web Services account.

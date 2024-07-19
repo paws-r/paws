@@ -10,9 +10,9 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_create_landing_zone/](https://www.paws-r-sdk.com/docs/controltower_create_landing_zone/) for full documentation.
 #'
-#' @param manifest &#91;required&#93; The manifest.yaml file is a text file that describes your Amazon Web
-#' Services resources. For examples, review [The manifest
-#' file](https://docs.aws.amazon.com/controltower/latest/userguide/the-manifest-file.html).
+#' @param manifest &#91;required&#93; The manifest JSON file is a text file that describes your Amazon Web
+#' Services resources. For examples, review [Launch your landing
+#' zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html).
 #' @param tags Tags to be applied to the landing zone.
 #' @param version &#91;required&#93; The landing zone version, for example, 3.0.
 #'
@@ -24,12 +24,13 @@ controltower_create_landing_zone <- function(manifest, tags = NULL, version) {
     name = "CreateLandingZone",
     http_method = "POST",
     http_path = "/create-landingzone",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$create_landing_zone_input(manifest = manifest, tags = tags, version = version)
   output <- .controltower$create_landing_zone_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -53,12 +54,13 @@ controltower_delete_landing_zone <- function(landingZoneIdentifier) {
     name = "DeleteLandingZone",
     http_method = "POST",
     http_path = "/delete-landingzone",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$delete_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
   output <- .controltower$delete_landing_zone_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -68,7 +70,7 @@ controltower_delete_landing_zone <- function(landingZoneIdentifier) {
 #' Disable an EnabledBaseline resource on the specified Target
 #'
 #' @description
-#' Disable an `EnabledBaseline` resource on the specified Target. This API starts an asynchronous operation to remove all resources deployed as part of the baseline enablement. The resource will vary depending on the enabled baseline.
+#' Disable an `EnabledBaseline` resource on the specified Target. This API starts an asynchronous operation to remove all resources deployed as part of the baseline enablement. The resource will vary depending on the enabled baseline. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_disable_baseline/](https://www.paws-r-sdk.com/docs/controltower_disable_baseline/) for full documentation.
 #'
@@ -83,12 +85,13 @@ controltower_disable_baseline <- function(enabledBaselineIdentifier) {
     name = "DisableBaseline",
     http_method = "POST",
     http_path = "/disable-baseline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$disable_baseline_input(enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$disable_baseline_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -98,7 +101,7 @@ controltower_disable_baseline <- function(enabledBaselineIdentifier) {
 #' This API call turns off a control
 #'
 #' @description
-#' This API call turns off a control. It starts an asynchronous operation that deletes AWS resources on the specified organizational unit and the accounts it contains. The resources will vary according to the control that you specify. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' This API call turns off a control. It starts an asynchronous operation that deletes Amazon Web Services resources on the specified organizational unit and the accounts it contains. The resources will vary according to the control that you specify. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_disable_control/](https://www.paws-r-sdk.com/docs/controltower_disable_control/) for full documentation.
 #'
@@ -119,12 +122,13 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
     name = "DisableControl",
     http_method = "POST",
     http_path = "/disable-control",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$disable_control_input(controlIdentifier = controlIdentifier, targetIdentifier = targetIdentifier)
   output <- .controltower$disable_control_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -134,7 +138,7 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
 #' Enable (apply) a Baseline to a Target
 #'
 #' @description
-#' Enable (apply) a `Baseline` to a Target. This API starts an asynchronous operation to deploy resources specified by the `Baseline` to the specified Target.
+#' Enable (apply) a `Baseline` to a Target. This API starts an asynchronous operation to deploy resources specified by the `Baseline` to the specified Target. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_enable_baseline/](https://www.paws-r-sdk.com/docs/controltower_enable_baseline/) for full documentation.
 #'
@@ -155,12 +159,13 @@ controltower_enable_baseline <- function(baselineIdentifier, baselineVersion, pa
     name = "EnableBaseline",
     http_method = "POST",
     http_path = "/enable-baseline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$enable_baseline_input(baselineIdentifier = baselineIdentifier, baselineVersion = baselineVersion, parameters = parameters, tags = tags, targetIdentifier = targetIdentifier)
   output <- .controltower$enable_baseline_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -170,7 +175,7 @@ controltower_enable_baseline <- function(baselineIdentifier, baselineVersion, pa
 #' This API call activates a control
 #'
 #' @description
-#' This API call activates a control. It starts an asynchronous operation that creates Amazon Web Services resources on the specified organizational unit and the accounts it contains. The resources created will vary according to the control that you specify. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' This API call activates a control. It starts an asynchronous operation that creates Amazon Web Services resources on the specified organizational unit and the accounts it contains. The resources created will vary according to the control that you specify. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_enable_control/](https://www.paws-r-sdk.com/docs/controltower_enable_control/) for full documentation.
 #'
@@ -194,12 +199,13 @@ controltower_enable_control <- function(controlIdentifier, parameters = NULL, ta
     name = "EnableControl",
     http_method = "POST",
     http_path = "/enable-control",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$enable_control_input(controlIdentifier = controlIdentifier, parameters = parameters, tags = tags, targetIdentifier = targetIdentifier)
   output <- .controltower$enable_control_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -210,7 +216,7 @@ controltower_enable_control <- function(controlIdentifier, parameters = NULL, ta
 #' identifier
 #'
 #' @description
-#' Retrieve details about an existing `Baseline` resource by specifying its identifier.
+#' Retrieve details about an existing `Baseline` resource by specifying its identifier. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_get_baseline/](https://www.paws-r-sdk.com/docs/controltower_get_baseline/) for full documentation.
 #'
@@ -224,12 +230,13 @@ controltower_get_baseline <- function(baselineIdentifier) {
     name = "GetBaseline",
     http_method = "POST",
     http_path = "/get-baseline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$get_baseline_input(baselineIdentifier = baselineIdentifier)
   output <- .controltower$get_baseline_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -241,7 +248,7 @@ controltower_get_baseline <- function(baselineIdentifier) {
 #' UpdateEnabledBaseline, ResetEnabledBaseline
 #'
 #' @description
-#' Returns the details of an asynchronous baseline operation, as initiated by any of these APIs: [`enable_baseline`][controltower_enable_baseline], [`disable_baseline`][controltower_disable_baseline], [`update_enabled_baseline`][controltower_update_enabled_baseline], [`reset_enabled_baseline`][controltower_reset_enabled_baseline]. A status message is displayed in case of operation failure.
+#' Returns the details of an asynchronous baseline operation, as initiated by any of these APIs: [`enable_baseline`][controltower_enable_baseline], [`disable_baseline`][controltower_disable_baseline], [`update_enabled_baseline`][controltower_update_enabled_baseline], [`reset_enabled_baseline`][controltower_reset_enabled_baseline]. A status message is displayed in case of operation failure. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_get_baseline_operation/](https://www.paws-r-sdk.com/docs/controltower_get_baseline_operation/) for full documentation.
 #'
@@ -256,12 +263,13 @@ controltower_get_baseline_operation <- function(operationIdentifier) {
     name = "GetBaselineOperation",
     http_method = "POST",
     http_path = "/get-baseline-operation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$get_baseline_operation_input(operationIdentifier = operationIdentifier)
   output <- .controltower$get_baseline_operation_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -272,7 +280,7 @@ controltower_get_baseline_operation <- function(operationIdentifier) {
 #' operation
 #'
 #' @description
-#' Returns the status of a particular [`enable_control`][controltower_enable_control] or [`disable_control`][controltower_disable_control] operation. Displays a message in case of error. Details for an operation are available for 90 days. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' Returns the status of a particular [`enable_control`][controltower_enable_control] or [`disable_control`][controltower_disable_control] operation. Displays a message in case of error. Details for an operation are available for 90 days. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_get_control_operation/](https://www.paws-r-sdk.com/docs/controltower_get_control_operation/) for full documentation.
 #'
@@ -287,12 +295,13 @@ controltower_get_control_operation <- function(operationIdentifier) {
     name = "GetControlOperation",
     http_method = "POST",
     http_path = "/get-control-operation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$get_control_operation_input(operationIdentifier = operationIdentifier)
   output <- .controltower$get_control_operation_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -318,12 +327,13 @@ controltower_get_enabled_baseline <- function(enabledBaselineIdentifier) {
     name = "GetEnabledBaseline",
     http_method = "POST",
     http_path = "/get-enabled-baseline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$get_enabled_baseline_input(enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$get_enabled_baseline_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -333,7 +343,7 @@ controltower_get_enabled_baseline <- function(enabledBaselineIdentifier) {
 #' Retrieves details about an enabled control
 #'
 #' @description
-#' Retrieves details about an enabled control. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' Retrieves details about an enabled control. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_get_enabled_control/](https://www.paws-r-sdk.com/docs/controltower_get_enabled_control/) for full documentation.
 #'
@@ -347,12 +357,13 @@ controltower_get_enabled_control <- function(enabledControlIdentifier) {
     name = "GetEnabledControl",
     http_method = "POST",
     http_path = "/get-enabled-control",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$get_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier)
   output <- .controltower$get_enabled_control_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -376,12 +387,13 @@ controltower_get_landing_zone <- function(landingZoneIdentifier) {
     name = "GetLandingZone",
     http_method = "POST",
     http_path = "/get-landingzone",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$get_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
   output <- .controltower$get_landing_zone_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -391,7 +403,7 @@ controltower_get_landing_zone <- function(landingZoneIdentifier) {
 #' Returns the status of the specified landing zone operation
 #'
 #' @description
-#' Returns the status of the specified landing zone operation. Details for an operation are available for 60 days.
+#' Returns the status of the specified landing zone operation. Details for an operation are available for 90 days.
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_get_landing_zone_operation/](https://www.paws-r-sdk.com/docs/controltower_get_landing_zone_operation/) for full documentation.
 #'
@@ -405,12 +417,13 @@ controltower_get_landing_zone_operation <- function(operationIdentifier) {
     name = "GetLandingZoneOperation",
     http_method = "POST",
     http_path = "/get-landingzone-operation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$get_landing_zone_operation_input(operationIdentifier = operationIdentifier)
   output <- .controltower$get_landing_zone_operation_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -420,7 +433,7 @@ controltower_get_landing_zone_operation <- function(operationIdentifier) {
 #' Returns a summary list of all available baselines
 #'
 #' @description
-#' Returns a summary list of all available baselines.
+#' Returns a summary list of all available baselines. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_list_baselines/](https://www.paws-r-sdk.com/docs/controltower_list_baselines/) for full documentation.
 #'
@@ -435,22 +448,57 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListBaselines",
     http_method = "POST",
     http_path = "/list-baselines",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "baselines")
   )
   input <- .controltower$list_baselines_input(maxResults = maxResults, nextToken = nextToken)
   output <- .controltower$list_baselines_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .controltower$operations$list_baselines <- controltower_list_baselines
 
+#' Provides a list of operations in progress or queued
+#'
+#' @description
+#' Provides a list of operations in progress or queued. For usage examples, see [ListControlOperation examples](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html#list-control-operations-api-examples).
+#'
+#' See [https://www.paws-r-sdk.com/docs/controltower_list_control_operations/](https://www.paws-r-sdk.com/docs/controltower_list_control_operations/) for full documentation.
+#'
+#' @param filter An input filter for the
+#' [`list_control_operations`][controltower_list_control_operations] API
+#' that lets you select the types of control operations to view.
+#' @param maxResults The maximum number of results to be shown.
+#' @param nextToken A pagination token.
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_list_control_operations
+controltower_list_control_operations <- function(filter = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListControlOperations",
+    http_method = "POST",
+    http_path = "/list-control-operations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "controlOperations")
+  )
+  input <- .controltower$list_control_operations_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .controltower$list_control_operations_output()
+  config <- get_config()
+  svc <- .controltower$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$list_control_operations <- controltower_list_control_operations
+
 #' Returns a list of summaries describing EnabledBaseline resources
 #'
 #' @description
-#' Returns a list of summaries describing `EnabledBaseline` resources. You can filter the list by the corresponding `Baseline` or `Target` of the `EnabledBaseline` resources.
+#' Returns a list of summaries describing `EnabledBaseline` resources. You can filter the list by the corresponding `Baseline` or `Target` of the `EnabledBaseline` resources. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_list_enabled_baselines/](https://www.paws-r-sdk.com/docs/controltower_list_enabled_baselines/) for full documentation.
 #'
@@ -468,12 +516,13 @@ controltower_list_enabled_baselines <- function(filter = NULL, maxResults = NULL
     name = "ListEnabledBaselines",
     http_method = "POST",
     http_path = "/list-enabled-baselines",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledBaselines")
   )
   input <- .controltower$list_enabled_baselines_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .controltower$list_enabled_baselines_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -484,36 +533,75 @@ controltower_list_enabled_baselines <- function(filter = NULL, maxResults = NULL
 #' specified organizational unit and the accounts it contains
 #'
 #' @description
-#' Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_list_enabled_controls/](https://www.paws-r-sdk.com/docs/controltower_list_enabled_controls/) for full documentation.
 #'
+#' @param filter An input filter for the
+#' [`list_enabled_controls`][controltower_list_enabled_controls] API that
+#' lets you select the types of control operations to view.
 #' @param maxResults How many results to return per API call.
 #' @param nextToken The token to continue the list from a previous API call with the same
 #' parameters.
-#' @param targetIdentifier &#91;required&#93; The ARN of the organizational unit. For information on how to find the
+#' @param targetIdentifier The ARN of the organizational unit. For information on how to find the
 #' `targetIdentifier`, see [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
 #'
 #' @keywords internal
 #'
 #' @rdname controltower_list_enabled_controls
-controltower_list_enabled_controls <- function(maxResults = NULL, nextToken = NULL, targetIdentifier) {
+controltower_list_enabled_controls <- function(filter = NULL, maxResults = NULL, nextToken = NULL, targetIdentifier = NULL) {
   op <- new_operation(
     name = "ListEnabledControls",
     http_method = "POST",
     http_path = "/list-enabled-controls",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledControls")
   )
-  input <- .controltower$list_enabled_controls_input(maxResults = maxResults, nextToken = nextToken, targetIdentifier = targetIdentifier)
+  input <- .controltower$list_enabled_controls_input(filter = filter, maxResults = maxResults, nextToken = nextToken, targetIdentifier = targetIdentifier)
   output <- .controltower$list_enabled_controls_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .controltower$operations$list_enabled_controls <- controltower_list_enabled_controls
+
+#' Lists all landing zone operations from the past 90 days
+#'
+#' @description
+#' Lists all landing zone operations from the past 90 days. Results are sorted by time, with the most recent operation first.
+#'
+#' See [https://www.paws-r-sdk.com/docs/controltower_list_landing_zone_operations/](https://www.paws-r-sdk.com/docs/controltower_list_landing_zone_operations/) for full documentation.
+#'
+#' @param filter An input filter for the
+#' [`list_landing_zone_operations`][controltower_list_landing_zone_operations]
+#' API that lets you select the types of landing zone operations to view.
+#' @param maxResults How many results to return per API call.
+#' @param nextToken The token to continue the list from a previous API call with the same
+#' parameters.
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_list_landing_zone_operations
+controltower_list_landing_zone_operations <- function(filter = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListLandingZoneOperations",
+    http_method = "POST",
+    http_path = "/list-landingzone-operations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "landingZoneOperations")
+  )
+  input <- .controltower$list_landing_zone_operations_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .controltower$list_landing_zone_operations_output()
+  config <- get_config()
+  svc <- .controltower$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$list_landing_zone_operations <- controltower_list_landing_zone_operations
 
 #' Returns the landing zone ARN for the landing zone deployed in your
 #' managed account
@@ -535,12 +623,13 @@ controltower_list_landing_zones <- function(maxResults = NULL, nextToken = NULL)
     name = "ListLandingZones",
     http_method = "POST",
     http_path = "/list-landingzones",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "landingZones")
   )
   input <- .controltower$list_landing_zones_input(maxResults = maxResults, nextToken = nextToken)
   output <- .controltower$list_landing_zones_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -550,7 +639,7 @@ controltower_list_landing_zones <- function(maxResults = NULL, nextToken = NULL)
 #' Returns a list of tags associated with the resource
 #'
 #' @description
-#' Returns a list of tags associated with the resource. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' Returns a list of tags associated with the resource. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/controltower_list_tags_for_resource/) for full documentation.
 #'
@@ -564,12 +653,13 @@ controltower_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .controltower$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -579,7 +669,7 @@ controltower_list_tags_for_resource <- function(resourceArn) {
 #' Re-enables an EnabledBaseline resource
 #'
 #' @description
-#' Re-enables an `EnabledBaseline` resource. For example, this API can re-apply the existing `Baseline` after a new member account is moved to the target OU.
+#' Re-enables an `EnabledBaseline` resource. For example, this API can re-apply the existing `Baseline` after a new member account is moved to the target OU. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_reset_enabled_baseline/](https://www.paws-r-sdk.com/docs/controltower_reset_enabled_baseline/) for full documentation.
 #'
@@ -594,12 +684,13 @@ controltower_reset_enabled_baseline <- function(enabledBaselineIdentifier) {
     name = "ResetEnabledBaseline",
     http_method = "POST",
     http_path = "/reset-enabled-baseline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$reset_enabled_baseline_input(enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$reset_enabled_baseline_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -609,7 +700,7 @@ controltower_reset_enabled_baseline <- function(enabledBaselineIdentifier) {
 #' This API call resets a landing zone
 #'
 #' @description
-#' This API call resets a landing zone. It starts an asynchronous operation that resets the landing zone to the parameters specified in its original configuration.
+#' This API call resets a landing zone. It starts an asynchronous operation that resets the landing zone to the parameters specified in the original configuration, which you specified in the manifest file. Nothing in the manifest file's original landing zone configuration is changed during the reset process, by default. This API is not the same as a rollback of a landing zone version, which is not a supported operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_reset_landing_zone/](https://www.paws-r-sdk.com/docs/controltower_reset_landing_zone/) for full documentation.
 #'
@@ -623,12 +714,13 @@ controltower_reset_landing_zone <- function(landingZoneIdentifier) {
     name = "ResetLandingZone",
     http_method = "POST",
     http_path = "/reset-landingzone",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$reset_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
   output <- .controltower$reset_landing_zone_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -638,7 +730,7 @@ controltower_reset_landing_zone <- function(landingZoneIdentifier) {
 #' Applies tags to a resource
 #'
 #' @description
-#' Applies tags to a resource. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' Applies tags to a resource. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_tag_resource/](https://www.paws-r-sdk.com/docs/controltower_tag_resource/) for full documentation.
 #'
@@ -653,12 +745,13 @@ controltower_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .controltower$tag_resource_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -668,7 +761,7 @@ controltower_tag_resource <- function(resourceArn, tags) {
 #' Removes tags from a resource
 #'
 #' @description
-#' Removes tags from a resource. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
+#' Removes tags from a resource. For usage examples, see the [*Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_untag_resource/](https://www.paws-r-sdk.com/docs/controltower_untag_resource/) for full documentation.
 #'
@@ -683,12 +776,13 @@ controltower_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .controltower$untag_resource_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -698,7 +792,7 @@ controltower_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates an EnabledBaseline resource's applied parameters or version
 #'
 #' @description
-#' Updates an `EnabledBaseline` resource's applied parameters or version.
+#' Updates an `EnabledBaseline` resource's applied parameters or version. For usage examples, see [*the Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/controltower_update_enabled_baseline/](https://www.paws-r-sdk.com/docs/controltower_update_enabled_baseline/) for full documentation.
 #'
@@ -715,12 +809,13 @@ controltower_update_enabled_baseline <- function(baselineVersion, enabledBaselin
     name = "UpdateEnabledBaseline",
     http_method = "POST",
     http_path = "/update-enabled-baseline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$update_enabled_baseline_input(baselineVersion = baselineVersion, enabledBaselineIdentifier = enabledBaselineIdentifier, parameters = parameters)
   output <- .controltower$update_enabled_baseline_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -746,12 +841,13 @@ controltower_update_enabled_control <- function(enabledControlIdentifier, parame
     name = "UpdateEnabledControl",
     http_method = "POST",
     http_path = "/update-enabled-control",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$update_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier, parameters = parameters)
   output <- .controltower$update_enabled_control_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -766,9 +862,12 @@ controltower_update_enabled_control <- function(enabledControlIdentifier, parame
 #' See [https://www.paws-r-sdk.com/docs/controltower_update_landing_zone/](https://www.paws-r-sdk.com/docs/controltower_update_landing_zone/) for full documentation.
 #'
 #' @param landingZoneIdentifier &#91;required&#93; The unique identifier of the landing zone.
-#' @param manifest &#91;required&#93; The `manifest.yaml` file is a text file that describes your Amazon Web
-#' Services resources. For examples, review [The manifest
-#' file](https://docs.aws.amazon.com/controltower/latest/userguide/the-manifest-file.html).
+#' @param manifest &#91;required&#93; The manifest file (JSON) is a text file that describes your Amazon Web
+#' Services resources. For an example, review [Launch your landing
+#' zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html).
+#' The example manifest file contains each of the available parameters. The
+#' schema for the landing zone's JSON manifest file is not published, by
+#' design.
 #' @param version &#91;required&#93; The landing zone version, for example, 3.2.
 #'
 #' @keywords internal
@@ -779,12 +878,13 @@ controltower_update_landing_zone <- function(landingZoneIdentifier, manifest, ve
     name = "UpdateLandingZone",
     http_method = "POST",
     http_path = "/update-landingzone",
+    host_prefix = "",
     paginator = list()
   )
   input <- .controltower$update_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier, manifest = manifest, version = version)
   output <- .controltower$update_landing_zone_output()
   config <- get_config()
-  svc <- .controltower$service(config)
+  svc <- .controltower$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

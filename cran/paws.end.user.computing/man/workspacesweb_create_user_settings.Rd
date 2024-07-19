@@ -11,6 +11,7 @@ workspacesweb_create_user_settings(
   cookieSynchronizationConfiguration = NULL,
   copyAllowed,
   customerManagedKey = NULL,
+  deepLinkAllowed = NULL,
   disconnectTimeoutInMinutes = NULL,
   downloadAllowed,
   idleDisconnectTimeoutInMinutes = NULL,
@@ -40,6 +41,9 @@ the local device.}
 
 \item{customerManagedKey}{The customer managed key used to encrypt sensitive information in the
 user settings.}
+
+\item{deepLinkAllowed}{Specifies whether the user can use deep links that open automatically
+when connecting to a session.}
 
 \item{disconnectTimeoutInMinutes}{The amount of time that a streaming session remains active after users
 disconnect.}

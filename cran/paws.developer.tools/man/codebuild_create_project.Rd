@@ -47,6 +47,7 @@ build. If a pull request ID is specified, it must use the format
 \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
 specified, the branch's HEAD commit ID is used. If not specified,
 the default branch's HEAD commit ID is used.
+\item For GitLab: the commit ID, branch, or Git tag to use.
 \item For Bitbucket: the commit ID, branch name, or tag name that
 corresponds to the version of the source code you want to build. If
 a branch name is specified, the branch's HEAD commit ID is used. If
@@ -78,7 +79,7 @@ later time.}
 dependent Amazon Web Services services on behalf of the Amazon Web
 Services account.}
 
-\item{timeoutInMinutes}{How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait
+\item{timeoutInMinutes}{How long, in minutes, from 5 to 2160 (36 hours), for CodeBuild to wait
 before it times out any build that has not been marked as completed. The
 default is 60 minutes.}
 
@@ -99,7 +100,10 @@ available, the CMK's alias (using the format \verb{alias/<alias-name>}).}
 These tags are available for use by Amazon Web Services services that
 support CodeBuild build project tags.}
 
-\item{vpcConfig}{VpcConfig enables CodeBuild to access resources in an Amazon VPC.}
+\item{vpcConfig}{VpcConfig enables CodeBuild to access resources in an Amazon VPC.
+
+If you're using compute fleets during project creation, do not provide
+vpcConfig.}
 
 \item{badgeEnabled}{Set this to true to generate a publicly accessible URL for your
 project's build badge.}

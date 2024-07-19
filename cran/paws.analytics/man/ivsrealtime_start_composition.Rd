@@ -6,21 +6,21 @@
 the request}
 \usage{
 ivsrealtime_start_composition(
-  destinations,
+  stageArn,
   idempotencyToken = NULL,
   layout = NULL,
-  stageArn,
+  destinations,
   tags = NULL
 )
 }
 \arguments{
-\item{destinations}{[required] Array of destination configuration.}
+\item{stageArn}{[required] ARN of the stage to be used for compositing.}
 
 \item{idempotencyToken}{Idempotency token.}
 
 \item{layout}{Layout object to configure composition parameters.}
 
-\item{stageArn}{[required] ARN of the stage to be used for compositing.}
+\item{destinations}{[required] Array of destination configuration.}
 
 \item{tags}{Tags attached to the resource. Array of maps, each of the form
 \code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}

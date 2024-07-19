@@ -3,10 +3,10 @@
 #' @include cloudhsmv2_service.R
 NULL
 
-#' Copy an AWS CloudHSM cluster backup to a different region
+#' Copy an CloudHSM cluster backup to a different region
 #'
 #' @description
-#' Copy an AWS CloudHSM cluster backup to a different region.
+#' Copy an CloudHSM cluster backup to a different region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_copy_backup_to_region/](https://www.paws-r-sdk.com/docs/cloudhsmv2_copy_backup_to_region/) for full documentation.
 #'
@@ -25,32 +25,34 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
     name = "CopyBackupToRegion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$copy_backup_to_region_input(DestinationRegion = DestinationRegion, BackupId = BackupId, TagList = TagList)
   output <- .cloudhsmv2$copy_backup_to_region_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$copy_backup_to_region <- cloudhsmv2_copy_backup_to_region
 
-#' Creates a new AWS CloudHSM cluster
+#' Creates a new CloudHSM cluster
 #'
 #' @description
-#' Creates a new AWS CloudHSM cluster.
+#' Creates a new CloudHSM cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/) for full documentation.
 #'
 #' @param BackupRetentionPolicy A policy that defines how the service retains backups.
-#' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. Currently the only allowed value
-#' is `hsm1.medium`.
-#' @param SourceBackupId The identifier (ID) of the cluster backup to restore. Use this value to
-#' restore the cluster from a backup instead of creating a new cluster. To
-#' find the backup ID, use
-#' [`describe_backups`][cloudhsmv2_describe_backups].
+#' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. The allowed values are
+#' `hsm1.medium` and `hsm2m.medium`.
+#' @param SourceBackupId The identifier (ID) or the Amazon Resource Name (ARN) of the cluster
+#' backup to restore. Use this value to restore the cluster from a backup
+#' instead of creating a new cluster. To find the backup ID or ARN, use
+#' [`describe_backups`][cloudhsmv2_describe_backups]. *If using a backup in
+#' another account, the full ARN must be supplied.*
 #' @param SubnetIds &#91;required&#93; The identifiers (IDs) of the subnets where you are creating the cluster.
 #' You must specify at least one subnet. If you specify multiple subnets,
 #' they must meet the following criteria:
@@ -59,32 +61,35 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' 
 #' -   You can specify only one subnet per Availability Zone.
 #' @param TagList Tags to apply to the CloudHSM cluster during creation.
+#' @param Mode The mode to use in the cluster. The allowed values are `FIPS` and
+#' `NON_FIPS`.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_create_cluster
-cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, SourceBackupId = NULL, SubnetIds, TagList = NULL) {
+cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, SourceBackupId = NULL, SubnetIds, TagList = NULL, Mode = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .cloudhsmv2$create_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, HsmType = HsmType, SourceBackupId = SourceBackupId, SubnetIds = SubnetIds, TagList = TagList)
+  input <- .cloudhsmv2$create_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, HsmType = HsmType, SourceBackupId = SourceBackupId, SubnetIds = SubnetIds, TagList = TagList, Mode = Mode)
   output <- .cloudhsmv2$create_cluster_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$create_cluster <- cloudhsmv2_create_cluster
 
-#' Creates a new hardware security module (HSM) in the specified AWS
-#' CloudHSM cluster
+#' Creates a new hardware security module (HSM) in the specified CloudHSM
+#' cluster
 #'
 #' @description
-#' Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.
+#' Creates a new hardware security module (HSM) in the specified CloudHSM cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/](https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/) for full documentation.
 #'
@@ -106,22 +111,23 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
     name = "CreateHsm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$create_hsm_input(ClusterId = ClusterId, AvailabilityZone = AvailabilityZone, IpAddress = IpAddress)
   output <- .cloudhsmv2$create_hsm_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$create_hsm <- cloudhsmv2_create_hsm
 
-#' Deletes a specified AWS CloudHSM backup
+#' Deletes a specified CloudHSM backup
 #'
 #' @description
-#' Deletes a specified AWS CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see [`restore_backup`][cloudhsmv2_restore_backup].
+#' Deletes a specified CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see [`restore_backup`][cloudhsmv2_restore_backup].
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/) for full documentation.
 #'
@@ -136,22 +142,23 @@ cloudhsmv2_delete_backup <- function(BackupId) {
     name = "DeleteBackup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$delete_backup_input(BackupId = BackupId)
   output <- .cloudhsmv2$delete_backup_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$delete_backup <- cloudhsmv2_delete_backup
 
-#' Deletes the specified AWS CloudHSM cluster
+#' Deletes the specified CloudHSM cluster
 #'
 #' @description
-#' Deletes the specified AWS CloudHSM cluster. Before you can delete a cluster, you must delete all HSMs in the cluster. To see if the cluster contains any HSMs, use [`describe_clusters`][cloudhsmv2_describe_clusters]. To delete an HSM, use [`delete_hsm`][cloudhsmv2_delete_hsm].
+#' Deletes the specified CloudHSM cluster. Before you can delete a cluster, you must delete all HSMs in the cluster. To see if the cluster contains any HSMs, use [`describe_clusters`][cloudhsmv2_describe_clusters]. To delete an HSM, use [`delete_hsm`][cloudhsmv2_delete_hsm].
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_cluster/) for full documentation.
 #'
@@ -166,12 +173,13 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
     name = "DeleteCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$delete_cluster_input(ClusterId = ClusterId)
   output <- .cloudhsmv2$delete_cluster_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -201,22 +209,54 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
     name = "DeleteHsm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$delete_hsm_input(ClusterId = ClusterId, HsmId = HsmId, EniId = EniId, EniIp = EniIp)
   output <- .cloudhsmv2$delete_hsm_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$delete_hsm <- cloudhsmv2_delete_hsm
 
-#' Gets information about backups of AWS CloudHSM clusters
+#' Deletes an CloudHSM resource policy
 #'
 #' @description
-#' Gets information about backups of AWS CloudHSM clusters.
+#' Deletes an CloudHSM resource policy. Deleting a resource policy will result in the resource being unshared and removed from any RAM resource shares. Deleting the resource policy attached to a backup will not impact any clusters created from that backup.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_resource_policy/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn Amazon Resource Name (ARN) of the resource from which the policy will be
+#' removed.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudhsmv2_delete_resource_policy
+cloudhsmv2_delete_resource_policy <- function(ResourceArn = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .cloudhsmv2$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .cloudhsmv2$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudhsmv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudhsmv2$operations$delete_resource_policy <- cloudhsmv2_delete_resource_policy
+
+#' Gets information about backups of CloudHSM clusters
+#'
+#' @description
+#' Gets information about backups of CloudHSM clusters. Lists either the backups you own or the backups shared with you when the Shared parameter is true.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_backups/](https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_backups/) for full documentation.
 #'
@@ -245,33 +285,46 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' the `neverExpires` parameter. `True` returns all backups exempt from the
 #' backup retention policy. `False` returns all backups with a backup
 #' retention policy defined at the cluster.
+#' @param Shared Describe backups that are shared with you.
+#' 
+#' By default when using this option, the command returns backups that have
+#' been shared using a standard Resource Access Manager resource share. In
+#' order for a backup that was shared using the PutResourcePolicy command
+#' to be returned, the share must be promoted to a standard resource share
+#' using the RAM
+#' [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/cli/latest/reference/ram/promote-resource-share-created-from-policy.html)
+#' API operation. For more information about sharing backups, see [Working
+#' with shared
+#' backups](https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html)
+#' in the CloudHSM User Guide.
 #' @param SortAscending Designates whether or not to sort the return backups by ascending
 #' chronological order of generation.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_describe_backups
-cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL, SortAscending = NULL) {
+cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL, Shared = NULL, SortAscending = NULL) {
   op <- new_operation(
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .cloudhsmv2$describe_backups_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, SortAscending = SortAscending)
+  input <- .cloudhsmv2$describe_backups_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, Shared = Shared, SortAscending = SortAscending)
   output <- .cloudhsmv2$describe_backups_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$describe_backups <- cloudhsmv2_describe_backups
 
-#' Gets information about AWS CloudHSM clusters
+#' Gets information about CloudHSM clusters
 #'
 #' @description
-#' Gets information about AWS CloudHSM clusters.
+#' Gets information about CloudHSM clusters.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_clusters/](https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_clusters/) for full documentation.
 #'
@@ -300,24 +353,55 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
     name = "DescribeClusters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$describe_clusters_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$describe_clusters_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$describe_clusters <- cloudhsmv2_describe_clusters
 
-#' Claims an AWS CloudHSM cluster by submitting the cluster certificate
-#' issued by your issuing certificate authority (CA) and the CA's root
-#' certificate
+#' Retrieves the resource policy document attached to a given resource
 #'
 #' @description
-#' Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' Retrieves the resource policy document attached to a given resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_get_resource_policy/](https://www.paws-r-sdk.com/docs/cloudhsmv2_get_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn Amazon Resource Name (ARN) of the resource to which a policy is
+#' attached.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudhsmv2_get_resource_policy
+cloudhsmv2_get_resource_policy <- function(ResourceArn = NULL) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .cloudhsmv2$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .cloudhsmv2$get_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudhsmv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudhsmv2$operations$get_resource_policy <- cloudhsmv2_get_resource_policy
+
+#' Claims an CloudHSM cluster by submitting the cluster certificate issued
+#' by your issuing certificate authority (CA) and the CA's root certificate
+#'
+#' @description
+#' Claims an CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/) for full documentation.
 #'
@@ -340,22 +424,23 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
     name = "InitializeCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$initialize_cluster_input(ClusterId = ClusterId, SignedCert = SignedCert, TrustAnchor = TrustAnchor)
   output <- .cloudhsmv2$initialize_cluster_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$initialize_cluster <- cloudhsmv2_initialize_cluster
 
-#' Gets a list of tags for the specified AWS CloudHSM cluster
+#' Gets a list of tags for the specified CloudHSM cluster
 #'
 #' @description
-#' Gets a list of tags for the specified AWS CloudHSM cluster.
+#' Gets a list of tags for the specified CloudHSM cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/](https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/) for full documentation.
 #'
@@ -376,22 +461,23 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$list_tags_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$list_tags_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$list_tags <- cloudhsmv2_list_tags
 
-#' Modifies attributes for AWS CloudHSM backup
+#' Modifies attributes for CloudHSM backup
 #'
 #' @description
-#' Modifies attributes for AWS CloudHSM backup.
+#' Modifies attributes for CloudHSM backup.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/](https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/) for full documentation.
 #'
@@ -410,22 +496,23 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
     name = "ModifyBackupAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$modify_backup_attributes_input(BackupId = BackupId, NeverExpires = NeverExpires)
   output <- .cloudhsmv2$modify_backup_attributes_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$modify_backup_attributes <- cloudhsmv2_modify_backup_attributes
 
-#' Modifies AWS CloudHSM cluster
+#' Modifies CloudHSM cluster
 #'
 #' @description
-#' Modifies AWS CloudHSM cluster.
+#' Modifies CloudHSM cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/) for full documentation.
 #'
@@ -441,23 +528,60 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
     name = "ModifyCluster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$modify_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, ClusterId = ClusterId)
   output <- .cloudhsmv2$modify_cluster_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$modify_cluster <- cloudhsmv2_modify_cluster
 
-#' Restores a specified AWS CloudHSM backup that is in the PENDING_DELETION
+#' Creates or updates an CloudHSM resource policy
+#'
+#' @description
+#' Creates or updates an CloudHSM resource policy. A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your CloudHSM resources. The following resources support CloudHSM resource policies:
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_put_resource_policy/](https://www.paws-r-sdk.com/docs/cloudhsmv2_put_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn Amazon Resource Name (ARN) of the resource to which you want to attach a
+#' policy.
+#' @param Policy The policy you want to associate with a resource.
+#' 
+#' For an example policy, see [Working with shared
+#' backups](https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html)
+#' in the CloudHSM User Guide
+#'
+#' @keywords internal
+#'
+#' @rdname cloudhsmv2_put_resource_policy
+cloudhsmv2_put_resource_policy <- function(ResourceArn = NULL, Policy = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .cloudhsmv2$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
+  output <- .cloudhsmv2$put_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudhsmv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudhsmv2$operations$put_resource_policy <- cloudhsmv2_put_resource_policy
+
+#' Restores a specified CloudHSM backup that is in the PENDING_DELETION
 #' state
 #'
 #' @description
-#' Restores a specified AWS CloudHSM backup that is in the `PENDING_DELETION` state. For mor information on deleting a backup, see [`delete_backup`][cloudhsmv2_delete_backup].
+#' Restores a specified CloudHSM backup that is in the `PENDING_DELETION` state. For more information on deleting a backup, see [`delete_backup`][cloudhsmv2_delete_backup].
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/](https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/) for full documentation.
 #'
@@ -472,23 +596,23 @@ cloudhsmv2_restore_backup <- function(BackupId) {
     name = "RestoreBackup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$restore_backup_input(BackupId = BackupId)
   output <- .cloudhsmv2$restore_backup_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$restore_backup <- cloudhsmv2_restore_backup
 
-#' Adds or overwrites one or more tags for the specified AWS CloudHSM
-#' cluster
+#' Adds or overwrites one or more tags for the specified CloudHSM cluster
 #'
 #' @description
-#' Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.
+#' Adds or overwrites one or more tags for the specified CloudHSM cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/](https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/) for full documentation.
 #'
@@ -505,23 +629,23 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$tag_resource_input(ResourceId = ResourceId, TagList = TagList)
   output <- .cloudhsmv2$tag_resource_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .cloudhsmv2$operations$tag_resource <- cloudhsmv2_tag_resource
 
-#' Removes the specified tag or tags from the specified AWS CloudHSM
-#' cluster
+#' Removes the specified tag or tags from the specified CloudHSM cluster
 #'
 #' @description
-#' Removes the specified tag or tags from the specified AWS CloudHSM cluster.
+#' Removes the specified tag or tags from the specified CloudHSM cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/](https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/) for full documentation.
 #'
@@ -539,12 +663,13 @@ cloudhsmv2_untag_resource <- function(ResourceId, TagKeyList) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudhsmv2$untag_resource_input(ResourceId = ResourceId, TagKeyList = TagKeyList)
   output <- .cloudhsmv2$untag_resource_output()
   config <- get_config()
-  svc <- .cloudhsmv2$service(config)
+  svc <- .cloudhsmv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

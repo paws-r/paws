@@ -13,7 +13,8 @@ secretsmanager_get_secret_value(
 )
 }
 \arguments{
-\item{SecretId}{[required] The ARN or name of the secret to retrieve.
+\item{SecretId}{[required] The ARN or name of the secret to retrieve. To retrieve a secret from
+another account, you must use an ARN.
 
 For an ARN, we recommend that you specify a complete ARN rather than a
 partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}

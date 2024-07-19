@@ -155,7 +155,7 @@ costandusagereportservice <- function(config = list(), credentials = list(), end
   target_prefix = "AWSOrigamiServiceGatewayService"
 )
 
-.costandusagereportservice$service <- function(config = list()) {
+.costandusagereportservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.costandusagereportservice$metadata, handlers, config)
+  new_service(.costandusagereportservice$metadata, handlers, config, op)
 }

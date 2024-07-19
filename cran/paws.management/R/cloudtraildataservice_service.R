@@ -139,7 +139,7 @@ cloudtraildataservice <- function(config = list(), credentials = list(), endpoin
   target_prefix = ""
 )
 
-.cloudtraildataservice$service <- function(config = list()) {
+.cloudtraildataservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.cloudtraildataservice$metadata, handlers, config)
+  new_service(.cloudtraildataservice$metadata, handlers, config, op)
 }

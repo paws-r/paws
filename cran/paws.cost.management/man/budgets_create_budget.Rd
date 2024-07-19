@@ -4,7 +4,12 @@
 \alias{budgets_create_budget}
 \title{Creates a budget and, if included, notifications and subscribers}
 \usage{
-budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers = NULL)
+budgets_create_budget(
+  AccountId,
+  Budget,
+  NotificationsWithSubscribers = NULL,
+  ResourceTags = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget.}
@@ -16,6 +21,10 @@ have up to five notifications, and each notification can have one SNS
 subscriber and up to 10 email subscribers. If you include notifications
 and subscribers in your \code{\link[=budgets_create_budget]{create_budget}} call,
 Amazon Web Services creates the notifications and subscribers for you.}
+
+\item{ResourceTags}{An optional list of tags to associate with the specified budget. Each
+tag consists of a key and a value, and each key must be unique for the
+resource.}
 }
 \description{
 Creates a budget and, if included, notifications and subscribers.

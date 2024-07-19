@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_describe_clusters}
 \alias{cloudhsmv2_describe_clusters}
-\title{Gets information about AWS CloudHSM clusters}
+\title{Gets information about CloudHSM clusters}
 \usage{
 cloudhsmv2_describe_clusters(
   Filters = NULL,
@@ -31,7 +31,7 @@ more clusters than the number you specify, the response contains a
 \code{NextToken} value.}
 }
 \description{
-Gets information about AWS CloudHSM clusters.
+Gets information about CloudHSM clusters.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_clusters/} for full documentation.
 }

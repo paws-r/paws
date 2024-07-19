@@ -7,21 +7,15 @@ lets you grant actions for Amazon Location resources to the API key
 bearer}
 \usage{
 locationservice_create_key(
+  KeyName,
+  Restrictions,
   Description = NULL,
   ExpireTime = NULL,
-  KeyName,
   NoExpiry = NULL,
-  Restrictions,
   Tags = NULL
 )
 }
 \arguments{
-\item{Description}{An optional description for the API key resource.}
-
-\item{ExpireTime}{The optional timestamp for when the API key resource will expire in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
-\code{YYYY-MM-DDThh:mm:ss.sssZ}. One of \code{NoExpiry} or \code{ExpireTime} must be
-set.}
-
 \item{KeyName}{[required] A custom name for the API key resource.
 
 Requirements:
@@ -32,10 +26,16 @@ periods (.), and underscores (_).
 \item No spaces allowed. For example, \code{ExampleAPIKey}.
 }}
 
+\item{Restrictions}{[required] The API key restrictions for the API key resource.}
+
+\item{Description}{An optional description for the API key resource.}
+
+\item{ExpireTime}{The optional timestamp for when the API key resource will expire in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
+\code{YYYY-MM-DDThh:mm:ss.sssZ}. One of \code{NoExpiry} or \code{ExpireTime} must be
+set.}
+
 \item{NoExpiry}{Optionally set to \code{true} to set no expiration time for the API key. One
 of \code{NoExpiry} or \code{ExpireTime} must be set.}
-
-\item{Restrictions}{[required] The API key restrictions for the API key resource.}
 
 \item{Tags}{Applies one or more tags to the map resource. A tag is a key-value pair
 that helps manage, identify, search, and filter your resources by

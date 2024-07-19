@@ -29,12 +29,13 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
     name = "AddPermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$add_permission_input(TopicArn = TopicArn, Label = Label, AWSAccountId = AWSAccountId, ActionName = ActionName)
   output <- .sns$add_permission_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -59,12 +60,13 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
     name = "CheckIfPhoneNumberIsOptedOut",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$check_if_phone_number_is_opted_out_input(phoneNumber = phoneNumber)
   output <- .sns$check_if_phone_number_is_opted_out_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -96,12 +98,13 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
     name = "ConfirmSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$confirm_subscription_input(TopicArn = TopicArn, Token = Token, AuthenticateOnUnsubscribe = AuthenticateOnUnsubscribe)
   output <- .sns$confirm_subscription_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -135,12 +138,13 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
     name = "CreatePlatformApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$create_platform_application_input(Name = Name, Platform = Platform, Attributes = Attributes)
   output <- .sns$create_platform_application_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -178,12 +182,13 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
     name = "CreatePlatformEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$create_platform_endpoint_input(PlatformApplicationArn = PlatformApplicationArn, Token = Token, CustomUserData = CustomUserData, Attributes = Attributes)
   output <- .sns$create_platform_endpoint_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -211,12 +216,13 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
     name = "CreateSMSSandboxPhoneNumber",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$create_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber, LanguageCode = LanguageCode)
   output <- .sns$create_sms_sandbox_phone_number_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -240,7 +246,7 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' `.fifo` suffix.
 #' @param Attributes A map of attributes with their corresponding values.
 #' 
-#' The following lists the names, descriptions, and values of the special
+#' The following lists names, descriptions, and values of the special
 #' request parameters that the [`create_topic`][sns_create_topic] action
 #' uses:
 #' 
@@ -326,12 +332,13 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL, DataProtectio
     name = "CreateTopic",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$create_topic_input(Name = Name, Attributes = Attributes, Tags = Tags, DataProtectionPolicy = DataProtectionPolicy)
   output <- .sns$create_topic_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -355,12 +362,13 @@ sns_delete_endpoint <- function(EndpointArn) {
     name = "DeleteEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$delete_endpoint_input(EndpointArn = EndpointArn)
   output <- .sns$delete_endpoint_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -385,12 +393,13 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
     name = "DeletePlatformApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$delete_platform_application_input(PlatformApplicationArn = PlatformApplicationArn)
   output <- .sns$delete_platform_application_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -415,12 +424,13 @@ sns_delete_sms_sandbox_phone_number <- function(PhoneNumber) {
     name = "DeleteSMSSandboxPhoneNumber",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$delete_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber)
   output <- .sns$delete_sms_sandbox_phone_number_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -444,12 +454,13 @@ sns_delete_topic <- function(TopicArn) {
     name = "DeleteTopic",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$delete_topic_input(TopicArn = TopicArn)
   output <- .sns$delete_topic_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -478,12 +489,13 @@ sns_get_data_protection_policy <- function(ResourceArn) {
     name = "GetDataProtectionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$get_data_protection_policy_input(ResourceArn = ResourceArn)
   output <- .sns$get_data_protection_policy_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -510,12 +522,13 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
     name = "GetEndpointAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$get_endpoint_attributes_input(EndpointArn = EndpointArn)
   output <- .sns$get_endpoint_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -541,12 +554,13 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
     name = "GetPlatformApplicationAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$get_platform_application_attributes_input(PlatformApplicationArn = PlatformApplicationArn)
   output <- .sns$get_platform_application_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -577,12 +591,13 @@ sns_get_sms_attributes <- function(attributes = NULL) {
     name = "GetSMSAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$get_sms_attributes_input(attributes = attributes)
   output <- .sns$get_sms_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -607,12 +622,13 @@ sns_get_sms_sandbox_account_status <- function() {
     name = "GetSMSSandboxAccountStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$get_sms_sandbox_account_status_input()
   output <- .sns$get_sms_sandbox_account_status_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -636,12 +652,13 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
     name = "GetSubscriptionAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$get_subscription_attributes_input(SubscriptionArn = SubscriptionArn)
   output <- .sns$get_subscription_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -665,12 +682,13 @@ sns_get_topic_attributes <- function(TopicArn) {
     name = "GetTopicAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$get_topic_attributes_input(TopicArn = TopicArn)
   output <- .sns$get_topic_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -701,12 +719,13 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
     name = "ListEndpointsByPlatformApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Endpoints")
   )
   input <- .sns$list_endpoints_by_platform_application_input(PlatformApplicationArn = PlatformApplicationArn, NextToken = NextToken)
   output <- .sns$list_endpoints_by_platform_application_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -734,12 +753,13 @@ sns_list_origination_numbers <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListOriginationNumbers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
   )
   input <- .sns$list_origination_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_origination_numbers_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -767,12 +787,13 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
     name = "ListPhoneNumbersOptedOut",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "phoneNumbers")
   )
   input <- .sns$list_phone_numbers_opted_out_input(nextToken = nextToken)
   output <- .sns$list_phone_numbers_opted_out_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -800,12 +821,13 @@ sns_list_platform_applications <- function(NextToken = NULL) {
     name = "ListPlatformApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PlatformApplications")
   )
   input <- .sns$list_platform_applications_input(NextToken = NextToken)
   output <- .sns$list_platform_applications_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -832,12 +854,13 @@ sns_list_sms_sandbox_phone_numbers <- function(NextToken = NULL, MaxResults = NU
     name = "ListSMSSandboxPhoneNumbers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
   )
   input <- .sns$list_sms_sandbox_phone_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_sms_sandbox_phone_numbers_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -862,12 +885,13 @@ sns_list_subscriptions <- function(NextToken = NULL) {
     name = "ListSubscriptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
   )
   input <- .sns$list_subscriptions_input(NextToken = NextToken)
   output <- .sns$list_subscriptions_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -894,12 +918,13 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
     name = "ListSubscriptionsByTopic",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
   )
   input <- .sns$list_subscriptions_by_topic_input(TopicArn = TopicArn, NextToken = NextToken)
   output <- .sns$list_subscriptions_by_topic_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -923,12 +948,13 @@ sns_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .sns$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -952,12 +978,13 @@ sns_list_topics <- function(NextToken = NULL) {
     name = "ListTopics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Topics")
   )
   input <- .sns$list_topics_input(NextToken = NextToken)
   output <- .sns$list_topics_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -982,12 +1009,13 @@ sns_opt_in_phone_number <- function(phoneNumber) {
     name = "OptInPhoneNumber",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$opt_in_phone_number_input(phoneNumber = phoneNumber)
   output <- .sns$opt_in_phone_number_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1071,9 +1099,8 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' delivered to email endpoints. This field will also be included, if
 #' present, in the standard JSON messages delivered to other endpoints.
 #' 
-#' Constraints: Subjects must be ASCII text that begins with a letter,
-#' number, or punctuation mark; must not include line breaks or control
-#' characters; and must be less than 100 characters long.
+#' Constraints: Subjects must be UTF-8 text with no line breaks or control
+#' characters, and less than 100 characters long.
 #' @param MessageStructure Set `MessageStructure` to `json` if you want to send a different message
 #' for each protocol. For example, using one publish action, you can send a
 #' short message to your SMS subscribers and a longer message to your email
@@ -1123,12 +1150,13 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
     name = "Publish",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$publish_input(TopicArn = TopicArn, TargetArn = TargetArn, PhoneNumber = PhoneNumber, Message = Message, Subject = Subject, MessageStructure = MessageStructure, MessageAttributes = MessageAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
   output <- .sns$publish_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1155,12 +1183,13 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
     name = "PublishBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$publish_batch_input(TopicArn = TopicArn, PublishBatchRequestEntries = PublishBatchRequestEntries)
   output <- .sns$publish_batch_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1195,12 +1224,13 @@ sns_put_data_protection_policy <- function(ResourceArn, DataProtectionPolicy) {
     name = "PutDataProtectionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$put_data_protection_policy_input(ResourceArn = ResourceArn, DataProtectionPolicy = DataProtectionPolicy)
   output <- .sns$put_data_protection_policy_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1225,12 +1255,13 @@ sns_remove_permission <- function(TopicArn, Label) {
     name = "RemovePermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$remove_permission_input(TopicArn = TopicArn, Label = Label)
   output <- .sns$remove_permission_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1273,12 +1304,13 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
     name = "SetEndpointAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$set_endpoint_attributes_input(EndpointArn = EndpointArn, Attributes = Attributes)
   output <- .sns$set_endpoint_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1378,12 +1410,13 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
     name = "SetPlatformApplicationAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$set_platform_application_attributes_input(PlatformApplicationArn = PlatformApplicationArn, Attributes = Attributes)
   output <- .sns$set_platform_application_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1484,12 +1517,13 @@ sns_set_sms_attributes <- function(attributes) {
     name = "SetSMSAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$set_sms_attributes_input(attributes = attributes)
   output <- .sns$set_sms_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1537,19 +1571,19 @@ sns_set_sms_attributes <- function(attributes) {
 #'     service that powers the subscribed endpoint becomes unavailable) are
 #'     held in the dead-letter queue for further analysis or reprocessing.
 #' 
-#' The following attribute applies only to Amazon Kinesis Data Firehose
-#' delivery stream subscriptions:
+#' The following attribute applies only to Amazon Data Firehose delivery
+#' stream subscriptions:
 #' 
 #' -   `SubscriptionRoleArn` – The ARN of the IAM role that has the
 #'     following:
 #' 
-#'     -   Permission to write to the Kinesis Data Firehose delivery stream
+#'     -   Permission to write to the Firehose delivery stream
 #' 
 #'     -   Amazon SNS listed as a trusted entity
 #' 
-#'     Specifying a valid ARN for this attribute is required for Kinesis
-#'     Data Firehose delivery stream subscriptions. For more information,
-#'     see [Fanout to Kinesis Data Firehose delivery
+#'     Specifying a valid ARN for this attribute is required for Firehose
+#'     delivery stream subscriptions. For more information, see [Fanout to
+#'     Firehose delivery
 #'     streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
 #'     in the *Amazon SNS Developer Guide*.
 #' @param AttributeValue The new value for the attribute in JSON format.
@@ -1562,12 +1596,13 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
     name = "SetSubscriptionAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$set_subscription_attributes_input(SubscriptionArn = SubscriptionArn, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .sns$set_subscription_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1742,12 +1777,13 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
     name = "SetTopicAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$set_topic_attributes_input(TopicArn = TopicArn, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .sns$set_topic_attributes_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1842,19 +1878,19 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #'     service that powers the subscribed endpoint becomes unavailable) are
 #'     held in the dead-letter queue for further analysis or reprocessing.
 #' 
-#' The following attribute applies only to Amazon Kinesis Data Firehose
-#' delivery stream subscriptions:
+#' The following attribute applies only to Amazon Data Firehose delivery
+#' stream subscriptions:
 #' 
 #' -   `SubscriptionRoleArn` – The ARN of the IAM role that has the
 #'     following:
 #' 
-#'     -   Permission to write to the Kinesis Data Firehose delivery stream
+#'     -   Permission to write to the Firehose delivery stream
 #' 
 #'     -   Amazon SNS listed as a trusted entity
 #' 
-#'     Specifying a valid ARN for this attribute is required for Kinesis
-#'     Data Firehose delivery stream subscriptions. For more information,
-#'     see [Fanout to Kinesis Data Firehose delivery
+#'     Specifying a valid ARN for this attribute is required for Firehose
+#'     delivery stream subscriptions. For more information, see [Fanout to
+#'     Firehose delivery
 #'     streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
 #'     in the *Amazon SNS Developer Guide*.
 #' 
@@ -1901,12 +1937,13 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
     name = "Subscribe",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$subscribe_input(TopicArn = TopicArn, Protocol = Protocol, Endpoint = Endpoint, Attributes = Attributes, ReturnSubscriptionArn = ReturnSubscriptionArn)
   output <- .sns$subscribe_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1932,12 +1969,13 @@ sns_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .sns$tag_resource_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1961,12 +1999,13 @@ sns_unsubscribe <- function(SubscriptionArn) {
     name = "Unsubscribe",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$unsubscribe_input(SubscriptionArn = SubscriptionArn)
   output <- .sns$unsubscribe_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1991,12 +2030,13 @@ sns_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .sns$untag_resource_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2023,12 +2063,13 @@ sns_verify_sms_sandbox_phone_number <- function(PhoneNumber, OneTimePassword) {
     name = "VerifySMSSandboxPhoneNumber",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sns$verify_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber, OneTimePassword = OneTimePassword)
   output <- .sns$verify_sms_sandbox_phone_number_output()
   config <- get_config()
-  svc <- .sns$service(config)
+  svc <- .sns$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

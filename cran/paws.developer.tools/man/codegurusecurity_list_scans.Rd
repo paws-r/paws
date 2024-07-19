@@ -2,7 +2,7 @@
 % Please edit documentation in R/codegurusecurity_operations.R
 \name{codegurusecurity_list_scans}
 \alias{codegurusecurity_list_scans}
-\title{Returns a list of all the standard scans in an account}
+\title{Returns a list of all scans in an account}
 \usage{
 codegurusecurity_list_scans(maxResults = NULL, nextToken = NULL)
 }
@@ -11,7 +11,7 @@ codegurusecurity_list_scans(maxResults = NULL, nextToken = NULL)
 parameter when paginating results. If additional results exist beyond
 the number you specify, the \code{nextToken} element is returned in the
 response. Use \code{nextToken} in a subsequent request to retrieve additional
-results.}
+results. If not specified, returns 100 results.}
 
 \item{nextToken}{A token to use for paginating results that are returned in the response.
 Set the value of this parameter to null for the first request. For
@@ -19,7 +19,7 @@ subsequent calls, use the \code{nextToken} value returned from the previous
 request to continue listing results after the first page.}
 }
 \description{
-Returns a list of all the standard scans in an account. Does not return express scans.
+Returns a list of all scans in an account. Does not return \code{EXPRESS} scans.
 
 See \url{https://www.paws-r-sdk.com/docs/codegurusecurity_list_scans/} for full documentation.
 }

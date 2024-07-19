@@ -156,7 +156,7 @@ mq <- function(config = list(), credentials = list(), endpoint = NULL, region = 
   target_prefix = ""
 )
 
-.mq$service <- function(config = list()) {
+.mq$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.mq$metadata, handlers, config)
+  new_service(.mq$metadata, handlers, config, op)
 }

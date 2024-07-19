@@ -97,6 +97,7 @@ Services Lake Formation.
 \tabular{ll}{
 \link[=datazone_accept_predictions]{accept_predictions} \tab Accepts automatically generated business-friendly metadata for your Amazon DataZone assets\cr
 \link[=datazone_accept_subscription_request]{accept_subscription_request} \tab Accepts a subscription request to a specific asset\cr
+\link[=datazone_associate_environment_role]{associate_environment_role} \tab Associates the environment role in Amazon DataZone\cr
 \link[=datazone_cancel_metadata_generation_run]{cancel_metadata_generation_run} \tab Cancels the metadata generation run\cr
 \link[=datazone_cancel_subscription]{cancel_subscription} \tab Cancels the subscription to the specified asset\cr
 \link[=datazone_create_asset]{create_asset} \tab Creates an asset in Amazon DataZone catalog\cr
@@ -105,6 +106,7 @@ Services Lake Formation.
 \link[=datazone_create_data_source]{create_data_source} \tab Creates an Amazon DataZone data source\cr
 \link[=datazone_create_domain]{create_domain} \tab Creates an Amazon DataZone domain\cr
 \link[=datazone_create_environment]{create_environment} \tab Create an Amazon DataZone environment\cr
+\link[=datazone_create_environment_action]{create_environment_action} \tab Creates an action for the environment, for example, creates a console link for an analytics tool that is available in this environment\cr
 \link[=datazone_create_environment_profile]{create_environment_profile} \tab Creates an Amazon DataZone environment profile\cr
 \link[=datazone_create_form_type]{create_form_type} \tab Creates a metadata form type\cr
 \link[=datazone_create_glossary]{create_glossary} \tab Creates an Amazon DataZone business glossary\cr
@@ -122,6 +124,7 @@ Services Lake Formation.
 \link[=datazone_delete_data_source]{delete_data_source} \tab Deletes a data source in Amazon DataZone\cr
 \link[=datazone_delete_domain]{delete_domain} \tab Deletes a Amazon DataZone domain\cr
 \link[=datazone_delete_environment]{delete_environment} \tab Deletes an environment in Amazon DataZone\cr
+\link[=datazone_delete_environment_action]{delete_environment_action} \tab Deletes an action for the environment, for example, deletes a console link for an analytics tool that is available in this environment\cr
 \link[=datazone_delete_environment_blueprint_configuration]{delete_environment_blueprint_configuration} \tab Deletes the blueprint configuration in Amazon DataZone\cr
 \link[=datazone_delete_environment_profile]{delete_environment_profile} \tab Deletes an environment profile in Amazon DataZone\cr
 \link[=datazone_delete_form_type]{delete_form_type} \tab Delets and metadata form type in Amazon DataZone\cr
@@ -134,12 +137,14 @@ Services Lake Formation.
 \link[=datazone_delete_subscription_request]{delete_subscription_request} \tab Deletes a subscription request in Amazon DataZone\cr
 \link[=datazone_delete_subscription_target]{delete_subscription_target} \tab Deletes a subscription target in Amazon DataZone\cr
 \link[=datazone_delete_time_series_data_points]{delete_time_series_data_points} \tab Deletes the specified time series form for the specified asset\cr
+\link[=datazone_disassociate_environment_role]{disassociate_environment_role} \tab Disassociates the environment role in Amazon DataZone\cr
 \link[=datazone_get_asset]{get_asset} \tab Gets an Amazon DataZone asset\cr
 \link[=datazone_get_asset_type]{get_asset_type} \tab Gets an Amazon DataZone asset type\cr
 \link[=datazone_get_data_source]{get_data_source} \tab Gets an Amazon DataZone data source\cr
 \link[=datazone_get_data_source_run]{get_data_source_run} \tab Gets an Amazon DataZone data source run\cr
 \link[=datazone_get_domain]{get_domain} \tab Gets an Amazon DataZone domain\cr
 \link[=datazone_get_environment]{get_environment} \tab Gets an Amazon DataZone environment\cr
+\link[=datazone_get_environment_action]{get_environment_action} \tab Gets the specified environment action\cr
 \link[=datazone_get_environment_blueprint]{get_environment_blueprint} \tab Gets an Amazon DataZone blueprint\cr
 \link[=datazone_get_environment_blueprint_configuration]{get_environment_blueprint_configuration} \tab Gets the blueprint configuration in Amazon DataZone\cr
 \link[=datazone_get_environment_profile]{get_environment_profile} \tab Gets an evinronment profile in Amazon DataZone\cr
@@ -148,6 +153,7 @@ Services Lake Formation.
 \link[=datazone_get_glossary_term]{get_glossary_term} \tab Gets a business glossary term in Amazon DataZone\cr
 \link[=datazone_get_group_profile]{get_group_profile} \tab Gets a group profile in Amazon DataZone\cr
 \link[=datazone_get_iam_portal_login_url]{get_iam_portal_login_url} \tab Gets the data portal URL for the specified Amazon DataZone domain\cr
+\link[=datazone_get_lineage_node]{get_lineage_node} \tab Gets the data lineage node\cr
 \link[=datazone_get_listing]{get_listing} \tab Gets a listing (a record of an asset at a given time)\cr
 \link[=datazone_get_metadata_generation_run]{get_metadata_generation_run} \tab Gets a metadata generation run in Amazon DataZone\cr
 \link[=datazone_get_project]{get_project} \tab Gets a project in Amazon DataZone\cr
@@ -162,10 +168,12 @@ Services Lake Formation.
 \link[=datazone_list_data_source_runs]{list_data_source_runs} \tab Lists data source runs in Amazon DataZone\cr
 \link[=datazone_list_data_sources]{list_data_sources} \tab Lists data sources in Amazon DataZone\cr
 \link[=datazone_list_domains]{list_domains} \tab Lists Amazon DataZone domains\cr
+\link[=datazone_list_environment_actions]{list_environment_actions} \tab Lists existing environment actions\cr
 \link[=datazone_list_environment_blueprint_configurations]{list_environment_blueprint_configurations} \tab Lists blueprint configurations for a Amazon DataZone environment\cr
 \link[=datazone_list_environment_blueprints]{list_environment_blueprints} \tab Lists blueprints in an Amazon DataZone environment\cr
 \link[=datazone_list_environment_profiles]{list_environment_profiles} \tab Lists Amazon DataZone environment profiles\cr
 \link[=datazone_list_environments]{list_environments} \tab Lists Amazon DataZone environments\cr
+\link[=datazone_list_lineage_node_history]{list_lineage_node_history} \tab Lists the history of the specified data lineage node\cr
 \link[=datazone_list_metadata_generation_runs]{list_metadata_generation_runs} \tab Lists all metadata generation runs\cr
 \link[=datazone_list_notifications]{list_notifications} \tab Lists all Amazon DataZone notifications\cr
 \link[=datazone_list_project_memberships]{list_project_memberships} \tab Lists all members of the specified project\cr
@@ -176,6 +184,7 @@ Services Lake Formation.
 \link[=datazone_list_subscription_targets]{list_subscription_targets} \tab Lists subscription targets in Amazon DataZone\cr
 \link[=datazone_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource in Amazon DataZone\cr
 \link[=datazone_list_time_series_data_points]{list_time_series_data_points} \tab Lists time series data points\cr
+\link[=datazone_post_lineage_event]{post_lineage_event} \tab Posts a data lineage event\cr
 \link[=datazone_post_time_series_data_points]{post_time_series_data_points} \tab Posts time series data points to Amazon DataZone for the specified asset\cr
 \link[=datazone_put_environment_blueprint_configuration]{put_environment_blueprint_configuration} \tab Writes the configuration for the specified environment blueprint in Amazon DataZone\cr
 \link[=datazone_reject_predictions]{reject_predictions} \tab Rejects automatically generated business-friendly metadata for your Amazon DataZone assets\cr
@@ -193,6 +202,7 @@ Services Lake Formation.
 \link[=datazone_update_data_source]{update_data_source} \tab Updates the specified data source in Amazon DataZone\cr
 \link[=datazone_update_domain]{update_domain} \tab Updates a Amazon DataZone domain\cr
 \link[=datazone_update_environment]{update_environment} \tab Updates the specified environment in Amazon DataZone\cr
+\link[=datazone_update_environment_action]{update_environment_action} \tab Updates an environment action\cr
 \link[=datazone_update_environment_profile]{update_environment_profile} \tab Updates the specified environment profile in Amazon DataZone\cr
 \link[=datazone_update_glossary]{update_glossary} \tab Updates the business glossary in Amazon DataZone\cr
 \link[=datazone_update_glossary_term]{update_glossary_term} \tab Updates a business glossary term in Amazon DataZone\cr

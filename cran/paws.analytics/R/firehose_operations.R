@@ -80,12 +80,13 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -120,12 +121,13 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
     name = "DeleteDeliveryStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$delete_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, AllowForceDelete = AllowForceDelete)
   output <- .firehose$delete_delivery_stream_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -153,12 +155,13 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
     name = "DescribeDeliveryStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$describe_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, Limit = Limit, ExclusiveStartDestinationId = ExclusiveStartDestinationId)
   output <- .firehose$describe_delivery_stream_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -196,12 +199,13 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
     name = "ListDeliveryStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$list_delivery_streams_input(Limit = Limit, DeliveryStreamType = DeliveryStreamType, ExclusiveStartDeliveryStreamName = ExclusiveStartDeliveryStreamName)
   output <- .firehose$list_delivery_streams_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -233,12 +237,13 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
     name = "ListTagsForDeliveryStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$list_tags_for_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, ExclusiveStartTagKey = ExclusiveStartTagKey, Limit = Limit)
   output <- .firehose$list_tags_for_delivery_stream_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -263,12 +268,13 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
     name = "PutRecord",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$put_record_input(DeliveryStreamName = DeliveryStreamName, Record = Record)
   output <- .firehose$put_record_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -295,12 +301,13 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
     name = "PutRecordBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$put_record_batch_input(DeliveryStreamName = DeliveryStreamName, Records = Records)
   output <- .firehose$put_record_batch_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -327,12 +334,13 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
     name = "StartDeliveryStreamEncryption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$start_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput)
   output <- .firehose$start_delivery_stream_encryption_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -357,12 +365,13 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
     name = "StopDeliveryStreamEncryption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$stop_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName)
   output <- .firehose$stop_delivery_stream_encryption_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -387,12 +396,13 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
     name = "TagDeliveryStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$tag_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, Tags = Tags)
   output <- .firehose$tag_delivery_stream_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -418,12 +428,13 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
     name = "UntagDeliveryStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$untag_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, TagKeys = TagKeys)
   output <- .firehose$untag_delivery_stream_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -455,7 +466,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
 #' @param AmazonOpenSearchServerlessDestinationUpdate Describes an update for a destination in the Serverless offering for
 #' Amazon OpenSearch Service.
-#' @param SnowflakeDestinationUpdate Update to the Snowflake destination condiguration settings
+#' @param SnowflakeDestinationUpdate Update to the Snowflake destination configuration settings.
 #'
 #' @keywords internal
 #'
@@ -465,12 +476,13 @@ firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStrea
     name = "UpdateDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate, AmazonOpenSearchServerlessDestinationUpdate = AmazonOpenSearchServerlessDestinationUpdate, SnowflakeDestinationUpdate = SnowflakeDestinationUpdate)
   output <- .firehose$update_destination_output()
   config <- get_config()
-  svc <- .firehose$service(config)
+  svc <- .firehose$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

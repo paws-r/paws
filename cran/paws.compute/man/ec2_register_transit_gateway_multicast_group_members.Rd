@@ -26,7 +26,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Registers members (network interfaces) with the transit gateway multicast group. A member is a network interface associated with a supported EC2 instance that receives multicast traffic. For information about supported instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html#multicast-limits}{Multicast Consideration} in \emph{Amazon VPC Transit Gateways}.
+Registers members (network interfaces) with the transit gateway multicast group. A member is a network interface associated with a supported EC2 instance that receives multicast traffic. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-multicast-overview.html}{Multicast on transit gateways} in the \emph{Amazon Web Services Transit Gateways Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_register_transit_gateway_multicast_group_members/} for full documentation.
 }

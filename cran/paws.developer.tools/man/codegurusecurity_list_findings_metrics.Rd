@@ -13,20 +13,22 @@ codegurusecurity_list_findings_metrics(
 )
 }
 \arguments{
-\item{endDate}{[required] The end date of the interval which you want to retrieve metrics from.}
+\item{endDate}{[required] The end date of the interval which you want to retrieve metrics from.
+Round to the nearest day.}
 
 \item{maxResults}{The maximum number of results to return in the response. Use this
 parameter when paginating results. If additional results exist beyond
 the number you specify, the \code{nextToken} element is returned in the
 response. Use \code{nextToken} in a subsequent request to retrieve additional
-results.}
+results. If not specified, returns 1000 results.}
 
 \item{nextToken}{A token to use for paginating results that are returned in the response.
 Set the value of this parameter to null for the first request. For
 subsequent calls, use the \code{nextToken} value returned from the previous
 request to continue listing results after the first page.}
 
-\item{startDate}{[required] The start date of the interval which you want to retrieve metrics from.}
+\item{startDate}{[required] The start date of the interval which you want to retrieve metrics from.
+Rounds to the nearest day.}
 }
 \description{
 Returns metrics about all findings in an account within a specified time range.

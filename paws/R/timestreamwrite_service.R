@@ -163,7 +163,7 @@ timestreamwrite <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "Timestream_20181101"
 )
 
-.timestreamwrite$service <- function(config = list()) {
+.timestreamwrite$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.timestreamwrite$metadata, handlers, config)
+  new_service(.timestreamwrite$metadata, handlers, config, op)
 }

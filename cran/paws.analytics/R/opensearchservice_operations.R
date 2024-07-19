@@ -21,12 +21,13 @@ opensearchservice_accept_inbound_connection <- function(ConnectionId) {
     name = "AcceptInboundConnection",
     http_method = "PUT",
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/{ConnectionId}/accept",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$accept_inbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$accept_inbound_connection_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -53,12 +54,13 @@ opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, 
     name = "AddDataSource",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$add_data_source_input(DomainName = DomainName, Name = Name, DataSourceType = DataSourceType, Description = Description)
   output <- .opensearchservice$add_data_source_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -84,12 +86,13 @@ opensearchservice_add_tags <- function(ARN, TagList) {
     name = "AddTags",
     http_method = "POST",
     http_path = "/2021-01-01/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$add_tags_input(ARN = ARN, TagList = TagList)
   output <- .opensearchservice$add_tags_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -116,12 +119,13 @@ opensearchservice_associate_package <- function(PackageID, DomainName) {
     name = "AssociatePackage",
     http_method = "POST",
     http_path = "/2021-01-01/packages/associate/{PackageID}/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$associate_package_input(PackageID = PackageID, DomainName = DomainName)
   output <- .opensearchservice$associate_package_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -147,12 +151,13 @@ opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account)
     name = "AuthorizeVpcEndpointAccess",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/authorizeVpcEndpointAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
   output <- .opensearchservice$authorize_vpc_endpoint_access_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -179,12 +184,13 @@ opensearchservice_cancel_domain_config_change <- function(DomainName, DryRun = N
     name = "CancelDomainConfigChange",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$cancel_domain_config_change_input(DomainName = DomainName, DryRun = DryRun)
   output <- .opensearchservice$cancel_domain_config_change_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -210,12 +216,13 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
     name = "CancelServiceSoftwareUpdate",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/serviceSoftwareUpdate/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$cancel_service_software_update_input(DomainName = DomainName)
   output <- .opensearchservice$cancel_service_software_update_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -299,21 +306,23 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' If no options are specified, the default start time of 10:00 P.M. local
 #' time (for the Region that the domain is created in) is used.
 #' @param SoftwareUpdateOptions Software update options for the domain.
+#' @param AIMLOptions Options for all machine learning features for the specified domain.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_domain
-opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
+opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
+  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
   output <- .opensearchservice$create_domain_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -342,12 +351,13 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
     name = "CreateOutboundConnection",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias, ConnectionMode = ConnectionMode, ConnectionProperties = ConnectionProperties)
   output <- .opensearchservice$create_outbound_connection_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -374,12 +384,13 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
     name = "CreatePackage",
     http_method = "POST",
     http_path = "/2021-01-01/packages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$create_package_input(PackageName = PackageName, PackageType = PackageType, PackageDescription = PackageDescription, PackageSource = PackageSource)
   output <- .opensearchservice$create_package_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -405,12 +416,13 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
     name = "CreateVpcEndpoint",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/vpcEndpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$create_vpc_endpoint_input(DomainArn = DomainArn, VpcOptions = VpcOptions, ClientToken = ClientToken)
   output <- .opensearchservice$create_vpc_endpoint_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -420,7 +432,7 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
 #' Deletes a direct-query data source
 #'
 #' @description
-#' Deletes a direct-query data source. For more information, see [Deleting an Amazon OpenSearch Service data source with Amazon S3](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-delete.html).
+#' Deletes a direct-query data source. For more information, see [Deleting an Amazon OpenSearch Service data source with Amazon S3](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_data_source/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_data_source/) for full documentation.
 #'
@@ -435,12 +447,13 @@ opensearchservice_delete_data_source <- function(DomainName, Name) {
     name = "DeleteDataSource",
     http_method = "DELETE",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$delete_data_source_input(DomainName = DomainName, Name = Name)
   output <- .opensearchservice$delete_data_source_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -464,12 +477,13 @@ opensearchservice_delete_domain <- function(DomainName) {
     name = "DeleteDomain",
     http_method = "DELETE",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$delete_domain_input(DomainName = DomainName)
   output <- .opensearchservice$delete_domain_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -494,12 +508,13 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
     name = "DeleteInboundConnection",
     http_method = "DELETE",
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/{ConnectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$delete_inbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$delete_inbound_connection_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -524,12 +539,13 @@ opensearchservice_delete_outbound_connection <- function(ConnectionId) {
     name = "DeleteOutboundConnection",
     http_method = "DELETE",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection/{ConnectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$delete_outbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$delete_outbound_connection_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -555,12 +571,13 @@ opensearchservice_delete_package <- function(PackageID) {
     name = "DeletePackage",
     http_method = "DELETE",
     http_path = "/2021-01-01/packages/{PackageID}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$delete_package_input(PackageID = PackageID)
   output <- .opensearchservice$delete_package_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -584,12 +601,13 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
     name = "DeleteVpcEndpoint",
     http_method = "DELETE",
     http_path = "/2021-01-01/opensearch/vpcEndpoints/{VpcEndpointId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$delete_vpc_endpoint_input(VpcEndpointId = VpcEndpointId)
   output <- .opensearchservice$delete_vpc_endpoint_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -615,12 +633,13 @@ opensearchservice_describe_domain <- function(DomainName) {
     name = "DescribeDomain",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_domain_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -653,12 +672,13 @@ opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults 
     name = "DescribeDomainAutoTunes",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/autoTunes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_domain_auto_tunes_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -686,12 +706,13 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
     name = "DescribeDomainChangeProgress",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/progress",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_domain_change_progress_input(DomainName = DomainName, ChangeId = ChangeId)
   output <- .opensearchservice$describe_domain_change_progress_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -716,12 +737,13 @@ opensearchservice_describe_domain_config <- function(DomainName) {
     name = "DescribeDomainConfig",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_domain_config_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_config_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -747,12 +769,13 @@ opensearchservice_describe_domain_health <- function(DomainName) {
     name = "DescribeDomainHealth",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/health",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_domain_health_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_health_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -778,12 +801,13 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
     name = "DescribeDomainNodes",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/nodes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_domain_nodes_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_nodes_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -809,12 +833,13 @@ opensearchservice_describe_domains <- function(DomainNames) {
     name = "DescribeDomains",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain-info",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_domains_input(DomainNames = DomainNames)
   output <- .opensearchservice$describe_domains_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -843,12 +868,13 @@ opensearchservice_describe_dry_run_progress <- function(DomainName, DryRunId = N
     name = "DescribeDryRunProgress",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dryRun",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_dry_run_progress_input(DomainName = DomainName, DryRunId = DryRunId, LoadDryRunConfig = LoadDryRunConfig)
   output <- .opensearchservice$describe_dry_run_progress_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -882,12 +908,13 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
     name = "DescribeInboundConnections",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/search",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$describe_inbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_inbound_connections_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -917,12 +944,13 @@ opensearchservice_describe_instance_type_limits <- function(DomainName = NULL, I
     name = "DescribeInstanceTypeLimits",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/instanceTypeLimits/{EngineVersion}/{InstanceType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_instance_type_limits_input(DomainName = DomainName, InstanceType = InstanceType, EngineVersion = EngineVersion)
   output <- .opensearchservice$describe_instance_type_limits_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -955,12 +983,13 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
     name = "DescribeOutboundConnections",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection/search",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$describe_outbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_outbound_connections_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -991,12 +1020,13 @@ opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NUL
     name = "DescribePackages",
     http_method = "POST",
     http_path = "/2021-01-01/packages/describe",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_packages_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1031,12 +1061,13 @@ opensearchservice_describe_reserved_instance_offerings <- function(ReservedInsta
     name = "DescribeReservedInstanceOfferings",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/reservedInstanceOfferings",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$describe_reserved_instance_offerings_input(ReservedInstanceOfferingId = ReservedInstanceOfferingId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_reserved_instance_offerings_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1071,12 +1102,13 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
     name = "DescribeReservedInstances",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/reservedInstances",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$describe_reserved_instances_input(ReservedInstanceId = ReservedInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_reserved_instances_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1100,12 +1132,13 @@ opensearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
     name = "DescribeVpcEndpoints",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/vpcEndpoints/describe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$describe_vpc_endpoints_input(VpcEndpointIds = VpcEndpointIds)
   output <- .opensearchservice$describe_vpc_endpoints_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1132,12 +1165,13 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
     name = "DissociatePackage",
     http_method = "POST",
     http_path = "/2021-01-01/packages/dissociate/{PackageID}/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$dissociate_package_input(PackageID = PackageID, DomainName = DomainName)
   output <- .opensearchservice$dissociate_package_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1163,12 +1197,13 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
     name = "GetCompatibleVersions",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/compatibleVersions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$get_compatible_versions_input(DomainName = DomainName)
   output <- .opensearchservice$get_compatible_versions_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1193,12 +1228,13 @@ opensearchservice_get_data_source <- function(DomainName, Name) {
     name = "GetDataSource",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$get_data_source_input(DomainName = DomainName, Name = Name)
   output <- .opensearchservice$get_data_source_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1223,12 +1259,13 @@ opensearchservice_get_domain_maintenance_status <- function(DomainName, Maintena
     name = "GetDomainMaintenanceStatus",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$get_domain_maintenance_status_input(DomainName = DomainName, MaintenanceId = MaintenanceId)
   output <- .opensearchservice$get_domain_maintenance_status_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1262,12 +1299,13 @@ opensearchservice_get_package_version_history <- function(PackageID, MaxResults 
     name = "GetPackageVersionHistory",
     http_method = "GET",
     http_path = "/2021-01-01/packages/{PackageID}/history",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$get_package_version_history_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1300,12 +1338,13 @@ opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL,
     name = "GetUpgradeHistory",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/upgradeDomain/{DomainName}/history",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$get_upgrade_history_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$get_upgrade_history_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1330,12 +1369,13 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
     name = "GetUpgradeStatus",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/upgradeDomain/{DomainName}/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$get_upgrade_status_input(DomainName = DomainName)
   output <- .opensearchservice$get_upgrade_status_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1359,12 +1399,13 @@ opensearchservice_list_data_sources <- function(DomainName) {
     name = "ListDataSources",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$list_data_sources_input(DomainName = DomainName)
   output <- .opensearchservice$list_data_sources_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1398,12 +1439,13 @@ opensearchservice_list_domain_maintenances <- function(DomainName, Action = NULL
     name = "ListDomainMaintenances",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenances",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$list_domain_maintenances_input(DomainName = DomainName, Action = Action, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_domain_maintenances_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1428,12 +1470,13 @@ opensearchservice_list_domain_names <- function(EngineType = NULL) {
     name = "ListDomainNames",
     http_method = "GET",
     http_path = "/2021-01-01/domain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$list_domain_names_input(EngineType = EngineType)
   output <- .opensearchservice$list_domain_names_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1467,12 +1510,13 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
     name = "ListDomainsForPackage",
     http_method = "GET",
     http_path = "/2021-01-01/packages/{PackageID}/domains",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_domains_for_package_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1511,12 +1555,13 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
     name = "ListInstanceTypeDetails",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/instanceTypeDetails/{EngineVersion}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$list_instance_type_details_input(EngineVersion = EngineVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken, RetrieveAZs = RetrieveAZs, InstanceType = InstanceType)
   output <- .opensearchservice$list_instance_type_details_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1548,12 +1593,13 @@ opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = 
     name = "ListPackagesForDomain",
     http_method = "GET",
     http_path = "/2021-01-01/domain/{DomainName}/packages",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_packages_for_domain_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1586,12 +1632,13 @@ opensearchservice_list_scheduled_actions <- function(DomainName, MaxResults = NU
     name = "ListScheduledActions",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledActions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$list_scheduled_actions_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_scheduled_actions_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1615,12 +1662,13 @@ opensearchservice_list_tags <- function(ARN) {
     name = "ListTags",
     http_method = "GET",
     http_path = "/2021-01-01/tags/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$list_tags_input(ARN = ARN)
   output <- .opensearchservice$list_tags_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1651,12 +1699,13 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
     name = "ListVersions",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/versions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchservice$list_versions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_versions_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1689,12 +1738,13 @@ opensearchservice_list_vpc_endpoint_access <- function(DomainName, NextToken = N
     name = "ListVpcEndpointAccess",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/listVpcEndpointAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$list_vpc_endpoint_access_input(DomainName = DomainName, NextToken = NextToken)
   output <- .opensearchservice$list_vpc_endpoint_access_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1723,12 +1773,13 @@ opensearchservice_list_vpc_endpoints <- function(NextToken = NULL) {
     name = "ListVpcEndpoints",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/vpcEndpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$list_vpc_endpoints_input(NextToken = NextToken)
   output <- .opensearchservice$list_vpc_endpoints_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1757,12 +1808,13 @@ opensearchservice_list_vpc_endpoints_for_domain <- function(DomainName, NextToke
     name = "ListVpcEndpointsForDomain",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/vpcEndpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$list_vpc_endpoints_for_domain_input(DomainName = DomainName, NextToken = NextToken)
   output <- .opensearchservice$list_vpc_endpoints_for_domain_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1788,12 +1840,13 @@ opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstan
     name = "PurchaseReservedInstanceOffering",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/purchaseReservedInstanceOffering",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$purchase_reserved_instance_offering_input(ReservedInstanceOfferingId = ReservedInstanceOfferingId, ReservationName = ReservationName, InstanceCount = InstanceCount)
   output <- .opensearchservice$purchase_reserved_instance_offering_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1818,12 +1871,13 @@ opensearchservice_reject_inbound_connection <- function(ConnectionId) {
     name = "RejectInboundConnection",
     http_method = "PUT",
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/{ConnectionId}/reject",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$reject_inbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$reject_inbound_connection_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1850,12 +1904,13 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
     name = "RemoveTags",
     http_method = "POST",
     http_path = "/2021-01-01/tags-removal",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$remove_tags_input(ARN = ARN, TagKeys = TagKeys)
   output <- .opensearchservice$remove_tags_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1881,12 +1936,13 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
     name = "RevokeVpcEndpointAccess",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/revokeVpcEndpointAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
   output <- .opensearchservice$revoke_vpc_endpoint_access_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1912,12 +1968,13 @@ opensearchservice_start_domain_maintenance <- function(DomainName, Action, NodeI
     name = "StartDomainMaintenance",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$start_domain_maintenance_input(DomainName = DomainName, Action = Action, NodeId = NodeId)
   output <- .opensearchservice$start_domain_maintenance_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1962,12 +2019,13 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
     name = "StartServiceSoftwareUpdate",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/serviceSoftwareUpdate/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$start_service_software_update_input(DomainName = DomainName, ScheduleAt = ScheduleAt, DesiredStartTime = DesiredStartTime)
   output <- .opensearchservice$start_service_software_update_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1985,21 +2043,23 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' @param Name &#91;required&#93; The name of the data source to modify.
 #' @param DataSourceType &#91;required&#93; The type of data source.
 #' @param Description A new description of the data source.
+#' @param Status The status of the data source update.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_data_source
-opensearchservice_update_data_source <- function(DomainName, Name, DataSourceType, Description = NULL) {
+opensearchservice_update_data_source <- function(DomainName, Name, DataSourceType, Description = NULL, Status = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
     http_method = "PUT",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .opensearchservice$update_data_source_input(DomainName = DomainName, Name = Name, DataSourceType = DataSourceType, Description = Description)
+  input <- .opensearchservice$update_data_source_input(DomainName = DomainName, Name = Name, DataSourceType = DataSourceType, Description = Description, Status = Status)
   output <- .opensearchservice$update_data_source_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2076,21 +2136,23 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #'     update](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html#validation-check).
 #' @param OffPeakWindowOptions Off-peak window options for the domain.
 #' @param SoftwareUpdateOptions Service software update options for the domain.
+#' @param AIMLOptions Options for all machine learning features for the specified domain.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2118,12 +2180,13 @@ opensearchservice_update_package <- function(PackageID, PackageSource, PackageDe
     name = "UpdatePackage",
     http_method = "POST",
     http_path = "/2021-01-01/packages/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$update_package_input(PackageID = PackageID, PackageSource = PackageSource, PackageDescription = PackageDescription, CommitMessage = CommitMessage)
   output <- .opensearchservice$update_package_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2171,12 +2234,13 @@ opensearchservice_update_scheduled_action <- function(DomainName, ActionID, Acti
     name = "UpdateScheduledAction",
     http_method = "PUT",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledAction/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$update_scheduled_action_input(DomainName = DomainName, ActionID = ActionID, ActionType = ActionType, ScheduleAt = ScheduleAt, DesiredStartTime = DesiredStartTime)
   output <- .opensearchservice$update_scheduled_action_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2201,12 +2265,13 @@ opensearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) {
     name = "UpdateVpcEndpoint",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/vpcEndpoints/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$update_vpc_endpoint_input(VpcEndpointId = VpcEndpointId, VpcOptions = VpcOptions)
   output <- .opensearchservice$update_vpc_endpoint_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2241,12 +2306,13 @@ opensearchservice_upgrade_domain <- function(DomainName, TargetVersion, PerformC
     name = "UpgradeDomain",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/upgradeDomain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchservice$upgrade_domain_input(DomainName = DomainName, TargetVersion = TargetVersion, PerformCheckOnly = PerformCheckOnly, AdvancedOptions = AdvancedOptions)
   output <- .opensearchservice$upgrade_domain_output()
   config <- get_config()
-  svc <- .opensearchservice$service(config)
+  svc <- .opensearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

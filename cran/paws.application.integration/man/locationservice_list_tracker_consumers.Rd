@@ -6,12 +6,15 @@
 resource}
 \usage{
 locationservice_list_tracker_consumers(
+  TrackerName,
   MaxResults = NULL,
-  NextToken = NULL,
-  TrackerName
+  NextToken = NULL
 )
 }
 \arguments{
+\item{TrackerName}{[required] The tracker resource whose associated geofence collections you want to
+list.}
+
 \item{MaxResults}{An optional limit for the number of resources returned in a single call.
 
 Default value: \code{100}}
@@ -20,9 +23,6 @@ Default value: \code{100}}
 response. If no token is provided, the default page is the first page.
 
 Default value: \code{null}}
-
-\item{TrackerName}{[required] The tracker resource whose associated geofence collections you want to
-list.}
 }
 \description{
 Lists geofence collections currently associated to the given tracker resource.

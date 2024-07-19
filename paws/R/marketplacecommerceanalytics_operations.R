@@ -201,12 +201,13 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
     name = "GenerateDataSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecommerceanalytics$generate_data_set_input(dataSetType = dataSetType, dataSetPublicationDate = dataSetPublicationDate, roleNameArn = roleNameArn, destinationS3BucketName = destinationS3BucketName, destinationS3Prefix = destinationS3Prefix, snsTopicArn = snsTopicArn, customerDefinedValues = customerDefinedValues)
   output <- .marketplacecommerceanalytics$generate_data_set_output()
   config <- get_config()
-  svc <- .marketplacecommerceanalytics$service(config)
+  svc <- .marketplacecommerceanalytics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -307,12 +308,13 @@ marketplacecommerceanalytics_start_support_data_export <- function(dataSetType, 
     name = "StartSupportDataExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacecommerceanalytics$start_support_data_export_input(dataSetType = dataSetType, fromDate = fromDate, roleNameArn = roleNameArn, destinationS3BucketName = destinationS3BucketName, destinationS3Prefix = destinationS3Prefix, snsTopicArn = snsTopicArn, customerDefinedValues = customerDefinedValues)
   output <- .marketplacecommerceanalytics$start_support_data_export_output()
   config <- get_config()
-  svc <- .marketplacecommerceanalytics$service(config)
+  svc <- .marketplacecommerceanalytics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

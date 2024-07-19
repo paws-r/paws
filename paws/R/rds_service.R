@@ -341,7 +341,7 @@ rds <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.rds$service <- function(config = list()) {
+.rds$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.rds$metadata, handlers, config)
+  new_service(.rds$metadata, handlers, config, op)
 }

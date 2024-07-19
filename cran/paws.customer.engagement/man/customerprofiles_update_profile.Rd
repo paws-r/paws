@@ -39,7 +39,7 @@ customerprofiles_update_profile(
 
 \item{AdditionalInformation}{Any additional information relevant to the customer’s profile.}
 
-\item{AccountNumber}{A unique account number that you have given to the customer.}
+\item{AccountNumber}{An account number that you have given to the customer.}
 
 \item{PartyType}{The type of profile used to describe the customer.}
 

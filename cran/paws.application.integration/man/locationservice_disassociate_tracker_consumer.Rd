@@ -5,9 +5,11 @@
 \title{Removes the association between a tracker resource and a geofence
 collection}
 \usage{
-locationservice_disassociate_tracker_consumer(ConsumerArn, TrackerName)
+locationservice_disassociate_tracker_consumer(TrackerName, ConsumerArn)
 }
 \arguments{
+\item{TrackerName}{[required] The name of the tracker resource to be dissociated from the consumer.}
+
 \item{ConsumerArn}{[required] The Amazon Resource Name (ARN) for the geofence collection to be
 disassociated from the tracker resource. Used when you need to specify a
 resource across all Amazon Web Services.
@@ -15,8 +17,6 @@ resource across all Amazon Web Services.
 \item Format example:
 \code{arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer}
 }}
-
-\item{TrackerName}{[required] The name of the tracker resource to be dissociated from the consumer.}
 }
 \description{
 Removes the association between a tracker resource and a geofence collection.

@@ -26,7 +26,9 @@ sagemaker_create_model_package(
   DriftCheckBaselines = NULL,
   AdditionalInferenceSpecifications = NULL,
   SkipModelValidation = NULL,
-  SourceUri = NULL
+  SourceUri = NULL,
+  SecurityConfig = NULL,
+  ModelCard = NULL
 )
 }
 \arguments{
@@ -126,6 +128,19 @@ Neo to store the compiled artifacts.}
 \item{SourceUri}{The URI of the source for the model package. If you want to clone a
 model package, set it to the model package Amazon Resource Name (ARN).
 If you want to register a model, set it to the model ARN.}
+
+\item{SecurityConfig}{The KMS Key ID (\code{KMSKeyId}) used for encryption of model package
+information.}
+
+\item{ModelCard}{The model card associated with the model package. Since
+\code{ModelPackageModelCard} is tied to a model package, it is a specific
+usage of a model card and its schema is simplified compared to the
+schema of \code{ModelCard}. The \code{ModelPackageModelCard} schema does not
+include \code{model_package_details}, and \code{model_overview} is composed of the
+\code{model_creator} and \code{model_artifact} properties. For more information
+about the model package model card schema, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html#model-card-schema}{Model package model card schema}.
+For more information about the model card associated with the model
+package, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html}{View the Details of a Model Version}.}
 }
 \description{
 Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.

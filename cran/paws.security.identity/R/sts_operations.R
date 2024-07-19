@@ -240,12 +240,13 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
     name = "AssumeRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts)
   output <- .sts$assume_role_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -357,12 +358,13 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
     name = "AssumeRoleWithSAML",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$assume_role_with_saml_input(RoleArn = RoleArn, PrincipalArn = PrincipalArn, SAMLAssertion = SAMLAssertion, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_saml_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -490,12 +492,13 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
     name = "AssumeRoleWithWebIdentity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_web_identity_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -521,12 +524,13 @@ sts_decode_authorization_message <- function(EncodedMessage) {
     name = "DecodeAuthorizationMessage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$decode_authorization_message_input(EncodedMessage = EncodedMessage)
   output <- .sts$decode_authorization_message_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -553,12 +557,13 @@ sts_get_access_key_info <- function(AccessKeyId) {
     name = "GetAccessKeyInfo",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$get_access_key_info_input(AccessKeyId = AccessKeyId)
   output <- .sts$get_access_key_info_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -583,12 +588,13 @@ sts_get_caller_identity <- function() {
     name = "GetCallerIdentity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$get_caller_identity_input()
   output <- .sts$get_caller_identity_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -739,12 +745,13 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
     name = "GetFederationToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags)
   output <- .sts$get_federation_token_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -797,12 +804,13 @@ sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, T
     name = "GetSessionToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sts$get_session_token_input(DurationSeconds = DurationSeconds, SerialNumber = SerialNumber, TokenCode = TokenCode)
   output <- .sts$get_session_token_output()
   config <- get_config()
-  svc <- .sts$service(config)
+  svc <- .sts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

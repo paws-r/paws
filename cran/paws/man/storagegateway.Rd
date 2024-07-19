@@ -184,7 +184,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
 \link[paws.storage:storagegateway_describe_file_system_associations]{describe_file_system_associations} \tab Gets the file system association information\cr
 \link[paws.storage:storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, time zone, status, and software version\cr
-\link[paws.storage:storagegateway_describe_maintenance_start_time]{describe_maintenance_start_time} \tab Returns your gateway's weekly maintenance start time including the day and time of the week\cr
+\link[paws.storage:storagegateway_describe_maintenance_start_time]{describe_maintenance_start_time} \tab Returns your gateway's maintenance window schedule information, with values for monthly or weekly cadence, specific day and time to begin maintenance, and which types of updates to apply\cr
 \link[paws.storage:storagegateway_describe_nfs_file_shares]{describe_nfs_file_shares} \tab Gets a description for one or more Network File System (NFS) file shares from an S3 File Gateway\cr
 \link[paws.storage:storagegateway_describe_smb_file_shares]{describe_smb_file_shares} \tab Gets a description for one or more Server Message Block (SMB) file shares from a S3 File Gateway\cr
 \link[paws.storage:storagegateway_describe_smb_settings]{describe_smb_settings} \tab Gets a description of a Server Message Block (SMB) file share settings from a file gateway\cr
@@ -227,14 +227,14 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_update_bandwidth_rate_limit_schedule]{update_bandwidth_rate_limit_schedule} \tab Updates the bandwidth rate limit schedule for a specified gateway\cr
 \link[paws.storage:storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target\cr
 \link[paws.storage:storagegateway_update_file_system_association]{update_file_system_association} \tab Updates a file system association\cr
-\link[paws.storage:storagegateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's metadata, which includes the gateway's name and time zone\cr
+\link[paws.storage:storagegateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's metadata, which includes the gateway's name, time zone, and metadata cache size\cr
 \link[paws.storage:storagegateway_update_gateway_software_now]{update_gateway_software_now} \tab Updates the gateway virtual machine (VM) software\cr
-\link[paws.storage:storagegateway_update_maintenance_start_time]{update_maintenance_start_time} \tab Updates a gateway's weekly maintenance start time information, including day and time of the week\cr
+\link[paws.storage:storagegateway_update_maintenance_start_time]{update_maintenance_start_time} \tab Updates a gateway's maintenance window schedule, with settings for monthly or weekly cadence, specific day and time to begin maintenance, and which types of updates to apply\cr
 \link[paws.storage:storagegateway_update_nfs_file_share]{update_nfs_file_share} \tab Updates a Network File System (NFS) file share\cr
 \link[paws.storage:storagegateway_update_smb_file_share]{update_smb_file_share} \tab Updates a Server Message Block (SMB) file share\cr
 \link[paws.storage:storagegateway_update_smb_file_share_visibility]{update_smb_file_share_visibility} \tab Controls whether the shares on an S3 File Gateway are visible in a net view or browse list\cr
 \link[paws.storage:storagegateway_update_smb_local_groups]{update_smb_local_groups} \tab Updates the list of Active Directory users and groups that have special permissions for SMB file shares on the gateway\cr
-\link[paws.storage:storagegateway_update_smb_security_strategy]{update_smb_security_strategy} \tab Updates the SMB security strategy on a file gateway\cr
+\link[paws.storage:storagegateway_update_smb_security_strategy]{update_smb_security_strategy} \tab Updates the SMB security strategy level for an Amazon S3 file gateway\cr
 \link[paws.storage:storagegateway_update_snapshot_schedule]{update_snapshot_schedule} \tab Updates a snapshot schedule configured for a gateway volume\cr
 \link[paws.storage:storagegateway_update_vtl_device_type]{update_vtl_device_type} \tab Updates the type of medium changer in a tape gateway
 }

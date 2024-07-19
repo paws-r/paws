@@ -161,7 +161,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
   target_prefix = ""
 )
 
-.route53recoveryreadiness$service <- function(config = list()) {
+.route53recoveryreadiness$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.route53recoveryreadiness$metadata, handlers, config)
+  new_service(.route53recoveryreadiness$metadata, handlers, config, op)
 }

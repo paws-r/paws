@@ -455,7 +455,7 @@ NULL
 
 .storagegateway$describe_maintenance_start_time_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer")), DayOfMonth = structure(logical(0), tags = list(type = "integer")), Timezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer")), DayOfMonth = structure(logical(0), tags = list(type = "integer")), Timezone = structure(logical(0), tags = list(type = "string")), SoftwareUpdatePreferences = structure(list(AutomaticUpdatePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -989,7 +989,7 @@ NULL
 
 .storagegateway$update_maintenance_start_time_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer")), DayOfMonth = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer")), DayOfMonth = structure(logical(0), tags = list(type = "integer")), SoftwareUpdatePreferences = structure(list(AutomaticUpdatePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

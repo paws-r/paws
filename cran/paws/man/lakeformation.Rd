@@ -117,6 +117,7 @@ Defines the public endpoint for the Lake Formation service.
 \link[paws.database:lakeformation_describe_transaction]{describe_transaction} \tab Returns the details of a single transaction\cr
 \link[paws.database:lakeformation_extend_transaction]{extend_transaction} \tab Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted\cr
 \link[paws.database:lakeformation_get_data_cells_filter]{get_data_cells_filter} \tab Returns a data cells filter\cr
+\link[paws.database:lakeformation_get_data_lake_principal]{get_data_lake_principal} \tab Returns the identity of the invoking principal\cr
 \link[paws.database:lakeformation_get_data_lake_settings]{get_data_lake_settings} \tab Retrieves the list of the data lake administrators of a Lake Formation-managed data lake\cr
 \link[paws.database:lakeformation_get_effective_permissions_for_path]{get_effective_permissions_for_path} \tab Returns the Lake Formation permissions for a specified table or database resource located at a path in Amazon S3\cr
 \link[paws.database:lakeformation_get_lf_tag]{get_lf_tag} \tab Returns an LF-tag definition\cr

@@ -23,7 +23,8 @@ opensearchservice_create_domain(
   TagList = NULL,
   AutoTuneOptions = NULL,
   OffPeakWindowOptions = NULL,
-  SoftwareUpdateOptions = NULL
+  SoftwareUpdateOptions = NULL,
+  AIMLOptions = NULL
 )
 }
 \arguments{
@@ -107,6 +108,8 @@ If no options are specified, the default start time of 10:00 P.M. local
 time (for the Region that the domain is created in) is used.}
 
 \item{SoftwareUpdateOptions}{Software update options for the domain.}
+
+\item{AIMLOptions}{Options for all machine learning features for the specified domain.}
 }
 \description{
 Creates an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html}{Creating and managing Amazon OpenSearch Service domains}.

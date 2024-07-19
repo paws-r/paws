@@ -149,6 +149,9 @@ Services Budgets API, see \href{https://aws.amazon.com/aws-cost-management/}{Ama
 \link[=budgets_describe_notifications_for_budget]{describe_notifications_for_budget} \tab Lists the notifications that are associated with a budget\cr
 \link[=budgets_describe_subscribers_for_notification]{describe_subscribers_for_notification} \tab Lists the subscribers that are associated with a notification\cr
 \link[=budgets_execute_budget_action]{execute_budget_action} \tab Executes a budget action\cr
+\link[=budgets_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags associated with a budget or budget action resource\cr
+\link[=budgets_tag_resource]{tag_resource} \tab Creates tags for a budget or budget action resource\cr
+\link[=budgets_untag_resource]{untag_resource} \tab Deletes tags associated with a budget or budget action resource\cr
 \link[=budgets_update_budget]{update_budget} \tab Updates a budget\cr
 \link[=budgets_update_budget_action]{update_budget_action} \tab Updates a budget action\cr
 \link[=budgets_update_notification]{update_notification} \tab Updates a notification\cr

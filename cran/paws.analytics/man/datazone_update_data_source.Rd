@@ -14,6 +14,7 @@ datazone_update_data_source(
   name = NULL,
   publishOnImport = NULL,
   recommendation = NULL,
+  retainPermissionsOnRevokeFailure = NULL,
   schedule = NULL
 )
 }
@@ -42,6 +43,9 @@ datazone_update_data_source(
 
 \item{recommendation}{The recommendation to be updated as part of the
 \code{\link[=datazone_update_data_source]{update_data_source}} action.}
+
+\item{retainPermissionsOnRevokeFailure}{Specifies that the granted permissions are retained in case of a
+self-subscribe functionality failure for a data source.}
 
 \item{schedule}{The schedule to be updated as part of the
 \code{\link[=datazone_update_data_source]{update_data_source}} action.}

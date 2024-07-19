@@ -22,12 +22,13 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
     name = "CancelJournalKinesisStream",
     http_method = "DELETE",
     http_path = "/ledgers/{name}/journal-kinesis-streams/{streamId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$cancel_journal_kinesis_stream_input(LedgerName = LedgerName, StreamId = StreamId)
   output <- .qldb$cancel_journal_kinesis_stream_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -136,12 +137,13 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
     name = "CreateLedger",
     http_method = "POST",
     http_path = "/ledgers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$create_ledger_input(Name = Name, Tags = Tags, PermissionsMode = PermissionsMode, DeletionProtection = DeletionProtection, KmsKey = KmsKey)
   output <- .qldb$create_ledger_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -165,12 +167,13 @@ qldb_delete_ledger <- function(Name) {
     name = "DeleteLedger",
     http_method = "DELETE",
     http_path = "/ledgers/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$delete_ledger_input(Name = Name)
   output <- .qldb$delete_ledger_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -196,12 +199,13 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
     name = "DescribeJournalKinesisStream",
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-kinesis-streams/{streamId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$describe_journal_kinesis_stream_input(LedgerName = LedgerName, StreamId = StreamId)
   output <- .qldb$describe_journal_kinesis_stream_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -229,12 +233,13 @@ qldb_describe_journal_s3_export <- function(Name, ExportId) {
     name = "DescribeJournalS3Export",
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-s3-exports/{exportId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$describe_journal_s3_export_input(Name = Name, ExportId = ExportId)
   output <- .qldb$describe_journal_s3_export_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -259,12 +264,13 @@ qldb_describe_ledger <- function(Name) {
     name = "DescribeLedger",
     http_method = "GET",
     http_path = "/ledgers/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$describe_ledger_input(Name = Name)
   output <- .qldb$describe_ledger_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -335,12 +341,13 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
     name = "ExportJournalToS3",
     http_method = "POST",
     http_path = "/ledgers/{name}/journal-s3-exports",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$export_journal_to_s3_input(Name = Name, InclusiveStartTime = InclusiveStartTime, ExclusiveEndTime = ExclusiveEndTime, S3ExportConfiguration = S3ExportConfiguration, RoleArn = RoleArn, OutputFormat = OutputFormat)
   output <- .qldb$export_journal_to_s3_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -373,12 +380,13 @@ qldb_get_block <- function(Name, BlockAddress, DigestTipAddress = NULL) {
     name = "GetBlock",
     http_method = "POST",
     http_path = "/ledgers/{name}/block",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$get_block_input(Name = Name, BlockAddress = BlockAddress, DigestTipAddress = DigestTipAddress)
   output <- .qldb$get_block_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -403,12 +411,13 @@ qldb_get_digest <- function(Name) {
     name = "GetDigest",
     http_method = "POST",
     http_path = "/ledgers/{name}/digest",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$get_digest_input(Name = Name)
   output <- .qldb$get_digest_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -445,12 +454,13 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
     name = "GetRevision",
     http_method = "POST",
     http_path = "/ledgers/{name}/revision",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$get_revision_input(Name = Name, BlockAddress = BlockAddress, DocumentId = DocumentId, DigestTipAddress = DigestTipAddress)
   output <- .qldb$get_revision_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -482,12 +492,13 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
     name = "ListJournalKinesisStreamsForLedger",
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-kinesis-streams",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .qldb$list_journal_kinesis_streams_for_ledger_input(LedgerName = LedgerName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_journal_kinesis_streams_for_ledger_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -518,12 +529,13 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListJournalS3Exports",
     http_method = "GET",
     http_path = "/journal-s3-exports",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .qldb$list_journal_s3_exports_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_journal_s3_exports_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -555,12 +567,13 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
     name = "ListJournalS3ExportsForLedger",
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-s3-exports",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .qldb$list_journal_s3_exports_for_ledger_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_journal_s3_exports_for_ledger_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -591,12 +604,13 @@ qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListLedgers",
     http_method = "GET",
     http_path = "/ledgers",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .qldb$list_ledgers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_ledgers_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -622,12 +636,13 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .qldb$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -688,12 +703,13 @@ qldb_stream_journal_to_kinesis <- function(LedgerName, RoleArn, Tags = NULL, Inc
     name = "StreamJournalToKinesis",
     http_method = "POST",
     http_path = "/ledgers/{name}/journal-kinesis-streams",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$stream_journal_to_kinesis_input(LedgerName = LedgerName, RoleArn = RoleArn, Tags = Tags, InclusiveStartTime = InclusiveStartTime, ExclusiveEndTime = ExclusiveEndTime, KinesisConfiguration = KinesisConfiguration, StreamName = StreamName)
   output <- .qldb$stream_journal_to_kinesis_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -724,12 +740,13 @@ qldb_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .qldb$tag_resource_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -757,12 +774,13 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .qldb$untag_resource_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -834,12 +852,13 @@ qldb_update_ledger <- function(Name, DeletionProtection = NULL, KmsKey = NULL) {
     name = "UpdateLedger",
     http_method = "PATCH",
     http_path = "/ledgers/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$update_ledger_input(Name = Name, DeletionProtection = DeletionProtection, KmsKey = KmsKey)
   output <- .qldb$update_ledger_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -890,12 +909,13 @@ qldb_update_ledger_permissions_mode <- function(Name, PermissionsMode) {
     name = "UpdateLedgerPermissionsMode",
     http_method = "PATCH",
     http_path = "/ledgers/{name}/permissions-mode",
+    host_prefix = "",
     paginator = list()
   )
   input <- .qldb$update_ledger_permissions_mode_input(Name = Name, PermissionsMode = PermissionsMode)
   output <- .qldb$update_ledger_permissions_mode_output()
   config <- get_config()
-  svc <- .qldb$service(config)
+  svc <- .qldb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

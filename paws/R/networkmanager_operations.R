@@ -31,6 +31,7 @@ NULL
 #'     ResourceArn = "string",
 #'     AttachmentPolicyRuleNumber = 123,
 #'     SegmentName = "string",
+#'     NetworkFunctionGroupName = "string",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -47,11 +48,29 @@ NULL
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string"
 #'     ),
+#'     ProposedNetworkFunctionGroupChange = list(
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AttachmentPolicyRuleNumber = 123,
+#'       NetworkFunctionGroupName = "string"
+#'     ),
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     UpdatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     LastModificationErrors = list(
+#'       list(
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'         Message = "string",
+#'         ResourceArn = "string",
+#'         RequestId = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -74,12 +93,13 @@ networkmanager_accept_attachment <- function(AttachmentId) {
     name = "AcceptAttachment",
     http_method = "POST",
     http_path = "/attachments/{attachmentId}/accept",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$accept_attachment_input(AttachmentId = AttachmentId)
   output <- .networkmanager$accept_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -140,12 +160,13 @@ networkmanager_associate_connect_peer <- function(GlobalNetworkId, ConnectPeerId
     name = "AssociateConnectPeer",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/connect-peer-associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$associate_connect_peer_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerId = ConnectPeerId, DeviceId = DeviceId, LinkId = LinkId)
   output <- .networkmanager$associate_connect_peer_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -213,12 +234,13 @@ networkmanager_associate_customer_gateway <- function(CustomerGatewayArn, Global
     name = "AssociateCustomerGateway",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/customer-gateway-associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$associate_customer_gateway_input(CustomerGatewayArn = CustomerGatewayArn, GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, LinkId = LinkId)
   output <- .networkmanager$associate_customer_gateway_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +293,13 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
     name = "AssociateLink",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/link-associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$associate_link_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, LinkId = LinkId)
   output <- .networkmanager$associate_link_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -340,12 +363,13 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
     name = "AssociateTransitGatewayConnectPeer",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$associate_transit_gateway_connect_peer_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArn = TransitGatewayConnectPeerArn, DeviceId = DeviceId, LinkId = LinkId)
   output <- .networkmanager$associate_transit_gateway_connect_peer_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -391,6 +415,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -407,11 +432,29 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     TransportAttachmentId = "string",
@@ -451,12 +494,13 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
     name = "CreateConnectAttachment",
     http_method = "POST",
     http_path = "/connect-attachments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_connect_attachment_input(CoreNetworkId = CoreNetworkId, EdgeLocation = EdgeLocation, TransportAttachmentId = TransportAttachmentId, Options = Options, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_connect_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -478,13 +522,16 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #'   ClientToken, SubnetArn)
 #'
 #' @param ConnectAttachmentId &#91;required&#93; The ID of the connection attachment.
-#' @param CoreNetworkAddress A Connect peer core network address.
+#' @param CoreNetworkAddress A Connect peer core network address. This only applies only when the
+#' protocol is `GRE`.
 #' @param PeerAddress &#91;required&#93; The Connect peer address.
-#' @param BgpOptions The Connect peer BGP options.
+#' @param BgpOptions The Connect peer BGP options. This only applies only when the protocol
+#' is `GRE`.
 #' @param InsideCidrBlocks The inside IP addresses used for BGP peering.
 #' @param Tags The tags associated with the peer request.
 #' @param ClientToken The client token associated with the request.
-#' @param SubnetArn The subnet ARN for the Connect peer.
+#' @param SubnetArn The subnet ARN for the Connect peer. This only applies only when the
+#' protocol is NO_ENCAP.
 #'
 #' @return
 #' A list with the following syntax:
@@ -521,7 +568,15 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #'         Value = "string"
 #'       )
 #'     ),
-#'     SubnetArn = "string"
+#'     SubnetArn = "string",
+#'     LastModificationErrors = list(
+#'       list(
+#'         Code = "EDGE_LOCATION_NO_FREE_IPS"|"EDGE_LOCATION_PEER_DUPLICATE"|"SUBNET_NOT_FOUND"|"IP_OUTSIDE_SUBNET_CIDR_RANGE"|"INVALID_INSIDE_CIDR_BLOCK"|"NO_ASSOCIATED_CIDR_BLOCK",
+#'         Message = "string",
+#'         ResourceArn = "string",
+#'         RequestId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -559,12 +614,13 @@ networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkA
     name = "CreateConnectPeer",
     http_method = "POST",
     http_path = "/connect-peers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_connect_peer_input(ConnectAttachmentId = ConnectAttachmentId, CoreNetworkAddress = CoreNetworkAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, Tags = Tags, ClientToken = ClientToken, SubnetArn = SubnetArn)
   output <- .networkmanager$create_connect_peer_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -648,12 +704,13 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/connections",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_connection_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, ConnectedDeviceId = ConnectedDeviceId, LinkId = LinkId, ConnectedLinkId = ConnectedLinkId, Description = Description, Tags = Tags)
   output <- .networkmanager$create_connection_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -698,6 +755,22 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
 #'         ),
 #'         SharedSegments = list(
 #'           "string"
+#'         )
+#'       )
+#'     ),
+#'     NetworkFunctionGroups = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         Segments = list(
+#'           SendVia = list(
+#'             "string"
+#'           ),
+#'           SendTo = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -746,12 +819,13 @@ networkmanager_create_core_network <- function(GlobalNetworkId, Description = NU
     name = "CreateCoreNetwork",
     http_method = "POST",
     http_path = "/core-networks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_core_network_input(GlobalNetworkId = GlobalNetworkId, Description = Description, Tags = Tags, PolicyDocument = PolicyDocument, ClientToken = ClientToken)
   output <- .networkmanager$create_core_network_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -864,12 +938,13 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
     name = "CreateDevice",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/devices",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_device_input(GlobalNetworkId = GlobalNetworkId, AWSLocation = AWSLocation, Description = Description, Type = Type, Vendor = Vendor, Model = Model, SerialNumber = SerialNumber, Location = Location, SiteId = SiteId, Tags = Tags)
   output <- .networkmanager$create_device_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -934,12 +1009,13 @@ networkmanager_create_global_network <- function(Description = NULL, Tags = NULL
     name = "CreateGlobalNetwork",
     http_method = "POST",
     http_path = "/global-networks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_global_network_input(Description = Description, Tags = Tags)
   output <- .networkmanager$create_global_network_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1032,12 +1108,13 @@ networkmanager_create_link <- function(GlobalNetworkId, Description = NULL, Type
     name = "CreateLink",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/links",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_link_input(GlobalNetworkId = GlobalNetworkId, Description = Description, Type = Type, Bandwidth = Bandwidth, Provider = Provider, SiteId = SiteId, Tags = Tags)
   output <- .networkmanager$create_link_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1124,12 +1201,13 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
     name = "CreateSite",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/sites",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_site_input(GlobalNetworkId = GlobalNetworkId, Description = Description, Location = Location, Tags = Tags)
   output <- .networkmanager$create_site_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1169,6 +1247,7 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -1185,11 +1264,29 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     VpnConnectionArn = "string"
@@ -1222,12 +1319,13 @@ networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, Vpn
     name = "CreateSiteToSiteVpnAttachment",
     http_method = "POST",
     http_path = "/site-to-site-vpn-attachments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_site_to_site_vpn_attachment_input(CoreNetworkId = CoreNetworkId, VpnConnectionArn = VpnConnectionArn, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_site_to_site_vpn_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1270,6 +1368,17 @@ networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, Vpn
 #'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "TRANSIT_GATEWAY_NOT_FOUND"|"TRANSIT_GATEWAY_PEERS_LIMIT_EXCEEDED"|"MISSING_PERMISSIONS"|"INTERNAL_ERROR"|"EDGE_LOCATION_PEER_DUPLICATE"|"INVALID_TRANSIT_GATEWAY_STATE",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string",
+#'           MissingPermissionsContext = list(
+#'             MissingPermission = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     TransitGatewayArn = "string",
@@ -1303,12 +1412,13 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
     name = "CreateTransitGatewayPeering",
     http_method = "POST",
     http_path = "/transit-gateway-peerings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_transit_gateway_peering_input(CoreNetworkId = CoreNetworkId, TransitGatewayArn = TransitGatewayArn, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_transit_gateway_peering_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1347,6 +1457,7 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -1363,11 +1474,29 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     PeeringId = "string",
@@ -1401,12 +1530,13 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
     name = "CreateTransitGatewayRouteTableAttachment",
     http_method = "POST",
     http_path = "/transit-gateway-route-table-attachments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_transit_gateway_route_table_attachment_input(PeeringId = PeeringId, TransitGatewayRouteTableArn = TransitGatewayRouteTableArn, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_transit_gateway_route_table_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1445,6 +1575,7 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -1461,11 +1592,29 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     SubnetArns = list(
@@ -1511,12 +1660,13 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
     name = "CreateVpcAttachment",
     http_method = "POST",
     http_path = "/vpc-attachments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$create_vpc_attachment_input(CoreNetworkId = CoreNetworkId, VpcArn = VpcArn, SubnetArns = SubnetArns, Options = Options, Tags = Tags, ClientToken = ClientToken)
   output <- .networkmanager$create_vpc_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1548,6 +1698,7 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
 #'     ResourceArn = "string",
 #'     AttachmentPolicyRuleNumber = 123,
 #'     SegmentName = "string",
+#'     NetworkFunctionGroupName = "string",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -1564,11 +1715,29 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string"
 #'     ),
+#'     ProposedNetworkFunctionGroupChange = list(
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AttachmentPolicyRuleNumber = 123,
+#'       NetworkFunctionGroupName = "string"
+#'     ),
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     UpdatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     LastModificationErrors = list(
+#'       list(
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'         Message = "string",
+#'         ResourceArn = "string",
+#'         RequestId = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1591,12 +1760,13 @@ networkmanager_delete_attachment <- function(AttachmentId) {
     name = "DeleteAttachment",
     http_method = "DELETE",
     http_path = "/attachments/{attachmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_attachment_input(AttachmentId = AttachmentId)
   output <- .networkmanager$delete_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1648,7 +1818,15 @@ networkmanager_delete_attachment <- function(AttachmentId) {
 #'         Value = "string"
 #'       )
 #'     ),
-#'     SubnetArn = "string"
+#'     SubnetArn = "string",
+#'     LastModificationErrors = list(
+#'       list(
+#'         Code = "EDGE_LOCATION_NO_FREE_IPS"|"EDGE_LOCATION_PEER_DUPLICATE"|"SUBNET_NOT_FOUND"|"IP_OUTSIDE_SUBNET_CIDR_RANGE"|"INVALID_INSIDE_CIDR_BLOCK"|"NO_ASSOCIATED_CIDR_BLOCK",
+#'         Message = "string",
+#'         ResourceArn = "string",
+#'         RequestId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1670,12 +1848,13 @@ networkmanager_delete_connect_peer <- function(ConnectPeerId) {
     name = "DeleteConnectPeer",
     http_method = "DELETE",
     http_path = "/connect-peers/{connectPeerId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_connect_peer_input(ConnectPeerId = ConnectPeerId)
   output <- .networkmanager$delete_connect_peer_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1738,12 +1917,13 @@ networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
     name = "DeleteConnection",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/connections/{connectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_connection_input(GlobalNetworkId = GlobalNetworkId, ConnectionId = ConnectionId)
   output <- .networkmanager$delete_connection_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1785,6 +1965,22 @@ networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
 #'         )
 #'       )
 #'     ),
+#'     NetworkFunctionGroups = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         Segments = list(
+#'           SendVia = list(
+#'             "string"
+#'           ),
+#'           SendTo = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     Edges = list(
 #'       list(
 #'         EdgeLocation = "string",
@@ -1821,12 +2017,13 @@ networkmanager_delete_core_network <- function(CoreNetworkId) {
     name = "DeleteCoreNetwork",
     http_method = "DELETE",
     http_path = "/core-networks/{coreNetworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_core_network_input(CoreNetworkId = CoreNetworkId)
   output <- .networkmanager$delete_core_network_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1889,12 +2086,13 @@ networkmanager_delete_core_network_policy_version <- function(CoreNetworkId, Pol
     name = "DeleteCoreNetworkPolicyVersion",
     http_method = "DELETE",
     http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions/{policyVersionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_core_network_policy_version_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId)
   output <- .networkmanager$delete_core_network_policy_version_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1968,12 +2166,13 @@ networkmanager_delete_device <- function(GlobalNetworkId, DeviceId) {
     name = "DeleteDevice",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/devices/{deviceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_device_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId)
   output <- .networkmanager$delete_device_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2031,12 +2230,13 @@ networkmanager_delete_global_network <- function(GlobalNetworkId) {
     name = "DeleteGlobalNetwork",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_global_network_input(GlobalNetworkId = GlobalNetworkId)
   output <- .networkmanager$delete_global_network_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2103,12 +2303,13 @@ networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
     name = "DeleteLink",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/links/{linkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_link_input(GlobalNetworkId = GlobalNetworkId, LinkId = LinkId)
   output <- .networkmanager$delete_link_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2146,6 +2347,17 @@ networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
 #'     ),
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     LastModificationErrors = list(
+#'       list(
+#'         Code = "TRANSIT_GATEWAY_NOT_FOUND"|"TRANSIT_GATEWAY_PEERS_LIMIT_EXCEEDED"|"MISSING_PERMISSIONS"|"INTERNAL_ERROR"|"EDGE_LOCATION_PEER_DUPLICATE"|"INVALID_TRANSIT_GATEWAY_STATE",
+#'         Message = "string",
+#'         ResourceArn = "string",
+#'         RequestId = "string",
+#'         MissingPermissionsContext = list(
+#'           MissingPermission = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2168,12 +2380,13 @@ networkmanager_delete_peering <- function(PeeringId) {
     name = "DeletePeering",
     http_method = "DELETE",
     http_path = "/peerings/{peeringId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_peering_input(PeeringId = PeeringId)
   output <- .networkmanager$delete_peering_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2211,12 +2424,13 @@ networkmanager_delete_resource_policy <- function(ResourceArn) {
     name = "DeleteResourcePolicy",
     http_method = "DELETE",
     http_path = "/resource-policy/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .networkmanager$delete_resource_policy_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2281,12 +2495,13 @@ networkmanager_delete_site <- function(GlobalNetworkId, SiteId) {
     name = "DeleteSite",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/sites/{siteId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$delete_site_input(GlobalNetworkId = GlobalNetworkId, SiteId = SiteId)
   output <- .networkmanager$delete_site_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2340,12 +2555,13 @@ networkmanager_deregister_transit_gateway <- function(GlobalNetworkId, TransitGa
     name = "DeregisterTransitGateway",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-registrations/{transitGatewayArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$deregister_transit_gateway_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayArn = TransitGatewayArn)
   output <- .networkmanager$deregister_transit_gateway_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2415,12 +2631,13 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
     name = "DescribeGlobalNetworks",
     http_method = "GET",
     http_path = "/global-networks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GlobalNetworks")
   )
   input <- .networkmanager$describe_global_networks_input(GlobalNetworkIds = GlobalNetworkIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$describe_global_networks_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2470,12 +2687,13 @@ networkmanager_disassociate_connect_peer <- function(GlobalNetworkId, ConnectPee
     name = "DisassociateConnectPeer",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/connect-peer-associations/{connectPeerId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$disassociate_connect_peer_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerId = ConnectPeerId)
   output <- .networkmanager$disassociate_connect_peer_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2526,12 +2744,13 @@ networkmanager_disassociate_customer_gateway <- function(GlobalNetworkId, Custom
     name = "DisassociateCustomerGateway",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/customer-gateway-associations/{customerGatewayArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$disassociate_customer_gateway_input(GlobalNetworkId = GlobalNetworkId, CustomerGatewayArn = CustomerGatewayArn)
   output <- .networkmanager$disassociate_customer_gateway_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2583,12 +2802,13 @@ networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) 
     name = "DisassociateLink",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/link-associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$disassociate_link_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, LinkId = LinkId)
   output <- .networkmanager$disassociate_link_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2639,12 +2859,13 @@ networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetwo
     name = "DisassociateTransitGatewayConnectPeer",
     http_method = "DELETE",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations/{transitGatewayConnectPeerArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$disassociate_transit_gateway_connect_peer_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArn = TransitGatewayConnectPeerArn)
   output <- .networkmanager$disassociate_transit_gateway_connect_peer_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2685,12 +2906,13 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
     name = "ExecuteCoreNetworkChangeSet",
     http_method = "POST",
     http_path = "/core-networks/{coreNetworkId}/core-network-change-sets/{policyVersionId}/execute",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$execute_core_network_change_set_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId)
   output <- .networkmanager$execute_core_network_change_set_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2723,6 +2945,7 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -2739,11 +2962,29 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     TransportAttachmentId = "string",
@@ -2771,12 +3012,13 @@ networkmanager_get_connect_attachment <- function(AttachmentId) {
     name = "GetConnectAttachment",
     http_method = "GET",
     http_path = "/connect-attachments/{attachmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_connect_attachment_input(AttachmentId = AttachmentId)
   output <- .networkmanager$get_connect_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2828,7 +3070,15 @@ networkmanager_get_connect_attachment <- function(AttachmentId) {
 #'         Value = "string"
 #'       )
 #'     ),
-#'     SubnetArn = "string"
+#'     SubnetArn = "string",
+#'     LastModificationErrors = list(
+#'       list(
+#'         Code = "EDGE_LOCATION_NO_FREE_IPS"|"EDGE_LOCATION_PEER_DUPLICATE"|"SUBNET_NOT_FOUND"|"IP_OUTSIDE_SUBNET_CIDR_RANGE"|"INVALID_INSIDE_CIDR_BLOCK"|"NO_ASSOCIATED_CIDR_BLOCK",
+#'         Message = "string",
+#'         ResourceArn = "string",
+#'         RequestId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2850,12 +3100,13 @@ networkmanager_get_connect_peer <- function(ConnectPeerId) {
     name = "GetConnectPeer",
     http_method = "GET",
     http_path = "/connect-peers/{connectPeerId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_connect_peer_input(ConnectPeerId = ConnectPeerId)
   output <- .networkmanager$get_connect_peer_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2915,12 +3166,13 @@ networkmanager_get_connect_peer_associations <- function(GlobalNetworkId, Connec
     name = "GetConnectPeerAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/connect-peer-associations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConnectPeerAssociations")
   )
   input <- .networkmanager$get_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerIds = ConnectPeerIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_connect_peer_associations_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2997,12 +3249,13 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
     name = "GetConnections",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/connections",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Connections")
   )
   input <- .networkmanager$get_connections_input(GlobalNetworkId = GlobalNetworkId, ConnectionIds = ConnectionIds, DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_connections_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3043,6 +3296,22 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
 #'         )
 #'       )
 #'     ),
+#'     NetworkFunctionGroups = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         Segments = list(
+#'           SendVia = list(
+#'             "string"
+#'           ),
+#'           SendTo = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     Edges = list(
 #'       list(
 #'         EdgeLocation = "string",
@@ -3079,12 +3348,13 @@ networkmanager_get_core_network <- function(CoreNetworkId) {
     name = "GetCoreNetwork",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_core_network_input(CoreNetworkId = CoreNetworkId)
   output <- .networkmanager$get_core_network_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3111,7 +3381,7 @@ networkmanager_get_core_network <- function(CoreNetworkId) {
 #' list(
 #'   CoreNetworkChangeEvents = list(
 #'     list(
-#'       Type = "CORE_NETWORK_SEGMENT"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
+#'       Type = "CORE_NETWORK_SEGMENT"|"NETWORK_FUNCTION_GROUP"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
 #'       Action = "ADD"|"MODIFY"|"REMOVE",
 #'       IdentifierPath = "string",
 #'       EventTime = as.POSIXct(
@@ -3121,6 +3391,7 @@ networkmanager_get_core_network <- function(CoreNetworkId) {
 #'       Values = list(
 #'         EdgeLocation = "string",
 #'         SegmentName = "string",
+#'         NetworkFunctionGroupName = "string",
 #'         AttachmentId = "string",
 #'         Cidr = "string"
 #'       )
@@ -3150,12 +3421,13 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
     name = "GetCoreNetworkChangeEvents",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-change-events/{policyVersionId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkChangeEvents")
   )
   input <- .networkmanager$get_core_network_change_events_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_core_network_change_events_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3184,11 +3456,12 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #' list(
 #'   CoreNetworkChanges = list(
 #'     list(
-#'       Type = "CORE_NETWORK_SEGMENT"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
+#'       Type = "CORE_NETWORK_SEGMENT"|"NETWORK_FUNCTION_GROUP"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
 #'       Action = "ADD"|"MODIFY"|"REMOVE",
 #'       Identifier = "string",
 #'       PreviousValues = list(
 #'         SegmentName = "string",
+#'         NetworkFunctionGroupName = "string",
 #'         EdgeLocations = list(
 #'           "string"
 #'         ),
@@ -3200,10 +3473,39 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #'         ),
 #'         SharedSegments = list(
 #'           "string"
+#'         ),
+#'         ServiceInsertionActions = list(
+#'           list(
+#'             Action = "send-via"|"send-to",
+#'             Mode = "dual-hop"|"single-hop",
+#'             WhenSentTo = list(
+#'               WhenSentToSegmentsList = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Via = list(
+#'               NetworkFunctionGroups = list(
+#'                 list(
+#'                   Name = "string"
+#'                 )
+#'               ),
+#'               WithEdgeOverrides = list(
+#'                 list(
+#'                   EdgeSets = list(
+#'                     list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   UseEdge = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       NewValues = list(
 #'         SegmentName = "string",
+#'         NetworkFunctionGroupName = "string",
 #'         EdgeLocations = list(
 #'           "string"
 #'         ),
@@ -3215,6 +3517,34 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #'         ),
 #'         SharedSegments = list(
 #'           "string"
+#'         ),
+#'         ServiceInsertionActions = list(
+#'           list(
+#'             Action = "send-via"|"send-to",
+#'             Mode = "dual-hop"|"single-hop",
+#'             WhenSentTo = list(
+#'               WhenSentToSegmentsList = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Via = list(
+#'               NetworkFunctionGroups = list(
+#'                 list(
+#'                   Name = "string"
+#'                 )
+#'               ),
+#'               WithEdgeOverrides = list(
+#'                 list(
+#'                   EdgeSets = list(
+#'                     list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   UseEdge = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       IdentifierPath = "string"
@@ -3244,12 +3574,13 @@ networkmanager_get_core_network_change_set <- function(CoreNetworkId, PolicyVers
     name = "GetCoreNetworkChangeSet",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-change-sets/{policyVersionId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkChanges")
   )
   input <- .networkmanager$get_core_network_change_set_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_core_network_change_set_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3314,12 +3645,13 @@ networkmanager_get_core_network_policy <- function(CoreNetworkId, PolicyVersionI
     name = "GetCoreNetworkPolicy",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_core_network_policy_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, Alias = Alias)
   output <- .networkmanager$get_core_network_policy_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3382,12 +3714,13 @@ networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, Cu
     name = "GetCustomerGatewayAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/customer-gateway-associations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CustomerGatewayAssociations")
   )
   input <- .networkmanager$get_customer_gateway_associations_input(GlobalNetworkId = GlobalNetworkId, CustomerGatewayArns = CustomerGatewayArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_customer_gateway_associations_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3472,12 +3805,13 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
     name = "GetDevices",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/devices",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Devices")
   )
   input <- .networkmanager$get_devices_input(GlobalNetworkId = GlobalNetworkId, DeviceIds = DeviceIds, SiteId = SiteId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_devices_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3537,12 +3871,13 @@ networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NUL
     name = "GetLinkAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/link-associations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LinkAssociations")
   )
   input <- .networkmanager$get_link_associations_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, LinkId = LinkId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_link_associations_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3628,12 +3963,13 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
     name = "GetLinks",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/links",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Links")
   )
   input <- .networkmanager$get_links_input(GlobalNetworkId = GlobalNetworkId, LinkIds = LinkIds, SiteId = SiteId, Type = Type, Provider = Provider, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_links_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3664,11 +4000,19 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
 #' 
 #' The following are the supported resource types for Network Manager:
 #' 
+#' -   `attachment`
+#' 
+#' -   `connect-peer`
+#' 
 #' -   `connection`
+#' 
+#' -   `core-network`
 #' 
 #' -   `device`
 #' 
 #' -   `link`
+#' 
+#' -   `peering`
 #' 
 #' -   `site`
 #' 
@@ -3722,12 +4066,13 @@ networkmanager_get_network_resource_counts <- function(GlobalNetworkId, Resource
     name = "GetNetworkResourceCounts",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resource-count",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkResourceCounts")
   )
   input <- .networkmanager$get_network_resource_counts_input(GlobalNetworkId = GlobalNetworkId, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resource_counts_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3762,11 +4107,19 @@ networkmanager_get_network_resource_counts <- function(GlobalNetworkId, Resource
 #' 
 #' The following are the supported resource types for Network Manager:
 #' 
+#' -   `attachment`
+#' 
+#' -   `connect-peer`
+#' 
 #' -   `connection`
+#' 
+#' -   `core-network`
 #' 
 #' -   `device`
 #' 
 #' -   `link`
+#' 
+#' -   `peering`
 #' 
 #' -   `site`
 #' 
@@ -3826,12 +4179,13 @@ networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, C
     name = "GetNetworkResourceRelationships",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resource-relationships",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Relationships")
   )
   input <- .networkmanager$get_network_resource_relationships_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resource_relationships_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3860,48 +4214,43 @@ networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, C
 #' 
 #' The following are the supported resource types for Direct Connect:
 #' 
-#' -   `dxcon` - The definition model is
-#'     [Connection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_Connection.html).
+#' -   `dxcon`
 #' 
-#' -   `dx-gateway` - The definition model is
-#'     [DirectConnectGateway](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DirectConnectGateway.html).
+#' -   `dx-gateway`
 #' 
-#' -   `dx-vif` - The definition model is
-#'     [VirtualInterface](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_VirtualInterface.html).
+#' -   `dx-vif`
 #' 
 #' The following are the supported resource types for Network Manager:
 #' 
-#' -   `connection` - The definition model is
-#'     [Connection](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Connection.html).
+#' -   `attachment`
 #' 
-#' -   `device` - The definition model is
-#'     [Device](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Device.html).
+#' -   `connect-peer`
 #' 
-#' -   `link` - The definition model is
-#'     [Link](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Link.html).
+#' -   `connection`
 #' 
-#' -   `site` - The definition model is
-#'     [Site](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Site.html).
+#' -   `core-network`
+#' 
+#' -   `device`
+#' 
+#' -   `link`
+#' 
+#' -   `peering`
+#' 
+#' -   `site`
 #' 
 #' The following are the supported resource types for Amazon VPC:
 #' 
-#' -   `customer-gateway` - The definition model is
-#'     [CustomerGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CustomerGateway.html).
+#' -   `customer-gateway`
 #' 
-#' -   `transit-gateway` - The definition model is
-#'     [TransitGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGateway.html).
+#' -   `transit-gateway`
 #' 
-#' -   `transit-gateway-attachment` - The definition model is
-#'     [TransitGatewayAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachment.html).
+#' -   `transit-gateway-attachment`
 #' 
-#' -   `transit-gateway-connect-peer` - The definition model is
-#'     [TransitGatewayConnectPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnectPeer.html).
+#' -   `transit-gateway-connect-peer`
 #' 
-#' -   `transit-gateway-route-table` - The definition model is
-#'     [TransitGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTable.html).
+#' -   `transit-gateway-route-table`
 #' 
-#' -   `vpn-connection` - The definition model is
-#'     [VpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConnection.html).
+#' -   `vpn-connection`
 #' @param ResourceArn The ARN of the resource.
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
@@ -3963,12 +4312,13 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
     name = "GetNetworkResources",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resources",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkResources")
   )
   input <- .networkmanager$get_network_resources_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resources_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4008,7 +4358,7 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
 #'     SegmentName = "string",
 #'     EdgeLocation = "string"
 #'   ),
-#'   RouteTableType = "TRANSIT_GATEWAY_ROUTE_TABLE"|"CORE_NETWORK_SEGMENT",
+#'   RouteTableType = "TRANSIT_GATEWAY_ROUTE_TABLE"|"CORE_NETWORK_SEGMENT"|"NETWORK_FUNCTION_GROUP",
 #'   RouteTableTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4020,6 +4370,7 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
 #'           CoreNetworkAttachmentId = "string",
 #'           TransitGatewayAttachmentId = "string",
 #'           SegmentName = "string",
+#'           NetworkFunctionGroupName = "string",
 #'           EdgeLocation = "string",
 #'           ResourceType = "string",
 #'           ResourceId = "string"
@@ -4042,6 +4393,11 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
 #'     CoreNetworkSegmentEdge = list(
 #'       CoreNetworkId = "string",
 #'       SegmentName = "string",
+#'       EdgeLocation = "string"
+#'     ),
+#'     CoreNetworkNetworkFunctionGroup = list(
+#'       CoreNetworkId = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       EdgeLocation = "string"
 #'     )
 #'   ),
@@ -4084,12 +4440,13 @@ networkmanager_get_network_routes <- function(GlobalNetworkId, RouteTableIdentif
     name = "GetNetworkRoutes",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/network-routes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_network_routes_input(GlobalNetworkId = GlobalNetworkId, RouteTableIdentifier = RouteTableIdentifier, ExactCidrMatches = ExactCidrMatches, LongestPrefixMatches = LongestPrefixMatches, SubnetOfMatches = SubnetOfMatches, SupernetOfMatches = SupernetOfMatches, PrefixListIds = PrefixListIds, States = States, Types = Types, DestinationFilters = DestinationFilters)
   output <- .networkmanager$get_network_routes_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4111,37 +4468,11 @@ networkmanager_get_network_routes <- function(GlobalNetworkId, RouteTableIdentif
 #' @param RegisteredGatewayArn The ARN of the gateway.
 #' @param AwsRegion The Amazon Web Services Region.
 #' @param AccountId The Amazon Web Services account ID.
-#' @param ResourceType The resource type.
+#' @param ResourceType The resource type. The following are the supported resource types:
 #' 
-#' The following are the supported resource types for Direct Connect:
-#' 
-#' -   `dxcon`
-#' 
-#' -   `dx-gateway`
-#' 
-#' -   `dx-vif`
-#' 
-#' The following are the supported resource types for Network Manager:
-#' 
-#' -   `connection`
-#' 
-#' -   `device`
-#' 
-#' -   `link`
-#' 
-#' -   `site`
-#' 
-#' The following are the supported resource types for Amazon VPC:
-#' 
-#' -   `customer-gateway`
-#' 
-#' -   `transit-gateway`
-#' 
-#' -   `transit-gateway-attachment`
+#' -   `connect-peer`
 #' 
 #' -   `transit-gateway-connect-peer`
-#' 
-#' -   `transit-gateway-route-table`
 #' 
 #' -   `vpn-connection`
 #' @param ResourceArn The ARN of the resource.
@@ -4200,12 +4531,13 @@ networkmanager_get_network_telemetry <- function(GlobalNetworkId, CoreNetworkId 
     name = "GetNetworkTelemetry",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-telemetry",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkTelemetry")
   )
   input <- .networkmanager$get_network_telemetry_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_telemetry_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4247,12 +4579,13 @@ networkmanager_get_resource_policy <- function(ResourceArn) {
     name = "GetResourcePolicy",
     http_method = "GET",
     http_path = "/resource-policy/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .networkmanager$get_resource_policy_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4362,12 +4695,13 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
     name = "GetRouteAnalysis",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/route-analyses/{routeAnalysisId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_route_analysis_input(GlobalNetworkId = GlobalNetworkId, RouteAnalysisId = RouteAnalysisId)
   output <- .networkmanager$get_route_analysis_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4400,6 +4734,7 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -4416,11 +4751,29 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     VpnConnectionArn = "string"
@@ -4445,12 +4798,13 @@ networkmanager_get_site_to_site_vpn_attachment <- function(AttachmentId) {
     name = "GetSiteToSiteVpnAttachment",
     http_method = "GET",
     http_path = "/site-to-site-vpn-attachments/{attachmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_site_to_site_vpn_attachment_input(AttachmentId = AttachmentId)
   output <- .networkmanager$get_site_to_site_vpn_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4524,12 +4878,13 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
     name = "GetSites",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/sites",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Sites")
   )
   input <- .networkmanager$get_sites_input(GlobalNetworkId = GlobalNetworkId, SiteIds = SiteIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_sites_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4591,12 +4946,13 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
     name = "GetTransitGatewayConnectPeerAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransitGatewayConnectPeerAssociations")
   )
   input <- .networkmanager$get_transit_gateway_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArns = TransitGatewayConnectPeerArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_transit_gateway_connect_peer_associations_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4635,6 +4991,17 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
 #'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "TRANSIT_GATEWAY_NOT_FOUND"|"TRANSIT_GATEWAY_PEERS_LIMIT_EXCEEDED"|"MISSING_PERMISSIONS"|"INTERNAL_ERROR"|"EDGE_LOCATION_PEER_DUPLICATE"|"INVALID_TRANSIT_GATEWAY_STATE",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string",
+#'           MissingPermissionsContext = list(
+#'             MissingPermission = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     TransitGatewayArn = "string",
@@ -4660,12 +5027,13 @@ networkmanager_get_transit_gateway_peering <- function(PeeringId) {
     name = "GetTransitGatewayPeering",
     http_method = "GET",
     http_path = "/transit-gateway-peerings/{peeringId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_transit_gateway_peering_input(PeeringId = PeeringId)
   output <- .networkmanager$get_transit_gateway_peering_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4729,12 +5097,13 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
     name = "GetTransitGatewayRegistrations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-registrations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransitGatewayRegistrations")
   )
   input <- .networkmanager$get_transit_gateway_registrations_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayArns = TransitGatewayArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_transit_gateway_registrations_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4767,6 +5136,7 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -4783,11 +5153,29 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     PeeringId = "string",
@@ -4813,12 +5201,13 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
     name = "GetTransitGatewayRouteTableAttachment",
     http_method = "GET",
     http_path = "/transit-gateway-route-table-attachments/{attachmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_transit_gateway_route_table_attachment_input(AttachmentId = AttachmentId)
   output <- .networkmanager$get_transit_gateway_route_table_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4851,6 +5240,7 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -4867,11 +5257,29 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     SubnetArns = list(
@@ -4902,12 +5310,13 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
     name = "GetVpcAttachment",
     http_method = "GET",
     http_path = "/vpc-attachments/{attachmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$get_vpc_attachment_input(AttachmentId = AttachmentId)
   output <- .networkmanager$get_vpc_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4946,6 +5355,7 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -4962,11 +5372,29 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4996,12 +5424,13 @@ networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType
     name = "ListAttachments",
     http_method = "GET",
     http_path = "/attachments",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Attachments")
   )
   input <- .networkmanager$list_attachments_input(CoreNetworkId = CoreNetworkId, AttachmentType = AttachmentType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_attachments_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5069,12 +5498,13 @@ networkmanager_list_connect_peers <- function(CoreNetworkId = NULL, ConnectAttac
     name = "ListConnectPeers",
     http_method = "GET",
     http_path = "/connect-peers",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConnectPeers")
   )
   input <- .networkmanager$list_connect_peers_input(CoreNetworkId = CoreNetworkId, ConnectAttachmentId = ConnectAttachmentId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_connect_peers_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5133,12 +5563,13 @@ networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxR
     name = "ListCoreNetworkPolicyVersions",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkPolicyVersions")
   )
   input <- .networkmanager$list_core_network_policy_versions_input(CoreNetworkId = CoreNetworkId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_core_network_policy_versions_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5198,12 +5629,13 @@ networkmanager_list_core_networks <- function(MaxResults = NULL, NextToken = NUL
     name = "ListCoreNetworks",
     http_method = "GET",
     http_path = "/core-networks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworks")
   )
   input <- .networkmanager$list_core_networks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_core_networks_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5261,12 +5693,13 @@ networkmanager_list_organization_service_access_status <- function(MaxResults = 
     name = "ListOrganizationServiceAccessStatus",
     http_method = "GET",
     http_path = "/organizations/service-access",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$list_organization_service_access_status_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_organization_service_access_status_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5311,6 +5744,17 @@ networkmanager_list_organization_service_access_status <- function(MaxResults = 
 #'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "TRANSIT_GATEWAY_NOT_FOUND"|"TRANSIT_GATEWAY_PEERS_LIMIT_EXCEEDED"|"MISSING_PERMISSIONS"|"INTERNAL_ERROR"|"EDGE_LOCATION_PEER_DUPLICATE"|"INVALID_TRANSIT_GATEWAY_STATE",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string",
+#'           MissingPermissionsContext = list(
+#'             MissingPermission = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -5340,12 +5784,13 @@ networkmanager_list_peerings <- function(CoreNetworkId = NULL, PeeringType = NUL
     name = "ListPeerings",
     http_method = "GET",
     http_path = "/peerings",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Peerings")
   )
   input <- .networkmanager$list_peerings_input(CoreNetworkId = CoreNetworkId, PeeringType = PeeringType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_peerings_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5392,12 +5837,13 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .networkmanager$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5467,12 +5913,13 @@ networkmanager_put_core_network_policy <- function(CoreNetworkId, PolicyDocument
     name = "PutCoreNetworkPolicy",
     http_method = "POST",
     http_path = "/core-networks/{coreNetworkId}/core-network-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$put_core_network_policy_input(CoreNetworkId = CoreNetworkId, PolicyDocument = PolicyDocument, Description = Description, LatestVersionId = LatestVersionId, ClientToken = ClientToken)
   output <- .networkmanager$put_core_network_policy_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5511,12 +5958,13 @@ networkmanager_put_resource_policy <- function(PolicyDocument, ResourceArn) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/resource-policy/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$put_resource_policy_input(PolicyDocument = PolicyDocument, ResourceArn = ResourceArn)
   output <- .networkmanager$put_resource_policy_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5576,12 +6024,13 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
     name = "RegisterTransitGateway",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-registrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$register_transit_gateway_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayArn = TransitGatewayArn)
   output <- .networkmanager$register_transit_gateway_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5613,6 +6062,7 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #'     ResourceArn = "string",
 #'     AttachmentPolicyRuleNumber = 123,
 #'     SegmentName = "string",
+#'     NetworkFunctionGroupName = "string",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -5629,11 +6079,29 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string"
 #'     ),
+#'     ProposedNetworkFunctionGroupChange = list(
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AttachmentPolicyRuleNumber = 123,
+#'       NetworkFunctionGroupName = "string"
+#'     ),
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     UpdatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     LastModificationErrors = list(
+#'       list(
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'         Message = "string",
+#'         ResourceArn = "string",
+#'         RequestId = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -5656,12 +6124,13 @@ networkmanager_reject_attachment <- function(AttachmentId) {
     name = "RejectAttachment",
     http_method = "POST",
     http_path = "/attachments/{attachmentId}/reject",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$reject_attachment_input(AttachmentId = AttachmentId)
   output <- .networkmanager$reject_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5726,12 +6195,13 @@ networkmanager_restore_core_network_policy_version <- function(CoreNetworkId, Po
     name = "RestoreCoreNetworkPolicyVersion",
     http_method = "POST",
     http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions/{policyVersionId}/restore",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$restore_core_network_policy_version_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId)
   output <- .networkmanager$restore_core_network_policy_version_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5787,12 +6257,13 @@ networkmanager_start_organization_service_access_update <- function(Action) {
     name = "StartOrganizationServiceAccessUpdate",
     http_method = "POST",
     http_path = "/organizations/service-access",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$start_organization_service_access_update_input(Action = Action)
   output <- .networkmanager$start_organization_service_access_update_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5919,12 +6390,13 @@ networkmanager_start_route_analysis <- function(GlobalNetworkId, Source, Destina
     name = "StartRouteAnalysis",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/route-analyses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$start_route_analysis_input(GlobalNetworkId = GlobalNetworkId, Source = Source, Destination = Destination, IncludeReturnPath = IncludeReturnPath, UseMiddleboxes = UseMiddleboxes)
   output <- .networkmanager$start_route_analysis_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5968,12 +6440,13 @@ networkmanager_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .networkmanager$tag_resource_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6014,12 +6487,13 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .networkmanager$untag_resource_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6092,12 +6566,13 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
     name = "UpdateConnection",
     http_method = "PATCH",
     http_path = "/global-networks/{globalNetworkId}/connections/{connectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_connection_input(GlobalNetworkId = GlobalNetworkId, ConnectionId = ConnectionId, LinkId = LinkId, ConnectedLinkId = ConnectedLinkId, Description = Description)
   output <- .networkmanager$update_connection_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6139,6 +6614,22 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
 #'         )
 #'       )
 #'     ),
+#'     NetworkFunctionGroups = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         Segments = list(
+#'           SendVia = list(
+#'             "string"
+#'           ),
+#'           SendTo = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     Edges = list(
 #'       list(
 #'         EdgeLocation = "string",
@@ -6176,12 +6667,13 @@ networkmanager_update_core_network <- function(CoreNetworkId, Description = NULL
     name = "UpdateCoreNetwork",
     http_method = "PATCH",
     http_path = "/core-networks/{coreNetworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_core_network_input(CoreNetworkId = CoreNetworkId, Description = Description)
   output <- .networkmanager$update_core_network_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6288,12 +6780,13 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
     name = "UpdateDevice",
     http_method = "PATCH",
     http_path = "/global-networks/{globalNetworkId}/devices/{deviceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_device_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, AWSLocation = AWSLocation, Description = Description, Type = Type, Vendor = Vendor, Model = Model, SerialNumber = SerialNumber, Location = Location, SiteId = SiteId)
   output <- .networkmanager$update_device_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6354,12 +6847,13 @@ networkmanager_update_global_network <- function(GlobalNetworkId, Description = 
     name = "UpdateGlobalNetwork",
     http_method = "PATCH",
     http_path = "/global-networks/{globalNetworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_global_network_input(GlobalNetworkId = GlobalNetworkId, Description = Description)
   output <- .networkmanager$update_global_network_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6444,12 +6938,13 @@ networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NU
     name = "UpdateLink",
     http_method = "PATCH",
     http_path = "/global-networks/{globalNetworkId}/links/{linkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_link_input(GlobalNetworkId = GlobalNetworkId, LinkId = LinkId, Description = Description, Type = Type, Bandwidth = Bandwidth, Provider = Provider)
   output <- .networkmanager$update_link_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6501,12 +6996,13 @@ networkmanager_update_network_resource_metadata <- function(GlobalNetworkId, Res
     name = "UpdateNetworkResourceMetadata",
     http_method = "PATCH",
     http_path = "/global-networks/{globalNetworkId}/network-resources/{resourceArn}/metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_network_resource_metadata_input(GlobalNetworkId = GlobalNetworkId, ResourceArn = ResourceArn, Metadata = Metadata)
   output <- .networkmanager$update_network_resource_metadata_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6588,12 +7084,13 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
     name = "UpdateSite",
     http_method = "PATCH",
     http_path = "/global-networks/{globalNetworkId}/sites/{siteId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_site_input(GlobalNetworkId = GlobalNetworkId, SiteId = SiteId, Description = Description, Location = Location)
   output <- .networkmanager$update_site_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6630,6 +7127,7 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -6646,11 +7144,29 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #'         AttachmentPolicyRuleNumber = 123,
 #'         SegmentName = "string"
 #'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
 #'       )
 #'     ),
 #'     SubnetArns = list(
@@ -6691,12 +7207,13 @@ networkmanager_update_vpc_attachment <- function(AttachmentId, AddSubnetArns = N
     name = "UpdateVpcAttachment",
     http_method = "PATCH",
     http_path = "/vpc-attachments/{attachmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .networkmanager$update_vpc_attachment_input(AttachmentId = AttachmentId, AddSubnetArns = AddSubnetArns, RemoveSubnetArns = RemoveSubnetArns, Options = Options)
   output <- .networkmanager$update_vpc_attachment_output()
   config <- get_config()
-  svc <- .networkmanager$service(config)
+  svc <- .networkmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -2,8 +2,8 @@
 % Please edit documentation in R/codegurusecurity_operations.R
 \name{codegurusecurity_create_upload_url}
 \alias{codegurusecurity_create_upload_url}
-\title{Generates a pre-signed URL and request headers used to upload a code
-resource}
+\title{Generates a pre-signed URL, request headers used to upload a code
+resource, and code artifact identifier for the uploaded resource}
 \usage{
 codegurusecurity_create_upload_url(scanName)
 }
@@ -15,7 +15,7 @@ scans of the same resource. Use this \code{scanName} when you call
 upload to this URL.}
 }
 \description{
-Generates a pre-signed URL and request headers used to upload a code resource.
+Generates a pre-signed URL, request headers used to upload a code resource, and code artifact identifier for the uploaded resource.
 
 See \url{https://www.paws-r-sdk.com/docs/codegurusecurity_create_upload_url/} for full documentation.
 }

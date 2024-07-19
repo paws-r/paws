@@ -53,7 +53,7 @@ The following are the supported values for each volume type:
 \item \code{io2}: 100 - 256,000 IOPS
 }
 
-For \code{io2} volumes, you can achieve up to 256,000 IOPS on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{instances built on the Nitro System}.
+For \code{io2} volumes, you can achieve up to 256,000 IOPS on \href{https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html}{instances built on the Nitro System}.
 On other instances, you can achieve performance up to 32,000 IOPS.
 
 Default: The existing value is retained if you keep the same volume
@@ -69,7 +69,7 @@ type is \code{gp3}. Otherwise, the default value is 125.
 Valid Range: Minimum value of 125. Maximum value of 1000.}
 
 \item{MultiAttachEnabled}{Specifies whether to enable Amazon EBS Multi-Attach. If you enable
-Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}
+Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html}{Nitro-based instances}
 in the same Availability Zone. This parameter is supported with \code{io1}
 and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
 in the \emph{Amazon EBS User Guide}.}

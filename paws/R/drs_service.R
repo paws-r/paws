@@ -179,7 +179,7 @@ drs <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.drs$service <- function(config = list()) {
+.drs$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.drs$metadata, handlers, config)
+  new_service(.drs$metadata, handlers, config, op)
 }

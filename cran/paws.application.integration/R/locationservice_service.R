@@ -119,6 +119,7 @@ NULL
 #'  \link[=locationservice_describe_route_calculator]{describe_route_calculator} \tab Retrieves the route calculator resource details\cr
 #'  \link[=locationservice_describe_tracker]{describe_tracker} \tab Retrieves the tracker resource details\cr
 #'  \link[=locationservice_disassociate_tracker_consumer]{disassociate_tracker_consumer} \tab Removes the association between a tracker resource and a geofence collection\cr
+#'  \link[=locationservice_forecast_geofence_events]{forecast_geofence_events} \tab Evaluates device positions against geofence geometries from a given geofence collection\cr
 #'  \link[=locationservice_get_device_position]{get_device_position} \tab Retrieves a device's most recent position according to its sample time\cr
 #'  \link[=locationservice_get_device_position_history]{get_device_position_history} \tab Retrieves the device position history from a tracker resource within a specified range of time\cr
 #'  \link[=locationservice_get_geofence]{get_geofence} \tab Retrieves the geofence details from a geofence collection\cr
@@ -148,7 +149,8 @@ NULL
 #'  \link[=locationservice_update_map]{update_map} \tab Updates the specified properties of a given map resource\cr
 #'  \link[=locationservice_update_place_index]{update_place_index} \tab Updates the specified properties of a given place index resource\cr
 #'  \link[=locationservice_update_route_calculator]{update_route_calculator} \tab Updates the specified properties for a given route calculator resource\cr
-#'  \link[=locationservice_update_tracker]{update_tracker} \tab Updates the specified properties of a given tracker resource
+#'  \link[=locationservice_update_tracker]{update_tracker} \tab Updates the specified properties of a given tracker resource\cr
+#'  \link[=locationservice_verify_device_position]{verify_device_position} \tab Verifies the integrity of the device's position by determining if it was reported behind a proxy, and by comparing it to an inferred position estimated based on the device's state
 #' }
 #'
 #' @return
@@ -184,11 +186,11 @@ locationservice <- function(config = list(), credentials = list(), endpoint = NU
   service_id = "Location",
   api_version = "2020-11-19",
   signing_name = "geo",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 
-.locationservice$service <- function(config = list()) {
+.locationservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.locationservice$metadata, handlers, config)
+  new_service(.locationservice$metadata, handlers, config, op)
 }

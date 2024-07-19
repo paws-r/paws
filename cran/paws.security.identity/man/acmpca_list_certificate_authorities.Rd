@@ -6,16 +6,12 @@
 CreateCertificateAuthority action}
 \usage{
 acmpca_list_certificate_authorities(
-  NextToken = NULL,
   MaxResults = NULL,
+  NextToken = NULL,
   ResourceOwner = NULL
 )
 }
 \arguments{
-\item{NextToken}{Use this parameter when paginating results in a subsequent request after
-you receive a response with truncated results. Set it to the value of
-the \code{NextToken} parameter from the response you just received.}
-
 \item{MaxResults}{Use this parameter when paginating results to specify the maximum number
 of items to return in the response on each page. If additional items
 exist beyond the number you specify, the \code{NextToken} element is sent in
@@ -24,6 +20,10 @@ retrieve additional items.
 
 Although the maximum value is 1000, the action only returns a maximum of
 100 items.}
+
+\item{NextToken}{Use this parameter when paginating results in a subsequent request after
+you receive a response with truncated results. Set it to the value of
+the \code{NextToken} parameter from the response you just received.}
 
 \item{ResourceOwner}{Use this parameter to filter the returned set of certificate authorities
 based on their owner. The default is SELF.}

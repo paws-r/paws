@@ -27,7 +27,7 @@ controltower_enable_baseline(
 are supported as targets.}
 }
 \description{
-Enable (apply) a \code{Baseline} to a Target. This API starts an asynchronous operation to deploy resources specified by the \code{Baseline} to the specified Target.
+Enable (apply) a \code{Baseline} to a Target. This API starts an asynchronous operation to deploy resources specified by the \code{Baseline} to the specified Target. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_enable_baseline/} for full documentation.
 }

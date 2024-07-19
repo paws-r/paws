@@ -5,28 +5,24 @@
 \title{Updates the specified properties of a given tracker resource}
 \usage{
 locationservice_update_tracker(
-  Description = NULL,
-  EventBridgeEnabled = NULL,
-  KmsKeyEnableGeospatialQueries = NULL,
-  PositionFiltering = NULL,
+  TrackerName,
   PricingPlan = NULL,
   PricingPlanDataSource = NULL,
-  TrackerName
+  Description = NULL,
+  PositionFiltering = NULL,
+  EventBridgeEnabled = NULL,
+  KmsKeyEnableGeospatialQueries = NULL
 )
 }
 \arguments{
+\item{TrackerName}{[required] The name of the tracker resource to update.}
+
+\item{PricingPlan}{No longer used. If included, the only allowed value is
+\code{RequestBasedUsage}.}
+
+\item{PricingPlanDataSource}{This parameter is no longer used.}
+
 \item{Description}{Updates the description for the tracker resource.}
-
-\item{EventBridgeEnabled}{Whether to enable position \code{UPDATE} events from this tracker to be sent
-to EventBridge.
-
-You do not need enable this feature to get \code{ENTER} and \code{EXIT} events for
-geofences with this tracker. Those events are always sent to
-EventBridge.}
-
-\item{KmsKeyEnableGeospatialQueries}{Enables \code{GeospatialQueries} for a tracker that uses a \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
-
-This parameter is only used if you are using a KMS customer managed key.}
 
 \item{PositionFiltering}{Updates the position filtering for the tracker resource.
 
@@ -54,12 +50,16 @@ and can help control costs by reducing the number of geofence
 evaluations.
 }}
 
-\item{PricingPlan}{No longer used. If included, the only allowed value is
-\code{RequestBasedUsage}.}
+\item{EventBridgeEnabled}{Whether to enable position \code{UPDATE} events from this tracker to be sent
+to EventBridge.
 
-\item{PricingPlanDataSource}{This parameter is no longer used.}
+You do not need enable this feature to get \code{ENTER} and \code{EXIT} events for
+geofences with this tracker. Those events are always sent to
+EventBridge.}
 
-\item{TrackerName}{[required] The name of the tracker resource to update.}
+\item{KmsKeyEnableGeospatialQueries}{Enables \code{GeospatialQueries} for a tracker that uses a \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
+
+This parameter is only used if you are using a KMS customer managed key.}
 }
 \description{
 Updates the specified properties of a given tracker resource.

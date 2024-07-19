@@ -8,10 +8,9 @@ account in this Region}
 ec2_modify_ebs_default_kms_key_id(KmsKeyId, DryRun = NULL)
 }
 \arguments{
-\item{KmsKeyId}{[required] The identifier of the Key Management Service (KMS) KMS key to use for
-Amazon EBS encryption. If this parameter is not specified, your KMS key
-for Amazon EBS is used. If \code{KmsKeyId} is specified, the encrypted state
-must be \code{true}.
+\item{KmsKeyId}{[required] The identifier of the KMS key to use for Amazon EBS encryption. If this
+parameter is not specified, your KMS key for Amazon EBS is used. If
+\code{KmsKeyId} is specified, the encrypted state must be \code{true}.
 
 You can specify the KMS key using any of the following:
 \itemize{

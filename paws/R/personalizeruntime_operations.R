@@ -86,12 +86,13 @@ personalizeruntime_get_action_recommendations <- function(campaignArn = NULL, us
     name = "GetActionRecommendations",
     http_method = "POST",
     http_path = "/action-recommendations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeruntime$get_action_recommendations_input(campaignArn = campaignArn, userId = userId, numResults = numResults, filterArn = filterArn, filterValues = filterValues)
   output <- .personalizeruntime$get_action_recommendations_output()
   config <- get_config()
-  svc <- .personalizeruntime$service(config)
+  svc <- .personalizeruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -163,6 +164,9 @@ personalizeruntime_get_action_recommendations <- function(campaignArn = NULL, us
 #'       promotionName = "string",
 #'       metadata = list(
 #'         "string"
+#'       ),
+#'       reason = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -203,12 +207,13 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
     name = "GetPersonalizedRanking",
     http_method = "POST",
     http_path = "/personalize-ranking",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context, filterArn = filterArn, filterValues = filterValues, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_personalized_ranking_output()
   config <- get_config()
-  svc <- .personalizeruntime$service(config)
+  svc <- .personalizeruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -305,6 +310,9 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'       promotionName = "string",
 #'       metadata = list(
 #'         "string"
+#'       ),
+#'       reason = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -355,12 +363,13 @@ personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = 
     name = "GetRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn, promotions = promotions, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_recommendations_output()
   config <- get_config()
-  svc <- .personalizeruntime$service(config)
+  svc <- .personalizeruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

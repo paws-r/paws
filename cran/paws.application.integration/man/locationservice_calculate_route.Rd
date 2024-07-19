@@ -6,44 +6,25 @@
 DeparturePosition and DestinationPosition}
 \usage{
 locationservice_calculate_route(
-  ArrivalTime = NULL,
   CalculatorName,
-  CarModeOptions = NULL,
-  DepartNow = NULL,
   DeparturePosition,
-  DepartureTime = NULL,
   DestinationPosition,
+  WaypointPositions = NULL,
+  TravelMode = NULL,
+  DepartureTime = NULL,
+  DepartNow = NULL,
   DistanceUnit = NULL,
   IncludeLegGeometry = NULL,
-  Key = NULL,
-  OptimizeFor = NULL,
-  TravelMode = NULL,
+  CarModeOptions = NULL,
   TruckModeOptions = NULL,
-  WaypointPositions = NULL
+  ArrivalTime = NULL,
+  OptimizeFor = NULL,
+  Key = NULL
 )
 }
 \arguments{
-\item{ArrivalTime}{Specifies the desired time of arrival. Uses the given time to calculate
-the route. Otherwise, the best time of day to travel with the best
-traffic conditions is used to calculate the route.
-
-ArrivalTime is not supported Esri.}
-
 \item{CalculatorName}{[required] The name of the route calculator resource that you want to use to
 calculate the route.}
-
-\item{CarModeOptions}{Specifies route preferences when traveling by \code{Car}, such as avoiding
-routes that use ferries or tolls.
-
-Requirements: \code{TravelMode} must be specified as \code{Car}.}
-
-\item{DepartNow}{Sets the time of departure as the current time. Uses the current time to
-calculate a route. Otherwise, the best time of day to travel with the
-best traffic conditions is used to calculate the route.
-
-Default Value: \code{false}
-
-Valid Values: \code{false} | \code{true}}
 
 \item{DeparturePosition}{[required] The start position for the route. Defined in \href{https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84}{World Geodetic System (WGS 84)}
 format: \verb{[longitude, latitude]}.
@@ -59,15 +40,6 @@ error.
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
-\item{DepartureTime}{Specifies the desired time of departure. Uses the given time to
-calculate the route. Otherwise, the best time of day to travel with the
-best traffic conditions is used to calculate the route.
-\itemize{
-\item In \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601}
-format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example,
-\verb{2020–07-2T12:15:20.000Z+01:00}
-}}
-
 \item{DestinationPosition}{[required] The finish position for the route. Defined in \href{https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84}{World Geodetic System (WGS 84)}
 format: \verb{[longitude, latitude]}.
 \itemize{
@@ -79,21 +51,25 @@ Location \href{https://docs.aws.amazon.com/location/latest/developerguide/snap-t
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
-\item{DistanceUnit}{Set the unit system to specify the distance.
+\item{WaypointPositions}{Specifies an ordered list of up to 23 intermediate positions to include
+along a route between the departure position and destination position.
+\itemize{
+\item For example, from the \code{DeparturePosition} \verb{[-123.115, 49.285]}, the
+route follows the order that the waypoint positions are given
+\verb{[[-122.757, 49.0021],[-122.349, 47.620]]}
+}
 
-Default Value: \code{Kilometers}}
+If you specify a waypoint position that's not located on a road, Amazon
+Location \href{https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
 
-\item{IncludeLegGeometry}{Set to include the geometry details in the result for each path between
-a pair of positions.
+Specifying more than 23 waypoints returns a \verb{400 ValidationException}
+error.
 
-Default Value: \code{false}
+If Esri is the provider for your route calculator, specifying a route
+that is longer than 400 km returns a \verb{400 RoutesValidationException}
+error.
 
-Valid Values: \code{false} | \code{true}}
-
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
-to authorize the request.}
-
-\item{OptimizeFor}{Specifies the distance to optimize for when calculating a route.}
+Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
 \item{TravelMode}{Specifies the mode of transport when calculating a route. Used in
 estimating the speed of travel and road compatibility. You can choose
@@ -119,31 +95,55 @@ preferences:
 
 Default Value: \code{Car}}
 
+\item{DepartureTime}{Specifies the desired time of departure. Uses the given time to
+calculate the route. Otherwise, the best time of day to travel with the
+best traffic conditions is used to calculate the route.
+\itemize{
+\item In \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601}
+format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example,
+\verb{2020–07-2T12:15:20.000Z+01:00}
+}}
+
+\item{DepartNow}{Sets the time of departure as the current time. Uses the current time to
+calculate a route. Otherwise, the best time of day to travel with the
+best traffic conditions is used to calculate the route.
+
+Default Value: \code{false}
+
+Valid Values: \code{false} | \code{true}}
+
+\item{DistanceUnit}{Set the unit system to specify the distance.
+
+Default Value: \code{Kilometers}}
+
+\item{IncludeLegGeometry}{Set to include the geometry details in the result for each path between
+a pair of positions.
+
+Default Value: \code{false}
+
+Valid Values: \code{false} | \code{true}}
+
+\item{CarModeOptions}{Specifies route preferences when traveling by \code{Car}, such as avoiding
+routes that use ferries or tolls.
+
+Requirements: \code{TravelMode} must be specified as \code{Car}.}
+
 \item{TruckModeOptions}{Specifies route preferences when traveling by \code{Truck}, such as avoiding
 routes that use ferries or tolls, and truck specifications to consider
 when choosing an optimal road.
 
 Requirements: \code{TravelMode} must be specified as \code{Truck}.}
 
-\item{WaypointPositions}{Specifies an ordered list of up to 23 intermediate positions to include
-along a route between the departure position and destination position.
-\itemize{
-\item For example, from the \code{DeparturePosition} \verb{[-123.115, 49.285]}, the
-route follows the order that the waypoint positions are given
-\verb{[[-122.757, 49.0021],[-122.349, 47.620]]}
-}
+\item{ArrivalTime}{Specifies the desired time of arrival. Uses the given time to calculate
+the route. Otherwise, the best time of day to travel with the best
+traffic conditions is used to calculate the route.
 
-If you specify a waypoint position that's not located on a road, Amazon
-Location \href{https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
+ArrivalTime is not supported Esri.}
 
-Specifying more than 23 waypoints returns a \verb{400 ValidationException}
-error.
+\item{OptimizeFor}{Specifies the distance to optimize for when calculating a route.}
 
-If Esri is the provider for your route calculator, specifying a route
-that is longer than 400 km returns a \verb{400 RoutesValidationException}
-error.
-
-Valid Values: \verb{[-180 to 180,-90 to 90]}}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 }
 \description{
 \href{https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html}{Calculates a route} given the following required parameters: \code{DeparturePosition} and \code{DestinationPosition}. Requires that you first \href{https://docs.aws.amazon.com/location/latest/APIReference/API_CreateRouteCalculator.html}{create a route calculator resource}.

@@ -34,12 +34,13 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
     name = "AddApplicationCloudWatchLoggingOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOption = CloudWatchLoggingOption, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -70,12 +71,13 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
     name = "AddApplicationInput",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_input_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, Input = Input)
   output <- .kinesisanalyticsv2$add_application_input_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -113,12 +115,13 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
     name = "AddApplicationInputProcessingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_input_processing_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, InputId = InputId, InputProcessingConfiguration = InputProcessingConfiguration)
   output <- .kinesisanalyticsv2$add_application_input_processing_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -155,12 +158,13 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
     name = "AddApplicationOutput",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_output_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, Output = Output)
   output <- .kinesisanalyticsv2$add_application_output_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -195,12 +199,13 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
     name = "AddApplicationReferenceDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_reference_data_source_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ReferenceDataSource = ReferenceDataSource)
   output <- .kinesisanalyticsv2$add_application_reference_data_source_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -240,12 +245,13 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
     name = "AddApplicationVpcConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfiguration = VpcConfiguration, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_vpc_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -285,12 +291,13 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$create_application_input(ApplicationName = ApplicationName, ApplicationDescription = ApplicationDescription, RuntimeEnvironment = RuntimeEnvironment, ServiceExecutionRole = ServiceExecutionRole, ApplicationConfiguration = ApplicationConfiguration, CloudWatchLoggingOptions = CloudWatchLoggingOptions, Tags = Tags, ApplicationMode = ApplicationMode)
   output <- .kinesisanalyticsv2$create_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -318,12 +325,13 @@ kinesisanalyticsv2_create_application_presigned_url <- function(ApplicationName,
     name = "CreateApplicationPresignedUrl",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$create_application_presigned_url_input(ApplicationName = ApplicationName, UrlType = UrlType, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
   output <- .kinesisanalyticsv2$create_application_presigned_url_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -348,12 +356,13 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
     name = "CreateApplicationSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$create_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName)
   output <- .kinesisanalyticsv2$create_application_snapshot_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -380,12 +389,13 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
     name = "DeleteApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_input(ApplicationName = ApplicationName, CreateTimestamp = CreateTimestamp)
   output <- .kinesisanalyticsv2$delete_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -426,12 +436,13 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
     name = "DeleteApplicationCloudWatchLoggingOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOptionId = CloudWatchLoggingOptionId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -465,12 +476,13 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
     name = "DeleteApplicationInputProcessingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_input_processing_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, InputId = InputId)
   output <- .kinesisanalyticsv2$delete_application_input_processing_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -509,12 +521,13 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
     name = "DeleteApplicationOutput",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_output_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, OutputId = OutputId)
   output <- .kinesisanalyticsv2$delete_application_output_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -550,12 +563,13 @@ kinesisanalyticsv2_delete_application_reference_data_source <- function(Applicat
     name = "DeleteApplicationReferenceDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_reference_data_source_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ReferenceId = ReferenceId)
   output <- .kinesisanalyticsv2$delete_application_reference_data_source_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -582,12 +596,13 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
     name = "DeleteApplicationSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName, SnapshotCreationTimestamp = SnapshotCreationTimestamp)
   output <- .kinesisanalyticsv2$delete_application_snapshot_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -625,12 +640,13 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
     name = "DeleteApplicationVpcConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfigurationId = VpcConfigurationId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_vpc_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -657,17 +673,50 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
     name = "DescribeApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$describe_application_input(ApplicationName = ApplicationName, IncludeAdditionalDetails = IncludeAdditionalDetails)
   output <- .kinesisanalyticsv2$describe_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .kinesisanalyticsv2$operations$describe_application <- kinesisanalyticsv2_describe_application
+
+#' Returns information about a specific operation performed on a Managed
+#' Service for Apache Flink application
+#'
+#' @description
+#' Returns information about a specific operation performed on a Managed Service for Apache Flink application
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_operation/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_operation/) for full documentation.
+#'
+#' @param ApplicationName &#91;required&#93; 
+#' @param OperationId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_describe_application_operation
+kinesisanalyticsv2_describe_application_operation <- function(ApplicationName, OperationId) {
+  op <- new_operation(
+    name = "DescribeApplicationOperation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$describe_application_operation_input(ApplicationName = ApplicationName, OperationId = OperationId)
+  output <- .kinesisanalyticsv2$describe_application_operation_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$describe_application_operation <- kinesisanalyticsv2_describe_application_operation
 
 #' Returns information about a snapshot of application state data
 #'
@@ -688,12 +737,13 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
     name = "DescribeApplicationSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$describe_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName)
   output <- .kinesisanalyticsv2$describe_application_snapshot_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -721,12 +771,13 @@ kinesisanalyticsv2_describe_application_version <- function(ApplicationName, App
     name = "DescribeApplicationVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$describe_application_version_input(ApplicationName = ApplicationName, ApplicationVersionId = ApplicationVersionId)
   output <- .kinesisanalyticsv2$describe_application_version_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -760,17 +811,53 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
     name = "DiscoverInputSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$discover_input_schema_input(ResourceARN = ResourceARN, ServiceExecutionRole = ServiceExecutionRole, InputStartingPositionConfiguration = InputStartingPositionConfiguration, S3Configuration = S3Configuration, InputProcessingConfiguration = InputProcessingConfiguration)
   output <- .kinesisanalyticsv2$discover_input_schema_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .kinesisanalyticsv2$operations$discover_input_schema <- kinesisanalyticsv2_discover_input_schema
+
+#' Lists information about operations performed on a Managed Service for
+#' Apache Flink application
+#'
+#' @description
+#' Lists information about operations performed on a Managed Service for Apache Flink application
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_operations/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_operations/) for full documentation.
+#'
+#' @param ApplicationName &#91;required&#93; 
+#' @param Limit 
+#' @param NextToken 
+#' @param Operation 
+#' @param OperationStatus 
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_list_application_operations
+kinesisanalyticsv2_list_application_operations <- function(ApplicationName, Limit = NULL, NextToken = NULL, Operation = NULL, OperationStatus = NULL) {
+  op <- new_operation(
+    name = "ListApplicationOperations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationOperationInfoList")
+  )
+  input <- .kinesisanalyticsv2$list_application_operations_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken, Operation = Operation, OperationStatus = OperationStatus)
+  output <- .kinesisanalyticsv2$list_application_operations_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$list_application_operations <- kinesisanalyticsv2_list_application_operations
 
 #' Lists information about the current application snapshots
 #'
@@ -794,12 +881,13 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
     name = "ListApplicationSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "SnapshotSummaries")
   )
   input <- .kinesisanalyticsv2$list_application_snapshots_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_application_snapshots_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -831,12 +919,13 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
     name = "ListApplicationVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationVersionSummaries")
   )
   input <- .kinesisanalyticsv2$list_application_versions_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_application_versions_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -865,12 +954,13 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
     name = "ListApplications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationSummaries")
   )
   input <- .kinesisanalyticsv2$list_applications_input(Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_applications_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -894,12 +984,13 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .kinesisanalyticsv2$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -909,7 +1000,7 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #' Reverts the application to the previous running version
 #'
 #' @description
-#' Reverts the application to the previous running version. You can roll back an application if you suspect it is stuck in a transient status.
+#' Reverts the application to the previous running version. You can roll back an application if you suspect it is stuck in a transient status or in the running status.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_rollback_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_rollback_application/) for full documentation.
 #'
@@ -926,12 +1017,13 @@ kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentAppl
     name = "RollbackApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$rollback_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId)
   output <- .kinesisanalyticsv2$rollback_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -957,12 +1049,13 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
     name = "StartApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$start_application_input(ApplicationName = ApplicationName, RunConfiguration = RunConfiguration)
   output <- .kinesisanalyticsv2$start_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1000,12 +1093,13 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
     name = "StopApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$stop_application_input(ApplicationName = ApplicationName, Force = Force)
   output <- .kinesisanalyticsv2$stop_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1031,12 +1125,13 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .kinesisanalyticsv2$tag_resource_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1063,12 +1158,13 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .kinesisanalyticsv2$untag_resource_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1119,12 +1215,13 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$update_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ApplicationConfigurationUpdate = ApplicationConfigurationUpdate, ServiceExecutionRoleUpdate = ServiceExecutionRoleUpdate, RunConfigurationUpdate = RunConfigurationUpdate, CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdates, ConditionalToken = ConditionalToken, RuntimeEnvironmentUpdate = RuntimeEnvironmentUpdate)
   output <- .kinesisanalyticsv2$update_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1151,12 +1248,13 @@ kinesisanalyticsv2_update_application_maintenance_configuration <- function(Appl
     name = "UpdateApplicationMaintenanceConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$update_application_maintenance_configuration_input(ApplicationName = ApplicationName, ApplicationMaintenanceConfigurationUpdate = ApplicationMaintenanceConfigurationUpdate)
   output <- .kinesisanalyticsv2$update_application_maintenance_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

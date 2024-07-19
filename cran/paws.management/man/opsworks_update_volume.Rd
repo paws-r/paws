@@ -9,7 +9,7 @@ opsworks_update_volume(VolumeId, Name = NULL, MountPoint = NULL)
 \arguments{
 \item{VolumeId}{[required] The volume ID.}
 
-\item{Name}{The new name.}
+\item{Name}{The new name. Volume names can be a maximum of 128 characters.}
 
 \item{MountPoint}{The new mount point.}
 }

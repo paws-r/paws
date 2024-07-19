@@ -2,38 +2,51 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_update_maintenance_start_time}
 \alias{storagegateway_update_maintenance_start_time}
-\title{Updates a gateway's weekly maintenance start time information, including
-day and time of the week}
+\title{Updates a gateway's maintenance window schedule, with settings for
+monthly or weekly cadence, specific day and time to begin maintenance,
+and which types of updates to apply}
 \usage{
 storagegateway_update_maintenance_start_time(
   GatewayARN,
-  HourOfDay,
-  MinuteOfHour,
+  HourOfDay = NULL,
+  MinuteOfHour = NULL,
   DayOfWeek = NULL,
-  DayOfMonth = NULL
+  DayOfMonth = NULL,
+  SoftwareUpdatePreferences = NULL
 )
 }
 \arguments{
 \item{GatewayARN}{[required]}
 
-\item{HourOfDay}{[required] The hour component of the maintenance start time represented as \emph{hh},
+\item{HourOfDay}{The hour component of the maintenance start time represented as \emph{hh},
 where \emph{hh} is the hour (00 to 23). The hour of the day is in the time
 zone of the gateway.}
 
-\item{MinuteOfHour}{[required] The minute component of the maintenance start time represented as \emph{mm},
+\item{MinuteOfHour}{The minute component of the maintenance start time represented as \emph{mm},
 where \emph{mm} is the minute (00 to 59). The minute of the hour is in the
 time zone of the gateway.}
 
 \item{DayOfWeek}{The day of the week component of the maintenance start time week
 represented as an ordinal number from 0 to 6, where 0 represents Sunday
-and 6 Saturday.}
+and 6 represents Saturday.}
 
 \item{DayOfMonth}{The day of the month component of the maintenance start time represented
 as an ordinal number from 1 to 28, where 1 represents the first day of
-the month and 28 represents the last day of the month.}
+the month. It is not possible to set the maintenance schedule to start
+on days 29 through 31.}
+
+\item{SoftwareUpdatePreferences}{A set of variables indicating the software update preferences for the
+gateway.
+
+Includes \code{AutomaticUpdatePolicy} field with the following inputs:
+
+\code{ALL_VERSIONS} - Enables regular gateway maintenance updates.
+
+\code{EMERGENCY_VERSIONS_ONLY} - Disables regular gateway maintenance
+updates.}
 }
 \description{
-Updates a gateway's weekly maintenance start time information, including day and time of the week. The maintenance time is the time in your gateway's time zone.
+Updates a gateway's maintenance window schedule, with settings for monthly or weekly cadence, specific day and time to begin maintenance, and which types of updates to apply. Time configuration uses the gateway's time zone. You can pass values for a complete maintenance schedule, or update policy, or both. Previous values will persist for whichever setting you choose not to modify. If an incomplete or invalid maintenance schedule is passed, the entire request will be rejected with an error and no changes will occur.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_maintenance_start_time/} for full documentation.
 }

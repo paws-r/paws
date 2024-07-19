@@ -6,24 +6,30 @@
 including VISA PVV and IBM3624}
 \usage{
 paymentcryptographydataplane_verify_pin_data(
-  DukptAttributes = NULL,
-  EncryptedPinBlock,
+  VerificationKeyIdentifier,
   EncryptionKeyIdentifier,
+  VerificationAttributes,
+  EncryptedPinBlock,
+  PrimaryAccountNumber,
   PinBlockFormat,
   PinDataLength = NULL,
-  PrimaryAccountNumber,
-  VerificationAttributes,
-  VerificationKeyIdentifier
+  DukptAttributes = NULL
 )
 }
 \arguments{
-\item{DukptAttributes}{The attributes and values for the DUKPT encrypted PIN block data.}
+\item{VerificationKeyIdentifier}{[required] The \code{keyARN} of the PIN verification key.}
+
+\item{EncryptionKeyIdentifier}{[required] The \code{keyARN} of the encryption key under which the PIN block data is
+encrypted. This key type can be PEK or BDK.}
+
+\item{VerificationAttributes}{[required] The attributes and values for PIN data verification.}
 
 \item{EncryptedPinBlock}{[required] The encrypted PIN block data that Amazon Web Services Payment
 Cryptography verifies.}
 
-\item{EncryptionKeyIdentifier}{[required] The \code{keyARN} of the encryption key under which the PIN block data is
-encrypted. This key type can be PEK or BDK.}
+\item{PrimaryAccountNumber}{[required] The Primary Account Number (PAN), a unique identifier for a payment
+credit or debit card that associates the card with a specific account
+holder.}
 
 \item{PinBlockFormat}{[required] The PIN encoding format for pin data generation as specified in ISO
 9564. Amazon Web Services Payment Cryptography supports \code{ISO_Format_0}
@@ -38,13 +44,7 @@ that the fill digits are random values from 10 to 15.}
 
 \item{PinDataLength}{The length of PIN being verified.}
 
-\item{PrimaryAccountNumber}{[required] The Primary Account Number (PAN), a unique identifier for a payment
-credit or debit card that associates the card with a specific account
-holder.}
-
-\item{VerificationAttributes}{[required] The attributes and values for PIN data verification.}
-
-\item{VerificationKeyIdentifier}{[required] The \code{keyARN} of the PIN verification key.}
+\item{DukptAttributes}{The attributes and values for the DUKPT encrypted PIN block data.}
 }
 \description{
 Verifies pin-related data such as PIN and PIN Offset using algorithms including VISA PVV and IBM3624. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/verify-pin-data.html}{Verify PIN data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

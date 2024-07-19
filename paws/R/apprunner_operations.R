@@ -84,12 +84,13 @@ apprunner_associate_custom_domain <- function(ServiceArn, DomainName, EnableWWWS
     name = "AssociateCustomDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$associate_custom_domain_input(ServiceArn = ServiceArn, DomainName = DomainName, EnableWWWSubdomain = EnableWWWSubdomain)
   output <- .apprunner$associate_custom_domain_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -225,12 +226,13 @@ apprunner_create_auto_scaling_configuration <- function(AutoScalingConfiguration
     name = "CreateAutoScalingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$create_auto_scaling_configuration_input(AutoScalingConfigurationName = AutoScalingConfigurationName, MaxConcurrency = MaxConcurrency, MinSize = MinSize, MaxSize = MaxSize, Tags = Tags)
   output <- .apprunner$create_auto_scaling_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -299,12 +301,13 @@ apprunner_create_connection <- function(ConnectionName, ProviderType, Tags = NUL
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$create_connection_input(ConnectionName = ConnectionName, ProviderType = ProviderType, Tags = Tags)
   output <- .apprunner$create_connection_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -404,12 +407,13 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
     name = "CreateObservabilityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$create_observability_configuration_input(ObservabilityConfigurationName = ObservabilityConfigurationName, TraceConfiguration = TraceConfiguration, Tags = Tags)
   output <- .apprunner$create_observability_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -668,12 +672,13 @@ apprunner_create_service <- function(ServiceName, SourceConfiguration, InstanceC
     name = "CreateService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$create_service_input(ServiceName = ServiceName, SourceConfiguration = SourceConfiguration, InstanceConfiguration = InstanceConfiguration, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration, HealthCheckConfiguration = HealthCheckConfiguration, AutoScalingConfigurationArn = AutoScalingConfigurationArn, NetworkConfiguration = NetworkConfiguration, ObservabilityConfiguration = ObservabilityConfiguration)
   output <- .apprunner$create_service_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -759,12 +764,13 @@ apprunner_create_vpc_connector <- function(VpcConnectorName, Subnets, SecurityGr
     name = "CreateVpcConnector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$create_vpc_connector_input(VpcConnectorName = VpcConnectorName, Subnets = Subnets, SecurityGroups = SecurityGroups, Tags = Tags)
   output <- .apprunner$create_vpc_connector_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -846,12 +852,13 @@ apprunner_create_vpc_ingress_connection <- function(ServiceArn, VpcIngressConnec
     name = "CreateVpcIngressConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$create_vpc_ingress_connection_input(ServiceArn = ServiceArn, VpcIngressConnectionName = VpcIngressConnectionName, IngressVpcConfiguration = IngressVpcConfiguration, Tags = Tags)
   output <- .apprunner$create_vpc_ingress_connection_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -926,12 +933,13 @@ apprunner_delete_auto_scaling_configuration <- function(AutoScalingConfiguration
     name = "DeleteAutoScalingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$delete_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn, DeleteAllRevisions = DeleteAllRevisions)
   output <- .apprunner$delete_auto_scaling_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -984,12 +992,13 @@ apprunner_delete_connection <- function(ConnectionArn) {
     name = "DeleteConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$delete_connection_input(ConnectionArn = ConnectionArn)
   output <- .apprunner$delete_connection_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1054,12 +1063,13 @@ apprunner_delete_observability_configuration <- function(ObservabilityConfigurat
     name = "DeleteObservabilityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$delete_observability_configuration_input(ObservabilityConfigurationArn = ObservabilityConfigurationArn)
   output <- .apprunner$delete_observability_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1211,12 +1221,13 @@ apprunner_delete_service <- function(ServiceArn) {
     name = "DeleteService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$delete_service_input(ServiceArn = ServiceArn)
   output <- .apprunner$delete_service_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1279,12 +1290,13 @@ apprunner_delete_vpc_connector <- function(VpcConnectorArn) {
     name = "DeleteVpcConnector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$delete_vpc_connector_input(VpcConnectorArn = VpcConnectorArn)
   output <- .apprunner$delete_vpc_connector_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1355,12 +1367,13 @@ apprunner_delete_vpc_ingress_connection <- function(VpcIngressConnectionArn) {
     name = "DeleteVpcIngressConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$delete_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn)
   output <- .apprunner$delete_vpc_ingress_connection_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1427,12 +1440,13 @@ apprunner_describe_auto_scaling_configuration <- function(AutoScalingConfigurati
     name = "DescribeAutoScalingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$describe_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn)
   output <- .apprunner$describe_auto_scaling_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1514,12 +1528,13 @@ apprunner_describe_custom_domains <- function(ServiceArn, NextToken = NULL, MaxR
     name = "DescribeCustomDomains",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$describe_custom_domains_input(ServiceArn = ServiceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .apprunner$describe_custom_domains_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1584,12 +1599,13 @@ apprunner_describe_observability_configuration <- function(ObservabilityConfigur
     name = "DescribeObservabilityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$describe_observability_configuration_input(ObservabilityConfigurationArn = ObservabilityConfigurationArn)
   output <- .apprunner$describe_observability_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1732,12 +1748,13 @@ apprunner_describe_service <- function(ServiceArn) {
     name = "DescribeService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$describe_service_input(ServiceArn = ServiceArn)
   output <- .apprunner$describe_service_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1799,12 +1816,13 @@ apprunner_describe_vpc_connector <- function(VpcConnectorArn) {
     name = "DescribeVpcConnector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$describe_vpc_connector_input(VpcConnectorArn = VpcConnectorArn)
   output <- .apprunner$describe_vpc_connector_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1866,12 +1884,13 @@ apprunner_describe_vpc_ingress_connection <- function(VpcIngressConnectionArn) {
     name = "DescribeVpcIngressConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$describe_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn)
   output <- .apprunner$describe_vpc_ingress_connection_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1945,12 +1964,13 @@ apprunner_disassociate_custom_domain <- function(ServiceArn, DomainName) {
     name = "DisassociateCustomDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$disassociate_custom_domain_input(ServiceArn = ServiceArn, DomainName = DomainName)
   output <- .apprunner$disassociate_custom_domain_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2039,12 +2059,13 @@ apprunner_list_auto_scaling_configurations <- function(AutoScalingConfigurationN
     name = "ListAutoScalingConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_auto_scaling_configurations_input(AutoScalingConfigurationName = AutoScalingConfigurationName, LatestOnly = LatestOnly, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_auto_scaling_configurations_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2113,12 +2134,13 @@ apprunner_list_connections <- function(ConnectionName = NULL, MaxResults = NULL,
     name = "ListConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_connections_input(ConnectionName = ConnectionName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_connections_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2201,12 +2223,13 @@ apprunner_list_observability_configurations <- function(ObservabilityConfigurati
     name = "ListObservabilityConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_observability_configurations_input(ObservabilityConfigurationName = ObservabilityConfigurationName, LatestOnly = LatestOnly, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_observability_configurations_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2283,12 +2306,13 @@ apprunner_list_operations <- function(ServiceArn, NextToken = NULL, MaxResults =
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_operations_input(ServiceArn = ServiceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .apprunner$list_operations_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2358,12 +2382,13 @@ apprunner_list_services <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_services_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .apprunner$list_services_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2429,12 +2454,13 @@ apprunner_list_services_for_auto_scaling_configuration <- function(AutoScalingCo
     name = "ListServicesForAutoScalingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_services_for_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_services_for_auto_scaling_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2485,12 +2511,13 @@ apprunner_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .apprunner$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2565,12 +2592,13 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListVpcConnectors",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_vpc_connectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_vpc_connectors_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2637,12 +2665,13 @@ apprunner_list_vpc_ingress_connections <- function(Filter = NULL, MaxResults = N
     name = "ListVpcIngressConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_vpc_ingress_connections_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_vpc_ingress_connections_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2793,12 +2822,13 @@ apprunner_pause_service <- function(ServiceArn) {
     name = "PauseService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$pause_service_input(ServiceArn = ServiceArn)
   output <- .apprunner$pause_service_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2948,12 +2978,13 @@ apprunner_resume_service <- function(ServiceArn) {
     name = "ResumeService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$resume_service_input(ServiceArn = ServiceArn)
   output <- .apprunner$resume_service_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3010,12 +3041,13 @@ apprunner_start_deployment <- function(ServiceArn) {
     name = "StartDeployment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$start_deployment_input(ServiceArn = ServiceArn)
   output <- .apprunner$start_deployment_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3065,12 +3097,13 @@ apprunner_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .apprunner$tag_resource_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3114,12 +3147,13 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .apprunner$untag_resource_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3186,12 +3220,13 @@ apprunner_update_default_auto_scaling_configuration <- function(AutoScalingConfi
     name = "UpdateDefaultAutoScalingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$update_default_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn)
   output <- .apprunner$update_default_auto_scaling_configuration_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3444,12 +3479,13 @@ apprunner_update_service <- function(ServiceArn, SourceConfiguration = NULL, Ins
     name = "UpdateService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$update_service_input(ServiceArn = ServiceArn, SourceConfiguration = SourceConfiguration, InstanceConfiguration = InstanceConfiguration, AutoScalingConfigurationArn = AutoScalingConfigurationArn, HealthCheckConfiguration = HealthCheckConfiguration, NetworkConfiguration = NetworkConfiguration, ObservabilityConfiguration = ObservabilityConfiguration)
   output <- .apprunner$update_service_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3524,12 +3560,13 @@ apprunner_update_vpc_ingress_connection <- function(VpcIngressConnectionArn, Ing
     name = "UpdateVpcIngressConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apprunner$update_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn, IngressVpcConfiguration = IngressVpcConfiguration)
   output <- .apprunner$update_vpc_ingress_connection_output()
   config <- get_config()
-  svc <- .apprunner$service(config)
+  svc <- .apprunner$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

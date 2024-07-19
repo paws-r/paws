@@ -169,7 +169,7 @@ connectcases <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.connectcases$service <- function(config = list()) {
+.connectcases$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.connectcases$metadata, handlers, config)
+  new_service(.connectcases$metadata, handlers, config, op)
 }

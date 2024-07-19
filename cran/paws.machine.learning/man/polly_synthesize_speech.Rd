@@ -17,35 +17,19 @@ polly_synthesize_speech(
 )
 }
 \arguments{
-\item{Engine}{Specifies the engine (\code{standard}, \code{neural} or \code{long-form}) for Amazon
-Polly to use when processing input text for speech synthesis. For
-information on Amazon Polly voices and which voices are available for
-each engine, see \href{https://docs.aws.amazon.com/polly/latest/dg/voicelist.html}{Available Voices}.
-
-\strong{NTTS-only voices}
-
-When using NTTS-only voices such as Kevin (en-US), this parameter is
-required and must be set to \code{neural}. If the engine is not specified, or
-is set to \code{standard}, this will result in an error.
-
-\strong{long-form-only voices}
-
-When using long-form-only voices such as Danielle (en-US), this
-parameter is required and must be set to \code{long-form}. If the engine is
-not specified, or is set to \code{standard} or \code{neural}, this will result in
-an error.
+\item{Engine}{Specifies the engine (\code{standard}, \code{neural}, \code{long-form}, or
+\code{generative}) for Amazon Polly to use when processing input text for
+speech synthesis. Provide an engine that is supported by the voice you
+select. If you don't provide an engine, the standard engine is selected
+by default. If a chosen voice isn't supported by the standard engine,
+this will result in an error. For information on Amazon Polly voices and
+which voices are available for each engine, see \href{https://docs.aws.amazon.com/polly/latest/dg/available-voices.html}{Available Voices}.
 
 Type: String
 
-Valid Values: \code{standard} | \code{neural} | \code{long-form}
+Valid Values: \code{standard} | \code{neural} | \code{long-form} | \code{generative}
 
-Required: Yes
-
-\strong{Standard voices}
-
-For standard voices, this is not required; the engine parameter defaults
-to \code{standard}. If the engine is not specified, or is set to \code{standard}
-and an NTTS-only voice is selected, this will result in an error.}
+Required: Yes}
 
 \item{LanguageCode}{Optional language code for the Synthesize Speech request. This is only
 necessary if using a bilingual voice, such as Aditi, which can be used
@@ -75,7 +59,8 @@ When pcm is used, the content returned is audio/pcm in a signed 16-bit,
 The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
 and "24000". The default value for standard voices is "22050". The
 default value for neural voices is "24000". The default value for
-long-form voices is "24000".
+long-form voices is "24000". The default value for generative voices is
+"24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
 "16000".}

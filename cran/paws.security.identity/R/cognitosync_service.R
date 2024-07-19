@@ -24,9 +24,8 @@ NULL
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
-#' Android](https://docs.amplify.aws/android/start/getting-started/introduction/)
-#' and the [Developer Guide for
-#' iOS](https://docs.amplify.aws/swift/start/getting-started/introduction/).
+#' Android](https://docs.amplify.aws/android/) and the [Developer Guide for
+#' iOS](https://docs.amplify.aws/swift/).
 #'
 #' @param
 #' config
@@ -167,7 +166,7 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = ""
 )
 
-.cognitosync$service <- function(config = list()) {
+.cognitosync$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.cognitosync$metadata, handlers, config)
+  new_service(.cognitosync$metadata, handlers, config, op)
 }

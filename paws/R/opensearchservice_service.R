@@ -198,7 +198,7 @@ opensearchservice <- function(config = list(), credentials = list(), endpoint = 
   target_prefix = ""
 )
 
-.opensearchservice$service <- function(config = list()) {
+.opensearchservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.opensearchservice$metadata, handlers, config)
+  new_service(.opensearchservice$metadata, handlers, config, op)
 }

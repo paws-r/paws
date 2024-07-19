@@ -34,12 +34,13 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
     name = "DescribeAffectedAccountsForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "eventScopeCode"), output_token = "nextToken", result_key = "affectedAccounts")
   )
   input <- .health$describe_affected_accounts_for_organization_input(eventArn = eventArn, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_accounts_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -74,12 +75,13 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
     name = "DescribeAffectedEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "entities")
   )
   input <- .health$describe_affected_entities_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_entities_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -116,12 +118,13 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
     name = "DescribeAffectedEntitiesForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "failedSet"), output_token = "nextToken", result_key = "entities")
   )
   input <- .health$describe_affected_entities_for_organization_input(organizationEntityFilters = organizationEntityFilters, locale = locale, nextToken = nextToken, maxResults = maxResults, organizationEntityAccountFilters = organizationEntityAccountFilters)
   output <- .health$describe_affected_entities_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -147,12 +150,13 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
     name = "DescribeEntityAggregates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "entityAggregates")
   )
   input <- .health$describe_entity_aggregates_input(eventArns = eventArns)
   output <- .health$describe_entity_aggregates_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -180,12 +184,13 @@ health_describe_entity_aggregates_for_organization <- function(eventArns, awsAcc
     name = "DescribeEntityAggregatesForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .health$describe_entity_aggregates_for_organization_input(eventArns = eventArns, awsAccountIds = awsAccountIds)
   output <- .health$describe_entity_aggregates_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -218,12 +223,13 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
     name = "DescribeEventAggregates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventAggregates")
   )
   input <- .health$describe_event_aggregates_input(filter = filter, aggregateField = aggregateField, maxResults = maxResults, nextToken = nextToken)
   output <- .health$describe_event_aggregates_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -250,12 +256,13 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
     name = "DescribeEventDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .health$describe_event_details_input(eventArns = eventArns, locale = locale)
   output <- .health$describe_event_details_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -283,12 +290,13 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
     name = "DescribeEventDetailsForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .health$describe_event_details_for_organization_input(organizationEventDetailFilters = organizationEventDetailFilters, locale = locale)
   output <- .health$describe_event_details_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -324,12 +332,13 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
     name = "DescribeEventTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTypes")
   )
   input <- .health$describe_event_types_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_event_types_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -362,12 +371,13 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
   )
   input <- .health$describe_events_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -401,12 +411,13 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
     name = "DescribeEventsForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
   )
   input <- .health$describe_events_for_organization_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -431,12 +442,13 @@ health_describe_health_service_status_for_organization <- function() {
     name = "DescribeHealthServiceStatusForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .health$describe_health_service_status_for_organization_input()
   output <- .health$describe_health_service_status_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -460,12 +472,13 @@ health_disable_health_service_access_for_organization <- function() {
     name = "DisableHealthServiceAccessForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .health$disable_health_service_access_for_organization_input()
   output <- .health$disable_health_service_access_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -489,12 +502,13 @@ health_enable_health_service_access_for_organization <- function() {
     name = "EnableHealthServiceAccessForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .health$enable_health_service_access_for_organization_input()
   output <- .health$enable_health_service_access_for_organization_output()
   config <- get_config()
-  svc <- .health$service(config)
+  svc <- .health$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

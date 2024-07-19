@@ -19,7 +19,20 @@ just like any other contact attributes.
 
 You can have up to 32,768 UTF-8 bytes across all attributes for a
 contact. Attribute keys can include only alphanumeric, dash, and
-underscore characters.}
+underscore characters.
+
+When the attributes for a contact exceed 32 KB, the contact is routed
+down the Error branch of the flow. As a mitigation, consider the
+following options:
+\itemize{
+\item Remove unnecessary attributes by setting their values to empty.
+\item If the attributes are only used in one flow and don't need to be
+referred to outside of that flow (for example, by a Lambda or
+another flow), then use flow attributes. This way you aren't
+needlessly persisting the 32 KB of information from one flow to
+another. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/set-contact-attributes.html}{Flow block: Set contact attributes}
+in the \emph{Amazon Connect Administrator Guide}.
+}}
 }
 \description{
 Creates or updates user-defined contact attributes associated with the specified contact.

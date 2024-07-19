@@ -21,12 +21,13 @@ workspacesweb_associate_browser_settings <- function(browserSettingsArn, portalA
     name = "AssociateBrowserSettings",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}/browserSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$associate_browser_settings_input(browserSettingsArn = browserSettingsArn, portalArn = portalArn)
   output <- .workspacesweb$associate_browser_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -51,12 +52,13 @@ workspacesweb_associate_ip_access_settings <- function(ipAccessSettingsArn, port
     name = "AssociateIpAccessSettings",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}/ipAccessSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$associate_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn, portalArn = portalArn)
   output <- .workspacesweb$associate_ip_access_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -81,12 +83,13 @@ workspacesweb_associate_network_settings <- function(networkSettingsArn, portalA
     name = "AssociateNetworkSettings",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}/networkSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$associate_network_settings_input(networkSettingsArn = networkSettingsArn, portalArn = portalArn)
   output <- .workspacesweb$associate_network_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -111,12 +114,13 @@ workspacesweb_associate_trust_store <- function(portalArn, trustStoreArn) {
     name = "AssociateTrustStore",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}/trustStores",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$associate_trust_store_input(portalArn = portalArn, trustStoreArn = trustStoreArn)
   output <- .workspacesweb$associate_trust_store_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -141,12 +145,13 @@ workspacesweb_associate_user_access_logging_settings <- function(portalArn, user
     name = "AssociateUserAccessLoggingSettings",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}/userAccessLoggingSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$associate_user_access_logging_settings_input(portalArn = portalArn, userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
   output <- .workspacesweb$associate_user_access_logging_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -171,12 +176,13 @@ workspacesweb_associate_user_settings <- function(portalArn, userSettingsArn) {
     name = "AssociateUserSettings",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}/userSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$associate_user_settings_input(portalArn = portalArn, userSettingsArn = userSettingsArn)
   output <- .workspacesweb$associate_user_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -214,12 +220,13 @@ workspacesweb_create_browser_settings <- function(additionalEncryptionContext = 
     name = "CreateBrowserSettings",
     http_method = "POST",
     http_path = "/browserSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$create_browser_settings_input(additionalEncryptionContext = additionalEncryptionContext, browserPolicy = browserPolicy, clientToken = clientToken, customerManagedKey = customerManagedKey, tags = tags)
   output <- .workspacesweb$create_browser_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -314,21 +321,24 @@ workspacesweb_create_browser_settings <- function(additionalEncryptionContext = 
 #' @param identityProviderName &#91;required&#93; The identity provider name.
 #' @param identityProviderType &#91;required&#93; The identity provider type.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param tags The tags to add to the identity provider resource. A tag is a key-value
+#' pair.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_identity_provider
-workspacesweb_create_identity_provider <- function(clientToken = NULL, identityProviderDetails, identityProviderName, identityProviderType, portalArn) {
+workspacesweb_create_identity_provider <- function(clientToken = NULL, identityProviderDetails, identityProviderName, identityProviderType, portalArn, tags = NULL) {
   op <- new_operation(
     name = "CreateIdentityProvider",
     http_method = "POST",
     http_path = "/identityProviders",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .workspacesweb$create_identity_provider_input(clientToken = clientToken, identityProviderDetails = identityProviderDetails, identityProviderName = identityProviderName, identityProviderType = identityProviderType, portalArn = portalArn)
+  input <- .workspacesweb$create_identity_provider_input(clientToken = clientToken, identityProviderDetails = identityProviderDetails, identityProviderName = identityProviderName, identityProviderType = identityProviderType, portalArn = portalArn, tags = tags)
   output <- .workspacesweb$create_identity_provider_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -356,7 +366,7 @@ workspacesweb_create_identity_provider <- function(clientToken = NULL, identityP
 #' @param description The description of the IP access settings.
 #' @param displayName The display name of the IP access settings.
 #' @param ipRules &#91;required&#93; The IP rules of the IP access settings.
-#' @param tags The tags to add to the browser settings resource. A tag is a key-value
+#' @param tags The tags to add to the IP access settings resource. A tag is a key-value
 #' pair.
 #'
 #' @keywords internal
@@ -367,12 +377,13 @@ workspacesweb_create_ip_access_settings <- function(additionalEncryptionContext 
     name = "CreateIpAccessSettings",
     http_method = "POST",
     http_path = "/ipAccessSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$create_ip_access_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, customerManagedKey = customerManagedKey, description = description, displayName = displayName, ipRules = ipRules, tags = tags)
   output <- .workspacesweb$create_ip_access_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -412,12 +423,13 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
     name = "CreateNetworkSettings",
     http_method = "POST",
     http_path = "/networkSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$create_network_settings_input(clientToken = clientToken, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, vpcId = vpcId)
   output <- .workspacesweb$create_network_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -468,12 +480,13 @@ workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, auth
     name = "CreatePortal",
     http_method = "POST",
     http_path = "/portals",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$create_portal_input(additionalEncryptionContext = additionalEncryptionContext, authenticationType = authenticationType, clientToken = clientToken, customerManagedKey = customerManagedKey, displayName = displayName, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, tags = tags)
   output <- .workspacesweb$create_portal_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -506,12 +519,13 @@ workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL
     name = "CreateTrustStore",
     http_method = "POST",
     http_path = "/trustStores",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$create_trust_store_input(certificateList = certificateList, clientToken = clientToken, tags = tags)
   output <- .workspacesweb$create_trust_store_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -546,12 +560,13 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
     name = "CreateUserAccessLoggingSettings",
     http_method = "POST",
     http_path = "/userAccessLoggingSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$create_user_access_logging_settings_input(clientToken = clientToken, kinesisStreamArn = kinesisStreamArn, tags = tags)
   output <- .workspacesweb$create_user_access_logging_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -581,6 +596,8 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #' the local device.
 #' @param customerManagedKey The customer managed key used to encrypt sensitive information in the
 #' user settings.
+#' @param deepLinkAllowed Specifies whether the user can use deep links that open automatically
+#' when connecting to a session.
 #' @param disconnectTimeoutInMinutes The amount of time that a streaming session remains active after users
 #' disconnect.
 #' @param downloadAllowed &#91;required&#93; Specifies whether the user can download files from the streaming session
@@ -599,17 +616,18 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_user_settings
-workspacesweb_create_user_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed, customerManagedKey = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed, printAllowed, tags = NULL, uploadAllowed) {
+workspacesweb_create_user_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed, customerManagedKey = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed, printAllowed, tags = NULL, uploadAllowed) {
   op <- new_operation(
     name = "CreateUserSettings",
     http_method = "POST",
     http_path = "/userSettings",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .workspacesweb$create_user_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, customerManagedKey = customerManagedKey, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, tags = tags, uploadAllowed = uploadAllowed)
+  input <- .workspacesweb$create_user_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, customerManagedKey = customerManagedKey, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, tags = tags, uploadAllowed = uploadAllowed)
   output <- .workspacesweb$create_user_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -633,12 +651,13 @@ workspacesweb_delete_browser_settings <- function(browserSettingsArn) {
     name = "DeleteBrowserSettings",
     http_method = "DELETE",
     http_path = "/browserSettings/{browserSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_browser_settings_input(browserSettingsArn = browserSettingsArn)
   output <- .workspacesweb$delete_browser_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -662,12 +681,13 @@ workspacesweb_delete_identity_provider <- function(identityProviderArn) {
     name = "DeleteIdentityProvider",
     http_method = "DELETE",
     http_path = "/identityProviders/{identityProviderArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_identity_provider_input(identityProviderArn = identityProviderArn)
   output <- .workspacesweb$delete_identity_provider_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -691,12 +711,13 @@ workspacesweb_delete_ip_access_settings <- function(ipAccessSettingsArn) {
     name = "DeleteIpAccessSettings",
     http_method = "DELETE",
     http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn)
   output <- .workspacesweb$delete_ip_access_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -720,12 +741,13 @@ workspacesweb_delete_network_settings <- function(networkSettingsArn) {
     name = "DeleteNetworkSettings",
     http_method = "DELETE",
     http_path = "/networkSettings/{networkSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_network_settings_input(networkSettingsArn = networkSettingsArn)
   output <- .workspacesweb$delete_network_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -749,12 +771,13 @@ workspacesweb_delete_portal <- function(portalArn) {
     name = "DeletePortal",
     http_method = "DELETE",
     http_path = "/portals/{portalArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_portal_input(portalArn = portalArn)
   output <- .workspacesweb$delete_portal_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -778,12 +801,13 @@ workspacesweb_delete_trust_store <- function(trustStoreArn) {
     name = "DeleteTrustStore",
     http_method = "DELETE",
     http_path = "/trustStores/{trustStoreArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_trust_store_input(trustStoreArn = trustStoreArn)
   output <- .workspacesweb$delete_trust_store_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -807,12 +831,13 @@ workspacesweb_delete_user_access_logging_settings <- function(userAccessLoggingS
     name = "DeleteUserAccessLoggingSettings",
     http_method = "DELETE",
     http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
   output <- .workspacesweb$delete_user_access_logging_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -836,12 +861,13 @@ workspacesweb_delete_user_settings <- function(userSettingsArn) {
     name = "DeleteUserSettings",
     http_method = "DELETE",
     http_path = "/userSettings/{userSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$delete_user_settings_input(userSettingsArn = userSettingsArn)
   output <- .workspacesweb$delete_user_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -865,12 +891,13 @@ workspacesweb_disassociate_browser_settings <- function(portalArn) {
     name = "DisassociateBrowserSettings",
     http_method = "DELETE",
     http_path = "/portals/{portalArn+}/browserSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$disassociate_browser_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_browser_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -894,12 +921,13 @@ workspacesweb_disassociate_ip_access_settings <- function(portalArn) {
     name = "DisassociateIpAccessSettings",
     http_method = "DELETE",
     http_path = "/portals/{portalArn+}/ipAccessSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$disassociate_ip_access_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_ip_access_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -923,12 +951,13 @@ workspacesweb_disassociate_network_settings <- function(portalArn) {
     name = "DisassociateNetworkSettings",
     http_method = "DELETE",
     http_path = "/portals/{portalArn+}/networkSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$disassociate_network_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_network_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -952,12 +981,13 @@ workspacesweb_disassociate_trust_store <- function(portalArn) {
     name = "DisassociateTrustStore",
     http_method = "DELETE",
     http_path = "/portals/{portalArn+}/trustStores",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$disassociate_trust_store_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_trust_store_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -981,12 +1011,13 @@ workspacesweb_disassociate_user_access_logging_settings <- function(portalArn) {
     name = "DisassociateUserAccessLoggingSettings",
     http_method = "DELETE",
     http_path = "/portals/{portalArn+}/userAccessLoggingSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$disassociate_user_access_logging_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_user_access_logging_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1010,12 +1041,13 @@ workspacesweb_disassociate_user_settings <- function(portalArn) {
     name = "DisassociateUserSettings",
     http_method = "DELETE",
     http_path = "/portals/{portalArn+}/userSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$disassociate_user_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_user_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1039,12 +1071,13 @@ workspacesweb_get_browser_settings <- function(browserSettingsArn) {
     name = "GetBrowserSettings",
     http_method = "GET",
     http_path = "/browserSettings/{browserSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_browser_settings_input(browserSettingsArn = browserSettingsArn)
   output <- .workspacesweb$get_browser_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1068,12 +1101,13 @@ workspacesweb_get_identity_provider <- function(identityProviderArn) {
     name = "GetIdentityProvider",
     http_method = "GET",
     http_path = "/identityProviders/{identityProviderArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_identity_provider_input(identityProviderArn = identityProviderArn)
   output <- .workspacesweb$get_identity_provider_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1097,12 +1131,13 @@ workspacesweb_get_ip_access_settings <- function(ipAccessSettingsArn) {
     name = "GetIpAccessSettings",
     http_method = "GET",
     http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn)
   output <- .workspacesweb$get_ip_access_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1126,12 +1161,13 @@ workspacesweb_get_network_settings <- function(networkSettingsArn) {
     name = "GetNetworkSettings",
     http_method = "GET",
     http_path = "/networkSettings/{networkSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_network_settings_input(networkSettingsArn = networkSettingsArn)
   output <- .workspacesweb$get_network_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1155,12 +1191,13 @@ workspacesweb_get_portal <- function(portalArn) {
     name = "GetPortal",
     http_method = "GET",
     http_path = "/portals/{portalArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_portal_input(portalArn = portalArn)
   output <- .workspacesweb$get_portal_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1184,12 +1221,13 @@ workspacesweb_get_portal_service_provider_metadata <- function(portalArn) {
     name = "GetPortalServiceProviderMetadata",
     http_method = "GET",
     http_path = "/portalIdp/{portalArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_portal_service_provider_metadata_input(portalArn = portalArn)
   output <- .workspacesweb$get_portal_service_provider_metadata_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1213,12 +1251,13 @@ workspacesweb_get_trust_store <- function(trustStoreArn) {
     name = "GetTrustStore",
     http_method = "GET",
     http_path = "/trustStores/{trustStoreArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_trust_store_input(trustStoreArn = trustStoreArn)
   output <- .workspacesweb$get_trust_store_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1243,12 +1282,13 @@ workspacesweb_get_trust_store_certificate <- function(thumbprint, trustStoreArn)
     name = "GetTrustStoreCertificate",
     http_method = "GET",
     http_path = "/trustStores/{trustStoreArn+}/certificate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_trust_store_certificate_input(thumbprint = thumbprint, trustStoreArn = trustStoreArn)
   output <- .workspacesweb$get_trust_store_certificate_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1272,12 +1312,13 @@ workspacesweb_get_user_access_logging_settings <- function(userAccessLoggingSett
     name = "GetUserAccessLoggingSettings",
     http_method = "GET",
     http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
   output <- .workspacesweb$get_user_access_logging_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1301,12 +1342,13 @@ workspacesweb_get_user_settings <- function(userSettingsArn) {
     name = "GetUserSettings",
     http_method = "GET",
     http_path = "/userSettings/{userSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$get_user_settings_input(userSettingsArn = userSettingsArn)
   output <- .workspacesweb$get_user_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1332,12 +1374,13 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
     name = "ListBrowserSettings",
     http_method = "GET",
     http_path = "/browserSettings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_browser_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_browser_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1364,12 +1407,13 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
     name = "ListIdentityProviders",
     http_method = "GET",
     http_path = "/portals/{portalArn+}/identityProviders",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_identity_providers_input(maxResults = maxResults, nextToken = nextToken, portalArn = portalArn)
   output <- .workspacesweb$list_identity_providers_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1395,12 +1439,13 @@ workspacesweb_list_ip_access_settings <- function(maxResults = NULL, nextToken =
     name = "ListIpAccessSettings",
     http_method = "GET",
     http_path = "/ipAccessSettings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_ip_access_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_ip_access_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1426,12 +1471,13 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
     name = "ListNetworkSettings",
     http_method = "GET",
     http_path = "/networkSettings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_network_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_network_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1457,12 +1503,13 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListPortals",
     http_method = "GET",
     http_path = "/portals",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_portals_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_portals_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1486,12 +1533,13 @@ workspacesweb_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .workspacesweb$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1518,12 +1566,13 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
     name = "ListTrustStoreCertificates",
     http_method = "GET",
     http_path = "/trustStores/{trustStoreArn+}/certificates",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_trust_store_certificates_input(maxResults = maxResults, nextToken = nextToken, trustStoreArn = trustStoreArn)
   output <- .workspacesweb$list_trust_store_certificates_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1549,12 +1598,13 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
     name = "ListTrustStores",
     http_method = "GET",
     http_path = "/trustStores",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_trust_stores_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_trust_stores_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1580,12 +1630,13 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
     name = "ListUserAccessLoggingSettings",
     http_method = "GET",
     http_path = "/userAccessLoggingSettings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_user_access_logging_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_user_access_logging_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1611,12 +1662,13 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
     name = "ListUserSettings",
     http_method = "GET",
     http_path = "/userSettings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_user_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_user_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1649,12 +1701,13 @@ workspacesweb_tag_resource <- function(clientToken = NULL, resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$tag_resource_input(clientToken = clientToken, resourceArn = resourceArn, tags = tags)
   output <- .workspacesweb$tag_resource_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1679,12 +1732,13 @@ workspacesweb_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .workspacesweb$untag_resource_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1718,12 +1772,13 @@ workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserS
     name = "UpdateBrowserSettings",
     http_method = "PATCH",
     http_path = "/browserSettings/{browserSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$update_browser_settings_input(browserPolicy = browserPolicy, browserSettingsArn = browserSettingsArn, clientToken = clientToken)
   output <- .workspacesweb$update_browser_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1826,12 +1881,13 @@ workspacesweb_update_identity_provider <- function(clientToken = NULL, identityP
     name = "UpdateIdentityProvider",
     http_method = "PATCH",
     http_path = "/identityProviders/{identityProviderArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$update_identity_provider_input(clientToken = clientToken, identityProviderArn = identityProviderArn, identityProviderDetails = identityProviderDetails, identityProviderName = identityProviderName, identityProviderType = identityProviderType)
   output <- .workspacesweb$update_identity_provider_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1866,12 +1922,13 @@ workspacesweb_update_ip_access_settings <- function(clientToken = NULL, descript
     name = "UpdateIpAccessSettings",
     http_method = "PATCH",
     http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$update_ip_access_settings_input(clientToken = clientToken, description = description, displayName = displayName, ipAccessSettingsArn = ipAccessSettingsArn, ipRules = ipRules)
   output <- .workspacesweb$update_ip_access_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1909,12 +1966,13 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
     name = "UpdateNetworkSettings",
     http_method = "PATCH",
     http_path = "/networkSettings/{networkSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$update_network_settings_input(clientToken = clientToken, networkSettingsArn = networkSettingsArn, securityGroupIds = securityGroupIds, subnetIds = subnetIds, vpcId = vpcId)
   output <- .workspacesweb$update_network_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1955,12 +2013,13 @@ workspacesweb_update_portal <- function(authenticationType = NULL, displayName =
     name = "UpdatePortal",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$update_portal_input(authenticationType = authenticationType, displayName = displayName, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, portalArn = portalArn)
   output <- .workspacesweb$update_portal_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1994,12 +2053,13 @@ workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certifica
     name = "UpdateTrustStore",
     http_method = "PATCH",
     http_path = "/trustStores/{trustStoreArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$update_trust_store_input(certificatesToAdd = certificatesToAdd, certificatesToDelete = certificatesToDelete, clientToken = clientToken, trustStoreArn = trustStoreArn)
   output <- .workspacesweb$update_trust_store_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2032,12 +2092,13 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
     name = "UpdateUserAccessLoggingSettings",
     http_method = "PATCH",
     http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspacesweb$update_user_access_logging_settings_input(clientToken = clientToken, kinesisStreamArn = kinesisStreamArn, userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
   output <- .workspacesweb$update_user_access_logging_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2066,6 +2127,8 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #' null.
 #' @param copyAllowed Specifies whether the user can copy text from the streaming session to
 #' the local device.
+#' @param deepLinkAllowed Specifies whether the user can use deep links that open automatically
+#' when connecting to a session.
 #' @param disconnectTimeoutInMinutes The amount of time that a streaming session remains active after users
 #' disconnect.
 #' @param downloadAllowed Specifies whether the user can download files from the streaming session
@@ -2083,17 +2146,18 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_user_settings
-workspacesweb_update_user_settings <- function(clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed = NULL, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed = NULL, printAllowed = NULL, uploadAllowed = NULL, userSettingsArn) {
+workspacesweb_update_user_settings <- function(clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed = NULL, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed = NULL, printAllowed = NULL, uploadAllowed = NULL, userSettingsArn) {
   op <- new_operation(
     name = "UpdateUserSettings",
     http_method = "PATCH",
     http_path = "/userSettings/{userSettingsArn+}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .workspacesweb$update_user_settings_input(clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, uploadAllowed = uploadAllowed, userSettingsArn = userSettingsArn)
+  input <- .workspacesweb$update_user_settings_input(clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, uploadAllowed = uploadAllowed, userSettingsArn = userSettingsArn)
   output <- .workspacesweb$update_user_settings_output()
   config <- get_config()
-  svc <- .workspacesweb$service(config)
+  svc <- .workspacesweb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

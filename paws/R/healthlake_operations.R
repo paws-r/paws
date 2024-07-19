@@ -76,12 +76,13 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
     name = "CreateFHIRDatastore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration)
   output <- .healthlake$create_fhir_datastore_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -126,12 +127,13 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
     name = "DeleteFHIRDatastore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$delete_fhir_datastore_input(DatastoreId = DatastoreId)
   output <- .healthlake$delete_fhir_datastore_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -208,12 +210,13 @@ healthlake_describe_fhir_datastore <- function(DatastoreId) {
     name = "DescribeFHIRDatastore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$describe_fhir_datastore_input(DatastoreId = DatastoreId)
   output <- .healthlake$describe_fhir_datastore_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -279,12 +282,13 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
     name = "DescribeFHIRExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$describe_fhir_export_job_input(DatastoreId = DatastoreId, JobId = JobId)
   output <- .healthlake$describe_fhir_export_job_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -362,12 +366,13 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
     name = "DescribeFHIRImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$describe_fhir_import_job_input(DatastoreId = DatastoreId, JobId = JobId)
   output <- .healthlake$describe_fhir_import_job_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -457,12 +462,13 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
     name = "ListFHIRDatastores",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .healthlake$list_fhir_datastores_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .healthlake$list_fhir_datastores_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -551,12 +557,13 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
     name = "ListFHIRExportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .healthlake$list_fhir_export_jobs_input(DatastoreId = DatastoreId, NextToken = NextToken, MaxResults = MaxResults, JobName = JobName, JobStatus = JobStatus, SubmittedBefore = SubmittedBefore, SubmittedAfter = SubmittedAfter)
   output <- .healthlake$list_fhir_export_jobs_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -658,12 +665,13 @@ healthlake_list_fhir_import_jobs <- function(DatastoreId, NextToken = NULL, MaxR
     name = "ListFHIRImportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .healthlake$list_fhir_import_jobs_input(DatastoreId = DatastoreId, NextToken = NextToken, MaxResults = MaxResults, JobName = JobName, JobStatus = JobStatus, SubmittedBefore = SubmittedBefore, SubmittedAfter = SubmittedAfter)
   output <- .healthlake$list_fhir_import_jobs_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -711,12 +719,13 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .healthlake$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -776,12 +785,13 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
     name = "StartFHIRExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$start_fhir_export_job_input(JobName = JobName, OutputDataConfig = OutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken)
   output <- .healthlake$start_fhir_export_job_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -845,12 +855,13 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Jo
     name = "StartFHIRImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, JobOutputDataConfig = JobOutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken)
   output <- .healthlake$start_fhir_import_job_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -895,12 +906,13 @@ healthlake_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .healthlake$tag_resource_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -942,12 +954,13 @@ healthlake_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .healthlake$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .healthlake$untag_resource_output()
   config <- get_config()
-  svc <- .healthlake$service(config)
+  svc <- .healthlake$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

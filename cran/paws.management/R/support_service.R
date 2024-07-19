@@ -203,7 +203,7 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = "AWSSupport_20130415"
 )
 
-.support$service <- function(config = list()) {
+.support$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.support$metadata, handlers, config)
+  new_service(.support$metadata, handlers, config, op)
 }

@@ -4,16 +4,16 @@
 \alias{ivsrealtime_get_participant}
 \title{Gets information about the specified participant token}
 \usage{
-ivsrealtime_get_participant(participantId, sessionId, stageArn)
+ivsrealtime_get_participant(stageArn, sessionId, participantId)
 }
 \arguments{
-\item{participantId}{[required] Unique identifier for the participant. This is assigned by IVS and
-returned by
-\code{\link[=ivsrealtime_create_participant_token]{create_participant_token}}.}
+\item{stageArn}{[required] Stage ARN.}
 
 \item{sessionId}{[required] ID of a session within the stage.}
 
-\item{stageArn}{[required] Stage ARN.}
+\item{participantId}{[required] Unique identifier for the participant. This is assigned by IVS and
+returned by
+\code{\link[=ivsrealtime_create_participant_token]{create_participant_token}}.}
 }
 \description{
 Gets information about the specified participant token.

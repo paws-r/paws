@@ -149,7 +149,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.rdsdataservice$service <- function(config = list()) {
+.rdsdataservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.rdsdataservice$metadata, handlers, config)
+  new_service(.rdsdataservice$metadata, handlers, config, op)
 }

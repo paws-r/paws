@@ -16,10 +16,10 @@ arczonalshift_start_zonal_shift(
 )
 }
 \arguments{
-\item{awayFrom}{[required] The Availability Zone that traffic is moved away from for a resource
-when you start a zonal shift. Until the zonal shift expires or you
-cancel it, traffic for the resource is instead moved to other
-Availability Zones in the Amazon Web Services Region.}
+\item{awayFrom}{[required] The Availability Zone (for example, \code{use1-az1}) that traffic is moved
+away from for a resource when you start a zonal shift. Until the zonal
+shift expires or you cancel it, traffic for the resource is instead
+moved to other Availability Zones in the Amazon Web Services Region.}
 
 \item{comment}{[required] A comment that you enter about the zonal shift. Only the latest comment
 is retained; no comment history is maintained. A new comment overwrites
@@ -45,8 +45,8 @@ number, and then one of the following, with no space:
 For example: \verb{20h} means the zonal shift expires in 20 hours. \verb{120m}
 means the zonal shift expires in 120 minutes (2 hours).}
 
-\item{resourceIdentifier}{[required] The identifier for the resource to shift away traffic for. The
-identifier is the Amazon Resource Name (ARN) for the resource.
+\item{resourceIdentifier}{[required] The identifier for the resource that Amazon Web Services shifts traffic
+for. The identifier is the Amazon Resource Name (ARN) for the resource.
 
 At this time, supported resources are Network Load Balancers and
 Application Load Balancers with cross-zone load balancing turned off.}

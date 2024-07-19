@@ -49,12 +49,13 @@ codestarnotifications_create_notification_rule <- function(Name, EventTypeIds, R
     name = "CreateNotificationRule",
     http_method = "POST",
     http_path = "/createNotificationRule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$create_notification_rule_input(Name = Name, EventTypeIds = EventTypeIds, Resource = Resource, Targets = Targets, DetailType = DetailType, ClientRequestToken = ClientRequestToken, Tags = Tags, Status = Status)
   output <- .codestarnotifications$create_notification_rule_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -79,12 +80,13 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
     name = "DeleteNotificationRule",
     http_method = "POST",
     http_path = "/deleteNotificationRule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$delete_notification_rule_input(Arn = Arn)
   output <- .codestarnotifications$delete_notification_rule_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -113,12 +115,13 @@ codestarnotifications_delete_target <- function(TargetAddress, ForceUnsubscribeA
     name = "DeleteTarget",
     http_method = "POST",
     http_path = "/deleteTarget",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$delete_target_input(TargetAddress = TargetAddress, ForceUnsubscribeAll = ForceUnsubscribeAll)
   output <- .codestarnotifications$delete_target_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -142,12 +145,13 @@ codestarnotifications_describe_notification_rule <- function(Arn) {
     name = "DescribeNotificationRule",
     http_method = "POST",
     http_path = "/describeNotificationRule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$describe_notification_rule_input(Arn = Arn)
   output <- .codestarnotifications$describe_notification_rule_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -177,12 +181,13 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
     name = "ListEventTypes",
     http_method = "POST",
     http_path = "/listEventTypes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EventTypes")
   )
   input <- .codestarnotifications$list_event_types_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_event_types_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -216,12 +221,13 @@ codestarnotifications_list_notification_rules <- function(Filters = NULL, NextTo
     name = "ListNotificationRules",
     http_method = "POST",
     http_path = "/listNotificationRules",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NotificationRules")
   )
   input <- .codestarnotifications$list_notification_rules_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_notification_rules_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -245,12 +251,13 @@ codestarnotifications_list_tags_for_resource <- function(Arn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/listTagsForResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$list_tags_for_resource_input(Arn = Arn)
   output <- .codestarnotifications$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -284,12 +291,13 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
     name = "ListTargets",
     http_method = "POST",
     http_path = "/listTargets",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets")
   )
   input <- .codestarnotifications$list_targets_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_targets_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -319,12 +327,13 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
     name = "Subscribe",
     http_method = "POST",
     http_path = "/subscribe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$subscribe_input(Arn = Arn, Target = Target, ClientRequestToken = ClientRequestToken)
   output <- .codestarnotifications$subscribe_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -350,12 +359,13 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$tag_resource_input(Arn = Arn, Tags = Tags)
   output <- .codestarnotifications$tag_resource_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -382,12 +392,13 @@ codestarnotifications_unsubscribe <- function(Arn, TargetAddress) {
     name = "Unsubscribe",
     http_method = "POST",
     http_path = "/unsubscribe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$unsubscribe_input(Arn = Arn, TargetAddress = TargetAddress)
   output <- .codestarnotifications$unsubscribe_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -414,12 +425,13 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/untagResource/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$untag_resource_input(Arn = Arn, TagKeys = TagKeys)
   output <- .codestarnotifications$untag_resource_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -457,12 +469,13 @@ codestarnotifications_update_notification_rule <- function(Arn, Name = NULL, Sta
     name = "UpdateNotificationRule",
     http_method = "POST",
     http_path = "/updateNotificationRule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestarnotifications$update_notification_rule_input(Arn = Arn, Name = Name, Status = Status, EventTypeIds = EventTypeIds, Targets = Targets, DetailType = DetailType)
   output <- .codestarnotifications$update_notification_rule_output()
   config <- get_config()
-  svc <- .codestarnotifications$service(config)
+  svc <- .codestarnotifications$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

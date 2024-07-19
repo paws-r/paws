@@ -257,7 +257,7 @@ NULL
 
 .inspector2$get_cis_scan_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scanArn = structure(logical(0), tags = list(type = "string")), targetAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(reportFormat = structure(logical(0), tags = list(type = "string")), scanArn = structure(logical(0), tags = list(type = "string")), targetAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -16,10 +16,7 @@ computeoptimizer_delete_recommendation_preferences(
 
 The \code{Ec2Instance} option encompasses standalone instances and instances
 that are part of Auto Scaling groups. The \code{AutoScalingGroup} option
-encompasses only instances that are part of an Auto Scaling group.
-
-The valid values for this parameter are \code{Ec2Instance} and
-\code{AutoScalingGroup}.}
+encompasses only instances that are part of an Auto Scaling group.}
 
 \item{scope}{An object that describes the scope of the recommendation preference to
 delete.

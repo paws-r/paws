@@ -2,7 +2,8 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_create_guardrail}
 \alias{bedrock_create_guardrail}
-\title{Creates a guardrail to block topics and to filter out harmful content}
+\title{Creates a guardrail to block topics and to implement safeguards for your
+generative AI applications}
 \usage{
 bedrock_create_guardrail(
   name,
@@ -11,6 +12,7 @@ bedrock_create_guardrail(
   contentPolicyConfig = NULL,
   wordPolicyConfig = NULL,
   sensitiveInformationPolicyConfig = NULL,
+  contextualGroundingPolicyConfig = NULL,
   blockedInputMessaging,
   blockedOutputsMessaging,
   kmsKeyId = NULL,
@@ -31,6 +33,9 @@ bedrock_create_guardrail(
 
 \item{sensitiveInformationPolicyConfig}{The sensitive information policy to configure for the guardrail.}
 
+\item{contextualGroundingPolicyConfig}{The contextual grounding policy configuration used to create a
+guardrail.}
+
 \item{blockedInputMessaging}{[required] The message to return when the guardrail blocks a prompt.}
 
 \item{blockedOutputsMessaging}{[required] The message to return when the guardrail blocks a model response.}
@@ -46,7 +51,7 @@ more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-
 in the \emph{Amazon S3 User Guide}.}
 }
 \description{
-Creates a guardrail to block topics and to filter out harmful content.
+Creates a guardrail to block topics and to implement safeguards for your generative AI applications.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_create_guardrail/} for full documentation.
 }

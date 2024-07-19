@@ -148,7 +148,7 @@ sagemakergeospatialcapabilities <- function(config = list(), credentials = list(
   target_prefix = ""
 )
 
-.sagemakergeospatialcapabilities$service <- function(config = list()) {
+.sagemakergeospatialcapabilities$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.sagemakergeospatialcapabilities$metadata, handlers, config)
+  new_service(.sagemakergeospatialcapabilities$metadata, handlers, config, op)
 }

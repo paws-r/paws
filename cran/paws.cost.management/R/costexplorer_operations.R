@@ -46,12 +46,13 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
     name = "CreateAnomalyMonitor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$create_anomaly_monitor_input(AnomalyMonitor = AnomalyMonitor, ResourceTags = ResourceTags)
   output <- .costexplorer$create_anomaly_monitor_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -100,12 +101,13 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
     name = "CreateAnomalySubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$create_anomaly_subscription_input(AnomalySubscription = AnomalySubscription, ResourceTags = ResourceTags)
   output <- .costexplorer$create_anomaly_subscription_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -165,12 +167,13 @@ costexplorer_create_cost_category_definition <- function(Name, EffectiveStart = 
     name = "CreateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$create_cost_category_definition_input(Name = Name, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules, ResourceTags = ResourceTags)
   output <- .costexplorer$create_cost_category_definition_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -195,12 +198,13 @@ costexplorer_delete_anomaly_monitor <- function(MonitorArn) {
     name = "DeleteAnomalyMonitor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$delete_anomaly_monitor_input(MonitorArn = MonitorArn)
   output <- .costexplorer$delete_anomaly_monitor_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -225,12 +229,13 @@ costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
     name = "DeleteAnomalySubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$delete_anomaly_subscription_input(SubscriptionArn = SubscriptionArn)
   output <- .costexplorer$delete_anomaly_subscription_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -254,12 +259,13 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
     name = "DeleteCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$delete_cost_category_definition_input(CostCategoryArn = CostCategoryArn)
   output <- .costexplorer$delete_cost_category_definition_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -285,12 +291,13 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
     name = "DescribeCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$describe_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveOn = EffectiveOn)
   output <- .costexplorer$describe_cost_category_definition_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -327,12 +334,13 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
     name = "GetAnomalies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_anomalies_input(MonitorArn = MonitorArn, DateInterval = DateInterval, Feedback = Feedback, TotalImpact = TotalImpact, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomalies_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -360,12 +368,13 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
     name = "GetAnomalyMonitors",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_anomaly_monitors_input(MonitorArnList = MonitorArnList, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomaly_monitors_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -394,12 +403,13 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
     name = "GetAnomalySubscriptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_anomaly_subscriptions_input(SubscriptionArnList = SubscriptionArnList, MonitorArn = MonitorArn, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomaly_subscriptions_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -430,12 +440,13 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
     name = "GetApproximateUsageRecords",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_approximate_usage_records_input(Granularity = Granularity, Services = Services, ApproximationDimension = ApproximationDimension)
   output <- .costexplorer$get_approximate_usage_records_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -511,12 +522,13 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
     name = "GetCostAndUsage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_cost_and_usage_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -593,12 +605,13 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
     name = "GetCostAndUsageWithResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_cost_and_usage_with_resources_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_with_resources_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -667,12 +680,13 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
     name = "GetCostCategories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_cost_categories_input(SearchString = SearchString, TimePeriod = TimePeriod, CostCategoryName = CostCategoryName, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_categories_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -775,12 +789,13 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
     name = "GetCostForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_cost_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_cost_forecast_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -998,12 +1013,13 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
     name = "GetDimensionValues",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_dimension_values_input(SearchString = SearchString, TimePeriod = TimePeriod, Dimension = Dimension, Context = Context, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_dimension_values_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1141,12 +1157,13 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
     name = "GetReservationCoverage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_reservation_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextPageToken = NextPageToken, SortBy = SortBy, MaxResults = MaxResults)
   output <- .costexplorer$get_reservation_coverage_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1188,12 +1205,13 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
     name = "GetReservationPurchaseRecommendation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_reservation_purchase_recommendation_input(AccountId = AccountId, Service = Service, Filter = Filter, AccountScope = AccountScope, LookbackPeriodInDays = LookbackPeriodInDays, TermInYears = TermInYears, PaymentOption = PaymentOption, ServiceSpecification = ServiceSpecification, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$get_reservation_purchase_recommendation_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1308,12 +1326,13 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
     name = "GetReservationUtilization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_reservation_utilization_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, SortBy = SortBy, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_reservation_utilization_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1352,12 +1371,13 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
     name = "GetRightsizingRecommendation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_rightsizing_recommendation_input(Filter = Filter, Configuration = Configuration, Service = Service, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$get_rightsizing_recommendation_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1381,12 +1401,13 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
     name = "GetSavingsPlanPurchaseRecommendationDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_savings_plan_purchase_recommendation_details_input(RecommendationDetailId = RecommendationDetailId)
   output <- .costexplorer$get_savings_plan_purchase_recommendation_details_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1466,12 +1487,13 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
     name = "GetSavingsPlansCoverage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$get_savings_plans_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_coverage_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1521,12 +1543,13 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
     name = "GetSavingsPlansPurchaseRecommendation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_savings_plans_purchase_recommendation_input(SavingsPlansType = SavingsPlansType, TermInYears = TermInYears, PaymentOption = PaymentOption, AccountScope = AccountScope, NextPageToken = NextPageToken, PageSize = PageSize, LookbackPeriodInDays = LookbackPeriodInDays, Filter = Filter)
   output <- .costexplorer$get_savings_plans_purchase_recommendation_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1595,12 +1618,13 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
     name = "GetSavingsPlansUtilization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_savings_plans_utilization_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_utilization_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1671,12 +1695,13 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
     name = "GetSavingsPlansUtilizationDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$get_savings_plans_utilization_details_input(TimePeriod = TimePeriod, Filter = Filter, DataType = DataType, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_utilization_details_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1740,12 +1765,13 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
     name = "GetTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_tags_input(SearchString = SearchString, TimePeriod = TimePeriod, TagKey = TagKey, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_tags_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1846,12 +1872,13 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
     name = "GetUsageForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$get_usage_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_usage_forecast_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1879,12 +1906,13 @@ costexplorer_list_cost_allocation_tag_backfill_history <- function(NextToken = N
     name = "ListCostAllocationTagBackfillHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_allocation_tag_backfill_history_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_allocation_tag_backfill_history_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1920,12 +1948,13 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
     name = "ListCostAllocationTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_allocation_tags_input(Status = Status, TagKeys = TagKeys, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_allocation_tags_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1954,12 +1983,13 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
     name = "ListCostCategoryDefinitions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_category_definitions_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1988,12 +2018,13 @@ costexplorer_list_savings_plans_purchase_recommendation_generation <- function(G
     name = "ListSavingsPlansPurchaseRecommendationGeneration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$list_savings_plans_purchase_recommendation_generation_input(GenerationStatus = GenerationStatus, RecommendationIds = RecommendationIds, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$list_savings_plans_purchase_recommendation_generation_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2020,12 +2051,13 @@ costexplorer_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .costexplorer$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2051,12 +2083,13 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
     name = "ProvideAnomalyFeedback",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$provide_anomaly_feedback_input(AnomalyId = AnomalyId, Feedback = Feedback)
   output <- .costexplorer$provide_anomaly_feedback_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2082,12 +2115,13 @@ costexplorer_start_cost_allocation_tag_backfill <- function(BackfillFrom) {
     name = "StartCostAllocationTagBackfill",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$start_cost_allocation_tag_backfill_input(BackfillFrom = BackfillFrom)
   output <- .costexplorer$start_cost_allocation_tag_backfill_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2111,12 +2145,13 @@ costexplorer_start_savings_plans_purchase_recommendation_generation <- function(
     name = "StartSavingsPlansPurchaseRecommendationGeneration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$start_savings_plans_purchase_recommendation_generation_input()
   output <- .costexplorer$start_savings_plans_purchase_recommendation_generation_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2165,12 +2200,13 @@ costexplorer_tag_resource <- function(ResourceArn, ResourceTags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$tag_resource_input(ResourceArn = ResourceArn, ResourceTags = ResourceTags)
   output <- .costexplorer$tag_resource_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2200,12 +2236,13 @@ costexplorer_untag_resource <- function(ResourceArn, ResourceTagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$untag_resource_input(ResourceArn = ResourceArn, ResourceTagKeys = ResourceTagKeys)
   output <- .costexplorer$untag_resource_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2230,12 +2267,13 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
     name = "UpdateAnomalyMonitor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$update_anomaly_monitor_input(MonitorArn = MonitorArn, MonitorName = MonitorName)
   output <- .costexplorer$update_anomaly_monitor_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2300,12 +2338,13 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
     name = "UpdateAnomalySubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$update_anomaly_subscription_input(SubscriptionArn = SubscriptionArn, Threshold = Threshold, Frequency = Frequency, MonitorArnList = MonitorArnList, Subscribers = Subscribers, SubscriptionName = SubscriptionName, ThresholdExpression = ThresholdExpression)
   output <- .costexplorer$update_anomaly_subscription_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2331,12 +2370,13 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
     name = "UpdateCostAllocationTagsStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$update_cost_allocation_tags_status_input(CostAllocationTagsStatus = CostAllocationTagsStatus)
   output <- .costexplorer$update_cost_allocation_tags_status_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2372,12 +2412,13 @@ costexplorer_update_cost_category_definition <- function(CostCategoryArn, Effect
     name = "UpdateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules)
   output <- .costexplorer$update_cost_category_definition_output()
   config <- get_config()
-  svc <- .costexplorer$service(config)
+  svc <- .costexplorer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -192,7 +192,7 @@ ecr <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "AmazonEC2ContainerRegistry_V20150921"
 )
 
-.ecr$service <- function(config = list()) {
+.ecr$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.ecr$metadata, handlers, config)
+  new_service(.ecr$metadata, handlers, config, op)
 }

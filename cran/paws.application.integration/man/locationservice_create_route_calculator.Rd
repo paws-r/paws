@@ -7,8 +7,8 @@
 locationservice_create_route_calculator(
   CalculatorName,
   DataSource,
-  Description = NULL,
   PricingPlan = NULL,
+  Description = NULL,
   Tags = NULL
 )
 }
@@ -48,10 +48,10 @@ and HERE truck routing coverage.
 For additional information , see \href{https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html}{Data providers}
 on the \emph{Amazon Location Service Developer Guide}.}
 
-\item{Description}{The optional description for the route calculator resource.}
-
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
+
+\item{Description}{The optional description for the route calculator resource.}
 
 \item{Tags}{Applies one or more tags to the route calculator resource. A tag is a
 key-value pair helps manage, identify, search, and filter your resources

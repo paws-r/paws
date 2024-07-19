@@ -7,6 +7,7 @@ WorkSpaces}
 \usage{
 workspaces_describe_workspace_directories(
   DirectoryIds = NULL,
+  WorkspaceDirectoryNames = NULL,
   Limit = NULL,
   NextToken = NULL
 )
@@ -14,6 +15,8 @@ workspaces_describe_workspace_directories(
 \arguments{
 \item{DirectoryIds}{The identifiers of the directories. If the value is null, all
 directories are retrieved.}
+
+\item{WorkspaceDirectoryNames}{The names of the WorkSpace directories.}
 
 \item{Limit}{The maximum number of directories to return.}
 

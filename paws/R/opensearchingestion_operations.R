@@ -72,7 +72,12 @@ NULL
 #'           ),
 #'           SecurityGroupIds = list(
 #'             "string"
-#'           )
+#'           ),
+#'           VpcAttachmentOptions = list(
+#'             AttachToVpc = TRUE|FALSE,
+#'             CidrBlock = "string"
+#'           ),
+#'           VpcEndpointManagement = "CUSTOMER"|"SERVICE"
 #'         )
 #'       )
 #'     ),
@@ -82,10 +87,17 @@ NULL
 #'     EncryptionAtRestOptions = list(
 #'       KmsKeyArn = "string"
 #'     ),
+#'     VpcEndpointService = "string",
 #'     ServiceVpcEndpoints = list(
 #'       list(
 #'         ServiceName = "OPENSEARCH_SERVERLESS",
 #'         VpcEndpointId = "string"
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         ServiceName = "string",
+#'         Endpoint = "string"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -117,7 +129,12 @@ NULL
 #'     ),
 #'     SecurityGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     VpcAttachmentOptions = list(
+#'       AttachToVpc = TRUE|FALSE,
+#'       CidrBlock = "string"
+#'     ),
+#'     VpcEndpointManagement = "CUSTOMER"|"SERVICE"
 #'   ),
 #'   BufferOptions = list(
 #'     PersistentBufferEnabled = TRUE|FALSE
@@ -144,12 +161,13 @@ opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits
     name = "CreatePipeline",
     http_method = "POST",
     http_path = "/2022-01-01/osis/createPipeline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$create_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, VpcOptions = VpcOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, Tags = Tags)
   output <- .opensearchingestion$create_pipeline_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -188,12 +206,13 @@ opensearchingestion_delete_pipeline <- function(PipelineName) {
     name = "DeletePipeline",
     http_method = "DELETE",
     http_path = "/2022-01-01/osis/deletePipeline/{PipelineName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$delete_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$delete_pipeline_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -208,7 +227,7 @@ opensearchingestion_delete_pipeline <- function(PipelineName) {
 #' @usage
 #' opensearchingestion_get_pipeline(PipelineName)
 #'
-#' @param PipelineName &#91;required&#93; The name of the pipeline to get information about.
+#' @param PipelineName &#91;required&#93; The name of the pipeline.
 #'
 #' @return
 #' A list with the following syntax:
@@ -249,7 +268,12 @@ opensearchingestion_delete_pipeline <- function(PipelineName) {
 #'           ),
 #'           SecurityGroupIds = list(
 #'             "string"
-#'           )
+#'           ),
+#'           VpcAttachmentOptions = list(
+#'             AttachToVpc = TRUE|FALSE,
+#'             CidrBlock = "string"
+#'           ),
+#'           VpcEndpointManagement = "CUSTOMER"|"SERVICE"
 #'         )
 #'       )
 #'     ),
@@ -259,10 +283,17 @@ opensearchingestion_delete_pipeline <- function(PipelineName) {
 #'     EncryptionAtRestOptions = list(
 #'       KmsKeyArn = "string"
 #'     ),
+#'     VpcEndpointService = "string",
 #'     ServiceVpcEndpoints = list(
 #'       list(
 #'         ServiceName = "OPENSEARCH_SERVERLESS",
 #'         VpcEndpointId = "string"
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         ServiceName = "string",
+#'         Endpoint = "string"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -292,12 +323,13 @@ opensearchingestion_get_pipeline <- function(PipelineName) {
     name = "GetPipeline",
     http_method = "GET",
     http_path = "/2022-01-01/osis/getPipeline/{PipelineName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$get_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$get_pipeline_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -315,9 +347,10 @@ opensearchingestion_get_pipeline <- function(PipelineName) {
 #' pipeline](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint).
 #'
 #' @usage
-#' opensearchingestion_get_pipeline_blueprint(BlueprintName)
+#' opensearchingestion_get_pipeline_blueprint(BlueprintName, Format)
 #'
 #' @param BlueprintName &#91;required&#93; The name of the blueprint to retrieve.
+#' @param Format The format format of the blueprint to retrieve.
 #'
 #' @return
 #' A list with the following syntax:
@@ -325,15 +358,21 @@ opensearchingestion_get_pipeline <- function(PipelineName) {
 #' list(
 #'   Blueprint = list(
 #'     BlueprintName = "string",
-#'     PipelineConfigurationBody = "string"
-#'   )
+#'     PipelineConfigurationBody = "string",
+#'     DisplayName = "string",
+#'     DisplayDescription = "string",
+#'     Service = "string",
+#'     UseCase = "string"
+#'   ),
+#'   Format = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_pipeline_blueprint(
-#'   BlueprintName = "string"
+#'   BlueprintName = "string",
+#'   Format = "string"
 #' )
 #' ```
 #'
@@ -342,17 +381,18 @@ opensearchingestion_get_pipeline <- function(PipelineName) {
 #' @rdname opensearchingestion_get_pipeline_blueprint
 #'
 #' @aliases opensearchingestion_get_pipeline_blueprint
-opensearchingestion_get_pipeline_blueprint <- function(BlueprintName) {
+opensearchingestion_get_pipeline_blueprint <- function(BlueprintName, Format = NULL) {
   op <- new_operation(
     name = "GetPipelineBlueprint",
     http_method = "GET",
     http_path = "/2022-01-01/osis/getPipelineBlueprint/{BlueprintName}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .opensearchingestion$get_pipeline_blueprint_input(BlueprintName = BlueprintName)
+  input <- .opensearchingestion$get_pipeline_blueprint_input(BlueprintName = BlueprintName, Format = Format)
   output <- .opensearchingestion$get_pipeline_blueprint_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -418,12 +458,13 @@ opensearchingestion_get_pipeline_change_progress <- function(PipelineName) {
     name = "GetPipelineChangeProgress",
     http_method = "GET",
     http_path = "/2022-01-01/osis/getPipelineChangeProgress/{PipelineName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$get_pipeline_change_progress_input(PipelineName = PipelineName)
   output <- .opensearchingestion$get_pipeline_change_progress_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -448,7 +489,11 @@ opensearchingestion_get_pipeline_change_progress <- function(PipelineName) {
 #' list(
 #'   Blueprints = list(
 #'     list(
-#'       BlueprintName = "string"
+#'       BlueprintName = "string",
+#'       DisplayName = "string",
+#'       DisplayDescription = "string",
+#'       Service = "string",
+#'       UseCase = "string"
 #'     )
 #'   )
 #' )
@@ -469,12 +514,13 @@ opensearchingestion_list_pipeline_blueprints <- function() {
     name = "ListPipelineBlueprints",
     http_method = "POST",
     http_path = "/2022-01-01/osis/listPipelineBlueprints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$list_pipeline_blueprints_input()
   output <- .opensearchingestion$list_pipeline_blueprints_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -522,6 +568,12 @@ opensearchingestion_list_pipeline_blueprints <- function() {
 #'       LastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       Destinations = list(
+#'         list(
+#'           ServiceName = "string",
+#'           Endpoint = "string"
+#'         )
+#'       ),
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -551,12 +603,13 @@ opensearchingestion_list_pipelines <- function(MaxResults = NULL, NextToken = NU
     name = "ListPipelines",
     http_method = "GET",
     http_path = "/2022-01-01/osis/listPipelines",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .opensearchingestion$list_pipelines_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchingestion$list_pipelines_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -605,12 +658,13 @@ opensearchingestion_list_tags_for_resource <- function(Arn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/2022-01-01/osis/listTagsForResource/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$list_tags_for_resource_input(Arn = Arn)
   output <- .opensearchingestion$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -668,7 +722,12 @@ opensearchingestion_list_tags_for_resource <- function(Arn) {
 #'           ),
 #'           SecurityGroupIds = list(
 #'             "string"
-#'           )
+#'           ),
+#'           VpcAttachmentOptions = list(
+#'             AttachToVpc = TRUE|FALSE,
+#'             CidrBlock = "string"
+#'           ),
+#'           VpcEndpointManagement = "CUSTOMER"|"SERVICE"
 #'         )
 #'       )
 #'     ),
@@ -678,10 +737,17 @@ opensearchingestion_list_tags_for_resource <- function(Arn) {
 #'     EncryptionAtRestOptions = list(
 #'       KmsKeyArn = "string"
 #'     ),
+#'     VpcEndpointService = "string",
 #'     ServiceVpcEndpoints = list(
 #'       list(
 #'         ServiceName = "OPENSEARCH_SERVERLESS",
 #'         VpcEndpointId = "string"
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         ServiceName = "string",
+#'         Endpoint = "string"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -711,12 +777,13 @@ opensearchingestion_start_pipeline <- function(PipelineName) {
     name = "StartPipeline",
     http_method = "PUT",
     http_path = "/2022-01-01/osis/startPipeline/{PipelineName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$start_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$start_pipeline_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -774,7 +841,12 @@ opensearchingestion_start_pipeline <- function(PipelineName) {
 #'           ),
 #'           SecurityGroupIds = list(
 #'             "string"
-#'           )
+#'           ),
+#'           VpcAttachmentOptions = list(
+#'             AttachToVpc = TRUE|FALSE,
+#'             CidrBlock = "string"
+#'           ),
+#'           VpcEndpointManagement = "CUSTOMER"|"SERVICE"
 #'         )
 #'       )
 #'     ),
@@ -784,10 +856,17 @@ opensearchingestion_start_pipeline <- function(PipelineName) {
 #'     EncryptionAtRestOptions = list(
 #'       KmsKeyArn = "string"
 #'     ),
+#'     VpcEndpointService = "string",
 #'     ServiceVpcEndpoints = list(
 #'       list(
 #'         ServiceName = "OPENSEARCH_SERVERLESS",
 #'         VpcEndpointId = "string"
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         ServiceName = "string",
+#'         Endpoint = "string"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -817,12 +896,13 @@ opensearchingestion_stop_pipeline <- function(PipelineName) {
     name = "StopPipeline",
     http_method = "PUT",
     http_path = "/2022-01-01/osis/stopPipeline/{PipelineName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$stop_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$stop_pipeline_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -868,12 +948,13 @@ opensearchingestion_tag_resource <- function(Arn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/2022-01-01/osis/tagResource/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$tag_resource_input(Arn = Arn, Tags = Tags)
   output <- .opensearchingestion$tag_resource_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -916,12 +997,13 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/2022-01-01/osis/untagResource/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$untag_resource_input(Arn = Arn, TagKeys = TagKeys)
   output <- .opensearchingestion$untag_resource_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -991,7 +1073,12 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #'           ),
 #'           SecurityGroupIds = list(
 #'             "string"
-#'           )
+#'           ),
+#'           VpcAttachmentOptions = list(
+#'             AttachToVpc = TRUE|FALSE,
+#'             CidrBlock = "string"
+#'           ),
+#'           VpcEndpointManagement = "CUSTOMER"|"SERVICE"
 #'         )
 #'       )
 #'     ),
@@ -1001,10 +1088,17 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #'     EncryptionAtRestOptions = list(
 #'       KmsKeyArn = "string"
 #'     ),
+#'     VpcEndpointService = "string",
 #'     ServiceVpcEndpoints = list(
 #'       list(
 #'         ServiceName = "OPENSEARCH_SERVERLESS",
 #'         VpcEndpointId = "string"
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         ServiceName = "string",
+#'         Endpoint = "string"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -1049,12 +1143,13 @@ opensearchingestion_update_pipeline <- function(PipelineName, MinUnits = NULL, M
     name = "UpdatePipeline",
     http_method = "PUT",
     http_path = "/2022-01-01/osis/updatePipeline/{PipelineName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$update_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions)
   output <- .opensearchingestion$update_pipeline_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1108,12 +1203,13 @@ opensearchingestion_validate_pipeline <- function(PipelineConfigurationBody) {
     name = "ValidatePipeline",
     http_method = "POST",
     http_path = "/2022-01-01/osis/validatePipeline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .opensearchingestion$validate_pipeline_input(PipelineConfigurationBody = PipelineConfigurationBody)
   output <- .opensearchingestion$validate_pipeline_output()
   config <- get_config()
-  svc <- .opensearchingestion$service(config)
+  svc <- .opensearchingestion$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

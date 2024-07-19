@@ -63,12 +63,13 @@ route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, Clus
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/cluster",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$create_cluster_input(ClientToken = ClientToken, ClusterName = ClusterName, Tags = Tags)
   output <- .route53recoverycontrolconfig$create_cluster_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -134,12 +135,13 @@ route53recoverycontrolconfig_create_control_panel <- function(ClientToken = NULL
     name = "CreateControlPanel",
     http_method = "POST",
     http_path = "/controlpanel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$create_control_panel_input(ClientToken = ClientToken, ClusterArn = ClusterArn, ControlPanelName = ControlPanelName, Tags = Tags)
   output <- .route53recoverycontrolconfig$create_control_panel_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -206,12 +208,13 @@ route53recoverycontrolconfig_create_routing_control <- function(ClientToken = NU
     name = "CreateRoutingControl",
     http_method = "POST",
     http_path = "/routingcontrol",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$create_routing_control_input(ClientToken = ClientToken, ClusterArn = ClusterArn, ControlPanelArn = ControlPanelArn, RoutingControlName = RoutingControlName)
   output <- .route53recoverycontrolconfig$create_routing_control_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -344,12 +347,13 @@ route53recoverycontrolconfig_create_safety_rule <- function(AssertionRule = NULL
     name = "CreateSafetyRule",
     http_method = "POST",
     http_path = "/safetyrule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$create_safety_rule_input(AssertionRule = AssertionRule, ClientToken = ClientToken, GatingRule = GatingRule, Tags = Tags)
   output <- .route53recoverycontrolconfig$create_safety_rule_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -386,12 +390,13 @@ route53recoverycontrolconfig_delete_cluster <- function(ClusterArn) {
     name = "DeleteCluster",
     http_method = "DELETE",
     http_path = "/cluster/{ClusterArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$delete_cluster_input(ClusterArn = ClusterArn)
   output <- .route53recoverycontrolconfig$delete_cluster_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -428,12 +433,13 @@ route53recoverycontrolconfig_delete_control_panel <- function(ControlPanelArn) {
     name = "DeleteControlPanel",
     http_method = "DELETE",
     http_path = "/controlpanel/{ControlPanelArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$delete_control_panel_input(ControlPanelArn = ControlPanelArn)
   output <- .route53recoverycontrolconfig$delete_control_panel_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -471,12 +477,13 @@ route53recoverycontrolconfig_delete_routing_control <- function(RoutingControlAr
     name = "DeleteRoutingControl",
     http_method = "DELETE",
     http_path = "/routingcontrol/{RoutingControlArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$delete_routing_control_input(RoutingControlArn = RoutingControlArn)
   output <- .route53recoverycontrolconfig$delete_routing_control_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -515,12 +522,13 @@ route53recoverycontrolconfig_delete_safety_rule <- function(SafetyRuleArn) {
     name = "DeleteSafetyRule",
     http_method = "DELETE",
     http_path = "/safetyrule/{SafetyRuleArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$delete_safety_rule_input(SafetyRuleArn = SafetyRuleArn)
   output <- .route53recoverycontrolconfig$delete_safety_rule_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -574,12 +582,13 @@ route53recoverycontrolconfig_describe_cluster <- function(ClusterArn) {
     name = "DescribeCluster",
     http_method = "GET",
     http_path = "/cluster/{ClusterArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$describe_cluster_input(ClusterArn = ClusterArn)
   output <- .route53recoverycontrolconfig$describe_cluster_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -629,12 +638,13 @@ route53recoverycontrolconfig_describe_control_panel <- function(ControlPanelArn)
     name = "DescribeControlPanel",
     http_method = "GET",
     http_path = "/controlpanel/{ControlPanelArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$describe_control_panel_input(ControlPanelArn = ControlPanelArn)
   output <- .route53recoverycontrolconfig$describe_control_panel_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -689,12 +699,13 @@ route53recoverycontrolconfig_describe_routing_control <- function(RoutingControl
     name = "DescribeRoutingControl",
     http_method = "GET",
     http_path = "/routingcontrol/{RoutingControlArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$describe_routing_control_input(RoutingControlArn = RoutingControlArn)
   output <- .route53recoverycontrolconfig$describe_routing_control_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -770,12 +781,13 @@ route53recoverycontrolconfig_describe_safety_rule <- function(SafetyRuleArn) {
     name = "DescribeSafetyRule",
     http_method = "GET",
     http_path = "/safetyrule/{SafetyRuleArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$describe_safety_rule_input(SafetyRuleArn = SafetyRuleArn)
   output <- .route53recoverycontrolconfig$describe_safety_rule_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -817,12 +829,13 @@ route53recoverycontrolconfig_get_resource_policy <- function(ResourceArn) {
     name = "GetResourcePolicy",
     http_method = "GET",
     http_path = "/resourcePolicy/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .route53recoverycontrolconfig$get_resource_policy_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +887,13 @@ route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(
     name = "ListAssociatedRoute53HealthChecks",
     http_method = "GET",
     http_path = "/routingcontrol/{RoutingControlArn}/associatedRoute53HealthChecks",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HealthCheckIds")
   )
   input <- .route53recoverycontrolconfig$list_associated_route_53_health_checks_input(MaxResults = MaxResults, NextToken = NextToken, RoutingControlArn = RoutingControlArn)
   output <- .route53recoverycontrolconfig$list_associated_route_53_health_checks_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -937,12 +951,13 @@ route53recoverycontrolconfig_list_clusters <- function(MaxResults = NULL, NextTo
     name = "ListClusters",
     http_method = "GET",
     http_path = "/cluster",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Clusters")
   )
   input <- .route53recoverycontrolconfig$list_clusters_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_clusters_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1000,12 +1015,13 @@ route53recoverycontrolconfig_list_control_panels <- function(ClusterArn = NULL, 
     name = "ListControlPanels",
     http_method = "GET",
     http_path = "/controlpanels",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ControlPanels")
   )
   input <- .route53recoverycontrolconfig$list_control_panels_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_control_panels_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1065,12 +1081,13 @@ route53recoverycontrolconfig_list_routing_controls <- function(ControlPanelArn, 
     name = "ListRoutingControls",
     http_method = "GET",
     http_path = "/controlpanel/{ControlPanelArn}/routingcontrols",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingControls")
   )
   input <- .route53recoverycontrolconfig$list_routing_controls_input(ControlPanelArn = ControlPanelArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_routing_controls_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1158,12 +1175,13 @@ route53recoverycontrolconfig_list_safety_rules <- function(ControlPanelArn, MaxR
     name = "ListSafetyRules",
     http_method = "GET",
     http_path = "/controlpanel/{ControlPanelArn}/safetyrules",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SafetyRules")
   )
   input <- .route53recoverycontrolconfig$list_safety_rules_input(ControlPanelArn = ControlPanelArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_safety_rules_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1207,12 +1225,13 @@ route53recoverycontrolconfig_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .route53recoverycontrolconfig$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1253,12 +1272,13 @@ route53recoverycontrolconfig_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .route53recoverycontrolconfig$tag_resource_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1299,12 +1319,13 @@ route53recoverycontrolconfig_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .route53recoverycontrolconfig$untag_resource_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1358,12 +1379,13 @@ route53recoverycontrolconfig_update_control_panel <- function(ControlPanelArn, C
     name = "UpdateControlPanel",
     http_method = "PUT",
     http_path = "/controlpanel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$update_control_panel_input(ControlPanelArn = ControlPanelArn, ControlPanelName = ControlPanelName)
   output <- .route53recoverycontrolconfig$update_control_panel_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1417,12 +1439,13 @@ route53recoverycontrolconfig_update_routing_control <- function(RoutingControlAr
     name = "UpdateRoutingControl",
     http_method = "PUT",
     http_path = "/routingcontrol",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$update_routing_control_input(RoutingControlArn = RoutingControlArn, RoutingControlName = RoutingControlName)
   output <- .route53recoverycontrolconfig$update_routing_control_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1511,12 +1534,13 @@ route53recoverycontrolconfig_update_safety_rule <- function(AssertionRuleUpdate 
     name = "UpdateSafetyRule",
     http_method = "PUT",
     http_path = "/safetyrule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .route53recoverycontrolconfig$update_safety_rule_input(AssertionRuleUpdate = AssertionRuleUpdate, GatingRuleUpdate = GatingRuleUpdate)
   output <- .route53recoverycontrolconfig$update_safety_rule_output()
   config <- get_config()
-  svc <- .route53recoverycontrolconfig$service(config)
+  svc <- .route53recoverycontrolconfig$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

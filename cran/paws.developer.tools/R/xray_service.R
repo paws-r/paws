@@ -161,7 +161,7 @@ xray <- function(config = list(), credentials = list(), endpoint = NULL, region 
   target_prefix = ""
 )
 
-.xray$service <- function(config = list()) {
+.xray$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.xray$metadata, handlers, config)
+  new_service(.xray$metadata, handlers, config, op)
 }

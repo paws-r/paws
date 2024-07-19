@@ -195,7 +195,7 @@ kendra <- function(config = list(), credentials = list(), endpoint = NULL, regio
   target_prefix = "AWSKendraFrontendService"
 )
 
-.kendra$service <- function(config = list()) {
+.kendra$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.kendra$metadata, handlers, config)
+  new_service(.kendra$metadata, handlers, config, op)
 }

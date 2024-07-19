@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.arczonalshift$get_autoshift_observer_notification_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.arczonalshift$get_autoshift_observer_notification_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .arczonalshift$get_managed_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceIdentifier", type = "string"))), tags = list(type = "structure"))
@@ -96,6 +108,18 @@ NULL
 .arczonalshift$start_zonal_shift_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(awayFrom = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), zonalShiftId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.arczonalshift$update_autoshift_observer_notification_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.arczonalshift$update_autoshift_observer_notification_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

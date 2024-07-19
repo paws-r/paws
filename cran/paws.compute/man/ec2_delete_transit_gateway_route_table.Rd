@@ -18,7 +18,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Deletes the specified transit gateway route table. You must disassociate the route table from any transit gateway route tables before you can delete it.
+Deletes the specified transit gateway route table. If there are any route tables associated with the transit gateway route table, you must first run \code{\link[=ec2_disassociate_route_table]{disassociate_route_table}} before you can delete the transit gateway route table. This removes any route tables associated with the transit gateway route table.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_delete_transit_gateway_route_table/} for full documentation.
 }

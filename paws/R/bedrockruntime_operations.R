@@ -3,6 +3,1007 @@
 #' @include bedrockruntime_service.R
 NULL
 
+#' The action to apply a guardrail
+#'
+#' @description
+#' The action to apply a guardrail.
+#'
+#' @usage
+#' bedrockruntime_apply_guardrail(guardrailIdentifier, guardrailVersion,
+#'   source, content)
+#'
+#' @param guardrailIdentifier &#91;required&#93; The guardrail identifier used in the request to apply the guardrail.
+#' @param guardrailVersion &#91;required&#93; The guardrail version used in the request to apply the guardrail.
+#' @param source &#91;required&#93; The source of data used in the request to apply the guardrail.
+#' @param content &#91;required&#93; The content details used in the request to apply the guardrail.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   usage = list(
+#'     topicPolicyUnits = 123,
+#'     contentPolicyUnits = 123,
+#'     wordPolicyUnits = 123,
+#'     sensitiveInformationPolicyUnits = 123,
+#'     sensitiveInformationPolicyFreeUnits = 123,
+#'     contextualGroundingPolicyUnits = 123
+#'   ),
+#'   action = "NONE"|"GUARDRAIL_INTERVENED",
+#'   outputs = list(
+#'     list(
+#'       text = "string"
+#'     )
+#'   ),
+#'   assessments = list(
+#'     list(
+#'       topicPolicy = list(
+#'         topics = list(
+#'           list(
+#'             name = "string",
+#'             type = "DENY",
+#'             action = "BLOCKED"
+#'           )
+#'         )
+#'       ),
+#'       contentPolicy = list(
+#'         filters = list(
+#'           list(
+#'             type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
+#'             confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'             action = "BLOCKED"
+#'           )
+#'         )
+#'       ),
+#'       wordPolicy = list(
+#'         customWords = list(
+#'           list(
+#'             match = "string",
+#'             action = "BLOCKED"
+#'           )
+#'         ),
+#'         managedWordLists = list(
+#'           list(
+#'             match = "string",
+#'             type = "PROFANITY",
+#'             action = "BLOCKED"
+#'           )
+#'         )
+#'       ),
+#'       sensitiveInformationPolicy = list(
+#'         piiEntities = list(
+#'           list(
+#'             match = "string",
+#'             type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
+#'             action = "ANONYMIZED"|"BLOCKED"
+#'           )
+#'         ),
+#'         regexes = list(
+#'           list(
+#'             name = "string",
+#'             match = "string",
+#'             regex = "string",
+#'             action = "ANONYMIZED"|"BLOCKED"
+#'           )
+#'         )
+#'       ),
+#'       contextualGroundingPolicy = list(
+#'         filters = list(
+#'           list(
+#'             type = "GROUNDING"|"RELEVANCE",
+#'             threshold = 123.0,
+#'             score = 123.0,
+#'             action = "BLOCKED"|"NONE"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$apply_guardrail(
+#'   guardrailIdentifier = "string",
+#'   guardrailVersion = "string",
+#'   source = "INPUT"|"OUTPUT",
+#'   content = list(
+#'     list(
+#'       text = list(
+#'         text = "string",
+#'         qualifiers = list(
+#'           "grounding_source"|"query"|"guard_content"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_apply_guardrail
+#'
+#' @aliases bedrockruntime_apply_guardrail
+bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion, source, content) {
+  op <- new_operation(
+    name = "ApplyGuardrail",
+    http_method = "POST",
+    http_path = "/guardrail/{guardrailIdentifier}/version/{guardrailVersion}/apply",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrockruntime$apply_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, source = source, content = content)
+  output <- .bedrockruntime$apply_guardrail_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$apply_guardrail <- bedrockruntime_apply_guardrail
+
+#' Sends messages to the specified Amazon Bedrock model
+#'
+#' @description
+#' Sends messages to the specified Amazon Bedrock model.
+#' [`converse`][bedrockruntime_converse] provides a consistent interface
+#' that works with all models that support messages. This allows you to
+#' write code once and use it with different models. Should a model have
+#' unique inference parameters, you can also pass those unique parameters
+#' to the model.
+#' 
+#' For information about the Converse API, see *Use the Converse API* in
+#' the *Amazon Bedrock User Guide*. To use a guardrail, see *Use a
+#' guardrail with the Converse API* in the *Amazon Bedrock User Guide*. To
+#' use a tool with a model, see *Tool use (Function calling)* in the
+#' *Amazon Bedrock User Guide*
+#' 
+#' For example code, see *Converse API examples* in the *Amazon Bedrock
+#' User Guide*.
+#' 
+#' This operation requires permission for the `bedrock:InvokeModel` action.
+#'
+#' @usage
+#' bedrockruntime_converse(modelId, messages, system, inferenceConfig,
+#'   toolConfig, guardrailConfig, additionalModelRequestFields,
+#'   additionalModelResponseFieldPaths)
+#'
+#' @param modelId &#91;required&#93; The identifier for the model that you want to call.
+#' 
+#' The `modelId` to provide depends on the type of model that you use:
+#' 
+#' -   If you use a base model, specify the model ID or its ARN. For a list
+#'     of model IDs for base models, see [Amazon Bedrock base model IDs
+#'     (on-demand
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a provisioned model, specify the ARN of the Provisioned
+#'     Throughput. For more information, see [Run inference using a
+#'     Provisioned
+#'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a custom model, first purchase Provisioned Throughput for
+#'     it. Then specify the ARN of the resulting provisioned model. For
+#'     more information, see [Use a custom model in Amazon
+#'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' @param messages &#91;required&#93; The messages that you want to send to the model.
+#' @param system A system prompt to pass to the model.
+#' @param inferenceConfig Inference parameters to pass to the model.
+#' [`converse`][bedrockruntime_converse] supports a base set of inference
+#' parameters. If you need to pass additional parameters that the model
+#' supports, use the `additionalModelRequestFields` request field.
+#' @param toolConfig Configuration information for the tools that the model can use when
+#' generating a response.
+#' 
+#' This field is only supported by Anthropic Claude 3, Cohere Command R,
+#' Cohere Command R+, and Mistral Large models.
+#' @param guardrailConfig Configuration information for a guardrail that you want to use in the
+#' request.
+#' @param additionalModelRequestFields Additional inference parameters that the model supports, beyond the base
+#' set of inference parameters that [`converse`][bedrockruntime_converse]
+#' supports in the `inferenceConfig` field. For more information, see
+#' [Model
+#' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+#' @param additionalModelResponseFieldPaths Additional model parameters field paths to return in the response.
+#' [`converse`][bedrockruntime_converse] returns the requested fields as a
+#' JSON Pointer object in the `additionalModelResponseFields` field. The
+#' following is example JSON for `additionalModelResponseFieldPaths`.
+#' 
+#' `[ "/stop_sequence" ]`
+#' 
+#' For information about the JSON Pointer syntax, see the [Internet
+#' Engineering Task Force
+#' (IETF)](https://datatracker.ietf.org/doc/html/rfc6901) documentation.
+#' 
+#' [`converse`][bedrockruntime_converse] rejects an empty JSON Pointer or
+#' incorrectly structured JSON Pointer with a `400` error code. if the JSON
+#' Pointer is valid, but the requested field is not in the model response,
+#' it is ignored by [`converse`][bedrockruntime_converse].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   output = list(
+#'     message = list(
+#'       role = "user"|"assistant",
+#'       content = list(
+#'         list(
+#'           text = "string",
+#'           image = list(
+#'             format = "png"|"jpeg"|"gif"|"webp",
+#'             source = list(
+#'               bytes = raw
+#'             )
+#'           ),
+#'           document = list(
+#'             format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'             name = "string",
+#'             source = list(
+#'               bytes = raw
+#'             )
+#'           ),
+#'           toolUse = list(
+#'             toolUseId = "string",
+#'             name = "string",
+#'             input = list()
+#'           ),
+#'           toolResult = list(
+#'             toolUseId = "string",
+#'             content = list(
+#'               list(
+#'                 json = list(),
+#'                 text = "string",
+#'                 image = list(
+#'                   format = "png"|"jpeg"|"gif"|"webp",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 ),
+#'                 document = list(
+#'                   format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'                   name = "string",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             status = "success"|"error"
+#'           ),
+#'           guardContent = list(
+#'             text = list(
+#'               text = "string",
+#'               qualifiers = list(
+#'                 "grounding_source"|"query"|"guard_content"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   stopReason = "end_turn"|"tool_use"|"max_tokens"|"stop_sequence"|"guardrail_intervened"|"content_filtered",
+#'   usage = list(
+#'     inputTokens = 123,
+#'     outputTokens = 123,
+#'     totalTokens = 123
+#'   ),
+#'   metrics = list(
+#'     latencyMs = 123
+#'   ),
+#'   additionalModelResponseFields = list(),
+#'   trace = list(
+#'     guardrail = list(
+#'       modelOutput = list(
+#'         "string"
+#'       ),
+#'       inputAssessment = list(
+#'         list(
+#'           topicPolicy = list(
+#'             topics = list(
+#'               list(
+#'                 name = "string",
+#'                 type = "DENY",
+#'                 action = "BLOCKED"
+#'               )
+#'             )
+#'           ),
+#'           contentPolicy = list(
+#'             filters = list(
+#'               list(
+#'                 type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
+#'                 confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                 action = "BLOCKED"
+#'               )
+#'             )
+#'           ),
+#'           wordPolicy = list(
+#'             customWords = list(
+#'               list(
+#'                 match = "string",
+#'                 action = "BLOCKED"
+#'               )
+#'             ),
+#'             managedWordLists = list(
+#'               list(
+#'                 match = "string",
+#'                 type = "PROFANITY",
+#'                 action = "BLOCKED"
+#'               )
+#'             )
+#'           ),
+#'           sensitiveInformationPolicy = list(
+#'             piiEntities = list(
+#'               list(
+#'                 match = "string",
+#'                 type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
+#'                 action = "ANONYMIZED"|"BLOCKED"
+#'               )
+#'             ),
+#'             regexes = list(
+#'               list(
+#'                 name = "string",
+#'                 match = "string",
+#'                 regex = "string",
+#'                 action = "ANONYMIZED"|"BLOCKED"
+#'               )
+#'             )
+#'           ),
+#'           contextualGroundingPolicy = list(
+#'             filters = list(
+#'               list(
+#'                 type = "GROUNDING"|"RELEVANCE",
+#'                 threshold = 123.0,
+#'                 score = 123.0,
+#'                 action = "BLOCKED"|"NONE"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       outputAssessments = list(
+#'         list(
+#'           list(
+#'             topicPolicy = list(
+#'               topics = list(
+#'                 list(
+#'                   name = "string",
+#'                   type = "DENY",
+#'                   action = "BLOCKED"
+#'                 )
+#'               )
+#'             ),
+#'             contentPolicy = list(
+#'               filters = list(
+#'                 list(
+#'                   type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
+#'                   confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                   action = "BLOCKED"
+#'                 )
+#'               )
+#'             ),
+#'             wordPolicy = list(
+#'               customWords = list(
+#'                 list(
+#'                   match = "string",
+#'                   action = "BLOCKED"
+#'                 )
+#'               ),
+#'               managedWordLists = list(
+#'                 list(
+#'                   match = "string",
+#'                   type = "PROFANITY",
+#'                   action = "BLOCKED"
+#'                 )
+#'               )
+#'             ),
+#'             sensitiveInformationPolicy = list(
+#'               piiEntities = list(
+#'                 list(
+#'                   match = "string",
+#'                   type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
+#'                   action = "ANONYMIZED"|"BLOCKED"
+#'                 )
+#'               ),
+#'               regexes = list(
+#'                 list(
+#'                   name = "string",
+#'                   match = "string",
+#'                   regex = "string",
+#'                   action = "ANONYMIZED"|"BLOCKED"
+#'                 )
+#'               )
+#'             ),
+#'             contextualGroundingPolicy = list(
+#'               filters = list(
+#'                 list(
+#'                   type = "GROUNDING"|"RELEVANCE",
+#'                   threshold = 123.0,
+#'                   score = 123.0,
+#'                   action = "BLOCKED"|"NONE"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$converse(
+#'   modelId = "string",
+#'   messages = list(
+#'     list(
+#'       role = "user"|"assistant",
+#'       content = list(
+#'         list(
+#'           text = "string",
+#'           image = list(
+#'             format = "png"|"jpeg"|"gif"|"webp",
+#'             source = list(
+#'               bytes = raw
+#'             )
+#'           ),
+#'           document = list(
+#'             format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'             name = "string",
+#'             source = list(
+#'               bytes = raw
+#'             )
+#'           ),
+#'           toolUse = list(
+#'             toolUseId = "string",
+#'             name = "string",
+#'             input = list()
+#'           ),
+#'           toolResult = list(
+#'             toolUseId = "string",
+#'             content = list(
+#'               list(
+#'                 json = list(),
+#'                 text = "string",
+#'                 image = list(
+#'                   format = "png"|"jpeg"|"gif"|"webp",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 ),
+#'                 document = list(
+#'                   format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'                   name = "string",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             status = "success"|"error"
+#'           ),
+#'           guardContent = list(
+#'             text = list(
+#'               text = "string",
+#'               qualifiers = list(
+#'                 "grounding_source"|"query"|"guard_content"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   system = list(
+#'     list(
+#'       text = "string",
+#'       guardContent = list(
+#'         text = list(
+#'           text = "string",
+#'           qualifiers = list(
+#'             "grounding_source"|"query"|"guard_content"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   inferenceConfig = list(
+#'     maxTokens = 123,
+#'     temperature = 123.0,
+#'     topP = 123.0,
+#'     stopSequences = list(
+#'       "string"
+#'     )
+#'   ),
+#'   toolConfig = list(
+#'     tools = list(
+#'       list(
+#'         toolSpec = list(
+#'           name = "string",
+#'           description = "string",
+#'           inputSchema = list(
+#'             json = list()
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     toolChoice = list(
+#'       auto = list(),
+#'       any = list(),
+#'       tool = list(
+#'         name = "string"
+#'       )
+#'     )
+#'   ),
+#'   guardrailConfig = list(
+#'     guardrailIdentifier = "string",
+#'     guardrailVersion = "string",
+#'     trace = "enabled"|"disabled"
+#'   ),
+#'   additionalModelRequestFields = list(),
+#'   additionalModelResponseFieldPaths = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_converse
+#'
+#' @aliases bedrockruntime_converse
+bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, additionalModelResponseFieldPaths = NULL) {
+  op <- new_operation(
+    name = "Converse",
+    http_method = "POST",
+    http_path = "/model/{modelId}/converse",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths)
+  output <- .bedrockruntime$converse_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$converse <- bedrockruntime_converse
+
+#' Sends messages to the specified Amazon Bedrock model and returns the
+#' response in a stream
+#'
+#' @description
+#' Sends messages to the specified Amazon Bedrock model and returns the
+#' response in a stream.
+#' [`converse_stream`][bedrockruntime_converse_stream] provides a
+#' consistent API that works with all Amazon Bedrock models that support
+#' messages. This allows you to write code once and use it with different
+#' models. Should a model have unique inference parameters, you can also
+#' pass those unique parameters to the model.
+#' 
+#' To find out if a model supports streaming, call
+#' [GetFoundationModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html)
+#' and check the `responseStreamingSupported` field in the response.
+#' 
+#' For information about the Converse API, see *Use the Converse API* in
+#' the *Amazon Bedrock User Guide*. To use a guardrail, see *Use a
+#' guardrail with the Converse API* in the *Amazon Bedrock User Guide*. To
+#' use a tool with a model, see *Tool use (Function calling)* in the
+#' *Amazon Bedrock User Guide*
+#' 
+#' For example code, see *Conversation streaming example* in the *Amazon
+#' Bedrock User Guide*.
+#' 
+#' This operation requires permission for the
+#' `bedrock:InvokeModelWithResponseStream` action.
+#'
+#' @usage
+#' bedrockruntime_converse_stream(modelId, messages, system,
+#'   inferenceConfig, toolConfig, guardrailConfig,
+#'   additionalModelRequestFields, additionalModelResponseFieldPaths)
+#'
+#' @param modelId &#91;required&#93; The ID for the model.
+#' 
+#' The `modelId` to provide depends on the type of model that you use:
+#' 
+#' -   If you use a base model, specify the model ID or its ARN. For a list
+#'     of model IDs for base models, see [Amazon Bedrock base model IDs
+#'     (on-demand
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a provisioned model, specify the ARN of the Provisioned
+#'     Throughput. For more information, see [Run inference using a
+#'     Provisioned
+#'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a custom model, first purchase Provisioned Throughput for
+#'     it. Then specify the ARN of the resulting provisioned model. For
+#'     more information, see [Use a custom model in Amazon
+#'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' @param messages &#91;required&#93; The messages that you want to send to the model.
+#' @param system A system prompt to send to the model.
+#' @param inferenceConfig Inference parameters to pass to the model.
+#' [`converse_stream`][bedrockruntime_converse_stream] supports a base set
+#' of inference parameters. If you need to pass additional parameters that
+#' the model supports, use the `additionalModelRequestFields` request
+#' field.
+#' @param toolConfig Configuration information for the tools that the model can use when
+#' generating a response.
+#' 
+#' This field is only supported by Anthropic Claude 3 models.
+#' @param guardrailConfig Configuration information for a guardrail that you want to use in the
+#' request.
+#' @param additionalModelRequestFields Additional inference parameters that the model supports, beyond the base
+#' set of inference parameters that
+#' [`converse_stream`][bedrockruntime_converse_stream] supports in the
+#' `inferenceConfig` field.
+#' @param additionalModelResponseFieldPaths Additional model parameters field paths to return in the response.
+#' [`converse_stream`][bedrockruntime_converse_stream] returns the
+#' requested fields as a JSON Pointer object in the
+#' `additionalModelResponseFields` field. The following is example JSON for
+#' `additionalModelResponseFieldPaths`.
+#' 
+#' `[ "/stop_sequence" ]`
+#' 
+#' For information about the JSON Pointer syntax, see the [Internet
+#' Engineering Task Force
+#' (IETF)](https://datatracker.ietf.org/doc/html/rfc6901) documentation.
+#' 
+#' [`converse_stream`][bedrockruntime_converse_stream] rejects an empty
+#' JSON Pointer or incorrectly structured JSON Pointer with a `400` error
+#' code. if the JSON Pointer is valid, but the requested field is not in
+#' the model response, it is ignored by
+#' [`converse_stream`][bedrockruntime_converse_stream].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stream = list(
+#'     messageStart = list(
+#'       role = "user"|"assistant"
+#'     ),
+#'     contentBlockStart = list(
+#'       start = list(
+#'         toolUse = list(
+#'           toolUseId = "string",
+#'           name = "string"
+#'         )
+#'       ),
+#'       contentBlockIndex = 123
+#'     ),
+#'     contentBlockDelta = list(
+#'       delta = list(
+#'         text = "string",
+#'         toolUse = list(
+#'           input = "string"
+#'         )
+#'       ),
+#'       contentBlockIndex = 123
+#'     ),
+#'     contentBlockStop = list(
+#'       contentBlockIndex = 123
+#'     ),
+#'     messageStop = list(
+#'       stopReason = "end_turn"|"tool_use"|"max_tokens"|"stop_sequence"|"guardrail_intervened"|"content_filtered",
+#'       additionalModelResponseFields = list()
+#'     ),
+#'     metadata = list(
+#'       usage = list(
+#'         inputTokens = 123,
+#'         outputTokens = 123,
+#'         totalTokens = 123
+#'       ),
+#'       metrics = list(
+#'         latencyMs = 123
+#'       ),
+#'       trace = list(
+#'         guardrail = list(
+#'           modelOutput = list(
+#'             "string"
+#'           ),
+#'           inputAssessment = list(
+#'             list(
+#'               topicPolicy = list(
+#'                 topics = list(
+#'                   list(
+#'                     name = "string",
+#'                     type = "DENY",
+#'                     action = "BLOCKED"
+#'                   )
+#'                 )
+#'               ),
+#'               contentPolicy = list(
+#'                 filters = list(
+#'                   list(
+#'                     type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
+#'                     confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                     action = "BLOCKED"
+#'                   )
+#'                 )
+#'               ),
+#'               wordPolicy = list(
+#'                 customWords = list(
+#'                   list(
+#'                     match = "string",
+#'                     action = "BLOCKED"
+#'                   )
+#'                 ),
+#'                 managedWordLists = list(
+#'                   list(
+#'                     match = "string",
+#'                     type = "PROFANITY",
+#'                     action = "BLOCKED"
+#'                   )
+#'                 )
+#'               ),
+#'               sensitiveInformationPolicy = list(
+#'                 piiEntities = list(
+#'                   list(
+#'                     match = "string",
+#'                     type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
+#'                     action = "ANONYMIZED"|"BLOCKED"
+#'                   )
+#'                 ),
+#'                 regexes = list(
+#'                   list(
+#'                     name = "string",
+#'                     match = "string",
+#'                     regex = "string",
+#'                     action = "ANONYMIZED"|"BLOCKED"
+#'                   )
+#'                 )
+#'               ),
+#'               contextualGroundingPolicy = list(
+#'                 filters = list(
+#'                   list(
+#'                     type = "GROUNDING"|"RELEVANCE",
+#'                     threshold = 123.0,
+#'                     score = 123.0,
+#'                     action = "BLOCKED"|"NONE"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           outputAssessments = list(
+#'             list(
+#'               list(
+#'                 topicPolicy = list(
+#'                   topics = list(
+#'                     list(
+#'                       name = "string",
+#'                       type = "DENY",
+#'                       action = "BLOCKED"
+#'                     )
+#'                   )
+#'                 ),
+#'                 contentPolicy = list(
+#'                   filters = list(
+#'                     list(
+#'                       type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
+#'                       confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                       action = "BLOCKED"
+#'                     )
+#'                   )
+#'                 ),
+#'                 wordPolicy = list(
+#'                   customWords = list(
+#'                     list(
+#'                       match = "string",
+#'                       action = "BLOCKED"
+#'                     )
+#'                   ),
+#'                   managedWordLists = list(
+#'                     list(
+#'                       match = "string",
+#'                       type = "PROFANITY",
+#'                       action = "BLOCKED"
+#'                     )
+#'                   )
+#'                 ),
+#'                 sensitiveInformationPolicy = list(
+#'                   piiEntities = list(
+#'                     list(
+#'                       match = "string",
+#'                       type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
+#'                       action = "ANONYMIZED"|"BLOCKED"
+#'                     )
+#'                   ),
+#'                   regexes = list(
+#'                     list(
+#'                       name = "string",
+#'                       match = "string",
+#'                       regex = "string",
+#'                       action = "ANONYMIZED"|"BLOCKED"
+#'                     )
+#'                   )
+#'                 ),
+#'                 contextualGroundingPolicy = list(
+#'                   filters = list(
+#'                     list(
+#'                       type = "GROUNDING"|"RELEVANCE",
+#'                       threshold = 123.0,
+#'                       score = 123.0,
+#'                       action = "BLOCKED"|"NONE"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     internalServerException = list(
+#'       message = "string"
+#'     ),
+#'     modelStreamErrorException = list(
+#'       message = "string",
+#'       originalStatusCode = 123,
+#'       originalMessage = "string"
+#'     ),
+#'     validationException = list(
+#'       message = "string"
+#'     ),
+#'     throttlingException = list(
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$converse_stream(
+#'   modelId = "string",
+#'   messages = list(
+#'     list(
+#'       role = "user"|"assistant",
+#'       content = list(
+#'         list(
+#'           text = "string",
+#'           image = list(
+#'             format = "png"|"jpeg"|"gif"|"webp",
+#'             source = list(
+#'               bytes = raw
+#'             )
+#'           ),
+#'           document = list(
+#'             format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'             name = "string",
+#'             source = list(
+#'               bytes = raw
+#'             )
+#'           ),
+#'           toolUse = list(
+#'             toolUseId = "string",
+#'             name = "string",
+#'             input = list()
+#'           ),
+#'           toolResult = list(
+#'             toolUseId = "string",
+#'             content = list(
+#'               list(
+#'                 json = list(),
+#'                 text = "string",
+#'                 image = list(
+#'                   format = "png"|"jpeg"|"gif"|"webp",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 ),
+#'                 document = list(
+#'                   format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'                   name = "string",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             status = "success"|"error"
+#'           ),
+#'           guardContent = list(
+#'             text = list(
+#'               text = "string",
+#'               qualifiers = list(
+#'                 "grounding_source"|"query"|"guard_content"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   system = list(
+#'     list(
+#'       text = "string",
+#'       guardContent = list(
+#'         text = list(
+#'           text = "string",
+#'           qualifiers = list(
+#'             "grounding_source"|"query"|"guard_content"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   inferenceConfig = list(
+#'     maxTokens = 123,
+#'     temperature = 123.0,
+#'     topP = 123.0,
+#'     stopSequences = list(
+#'       "string"
+#'     )
+#'   ),
+#'   toolConfig = list(
+#'     tools = list(
+#'       list(
+#'         toolSpec = list(
+#'           name = "string",
+#'           description = "string",
+#'           inputSchema = list(
+#'             json = list()
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     toolChoice = list(
+#'       auto = list(),
+#'       any = list(),
+#'       tool = list(
+#'         name = "string"
+#'       )
+#'     )
+#'   ),
+#'   guardrailConfig = list(
+#'     guardrailIdentifier = "string",
+#'     guardrailVersion = "string",
+#'     trace = "enabled"|"disabled",
+#'     streamProcessingMode = "sync"|"async"
+#'   ),
+#'   additionalModelRequestFields = list(),
+#'   additionalModelResponseFieldPaths = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_converse_stream
+#'
+#' @aliases bedrockruntime_converse_stream
+bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, additionalModelResponseFieldPaths = NULL) {
+  op <- new_operation(
+    name = "ConverseStream",
+    http_method = "POST",
+    http_path = "/model/{modelId}/converse-stream",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths)
+  output <- .bedrockruntime$converse_stream_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$converse_stream <- bedrockruntime_converse_stream
+
 #' Invokes the specified Amazon Bedrock model to run inference using the
 #' prompt and inference parameters provided in the request body
 #'
@@ -21,13 +1022,14 @@ NULL
 #'   guardrailIdentifier, guardrailVersion)
 #'
 #' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
-#' `contentType` in the header. To see the format and content of the
-#' request and response bodies for different models, refer to [Inference
+#' `contentType` in the header. You must provide the body in JSON format.
+#' To see the format and content of the request and response bodies for
+#' different models, refer to [Inference
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' For more information, see [Run
 #' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
 #' in the Bedrock User Guide.
-#' @param contentType The MIME type of the input data in the request. The default value is
+#' @param contentType The MIME type of the input data in the request. You must specify
 #' `application/json`.
 #' @param accept The desired MIME type of the inference body in the response. The default
 #' value is `application/json`.
@@ -101,12 +1103,13 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
     name = "InvokeModel",
     http_method = "POST",
     http_path = "/model/{modelId}/invoke",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrockruntime$invoke_model_output()
   config <- get_config()
-  svc <- .bedrockruntime$service(config)
+  svc <- .bedrockruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -139,13 +1142,14 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #'   accept, modelId, trace, guardrailIdentifier, guardrailVersion)
 #'
 #' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
-#' `contentType` in the header. To see the format and content of the
-#' request and response bodies for different models, refer to [Inference
+#' `contentType` in the header. You must provide the body in JSON format.
+#' To see the format and content of the request and response bodies for
+#' different models, refer to [Inference
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' For more information, see [Run
 #' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
 #' in the Bedrock User Guide.
-#' @param contentType The MIME type of the input data in the request. The default value is
+#' @param contentType The MIME type of the input data in the request. You must specify
 #' `application/json`.
 #' @param accept The desired MIME type of the inference body in the response. The default
 #' value is `application/json`.
@@ -240,12 +1244,13 @@ bedrockruntime_invoke_model_with_response_stream <- function(body, contentType =
     name = "InvokeModelWithResponseStream",
     http_method = "POST",
     http_path = "/model/{modelId}/invoke-with-response-stream",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()
   config <- get_config()
-  svc <- .bedrockruntime$service(config)
+  svc <- .bedrockruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

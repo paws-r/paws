@@ -118,6 +118,7 @@ For example, \verb{emr-serverless.us-east-2.amazonaws.com}.
 \link[paws.compute:emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Creates and returns a URL that you can use to access the application UIs for a job run\cr
 \link[paws.compute:emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
 \link[paws.compute:emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
+\link[paws.compute:emrserverless_list_job_run_attempts]{list_job_run_attempts} \tab Lists all attempt of a job run\cr
 \link[paws.compute:emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
 \link[paws.compute:emrserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to the resources\cr
 \link[paws.compute:emrserverless_start_application]{start_application} \tab Starts a specified application and initializes initial capacity if configured\cr

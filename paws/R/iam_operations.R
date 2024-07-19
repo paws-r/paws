@@ -59,12 +59,13 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
     name = "AddClientIDToOpenIDConnectProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$add_client_id_to_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ClientID = ClientID)
   output <- .iam$add_client_id_to_open_id_connect_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -143,12 +144,13 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
     name = "AddRoleToInstanceProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$add_role_to_instance_profile_input(InstanceProfileName = InstanceProfileName, RoleName = RoleName)
   output <- .iam$add_role_to_instance_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -207,12 +209,13 @@ iam_add_user_to_group <- function(GroupName, UserName) {
     name = "AddUserToGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$add_user_to_group_input(GroupName = GroupName, UserName = UserName)
   output <- .iam$add_user_to_group_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -284,12 +287,13 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
     name = "AttachGroupPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$attach_group_policy_input(GroupName = GroupName, PolicyArn = PolicyArn)
   output <- .iam$attach_group_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -368,12 +372,13 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
     name = "AttachRolePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$attach_role_policy_input(RoleName = RoleName, PolicyArn = PolicyArn)
   output <- .iam$attach_role_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -446,12 +451,13 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
     name = "AttachUserPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$attach_user_policy_input(UserName = UserName, PolicyArn = PolicyArn)
   output <- .iam$attach_user_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -521,12 +527,13 @@ iam_change_password <- function(OldPassword, NewPassword) {
     name = "ChangePassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$change_password_input(OldPassword = OldPassword, NewPassword = NewPassword)
   output <- .iam$change_password_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -611,12 +618,13 @@ iam_create_access_key <- function(UserName = NULL) {
     name = "CreateAccessKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_access_key_input(UserName = UserName)
   output <- .iam$create_access_key_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -671,12 +679,13 @@ iam_create_account_alias <- function(AccountAlias) {
     name = "CreateAccountAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_account_alias_input(AccountAlias = AccountAlias)
   output <- .iam$create_account_alias_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -758,12 +767,13 @@ iam_create_group <- function(Path = NULL, GroupName) {
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_group_input(Path = Path, GroupName = GroupName)
   output <- .iam$create_group_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -905,12 +915,13 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags =
     name = "CreateInstanceProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_instance_profile_input(InstanceProfileName = InstanceProfileName, Path = Path, Tags = Tags)
   output <- .iam$create_instance_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1002,12 +1013,13 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
     name = "CreateLoginProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_login_profile_input(UserName = UserName, Password = Password, PasswordResetRequired = PasswordResetRequired)
   output <- .iam$create_login_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1019,8 +1031,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #'
 #' @description
 #' Creates an IAM entity to describe an identity provider (IdP) that
-#' supports [OpenID Connect
-#' (OIDC)](https://openid.net/developers/how-connect-works/).
+#' supports OpenID Connect (OIDC).
 #' 
 #' The OIDC provider that you create with this operation can be used as a
 #' principal in a role's trust policy. Such a policy establishes a trust
@@ -1185,12 +1196,13 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
     name = "CreateOpenIDConnectProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_open_id_connect_provider_input(Url = Url, ClientIDList = ClientIDList, ThumbprintList = ThumbprintList, Tags = Tags)
   output <- .iam$create_open_id_connect_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1348,12 +1360,13 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
     name = "CreatePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_policy_input(PolicyName = PolicyName, Path = Path, PolicyDocument = PolicyDocument, Description = Description, Tags = Tags)
   output <- .iam$create_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1459,12 +1472,13 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
     name = "CreatePolicyVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_policy_version_input(PolicyArn = PolicyArn, PolicyDocument = PolicyDocument, SetAsDefault = SetAsDefault)
   output <- .iam$create_policy_version_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1650,12 +1664,13 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
     name = "CreateRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_role_input(Path = Path, RoleName = RoleName, AssumeRolePolicyDocument = AssumeRolePolicyDocument, Description = Description, MaxSessionDuration = MaxSessionDuration, PermissionsBoundary = PermissionsBoundary, Tags = Tags)
   output <- .iam$create_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1760,12 +1775,13 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
     name = "CreateSAMLProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, Name = Name, Tags = Tags)
   output <- .iam$create_saml_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1870,12 +1886,13 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
     name = "CreateServiceLinkedRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_service_linked_role_input(AWSServiceName = AWSServiceName, Description = Description, CustomSuffix = CustomSuffix)
   output <- .iam$create_service_linked_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1958,12 +1975,13 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
     name = "CreateServiceSpecificCredential",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_service_specific_credential_input(UserName = UserName, ServiceName = ServiceName)
   output <- .iam$create_service_specific_credential_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2089,12 +2107,13 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_user_input(Path = Path, UserName = UserName, PermissionsBoundary = PermissionsBoundary, Tags = Tags)
   output <- .iam$create_user_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2226,12 +2245,13 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName, Tag
     name = "CreateVirtualMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$create_virtual_mfa_device_input(Path = Path, VirtualMFADeviceName = VirtualMFADeviceName, Tags = Tags)
   output <- .iam$create_virtual_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2288,12 +2308,13 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
     name = "DeactivateMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$deactivate_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber)
   output <- .iam$deactivate_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2359,12 +2380,13 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
     name = "DeleteAccessKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_access_key_input(UserName = UserName, AccessKeyId = AccessKeyId)
   output <- .iam$delete_access_key_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2419,12 +2441,13 @@ iam_delete_account_alias <- function(AccountAlias) {
     name = "DeleteAccountAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_account_alias_input(AccountAlias = AccountAlias)
   output <- .iam$delete_account_alias_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2464,12 +2487,13 @@ iam_delete_account_password_policy <- function() {
     name = "DeleteAccountPasswordPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_account_password_policy_input()
   output <- .iam$delete_account_password_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2512,12 +2536,13 @@ iam_delete_group <- function(GroupName) {
     name = "DeleteGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_group_input(GroupName = GroupName)
   output <- .iam$delete_group_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2586,12 +2611,13 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
     name = "DeleteGroupPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_group_policy_input(GroupName = GroupName, PolicyName = PolicyName)
   output <- .iam$delete_group_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2652,12 +2678,13 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
     name = "DeleteInstanceProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_instance_profile_input(InstanceProfileName = InstanceProfileName)
   output <- .iam$delete_instance_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2723,12 +2750,13 @@ iam_delete_login_profile <- function(UserName) {
     name = "DeleteLoginProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_login_profile_input(UserName = UserName)
   output <- .iam$delete_login_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2777,12 +2805,13 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
     name = "DeleteOpenIDConnectProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn)
   output <- .iam$delete_open_id_connect_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2851,12 +2880,13 @@ iam_delete_policy <- function(PolicyArn) {
     name = "DeletePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_policy_input(PolicyArn = PolicyArn)
   output <- .iam$delete_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2922,12 +2952,13 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
     name = "DeletePolicyVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$delete_policy_version_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2999,12 +3030,13 @@ iam_delete_role <- function(RoleName) {
     name = "DeleteRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_role_input(RoleName = RoleName)
   output <- .iam$delete_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3048,12 +3080,13 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
     name = "DeleteRolePermissionsBoundary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_role_permissions_boundary_input(RoleName = RoleName)
   output <- .iam$delete_role_permissions_boundary_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3122,12 +3155,13 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
     name = "DeleteRolePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_role_policy_input(RoleName = RoleName, PolicyName = PolicyName)
   output <- .iam$delete_role_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3172,12 +3206,13 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
     name = "DeleteSAMLProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_saml_provider_input(SAMLProviderArn = SAMLProviderArn)
   output <- .iam$delete_saml_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3232,12 +3267,13 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
     name = "DeleteSSHPublicKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId)
   output <- .iam$delete_ssh_public_key_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3297,12 +3333,13 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
     name = "DeleteServerCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_server_certificate_input(ServerCertificateName = ServerCertificateName)
   output <- .iam$delete_server_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3368,12 +3405,13 @@ iam_delete_service_linked_role <- function(RoleName) {
     name = "DeleteServiceLinkedRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_service_linked_role_input(RoleName = RoleName)
   output <- .iam$delete_service_linked_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3426,12 +3464,13 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
     name = "DeleteServiceSpecificCredential",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId)
   output <- .iam$delete_service_specific_credential_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3496,12 +3535,13 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
     name = "DeleteSigningCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_signing_certificate_input(UserName = UserName, CertificateId = CertificateId)
   output <- .iam$delete_signing_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3582,12 +3622,13 @@ iam_delete_user <- function(UserName) {
     name = "DeleteUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_user_input(UserName = UserName)
   output <- .iam$delete_user_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3629,12 +3670,13 @@ iam_delete_user_permissions_boundary <- function(UserName) {
     name = "DeleteUserPermissionsBoundary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_user_permissions_boundary_input(UserName = UserName)
   output <- .iam$delete_user_permissions_boundary_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3703,12 +3745,13 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
     name = "DeleteUserPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_user_policy_input(UserName = UserName, PolicyName = PolicyName)
   output <- .iam$delete_user_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3764,12 +3807,13 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
     name = "DeleteVirtualMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$delete_virtual_mfa_device_input(SerialNumber = SerialNumber)
   output <- .iam$delete_virtual_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3824,12 +3868,13 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
     name = "DetachGroupPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$detach_group_policy_input(GroupName = GroupName, PolicyArn = PolicyArn)
   output <- .iam$detach_group_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3884,12 +3929,13 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
     name = "DetachRolePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$detach_role_policy_input(RoleName = RoleName, PolicyArn = PolicyArn)
   output <- .iam$detach_role_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3944,12 +3990,13 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
     name = "DetachUserPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$detach_user_policy_input(UserName = UserName, PolicyArn = PolicyArn)
   output <- .iam$detach_user_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4027,12 +4074,13 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
     name = "EnableMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$enable_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber, AuthenticationCode1 = AuthenticationCode1, AuthenticationCode2 = AuthenticationCode2)
   output <- .iam$enable_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4073,12 +4121,13 @@ iam_generate_credential_report <- function() {
     name = "GenerateCredentialReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$generate_credential_report_input()
   output <- .iam$generate_credential_report_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4271,12 +4320,13 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
     name = "GenerateOrganizationsAccessReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$generate_organizations_access_report_input(EntityPath = EntityPath, OrganizationsPolicyId = OrganizationsPolicyId)
   output <- .iam$generate_organizations_access_report_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4405,12 +4455,13 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
     name = "GenerateServiceLastAccessedDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$generate_service_last_accessed_details_input(Arn = Arn, Granularity = Granularity)
   output <- .iam$generate_service_last_accessed_details_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4466,12 +4517,13 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
     name = "GetAccessKeyLastUsed",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_access_key_last_used_input(AccessKeyId = AccessKeyId)
   output <- .iam$get_access_key_last_used_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4728,12 +4780,13 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
     name = "GetAccountAuthorizationDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("UserDetailList", "GroupDetailList", "RoleDetailList", "Policies"))
   )
   input <- .iam$get_account_authorization_details_input(Filter = Filter, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_account_authorization_details_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4792,12 +4845,13 @@ iam_get_account_password_policy <- function() {
     name = "GetAccountPasswordPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_account_password_policy_input()
   output <- .iam$get_account_password_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4849,12 +4903,13 @@ iam_get_account_summary <- function() {
     name = "GetAccountSummary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_account_summary_input()
   output <- .iam$get_account_summary_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4929,12 +4984,13 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
     name = "GetContextKeysForCustomPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_context_keys_for_custom_policy_input(PolicyInputList = PolicyInputList)
   output <- .iam$get_context_keys_for_custom_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5033,12 +5089,13 @@ iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInp
     name = "GetContextKeysForPrincipalPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_context_keys_for_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList)
   output <- .iam$get_context_keys_for_principal_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5082,12 +5139,13 @@ iam_get_credential_report <- function() {
     name = "GetCredentialReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_credential_report_input()
   output <- .iam$get_credential_report_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5184,12 +5242,13 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     name = "GetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users")
   )
   input <- .iam$get_group_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$get_group_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5264,12 +5323,13 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
     name = "GetGroupPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_group_policy_input(GroupName = GroupName, PolicyName = PolicyName)
   output <- .iam$get_group_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5374,12 +5434,13 @@ iam_get_instance_profile <- function(InstanceProfileName) {
     name = "GetInstanceProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_instance_profile_input(InstanceProfileName = InstanceProfileName)
   output <- .iam$get_instance_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5454,12 +5515,13 @@ iam_get_login_profile <- function(UserName) {
     name = "GetLoginProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_login_profile_input(UserName = UserName)
   output <- .iam$get_login_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5512,12 +5574,13 @@ iam_get_mfa_device <- function(SerialNumber, UserName = NULL) {
     name = "GetMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_mfa_device_input(SerialNumber = SerialNumber, UserName = UserName)
   output <- .iam$get_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5584,12 +5647,13 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
     name = "GetOpenIDConnectProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn)
   output <- .iam$get_open_id_connect_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5713,12 +5777,13 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
     name = "GetOrganizationsAccessReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_organizations_access_report_input(JobId = JobId, MaxItems = MaxItems, Marker = Marker, SortKey = SortKey)
   output <- .iam$get_organizations_access_report_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5806,12 +5871,13 @@ iam_get_policy <- function(PolicyArn) {
     name = "GetPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_policy_input(PolicyArn = PolicyArn)
   output <- .iam$get_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5901,12 +5967,13 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
     name = "GetPolicyVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$get_policy_version_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6001,12 +6068,13 @@ iam_get_role <- function(RoleName) {
     name = "GetRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_role_input(RoleName = RoleName)
   output <- .iam$get_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6085,12 +6153,13 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
     name = "GetRolePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_role_policy_input(RoleName = RoleName, PolicyName = PolicyName)
   output <- .iam$get_role_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6154,12 +6223,13 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
     name = "GetSAMLProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_saml_provider_input(SAMLProviderArn = SAMLProviderArn)
   output <- .iam$get_saml_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6233,12 +6303,13 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
     name = "GetSSHPublicKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId, Encoding = Encoding)
   output <- .iam$get_ssh_public_key_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6316,12 +6387,13 @@ iam_get_server_certificate <- function(ServerCertificateName) {
     name = "GetServerCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_server_certificate_input(ServerCertificateName = ServerCertificateName)
   output <- .iam$get_server_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6480,12 +6552,13 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
     name = "GetServiceLastAccessedDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_service_last_accessed_details_input(JobId = JobId, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_service_last_accessed_details_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6621,12 +6694,13 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
     name = "GetServiceLastAccessedDetailsWithEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_service_last_accessed_details_with_entities_input(JobId = JobId, ServiceNamespace = ServiceNamespace, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_service_last_accessed_details_with_entities_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6689,12 +6763,13 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
     name = "GetServiceLinkedRoleDeletionStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_service_linked_role_deletion_status_input(DeletionTaskId = DeletionTaskId)
   output <- .iam$get_service_linked_role_deletion_status_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6777,12 +6852,13 @@ iam_get_user <- function(UserName = NULL) {
     name = "GetUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_user_input(UserName = UserName)
   output <- .iam$get_user_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6857,12 +6933,13 @@ iam_get_user_policy <- function(UserName, PolicyName) {
     name = "GetUserPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$get_user_policy_input(UserName = UserName, PolicyName = PolicyName)
   output <- .iam$get_user_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6963,12 +7040,13 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     name = "ListAccessKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccessKeyMetadata")
   )
   input <- .iam$list_access_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_access_keys_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7039,12 +7117,13 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListAccountAliases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccountAliases")
   )
   input <- .iam$list_account_aliases_input(Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_account_aliases_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7139,12 +7218,13 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
     name = "ListAttachedGroupPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_group_policies_input(GroupName = GroupName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_group_policies_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7238,12 +7318,13 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
     name = "ListAttachedRolePolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_role_policies_input(RoleName = RoleName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_role_policies_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7337,12 +7418,13 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
     name = "ListAttachedUserPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_user_policies_input(UserName = UserName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_user_policies_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7463,12 +7545,13 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
     name = "ListEntitiesForPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("PolicyGroups", "PolicyUsers", "PolicyRoles"))
   )
   input <- .iam$list_entities_for_policy_input(PolicyArn = PolicyArn, EntityFilter = EntityFilter, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_entities_for_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7556,12 +7639,13 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     name = "ListGroupPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_group_policies_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_group_policies_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7650,12 +7734,13 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups")
   )
   input <- .iam$list_groups_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7741,12 +7826,13 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
     name = "ListGroupsForUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups")
   )
   input <- .iam$list_groups_for_user_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_for_user_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7819,12 +7905,13 @@ iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, M
     name = "ListInstanceProfileTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_instance_profile_tags_input(InstanceProfileName = InstanceProfileName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profile_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7953,12 +8040,13 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
     name = "ListInstanceProfiles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles")
   )
   input <- .iam$list_instance_profiles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8075,12 +8163,13 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
     name = "ListInstanceProfilesForRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles")
   )
   input <- .iam$list_instance_profiles_for_role_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_for_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8156,12 +8245,13 @@ iam_list_mfa_device_tags <- function(SerialNumber, Marker = NULL, MaxItems = NUL
     name = "ListMFADeviceTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_mfa_device_tags_input(SerialNumber = SerialNumber, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_device_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8240,12 +8330,13 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     name = "ListMFADevices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "MFADevices")
   )
   input <- .iam$list_mfa_devices_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_devices_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8324,12 +8415,13 @@ iam_list_open_id_connect_provider_tags <- function(OpenIDConnectProviderArn, Mar
     name = "ListOpenIDConnectProviderTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_open_id_connect_provider_tags_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_open_id_connect_provider_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8381,12 +8473,13 @@ iam_list_open_id_connect_providers <- function() {
     name = "ListOpenIDConnectProviders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$list_open_id_connect_providers_input()
   output <- .iam$list_open_id_connect_providers_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8528,12 +8621,13 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Policies")
   )
   input <- .iam$list_policies_input(Scope = Scope, OnlyAttached = OnlyAttached, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policies_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8663,12 +8757,13 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
     name = "ListPoliciesGrantingServiceAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$list_policies_granting_service_access_input(Marker = Marker, Arn = Arn, ServiceNamespaces = ServiceNamespaces)
   output <- .iam$list_policies_granting_service_access_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8742,12 +8837,13 @@ iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
     name = "ListPolicyTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_policy_tags_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8829,12 +8925,13 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
     name = "ListPolicyVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Versions")
   )
   input <- .iam$list_policy_versions_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_versions_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8913,12 +9010,13 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     name = "ListRolePolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_role_policies_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_policies_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8999,12 +9097,13 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     name = "ListRoleTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_role_tags_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9124,12 +9223,13 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     name = "ListRoles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Roles")
   )
   input <- .iam$list_roles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_roles_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9207,12 +9307,13 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
     name = "ListSAMLProviderTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_saml_provider_tags_input(SAMLProviderArn = SAMLProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_saml_provider_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9270,12 +9371,13 @@ iam_list_saml_providers <- function() {
     name = "ListSAMLProviders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "SAMLProviderList")
   )
   input <- .iam$list_saml_providers_input()
   output <- .iam$list_saml_providers_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9362,12 +9464,13 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
     name = "ListSSHPublicKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "SSHPublicKeys")
   )
   input <- .iam$list_ssh_public_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_ssh_public_keys_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9448,12 +9551,13 @@ iam_list_server_certificate_tags <- function(ServerCertificateName, Marker = NUL
     name = "ListServerCertificateTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_server_certificate_tags_input(ServerCertificateName = ServerCertificateName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificate_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9554,12 +9658,13 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
     name = "ListServerCertificates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "ServerCertificateMetadataList")
   )
   input <- .iam$list_server_certificates_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificates_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9632,12 +9737,13 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
     name = "ListServiceSpecificCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$list_service_specific_credentials_input(UserName = UserName, ServiceName = ServiceName)
   output <- .iam$list_service_specific_credentials_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9733,12 +9839,13 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
     name = "ListSigningCertificates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Certificates")
   )
   input <- .iam$list_signing_certificates_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_signing_certificates_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9817,12 +9924,13 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
     name = "ListUserPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_user_policies_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_policies_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9903,12 +10011,13 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
     name = "ListUserTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_user_tags_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_tags_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10025,12 +10134,13 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users")
   )
   input <- .iam$list_users_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_users_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10148,12 +10258,13 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
     name = "ListVirtualMFADevices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "VirtualMFADevices")
   )
   input <- .iam$list_virtual_mfa_devices_input(AssignmentStatus = AssignmentStatus, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_virtual_mfa_devices_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10255,12 +10366,13 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
     name = "PutGroupPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$put_group_policy_input(GroupName = GroupName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_group_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10328,12 +10440,13 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
     name = "PutRolePermissionsBoundary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$put_role_permissions_boundary_input(RoleName = RoleName, PermissionsBoundary = PermissionsBoundary)
   output <- .iam$put_role_permissions_boundary_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10445,12 +10558,13 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
     name = "PutRolePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$put_role_policy_input(RoleName = RoleName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_role_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10516,12 +10630,13 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
     name = "PutUserPermissionsBoundary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$put_user_permissions_boundary_input(UserName = UserName, PermissionsBoundary = PermissionsBoundary)
   output <- .iam$put_user_permissions_boundary_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10622,12 +10737,13 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
     name = "PutUserPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$put_user_policy_input(UserName = UserName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_user_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10684,12 +10800,13 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
     name = "RemoveClientIDFromOpenIDConnectProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$remove_client_id_from_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ClientID = ClientID)
   output <- .iam$remove_client_id_from_open_id_connect_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10762,12 +10879,13 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
     name = "RemoveRoleFromInstanceProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$remove_role_from_instance_profile_input(InstanceProfileName = InstanceProfileName, RoleName = RoleName)
   output <- .iam$remove_role_from_instance_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10826,12 +10944,13 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
     name = "RemoveUserFromGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$remove_user_from_group_input(GroupName = GroupName, UserName = UserName)
   output <- .iam$remove_user_from_group_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10900,12 +11019,13 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
     name = "ResetServiceSpecificCredential",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$reset_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId)
   output <- .iam$reset_service_specific_credential_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10970,12 +11090,13 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
     name = "ResyncMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$resync_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber, AuthenticationCode1 = AuthenticationCode1, AuthenticationCode2 = AuthenticationCode2)
   output <- .iam$resync_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11035,12 +11156,13 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
     name = "SetDefaultPolicyVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$set_default_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$set_default_policy_version_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11123,12 +11245,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
     name = "SetSecurityTokenServicePreferences",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$set_security_token_service_preferences_input(GlobalEndpointTokenVersion = GlobalEndpointTokenVersion)
   output <- .iam$set_security_token_service_preferences_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11476,12 +11599,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
     name = "SimulateCustomPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults")
   )
   input <- .iam$simulate_custom_policy_input(PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_custom_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11849,12 +11973,13 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
     name = "SimulatePrincipalPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults")
   )
   input <- .iam$simulate_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_principal_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11936,12 +12061,13 @@ iam_tag_instance_profile <- function(InstanceProfileName, Tags) {
     name = "TagInstanceProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_instance_profile_input(InstanceProfileName = InstanceProfileName, Tags = Tags)
   output <- .iam$tag_instance_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12026,12 +12152,13 @@ iam_tag_mfa_device <- function(SerialNumber, Tags) {
     name = "TagMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_mfa_device_input(SerialNumber = SerialNumber, Tags = Tags)
   output <- .iam$tag_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12118,12 +12245,13 @@ iam_tag_open_id_connect_provider <- function(OpenIDConnectProviderArn, Tags) {
     name = "TagOpenIDConnectProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, Tags = Tags)
   output <- .iam$tag_open_id_connect_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12206,12 +12334,13 @@ iam_tag_policy <- function(PolicyArn, Tags) {
     name = "TagPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_policy_input(PolicyArn = PolicyArn, Tags = Tags)
   output <- .iam$tag_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12319,12 +12448,13 @@ iam_tag_role <- function(RoleName, Tags) {
     name = "TagRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_role_input(RoleName = RoleName, Tags = Tags)
   output <- .iam$tag_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12411,12 +12541,13 @@ iam_tag_saml_provider <- function(SAMLProviderArn, Tags) {
     name = "TagSAMLProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_saml_provider_input(SAMLProviderArn = SAMLProviderArn, Tags = Tags)
   output <- .iam$tag_saml_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12508,12 +12639,13 @@ iam_tag_server_certificate <- function(ServerCertificateName, Tags) {
     name = "TagServerCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_server_certificate_input(ServerCertificateName = ServerCertificateName, Tags = Tags)
   output <- .iam$tag_server_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12620,12 +12752,13 @@ iam_tag_user <- function(UserName, Tags) {
     name = "TagUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$tag_user_input(UserName = UserName, Tags = Tags)
   output <- .iam$tag_user_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12675,12 +12808,13 @@ iam_untag_instance_profile <- function(InstanceProfileName, TagKeys) {
     name = "UntagInstanceProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_instance_profile_input(InstanceProfileName = InstanceProfileName, TagKeys = TagKeys)
   output <- .iam$untag_instance_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12734,12 +12868,13 @@ iam_untag_mfa_device <- function(SerialNumber, TagKeys) {
     name = "UntagMFADevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_mfa_device_input(SerialNumber = SerialNumber, TagKeys = TagKeys)
   output <- .iam$untag_mfa_device_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12793,12 +12928,13 @@ iam_untag_open_id_connect_provider <- function(OpenIDConnectProviderArn, TagKeys
     name = "UntagOpenIDConnectProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, TagKeys = TagKeys)
   output <- .iam$untag_open_id_connect_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12849,12 +12985,13 @@ iam_untag_policy <- function(PolicyArn, TagKeys) {
     name = "UntagPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_policy_input(PolicyArn = PolicyArn, TagKeys = TagKeys)
   output <- .iam$untag_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12916,12 +13053,13 @@ iam_untag_role <- function(RoleName, TagKeys) {
     name = "UntagRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_role_input(RoleName = RoleName, TagKeys = TagKeys)
   output <- .iam$untag_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12976,12 +13114,13 @@ iam_untag_saml_provider <- function(SAMLProviderArn, TagKeys) {
     name = "UntagSAMLProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_saml_provider_input(SAMLProviderArn = SAMLProviderArn, TagKeys = TagKeys)
   output <- .iam$untag_saml_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13039,12 +13178,13 @@ iam_untag_server_certificate <- function(ServerCertificateName, TagKeys) {
     name = "UntagServerCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_server_certificate_input(ServerCertificateName = ServerCertificateName, TagKeys = TagKeys)
   output <- .iam$untag_server_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13106,12 +13246,13 @@ iam_untag_user <- function(UserName, TagKeys) {
     name = "UntagUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$untag_user_input(UserName = UserName, TagKeys = TagKeys)
   output <- .iam$untag_user_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13190,12 +13331,13 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
     name = "UpdateAccessKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_access_key_input(UserName = UserName, AccessKeyId = AccessKeyId, Status = Status)
   output <- .iam$update_access_key_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13336,12 +13478,13 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
     name = "UpdateAccountPasswordPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_account_password_policy_input(MinimumPasswordLength = MinimumPasswordLength, RequireSymbols = RequireSymbols, RequireNumbers = RequireNumbers, RequireUppercaseCharacters = RequireUppercaseCharacters, RequireLowercaseCharacters = RequireLowercaseCharacters, AllowUsersToChangePassword = AllowUsersToChangePassword, MaxPasswordAge = MaxPasswordAge, PasswordReusePrevention = PasswordReusePrevention, HardExpiry = HardExpiry)
   output <- .iam$update_account_password_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13417,12 +13560,13 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
     name = "UpdateAssumeRolePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_assume_role_policy_input(RoleName = RoleName, PolicyDocument = PolicyDocument)
   output <- .iam$update_assume_role_policy_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13506,12 +13650,13 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_group_input(GroupName = GroupName, NewPath = NewPath, NewGroupName = NewGroupName)
   output <- .iam$update_group_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13595,12 +13740,13 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
     name = "UpdateLoginProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_login_profile_input(UserName = UserName, Password = Password, PasswordResetRequired = PasswordResetRequired)
   output <- .iam$update_login_profile_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13679,12 +13825,13 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
     name = "UpdateOpenIDConnectProviderThumbprint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_open_id_connect_provider_thumbprint_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ThumbprintList = ThumbprintList)
   output <- .iam$update_open_id_connect_provider_thumbprint_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13743,12 +13890,13 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
     name = "UpdateRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_role_input(RoleName = RoleName, Description = Description, MaxSessionDuration = MaxSessionDuration)
   output <- .iam$update_role_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13823,12 +13971,13 @@ iam_update_role_description <- function(RoleName, Description) {
     name = "UpdateRoleDescription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_role_description_input(RoleName = RoleName, Description = Description)
   output <- .iam$update_role_description_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13886,12 +14035,13 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
     name = "UpdateSAMLProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, SAMLProviderArn = SAMLProviderArn)
   output <- .iam$update_saml_provider_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13953,12 +14103,13 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
     name = "UpdateSSHPublicKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId, Status = Status)
   output <- .iam$update_ssh_public_key_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14045,12 +14196,13 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
     name = "UpdateServerCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_server_certificate_input(ServerCertificateName = ServerCertificateName, NewPath = NewPath, NewServerCertificateName = NewServerCertificateName)
   output <- .iam$update_server_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14107,12 +14259,13 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
     name = "UpdateServiceSpecificCredential",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId, Status = Status)
   output <- .iam$update_service_specific_credential_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14185,12 +14338,13 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
     name = "UpdateSigningCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_signing_certificate_input(UserName = UserName, CertificateId = CertificateId, Status = Status)
   output <- .iam$update_signing_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14275,12 +14429,13 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
     name = "UpdateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$update_user_input(UserName = UserName, NewPath = NewPath, NewUserName = NewUserName)
   output <- .iam$update_user_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14361,12 +14516,13 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
     name = "UploadSSHPublicKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$upload_ssh_public_key_input(UserName = UserName, SSHPublicKeyBody = SSHPublicKeyBody)
   output <- .iam$upload_ssh_public_key_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14559,12 +14715,13 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
     name = "UploadServerCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$upload_server_certificate_input(Path = Path, ServerCertificateName = ServerCertificateName, CertificateBody = CertificateBody, PrivateKey = PrivateKey, CertificateChain = CertificateChain, Tags = Tags)
   output <- .iam$upload_server_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14671,12 +14828,13 @@ iam_upload_signing_certificate <- function(UserName = NULL, CertificateBody) {
     name = "UploadSigningCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iam$upload_signing_certificate_input(UserName = UserName, CertificateBody = CertificateBody)
   output <- .iam$upload_signing_certificate_output()
   config <- get_config()
-  svc <- .iam$service(config)
+  svc <- .iam$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

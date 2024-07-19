@@ -11,7 +11,7 @@ controltower_get_baseline(baselineIdentifier)
 \item{baselineIdentifier}{[required] The ARN of the \code{Baseline} resource to be retrieved.}
 }
 \description{
-Retrieve details about an existing \code{Baseline} resource by specifying its identifier.
+Retrieve details about an existing \code{Baseline} resource by specifying its identifier. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_get_baseline/} for full documentation.
 }

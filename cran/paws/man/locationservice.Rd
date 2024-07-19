@@ -123,6 +123,7 @@ and Geofencing"
 \link[paws.application.integration:locationservice_describe_route_calculator]{describe_route_calculator} \tab Retrieves the route calculator resource details\cr
 \link[paws.application.integration:locationservice_describe_tracker]{describe_tracker} \tab Retrieves the tracker resource details\cr
 \link[paws.application.integration:locationservice_disassociate_tracker_consumer]{disassociate_tracker_consumer} \tab Removes the association between a tracker resource and a geofence collection\cr
+\link[paws.application.integration:locationservice_forecast_geofence_events]{forecast_geofence_events} \tab Evaluates device positions against geofence geometries from a given geofence collection\cr
 \link[paws.application.integration:locationservice_get_device_position]{get_device_position} \tab Retrieves a device's most recent position according to its sample time\cr
 \link[paws.application.integration:locationservice_get_device_position_history]{get_device_position_history} \tab Retrieves the device position history from a tracker resource within a specified range of time\cr
 \link[paws.application.integration:locationservice_get_geofence]{get_geofence} \tab Retrieves the geofence details from a geofence collection\cr
@@ -152,7 +153,8 @@ and Geofencing"
 \link[paws.application.integration:locationservice_update_map]{update_map} \tab Updates the specified properties of a given map resource\cr
 \link[paws.application.integration:locationservice_update_place_index]{update_place_index} \tab Updates the specified properties of a given place index resource\cr
 \link[paws.application.integration:locationservice_update_route_calculator]{update_route_calculator} \tab Updates the specified properties for a given route calculator resource\cr
-\link[paws.application.integration:locationservice_update_tracker]{update_tracker} \tab Updates the specified properties of a given tracker resource
+\link[paws.application.integration:locationservice_update_tracker]{update_tracker} \tab Updates the specified properties of a given tracker resource\cr
+\link[paws.application.integration:locationservice_verify_device_position]{verify_device_position} \tab Verifies the integrity of the device's position by determining if it was reported behind a proxy, and by comparing it to an inferred position estimated based on the device's state
 }
 }
 

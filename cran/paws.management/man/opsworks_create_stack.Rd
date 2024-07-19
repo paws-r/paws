@@ -27,27 +27,27 @@ opsworks_create_stack(
 )
 }
 \arguments{
-\item{Name}{[required] The stack name.}
+\item{Name}{[required] The stack name. Stack names can be a maximum of 64 characters.}
 
-\item{Region}{[required] The stack's AWS region, such as \code{ap-south-1}. For more information about
-Amazon regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
+\item{Region}{[required] The stack's Amazon Web Services Region, such as \code{ap-south-1}. For more
+information about Amazon Web Services Regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
 
-In the AWS CLI, this API maps to the \code{--stack-region} parameter. If the
-\code{--stack-region} parameter and the AWS CLI common parameter \code{--region}
-are set to the same value, the stack uses a \emph{regional} endpoint. If the
-\code{--stack-region} parameter is not set, but the AWS CLI \code{--region}
-parameter is, this also results in a stack with a \emph{regional} endpoint.
-However, if the \code{--region} parameter is set to \code{us-east-1}, and the
-\code{--stack-region} parameter is set to one of the following, then the
-stack uses a legacy or \emph{classic} region:
+In the CLI, this API maps to the \code{--stack-region} parameter. If the
+\code{--stack-region} parameter and the CLI common parameter \code{--region} are
+set to the same value, the stack uses a \emph{regional} endpoint. If the
+\code{--stack-region} parameter is not set, but the CLI \code{--region} parameter
+is, this also results in a stack with a \emph{regional} endpoint. However, if
+the \code{--region} parameter is set to \code{us-east-1}, and the \code{--stack-region}
+parameter is set to one of the following, then the stack uses a legacy
+or \emph{classic} region:
 \verb{us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2}.
 In this case, the actual API endpoint of the stack is in \code{us-east-1}.
 Only the preceding regions are supported as classic regions in the
 \code{us-east-1} API endpoint. Because it is a best practice to choose the
-regional endpoint that is closest to where you manage AWS, we recommend
-that you use regional endpoints for new stacks. The AWS CLI common
-\code{--region} parameter always specifies a regional API endpoint; it cannot
-be used to specify a classic AWS OpsWorks Stacks region.}
+regional endpoint that is closest to where you manage Amazon Web
+Services, we recommend that you use regional endpoints for new stacks.
+The CLI common \code{--region} parameter always specifies a regional API
+endpoint; it cannot be used to specify a classic OpsWorks Stacks region.}
 
 \item{VpcId}{The ID of the VPC that the stack is to be launched into. The VPC must be
 in the stack's region. All instances are launched into this VPC. You
@@ -60,10 +60,10 @@ the default VPC for the specified region.
 
 If the VPC ID corresponds to a default VPC and you have specified either
 the \code{DefaultAvailabilityZone} or the \code{DefaultSubnetId} parameter only,
-AWS OpsWorks Stacks infers the value of the other parameter. If you
-specify neither parameter, AWS OpsWorks Stacks sets these parameters to
-the first valid Availability Zone for the specified region and the
-corresponding default VPC subnet ID, respectively.
+OpsWorks Stacks infers the value of the other parameter. If you specify
+neither parameter, OpsWorks Stacks sets these parameters to the first
+valid Availability Zone for the specified region and the corresponding
+default VPC subnet ID, respectively.
 
 If you specify a nondefault VPC ID, note the following:
 \itemize{
@@ -72,17 +72,17 @@ region.
 \item You must specify a value for \code{DefaultSubnetId}.
 }
 
-For more information about how to use AWS OpsWorks Stacks with a VPC,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
+For more information about how to use OpsWorks Stacks with a VPC, see
+\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
 For more information about default VPC and EC2-Classic, see \href{https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/}{Supported Platforms}.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.}
 
-\item{ServiceRoleArn}{[required] The stack's AWS Identity and Access Management (IAM) role, which allows
-AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
-set this parameter to the Amazon Resource Name (ARN) for an existing IAM
-role. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
+\item{ServiceRoleArn}{[required] The stack's IAM role, which allows OpsWorks Stacks to work with Amazon
+Web Services resources on your behalf. You must set this parameter to
+the Amazon Resource Name (ARN) for an existing IAM role. For more
+information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{DefaultInstanceProfileArn}{[required] The Amazon Resource Name (ARN) of an IAM profile that is the default
 profile for all of the stack's EC2 instances. For more information about
@@ -93,12 +93,12 @@ instance unless you specify a different operating system when you create
 the instance. You can specify one of the following.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
+\verb{Amazon Linux 2}, \verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
 \verb{Amazon Linux 2017.03}, \verb{Amazon Linux 2016.09},
 \verb{Amazon Linux 2016.03}, \verb{Amazon Linux 2015.09}, or
 \verb{Amazon Linux 2015.03}.
-\item A supported Ubuntu operating system, such as \verb{Ubuntu 16.04 LTS},
-\verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
+\item A supported Ubuntu operating system, such as \verb{Ubuntu 18.04 LTS},
+\verb{Ubuntu 16.04 LTS}, \verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
 \item \verb{CentOS Linux 7}
 \item \verb{Red Hat Enterprise Linux 7}
 \item A supported Windows operating system, such as
@@ -110,8 +110,9 @@ the instance. You can specify one of the following.
 when you create instances. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 }
 
-The default option is the current Amazon Linux version. For more
-information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.}
+The default option is the current Amazon Linux version. Not all
+operating systems are supported with all versions of Chef. For more
+information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{OpsWorks Stacks Operating Systems}.}
 
 \item{HostnameTheme}{The stack's host name theme, with spaces replaced by underscores. The
 theme is used to generate host names for the stack's instances. By
@@ -168,24 +169,24 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cr
 
 \item{UseCustomCookbooks}{Whether the stack uses custom cookbooks.}
 
-\item{UseOpsworksSecurityGroups}{Whether to associate the AWS OpsWorks Stacks built-in security groups
-with the stack's layers.
+\item{UseOpsworksSecurityGroups}{Whether to associate the OpsWorks Stacks built-in security groups with
+the stack's layers.
 
-AWS OpsWorks Stacks provides a standard set of built-in security groups,
-one for each layer, which are associated with layers by default. With
+OpsWorks Stacks provides a standard set of built-in security groups, one
+for each layer, which are associated with layers by default. With
 \code{UseOpsworksSecurityGroups} you can instead provide your own custom
 security groups. \code{UseOpsworksSecurityGroups} has the following settings:
 \itemize{
-\item True - AWS OpsWorks Stacks automatically associates the appropriate
+\item True - OpsWorks Stacks automatically associates the appropriate
 built-in security group with each layer (default setting). You can
 associate additional security groups with a layer after you create
 it, but you cannot delete the built-in security group.
-\item False - AWS OpsWorks Stacks does not associate built-in security
-groups with layers. You must create appropriate EC2 security groups
-and associate a security group with each layer that you create.
-However, you can still manually associate a built-in security group
-with a layer on creation; custom security groups are required only
-for those layers that need custom settings.
+\item False - OpsWorks Stacks does not associate built-in security groups
+with layers. You must create appropriate EC2 security groups and
+associate a security group with each layer that you create. However,
+you can still manually associate a built-in security group with a
+layer on creation; custom security groups are required only for
+those layers that need custom settings.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
@@ -195,7 +196,7 @@ repository. For more information, see \href{https://docs.aws.amazon.com/opsworks
 or \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html}{Cookbooks and Recipes}.}
 
 \item{DefaultSshKeyName}{A default Amazon EC2 key pair name. The default value is none. If you
-specify a key pair name, AWS OpsWorks installs the public key on the
+specify a key pair name, OpsWorks installs the public key on the
 instance and you can use the private key with an SSH client to log in to
 the instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html}{Using SSH to Communicate with an Instance}
 and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html}{Managing SSH Access}.
@@ -207,16 +208,16 @@ instances in the stack, but you can override it when you create an
 instance. The default option is \code{instance-store}. For more information,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
 
-\item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
+\item{AgentVersion}{The default OpsWorks Stacks agent version. You have the following
 options:
 \itemize{
-\item Auto-update - Set this parameter to \code{LATEST}. AWS OpsWorks Stacks
+\item Auto-update - Set this parameter to \code{LATEST}. OpsWorks Stacks
 automatically installs new agent versions on the stack's instances
 as soon as they are available.
 \item Fixed version - Set this parameter to your preferred agent version.
 To update the agent version, you must edit the stack configuration
-and specify a new version. AWS OpsWorks Stacks then automatically
-installs that version on the stack's instances.
+and specify a new version. OpsWorks Stacks installs that version on
+the stack's instances.
 }
 
 The default setting is the most recent release of the agent. To specify

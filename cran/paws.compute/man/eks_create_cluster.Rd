@@ -15,7 +15,8 @@ eks_create_cluster(
   tags = NULL,
   encryptionConfig = NULL,
   outpostConfig = NULL,
-  accessConfig = NULL
+  accessConfig = NULL,
+  bootstrapSelfManagedAddons = NULL
 )
 }
 \arguments{
@@ -66,6 +67,14 @@ in the \emph{Amazon EKS User Guide}. This object isn't available for creating
 Amazon EKS clusters on the Amazon Web Services cloud.}
 
 \item{accessConfig}{The access configuration for the cluster.}
+
+\item{bootstrapSelfManagedAddons}{If you set this value to \code{False} when creating a cluster, the default
+networking add-ons will not be installed.
+
+The default networking addons include vpc-cni, coredns, and kube-proxy.
+
+Use this option when you plan to install third-party alternative add-ons
+or self-manage the default networking add-ons.}
 }
 \description{
 Creates an Amazon EKS control plane.

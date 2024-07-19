@@ -31,7 +31,7 @@ specifies its namespace depends on its type. For example:
 \item The namespace of a Maven package version is its \code{groupId}.
 \item The namespace of an npm or Swift package version is its \code{scope}.
 \item The namespace of a generic package is its \code{namespace}.
-\item Python, NuGet, and Ruby package versions do not contain a
+\item Python, NuGet, Ruby, and Cargo package versions do not contain a
 corresponding component, package versions of those formats do not
 have a namespace.
 }}

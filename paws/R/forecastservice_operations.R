@@ -233,12 +233,13 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
     name = "CreateAutoPredictor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_auto_predictor_input(PredictorName = PredictorName, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, ForecastDimensions = ForecastDimensions, ForecastFrequency = ForecastFrequency, DataConfig = DataConfig, EncryptionConfig = EncryptionConfig, ReferencePredictorArn = ReferencePredictorArn, OptimizationMetric = OptimizationMetric, ExplainPredictor = ExplainPredictor, Tags = Tags, MonitorConfig = MonitorConfig, TimeAlignmentBoundary = TimeAlignmentBoundary)
   output <- .forecastservice$create_auto_predictor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -409,12 +410,13 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_dataset_input(DatasetName = DatasetName, Domain = Domain, DatasetType = DatasetType, DataFrequency = DataFrequency, Schema = Schema, EncryptionConfig = EncryptionConfig, Tags = Tags)
   output <- .forecastservice$create_dataset_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -527,12 +529,13 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
     name = "CreateDatasetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_dataset_group_input(DatasetGroupName = DatasetGroupName, Domain = Domain, DatasetArns = DatasetArns, Tags = Tags)
   output <- .forecastservice$create_dataset_group_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -707,12 +710,13 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags, Format = Format, ImportMode = ImportMode)
   output <- .forecastservice$create_dataset_import_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -906,12 +910,13 @@ forecastservice_create_explainability <- function(ExplainabilityName, ResourceAr
     name = "CreateExplainability",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_explainability_input(ExplainabilityName = ExplainabilityName, ResourceArn = ResourceArn, ExplainabilityConfig = ExplainabilityConfig, DataSource = DataSource, Schema = Schema, EnableVisualization = EnableVisualization, StartDateTime = StartDateTime, EndDateTime = EndDateTime, Tags = Tags)
   output <- .forecastservice$create_explainability_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1012,12 +1017,13 @@ forecastservice_create_explainability_export <- function(ExplainabilityExportNam
     name = "CreateExplainabilityExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_explainability_export_input(ExplainabilityExportName = ExplainabilityExportName, ExplainabilityArn = ExplainabilityArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_explainability_export_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1174,12 +1180,13 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
     name = "CreateForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_forecast_input(ForecastName = ForecastName, PredictorArn = PredictorArn, ForecastTypes = ForecastTypes, Tags = Tags, TimeSeriesSelector = TimeSeriesSelector)
   output <- .forecastservice$create_forecast_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1301,12 +1308,13 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
     name = "CreateForecastExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_forecast_export_job_input(ForecastExportJobName = ForecastExportJobName, ForecastArn = ForecastArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_forecast_export_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1362,12 +1370,13 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
     name = "CreateMonitor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_monitor_input(MonitorName = MonitorName, ResourceArn = ResourceArn, Tags = Tags)
   output <- .forecastservice$create_monitor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1677,12 +1686,13 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
     name = "CreatePredictor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, PerformAutoML = PerformAutoML, AutoMLOverrideStrategy = AutoMLOverrideStrategy, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags, OptimizationMetric = OptimizationMetric)
   output <- .forecastservice$create_predictor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1792,12 +1802,13 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
     name = "CreatePredictorBacktestExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_predictor_backtest_export_job_input(PredictorBacktestExportJobName = PredictorBacktestExportJobName, PredictorArn = PredictorArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_predictor_backtest_export_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1910,12 +1921,13 @@ forecastservice_create_what_if_analysis <- function(WhatIfAnalysisName, Forecast
     name = "CreateWhatIfAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_what_if_analysis_input(WhatIfAnalysisName = WhatIfAnalysisName, ForecastArn = ForecastArn, TimeSeriesSelector = TimeSeriesSelector, Tags = Tags)
   output <- .forecastservice$create_what_if_analysis_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2027,12 +2039,13 @@ forecastservice_create_what_if_forecast <- function(WhatIfForecastName, WhatIfAn
     name = "CreateWhatIfForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_what_if_forecast_input(WhatIfForecastName = WhatIfForecastName, WhatIfAnalysisArn = WhatIfAnalysisArn, TimeSeriesTransformations = TimeSeriesTransformations, TimeSeriesReplacementsDataSource = TimeSeriesReplacementsDataSource, Tags = Tags)
   output <- .forecastservice$create_what_if_forecast_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2128,12 +2141,13 @@ forecastservice_create_what_if_forecast_export <- function(WhatIfForecastExportN
     name = "CreateWhatIfForecastExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$create_what_if_forecast_export_input(WhatIfForecastExportName = WhatIfForecastExportName, WhatIfForecastArns = WhatIfForecastArns, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_what_if_forecast_export_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2180,12 +2194,13 @@ forecastservice_delete_dataset <- function(DatasetArn) {
     name = "DeleteDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_dataset_input(DatasetArn = DatasetArn)
   output <- .forecastservice$delete_dataset_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2230,12 +2245,13 @@ forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
     name = "DeleteDatasetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_dataset_group_input(DatasetGroupArn = DatasetGroupArn)
   output <- .forecastservice$delete_dataset_group_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2278,12 +2294,13 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
     name = "DeleteDatasetImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_dataset_import_job_input(DatasetImportJobArn = DatasetImportJobArn)
   output <- .forecastservice$delete_dataset_import_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2325,12 +2342,13 @@ forecastservice_delete_explainability <- function(ExplainabilityArn) {
     name = "DeleteExplainability",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_explainability_input(ExplainabilityArn = ExplainabilityArn)
   output <- .forecastservice$delete_explainability_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2367,12 +2385,13 @@ forecastservice_delete_explainability_export <- function(ExplainabilityExportArn
     name = "DeleteExplainabilityExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
   output <- .forecastservice$delete_explainability_export_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2416,12 +2435,13 @@ forecastservice_delete_forecast <- function(ForecastArn) {
     name = "DeleteForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_forecast_input(ForecastArn = ForecastArn)
   output <- .forecastservice$delete_forecast_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2464,12 +2484,13 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
     name = "DeleteForecastExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_forecast_export_job_input(ForecastExportJobArn = ForecastExportJobArn)
   output <- .forecastservice$delete_forecast_export_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2508,12 +2529,13 @@ forecastservice_delete_monitor <- function(MonitorArn) {
     name = "DeleteMonitor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_monitor_input(MonitorArn = MonitorArn)
   output <- .forecastservice$delete_monitor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2556,12 +2578,13 @@ forecastservice_delete_predictor <- function(PredictorArn) {
     name = "DeletePredictor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$delete_predictor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2600,12 +2623,13 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
     name = "DeletePredictorBacktestExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
   output <- .forecastservice$delete_predictor_backtest_export_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2665,12 +2689,13 @@ forecastservice_delete_resource_tree <- function(ResourceArn) {
     name = "DeleteResourceTree",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_resource_tree_input(ResourceArn = ResourceArn)
   output <- .forecastservice$delete_resource_tree_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2717,12 +2742,13 @@ forecastservice_delete_what_if_analysis <- function(WhatIfAnalysisArn) {
     name = "DeleteWhatIfAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
   output <- .forecastservice$delete_what_if_analysis_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2770,12 +2796,13 @@ forecastservice_delete_what_if_forecast <- function(WhatIfForecastArn) {
     name = "DeleteWhatIfForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
   output <- .forecastservice$delete_what_if_forecast_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2819,12 +2846,13 @@ forecastservice_delete_what_if_forecast_export <- function(WhatIfForecastExportA
     name = "DeleteWhatIfForecastExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$delete_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
   output <- .forecastservice$delete_what_if_forecast_export_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2931,12 +2959,13 @@ forecastservice_describe_auto_predictor <- function(PredictorArn) {
     name = "DescribeAutoPredictor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_auto_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$describe_auto_predictor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3013,12 +3042,13 @@ forecastservice_describe_dataset <- function(DatasetArn) {
     name = "DescribeDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_dataset_input(DatasetArn = DatasetArn)
   output <- .forecastservice$describe_dataset_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3086,12 +3116,13 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
     name = "DescribeDatasetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_dataset_group_input(DatasetGroupArn = DatasetGroupArn)
   output <- .forecastservice$describe_dataset_group_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3193,12 +3224,13 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
     name = "DescribeDatasetImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_dataset_import_job_input(DatasetImportJobArn = DatasetImportJobArn)
   output <- .forecastservice$describe_dataset_import_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3276,12 +3308,13 @@ forecastservice_describe_explainability <- function(ExplainabilityArn) {
     name = "DescribeExplainability",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_explainability_input(ExplainabilityArn = ExplainabilityArn)
   output <- .forecastservice$describe_explainability_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3344,12 +3377,13 @@ forecastservice_describe_explainability_export <- function(ExplainabilityExportA
     name = "DescribeExplainabilityExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
   output <- .forecastservice$describe_explainability_export_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3442,12 +3476,13 @@ forecastservice_describe_forecast <- function(ForecastArn) {
     name = "DescribeForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_forecast_input(ForecastArn = ForecastArn)
   output <- .forecastservice$describe_forecast_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3522,12 +3557,13 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
     name = "DescribeForecastExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_forecast_export_job_input(ForecastExportJobArn = ForecastExportJobArn)
   output <- .forecastservice$describe_forecast_export_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3610,12 +3646,13 @@ forecastservice_describe_monitor <- function(MonitorArn) {
     name = "DescribeMonitor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_monitor_input(MonitorArn = MonitorArn)
   output <- .forecastservice$describe_monitor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3794,12 +3831,13 @@ forecastservice_describe_predictor <- function(PredictorArn) {
     name = "DescribePredictor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$describe_predictor_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3875,12 +3913,13 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
     name = "DescribePredictorBacktestExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
   output <- .forecastservice$describe_predictor_backtest_export_job_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3969,12 +4008,13 @@ forecastservice_describe_what_if_analysis <- function(WhatIfAnalysisArn) {
     name = "DescribeWhatIfAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
   output <- .forecastservice$describe_what_if_analysis_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4079,12 +4119,13 @@ forecastservice_describe_what_if_forecast <- function(WhatIfForecastArn) {
     name = "DescribeWhatIfForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
   output <- .forecastservice$describe_what_if_forecast_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4164,12 +4205,13 @@ forecastservice_describe_what_if_forecast_export <- function(WhatIfForecastExpor
     name = "DescribeWhatIfForecastExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$describe_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
   output <- .forecastservice$describe_what_if_forecast_export_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4273,12 +4315,13 @@ forecastservice_get_accuracy_metrics <- function(PredictorArn) {
     name = "GetAccuracyMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$get_accuracy_metrics_input(PredictorArn = PredictorArn)
   output <- .forecastservice$get_accuracy_metrics_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4344,12 +4387,13 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
     name = "ListDatasetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetGroups")
   )
   input <- .forecastservice$list_dataset_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_dataset_groups_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4454,12 +4498,13 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
     name = "ListDatasetImportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetImportJobs")
   )
   input <- .forecastservice$list_dataset_import_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_dataset_import_jobs_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4524,12 +4569,13 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListDatasets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Datasets")
   )
   input <- .forecastservice$list_datasets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_datasets_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4624,12 +4670,13 @@ forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults =
     name = "ListExplainabilities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Explainabilities")
   )
   input <- .forecastservice$list_explainabilities_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainabilities_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4727,12 +4774,13 @@ forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxRes
     name = "ListExplainabilityExports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExplainabilityExports")
   )
   input <- .forecastservice$list_explainability_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainability_exports_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4836,12 +4884,13 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
     name = "ListForecastExportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ForecastExportJobs")
   )
   input <- .forecastservice$list_forecast_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecast_export_jobs_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4938,12 +4987,13 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListForecasts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Forecasts")
   )
   input <- .forecastservice$list_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecasts_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5061,12 +5111,13 @@ forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResult
     name = "ListMonitorEvaluations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorMonitorEvaluations")
   )
   input <- .forecastservice$list_monitor_evaluations_input(NextToken = NextToken, MaxResults = MaxResults, MonitorArn = MonitorArn, Filters = Filters)
   output <- .forecastservice$list_monitor_evaluations_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5160,12 +5211,13 @@ forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, F
     name = "ListMonitors",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Monitors")
   )
   input <- .forecastservice$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_monitors_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5266,12 +5318,13 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
     name = "ListPredictorBacktestExportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorBacktestExportJobs")
   )
   input <- .forecastservice$list_predictor_backtest_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictor_backtest_export_jobs_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5375,12 +5428,13 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
     name = "ListPredictors",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Predictors")
   )
   input <- .forecastservice$list_predictors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictors_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5428,12 +5482,13 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5531,12 +5586,13 @@ forecastservice_list_what_if_analyses <- function(NextToken = NULL, MaxResults =
     name = "ListWhatIfAnalyses",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfAnalyses")
   )
   input <- .forecastservice$list_what_if_analyses_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_analyses_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5644,12 +5700,13 @@ forecastservice_list_what_if_forecast_exports <- function(NextToken = NULL, MaxR
     name = "ListWhatIfForecastExports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecastExports")
   )
   input <- .forecastservice$list_what_if_forecast_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecast_exports_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5747,12 +5804,13 @@ forecastservice_list_what_if_forecasts <- function(NextToken = NULL, MaxResults 
     name = "ListWhatIfForecasts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecasts")
   )
   input <- .forecastservice$list_what_if_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecasts_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5789,12 +5847,13 @@ forecastservice_resume_resource <- function(ResourceArn) {
     name = "ResumeResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$resume_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$resume_resource_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5854,12 +5913,13 @@ forecastservice_stop_resource <- function(ResourceArn) {
     name = "StopResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$stop_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$stop_resource_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5935,12 +5995,13 @@ forecastservice_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .forecastservice$tag_resource_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5982,12 +6043,13 @@ forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .forecastservice$untag_resource_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6034,12 +6096,13 @@ forecastservice_update_dataset_group <- function(DatasetGroupArn, DatasetArns) {
     name = "UpdateDatasetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastservice$update_dataset_group_input(DatasetGroupArn = DatasetGroupArn, DatasetArns = DatasetArns)
   output <- .forecastservice$update_dataset_group_output()
   config <- get_config()
-  svc <- .forecastservice$service(config)
+  svc <- .forecastservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

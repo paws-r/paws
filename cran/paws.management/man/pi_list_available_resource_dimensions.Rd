@@ -10,7 +10,8 @@ pi_list_available_resource_dimensions(
   Identifier,
   Metrics,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  AuthorizedActions = NULL
 )
 }
 \arguments{
@@ -33,6 +34,14 @@ included in the response so that the remaining results can be retrieved.}
 \item{NextToken}{An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 token, up to the value specified by \code{MaxRecords}.}
+
+\item{AuthorizedActions}{The actions to discover the dimensions you are authorized to access. If
+you specify multiple actions, then the response will contain the
+dimensions common for all the actions.
+
+When you don't specify this request parameter or provide an empty list,
+the response contains all the available dimensions for the target
+database engine whether or not you are authorized to access them.}
 }
 \description{
 Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance.

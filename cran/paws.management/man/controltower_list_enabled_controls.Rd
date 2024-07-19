@@ -6,22 +6,27 @@
 specified organizational unit and the accounts it contains}
 \usage{
 controltower_list_enabled_controls(
+  filter = NULL,
   maxResults = NULL,
   nextToken = NULL,
-  targetIdentifier
+  targetIdentifier = NULL
 )
 }
 \arguments{
+\item{filter}{An input filter for the
+\code{\link[=controltower_list_enabled_controls]{list_enabled_controls}} API that
+lets you select the types of control operations to view.}
+
 \item{maxResults}{How many results to return per API call.}
 
 \item{nextToken}{The token to continue the list from a previous API call with the same
 parameters.}
 
-\item{targetIdentifier}{[required] The ARN of the organizational unit. For information on how to find the
+\item{targetIdentifier}{The ARN of the organizational unit. For information on how to find the
 \code{targetIdentifier}, see \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
 }
 \description{
-Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
+Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains. For usage examples, see the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{Controls Reference Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_list_enabled_controls/} for full documentation.
 }

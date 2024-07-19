@@ -6,22 +6,28 @@
 PIN Block, and PIN Offset during new card issuance or reissuance}
 \usage{
 paymentcryptographydataplane_generate_pin_data(
+  GenerationKeyIdentifier,
   EncryptionKeyIdentifier,
   GenerationAttributes,
-  GenerationKeyIdentifier,
-  PinBlockFormat,
   PinDataLength = NULL,
-  PrimaryAccountNumber
+  PrimaryAccountNumber,
+  PinBlockFormat
 )
 }
 \arguments{
+\item{GenerationKeyIdentifier}{[required] The \code{keyARN} of the PEK that Amazon Web Services Payment Cryptography
+uses for pin data generation.}
+
 \item{EncryptionKeyIdentifier}{[required] The \code{keyARN} of the PEK that Amazon Web Services Payment Cryptography
 uses to encrypt the PIN Block.}
 
 \item{GenerationAttributes}{[required] The attributes and values to use for PIN, PVV, or PIN Offset generation.}
 
-\item{GenerationKeyIdentifier}{[required] The \code{keyARN} of the PEK that Amazon Web Services Payment Cryptography
-uses for pin data generation.}
+\item{PinDataLength}{The length of PIN under generation.}
+
+\item{PrimaryAccountNumber}{[required] The Primary Account Number (PAN), a unique identifier for a payment
+credit or debit card that associates the card with a specific account
+holder.}
 
 \item{PinBlockFormat}{[required] The PIN encoding format for pin data generation as specified in ISO
 9564. Amazon Web Services Payment Cryptography supports \code{ISO_Format_0}
@@ -33,12 +39,6 @@ format. It supports a PIN from 4 to 12 digits in length.
 
 The \code{ISO_Format_3} PIN block format is the same as \code{ISO_Format_0} except
 that the fill digits are random values from 10 to 15.}
-
-\item{PinDataLength}{The length of PIN under generation.}
-
-\item{PrimaryAccountNumber}{[required] The Primary Account Number (PAN), a unique identifier for a payment
-credit or debit card that associates the card with a specific account
-holder.}
 }
 \description{
 Generates pin-related data such as PIN, PIN Verification Value (PVV), PIN Block, and PIN Offset during new card issuance or reissuance. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/generate-pin-data.html}{Generate PIN data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

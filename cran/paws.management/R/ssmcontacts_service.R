@@ -178,7 +178,7 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = "SSMContacts"
 )
 
-.ssmcontacts$service <- function(config = list()) {
+.ssmcontacts$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.ssmcontacts$metadata, handlers, config)
+  new_service(.ssmcontacts$metadata, handlers, config, op)
 }

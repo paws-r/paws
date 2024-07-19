@@ -10,7 +10,7 @@ sagemaker_describe_workteam(WorkteamName)
 \item{WorkteamName}{[required] The name of the work team to return a description of.}
 }
 \description{
-Gets information about a specific work team. You can see information such as the create date, the last updated date, membership information, and the work team's Amazon Resource Name (ARN).
+Gets information about a specific work team. You can see information such as the creation date, the last updated date, membership information, and the work team's Amazon Resource Name (ARN).
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_workteam/} for full documentation.
 }

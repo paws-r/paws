@@ -123,6 +123,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ssmsap$list_operation_events_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_operation_events_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationEvents = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), Resource = structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssmsap$list_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -171,6 +183,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ssmsap$start_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$start_application_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssmsap$start_application_refresh_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -178,6 +202,18 @@ NULL
 }
 
 .ssmsap$start_application_refresh_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$stop_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), StopConnectedEntity = structure(logical(0), tags = list(type = "string")), IncludeEc2InstanceShutdown = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$stop_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))

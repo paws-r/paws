@@ -6,11 +6,11 @@
 \usage{
 locationservice_create_geofence_collection(
   CollectionName,
-  Description = NULL,
-  KmsKeyId = NULL,
   PricingPlan = NULL,
   PricingPlanDataSource = NULL,
-  Tags = NULL
+  Description = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL
 )
 }
 \arguments{
@@ -24,15 +24,12 @@ periods (.), and underscores (_).
 \item No spaces allowed. For example, \code{ExampleGeofenceCollection}.
 }}
 
-\item{Description}{An optional description for the geofence collection.}
-
-\item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
-Enter a key ID, key ARN, alias name, or alias ARN.}
-
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
 
 \item{PricingPlanDataSource}{This parameter is no longer used.}
+
+\item{Description}{An optional description for the geofence collection.}
 
 \item{Tags}{Applies one or more tags to the geofence collection. A tag is a
 key-value pair helps manage, identify, search, and filter your resources
@@ -50,6 +47,9 @@ Restrictions:
 characters: + - = . _ : / @.
 \item Cannot use "aws:" as a prefix for a key.
 }}
+
+\item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
+Enter a key ID, key ARN, alias name, or alias ARN.}
 }
 \description{
 Creates a geofence collection, which manages and stores geofences.

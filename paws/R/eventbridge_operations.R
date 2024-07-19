@@ -35,12 +35,13 @@ eventbridge_activate_event_source <- function(Name) {
     name = "ActivateEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$activate_event_source_input(Name = Name)
   output <- .eventbridge$activate_event_source_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -84,12 +85,13 @@ eventbridge_cancel_replay <- function(ReplayName) {
     name = "CancelReplay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$cancel_replay_input(ReplayName = ReplayName)
   output <- .eventbridge$cancel_replay_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -161,12 +163,13 @@ eventbridge_create_api_destination <- function(Name, Description = NULL, Connect
     name = "CreateApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .eventbridge$create_api_destination_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -182,6 +185,24 @@ eventbridge_create_api_destination <- function(Name, Description = NULL, Connect
 #' effect. If you do not specify a pattern to filter events sent to the
 #' archive, all events are sent to the archive except replayed events.
 #' Replayed events are not sent to an archive.
+#' 
+#' Archives and schema discovery are not supported for event buses
+#' encrypted using a customer managed key. EventBridge returns an error if:
+#' 
+#' -   You call [`create_archive`][eventbridge_create_archive] on an event
+#'     bus set to use a customer managed key for encryption.
+#' 
+#' -   You call ` CreateDiscoverer ` on an event bus set to use a customer
+#'     managed key for encryption.
+#' 
+#' -   You call ` UpdatedEventBus ` to set a customer managed key on an
+#'     event bus with an archives or schema discovery enabled.
+#' 
+#' To enable archives or schema discovery on an event bus, choose to use an
+#' Amazon Web Services owned key. For more information, see [Data
+#' encryption in
+#' EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/)
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_create_archive(ArchiveName, EventSourceArn, Description,
@@ -228,12 +249,13 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
     name = "CreateArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$create_archive_input(ArchiveName = ArchiveName, EventSourceArn = EventSourceArn, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .eventbridge$create_archive_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -357,12 +379,13 @@ eventbridge_create_connection <- function(Name, Description = NULL, Authorizatio
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .eventbridge$create_connection_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -464,12 +487,13 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$create_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
   output <- .eventbridge$create_endpoint_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -485,7 +509,8 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' partner event source.
 #'
 #' @usage
-#' eventbridge_create_event_bus(Name, EventSourceName, Tags)
+#' eventbridge_create_event_bus(Name, EventSourceName, Description,
+#'   KmsKeyIdentifier, DeadLetterConfig, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the new event bus.
 #' 
@@ -498,13 +523,50 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' already used for your account's default event bus.
 #' @param EventSourceName If you are creating a partner event bus, this specifies the partner
 #' event source that the new event bus will be matched with.
+#' @param Description The event bus description.
+#' @param KmsKeyIdentifier The identifier of the KMS customer managed key for EventBridge to use,
+#' if you choose to use a customer managed key to encrypt events on this
+#' event bus. The identifier can be the key Amazon Resource Name (ARN),
+#' KeyId, key alias, or key alias ARN.
+#' 
+#' If you do not specify a customer managed key identifier, EventBridge
+#' uses an Amazon Web Services owned key to encrypt events on the event
+#' bus.
+#' 
+#' For more information, see [Managing
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html)
+#' in the *Key Management Service Developer Guide*.
+#' 
+#' Archives and schema discovery are not supported for event buses
+#' encrypted using a customer managed key. EventBridge returns an error if:
+#' 
+#' -   You call [`create_archive`][eventbridge_create_archive] on an event
+#'     bus set to use a customer managed key for encryption.
+#' 
+#' -   You call ` CreateDiscoverer ` on an event bus set to use a customer
+#'     managed key for encryption.
+#' 
+#' -   You call ` UpdatedEventBus ` to set a customer managed key on an
+#'     event bus with an archives or schema discovery enabled.
+#' 
+#' To enable archives or schema discovery on an event bus, choose to use an
+#' Amazon Web Services owned key. For more information, see [Data
+#' encryption in
+#' EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/)
+#' in the *Amazon EventBridge User Guide*.
+#' @param DeadLetterConfig 
 #' @param Tags Tags to associate with the event bus.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   EventBusArn = "string"
+#'   EventBusArn = "string",
+#'   Description = "string",
+#'   KmsKeyIdentifier = "string",
+#'   DeadLetterConfig = list(
+#'     Arn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -513,6 +575,11 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' svc$create_event_bus(
 #'   Name = "string",
 #'   EventSourceName = "string",
+#'   Description = "string",
+#'   KmsKeyIdentifier = "string",
+#'   DeadLetterConfig = list(
+#'     Arn = "string"
+#'   ),
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -527,17 +594,18 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' @rdname eventbridge_create_event_bus
 #'
 #' @aliases eventbridge_create_event_bus
-eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NULL) {
+eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Description = NULL, KmsKeyIdentifier = NULL, DeadLetterConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventBus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eventbridge$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Tags = Tags)
+  input <- .eventbridge$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Description = Description, KmsKeyIdentifier = KmsKeyIdentifier, DeadLetterConfig = DeadLetterConfig, Tags = Tags)
   output <- .eventbridge$create_event_bus_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -622,12 +690,13 @@ eventbridge_create_partner_event_source <- function(Name, Account) {
     name = "CreatePartnerEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$create_partner_event_source_input(Name = Name, Account = Account)
   output <- .eventbridge$create_partner_event_source_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -673,12 +742,13 @@ eventbridge_deactivate_event_source <- function(Name) {
     name = "DeactivateEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$deactivate_event_source_input(Name = Name)
   output <- .eventbridge$deactivate_event_source_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -732,12 +802,13 @@ eventbridge_deauthorize_connection <- function(Name) {
     name = "DeauthorizeConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$deauthorize_connection_input(Name = Name)
   output <- .eventbridge$deauthorize_connection_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -774,12 +845,13 @@ eventbridge_delete_api_destination <- function(Name) {
     name = "DeleteApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$delete_api_destination_input(Name = Name)
   output <- .eventbridge$delete_api_destination_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -816,12 +888,13 @@ eventbridge_delete_archive <- function(ArchiveName) {
     name = "DeleteArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$delete_archive_input(ArchiveName = ArchiveName)
   output <- .eventbridge$delete_archive_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -873,12 +946,13 @@ eventbridge_delete_connection <- function(Name) {
     name = "DeleteConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$delete_connection_input(Name = Name)
   output <- .eventbridge$delete_connection_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -892,7 +966,7 @@ eventbridge_delete_connection <- function(Name) {
 #' endpoints, see [Making applications Regional-fault tolerant with global
 #' endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the *Amazon EventBridge User Guide*.
+#' in the *Amazon EventBridge User Guide* .
 #'
 #' @usage
 #' eventbridge_delete_endpoint(Name)
@@ -920,12 +994,13 @@ eventbridge_delete_endpoint <- function(Name) {
     name = "DeleteEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$delete_endpoint_input(Name = Name)
   output <- .eventbridge$delete_endpoint_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -964,12 +1039,13 @@ eventbridge_delete_event_bus <- function(Name) {
     name = "DeleteEventBus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$delete_event_bus_input(Name = Name)
   output <- .eventbridge$delete_event_bus_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1013,12 +1089,13 @@ eventbridge_delete_partner_event_source <- function(Name, Account) {
     name = "DeletePartnerEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$delete_partner_event_source_input(Name = Name, Account = Account)
   output <- .eventbridge$delete_partner_event_source_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1082,12 +1159,13 @@ eventbridge_delete_rule <- function(Name, EventBusName = NULL, Force = NULL) {
     name = "DeleteRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$delete_rule_input(Name = Name, EventBusName = EventBusName, Force = Force)
   output <- .eventbridge$delete_rule_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1142,12 +1220,13 @@ eventbridge_describe_api_destination <- function(Name) {
     name = "DescribeApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_api_destination_input(Name = Name)
   output <- .eventbridge$describe_api_destination_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1201,12 +1280,13 @@ eventbridge_describe_archive <- function(ArchiveName) {
     name = "DescribeArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_archive_input(ArchiveName = ArchiveName)
   output <- .eventbridge$describe_archive_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1324,12 +1404,13 @@ eventbridge_describe_connection <- function(Name) {
     name = "DescribeConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_connection_input(Name = Name)
   output <- .eventbridge$describe_connection_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1343,7 +1424,7 @@ eventbridge_describe_connection <- function(Name) {
 #' information about global endpoints, see [Making applications
 #' Regional-fault tolerant with global endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the *Amazon EventBridge User Guide*.
+#' in the *Amazon EventBridge User Guide* .
 #'
 #' @usage
 #' eventbridge_describe_endpoint(Name, HomeRegion)
@@ -1410,12 +1491,13 @@ eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
     name = "DescribeEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_endpoint_input(Name = Name, HomeRegion = HomeRegion)
   output <- .eventbridge$describe_endpoint_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1449,7 +1531,18 @@ eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
 #' list(
 #'   Name = "string",
 #'   Arn = "string",
-#'   Policy = "string"
+#'   Description = "string",
+#'   KmsKeyIdentifier = "string",
+#'   DeadLetterConfig = list(
+#'     Arn = "string"
+#'   ),
+#'   Policy = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -1470,12 +1563,13 @@ eventbridge_describe_event_bus <- function(Name = NULL) {
     name = "DescribeEventBus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_event_bus_input(Name = Name)
   output <- .eventbridge$describe_event_bus_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1528,12 +1622,13 @@ eventbridge_describe_event_source <- function(Name) {
     name = "DescribeEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_event_source_input(Name = Name)
   output <- .eventbridge$describe_event_source_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1581,12 +1676,13 @@ eventbridge_describe_partner_event_source <- function(Name) {
     name = "DescribePartnerEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_partner_event_source_input(Name = Name)
   output <- .eventbridge$describe_partner_event_source_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1665,12 +1761,13 @@ eventbridge_describe_replay <- function(ReplayName) {
     name = "DescribeReplay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_replay_input(ReplayName = ReplayName)
   output <- .eventbridge$describe_replay_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1728,12 +1825,13 @@ eventbridge_describe_rule <- function(Name, EventBusName = NULL) {
     name = "DescribeRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$describe_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .eventbridge$describe_rule_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1777,12 +1875,13 @@ eventbridge_disable_rule <- function(Name, EventBusName = NULL) {
     name = "DisableRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$disable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .eventbridge$disable_rule_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1827,12 +1926,13 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
     name = "EnableRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$enable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .eventbridge$enable_rule_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1901,12 +2001,13 @@ eventbridge_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn =
     name = "ListApiDestinations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_api_destinations_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1975,12 +2076,13 @@ eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, 
     name = "ListArchives",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_archives_input(NamePrefix = NamePrefix, EventSourceArn = EventSourceArn, State = State, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_archives_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2049,12 +2151,13 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
     name = "ListConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_connections_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2068,7 +2171,7 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
 #' information about global endpoints, see [Making applications
 #' Regional-fault tolerant with global endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the *Amazon EventBridge User Guide*.
+#' in the *Amazon EventBridge User Guide* .
 #'
 #' @usage
 #' eventbridge_list_endpoints(NamePrefix, HomeRegion, NextToken,
@@ -2150,12 +2253,13 @@ eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, Nex
     name = "ListEndpoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_endpoints_input(NamePrefix = NamePrefix, HomeRegion = HomeRegion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .eventbridge$list_endpoints_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2188,7 +2292,14 @@ eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, Nex
 #'     list(
 #'       Name = "string",
 #'       Arn = "string",
-#'       Policy = "string"
+#'       Description = "string",
+#'       Policy = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2214,12 +2325,13 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
     name = "ListEventBuses",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_event_buses_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_event_buses_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2287,12 +2399,13 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
     name = "ListEventSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_event_sources_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2360,12 +2473,13 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
     name = "ListPartnerEventSourceAccounts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_partner_event_source_accounts_input(EventSourceName = EventSourceName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_partner_event_source_accounts_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2424,12 +2538,13 @@ eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL,
     name = "ListPartnerEventSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_partner_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_partner_event_sources_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2507,12 +2622,13 @@ eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourc
     name = "ListReplays",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_replays_input(NamePrefix = NamePrefix, State = State, EventSourceArn = EventSourceArn, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_replays_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2569,12 +2685,13 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
     name = "ListRuleNamesByTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_rule_names_by_target_input(TargetArn = TargetArn, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_rule_names_by_target_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2644,12 +2761,13 @@ eventbridge_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextT
     name = "ListRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_rules_input(NamePrefix = NamePrefix, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_rules_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2697,12 +2815,13 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .eventbridge$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2882,12 +3001,13 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
     name = "ListTargetsByRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$list_targets_by_rule_input(Rule = Rule, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_targets_by_rule_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2974,12 +3094,13 @@ eventbridge_put_events <- function(Entries, EndpointId = NULL) {
     name = "PutEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$put_events_input(Entries = Entries, EndpointId = EndpointId)
   output <- .eventbridge$put_events_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3047,12 +3168,13 @@ eventbridge_put_partner_events <- function(Entries) {
     name = "PutPartnerEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$put_partner_events_input(Entries = Entries)
   output <- .eventbridge$put_partner_events_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3161,12 +3283,13 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
     name = "PutPermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$put_permission_input(EventBusName = EventBusName, Action = Action, Principal = Principal, StatementId = StatementId, Condition = Condition, Policy = Policy)
   output <- .eventbridge$put_permission_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3250,8 +3373,38 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' "rate(5 minutes)".
 #' @param EventPattern The event pattern. For more information, see [Amazon EventBridge event
 #' patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html)
-#' in the *Amazon EventBridge User Guide*.
-#' @param State Indicates whether the rule is enabled or disabled.
+#' in the *Amazon EventBridge User Guide* .
+#' @param State The state of the rule.
+#' 
+#' Valid values include:
+#' 
+#' -   `DISABLED`: The rule is disabled. EventBridge does not match any
+#'     events against the rule.
+#' 
+#' -   `ENABLED`: The rule is enabled. EventBridge matches events against
+#'     the rule, *except* for Amazon Web Services management events
+#'     delivered through CloudTrail.
+#' 
+#' -   `ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS`: The rule is enabled
+#'     for all events, including Amazon Web Services management events
+#'     delivered through CloudTrail.
+#' 
+#'     Management events provide visibility into management operations that
+#'     are performed on resources in your Amazon Web Services account.
+#'     These are also known as control plane operations. For more
+#'     information, see [Logging management
+#'     events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events)
+#'     in the *CloudTrail User Guide*, and [Filtering management events
+#'     from Amazon Web Services
+#'     services](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event.html#eb-service-event-cloudtrail)
+#'     in the *Amazon EventBridge User Guide* .
+#' 
+#'     This value is only valid for rules on the
+#'     [default](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is-how-it-works-concepts.html#eb-bus-concepts-buses)
+#'     event bus or [custom event
+#'     buses](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-event-bus.html).
+#'     It does not apply to [partner event
+#'     buses](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-saas.html).
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
 #' 
@@ -3301,12 +3454,13 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
     name = "PutRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$put_rule_input(Name = Name, ScheduleExpression = ScheduleExpression, EventPattern = EventPattern, State = State, Description = Description, RoleArn = RoleArn, Tags = Tags, EventBusName = EventBusName)
   output <- .eventbridge$put_rule_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3330,7 +3484,7 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' For a list of services you can configure as targets for events, see
 #' [EventBridge
 #' targets](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html)
-#' in the *Amazon EventBridge User Guide*.
+#' in the *Amazon EventBridge User Guide* .
 #' 
 #' Creating rules with built-in targets is supported only in the Amazon Web
 #' Services Management Console. The built-in targets are:
@@ -3362,7 +3516,7 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' 
 #' For more information, see [Authentication and Access
 #' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
-#' in the *Amazon EventBridge User Guide*.
+#' in the *Amazon EventBridge User Guide* .
 #' 
 #' If another Amazon Web Services account is in the same region and has
 #' granted you permission (using
@@ -3597,12 +3751,13 @@ eventbridge_put_targets <- function(Rule, EventBusName = NULL, Targets) {
     name = "PutTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$put_targets_input(Rule = Rule, EventBusName = EventBusName, Targets = Targets)
   output <- .eventbridge$put_targets_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3653,12 +3808,13 @@ eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissio
     name = "RemovePermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$remove_permission_input(StatementId = StatementId, RemoveAllPermissions = RemoveAllPermissions, EventBusName = EventBusName)
   output <- .eventbridge$remove_permission_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3738,12 +3894,13 @@ eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = N
     name = "RemoveTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$remove_targets_input(Rule = Rule, EventBusName = EventBusName, Ids = Ids, Force = Force)
   output <- .eventbridge$remove_targets_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3823,12 +3980,13 @@ eventbridge_start_replay <- function(ReplayName, Description = NULL, EventSource
     name = "StartReplay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$start_replay_input(ReplayName = ReplayName, Description = Description, EventSourceArn = EventSourceArn, EventStartTime = EventStartTime, EventEndTime = EventEndTime, Destination = Destination)
   output <- .eventbridge$start_replay_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3888,12 +4046,13 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .eventbridge$tag_resource_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3916,7 +4075,7 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
-#' in the *Amazon EventBridge User Guide*.
+#' in the *Amazon EventBridge User Guide* .
 #' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern. The JSON
 #' must follow the format specified in [Amazon Web Services
 #' Events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html),
@@ -3962,12 +4121,13 @@ eventbridge_test_event_pattern <- function(EventPattern, Event) {
     name = "TestEventPattern",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$test_event_pattern_input(EventPattern = EventPattern, Event = Event)
   output <- .eventbridge$test_event_pattern_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4010,12 +4170,13 @@ eventbridge_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .eventbridge$untag_resource_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4076,12 +4237,13 @@ eventbridge_update_api_destination <- function(Name, Description = NULL, Connect
     name = "UpdateApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .eventbridge$update_api_destination_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4135,12 +4297,13 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
     name = "UpdateArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$update_archive_input(ArchiveName = ArchiveName, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .eventbridge$update_archive_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4262,12 +4425,13 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
     name = "UpdateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .eventbridge$update_connection_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4281,7 +4445,7 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
 #' endpoints, see [Making applications Regional-fault tolerant with global
 #' endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the *Amazon EventBridge User Guide*.
+#' in the *Amazon EventBridge User Guide* .
 #'
 #' @usage
 #' eventbridge_update_endpoint(Name, Description, RoutingConfig,
@@ -4363,14 +4527,107 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
     name = "UpdateEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridge$update_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
   output <- .eventbridge$update_endpoint_output()
   config <- get_config()
-  svc <- .eventbridge$service(config)
+  svc <- .eventbridge$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .eventbridge$operations$update_endpoint <- eventbridge_update_endpoint
+
+#' Updates the specified event bus
+#'
+#' @description
+#' Updates the specified event bus.
+#'
+#' @usage
+#' eventbridge_update_event_bus(Name, KmsKeyIdentifier, Description,
+#'   DeadLetterConfig)
+#'
+#' @param Name The name of the event bus.
+#' @param KmsKeyIdentifier The identifier of the KMS customer managed key for EventBridge to use,
+#' if you choose to use a customer managed key to encrypt events on this
+#' event bus. The identifier can be the key Amazon Resource Name (ARN),
+#' KeyId, key alias, or key alias ARN.
+#' 
+#' If you do not specify a customer managed key identifier, EventBridge
+#' uses an Amazon Web Services owned key to encrypt events on the event
+#' bus.
+#' 
+#' For more information, see [Managing
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html)
+#' in the *Key Management Service Developer Guide*.
+#' 
+#' Archives and schema discovery are not supported for event buses
+#' encrypted using a customer managed key. EventBridge returns an error if:
+#' 
+#' -   You call [`create_archive`][eventbridge_create_archive] on an event
+#'     bus set to use a customer managed key for encryption.
+#' 
+#' -   You call ` CreateDiscoverer ` on an event bus set to use a customer
+#'     managed key for encryption.
+#' 
+#' -   You call ` UpdatedEventBus ` to set a customer managed key on an
+#'     event bus with an archives or schema discovery enabled.
+#' 
+#' To enable archives or schema discovery on an event bus, choose to use an
+#' Amazon Web Services owned key. For more information, see [Data
+#' encryption in
+#' EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/)
+#' in the *Amazon EventBridge User Guide*.
+#' @param Description The event bus description.
+#' @param DeadLetterConfig 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string",
+#'   KmsKeyIdentifier = "string",
+#'   Description = "string",
+#'   DeadLetterConfig = list(
+#'     Arn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_event_bus(
+#'   Name = "string",
+#'   KmsKeyIdentifier = "string",
+#'   Description = "string",
+#'   DeadLetterConfig = list(
+#'     Arn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_update_event_bus
+#'
+#' @aliases eventbridge_update_event_bus
+eventbridge_update_event_bus <- function(Name = NULL, KmsKeyIdentifier = NULL, Description = NULL, DeadLetterConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateEventBus",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .eventbridge$update_event_bus_input(Name = Name, KmsKeyIdentifier = KmsKeyIdentifier, Description = Description, DeadLetterConfig = DeadLetterConfig)
+  output <- .eventbridge$update_event_bus_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$update_event_bus <- eventbridge_update_event_bus

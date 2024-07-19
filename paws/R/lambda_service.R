@@ -270,7 +270,7 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
   target_prefix = ""
 )
 
-.lambda$service <- function(config = list()) {
+.lambda$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.lambda$metadata, handlers, config)
+  new_service(.lambda$metadata, handlers, config, op)
 }

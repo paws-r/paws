@@ -32,10 +32,10 @@ opsworks_clone_stack(
 \arguments{
 \item{SourceStackId}{[required] The source stack ID.}
 
-\item{Name}{The cloned stack name.}
+\item{Name}{The cloned stack name. Stack names can be a maximum of 64 characters.}
 
-\item{Region}{The cloned stack AWS region, such as "ap-northeast-2". For more
-information about AWS regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.}
+\item{Region}{The cloned stack Amazon Web Services Region, such as \code{ap-northeast-2}.
+For more information about Amazon Web Services Regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.}
 
 \item{VpcId}{The ID of the VPC that the cloned stack is to be launched into. It must
 be in the specified region. All instances are launched into this VPC,
@@ -48,10 +48,10 @@ the default VPC for the specified region.
 
 If the VPC ID corresponds to a default VPC and you have specified either
 the \code{DefaultAvailabilityZone} or the \code{DefaultSubnetId} parameter only,
-AWS OpsWorks Stacks infers the value of the other parameter. If you
-specify neither parameter, AWS OpsWorks Stacks sets these parameters to
-the first valid Availability Zone for the specified region and the
-corresponding default VPC subnet ID, respectively.
+OpsWorks Stacks infers the value of the other parameter. If you specify
+neither parameter, OpsWorks Stacks sets these parameters to the first
+valid Availability Zone for the specified region and the corresponding
+default VPC subnet ID, respectively.
 
 If you specify a nondefault VPC ID, note the following:
 \itemize{
@@ -60,19 +60,19 @@ region.
 \item You must specify a value for \code{DefaultSubnetId}.
 }
 
-For more information about how to use AWS OpsWorks Stacks with a VPC,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
+For more information about how to use OpsWorks Stacks with a VPC, see
+\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
 For more information about default VPC and EC2 Classic, see \href{https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/}{Supported Platforms}.}
 
 \item{Attributes}{A list of stack attributes and values as key/value pairs to be added to
 the cloned stack.}
 
-\item{ServiceRoleArn}{[required] The stack AWS Identity and Access Management (IAM) role, which allows
-AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
-set this parameter to the Amazon Resource Name (ARN) for an existing IAM
-role. If you create a stack by using the AWS OpsWorks Stacks console, it
-creates the role for you. You can obtain an existing stack's IAM ARN
-programmatically by calling
+\item{ServiceRoleArn}{[required] The stack Identity and Access Management (IAM) role, which allows
+OpsWorks Stacks to work with Amazon Web Services resources on your
+behalf. You must set this parameter to the Amazon Resource Name (ARN)
+for an existing IAM role. If you create a stack by using the OpsWorkss
+Stacks console, it creates the role for you. You can obtain an existing
+stack's IAM ARN programmatically by calling
 \code{\link[=opsworks_describe_permissions]{describe_permissions}}. For more
 information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.
 
@@ -87,12 +87,12 @@ IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_i
 \item{DefaultOs}{The stack's operating system, which must be set to one of the following.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
+\verb{Amazon Linux 2}, \verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
 \verb{Amazon Linux 2017.03}, \verb{Amazon Linux 2016.09},
 \verb{Amazon Linux 2016.03}, \verb{Amazon Linux 2015.09}, or
 \verb{Amazon Linux 2015.03}.
-\item A supported Ubuntu operating system, such as \verb{Ubuntu 16.04 LTS},
-\verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
+\item A supported Ubuntu operating system, such as \verb{Ubuntu 18.04 LTS},
+\verb{Ubuntu 16.04 LTS}, \verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
 \item \verb{CentOS Linux 7}
 \item \verb{Red Hat Enterprise Linux 7}
 \item \verb{Microsoft Windows Server 2012 R2 Base},
@@ -104,8 +104,9 @@ when you create instances. For more information about how to use
 custom AMIs with OpsWorks, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 }
 
-The default option is the parent stack's operating system. For more
-information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
+The default option is the parent stack's operating system. Not all
+operating systems are supported with all versions of Chef. For more
+information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{OpsWorks Stacks Operating Systems}.
 
 You can specify a different Linux operating system for the cloned stack,
 but you cannot change from Linux to Windows or Windows to Linux.}
@@ -164,25 +165,24 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cr
 
 \item{UseCustomCookbooks}{Whether to use custom cookbooks.}
 
-\item{UseOpsworksSecurityGroups}{Whether to associate the AWS OpsWorks Stacks built-in security groups
-with the stack's layers.
+\item{UseOpsworksSecurityGroups}{Whether to associate the OpsWorks Stacks built-in security groups with
+the stack's layers.
 
-AWS OpsWorks Stacks provides a standard set of built-in security groups,
-one for each layer, which are associated with layers by default. With
+OpsWorks Stacks provides a standard set of security groups, one for each
+layer, which are associated with layers by default. With
 \code{UseOpsworksSecurityGroups} you can instead provide your own custom
 security groups. \code{UseOpsworksSecurityGroups} has the following settings:
 \itemize{
-\item True - AWS OpsWorks Stacks automatically associates the appropriate
+\item True - OpsWorks Stacks automatically associates the appropriate
 built-in security group with each layer (default setting). You can
 associate additional security groups with a layer after you create
 it but you cannot delete the built-in security group.
-\item False - AWS OpsWorks Stacks does not associate built-in security
-groups with layers. You must create appropriate Amazon Elastic
-Compute Cloud (Amazon EC2) security groups and associate a security
-group with each layer that you create. However, you can still
-manually associate a built-in security group with a layer on
-creation; custom security groups are required only for those layers
-that need custom settings.
+\item False - OpsWorks Stacks does not associate built-in security groups
+with layers. You must create appropriate Amazon EC2 security groups
+and associate a security group with each layer that you create.
+However, you can still manually associate a built-in security group
+with a layer on creation; custom security groups are required only
+for those layers that need custom settings.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
@@ -192,7 +192,7 @@ repository. For more information, see \href{https://docs.aws.amazon.com/opsworks
 or \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html}{Cookbooks and Recipes}.}
 
 \item{DefaultSshKeyName}{A default Amazon EC2 key pair name. The default value is none. If you
-specify a key pair name, AWS OpsWorks installs the public key on the
+specify a key pair name, OpsWorks installs the public key on the
 instance and you can use the private key with an SSH client to log in to
 the instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html}{Using SSH to Communicate with an Instance}
 and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html}{Managing SSH Access}.
@@ -207,16 +207,16 @@ key pair, when you \href{https://docs.aws.amazon.com/opsworks/latest/userguide/w
 instances in the cloned stack, but you can override it when you create
 an instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
 
-\item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
+\item{AgentVersion}{The default OpsWorks Stacks agent version. You have the following
 options:
 \itemize{
-\item Auto-update - Set this parameter to \code{LATEST}. AWS OpsWorks Stacks
+\item Auto-update - Set this parameter to \code{LATEST}. OpsWorks Stacks
 automatically installs new agent versions on the stack's instances
 as soon as they are available.
 \item Fixed version - Set this parameter to your preferred agent version.
 To update the agent version, you must edit the stack configuration
-and specify a new version. AWS OpsWorks Stacks then automatically
-installs that version on the stack's instances.
+and specify a new version. OpsWorks Stacks automatically installs
+that version on the stack's instances.
 }
 
 The default setting is \code{LATEST}. To specify an agent version, you must

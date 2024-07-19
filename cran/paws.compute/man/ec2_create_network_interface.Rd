@@ -108,7 +108,7 @@ The only supported values are \code{interface}, \code{efa}, and \code{trunk}.}
 \item{TagSpecifications}{The tags to apply to the new network interface.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{EnablePrimaryIpv6}{If you’re creating a network interface in a dual-stack or IPv6-only
 subnet, you have the option to assign a primary IPv6 IP address. A

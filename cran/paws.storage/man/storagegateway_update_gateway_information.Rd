@@ -2,8 +2,8 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_update_gateway_information}
 \alias{storagegateway_update_gateway_information}
-\title{Updates a gateway's metadata, which includes the gateway's name and time
-zone}
+\title{Updates a gateway's metadata, which includes the gateway's name, time
+zone, and metadata cache size}
 \usage{
 storagegateway_update_gateway_information(
   GatewayARN,
@@ -25,10 +25,13 @@ you want to use to monitor and log events in the gateway.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html}{What is Amazon CloudWatch Logs?}}
 
-\item{GatewayCapacity}{Specifies the size of the gateway's metadata cache.}
+\item{GatewayCapacity}{Specifies the size of the gateway's metadata cache. This setting impacts
+gateway performance and hardware recommendations. For more information,
+see \href{https://docs.aws.amazon.com/filegateway/latest/files3/Performance.html#performance-multiple-file-shares}{Performance guidance for gateways with multiple file shares}
+in the \emph{Amazon S3 File Gateway User Guide}.}
 }
 \description{
-Updates a gateway's metadata, which includes the gateway's name and time zone. To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
+Updates a gateway's metadata, which includes the gateway's name, time zone, and metadata cache size. To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_gateway_information/} for full documentation.
 }

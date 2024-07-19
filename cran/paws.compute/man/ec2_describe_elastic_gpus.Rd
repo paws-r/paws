@@ -41,7 +41,7 @@ value. This value can be between 5 and 1000.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \description{
-Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4ad, G4dn, or G5 instances.
+Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4, G5, or G6 instances.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_elastic_gpus/} for full documentation.
 }

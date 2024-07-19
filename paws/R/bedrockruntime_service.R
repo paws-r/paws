@@ -84,13 +84,16 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- bedrockruntime()
-#' svc$invoke_model(
+#' svc$apply_guardrail(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=bedrockruntime_apply_guardrail]{apply_guardrail} \tab The action to apply a guardrail\cr
+#'  \link[=bedrockruntime_converse]{converse} \tab Sends messages to the specified Amazon Bedrock model\cr
+#'  \link[=bedrockruntime_converse_stream]{converse_stream} \tab Sends messages to the specified Amazon Bedrock model and returns the response in a stream\cr
 #'  \link[=bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body\cr
 #'  \link[=bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body
 #' }
@@ -132,7 +135,7 @@ bedrockruntime <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.bedrockruntime$service <- function(config = list()) {
+.bedrockruntime$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.bedrockruntime$metadata, handlers, config)
+  new_service(.bedrockruntime$metadata, handlers, config, op)
 }

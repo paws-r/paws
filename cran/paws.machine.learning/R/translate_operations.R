@@ -31,12 +31,13 @@ translate_create_parallel_data <- function(Name, Description = NULL, ParallelDat
     name = "CreateParallelData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$create_parallel_data_input(Name = Name, Description = Description, ParallelDataConfig = ParallelDataConfig, EncryptionKey = EncryptionKey, ClientToken = ClientToken, Tags = Tags)
   output <- .translate$create_parallel_data_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -60,12 +61,13 @@ translate_delete_parallel_data <- function(Name) {
     name = "DeleteParallelData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$delete_parallel_data_input(Name = Name)
   output <- .translate$delete_parallel_data_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -89,12 +91,13 @@ translate_delete_terminology <- function(Name) {
     name = "DeleteTerminology",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$delete_terminology_input(Name = Name)
   output <- .translate$delete_terminology_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -122,12 +125,13 @@ translate_describe_text_translation_job <- function(JobId) {
     name = "DescribeTextTranslationJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$describe_text_translation_job_input(JobId = JobId)
   output <- .translate$describe_text_translation_job_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -151,12 +155,13 @@ translate_get_parallel_data <- function(Name) {
     name = "GetParallelData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$get_parallel_data_input(Name = Name)
   output <- .translate$get_parallel_data_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -190,12 +195,13 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
     name = "GetTerminology",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$get_terminology_input(Name = Name, TerminologyDataFormat = TerminologyDataFormat)
   output <- .translate$get_terminology_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -231,12 +237,13 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
     name = "ImportTerminology",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$import_terminology_input(Name = Name, MergeStrategy = MergeStrategy, Description = Description, TerminologyData = TerminologyData, EncryptionKey = EncryptionKey, Tags = Tags)
   output <- .translate$import_terminology_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -265,12 +272,13 @@ translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NUL
     name = "ListLanguages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_languages_input(DisplayLanguageCode = DisplayLanguageCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_languages_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -296,12 +304,13 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListParallelData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_parallel_data_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_parallel_data_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -326,12 +335,13 @@ translate_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .translate$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -357,12 +367,13 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListTerminologies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_terminologies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_terminologies_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -391,12 +402,13 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
     name = "ListTextTranslationJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_text_translation_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_text_translation_jobs_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -486,12 +498,13 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
     name = "StartTextTranslationJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$start_text_translation_job_input(JobName = JobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, SourceLanguageCode = SourceLanguageCode, TargetLanguageCodes = TargetLanguageCodes, TerminologyNames = TerminologyNames, ParallelDataNames = ParallelDataNames, ClientToken = ClientToken, Settings = Settings)
   output <- .translate$start_text_translation_job_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -515,12 +528,13 @@ translate_stop_text_translation_job <- function(JobId) {
     name = "StopTextTranslationJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$stop_text_translation_job_input(JobId = JobId)
   output <- .translate$stop_text_translation_job_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -548,12 +562,13 @@ translate_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .translate$tag_resource_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -615,12 +630,13 @@ translate_translate_document <- function(Document, TerminologyNames = NULL, Sour
     name = "TranslateDocument",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$translate_document_input(Document = Document, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode, Settings = Settings)
   output <- .translate$translate_document_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -683,12 +699,13 @@ translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLangua
     name = "TranslateText",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$translate_text_input(Text = Text, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode, Settings = Settings)
   output <- .translate$translate_text_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -716,12 +733,13 @@ translate_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .translate$untag_resource_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -750,12 +768,13 @@ translate_update_parallel_data <- function(Name, Description = NULL, ParallelDat
     name = "UpdateParallelData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .translate$update_parallel_data_input(Name = Name, Description = Description, ParallelDataConfig = ParallelDataConfig, ClientToken = ClientToken)
   output <- .translate$update_parallel_data_output()
   config <- get_config()
-  svc <- .translate$service(config)
+  svc <- .translate$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -187,7 +187,7 @@ docdb <- function(config = list(), credentials = list(), endpoint = NULL, region
   target_prefix = ""
 )
 
-.docdb$service <- function(config = list()) {
+.docdb$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.docdb$metadata, handlers, config)
+  new_service(.docdb$metadata, handlers, config, op)
 }

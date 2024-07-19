@@ -39,12 +39,13 @@ workmailmessageflow_get_raw_message_content <- function(messageId) {
     name = "GetRawMessageContent",
     http_method = "GET",
     http_path = "/messages/{messageId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmailmessageflow$get_raw_message_content_input(messageId = messageId)
   output <- .workmailmessageflow$get_raw_message_content_output()
   config <- get_config()
-  svc <- .workmailmessageflow$service(config)
+  svc <- .workmailmessageflow$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -105,12 +106,13 @@ workmailmessageflow_put_raw_message_content <- function(messageId, content) {
     name = "PutRawMessageContent",
     http_method = "POST",
     http_path = "/messages/{messageId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmailmessageflow$put_raw_message_content_input(messageId = messageId, content = content)
   output <- .workmailmessageflow$put_raw_message_content_output()
   config <- get_config()
-  svc <- .workmailmessageflow$service(config)
+  svc <- .workmailmessageflow$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

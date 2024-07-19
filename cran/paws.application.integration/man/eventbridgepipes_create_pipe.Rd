@@ -5,40 +5,34 @@
 \title{Create a pipe}
 \usage{
 eventbridgepipes_create_pipe(
+  Name,
   Description = NULL,
   DesiredState = NULL,
-  Enrichment = NULL,
-  EnrichmentParameters = NULL,
-  LogConfiguration = NULL,
-  Name,
-  RoleArn,
   Source,
   SourceParameters = NULL,
-  Tags = NULL,
+  Enrichment = NULL,
+  EnrichmentParameters = NULL,
   Target,
-  TargetParameters = NULL
+  TargetParameters = NULL,
+  RoleArn,
+  Tags = NULL,
+  LogConfiguration = NULL
 )
 }
 \arguments{
+\item{Name}{[required] The name of the pipe.}
+
 \item{Description}{A description of the pipe.}
 
 \item{DesiredState}{The state the pipe should be in.}
-
-\item{Enrichment}{The ARN of the enrichment resource.}
-
-\item{EnrichmentParameters}{The parameters required to set up enrichment on your pipe.}
-
-\item{LogConfiguration}{The logging configuration settings for the pipe.}
-
-\item{Name}{[required] The name of the pipe.}
-
-\item{RoleArn}{[required] The ARN of the role that allows the pipe to send data to the target.}
 
 \item{Source}{[required] The ARN of the source resource.}
 
 \item{SourceParameters}{The parameters required to set up a source for your pipe.}
 
-\item{Tags}{The list of key-value pairs to associate with the pipe.}
+\item{Enrichment}{The ARN of the enrichment resource.}
+
+\item{EnrichmentParameters}{The parameters required to set up enrichment on your pipe.}
 
 \item{Target}{[required] The ARN of the target resource.}
 
@@ -47,6 +41,12 @@ eventbridgepipes_create_pipe(
 For more information about pipe target parameters, including how to use
 dynamic path parameters, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html}{Target parameters}
 in the \emph{Amazon EventBridge User Guide}.}
+
+\item{RoleArn}{[required] The ARN of the role that allows the pipe to send data to the target.}
+
+\item{Tags}{The list of key-value pairs to associate with the pipe.}
+
+\item{LogConfiguration}{The logging configuration settings for the pipe.}
 }
 \description{
 Create a pipe. Amazon EventBridge Pipes connect event sources to targets and reduces the need for specialized knowledge and integration code.

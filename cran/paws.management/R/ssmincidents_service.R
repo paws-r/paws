@@ -170,7 +170,7 @@ ssmincidents <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.ssmincidents$service <- function(config = list()) {
+.ssmincidents$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.ssmincidents$metadata, handlers, config)
+  new_service(.ssmincidents$metadata, handlers, config, op)
 }

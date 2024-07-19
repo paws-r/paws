@@ -77,12 +77,13 @@ kendraranking_create_rescore_execution_plan <- function(Name, Description = NULL
     name = "CreateRescoreExecutionPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$create_rescore_execution_plan_input(Name = Name, Description = Description, CapacityUnits = CapacityUnits, Tags = Tags, ClientToken = ClientToken)
   output <- .kendraranking$create_rescore_execution_plan_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -121,12 +122,13 @@ kendraranking_delete_rescore_execution_plan <- function(Id) {
     name = "DeleteRescoreExecutionPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$delete_rescore_execution_plan_input(Id = Id)
   output <- .kendraranking$delete_rescore_execution_plan_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -185,12 +187,13 @@ kendraranking_describe_rescore_execution_plan <- function(Id) {
     name = "DescribeRescoreExecutionPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$describe_rescore_execution_plan_input(Id = Id)
   output <- .kendraranking$describe_rescore_execution_plan_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -251,12 +254,13 @@ kendraranking_list_rescore_execution_plans <- function(NextToken = NULL, MaxResu
     name = "ListRescoreExecutionPlans",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendraranking$list_rescore_execution_plans_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendraranking$list_rescore_execution_plans_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -306,12 +310,13 @@ kendraranking_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .kendraranking$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -384,12 +389,13 @@ kendraranking_rescore <- function(RescoreExecutionPlanId, SearchQuery, Documents
     name = "Rescore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$rescore_input(RescoreExecutionPlanId = RescoreExecutionPlanId, SearchQuery = SearchQuery, Documents = Documents)
   output <- .kendraranking$rescore_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -437,12 +443,13 @@ kendraranking_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .kendraranking$tag_resource_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -487,12 +494,13 @@ kendraranking_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .kendraranking$untag_resource_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -547,12 +555,13 @@ kendraranking_update_rescore_execution_plan <- function(Id, Name = NULL, Descrip
     name = "UpdateRescoreExecutionPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendraranking$update_rescore_execution_plan_input(Id = Id, Name = Name, Description = Description, CapacityUnits = CapacityUnits)
   output <- .kendraranking$update_rescore_execution_plan_output()
   config <- get_config()
-  svc <- .kendraranking$service(config)
+  svc <- .kendraranking$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

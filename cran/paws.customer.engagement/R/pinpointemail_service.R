@@ -209,7 +209,7 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = ""
 )
 
-.pinpointemail$service <- function(config = list()) {
+.pinpointemail$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.pinpointemail$metadata, handlers, config)
+  new_service(.pinpointemail$metadata, handlers, config, op)
 }

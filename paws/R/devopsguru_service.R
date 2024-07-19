@@ -180,7 +180,7 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.devopsguru$service <- function(config = list()) {
+.devopsguru$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.devopsguru$metadata, handlers, config)
+  new_service(.devopsguru$metadata, handlers, config, op)
 }

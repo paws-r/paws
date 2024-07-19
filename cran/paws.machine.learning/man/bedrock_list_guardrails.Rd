@@ -11,7 +11,7 @@ bedrock_list_guardrails(
 )
 }
 \arguments{
-\item{guardrailIdentifier}{The unique identifier of the guardrail.}
+\item{guardrailIdentifier}{The unique identifier of the guardrail. This can be an ID or the ARN.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 

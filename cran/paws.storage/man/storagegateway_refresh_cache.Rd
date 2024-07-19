@@ -12,7 +12,10 @@ storagegateway_refresh_cache(FileShareARN, FolderList = NULL, Recursive = NULL)
 \item{FolderList}{A comma-separated list of the paths of folders to refresh in the cache.
 The default is [\code{"/"}]. The default refreshes objects and folders at
 the root of the Amazon S3 bucket. If \code{Recursive} is set to \code{true}, the
-entire S3 bucket that the file share has access to is refreshed.}
+entire S3 bucket that the file share has access to is refreshed.
+
+Do not include \code{/} when specifying folder names. For example, you would
+specify \code{samplefolder} rather than \verb{samplefolder/}.}
 
 \item{Recursive}{A value that specifies whether to recursively refresh folders in the
 cache. The refresh includes folders that were in the cache the last time

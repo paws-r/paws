@@ -2,8 +2,8 @@
 % Please edit documentation in R/opsworks_operations.R
 \name{opsworks_register_instance}
 \alias{opsworks_register_instance}
-\title{Registers instances that were created outside of AWS OpsWorks Stacks
-with a specified stack}
+\title{Registers instances that were created outside of OpsWorks Stacks with a
+specified stack}
 \usage{
 opsworks_register_instance(
   StackId,
@@ -18,7 +18,12 @@ opsworks_register_instance(
 \arguments{
 \item{StackId}{[required] The ID of the stack that the instance is to be registered with.}
 
-\item{Hostname}{The instance's hostname.}
+\item{Hostname}{The instance's host name. The following are character limits for
+instance host names.
+\itemize{
+\item Linux-based instances: 63 characters
+\item Windows-based instances: 15 characters
+}}
 
 \item{PublicIp}{The instance's public IP address.}
 
@@ -32,7 +37,7 @@ between the instance and the service.}
 \item{InstanceIdentity}{An InstanceIdentity object that contains the instance's identity.}
 }
 \description{
-Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack.
+Registers instances that were created outside of OpsWorks Stacks with a specified stack.
 
 See \url{https://www.paws-r-sdk.com/docs/opsworks_register_instance/} for full documentation.
 }

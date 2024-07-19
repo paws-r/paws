@@ -10,13 +10,12 @@ vpclattice_update_service_network_vpc_association(
 )
 }
 \arguments{
-\item{securityGroupIds}{[required] The IDs of the security groups. Once you add a security group, it cannot
-be removed.}
+\item{securityGroupIds}{[required] The IDs of the security groups.}
 
 \item{serviceNetworkVpcAssociationIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the association.}
 }
 \description{
-Updates the service network and VPC association. Once you add a security group, it cannot be removed.
+Updates the service network and VPC association. If you add a security group to the service network and VPC association, the association must continue to always have at least one security group. You can add or edit security groups at any time. However, to remove all security groups, you must first delete the association and recreate it without security groups.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_update_service_network_vpc_association/} for full documentation.
 }

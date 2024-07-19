@@ -65,6 +65,10 @@ pull request ID is specified, it must use the format
 specified, the branch's HEAD commit ID is used. If not specified, the
 default branch's HEAD commit ID is used.
 
+\strong{GitLab}
+
+The commit ID, branch, or Git tag to use.
+
 \strong{Bitbucket}
 
 The commit ID, branch name, or tag name that corresponds to the version
@@ -99,7 +103,7 @@ one defined in the build project.}
 
 \item{sourceAuthOverride}{An authorization type for this build that overrides the one defined in
 the build project. This override applies only if the build project's
-source is BitBucket or GitHub.}
+source is BitBucket, GitHub, GitLab, or GitLab Self Managed.}
 
 \item{gitCloneDepthOverride}{The user-defined depth of history, with a minimum value of 0, that
 overrides, for this build only, any previous depth of history defined in
@@ -171,7 +175,7 @@ specified in the build project.}
 
 \item{privilegedModeOverride}{Enable this flag to override privileged mode in the build project.}
 
-\item{timeoutInMinutesOverride}{The number of build timeout minutes, from 5 to 480 (8 hours), that
+\item{timeoutInMinutesOverride}{The number of build timeout minutes, from 5 to 2160 (36 hours), that
 overrides, for this build only, the latest setting already defined in
 the build project.}
 

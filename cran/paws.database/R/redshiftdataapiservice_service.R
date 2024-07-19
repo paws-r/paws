@@ -146,7 +146,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
   target_prefix = "RedshiftData"
 )
 
-.redshiftdataapiservice$service <- function(config = list()) {
+.redshiftdataapiservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.redshiftdataapiservice$metadata, handlers, config)
+  new_service(.redshiftdataapiservice$metadata, handlers, config, op)
 }

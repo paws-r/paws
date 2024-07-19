@@ -178,7 +178,7 @@ opensearchserviceserverless <- function(config = list(), credentials = list(), e
   target_prefix = "OpenSearchServerless"
 )
 
-.opensearchserviceserverless$service <- function(config = list()) {
+.opensearchserviceserverless$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.opensearchserviceserverless$metadata, handlers, config)
+  new_service(.opensearchserviceserverless$metadata, handlers, config, op)
 }

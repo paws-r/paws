@@ -27,7 +27,7 @@ NULL
 
 .accessanalyzer$check_access_not_granted_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyDocument = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), access = structure(list(structure(list(actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), policyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(policyDocument = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), access = structure(list(structure(list(actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), policyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -44,6 +44,18 @@ NULL
 }
 
 .accessanalyzer$check_no_new_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(result = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), reasons = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), statementIndex = structure(logical(0), tags = list(type = "integer", box = TRUE)), statementId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$check_no_public_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policyDocument = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$check_no_public_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(result = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), reasons = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), statementIndex = structure(logical(0), tags = list(type = "integer", box = TRUE)), statementId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -100,6 +112,16 @@ NULL
 }
 
 .accessanalyzer$delete_archive_rule_output <- function(...) {
+  list()
+}
+
+.accessanalyzer$generate_finding_recommendation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(analyzerArn = structure(logical(0), tags = list(location = "querystring", locationName = "analyzerArn", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$generate_finding_recommendation_output <- function(...) {
   list()
 }
 
@@ -160,6 +182,18 @@ NULL
 .accessanalyzer$get_finding_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(finding = structure(list(id = structure(logical(0), tags = list(type = "string")), principal = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), action = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resource = structure(logical(0), tags = list(type = "string")), isPublic = structure(logical(0), tags = list(type = "boolean", box = TRUE)), resourceType = structure(logical(0), tags = list(type = "string")), condition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), analyzedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), resourceOwnerAccount = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), detail = structure(list(accessPointArn = structure(logical(0), tags = list(type = "string")), accessPointAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$get_finding_recommendation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(analyzerArn = structure(logical(0), tags = list(location = "querystring", locationName = "analyzerArn", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$get_finding_recommendation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(startedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), completedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), nextToken = structure(logical(0), tags = list(type = "string")), error = structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceArn = structure(logical(0), tags = list(type = "string")), recommendedSteps = structure(list(structure(list(unusedPermissionsRecommendedStep = structure(list(policyUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), recommendedAction = structure(logical(0), tags = list(type = "string")), recommendedPolicy = structure(logical(0), tags = list(type = "string")), existingPolicyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), recommendationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

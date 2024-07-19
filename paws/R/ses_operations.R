@@ -61,12 +61,13 @@ ses_clone_receipt_rule_set <- function(RuleSetName, OriginalRuleSetName) {
     name = "CloneReceiptRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$clone_receipt_rule_set_input(RuleSetName = RuleSetName, OriginalRuleSetName = OriginalRuleSetName)
   output <- .ses$clone_receipt_rule_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -112,12 +113,13 @@ ses_create_configuration_set <- function(ConfigurationSet) {
     name = "CreateConfigurationSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_configuration_set_input(ConfigurationSet = ConfigurationSet)
   output <- .ses$create_configuration_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -193,12 +195,13 @@ ses_create_configuration_set_event_destination <- function(ConfigurationSetName,
     name = "CreateConfigurationSetEventDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination)
   output <- .ses$create_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -249,12 +252,13 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
     name = "CreateConfigurationSetTrackingOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions)
   output <- .ses$create_configuration_set_tracking_options_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -317,12 +321,13 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
     name = "CreateCustomVerificationEmailTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
   output <- .ses$create_custom_verification_email_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -387,12 +392,13 @@ ses_create_receipt_filter <- function(Filter) {
     name = "CreateReceiptFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_receipt_filter_input(Filter = Filter)
   output <- .ses$create_receipt_filter_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -511,12 +517,13 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
     name = "CreateReceiptRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_receipt_rule_input(RuleSetName = RuleSetName, After = After, Rule = Rule)
   output <- .ses$create_receipt_rule_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -575,12 +582,13 @@ ses_create_receipt_rule_set <- function(RuleSetName) {
     name = "CreateReceiptRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$create_receipt_rule_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -628,12 +636,13 @@ ses_create_template <- function(Template) {
     name = "CreateTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$create_template_input(Template = Template)
   output <- .ses$create_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -675,12 +684,13 @@ ses_delete_configuration_set <- function(ConfigurationSetName) {
     name = "DeleteConfigurationSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .ses$delete_configuration_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -727,12 +737,13 @@ ses_delete_configuration_set_event_destination <- function(ConfigurationSetName,
     name = "DeleteConfigurationSetEventDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName)
   output <- .ses$delete_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -781,12 +792,13 @@ ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) 
     name = "DeleteConfigurationSetTrackingOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName)
   output <- .ses$delete_configuration_set_tracking_options_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -830,12 +842,13 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
     name = "DeleteCustomVerificationEmailTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_custom_verification_email_template_input(TemplateName = TemplateName)
   output <- .ses$delete_custom_verification_email_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -886,12 +899,13 @@ ses_delete_identity <- function(Identity) {
     name = "DeleteIdentity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_identity_input(Identity = Identity)
   output <- .ses$delete_identity_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -958,12 +972,13 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
     name = "DeleteIdentityPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_identity_policy_input(Identity = Identity, PolicyName = PolicyName)
   output <- .ses$delete_identity_policy_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1014,12 +1029,13 @@ ses_delete_receipt_filter <- function(FilterName) {
     name = "DeleteReceiptFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_receipt_filter_input(FilterName = FilterName)
   output <- .ses$delete_receipt_filter_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1074,12 +1090,13 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
     name = "DeleteReceiptRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_receipt_rule_input(RuleSetName = RuleSetName, RuleName = RuleName)
   output <- .ses$delete_receipt_rule_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1134,12 +1151,13 @@ ses_delete_receipt_rule_set <- function(RuleSetName) {
     name = "DeleteReceiptRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$delete_receipt_rule_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1178,12 +1196,13 @@ ses_delete_template <- function(TemplateName) {
     name = "DeleteTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_template_input(TemplateName = TemplateName)
   output <- .ses$delete_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1230,12 +1249,13 @@ ses_delete_verified_email_address <- function(EmailAddress) {
     name = "DeleteVerifiedEmailAddress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$delete_verified_email_address_input(EmailAddress = EmailAddress)
   output <- .ses$delete_verified_email_address_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1344,12 +1364,13 @@ ses_describe_active_receipt_rule_set <- function() {
     name = "DescribeActiveReceiptRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$describe_active_receipt_rule_set_input()
   output <- .ses$describe_active_receipt_rule_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1440,12 +1461,13 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
     name = "DescribeConfigurationSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$describe_configuration_set_input(ConfigurationSetName = ConfigurationSetName, ConfigurationSetAttributeNames = ConfigurationSetAttributeNames)
   output <- .ses$describe_configuration_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1550,12 +1572,13 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
     name = "DescribeReceiptRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$describe_receipt_rule_input(RuleSetName = RuleSetName, RuleName = RuleName)
   output <- .ses$describe_receipt_rule_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1666,12 +1689,13 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
     name = "DescribeReceiptRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$describe_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$describe_receipt_rule_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1719,12 +1743,13 @@ ses_get_account_sending_enabled <- function() {
     name = "GetAccountSendingEnabled",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_account_sending_enabled_input()
   output <- .ses$get_account_sending_enabled_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1780,12 +1805,13 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
     name = "GetCustomVerificationEmailTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_custom_verification_email_template_input(TemplateName = TemplateName)
   output <- .ses$get_custom_verification_email_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1872,12 +1898,13 @@ ses_get_identity_dkim_attributes <- function(Identities) {
     name = "GetIdentityDkimAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_identity_dkim_attributes_input(Identities = Identities)
   output <- .ses$get_identity_dkim_attributes_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1943,12 +1970,13 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
     name = "GetIdentityMailFromDomainAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_identity_mail_from_domain_attributes_input(Identities = Identities)
   output <- .ses$get_identity_mail_from_domain_attributes_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2025,12 +2053,13 @@ ses_get_identity_notification_attributes <- function(Identities) {
     name = "GetIdentityNotificationAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_identity_notification_attributes_input(Identities = Identities)
   output <- .ses$get_identity_notification_attributes_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2112,12 +2141,13 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
     name = "GetIdentityPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_identity_policies_input(Identity = Identity, PolicyNames = PolicyNames)
   output <- .ses$get_identity_policies_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2200,12 +2230,13 @@ ses_get_identity_verification_attributes <- function(Identities) {
     name = "GetIdentityVerificationAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_identity_verification_attributes_input(Identities = Identities)
   output <- .ses$get_identity_verification_attributes_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2253,12 +2284,13 @@ ses_get_send_quota <- function() {
     name = "GetSendQuota",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_send_quota_input()
   output <- .ses$get_send_quota_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2316,12 +2348,13 @@ ses_get_send_statistics <- function() {
     name = "GetSendStatistics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_send_statistics_input()
   output <- .ses$get_send_statistics_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2372,12 +2405,13 @@ ses_get_template <- function(TemplateName) {
     name = "GetTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$get_template_input(TemplateName = TemplateName)
   output <- .ses$get_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2441,12 +2475,13 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
     name = "ListConfigurationSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$list_configuration_sets_input(NextToken = NextToken, MaxItems = MaxItems)
   output <- .ses$list_configuration_sets_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2512,12 +2547,13 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
     name = "ListCustomVerificationEmailTemplates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ses$list_custom_verification_email_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .ses$list_custom_verification_email_templates_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2596,12 +2632,13 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
     name = "ListIdentities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Identities")
   )
   input <- .ses$list_identities_input(IdentityType = IdentityType, NextToken = NextToken, MaxItems = MaxItems)
   output <- .ses$list_identities_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2674,12 +2711,13 @@ ses_list_identity_policies <- function(Identity) {
     name = "ListIdentityPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$list_identity_policies_input(Identity = Identity)
   output <- .ses$list_identity_policies_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2742,12 +2780,13 @@ ses_list_receipt_filters <- function() {
     name = "ListReceiptFilters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$list_receipt_filters_input()
   output <- .ses$list_receipt_filters_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2820,12 +2859,13 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
     name = "ListReceiptRuleSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$list_receipt_rule_sets_input(NextToken = NextToken)
   output <- .ses$list_receipt_rule_sets_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2886,12 +2926,13 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
     name = "ListTemplates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$list_templates_input(NextToken = NextToken, MaxItems = MaxItems)
   output <- .ses$list_templates_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2938,12 +2979,13 @@ ses_list_verified_email_addresses <- function() {
     name = "ListVerifiedEmailAddresses",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "VerifiedEmailAddresses")
   )
   input <- .ses$list_verified_email_addresses_input()
   output <- .ses$list_verified_email_addresses_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2986,12 +3028,13 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
     name = "PutConfigurationSetDeliveryOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, DeliveryOptions = DeliveryOptions)
   output <- .ses$put_configuration_set_delivery_options_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3067,12 +3110,13 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
     name = "PutIdentityPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$put_identity_policy_input(Identity = Identity, PolicyName = PolicyName, Policy = Policy)
   output <- .ses$put_identity_policy_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3136,12 +3180,13 @@ ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
     name = "ReorderReceiptRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$reorder_receipt_rule_set_input(RuleSetName = RuleSetName, RuleNames = RuleNames)
   output <- .ses$reorder_receipt_rule_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3251,12 +3296,13 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
     name = "SendBounce",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$send_bounce_input(OriginalMessageId = OriginalMessageId, BounceSender = BounceSender, Explanation = Explanation, MessageDsn = MessageDsn, BouncedRecipientInfoList = BouncedRecipientInfoList, BounceSenderArn = BounceSenderArn)
   output <- .ses$send_bounce_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3460,12 +3506,13 @@ ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddre
     name = "SendBulkTemplatedEmail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$send_bulk_templated_email_input(Source = Source, SourceArn = SourceArn, ReplyToAddresses = ReplyToAddresses, ReturnPath = ReturnPath, ReturnPathArn = ReturnPathArn, ConfigurationSetName = ConfigurationSetName, DefaultTags = DefaultTags, Template = Template, TemplateArn = TemplateArn, DefaultTemplateData = DefaultTemplateData, Destinations = Destinations)
   output <- .ses$send_bulk_templated_email_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3526,12 +3573,13 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
     name = "SendCustomVerificationEmail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$send_custom_verification_email_input(EmailAddress = EmailAddress, TemplateName = TemplateName, ConfigurationSetName = ConfigurationSetName)
   output <- .ses$send_custom_verification_email_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3759,12 +3807,13 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
     name = "SendEmail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$send_email_input(Source = Source, Destination = Destination, Message = Message, ReplyToAddresses = ReplyToAddresses, ReturnPath = ReturnPath, SourceArn = SourceArn, ReturnPathArn = ReturnPathArn, Tags = Tags, ConfigurationSetName = ConfigurationSetName)
   output <- .ses$send_email_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4041,12 +4090,13 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
     name = "SendRawEmail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$send_raw_email_input(Source = Source, Destinations = Destinations, RawMessage = RawMessage, FromArn = FromArn, SourceArn = SourceArn, ReturnPathArn = ReturnPathArn, Tags = Tags, ConfigurationSetName = ConfigurationSetName)
   output <- .ses$send_raw_email_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4240,12 +4290,13 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
     name = "SendTemplatedEmail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$send_templated_email_input(Source = Source, Destination = Destination, ReplyToAddresses = ReplyToAddresses, ReturnPath = ReturnPath, SourceArn = SourceArn, ReturnPathArn = ReturnPathArn, Tags = Tags, ConfigurationSetName = ConfigurationSetName, Template = Template, TemplateArn = TemplateArn, TemplateData = TemplateData)
   output <- .ses$send_templated_email_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4300,12 +4351,13 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
     name = "SetActiveReceiptRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$set_active_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$set_active_receipt_rule_set_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4373,12 +4425,13 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
     name = "SetIdentityDkimEnabled",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$set_identity_dkim_enabled_input(Identity = Identity, DkimEnabled = DkimEnabled)
   output <- .ses$set_identity_dkim_enabled_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4449,12 +4502,13 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
     name = "SetIdentityFeedbackForwardingEnabled",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$set_identity_feedback_forwarding_enabled_input(Identity = Identity, ForwardingEnabled = ForwardingEnabled)
   output <- .ses$set_identity_feedback_forwarding_enabled_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4526,12 +4580,13 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
     name = "SetIdentityHeadersInNotificationsEnabled",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$set_identity_headers_in_notifications_enabled_input(Identity = Identity, NotificationType = NotificationType, Enabled = Enabled)
   output <- .ses$set_identity_headers_in_notifications_enabled_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4610,12 +4665,13 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
     name = "SetIdentityMailFromDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$set_identity_mail_from_domain_input(Identity = Identity, MailFromDomain = MailFromDomain, BehaviorOnMXFailure = BehaviorOnMXFailure)
   output <- .ses$set_identity_mail_from_domain_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4692,12 +4748,13 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
     name = "SetIdentityNotificationTopic",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$set_identity_notification_topic_input(Identity = Identity, NotificationType = NotificationType, SnsTopic = SnsTopic)
   output <- .ses$set_identity_notification_topic_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4757,12 +4814,13 @@ ses_set_receipt_rule_position <- function(RuleSetName, RuleName, After = NULL) {
     name = "SetReceiptRulePosition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$set_receipt_rule_position_input(RuleSetName = RuleSetName, RuleName = RuleName, After = After)
   output <- .ses$set_receipt_rule_position_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4812,12 +4870,13 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
     name = "TestRenderTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$test_render_template_input(TemplateName = TemplateName, TemplateData = TemplateData)
   output <- .ses$test_render_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4871,12 +4930,13 @@ ses_update_account_sending_enabled <- function(Enabled = NULL) {
     name = "UpdateAccountSendingEnabled",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_account_sending_enabled_input(Enabled = Enabled)
   output <- .ses$update_account_sending_enabled_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4951,12 +5011,13 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
     name = "UpdateConfigurationSetEventDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination)
   output <- .ses$update_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5014,12 +5075,13 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
     name = "UpdateConfigurationSetReputationMetricsEnabled",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_configuration_set_reputation_metrics_enabled_input(ConfigurationSetName = ConfigurationSetName, Enabled = Enabled)
   output <- .ses$update_configuration_set_reputation_metrics_enabled_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5077,12 +5139,13 @@ ses_update_configuration_set_sending_enabled <- function(ConfigurationSetName, E
     name = "UpdateConfigurationSetSendingEnabled",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_configuration_set_sending_enabled_input(ConfigurationSetName = ConfigurationSetName, Enabled = Enabled)
   output <- .ses$update_configuration_set_sending_enabled_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5132,12 +5195,13 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
     name = "UpdateConfigurationSetTrackingOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions)
   output <- .ses$update_configuration_set_tracking_options_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5200,12 +5264,13 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
     name = "UpdateCustomVerificationEmailTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
   output <- .ses$update_custom_verification_email_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5318,12 +5383,13 @@ ses_update_receipt_rule <- function(RuleSetName, Rule) {
     name = "UpdateReceiptRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_receipt_rule_input(RuleSetName = RuleSetName, Rule = Rule)
   output <- .ses$update_receipt_rule_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5370,12 +5436,13 @@ ses_update_template <- function(Template) {
     name = "UpdateTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$update_template_input(Template = Template)
   output <- .ses$update_template_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5463,12 +5530,13 @@ ses_verify_domain_dkim <- function(Domain) {
     name = "VerifyDomainDkim",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$verify_domain_dkim_input(Domain = Domain)
   output <- .ses$verify_domain_dkim_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5527,12 +5595,13 @@ ses_verify_domain_identity <- function(Domain) {
     name = "VerifyDomainIdentity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$verify_domain_identity_input(Domain = Domain)
   output <- .ses$verify_domain_identity_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5579,12 +5648,13 @@ ses_verify_email_address <- function(EmailAddress) {
     name = "VerifyEmailAddress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$verify_email_address_input(EmailAddress = EmailAddress)
   output <- .ses$verify_email_address_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5637,12 +5707,13 @@ ses_verify_email_identity <- function(EmailAddress) {
     name = "VerifyEmailIdentity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ses$verify_email_identity_input(EmailAddress = EmailAddress)
   output <- .ses$verify_email_identity_output()
   config <- get_config()
-  svc <- .ses$service(config)
+  svc <- .ses$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

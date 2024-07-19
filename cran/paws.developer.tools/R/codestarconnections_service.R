@@ -230,7 +230,7 @@ codestarconnections <- function(config = list(), credentials = list(), endpoint 
   target_prefix = "com.amazonaws.codestar.connections.CodeStar_connections_20191201"
 )
 
-.codestarconnections$service <- function(config = list()) {
+.codestarconnections$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.codestarconnections$metadata, handlers, config)
+  new_service(.codestarconnections$metadata, handlers, config, op)
 }

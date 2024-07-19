@@ -41,12 +41,13 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
     name = "CancelJobRun",
     http_method = "DELETE",
     http_path = "/applications/{applicationId}/jobruns/{jobRunId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$cancel_job_run_input(applicationId = applicationId, jobRunId = jobRunId)
   output <- .emrserverless$cancel_job_run_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -63,7 +64,7 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'   initialCapacity, maximumCapacity, tags, autoStartConfiguration,
 #'   autoStopConfiguration, networkConfiguration, architecture,
 #'   imageConfiguration, workerTypeSpecifications, runtimeConfiguration,
-#'   monitoringConfiguration)
+#'   monitoringConfiguration, interactiveConfiguration)
 #'
 #' @param name The name of the application.
 #' @param releaseLabel &#91;required&#93; The Amazon EMR release associated with the application.
@@ -98,6 +99,8 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' consists of a classification and properties. This configuration is
 #' applied to all the job runs submitted under the application.
 #' @param monitoringConfiguration The configuration setting for monitoring.
+#' @param interactiveConfiguration The interactive configuration object that enables the interactive use
+#' cases to use when running an application.
 #'
 #' @return
 #' A list with the following syntax:
@@ -193,6 +196,10 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'     prometheusMonitoringConfiguration = list(
 #'       remoteWriteUrl = "string"
 #'     )
+#'   ),
+#'   interactiveConfiguration = list(
+#'     studioEnabled = TRUE|FALSE,
+#'     livyEndpointEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -202,17 +209,18 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @rdname emrserverless_create_application
 #'
 #' @aliases emrserverless_create_application
-emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL) {
+emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, interactiveConfiguration = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/applications",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration)
+  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, interactiveConfiguration = interactiveConfiguration)
   output <- .emrserverless$create_application_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -250,12 +258,13 @@ emrserverless_delete_application <- function(applicationId) {
     name = "DeleteApplication",
     http_method = "DELETE",
     http_path = "/applications/{applicationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$delete_application_input(applicationId = applicationId)
   output <- .emrserverless$delete_application_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -369,6 +378,10 @@ emrserverless_delete_application <- function(applicationId) {
 #'       prometheusMonitoringConfiguration = list(
 #'         remoteWriteUrl = "string"
 #'       )
+#'     ),
+#'     interactiveConfiguration = list(
+#'       studioEnabled = TRUE|FALSE,
+#'       livyEndpointEnabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -391,12 +404,13 @@ emrserverless_get_application <- function(applicationId) {
     name = "GetApplication",
     http_method = "GET",
     http_path = "/applications/{applicationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$get_application_input(applicationId = applicationId)
   output <- .emrserverless$get_application_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -420,10 +434,13 @@ emrserverless_get_application <- function(applicationId) {
 #' generate a new URL.
 #'
 #' @usage
-#' emrserverless_get_dashboard_for_job_run(applicationId, jobRunId)
+#' emrserverless_get_dashboard_for_job_run(applicationId, jobRunId,
+#'   attempt)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application.
 #' @param jobRunId &#91;required&#93; The ID of the job run.
+#' @param attempt An optimal parameter that indicates the amount of attempts for the job.
+#' If not specified, this value defaults to the attempt of the latest job.
 #'
 #' @return
 #' A list with the following syntax:
@@ -437,7 +454,8 @@ emrserverless_get_application <- function(applicationId) {
 #' ```
 #' svc$get_dashboard_for_job_run(
 #'   applicationId = "string",
-#'   jobRunId = "string"
+#'   jobRunId = "string",
+#'   attempt = 123
 #' )
 #' ```
 #'
@@ -446,17 +464,18 @@ emrserverless_get_application <- function(applicationId) {
 #' @rdname emrserverless_get_dashboard_for_job_run
 #'
 #' @aliases emrserverless_get_dashboard_for_job_run
-emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
+emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId, attempt = NULL) {
   op <- new_operation(
     name = "GetDashboardForJobRun",
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns/{jobRunId}/dashboard",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .emrserverless$get_dashboard_for_job_run_input(applicationId = applicationId, jobRunId = jobRunId)
+  input <- .emrserverless$get_dashboard_for_job_run_input(applicationId = applicationId, jobRunId = jobRunId, attempt = attempt)
   output <- .emrserverless$get_dashboard_for_job_run_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -469,10 +488,12 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
 #' Displays detailed information about a job run.
 #'
 #' @usage
-#' emrserverless_get_job_run(applicationId, jobRunId)
+#' emrserverless_get_job_run(applicationId, jobRunId, attempt)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application on which the job run is submitted.
 #' @param jobRunId &#91;required&#93; The ID of the job run.
+#' @param attempt An optimal parameter that indicates the amount of attempts for the job.
+#' If not specified, this value defaults to the attempt of the latest job.
 #'
 #' @return
 #' A list with the following syntax:
@@ -565,6 +586,18 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
 #'       vCPUHour = 123.0,
 #'       memoryGBHour = 123.0,
 #'       storageGBHour = 123.0
+#'     ),
+#'     mode = "BATCH"|"STREAMING",
+#'     retryPolicy = list(
+#'       maxAttempts = 123,
+#'       maxFailedAttemptsPerHour = 123
+#'     ),
+#'     attempt = 123,
+#'     attemptCreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     attemptUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -574,7 +607,8 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
 #' ```
 #' svc$get_job_run(
 #'   applicationId = "string",
-#'   jobRunId = "string"
+#'   jobRunId = "string",
+#'   attempt = 123
 #' )
 #' ```
 #'
@@ -583,17 +617,18 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
 #' @rdname emrserverless_get_job_run
 #'
 #' @aliases emrserverless_get_job_run
-emrserverless_get_job_run <- function(applicationId, jobRunId) {
+emrserverless_get_job_run <- function(applicationId, jobRunId, attempt = NULL) {
   op <- new_operation(
     name = "GetJobRun",
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns/{jobRunId}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .emrserverless$get_job_run_input(applicationId = applicationId, jobRunId = jobRunId)
+  input <- .emrserverless$get_job_run_input(applicationId = applicationId, jobRunId = jobRunId, attempt = attempt)
   output <- .emrserverless$get_job_run_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -661,17 +696,98 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications")
   )
   input <- .emrserverless$list_applications_input(nextToken = nextToken, maxResults = maxResults, states = states)
   output <- .emrserverless$list_applications_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .emrserverless$operations$list_applications <- emrserverless_list_applications
+
+#' Lists all attempt of a job run
+#'
+#' @description
+#' Lists all attempt of a job run.
+#'
+#' @usage
+#' emrserverless_list_job_run_attempts(applicationId, jobRunId, nextToken,
+#'   maxResults)
+#'
+#' @param applicationId &#91;required&#93; The ID of the application for which to list job runs.
+#' @param jobRunId &#91;required&#93; The ID of the job run to list.
+#' @param nextToken The token for the next set of job run attempt results.
+#' @param maxResults The maximum number of job run attempts to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobRunAttempts = list(
+#'     list(
+#'       applicationId = "string",
+#'       id = "string",
+#'       name = "string",
+#'       mode = "BATCH"|"STREAMING",
+#'       arn = "string",
+#'       createdBy = "string",
+#'       jobCreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       executionRole = "string",
+#'       state = "SUBMITTED"|"PENDING"|"SCHEDULED"|"RUNNING"|"SUCCESS"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'       stateDetails = "string",
+#'       releaseLabel = "string",
+#'       type = "string",
+#'       attempt = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_job_run_attempts(
+#'   applicationId = "string",
+#'   jobRunId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_list_job_run_attempts
+#'
+#' @aliases emrserverless_list_job_run_attempts
+emrserverless_list_job_run_attempts <- function(applicationId, jobRunId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListJobRunAttempts",
+    http_method = "GET",
+    http_path = "/applications/{applicationId}/jobruns/{jobRunId}/attempts",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRunAttempts")
+  )
+  input <- .emrserverless$list_job_run_attempts_input(applicationId = applicationId, jobRunId = jobRunId, nextToken = nextToken, maxResults = maxResults)
+  output <- .emrserverless$list_job_run_attempts_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$list_job_run_attempts <- emrserverless_list_job_run_attempts
 
 #' Lists job runs based on a set of parameters
 #'
@@ -680,7 +796,7 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #'
 #' @usage
 #' emrserverless_list_job_runs(applicationId, nextToken, maxResults,
-#'   createdAtAfter, createdAtBefore, states)
+#'   createdAtAfter, createdAtBefore, states, mode)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application for which to list the job run.
 #' @param nextToken The token for the next set of job run results.
@@ -689,6 +805,7 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #' @param createdAtBefore The upper bound of the option to filter by creation date and time.
 #' @param states An optional filter for job run states. Note that if this filter contains
 #' multiple states, the resulting list will be grouped by the state.
+#' @param mode The mode of the job runs to list.
 #'
 #' @return
 #' A list with the following syntax:
@@ -699,6 +816,7 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #'       applicationId = "string",
 #'       id = "string",
 #'       name = "string",
+#'       mode = "BATCH"|"STREAMING",
 #'       arn = "string",
 #'       createdBy = "string",
 #'       createdAt = as.POSIXct(
@@ -711,7 +829,14 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #'       state = "SUBMITTED"|"PENDING"|"SCHEDULED"|"RUNNING"|"SUCCESS"|"FAILED"|"CANCELLING"|"CANCELLED",
 #'       stateDetails = "string",
 #'       releaseLabel = "string",
-#'       type = "string"
+#'       type = "string",
+#'       attempt = 123,
+#'       attemptCreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       attemptUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -732,7 +857,8 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #'   ),
 #'   states = list(
 #'     "SUBMITTED"|"PENDING"|"SCHEDULED"|"RUNNING"|"SUCCESS"|"FAILED"|"CANCELLING"|"CANCELLED"
-#'   )
+#'   ),
+#'   mode = "BATCH"|"STREAMING"
 #' )
 #' ```
 #'
@@ -741,17 +867,18 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #' @rdname emrserverless_list_job_runs
 #'
 #' @aliases emrserverless_list_job_runs
-emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResults = NULL, createdAtAfter = NULL, createdAtBefore = NULL, states = NULL) {
+emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResults = NULL, createdAtAfter = NULL, createdAtBefore = NULL, states = NULL, mode = NULL) {
   op <- new_operation(
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns")
   )
-  input <- .emrserverless$list_job_runs_input(applicationId = applicationId, nextToken = nextToken, maxResults = maxResults, createdAtAfter = createdAtAfter, createdAtBefore = createdAtBefore, states = states)
+  input <- .emrserverless$list_job_runs_input(applicationId = applicationId, nextToken = nextToken, maxResults = maxResults, createdAtAfter = createdAtAfter, createdAtBefore = createdAtBefore, states = states, mode = mode)
   output <- .emrserverless$list_job_runs_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -797,12 +924,13 @@ emrserverless_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .emrserverless$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -841,12 +969,13 @@ emrserverless_start_application <- function(applicationId) {
     name = "StartApplication",
     http_method = "POST",
     http_path = "/applications/{applicationId}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$start_application_input(applicationId = applicationId)
   output <- .emrserverless$start_application_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -861,7 +990,7 @@ emrserverless_start_application <- function(applicationId) {
 #' @usage
 #' emrserverless_start_job_run(applicationId, clientToken,
 #'   executionRoleArn, jobDriver, configurationOverrides, tags,
-#'   executionTimeoutMinutes, name)
+#'   executionTimeoutMinutes, name, mode, retryPolicy)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application on which to run the job.
 #' @param clientToken &#91;required&#93; The client idempotency token of the job run to start. Its value must be
@@ -873,6 +1002,8 @@ emrserverless_start_application <- function(applicationId) {
 #' @param executionTimeoutMinutes The maximum duration for the job run to run. If the job run runs beyond
 #' this duration, it will be automatically cancelled.
 #' @param name The optional job run name. This doesn't have to be unique.
+#' @param mode The mode of the job run when it starts.
+#' @param retryPolicy The retry policy when job run starts.
 #'
 #' @return
 #' A list with the following syntax:
@@ -943,7 +1074,12 @@ emrserverless_start_application <- function(applicationId) {
 #'     "string"
 #'   ),
 #'   executionTimeoutMinutes = 123,
-#'   name = "string"
+#'   name = "string",
+#'   mode = "BATCH"|"STREAMING",
+#'   retryPolicy = list(
+#'     maxAttempts = 123,
+#'     maxFailedAttemptsPerHour = 123
+#'   )
 #' )
 #' ```
 #'
@@ -952,17 +1088,18 @@ emrserverless_start_application <- function(applicationId) {
 #' @rdname emrserverless_start_job_run
 #'
 #' @aliases emrserverless_start_job_run
-emrserverless_start_job_run <- function(applicationId, clientToken, executionRoleArn, jobDriver = NULL, configurationOverrides = NULL, tags = NULL, executionTimeoutMinutes = NULL, name = NULL) {
+emrserverless_start_job_run <- function(applicationId, clientToken, executionRoleArn, jobDriver = NULL, configurationOverrides = NULL, tags = NULL, executionTimeoutMinutes = NULL, name = NULL, mode = NULL, retryPolicy = NULL) {
   op <- new_operation(
     name = "StartJobRun",
     http_method = "POST",
     http_path = "/applications/{applicationId}/jobruns",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .emrserverless$start_job_run_input(applicationId = applicationId, clientToken = clientToken, executionRoleArn = executionRoleArn, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, executionTimeoutMinutes = executionTimeoutMinutes, name = name)
+  input <- .emrserverless$start_job_run_input(applicationId = applicationId, clientToken = clientToken, executionRoleArn = executionRoleArn, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, executionTimeoutMinutes = executionTimeoutMinutes, name = name, mode = mode, retryPolicy = retryPolicy)
   output <- .emrserverless$start_job_run_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1002,12 +1139,13 @@ emrserverless_stop_application <- function(applicationId) {
     name = "StopApplication",
     http_method = "POST",
     http_path = "/applications/{applicationId}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$stop_application_input(applicationId = applicationId)
   output <- .emrserverless$stop_application_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1055,12 +1193,13 @@ emrserverless_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .emrserverless$tag_resource_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1103,12 +1242,13 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrserverless$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .emrserverless$untag_resource_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1125,8 +1265,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' emrserverless_update_application(applicationId, clientToken,
 #'   initialCapacity, maximumCapacity, autoStartConfiguration,
 #'   autoStopConfiguration, networkConfiguration, architecture,
-#'   imageConfiguration, workerTypeSpecifications, releaseLabel,
-#'   runtimeConfiguration, monitoringConfiguration)
+#'   imageConfiguration, workerTypeSpecifications, interactiveConfiguration,
+#'   releaseLabel, runtimeConfiguration, monitoringConfiguration)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to update.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to update. Its value
@@ -1152,6 +1292,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' `TezTask` for Hive applications. You can either set image details in
 #' this parameter for each worker type, or in `imageConfiguration` for all
 #' worker types.
+#' @param interactiveConfiguration The interactive configuration object that contains new interactive use
+#' cases when the application is updated.
 #' @param releaseLabel The Amazon EMR release label for the application. You can change the
 #' release label to use a different release of Amazon EMR.
 #' @param runtimeConfiguration The
@@ -1258,6 +1400,10 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'       prometheusMonitoringConfiguration = list(
 #'         remoteWriteUrl = "string"
 #'       )
+#'     ),
+#'     interactiveConfiguration = list(
+#'       studioEnabled = TRUE|FALSE,
+#'       livyEndpointEnabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1310,6 +1456,10 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'       )
 #'     )
 #'   ),
+#'   interactiveConfiguration = list(
+#'     studioEnabled = TRUE|FALSE,
+#'     livyEndpointEnabled = TRUE|FALSE
+#'   ),
 #'   releaseLabel = "string",
 #'   runtimeConfiguration = list(
 #'     list(
@@ -1352,17 +1502,18 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname emrserverless_update_application
 #'
 #' @aliases emrserverless_update_application
-emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, releaseLabel = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL) {
+emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, interactiveConfiguration = NULL, releaseLabel = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration)
+  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, interactiveConfiguration = interactiveConfiguration, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration)
   output <- .emrserverless$update_application_output()
   config <- get_config()
-  svc <- .emrserverless$service(config)
+  svc <- .emrserverless$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

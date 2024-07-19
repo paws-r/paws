@@ -10,6 +10,7 @@ connect_create_contact_flow(
   Type,
   Description = NULL,
   Content,
+  Status = NULL,
   Tags = NULL
 )
 }
@@ -28,6 +29,11 @@ in the \emph{Amazon Connect Administrator Guide}.}
 see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example flow in Amazon Connect Flow language}.
 
 Length Constraints: Minimum length of 1. Maximum length of 256000.}
+
+\item{Status}{Indicates the flow status as either \code{SAVED} or \code{PUBLISHED}. The
+\code{PUBLISHED} status will initiate validation on the content. the \code{SAVED}
+status does not initiate validation of the content. \code{SAVED} |
+\code{PUBLISHED}.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}

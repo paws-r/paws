@@ -7,22 +7,22 @@ Verification Values (CVV/CVV2), Dynamic Card Verification Values
 (dCVV/dCVV2), or Card Security Codes (CSC)}
 \usage{
 paymentcryptographydataplane_generate_card_validation_data(
-  GenerationAttributes,
   KeyIdentifier,
   PrimaryAccountNumber,
+  GenerationAttributes,
   ValidationDataLength = NULL
 )
 }
 \arguments{
-\item{GenerationAttributes}{[required] The algorithm for generating CVV or CSC values for the card within
-Amazon Web Services Payment Cryptography.}
-
 \item{KeyIdentifier}{[required] The \code{keyARN} of the CVK encryption key that Amazon Web Services Payment
 Cryptography uses to generate card data.}
 
 \item{PrimaryAccountNumber}{[required] The Primary Account Number (PAN), a unique identifier for a payment
 credit or debit card that associates the card with a specific account
 holder.}
+
+\item{GenerationAttributes}{[required] The algorithm for generating CVV or CSC values for the card within
+Amazon Web Services Payment Cryptography.}
 
 \item{ValidationDataLength}{The length of the CVV or CSC to be generated. The default value is 3.}
 }

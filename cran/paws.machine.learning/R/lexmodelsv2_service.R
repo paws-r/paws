@@ -230,7 +230,7 @@ lexmodelsv2 <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = ""
 )
 
-.lexmodelsv2$service <- function(config = list()) {
+.lexmodelsv2$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.lexmodelsv2$metadata, handlers, config)
+  new_service(.lexmodelsv2$metadata, handlers, config, op)
 }

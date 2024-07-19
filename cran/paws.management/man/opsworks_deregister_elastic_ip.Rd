@@ -10,7 +10,7 @@ opsworks_deregister_elastic_ip(ElasticIp)
 \item{ElasticIp}{[required] The Elastic IP address.}
 }
 \description{
-Deregisters a specified Elastic IP address. The address can then be registered by another stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+Deregisters a specified Elastic IP address. The address can be registered by another stack after it is deregistered. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
 See \url{https://www.paws-r-sdk.com/docs/opsworks_deregister_elastic_ip/} for full documentation.
 }

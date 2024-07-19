@@ -7,7 +7,7 @@
 mq_create_configuration(
   AuthenticationStrategy = NULL,
   EngineType,
-  EngineVersion,
+  EngineVersion = NULL,
   Name,
   Tags = NULL
 )
@@ -19,8 +19,11 @@ The default is SIMPLE.}
 \item{EngineType}{[required] Required. The type of broker engine. Currently, Amazon MQ supports
 ACTIVEMQ and RABBITMQ.}
 
-\item{EngineVersion}{[required] Required. The broker engine's version. For a list of supported engine
-versions, see \href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/}{Supported engines}.}
+\item{EngineVersion}{The broker engine version. Defaults to the latest available version for
+the specified broker engine type. For more information, see the
+\href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html}{ActiveMQ version management}
+and the \href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-management.html}{RabbitMQ version management}
+sections in the Amazon MQ Developer Guide.}
 
 \item{Name}{[required] Required. The name of the configuration. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .

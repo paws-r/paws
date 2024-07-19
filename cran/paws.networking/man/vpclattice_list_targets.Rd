@@ -18,7 +18,7 @@ vpclattice_list_targets(
 
 \item{targetGroupIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the target group.}
 
-\item{targets}{The targets to list.}
+\item{targets}{The targets.}
 }
 \description{
 Lists the targets for the target group. By default, all targets are included. You can use this API to check the health status of targets. You can also filter the results by target.

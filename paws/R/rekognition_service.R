@@ -370,7 +370,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = "RekognitionService"
 )
 
-.rekognition$service <- function(config = list()) {
+.rekognition$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.rekognition$metadata, handlers, config)
+  new_service(.rekognition$metadata, handlers, config, op)
 }

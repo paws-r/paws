@@ -3,6 +3,86 @@
 #' @include account_service.R
 NULL
 
+#' Accepts the request that originated from StartPrimaryEmailUpdate to
+#' update the primary email address (also known as the root user email
+#' address) for the specified account
+#'
+#' @description
+#' Accepts the request that originated from
+#' [`start_primary_email_update`][account_start_primary_email_update] to
+#' update the primary email address (also known as the root user email
+#' address) for the specified account.
+#'
+#' @usage
+#' account_accept_primary_email_update(AccountId, Otp, PrimaryEmail)
+#'
+#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation. To use
+#' this parameter, the caller must be an identity in the [organization's
+#' management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' This operation can only be called from the management account or the
+#' delegated administrator account of an organization for a member account.
+#' 
+#' The management account can't specify its own `AccountId`.
+#' @param Otp &#91;required&#93; The OTP code sent to the `PrimaryEmail` specified on the
+#' [`start_primary_email_update`][account_start_primary_email_update] API
+#' call.
+#' @param PrimaryEmail &#91;required&#93; The new primary email address for use with the specified account. This
+#' must match the `PrimaryEmail` from the
+#' [`start_primary_email_update`][account_start_primary_email_update] API
+#' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"ACCEPTED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_primary_email_update(
+#'   AccountId = "string",
+#'   Otp = "string",
+#'   PrimaryEmail = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_accept_primary_email_update
+#'
+#' @aliases account_accept_primary_email_update
+account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
+  op <- new_operation(
+    name = "AcceptPrimaryEmailUpdate",
+    http_method = "POST",
+    http_path = "/acceptPrimaryEmailUpdate",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .account$accept_primary_email_update_input(AccountId = AccountId, Otp = Otp, PrimaryEmail = PrimaryEmail)
+  output <- .account$accept_primary_email_update_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$accept_primary_email_update <- account_accept_primary_email_update
+
 #' Deletes the specified alternate contact from an Amazon Web Services
 #' account
 #'
@@ -74,12 +154,13 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
     name = "DeleteAlternateContact",
     http_method = "POST",
     http_path = "/deleteAlternateContact",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$delete_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
   output <- .account$delete_alternate_contact_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -90,6 +171,9 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
 #'
 #' @description
 #' Disables (opts-out) a particular Region for an account.
+#' 
+#' The act of disabling a Region will remove all IAM access to any
+#' resources that reside in that Region.
 #'
 #' @usage
 #' account_disable_region(AccountId, RegionName)
@@ -101,9 +185,9 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
 #' parameter, the caller must be an identity in the [organization's
 #' management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must also
-#' be a member account in the same organization. The organization must have
-#' [all features
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
 #' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
@@ -147,12 +231,13 @@ account_disable_region <- function(AccountId = NULL, RegionName) {
     name = "DisableRegion",
     http_method = "POST",
     http_path = "/disableRegion",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$disable_region_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$disable_region_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -174,9 +259,9 @@ account_disable_region <- function(AccountId = NULL, RegionName) {
 #' parameter, the caller must be an identity in the [organization's
 #' management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must also
-#' be a member account in the same organization. The organization must have
-#' [all features
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
 #' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
@@ -221,12 +306,13 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
     name = "EnableRegion",
     http_method = "POST",
     http_path = "/enableRegion",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$enable_region_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$enable_region_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -315,12 +401,13 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
     name = "GetAlternateContact",
     http_method = "POST",
     http_path = "/getAlternateContact",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$get_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
   output <- .account$get_alternate_contact_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -348,9 +435,9 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' parameter, the caller must be an identity in the [organization's
 #' management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must also
-#' be a member account in the same organization. The organization must have
-#' [all features
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
 #' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
@@ -405,17 +492,84 @@ account_get_contact_information <- function(AccountId = NULL) {
     name = "GetContactInformation",
     http_method = "POST",
     http_path = "/getContactInformation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$get_contact_information_input(AccountId = AccountId)
   output <- .account$get_contact_information_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .account$operations$get_contact_information <- account_get_contact_information
+
+#' Retrieves the primary email address for the specified account
+#'
+#' @description
+#' Retrieves the primary email address for the specified account.
+#'
+#' @usage
+#' account_get_primary_email(AccountId)
+#'
+#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation. To use
+#' this parameter, the caller must be an identity in the [organization's
+#' management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' This operation can only be called from the management account or the
+#' delegated administrator account of an organization for a member account.
+#' 
+#' The management account can't specify its own `AccountId`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrimaryEmail = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_primary_email(
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_get_primary_email
+#'
+#' @aliases account_get_primary_email
+account_get_primary_email <- function(AccountId) {
+  op <- new_operation(
+    name = "GetPrimaryEmail",
+    http_method = "POST",
+    http_path = "/getPrimaryEmail",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .account$get_primary_email_input(AccountId = AccountId)
+  output <- .account$get_primary_email_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$get_primary_email <- account_get_primary_email
 
 #' Retrieves the opt-in status of a particular Region
 #'
@@ -432,9 +586,9 @@ account_get_contact_information <- function(AccountId = NULL) {
 #' parameter, the caller must be an identity in the [organization's
 #' management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must also
-#' be a member account in the same organization. The organization must have
-#' [all features
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
 #' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
@@ -481,12 +635,13 @@ account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
     name = "GetRegionOptStatus",
     http_method = "POST",
     http_path = "/getRegionOptStatus",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$get_region_opt_status_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$get_region_opt_status_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -512,9 +667,9 @@ account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
 #' parameter, the caller must be an identity in the [organization's
 #' management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must also
-#' be a member account in the same organization. The organization must have
-#' [all features
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
 #' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
@@ -584,12 +739,13 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
     name = "ListRegions",
     http_method = "POST",
     http_path = "/listRegions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions")
   )
   input <- .account$list_regions_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken, RegionOptStatusContains = RegionOptStatusContains)
   output <- .account$list_regions_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -676,12 +832,13 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
     name = "PutAlternateContact",
     http_method = "POST",
     http_path = "/putAlternateContact",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$put_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType, EmailAddress = EmailAddress, Name = Name, PhoneNumber = PhoneNumber, Title = Title)
   output <- .account$put_alternate_contact_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -709,9 +866,9 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' parameter, the caller must be an identity in the [organization's
 #' management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must also
-#' be a member account in the same organization. The organization must have
-#' [all features
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
 #' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
@@ -764,14 +921,86 @@ account_put_contact_information <- function(AccountId = NULL, ContactInformation
     name = "PutContactInformation",
     http_method = "POST",
     http_path = "/putContactInformation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .account$put_contact_information_input(AccountId = AccountId, ContactInformation = ContactInformation)
   output <- .account$put_contact_information_output()
   config <- get_config()
-  svc <- .account$service(config)
+  svc <- .account$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .account$operations$put_contact_information <- account_put_contact_information
+
+#' Starts the process to update the primary email address for the specified
+#' account
+#'
+#' @description
+#' Starts the process to update the primary email address for the specified
+#' account.
+#'
+#' @usage
+#' account_start_primary_email_update(AccountId, PrimaryEmail)
+#'
+#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation. To use
+#' this parameter, the caller must be an identity in the [organization's
+#' management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account. The specified account ID must be a
+#' member account in the same organization. The organization must have [all
+#' features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' This operation can only be called from the management account or the
+#' delegated administrator account of an organization for a member account.
+#' 
+#' The management account can't specify its own `AccountId`.
+#' @param PrimaryEmail &#91;required&#93; The new primary email address (also known as the root user email
+#' address) to use in the specified account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"ACCEPTED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_primary_email_update(
+#'   AccountId = "string",
+#'   PrimaryEmail = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_start_primary_email_update
+#'
+#' @aliases account_start_primary_email_update
+account_start_primary_email_update <- function(AccountId, PrimaryEmail) {
+  op <- new_operation(
+    name = "StartPrimaryEmailUpdate",
+    http_method = "POST",
+    http_path = "/startPrimaryEmailUpdate",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .account$start_primary_email_update_input(AccountId = AccountId, PrimaryEmail = PrimaryEmail)
+  output <- .account$start_primary_email_update_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$start_primary_email_update <- account_start_primary_email_update

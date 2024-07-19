@@ -52,12 +52,13 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
     name = "AssociateTeamMember",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$associate_team_member_input(projectId = projectId, clientRequestToken = clientRequestToken, userArn = userArn, projectRole = projectRole, remoteAccessAllowed = remoteAccessAllowed)
   output <- .codestar$associate_team_member_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -160,12 +161,13 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$create_project_input(name = name, id = id, description = description, clientRequestToken = clientRequestToken, sourceCode = sourceCode, toolchain = toolchain, tags = tags)
   output <- .codestar$create_project_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -234,12 +236,13 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
     name = "CreateUserProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$create_user_profile_input(userArn = userArn, displayName = displayName, emailAddress = emailAddress, sshPublicKey = sshPublicKey)
   output <- .codestar$create_user_profile_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -294,12 +297,13 @@ codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack =
     name = "DeleteProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$delete_project_input(id = id, clientRequestToken = clientRequestToken, deleteStack = deleteStack)
   output <- .codestar$delete_project_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -346,12 +350,13 @@ codestar_delete_user_profile <- function(userArn) {
     name = "DeleteUserProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$delete_user_profile_input(userArn = userArn)
   output <- .codestar$delete_user_profile_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -406,12 +411,13 @@ codestar_describe_project <- function(id) {
     name = "DescribeProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$describe_project_input(id = id)
   output <- .codestar$describe_project_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -464,12 +470,13 @@ codestar_describe_user_profile <- function(userArn) {
     name = "DescribeUserProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$describe_user_profile_input(userArn = userArn)
   output <- .codestar$describe_user_profile_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -514,12 +521,13 @@ codestar_disassociate_team_member <- function(projectId, userArn) {
     name = "DisassociateTeamMember",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$disassociate_team_member_input(projectId = projectId, userArn = userArn)
   output <- .codestar$disassociate_team_member_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -571,12 +579,13 @@ codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListProjects",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$list_projects_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codestar$list_projects_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -629,12 +638,13 @@ codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NU
     name = "ListResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$list_resources_input(projectId = projectId, nextToken = nextToken, maxResults = maxResults)
   output <- .codestar$list_resources_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -683,12 +693,13 @@ codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NU
     name = "ListTagsForProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$list_tags_for_project_input(id = id, nextToken = nextToken, maxResults = maxResults)
   output <- .codestar$list_tags_for_project_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -742,12 +753,13 @@ codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults =
     name = "ListTeamMembers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$list_team_members_input(projectId = projectId, nextToken = nextToken, maxResults = maxResults)
   output <- .codestar$list_team_members_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -802,12 +814,13 @@ codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListUserProfiles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$list_user_profiles_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codestar$list_user_profiles_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -855,12 +868,13 @@ codestar_tag_project <- function(id, tags) {
     name = "TagProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$tag_project_input(id = id, tags = tags)
   output <- .codestar$tag_project_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -901,12 +915,13 @@ codestar_untag_project <- function(id, tags) {
     name = "UntagProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$untag_project_input(id = id, tags = tags)
   output <- .codestar$untag_project_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -947,12 +962,13 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
     name = "UpdateProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$update_project_input(id = id, name = name, description = description)
   output <- .codestar$update_project_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1012,12 +1028,13 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
     name = "UpdateTeamMember",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$update_team_member_input(projectId = projectId, userArn = userArn, projectRole = projectRole, remoteAccessAllowed = remoteAccessAllowed)
   output <- .codestar$update_team_member_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1083,12 +1100,13 @@ codestar_update_user_profile <- function(userArn, displayName = NULL, emailAddre
     name = "UpdateUserProfile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codestar$update_user_profile_input(userArn = userArn, displayName = displayName, emailAddress = emailAddress, sshPublicKey = sshPublicKey)
   output <- .codestar$update_user_profile_output()
   config <- get_config()
-  svc <- .codestar$service(config)
+  svc <- .codestar$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

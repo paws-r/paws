@@ -17,7 +17,7 @@ directconnect_create_interconnect(
 \arguments{
 \item{interconnectName}{[required] The name of the interconnect.}
 
-\item{bandwidth}{[required] The port bandwidth, in Gbps. The possible values are 1 and 10.}
+\item{bandwidth}{[required] The port bandwidth, in Gbps. The possible values are 1, 10, and 100.}
 
 \item{location}{[required] The location of the interconnect.}
 

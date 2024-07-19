@@ -132,7 +132,7 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
   target_prefix = ""
 )
 
-.workmailmessageflow$service <- function(config = list()) {
+.workmailmessageflow$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.workmailmessageflow$metadata, handlers, config)
+  new_service(.workmailmessageflow$metadata, handlers, config, op)
 }

@@ -137,7 +137,7 @@ pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.pinpointsmsvoice$service <- function(config = list()) {
+.pinpointsmsvoice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.pinpointsmsvoice$metadata, handlers, config)
+  new_service(.pinpointsmsvoice$metadata, handlers, config, op)
 }

@@ -2,9 +2,8 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_initialize_cluster}
 \alias{cloudhsmv2_initialize_cluster}
-\title{Claims an AWS CloudHSM cluster by submitting the cluster certificate
-issued by your issuing certificate authority (CA) and the CA's root
-certificate}
+\title{Claims an CloudHSM cluster by submitting the cluster certificate issued
+by your issuing certificate authority (CA) and the CA's root certificate}
 \usage{
 cloudhsmv2_initialize_cluster(ClusterId, SignedCert, TrustAnchor)
 }
@@ -23,7 +22,7 @@ available, and thus must be the root certificate. The certificate must
 be in PEM format and can contain a maximum of 5000 characters.}
 }
 \description{
-Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
+Claims an CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/} for full documentation.
 }

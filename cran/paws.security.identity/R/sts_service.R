@@ -165,7 +165,7 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.sts$service <- function(config = list()) {
+.sts$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.sts$metadata, handlers, config)
+  new_service(.sts$metadata, handlers, config, op)
 }

@@ -27,12 +27,13 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
     name = "CompleteAttachmentUpload",
     http_method = "POST",
     http_path = "/participant/complete-attachment-upload",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$complete_attachment_upload_input(AttachmentIds = AttachmentIds, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$complete_attachment_upload_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -66,12 +67,13 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
     name = "CreateParticipantConnection",
     http_method = "POST",
     http_path = "/participant/connection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$create_participant_connection_input(Type = Type, ParticipantToken = ParticipantToken, ConnectParticipant = ConnectParticipant)
   output <- .connectparticipant$create_participant_connection_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -97,12 +99,13 @@ connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
     name = "DescribeView",
     http_method = "GET",
     http_path = "/participant/views/{ViewToken}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$describe_view_input(ViewToken = ViewToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$describe_view_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -131,12 +134,13 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
     name = "DisconnectParticipant",
     http_method = "POST",
     http_path = "/participant/disconnect",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$disconnect_participant_input(ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$disconnect_participant_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -161,12 +165,13 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
     name = "GetAttachment",
     http_method = "POST",
     http_path = "/participant/attachment",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$get_attachment_input(AttachmentId = AttachmentId, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_attachment_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -201,12 +206,13 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
     name = "GetTranscript",
     http_method = "POST",
     http_path = "/participant/transcript",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .connectparticipant$get_transcript_input(ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, ScanDirection = ScanDirection, SortOrder = SortOrder, StartPosition = StartPosition, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_transcript_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -251,12 +257,13 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
     name = "SendEvent",
     http_method = "POST",
     http_path = "/participant/event",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$send_event_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_event_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -299,12 +306,13 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
     name = "SendMessage",
     http_method = "POST",
     http_path = "/participant/message",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$send_message_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_message_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -340,12 +348,13 @@ connectparticipant_start_attachment_upload <- function(ContentType, AttachmentSi
     name = "StartAttachmentUpload",
     http_method = "POST",
     http_path = "/participant/start-attachment-upload",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectparticipant$start_attachment_upload_input(ContentType = ContentType, AttachmentSizeInBytes = AttachmentSizeInBytes, AttachmentName = AttachmentName, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$start_attachment_upload_output()
   config <- get_config()
-  svc <- .connectparticipant$service(config)
+  svc <- .connectparticipant$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

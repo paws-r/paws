@@ -42,12 +42,13 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
     name = "CancelJobRun",
     http_method = "DELETE",
     http_path = "/virtualclusters/{virtualClusterId}/jobruns/{jobRunId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$cancel_job_run_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$cancel_job_run_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -154,12 +155,13 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
     name = "CreateJobTemplate",
     http_method = "POST",
     http_path = "/jobtemplates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$create_job_template_input(name = name, clientToken = clientToken, jobTemplateData = jobTemplateData, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .emrcontainers$create_job_template_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -252,12 +254,13 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
     name = "CreateManagedEndpoint",
     http_method = "POST",
     http_path = "/virtualclusters/{virtualClusterId}/endpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$create_managed_endpoint_input(name = name, virtualClusterId = virtualClusterId, type = type, releaseLabel = releaseLabel, executionRoleArn = executionRoleArn, certificateArn = certificateArn, configurationOverrides = configurationOverrides, clientToken = clientToken, tags = tags)
   output <- .emrcontainers$create_managed_endpoint_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -335,12 +338,13 @@ emrcontainers_create_security_configuration <- function(clientToken, name, secur
     name = "CreateSecurityConfiguration",
     http_method = "POST",
     http_path = "/securityconfigurations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$create_security_configuration_input(clientToken = clientToken, name = name, securityConfigurationData = securityConfigurationData, tags = tags)
   output <- .emrcontainers$create_security_configuration_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -408,12 +412,13 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
     name = "CreateVirtualCluster",
     http_method = "POST",
     http_path = "/virtualclusters",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags, securityConfigurationId = securityConfigurationId)
   output <- .emrcontainers$create_virtual_cluster_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -458,12 +463,13 @@ emrcontainers_delete_job_template <- function(id) {
     name = "DeleteJobTemplate",
     http_method = "DELETE",
     http_path = "/jobtemplates/{templateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$delete_job_template_input(id = id)
   output <- .emrcontainers$delete_job_template_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -510,12 +516,13 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
     name = "DeleteManagedEndpoint",
     http_method = "DELETE",
     http_path = "/virtualclusters/{virtualClusterId}/endpoints/{endpointId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$delete_managed_endpoint_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$delete_managed_endpoint_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -562,12 +569,13 @@ emrcontainers_delete_virtual_cluster <- function(id) {
     name = "DeleteVirtualCluster",
     http_method = "DELETE",
     http_path = "/virtualclusters/{virtualClusterId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$delete_virtual_cluster_input(id = id)
   output <- .emrcontainers$delete_virtual_cluster_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -678,12 +686,13 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
     name = "DescribeJobRun",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/jobruns/{jobRunId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$describe_job_run_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$describe_job_run_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -789,12 +798,13 @@ emrcontainers_describe_job_template <- function(id) {
     name = "DescribeJobTemplate",
     http_method = "GET",
     http_path = "/jobtemplates/{templateId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$describe_job_template_input(id = id)
   output <- .emrcontainers$describe_job_template_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -892,12 +902,13 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
     name = "DescribeManagedEndpoint",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/endpoints/{endpointId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$describe_managed_endpoint_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$describe_managed_endpoint_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -976,12 +987,13 @@ emrcontainers_describe_security_configuration <- function(id) {
     name = "DescribeSecurityConfiguration",
     http_method = "GET",
     http_path = "/securityconfigurations/{securityConfigurationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$describe_security_configuration_input(id = id)
   output <- .emrcontainers$describe_security_configuration_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1050,12 +1062,13 @@ emrcontainers_describe_virtual_cluster <- function(id) {
     name = "DescribeVirtualCluster",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$describe_virtual_cluster_input(id = id)
   output <- .emrcontainers$describe_virtual_cluster_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1120,12 +1133,13 @@ emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdent
     name = "GetManagedEndpointSessionCredentials",
     http_method = "POST",
     http_path = "/virtualclusters/{virtualClusterId}/endpoints/{endpointId}/credentials",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$get_managed_endpoint_session_credentials_input(endpointIdentifier = endpointIdentifier, virtualClusterIdentifier = virtualClusterIdentifier, executionRoleArn = executionRoleArn, credentialType = credentialType, durationInSeconds = durationInSeconds, logContext = logContext, clientToken = clientToken)
   output <- .emrcontainers$get_managed_endpoint_session_credentials_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1256,12 +1270,13 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/jobruns",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns")
   )
   input <- .emrcontainers$list_job_runs_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, name = name, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_runs_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1381,12 +1396,13 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
     name = "ListJobTemplates",
     http_method = "GET",
     http_path = "/jobtemplates",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .emrcontainers$list_job_templates_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_templates_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1506,12 +1522,13 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
     name = "ListManagedEndpoints",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/endpoints",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints")
   )
   input <- .emrcontainers$list_managed_endpoints_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, types = types, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_managed_endpoints_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1604,12 +1621,13 @@ emrcontainers_list_security_configurations <- function(createdAfter = NULL, crea
     name = "ListSecurityConfigurations",
     http_method = "GET",
     http_path = "/securityconfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "securityConfigurations")
   )
   input <- .emrcontainers$list_security_configurations_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_security_configurations_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1653,12 +1671,13 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .emrcontainers$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1755,12 +1774,13 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
     name = "ListVirtualClusters",
     http_method = "GET",
     http_path = "/virtualclusters",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "virtualClusters")
   )
   input <- .emrcontainers$list_virtual_clusters_input(containerProviderId = containerProviderId, containerProviderType = containerProviderType, createdAfter = createdAfter, createdBefore = createdBefore, states = states, maxResults = maxResults, nextToken = nextToken, eksAccessEntryIntegrated = eksAccessEntryIntegrated)
   output <- .emrcontainers$list_virtual_clusters_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1870,12 +1890,13 @@ emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientTok
     name = "StartJobRun",
     http_method = "POST",
     http_path = "/virtualclusters/{virtualClusterId}/jobruns",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$start_job_run_input(name = name, virtualClusterId = virtualClusterId, clientToken = clientToken, executionRoleArn = executionRoleArn, releaseLabel = releaseLabel, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, jobTemplateId = jobTemplateId, jobTemplateParameters = jobTemplateParameters, retryPolicyConfiguration = retryPolicyConfiguration)
   output <- .emrcontainers$start_job_run_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1926,12 +1947,13 @@ emrcontainers_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .emrcontainers$tag_resource_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1972,12 +1994,13 @@ emrcontainers_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .emrcontainers$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .emrcontainers$untag_resource_output()
   config <- get_config()
-  svc <- .emrcontainers$service(config)
+  svc <- .emrcontainers$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

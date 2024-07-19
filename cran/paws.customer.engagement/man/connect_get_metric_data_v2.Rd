@@ -66,31 +66,34 @@ be less than 35 days.
 \item{Filters}{[required] The filters to apply to returned metrics. You can filter on the
 following resources:
 \itemize{
-\item Queues
-\item Routing profiles
 \item Agents
 \item Channels
-\item User hierarchy groups
 \item Feature
+\item Queues
+\item Routing profiles
 \item Routing step expression
+\item User hierarchy groups
 }
 
 At least one filter must be passed from queues, routing profiles,
 agents, or user hierarchy groups.
 
 To filter by phone number, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/create-historical-metrics-report.html}{Create a historical metrics report}
-in the \emph{Amazon Connect Administrator's Guide}.
+in the \emph{Amazon Connect Administrator Guide}.
 
 Note the following limits:
 \itemize{
 \item \strong{Filter keys}: A maximum of 5 filter keys are supported in a
-single request. Valid filter keys: \code{QUEUE} | \code{ROUTING_PROFILE} |
-\code{AGENT} | \code{CHANNEL} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
-\code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} |
-\code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} |
-\code{FEATURE} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} |
-\code{contact/segmentAttributes/connect:Subtype} |
-\code{ROUTING_STEP_EXPRESSION}
+single request. Valid filter keys: \code{AGENT} |
+\code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} |
+\code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} |
+\code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} |
+\code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{FEATURE}
+| \code{FLOW_TYPE} | \code{FLOWS_NEXT_RESOURCE_ID} |
+\code{FLOWS_NEXT_RESOURCE_QUEUE_ID} | \code{FLOWS_OUTCOME_TYPE} |
+\code{FLOWS_RESOURCE_ID} | \code{INITIATION_METHOD} |
+\code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
+\code{ROUTING_STEP_EXPRESSION} | \code{QUEUE} | \code{Q_CONNECT_ENABLED} |
 \item \strong{Filter values}: A maximum of 100 filter values are supported in a
 single request. VOICE, CHAT, and TASK are valid \code{filterValue} for
 the CHANNEL filter key. They do not count towards limitation of 100
@@ -110,6 +113,17 @@ for the \verb{contact/segmentAttributes/connect:Subtype filter} key.
 up to 3000 length. This filter is case and order sensitive. JSON
 string fields must be sorted in ascending order and JSON array order
 should be kept as is.
+
+\code{Q_CONNECT_ENABLED}. TRUE and FALSE are the only valid filterValues
+for the \code{Q_CONNECT_ENABLED} filter key.
+\itemize{
+\item TRUE includes all contacts that had Amazon Q in Connect enabled
+as part of the flow.
+\item FALSE includes all contacts that did not have Amazon Q in
+Connect enabled as part of the flow
+}
+
+This filter is available only for contact record-driven metrics.
 }}
 
 \item{Groupings}{The grouping applied to the metrics that are returned. For example, when
@@ -119,23 +133,28 @@ are not aggregated for all queues.
 
 If no grouping is specified, a summary of all metrics is returned.
 
-Valid grouping keys: \code{QUEUE} | \code{ROUTING_PROFILE} | \code{AGENT} | \code{CHANNEL} |
-\code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} |
-\code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} |
-\code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} |
-\code{contact/segmentAttributes/connect:Subtype} | \code{ROUTING_STEP_EXPRESSION}}
+Valid grouping keys: \code{AGENT} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
+\code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} |
+\code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} |
+\code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
+\code{contact/segmentAttributes/connect:Subtype} | \code{FLOWS_RESOURCE_ID} |
+\code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOW_TYPE} | \code{FLOWS_OUTCOME_TYPE} |
+\code{INITIATION_METHOD} | \code{Q_CONNECT_ENABLED} | \code{QUEUE} |
+\code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
+\code{ROUTING_STEP_EXPRESSION}}
 
 \item{Metrics}{[required] The metrics to retrieve. Specify the name, groupings, and filters for
 each metric. The following historical metrics are available. For a
 description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html}{Historical metrics definitions}
-in the \emph{Amazon Connect Administrator's Guide}.
+in the \emph{Amazon Connect Administrator Guide}.
 
 \strong{ABANDONMENT_RATE}
 
 Unit: Percent
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#abandonment-rate-historical}{Abandonment rate}
 
@@ -232,7 +251,8 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-queue-abandon-time-historical}{Average queue abandon time}
 
@@ -241,7 +261,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-active-time-historical}{Average active time}
 
@@ -252,7 +272,8 @@ Unit: Seconds
 Valid metric filter key: \code{INITIATION_METHOD}
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-acw-time-historical}{Average after contact work time}
 
@@ -279,7 +300,7 @@ metric.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-pause-time-historical}{Average agent pause time}
 
@@ -308,7 +329,8 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-contact-duration-historical}{Average contact duration}
 
@@ -319,9 +341,22 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-conversation-duration-historical}{Average conversation duration}
+
+\strong{AVG_FLOW_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+outcome type, Flows resource ID, Initiation method, Resource published
+timestamp
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-flow-time-historical}{Average flow time}
 
 \strong{AVG_GREETING_TIME_AGENT}
 
@@ -331,9 +366,9 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-greeting-time-agent-historical}{Average greeting time agent}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-greeting-time-agent-historical}{Average agent greeting time}
 
 \strong{AVG_HANDLE_TIME}
 
@@ -352,7 +387,8 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-customer-hold-time-historical}{Average customer hold time}
 
@@ -363,7 +399,7 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#avg-customer-hold-time-all-contacts-historical}{Average customer hold time all contacts}
 
@@ -372,7 +408,8 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-holds-historical}{Average holds}
 
@@ -383,7 +420,7 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-interaction-customer-hold-time-historical}{Average agent interaction and customer hold time}
 
@@ -394,7 +431,7 @@ Unit: Seconds
 Valid metric filter key: \code{INITIATION_METHOD}
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-interaction-time-historical}{Average agent interaction time}
 
@@ -408,9 +445,9 @@ conversational analytics.
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-agent-historical}{Average interruptions agent}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-agent-historical}{Average agent interruptions}
 
 \strong{AVG_INTERRUPTION_TIME_AGENT}
 
@@ -420,9 +457,9 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-time-agent-historical}{Average interruption time agent}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-time-agent-historical}{Average agent interruption time}
 
 \strong{AVG_NON_TALK_TIME}
 
@@ -432,7 +469,7 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html##average-non-talk-time-historical}{Average non-talk time}
 
@@ -441,7 +478,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-queue-answer-time-historical}{Average queue answer time}
 
@@ -452,7 +489,7 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-resolution-time-historical}{Average resolution time}
 
@@ -464,7 +501,7 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-historical}{Average talk time}
 
@@ -476,9 +513,9 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-agent-historical}{Average talk time agent}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-agent-historical}{Average agent talk time}
 
 \strong{AVG_TALK_TIME_CUSTOMER}
 
@@ -488,9 +525,9 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-customer-historical}{Average talk time customer}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-customer-historical}{Average customer talk time}
 
 \strong{CASES_CREATED}
 
@@ -502,16 +539,6 @@ Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html##cases-created-historical}{Cases created}
 
-\strong{CONTACTS_ABANDONED}
-
-Unit: Count
-
-Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype,
-RoutingStepExpression
-
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-historical}{Contact abandoned}
-
 \strong{CONTACTS_CREATED}
 
 Unit: Count
@@ -519,7 +546,7 @@ Unit: Count
 Valid metric filter key: \code{INITIATION_METHOD}
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-created-historical}{Contacts created}
 
@@ -533,7 +560,7 @@ Valid metric filter key: \code{INITIATION_METHOD}, \code{DISCONNECT_REASON}
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype,
-RoutingStepExpression
+RoutingStepExpression, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#api-contacts-handled-historical}{API contacts handled}
 
@@ -546,16 +573,16 @@ Unit: Count
 Valid metric filter key: \code{INITIATION_METHOD}
 
 Valid groupings and filters: Queue, Channel, Agent, Agent Hierarchy,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical}{Contacts handled by Connected to agent}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical}{Contacts handled (connected to agent timestamp)}
 
 \strong{CONTACTS_HOLD_ABANDONS}
 
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical}{Contacts hold disconnect}
 
@@ -564,7 +591,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-agent-disconnect-historical}{Contacts hold agent disconnect}
 
@@ -573,7 +600,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-customer-disconnect-historical}{Contacts hold customer disconnect}
 
@@ -582,7 +609,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-customer-disconnect-historical}{Contacts put on hold}
 
@@ -591,7 +618,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-external-historical}{Contacts transferred out external}
 
@@ -600,7 +627,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Percent
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-internal-historical}{Contacts transferred out internal}
 
@@ -609,7 +636,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-historical}{Contacts queued}
 
@@ -620,14 +647,27 @@ Unit: Count
 Valid groupings and filters: Queue, Channel, Agent, Agent Hierarchy,
 contact/segmentAttributes/connect:Subtype
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-by-enqueue-historical}{Contacts queued by Enqueue}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-by-enqueue-historical}{Contacts queued (enqueue timestamp)}
+
+\strong{CONTACTS_REMOVED_FROM_QUEUE_IN_X}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Q in
+Connect
+
+Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
+(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
+"Less than").
+
+UI name: This metric is not available in Amazon Connect admin website.
 
 \strong{CONTACTS_RESOLVED_IN_X}
 
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
 Threshold: For \code{ThresholdValue} enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
@@ -640,7 +680,8 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, Q
+in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-historical}{Contacts transferred out}
 
@@ -651,7 +692,7 @@ Feature is a valid filter but not a valid grouping.
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-by-agent-historical}{Contacts transferred out by agent}
 
@@ -660,7 +701,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-by-agent-historical}{Contacts transferred out queue}
 
@@ -674,14 +715,61 @@ Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#current-cases-historical}{Current cases}
 
+\strong{FLOWS_OUTCOME}
+
+Unit: Count
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+outcome type, Flows resource ID, Initiation method, Resource published
+timestamp
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-outcome-historical}{Flows outcome}
+
+\strong{FLOWS_STARTED}
+
+Unit: Count
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+resource ID, Flows resource ID, Initiation method, Resource published
+timestamp
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-started-historical}{Flows started}
+
+\strong{MAX_FLOW_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+outcome type, Flows resource ID, Initiation method, Resource published
+timestamp
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#maximum-flow-time-historical}{Maximum flow time}
+
 \strong{MAX_QUEUED_TIME}
 
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#maximum-queued-time-historical}{Maximum queued time}
+
+\strong{MIN_FLOW_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+outcome type, Flows resource ID, Initiation method, Resource published
+timestamp
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#minimum-flow-time-historical}{Minimum flow time}
 
 \strong{PERCENT_CASES_FIRST_CONTACT_RESOLVED}
 
@@ -699,7 +787,8 @@ Unit: Percent
 
 Valid groupings and filters: Queue, RoutingStepExpression
 
-UI name: Not available
+UI name: This metric is available in Real-time Metrics UI but not on the
+Historical Metrics UI.
 
 \strong{PERCENT_CONTACTS_STEP_JOINED}
 
@@ -707,7 +796,24 @@ Unit: Percent
 
 Valid groupings and filters: Queue, RoutingStepExpression
 
-UI name: Not available
+UI name: This metric is available in Real-time Metrics UI but not on the
+Historical Metrics UI.
+
+\strong{PERCENT_FLOWS_OUTCOME}
+
+Unit: Percent
+
+Valid metric filter key: \code{FLOWS_OUTCOME_TYPE}
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Flow type, Flows module
+resource ID, Flows next resource ID, Flows next resource queue ID, Flows
+outcome type, Flows resource ID, Initiation method, Resource published
+timestamp
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-outcome-percentage-historical}{Flows outcome percentage}.
+
+The \code{FLOWS_OUTCOME_TYPE} is not a valid grouping.
 
 \strong{PERCENT_NON_TALK_TIME}
 
@@ -717,7 +823,7 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ntt-historical}{Non-talk time percent}
 
@@ -729,7 +835,7 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#tt-historical}{Talk time percent}
 
@@ -741,9 +847,9 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttagent-historical}{Talk time agent percent}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttagent-historical}{Agent talk time percent}
 
 \strong{PERCENT_TALK_TIME_CUSTOMER}
 
@@ -753,9 +859,9 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttcustomer-historical}{Talk time customer percent}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttcustomer-historical}{Customer talk time percent}
 
 \strong{REOPENED_CASE_ACTIONS}
 
@@ -775,7 +881,7 @@ Required filter key: CASE_TEMPLATE_ARN
 
 Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-resolved-historicall}{Cases resolved}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-resolved-historical}{Cases resolved}
 
 \strong{SERVICE_LEVEL}
 
@@ -783,7 +889,8 @@ You can include up to 20 SERVICE_LEVEL metrics in a request.
 
 Unit: Percent
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile, Q in
+Connect
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
@@ -797,14 +904,15 @@ Unit: Count
 
 Valid groupings and filters: Queue, RoutingStepExpression
 
-UI name: Not available
+UI name: This metric is available in Real-time Metrics UI but not on the
+Historical Metrics UI.
 
 \strong{SUM_AFTER_CONTACT_WORK_TIME}
 
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#acw-historical}{After contact work time}
 
@@ -824,30 +932,41 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 The \code{Negate} key in Metric Level Filters is not applicable for this
 metric.
 
-\strong{SUM_CONTACT_FLOW_TIME}
+\strong{SUM_CONTACTS_ABANDONED}
 
-Unit: Seconds
+Unit: Count
 
-Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
-
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-flow-time-historical}{Contact flow time}
-
-\strong{SUM_CONTACT_TIME_AGENT}
-
-Unit: Seconds
+Metric filter:
+\itemize{
+\item Valid values: \code{API}| \code{Incoming} | \code{Outbound} | \code{Transfer} |
+\code{Callback} | \code{Queue_Transfer}| \code{Disconnect}
+}
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype,
+RoutingStepExpression, Q in Connect
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-on-contact-time-historical}{Agent on contact time}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-historical}{Contact abandoned}
+
+\strong{SUM_CONTACTS_ABANDONED_IN_X}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile,
+contact/segmentAttributes/connect:Subtype, Q in Connect
+
+Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
+(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
+"Less than").
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-x-historical}{Contacts abandoned in X seconds}
 
 \strong{SUM_CONTACTS_ANSWERED_IN_X}
 
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
@@ -855,18 +974,22 @@ Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-answered-x-historical}{Contacts answered in X seconds}
 
-\strong{SUM_CONTACTS_ABANDONED_IN_X}
+\strong{SUM_CONTACT_FLOW_TIME}
 
-Unit: Count
+Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile,
-contact/segmentAttributes/connect:Subtype
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, Q in Connect
 
-Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
-(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-flow-time-historical}{Contact flow time}
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-x-historical}{Contacts abandoned in X seconds}
+\strong{SUM_CONTACT_TIME_AGENT}
+
+Unit: Seconds
+
+Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-on-contact-time-historical}{Agent on contact time}
 
 \strong{SUM_CONTACTS_DISCONNECTED}
 
@@ -875,7 +998,7 @@ Valid metric filter key: \code{DISCONNECT_REASON}
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-disconnected-historical}{Contact disconnected}
 
@@ -883,8 +1006,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 
 Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#error-status-time-historical}{Error status time}
 
@@ -893,7 +1015,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-handle-time-historical}{Contact handle time}
 
@@ -902,7 +1024,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#customer-hold-time-historical}{Customer hold time}
 
@@ -919,7 +1041,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-interaction-hold-time-historical}{Agent interaction and hold time}
 
@@ -953,7 +1075,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile,
-contact/segmentAttributes/connect:Subtype
+contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#callback-attempts-historical}{Callback attempts}}
 

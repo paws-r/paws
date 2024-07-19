@@ -58,18 +58,23 @@ rds_create_db_cluster(
   MasterUserSecretKmsKeyId = NULL,
   EnableLocalWriteForwarding = NULL,
   CACertificateIdentifier = NULL,
+  EngineLifecycleSupport = NULL,
   SourceRegion = NULL
 )
 }
 \arguments{
-\item{AvailabilityZones}{A list of Availability Zones (AZs) where DB instances in the DB cluster
-can be created.
+\item{AvailabilityZones}{A list of Availability Zones (AZs) where you specifically want to create
+DB instances in the DB cluster.
 
-For information on Amazon Web Services Regions and Availability Zones,
-see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones}
+For information on AZs, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html#Concepts.RegionsAndAvailabilityZones.AvailabilityZones}{Availability Zones}
 in the \emph{Amazon Aurora User Guide}.
 
-Valid for Cluster Type: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only
+
+Constraints:
+\itemize{
+\item Can't specify more than three AZs.
+}}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained.
 
@@ -87,9 +92,9 @@ cluster with.
 
 Valid for Cluster Type: Aurora DB clusters only}
 
-\item{DatabaseName}{The name for your database of up to 64 alphanumeric characters. If you
-don't provide a name, Amazon RDS doesn't create a database in the DB
-cluster you are creating.
+\item{DatabaseName}{The name for your database of up to 64 alphanumeric characters. A
+database named \code{postgres} is always created. If this parameter is
+specified, an additional database with this name is created.
 
 Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
@@ -133,7 +138,6 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 Constraints:
 \itemize{
 \item Must match the name of an existing DB subnet group.
-\item Must not be \code{default}.
 }
 
 Example: \code{mydbsubnetgroup}}
@@ -142,7 +146,16 @@ Example: \code{mydbsubnetgroup}}
 
 Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
-Valid Values: \code{aurora-mysql | aurora-postgresql | mysql | postgres}}
+Valid Values:
+\itemize{
+\item \code{aurora-mysql}
+\item \code{aurora-postgresql}
+\item \code{mysql}
+\item \code{postgres}
+\item \code{neptune} - For information about using Amazon Neptune, see the
+\href{https://docs.aws.amazon.com/neptune/latest/userguide/intro.html}{\emph{Amazon Neptune User Guide}}
+.
+}}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
@@ -720,6 +733,34 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide}.
 
 Valid for Cluster Type: Multi-AZ DB clusters}
+
+\item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
+
+By default, this value is set to \code{open-source-rds-extended-support},
+which enrolls your DB cluster into Amazon RDS Extended Support. At the
+end of standard support, you can avoid charges for Extended Support by
+setting the value to \code{open-source-rds-extended-support-disabled}. In
+this case, creating the DB cluster will fail if the DB major version is
+past its end of standard support date.
+
+You can use this setting to enroll your DB cluster into Amazon RDS
+Extended Support. With RDS Extended Support, you can run the selected
+major engine version on your DB cluster past the end of standard support
+for that engine version. For more information, see the following
+sections:
+\itemize{
+\item Amazon Aurora (PostgreSQL only) - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon Aurora User Guide}
+\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon RDS User Guide}
+}
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Valid Values:
+\code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
+
+Default: \code{open-source-rds-extended-support}}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

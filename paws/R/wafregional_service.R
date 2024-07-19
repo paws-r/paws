@@ -236,7 +236,7 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = "AWSWAF_Regional_20161128"
 )
 
-.wafregional$service <- function(config = list()) {
+.wafregional$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.wafregional$metadata, handlers, config)
+  new_service(.wafregional$metadata, handlers, config, op)
 }

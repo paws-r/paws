@@ -185,7 +185,7 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = ""
 )
 
-.appmesh$service <- function(config = list()) {
+.appmesh$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.appmesh$metadata, handlers, config)
+  new_service(.appmesh$metadata, handlers, config, op)
 }

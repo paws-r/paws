@@ -2,7 +2,7 @@
 % Please edit documentation in R/arczonalshift_operations.R
 \name{arczonalshift_list_autoshifts}
 \alias{arczonalshift_list_autoshifts}
-\title{Returns the active autoshifts for a specified resource}
+\title{Returns a list of autoshifts for an Amazon Web Services Region}
 \usage{
 arczonalshift_list_autoshifts(
   maxResults = NULL,
@@ -22,7 +22,7 @@ request the next page of results.}
 \item{status}{The status of the autoshift.}
 }
 \description{
-Returns the active autoshifts for a specified resource.
+Returns a list of autoshifts for an Amazon Web Services Region. By default, the call returns only \code{ACTIVE} autoshifts. Optionally, you can specify the \code{status} parameter to return \code{COMPLETED} autoshifts.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_list_autoshifts/} for full documentation.
 }

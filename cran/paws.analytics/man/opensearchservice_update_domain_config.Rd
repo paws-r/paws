@@ -24,7 +24,8 @@ opensearchservice_update_domain_config(
   DryRun = NULL,
   DryRunMode = NULL,
   OffPeakWindowOptions = NULL,
-  SoftwareUpdateOptions = NULL
+  SoftwareUpdateOptions = NULL,
+  AIMLOptions = NULL
 )
 }
 \arguments{
@@ -103,6 +104,8 @@ making. For more information, see \href{https://docs.aws.amazon.com/opensearch-s
 \item{OffPeakWindowOptions}{Off-peak window options for the domain.}
 
 \item{SoftwareUpdateOptions}{Service software update options for the domain.}
+
+\item{AIMLOptions}{Options for all machine learning features for the specified domain.}
 }
 \description{
 Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.

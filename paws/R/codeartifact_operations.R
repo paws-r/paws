@@ -38,6 +38,10 @@ NULL
 #' -   `public:maven-commonsware` - for the CommonsWare Android repository.
 #' 
 #' -   `public:maven-clojars` - for the Clojars repository.
+#' 
+#' -   `public:ruby-gems-org` - for RubyGems.org.
+#' 
+#' -   `public:crates-io` - for Crates.io.
 #'
 #' @return
 #' A list with the following syntax:
@@ -58,7 +62,7 @@ NULL
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -89,12 +93,13 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
     name = "AssociateExternalConnection",
     http_method = "POST",
     http_path = "/v1/repository/external-connection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$associate_external_connection_input(domain = domain, domainOwner = domainOwner, repository = repository, externalConnection = externalConnection)
   output <- .codeartifact$associate_external_connection_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -143,7 +148,7 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the versions to be copied.
@@ -194,7 +199,7 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #'   domainOwner = "string",
 #'   sourceRepository = "string",
 #'   destinationRepository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -218,12 +223,13 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
     name = "CopyPackageVersions",
     http_method = "POST",
     http_path = "/v1/package/versions/copy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$copy_package_versions_input(domain = domain, domainOwner = domainOwner, sourceRepository = sourceRepository, destinationRepository = destinationRepository, format = format, namespace = namespace, package = package, versions = versions, versionRevisions = versionRevisions, allowOverwrite = allowOverwrite, includeFromUpstream = includeFromUpstream)
   output <- .codeartifact$copy_package_versions_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -315,12 +321,13 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/v1/domain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$create_domain_input(domain = domain, encryptionKey = encryptionKey, tags = tags)
   output <- .codeartifact$create_domain_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -410,12 +417,13 @@ codeartifact_create_package_group <- function(domain, domainOwner = NULL, packag
     name = "CreatePackageGroup",
     http_method = "POST",
     http_path = "/v1/package-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$create_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, contactInfo = contactInfo, description = description, tags = tags)
   output <- .codeartifact$create_package_group_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -462,7 +470,7 @@ codeartifact_create_package_group <- function(domain, domainOwner = NULL, packag
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -504,12 +512,13 @@ codeartifact_create_repository <- function(domain, domainOwner = NULL, repositor
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/v1/repository",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$create_repository_input(domain = domain, domainOwner = domainOwner, repository = repository, description = description, upstreams = upstreams, tags = tags)
   output <- .codeartifact$create_repository_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -568,12 +577,13 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
     name = "DeleteDomain",
     http_method = "DELETE",
     http_path = "/v1/domain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$delete_domain_input(domain = domain, domainOwner = domainOwner)
   output <- .codeartifact$delete_domain_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -628,12 +638,13 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
     name = "DeleteDomainPermissionsPolicy",
     http_method = "DELETE",
     http_path = "/v1/domain/permissions/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$delete_domain_permissions_policy_input(domain = domain, domainOwner = domainOwner, policyRevision = policyRevision)
   output <- .codeartifact$delete_domain_permissions_policy_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -675,7 +686,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package to delete.
@@ -685,7 +696,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' ```
 #' list(
 #'   deletedPackage = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'     namespace = "string",
 #'     package = "string",
 #'     originConfiguration = list(
@@ -704,7 +715,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string"
 #' )
@@ -720,12 +731,13 @@ codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, 
     name = "DeletePackage",
     http_method = "DELETE",
     http_path = "/v1/package",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$delete_package_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package)
   output <- .codeartifact$delete_package_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -804,12 +816,13 @@ codeartifact_delete_package_group <- function(domain, domainOwner = NULL, packag
     name = "DeletePackageGroup",
     http_method = "DELETE",
     http_path = "/v1/package-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$delete_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup)
   output <- .codeartifact$delete_package_group_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -856,7 +869,7 @@ codeartifact_delete_package_group <- function(domain, domainOwner = NULL, packag
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package with the versions to delete.
@@ -888,7 +901,7 @@ codeartifact_delete_package_group <- function(domain, domainOwner = NULL, packag
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -908,12 +921,13 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
     name = "DeletePackageVersions",
     http_method = "POST",
     http_path = "/v1/package/versions/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$delete_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, versions = versions, expectedStatus = expectedStatus)
   output <- .codeartifact$delete_package_versions_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -952,7 +966,7 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -982,12 +996,13 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
     name = "DeleteRepository",
     http_method = "DELETE",
     http_path = "/v1/repository",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$delete_repository_input(domain = domain, domainOwner = domainOwner, repository = repository)
   output <- .codeartifact$delete_repository_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1055,12 +1070,13 @@ codeartifact_delete_repository_permissions_policy <- function(domain, domainOwne
     name = "DeleteRepositoryPermissionsPolicy",
     http_method = "DELETE",
     http_path = "/v1/repository/permissions/policies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$delete_repository_permissions_policy_input(domain = domain, domainOwner = domainOwner, repository = repository, policyRevision = policyRevision)
   output <- .codeartifact$delete_repository_permissions_policy_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1120,12 +1136,13 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
     name = "DescribeDomain",
     http_method = "GET",
     http_path = "/v1/domain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$describe_domain_input(domain = domain, domainOwner = domainOwner)
   output <- .codeartifact$describe_domain_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1169,7 +1186,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the requested package.
@@ -1179,7 +1196,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' ```
 #' list(
 #'   package = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'     namespace = "string",
 #'     name = "string",
 #'     originConfiguration = list(
@@ -1198,7 +1215,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string"
 #' )
@@ -1214,12 +1231,13 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
     name = "DescribePackage",
     http_method = "GET",
     http_path = "/v1/package",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$describe_package_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package)
   output <- .codeartifact$describe_package_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1296,12 +1314,13 @@ codeartifact_describe_package_group <- function(domain, domainOwner = NULL, pack
     name = "DescribePackageGroup",
     http_method = "GET",
     http_path = "/v1/package-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$describe_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup)
   output <- .codeartifact$describe_package_group_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1345,7 +1364,7 @@ codeartifact_describe_package_group <- function(domain, domainOwner = NULL, pack
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the requested package version.
@@ -1356,7 +1375,7 @@ codeartifact_describe_package_group <- function(domain, domainOwner = NULL, pack
 #' ```
 #' list(
 #'   packageVersion = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'     namespace = "string",
 #'     packageName = "string",
 #'     displayName = "string",
@@ -1392,7 +1411,7 @@ codeartifact_describe_package_group <- function(domain, domainOwner = NULL, pack
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -1409,12 +1428,13 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
     name = "DescribePackageVersion",
     http_method = "GET",
     http_path = "/v1/package/version",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$describe_package_version_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion)
   output <- .codeartifact$describe_package_version_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1455,7 +1475,7 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -1485,12 +1505,13 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
     name = "DescribeRepository",
     http_method = "GET",
     http_path = "/v1/repository",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$describe_repository_input(domain = domain, domainOwner = domainOwner, repository = repository)
   output <- .codeartifact$describe_repository_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1533,7 +1554,7 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -1564,12 +1585,13 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
     name = "DisassociateExternalConnection",
     http_method = "DELETE",
     http_path = "/v1/repository/external-connection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$disassociate_external_connection_input(domain = domain, domainOwner = domainOwner, repository = repository, externalConnection = externalConnection)
   output <- .codeartifact$disassociate_external_connection_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1623,7 +1645,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package with the versions you want to dispose.
@@ -1656,7 +1678,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -1679,12 +1701,13 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
     name = "DisposePackageVersions",
     http_method = "POST",
     http_path = "/v1/package/versions/dispose",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$dispose_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, versions = versions, versionRevisions = versionRevisions, expectedStatus = expectedStatus)
   output <- .codeartifact$dispose_package_versions_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1738,7 +1761,7 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The package from which to get the associated package group.
@@ -1784,7 +1807,7 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' svc$get_associated_package_group(
 #'   domain = "string",
 #'   domainOwner = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string"
 #' )
@@ -1800,12 +1823,13 @@ codeartifact_get_associated_package_group <- function(domain, domainOwner = NULL
     name = "GetAssociatedPackageGroup",
     http_method = "GET",
     http_path = "/v1/get-associated-package-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$get_associated_package_group_input(domain = domain, domainOwner = domainOwner, format = format, namespace = namespace, package = package)
   output <- .codeartifact$get_associated_package_group_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1888,12 +1912,13 @@ codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, dur
     name = "GetAuthorizationToken",
     http_method = "POST",
     http_path = "/v1/authorization-token",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$get_authorization_token_input(domain = domain, domainOwner = domainOwner, durationSeconds = durationSeconds)
   output <- .codeartifact$get_authorization_token_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1947,12 +1972,13 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
     name = "GetDomainPermissionsPolicy",
     http_method = "GET",
     http_path = "/v1/domain/permissions/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$get_domain_permissions_policy_input(domain = domain, domainOwner = domainOwner)
   output <- .codeartifact$get_domain_permissions_policy_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2001,7 +2027,7 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the requested asset.
@@ -2027,7 +2053,7 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2046,12 +2072,13 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
     name = "GetPackageVersionAsset",
     http_method = "GET",
     http_path = "/v1/package/version/asset",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$get_package_version_asset_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, asset = asset, packageVersionRevision = packageVersionRevision)
   output <- .codeartifact$get_package_version_asset_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2097,7 +2124,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package version that contains the requested readme file.
@@ -2107,7 +2134,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -2122,7 +2149,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -2139,12 +2166,13 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
     name = "GetPackageVersionReadme",
     http_method = "GET",
     http_path = "/v1/package/version/readme",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$get_package_version_readme_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion)
   output <- .codeartifact$get_package_version_readme_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2156,6 +2184,8 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' @description
 #' Returns the endpoint of a repository for a specific package format. A
 #' repository has one endpoint for each package format:
+#' 
+#' -   `cargo`
 #' 
 #' -   `generic`
 #' 
@@ -2197,7 +2227,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo"
 #' )
 #' ```
 #'
@@ -2211,12 +2241,13 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
     name = "GetRepositoryEndpoint",
     http_method = "GET",
     http_path = "/v1/repository/endpoint",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$get_repository_endpoint_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format)
   output <- .codeartifact$get_repository_endpoint_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2270,12 +2301,13 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
     name = "GetRepositoryPermissionsPolicy",
     http_method = "GET",
     http_path = "/v1/repository/permissions/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$get_repository_permissions_policy_input(domain = domain, domainOwner = domainOwner, repository = repository)
   output <- .codeartifact$get_repository_permissions_policy_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2342,12 +2374,13 @@ codeartifact_list_allowed_repositories_for_group <- function(domain, domainOwner
     name = "ListAllowedRepositoriesForGroup",
     http_method = "GET",
     http_path = "/v1/package-group-allowed-repositories",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "allowedRepositories")
   )
   input <- .codeartifact$list_allowed_repositories_for_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, originRestrictionType = originRestrictionType, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_allowed_repositories_for_group_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2387,7 +2420,7 @@ codeartifact_list_allowed_repositories_for_group <- function(domain, domainOwner
 #' list(
 #'   packages = list(
 #'     list(
-#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'       namespace = "string",
 #'       package = "string",
 #'       associationType = "STRONG"|"WEAK"
@@ -2419,12 +2452,13 @@ codeartifact_list_associated_packages <- function(domain, domainOwner = NULL, pa
     name = "ListAssociatedPackages",
     http_method = "GET",
     http_path = "/v1/list-associated-packages",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packages")
   )
   input <- .codeartifact$list_associated_packages_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, maxResults = maxResults, nextToken = nextToken, preview = preview)
   output <- .codeartifact$list_associated_packages_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2487,12 +2521,13 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/v1/domains",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "domains")
   )
   input <- .codeartifact$list_domains_input(maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_domains_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2578,12 +2613,13 @@ codeartifact_list_package_groups <- function(domain, domainOwner = NULL, maxResu
     name = "ListPackageGroups",
     http_method = "POST",
     http_path = "/v1/package-groups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packageGroups")
   )
   input <- .codeartifact$list_package_groups_input(domain = domain, domainOwner = domainOwner, maxResults = maxResults, nextToken = nextToken, prefix = prefix)
   output <- .codeartifact$list_package_groups_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2630,7 +2666,7 @@ codeartifact_list_package_groups <- function(domain, domainOwner = NULL, maxResu
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the requested package version
@@ -2645,7 +2681,7 @@ codeartifact_list_package_groups <- function(domain, domainOwner = NULL, maxResu
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -2669,7 +2705,7 @@ codeartifact_list_package_groups <- function(domain, domainOwner = NULL, maxResu
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2688,12 +2724,13 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
     name = "ListPackageVersionAssets",
     http_method = "POST",
     http_path = "/v1/package/version/assets",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assets")
   )
   input <- .codeartifact$list_package_version_assets_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_package_version_assets_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2731,20 +2768,14 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' 
 #' -   Maven
 #' 
-#' -   Swift
-#' 
-#' -   generic
-#' 
 #' 
 #' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm or Swift package version is its `scope`.
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   The namespace of a generic package is its `namespace`.
-#' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
-#'     corresponding component, package versions of those formats do not
-#'     have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the package versions' package.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -2755,7 +2786,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -2778,7 +2809,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2796,12 +2827,13 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
     name = "ListPackageVersionDependencies",
     http_method = "POST",
     http_path = "/v1/package/version/dependencies",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$list_package_version_dependencies_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, nextToken = nextToken)
   output <- .codeartifact$list_package_version_dependencies_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2849,7 +2881,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package for which you want to request package versions.
@@ -2867,7 +2899,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' ```
 #' list(
 #'   defaultDisplayVersion = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -2894,7 +2926,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted",
@@ -2915,12 +2947,13 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
     name = "ListPackageVersions",
     http_method = "POST",
     http_path = "/v1/package/versions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "versions")
   )
   input <- .codeartifact$list_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, status = status, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken, originType = originType)
   output <- .codeartifact$list_package_versions_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2959,7 +2992,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param packagePrefix A prefix used to filter requested packages. Only packages with names
@@ -2983,7 +3016,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' list(
 #'   packages = list(
 #'     list(
-#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'       namespace = "string",
 #'       package = "string",
 #'       originConfiguration = list(
@@ -3004,7 +3037,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   packagePrefix = "string",
 #'   maxResults = 123,
@@ -3024,12 +3057,13 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
     name = "ListPackages",
     http_method = "POST",
     http_path = "/v1/packages",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packages")
   )
   input <- .codeartifact$list_packages_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, packagePrefix = packagePrefix, maxResults = maxResults, nextToken = nextToken, publish = publish, upstream = upstream)
   output <- .codeartifact$list_packages_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3095,12 +3129,13 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
     name = "ListRepositories",
     http_method = "POST",
     http_path = "/v1/repositories",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .codeartifact$list_repositories_input(repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3175,12 +3210,13 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
     name = "ListRepositoriesInDomain",
     http_method = "POST",
     http_path = "/v1/domain/repositories",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .codeartifact$list_repositories_in_domain_input(domain = domain, domainOwner = domainOwner, administratorAccount = administratorAccount, repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_in_domain_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3270,12 +3306,13 @@ codeartifact_list_sub_package_groups <- function(domain, domainOwner = NULL, pac
     name = "ListSubPackageGroups",
     http_method = "POST",
     http_path = "/v1/package-groups/sub-groups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packageGroups")
   )
   input <- .codeartifact$list_sub_package_groups_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_sub_package_groups_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3324,12 +3361,13 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/v1/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codeartifact$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3399,7 +3437,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -3421,7 +3459,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -3442,12 +3480,13 @@ codeartifact_publish_package_version <- function(domain, domainOwner = NULL, rep
     name = "PublishPackageVersion",
     http_method = "POST",
     http_path = "/v1/package/version/publish",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$publish_package_version_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, assetContent = assetContent, assetName = assetName, assetSHA256 = assetSHA256, unfinished = unfinished)
   output <- .codeartifact$publish_package_version_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3513,12 +3552,13 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
     name = "PutDomainPermissionsPolicy",
     http_method = "PUT",
     http_path = "/v1/domain/permissions/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$put_domain_permissions_policy_input(domain = domain, domainOwner = domainOwner, policyRevision = policyRevision, policyDocument = policyDocument)
   output <- .codeartifact$put_domain_permissions_policy_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3568,7 +3608,7 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package to be updated.
@@ -3602,7 +3642,7 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   restrictions = list(
@@ -3622,12 +3662,13 @@ codeartifact_put_package_origin_configuration <- function(domain, domainOwner = 
     name = "PutPackageOriginConfiguration",
     http_method = "POST",
     http_path = "/v1/package",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$put_package_origin_configuration_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, restrictions = restrictions)
   output <- .codeartifact$put_package_origin_configuration_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3697,12 +3738,13 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
     name = "PutRepositoryPermissionsPolicy",
     http_method = "PUT",
     http_path = "/v1/repository/permissions/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$put_repository_permissions_policy_input(domain = domain, domainOwner = domainOwner, repository = repository, policyRevision = policyRevision, policyDocument = policyDocument)
   output <- .codeartifact$put_repository_permissions_policy_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3747,12 +3789,13 @@ codeartifact_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/v1/tag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codeartifact$tag_resource_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3794,12 +3837,13 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/v1/untag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codeartifact$untag_resource_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3882,12 +3926,13 @@ codeartifact_update_package_group <- function(domain, domainOwner = NULL, packag
     name = "UpdatePackageGroup",
     http_method = "PUT",
     http_path = "/v1/package-group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$update_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, contactInfo = contactInfo, description = description)
   output <- .codeartifact$update_package_group_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4002,12 +4047,13 @@ codeartifact_update_package_group_origin_configuration <- function(domain, domai
     name = "UpdatePackageGroupOriginConfiguration",
     http_method = "PUT",
     http_path = "/v1/package-group-origin-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$update_package_group_origin_configuration_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, restrictions = restrictions, addAllowedRepositories = addAllowedRepositories, removeAllowedRepositories = removeAllowedRepositories)
   output <- .codeartifact$update_package_group_origin_configuration_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4046,7 +4092,7 @@ codeartifact_update_package_group_origin_configuration <- function(domain, domai
 #' 
 #' -   The namespace of a generic package is its `namespace`.
 #' 
-#' -   Python, NuGet, and Ruby package versions do not contain a
+#' -   Python, NuGet, Ruby, and Cargo package versions do not contain a
 #'     corresponding component, package versions of those formats do not
 #'     have a namespace.
 #' @param package &#91;required&#93; The name of the package with the version statuses to update.
@@ -4087,7 +4133,7 @@ codeartifact_update_package_group_origin_configuration <- function(domain, domai
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -4111,12 +4157,13 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
     name = "UpdatePackageVersionsStatus",
     http_method = "POST",
     http_path = "/v1/package/versions/update_status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$update_package_versions_status_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, versions = versions, versionRevisions = versionRevisions, expectedStatus = expectedStatus, targetStatus = targetStatus)
   output <- .codeartifact$update_package_versions_status_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4162,7 +4209,7 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -4198,12 +4245,13 @@ codeartifact_update_repository <- function(domain, domainOwner = NULL, repositor
     name = "UpdateRepository",
     http_method = "PUT",
     http_path = "/v1/repository",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeartifact$update_repository_input(domain = domain, domainOwner = domainOwner, repository = repository, description = description, upstreams = upstreams)
   output <- .codeartifact$update_repository_output()
   config <- get_config()
-  svc <- .codeartifact$service(config)
+  svc <- .codeartifact$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

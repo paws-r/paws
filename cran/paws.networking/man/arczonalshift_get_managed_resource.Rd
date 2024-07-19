@@ -9,8 +9,8 @@ Services Region}
 arczonalshift_get_managed_resource(resourceIdentifier)
 }
 \arguments{
-\item{resourceIdentifier}{[required] The identifier for the resource to shift away traffic for. The
-identifier is the Amazon Resource Name (ARN) for the resource.
+\item{resourceIdentifier}{[required] The identifier for the resource that Amazon Web Services shifts traffic
+for. The identifier is the Amazon Resource Name (ARN) for the resource.
 
 At this time, supported resources are Network Load Balancers and
 Application Load Balancers with cross-zone load balancing turned off.}

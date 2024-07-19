@@ -16,7 +16,8 @@ ec2_create_traffic_mirror_filter_rule(
   SourceCidrBlock,
   Description = NULL,
   DryRun = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
@@ -52,6 +53,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{How to ensure idempotency}.}
+
+\item{TagSpecifications}{Traffic Mirroring tags specifications.}
 }
 \description{
 Creates a Traffic Mirror filter rule.

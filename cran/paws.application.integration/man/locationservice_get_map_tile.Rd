@@ -4,19 +4,19 @@
 \alias{locationservice_get_map_tile}
 \title{Retrieves a vector data tile from the map resource}
 \usage{
-locationservice_get_map_tile(Key = NULL, MapName, X, Y, Z)
+locationservice_get_map_tile(MapName, Z, X, Y, Key = NULL)
 }
 \arguments{
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
-to authorize the request.}
-
 \item{MapName}{[required] The map resource to retrieve the map tiles from.}
+
+\item{Z}{[required] The zoom value for the map tile.}
 
 \item{X}{[required] The X axis value for the map tile.}
 
 \item{Y}{[required] The Y axis value for the map tile.}
 
-\item{Z}{[required] The zoom value for the map tile.}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 }
 \description{
 Retrieves a vector data tile from the map resource. Map tiles are used by clients to render a map. they're addressed using a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
