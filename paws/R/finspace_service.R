@@ -180,7 +180,7 @@ finspace <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = ""
 )
 
-.finspace$service <- function(config = list()) {
+.finspace$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.finspace$metadata, handlers, config)
+  new_service(.finspace$metadata, handlers, config, op)
 }

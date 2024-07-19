@@ -102,11 +102,14 @@ responses.
 \link[paws.management:ssmsap_list_applications]{list_applications} \tab Lists all the applications registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_list_components]{list_components} \tab Lists all the components registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_list_databases]{list_databases} \tab Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP\cr
+\link[paws.management:ssmsap_list_operation_events]{list_operation_events} \tab Returns a list of operations events\cr
 \link[paws.management:ssmsap_list_operations]{list_operations} \tab Lists the operations performed by AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an SAP HANA application and/or database registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_put_resource_permission]{put_resource_permission} \tab Adds permissions to the target database\cr
 \link[paws.management:ssmsap_register_application]{register_application} \tab Register an SAP application with AWS Systems Manager for SAP\cr
+\link[paws.management:ssmsap_start_application]{start_application} \tab Request is an operation which starts an application\cr
 \link[paws.management:ssmsap_start_application_refresh]{start_application_refresh} \tab Refreshes a registered application\cr
+\link[paws.management:ssmsap_stop_application]{stop_application} \tab Request is an operation to stop an application\cr
 \link[paws.management:ssmsap_tag_resource]{tag_resource} \tab Creates tag for a resource by specifying the ARN\cr
 \link[paws.management:ssmsap_untag_resource]{untag_resource} \tab Delete the tags for a resource\cr
 \link[paws.management:ssmsap_update_application_settings]{update_application_settings} \tab Updates the settings of an application registered with AWS Systems Manager for SAP

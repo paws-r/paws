@@ -11,6 +11,7 @@ dynamodb_restore_table_from_backup(
   GlobalSecondaryIndexOverride = NULL,
   LocalSecondaryIndexOverride = NULL,
   ProvisionedThroughputOverride = NULL,
+  OnDemandThroughputOverride = NULL,
   SSESpecificationOverride = NULL
 )
 }
@@ -30,6 +31,8 @@ provided should match existing secondary indexes. You can choose to
 exclude some or all of the indexes at the time of restore.}
 
 \item{ProvisionedThroughputOverride}{Provisioned throughput settings for the restored table.}
+
+\item{OnDemandThroughputOverride}{}
 
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }

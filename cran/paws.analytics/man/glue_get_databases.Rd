@@ -8,7 +8,8 @@ glue_get_databases(
   CatalogId = NULL,
   NextToken = NULL,
   MaxResults = NULL,
-  ResourceShareType = NULL
+  ResourceShareType = NULL,
+  AttributesToGet = NULL
 )
 }
 \arguments{
@@ -29,6 +30,10 @@ account.
 \item If set to \code{ALL}, will list the databases shared with your account,
 as well as the databases in yor local account.
 }}
+
+\item{AttributesToGet}{Specifies the database fields returned by the
+\code{\link[=glue_get_databases]{get_databases}} call. This parameter doesn’t
+accept an empty list. The request must include the \code{NAME}.}
 }
 \description{
 Retrieves all databases defined in a given Data Catalog.

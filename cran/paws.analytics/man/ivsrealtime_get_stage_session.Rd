@@ -4,12 +4,12 @@
 \alias{ivsrealtime_get_stage_session}
 \title{Gets information for the specified stage session}
 \usage{
-ivsrealtime_get_stage_session(sessionId, stageArn)
+ivsrealtime_get_stage_session(stageArn, sessionId)
 }
 \arguments{
-\item{sessionId}{[required] ID of a session within the stage.}
-
 \item{stageArn}{[required] ARN of the stage for which the information is to be retrieved.}
+
+\item{sessionId}{[required] ID of a session within the stage.}
 }
 \description{
 Gets information for the specified stage session.

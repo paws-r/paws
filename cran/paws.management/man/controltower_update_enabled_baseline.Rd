@@ -19,7 +19,7 @@ should be updated.}
 \item{parameters}{Parameters to apply when making an update.}
 }
 \description{
-Updates an \code{EnabledBaseline} resource's applied parameters or version.
+Updates an \code{EnabledBaseline} resource's applied parameters or version. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_update_enabled_baseline/} for full documentation.
 }

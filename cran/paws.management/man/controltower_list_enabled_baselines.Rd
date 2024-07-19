@@ -20,7 +20,7 @@ applied for either, or both.}
 \item{nextToken}{A pagination token.}
 }
 \description{
-Returns a list of summaries describing \code{EnabledBaseline} resources. You can filter the list by the corresponding \code{Baseline} or \code{Target} of the \code{EnabledBaseline} resources.
+Returns a list of summaries describing \code{EnabledBaseline} resources. You can filter the list by the corresponding \code{Baseline} or \code{Target} of the \code{EnabledBaseline} resources. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_list_enabled_baselines/} for full documentation.
 }

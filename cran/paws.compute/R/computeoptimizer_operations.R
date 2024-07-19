@@ -16,9 +16,6 @@ NULL
 #' The `Ec2Instance` option encompasses standalone instances and instances
 #' that are part of Auto Scaling groups. The `AutoScalingGroup` option
 #' encompasses only instances that are part of an Auto Scaling group.
-#' 
-#' The valid values for this parameter are `Ec2Instance` and
-#' `AutoScalingGroup`.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' delete.
 #' 
@@ -38,12 +35,13 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
     name = "DeleteRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$delete_recommendation_preferences_input(resourceType = resourceType, scope = scope, recommendationPreferenceNames = recommendationPreferenceNames)
   output <- .computeoptimizer$delete_recommendation_preferences_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -83,12 +81,13 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
     name = "DescribeRecommendationExportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationExportJobs")
   )
   input <- .computeoptimizer$describe_recommendation_export_jobs_input(jobIds = jobIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$describe_recommendation_export_jobs_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -168,12 +167,13 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
     name = "ExportAutoScalingGroupRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$export_auto_scaling_group_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_auto_scaling_group_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -239,12 +239,13 @@ computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL
     name = "ExportEBSVolumeRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$export_ebs_volume_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_ebs_volume_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -321,12 +322,13 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
     name = "ExportEC2InstanceRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$export_ec2_instance_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_ec2_instance_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -390,12 +392,13 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
     name = "ExportECSServiceRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$export_ecs_service_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_ecs_service_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -461,12 +464,13 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
     name = "ExportLambdaFunctionRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$export_lambda_function_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_lambda_function_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -529,17 +533,90 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
     name = "ExportLicenseRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$export_license_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_license_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .computeoptimizer$operations$export_license_recommendations <- computeoptimizer_export_license_recommendations
+
+#' Export optimization recommendations for your Amazon Relational Database
+#' Service (Amazon RDS)
+#'
+#' @description
+#' Export optimization recommendations for your Amazon Relational Database Service (Amazon RDS).
+#'
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_export_rds_database_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_export_rds_database_recommendations/) for full documentation.
+#'
+#' @param accountIds The Amazon Web Services account IDs for the export Amazon RDS
+#' recommendations.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to specify the member account you
+#' want to export recommendations to.
+#' 
+#' This parameter can't be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' If this parameter or the include member accounts parameter is omitted,
+#' the recommendations for member accounts aren't included in the export.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of Amazon RDS recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file.
+#' 
+#' The CSV file is the only export file format currently supported.
+#' @param includeMemberAccounts If your account is the management account or the delegated administrator
+#' of an organization, this parameter indicates whether to include
+#' recommendations for resources in all member accounts of the
+#' organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' If this parameter is omitted, recommendations for member accounts of the
+#' organization aren't included in the export file.
+#' 
+#' If this parameter or the account ID parameter is omitted,
+#' recommendations for member accounts aren't included in the export.
+#' @param recommendationPreferences 
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_rds_database_recommendations
+computeoptimizer_export_rds_database_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL, recommendationPreferences = NULL) {
+  op <- new_operation(
+    name = "ExportRDSDatabaseRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .computeoptimizer$export_rds_database_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
+  output <- .computeoptimizer$export_rds_database_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_rds_database_recommendations <- computeoptimizer_export_rds_database_recommendations
 
 #' Returns Auto Scaling group recommendations
 #'
@@ -578,12 +655,13 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
     name = "GetAutoScalingGroupRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_auto_scaling_group_recommendations_input(accountIds = accountIds, autoScalingGroupArns = autoScalingGroupArns, nextToken = nextToken, maxResults = maxResults, filters = filters, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_auto_scaling_group_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -624,12 +702,13 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
     name = "GetEBSVolumeRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_ebs_volume_recommendations_input(volumeArns = volumeArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_ebs_volume_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -672,12 +751,13 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
     name = "GetEC2InstanceRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_ec2_instance_recommendations_input(instanceArns = instanceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_instance_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -709,12 +789,13 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
     name = "GetEC2RecommendationProjectedMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_ec2_recommendation_projected_metrics_input(instanceArn = instanceArn, stat = stat, period = period, startTime = startTime, endTime = endTime, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_recommendation_projected_metrics_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -746,12 +827,13 @@ computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(se
     name = "GetECSServiceRecommendationProjectedMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_input(serviceArn = serviceArn, stat = stat, period = period, startTime = startTime, endTime = endTime)
   output <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -796,12 +878,13 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
     name = "GetECSServiceRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_ecs_service_recommendations_input(serviceArns = serviceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_ecs_service_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -828,12 +911,13 @@ computeoptimizer_get_effective_recommendation_preferences <- function(resourceAr
     name = "GetEffectiveRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_effective_recommendation_preferences_input(resourceArn = resourceArn)
   output <- .computeoptimizer$get_effective_recommendation_preferences_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -858,12 +942,13 @@ computeoptimizer_get_enrollment_status <- function() {
     name = "GetEnrollmentStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_enrollment_status_input()
   output <- .computeoptimizer$get_enrollment_status_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -896,12 +981,13 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
     name = "GetEnrollmentStatusesForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountEnrollmentStatuses")
   )
   input <- .computeoptimizer$get_enrollment_statuses_for_organization_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_enrollment_statuses_for_organization_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -951,12 +1037,13 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
     name = "GetLambdaFunctionRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lambdaFunctionRecommendations")
   )
   input <- .computeoptimizer$get_lambda_function_recommendations_input(functionArns = functionArns, accountIds = accountIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_lambda_function_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1001,17 +1088,112 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
     name = "GetLicenseRecommendations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$get_license_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_license_recommendations_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .computeoptimizer$operations$get_license_recommendations <- computeoptimizer_get_license_recommendations
+
+#' Returns the projected metrics of Amazon RDS recommendations
+#'
+#' @description
+#' Returns the projected metrics of Amazon RDS recommendations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_rds_database_recommendation_projected_metrics/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_rds_database_recommendation_projected_metrics/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN that identifies the Amazon RDS.
+#' 
+#' The following is the format of the ARN:
+#' 
+#' `arn:aws:rds:{region}:{accountId}:db:{resourceName}`
+#' @param stat &#91;required&#93; The statistic of the projected metrics.
+#' @param period &#91;required&#93; The granularity, in seconds, of the projected metrics data points.
+#' @param startTime &#91;required&#93; The timestamp of the first projected metrics data point to return.
+#' @param endTime &#91;required&#93; The timestamp of the last projected metrics data point to return.
+#' @param recommendationPreferences 
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_rds_datab_recom_proje_metri
+computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(resourceArn, stat, period, startTime, endTime, recommendationPreferences = NULL) {
+  op <- new_operation(
+    name = "GetRDSDatabaseRecommendationProjectedMetrics",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_rds_database_recommendation_projected_metrics_input(resourceArn = resourceArn, stat = stat, period = period, startTime = startTime, endTime = endTime, recommendationPreferences = recommendationPreferences)
+  output <- .computeoptimizer$get_rds_database_recommendation_projected_metrics_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_rds_database_recommendation_projected_metrics <- computeoptimizer_get_rds_database_recommendation_projected_metrics
+
+#' Returns Amazon RDS recommendations
+#'
+#' @description
+#' Returns Amazon RDS recommendations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_rds_database_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_rds_database_recommendations/) for full documentation.
+#'
+#' @param resourceArns The ARN that identifies the Amazon RDS.
+#' 
+#' The following is the format of the ARN:
+#' 
+#' `arn:aws:rds:{region}:{accountId}:db:{resourceName}`
+#' 
+#' The following is the format of a DB Cluster ARN:
+#' 
+#' `arn:aws:rds:{region}:{accountId}:cluster:{resourceName}`
+#' @param nextToken The token to advance to the next page of Amazon RDS recommendations.
+#' @param maxResults The maximum number of Amazon RDS recommendations to return with a single
+#' request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
+#' list of Amazon RDS recommendations.
+#' @param accountIds Return the Amazon RDS recommendations to the specified Amazon Web
+#' Services account IDs.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to return the Amazon RDS
+#' recommendations to specific member accounts.
+#' 
+#' You can only specify one account ID per request.
+#' @param recommendationPreferences 
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_rds_database_recommendations
+computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL, recommendationPreferences = NULL) {
+  op <- new_operation(
+    name = "GetRDSDatabaseRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_rds_database_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, recommendationPreferences = recommendationPreferences)
+  output <- .computeoptimizer$get_rds_database_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_rds_database_recommendations <- computeoptimizer_get_rds_database_recommendations
 
 #' Returns existing recommendation preferences, such as enhanced
 #' infrastructure metrics
@@ -1027,9 +1209,6 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
 #' The `Ec2Instance` option encompasses standalone instances and instances
 #' that are part of Auto Scaling groups. The `AutoScalingGroup` option
 #' encompasses only instances that are part of an Auto Scaling group.
-#' 
-#' The valid values for this parameter are `Ec2Instance` and
-#' `AutoScalingGroup`.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' return.
 #' 
@@ -1054,12 +1233,13 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
     name = "GetRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationPreferencesDetails")
   )
   input <- .computeoptimizer$get_recommendation_preferences_input(resourceType = resourceType, scope = scope, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_preferences_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1096,12 +1276,13 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
     name = "GetRecommendationSummaries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationSummaries")
   )
   input <- .computeoptimizer$get_recommendation_summaries_input(accountIds = accountIds, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_summaries_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1121,9 +1302,6 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' The `Ec2Instance` option encompasses standalone instances and instances
 #' that are part of Auto Scaling groups. The `AutoScalingGroup` option
 #' encompasses only instances that are part of an Auto Scaling group.
-#' 
-#' The valid values for this parameter are `Ec2Instance` and
-#' `AutoScalingGroup`.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' create.
 #' 
@@ -1232,12 +1410,13 @@ computeoptimizer_put_recommendation_preferences <- function(resourceType, scope 
     name = "PutRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference, lookBackPeriod = lookBackPeriod, utilizationPreferences = utilizationPreferences, preferredResources = preferredResources, savingsEstimationMode = savingsEstimationMode)
   output <- .computeoptimizer$put_recommendation_preferences_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1281,12 +1460,13 @@ computeoptimizer_update_enrollment_status <- function(status, includeMemberAccou
     name = "UpdateEnrollmentStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .computeoptimizer$update_enrollment_status_input(status = status, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$update_enrollment_status_output()
   config <- get_config()
-  svc <- .computeoptimizer$service(config)
+  svc <- .computeoptimizer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

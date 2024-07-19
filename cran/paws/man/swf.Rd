@@ -61,7 +61,7 @@ coordinating them without worrying about underlying complexities such as
 tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
-the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}} .
+the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{AmazonSWF Developer Guide}} .
 }
 \section{Service syntax}{
 
@@ -106,6 +106,8 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
 \link[paws.application.integration:swf_count_open_workflow_executions]{count_open_workflow_executions} \tab Returns the number of open workflow executions within the given domain that meet the specified filtering criteria\cr
 \link[paws.application.integration:swf_count_pending_activity_tasks]{count_pending_activity_tasks} \tab Returns the estimated number of activity tasks in the specified task list\cr
 \link[paws.application.integration:swf_count_pending_decision_tasks]{count_pending_decision_tasks} \tab Returns the estimated number of decision tasks in the specified task list\cr
+\link[paws.application.integration:swf_delete_activity_type]{delete_activity_type} \tab Deletes the specified activity type\cr
+\link[paws.application.integration:swf_delete_workflow_type]{delete_workflow_type} \tab Deletes the specified workflow type\cr
 \link[paws.application.integration:swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified activity type\cr
 \link[paws.application.integration:swf_deprecate_domain]{deprecate_domain} \tab Deprecates the specified domain\cr
 \link[paws.application.integration:swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified workflow type\cr

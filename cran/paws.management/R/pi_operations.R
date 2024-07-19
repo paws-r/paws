@@ -32,12 +32,13 @@ pi_create_performance_analysis_report <- function(ServiceType, Identifier, Start
     name = "CreatePerformanceAnalysisReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$create_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Tags = Tags)
   output <- .pi$create_performance_analysis_report_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -71,12 +72,13 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
     name = "DeletePerformanceAnalysisReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$delete_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId)
   output <- .pi$delete_performance_analysis_report_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -166,6 +168,9 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
 #'     `GroupBy` or `Partition` parameters.
 #' 
 #' -   A single filter for any other dimension in this dimension group.
+#' 
+#' The `db.sql.db_id` filter isn't available for RDS for SQL Server DB
+#' instances.
 #' @param MaxResults The maximum number of items to return in the response. If more items
 #' exist than the specified `MaxRecords` value, a pagination token is
 #' included in the response so that the remaining results can be retrieved.
@@ -181,12 +186,13 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
     name = "DescribeDimensionKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$describe_dimension_keys_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Metric = Metric, PeriodInSeconds = PeriodInSeconds, GroupBy = GroupBy, AdditionalMetrics = AdditionalMetrics, PartitionBy = PartitionBy, Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$describe_dimension_keys_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -241,12 +247,13 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
     name = "GetDimensionKeyDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$get_dimension_key_details_input(ServiceType = ServiceType, Identifier = Identifier, Group = Group, GroupIdentifier = GroupIdentifier, RequestedDimensions = RequestedDimensions)
   output <- .pi$get_dimension_key_details_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -286,12 +293,13 @@ pi_get_performance_analysis_report <- function(ServiceType, Identifier, Analysis
     name = "GetPerformanceAnalysisReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$get_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId, TextFormat = TextFormat, AcceptLanguage = AcceptLanguage)
   output <- .pi$get_performance_analysis_report_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -321,12 +329,13 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
     name = "GetResourceMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$get_resource_metadata_input(ServiceType = ServiceType, Identifier = Identifier)
   output <- .pi$get_resource_metadata_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -408,12 +417,13 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
     name = "GetResourceMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$get_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricQueries = MetricQueries, StartTime = StartTime, EndTime = EndTime, PeriodInSeconds = PeriodInSeconds, MaxResults = MaxResults, NextToken = NextToken, PeriodAlignment = PeriodAlignment)
   output <- .pi$get_resource_metrics_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -443,21 +453,29 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
 #' @param NextToken An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' token, up to the value specified by `MaxRecords`.
+#' @param AuthorizedActions The actions to discover the dimensions you are authorized to access. If
+#' you specify multiple actions, then the response will contain the
+#' dimensions common for all the actions.
+#' 
+#' When you don't specify this request parameter or provide an empty list,
+#' the response contains all the available dimensions for the target
+#' database engine whether or not you are authorized to access them.
 #'
 #' @keywords internal
 #'
 #' @rdname pi_list_available_resource_dimensions
-pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metrics, MaxResults = NULL, NextToken = NULL) {
+pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metrics, MaxResults = NULL, NextToken = NULL, AuthorizedActions = NULL) {
   op <- new_operation(
     name = "ListAvailableResourceDimensions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .pi$list_available_resource_dimensions_input(ServiceType = ServiceType, Identifier = Identifier, Metrics = Metrics, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .pi$list_available_resource_dimensions_input(ServiceType = ServiceType, Identifier = Identifier, Metrics = Metrics, MaxResults = MaxResults, NextToken = NextToken, AuthorizedActions = AuthorizedActions)
   output <- .pi$list_available_resource_dimensions_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -506,12 +524,13 @@ pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTy
     name = "ListAvailableResourceMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_available_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricTypes = MetricTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pi$list_available_resource_metrics_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -551,12 +570,13 @@ pi_list_performance_analysis_reports <- function(ServiceType, Identifier, NextTo
     name = "ListPerformanceAnalysisReports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_performance_analysis_reports_input(ServiceType = ServiceType, Identifier = Identifier, NextToken = NextToken, MaxResults = MaxResults, ListTags = ListTags)
   output <- .pi$list_performance_analysis_reports_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -586,12 +606,13 @@ pi_list_tags_for_resource <- function(ServiceType, ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$list_tags_for_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN)
   output <- .pi$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -622,12 +643,13 @@ pi_tag_resource <- function(ServiceType, ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$tag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, Tags = Tags)
   output <- .pi$tag_resource_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -659,12 +681,13 @@ pi_untag_resource <- function(ServiceType, ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pi$untag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .pi$untag_resource_output()
   config <- get_config()
-  svc <- .pi$service(config)
+  svc <- .pi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

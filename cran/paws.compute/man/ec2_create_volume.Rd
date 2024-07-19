@@ -47,17 +47,16 @@ The following are the supported values for each volume type:
 \item \code{io2}: 100 - 256,000 IOPS
 }
 
-For \code{io2} volumes, you can achieve up to 256,000 IOPS on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{instances built on the Nitro System}.
+For \code{io2} volumes, you can achieve up to 256,000 IOPS on \href{https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html}{instances built on the Nitro System}.
 On other instances, you can achieve performance up to 32,000 IOPS.
 
 This parameter is required for \code{io1} and \code{io2} volumes. The default for
 \code{gp3} volumes is 3,000 IOPS. This parameter is not supported for \code{gp2},
 \code{st1}, \code{sc1}, or \code{standard} volumes.}
 
-\item{KmsKeyId}{The identifier of the Key Management Service (KMS) KMS key to use for
-Amazon EBS encryption. If this parameter is not specified, your KMS key
-for Amazon EBS is used. If \code{KmsKeyId} is specified, the encrypted state
-must be \code{true}.
+\item{KmsKeyId}{The identifier of the KMS key to use for Amazon EBS encryption. If this
+parameter is not specified, your KMS key for Amazon EBS is used. If
+\code{KmsKeyId} is specified, the encrypted state must be \code{true}.
 
 You can specify the KMS key using any of the following:
 \itemize{
@@ -73,7 +72,13 @@ Amazon Web Services authenticates the KMS key asynchronously. Therefore,
 if you specify an ID, alias, or ARN that is not valid, the action can
 appear to complete, but eventually fails.}
 
-\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost.}
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost on which to create the
+volume.
+
+If you intend to use a volume with an instance running on an outpost,
+then you must create the volume on the same outpost as the instance. You
+can't use a volume created in an Amazon Web Services Region with an
+instance on an Amazon Web Services outpost, or the other way around.}
 
 \item{Size}{The size of the volume, in GiBs. You must specify either a snapshot ID
 or a volume size. If you specify a snapshot, the default is the snapshot
@@ -117,7 +122,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to apply to the volume during creation.}
 
 \item{MultiAttachEnabled}{Indicates whether to enable Amazon EBS Multi-Attach. If you enable
-Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Instances built on the Nitro System}
+Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html}{Instances built on the Nitro System}
 in the same Availability Zone. This parameter is supported with \code{io1}
 and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
 in the \emph{Amazon EBS User Guide}.}

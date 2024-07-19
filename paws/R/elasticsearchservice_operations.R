@@ -57,12 +57,13 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(
     name = "AcceptInboundCrossClusterSearchConnection",
     http_method = "PUT",
     http_path = "/2015-01-01/es/ccs/inboundConnection/{ConnectionId}/accept",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$accept_inbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
   output <- .elasticsearchservice$accept_inbound_cross_cluster_search_connection_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -111,12 +112,13 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
     name = "AddTags",
     http_method = "POST",
     http_path = "/2015-01-01/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$add_tags_input(ARN = ARN, TagList = TagList)
   output <- .elasticsearchservice$add_tags_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -177,12 +179,13 @@ elasticsearchservice_associate_package <- function(PackageID, DomainName) {
     name = "AssociatePackage",
     http_method = "POST",
     http_path = "/2015-01-01/packages/associate/{PackageID}/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$associate_package_input(PackageID = PackageID, DomainName = DomainName)
   output <- .elasticsearchservice$associate_package_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -231,12 +234,13 @@ elasticsearchservice_authorize_vpc_endpoint_access <- function(DomainName, Accou
     name = "AuthorizeVpcEndpointAccess",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain/{DomainName}/authorizeVpcEndpointAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
   output <- .elasticsearchservice$authorize_vpc_endpoint_access_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -293,12 +297,13 @@ elasticsearchservice_cancel_domain_config_change <- function(DomainName, DryRun 
     name = "CancelDomainConfigChange",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain/{DomainName}/config/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$cancel_domain_config_change_input(DomainName = DomainName, DryRun = DryRun)
   output <- .elasticsearchservice$cancel_domain_config_change_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -355,12 +360,13 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
     name = "CancelElasticsearchServiceSoftwareUpdate",
     http_method = "POST",
     http_path = "/2015-01-01/es/serviceSoftwareUpdate/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$cancel_elasticsearch_service_software_update_input(DomainName = DomainName)
   output <- .elasticsearchservice$cancel_elasticsearch_service_software_update_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -694,12 +700,13 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
     name = "CreateElasticsearchDomain",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList)
   output <- .elasticsearchservice$create_elasticsearch_domain_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -773,12 +780,13 @@ elasticsearchservice_create_outbound_cross_cluster_search_connection <- function
     name = "CreateOutboundCrossClusterSearchConnection",
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/outboundConnection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$create_outbound_cross_cluster_search_connection_input(SourceDomainInfo = SourceDomainInfo, DestinationDomainInfo = DestinationDomainInfo, ConnectionAlias = ConnectionAlias)
   output <- .elasticsearchservice$create_outbound_cross_cluster_search_connection_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -847,12 +855,13 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
     name = "CreatePackage",
     http_method = "POST",
     http_path = "/2015-01-01/packages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$create_package_input(PackageName = PackageName, PackageType = PackageType, PackageDescription = PackageDescription, PackageSource = PackageSource)
   output <- .elasticsearchservice$create_package_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -924,12 +933,13 @@ elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, Clie
     name = "CreateVpcEndpoint",
     http_method = "POST",
     http_path = "/2015-01-01/es/vpcEndpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$create_vpc_endpoint_input(DomainArn = DomainArn, VpcOptions = VpcOptions, ClientToken = ClientToken)
   output <- .elasticsearchservice$create_vpc_endpoint_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1111,12 +1121,13 @@ elasticsearchservice_delete_elasticsearch_domain <- function(DomainName) {
     name = "DeleteElasticsearchDomain",
     http_method = "DELETE",
     http_path = "/2015-01-01/es/domain/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$delete_elasticsearch_domain_input(DomainName = DomainName)
   output <- .elasticsearchservice$delete_elasticsearch_domain_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1155,12 +1166,13 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
     name = "DeleteElasticsearchServiceRole",
     http_method = "DELETE",
     http_path = "/2015-01-01/es/role",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$delete_elasticsearch_service_role_input()
   output <- .elasticsearchservice$delete_elasticsearch_service_role_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1221,12 +1233,13 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(
     name = "DeleteInboundCrossClusterSearchConnection",
     http_method = "DELETE",
     http_path = "/2015-01-01/es/ccs/inboundConnection/{ConnectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$delete_inbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
   output <- .elasticsearchservice$delete_inbound_cross_cluster_search_connection_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1288,12 +1301,13 @@ elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function
     name = "DeleteOutboundCrossClusterSearchConnection",
     http_method = "DELETE",
     http_path = "/2015-01-01/es/ccs/outboundConnection/{ConnectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$delete_outbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
   output <- .elasticsearchservice$delete_outbound_cross_cluster_search_connection_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1354,12 +1368,13 @@ elasticsearchservice_delete_package <- function(PackageID) {
     name = "DeletePackage",
     http_method = "DELETE",
     http_path = "/2015-01-01/packages/{PackageID}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$delete_package_input(PackageID = PackageID)
   output <- .elasticsearchservice$delete_package_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1406,12 +1421,13 @@ elasticsearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
     name = "DeleteVpcEndpoint",
     http_method = "DELETE",
     http_path = "/2015-01-01/es/vpcEndpoints/{VpcEndpointId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$delete_vpc_endpoint_input(VpcEndpointId = VpcEndpointId)
   output <- .elasticsearchservice$delete_vpc_endpoint_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1479,12 +1495,13 @@ elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResul
     name = "DescribeDomainAutoTunes",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/autoTunes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_domain_auto_tunes_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1561,12 +1578,13 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
     name = "DescribeDomainChangeProgress",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/progress",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$describe_domain_change_progress_input(DomainName = DomainName, ChangeId = ChangeId)
   output <- .elasticsearchservice$describe_domain_change_progress_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1749,12 +1767,13 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
     name = "DescribeElasticsearchDomain",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$describe_elasticsearch_domain_input(DomainName = DomainName)
   output <- .elasticsearchservice$describe_elasticsearch_domain_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2108,12 +2127,13 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
     name = "DescribeElasticsearchDomainConfig",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$describe_elasticsearch_domain_config_input(DomainName = DomainName)
   output <- .elasticsearchservice$describe_elasticsearch_domain_config_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2300,12 +2320,13 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
     name = "DescribeElasticsearchDomains",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain-info",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$describe_elasticsearch_domains_input(DomainNames = DomainNames)
   output <- .elasticsearchservice$describe_elasticsearch_domains_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2389,12 +2410,13 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
     name = "DescribeElasticsearchInstanceTypeLimits",
     http_method = "GET",
     http_path = "/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$describe_elasticsearch_instance_type_limits_input(DomainName = DomainName, InstanceType = InstanceType, ElasticsearchVersion = ElasticsearchVersion)
   output <- .elasticsearchservice$describe_elasticsearch_instance_type_limits_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2478,12 +2500,13 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
     name = "DescribeInboundCrossClusterSearchConnections",
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/inboundConnection/search",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2568,12 +2591,13 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
     name = "DescribeOutboundCrossClusterSearchConnections",
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/outboundConnection/search",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2650,12 +2674,13 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
     name = "DescribePackages",
     http_method = "POST",
     http_path = "/2015-01-01/packages/describe",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_packages_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2723,12 +2748,13 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
     name = "DescribeReservedElasticsearchInstanceOfferings",
     http_method = "GET",
     http_path = "/2015-01-01/es/reservedInstanceOfferings",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_reserved_elasticsearch_instance_offerings_input(ReservedElasticsearchInstanceOfferingId = ReservedElasticsearchInstanceOfferingId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_reserved_elasticsearch_instance_offerings_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2805,12 +2831,13 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
     name = "DescribeReservedElasticsearchInstances",
     http_method = "GET",
     http_path = "/2015-01-01/es/reservedInstances",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_reserved_elasticsearch_instances_input(ReservedElasticsearchInstanceId = ReservedElasticsearchInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_reserved_elasticsearch_instances_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2881,12 +2908,13 @@ elasticsearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
     name = "DescribeVpcEndpoints",
     http_method = "POST",
     http_path = "/2015-01-01/es/vpcEndpoints/describe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$describe_vpc_endpoints_input(VpcEndpointIds = VpcEndpointIds)
   output <- .elasticsearchservice$describe_vpc_endpoints_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2947,12 +2975,13 @@ elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
     name = "DissociatePackage",
     http_method = "POST",
     http_path = "/2015-01-01/packages/dissociate/{PackageID}/{DomainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$dissociate_package_input(PackageID = PackageID, DomainName = DomainName)
   output <- .elasticsearchservice$dissociate_package_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3003,12 +3032,13 @@ elasticsearchservice_get_compatible_elasticsearch_versions <- function(DomainNam
     name = "GetCompatibleElasticsearchVersions",
     http_method = "GET",
     http_path = "/2015-01-01/es/compatibleVersions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$get_compatible_elasticsearch_versions_input(DomainName = DomainName)
   output <- .elasticsearchservice$get_compatible_elasticsearch_versions_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3069,12 +3099,13 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
     name = "GetPackageVersionHistory",
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/history",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$get_package_version_history_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3142,12 +3173,13 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
     name = "GetUpgradeHistory",
     http_method = "GET",
     http_path = "/2015-01-01/es/upgradeDomain/{DomainName}/history",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$get_upgrade_history_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$get_upgrade_history_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3193,12 +3225,13 @@ elasticsearchservice_get_upgrade_status <- function(DomainName) {
     name = "GetUpgradeStatus",
     http_method = "GET",
     http_path = "/2015-01-01/es/upgradeDomain/{DomainName}/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$get_upgrade_status_input(DomainName = DomainName)
   output <- .elasticsearchservice$get_upgrade_status_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3248,12 +3281,13 @@ elasticsearchservice_list_domain_names <- function(EngineType = NULL) {
     name = "ListDomainNames",
     http_method = "GET",
     http_path = "/2015-01-01/domain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$list_domain_names_input(EngineType = EngineType)
   output <- .elasticsearchservice$list_domain_names_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3320,12 +3354,13 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
     name = "ListDomainsForPackage",
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/domains",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_domains_for_package_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3384,12 +3419,13 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
     name = "ListElasticsearchInstanceTypes",
     http_method = "GET",
     http_path = "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_elasticsearch_instance_types_input(ElasticsearchVersion = ElasticsearchVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_elasticsearch_instance_types_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3437,12 +3473,13 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
     name = "ListElasticsearchVersions",
     http_method = "GET",
     http_path = "/2015-01-01/es/versions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_elasticsearch_versions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_elasticsearch_versions_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3509,12 +3546,13 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
     name = "ListPackagesForDomain",
     http_method = "GET",
     http_path = "/2015-01-01/domain/{DomainName}/packages",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_packages_for_domain_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3562,12 +3600,13 @@ elasticsearchservice_list_tags <- function(ARN) {
     name = "ListTags",
     http_method = "GET",
     http_path = "/2015-01-01/tags/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$list_tags_input(ARN = ARN)
   output <- .elasticsearchservice$list_tags_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3622,12 +3661,13 @@ elasticsearchservice_list_vpc_endpoint_access <- function(DomainName, NextToken 
     name = "ListVpcEndpointAccess",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/listVpcEndpointAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$list_vpc_endpoint_access_input(DomainName = DomainName, NextToken = NextToken)
   output <- .elasticsearchservice$list_vpc_endpoint_access_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3679,12 +3719,13 @@ elasticsearchservice_list_vpc_endpoints <- function(NextToken = NULL) {
     name = "ListVpcEndpoints",
     http_method = "GET",
     http_path = "/2015-01-01/es/vpcEndpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$list_vpc_endpoints_input(NextToken = NextToken)
   output <- .elasticsearchservice$list_vpc_endpoints_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3739,12 +3780,13 @@ elasticsearchservice_list_vpc_endpoints_for_domain <- function(DomainName, NextT
     name = "ListVpcEndpointsForDomain",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/vpcEndpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$list_vpc_endpoints_for_domain_input(DomainName = DomainName, NextToken = NextToken)
   output <- .elasticsearchservice$list_vpc_endpoints_for_domain_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3792,12 +3834,13 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
     name = "PurchaseReservedElasticsearchInstanceOffering",
     http_method = "POST",
     http_path = "/2015-01-01/es/purchaseReservedInstanceOffering",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$purchase_reserved_elasticsearch_instance_offering_input(ReservedElasticsearchInstanceOfferingId = ReservedElasticsearchInstanceOfferingId, ReservationName = ReservationName, InstanceCount = InstanceCount)
   output <- .elasticsearchservice$purchase_reserved_elasticsearch_instance_offering_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3858,12 +3901,13 @@ elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(
     name = "RejectInboundCrossClusterSearchConnection",
     http_method = "PUT",
     http_path = "/2015-01-01/es/ccs/inboundConnection/{ConnectionId}/reject",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$reject_inbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
   output <- .elasticsearchservice$reject_inbound_cross_cluster_search_connection_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3908,12 +3952,13 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
     name = "RemoveTags",
     http_method = "POST",
     http_path = "/2015-01-01/tags-removal",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$remove_tags_input(ARN = ARN, TagKeys = TagKeys)
   output <- .elasticsearchservice$remove_tags_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3954,12 +3999,13 @@ elasticsearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account)
     name = "RevokeVpcEndpointAccess",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain/{DomainName}/revokeVpcEndpointAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
   output <- .elasticsearchservice$revoke_vpc_endpoint_access_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4014,12 +4060,13 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
     name = "StartElasticsearchServiceSoftwareUpdate",
     http_method = "POST",
     http_path = "/2015-01-01/es/serviceSoftwareUpdate/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$start_elasticsearch_service_software_update_input(DomainName = DomainName)
   output <- .elasticsearchservice$start_elasticsearch_service_software_update_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4518,12 +4565,13 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
     name = "UpdateElasticsearchDomainConfig",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain/{DomainName}/config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun)
   output <- .elasticsearchservice$update_elasticsearch_domain_config_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4593,12 +4641,13 @@ elasticsearchservice_update_package <- function(PackageID, PackageSource, Packag
     name = "UpdatePackage",
     http_method = "POST",
     http_path = "/2015-01-01/packages/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$update_package_input(PackageID = PackageID, PackageSource = PackageSource, PackageDescription = PackageDescription, CommitMessage = CommitMessage)
   output <- .elasticsearchservice$update_package_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4667,12 +4716,13 @@ elasticsearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) 
     name = "UpdateVpcEndpoint",
     http_method = "POST",
     http_path = "/2015-01-01/es/vpcEndpoints/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$update_vpc_endpoint_input(VpcEndpointId = VpcEndpointId, VpcOptions = VpcOptions)
   output <- .elasticsearchservice$update_vpc_endpoint_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4736,12 +4786,13 @@ elasticsearchservice_upgrade_elasticsearch_domain <- function(DomainName, Target
     name = "UpgradeElasticsearchDomain",
     http_method = "POST",
     http_path = "/2015-01-01/es/upgradeDomain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticsearchservice$upgrade_elasticsearch_domain_input(DomainName = DomainName, TargetVersion = TargetVersion, PerformCheckOnly = PerformCheckOnly)
   output <- .elasticsearchservice$upgrade_elasticsearch_domain_output()
   config <- get_config()
-  svc <- .elasticsearchservice$service(config)
+  svc <- .elasticsearchservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -77,7 +77,7 @@ documentation:
 \itemize{
 \item Linux: \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
 in the \emph{Amazon EC2 User Guide for Linux Instances}
-\item Windows: \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
+\item Windows: \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
 in the \emph{Amazon EC2 User Guide for Windows Instances}
 }
 

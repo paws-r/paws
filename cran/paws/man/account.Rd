@@ -89,22 +89,25 @@ Operations for Amazon Web Services Account Management
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.security.identity:account_accept_primary_email_update]{accept_primary_email_update} \tab Accepts the request that originated from StartPrimaryEmailUpdate to update the primary email address (also known as the root user email address) for the specified account\cr
 \link[paws.security.identity:account_delete_alternate_contact]{delete_alternate_contact} \tab Deletes the specified alternate contact from an Amazon Web Services account\cr
 \link[paws.security.identity:account_disable_region]{disable_region} \tab Disables (opts-out) a particular Region for an account\cr
 \link[paws.security.identity:account_enable_region]{enable_region} \tab Enables (opts-in) a particular Region for an account\cr
 \link[paws.security.identity:account_get_alternate_contact]{get_alternate_contact} \tab Retrieves the specified alternate contact attached to an Amazon Web Services account\cr
 \link[paws.security.identity:account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
+\link[paws.security.identity:account_get_primary_email]{get_primary_email} \tab Retrieves the primary email address for the specified account\cr
 \link[paws.security.identity:account_get_region_opt_status]{get_region_opt_status} \tab Retrieves the opt-in status of a particular Region\cr
 \link[paws.security.identity:account_list_regions]{list_regions} \tab Lists all the Regions for a given account and their respective opt-in statuses\cr
 \link[paws.security.identity:account_put_alternate_contact]{put_alternate_contact} \tab Modifies the specified alternate contact attached to an Amazon Web Services account\cr
-\link[paws.security.identity:account_put_contact_information]{put_contact_information} \tab Updates the primary contact information of an Amazon Web Services account
+\link[paws.security.identity:account_put_contact_information]{put_contact_information} \tab Updates the primary contact information of an Amazon Web Services account\cr
+\link[paws.security.identity:account_start_primary_email_update]{start_primary_email_update} \tab Starts the process to update the primary email address for the specified account
 }
 }
 
 \examples{
 \dontrun{
 svc <- account()
-svc$delete_alternate_contact(
+svc$accept_primary_email_update(
   Foo = 123
 )
 }

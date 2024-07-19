@@ -49,12 +49,13 @@ workspaces_accept_account_link_invitation <- function(LinkId, ClientToken = NULL
     name = "AcceptAccountLinkInvitation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$accept_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
   output <- .workspaces$accept_account_link_invitation_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -107,12 +108,13 @@ workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
     name = "AssociateConnectionAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$associate_connection_alias_input(AliasId = AliasId, ResourceId = ResourceId)
   output <- .workspaces$associate_connection_alias_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -155,12 +157,13 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
     name = "AssociateIpGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$associate_ip_groups_input(DirectoryId = DirectoryId, GroupIds = GroupIds)
   output <- .workspaces$associate_ip_groups_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -219,12 +222,13 @@ workspaces_associate_workspace_application <- function(WorkspaceId, ApplicationI
     name = "AssociateWorkspaceApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$associate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
   output <- .workspaces$associate_workspace_application_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +275,13 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
     name = "AuthorizeIpRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$authorize_ip_rules_input(GroupId = GroupId, UserRules = UserRules)
   output <- .workspaces$authorize_ip_rules_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -351,12 +356,13 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
     name = "CopyWorkspaceImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$copy_workspace_image_input(Name = Name, Description = Description, SourceImageId = SourceImageId, SourceRegion = SourceRegion, Tags = Tags)
   output <- .workspaces$copy_workspace_image_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -406,12 +412,13 @@ workspaces_create_account_link_invitation <- function(TargetAccountId, ClientTok
     name = "CreateAccountLinkInvitation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_account_link_invitation_input(TargetAccountId = TargetAccountId, ClientToken = ClientToken)
   output <- .workspaces$create_account_link_invitation_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -461,12 +468,13 @@ workspaces_create_connect_client_add_in <- function(ResourceId, Name, URL) {
     name = "CreateConnectClientAddIn",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_connect_client_add_in_input(ResourceId = ResourceId, Name = Name, URL = URL)
   output <- .workspaces$create_connect_client_add_in_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -526,12 +534,13 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
     name = "CreateConnectionAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_connection_alias_input(ConnectionString = ConnectionString, Tags = Tags)
   output <- .workspaces$create_connection_alias_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -603,12 +612,13 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
     name = "CreateIpGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_ip_group_input(GroupName = GroupName, GroupDesc = GroupDesc, UserRules = UserRules, Tags = Tags)
   output <- .workspaces$create_ip_group_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -690,12 +700,13 @@ workspaces_create_standby_workspaces <- function(PrimaryRegion, StandbyWorkspace
     name = "CreateStandbyWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_standby_workspaces_input(PrimaryRegion = PrimaryRegion, StandbyWorkspaces = StandbyWorkspaces)
   output <- .workspaces$create_standby_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -741,12 +752,13 @@ workspaces_create_tags <- function(ResourceId, Tags) {
     name = "CreateTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_tags_input(ResourceId = ResourceId, Tags = Tags)
   output <- .workspaces$create_tags_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -821,12 +833,13 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
     name = "CreateUpdatedWorkspaceImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_updated_workspace_image_input(Name = Name, Description = Description, SourceImageId = SourceImageId, Tags = Tags)
   output <- .workspaces$create_updated_workspace_image_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -921,12 +934,13 @@ workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, Im
     name = "CreateWorkspaceBundle",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_workspace_bundle_input(BundleName = BundleName, BundleDescription = BundleDescription, ImageId = ImageId, ComputeType = ComputeType, UserStorage = UserStorage, RootStorage = RootStorage, Tags = Tags)
   output <- .workspaces$create_workspace_bundle_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -992,12 +1006,13 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
     name = "CreateWorkspaceImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_workspace_image_input(Name = Name, Description = Description, WorkspaceId = WorkspaceId, Tags = Tags)
   output <- .workspaces$create_workspace_image_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1015,7 +1030,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' -   The `MANUAL` running mode value is only supported by Amazon
 #'     WorkSpaces Core. Contact your account team to be allow-listed to use
 #'     this value. For more information, see [Amazon WorkSpaces
-#'     Core](https://aws.amazon.com/workspaces/core/).
+#'     Core](https://aws.amazon.com/workspaces-family/core/).
 #' 
 #' -   You don't need to specify the `PCOIP` protocol for Linux bundles
 #'     because `WSP` is the default protocol for those bundles.
@@ -1050,7 +1065,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           Protocols = list(
 #'             "PCOIP"|"WSP"
 #'           ),
-#'           OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'           OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -1089,7 +1104,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -1145,7 +1160,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"
 #'       ),
 #'       Tags = list(
 #'         list(
@@ -1169,17 +1184,128 @@ workspaces_create_workspaces <- function(Workspaces) {
     name = "CreateWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$create_workspaces_input(Workspaces = Workspaces)
   output <- .workspaces$create_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .workspaces$operations$create_workspaces <- workspaces_create_workspaces
+
+#' Creates a pool of WorkSpaces
+#'
+#' @description
+#' Creates a pool of WorkSpaces.
+#'
+#' @usage
+#' workspaces_create_workspaces_pool(PoolName, Description, BundleId,
+#'   DirectoryId, Capacity, Tags, ApplicationSettings, TimeoutSettings)
+#'
+#' @param PoolName &#91;required&#93; The name of the pool.
+#' @param Description &#91;required&#93; The pool description.
+#' @param BundleId &#91;required&#93; The identifier of the bundle for the pool.
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for the pool.
+#' @param Capacity &#91;required&#93; The user capacity of the pool.
+#' @param Tags The tags for the pool.
+#' @param ApplicationSettings Indicates the application settings of the pool.
+#' @param TimeoutSettings Indicates the timeout settings of the pool.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkspacesPool = list(
+#'     PoolId = "string",
+#'     PoolArn = "string",
+#'     CapacityStatus = list(
+#'       AvailableUserSessions = 123,
+#'       DesiredUserSessions = 123,
+#'       ActualUserSessions = 123,
+#'       ActiveUserSessions = 123
+#'     ),
+#'     PoolName = "string",
+#'     Description = "string",
+#'     State = "CREATING"|"DELETING"|"RUNNING"|"STARTING"|"STOPPED"|"STOPPING"|"UPDATING",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BundleId = "string",
+#'     DirectoryId = "string",
+#'     Errors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_IS_MISSING"|"IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"WORKSPACES_POOL_STOPPED"|"WORKSPACES_POOL_INSTANCE_PROVISIONING_FAILURE"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR"|"DOMAIN_JOIN_ERROR_SECRET_ACTION_PERMISSION_IS_MISSING"|"DOMAIN_JOIN_ERROR_SECRET_DECRYPTION_FAILURE"|"DOMAIN_JOIN_ERROR_SECRET_STATE_INVALID"|"DOMAIN_JOIN_ERROR_SECRET_NOT_FOUND"|"DOMAIN_JOIN_ERROR_SECRET_VALUE_KEY_NOT_FOUND"|"DOMAIN_JOIN_ERROR_SECRET_INVALID"|"BUNDLE_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INSUFFICIENT_PERMISSIONS_ERROR"|"DEFAULT_OU_IS_MISSING",
+#'         ErrorMessage = "string"
+#'       )
+#'     ),
+#'     ApplicationSettings = list(
+#'       Status = "DISABLED"|"ENABLED",
+#'       SettingsGroup = "string",
+#'       S3BucketName = "string"
+#'     ),
+#'     TimeoutSettings = list(
+#'       DisconnectTimeoutInSeconds = 123,
+#'       IdleDisconnectTimeoutInSeconds = 123,
+#'       MaxUserDurationInSeconds = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workspaces_pool(
+#'   PoolName = "string",
+#'   Description = "string",
+#'   BundleId = "string",
+#'   DirectoryId = "string",
+#'   Capacity = list(
+#'     DesiredUserSessions = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ApplicationSettings = list(
+#'     Status = "DISABLED"|"ENABLED",
+#'     SettingsGroup = "string"
+#'   ),
+#'   TimeoutSettings = list(
+#'     DisconnectTimeoutInSeconds = 123,
+#'     IdleDisconnectTimeoutInSeconds = 123,
+#'     MaxUserDurationInSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_workspaces_pool
+#'
+#' @aliases workspaces_create_workspaces_pool
+workspaces_create_workspaces_pool <- function(PoolName, Description, BundleId, DirectoryId, Capacity, Tags = NULL, ApplicationSettings = NULL, TimeoutSettings = NULL) {
+  op <- new_operation(
+    name = "CreateWorkspacesPool",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$create_workspaces_pool_input(PoolName = PoolName, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, Tags = Tags, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings)
+  output <- .workspaces$create_workspaces_pool_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_workspaces_pool <- workspaces_create_workspaces_pool
 
 #' Deletes the account link invitation
 #'
@@ -1224,12 +1350,13 @@ workspaces_delete_account_link_invitation <- function(LinkId, ClientToken = NULL
     name = "DeleteAccountLinkInvitation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
   output <- .workspaces$delete_account_link_invitation_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1277,12 +1404,13 @@ workspaces_delete_client_branding <- function(ResourceId, Platforms) {
     name = "DeleteClientBranding",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_client_branding_input(ResourceId = ResourceId, Platforms = Platforms)
   output <- .workspaces$delete_client_branding_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1323,12 +1451,13 @@ workspaces_delete_connect_client_add_in <- function(AddInId, ResourceId) {
     name = "DeleteConnectClientAddIn",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId)
   output <- .workspaces$delete_connect_client_add_in_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1380,12 +1509,13 @@ workspaces_delete_connection_alias <- function(AliasId) {
     name = "DeleteConnectionAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_connection_alias_input(AliasId = AliasId)
   output <- .workspaces$delete_connection_alias_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1425,12 +1555,13 @@ workspaces_delete_ip_group <- function(GroupId) {
     name = "DeleteIpGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_ip_group_input(GroupId = GroupId)
   output <- .workspaces$delete_ip_group_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1473,12 +1604,13 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
     name = "DeleteTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_tags_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .workspaces$delete_tags_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1517,12 +1649,13 @@ workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
     name = "DeleteWorkspaceBundle",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_workspace_bundle_input(BundleId = BundleId)
   output <- .workspaces$delete_workspace_bundle_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1561,12 +1694,13 @@ workspaces_delete_workspace_image <- function(ImageId) {
     name = "DeleteWorkspaceImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$delete_workspace_image_input(ImageId = ImageId)
   output <- .workspaces$delete_workspace_image_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1631,12 +1765,13 @@ workspaces_deploy_workspace_applications <- function(WorkspaceId, Force = NULL) 
     name = "DeployWorkspaceApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$deploy_workspace_applications_input(WorkspaceId = WorkspaceId, Force = Force)
   output <- .workspaces$deploy_workspace_applications_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1691,12 +1826,13 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
     name = "DeregisterWorkspaceDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$deregister_workspace_directory_input(DirectoryId = DirectoryId)
   output <- .workspaces$deregister_workspace_directory_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1740,12 +1876,13 @@ workspaces_describe_account <- function() {
     name = "DescribeAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_account_input()
   output <- .workspaces$describe_account_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1802,12 +1939,13 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
     name = "DescribeAccountModifications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_account_modifications_input(NextToken = NextToken)
   output <- .workspaces$describe_account_modifications_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1879,12 +2017,13 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
     name = "DescribeApplicationAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .workspaces$describe_application_associations_input(MaxResults = MaxResults, NextToken = NextToken, ApplicationId = ApplicationId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_application_associations_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1930,7 +2069,7 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
 #'         "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'       ),
 #'       SupportedOperatingSystemNames = list(
-#'         "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'         "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"
 #'       )
 #'     )
 #'   ),
@@ -1949,7 +2088,7 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
 #'   ),
 #'   LicenseType = "LICENSED"|"UNLICENSED",
 #'   OperatingSystemNames = list(
-#'     "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'     "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"
 #'   ),
 #'   Owner = "string",
 #'   MaxResults = 123,
@@ -1967,12 +2106,13 @@ workspaces_describe_applications <- function(ApplicationIds = NULL, ComputeTypeN
     name = "DescribeApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .workspaces$describe_applications_input(ApplicationIds = ApplicationIds, ComputeTypeNames = ComputeTypeNames, LicenseType = LicenseType, OperatingSystemNames = OperatingSystemNames, Owner = Owner, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workspaces$describe_applications_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2038,12 +2178,13 @@ workspaces_describe_bundle_associations <- function(BundleId, AssociatedResource
     name = "DescribeBundleAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_bundle_associations_input(BundleId = BundleId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_bundle_associations_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2147,12 +2288,13 @@ workspaces_describe_client_branding <- function(ResourceId) {
     name = "DescribeClientBranding",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_client_branding_input(ResourceId = ResourceId)
   output <- .workspaces$describe_client_branding_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2206,12 +2348,13 @@ workspaces_describe_client_properties <- function(ResourceIds) {
     name = "DescribeClientProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_client_properties_input(ResourceIds = ResourceIds)
   output <- .workspaces$describe_client_properties_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2268,12 +2411,13 @@ workspaces_describe_connect_client_add_ins <- function(ResourceId, NextToken = N
     name = "DescribeConnectClientAddIns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_connect_client_add_ins_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_connect_client_add_ins_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2334,12 +2478,13 @@ workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken 
     name = "DescribeConnectionAliasPermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_connection_alias_permissions_input(AliasId = AliasId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_connection_alias_permissions_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2411,12 +2556,13 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
     name = "DescribeConnectionAliases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_connection_aliases_input(AliasIds = AliasIds, ResourceId = ResourceId, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_connection_aliases_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2481,12 +2627,13 @@ workspaces_describe_image_associations <- function(ImageId, AssociatedResourceTy
     name = "DescribeImageAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_image_associations_input(ImageId = ImageId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_image_associations_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2548,12 +2695,13 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
     name = "DescribeIpGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_ip_groups_input(GroupIds = GroupIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_ip_groups_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2602,12 +2750,13 @@ workspaces_describe_tags <- function(ResourceId) {
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_tags_input(ResourceId = ResourceId)
   output <- .workspaces$describe_tags_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2673,12 +2822,13 @@ workspaces_describe_workspace_associations <- function(WorkspaceId, AssociatedRe
     name = "DescribeWorkspaceAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_workspace_associations_input(WorkspaceId = WorkspaceId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_workspace_associations_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2762,12 +2912,13 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
     name = "DescribeWorkspaceBundles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Bundles")
   )
   input <- .workspaces$describe_workspace_bundles_input(BundleIds = BundleIds, Owner = Owner, NextToken = NextToken)
   output <- .workspaces$describe_workspace_bundles_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2782,11 +2933,12 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' WorkSpaces.
 #'
 #' @usage
-#' workspaces_describe_workspace_directories(DirectoryIds, Limit,
-#'   NextToken)
+#' workspaces_describe_workspace_directories(DirectoryIds,
+#'   WorkspaceDirectoryNames, Limit, NextToken)
 #'
 #' @param DirectoryIds The identifiers of the directories. If the value is null, all
 #' directories are retrieved.
+#' @param WorkspaceDirectoryNames The names of the WorkSpace directories.
 #' @param Limit The maximum number of directories to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
@@ -2809,7 +2961,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'       ),
 #'       CustomerUserName = "string",
 #'       IamRoleId = "string",
-#'       DirectoryType = "SIMPLE_AD"|"AD_CONNECTOR",
+#'       DirectoryType = "SIMPLE_AD"|"AD_CONNECTOR"|"CUSTOMER_MANAGED",
 #'       WorkspaceSecurityGroupId = "string",
 #'       State = "REGISTERING"|"REGISTERED"|"DEREGISTERING"|"DEREGISTERED"|"ERROR",
 #'       WorkspaceCreationProperties = list(
@@ -2818,7 +2970,8 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'         DefaultOu = "string",
 #'         CustomSecurityGroupId = "string",
 #'         UserEnabledAsLocalAdministrator = TRUE|FALSE,
-#'         EnableMaintenanceMode = TRUE|FALSE
+#'         EnableMaintenanceMode = TRUE|FALSE,
+#'         InstanceIamRoleArn = "string"
 #'       ),
 #'       ipGroupIds = list(
 #'         "string"
@@ -2849,7 +3002,32 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'       CertificateBasedAuthProperties = list(
 #'         Status = "DISABLED"|"ENABLED",
 #'         CertificateAuthorityArn = "string"
-#'       )
+#'       ),
+#'       WorkspaceDirectoryName = "string",
+#'       WorkspaceDirectoryDescription = "string",
+#'       UserIdentityType = "CUSTOMER_MANAGED"|"AWS_DIRECTORY_SERVICE",
+#'       WorkspaceType = "PERSONAL"|"POOLS",
+#'       ActiveDirectoryConfig = list(
+#'         DomainName = "string",
+#'         ServiceAccountSecretArn = "string"
+#'       ),
+#'       StreamingProperties = list(
+#'         StreamingExperiencePreferredProtocol = "TCP"|"UDP",
+#'         UserSettings = list(
+#'           list(
+#'             Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"PRINTING_TO_LOCAL_DEVICE"|"SMART_CARD",
+#'             Permission = "ENABLED"|"DISABLED",
+#'             MaximumLength = 123
+#'           )
+#'         ),
+#'         StorageConnectors = list(
+#'           list(
+#'             ConnectorType = "HOME_FOLDER",
+#'             Status = "ENABLED"|"DISABLED"
+#'           )
+#'         )
+#'       ),
+#'       ErrorMessage = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2862,6 +3040,9 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'   DirectoryIds = list(
 #'     "string"
 #'   ),
+#'   WorkspaceDirectoryNames = list(
+#'     "string"
+#'   ),
 #'   Limit = 123,
 #'   NextToken = "string"
 #' )
@@ -2872,17 +3053,18 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' @rdname workspaces_describe_workspace_directories
 #'
 #' @aliases workspaces_describe_workspace_directories
-workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit = NULL, NextToken = NULL) {
+workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, WorkspaceDirectoryNames = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceDirectories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Directories")
   )
-  input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, Limit = Limit, NextToken = NextToken)
+  input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, WorkspaceDirectoryNames = WorkspaceDirectoryNames, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspace_directories_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2938,12 +3120,13 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
     name = "DescribeWorkspaceImagePermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_workspace_image_permissions_input(ImageId = ImageId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_workspace_image_permissions_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3026,12 +3209,13 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
     name = "DescribeWorkspaceImages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_workspace_images_input(ImageIds = ImageIds, ImageType = ImageType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_workspace_images_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3086,12 +3270,13 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
     name = "DescribeWorkspaceSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_workspace_snapshots_input(WorkspaceId = WorkspaceId)
   output <- .workspaces$describe_workspace_snapshots_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3160,7 +3345,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -3222,12 +3407,13 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
     name = "DescribeWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Workspaces")
   )
   input <- .workspaces$describe_workspaces_input(WorkspaceIds = WorkspaceIds, DirectoryId = DirectoryId, UserName = UserName, BundleId = BundleId, Limit = Limit, NextToken = NextToken, WorkspaceName = WorkspaceName)
   output <- .workspaces$describe_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3287,17 +3473,197 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
     name = "DescribeWorkspacesConnectionStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$describe_workspaces_connection_status_input(WorkspaceIds = WorkspaceIds, NextToken = NextToken)
   output <- .workspaces$describe_workspaces_connection_status_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .workspaces$operations$describe_workspaces_connection_status <- workspaces_describe_workspaces_connection_status
+
+#' Retrieves a list that describes the streaming sessions for a specified
+#' pool
+#'
+#' @description
+#' Retrieves a list that describes the streaming sessions for a specified
+#' pool.
+#'
+#' @usage
+#' workspaces_describe_workspaces_pool_sessions(PoolId, UserId, Limit,
+#'   NextToken)
+#'
+#' @param PoolId &#91;required&#93; The identifier of the pool.
+#' @param UserId The identifier of the user.
+#' @param Limit The maximum number of items to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sessions = list(
+#'     list(
+#'       AuthenticationType = "SAML",
+#'       ConnectionState = "CONNECTED"|"NOT_CONNECTED",
+#'       SessionId = "string",
+#'       InstanceId = "string",
+#'       PoolId = "string",
+#'       ExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NetworkAccessConfiguration = list(
+#'         EniPrivateIpAddress = "string",
+#'         EniId = "string"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UserId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_workspaces_pool_sessions(
+#'   PoolId = "string",
+#'   UserId = "string",
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_workspaces_pool_sessions
+#'
+#' @aliases workspaces_describe_workspaces_pool_sessions
+workspaces_describe_workspaces_pool_sessions <- function(PoolId, UserId = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeWorkspacesPoolSessions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$describe_workspaces_pool_sessions_input(PoolId = PoolId, UserId = UserId, Limit = Limit, NextToken = NextToken)
+  output <- .workspaces$describe_workspaces_pool_sessions_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_workspaces_pool_sessions <- workspaces_describe_workspaces_pool_sessions
+
+#' Describes the specified WorkSpaces Pools
+#'
+#' @description
+#' Describes the specified WorkSpaces Pools.
+#'
+#' @usage
+#' workspaces_describe_workspaces_pools(PoolIds, Filters, Limit, NextToken)
+#'
+#' @param PoolIds The identifier of the WorkSpaces Pools.
+#' @param Filters The filter conditions for the WorkSpaces Pool to return.
+#' @param Limit The maximum number of items to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkspacesPools = list(
+#'     list(
+#'       PoolId = "string",
+#'       PoolArn = "string",
+#'       CapacityStatus = list(
+#'         AvailableUserSessions = 123,
+#'         DesiredUserSessions = 123,
+#'         ActualUserSessions = 123,
+#'         ActiveUserSessions = 123
+#'       ),
+#'       PoolName = "string",
+#'       Description = "string",
+#'       State = "CREATING"|"DELETING"|"RUNNING"|"STARTING"|"STOPPED"|"STOPPING"|"UPDATING",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       BundleId = "string",
+#'       DirectoryId = "string",
+#'       Errors = list(
+#'         list(
+#'           ErrorCode = "IAM_SERVICE_ROLE_IS_MISSING"|"IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"WORKSPACES_POOL_STOPPED"|"WORKSPACES_POOL_INSTANCE_PROVISIONING_FAILURE"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR"|"DOMAIN_JOIN_ERROR_SECRET_ACTION_PERMISSION_IS_MISSING"|"DOMAIN_JOIN_ERROR_SECRET_DECRYPTION_FAILURE"|"DOMAIN_JOIN_ERROR_SECRET_STATE_INVALID"|"DOMAIN_JOIN_ERROR_SECRET_NOT_FOUND"|"DOMAIN_JOIN_ERROR_SECRET_VALUE_KEY_NOT_FOUND"|"DOMAIN_JOIN_ERROR_SECRET_INVALID"|"BUNDLE_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INSUFFICIENT_PERMISSIONS_ERROR"|"DEFAULT_OU_IS_MISSING",
+#'           ErrorMessage = "string"
+#'         )
+#'       ),
+#'       ApplicationSettings = list(
+#'         Status = "DISABLED"|"ENABLED",
+#'         SettingsGroup = "string",
+#'         S3BucketName = "string"
+#'       ),
+#'       TimeoutSettings = list(
+#'         DisconnectTimeoutInSeconds = 123,
+#'         IdleDisconnectTimeoutInSeconds = 123,
+#'         MaxUserDurationInSeconds = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_workspaces_pools(
+#'   PoolIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "PoolName",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Operator = "EQUALS"|"NOTEQUALS"|"CONTAINS"|"NOTCONTAINS"
+#'     )
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_workspaces_pools
+#'
+#' @aliases workspaces_describe_workspaces_pools
+workspaces_describe_workspaces_pools <- function(PoolIds = NULL, Filters = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeWorkspacesPools",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$describe_workspaces_pools_input(PoolIds = PoolIds, Filters = Filters, Limit = Limit, NextToken = NextToken)
+  output <- .workspaces$describe_workspaces_pools_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_workspaces_pools <- workspaces_describe_workspaces_pools
 
 #' Disassociates a connection alias from a directory
 #'
@@ -3338,12 +3704,13 @@ workspaces_disassociate_connection_alias <- function(AliasId) {
     name = "DisassociateConnectionAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$disassociate_connection_alias_input(AliasId = AliasId)
   output <- .workspaces$disassociate_connection_alias_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3386,12 +3753,13 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
     name = "DisassociateIpGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$disassociate_ip_groups_input(DirectoryId = DirectoryId, GroupIds = GroupIds)
   output <- .workspaces$disassociate_ip_groups_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3451,12 +3819,13 @@ workspaces_disassociate_workspace_application <- function(WorkspaceId, Applicati
     name = "DisassociateWorkspaceApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$disassociate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
   output <- .workspaces$disassociate_workspace_application_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3505,12 +3874,13 @@ workspaces_get_account_link <- function(LinkId = NULL, LinkedAccountId = NULL) {
     name = "GetAccountLink",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$get_account_link_input(LinkId = LinkId, LinkedAccountId = LinkedAccountId)
   output <- .workspaces$get_account_link_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3692,12 +4062,13 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
     name = "ImportClientBranding",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$import_client_branding_input(ResourceId = ResourceId, DeviceTypeWindows = DeviceTypeWindows, DeviceTypeOsx = DeviceTypeOsx, DeviceTypeAndroid = DeviceTypeAndroid, DeviceTypeIos = DeviceTypeIos, DeviceTypeLinux = DeviceTypeLinux, DeviceTypeWeb = DeviceTypeWeb)
   output <- .workspaces$import_client_branding_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3734,7 +4105,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' The `BYOL_REGULAR_BYOP` and `BYOL_GRAPHICS_G4DN_BYOP` values are only
 #' supported by Amazon WorkSpaces Core. Contact your account team to be
 #' allow-listed to use these values. For more information, see [Amazon
-#' WorkSpaces Core](https://aws.amazon.com/workspaces/core/).
+#' WorkSpaces Core](https://aws.amazon.com/workspaces-family/core/).
 #' @param ImageName &#91;required&#93; The name of the WorkSpace image.
 #' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
@@ -3786,12 +4157,13 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
     name = "ImportWorkspaceImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$import_workspace_image_input(Ec2ImageId = Ec2ImageId, IngestionProcess = IngestionProcess, ImageName = ImageName, ImageDescription = ImageDescription, Tags = Tags, Applications = Applications)
   output <- .workspaces$import_workspace_image_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3848,12 +4220,13 @@ workspaces_list_account_links <- function(LinkStatusFilter = NULL, NextToken = N
     name = "ListAccountLinks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountLinks")
   )
   input <- .workspaces$list_account_links_input(LinkStatusFilter = LinkStatusFilter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$list_account_links_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3919,12 +4292,13 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
     name = "ListAvailableManagementCidrRanges",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$list_available_management_cidr_ranges_input(ManagementCidrRangeConstraint = ManagementCidrRangeConstraint, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workspaces$list_available_management_cidr_ranges_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3983,12 +4357,13 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
     name = "MigrateWorkspace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$migrate_workspace_input(SourceWorkspaceId = SourceWorkspaceId, BundleId = BundleId)
   output <- .workspaces$migrate_workspace_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4036,12 +4411,13 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
     name = "ModifyAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_account_input(DedicatedTenancySupport = DedicatedTenancySupport, DedicatedTenancyManagementCidrRange = DedicatedTenancyManagementCidrRange)
   output <- .workspaces$modify_account_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4091,12 +4467,13 @@ workspaces_modify_certificate_based_auth_properties <- function(ResourceId, Cert
     name = "ModifyCertificateBasedAuthProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_certificate_based_auth_properties_input(ResourceId = ResourceId, CertificateBasedAuthProperties = CertificateBasedAuthProperties, PropertiesToDelete = PropertiesToDelete)
   output <- .workspaces$modify_certificate_based_auth_properties_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4138,12 +4515,13 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
     name = "ModifyClientProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_client_properties_input(ResourceId = ResourceId, ClientProperties = ClientProperties)
   output <- .workspaces$modify_client_properties_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4202,12 +4580,13 @@ workspaces_modify_saml_properties <- function(ResourceId, SamlProperties = NULL,
     name = "ModifySamlProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_saml_properties_input(ResourceId = ResourceId, SamlProperties = SamlProperties, PropertiesToDelete = PropertiesToDelete)
   output <- .workspaces$modify_saml_properties_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4257,17 +4636,78 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
     name = "ModifySelfservicePermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_selfservice_permissions_input(ResourceId = ResourceId, SelfservicePermissions = SelfservicePermissions)
   output <- .workspaces$modify_selfservice_permissions_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .workspaces$operations$modify_selfservice_permissions <- workspaces_modify_selfservice_permissions
+
+#' Modifies the specified streaming properties
+#'
+#' @description
+#' Modifies the specified streaming properties.
+#'
+#' @usage
+#' workspaces_modify_streaming_properties(ResourceId, StreamingProperties)
+#'
+#' @param ResourceId &#91;required&#93; The identifier of the resource.
+#' @param StreamingProperties The streaming properties to configure.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_streaming_properties(
+#'   ResourceId = "string",
+#'   StreamingProperties = list(
+#'     StreamingExperiencePreferredProtocol = "TCP"|"UDP",
+#'     UserSettings = list(
+#'       list(
+#'         Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"PRINTING_TO_LOCAL_DEVICE"|"SMART_CARD",
+#'         Permission = "ENABLED"|"DISABLED",
+#'         MaximumLength = 123
+#'       )
+#'     ),
+#'     StorageConnectors = list(
+#'       list(
+#'         ConnectorType = "HOME_FOLDER",
+#'         Status = "ENABLED"|"DISABLED"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_streaming_properties
+#'
+#' @aliases workspaces_modify_streaming_properties
+workspaces_modify_streaming_properties <- function(ResourceId, StreamingProperties = NULL) {
+  op <- new_operation(
+    name = "ModifyStreamingProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$modify_streaming_properties_input(ResourceId = ResourceId, StreamingProperties = StreamingProperties)
+  output <- .workspaces$modify_streaming_properties_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_streaming_properties <- workspaces_modify_streaming_properties
 
 #' Specifies which devices and operating systems users can use to access
 #' their WorkSpaces
@@ -4314,12 +4754,13 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
     name = "ModifyWorkspaceAccessProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_workspace_access_properties_input(ResourceId = ResourceId, WorkspaceAccessProperties = WorkspaceAccessProperties)
   output <- .workspaces$modify_workspace_access_properties_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4351,7 +4792,8 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
 #'     DefaultOu = "string",
 #'     CustomSecurityGroupId = "string",
 #'     UserEnabledAsLocalAdministrator = TRUE|FALSE,
-#'     EnableMaintenanceMode = TRUE|FALSE
+#'     EnableMaintenanceMode = TRUE|FALSE,
+#'     InstanceIamRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -4366,12 +4808,13 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
     name = "ModifyWorkspaceCreationProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_workspace_creation_properties_input(ResourceId = ResourceId, WorkspaceCreationProperties = WorkspaceCreationProperties)
   output <- .workspaces$modify_workspace_creation_properties_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4388,7 +4831,7 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' The `MANUAL` running mode value is only supported by Amazon WorkSpaces
 #' Core. Contact your account team to be allow-listed to use this value.
 #' For more information, see [Amazon WorkSpaces
-#' Core](https://aws.amazon.com/workspaces/core/).
+#' Core](https://aws.amazon.com/workspaces-family/core/).
 #'
 #' @usage
 #' workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties,
@@ -4414,7 +4857,7 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'     Protocols = list(
 #'       "PCOIP"|"WSP"
 #'     ),
-#'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"
 #'   ),
 #'   DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE"
 #' )
@@ -4430,12 +4873,13 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
     name = "ModifyWorkspaceProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_workspace_properties_input(WorkspaceId = WorkspaceId, WorkspaceProperties = WorkspaceProperties, DataReplication = DataReplication)
   output <- .workspaces$modify_workspace_properties_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4480,12 +4924,13 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
     name = "ModifyWorkspaceState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$modify_workspace_state_input(WorkspaceId = WorkspaceId, WorkspaceState = WorkspaceState)
   output <- .workspaces$modify_workspace_state_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4545,12 +4990,13 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
     name = "RebootWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$reboot_workspaces_input(RebootWorkspaceRequests = RebootWorkspaceRequests)
   output <- .workspaces$reboot_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4612,12 +5058,13 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
     name = "RebuildWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$rebuild_workspaces_input(RebuildWorkspaceRequests = RebuildWorkspaceRequests)
   output <- .workspaces$rebuild_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4636,9 +5083,11 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #'
 #' @usage
 #' workspaces_register_workspace_directory(DirectoryId, SubnetIds,
-#'   EnableWorkDocs, EnableSelfService, Tenancy, Tags)
+#'   EnableWorkDocs, EnableSelfService, Tenancy, Tags,
+#'   WorkspaceDirectoryName, WorkspaceDirectoryDescription, UserIdentityType,
+#'   WorkspaceType, ActiveDirectoryConfig)
 #'
-#' @param DirectoryId &#91;required&#93; The identifier of the directory. You cannot register a directory if it
+#' @param DirectoryId The identifier of the directory. You cannot register a directory if it
 #' does not have a status of Active. If the directory does not have a
 #' status of Active, you will receive an InvalidResourceStateException
 #' error. If you have already registered the maximum number of directories
@@ -4649,7 +5098,7 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' Make sure that the subnets are in supported Availability Zones. The
 #' subnets must also be in separate Availability Zones. If these conditions
 #' are not met, you will receive an OperationNotSupportedException error.
-#' @param EnableWorkDocs &#91;required&#93; Indicates whether Amazon WorkDocs is enabled or disabled. If you have
+#' @param EnableWorkDocs Indicates whether Amazon WorkDocs is enabled or disabled. If you have
 #' enabled this parameter and WorkDocs is not available in the Region, you
 #' will receive an OperationNotSupportedException error. Set
 #' `EnableWorkDocs` to disabled, and try again.
@@ -4662,9 +5111,20 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' images, see [Bring Your Own Windows Desktop
 #' Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #' @param Tags The tags associated with the directory.
+#' @param WorkspaceDirectoryName The name of the directory to register.
+#' @param WorkspaceDirectoryDescription Description of the directory to register.
+#' @param UserIdentityType The type of identity management the user is using.
+#' @param WorkspaceType Indicates whether the directory's WorkSpace type is personal or pools.
+#' @param ActiveDirectoryConfig The active directory config of the directory.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string",
+#'   State = "REGISTERING"|"REGISTERED"|"DEREGISTERING"|"DEREGISTERED"|"ERROR"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4681,6 +5141,14 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   WorkspaceDirectoryName = "string",
+#'   WorkspaceDirectoryDescription = "string",
+#'   UserIdentityType = "CUSTOMER_MANAGED"|"AWS_DIRECTORY_SERVICE",
+#'   WorkspaceType = "PERSONAL"|"POOLS",
+#'   ActiveDirectoryConfig = list(
+#'     DomainName = "string",
+#'     ServiceAccountSecretArn = "string"
 #'   )
 #' )
 #' ```
@@ -4690,17 +5158,18 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @rdname workspaces_register_workspace_directory
 #'
 #' @aliases workspaces_register_workspace_directory
-workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NULL, EnableWorkDocs, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL) {
+workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetIds = NULL, EnableWorkDocs = NULL, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL, WorkspaceDirectoryName = NULL, WorkspaceDirectoryDescription = NULL, UserIdentityType = NULL, WorkspaceType = NULL, ActiveDirectoryConfig = NULL) {
   op <- new_operation(
     name = "RegisterWorkspaceDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableWorkDocs = EnableWorkDocs, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags)
+  input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableWorkDocs = EnableWorkDocs, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags, WorkspaceDirectoryName = WorkspaceDirectoryName, WorkspaceDirectoryDescription = WorkspaceDirectoryDescription, UserIdentityType = UserIdentityType, WorkspaceType = WorkspaceType, ActiveDirectoryConfig = ActiveDirectoryConfig)
   output <- .workspaces$register_workspace_directory_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4749,12 +5218,13 @@ workspaces_reject_account_link_invitation <- function(LinkId, ClientToken = NULL
     name = "RejectAccountLinkInvitation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$reject_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
   output <- .workspaces$reject_account_link_invitation_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4801,12 +5271,13 @@ workspaces_restore_workspace <- function(WorkspaceId) {
     name = "RestoreWorkspace",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$restore_workspace_input(WorkspaceId = WorkspaceId)
   output <- .workspaces$restore_workspace_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4847,12 +5318,13 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
     name = "RevokeIpRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$revoke_ip_rules_input(GroupId = GroupId, UserRules = UserRules)
   output <- .workspaces$revoke_ip_rules_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4907,17 +5379,64 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
     name = "StartWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$start_workspaces_input(StartWorkspaceRequests = StartWorkspaceRequests)
   output <- .workspaces$start_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .workspaces$operations$start_workspaces <- workspaces_start_workspaces
+
+#' Starts the specified pool
+#'
+#' @description
+#' Starts the specified pool.
+#' 
+#' You cannot start a pool unless it has a running mode of `AutoStop` and a
+#' state of `STOPPED`.
+#'
+#' @usage
+#' workspaces_start_workspaces_pool(PoolId)
+#'
+#' @param PoolId &#91;required&#93; The identifier of the pool.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_workspaces_pool(
+#'   PoolId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_start_workspaces_pool
+#'
+#' @aliases workspaces_start_workspaces_pool
+workspaces_start_workspaces_pool <- function(PoolId) {
+  op <- new_operation(
+    name = "StartWorkspacesPool",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$start_workspaces_pool_input(PoolId = PoolId)
+  output <- .workspaces$start_workspaces_pool_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$start_workspaces_pool <- workspaces_start_workspaces_pool
 
 #' Stops the specified WorkSpaces
 #'
@@ -4967,17 +5486,65 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
     name = "StopWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$stop_workspaces_input(StopWorkspaceRequests = StopWorkspaceRequests)
   output <- .workspaces$stop_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .workspaces$operations$stop_workspaces <- workspaces_stop_workspaces
+
+#' Stops the specified pool
+#'
+#' @description
+#' Stops the specified pool.
+#' 
+#' You cannot stop a WorkSpace pool unless it has a running mode of
+#' `AutoStop` and a state of `AVAILABLE`, `IMPAIRED`, `UNHEALTHY`, or
+#' `ERROR`.
+#'
+#' @usage
+#' workspaces_stop_workspaces_pool(PoolId)
+#'
+#' @param PoolId &#91;required&#93; The identifier of the pool.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_workspaces_pool(
+#'   PoolId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_stop_workspaces_pool
+#'
+#' @aliases workspaces_stop_workspaces_pool
+workspaces_stop_workspaces_pool <- function(PoolId) {
+  op <- new_operation(
+    name = "StopWorkspacesPool",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$stop_workspaces_pool_input(PoolId = PoolId)
+  output <- .workspaces$stop_workspaces_pool_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$stop_workspaces_pool <- workspaces_stop_workspaces_pool
 
 #' Terminates the specified WorkSpaces
 #'
@@ -5053,17 +5620,104 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
     name = "TerminateWorkspaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$terminate_workspaces_input(TerminateWorkspaceRequests = TerminateWorkspaceRequests)
   output <- .workspaces$terminate_workspaces_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .workspaces$operations$terminate_workspaces <- workspaces_terminate_workspaces
+
+#' Terminates the specified pool
+#'
+#' @description
+#' Terminates the specified pool.
+#'
+#' @usage
+#' workspaces_terminate_workspaces_pool(PoolId)
+#'
+#' @param PoolId &#91;required&#93; The identifier of the pool.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$terminate_workspaces_pool(
+#'   PoolId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_terminate_workspaces_pool
+#'
+#' @aliases workspaces_terminate_workspaces_pool
+workspaces_terminate_workspaces_pool <- function(PoolId) {
+  op <- new_operation(
+    name = "TerminateWorkspacesPool",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$terminate_workspaces_pool_input(PoolId = PoolId)
+  output <- .workspaces$terminate_workspaces_pool_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$terminate_workspaces_pool <- workspaces_terminate_workspaces_pool
+
+#' Terminates the pool session
+#'
+#' @description
+#' Terminates the pool session.
+#'
+#' @usage
+#' workspaces_terminate_workspaces_pool_session(SessionId)
+#'
+#' @param SessionId &#91;required&#93; The identifier of the pool session.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$terminate_workspaces_pool_session(
+#'   SessionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_terminate_workspaces_pool_session
+#'
+#' @aliases workspaces_terminate_workspaces_pool_session
+workspaces_terminate_workspaces_pool_session <- function(SessionId) {
+  op <- new_operation(
+    name = "TerminateWorkspacesPoolSession",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$terminate_workspaces_pool_session_input(SessionId = SessionId)
+  output <- .workspaces$terminate_workspaces_pool_session_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$terminate_workspaces_pool_session <- workspaces_terminate_workspaces_pool_session
 
 #' Updates a Amazon Connect client add-in
 #'
@@ -5102,12 +5756,13 @@ workspaces_update_connect_client_add_in <- function(AddInId, ResourceId, Name = 
     name = "UpdateConnectClientAddIn",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$update_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId, Name = Name, URL = URL)
   output <- .workspaces$update_connect_client_add_in_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5172,12 +5827,13 @@ workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAli
     name = "UpdateConnectionAliasPermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$update_connection_alias_permission_input(AliasId = AliasId, ConnectionAliasPermission = ConnectionAliasPermission)
   output <- .workspaces$update_connection_alias_permission_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5223,12 +5879,13 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
     name = "UpdateRulesOfIpGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$update_rules_of_ip_group_input(GroupId = GroupId, UserRules = UserRules)
   output <- .workspaces$update_rules_of_ip_group_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5274,12 +5931,13 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
     name = "UpdateWorkspaceBundle",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$update_workspace_bundle_input(BundleId = BundleId, ImageId = ImageId)
   output <- .workspaces$update_workspace_bundle_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5354,14 +6012,118 @@ workspaces_update_workspace_image_permission <- function(ImageId, AllowCopyImage
     name = "UpdateWorkspaceImagePermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workspaces$update_workspace_image_permission_input(ImageId = ImageId, AllowCopyImage = AllowCopyImage, SharedAccountId = SharedAccountId)
   output <- .workspaces$update_workspace_image_permission_output()
   config <- get_config()
-  svc <- .workspaces$service(config)
+  svc <- .workspaces$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .workspaces$operations$update_workspace_image_permission <- workspaces_update_workspace_image_permission
+
+#' Updates the specified pool
+#'
+#' @description
+#' Updates the specified pool.
+#'
+#' @usage
+#' workspaces_update_workspaces_pool(PoolId, Description, BundleId,
+#'   DirectoryId, Capacity, ApplicationSettings, TimeoutSettings)
+#'
+#' @param PoolId &#91;required&#93; The identifier of the specified pool to update.
+#' @param Description Describes the specified pool to update.
+#' @param BundleId The identifier of the bundle.
+#' @param DirectoryId The identifier of the directory.
+#' @param Capacity The desired capacity for the pool.
+#' @param ApplicationSettings The persistent application settings for users in the pool.
+#' @param TimeoutSettings Indicates the timeout settings of the specified pool.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkspacesPool = list(
+#'     PoolId = "string",
+#'     PoolArn = "string",
+#'     CapacityStatus = list(
+#'       AvailableUserSessions = 123,
+#'       DesiredUserSessions = 123,
+#'       ActualUserSessions = 123,
+#'       ActiveUserSessions = 123
+#'     ),
+#'     PoolName = "string",
+#'     Description = "string",
+#'     State = "CREATING"|"DELETING"|"RUNNING"|"STARTING"|"STOPPED"|"STOPPING"|"UPDATING",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BundleId = "string",
+#'     DirectoryId = "string",
+#'     Errors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_IS_MISSING"|"IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"WORKSPACES_POOL_STOPPED"|"WORKSPACES_POOL_INSTANCE_PROVISIONING_FAILURE"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR"|"DOMAIN_JOIN_ERROR_SECRET_ACTION_PERMISSION_IS_MISSING"|"DOMAIN_JOIN_ERROR_SECRET_DECRYPTION_FAILURE"|"DOMAIN_JOIN_ERROR_SECRET_STATE_INVALID"|"DOMAIN_JOIN_ERROR_SECRET_NOT_FOUND"|"DOMAIN_JOIN_ERROR_SECRET_VALUE_KEY_NOT_FOUND"|"DOMAIN_JOIN_ERROR_SECRET_INVALID"|"BUNDLE_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INSUFFICIENT_PERMISSIONS_ERROR"|"DEFAULT_OU_IS_MISSING",
+#'         ErrorMessage = "string"
+#'       )
+#'     ),
+#'     ApplicationSettings = list(
+#'       Status = "DISABLED"|"ENABLED",
+#'       SettingsGroup = "string",
+#'       S3BucketName = "string"
+#'     ),
+#'     TimeoutSettings = list(
+#'       DisconnectTimeoutInSeconds = 123,
+#'       IdleDisconnectTimeoutInSeconds = 123,
+#'       MaxUserDurationInSeconds = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_workspaces_pool(
+#'   PoolId = "string",
+#'   Description = "string",
+#'   BundleId = "string",
+#'   DirectoryId = "string",
+#'   Capacity = list(
+#'     DesiredUserSessions = 123
+#'   ),
+#'   ApplicationSettings = list(
+#'     Status = "DISABLED"|"ENABLED",
+#'     SettingsGroup = "string"
+#'   ),
+#'   TimeoutSettings = list(
+#'     DisconnectTimeoutInSeconds = 123,
+#'     IdleDisconnectTimeoutInSeconds = 123,
+#'     MaxUserDurationInSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_workspaces_pool
+#'
+#' @aliases workspaces_update_workspaces_pool
+workspaces_update_workspaces_pool <- function(PoolId, Description = NULL, BundleId = NULL, DirectoryId = NULL, Capacity = NULL, ApplicationSettings = NULL, TimeoutSettings = NULL) {
+  op <- new_operation(
+    name = "UpdateWorkspacesPool",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .workspaces$update_workspaces_pool_input(PoolId = PoolId, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings)
+  output <- .workspaces$update_workspaces_pool_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_workspaces_pool <- workspaces_update_workspaces_pool

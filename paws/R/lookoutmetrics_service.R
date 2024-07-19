@@ -162,7 +162,7 @@ lookoutmetrics <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.lookoutmetrics$service <- function(config = list()) {
+.lookoutmetrics$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.lookoutmetrics$metadata, handlers, config)
+  new_service(.lookoutmetrics$metadata, handlers, config, op)
 }

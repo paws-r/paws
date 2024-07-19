@@ -91,7 +91,7 @@ evaluating Amazon Bedrock models.
 
 \tabular{ll}{
 \link[paws.machine.learning:bedrock_create_evaluation_job]{create_evaluation_job} \tab API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers\cr
-\link[paws.machine.learning:bedrock_create_guardrail]{create_guardrail} \tab Creates a guardrail to block topics and to filter out harmful content\cr
+\link[paws.machine.learning:bedrock_create_guardrail]{create_guardrail} \tab Creates a guardrail to block topics and to implement safeguards for your generative AI applications\cr
 \link[paws.machine.learning:bedrock_create_guardrail_version]{create_guardrail_version} \tab Creates a version of the guardrail\cr
 \link[paws.machine.learning:bedrock_create_model_customization_job]{create_model_customization_job} \tab Creates a fine-tuning job to customize a base model\cr
 \link[paws.machine.learning:bedrock_create_provisioned_model_throughput]{create_provisioned_model_throughput} \tab Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify\cr

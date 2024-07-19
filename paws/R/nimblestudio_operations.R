@@ -57,12 +57,13 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
     name = "AcceptEulas",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/eula-acceptances",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$accept_eulas_input(clientToken = clientToken, eulaIds = eulaIds, studioId = studioId)
   output <- .nimblestudio$accept_eulas_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -235,12 +236,13 @@ nimblestudio_create_launch_profile <- function(clientToken = NULL, description =
     name = "CreateLaunchProfile",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$create_launch_profile_input(clientToken = clientToken, description = description, ec2SubnetIds = ec2SubnetIds, launchProfileProtocolVersions = launchProfileProtocolVersions, name = name, streamConfiguration = streamConfiguration, studioComponentIds = studioComponentIds, studioId = studioId, tags = tags)
   output <- .nimblestudio$create_launch_profile_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -321,12 +323,13 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
     name = "CreateStreamingImage",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/streaming-images",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$create_streaming_image_input(clientToken = clientToken, description = description, ec2ImageId = ec2ImageId, name = name, studioId = studioId, tags = tags)
   output <- .nimblestudio$create_streaming_image_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -439,12 +442,13 @@ nimblestudio_create_streaming_session <- function(clientToken = NULL, ec2Instanc
     name = "CreateStreamingSession",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$create_streaming_session_input(clientToken = clientToken, ec2InstanceType = ec2InstanceType, launchProfileId = launchProfileId, ownedBy = ownedBy, streamingImageId = streamingImageId, studioId = studioId, tags = tags)
   output <- .nimblestudio$create_streaming_session_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -512,12 +516,13 @@ nimblestudio_create_streaming_session_stream <- function(clientToken = NULL, exp
     name = "CreateStreamingSessionStream",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}/streams",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$create_streaming_session_stream_input(clientToken = clientToken, expirationInSeconds = expirationInSeconds, sessionId = sessionId, studioId = studioId)
   output <- .nimblestudio$create_streaming_session_stream_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -640,12 +645,13 @@ nimblestudio_create_studio <- function(adminRoleArn, clientToken = NULL, display
     name = "CreateStudio",
     http_method = "POST",
     http_path = "/2020-08-01/studios",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$create_studio_input(adminRoleArn = adminRoleArn, clientToken = clientToken, displayName = displayName, studioEncryptionConfiguration = studioEncryptionConfiguration, studioName = studioName, tags = tags, userRoleArn = userRoleArn)
   output <- .nimblestudio$create_studio_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -829,12 +835,13 @@ nimblestudio_create_studio_component <- function(clientToken = NULL, configurati
     name = "CreateStudioComponent",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/studio-components",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$create_studio_component_input(clientToken = clientToken, configuration = configuration, description = description, ec2SecurityGroupIds = ec2SecurityGroupIds, initializationScripts = initializationScripts, name = name, runtimeRoleArn = runtimeRoleArn, scriptParameters = scriptParameters, secureInitializationRoleArn = secureInitializationRoleArn, studioId = studioId, subtype = subtype, tags = tags, type = type)
   output <- .nimblestudio$create_studio_component_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -952,12 +959,13 @@ nimblestudio_delete_launch_profile <- function(clientToken = NULL, launchProfile
     name = "DeleteLaunchProfile",
     http_method = "DELETE",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$delete_launch_profile_input(clientToken = clientToken, launchProfileId = launchProfileId, studioId = studioId)
   output <- .nimblestudio$delete_launch_profile_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1005,12 +1013,13 @@ nimblestudio_delete_launch_profile_member <- function(clientToken = NULL, launch
     name = "DeleteLaunchProfileMember",
     http_method = "DELETE",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/membership/{principalId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$delete_launch_profile_member_input(clientToken = clientToken, launchProfileId = launchProfileId, principalId = principalId, studioId = studioId)
   output <- .nimblestudio$delete_launch_profile_member_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1081,12 +1090,13 @@ nimblestudio_delete_streaming_image <- function(clientToken = NULL, streamingIma
     name = "DeleteStreamingImage",
     http_method = "DELETE",
     http_path = "/2020-08-01/studios/{studioId}/streaming-images/{streamingImageId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$delete_streaming_image_input(clientToken = clientToken, streamingImageId = streamingImageId, studioId = studioId)
   output <- .nimblestudio$delete_streaming_image_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1187,12 +1197,13 @@ nimblestudio_delete_streaming_session <- function(clientToken = NULL, sessionId,
     name = "DeleteStreamingSession",
     http_method = "DELETE",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$delete_streaming_session_input(clientToken = clientToken, sessionId = sessionId, studioId = studioId)
   output <- .nimblestudio$delete_streaming_session_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1265,12 +1276,13 @@ nimblestudio_delete_studio <- function(clientToken = NULL, studioId) {
     name = "DeleteStudio",
     http_method = "DELETE",
     http_path = "/2020-08-01/studios/{studioId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$delete_studio_input(clientToken = clientToken, studioId = studioId)
   output <- .nimblestudio$delete_studio_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1386,12 +1398,13 @@ nimblestudio_delete_studio_component <- function(clientToken = NULL, studioCompo
     name = "DeleteStudioComponent",
     http_method = "DELETE",
     http_path = "/2020-08-01/studios/{studioId}/studio-components/{studioComponentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$delete_studio_component_input(clientToken = clientToken, studioComponentId = studioComponentId, studioId = studioId)
   output <- .nimblestudio$delete_studio_component_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1435,12 +1448,13 @@ nimblestudio_delete_studio_member <- function(clientToken = NULL, principalId, s
     name = "DeleteStudioMember",
     http_method = "DELETE",
     http_path = "/2020-08-01/studios/{studioId}/membership/{principalId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$delete_studio_member_input(clientToken = clientToken, principalId = principalId, studioId = studioId)
   output <- .nimblestudio$delete_studio_member_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1492,12 +1506,13 @@ nimblestudio_get_eula <- function(eulaId) {
     name = "GetEula",
     http_method = "GET",
     http_path = "/2020-08-01/eulas/{eulaId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_eula_input(eulaId = eulaId)
   output <- .nimblestudio$get_eula_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1609,12 +1624,13 @@ nimblestudio_get_launch_profile <- function(launchProfileId, studioId) {
     name = "GetLaunchProfile",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_launch_profile_input(launchProfileId = launchProfileId, studioId = studioId)
   output <- .nimblestudio$get_launch_profile_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1773,12 +1789,13 @@ nimblestudio_get_launch_profile_details <- function(launchProfileId, studioId) {
     name = "GetLaunchProfileDetails",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/details",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_launch_profile_details_input(launchProfileId = launchProfileId, studioId = studioId)
   output <- .nimblestudio$get_launch_profile_details_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1876,12 +1893,13 @@ nimblestudio_get_launch_profile_initialization <- function(launchProfileId, laun
     name = "GetLaunchProfileInitialization",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/init",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_launch_profile_initialization_input(launchProfileId = launchProfileId, launchProfileProtocolVersions = launchProfileProtocolVersions, launchPurpose = launchPurpose, platform = platform, studioId = studioId)
   output <- .nimblestudio$get_launch_profile_initialization_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1934,12 +1952,13 @@ nimblestudio_get_launch_profile_member <- function(launchProfileId, principalId,
     name = "GetLaunchProfileMember",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/membership/{principalId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_launch_profile_member_input(launchProfileId = launchProfileId, principalId = principalId, studioId = studioId)
   output <- .nimblestudio$get_launch_profile_member_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2004,12 +2023,13 @@ nimblestudio_get_streaming_image <- function(streamingImageId, studioId) {
     name = "GetStreamingImage",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-images/{streamingImageId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_streaming_image_input(streamingImageId = streamingImageId, studioId = studioId)
   output <- .nimblestudio$get_streaming_image_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2102,12 +2122,13 @@ nimblestudio_get_streaming_session <- function(sessionId, studioId) {
     name = "GetStreamingSession",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_streaming_session_input(sessionId = sessionId, studioId = studioId)
   output <- .nimblestudio$get_streaming_session_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2169,12 +2190,13 @@ nimblestudio_get_streaming_session_backup <- function(backupId, studioId) {
     name = "GetStreamingSessionBackup",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-session-backups/{backupId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_streaming_session_backup_input(backupId = backupId, studioId = studioId)
   output <- .nimblestudio$get_streaming_session_backup_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2239,12 +2261,13 @@ nimblestudio_get_streaming_session_stream <- function(sessionId, streamId, studi
     name = "GetStreamingSessionStream",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}/streams/{streamId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_streaming_session_stream_input(sessionId = sessionId, streamId = streamId, studioId = studioId)
   output <- .nimblestudio$get_streaming_session_stream_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2312,12 +2335,13 @@ nimblestudio_get_studio <- function(studioId) {
     name = "GetStudio",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_studio_input(studioId = studioId)
   output <- .nimblestudio$get_studio_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2427,12 +2451,13 @@ nimblestudio_get_studio_component <- function(studioComponentId, studioId) {
     name = "GetStudioComponent",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/studio-components/{studioComponentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_studio_component_input(studioComponentId = studioComponentId, studioId = studioId)
   output <- .nimblestudio$get_studio_component_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2481,12 +2506,13 @@ nimblestudio_get_studio_member <- function(principalId, studioId) {
     name = "GetStudioMember",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/membership/{principalId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$get_studio_member_input(principalId = principalId, studioId = studioId)
   output <- .nimblestudio$get_studio_member_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2546,12 +2572,13 @@ nimblestudio_list_eula_acceptances <- function(eulaIds = NULL, nextToken = NULL,
     name = "ListEulaAcceptances",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/eula-acceptances",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "eulaAcceptances")
   )
   input <- .nimblestudio$list_eula_acceptances_input(eulaIds = eulaIds, nextToken = nextToken, studioId = studioId)
   output <- .nimblestudio$list_eula_acceptances_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2611,12 +2638,13 @@ nimblestudio_list_eulas <- function(eulaIds = NULL, nextToken = NULL) {
     name = "ListEulas",
     http_method = "GET",
     http_path = "/2020-08-01/eulas",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "eulas")
   )
   input <- .nimblestudio$list_eulas_input(eulaIds = eulaIds, nextToken = nextToken)
   output <- .nimblestudio$list_eulas_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2675,12 +2703,13 @@ nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults
     name = "ListLaunchProfileMembers",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/membership",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .nimblestudio$list_launch_profile_members_input(launchProfileId = launchProfileId, maxResults = maxResults, nextToken = nextToken, studioId = studioId)
   output <- .nimblestudio$list_launch_profile_members_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2804,12 +2833,13 @@ nimblestudio_list_launch_profiles <- function(maxResults = NULL, nextToken = NUL
     name = "ListLaunchProfiles",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "launchProfiles")
   )
   input <- .nimblestudio$list_launch_profiles_input(maxResults = maxResults, nextToken = nextToken, principalId = principalId, states = states, studioId = studioId)
   output <- .nimblestudio$list_launch_profiles_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2883,12 +2913,13 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
     name = "ListStreamingImages",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-images",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "streamingImages")
   )
   input <- .nimblestudio$list_streaming_images_input(nextToken = nextToken, owner = owner, studioId = studioId)
   output <- .nimblestudio$list_streaming_images_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2954,12 +2985,13 @@ nimblestudio_list_streaming_session_backups <- function(nextToken = NULL, ownedB
     name = "ListStreamingSessionBackups",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-session-backups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "streamingSessionBackups")
   )
   input <- .nimblestudio$list_streaming_session_backups_input(nextToken = nextToken, ownedBy = ownedBy, studioId = studioId)
   output <- .nimblestudio$list_streaming_session_backups_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3060,12 +3092,13 @@ nimblestudio_list_streaming_sessions <- function(createdBy = NULL, nextToken = N
     name = "ListStreamingSessions",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "sessions")
   )
   input <- .nimblestudio$list_streaming_sessions_input(createdBy = createdBy, nextToken = nextToken, ownedBy = ownedBy, sessionIds = sessionIds, studioId = studioId)
   output <- .nimblestudio$list_streaming_sessions_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3192,12 +3225,13 @@ nimblestudio_list_studio_components <- function(maxResults = NULL, nextToken = N
     name = "ListStudioComponents",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/studio-components",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "studioComponents")
   )
   input <- .nimblestudio$list_studio_components_input(maxResults = maxResults, nextToken = nextToken, states = states, studioId = studioId, types = types)
   output <- .nimblestudio$list_studio_components_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3255,12 +3289,13 @@ nimblestudio_list_studio_members <- function(maxResults = NULL, nextToken = NULL
     name = "ListStudioMembers",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/membership",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .nimblestudio$list_studio_members_input(maxResults = maxResults, nextToken = nextToken, studioId = studioId)
   output <- .nimblestudio$list_studio_members_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3334,12 +3369,13 @@ nimblestudio_list_studios <- function(nextToken = NULL) {
     name = "ListStudios",
     http_method = "GET",
     http_path = "/2020-08-01/studios",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "studios")
   )
   input <- .nimblestudio$list_studios_input(nextToken = nextToken)
   output <- .nimblestudio$list_studios_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3390,12 +3426,13 @@ nimblestudio_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/2020-08-01/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .nimblestudio$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3450,12 +3487,13 @@ nimblestudio_put_launch_profile_members <- function(clientToken = NULL, identity
     name = "PutLaunchProfileMembers",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/membership",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$put_launch_profile_members_input(clientToken = clientToken, identityStoreId = identityStoreId, launchProfileId = launchProfileId, members = members, studioId = studioId)
   output <- .nimblestudio$put_launch_profile_members_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3507,12 +3545,13 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
     name = "PutStudioMembers",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/membership",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$put_studio_members_input(clientToken = clientToken, identityStoreId = identityStoreId, members = members, studioId = studioId)
   output <- .nimblestudio$put_studio_members_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3612,12 +3651,13 @@ nimblestudio_start_streaming_session <- function(backupId = NULL, clientToken = 
     name = "StartStreamingSession",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$start_streaming_session_input(backupId = backupId, clientToken = clientToken, sessionId = sessionId, studioId = studioId)
   output <- .nimblestudio$start_streaming_session_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3703,12 +3743,13 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
     name = "StartStudioSSOConfigurationRepair",
     http_method = "PUT",
     http_path = "/2020-08-01/studios/{studioId}/sso-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$start_studio_sso_configuration_repair_input(clientToken = clientToken, studioId = studioId)
   output <- .nimblestudio$start_studio_sso_configuration_repair_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3809,12 +3850,13 @@ nimblestudio_stop_streaming_session <- function(clientToken = NULL, sessionId, s
     name = "StopStreamingSession",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$stop_streaming_session_input(clientToken = clientToken, sessionId = sessionId, studioId = studioId, volumeRetentionMode = volumeRetentionMode)
   output <- .nimblestudio$stop_streaming_session_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3856,12 +3898,13 @@ nimblestudio_tag_resource <- function(resourceArn, tags = NULL) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/2020-08-01/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .nimblestudio$tag_resource_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3903,12 +3946,13 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/2020-08-01/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .nimblestudio$untag_resource_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4073,12 +4117,13 @@ nimblestudio_update_launch_profile <- function(clientToken = NULL, description =
     name = "UpdateLaunchProfile",
     http_method = "PATCH",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$update_launch_profile_input(clientToken = clientToken, description = description, launchProfileId = launchProfileId, launchProfileProtocolVersions = launchProfileProtocolVersions, name = name, streamConfiguration = streamConfiguration, studioComponentIds = studioComponentIds, studioId = studioId)
   output <- .nimblestudio$update_launch_profile_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4138,12 +4183,13 @@ nimblestudio_update_launch_profile_member <- function(clientToken = NULL, launch
     name = "UpdateLaunchProfileMember",
     http_method = "PATCH",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/membership/{principalId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$update_launch_profile_member_input(clientToken = clientToken, launchProfileId = launchProfileId, persona = persona, principalId = principalId, studioId = studioId)
   output <- .nimblestudio$update_launch_profile_member_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4218,12 +4264,13 @@ nimblestudio_update_streaming_image <- function(clientToken = NULL, description 
     name = "UpdateStreamingImage",
     http_method = "PATCH",
     http_path = "/2020-08-01/studios/{studioId}/streaming-images/{streamingImageId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$update_streaming_image_input(clientToken = clientToken, description = description, name = name, streamingImageId = streamingImageId, studioId = studioId)
   output <- .nimblestudio$update_streaming_image_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4308,12 +4355,13 @@ nimblestudio_update_studio <- function(adminRoleArn = NULL, clientToken = NULL, 
     name = "UpdateStudio",
     http_method = "PATCH",
     http_path = "/2020-08-01/studios/{studioId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$update_studio_input(adminRoleArn = adminRoleArn, clientToken = clientToken, displayName = displayName, studioId = studioId, userRoleArn = userRoleArn)
   output <- .nimblestudio$update_studio_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4494,12 +4542,13 @@ nimblestudio_update_studio_component <- function(clientToken = NULL, configurati
     name = "UpdateStudioComponent",
     http_method = "PATCH",
     http_path = "/2020-08-01/studios/{studioId}/studio-components/{studioComponentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .nimblestudio$update_studio_component_input(clientToken = clientToken, configuration = configuration, description = description, ec2SecurityGroupIds = ec2SecurityGroupIds, initializationScripts = initializationScripts, name = name, runtimeRoleArn = runtimeRoleArn, scriptParameters = scriptParameters, secureInitializationRoleArn = secureInitializationRoleArn, studioComponentId = studioComponentId, studioId = studioId, subtype = subtype, type = type)
   output <- .nimblestudio$update_studio_component_output()
   config <- get_config()
-  svc <- .nimblestudio$service(config)
+  svc <- .nimblestudio$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

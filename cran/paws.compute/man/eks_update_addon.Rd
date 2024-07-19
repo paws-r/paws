@@ -11,7 +11,8 @@ eks_update_addon(
   serviceAccountRoleArn = NULL,
   resolveConflicts = NULL,
   clientRequestToken = NULL,
-  configurationValues = NULL
+  configurationValues = NULL,
+  podIdentityAssociations = NULL
 )
 }
 \arguments{
@@ -58,6 +59,14 @@ idempotency of the request.}
 \item{configurationValues}{The set of configuration values for the add-on that's created. The
 values that you provide are validated against the schema returned by
 \code{\link[=eks_describe_addon_configuration]{describe_addon_configuration}}.}
+
+\item{podIdentityAssociations}{An array of Pod Identity Assocations to be updated. Each EKS Pod
+Identity association maps a Kubernetes service account to an IAM Role.
+If this value is left blank, no change. If an empty array is provided,
+existing Pod Identity Assocations owned by the Addon are deleted.
+
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using Pod Identity}
+in the EKS User Guide.}
 }
 \description{
 Updates an Amazon EKS add-on.

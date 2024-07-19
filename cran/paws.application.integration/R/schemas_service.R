@@ -160,7 +160,7 @@ schemas <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = ""
 )
 
-.schemas$service <- function(config = list()) {
+.schemas$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.schemas$metadata, handlers, config)
+  new_service(.schemas$metadata, handlers, config, op)
 }

@@ -115,6 +115,7 @@ permissions to use the service, see the \href{https://docs.aws.amazon.com/comput
 \link[paws.compute:computeoptimizer_export_ecs_service_recommendations]{export_ecs_service_recommendations} \tab Exports optimization recommendations for Amazon ECS services on Fargate\cr
 \link[paws.compute:computeoptimizer_export_lambda_function_recommendations]{export_lambda_function_recommendations} \tab Exports optimization recommendations for Lambda functions\cr
 \link[paws.compute:computeoptimizer_export_license_recommendations]{export_license_recommendations} \tab Export optimization recommendations for your licenses\cr
+\link[paws.compute:computeoptimizer_export_rds_database_recommendations]{export_rds_database_recommendations} \tab Export optimization recommendations for your Amazon Relational Database Service (Amazon RDS)\cr
 \link[paws.compute:computeoptimizer_get_auto_scaling_group_recommendations]{get_auto_scaling_group_recommendations} \tab Returns Auto Scaling group recommendations\cr
 \link[paws.compute:computeoptimizer_get_ebs_volume_recommendations]{get_ebs_volume_recommendations} \tab Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations\cr
 \link[paws.compute:computeoptimizer_get_ec2_instance_recommendations]{get_ec2_instance_recommendations} \tab Returns Amazon EC2 instance recommendations\cr
@@ -126,6 +127,8 @@ permissions to use the service, see the \href{https://docs.aws.amazon.com/comput
 \link[paws.compute:computeoptimizer_get_enrollment_statuses_for_organization]{get_enrollment_statuses_for_organization} \tab Returns the Compute Optimizer enrollment (opt-in) status of organization member accounts, if your account is an organization management account\cr
 \link[paws.compute:computeoptimizer_get_lambda_function_recommendations]{get_lambda_function_recommendations} \tab Returns Lambda function recommendations\cr
 \link[paws.compute:computeoptimizer_get_license_recommendations]{get_license_recommendations} \tab Returns license recommendations for Amazon EC2 instances that run on a specific license\cr
+\link[paws.compute:computeoptimizer_get_rds_database_recommendation_projected_metrics]{get_rds_database_recommendation_projected_metrics} \tab Returns the projected metrics of Amazon RDS recommendations\cr
+\link[paws.compute:computeoptimizer_get_rds_database_recommendations]{get_rds_database_recommendations} \tab Returns Amazon RDS recommendations\cr
 \link[paws.compute:computeoptimizer_get_recommendation_preferences]{get_recommendation_preferences} \tab Returns existing recommendation preferences, such as enhanced infrastructure metrics\cr
 \link[paws.compute:computeoptimizer_get_recommendation_summaries]{get_recommendation_summaries} \tab Returns the optimization findings for an account\cr
 \link[paws.compute:computeoptimizer_put_recommendation_preferences]{put_recommendation_preferences} \tab Creates a new recommendation preference or updates an existing recommendation preference, such as enhanced infrastructure metrics\cr

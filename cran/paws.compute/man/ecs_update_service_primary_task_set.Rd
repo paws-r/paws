@@ -17,7 +17,7 @@ the task set exists in.}
 as the primary task set in the deployment.}
 }
 \description{
-Modifies which task set in a service is the primary task set. Any parameters that are updated on the primary task set in a service will transition to the service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types} in the \emph{Amazon Elastic Container Service Developer Guide}.
+Modifies which task set in a service is the primary task set. Any parameters that are updated on the primary task set in a service will transition to the service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Amazon ECS Deployment Types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ecs_update_service_primary_task_set/} for full documentation.
 }

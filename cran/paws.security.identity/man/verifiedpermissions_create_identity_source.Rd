@@ -2,8 +2,8 @@
 % Please edit documentation in R/verifiedpermissions_operations.R
 \name{verifiedpermissions_create_identity_source}
 \alias{verifiedpermissions_create_identity_source}
-\title{Creates a reference to an Amazon Cognito user pool as an external
-identity provider (IdP)}
+\title{Adds an identity source to a policy store–an Amazon Cognito user pool or
+OpenID Connect (OIDC) identity provider (IdP)}
 \usage{
 verifiedpermissions_create_identity_source(
   clientToken = NULL,
@@ -36,18 +36,13 @@ can reference identities from the identity provider configured in the
 new identity source.}
 
 \item{configuration}{[required] Specifies the details required to communicate with the identity provider
-(IdP) associated with this identity source.
-
-At this time, the only valid member of this structure is a Amazon
-Cognito user pool configuration.
-
-You must specify a \code{UserPoolArn}, and optionally, a \code{ClientId}.}
+(IdP) associated with this identity source.}
 
 \item{principalEntityType}{Specifies the namespace and data type of the principals generated for
 identities authenticated by the new identity source.}
 }
 \description{
-Creates a reference to an Amazon Cognito user pool as an external identity provider (IdP).
+Adds an identity source to a policy store–an Amazon Cognito user pool or OpenID Connect (OIDC) identity provider (IdP).
 
 See \url{https://www.paws-r-sdk.com/docs/verifiedpermissions_create_identity_source/} for full documentation.
 }

@@ -131,7 +131,7 @@ personalizeruntime <- function(config = list(), credentials = list(), endpoint =
   target_prefix = ""
 )
 
-.personalizeruntime$service <- function(config = list()) {
+.personalizeruntime$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.personalizeruntime$metadata, handlers, config)
+  new_service(.personalizeruntime$metadata, handlers, config, op)
 }

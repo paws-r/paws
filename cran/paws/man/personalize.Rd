@@ -98,6 +98,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_create_batch_inference_job]{create_batch_inference_job} \tab Generates batch recommendations based on a list of items or users stored in Amazon S3 and exports the recommendations to an Amazon S3 bucket\cr
 \link[paws.machine.learning:personalize_create_batch_segment_job]{create_batch_segment_job} \tab Creates a batch segment job\cr
 \link[paws.machine.learning:personalize_create_campaign]{create_campaign} \tab You incur campaign costs while it is active\cr
+\link[paws.machine.learning:personalize_create_data_deletion_job]{create_data_deletion_job} \tab Creates a batch job that deletes all references to specific users from an Amazon Personalize dataset group in batches\cr
 \link[paws.machine.learning:personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group\cr
 \link[paws.machine.learning:personalize_create_dataset_export_job]{create_dataset_export_job} \tab Creates a job that exports data from your dataset to an Amazon S3 bucket\cr
 \link[paws.machine.learning:personalize_create_dataset_group]{create_dataset_group} \tab Creates an empty dataset group\cr
@@ -122,6 +123,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_describe_batch_inference_job]{describe_batch_inference_job} \tab Gets the properties of a batch inference job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate the recommendations\cr
 \link[paws.machine.learning:personalize_describe_batch_segment_job]{describe_batch_segment_job} \tab Gets the properties of a batch segment job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate segments\cr
 \link[paws.machine.learning:personalize_describe_campaign]{describe_campaign} \tab Describes the given campaign, including its status\cr
+\link[paws.machine.learning:personalize_describe_data_deletion_job]{describe_data_deletion_job} \tab Describes the data deletion job created by CreateDataDeletionJob, including the job status\cr
 \link[paws.machine.learning:personalize_describe_dataset]{describe_dataset} \tab Describes the given dataset\cr
 \link[paws.machine.learning:personalize_describe_dataset_export_job]{describe_dataset_export_job} \tab Describes the dataset export job created by CreateDatasetExportJob, including the export job status\cr
 \link[paws.machine.learning:personalize_describe_dataset_group]{describe_dataset_group} \tab Describes the given dataset group\cr
@@ -139,6 +141,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_list_batch_inference_jobs]{list_batch_inference_jobs} \tab Gets a list of the batch inference jobs that have been performed off of a solution version\cr
 \link[paws.machine.learning:personalize_list_batch_segment_jobs]{list_batch_segment_jobs} \tab Gets a list of the batch segment jobs that have been performed off of a solution version that you specify\cr
 \link[paws.machine.learning:personalize_list_campaigns]{list_campaigns} \tab Returns a list of campaigns that use the given solution\cr
+\link[paws.machine.learning:personalize_list_data_deletion_jobs]{list_data_deletion_jobs} \tab Returns a list of data deletion jobs for a dataset group ordered by creation time, with the most recent first\cr
 \link[paws.machine.learning:personalize_list_dataset_export_jobs]{list_dataset_export_jobs} \tab Returns a list of dataset export jobs that use the given dataset\cr
 \link[paws.machine.learning:personalize_list_dataset_groups]{list_dataset_groups} \tab Returns a list of dataset groups\cr
 \link[paws.machine.learning:personalize_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs that use the given dataset\cr

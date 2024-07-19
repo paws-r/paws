@@ -12,7 +12,7 @@ controltower_get_control_operation(operationIdentifier)
 operation is available for 90 days.}
 }
 \description{
-Returns the status of a particular \code{\link[=controltower_enable_control]{enable_control}} or \code{\link[=controltower_disable_control]{disable_control}} operation. Displays a message in case of error. Details for an operation are available for 90 days. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
+Returns the status of a particular \code{\link[=controltower_enable_control]{enable_control}} or \code{\link[=controltower_disable_control]{disable_control}} operation. Displays a message in case of error. Details for an operation are available for 90 days. For usage examples, see the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{Controls Reference Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_get_control_operation/} for full documentation.
 }

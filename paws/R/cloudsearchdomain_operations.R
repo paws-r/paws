@@ -430,12 +430,13 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
     name = "Search",
     http_method = "GET",
     http_path = "/2013-01-01/search?format=sdk&pretty=true",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudsearchdomain$search_input(cursor = cursor, expr = expr, facet = facet, filterQuery = filterQuery, highlight = highlight, partial = partial, query = query, queryOptions = queryOptions, queryParser = queryParser, return = return, size = size, sort = sort, start = start, stats = stats)
   output <- .cloudsearchdomain$search_output()
   config <- get_config()
-  svc <- .cloudsearchdomain$service(config)
+  svc <- .cloudsearchdomain$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -513,12 +514,13 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
     name = "Suggest",
     http_method = "GET",
     http_path = "/2013-01-01/suggest?format=sdk&pretty=true",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudsearchdomain$suggest_input(query = query, suggester = suggester, size = size)
   output <- .cloudsearchdomain$suggest_output()
   config <- get_config()
-  svc <- .cloudsearchdomain$service(config)
+  svc <- .cloudsearchdomain$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -599,12 +601,13 @@ cloudsearchdomain_upload_documents <- function(documents, contentType) {
     name = "UploadDocuments",
     http_method = "POST",
     http_path = "/2013-01-01/documents/batch?format=sdk",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudsearchdomain$upload_documents_input(documents = documents, contentType = contentType)
   output <- .cloudsearchdomain$upload_documents_output()
   config <- get_config()
-  svc <- .cloudsearchdomain$service(config)
+  svc <- .cloudsearchdomain$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

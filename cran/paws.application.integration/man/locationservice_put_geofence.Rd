@@ -9,8 +9,8 @@ request}
 locationservice_put_geofence(
   CollectionName,
   GeofenceId,
-  GeofenceProperties = NULL,
-  Geometry
+  Geometry,
+  GeofenceProperties = NULL
 )
 }
 \arguments{
@@ -18,18 +18,19 @@ locationservice_put_geofence(
 
 \item{GeofenceId}{[required] An identifier for the geofence. For example, \code{ExampleGeofence-1}.}
 
+\item{Geometry}{[required] Contains the details to specify the position of the geofence. Can be a
+polygon, a circle or a polygon encoded in Geobuf format. Including
+multiple selections will return a validation error.
+
+The \href{https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html}{geofence polygon}
+format supports a maximum of 1,000 vertices. The \href{https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html}{Geofence Geobuf}
+format supports a maximum of 100,000 vertices.}
+
 \item{GeofenceProperties}{Associates one of more properties with the geofence. A property is a
 key-value pair stored with the geofence and added to any geofence event
 triggered with that geofence.
 
 Format: \code{"key" : "value"}}
-
-\item{Geometry}{[required] Contains the details to specify the position of the geofence. Can be
-either a polygon or a circle. Including both will return a validation
-error.
-
-Each \href{https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html}{geofence polygon}
-can have a maximum of 1,000 vertices.}
 }
 \description{
 Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request.

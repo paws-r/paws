@@ -16,7 +16,7 @@ ec2_modify_instance_placement(
 )
 }
 \arguments{
-\item{Affinity}{The affinity setting for the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-affinity}{Host affinity}
+\item{Affinity}{The affinity setting for the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-affinity}{Host affinity}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{GroupName}{The name of the placement group in which to place the instance. For

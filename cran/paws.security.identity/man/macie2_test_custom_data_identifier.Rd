@@ -2,7 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_test_custom_data_identifier}
 \alias{macie2_test_custom_data_identifier}
-\title{Tests a custom data identifier}
+\title{Tests criteria for a custom data identifier}
 \usage{
 macie2_test_custom_data_identifier(
   ignoreWords = NULL,
@@ -39,7 +39,7 @@ expression can contain as many as 512 characters.}
 can contain as many as 1,000 characters.}
 }
 \description{
-Tests a custom data identifier.
+Tests criteria for a custom data identifier.
 
 See \url{https://www.paws-r-sdk.com/docs/macie2_test_custom_data_identifier/} for full documentation.
 }

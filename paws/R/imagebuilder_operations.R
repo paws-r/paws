@@ -47,12 +47,13 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
     name = "CancelImageCreation",
     http_method = "PUT",
     http_path = "/CancelImageCreation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$cancel_image_creation_input(imageBuildVersionArn = imageBuildVersionArn, clientToken = clientToken)
   output <- .imagebuilder$cancel_image_creation_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -101,12 +102,13 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
     name = "CancelLifecycleExecution",
     http_method = "PUT",
     http_path = "/CancelLifecycleExecution",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$cancel_lifecycle_execution_input(lifecycleExecutionId = lifecycleExecutionId, clientToken = clientToken)
   output <- .imagebuilder$cancel_lifecycle_execution_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -214,12 +216,13 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
     name = "CreateComponent",
     http_method = "PUT",
     http_path = "/CreateComponent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_component_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, platform = platform, supportedOsVersions = supportedOsVersions, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_component_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -357,12 +360,13 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
     name = "CreateContainerRecipe",
     http_method = "PUT",
     http_path = "/CreateContainerRecipe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, instanceConfiguration = instanceConfiguration, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
   output <- .imagebuilder$create_container_recipe_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -491,12 +495,13 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
     name = "CreateDistributionConfiguration",
     http_method = "PUT",
     http_path = "/CreateDistributionConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_distribution_configuration_input(name = name, description = description, distributions = distributions, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_distribution_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -604,12 +609,13 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
     name = "CreateImage",
     http_method = "PUT",
     http_path = "/CreateImage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_image_input(imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, distributionConfigurationArn = distributionConfigurationArn, infrastructureConfigurationArn = infrastructureConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole)
   output <- .imagebuilder$create_image_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -729,12 +735,13 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
     name = "CreateImagePipeline",
     http_method = "PUT",
     http_path = "/CreateImagePipeline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole)
   output <- .imagebuilder$create_image_pipeline_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -859,12 +866,13 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
     name = "CreateImageRecipe",
     http_method = "PUT",
     http_path = "/CreateImageRecipe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, clientToken = clientToken)
   output <- .imagebuilder$create_image_recipe_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -974,12 +982,13 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
     name = "CreateInfrastructureConfiguration",
     http_method = "PUT",
     http_path = "/CreateInfrastructureConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_infrastructure_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1095,12 +1104,13 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
     name = "CreateLifecyclePolicy",
     http_method = "PUT",
     http_path = "/CreateLifecyclePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_lifecycle_policy_input(name = name, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_lifecycle_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1192,12 +1202,13 @@ imagebuilder_create_workflow <- function(name, semanticVersion, description = NU
     name = "CreateWorkflow",
     http_method = "PUT",
     http_path = "/CreateWorkflow",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$create_workflow_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken, type = type)
   output <- .imagebuilder$create_workflow_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1240,12 +1251,13 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
     name = "DeleteComponent",
     http_method = "DELETE",
     http_path = "/DeleteComponent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_component_input(componentBuildVersionArn = componentBuildVersionArn)
   output <- .imagebuilder$delete_component_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1288,12 +1300,13 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
     name = "DeleteContainerRecipe",
     http_method = "DELETE",
     http_path = "/DeleteContainerRecipe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_container_recipe_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$delete_container_recipe_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1338,12 +1351,13 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
     name = "DeleteDistributionConfiguration",
     http_method = "DELETE",
     http_path = "/DeleteDistributionConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn)
   output <- .imagebuilder$delete_distribution_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1363,7 +1377,7 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
 #'     in the *Amazon EC2 User Guide* .
 #' 
 #' -   To deregister an EC2 Windows AMI, see [Deregister your Windows
-#'     AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/deregister-ami.html)
+#'     AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html)
 #'     in the *Amazon EC2 Windows Guide* .
 #' 
 #' -   To delete a container image from Amazon ECR, see [Deleting an
@@ -1402,12 +1416,13 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
     name = "DeleteImage",
     http_method = "DELETE",
     http_path = "/DeleteImage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_image_input(imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$delete_image_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1450,12 +1465,13 @@ imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
     name = "DeleteImagePipeline",
     http_method = "DELETE",
     http_path = "/DeleteImagePipeline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_image_pipeline_input(imagePipelineArn = imagePipelineArn)
   output <- .imagebuilder$delete_image_pipeline_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1498,12 +1514,13 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
     name = "DeleteImageRecipe",
     http_method = "DELETE",
     http_path = "/DeleteImageRecipe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_image_recipe_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$delete_image_recipe_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1548,12 +1565,13 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
     name = "DeleteInfrastructureConfiguration",
     http_method = "DELETE",
     http_path = "/DeleteInfrastructureConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn)
   output <- .imagebuilder$delete_infrastructure_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1596,12 +1614,13 @@ imagebuilder_delete_lifecycle_policy <- function(lifecyclePolicyArn) {
     name = "DeleteLifecyclePolicy",
     http_method = "DELETE",
     http_path = "/DeleteLifecyclePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn)
   output <- .imagebuilder$delete_lifecycle_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1643,12 +1662,13 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
     name = "DeleteWorkflow",
     http_method = "DELETE",
     http_path = "/DeleteWorkflow",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$delete_workflow_input(workflowBuildVersionArn = workflowBuildVersionArn)
   output <- .imagebuilder$delete_workflow_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1727,12 +1747,13 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
     name = "GetComponent",
     http_method = "GET",
     http_path = "/GetComponent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_component_input(componentBuildVersionArn = componentBuildVersionArn)
   output <- .imagebuilder$get_component_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1776,12 +1797,13 @@ imagebuilder_get_component_policy <- function(componentArn) {
     name = "GetComponentPolicy",
     http_method = "GET",
     http_path = "/GetComponentPolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_component_policy_input(componentArn = componentArn)
   output <- .imagebuilder$get_component_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1878,12 +1900,13 @@ imagebuilder_get_container_recipe <- function(containerRecipeArn) {
     name = "GetContainerRecipe",
     http_method = "GET",
     http_path = "/GetContainerRecipe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_container_recipe_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$get_container_recipe_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1927,12 +1950,13 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
     name = "GetContainerRecipePolicy",
     http_method = "GET",
     http_path = "/GetContainerRecipePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_container_recipe_policy_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$get_container_recipe_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2058,12 +2082,13 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
     name = "GetDistributionConfiguration",
     http_method = "GET",
     http_path = "/GetDistributionConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn)
   output <- .imagebuilder$get_distribution_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2408,12 +2433,13 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
     name = "GetImage",
     http_method = "GET",
     http_path = "/GetImage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_image_input(imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$get_image_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2509,12 +2535,13 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
     name = "GetImagePipeline",
     http_method = "GET",
     http_path = "/GetImagePipeline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_image_pipeline_input(imagePipelineArn = imagePipelineArn)
   output <- .imagebuilder$get_image_pipeline_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2558,12 +2585,13 @@ imagebuilder_get_image_policy <- function(imageArn) {
     name = "GetImagePolicy",
     http_method = "GET",
     http_path = "/GetImagePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_image_policy_input(imageArn = imageArn)
   output <- .imagebuilder$get_image_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2657,12 +2685,13 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
     name = "GetImageRecipe",
     http_method = "GET",
     http_path = "/GetImageRecipe",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_image_recipe_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$get_image_recipe_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2706,12 +2735,13 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
     name = "GetImageRecipePolicy",
     http_method = "GET",
     http_path = "/GetImageRecipePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_image_recipe_policy_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$get_image_recipe_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2789,12 +2819,13 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
     name = "GetInfrastructureConfiguration",
     http_method = "GET",
     http_path = "/GetInfrastructureConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn)
   output <- .imagebuilder$get_infrastructure_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2855,12 +2886,13 @@ imagebuilder_get_lifecycle_execution <- function(lifecycleExecutionId) {
     name = "GetLifecycleExecution",
     http_method = "GET",
     http_path = "/GetLifecycleExecution",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_lifecycle_execution_input(lifecycleExecutionId = lifecycleExecutionId)
   output <- .imagebuilder$get_lifecycle_execution_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2972,12 +3004,13 @@ imagebuilder_get_lifecycle_policy <- function(lifecyclePolicyArn) {
     name = "GetLifecyclePolicy",
     http_method = "GET",
     http_path = "/GetLifecyclePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn)
   output <- .imagebuilder$get_lifecycle_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3048,12 +3081,13 @@ imagebuilder_get_workflow <- function(workflowBuildVersionArn) {
     name = "GetWorkflow",
     http_method = "GET",
     http_path = "/GetWorkflow",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_workflow_input(workflowBuildVersionArn = workflowBuildVersionArn)
   output <- .imagebuilder$get_workflow_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3111,12 +3145,13 @@ imagebuilder_get_workflow_execution <- function(workflowExecutionId) {
     name = "GetWorkflowExecution",
     http_method = "GET",
     http_path = "/GetWorkflowExecution",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_workflow_execution_input(workflowExecutionId = workflowExecutionId)
   output <- .imagebuilder$get_workflow_execution_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3177,12 +3212,13 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
     name = "GetWorkflowStepExecution",
     http_method = "GET",
     http_path = "/GetWorkflowStepExecution",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$get_workflow_step_execution_input(stepExecutionId = stepExecutionId)
   output <- .imagebuilder$get_workflow_step_execution_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3274,12 +3310,13 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
     name = "ImportComponent",
     http_method = "PUT",
     http_path = "/ImportComponent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$import_component_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, type = type, format = format, platform = platform, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$import_component_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3374,12 +3411,13 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
     name = "ImportVmImage",
     http_method = "PUT",
     http_path = "/ImportVmImage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$import_vm_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, vmImportTaskId = vmImportTaskId, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$import_vm_image_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3466,12 +3504,13 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
     name = "ListComponentBuildVersions",
     http_method = "POST",
     http_path = "/ListComponentBuildVersions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentSummaryList")
   )
   input <- .imagebuilder$list_component_build_versions_input(componentVersionArn = componentVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_component_build_versions_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3575,12 +3614,13 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
     name = "ListComponents",
     http_method = "POST",
     http_path = "/ListComponents",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentVersionList")
   )
   input <- .imagebuilder$list_components_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_components_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3662,12 +3702,13 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
     name = "ListContainerRecipes",
     http_method = "POST",
     http_path = "/ListContainerRecipes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "containerRecipeSummaryList")
   )
   input <- .imagebuilder$list_container_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_container_recipes_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3738,12 +3779,13 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
     name = "ListDistributionConfigurations",
     http_method = "POST",
     http_path = "/ListDistributionConfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "distributionConfigurationSummaryList")
   )
   input <- .imagebuilder$list_distribution_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_distribution_configurations_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3860,12 +3902,13 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
     name = "ListImageBuildVersions",
     http_method = "POST",
     http_path = "/ListImageBuildVersions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList")
   )
   input <- .imagebuilder$list_image_build_versions_input(imageVersionArn = imageVersionArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_build_versions_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3925,12 +3968,13 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
     name = "ListImagePackages",
     http_method = "POST",
     http_path = "/ListImagePackages",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePackageList")
   )
   input <- .imagebuilder$list_image_packages_input(imageBuildVersionArn = imageBuildVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_packages_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4041,12 +4085,13 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
     name = "ListImagePipelineImages",
     http_method = "POST",
     http_path = "/ListImagePipelineImages",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList")
   )
   input <- .imagebuilder$list_image_pipeline_images_input(imagePipelineArn = imagePipelineArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipeline_images_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4168,12 +4213,13 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
     name = "ListImagePipelines",
     http_method = "POST",
     http_path = "/ListImagePipelines",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePipelineList")
   )
   input <- .imagebuilder$list_image_pipelines_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipelines_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4253,12 +4299,13 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
     name = "ListImageRecipes",
     http_method = "POST",
     http_path = "/ListImageRecipes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageRecipeSummaryList")
   )
   input <- .imagebuilder$list_image_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_recipes_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4366,12 +4413,13 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
     name = "ListImageScanFindingAggregations",
     http_method = "POST",
     http_path = "/ListImageScanFindingAggregations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "responses")
   )
   input <- .imagebuilder$list_image_scan_finding_aggregations_input(filter = filter, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_finding_aggregations_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4518,12 +4566,13 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
     name = "ListImageScanFindings",
     http_method = "POST",
     http_path = "/ListImageScanFindings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .imagebuilder$list_image_scan_findings_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_findings_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4614,12 +4663,13 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
     name = "ListImages",
     http_method = "POST",
     http_path = "/ListImages",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageVersionList")
   )
   input <- .imagebuilder$list_images_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken, includeDeprecated = includeDeprecated)
   output <- .imagebuilder$list_images_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4694,12 +4744,13 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
     name = "ListInfrastructureConfigurations",
     http_method = "POST",
     http_path = "/ListInfrastructureConfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "infrastructureConfigurationSummaryList")
   )
   input <- .imagebuilder$list_infrastructure_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_infrastructure_configurations_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4797,12 +4848,13 @@ imagebuilder_list_lifecycle_execution_resources <- function(lifecycleExecutionId
     name = "ListLifecycleExecutionResources",
     http_method = "POST",
     http_path = "/ListLifecycleExecutionResources",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources")
   )
   input <- .imagebuilder$list_lifecycle_execution_resources_input(lifecycleExecutionId = lifecycleExecutionId, parentResourceId = parentResourceId, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_lifecycle_execution_resources_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4870,12 +4922,13 @@ imagebuilder_list_lifecycle_executions <- function(maxResults = NULL, nextToken 
     name = "ListLifecycleExecutions",
     http_method = "POST",
     http_path = "/ListLifecycleExecutions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecycleExecutions")
   )
   input <- .imagebuilder$list_lifecycle_executions_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .imagebuilder$list_lifecycle_executions_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4952,12 +5005,13 @@ imagebuilder_list_lifecycle_policies <- function(filters = NULL, maxResults = NU
     name = "ListLifecyclePolicies",
     http_method = "POST",
     http_path = "/ListLifecyclePolicies",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecyclePolicySummaryList")
   )
   input <- .imagebuilder$list_lifecycle_policies_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_lifecycle_policies_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5002,12 +5056,13 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .imagebuilder$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5065,12 +5120,13 @@ imagebuilder_list_waiting_workflow_steps <- function(maxResults = NULL, nextToke
     name = "ListWaitingWorkflowSteps",
     http_method = "POST",
     http_path = "/ListWaitingWorkflowSteps",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps")
   )
   input <- .imagebuilder$list_waiting_workflow_steps_input(maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_waiting_workflow_steps_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5138,12 +5194,13 @@ imagebuilder_list_workflow_build_versions <- function(workflowVersionArn, maxRes
     name = "ListWorkflowBuildVersions",
     http_method = "POST",
     http_path = "/ListWorkflowBuildVersions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaryList")
   )
   input <- .imagebuilder$list_workflow_build_versions_input(workflowVersionArn = workflowVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_workflow_build_versions_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5213,12 +5270,13 @@ imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken =
     name = "ListWorkflowExecutions",
     http_method = "POST",
     http_path = "/ListWorkflowExecutions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowExecutions")
   )
   input <- .imagebuilder$list_workflow_executions_input(maxResults = maxResults, nextToken = nextToken, imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$list_workflow_executions_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5289,12 +5347,13 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
     name = "ListWorkflowStepExecutions",
     http_method = "POST",
     http_path = "/ListWorkflowStepExecutions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps")
   )
   input <- .imagebuilder$list_workflow_step_executions_input(maxResults = maxResults, nextToken = nextToken, workflowExecutionId = workflowExecutionId)
   output <- .imagebuilder$list_workflow_step_executions_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5365,12 +5424,13 @@ imagebuilder_list_workflows <- function(owner = NULL, filters = NULL, byName = N
     name = "ListWorkflows",
     http_method = "POST",
     http_path = "/ListWorkflows",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowVersionList")
   )
   input <- .imagebuilder$list_workflows_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_workflows_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5423,12 +5483,13 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
     name = "PutComponentPolicy",
     http_method = "PUT",
     http_path = "/PutComponentPolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$put_component_policy_input(componentArn = componentArn, policy = policy)
   output <- .imagebuilder$put_component_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5482,12 +5543,13 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
     name = "PutContainerRecipePolicy",
     http_method = "PUT",
     http_path = "/PutContainerRecipePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$put_container_recipe_policy_input(containerRecipeArn = containerRecipeArn, policy = policy)
   output <- .imagebuilder$put_container_recipe_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5540,12 +5602,13 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
     name = "PutImagePolicy",
     http_method = "PUT",
     http_path = "/PutImagePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$put_image_policy_input(imageArn = imageArn, policy = policy)
   output <- .imagebuilder$put_image_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5599,12 +5662,13 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
     name = "PutImageRecipePolicy",
     http_method = "PUT",
     http_path = "/PutImageRecipePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$put_image_recipe_policy_input(imageRecipeArn = imageRecipeArn, policy = policy)
   output <- .imagebuilder$put_image_recipe_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5664,12 +5728,13 @@ imagebuilder_send_workflow_step_action <- function(stepExecutionId, imageBuildVe
     name = "SendWorkflowStepAction",
     http_method = "PUT",
     http_path = "/SendWorkflowStepAction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$send_workflow_step_action_input(stepExecutionId = stepExecutionId, imageBuildVersionArn = imageBuildVersionArn, action = action, reason = reason, clientToken = clientToken)
   output <- .imagebuilder$send_workflow_step_action_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5720,12 +5785,13 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
     name = "StartImagePipelineExecution",
     http_method = "PUT",
     http_path = "/StartImagePipelineExecution",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$start_image_pipeline_execution_input(imagePipelineArn = imagePipelineArn, clientToken = clientToken)
   output <- .imagebuilder$start_image_pipeline_execution_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5815,12 +5881,13 @@ imagebuilder_start_resource_state_update <- function(resourceArn, state, executi
     name = "StartResourceStateUpdate",
     http_method = "PUT",
     http_path = "/StartResourceStateUpdate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$start_resource_state_update_input(resourceArn = resourceArn, state = state, executionRole = executionRole, includeResources = includeResources, exclusionRules = exclusionRules, updateAt = updateAt, clientToken = clientToken)
   output <- .imagebuilder$start_resource_state_update_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5861,12 +5928,13 @@ imagebuilder_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .imagebuilder$tag_resource_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5907,12 +5975,13 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .imagebuilder$untag_resource_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6038,12 +6107,13 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
     name = "UpdateDistributionConfiguration",
     http_method = "PUT",
     http_path = "/UpdateDistributionConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$update_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn, description = description, distributions = distributions, clientToken = clientToken)
   output <- .imagebuilder$update_distribution_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6165,12 +6235,13 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
     name = "UpdateImagePipeline",
     http_method = "PUT",
     http_path = "/UpdateImagePipeline",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole)
   output <- .imagebuilder$update_image_pipeline_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6232,7 +6303,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #'     in the *Amazon EC2 User Guide* for Linux instances.
 #' 
 #' -   [Configure the instance metadata
-#'     options](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-instance-metadata-options.html)
+#'     options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
 #'     in the *Amazon EC2 Windows Guide* for Windows instances.
 #'
 #' @return
@@ -6288,12 +6359,13 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
     name = "UpdateInfrastructureConfiguration",
     http_method = "PUT",
     http_path = "/UpdateInfrastructureConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$update_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, clientToken = clientToken, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions)
   output <- .imagebuilder$update_infrastructure_configuration_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6403,12 +6475,13 @@ imagebuilder_update_lifecycle_policy <- function(lifecyclePolicyArn, description
     name = "UpdateLifecyclePolicy",
     http_method = "PUT",
     http_path = "/UpdateLifecyclePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .imagebuilder$update_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, clientToken = clientToken)
   output <- .imagebuilder$update_lifecycle_policy_output()
   config <- get_config()
-  svc <- .imagebuilder$service(config)
+  svc <- .imagebuilder$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

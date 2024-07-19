@@ -57,8 +57,11 @@ compute capacity and 16 GB of memory. For more information, see the
 can consume resources before it is terminated and enters \code{TIMEOUT}
 status. This value overrides the timeout value set in the parent job.
 
-Streaming jobs do not have a timeout. The default for non-streaming jobs
-is 2,880 minutes (48 hours).}
+Streaming jobs must have timeout values less than 7 days or 10080
+minutes. When the value is left blank, the job will be restarted after 7
+days based if you have not setup a maintenance window. If you have setup
+maintenance window, it will be restarted during the maintenance window
+after 7 days.}
 
 \item{MaxCapacity}{For Glue version 1.0 or earlier jobs, using the standard worker type,
 the number of Glue data processing units (DPUs) that can be allocated

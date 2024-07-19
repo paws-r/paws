@@ -4,16 +4,16 @@
 \alias{locationservice_batch_get_device_position}
 \title{Lists the latest device positions for requested devices}
 \usage{
-locationservice_batch_get_device_position(DeviceIds, TrackerName)
+locationservice_batch_get_device_position(TrackerName, DeviceIds)
 }
 \arguments{
+\item{TrackerName}{[required] The tracker resource retrieving the device position.}
+
 \item{DeviceIds}{[required] Devices whose position you want to retrieve.
 \itemize{
 \item For example, for two devices:
 \code{device-ids=DeviceId1&device-ids=DeviceId2}
 }}
-
-\item{TrackerName}{[required] The tracker resource retrieving the device position.}
 }
 \description{
 Lists the latest device positions for requested devices.

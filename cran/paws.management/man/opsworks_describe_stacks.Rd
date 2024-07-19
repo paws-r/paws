@@ -8,8 +8,14 @@ opsworks_describe_stacks(StackIds = NULL)
 }
 \arguments{
 \item{StackIds}{An array of stack IDs that specify the stacks to be described. If you
-omit this parameter, \code{\link[=opsworks_describe_stacks]{describe_stacks}}
-returns a description of every stack.}
+omit this parameter, and have permissions to get information about all
+stacks, \code{\link[=opsworks_describe_stacks]{describe_stacks}} returns a
+description of every stack. If the IAM policy that is attached to an IAM
+user limits the \code{\link[=opsworks_describe_stacks]{describe_stacks}} action to
+specific stack ARNs, this parameter is required, and the user must
+specify a stack ARN that is allowed by the policy. Otherwise,
+\code{\link[=opsworks_describe_stacks]{describe_stacks}} returns an \code{AccessDenied}
+error.}
 }
 \description{
 Requests a description of one or more stacks.

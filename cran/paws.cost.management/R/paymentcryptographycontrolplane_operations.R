@@ -29,12 +29,13 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
     name = "CreateAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$create_alias_input(AliasName = AliasName, KeyArn = KeyArn)
   output <- .paymentcryptographycontrolplane$create_alias_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -92,12 +93,13 @@ paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckVa
     name = "CreateKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags)
   output <- .paymentcryptographycontrolplane$create_key_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -123,12 +125,13 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
     name = "DeleteAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$delete_alias_input(AliasName = AliasName)
   output <- .paymentcryptographycontrolplane$delete_alias_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -154,12 +157,13 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
     name = "DeleteKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$delete_key_input(KeyIdentifier = KeyIdentifier, DeleteKeyInDays = DeleteKeyInDays)
   output <- .paymentcryptographycontrolplane$delete_key_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -187,12 +191,13 @@ paymentcryptographycontrolplane_export_key <- function(KeyMaterial, ExportKeyIde
     name = "ExportKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$export_key_input(KeyMaterial = KeyMaterial, ExportKeyIdentifier = ExportKeyIdentifier, ExportAttributes = ExportAttributes)
   output <- .paymentcryptographycontrolplane$export_key_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -217,12 +222,13 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
     name = "GetAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$get_alias_input(AliasName = AliasName)
   output <- .paymentcryptographycontrolplane$get_alias_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -248,12 +254,13 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
     name = "GetKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$get_key_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$get_key_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -284,12 +291,13 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
     name = "GetParametersForExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$get_parameters_for_export_input(KeyMaterialType = KeyMaterialType, SigningKeyAlgorithm = SigningKeyAlgorithm)
   output <- .paymentcryptographycontrolplane$get_parameters_for_export_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -327,12 +335,13 @@ paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMateria
     name = "GetParametersForImport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$get_parameters_for_import_input(KeyMaterialType = KeyMaterialType, WrappingKeyAlgorithm = WrappingKeyAlgorithm)
   output <- .paymentcryptographycontrolplane$get_parameters_for_import_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -357,12 +366,13 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
     name = "GetPublicKeyCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$get_public_key_certificate_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$get_public_key_certificate_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -417,12 +427,13 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
     name = "ImportKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags)
   output <- .paymentcryptographycontrolplane$import_key_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -456,12 +467,13 @@ paymentcryptographycontrolplane_list_aliases <- function(NextToken = NULL, MaxRe
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Aliases")
   )
   input <- .paymentcryptographycontrolplane$list_aliases_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_aliases_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -496,12 +508,13 @@ paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, NextToken
     name = "ListKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keys")
   )
   input <- .paymentcryptographycontrolplane$list_keys_input(KeyState = KeyState, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_keys_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -535,12 +548,13 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
   input <- .paymentcryptographycontrolplane$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -565,12 +579,13 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
     name = "RestoreKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$restore_key_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$restore_key_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -596,12 +611,13 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
     name = "StartKeyUsage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$start_key_usage_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$start_key_usage_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -626,12 +642,13 @@ paymentcryptographycontrolplane_stop_key_usage <- function(KeyIdentifier) {
     name = "StopKeyUsage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$stop_key_usage_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$stop_key_usage_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -673,12 +690,13 @@ paymentcryptographycontrolplane_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .paymentcryptographycontrolplane$tag_resource_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -710,12 +728,13 @@ paymentcryptographycontrolplane_untag_resource <- function(ResourceArn, TagKeys)
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .paymentcryptographycontrolplane$untag_resource_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -742,12 +761,13 @@ paymentcryptographycontrolplane_update_alias <- function(AliasName, KeyArn = NUL
     name = "UpdateAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .paymentcryptographycontrolplane$update_alias_input(AliasName = AliasName, KeyArn = KeyArn)
   output <- .paymentcryptographycontrolplane$update_alias_output()
   config <- get_config()
-  svc <- .paymentcryptographycontrolplane$service(config)
+  svc <- .paymentcryptographycontrolplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

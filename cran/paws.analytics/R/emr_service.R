@@ -189,7 +189,7 @@ emr <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "ElasticMapReduce"
 )
 
-.emr$service <- function(config = list()) {
+.emr$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.emr$metadata, handlers, config)
+  new_service(.emr$metadata, handlers, config, op)
 }

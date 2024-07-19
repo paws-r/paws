@@ -2,12 +2,12 @@
 % Please edit documentation in R/licensemanagerlinuxsubscriptions_operations.R
 \name{licensemanagerlinuxsubscriptions_get_service_settings}
 \alias{licensemanagerlinuxsubscriptions_get_service_settings}
-\title{Lists the Linux subscriptions service settings}
+\title{Lists the Linux subscriptions service settings for your account}
 \usage{
 licensemanagerlinuxsubscriptions_get_service_settings()
 }
 \description{
-Lists the Linux subscriptions service settings.
+Lists the Linux subscriptions service settings for your account.
 
 See \url{https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_service_settings/} for full documentation.
 }

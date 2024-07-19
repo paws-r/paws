@@ -5,10 +5,12 @@
 \title{Retrieves information about a specific blueprint for OpenSearch
 Ingestion}
 \usage{
-opensearchingestion_get_pipeline_blueprint(BlueprintName)
+opensearchingestion_get_pipeline_blueprint(BlueprintName, Format = NULL)
 }
 \arguments{
 \item{BlueprintName}{[required] The name of the blueprint to retrieve.}
+
+\item{Format}{The format format of the blueprint to retrieve.}
 }
 \description{
 Retrieves information about a specific blueprint for OpenSearch Ingestion. Blueprints are templates for the configuration needed for a \code{\link[=opensearchingestion_create_pipeline]{create_pipeline}} request. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint}{Using blueprints to create a pipeline}.

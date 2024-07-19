@@ -15,6 +15,7 @@ emrserverless_update_application(
   architecture = NULL,
   imageConfiguration = NULL,
   workerTypeSpecifications = NULL,
+  interactiveConfiguration = NULL,
   releaseLabel = NULL,
   runtimeConfiguration = NULL,
   monitoringConfiguration = NULL
@@ -54,6 +55,9 @@ worker types for a Spark or Hive application. Valid worker types include
 \code{TezTask} for Hive applications. You can either set image details in
 this parameter for each worker type, or in \code{imageConfiguration} for all
 worker types.}
+
+\item{interactiveConfiguration}{The interactive configuration object that contains new interactive use
+cases when the application is updated.}
 
 \item{releaseLabel}{The Amazon EMR release label for the application. You can change the
 release label to use a different release of Amazon EMR.}

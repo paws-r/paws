@@ -21,12 +21,13 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
     name = "AddTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$add_tags_input(LoadBalancerNames = LoadBalancerNames, Tags = Tags)
   output <- .elb$add_tags_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -53,12 +54,13 @@ elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, Securit
     name = "ApplySecurityGroupsToLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$apply_security_groups_to_load_balancer_input(LoadBalancerName = LoadBalancerName, SecurityGroups = SecurityGroups)
   output <- .elb$apply_security_groups_to_load_balancer_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -85,12 +87,13 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
     name = "AttachLoadBalancerToSubnets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$attach_load_balancer_to_subnets_input(LoadBalancerName = LoadBalancerName, Subnets = Subnets)
   output <- .elb$attach_load_balancer_to_subnets_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -116,12 +119,13 @@ elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
     name = "ConfigureHealthCheck",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$configure_health_check_input(LoadBalancerName = LoadBalancerName, HealthCheck = HealthCheck)
   output <- .elb$configure_health_check_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -150,12 +154,13 @@ elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName
     name = "CreateAppCookieStickinessPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$create_app_cookie_stickiness_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName, CookieName = CookieName)
   output <- .elb$create_app_cookie_stickiness_policy_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -188,12 +193,13 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
     name = "CreateLBCookieStickinessPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$create_lb_cookie_stickiness_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName, CookieExpirationPeriod = CookieExpirationPeriod)
   output <- .elb$create_lb_cookie_stickiness_policy_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -256,12 +262,13 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
     name = "CreateLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$create_load_balancer_input(LoadBalancerName = LoadBalancerName, Listeners = Listeners, AvailabilityZones = AvailabilityZones, Subnets = Subnets, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags)
   output <- .elb$create_load_balancer_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -286,12 +293,13 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
     name = "CreateLoadBalancerListeners",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$create_load_balancer_listeners_input(LoadBalancerName = LoadBalancerName, Listeners = Listeners)
   output <- .elb$create_load_balancer_listeners_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -321,12 +329,13 @@ elb_create_load_balancer_policy <- function(LoadBalancerName, PolicyName, Policy
     name = "CreateLoadBalancerPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$create_load_balancer_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName, PolicyTypeName = PolicyTypeName, PolicyAttributes = PolicyAttributes)
   output <- .elb$create_load_balancer_policy_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -350,12 +359,13 @@ elb_delete_load_balancer <- function(LoadBalancerName) {
     name = "DeleteLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$delete_load_balancer_input(LoadBalancerName = LoadBalancerName)
   output <- .elb$delete_load_balancer_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -380,12 +390,13 @@ elb_delete_load_balancer_listeners <- function(LoadBalancerName, LoadBalancerPor
     name = "DeleteLoadBalancerListeners",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$delete_load_balancer_listeners_input(LoadBalancerName = LoadBalancerName, LoadBalancerPorts = LoadBalancerPorts)
   output <- .elb$delete_load_balancer_listeners_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -410,12 +421,13 @@ elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
     name = "DeleteLoadBalancerPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$delete_load_balancer_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName)
   output <- .elb$delete_load_balancer_policy_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -440,12 +452,13 @@ elb_deregister_instances_from_load_balancer <- function(LoadBalancerName, Instan
     name = "DeregisterInstancesFromLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$deregister_instances_from_load_balancer_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$deregister_instances_from_load_balancer_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -472,12 +485,13 @@ elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
     name = "DescribeAccountLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$describe_account_limits_input(Marker = Marker, PageSize = PageSize)
   output <- .elb$describe_account_limits_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -503,12 +517,13 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
     name = "DescribeInstanceHealth",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "InstanceStates")
   )
   input <- .elb$describe_instance_health_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$describe_instance_health_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -532,12 +547,13 @@ elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
     name = "DescribeLoadBalancerAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$describe_load_balancer_attributes_input(LoadBalancerName = LoadBalancerName)
   output <- .elb$describe_load_balancer_attributes_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -562,12 +578,13 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
     name = "DescribeLoadBalancerPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "PolicyDescriptions")
   )
   input <- .elb$describe_load_balancer_policies_input(LoadBalancerName = LoadBalancerName, PolicyNames = PolicyNames)
   output <- .elb$describe_load_balancer_policies_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -593,12 +610,13 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
     name = "DescribeLoadBalancerPolicyTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "PolicyTypeDescriptions")
   )
   input <- .elb$describe_load_balancer_policy_types_input(PolicyTypeNames = PolicyTypeNames)
   output <- .elb$describe_load_balancer_policy_types_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -626,12 +644,13 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
     name = "DescribeLoadBalancers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancerDescriptions")
   )
   input <- .elb$describe_load_balancers_input(LoadBalancerNames = LoadBalancerNames, Marker = Marker, PageSize = PageSize)
   output <- .elb$describe_load_balancers_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -655,12 +674,13 @@ elb_describe_tags <- function(LoadBalancerNames) {
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$describe_tags_input(LoadBalancerNames = LoadBalancerNames)
   output <- .elb$describe_tags_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -686,12 +706,13 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
     name = "DetachLoadBalancerFromSubnets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$detach_load_balancer_from_subnets_input(LoadBalancerName = LoadBalancerName, Subnets = Subnets)
   output <- .elb$detach_load_balancer_from_subnets_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -717,12 +738,13 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
     name = "DisableAvailabilityZonesForLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$disable_availability_zones_for_load_balancer_input(LoadBalancerName = LoadBalancerName, AvailabilityZones = AvailabilityZones)
   output <- .elb$disable_availability_zones_for_load_balancer_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -749,12 +771,13 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
     name = "EnableAvailabilityZonesForLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$enable_availability_zones_for_load_balancer_input(LoadBalancerName = LoadBalancerName, AvailabilityZones = AvailabilityZones)
   output <- .elb$enable_availability_zones_for_load_balancer_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -779,12 +802,13 @@ elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAt
     name = "ModifyLoadBalancerAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$modify_load_balancer_attributes_input(LoadBalancerName = LoadBalancerName, LoadBalancerAttributes = LoadBalancerAttributes)
   output <- .elb$modify_load_balancer_attributes_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -809,12 +833,13 @@ elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instance
     name = "RegisterInstancesWithLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$register_instances_with_load_balancer_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$register_instances_with_load_balancer_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -840,12 +865,13 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
     name = "RemoveTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$remove_tags_input(LoadBalancerNames = LoadBalancerNames, Tags = Tags)
   output <- .elb$remove_tags_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -872,12 +898,13 @@ elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, Loa
     name = "SetLoadBalancerListenerSSLCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$set_load_balancer_listener_ssl_certificate_input(LoadBalancerName = LoadBalancerName, LoadBalancerPort = LoadBalancerPort, SSLCertificateId = SSLCertificateId)
   output <- .elb$set_load_balancer_listener_ssl_certificate_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -905,12 +932,13 @@ elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, 
     name = "SetLoadBalancerPoliciesForBackendServer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$set_load_balancer_policies_for_backend_server_input(LoadBalancerName = LoadBalancerName, InstancePort = InstancePort, PolicyNames = PolicyNames)
   output <- .elb$set_load_balancer_policies_for_backend_server_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -939,12 +967,13 @@ elb_set_load_balancer_policies_of_listener <- function(LoadBalancerName, LoadBal
     name = "SetLoadBalancerPoliciesOfListener",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elb$set_load_balancer_policies_of_listener_input(LoadBalancerName = LoadBalancerName, LoadBalancerPort = LoadBalancerPort, PolicyNames = PolicyNames)
   output <- .elb$set_load_balancer_policies_of_listener_output()
   config <- get_config()
-  svc <- .elb$service(config)
+  svc <- .elb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

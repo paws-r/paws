@@ -19,7 +19,7 @@ set.}
 \item{EventDestination}{[required] An object that defines the event destination.}
 }
 \description{
-Create an event destination. \emph{Events} include message sends, deliveries, opens, clicks, bounces, and complaints. \emph{Event destinations} are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
+Create an event destination. \emph{Events} include message sends, deliveries, opens, clicks, bounces, and complaints. \emph{Event destinations} are places that you can send information about these events to. For example, you can send event data to Amazon EventBridge and associate a rule to send the event to the specified target.
 
 See \url{https://www.paws-r-sdk.com/docs/sesv2_create_configuration_set_event_destination/} for full documentation.
 }

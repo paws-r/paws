@@ -8,7 +8,8 @@ opensearchservice_update_data_source(
   DomainName,
   Name,
   DataSourceType,
-  Description = NULL
+  Description = NULL,
+  Status = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ opensearchservice_update_data_source(
 \item{DataSourceType}{[required] The type of data source.}
 
 \item{Description}{A new description of the data source.}
+
+\item{Status}{The status of the data source update.}
 }
 \description{
 Updates a direct-query data source. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html}{Working with Amazon OpenSearch Service data source integrations with Amazon S3}.

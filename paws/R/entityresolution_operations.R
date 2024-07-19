@@ -63,12 +63,13 @@ entityresolution_add_policy_statement <- function(action, arn, condition = NULL,
     name = "AddPolicyStatement",
     http_method = "POST",
     http_path = "/policies/{arn}/{statementId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$add_policy_statement_input(action = action, arn = arn, condition = condition, effect = effect, principal = principal, statementId = statementId)
   output <- .entityresolution$add_policy_statement_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -131,12 +132,13 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
     name = "BatchDeleteUniqueId",
     http_method = "DELETE",
     http_path = "/matchingworkflows/{workflowName}/uniqueids",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$batch_delete_unique_id_input(inputSource = inputSource, uniqueIds = uniqueIds, workflowName = workflowName)
   output <- .entityresolution$batch_delete_unique_id_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -251,12 +253,13 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
     name = "CreateIdMappingWorkflow",
     http_method = "POST",
     http_path = "/idmappingworkflows",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$create_id_mapping_workflow_input(description = description, idMappingTechniques = idMappingTechniques, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, roleArn = roleArn, tags = tags, workflowName = workflowName)
   output <- .entityresolution$create_id_mapping_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -369,12 +372,13 @@ entityresolution_create_id_namespace <- function(description = NULL, idMappingWo
     name = "CreateIdNamespace",
     http_method = "POST",
     http_path = "/idnamespaces",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$create_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn, tags = tags, type = type)
   output <- .entityresolution$create_id_namespace_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -534,12 +538,13 @@ entityresolution_create_matching_workflow <- function(description = NULL, increm
     name = "CreateMatchingWorkflow",
     http_method = "POST",
     http_path = "/matchingworkflows",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$create_matching_workflow_input(description = description, incrementalRunConfig = incrementalRunConfig, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, roleArn = roleArn, tags = tags, workflowName = workflowName)
   output <- .entityresolution$create_matching_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -616,12 +621,13 @@ entityresolution_create_schema_mapping <- function(description = NULL, mappedInp
     name = "CreateSchemaMapping",
     http_method = "POST",
     http_path = "/schemas",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$create_schema_mapping_input(description = description, mappedInputFields = mappedInputFields, schemaName = schemaName, tags = tags)
   output <- .entityresolution$create_schema_mapping_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -664,12 +670,13 @@ entityresolution_delete_id_mapping_workflow <- function(workflowName) {
     name = "DeleteIdMappingWorkflow",
     http_method = "DELETE",
     http_path = "/idmappingworkflows/{workflowName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$delete_id_mapping_workflow_input(workflowName = workflowName)
   output <- .entityresolution$delete_id_mapping_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -711,12 +718,13 @@ entityresolution_delete_id_namespace <- function(idNamespaceName) {
     name = "DeleteIdNamespace",
     http_method = "DELETE",
     http_path = "/idnamespaces/{idNamespaceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$delete_id_namespace_input(idNamespaceName = idNamespaceName)
   output <- .entityresolution$delete_id_namespace_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -759,12 +767,13 @@ entityresolution_delete_matching_workflow <- function(workflowName) {
     name = "DeleteMatchingWorkflow",
     http_method = "DELETE",
     http_path = "/matchingworkflows/{workflowName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$delete_matching_workflow_input(workflowName = workflowName)
   output <- .entityresolution$delete_matching_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -811,12 +820,13 @@ entityresolution_delete_policy_statement <- function(arn, statementId) {
     name = "DeletePolicyStatement",
     http_method = "DELETE",
     http_path = "/policies/{arn}/{statementId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$delete_policy_statement_input(arn = arn, statementId = statementId)
   output <- .entityresolution$delete_policy_statement_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -861,12 +871,13 @@ entityresolution_delete_schema_mapping <- function(schemaName) {
     name = "DeleteSchemaMapping",
     http_method = "DELETE",
     http_path = "/schemas/{schemaName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$delete_schema_mapping_input(schemaName = schemaName)
   output <- .entityresolution$delete_schema_mapping_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -934,12 +945,13 @@ entityresolution_get_id_mapping_job <- function(jobId, workflowName) {
     name = "GetIdMappingJob",
     http_method = "GET",
     http_path = "/idmappingworkflows/{workflowName}/jobs/{jobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_id_mapping_job_input(jobId = jobId, workflowName = workflowName)
   output <- .entityresolution$get_id_mapping_job_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1016,12 +1028,13 @@ entityresolution_get_id_mapping_workflow <- function(workflowName) {
     name = "GetIdMappingWorkflow",
     http_method = "GET",
     http_path = "/idmappingworkflows/{workflowName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_id_mapping_workflow_input(workflowName = workflowName)
   output <- .entityresolution$get_id_mapping_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1091,12 +1104,13 @@ entityresolution_get_id_namespace <- function(idNamespaceName) {
     name = "GetIdNamespace",
     http_method = "GET",
     http_path = "/idnamespaces/{idNamespaceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_id_namespace_input(idNamespaceName = idNamespaceName)
   output <- .entityresolution$get_id_namespace_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1150,12 +1164,13 @@ entityresolution_get_match_id <- function(applyNormalization = NULL, record, wor
     name = "GetMatchId",
     http_method = "POST",
     http_path = "/matchingworkflows/{workflowName}/matches",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_match_id_input(applyNormalization = applyNormalization, record = record, workflowName = workflowName)
   output <- .entityresolution$get_match_id_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1224,12 +1239,13 @@ entityresolution_get_matching_job <- function(jobId, workflowName) {
     name = "GetMatchingJob",
     http_method = "GET",
     http_path = "/matchingworkflows/{workflowName}/jobs/{jobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_matching_job_input(jobId = jobId, workflowName = workflowName)
   output <- .entityresolution$get_matching_job_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1327,12 +1343,13 @@ entityresolution_get_matching_workflow <- function(workflowName) {
     name = "GetMatchingWorkflow",
     http_method = "GET",
     http_path = "/matchingworkflows/{workflowName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_matching_workflow_input(workflowName = workflowName)
   output <- .entityresolution$get_matching_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1377,12 +1394,13 @@ entityresolution_get_policy <- function(arn) {
     name = "GetPolicy",
     http_method = "GET",
     http_path = "/policies/{arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_policy_input(arn = arn)
   output <- .entityresolution$get_policy_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1471,12 +1489,13 @@ entityresolution_get_provider_service <- function(providerName, providerServiceN
     name = "GetProviderService",
     http_method = "GET",
     http_path = "/providerservices/{providerName}/{providerServiceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_provider_service_input(providerName = providerName, providerServiceName = providerServiceName)
   output <- .entityresolution$get_provider_service_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1539,12 +1558,13 @@ entityresolution_get_schema_mapping <- function(schemaName) {
     name = "GetSchemaMapping",
     http_method = "GET",
     http_path = "/schemas/{schemaName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$get_schema_mapping_input(schemaName = schemaName)
   output <- .entityresolution$get_schema_mapping_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1603,12 +1623,13 @@ entityresolution_list_id_mapping_jobs <- function(maxResults = NULL, nextToken =
     name = "ListIdMappingJobs",
     http_method = "GET",
     http_path = "/idmappingworkflows/{workflowName}/jobs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs")
   )
   input <- .entityresolution$list_id_mapping_jobs_input(maxResults = maxResults, nextToken = nextToken, workflowName = workflowName)
   output <- .entityresolution$list_id_mapping_jobs_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1666,12 +1687,13 @@ entityresolution_list_id_mapping_workflows <- function(maxResults = NULL, nextTo
     name = "ListIdMappingWorkflows",
     http_method = "GET",
     http_path = "/idmappingworkflows",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries")
   )
   input <- .entityresolution$list_id_mapping_workflows_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_id_mapping_workflows_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1729,12 +1751,13 @@ entityresolution_list_id_namespaces <- function(maxResults = NULL, nextToken = N
     name = "ListIdNamespaces",
     http_method = "GET",
     http_path = "/idnamespaces",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "idNamespaceSummaries")
   )
   input <- .entityresolution$list_id_namespaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_id_namespaces_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1792,12 +1815,13 @@ entityresolution_list_matching_jobs <- function(maxResults = NULL, nextToken = N
     name = "ListMatchingJobs",
     http_method = "GET",
     http_path = "/matchingworkflows/{workflowName}/jobs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs")
   )
   input <- .entityresolution$list_matching_jobs_input(maxResults = maxResults, nextToken = nextToken, workflowName = workflowName)
   output <- .entityresolution$list_matching_jobs_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1856,12 +1880,13 @@ entityresolution_list_matching_workflows <- function(maxResults = NULL, nextToke
     name = "ListMatchingWorkflows",
     http_method = "GET",
     http_path = "/matchingworkflows",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries")
   )
   input <- .entityresolution$list_matching_workflows_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_matching_workflows_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1919,12 +1944,13 @@ entityresolution_list_provider_services <- function(maxResults = NULL, nextToken
     name = "ListProviderServices",
     http_method = "GET",
     http_path = "/providerservices",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "providerServiceSummaries")
   )
   input <- .entityresolution$list_provider_services_input(maxResults = maxResults, nextToken = nextToken, providerName = providerName)
   output <- .entityresolution$list_provider_services_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1983,12 +2009,13 @@ entityresolution_list_schema_mappings <- function(maxResults = NULL, nextToken =
     name = "ListSchemaMappings",
     http_method = "GET",
     http_path = "/schemas",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schemaList")
   )
   input <- .entityresolution$list_schema_mappings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_schema_mappings_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2034,12 +2061,13 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .entityresolution$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2088,12 +2116,13 @@ entityresolution_put_policy <- function(arn, policy, token = NULL) {
     name = "PutPolicy",
     http_method = "PUT",
     http_path = "/policies/{arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$put_policy_input(arn = arn, policy = policy, token = token)
   output <- .entityresolution$put_policy_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2153,12 +2182,13 @@ entityresolution_start_id_mapping_job <- function(outputSourceConfig = NULL, wor
     name = "StartIdMappingJob",
     http_method = "POST",
     http_path = "/idmappingworkflows/{workflowName}/jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$start_id_mapping_job_input(outputSourceConfig = outputSourceConfig, workflowName = workflowName)
   output <- .entityresolution$start_id_mapping_job_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2203,12 +2233,13 @@ entityresolution_start_matching_job <- function(workflowName) {
     name = "StartMatchingJob",
     http_method = "POST",
     http_path = "/matchingworkflows/{workflowName}/jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$start_matching_job_input(workflowName = workflowName)
   output <- .entityresolution$start_matching_job_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2261,12 +2292,13 @@ entityresolution_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .entityresolution$tag_resource_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2309,12 +2341,13 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .entityresolution$untag_resource_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2422,12 +2455,13 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
     name = "UpdateIdMappingWorkflow",
     http_method = "PUT",
     http_path = "/idmappingworkflows/{workflowName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$update_id_mapping_workflow_input(description = description, idMappingTechniques = idMappingTechniques, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, roleArn = roleArn, workflowName = workflowName)
   output <- .entityresolution$update_id_mapping_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2521,12 +2555,13 @@ entityresolution_update_id_namespace <- function(description = NULL, idMappingWo
     name = "UpdateIdNamespace",
     http_method = "PUT",
     http_path = "/idnamespaces/{idNamespaceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$update_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn)
   output <- .entityresolution$update_id_namespace_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2677,12 +2712,13 @@ entityresolution_update_matching_workflow <- function(description = NULL, increm
     name = "UpdateMatchingWorkflow",
     http_method = "PUT",
     http_path = "/matchingworkflows/{workflowName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$update_matching_workflow_input(description = description, incrementalRunConfig = incrementalRunConfig, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, roleArn = roleArn, workflowName = workflowName)
   output <- .entityresolution$update_matching_workflow_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2754,12 +2790,13 @@ entityresolution_update_schema_mapping <- function(description = NULL, mappedInp
     name = "UpdateSchemaMapping",
     http_method = "PUT",
     http_path = "/schemas/{schemaName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .entityresolution$update_schema_mapping_input(description = description, mappedInputFields = mappedInputFields, schemaName = schemaName)
   output <- .entityresolution$update_schema_mapping_output()
   config <- get_config()
-  svc <- .entityresolution$service(config)
+  svc <- .entityresolution$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

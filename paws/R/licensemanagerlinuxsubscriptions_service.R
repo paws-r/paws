@@ -84,16 +84,23 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- licensemanagerlinuxsubscriptions()
-#' svc$get_service_settings(
+#' svc$deregister_subscription_provider(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=licensemanagerlinuxsubscriptions_get_service_settings]{get_service_settings} \tab Lists the Linux subscriptions service settings\cr
+#'  \link[=licensemanagerlinuxsubscriptions_deregister_subscription_provider]{deregister_subscription_provider} \tab Remove a third-party subscription provider from the Bring Your Own License (BYOL) subscriptions registered to your account\cr
+#'  \link[=licensemanagerlinuxsubscriptions_get_registered_subscription_provider]{get_registered_subscription_provider} \tab Get details for a Bring Your Own License (BYOL) subscription that's registered to your account\cr
+#'  \link[=licensemanagerlinuxsubscriptions_get_service_settings]{get_service_settings} \tab Lists the Linux subscriptions service settings for your account\cr
 #'  \link[=licensemanagerlinuxsubscriptions_list_linux_subscription_instances]{list_linux_subscription_instances} \tab Lists the running Amazon EC2 instances that were discovered with commercial Linux subscriptions\cr
 #'  \link[=licensemanagerlinuxsubscriptions_list_linux_subscriptions]{list_linux_subscriptions} \tab Lists the Linux subscriptions that have been discovered\cr
+#'  \link[=licensemanagerlinuxsubscriptions_list_registered_subscription_providers]{list_registered_subscription_providers} \tab List Bring Your Own License (BYOL) subscription registration resources for your account\cr
+#'  \link[=licensemanagerlinuxsubscriptions_list_tags_for_resource]{list_tags_for_resource} \tab List the metadata tags that are assigned to the specified Amazon Web Services resource\cr
+#'  \link[=licensemanagerlinuxsubscriptions_register_subscription_provider]{register_subscription_provider} \tab Register the supported third-party subscription provider for your Bring Your Own License (BYOL) subscription\cr
+#'  \link[=licensemanagerlinuxsubscriptions_tag_resource]{tag_resource} \tab Add metadata tags to the specified Amazon Web Services resource\cr
+#'  \link[=licensemanagerlinuxsubscriptions_untag_resource]{untag_resource} \tab Remove one or more metadata tag from the specified Amazon Web Services resource\cr
 #'  \link[=licensemanagerlinuxsubscriptions_update_service_settings]{update_service_settings} \tab Updates the service settings for Linux subscriptions
 #' }
 #'
@@ -134,7 +141,7 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
   target_prefix = ""
 )
 
-.licensemanagerlinuxsubscriptions$service <- function(config = list()) {
+.licensemanagerlinuxsubscriptions$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.licensemanagerlinuxsubscriptions$metadata, handlers, config)
+  new_service(.licensemanagerlinuxsubscriptions$metadata, handlers, config, op)
 }

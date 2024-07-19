@@ -219,7 +219,7 @@ workdocs <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = ""
 )
 
-.workdocs$service <- function(config = list()) {
+.workdocs$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.workdocs$metadata, handlers, config)
+  new_service(.workdocs$metadata, handlers, config, op)
 }

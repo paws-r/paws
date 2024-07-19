@@ -10,6 +10,7 @@ rds_create_global_cluster(
   SourceDBClusterIdentifier = NULL,
   Engine = NULL,
   EngineVersion = NULL,
+  EngineLifecycleSupport = NULL,
   DeletionProtection = NULL,
   DatabaseName = NULL,
   StorageEncrypted = NULL
@@ -50,6 +51,28 @@ Constraints:
 this case, Amazon Aurora uses the engine version of the source DB
 cluster.
 }}
+
+\item{EngineLifecycleSupport}{The life cycle type for this global database cluster.
+
+By default, this value is set to \code{open-source-rds-extended-support},
+which enrolls your global cluster into Amazon RDS Extended Support. At
+the end of standard support, you can avoid charges for Extended Support
+by setting the value to \code{open-source-rds-extended-support-disabled}. In
+this case, creating the global cluster will fail if the DB major version
+is past its end of standard support date.
+
+This setting only applies to Aurora PostgreSQL-based global databases.
+
+You can use this setting to enroll your global cluster into Amazon RDS
+Extended Support. With RDS Extended Support, you can run the selected
+major engine version on your global cluster past the end of standard
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid Values:
+\code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
+
+Default: \code{open-source-rds-extended-support}}
 
 \item{DeletionProtection}{Specifies whether to enable deletion protection for the new global
 database cluster. The global database can't be deleted when deletion

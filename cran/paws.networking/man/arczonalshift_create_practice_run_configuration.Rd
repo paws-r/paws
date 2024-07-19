@@ -55,9 +55,9 @@ if your application is impacted by the zonal shift, and you want to stop
 the zonal shift, to let traffic for the resource return to the
 Availability Zone.}
 
-\item{resourceIdentifier}{[required] The identifier of the resource to shift away traffic for when a practice
-run starts a zonal shift. The identifier is the Amazon Resource Name
-(ARN) for the resource.
+\item{resourceIdentifier}{[required] The identifier of the resource that Amazon Web Services shifts traffic
+for with a practice run zonal shift. The identifier is the Amazon
+Resource Name (ARN) for the resource.
 
 At this time, supported resources are Network Load Balancers and
 Application Load Balancers with cross-zone load balancing turned off.}

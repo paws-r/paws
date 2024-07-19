@@ -17,21 +17,25 @@ NULL
 #' subscriber and up to 10 email subscribers. If you include notifications
 #' and subscribers in your [`create_budget`][budgets_create_budget] call,
 #' Amazon Web Services creates the notifications and subscribers for you.
+#' @param ResourceTags An optional list of tags to associate with the specified budget. Each
+#' tag consists of a key and a value, and each key must be unique for the
+#' resource.
 #'
 #' @keywords internal
 #'
 #' @rdname budgets_create_budget
-budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscribers = NULL) {
+budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscribers = NULL, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateBudget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .budgets$create_budget_input(AccountId = AccountId, Budget = Budget, NotificationsWithSubscribers = NotificationsWithSubscribers)
+  input <- .budgets$create_budget_input(AccountId = AccountId, Budget = Budget, NotificationsWithSubscribers = NotificationsWithSubscribers, ResourceTags = ResourceTags)
   output <- .budgets$create_budget_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -57,21 +61,25 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 #' must be in the same account.
 #' @param ApprovalModel &#91;required&#93; This specifies if the action needs manual or automatic approval.
 #' @param Subscribers &#91;required&#93; 
+#' @param ResourceTags An optional list of tags to associate with the specified budget action.
+#' Each tag consists of a key and a value, and each key must be unique for
+#' the resource.
 #'
 #' @keywords internal
 #'
 #' @rdname budgets_create_budget_action
-budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType, ActionType, ActionThreshold, Definition, ExecutionRoleArn, ApprovalModel, Subscribers) {
+budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType, ActionType, ActionThreshold, Definition, ExecutionRoleArn, ApprovalModel, Subscribers, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateBudgetAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .budgets$create_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, NotificationType = NotificationType, ActionType = ActionType, ActionThreshold = ActionThreshold, Definition = Definition, ExecutionRoleArn = ExecutionRoleArn, ApprovalModel = ApprovalModel, Subscribers = Subscribers)
+  input <- .budgets$create_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, NotificationType = NotificationType, ActionType = ActionType, ActionThreshold = ActionThreshold, Definition = Definition, ExecutionRoleArn = ExecutionRoleArn, ApprovalModel = ApprovalModel, Subscribers = Subscribers, ResourceTags = ResourceTags)
   output <- .budgets$create_budget_action_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -102,12 +110,13 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
     name = "CreateNotification",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$create_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, Subscribers = Subscribers)
   output <- .budgets$create_notification_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -136,12 +145,13 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
     name = "CreateSubscriber",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$create_subscriber_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, Subscriber = Subscriber)
   output <- .budgets$create_subscriber_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -167,12 +177,13 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
     name = "DeleteBudget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$delete_budget_input(AccountId = AccountId, BudgetName = BudgetName)
   output <- .budgets$delete_budget_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -198,12 +209,13 @@ budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
     name = "DeleteBudgetAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$delete_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId)
   output <- .budgets$delete_budget_action_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -230,12 +242,13 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
     name = "DeleteNotification",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$delete_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification)
   output <- .budgets$delete_notification_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -263,12 +276,13 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
     name = "DeleteSubscriber",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$delete_subscriber_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, Subscriber = Subscriber)
   output <- .budgets$delete_subscriber_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -294,12 +308,13 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
     name = "DescribeBudget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$describe_budget_input(AccountId = AccountId, BudgetName = BudgetName)
   output <- .budgets$describe_budget_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -325,12 +340,13 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
     name = "DescribeBudgetAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$describe_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId)
   output <- .budgets$describe_budget_action_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -359,12 +375,13 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
     name = "DescribeBudgetActionHistories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActionHistories")
   )
   input <- .budgets$describe_budget_action_histories_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_action_histories_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -390,12 +407,13 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
     name = "DescribeBudgetActionsForAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
   )
   input <- .budgets$describe_budget_actions_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_account_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -422,12 +440,13 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
     name = "DescribeBudgetActionsForBudget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
   )
   input <- .budgets$describe_budget_actions_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_budget_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -455,12 +474,13 @@ budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResu
     name = "DescribeBudgetNotificationsForAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetNotificationsForAccount")
   )
   input <- .budgets$describe_budget_notifications_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_notifications_for_account_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -489,12 +509,13 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
     name = "DescribeBudgetPerformanceHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetPerformanceHistory")
   )
   input <- .budgets$describe_budget_performance_history_input(AccountId = AccountId, BudgetName = BudgetName, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_performance_history_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -523,12 +544,13 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
     name = "DescribeBudgets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Budgets")
   )
   input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budgets_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -558,12 +580,13 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
     name = "DescribeNotificationsForBudget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Notifications")
   )
   input <- .budgets$describe_notifications_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_notifications_for_budget_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -594,12 +617,13 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
     name = "DescribeSubscribersForNotification",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscribers")
   )
   input <- .budgets$describe_subscribers_for_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_subscribers_for_notification_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -626,17 +650,110 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
     name = "ExecuteBudgetAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$execute_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, ExecutionType = ExecutionType)
   output <- .budgets$execute_budget_action_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .budgets$operations$execute_budget_action <- budgets_execute_budget_action
+
+#' Lists tags associated with a budget or budget action resource
+#'
+#' @description
+#' Lists tags associated with a budget or budget action resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/budgets_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/budgets_list_tags_for_resource/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The unique identifier for the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname budgets_list_tags_for_resource
+budgets_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .budgets$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .budgets$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .budgets$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.budgets$operations$list_tags_for_resource <- budgets_list_tags_for_resource
+
+#' Creates tags for a budget or budget action resource
+#'
+#' @description
+#' Creates tags for a budget or budget action resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/budgets_tag_resource/](https://www.paws-r-sdk.com/docs/budgets_tag_resource/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The unique identifier for the resource.
+#' @param ResourceTags &#91;required&#93; The tags associated with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname budgets_tag_resource
+budgets_tag_resource <- function(ResourceARN, ResourceTags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .budgets$tag_resource_input(ResourceARN = ResourceARN, ResourceTags = ResourceTags)
+  output <- .budgets$tag_resource_output()
+  config <- get_config()
+  svc <- .budgets$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.budgets$operations$tag_resource <- budgets_tag_resource
+
+#' Deletes tags associated with a budget or budget action resource
+#'
+#' @description
+#' Deletes tags associated with a budget or budget action resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/budgets_untag_resource/](https://www.paws-r-sdk.com/docs/budgets_untag_resource/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The unique identifier for the resource.
+#' @param ResourceTagKeys &#91;required&#93; The key that's associated with the tag.
+#'
+#' @keywords internal
+#'
+#' @rdname budgets_untag_resource
+budgets_untag_resource <- function(ResourceARN, ResourceTagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .budgets$untag_resource_input(ResourceARN = ResourceARN, ResourceTagKeys = ResourceTagKeys)
+  output <- .budgets$untag_resource_output()
+  config <- get_config()
+  svc <- .budgets$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.budgets$operations$untag_resource <- budgets_untag_resource
 
 #' Updates a budget
 #'
@@ -657,12 +774,13 @@ budgets_update_budget <- function(AccountId, NewBudget) {
     name = "UpdateBudget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$update_budget_input(AccountId = AccountId, NewBudget = NewBudget)
   output <- .budgets$update_budget_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -695,12 +813,13 @@ budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, Notifi
     name = "UpdateBudgetAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$update_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, NotificationType = NotificationType, ActionThreshold = ActionThreshold, Definition = Definition, ExecutionRoleArn = ExecutionRoleArn, ApprovalModel = ApprovalModel, Subscribers = Subscribers)
   output <- .budgets$update_budget_action_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -728,12 +847,13 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
     name = "UpdateNotification",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$update_notification_input(AccountId = AccountId, BudgetName = BudgetName, OldNotification = OldNotification, NewNotification = NewNotification)
   output <- .budgets$update_notification_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -762,12 +882,13 @@ budgets_update_subscriber <- function(AccountId, BudgetName, Notification, OldSu
     name = "UpdateSubscriber",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .budgets$update_subscriber_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, OldSubscriber = OldSubscriber, NewSubscriber = NewSubscriber)
   output <- .budgets$update_subscriber_output()
   config <- get_config()
-  svc <- .budgets$service(config)
+  svc <- .budgets$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

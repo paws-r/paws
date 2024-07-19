@@ -2,12 +2,12 @@
 % Please edit documentation in R/codegurusecurity_operations.R
 \name{codegurusecurity_get_account_configuration}
 \alias{codegurusecurity_get_account_configuration}
-\title{Use to get account level configuration}
+\title{Use to get the encryption configuration for an account}
 \usage{
 codegurusecurity_get_account_configuration()
 }
 \description{
-Use to get account level configuration.
+Use to get the encryption configuration for an account.
 
 See \url{https://www.paws-r-sdk.com/docs/codegurusecurity_get_account_configuration/} for full documentation.
 }

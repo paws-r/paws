@@ -147,7 +147,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
   target_prefix = ""
 )
 
-.opensearchingestion$service <- function(config = list()) {
+.opensearchingestion$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.opensearchingestion$metadata, handlers, config)
+  new_service(.opensearchingestion$metadata, handlers, config, op)
 }

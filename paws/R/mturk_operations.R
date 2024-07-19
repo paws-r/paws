@@ -47,12 +47,13 @@ mturk_accept_qualification_request <- function(QualificationRequestId, IntegerVa
     name = "AcceptQualificationRequest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$accept_qualification_request_input(QualificationRequestId = QualificationRequestId, IntegerValue = IntegerValue)
   output <- .mturk$accept_qualification_request_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -119,12 +120,13 @@ mturk_approve_assignment <- function(AssignmentId, RequesterFeedback = NULL, Ove
     name = "ApproveAssignment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$approve_assignment_input(AssignmentId = AssignmentId, RequesterFeedback = RequesterFeedback, OverrideRejection = OverrideRejection)
   output <- .mturk$approve_assignment_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -194,12 +196,13 @@ mturk_associate_qualification_with_worker <- function(QualificationTypeId, Worke
     name = "AssociateQualificationWithWorker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$associate_qualification_with_worker_input(QualificationTypeId = QualificationTypeId, WorkerId = WorkerId, IntegerValue = IntegerValue, SendNotification = SendNotification)
   output <- .mturk$associate_qualification_with_worker_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -265,12 +268,13 @@ mturk_create_additional_assignments_for_hit <- function(HITId, NumberOfAdditiona
     name = "CreateAdditionalAssignmentsForHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$create_additional_assignments_for_hit_input(HITId = HITId, NumberOfAdditionalAssignments = NumberOfAdditionalAssignments, UniqueRequestToken = UniqueRequestToken)
   output <- .mturk$create_additional_assignments_for_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -532,12 +536,13 @@ mturk_create_hit <- function(MaxAssignments = NULL, AutoApprovalDelayInSeconds =
     name = "CreateHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$create_hit_input(MaxAssignments = MaxAssignments, AutoApprovalDelayInSeconds = AutoApprovalDelayInSeconds, LifetimeInSeconds = LifetimeInSeconds, AssignmentDurationInSeconds = AssignmentDurationInSeconds, Reward = Reward, Title = Title, Keywords = Keywords, Description = Description, Question = Question, RequesterAnnotation = RequesterAnnotation, QualificationRequirements = QualificationRequirements, UniqueRequestToken = UniqueRequestToken, AssignmentReviewPolicy = AssignmentReviewPolicy, HITReviewPolicy = HITReviewPolicy, HITLayoutId = HITLayoutId, HITLayoutParameters = HITLayoutParameters)
   output <- .mturk$create_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -633,12 +638,13 @@ mturk_create_hit_type <- function(AutoApprovalDelayInSeconds = NULL, AssignmentD
     name = "CreateHITType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$create_hit_type_input(AutoApprovalDelayInSeconds = AutoApprovalDelayInSeconds, AssignmentDurationInSeconds = AssignmentDurationInSeconds, Reward = Reward, Title = Title, Keywords = Keywords, Description = Description, QualificationRequirements = QualificationRequirements)
   output <- .mturk$create_hit_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -844,12 +850,13 @@ mturk_create_hit_with_hit_type <- function(HITTypeId, MaxAssignments = NULL, Lif
     name = "CreateHITWithHITType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$create_hit_with_hit_type_input(HITTypeId = HITTypeId, MaxAssignments = MaxAssignments, LifetimeInSeconds = LifetimeInSeconds, Question = Question, RequesterAnnotation = RequesterAnnotation, UniqueRequestToken = UniqueRequestToken, AssignmentReviewPolicy = AssignmentReviewPolicy, HITReviewPolicy = HITReviewPolicy, HITLayoutId = HITLayoutId, HITLayoutParameters = HITLayoutParameters)
   output <- .mturk$create_hit_with_hit_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -970,12 +977,13 @@ mturk_create_qualification_type <- function(Name, Keywords = NULL, Description, 
     name = "CreateQualificationType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$create_qualification_type_input(Name = Name, Keywords = Keywords, Description = Description, QualificationTypeStatus = QualificationTypeStatus, RetryDelayInSeconds = RetryDelayInSeconds, Test = Test, AnswerKey = AnswerKey, TestDurationInSeconds = TestDurationInSeconds, AutoGranted = AutoGranted, AutoGrantedValue = AutoGrantedValue)
   output <- .mturk$create_qualification_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1020,12 +1028,13 @@ mturk_create_worker_block <- function(WorkerId, Reason) {
     name = "CreateWorkerBlock",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$create_worker_block_input(WorkerId = WorkerId, Reason = Reason)
   output <- .mturk$create_worker_block_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1083,12 +1092,13 @@ mturk_delete_hit <- function(HITId) {
     name = "DeleteHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$delete_hit_input(HITId = HITId)
   output <- .mturk$delete_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1140,12 +1150,13 @@ mturk_delete_qualification_type <- function(QualificationTypeId) {
     name = "DeleteQualificationType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$delete_qualification_type_input(QualificationTypeId = QualificationTypeId)
   output <- .mturk$delete_qualification_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1192,12 +1203,13 @@ mturk_delete_worker_block <- function(WorkerId, Reason = NULL) {
     name = "DeleteWorkerBlock",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$delete_worker_block_input(WorkerId = WorkerId, Reason = Reason)
   output <- .mturk$delete_worker_block_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1246,12 +1258,13 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
     name = "DisassociateQualificationFromWorker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$disassociate_qualification_from_worker_input(WorkerId = WorkerId, QualificationTypeId = QualificationTypeId, Reason = Reason)
   output <- .mturk$disassociate_qualification_from_worker_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1299,12 +1312,13 @@ mturk_get_account_balance <- function() {
     name = "GetAccountBalance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$get_account_balance_input()
   output <- .mturk$get_account_balance_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1416,12 +1430,13 @@ mturk_get_assignment <- function(AssignmentId) {
     name = "GetAssignment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$get_assignment_input(AssignmentId = AssignmentId)
   output <- .mturk$get_assignment_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1478,12 +1493,13 @@ mturk_get_file_upload_url <- function(AssignmentId, QuestionIdentifier) {
     name = "GetFileUploadURL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$get_file_upload_url_input(AssignmentId = AssignmentId, QuestionIdentifier = QuestionIdentifier)
   output <- .mturk$get_file_upload_url_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1568,12 +1584,13 @@ mturk_get_hit <- function(HITId) {
     name = "GetHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$get_hit_input(HITId = HITId)
   output <- .mturk$get_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1639,12 +1656,13 @@ mturk_get_qualification_score <- function(QualificationTypeId, WorkerId) {
     name = "GetQualificationScore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$get_qualification_score_input(QualificationTypeId = QualificationTypeId, WorkerId = WorkerId)
   output <- .mturk$get_qualification_score_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1704,12 +1722,13 @@ mturk_get_qualification_type <- function(QualificationTypeId) {
     name = "GetQualificationType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$get_qualification_type_input(QualificationTypeId = QualificationTypeId)
   output <- .mturk$get_qualification_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1811,12 +1830,13 @@ mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults =
     name = "ListAssignmentsForHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_assignments_for_hit_input(HITId = HITId, NextToken = NextToken, MaxResults = MaxResults, AssignmentStatuses = AssignmentStatuses)
   output <- .mturk$list_assignments_for_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1885,12 +1905,13 @@ mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextTok
     name = "ListBonusPayments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_bonus_payments_input(HITId = HITId, AssignmentId = AssignmentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_bonus_payments_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1983,12 +2004,13 @@ mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListHITs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_hi_ts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_hi_ts_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2088,12 +2110,13 @@ mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextTok
     name = "ListHITsForQualificationType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_hi_ts_for_qualification_type_input(QualificationTypeId = QualificationTypeId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_hi_ts_for_qualification_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2158,12 +2181,13 @@ mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextTo
     name = "ListQualificationRequests",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_qualification_requests_input(QualificationTypeId = QualificationTypeId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_qualification_requests_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2244,12 +2268,13 @@ mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, Must
     name = "ListQualificationTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_qualification_types_input(Query = Query, MustBeRequestable = MustBeRequestable, MustBeOwnedByCaller = MustBeOwnedByCaller, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_qualification_types_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2408,12 +2433,13 @@ mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL,
     name = "ListReviewPolicyResultsForHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_review_policy_results_for_hit_input(HITId = HITId, PolicyLevels = PolicyLevels, RetrieveActions = RetrieveActions, RetrieveResults = RetrieveResults, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_review_policy_results_for_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2513,12 +2539,13 @@ mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextTok
     name = "ListReviewableHITs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_reviewable_hi_ts_input(HITTypeId = HITTypeId, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_reviewable_hi_ts_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2571,12 +2598,13 @@ mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListWorkerBlocks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_worker_blocks_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_worker_blocks_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2645,12 +2673,13 @@ mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Stat
     name = "ListWorkersWithQualificationType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_workers_with_qualification_type_input(QualificationTypeId = QualificationTypeId, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_workers_with_qualification_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2713,12 +2742,13 @@ mturk_notify_workers <- function(Subject, MessageText, WorkerIds) {
     name = "NotifyWorkers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$notify_workers_input(Subject = Subject, MessageText = MessageText, WorkerIds = WorkerIds)
   output <- .mturk$notify_workers_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2770,12 +2800,13 @@ mturk_reject_assignment <- function(AssignmentId, RequesterFeedback) {
     name = "RejectAssignment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$reject_assignment_input(AssignmentId = AssignmentId, RequesterFeedback = RequesterFeedback)
   output <- .mturk$reject_assignment_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2822,12 +2853,13 @@ mturk_reject_qualification_request <- function(QualificationRequestId, Reason = 
     name = "RejectQualificationRequest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$reject_qualification_request_input(QualificationRequestId = QualificationRequestId, Reason = Reason)
   output <- .mturk$reject_qualification_request_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2891,12 +2923,13 @@ mturk_send_bonus <- function(WorkerId, BonusAmount, AssignmentId, Reason, Unique
     name = "SendBonus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$send_bonus_input(WorkerId = WorkerId, BonusAmount = BonusAmount, AssignmentId = AssignmentId, Reason = Reason, UniqueRequestToken = UniqueRequestToken)
   output <- .mturk$send_bonus_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2955,12 +2988,13 @@ mturk_send_test_event_notification <- function(Notification, TestEventType) {
     name = "SendTestEventNotification",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$send_test_event_notification_input(Notification = Notification, TestEventType = TestEventType)
   output <- .mturk$send_test_event_notification_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3004,12 +3038,13 @@ mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
     name = "UpdateExpirationForHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$update_expiration_for_hit_input(HITId = HITId, ExpireAt = ExpireAt)
   output <- .mturk$update_expiration_for_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3057,12 +3092,13 @@ mturk_update_hit_review_status <- function(HITId, Revert = NULL) {
     name = "UpdateHITReviewStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$update_hit_review_status_input(HITId = HITId, Revert = Revert)
   output <- .mturk$update_hit_review_status_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3106,12 +3142,13 @@ mturk_update_hit_type_of_hit <- function(HITId, HITTypeId) {
     name = "UpdateHITTypeOfHIT",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$update_hit_type_of_hit_input(HITId = HITId, HITTypeId = HITTypeId)
   output <- .mturk$update_hit_type_of_hit_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3175,12 +3212,13 @@ mturk_update_notification_settings <- function(HITTypeId, Notification = NULL, A
     name = "UpdateNotificationSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$update_notification_settings_input(HITTypeId = HITTypeId, Notification = Notification, Active = Active)
   output <- .mturk$update_notification_settings_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3315,12 +3353,13 @@ mturk_update_qualification_type <- function(QualificationTypeId, Description = N
     name = "UpdateQualificationType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .mturk$update_qualification_type_input(QualificationTypeId = QualificationTypeId, Description = Description, QualificationTypeStatus = QualificationTypeStatus, Test = Test, AnswerKey = AnswerKey, TestDurationInSeconds = TestDurationInSeconds, RetryDelayInSeconds = RetryDelayInSeconds, AutoGranted = AutoGranted, AutoGrantedValue = AutoGrantedValue)
   output <- .mturk$update_qualification_type_output()
   config <- get_config()
-  svc <- .mturk$service(config)
+  svc <- .mturk$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

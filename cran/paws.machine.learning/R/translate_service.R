@@ -149,7 +149,7 @@ translate <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = "AWSShineFrontendService_20170701"
 )
 
-.translate$service <- function(config = list()) {
+.translate$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.translate$metadata, handlers, config)
+  new_service(.translate$metadata, handlers, config, op)
 }

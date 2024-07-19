@@ -12,7 +12,8 @@ sagemaker_update_model_package(
   CustomerMetadataPropertiesToRemove = NULL,
   AdditionalInferenceSpecificationsToAdd = NULL,
   InferenceSpecification = NULL,
-  SourceUri = NULL
+  SourceUri = NULL,
+  ModelCard = NULL
 )
 }
 \arguments{
@@ -46,6 +47,16 @@ for inference.
 }}
 
 \item{SourceUri}{The URI of the source for the model package.}
+
+\item{ModelCard}{The model card associated with the model package. Since
+\code{ModelPackageModelCard} is tied to a model package, it is a specific
+usage of a model card and its schema is simplified compared to the
+schema of \code{ModelCard}. The \code{ModelPackageModelCard} schema does not
+include \code{model_package_details}, and \code{model_overview} is composed of the
+\code{model_creator} and \code{model_artifact} properties. For more information
+about the model package model card schema, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html#model-card-schema}{Model package model card schema}.
+For more information about the model card associated with the model
+package, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html}{View the Details of a Model Version}.}
 }
 \description{
 Updates a versioned model.

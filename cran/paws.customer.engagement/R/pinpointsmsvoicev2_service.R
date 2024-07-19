@@ -255,7 +255,7 @@ pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint =
   target_prefix = "PinpointSMSVoiceV2"
 )
 
-.pinpointsmsvoicev2$service <- function(config = list()) {
+.pinpointsmsvoicev2$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.pinpointsmsvoicev2$metadata, handlers, config)
+  new_service(.pinpointsmsvoicev2$metadata, handlers, config, op)
 }

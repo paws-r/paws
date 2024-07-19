@@ -2,13 +2,12 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_describe_virtual_gateways}
 \alias{directconnect_describe_virtual_gateways}
-\title{Lists the virtual private gateways owned by the Amazon Web Services
-account}
+\title{Deprecated}
 \usage{
 directconnect_describe_virtual_gateways()
 }
 \description{
-Lists the virtual private gateways owned by the Amazon Web Services account.
+Deprecated. Use \code{DescribeVpnGateways} instead. See \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html}{DescribeVPNGateways} in the \emph{Amazon Elastic Compute Cloud API Reference}.
 
 See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_virtual_gateways/} for full documentation.
 }

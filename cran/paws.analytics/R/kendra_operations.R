@@ -23,12 +23,13 @@ kendra_associate_entities_to_experience <- function(Id, IndexId, EntityList) {
     name = "AssociateEntitiesToExperience",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$associate_entities_to_experience_input(Id = Id, IndexId = IndexId, EntityList = EntityList)
   output <- .kendra$associate_entities_to_experience_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -59,12 +60,13 @@ kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
     name = "AssociatePersonasToEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$associate_personas_to_entities_input(Id = Id, IndexId = IndexId, Personas = Personas)
   output <- .kendra$associate_personas_to_entities_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -90,12 +92,13 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
     name = "BatchDeleteDocument",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$batch_delete_document_input(IndexId = IndexId, DocumentIdList = DocumentIdList, DataSourceSyncJobMetricTarget = DataSourceSyncJobMetricTarget)
   output <- .kendra$batch_delete_document_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -120,12 +123,13 @@ kendra_batch_delete_featured_results_set <- function(IndexId, FeaturedResultsSet
     name = "BatchDeleteFeaturedResultsSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$batch_delete_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetIds = FeaturedResultsSetIds)
   output <- .kendra$batch_delete_featured_results_set_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -156,12 +160,13 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
     name = "BatchGetDocumentStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$batch_get_document_status_input(IndexId = IndexId, DocumentInfoList = DocumentInfoList)
   output <- .kendra$batch_get_document_status_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -208,12 +213,13 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents, Custom
     name = "BatchPutDocument",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$batch_put_document_input(IndexId = IndexId, RoleArn = RoleArn, Documents = Documents, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$batch_put_document_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -237,12 +243,13 @@ kendra_clear_query_suggestions <- function(IndexId) {
     name = "ClearQuerySuggestions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$clear_query_suggestions_input(IndexId = IndexId)
   output <- .kendra$clear_query_suggestions_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -282,12 +289,13 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
     name = "CreateAccessControlConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_access_control_configuration_input(IndexId = IndexId, Name = Name, Description = Description, AccessControlList = AccessControlList, HierarchicalAccessControlList = HierarchicalAccessControlList, ClientToken = ClientToken)
   output <- .kendra$create_access_control_configuration_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -369,12 +377,13 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
     name = "CreateDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_data_source_input(Name = Name, IndexId = IndexId, Type = Type, Configuration = Configuration, VpcConfiguration = VpcConfiguration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, Tags = Tags, ClientToken = ClientToken, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$create_data_source_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -416,12 +425,13 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
     name = "CreateExperience",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_experience_input(Name = Name, IndexId = IndexId, RoleArn = RoleArn, Configuration = Configuration, Description = Description, ClientToken = ClientToken)
   output <- .kendra$create_experience_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -474,12 +484,13 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
     name = "CreateFaq",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_faq_input(IndexId = IndexId, Name = Name, Description = Description, S3Path = S3Path, RoleArn = RoleArn, Tags = Tags, FileFormat = FileFormat, ClientToken = ClientToken, LanguageCode = LanguageCode)
   output <- .kendra$create_faq_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -530,12 +541,13 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
     name = "CreateFeaturedResultsSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetName = FeaturedResultsSetName, Description = Description, ClientToken = ClientToken, Status = Status, QueryTexts = QueryTexts, FeaturedDocuments = FeaturedDocuments, Tags = Tags)
   output <- .kendra$create_featured_results_set_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -605,12 +617,13 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
     name = "CreateIndex",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_index_input(Name = Name, Edition = Edition, RoleArn = RoleArn, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration, Description = Description, ClientToken = ClientToken, Tags = Tags, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy, UserGroupResolutionConfiguration = UserGroupResolutionConfiguration)
   output <- .kendra$create_index_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -660,12 +673,13 @@ kendra_create_query_suggestions_block_list <- function(IndexId, Name, Descriptio
     name = "CreateQuerySuggestionsBlockList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_query_suggestions_block_list_input(IndexId = IndexId, Name = Name, Description = Description, SourceS3Path = SourceS3Path, ClientToken = ClientToken, RoleArn = RoleArn, Tags = Tags)
   output <- .kendra$create_query_suggestions_block_list_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -703,12 +717,13 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
     name = "CreateThesaurus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$create_thesaurus_input(IndexId = IndexId, Name = Name, Description = Description, RoleArn = RoleArn, Tags = Tags, SourceS3Path = SourceS3Path, ClientToken = ClientToken)
   output <- .kendra$create_thesaurus_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -734,12 +749,13 @@ kendra_delete_access_control_configuration <- function(IndexId, Id) {
     name = "DeleteAccessControlConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_access_control_configuration_input(IndexId = IndexId, Id = Id)
   output <- .kendra$delete_access_control_configuration_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -764,12 +780,13 @@ kendra_delete_data_source <- function(Id, IndexId) {
     name = "DeleteDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_data_source_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_data_source_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -794,12 +811,13 @@ kendra_delete_experience <- function(Id, IndexId) {
     name = "DeleteExperience",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_experience_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_experience_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -824,12 +842,13 @@ kendra_delete_faq <- function(Id, IndexId) {
     name = "DeleteFaq",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_faq_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_faq_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -853,12 +872,13 @@ kendra_delete_index <- function(Id) {
     name = "DeleteIndex",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_index_input(Id = Id)
   output <- .kendra$delete_index_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -910,12 +930,13 @@ kendra_delete_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupI
     name = "DeletePrincipalMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId, OrderingId = OrderingId)
   output <- .kendra$delete_principal_mapping_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -940,12 +961,13 @@ kendra_delete_query_suggestions_block_list <- function(IndexId, Id) {
     name = "DeleteQuerySuggestionsBlockList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_query_suggestions_block_list_input(IndexId = IndexId, Id = Id)
   output <- .kendra$delete_query_suggestions_block_list_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -970,12 +992,13 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
     name = "DeleteThesaurus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$delete_thesaurus_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_thesaurus_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1002,12 +1025,13 @@ kendra_describe_access_control_configuration <- function(IndexId, Id) {
     name = "DescribeAccessControlConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_access_control_configuration_input(IndexId = IndexId, Id = Id)
   output <- .kendra$describe_access_control_configuration_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1032,12 +1056,13 @@ kendra_describe_data_source <- function(Id, IndexId) {
     name = "DescribeDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_data_source_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_data_source_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1064,12 +1089,13 @@ kendra_describe_experience <- function(Id, IndexId) {
     name = "DescribeExperience",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_experience_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_experience_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1094,12 +1120,13 @@ kendra_describe_faq <- function(Id, IndexId) {
     name = "DescribeFaq",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_faq_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_faq_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1125,12 +1152,13 @@ kendra_describe_featured_results_set <- function(IndexId, FeaturedResultsSetId) 
     name = "DescribeFeaturedResultsSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetId = FeaturedResultsSetId)
   output <- .kendra$describe_featured_results_set_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1154,12 +1182,13 @@ kendra_describe_index <- function(Id) {
     name = "DescribeIndex",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_index_input(Id = Id)
   output <- .kendra$describe_index_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1189,12 +1218,13 @@ kendra_describe_principal_mapping <- function(IndexId, DataSourceId = NULL, Grou
     name = "DescribePrincipalMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId)
   output <- .kendra$describe_principal_mapping_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1220,12 +1250,13 @@ kendra_describe_query_suggestions_block_list <- function(IndexId, Id) {
     name = "DescribeQuerySuggestionsBlockList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_query_suggestions_block_list_input(IndexId = IndexId, Id = Id)
   output <- .kendra$describe_query_suggestions_block_list_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1250,12 +1281,13 @@ kendra_describe_query_suggestions_config <- function(IndexId) {
     name = "DescribeQuerySuggestionsConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_query_suggestions_config_input(IndexId = IndexId)
   output <- .kendra$describe_query_suggestions_config_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1280,12 +1312,13 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
     name = "DescribeThesaurus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$describe_thesaurus_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_thesaurus_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1312,12 +1345,13 @@ kendra_disassociate_entities_from_experience <- function(Id, IndexId, EntityList
     name = "DisassociateEntitiesFromExperience",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$disassociate_entities_from_experience_input(Id = Id, IndexId = IndexId, EntityList = EntityList)
   output <- .kendra$disassociate_entities_from_experience_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1345,12 +1379,13 @@ kendra_disassociate_personas_from_entities <- function(Id, IndexId, EntityIds) {
     name = "DisassociatePersonasFromEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$disassociate_personas_from_entities_input(Id = Id, IndexId = IndexId, EntityIds = EntityIds)
   output <- .kendra$disassociate_personas_from_entities_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1397,12 +1432,13 @@ kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount
     name = "GetQuerySuggestions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$get_query_suggestions_input(IndexId = IndexId, QueryText = QueryText, MaxSuggestionsCount = MaxSuggestionsCount, SuggestionTypes = SuggestionTypes, AttributeSuggestionsConfig = AttributeSuggestionsConfig)
   output <- .kendra$get_query_suggestions_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1458,12 +1494,13 @@ kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL
     name = "GetSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$get_snapshots_input(IndexId = IndexId, Interval = Interval, MetricType = MetricType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$get_snapshots_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1492,12 +1529,13 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
     name = "ListAccessControlConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_access_control_configurations_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_access_control_configurations_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1532,12 +1570,13 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
     name = "ListDataSourceSyncJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_data_source_sync_jobs_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults, StartTimeFilter = StartTimeFilter, StatusFilter = StatusFilter)
   output <- .kendra$list_data_source_sync_jobs_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1567,12 +1606,13 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
     name = "ListDataSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_data_sources_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_data_sources_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1603,12 +1643,13 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
     name = "ListEntityPersonas",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_entity_personas_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_entity_personas_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1638,12 +1679,13 @@ kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
     name = "ListExperienceEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .kendra$list_experience_entities_input(Id = Id, IndexId = IndexId, NextToken = NextToken)
   output <- .kendra$list_experience_entities_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1672,12 +1714,13 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
     name = "ListExperiences",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_experiences_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_experiences_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1706,12 +1749,13 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     name = "ListFaqs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_faqs_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_faqs_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1739,12 +1783,13 @@ kendra_list_featured_results_sets <- function(IndexId, NextToken = NULL, MaxResu
     name = "ListFeaturedResultsSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$list_featured_results_sets_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_featured_results_sets_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1780,12 +1825,13 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
     name = "ListGroupsOlderThanOrderingId",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_groups_older_than_ordering_id_input(IndexId = IndexId, DataSourceId = DataSourceId, OrderingId = OrderingId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_groups_older_than_ordering_id_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1812,12 +1858,13 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListIndices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_indices_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_indices_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1851,12 +1898,13 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
     name = "ListQuerySuggestionsBlockLists",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_query_suggestions_block_lists_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_query_suggestions_block_lists_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1881,12 +1929,13 @@ kendra_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .kendra$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1915,12 +1964,13 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     name = "ListThesauri",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_thesauri_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_thesauri_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1986,12 +2036,13 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
     name = "PutPrincipalMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$put_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId, GroupMembers = GroupMembers, OrderingId = OrderingId, RoleArn = RoleArn)
   output <- .kendra$put_principal_mapping_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2079,12 +2130,13 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
     name = "Query",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, SortingConfigurations = SortingConfigurations, UserContext = UserContext, VisitorId = VisitorId, SpellCorrectionConfiguration = SpellCorrectionConfiguration, CollapseConfiguration = CollapseConfiguration)
   output <- .kendra$query_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2145,12 +2197,13 @@ kendra_retrieve <- function(IndexId, QueryText, AttributeFilter = NULL, Requeste
     name = "Retrieve",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$retrieve_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, RequestedDocumentAttributes = RequestedDocumentAttributes, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, UserContext = UserContext)
   output <- .kendra$retrieve_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2175,12 +2228,13 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
     name = "StartDataSourceSyncJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$start_data_source_sync_job_input(Id = Id, IndexId = IndexId)
   output <- .kendra$start_data_source_sync_job_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2206,12 +2260,13 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
     name = "StopDataSourceSyncJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$stop_data_source_sync_job_input(Id = Id, IndexId = IndexId)
   output <- .kendra$stop_data_source_sync_job_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2243,12 +2298,13 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
     name = "SubmitFeedback",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$submit_feedback_input(IndexId = IndexId, QueryId = QueryId, ClickFeedbackItems = ClickFeedbackItems, RelevanceFeedbackItems = RelevanceFeedbackItems)
   output <- .kendra$submit_feedback_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2275,12 +2331,13 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .kendra$tag_resource_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2307,12 +2364,13 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .kendra$untag_resource_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2347,12 +2405,13 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
     name = "UpdateAccessControlConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_access_control_configuration_input(IndexId = IndexId, Id = Id, Name = Name, Description = Description, AccessControlList = AccessControlList, HierarchicalAccessControlList = HierarchicalAccessControlList)
   output <- .kendra$update_access_control_configuration_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2403,12 +2462,13 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
     name = "UpdateDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_data_source_input(Id = Id, Name = Name, IndexId = IndexId, Configuration = Configuration, VpcConfiguration = VpcConfiguration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$update_data_source_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2443,12 +2503,13 @@ kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, C
     name = "UpdateExperience",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_experience_input(Id = Id, Name = Name, IndexId = IndexId, RoleArn = RoleArn, Configuration = Configuration, Description = Description)
   output <- .kendra$update_experience_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2487,12 +2548,13 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
     name = "UpdateFeaturedResultsSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetId = FeaturedResultsSetId, FeaturedResultsSetName = FeaturedResultsSetName, Description = Description, Status = Status, QueryTexts = QueryTexts, FeaturedDocuments = FeaturedDocuments)
   output <- .kendra$update_featured_results_set_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2538,12 +2600,13 @@ kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = N
     name = "UpdateIndex",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_index_input(Id = Id, Name = Name, RoleArn = RoleArn, Description = Description, DocumentMetadataConfigurationUpdates = DocumentMetadataConfigurationUpdates, CapacityUnits = CapacityUnits, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy, UserGroupResolutionConfiguration = UserGroupResolutionConfiguration)
   output <- .kendra$update_index_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2584,12 +2647,13 @@ kendra_update_query_suggestions_block_list <- function(IndexId, Id, Name = NULL,
     name = "UpdateQuerySuggestionsBlockList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_query_suggestions_block_list_input(IndexId = IndexId, Id = Id, Name = Name, Description = Description, SourceS3Path = SourceS3Path, RoleArn = RoleArn)
   output <- .kendra$update_query_suggestions_block_list_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2659,12 +2723,13 @@ kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLo
     name = "UpdateQuerySuggestionsConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_query_suggestions_config_input(IndexId = IndexId, Mode = Mode, QueryLogLookBackWindowInDays = QueryLogLookBackWindowInDays, IncludeQueriesWithoutUserInformation = IncludeQueriesWithoutUserInformation, MinimumNumberOfQueryingUsers = MinimumNumberOfQueryingUsers, MinimumQueryCount = MinimumQueryCount, AttributeSuggestionsConfig = AttributeSuggestionsConfig)
   output <- .kendra$update_query_suggestions_config_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2694,12 +2759,13 @@ kendra_update_thesaurus <- function(Id, Name = NULL, IndexId, Description = NULL
     name = "UpdateThesaurus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kendra$update_thesaurus_input(Id = Id, Name = Name, IndexId = IndexId, Description = Description, RoleArn = RoleArn, SourceS3Path = SourceS3Path)
   output <- .kendra$update_thesaurus_output()
   config <- get_config()
-  svc <- .kendra$service(config)
+  svc <- .kendra$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

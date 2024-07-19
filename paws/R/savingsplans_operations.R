@@ -59,12 +59,13 @@ savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, 
     name = "CreateSavingsPlan",
     http_method = "POST",
     http_path = "/CreateSavingsPlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$create_savings_plan_input(savingsPlanOfferingId = savingsPlanOfferingId, commitment = commitment, upfrontPaymentAmount = upfrontPaymentAmount, purchaseTime = purchaseTime, clientToken = clientToken, tags = tags)
   output <- .savingsplans$create_savings_plan_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -101,12 +102,13 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
     name = "DeleteQueuedSavingsPlan",
     http_method = "POST",
     http_path = "/DeleteQueuedSavingsPlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$delete_queued_savings_plan_input(savingsPlanId = savingsPlanId)
   output <- .savingsplans$delete_queued_savings_plan_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -181,12 +183,13 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
     name = "DescribeSavingsPlanRates",
     http_method = "POST",
     http_path = "/DescribeSavingsPlanRates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$describe_savings_plan_rates_input(savingsPlanId = savingsPlanId, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .savingsplans$describe_savings_plan_rates_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -280,12 +283,13 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
     name = "DescribeSavingsPlans",
     http_method = "POST",
     http_path = "/DescribeSavingsPlans",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$describe_savings_plans_input(savingsPlanArns = savingsPlanArns, savingsPlanIds = savingsPlanIds, nextToken = nextToken, maxResults = maxResults, states = states, filters = filters)
   output <- .savingsplans$describe_savings_plans_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -395,12 +399,13 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
     name = "DescribeSavingsPlansOfferingRates",
     http_method = "POST",
     http_path = "/DescribeSavingsPlansOfferingRates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$describe_savings_plans_offering_rates_input(savingsPlanOfferingIds = savingsPlanOfferingIds, savingsPlanPaymentOptions = savingsPlanPaymentOptions, savingsPlanTypes = savingsPlanTypes, products = products, serviceCodes = serviceCodes, usageTypes = usageTypes, operations = operations, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .savingsplans$describe_savings_plans_offering_rates_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -518,12 +523,13 @@ savingsplans_describe_savings_plans_offerings <- function(offeringIds = NULL, pa
     name = "DescribeSavingsPlansOfferings",
     http_method = "POST",
     http_path = "/DescribeSavingsPlansOfferings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$describe_savings_plans_offerings_input(offeringIds = offeringIds, paymentOptions = paymentOptions, productType = productType, planTypes = planTypes, durations = durations, currencies = currencies, descriptions = descriptions, serviceCodes = serviceCodes, usageTypes = usageTypes, operations = operations, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .savingsplans$describe_savings_plans_offerings_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -567,12 +573,13 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/ListTagsForResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .savingsplans$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -617,12 +624,13 @@ savingsplans_return_savings_plan <- function(savingsPlanId, clientToken = NULL) 
     name = "ReturnSavingsPlan",
     http_method = "POST",
     http_path = "/ReturnSavingsPlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$return_savings_plan_input(savingsPlanId = savingsPlanId, clientToken = clientToken)
   output <- .savingsplans$return_savings_plan_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -664,12 +672,13 @@ savingsplans_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/TagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .savingsplans$tag_resource_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -710,12 +719,13 @@ savingsplans_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/UntagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .savingsplans$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .savingsplans$untag_resource_output()
   config <- get_config()
-  svc <- .savingsplans$service(config)
+  svc <- .savingsplans$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

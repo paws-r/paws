@@ -49,7 +49,7 @@ the warm pool on scale in. The default is to terminate instances in the
 Auto Scaling group when the group scales in.}
 }
 \description{
-Creates or updates a warm pool for the specified Auto Scaling group. A warm pool is a pool of pre-initialized EC2 instances that sits alongside the Auto Scaling group. Whenever your application needs to scale out, the Auto Scaling group can draw on the warm pool to meet its new desired capacity. For more information and example configurations, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html}{Warm pools for Amazon EC2 Auto Scaling} in the \emph{Amazon EC2 Auto Scaling User Guide}.
+Creates or updates a warm pool for the specified Auto Scaling group. A warm pool is a pool of pre-initialized EC2 instances that sits alongside the Auto Scaling group. Whenever your application needs to scale out, the Auto Scaling group can draw on the warm pool to meet its new desired capacity.
 
 See \url{https://www.paws-r-sdk.com/docs/autoscaling_put_warm_pool/} for full documentation.
 }

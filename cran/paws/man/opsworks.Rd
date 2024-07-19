@@ -48,42 +48,44 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Welcome to the \emph{AWS OpsWorks Stacks API Reference}. This guide provides
-descriptions, syntax, and usage examples for AWS OpsWorks Stacks actions
-and data types, including common parameters and error codes.
+OpsWorks
 
-AWS OpsWorks Stacks is an application management service that provides
-an integrated experience for overseeing the complete application
-lifecycle. For information about this product, go to the \href{https://aws.amazon.com/opsworks/}{AWS OpsWorks} details page.
+Welcome to the \emph{OpsWorks Stacks API Reference}. This guide provides
+descriptions, syntax, and usage examples for OpsWorks Stacks actions and
+data types, including common parameters and error codes.
+
+OpsWorks Stacks is an application management service that provides an
+integrated experience for managing the complete application lifecycle.
+For information about OpsWorks, see the
+\href{https://aws.amazon.com/opsworks/}{OpsWorks} information page.
 
 \strong{SDKs and CLI}
 
-The most common way to use the AWS OpsWorks Stacks API is by using the
-AWS Command Line Interface (CLI) or by using one of the AWS SDKs to
-implement applications in your preferred language. For more information,
-see:
+Use the OpsWorks Stacks API by using the Command Line Interface (CLI) or
+by using one of the Amazon Web Services SDKs to implement applications
+in your preferred language. For more information, see:
 \itemize{
-\item \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html}{AWS CLI}
-\item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html}{AWS SDK for Java}
-\item AWS SDK for .NET
-\item AWS SDK for PHP 2
-\item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/}{AWS SDK for Ruby}
-\item \href{https://docs.aws.amazon.com/sdk-for-javascript/}{AWS SDK for Node.js}
-\item \href{http://docs.pythonboto.org/en/latest/ref/opsworks.html}{AWS SDK for Python(Boto)}
+\item \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html}{CLI}
+\item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html}{SDK for Java}
+\item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/OpsWorks/NOpsWorks.html}{SDK for .NET}
+\item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html}{SDK for PHP}
+\item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/}{SDK for Ruby}
+\item \href{https://docs.aws.amazon.com/sdk-for-javascript/}{Amazon Web Services SDK for Node.js}
+\item \href{http://docs.pythonboto.org/en/latest/ref/opsworks.html}{SDK for Python (Boto)}
 }
 
 \strong{Endpoints}
 
-AWS OpsWorks Stacks supports the following endpoints, all HTTPS. You
-must connect to one of the following endpoints. Stacks can only be
-accessed or managed within the endpoint in which they are created.
+OpsWorks Stacks supports the following endpoints, all HTTPS. You must
+connect to one of the following endpoints. Stacks can only be accessed
+or managed within the endpoint in which they are created.
 \itemize{
 \item opsworks.us-east-1.amazonaws.com
 \item opsworks.us-east-2.amazonaws.com
 \item opsworks.us-west-1.amazonaws.com
 \item opsworks.us-west-2.amazonaws.com
 \item opsworks.ca-central-1.amazonaws.com (API only; not available in the
-AWS console)
+Amazon Web Services Management Console)
 \item opsworks.eu-west-1.amazonaws.com
 \item opsworks.eu-west-2.amazonaws.com
 \item opsworks.eu-west-3.amazonaws.com
@@ -166,10 +168,10 @@ possible.
 \link[paws.management:opsworks_delete_user_profile]{delete_user_profile} \tab Deletes a user profile\cr
 \link[paws.management:opsworks_deregister_ecs_cluster]{deregister_ecs_cluster} \tab Deregisters a specified Amazon ECS cluster from a stack\cr
 \link[paws.management:opsworks_deregister_elastic_ip]{deregister_elastic_ip} \tab Deregisters a specified Elastic IP address\cr
-\link[paws.management:opsworks_deregister_instance]{deregister_instance} \tab Deregister a registered Amazon EC2 or on-premises instance\cr
+\link[paws.management:opsworks_deregister_instance]{deregister_instance} \tab Deregister an instance from OpsWorks Stacks\cr
 \link[paws.management:opsworks_deregister_rds_db_instance]{deregister_rds_db_instance} \tab Deregisters an Amazon RDS instance\cr
 \link[paws.management:opsworks_deregister_volume]{deregister_volume} \tab Deregisters an Amazon EBS volume\cr
-\link[paws.management:opsworks_describe_agent_versions]{describe_agent_versions} \tab Describes the available AWS OpsWorks Stacks agent versions\cr
+\link[paws.management:opsworks_describe_agent_versions]{describe_agent_versions} \tab Describes the available OpsWorks Stacks agent versions\cr
 \link[paws.management:opsworks_describe_apps]{describe_apps} \tab Requests a description of a specified set of apps\cr
 \link[paws.management:opsworks_describe_commands]{describe_commands} \tab Describes the results of specified commands\cr
 \link[paws.management:opsworks_describe_deployments]{describe_deployments} \tab Requests a description of a specified set of deployments\cr
@@ -180,11 +182,11 @@ possible.
 \link[paws.management:opsworks_describe_layers]{describe_layers} \tab Requests a description of one or more layers in a specified stack\cr
 \link[paws.management:opsworks_describe_load_based_auto_scaling]{describe_load_based_auto_scaling} \tab Describes load-based auto scaling configurations for specified layers\cr
 \link[paws.management:opsworks_describe_my_user_profile]{describe_my_user_profile} \tab Describes a user's SSH information\cr
-\link[paws.management:opsworks_describe_operating_systems]{describe_operating_systems} \tab Describes the operating systems that are supported by AWS OpsWorks Stacks\cr
+\link[paws.management:opsworks_describe_operating_systems]{describe_operating_systems} \tab Describes the operating systems that are supported by OpsWorks Stacks\cr
 \link[paws.management:opsworks_describe_permissions]{describe_permissions} \tab Describes the permissions for a specified stack\cr
 \link[paws.management:opsworks_describe_raid_arrays]{describe_raid_arrays} \tab Describe an instance's RAID arrays\cr
 \link[paws.management:opsworks_describe_rds_db_instances]{describe_rds_db_instances} \tab Describes Amazon RDS instances\cr
-\link[paws.management:opsworks_describe_service_errors]{describe_service_errors} \tab Describes AWS OpsWorks Stacks service errors\cr
+\link[paws.management:opsworks_describe_service_errors]{describe_service_errors} \tab Describes OpsWorks Stacks service errors\cr
 \link[paws.management:opsworks_describe_stack_provisioning_parameters]{describe_stack_provisioning_parameters} \tab Requests a description of a stack's provisioning parameters\cr
 \link[paws.management:opsworks_describe_stacks]{describe_stacks} \tab Requests a description of one or more stacks\cr
 \link[paws.management:opsworks_describe_stack_summary]{describe_stack_summary} \tab Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as running_setup or online\cr
@@ -199,7 +201,7 @@ possible.
 \link[paws.management:opsworks_reboot_instance]{reboot_instance} \tab Reboots a specified instance\cr
 \link[paws.management:opsworks_register_ecs_cluster]{register_ecs_cluster} \tab Registers a specified Amazon ECS cluster with a stack\cr
 \link[paws.management:opsworks_register_elastic_ip]{register_elastic_ip} \tab Registers an Elastic IP address with a specified stack\cr
-\link[paws.management:opsworks_register_instance]{register_instance} \tab Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack\cr
+\link[paws.management:opsworks_register_instance]{register_instance} \tab Registers instances that were created outside of OpsWorks Stacks with a specified stack\cr
 \link[paws.management:opsworks_register_rds_db_instance]{register_rds_db_instance} \tab Registers an Amazon RDS instance with a stack\cr
 \link[paws.management:opsworks_register_volume]{register_volume} \tab Registers an Amazon EBS volume with a specified stack\cr
 \link[paws.management:opsworks_set_load_based_auto_scaling]{set_load_based_auto_scaling} \tab Specify the load-based auto scaling configuration for a specified layer\cr
@@ -209,7 +211,7 @@ possible.
 \link[paws.management:opsworks_start_stack]{start_stack} \tab Starts a stack's instances\cr
 \link[paws.management:opsworks_stop_instance]{stop_instance} \tab Stops a specified instance\cr
 \link[paws.management:opsworks_stop_stack]{stop_stack} \tab Stops a specified stack\cr
-\link[paws.management:opsworks_tag_resource]{tag_resource} \tab Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks\cr
+\link[paws.management:opsworks_tag_resource]{tag_resource} \tab Apply cost-allocation tags to a specified stack or layer in OpsWorks Stacks\cr
 \link[paws.management:opsworks_unassign_instance]{unassign_instance} \tab Unassigns a registered instance from all layers that are using the instance\cr
 \link[paws.management:opsworks_unassign_volume]{unassign_volume} \tab Unassigns an assigned Amazon EBS volume\cr
 \link[paws.management:opsworks_untag_resource]{untag_resource} \tab Removes tags from a specified stack or layer\cr

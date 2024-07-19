@@ -6,31 +6,19 @@
 specified range of time}
 \usage{
 locationservice_get_device_position_history(
+  TrackerName,
   DeviceId,
-  EndTimeExclusive = NULL,
-  MaxResults = NULL,
   NextToken = NULL,
   StartTimeInclusive = NULL,
-  TrackerName
+  EndTimeExclusive = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{TrackerName}{[required] The tracker resource receiving the request for the device position
+history.}
+
 \item{DeviceId}{[required] The device whose position history you want to retrieve.}
-
-\item{EndTimeExclusive}{Specify the end time for the position history in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
-\code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be the time that
-the request is made.
-
-Requirement:
-\itemize{
-\item The time specified for \code{EndTimeExclusive} must be after the time for
-\code{StartTimeInclusive}.
-}}
-
-\item{MaxResults}{An optional limit for the number of device positions returned in a
-single call.
-
-Default value: \code{100}}
 
 \item{NextToken}{The pagination token specifying which page of results to return in the
 response. If no token is provided, the default page is the first page.
@@ -47,8 +35,20 @@ Requirement:
 \code{EndTimeExclusive}.
 }}
 
-\item{TrackerName}{[required] The tracker resource receiving the request for the device position
-history.}
+\item{EndTimeExclusive}{Specify the end time for the position history in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
+\code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be the time that
+the request is made.
+
+Requirement:
+\itemize{
+\item The time specified for \code{EndTimeExclusive} must be after the time for
+\code{StartTimeInclusive}.
+}}
+
+\item{MaxResults}{An optional limit for the number of device positions returned in a
+single call.
+
+Default value: \code{100}}
 }
 \description{
 Retrieves the device position history from a tracker resource within a specified range of time.

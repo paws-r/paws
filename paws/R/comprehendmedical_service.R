@@ -162,7 +162,7 @@ comprehendmedical <- function(config = list(), credentials = list(), endpoint = 
   target_prefix = "ComprehendMedical_20181030"
 )
 
-.comprehendmedical$service <- function(config = list()) {
+.comprehendmedical$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.comprehendmedical$metadata, handlers, config)
+  new_service(.comprehendmedical$metadata, handlers, config, op)
 }

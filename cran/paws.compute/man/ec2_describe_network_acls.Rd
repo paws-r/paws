@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_network_acls}
 \alias{ec2_describe_network_acls}
-\title{Describes one or more of your network ACLs}
+\title{Describes your network ACLs}
 \usage{
 ec2_describe_network_acls(
   Filters = NULL,
@@ -58,9 +58,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{NetworkAclIds}{The IDs of the network ACLs.
-
-Default: Describes all your network ACLs.}
+\item{NetworkAclIds}{The IDs of the network ACLs.}
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
@@ -71,7 +69,7 @@ output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes one or more of your network ACLs.
+Describes your network ACLs. The default is to describe all your network ACLs. Alternatively, you can specify specific network ACL IDs or filter the results to include only the network ACLs that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_network_acls/} for full documentation.
 }

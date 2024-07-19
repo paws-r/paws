@@ -5,12 +5,19 @@
 \title{Creates and returns a URL that you can use to access the application UIs
 for a job run}
 \usage{
-emrserverless_get_dashboard_for_job_run(applicationId, jobRunId)
+emrserverless_get_dashboard_for_job_run(
+  applicationId,
+  jobRunId,
+  attempt = NULL
+)
 }
 \arguments{
 \item{applicationId}{[required] The ID of the application.}
 
 \item{jobRunId}{[required] The ID of the job run.}
+
+\item{attempt}{An optimal parameter that indicates the amount of attempts for the job.
+If not specified, this value defaults to the attempt of the latest job.}
 }
 \description{
 Creates and returns a URL that you can use to access the application UIs for a job run.

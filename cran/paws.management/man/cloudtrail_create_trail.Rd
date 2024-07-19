@@ -34,11 +34,12 @@ underscores (_), or dashes (-)
 }}
 
 \item{S3BucketName}{[required] Specifies the name of the Amazon S3 bucket designated for publishing log
-files. See \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Amazon S3 Bucket Naming Requirements}.}
+files. For information about bucket naming rules, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Bucket naming rules}
+in the \emph{Amazon Simple Storage Service User Guide}.}
 
 \item{S3KeyPrefix}{Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html}{Finding Your CloudTrail Log Files}.
+see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files}{Finding Your CloudTrail Log Files}.
 The maximum length is 200 characters.}
 
 \item{SnsTopicName}{Specifies the name of the Amazon SNS topic defined for notification of

@@ -148,7 +148,7 @@ NULL
 #'  \link[=directconnect_describe_locations]{describe_locations} \tab Lists the Direct Connect locations in the current Amazon Web Services Region\cr
 #'  \link[=directconnect_describe_router_configuration]{describe_router_configuration} \tab Details about the router\cr
 #'  \link[=directconnect_describe_tags]{describe_tags} \tab Describes the tags associated with the specified Direct Connect resources\cr
-#'  \link[=directconnect_describe_virtual_gateways]{describe_virtual_gateways} \tab Lists the virtual private gateways owned by the Amazon Web Services account\cr
+#'  \link[=directconnect_describe_virtual_gateways]{describe_virtual_gateways} \tab Deprecated\cr
 #'  \link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces} \tab Displays all virtual interfaces for an Amazon Web Services account\cr
 #'  \link[=directconnect_disassociate_connection_from_lag]{disassociate_connection_from_lag} \tab Disassociates a connection from a link aggregation group (LAG)\cr
 #'  \link[=directconnect_disassociate_mac_sec_key]{disassociate_mac_sec_key} \tab Removes the association between a MAC Security (MACsec) security key and an Direct Connect dedicated connection\cr
@@ -201,7 +201,7 @@ directconnect <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = "OvertureService"
 )
 
-.directconnect$service <- function(config = list()) {
+.directconnect$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.directconnect$metadata, handlers, config)
+  new_service(.directconnect$metadata, handlers, config, op)
 }

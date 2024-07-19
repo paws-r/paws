@@ -179,7 +179,7 @@ inspector <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = "InspectorService"
 )
 
-.inspector$service <- function(config = list()) {
+.inspector$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.inspector$metadata, handlers, config)
+  new_service(.inspector$metadata, handlers, config, op)
 }

@@ -159,7 +159,7 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.codegurureviewer$service <- function(config = list()) {
+.codegurureviewer$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.codegurureviewer$metadata, handlers, config)
+  new_service(.codegurureviewer$metadata, handlers, config, op)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/codegurusecurity_operations.R
 \name{codegurusecurity_batch_get_findings}
 \alias{codegurusecurity_batch_get_findings}
-\title{Returns a list of all requested findings}
+\title{Returns a list of requested findings from standard scans}
 \usage{
 codegurusecurity_batch_get_findings(findingIdentifiers)
 }
@@ -12,7 +12,7 @@ and a \code{findingId}. You retrieve the \code{findingId} when you call
 \code{\link[=codegurusecurity_get_findings]{get_findings}}.}
 }
 \description{
-Returns a list of all requested findings.
+Returns a list of requested findings from standard scans.
 
 See \url{https://www.paws-r-sdk.com/docs/codegurusecurity_batch_get_findings/} for full documentation.
 }

@@ -26,9 +26,13 @@ The following are the supported resource types for Direct Connect:
 
 The following are the supported resource types for Network Manager:
 \itemize{
+\item \code{attachment}
+\item \code{connect-peer}
 \item \code{connection}
+\item \code{core-network}
 \item \code{device}
 \item \code{link}
+\item \code{peering}
 \item \code{site}
 }
 

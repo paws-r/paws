@@ -107,6 +107,8 @@ NULL
 #'  \link[=swf_count_open_workflow_executions]{count_open_workflow_executions} \tab Returns the number of open workflow executions within the given domain that meet the specified filtering criteria\cr
 #'  \link[=swf_count_pending_activity_tasks]{count_pending_activity_tasks} \tab Returns the estimated number of activity tasks in the specified task list\cr
 #'  \link[=swf_count_pending_decision_tasks]{count_pending_decision_tasks} \tab Returns the estimated number of decision tasks in the specified task list\cr
+#'  \link[=swf_delete_activity_type]{delete_activity_type} \tab Deletes the specified activity type\cr
+#'  \link[=swf_delete_workflow_type]{delete_workflow_type} \tab Deletes the specified workflow type\cr
 #'  \link[=swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified activity type\cr
 #'  \link[=swf_deprecate_domain]{deprecate_domain} \tab Deprecates the specified domain\cr
 #'  \link[=swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified workflow type\cr
@@ -179,7 +181,7 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "SimpleWorkflowService"
 )
 
-.swf$service <- function(config = list()) {
+.swf$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.swf$metadata, handlers, config)
+  new_service(.swf$metadata, handlers, config, op)
 }

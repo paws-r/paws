@@ -218,7 +218,7 @@ neptune <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = ""
 )
 
-.neptune$service <- function(config = list()) {
+.neptune$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.neptune$metadata, handlers, config)
+  new_service(.neptune$metadata, handlers, config, op)
 }

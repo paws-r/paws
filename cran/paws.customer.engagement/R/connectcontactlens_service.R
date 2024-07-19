@@ -140,7 +140,7 @@ connectcontactlens <- function(config = list(), credentials = list(), endpoint =
   target_prefix = ""
 )
 
-.connectcontactlens$service <- function(config = list()) {
+.connectcontactlens$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.connectcontactlens$metadata, handlers, config)
+  new_service(.connectcontactlens$metadata, handlers, config, op)
 }

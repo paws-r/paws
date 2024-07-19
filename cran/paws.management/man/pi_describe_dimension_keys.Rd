@@ -101,7 +101,10 @@ to further subdivide the partition keys in the response.}
 \item Any number of filters by the same dimension, as specified in the
 \code{GroupBy} or \code{Partition} parameters.
 \item A single filter for any other dimension in this dimension group.
-}}
+}
+
+The \code{db.sql.db_id} filter isn't available for RDS for SQL Server DB
+instances.}
 
 \item{MaxResults}{The maximum number of items to return in the response. If more items
 exist than the specified \code{MaxRecords} value, a pagination token is

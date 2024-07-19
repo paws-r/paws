@@ -151,7 +151,7 @@ connectcampaignservice <- function(config = list(), credentials = list(), endpoi
   target_prefix = ""
 )
 
-.connectcampaignservice$service <- function(config = list()) {
+.connectcampaignservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.connectcampaignservice$metadata, handlers, config)
+  new_service(.connectcampaignservice$metadata, handlers, config, op)
 }

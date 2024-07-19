@@ -38,7 +38,7 @@ names to verify the names contain a date between the specified
 import.}
 }
 \description{
-Starts an import of logged trail events from a source S3 bucket to a destination event data store. By default, CloudTrail only imports events contained in the S3 bucket's \code{CloudTrail} prefix and the prefixes inside the \code{CloudTrail} prefix, and does not check prefixes for other Amazon Web Services services. If you want to import CloudTrail events contained in another prefix, you must include the prefix in the \code{S3LocationUri}. For more considerations about importing trail events, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-copy-trail-to-lake.html#cloudtrail-trail-copy-considerations}{Considerations}.
+Starts an import of logged trail events from a source S3 bucket to a destination event data store. By default, CloudTrail only imports events contained in the S3 bucket's \code{CloudTrail} prefix and the prefixes inside the \code{CloudTrail} prefix, and does not check prefixes for other Amazon Web Services services. If you want to import CloudTrail events contained in another prefix, you must include the prefix in the \code{S3LocationUri}. For more considerations about importing trail events, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-copy-trail-to-lake.html#cloudtrail-trail-copy-considerations}{Considerations for copying trail events} in the \emph{CloudTrail User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_start_import/} for full documentation.
 }

@@ -177,7 +177,7 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
   target_prefix = ""
 )
 
-.lexmodelbuildingservice$service <- function(config = list()) {
+.lexmodelbuildingservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.lexmodelbuildingservice$metadata, handlers, config)
+  new_service(.lexmodelbuildingservice$metadata, handlers, config, op)
 }

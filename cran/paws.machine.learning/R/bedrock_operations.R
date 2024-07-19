@@ -46,22 +46,24 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
     name = "CreateEvaluationJob",
     http_method = "POST",
     http_path = "/evaluation-jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$create_evaluation_job_input(jobName = jobName, jobDescription = jobDescription, clientRequestToken = clientRequestToken, roleArn = roleArn, customerEncryptionKeyId = customerEncryptionKeyId, jobTags = jobTags, evaluationConfig = evaluationConfig, inferenceConfig = inferenceConfig, outputDataConfig = outputDataConfig)
   output <- .bedrock$create_evaluation_job_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .bedrock$operations$create_evaluation_job <- bedrock_create_evaluation_job
 
-#' Creates a guardrail to block topics and to filter out harmful content
+#' Creates a guardrail to block topics and to implement safeguards for your
+#' generative AI applications
 #'
 #' @description
-#' Creates a guardrail to block topics and to filter out harmful content.
+#' Creates a guardrail to block topics and to implement safeguards for your generative AI applications.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_create_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_create_guardrail/) for full documentation.
 #'
@@ -71,6 +73,8 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' @param contentPolicyConfig The content filter policies to configure for the guardrail.
 #' @param wordPolicyConfig The word policy you configure for the guardrail.
 #' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
+#' @param contextualGroundingPolicyConfig The contextual grounding policy configuration used to create a
+#' guardrail.
 #' @param blockedInputMessaging &#91;required&#93; The message to return when the guardrail blocks a prompt.
 #' @param blockedOutputsMessaging &#91;required&#93; The message to return when the guardrail blocks a model response.
 #' @param kmsKeyId The ARN of the KMS key that you use to encrypt the guardrail.
@@ -85,17 +89,18 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' @keywords internal
 #'
 #' @rdname bedrock_create_guardrail
-bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL, tags = NULL, clientRequestToken = NULL) {
+bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL, tags = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateGuardrail",
     http_method = "POST",
     http_path = "/guardrails",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
+  input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_guardrail_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -109,7 +114,7 @@ bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_create_guardrail_version/](https://www.paws-r-sdk.com/docs/bedrock_create_guardrail_version/) for full documentation.
 #'
-#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail.
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail. This can be an ID or the ARN.
 #' @param description A description of the guardrail version.
 #' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than once. If this token matches a previous request,
@@ -126,12 +131,13 @@ bedrock_create_guardrail_version <- function(guardrailIdentifier, description = 
     name = "CreateGuardrailVersion",
     http_method = "POST",
     http_path = "/guardrails/{guardrailIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$create_guardrail_version_input(guardrailIdentifier = guardrailIdentifier, description = description, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_guardrail_version_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -181,12 +187,13 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
     name = "CreateModelCustomizationJob",
     http_method = "POST",
     http_path = "/model-customization-jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$create_model_customization_job_input(jobName = jobName, customModelName = customModelName, roleArn = roleArn, clientRequestToken = clientRequestToken, baseModelIdentifier = baseModelIdentifier, customizationType = customizationType, customModelKmsKeyId = customModelKmsKeyId, jobTags = jobTags, customModelTags = customModelTags, trainingDataConfig = trainingDataConfig, validationDataConfig = validationDataConfig, outputDataConfig = outputDataConfig, hyperParameters = hyperParameters, vpcConfig = vpcConfig)
   output <- .bedrock$create_model_customization_job_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -246,12 +253,13 @@ bedrock_create_provisioned_model_throughput <- function(clientRequestToken = NUL
     name = "CreateProvisionedModelThroughput",
     http_method = "POST",
     http_path = "/provisioned-model-throughput",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$create_provisioned_model_throughput_input(clientRequestToken = clientRequestToken, modelUnits = modelUnits, provisionedModelName = provisionedModelName, modelId = modelId, commitmentDuration = commitmentDuration, tags = tags)
   output <- .bedrock$create_provisioned_model_throughput_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -275,12 +283,13 @@ bedrock_delete_custom_model <- function(modelIdentifier) {
     name = "DeleteCustomModel",
     http_method = "DELETE",
     http_path = "/custom-models/{modelIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$delete_custom_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$delete_custom_model_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -294,7 +303,7 @@ bedrock_delete_custom_model <- function(modelIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_delete_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_delete_guardrail/) for full documentation.
 #'
-#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail.
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail. This can be an ID or the ARN.
 #' @param guardrailVersion The version of the guardrail.
 #'
 #' @keywords internal
@@ -305,12 +314,13 @@ bedrock_delete_guardrail <- function(guardrailIdentifier, guardrailVersion = NUL
     name = "DeleteGuardrail",
     http_method = "DELETE",
     http_path = "/guardrails/{guardrailIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$delete_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrock$delete_guardrail_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -334,12 +344,13 @@ bedrock_delete_model_invocation_logging_configuration <- function() {
     name = "DeleteModelInvocationLoggingConfiguration",
     http_method = "DELETE",
     http_path = "/logging/modelinvocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$delete_model_invocation_logging_configuration_input()
   output <- .bedrock$delete_model_invocation_logging_configuration_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -363,12 +374,13 @@ bedrock_delete_provisioned_model_throughput <- function(provisionedModelId) {
     name = "DeleteProvisionedModelThroughput",
     http_method = "DELETE",
     http_path = "/provisioned-model-throughput/{provisionedModelId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$delete_provisioned_model_throughput_input(provisionedModelId = provisionedModelId)
   output <- .bedrock$delete_provisioned_model_throughput_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -393,12 +405,13 @@ bedrock_get_custom_model <- function(modelIdentifier) {
     name = "GetCustomModel",
     http_method = "GET",
     http_path = "/custom-models/{modelIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$get_custom_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$get_custom_model_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -423,12 +436,13 @@ bedrock_get_evaluation_job <- function(jobIdentifier) {
     name = "GetEvaluationJob",
     http_method = "GET",
     http_path = "/evaluation-jobs/{jobIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$get_evaluation_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$get_evaluation_job_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -452,12 +466,13 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
     name = "GetFoundationModel",
     http_method = "GET",
     http_path = "/foundation-models/{modelIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$get_foundation_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$get_foundation_model_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -471,7 +486,8 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_get_guardrail/) for full documentation.
 #'
-#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail for which to get details.
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail for which to get details. This
+#' can be an ID or the ARN.
 #' @param guardrailVersion The version of the guardrail for which to get details. If you don't
 #' specify a version, the response returns details for the `DRAFT` version.
 #'
@@ -483,12 +499,13 @@ bedrock_get_guardrail <- function(guardrailIdentifier, guardrailVersion = NULL) 
     name = "GetGuardrail",
     http_method = "GET",
     http_path = "/guardrails/{guardrailIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$get_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrock$get_guardrail_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -513,12 +530,13 @@ bedrock_get_model_customization_job <- function(jobIdentifier) {
     name = "GetModelCustomizationJob",
     http_method = "GET",
     http_path = "/model-customization-jobs/{jobIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$get_model_customization_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$get_model_customization_job_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -542,12 +560,13 @@ bedrock_get_model_invocation_logging_configuration <- function() {
     name = "GetModelInvocationLoggingConfiguration",
     http_method = "GET",
     http_path = "/logging/modelinvocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$get_model_invocation_logging_configuration_input()
   output <- .bedrock$get_model_invocation_logging_configuration_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -571,12 +590,13 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
     name = "GetProvisionedModelThroughput",
     http_method = "GET",
     http_path = "/provisioned-model-throughput/{provisionedModelId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$get_provisioned_model_throughput_input(provisionedModelId = provisionedModelId)
   output <- .bedrock$get_provisioned_model_throughput_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -612,12 +632,13 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
     name = "ListCustomModels",
     http_method = "GET",
     http_path = "/custom-models",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries")
   )
   input <- .bedrock$list_custom_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, baseModelArnEquals = baseModelArnEquals, foundationModelArnEquals = foundationModelArnEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_custom_models_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -651,12 +672,13 @@ bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeB
     name = "ListEvaluationJobs",
     http_method = "GET",
     http_path = "/evaluation-jobs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaries")
   )
   input <- .bedrock$list_evaluation_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_evaluation_jobs_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -689,12 +711,13 @@ bedrock_list_foundation_models <- function(byProvider = NULL, byCustomizationTyp
     name = "ListFoundationModels",
     http_method = "GET",
     http_path = "/foundation-models",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$list_foundation_models_input(byProvider = byProvider, byCustomizationType = byCustomizationType, byOutputModality = byOutputModality, byInferenceType = byInferenceType)
   output <- .bedrock$list_foundation_models_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -708,7 +731,7 @@ bedrock_list_foundation_models <- function(byProvider = NULL, byCustomizationTyp
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_guardrails/](https://www.paws-r-sdk.com/docs/bedrock_list_guardrails/) for full documentation.
 #'
-#' @param guardrailIdentifier The unique identifier of the guardrail.
+#' @param guardrailIdentifier The unique identifier of the guardrail. This can be an ID or the ARN.
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken If there are more results than were returned in the response, the
 #' response returns a `nextToken` that you can send in another
@@ -723,12 +746,13 @@ bedrock_list_guardrails <- function(guardrailIdentifier = NULL, maxResults = NUL
     name = "ListGuardrails",
     http_method = "GET",
     http_path = "/guardrails",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "guardrails")
   )
   input <- .bedrock$list_guardrails_input(guardrailIdentifier = guardrailIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrock$list_guardrails_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -761,12 +785,13 @@ bedrock_list_model_customization_jobs <- function(creationTimeAfter = NULL, crea
     name = "ListModelCustomizationJobs",
     http_method = "GET",
     http_path = "/model-customization-jobs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelCustomizationJobSummaries")
   )
   input <- .bedrock$list_model_customization_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_model_customization_jobs_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -808,12 +833,13 @@ bedrock_list_provisioned_model_throughputs <- function(creationTimeAfter = NULL,
     name = "ListProvisionedModelThroughputs",
     http_method = "GET",
     http_path = "/provisioned-model-throughputs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "provisionedModelSummaries")
   )
   input <- .bedrock$list_provisioned_model_throughputs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, modelArnEquals = modelArnEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_provisioned_model_throughputs_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -837,12 +863,13 @@ bedrock_list_tags_for_resource <- function(resourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/listTagsForResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$list_tags_for_resource_input(resourceARN = resourceARN)
   output <- .bedrock$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -866,12 +893,13 @@ bedrock_put_model_invocation_logging_configuration <- function(loggingConfig) {
     name = "PutModelInvocationLoggingConfiguration",
     http_method = "PUT",
     http_path = "/logging/modelinvocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$put_model_invocation_logging_configuration_input(loggingConfig = loggingConfig)
   output <- .bedrock$put_model_invocation_logging_configuration_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -895,12 +923,13 @@ bedrock_stop_evaluation_job <- function(jobIdentifier) {
     name = "StopEvaluationJob",
     http_method = "POST",
     http_path = "/evaluation-job/{jobIdentifier}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$stop_evaluation_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$stop_evaluation_job_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -924,12 +953,13 @@ bedrock_stop_model_customization_job <- function(jobIdentifier) {
     name = "StopModelCustomizationJob",
     http_method = "POST",
     http_path = "/model-customization-jobs/{jobIdentifier}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$stop_model_customization_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$stop_model_customization_job_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -954,12 +984,13 @@ bedrock_tag_resource <- function(resourceARN, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$tag_resource_input(resourceARN = resourceARN, tags = tags)
   output <- .bedrock$tag_resource_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -984,12 +1015,13 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/untagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
   output <- .bedrock$untag_resource_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1003,13 +1035,15 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_update_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_update_guardrail/) for full documentation.
 #'
-#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail. This can be an ID or the ARN.
 #' @param name &#91;required&#93; A name for the guardrail.
 #' @param description A description of the guardrail.
 #' @param topicPolicyConfig The topic policy to configure for the guardrail.
 #' @param contentPolicyConfig The content policy to configure for the guardrail.
 #' @param wordPolicyConfig The word policy to configure for the guardrail.
 #' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
+#' @param contextualGroundingPolicyConfig The contextual grounding policy configuration used to update a
+#' guardrail.
 #' @param blockedInputMessaging &#91;required&#93; The message to return when the guardrail blocks a prompt.
 #' @param blockedOutputsMessaging &#91;required&#93; The message to return when the guardrail blocks a model response.
 #' @param kmsKeyId The ARN of the KMS key with which to encrypt the guardrail.
@@ -1017,17 +1051,18 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname bedrock_update_guardrail
-bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL) {
+bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL) {
   op <- new_operation(
     name = "UpdateGuardrail",
     http_method = "PUT",
     http_path = "/guardrails/{guardrailIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
+  input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
   output <- .bedrock$update_guardrail_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1064,12 +1099,13 @@ bedrock_update_provisioned_model_throughput <- function(provisionedModelId, desi
     name = "UpdateProvisionedModelThroughput",
     http_method = "PATCH",
     http_path = "/provisioned-model-throughput/{provisionedModelId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .bedrock$update_provisioned_model_throughput_input(provisionedModelId = provisionedModelId, desiredProvisionedModelName = desiredProvisionedModelName, desiredModelId = desiredModelId)
   output <- .bedrock$update_provisioned_model_throughput_output()
   config <- get_config()
-  svc <- .bedrock$service(config)
+  svc <- .bedrock$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

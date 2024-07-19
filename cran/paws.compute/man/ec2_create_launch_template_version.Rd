@@ -55,7 +55,7 @@ parameters that you specify for the new version.}
 \item{ResolveAlias}{If \code{true}, and if a Systems Manager parameter is specified for
 \code{ImageId}, the AMI ID is displayed in the response for \code{imageID}. For
 more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#use-an-ssm-parameter-instead-of-an-ami-id}{Use a Systems Manager parameter instead of an AMI ID}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{false}}
 }

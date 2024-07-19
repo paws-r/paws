@@ -226,7 +226,7 @@ servicecatalog <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = "AWS242ServiceCatalogService"
 )
 
-.servicecatalog$service <- function(config = list()) {
+.servicecatalog$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.servicecatalog$metadata, handlers, config)
+  new_service(.servicecatalog$metadata, handlers, config, op)
 }

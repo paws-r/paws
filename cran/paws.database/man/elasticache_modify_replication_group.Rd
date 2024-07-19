@@ -166,13 +166,15 @@ length
 '\%'
 }
 
-For more information, see AUTH password at AUTH.}
+For more information, see AUTH password at
+\href{https://redis.io/docs/latest/commands/auth/}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:
 \itemize{
-\item Rotate
-\item Set
+\item ROTATE - default, if no update strategy is provided
+\item SET - allowed only after ROTATE
+\item DELETE - allowed only when transitioning to RBAC
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}

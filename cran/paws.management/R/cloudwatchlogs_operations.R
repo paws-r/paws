@@ -52,12 +52,13 @@ cloudwatchlogs_associate_kms_key <- function(logGroupName = NULL, kmsKeyId, reso
     name = "AssociateKmsKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$associate_kms_key_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, resourceIdentifier = resourceIdentifier)
   output <- .cloudwatchlogs$associate_kms_key_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -81,12 +82,13 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
     name = "CancelExportTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$cancel_export_task_input(taskId = taskId)
   output <- .cloudwatchlogs$cancel_export_task_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -115,12 +117,13 @@ cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinati
     name = "CreateDelivery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$create_delivery_input(deliverySourceName = deliverySourceName, deliveryDestinationArn = deliveryDestinationArn, tags = tags)
   output <- .cloudwatchlogs$create_delivery_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -161,12 +164,13 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
     name = "CreateExportTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$create_export_task_input(taskName = taskName, logGroupName = logGroupName, logStreamNamePrefix = logStreamNamePrefix, from = from, to = to, destination = destination, destinationPrefix = destinationPrefix)
   output <- .cloudwatchlogs$create_export_task_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -222,12 +226,13 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
     name = "CreateLogAnomalyDetector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$create_log_anomaly_detector_input(logGroupArnList = logGroupArnList, detectorName = detectorName, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, kmsKeyId = kmsKeyId, anomalyVisibilityTime = anomalyVisibilityTime, tags = tags)
   output <- .cloudwatchlogs$create_log_anomaly_detector_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -281,12 +286,13 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
     name = "CreateLogGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$create_log_group_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, tags = tags, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$create_log_group_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -311,12 +317,13 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
     name = "CreateLogStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$create_log_stream_input(logGroupName = logGroupName, logStreamName = logStreamName)
   output <- .cloudwatchlogs$create_log_stream_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -341,12 +348,13 @@ cloudwatchlogs_delete_account_policy <- function(policyName, policyType) {
     name = "DeleteAccountPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_account_policy_input(policyName = policyName, policyType = policyType)
   output <- .cloudwatchlogs$delete_account_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -371,12 +379,13 @@ cloudwatchlogs_delete_data_protection_policy <- function(logGroupIdentifier) {
     name = "DeleteDataProtectionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier)
   output <- .cloudwatchlogs$delete_data_protection_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -402,12 +411,13 @@ cloudwatchlogs_delete_delivery <- function(id) {
     name = "DeleteDelivery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_delivery_input(id = id)
   output <- .cloudwatchlogs$delete_delivery_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -434,12 +444,13 @@ cloudwatchlogs_delete_delivery_destination <- function(name) {
     name = "DeleteDeliveryDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_delivery_destination_input(name = name)
   output <- .cloudwatchlogs$delete_delivery_destination_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -464,12 +475,13 @@ cloudwatchlogs_delete_delivery_destination_policy <- function(deliveryDestinatio
     name = "DeleteDeliveryDestinationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
   output <- .cloudwatchlogs$delete_delivery_destination_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -493,12 +505,13 @@ cloudwatchlogs_delete_delivery_source <- function(name) {
     name = "DeleteDeliverySource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_delivery_source_input(name = name)
   output <- .cloudwatchlogs$delete_delivery_source_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -523,12 +536,13 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
     name = "DeleteDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_destination_input(destinationName = destinationName)
   output <- .cloudwatchlogs$delete_destination_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -555,12 +569,13 @@ cloudwatchlogs_delete_log_anomaly_detector <- function(anomalyDetectorArn) {
     name = "DeleteLogAnomalyDetector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
   output <- .cloudwatchlogs$delete_log_anomaly_detector_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -585,12 +600,13 @@ cloudwatchlogs_delete_log_group <- function(logGroupName) {
     name = "DeleteLogGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_log_group_input(logGroupName = logGroupName)
   output <- .cloudwatchlogs$delete_log_group_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -616,12 +632,13 @@ cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
     name = "DeleteLogStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_log_stream_input(logGroupName = logGroupName, logStreamName = logStreamName)
   output <- .cloudwatchlogs$delete_log_stream_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -646,12 +663,13 @@ cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
     name = "DeleteMetricFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_metric_filter_input(logGroupName = logGroupName, filterName = filterName)
   output <- .cloudwatchlogs$delete_metric_filter_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -677,12 +695,13 @@ cloudwatchlogs_delete_query_definition <- function(queryDefinitionId) {
     name = "DeleteQueryDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_query_definition_input(queryDefinitionId = queryDefinitionId)
   output <- .cloudwatchlogs$delete_query_definition_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -706,12 +725,13 @@ cloudwatchlogs_delete_resource_policy <- function(policyName = NULL) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_resource_policy_input(policyName = policyName)
   output <- .cloudwatchlogs$delete_resource_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -735,12 +755,13 @@ cloudwatchlogs_delete_retention_policy <- function(logGroupName) {
     name = "DeleteRetentionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_retention_policy_input(logGroupName = logGroupName)
   output <- .cloudwatchlogs$delete_retention_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -765,12 +786,13 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
     name = "DeleteSubscriptionFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$delete_subscription_filter_input(logGroupName = logGroupName, filterName = filterName)
   output <- .cloudwatchlogs$delete_subscription_filter_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -805,12 +827,13 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
     name = "DescribeAccountPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$describe_account_policies_input(policyType = policyType, policyName = policyName, accountIdentifiers = accountIdentifiers)
   output <- .cloudwatchlogs$describe_account_policies_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -836,12 +859,13 @@ cloudwatchlogs_describe_deliveries <- function(nextToken = NULL, limit = NULL) {
     name = "DescribeDeliveries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveries")
   )
   input <- .cloudwatchlogs$describe_deliveries_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_deliveries_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -868,12 +892,13 @@ cloudwatchlogs_describe_delivery_destinations <- function(nextToken = NULL, limi
     name = "DescribeDeliveryDestinations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveryDestinations")
   )
   input <- .cloudwatchlogs$describe_delivery_destinations_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_delivery_destinations_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -900,12 +925,13 @@ cloudwatchlogs_describe_delivery_sources <- function(nextToken = NULL, limit = N
     name = "DescribeDeliverySources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliverySources")
   )
   input <- .cloudwatchlogs$describe_delivery_sources_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_delivery_sources_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -934,12 +960,13 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
     name = "DescribeDestinations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "destinations")
   )
   input <- .cloudwatchlogs$describe_destinations_input(DestinationNamePrefix = DestinationNamePrefix, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_destinations_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -970,12 +997,13 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
     name = "DescribeExportTasks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$describe_export_tasks_input(taskId = taskId, statusCode = statusCode, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_export_tasks_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1037,12 +1065,13 @@ cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGro
     name = "DescribeLogGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logGroups")
   )
   input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$describe_log_groups_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1098,12 +1127,13 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName = NULL, logGroupIde
     name = "DescribeLogStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logStreams")
   )
   input <- .cloudwatchlogs$describe_log_streams_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNamePrefix = logStreamNamePrefix, orderBy = orderBy, descending = descending, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_log_streams_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1139,12 +1169,13 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
     name = "DescribeMetricFilters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "metricFilters")
   )
   input <- .cloudwatchlogs$describe_metric_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit, metricName = metricName, metricNamespace = metricNamespace)
   output <- .cloudwatchlogs$describe_metric_filters_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1174,12 +1205,13 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
     name = "DescribeQueries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$describe_queries_input(logGroupName = logGroupName, status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchlogs$describe_queries_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1207,12 +1239,13 @@ cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix 
     name = "DescribeQueryDefinitions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$describe_query_definitions_input(queryDefinitionNamePrefix = queryDefinitionNamePrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchlogs$describe_query_definitions_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1238,12 +1271,13 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
     name = "DescribeResourcePolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$describe_resource_policies_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_resource_policies_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1273,12 +1307,13 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
     name = "DescribeSubscriptionFilters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "subscriptionFilters")
   )
   input <- .cloudwatchlogs$describe_subscription_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_subscription_filters_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1329,12 +1364,13 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
     name = "DisassociateKmsKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$disassociate_kms_key_input(logGroupName = logGroupName, resourceIdentifier = resourceIdentifier)
   output <- .cloudwatchlogs$disassociate_kms_key_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1406,12 +1442,13 @@ cloudwatchlogs_filter_log_events <- function(logGroupName = NULL, logGroupIdenti
     name = "FilterLogEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = list("events", "searchedLogStreams"))
   )
   input <- .cloudwatchlogs$filter_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNames = logStreamNames, logStreamNamePrefix = logStreamNamePrefix, startTime = startTime, endTime = endTime, filterPattern = filterPattern, nextToken = nextToken, limit = limit, interleaved = interleaved, unmask = unmask)
   output <- .cloudwatchlogs$filter_log_events_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1436,12 +1473,13 @@ cloudwatchlogs_get_data_protection_policy <- function(logGroupIdentifier) {
     name = "GetDataProtectionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier)
   output <- .cloudwatchlogs$get_data_protection_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1465,12 +1503,13 @@ cloudwatchlogs_get_delivery <- function(id) {
     name = "GetDelivery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_delivery_input(id = id)
   output <- .cloudwatchlogs$get_delivery_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1494,12 +1533,13 @@ cloudwatchlogs_get_delivery_destination <- function(name) {
     name = "GetDeliveryDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_delivery_destination_input(name = name)
   output <- .cloudwatchlogs$get_delivery_destination_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1525,12 +1565,13 @@ cloudwatchlogs_get_delivery_destination_policy <- function(deliveryDestinationNa
     name = "GetDeliveryDestinationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
   output <- .cloudwatchlogs$get_delivery_destination_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1554,12 +1595,13 @@ cloudwatchlogs_get_delivery_source <- function(name) {
     name = "GetDeliverySource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_delivery_source_input(name = name)
   output <- .cloudwatchlogs$get_delivery_source_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1586,12 +1628,13 @@ cloudwatchlogs_get_log_anomaly_detector <- function(anomalyDetectorArn) {
     name = "GetLogAnomalyDetector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
   output <- .cloudwatchlogs$get_log_anomaly_detector_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1648,12 +1691,13 @@ cloudwatchlogs_get_log_events <- function(logGroupName = NULL, logGroupIdentifie
     name = "GetLogEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextForwardToken", result_key = "events")
   )
   input <- .cloudwatchlogs$get_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamName = logStreamName, startTime = startTime, endTime = endTime, nextToken = nextToken, limit = limit, startFromHead = startFromHead, unmask = unmask)
   output <- .cloudwatchlogs$get_log_events_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1693,12 +1737,13 @@ cloudwatchlogs_get_log_group_fields <- function(logGroupName = NULL, time = NULL
     name = "GetLogGroupFields",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_log_group_fields_input(logGroupName = logGroupName, time = time, logGroupIdentifier = logGroupIdentifier)
   output <- .cloudwatchlogs$get_log_group_fields_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1732,12 +1777,13 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer, unmask = NULL) {
     name = "GetLogRecord",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_log_record_input(logRecordPointer = logRecordPointer, unmask = unmask)
   output <- .cloudwatchlogs$get_log_record_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1761,12 +1807,13 @@ cloudwatchlogs_get_query_results <- function(queryId) {
     name = "GetQueryResults",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$get_query_results_input(queryId = queryId)
   output <- .cloudwatchlogs$get_query_results_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1796,12 +1843,13 @@ cloudwatchlogs_list_anomalies <- function(anomalyDetectorArn = NULL, suppression
     name = "ListAnomalies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalies")
   )
   input <- .cloudwatchlogs$list_anomalies_input(anomalyDetectorArn = anomalyDetectorArn, suppressionState = suppressionState, limit = limit, nextToken = nextToken)
   output <- .cloudwatchlogs$list_anomalies_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1829,12 +1877,13 @@ cloudwatchlogs_list_log_anomaly_detectors <- function(filterLogGroupArn = NULL, 
     name = "ListLogAnomalyDetectors",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalyDetectors")
   )
   input <- .cloudwatchlogs$list_log_anomaly_detectors_input(filterLogGroupArn = filterLogGroupArn, limit = limit, nextToken = nextToken)
   output <- .cloudwatchlogs$list_log_anomaly_detectors_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1868,12 +1917,13 @@ cloudwatchlogs_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .cloudwatchlogs$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1897,12 +1947,13 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
     name = "ListTagsLogGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$list_tags_log_group_input(logGroupName = logGroupName)
   output <- .cloudwatchlogs$list_tags_log_group_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2021,12 +2072,13 @@ cloudwatchlogs_put_account_policy <- function(policyName, policyDocument, policy
     name = "PutAccountPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_account_policy_input(policyName = policyName, policyDocument = policyDocument, policyType = policyType, scope = scope, selectionCriteria = selectionCriteria)
   output <- .cloudwatchlogs$put_account_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2088,12 +2140,13 @@ cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policy
     name = "PutDataProtectionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier, policyDocument = policyDocument)
   output <- .cloudwatchlogs$put_data_protection_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2125,12 +2178,13 @@ cloudwatchlogs_put_delivery_destination <- function(name, outputFormat = NULL, d
     name = "PutDeliveryDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_delivery_destination_input(name = name, outputFormat = outputFormat, deliveryDestinationConfiguration = deliveryDestinationConfiguration, tags = tags)
   output <- .cloudwatchlogs$put_delivery_destination_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2157,12 +2211,13 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
     name = "PutDeliveryDestinationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName, deliveryDestinationPolicy = deliveryDestinationPolicy)
   output <- .cloudwatchlogs$put_delivery_destination_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2203,12 +2258,13 @@ cloudwatchlogs_put_delivery_source <- function(name, resourceArn, logType, tags 
     name = "PutDeliverySource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_delivery_source_input(name = name, resourceArn = resourceArn, logType = logType, tags = tags)
   output <- .cloudwatchlogs$put_delivery_source_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2240,12 +2296,13 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn, 
     name = "PutDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_destination_input(destinationName = destinationName, targetArn = targetArn, roleArn = roleArn, tags = tags)
   output <- .cloudwatchlogs$put_destination_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2285,12 +2342,13 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
     name = "PutDestinationPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_destination_policy_input(destinationName = destinationName, accessPolicy = accessPolicy, forceUpdate = forceUpdate)
   output <- .cloudwatchlogs$put_destination_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2324,12 +2382,13 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
     name = "PutLogEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_log_events_input(logGroupName = logGroupName, logStreamName = logStreamName, logEvents = logEvents, sequenceToken = sequenceToken)
   output <- .cloudwatchlogs$put_log_events_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2357,12 +2416,13 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
     name = "PutMetricFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_metric_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, metricTransformations = metricTransformations)
   output <- .cloudwatchlogs$put_metric_filter_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2408,12 +2468,13 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
     name = "PutQueryDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_query_definition_input(name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken)
   output <- .cloudwatchlogs$put_query_definition_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2459,12 +2520,13 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_resource_policy_input(policyName = policyName, policyDocument = policyDocument)
   output <- .cloudwatchlogs$put_resource_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2489,12 +2551,13 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
     name = "PutRetentionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_retention_policy_input(logGroupName = logGroupName, retentionInDays = retentionInDays)
   output <- .cloudwatchlogs$put_retention_policy_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2552,12 +2615,13 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
     name = "PutSubscriptionFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$put_subscription_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, destinationArn = destinationArn, roleArn = roleArn, distribution = distribution)
   output <- .cloudwatchlogs$put_subscription_filter_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2615,12 +2679,13 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
     name = "StartLiveTail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "streaming-",
     paginator = list()
   )
   input <- .cloudwatchlogs$start_live_tail_input(logGroupIdentifiers = logGroupIdentifiers, logStreamNames = logStreamNames, logStreamNamePrefixes = logStreamNamePrefixes, logEventFilterPattern = logEventFilterPattern)
   output <- .cloudwatchlogs$start_live_tail_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2678,12 +2743,13 @@ cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL
     name = "StartQuery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$start_query_input(logGroupName = logGroupName, logGroupNames = logGroupNames, logGroupIdentifiers = logGroupIdentifiers, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
   output <- .cloudwatchlogs$start_query_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2708,12 +2774,13 @@ cloudwatchlogs_stop_query <- function(queryId) {
     name = "StopQuery",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$stop_query_input(queryId = queryId)
   output <- .cloudwatchlogs$stop_query_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2738,12 +2805,13 @@ cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
     name = "TagLogGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$tag_log_group_input(logGroupName = logGroupName, tags = tags)
   output <- .cloudwatchlogs$tag_log_group_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2779,12 +2847,13 @@ cloudwatchlogs_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .cloudwatchlogs$tag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2810,12 +2879,13 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
     name = "TestMetricFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$test_metric_filter_input(filterPattern = filterPattern, logEventMessages = logEventMessages)
   output <- .cloudwatchlogs$test_metric_filter_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2840,12 +2910,13 @@ cloudwatchlogs_untag_log_group <- function(logGroupName, tags) {
     name = "UntagLogGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$untag_log_group_input(logGroupName = logGroupName, tags = tags)
   output <- .cloudwatchlogs$untag_log_group_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2880,12 +2951,13 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .cloudwatchlogs$untag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2921,12 +2993,13 @@ cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, an
     name = "UpdateAnomaly",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$update_anomaly_input(anomalyId = anomalyId, patternId = patternId, anomalyDetectorArn = anomalyDetectorArn, suppressionType = suppressionType, suppressionPeriod = suppressionPeriod)
   output <- .cloudwatchlogs$update_anomaly_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2962,12 +3035,13 @@ cloudwatchlogs_update_log_anomaly_detector <- function(anomalyDetectorArn, evalu
     name = "UpdateLogAnomalyDetector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchlogs$update_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, anomalyVisibilityTime = anomalyVisibilityTime, enabled = enabled)
   output <- .cloudwatchlogs$update_log_anomaly_detector_output()
   config <- get_config()
-  svc <- .cloudwatchlogs$service(config)
+  svc <- .cloudwatchlogs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

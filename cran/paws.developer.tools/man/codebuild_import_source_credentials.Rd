@@ -19,13 +19,16 @@ codebuild_import_source_credentials(
 is not valid for other types of source providers or connections.}
 
 \item{token}{[required] For GitHub or GitHub Enterprise, this is the personal access token. For
-Bitbucket, this is either the access token or the app password.}
+Bitbucket, this is either the access token or the app password. For the
+\code{authType} CODECONNECTIONS, this is the \code{connectionArn}.}
 
 \item{serverType}{[required] The source provider used for this project.}
 
 \item{authType}{[required] The type of authentication used to connect to a GitHub, GitHub
-Enterprise, or Bitbucket repository. An OAUTH connection is not
-supported by the API and must be created using the CodeBuild console.}
+Enterprise, GitLab, GitLab Self Managed, or Bitbucket repository. An
+OAUTH connection is not supported by the API and must be created using
+the CodeBuild console. Note that CODECONNECTIONS is only valid for
+GitLab and GitLab Self Managed.}
 
 \item{shouldOverwrite}{Set to \code{false} to prevent overwriting the repository source credentials.
 Set to \code{true} to overwrite the repository source credentials. The

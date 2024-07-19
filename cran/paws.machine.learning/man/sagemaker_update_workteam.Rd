@@ -8,7 +8,8 @@ sagemaker_update_workteam(
   WorkteamName,
   MemberDefinitions = NULL,
   Description = NULL,
-  NotificationConfiguration = NULL
+  NotificationConfiguration = NULL,
+  WorkerAccessConfiguration = NULL
 )
 }
 \arguments{
@@ -42,6 +43,11 @@ with the work team you update.}
 \item{Description}{An updated description for the work team.}
 
 \item{NotificationConfiguration}{Configures SNS topic notifications for available or expiring work items}
+
+\item{WorkerAccessConfiguration}{Use this optional parameter to constrain access to an Amazon S3 resource
+based on the IP address using supported IAM global condition keys. The
+Amazon S3 resource is accessed in the worker portal using a Amazon S3
+presigned URL.}
 }
 \description{
 Updates an existing work team with new member definitions or description.

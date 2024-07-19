@@ -18,13 +18,11 @@ opsworks_set_load_based_auto_scaling(
 
 \item{UpScaling}{An \code{AutoScalingThresholds} object with the upscaling threshold
 configuration. If the load exceeds these thresholds for a specified
-amount of time, AWS OpsWorks Stacks starts a specified number of
-instances.}
+amount of time, OpsWorks Stacks starts a specified number of instances.}
 
 \item{DownScaling}{An \code{AutoScalingThresholds} object with the downscaling threshold
 configuration. If the load falls below these thresholds for a specified
-amount of time, AWS OpsWorks Stacks stops a specified number of
-instances.}
+amount of time, OpsWorks Stacks stops a specified number of instances.}
 }
 \description{
 Specify the load-based auto scaling configuration for a specified layer. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.

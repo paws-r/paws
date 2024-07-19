@@ -39,12 +39,13 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
     name = "CreateGatewayRoute",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$create_gateway_route_input(clientToken = clientToken, gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$create_gateway_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -77,12 +78,13 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
     name = "CreateMesh",
     http_method = "PUT",
     http_path = "/v20190125/meshes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$create_mesh_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags)
   output <- .appmesh$create_mesh_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -125,12 +127,13 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
     name = "CreateRoute",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$create_route_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, routeName = routeName, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
   output <- .appmesh$create_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -170,12 +173,13 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
     name = "CreateVirtualGateway",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualGateways",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$create_virtual_gateway_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$create_virtual_gateway_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -215,12 +219,13 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
     name = "CreateVirtualNode",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$create_virtual_node_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualNodeName = virtualNodeName)
   output <- .appmesh$create_virtual_node_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -260,12 +265,13 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwne
     name = "CreateVirtualRouter",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$create_virtual_router_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
   output <- .appmesh$create_virtual_router_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -305,12 +311,13 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
     name = "CreateVirtualService",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualServices",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$create_virtual_service_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualServiceName = virtualServiceName)
   output <- .appmesh$create_virtual_service_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -341,12 +348,13 @@ appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner =
     name = "DeleteGatewayRoute",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes/{gatewayRouteName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$delete_gateway_route_input(gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$delete_gateway_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -370,12 +378,13 @@ appmesh_delete_mesh <- function(meshName) {
     name = "DeleteMesh",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$delete_mesh_input(meshName = meshName)
   output <- .appmesh$delete_mesh_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -406,12 +415,13 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
     name = "DeleteRoute",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$delete_route_input(meshName = meshName, meshOwner = meshOwner, routeName = routeName, virtualRouterName = virtualRouterName)
   output <- .appmesh$delete_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -441,12 +451,13 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
     name = "DeleteVirtualGateway",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualGateways/{virtualGatewayName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$delete_virtual_gateway_input(meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$delete_virtual_gateway_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -476,12 +487,13 @@ appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeN
     name = "DeleteVirtualNode",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$delete_virtual_node_input(meshName = meshName, meshOwner = meshOwner, virtualNodeName = virtualNodeName)
   output <- .appmesh$delete_virtual_node_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -511,12 +523,13 @@ appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRou
     name = "DeleteVirtualRouter",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$delete_virtual_router_input(meshName = meshName, meshOwner = meshOwner, virtualRouterName = virtualRouterName)
   output <- .appmesh$delete_virtual_router_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -546,12 +559,13 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
     name = "DeleteVirtualService",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$delete_virtual_service_input(meshName = meshName, meshOwner = meshOwner, virtualServiceName = virtualServiceName)
   output <- .appmesh$delete_virtual_service_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -583,12 +597,13 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
     name = "DescribeGatewayRoute",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes/{gatewayRouteName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$describe_gateway_route_input(gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$describe_gateway_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -617,12 +632,13 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
     name = "DescribeMesh",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$describe_mesh_input(meshName = meshName, meshOwner = meshOwner)
   output <- .appmesh$describe_mesh_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -653,12 +669,13 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
     name = "DescribeRoute",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$describe_route_input(meshName = meshName, meshOwner = meshOwner, routeName = routeName, virtualRouterName = virtualRouterName)
   output <- .appmesh$describe_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -688,12 +705,13 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
     name = "DescribeVirtualGateway",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualGateways/{virtualGatewayName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$describe_virtual_gateway_input(meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$describe_virtual_gateway_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -723,12 +741,13 @@ appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNod
     name = "DescribeVirtualNode",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$describe_virtual_node_input(meshName = meshName, meshOwner = meshOwner, virtualNodeName = virtualNodeName)
   output <- .appmesh$describe_virtual_node_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -758,12 +777,13 @@ appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualR
     name = "DescribeVirtualRouter",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$describe_virtual_router_input(meshName = meshName, meshOwner = meshOwner, virtualRouterName = virtualRouterName)
   output <- .appmesh$describe_virtual_router_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -793,12 +813,13 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
     name = "DescribeVirtualService",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$describe_virtual_service_input(meshName = meshName, meshOwner = meshOwner, virtualServiceName = virtualServiceName)
   output <- .appmesh$describe_virtual_service_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -845,12 +866,13 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
     name = "ListGatewayRoutes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "gatewayRoutes")
   )
   input <- .appmesh$list_gateway_routes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$list_gateway_routes_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -891,12 +913,13 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
     name = "ListMeshes",
     http_method = "GET",
     http_path = "/v20190125/meshes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "meshes")
   )
   input <- .appmesh$list_meshes_input(limit = limit, nextToken = nextToken)
   output <- .appmesh$list_meshes_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -940,12 +963,13 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
     name = "ListRoutes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "routes")
   )
   input <- .appmesh$list_routes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken, virtualRouterName = virtualRouterName)
   output <- .appmesh$list_routes_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -987,12 +1011,13 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/v20190125/tags",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "tags")
   )
   input <- .appmesh$list_tags_for_resource_input(limit = limit, nextToken = nextToken, resourceArn = resourceArn)
   output <- .appmesh$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1037,12 +1062,13 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
     name = "ListVirtualGateways",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualGateways",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualGateways")
   )
   input <- .appmesh$list_virtual_gateways_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_gateways_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1087,12 +1113,13 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
     name = "ListVirtualNodes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualNodes")
   )
   input <- .appmesh$list_virtual_nodes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_nodes_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1137,12 +1164,13 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
     name = "ListVirtualRouters",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualRouters")
   )
   input <- .appmesh$list_virtual_routers_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_routers_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1187,12 +1215,13 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NU
     name = "ListVirtualServices",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualServices",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualServices")
   )
   input <- .appmesh$list_virtual_services_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_services_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1220,12 +1249,13 @@ appmesh_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "PUT",
     http_path = "/v20190125/tag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .appmesh$tag_resource_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1250,12 +1280,13 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "PUT",
     http_path = "/v20190125/untag",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .appmesh$untag_resource_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1293,12 +1324,13 @@ appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
     name = "UpdateGatewayRoute",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes/{gatewayRouteName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$update_gateway_route_input(clientToken = clientToken, gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$update_gateway_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1326,12 +1358,13 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
     name = "UpdateMesh",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$update_mesh_input(clientToken = clientToken, meshName = meshName, spec = spec)
   output <- .appmesh$update_mesh_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1367,12 +1400,13 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
     name = "UpdateRoute",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$update_route_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, routeName = routeName, spec = spec, virtualRouterName = virtualRouterName)
   output <- .appmesh$update_route_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1407,12 +1441,13 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
     name = "UpdateVirtualGateway",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualGateways/{virtualGatewayName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$update_virtual_gateway_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$update_virtual_gateway_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1447,12 +1482,13 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
     name = "UpdateVirtualNode",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$update_virtual_node_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualNodeName = virtualNodeName)
   output <- .appmesh$update_virtual_node_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1487,12 +1523,13 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwne
     name = "UpdateVirtualRouter",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$update_virtual_router_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualRouterName = virtualRouterName)
   output <- .appmesh$update_virtual_router_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1527,12 +1564,13 @@ appmesh_update_virtual_service <- function(clientToken = NULL, meshName, meshOwn
     name = "UpdateVirtualService",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appmesh$update_virtual_service_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualServiceName = virtualServiceName)
   output <- .appmesh$update_virtual_service_output()
   config <- get_config()
-  svc <- .appmesh$service(config)
+  svc <- .appmesh$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -145,7 +145,7 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.savingsplans$service <- function(config = list()) {
+.savingsplans$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.savingsplans$metadata, handlers, config)
+  new_service(.savingsplans$metadata, handlers, config, op)
 }

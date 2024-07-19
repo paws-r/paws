@@ -22,12 +22,13 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
     name = "AddNotificationChannels",
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$add_notification_channels_input(channels = channels, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$add_notification_channels_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -79,12 +80,13 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
     name = "BatchGetFrameMetricData",
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/frames/-/metrics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$batch_get_frame_metric_data_input(endTime = endTime, frameMetrics = frameMetrics, period = period, profilingGroupName = profilingGroupName, startTime = startTime, targetResolution = targetResolution)
   output <- .codeguruprofiler$batch_get_frame_metric_data_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -141,12 +143,13 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
     name = "ConfigureAgent",
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/configureAgent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$configure_agent_input(fleetInstanceId = fleetInstanceId, metadata = metadata, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$configure_agent_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -181,12 +184,13 @@ codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = N
     name = "CreateProfilingGroup",
     http_method = "POST",
     http_path = "/profilingGroups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$create_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, clientToken = clientToken, computePlatform = computePlatform, profilingGroupName = profilingGroupName, tags = tags)
   output <- .codeguruprofiler$create_profiling_group_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -210,12 +214,13 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
     name = "DeleteProfilingGroup",
     http_method = "DELETE",
     http_path = "/profilingGroups/{profilingGroupName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$delete_profiling_group_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$delete_profiling_group_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -240,12 +245,13 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
     name = "DescribeProfilingGroup",
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$describe_profiling_group_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$describe_profiling_group_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -291,12 +297,13 @@ codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnl
     name = "GetFindingsReportAccountSummary",
     http_method = "GET",
     http_path = "/internal/findingsReports",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .codeguruprofiler$get_findings_report_account_summary_input(dailyReportsOnly = dailyReportsOnly, maxResults = maxResults, nextToken = nextToken)
   output <- .codeguruprofiler$get_findings_report_account_summary_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -322,12 +329,13 @@ codeguruprofiler_get_notification_configuration <- function(profilingGroupName) 
     name = "GetNotificationConfiguration",
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$get_notification_configuration_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$get_notification_configuration_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -351,12 +359,13 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
     name = "GetPolicy",
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$get_policy_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$get_policy_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -407,12 +416,13 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
     name = "GetProfile",
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/profile",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$get_profile_input(accept = accept, endTime = endTime, maxDepth = maxDepth, period = period, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$get_profile_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -469,12 +479,13 @@ codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profili
     name = "GetRecommendations",
     http_method = "GET",
     http_path = "/internal/profilingGroups/{profilingGroupName}/recommendations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$get_recommendations_input(endTime = endTime, locale = locale, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$get_recommendations_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -527,12 +538,13 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
     name = "ListFindingsReports",
     http_method = "GET",
     http_path = "/internal/profilingGroups/{profilingGroupName}/findingsReports",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .codeguruprofiler$list_findings_reports_input(dailyReportsOnly = dailyReportsOnly, endTime = endTime, maxResults = maxResults, nextToken = nextToken, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$list_findings_reports_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -589,12 +601,13 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
     name = "ListProfileTimes",
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/profileTimes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "profileTimes")
   )
   input <- .codeguruprofiler$list_profile_times_input(endTime = endTime, maxResults = maxResults, nextToken = nextToken, orderBy = orderBy, period = period, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$list_profile_times_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -640,12 +653,13 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
     name = "ListProfilingGroups",
     http_method = "GET",
     http_path = "/profilingGroups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .codeguruprofiler$list_profiling_groups_input(includeDescription = includeDescription, maxResults = maxResults, nextToken = nextToken)
   output <- .codeguruprofiler$list_profiling_groups_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -670,12 +684,13 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codeguruprofiler$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -709,12 +724,13 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
     name = "PostAgentProfile",
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/agentProfile",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$post_agent_profile_input(agentProfile = agentProfile, contentType = contentType, profileToken = profileToken, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$post_agent_profile_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -751,12 +767,13 @@ codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGr
     name = "PutPermission",
     http_method = "PUT",
     http_path = "/profilingGroups/{profilingGroupName}/policy/{actionGroup}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$put_permission_input(actionGroup = actionGroup, principals = principals, profilingGroupName = profilingGroupName, revisionId = revisionId)
   output <- .codeguruprofiler$put_permission_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -782,12 +799,13 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
     name = "RemoveNotificationChannel",
     http_method = "DELETE",
     http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration/{channelId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$remove_notification_channel_input(channelId = channelId, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$remove_notification_channel_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -819,12 +837,13 @@ codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, 
     name = "RemovePermission",
     http_method = "DELETE",
     http_path = "/profilingGroups/{profilingGroupName}/policy/{actionGroup}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$remove_permission_input(actionGroup = actionGroup, profilingGroupName = profilingGroupName, revisionId = revisionId)
   output <- .codeguruprofiler$remove_permission_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -855,12 +874,13 @@ codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, 
     name = "SubmitFeedback",
     http_method = "POST",
     http_path = "/internal/profilingGroups/{profilingGroupName}/anomalies/{anomalyInstanceId}/feedback",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$submit_feedback_input(anomalyInstanceId = anomalyInstanceId, comment = comment, profilingGroupName = profilingGroupName, type = type)
   output <- .codeguruprofiler$submit_feedback_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -886,12 +906,13 @@ codeguruprofiler_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codeguruprofiler$tag_resource_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -918,12 +939,13 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codeguruprofiler$untag_resource_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -949,12 +971,13 @@ codeguruprofiler_update_profiling_group <- function(agentOrchestrationConfig, pr
     name = "UpdateProfilingGroup",
     http_method = "PUT",
     http_path = "/profilingGroups/{profilingGroupName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codeguruprofiler$update_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$update_profiling_group_output()
   config <- get_config()
-  svc <- .codeguruprofiler$service(config)
+  svc <- .codeguruprofiler$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

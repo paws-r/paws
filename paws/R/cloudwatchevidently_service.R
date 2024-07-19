@@ -179,7 +179,7 @@ cloudwatchevidently <- function(config = list(), credentials = list(), endpoint 
   target_prefix = ""
 )
 
-.cloudwatchevidently$service <- function(config = list()) {
+.cloudwatchevidently$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.cloudwatchevidently$metadata, handlers, config)
+  new_service(.cloudwatchevidently$metadata, handlers, config, op)
 }

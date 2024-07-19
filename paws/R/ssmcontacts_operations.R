@@ -55,12 +55,13 @@ ssmcontacts_accept_page <- function(PageId, ContactChannelId = NULL, AcceptType,
     name = "AcceptPage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$accept_page_input(PageId = PageId, ContactChannelId = ContactChannelId, AcceptType = AcceptType, Note = Note, AcceptCode = AcceptCode, AcceptCodeValidation = AcceptCodeValidation)
   output <- .ssmcontacts$accept_page_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -100,12 +101,13 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
     name = "ActivateContactChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$activate_contact_channel_input(ContactChannelId = ContactChannelId, ActivationCode = ActivationCode)
   output <- .ssmcontacts$activate_contact_channel_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -194,12 +196,13 @@ ssmcontacts_create_contact <- function(Alias, DisplayName = NULL, Type, Plan, Ta
     name = "CreateContact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$create_contact_input(Alias = Alias, DisplayName = DisplayName, Type = Type, Plan = Plan, Tags = Tags, IdempotencyToken = IdempotencyToken)
   output <- .ssmcontacts$create_contact_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -274,12 +277,13 @@ ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAd
     name = "CreateContactChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$create_contact_channel_input(ContactId = ContactId, Name = Name, Type = Type, DeliveryAddress = DeliveryAddress, DeferActivation = DeferActivation, IdempotencyToken = IdempotencyToken)
   output <- .ssmcontacts$create_contact_channel_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -401,12 +405,13 @@ ssmcontacts_create_rotation <- function(Name, ContactIds, StartTime = NULL, Time
     name = "CreateRotation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$create_rotation_input(Name = Name, ContactIds = ContactIds, StartTime = StartTime, TimeZoneId = TimeZoneId, Recurrence = Recurrence, Tags = Tags, IdempotencyToken = IdempotencyToken)
   output <- .ssmcontacts$create_rotation_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -469,12 +474,13 @@ ssmcontacts_create_rotation_override <- function(RotationId, NewContactIds, Star
     name = "CreateRotationOverride",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$create_rotation_override_input(RotationId = RotationId, NewContactIds = NewContactIds, StartTime = StartTime, EndTime = EndTime, IdempotencyToken = IdempotencyToken)
   output <- .ssmcontacts$create_rotation_override_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -514,12 +520,13 @@ ssmcontacts_deactivate_contact_channel <- function(ContactChannelId) {
     name = "DeactivateContactChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$deactivate_contact_channel_input(ContactChannelId = ContactChannelId)
   output <- .ssmcontacts$deactivate_contact_channel_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -560,12 +567,13 @@ ssmcontacts_delete_contact <- function(ContactId) {
     name = "DeleteContact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$delete_contact_input(ContactId = ContactId)
   output <- .ssmcontacts$delete_contact_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -607,12 +615,13 @@ ssmcontacts_delete_contact_channel <- function(ContactChannelId) {
     name = "DeleteContactChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$delete_contact_channel_input(ContactChannelId = ContactChannelId)
   output <- .ssmcontacts$delete_contact_channel_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -650,12 +659,13 @@ ssmcontacts_delete_rotation <- function(RotationId) {
     name = "DeleteRotation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$delete_rotation_input(RotationId = RotationId)
   output <- .ssmcontacts$delete_rotation_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -695,12 +705,13 @@ ssmcontacts_delete_rotation_override <- function(RotationId, RotationOverrideId)
     name = "DeleteRotationOverride",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$delete_rotation_override_input(RotationId = RotationId, RotationOverrideId = RotationOverrideId)
   output <- .ssmcontacts$delete_rotation_override_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -759,12 +770,13 @@ ssmcontacts_describe_engagement <- function(EngagementId) {
     name = "DescribeEngagement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$describe_engagement_input(EngagementId = EngagementId)
   output <- .ssmcontacts$describe_engagement_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -823,12 +835,13 @@ ssmcontacts_describe_page <- function(PageId) {
     name = "DescribePage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$describe_page_input(PageId = PageId)
   output <- .ssmcontacts$describe_page_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -895,12 +908,13 @@ ssmcontacts_get_contact <- function(ContactId) {
     name = "GetContact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$get_contact_input(ContactId = ContactId)
   output <- .ssmcontacts$get_contact_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -950,12 +964,13 @@ ssmcontacts_get_contact_channel <- function(ContactChannelId) {
     name = "GetContactChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$get_contact_channel_input(ContactChannelId = ContactChannelId)
   output <- .ssmcontacts$get_contact_channel_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1000,12 +1015,13 @@ ssmcontacts_get_contact_policy <- function(ContactArn) {
     name = "GetContactPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$get_contact_policy_input(ContactArn = ContactArn)
   output <- .ssmcontacts$get_contact_policy_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1098,12 +1114,13 @@ ssmcontacts_get_rotation <- function(RotationId) {
     name = "GetRotation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$get_rotation_input(RotationId = RotationId)
   output <- .ssmcontacts$get_rotation_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1162,12 +1179,13 @@ ssmcontacts_get_rotation_override <- function(RotationId, RotationOverrideId) {
     name = "GetRotationOverride",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$get_rotation_override_input(RotationId = RotationId, RotationOverrideId = RotationOverrideId)
   output <- .ssmcontacts$get_rotation_override_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1225,12 +1243,13 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
     name = "ListContactChannels",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ContactChannels")
   )
   input <- .ssmcontacts$list_contact_channels_input(ContactId = ContactId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_contact_channels_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1288,12 +1307,13 @@ ssmcontacts_list_contacts <- function(NextToken = NULL, MaxResults = NULL, Alias
     name = "ListContacts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Contacts")
   )
   input <- .ssmcontacts$list_contacts_input(NextToken = NextToken, MaxResults = MaxResults, AliasPrefix = AliasPrefix, Type = Type)
   output <- .ssmcontacts$list_contacts_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1364,12 +1384,13 @@ ssmcontacts_list_engagements <- function(NextToken = NULL, MaxResults = NULL, In
     name = "ListEngagements",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Engagements")
   )
   input <- .ssmcontacts$list_engagements_input(NextToken = NextToken, MaxResults = MaxResults, IncidentId = IncidentId, TimeRangeValue = TimeRangeValue)
   output <- .ssmcontacts$list_engagements_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1428,12 +1449,13 @@ ssmcontacts_list_page_receipts <- function(PageId, NextToken = NULL, MaxResults 
     name = "ListPageReceipts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Receipts")
   )
   input <- .ssmcontacts$list_page_receipts_input(PageId = PageId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_page_receipts_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1489,12 +1511,13 @@ ssmcontacts_list_page_resolutions <- function(NextToken = NULL, PageId) {
     name = "ListPageResolutions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PageResolutions")
   )
   input <- .ssmcontacts$list_page_resolutions_input(NextToken = NextToken, PageId = PageId)
   output <- .ssmcontacts$list_page_resolutions_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1560,12 +1583,13 @@ ssmcontacts_list_pages_by_contact <- function(ContactId, NextToken = NULL, MaxRe
     name = "ListPagesByContact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Pages")
   )
   input <- .ssmcontacts$list_pages_by_contact_input(ContactId = ContactId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_pages_by_contact_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1633,12 +1657,13 @@ ssmcontacts_list_pages_by_engagement <- function(EngagementId, NextToken = NULL,
     name = "ListPagesByEngagement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Pages")
   )
   input <- .ssmcontacts$list_pages_by_engagement_input(EngagementId = EngagementId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_pages_by_engagement_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1789,12 +1814,13 @@ ssmcontacts_list_preview_rotation_shifts <- function(RotationStartTime = NULL, S
     name = "ListPreviewRotationShifts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RotationShifts")
   )
   input <- .ssmcontacts$list_preview_rotation_shifts_input(RotationStartTime = RotationStartTime, StartTime = StartTime, EndTime = EndTime, Members = Members, TimeZoneId = TimeZoneId, Recurrence = Recurrence, Overrides = Overrides, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_preview_rotation_shifts_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1873,12 +1899,13 @@ ssmcontacts_list_rotation_overrides <- function(RotationId, StartTime, EndTime, 
     name = "ListRotationOverrides",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RotationOverrides")
   )
   input <- .ssmcontacts$list_rotation_overrides_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_rotation_overrides_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1958,12 +1985,13 @@ ssmcontacts_list_rotation_shifts <- function(RotationId, StartTime = NULL, EndTi
     name = "ListRotationShifts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RotationShifts")
   )
   input <- .ssmcontacts$list_rotation_shifts_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_rotation_shifts_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2069,12 +2097,13 @@ ssmcontacts_list_rotations <- function(RotationNamePrefix = NULL, NextToken = NU
     name = "ListRotations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Rotations")
   )
   input <- .ssmcontacts$list_rotations_input(RotationNamePrefix = RotationNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_rotations_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2121,12 +2150,13 @@ ssmcontacts_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .ssmcontacts$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2169,12 +2199,13 @@ ssmcontacts_put_contact_policy <- function(ContactArn, Policy) {
     name = "PutContactPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$put_contact_policy_input(ContactArn = ContactArn, Policy = Policy)
   output <- .ssmcontacts$put_contact_policy_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2214,12 +2245,13 @@ ssmcontacts_send_activation_code <- function(ContactChannelId) {
     name = "SendActivationCode",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$send_activation_code_input(ContactChannelId = ContactChannelId)
   output <- .ssmcontacts$send_activation_code_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2282,12 +2314,13 @@ ssmcontacts_start_engagement <- function(ContactId, Sender, Subject, Content, Pu
     name = "StartEngagement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$start_engagement_input(ContactId = ContactId, Sender = Sender, Subject = Subject, Content = Content, PublicSubject = PublicSubject, PublicContent = PublicContent, IncidentId = IncidentId, IdempotencyToken = IdempotencyToken)
   output <- .ssmcontacts$start_engagement_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2328,12 +2361,13 @@ ssmcontacts_stop_engagement <- function(EngagementId, Reason = NULL) {
     name = "StopEngagement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$stop_engagement_input(EngagementId = EngagementId, Reason = Reason)
   output <- .ssmcontacts$stop_engagement_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2378,12 +2412,13 @@ ssmcontacts_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .ssmcontacts$tag_resource_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2424,12 +2459,13 @@ ssmcontacts_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .ssmcontacts$untag_resource_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2494,12 +2530,13 @@ ssmcontacts_update_contact <- function(ContactId, DisplayName = NULL, Plan = NUL
     name = "UpdateContact",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$update_contact_input(ContactId = ContactId, DisplayName = DisplayName, Plan = Plan)
   output <- .ssmcontacts$update_contact_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2545,12 +2582,13 @@ ssmcontacts_update_contact_channel <- function(ContactChannelId, Name = NULL, De
     name = "UpdateContactChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$update_contact_channel_input(ContactChannelId = ContactChannelId, Name = Name, DeliveryAddress = DeliveryAddress)
   output <- .ssmcontacts$update_contact_channel_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2654,12 +2692,13 @@ ssmcontacts_update_rotation <- function(RotationId, ContactIds = NULL, StartTime
     name = "UpdateRotation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmcontacts$update_rotation_input(RotationId = RotationId, ContactIds = ContactIds, StartTime = StartTime, TimeZoneId = TimeZoneId, Recurrence = Recurrence)
   output <- .ssmcontacts$update_rotation_output()
   config <- get_config()
-  svc <- .ssmcontacts$service(config)
+  svc <- .ssmcontacts$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

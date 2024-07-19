@@ -177,7 +177,7 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "AWSSimbaAPIService_v20180301"
 )
 
-.fsx$service <- function(config = list()) {
+.fsx$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.fsx$metadata, handlers, config)
+  new_service(.fsx$metadata, handlers, config, op)
 }

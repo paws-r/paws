@@ -5,16 +5,16 @@
 \title{Deletes the position history of one or more devices from a tracker
 resource}
 \usage{
-locationservice_batch_delete_device_position_history(DeviceIds, TrackerName)
+locationservice_batch_delete_device_position_history(TrackerName, DeviceIds)
 }
 \arguments{
+\item{TrackerName}{[required] The name of the tracker resource to delete the device position history
+from.}
+
 \item{DeviceIds}{[required] Devices whose position history you want to delete.
 \itemize{
 \item For example, for two devices: \verb{“DeviceIds” : [DeviceId1,DeviceId2]}
 }}
-
-\item{TrackerName}{[required] The name of the tracker resource to delete the device position history
-from.}
 }
 \description{
 Deletes the position history of one or more devices from a tracker resource.

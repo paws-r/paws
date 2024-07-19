@@ -182,7 +182,7 @@ entityresolution <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.entityresolution$service <- function(config = list()) {
+.entityresolution$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.entityresolution$metadata, handlers, config)
+  new_service(.entityresolution$metadata, handlers, config, op)
 }

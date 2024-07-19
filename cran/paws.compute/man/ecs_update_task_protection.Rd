@@ -31,7 +31,7 @@ If you don’t specify the time, then the task is automatically protected
 for 120 minutes (2 hours).}
 }
 \description{
-Updates the protection status of a task. You can set \code{protectionEnabled} to \code{true} to protect your task from termination during scale-in events from \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html}{Service Autoscaling} or \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{deployments}.
+Updates the protection status of a task. You can set \code{protectionEnabled} to \code{true} to protect your task from termination during scale-in events from \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html}{Service Autoscaling} or \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{deployments}.
 
 See \url{https://www.paws-r-sdk.com/docs/ecs_update_task_protection/} for full documentation.
 }

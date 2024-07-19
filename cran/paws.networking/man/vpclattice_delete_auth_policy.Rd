@@ -10,7 +10,7 @@ vpclattice_delete_auth_policy(resourceIdentifier)
 \item{resourceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the resource.}
 }
 \description{
-Deletes the specified auth policy. If an auth is set to \verb{Amazon Web Services_IAM} and the auth policy is deleted, all requests will be denied by default. If you are trying to remove the auth policy completely, you must set the auth_type to \code{NONE}. If auth is enabled on the resource, but no auth policy is set, all requests will be denied.
+Deletes the specified auth policy. If an auth is set to \code{AWS_IAM} and the auth policy is deleted, all requests are denied. If you are trying to remove the auth policy completely, you must set the auth type to \code{NONE}. If auth is enabled on the resource, but no auth policy is set, all requests are denied.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_delete_auth_policy/} for full documentation.
 }

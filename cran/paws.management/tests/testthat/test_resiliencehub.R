@@ -8,6 +8,10 @@ test_that("list_apps", {
   expect_error(svc$list_apps(), NA)
 })
 
+test_that("list_recommendation_templates", {
+  expect_error(svc$list_recommendation_templates(), NA)
+})
+
 test_that("list_resiliency_policies", {
   expect_error(svc$list_resiliency_policies(), NA)
 })

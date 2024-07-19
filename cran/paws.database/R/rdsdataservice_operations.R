@@ -52,12 +52,13 @@ rdsdataservice_batch_execute_statement <- function(resourceArn, secretArn, sql, 
     name = "BatchExecuteStatement",
     http_method = "POST",
     http_path = "/BatchExecute",
+    host_prefix = "",
     paginator = list()
   )
   input <- .rdsdataservice$batch_execute_statement_input(resourceArn = resourceArn, secretArn = secretArn, sql = sql, database = database, schema = schema, parameterSets = parameterSets, transactionId = transactionId)
   output <- .rdsdataservice$batch_execute_statement_output()
   config <- get_config()
-  svc <- .rdsdataservice$service(config)
+  svc <- .rdsdataservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -84,12 +85,13 @@ rdsdataservice_begin_transaction <- function(resourceArn, secretArn, database = 
     name = "BeginTransaction",
     http_method = "POST",
     http_path = "/BeginTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .rdsdataservice$begin_transaction_input(resourceArn = resourceArn, secretArn = secretArn, database = database, schema = schema)
   output <- .rdsdataservice$begin_transaction_output()
   config <- get_config()
-  svc <- .rdsdataservice$service(config)
+  svc <- .rdsdataservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -116,12 +118,13 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
     name = "CommitTransaction",
     http_method = "POST",
     http_path = "/CommitTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .rdsdataservice$commit_transaction_input(resourceArn = resourceArn, secretArn = secretArn, transactionId = transactionId)
   output <- .rdsdataservice$commit_transaction_output()
   config <- get_config()
-  svc <- .rdsdataservice$service(config)
+  svc <- .rdsdataservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -158,12 +161,13 @@ rdsdataservice_execute_sql <- function(dbClusterOrInstanceArn, awsSecretStoreArn
     name = "ExecuteSql",
     http_method = "POST",
     http_path = "/ExecuteSql",
+    host_prefix = "",
     paginator = list()
   )
   input <- .rdsdataservice$execute_sql_input(dbClusterOrInstanceArn = dbClusterOrInstanceArn, awsSecretStoreArn = awsSecretStoreArn, sqlStatements = sqlStatements, database = database, schema = schema)
   output <- .rdsdataservice$execute_sql_output()
   config <- get_config()
-  svc <- .rdsdataservice$service(config)
+  svc <- .rdsdataservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -227,12 +231,13 @@ rdsdataservice_execute_statement <- function(resourceArn, secretArn, sql, databa
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/Execute",
+    host_prefix = "",
     paginator = list()
   )
   input <- .rdsdataservice$execute_statement_input(resourceArn = resourceArn, secretArn = secretArn, sql = sql, database = database, schema = schema, parameters = parameters, transactionId = transactionId, includeResultMetadata = includeResultMetadata, continueAfterTimeout = continueAfterTimeout, resultSetOptions = resultSetOptions, formatRecordsAs = formatRecordsAs)
   output <- .rdsdataservice$execute_statement_output()
   config <- get_config()
-  svc <- .rdsdataservice$service(config)
+  svc <- .rdsdataservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -258,12 +263,13 @@ rdsdataservice_rollback_transaction <- function(resourceArn, secretArn, transact
     name = "RollbackTransaction",
     http_method = "POST",
     http_path = "/RollbackTransaction",
+    host_prefix = "",
     paginator = list()
   )
   input <- .rdsdataservice$rollback_transaction_input(resourceArn = resourceArn, secretArn = secretArn, transactionId = transactionId)
   output <- .rdsdataservice$rollback_transaction_output()
   config <- get_config()
-  svc <- .rdsdataservice$service(config)
+  svc <- .rdsdataservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

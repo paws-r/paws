@@ -70,12 +70,14 @@ Select only one valid value.
 \item For symmetric encryption KMS keys, omit the parameter or specify
 \code{ENCRYPT_DECRYPT}.
 \item For HMAC KMS keys (symmetric), specify \code{GENERATE_VERIFY_MAC}.
-\item For asymmetric KMS keys with RSA key material, specify
+\item For asymmetric KMS keys with RSA key pairs, specify
 \code{ENCRYPT_DECRYPT} or \code{SIGN_VERIFY}.
-\item For asymmetric KMS keys with ECC key material, specify
+\item For asymmetric KMS keys with NIST-recommended elliptic curve key
+pairs, specify \code{SIGN_VERIFY} or \code{KEY_AGREEMENT}.
+\item For asymmetric KMS keys with \code{ECC_SECG_P256K1} key pairs specify
 \code{SIGN_VERIFY}.
-\item For asymmetric KMS keys with SM2 key material (China Regions only),
-specify \code{ENCRYPT_DECRYPT} or \code{SIGN_VERIFY}.
+\item For asymmetric KMS keys with SM2 key pairs (China Regions only),
+specify \code{ENCRYPT_DECRYPT}, \code{SIGN_VERIFY}, or \code{KEY_AGREEMENT}.
 }}
 
 \item{CustomerMasterKeySpec}{Instead, use the \code{KeySpec} parameter.
@@ -120,26 +122,29 @@ KMS supports the following key specs for KMS keys:
 \item \code{HMAC_384}
 \item \code{HMAC_512}
 }
-\item Asymmetric RSA key pairs
+\item Asymmetric RSA key pairs (encryption and decryption -or- signing and
+verification)
 \itemize{
 \item \code{RSA_2048}
 \item \code{RSA_3072}
 \item \code{RSA_4096}
 }
-\item Asymmetric NIST-recommended elliptic curve key pairs
+\item Asymmetric NIST-recommended elliptic curve key pairs (signing and
+verification -or- deriving shared secrets)
 \itemize{
 \item \code{ECC_NIST_P256} (secp256r1)
 \item \code{ECC_NIST_P384} (secp384r1)
 \item \code{ECC_NIST_P521} (secp521r1)
 }
-\item Other asymmetric elliptic curve key pairs
+\item Other asymmetric elliptic curve key pairs (signing and verification)
 \itemize{
 \item \code{ECC_SECG_P256K1} (secp256k1), commonly used for
 cryptocurrencies.
 }
-\item SM2 key pairs (China Regions only)
+\item SM2 key pairs (encryption and decryption -or- signing and
+verification -or- deriving shared secrets)
 \itemize{
-\item \code{SM2}
+\item \code{SM2} (China Regions only)
 }
 }}
 

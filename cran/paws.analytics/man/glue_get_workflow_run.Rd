@@ -14,7 +14,7 @@ glue_get_workflow_run(Name, RunId, IncludeGraph = NULL)
 \item{IncludeGraph}{Specifies whether to include the workflow graph in response or not.}
 }
 \description{
-Retrieves the metadata for a given workflow run.
+Retrieves the metadata for a given workflow run. Job run history is accessible for 90 days for your workflow and job run.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_get_workflow_run/} for full documentation.
 }

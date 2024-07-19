@@ -26,12 +26,13 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
     name = "BatchMeterUsage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacemetering$batch_meter_usage_input(UsageRecords = UsageRecords, ProductCode = ProductCode)
   output <- .marketplacemetering$batch_meter_usage_output()
   config <- get_config()
-  svc <- .marketplacemetering$service(config)
+  svc <- .marketplacemetering$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -73,12 +74,13 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
     name = "MeterUsage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun, UsageAllocations = UsageAllocations)
   output <- .marketplacemetering$meter_usage_output()
   config <- get_config()
-  svc <- .marketplacemetering$service(config)
+  svc <- .marketplacemetering$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -109,12 +111,13 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
     name = "RegisterUsage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacemetering$register_usage_input(ProductCode = ProductCode, PublicKeyVersion = PublicKeyVersion, Nonce = Nonce)
   output <- .marketplacemetering$register_usage_output()
   config <- get_config()
-  svc <- .marketplacemetering$service(config)
+  svc <- .marketplacemetering$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -142,12 +145,13 @@ marketplacemetering_resolve_customer <- function(RegistrationToken) {
     name = "ResolveCustomer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .marketplacemetering$resolve_customer_input(RegistrationToken = RegistrationToken)
   output <- .marketplacemetering$resolve_customer_output()
   config <- get_config()
-  svc <- .marketplacemetering$service(config)
+  svc <- .marketplacemetering$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

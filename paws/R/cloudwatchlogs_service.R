@@ -237,7 +237,7 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = "Logs_20140328"
 )
 
-.cloudwatchlogs$service <- function(config = list()) {
+.cloudwatchlogs$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.cloudwatchlogs$metadata, handlers, config)
+  new_service(.cloudwatchlogs$metadata, handlers, config, op)
 }

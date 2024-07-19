@@ -175,7 +175,7 @@ codeguruprofiler <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.codeguruprofiler$service <- function(config = list()) {
+.codeguruprofiler$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.codeguruprofiler$metadata, handlers, config)
+  new_service(.codeguruprofiler$metadata, handlers, config, op)
 }

@@ -18,7 +18,7 @@ ec2_detach_verified_access_trust_provider(
 \item{VerifiedAccessTrustProviderId}{[required] The ID of the Verified Access trust provider.}
 
 \item{ClientToken}{A unique, case-sensitive token that you provide to ensure idempotency of
-your modification request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+your modification request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

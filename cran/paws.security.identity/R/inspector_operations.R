@@ -23,12 +23,13 @@ inspector_add_attributes_to_findings <- function(findingArns, attributes) {
     name = "AddAttributesToFindings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$add_attributes_to_findings_input(findingArns = findingArns, attributes = attributes)
   output <- .inspector$add_attributes_to_findings_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -58,12 +59,13 @@ inspector_create_assessment_target <- function(assessmentTargetName, resourceGro
     name = "CreateAssessmentTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$create_assessment_target_input(assessmentTargetName = assessmentTargetName, resourceGroupArn = resourceGroupArn)
   output <- .inspector$create_assessment_target_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -100,12 +102,13 @@ inspector_create_assessment_template <- function(assessmentTargetArn, assessment
     name = "CreateAssessmentTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$create_assessment_template_input(assessmentTargetArn = assessmentTargetArn, assessmentTemplateName = assessmentTemplateName, durationInSeconds = durationInSeconds, rulesPackageArns = rulesPackageArns, userAttributesForFindings = userAttributesForFindings)
   output <- .inspector$create_assessment_template_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -131,12 +134,13 @@ inspector_create_exclusions_preview <- function(assessmentTemplateArn) {
     name = "CreateExclusionsPreview",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$create_exclusions_preview_input(assessmentTemplateArn = assessmentTemplateArn)
   output <- .inspector$create_exclusions_preview_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -165,12 +169,13 @@ inspector_create_resource_group <- function(resourceGroupTags) {
     name = "CreateResourceGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$create_resource_group_input(resourceGroupTags = resourceGroupTags)
   output <- .inspector$create_resource_group_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -195,12 +200,13 @@ inspector_delete_assessment_run <- function(assessmentRunArn) {
     name = "DeleteAssessmentRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$delete_assessment_run_input(assessmentRunArn = assessmentRunArn)
   output <- .inspector$delete_assessment_run_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -225,12 +231,13 @@ inspector_delete_assessment_target <- function(assessmentTargetArn) {
     name = "DeleteAssessmentTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$delete_assessment_target_input(assessmentTargetArn = assessmentTargetArn)
   output <- .inspector$delete_assessment_target_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -255,12 +262,13 @@ inspector_delete_assessment_template <- function(assessmentTemplateArn) {
     name = "DeleteAssessmentTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$delete_assessment_template_input(assessmentTemplateArn = assessmentTemplateArn)
   output <- .inspector$delete_assessment_template_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -285,12 +293,13 @@ inspector_describe_assessment_runs <- function(assessmentRunArns) {
     name = "DescribeAssessmentRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_assessment_runs_input(assessmentRunArns = assessmentRunArns)
   output <- .inspector$describe_assessment_runs_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -316,12 +325,13 @@ inspector_describe_assessment_targets <- function(assessmentTargetArns) {
     name = "DescribeAssessmentTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_assessment_targets_input(assessmentTargetArns = assessmentTargetArns)
   output <- .inspector$describe_assessment_targets_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -346,12 +356,13 @@ inspector_describe_assessment_templates <- function(assessmentTemplateArns) {
     name = "DescribeAssessmentTemplates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_assessment_templates_input(assessmentTemplateArns = assessmentTemplateArns)
   output <- .inspector$describe_assessment_templates_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -376,12 +387,13 @@ inspector_describe_cross_account_access_role <- function() {
     name = "DescribeCrossAccountAccessRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_cross_account_access_role_input()
   output <- .inspector$describe_cross_account_access_role_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -407,12 +419,13 @@ inspector_describe_exclusions <- function(exclusionArns, locale = NULL) {
     name = "DescribeExclusions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_exclusions_input(exclusionArns = exclusionArns, locale = locale)
   output <- .inspector$describe_exclusions_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -438,12 +451,13 @@ inspector_describe_findings <- function(findingArns, locale = NULL) {
     name = "DescribeFindings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_findings_input(findingArns = findingArns, locale = locale)
   output <- .inspector$describe_findings_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -468,12 +482,13 @@ inspector_describe_resource_groups <- function(resourceGroupArns) {
     name = "DescribeResourceGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_resource_groups_input(resourceGroupArns = resourceGroupArns)
   output <- .inspector$describe_resource_groups_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -499,12 +514,13 @@ inspector_describe_rules_packages <- function(rulesPackageArns, locale = NULL) {
     name = "DescribeRulesPackages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$describe_rules_packages_input(rulesPackageArns = rulesPackageArns, locale = locale)
   output <- .inspector$describe_rules_packages_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -536,12 +552,13 @@ inspector_get_assessment_report <- function(assessmentRunArn, reportFileFormat, 
     name = "GetAssessmentReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$get_assessment_report_input(assessmentRunArn = assessmentRunArn, reportFileFormat = reportFileFormat, reportType = reportType)
   output <- .inspector$get_assessment_report_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -578,12 +595,13 @@ inspector_get_exclusions_preview <- function(assessmentTemplateArn, previewToken
     name = "GetExclusionsPreview",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$get_exclusions_preview_input(assessmentTemplateArn = assessmentTemplateArn, previewToken = previewToken, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .inspector$get_exclusions_preview_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -609,12 +627,13 @@ inspector_get_telemetry_metadata <- function(assessmentRunArn) {
     name = "GetTelemetryMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$get_telemetry_metadata_input(assessmentRunArn = assessmentRunArn)
   output <- .inspector$get_telemetry_metadata_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -653,12 +672,13 @@ inspector_list_assessment_run_agents <- function(assessmentRunArn, filter = NULL
     name = "ListAssessmentRunAgents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_run_agents_input(assessmentRunArn = assessmentRunArn, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_run_agents_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -698,12 +718,13 @@ inspector_list_assessment_runs <- function(assessmentTemplateArns = NULL, filter
     name = "ListAssessmentRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_runs_input(assessmentTemplateArns = assessmentTemplateArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_runs_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -739,12 +760,13 @@ inspector_list_assessment_targets <- function(filter = NULL, nextToken = NULL, m
     name = "ListAssessmentTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_targets_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_targets_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -783,12 +805,13 @@ inspector_list_assessment_templates <- function(assessmentTargetArns = NULL, fil
     name = "ListAssessmentTemplates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_templates_input(assessmentTargetArns = assessmentTargetArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_templates_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -821,12 +844,13 @@ inspector_list_event_subscriptions <- function(resourceArn = NULL, nextToken = N
     name = "ListEventSubscriptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_event_subscriptions_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_event_subscriptions_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -859,12 +883,13 @@ inspector_list_exclusions <- function(assessmentRunArn, nextToken = NULL, maxRes
     name = "ListExclusions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_exclusions_input(assessmentRunArn = assessmentRunArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_exclusions_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -903,12 +928,13 @@ inspector_list_findings <- function(assessmentRunArns = NULL, filter = NULL, nex
     name = "ListFindings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_findings_input(assessmentRunArns = assessmentRunArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_findings_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -938,12 +964,13 @@ inspector_list_rules_packages <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListRulesPackages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_rules_packages_input(nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_rules_packages_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -968,12 +995,13 @@ inspector_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .inspector$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1005,12 +1033,13 @@ inspector_preview_agents <- function(previewAgentsArn, nextToken = NULL, maxResu
     name = "PreviewAgents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$preview_agents_input(previewAgentsArn = previewAgentsArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$preview_agents_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1036,12 +1065,13 @@ inspector_register_cross_account_access_role <- function(roleArn) {
     name = "RegisterCrossAccountAccessRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$register_cross_account_access_role_input(roleArn = roleArn)
   output <- .inspector$register_cross_account_access_role_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1070,12 +1100,13 @@ inspector_remove_attributes_from_findings <- function(findingArns, attributeKeys
     name = "RemoveAttributesFromFindings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$remove_attributes_from_findings_input(findingArns = findingArns, attributeKeys = attributeKeys)
   output <- .inspector$remove_attributes_from_findings_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1102,12 +1133,13 @@ inspector_set_tags_for_resource <- function(resourceArn, tags = NULL) {
     name = "SetTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$set_tags_for_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .inspector$set_tags_for_resource_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1136,12 +1168,13 @@ inspector_start_assessment_run <- function(assessmentTemplateArn, assessmentRunN
     name = "StartAssessmentRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$start_assessment_run_input(assessmentTemplateArn = assessmentTemplateArn, assessmentRunName = assessmentRunName)
   output <- .inspector$start_assessment_run_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1171,12 +1204,13 @@ inspector_stop_assessment_run <- function(assessmentRunArn, stopAction = NULL) {
     name = "StopAssessmentRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$stop_assessment_run_input(assessmentRunArn = assessmentRunArn, stopAction = stopAction)
   output <- .inspector$stop_assessment_run_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1204,12 +1238,13 @@ inspector_subscribe_to_event <- function(resourceArn, event, topicArn) {
     name = "SubscribeToEvent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$subscribe_to_event_input(resourceArn = resourceArn, event = event, topicArn = topicArn)
   output <- .inspector$subscribe_to_event_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1237,12 +1272,13 @@ inspector_unsubscribe_from_event <- function(resourceArn, event, topicArn) {
     name = "UnsubscribeFromEvent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$unsubscribe_from_event_input(resourceArn = resourceArn, event = event, topicArn = topicArn)
   output <- .inspector$unsubscribe_from_event_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1270,12 +1306,13 @@ inspector_update_assessment_target <- function(assessmentTargetArn, assessmentTa
     name = "UpdateAssessmentTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .inspector$update_assessment_target_input(assessmentTargetArn = assessmentTargetArn, assessmentTargetName = assessmentTargetName, resourceGroupArn = resourceGroupArn)
   output <- .inspector$update_assessment_target_output()
   config <- get_config()
-  svc <- .inspector$service(config)
+  svc <- .inspector$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -122,6 +122,7 @@ NULL
 #'  \link[=batch_describe_job_queues]{describe_job_queues} \tab Describes one or more of your job queues\cr
 #'  \link[=batch_describe_jobs]{describe_jobs} \tab Describes a list of Batch jobs\cr
 #'  \link[=batch_describe_scheduling_policies]{describe_scheduling_policies} \tab Describes one or more of your scheduling policies\cr
+#'  \link[=batch_get_job_queue_snapshot]{get_job_queue_snapshot} \tab Provides a list of the first 100 RUNNABLE jobs associated to a single job queue\cr
 #'  \link[=batch_list_jobs]{list_jobs} \tab Returns a list of Batch jobs\cr
 #'  \link[=batch_list_scheduling_policies]{list_scheduling_policies} \tab Returns a list of Batch scheduling policies\cr
 #'  \link[=batch_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Batch resource\cr
@@ -172,7 +173,7 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
   target_prefix = ""
 )
 
-.batch$service <- function(config = list()) {
+.batch$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.batch$metadata, handlers, config)
+  new_service(.batch$metadata, handlers, config, op)
 }

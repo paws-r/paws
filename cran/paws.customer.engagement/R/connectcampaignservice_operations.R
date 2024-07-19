@@ -24,12 +24,13 @@ connectcampaignservice_create_campaign <- function(name, connectInstanceId, dial
     name = "CreateCampaign",
     http_method = "PUT",
     http_path = "/campaigns",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$create_campaign_input(name = name, connectInstanceId = connectInstanceId, dialerConfig = dialerConfig, outboundCallConfig = outboundCallConfig, tags = tags)
   output <- .connectcampaignservice$create_campaign_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -53,12 +54,13 @@ connectcampaignservice_delete_campaign <- function(id) {
     name = "DeleteCampaign",
     http_method = "DELETE",
     http_path = "/campaigns/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$delete_campaign_input(id = id)
   output <- .connectcampaignservice$delete_campaign_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -82,12 +84,13 @@ connectcampaignservice_delete_connect_instance_config <- function(connectInstanc
     name = "DeleteConnectInstanceConfig",
     http_method = "DELETE",
     http_path = "/connect-instance/{connectInstanceId}/config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$delete_connect_instance_config_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservice$delete_connect_instance_config_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -112,12 +115,13 @@ connectcampaignservice_delete_instance_onboarding_job <- function(connectInstanc
     name = "DeleteInstanceOnboardingJob",
     http_method = "DELETE",
     http_path = "/connect-instance/{connectInstanceId}/onboarding",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$delete_instance_onboarding_job_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservice$delete_instance_onboarding_job_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -141,12 +145,13 @@ connectcampaignservice_describe_campaign <- function(id) {
     name = "DescribeCampaign",
     http_method = "GET",
     http_path = "/campaigns/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$describe_campaign_input(id = id)
   output <- .connectcampaignservice$describe_campaign_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -170,12 +175,13 @@ connectcampaignservice_get_campaign_state <- function(id) {
     name = "GetCampaignState",
     http_method = "GET",
     http_path = "/campaigns/{id}/state",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$get_campaign_state_input(id = id)
   output <- .connectcampaignservice$get_campaign_state_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -199,12 +205,13 @@ connectcampaignservice_get_campaign_state_batch <- function(campaignIds) {
     name = "GetCampaignStateBatch",
     http_method = "POST",
     http_path = "/campaigns-state",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$get_campaign_state_batch_input(campaignIds = campaignIds)
   output <- .connectcampaignservice$get_campaign_state_batch_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -228,12 +235,13 @@ connectcampaignservice_get_connect_instance_config <- function(connectInstanceId
     name = "GetConnectInstanceConfig",
     http_method = "GET",
     http_path = "/connect-instance/{connectInstanceId}/config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$get_connect_instance_config_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservice$get_connect_instance_config_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -257,12 +265,13 @@ connectcampaignservice_get_instance_onboarding_job_status <- function(connectIns
     name = "GetInstanceOnboardingJobStatus",
     http_method = "GET",
     http_path = "/connect-instance/{connectInstanceId}/onboarding",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$get_instance_onboarding_job_status_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservice$get_instance_onboarding_job_status_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -289,12 +298,13 @@ connectcampaignservice_list_campaigns <- function(maxResults = NULL, nextToken =
     name = "ListCampaigns",
     http_method = "POST",
     http_path = "/campaigns-summary",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "campaignSummaryList")
   )
   input <- .connectcampaignservice$list_campaigns_input(maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .connectcampaignservice$list_campaigns_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -318,12 +328,13 @@ connectcampaignservice_list_tags_for_resource <- function(arn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$list_tags_for_resource_input(arn = arn)
   output <- .connectcampaignservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -347,12 +358,13 @@ connectcampaignservice_pause_campaign <- function(id) {
     name = "PauseCampaign",
     http_method = "POST",
     http_path = "/campaigns/{id}/pause",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$pause_campaign_input(id = id)
   output <- .connectcampaignservice$pause_campaign_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -377,12 +389,13 @@ connectcampaignservice_put_dial_request_batch <- function(id, dialRequests) {
     name = "PutDialRequestBatch",
     http_method = "PUT",
     http_path = "/campaigns/{id}/dial-requests",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$put_dial_request_batch_input(id = id, dialRequests = dialRequests)
   output <- .connectcampaignservice$put_dial_request_batch_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -406,12 +419,13 @@ connectcampaignservice_resume_campaign <- function(id) {
     name = "ResumeCampaign",
     http_method = "POST",
     http_path = "/campaigns/{id}/resume",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$resume_campaign_input(id = id)
   output <- .connectcampaignservice$resume_campaign_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -435,12 +449,13 @@ connectcampaignservice_start_campaign <- function(id) {
     name = "StartCampaign",
     http_method = "POST",
     http_path = "/campaigns/{id}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$start_campaign_input(id = id)
   output <- .connectcampaignservice$start_campaign_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -465,12 +480,13 @@ connectcampaignservice_start_instance_onboarding_job <- function(connectInstance
     name = "StartInstanceOnboardingJob",
     http_method = "PUT",
     http_path = "/connect-instance/{connectInstanceId}/onboarding",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$start_instance_onboarding_job_input(connectInstanceId = connectInstanceId, encryptionConfig = encryptionConfig)
   output <- .connectcampaignservice$start_instance_onboarding_job_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -494,12 +510,13 @@ connectcampaignservice_stop_campaign <- function(id) {
     name = "StopCampaign",
     http_method = "POST",
     http_path = "/campaigns/{id}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$stop_campaign_input(id = id)
   output <- .connectcampaignservice$stop_campaign_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -524,12 +541,13 @@ connectcampaignservice_tag_resource <- function(arn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$tag_resource_input(arn = arn, tags = tags)
   output <- .connectcampaignservice$tag_resource_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -554,12 +572,13 @@ connectcampaignservice_untag_resource <- function(arn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$untag_resource_input(arn = arn, tagKeys = tagKeys)
   output <- .connectcampaignservice$untag_resource_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -584,12 +603,13 @@ connectcampaignservice_update_campaign_dialer_config <- function(id, dialerConfi
     name = "UpdateCampaignDialerConfig",
     http_method = "POST",
     http_path = "/campaigns/{id}/dialer-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$update_campaign_dialer_config_input(id = id, dialerConfig = dialerConfig)
   output <- .connectcampaignservice$update_campaign_dialer_config_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -614,12 +634,13 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
     name = "UpdateCampaignName",
     http_method = "POST",
     http_path = "/campaigns/{id}/name",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$update_campaign_name_input(id = id, name = name)
   output <- .connectcampaignservice$update_campaign_name_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -646,12 +667,13 @@ connectcampaignservice_update_campaign_outbound_call_config <- function(id, conn
     name = "UpdateCampaignOutboundCallConfig",
     http_method = "POST",
     http_path = "/campaigns/{id}/outbound-call-config",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectcampaignservice$update_campaign_outbound_call_config_input(id = id, connectContactFlowId = connectContactFlowId, connectSourcePhoneNumber = connectSourcePhoneNumber, answerMachineDetectionConfig = answerMachineDetectionConfig)
   output <- .connectcampaignservice$update_campaign_outbound_call_config_output()
   config <- get_config()
-  svc <- .connectcampaignservice$service(config)
+  svc <- .connectcampaignservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -11,6 +11,8 @@ codebuild_create_fleet(
   computeType,
   scalingConfiguration = NULL,
   overflowBehavior = NULL,
+  vpcConfig = NULL,
+  fleetServiceRole = NULL,
   tags = NULL
 )
 }
@@ -97,7 +99,18 @@ in the \emph{CodeBuild User Guide.}}
 the existing fleet instance to become available.
 \item For overflow behavior \code{ON_DEMAND}, your overflow builds run on
 CodeBuild on-demand.
+
+If you choose to set your overflow behavior to on-demand while
+creating a VPC-connected fleet, make sure that you add the required
+VPC permissions to your project service role. For more information,
+see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface}{Example policy statement to allow CodeBuild access to Amazon Web Services services required to create a VPC network interface}.
 }}
+
+\item{vpcConfig}{}
+
+\item{fleetServiceRole}{The service role associated with the compute fleet. For more
+information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-permission-policy-fleet-service-role.html}{Allow a user to add a permission policy for a fleet service role}
+in the \emph{CodeBuild User Guide}.}
 
 \item{tags}{A list of tag key and value pairs associated with this compute fleet.
 

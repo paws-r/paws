@@ -12,7 +12,8 @@ eks_create_addon(
   resolveConflicts = NULL,
   clientRequestToken = NULL,
   tags = NULL,
-  configurationValues = NULL
+  configurationValues = NULL,
+  podIdentityAssociations = NULL
 )
 }
 \arguments{
@@ -71,6 +72,12 @@ propagate to any other cluster or Amazon Web Services resources.}
 \item{configurationValues}{The set of configuration values for the add-on that's created. The
 values that you provide are validated against the schema returned by
 \code{\link[=eks_describe_addon_configuration]{describe_addon_configuration}}.}
+
+\item{podIdentityAssociations}{An array of Pod Identity Assocations to be created. Each EKS Pod
+Identity association maps a Kubernetes service account to an IAM Role.
+
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using Pod Identity}
+in the EKS User Guide.}
 }
 \description{
 Creates an Amazon EKS add-on.

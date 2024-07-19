@@ -87,7 +87,11 @@ contents of the file as a parameter.
 
 Either \code{SecretString} or \code{SecretBinary} must have a value, but not both.
 
-This parameter is not available in the Secrets Manager console.}
+This parameter is not available in the Secrets Manager console.
+
+Sensitive: This field contains sensitive information, so the service
+does not include it in CloudTrail log entries. If you create your own
+log entries, you must also avoid logging the information in this field.}
 
 \item{SecretString}{The text data to encrypt and store in this new version of the secret. We
 recommend you use a JSON structure of key/value pairs for your secret
@@ -98,7 +102,11 @@ Either \code{SecretString} or \code{SecretBinary} must have a value, but not bot
 If you create a secret by using the Secrets Manager console then Secrets
 Manager puts the protected secret text in only the \code{SecretString}
 parameter. The Secrets Manager console stores the information as a JSON
-structure of key/value pairs that a Lambda rotation function can parse.}
+structure of key/value pairs that a Lambda rotation function can parse.
+
+Sensitive: This field contains sensitive information, so the service
+does not include it in CloudTrail log entries. If you create your own
+log entries, you must also avoid logging the information in this field.}
 
 \item{Tags}{A list of tags to attach to the secret. Each tag is a key and value pair
 of strings in a JSON text string, for example:

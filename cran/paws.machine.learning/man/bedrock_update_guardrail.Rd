@@ -12,13 +12,14 @@ bedrock_update_guardrail(
   contentPolicyConfig = NULL,
   wordPolicyConfig = NULL,
   sensitiveInformationPolicyConfig = NULL,
+  contextualGroundingPolicyConfig = NULL,
   blockedInputMessaging,
   blockedOutputsMessaging,
   kmsKeyId = NULL
 )
 }
 \arguments{
-\item{guardrailIdentifier}{[required] The unique identifier of the guardrail}
+\item{guardrailIdentifier}{[required] The unique identifier of the guardrail. This can be an ID or the ARN.}
 
 \item{name}{[required] A name for the guardrail.}
 
@@ -31,6 +32,9 @@ bedrock_update_guardrail(
 \item{wordPolicyConfig}{The word policy to configure for the guardrail.}
 
 \item{sensitiveInformationPolicyConfig}{The sensitive information policy to configure for the guardrail.}
+
+\item{contextualGroundingPolicyConfig}{The contextual grounding policy configuration used to update a
+guardrail.}
 
 \item{blockedInputMessaging}{[required] The message to return when the guardrail blocks a prompt.}
 

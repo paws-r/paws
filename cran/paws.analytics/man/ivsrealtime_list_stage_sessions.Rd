@@ -4,15 +4,15 @@
 \alias{ivsrealtime_list_stage_sessions}
 \title{Gets all sessions for a specified stage}
 \usage{
-ivsrealtime_list_stage_sessions(maxResults = NULL, nextToken = NULL, stageArn)
+ivsrealtime_list_stage_sessions(stageArn, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{Maximum number of results to return. Default: 50.}
+\item{stageArn}{[required] Stage ARN.}
 
 \item{nextToken}{The first stage session to retrieve. This is used for pagination; see
 the \code{nextToken} response field.}
 
-\item{stageArn}{[required] Stage ARN.}
+\item{maxResults}{Maximum number of results to return. Default: 50.}
 }
 \description{
 Gets all sessions for a specified stage.

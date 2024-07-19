@@ -182,7 +182,7 @@ resourcegroups <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.resourcegroups$service <- function(config = list()) {
+.resourcegroups$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.resourcegroups$metadata, handlers, config)
+  new_service(.resourcegroups$metadata, handlers, config, op)
 }

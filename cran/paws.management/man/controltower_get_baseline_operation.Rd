@@ -13,7 +13,7 @@ controltower_get_baseline_operation(operationIdentifier)
 Disable, Update, Reset).}
 }
 \description{
-Returns the details of an asynchronous baseline operation, as initiated by any of these APIs: \code{\link[=controltower_enable_baseline]{enable_baseline}}, \code{\link[=controltower_disable_baseline]{disable_baseline}}, \code{\link[=controltower_update_enabled_baseline]{update_enabled_baseline}}, \code{\link[=controltower_reset_enabled_baseline]{reset_enabled_baseline}}. A status message is displayed in case of operation failure.
+Returns the details of an asynchronous baseline operation, as initiated by any of these APIs: \code{\link[=controltower_enable_baseline]{enable_baseline}}, \code{\link[=controltower_disable_baseline]{disable_baseline}}, \code{\link[=controltower_update_enabled_baseline]{update_enabled_baseline}}, \code{\link[=controltower_reset_enabled_baseline]{reset_enabled_baseline}}. A status message is displayed in case of operation failure. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_get_baseline_operation/} for full documentation.
 }

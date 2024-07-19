@@ -6,22 +6,22 @@
 AWS region where the API request is processed}
 \usage{
 ivsrealtime_list_compositions(
-  filterByEncoderConfigurationArn = NULL,
   filterByStageArn = NULL,
-  maxResults = NULL,
-  nextToken = NULL
+  filterByEncoderConfigurationArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
+\item{filterByStageArn}{Filters the Composition list to match the specified Stage ARN.}
+
 \item{filterByEncoderConfigurationArn}{Filters the Composition list to match the specified EncoderConfiguration
 attached to at least one of its output.}
 
-\item{filterByStageArn}{Filters the Composition list to match the specified Stage ARN.}
-
-\item{maxResults}{Maximum number of results to return. Default: 100.}
-
 \item{nextToken}{The first Composition to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}
+
+\item{maxResults}{Maximum number of results to return. Default: 100.}
 }
 \description{
 Gets summary information about all Compositions in your account, in the AWS region where the API request is processed.

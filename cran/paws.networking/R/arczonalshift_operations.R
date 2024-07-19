@@ -20,12 +20,13 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
     name = "CancelZonalShift",
     http_method = "DELETE",
     http_path = "/zonalshifts/{zonalShiftId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$cancel_zonal_shift_input(zonalShiftId = zonalShiftId)
   output <- .arczonalshift$cancel_zonal_shift_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -77,9 +78,9 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
 #' if your application is impacted by the zonal shift, and you want to stop
 #' the zonal shift, to let traffic for the resource return to the
 #' Availability Zone.
-#' @param resourceIdentifier &#91;required&#93; The identifier of the resource to shift away traffic for when a practice
-#' run starts a zonal shift. The identifier is the Amazon Resource Name
-#' (ARN) for the resource.
+#' @param resourceIdentifier &#91;required&#93; The identifier of the resource that Amazon Web Services shifts traffic
+#' for with a practice run zonal shift. The identifier is the Amazon
+#' Resource Name (ARN) for the resource.
 #' 
 #' At this time, supported resources are Network Load Balancers and
 #' Application Load Balancers with cross-zone load balancing turned off.
@@ -92,12 +93,13 @@ arczonalshift_create_practice_run_configuration <- function(blockedDates = NULL,
     name = "CreatePracticeRunConfiguration",
     http_method = "POST",
     http_path = "/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$create_practice_run_configuration_input(blockedDates = blockedDates, blockedWindows = blockedWindows, blockingAlarms = blockingAlarms, outcomeAlarms = outcomeAlarms, resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$create_practice_run_configuration_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -123,17 +125,48 @@ arczonalshift_delete_practice_run_configuration <- function(resourceIdentifier) 
     name = "DeletePracticeRunConfiguration",
     http_method = "DELETE",
     http_path = "/configuration/{resourceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$delete_practice_run_configuration_input(resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$delete_practice_run_configuration_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .arczonalshift$operations$delete_practice_run_configuration <- arczonalshift_delete_practice_run_configuration
+
+#' Returns the status of autoshift observer notification
+#'
+#' @description
+#' Returns the status of autoshift observer notification. Autoshift observer notification enables you to be notified, through Amazon EventBridge, when there is an autoshift event for zonal autoshift.
+#'
+#' See [https://www.paws-r-sdk.com/docs/arczonalshift_get_autoshift_observer_notification_status/](https://www.paws-r-sdk.com/docs/arczonalshift_get_autoshift_observer_notification_status/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname arczonalshift_get_autoshift_observer_notification_status
+arczonalshift_get_autoshift_observer_notification_status <- function() {
+  op <- new_operation(
+    name = "GetAutoshiftObserverNotificationStatus",
+    http_method = "GET",
+    http_path = "/autoshift-observer-notification",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .arczonalshift$get_autoshift_observer_notification_status_input()
+  output <- .arczonalshift$get_autoshift_observer_notification_status_output()
+  config <- get_config()
+  svc <- .arczonalshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.arczonalshift$operations$get_autoshift_observer_notification_status <- arczonalshift_get_autoshift_observer_notification_status
 
 #' Get information about a resource that's been registered for zonal shifts
 #' with Amazon Route 53 Application Recovery Controller in this Amazon Web
@@ -144,8 +177,8 @@ arczonalshift_delete_practice_run_configuration <- function(resourceIdentifier) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/arczonalshift_get_managed_resource/](https://www.paws-r-sdk.com/docs/arczonalshift_get_managed_resource/) for full documentation.
 #'
-#' @param resourceIdentifier &#91;required&#93; The identifier for the resource to shift away traffic for. The
-#' identifier is the Amazon Resource Name (ARN) for the resource.
+#' @param resourceIdentifier &#91;required&#93; The identifier for the resource that Amazon Web Services shifts traffic
+#' for. The identifier is the Amazon Resource Name (ARN) for the resource.
 #' 
 #' At this time, supported resources are Network Load Balancers and
 #' Application Load Balancers with cross-zone load balancing turned off.
@@ -158,22 +191,23 @@ arczonalshift_get_managed_resource <- function(resourceIdentifier) {
     name = "GetManagedResource",
     http_method = "GET",
     http_path = "/managedresources/{resourceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$get_managed_resource_input(resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$get_managed_resource_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .arczonalshift$operations$get_managed_resource <- arczonalshift_get_managed_resource
 
-#' Returns the active autoshifts for a specified resource
+#' Returns a list of autoshifts for an Amazon Web Services Region
 #'
 #' @description
-#' Returns the active autoshifts for a specified resource.
+#' Returns a list of autoshifts for an Amazon Web Services Region. By default, the call returns only `ACTIVE` autoshifts. Optionally, you can specify the `status` parameter to return `COMPLETED` autoshifts.
 #'
 #' See [https://www.paws-r-sdk.com/docs/arczonalshift_list_autoshifts/](https://www.paws-r-sdk.com/docs/arczonalshift_list_autoshifts/) for full documentation.
 #'
@@ -193,12 +227,13 @@ arczonalshift_list_autoshifts <- function(maxResults = NULL, nextToken = NULL, s
     name = "ListAutoshifts",
     http_method = "GET",
     http_path = "/autoshifts",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .arczonalshift$list_autoshifts_input(maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .arczonalshift$list_autoshifts_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -229,12 +264,13 @@ arczonalshift_list_managed_resources <- function(maxResults = NULL, nextToken = 
     name = "ListManagedResources",
     http_method = "GET",
     http_path = "/managedresources",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .arczonalshift$list_managed_resources_input(maxResults = maxResults, nextToken = nextToken)
   output <- .arczonalshift$list_managed_resources_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -246,7 +282,7 @@ arczonalshift_list_managed_resources <- function(maxResults = NULL, nextToken = 
 #' this Amazon Web Services Region
 #'
 #' @description
-#' Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region. [`list_zonal_shifts`][arczonalshift_list_zonal_shifts] returns customer-started zonal shifts, as well as practice run zonal shifts that Route 53 ARC started on your behalf for zonal autoshift.
+#' Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region. [`list_zonal_shifts`][arczonalshift_list_zonal_shifts] returns customer-initiated zonal shifts, as well as practice run zonal shifts that Route 53 ARC started on your behalf for zonal autoshift.
 #'
 #' See [https://www.paws-r-sdk.com/docs/arczonalshift_list_zonal_shifts/](https://www.paws-r-sdk.com/docs/arczonalshift_list_zonal_shifts/) for full documentation.
 #'
@@ -277,12 +313,13 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
     name = "ListZonalShifts",
     http_method = "GET",
     http_path = "/zonalshifts",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .arczonalshift$list_zonal_shifts_input(maxResults = maxResults, nextToken = nextToken, resourceIdentifier = resourceIdentifier, status = status)
   output <- .arczonalshift$list_zonal_shifts_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -300,10 +337,10 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/arczonalshift_start_zonal_shift/](https://www.paws-r-sdk.com/docs/arczonalshift_start_zonal_shift/) for full documentation.
 #'
-#' @param awayFrom &#91;required&#93; The Availability Zone that traffic is moved away from for a resource
-#' when you start a zonal shift. Until the zonal shift expires or you
-#' cancel it, traffic for the resource is instead moved to other
-#' Availability Zones in the Amazon Web Services Region.
+#' @param awayFrom &#91;required&#93; The Availability Zone (for example, `use1-az1`) that traffic is moved
+#' away from for a resource when you start a zonal shift. Until the zonal
+#' shift expires or you cancel it, traffic for the resource is instead
+#' moved to other Availability Zones in the Amazon Web Services Region.
 #' @param comment &#91;required&#93; A comment that you enter about the zonal shift. Only the latest comment
 #' is retained; no comment history is maintained. A new comment overwrites
 #' any existing comment string.
@@ -326,8 +363,8 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
 #' 
 #' For example: `20h` means the zonal shift expires in 20 hours. `120m`
 #' means the zonal shift expires in 120 minutes (2 hours).
-#' @param resourceIdentifier &#91;required&#93; The identifier for the resource to shift away traffic for. The
-#' identifier is the Amazon Resource Name (ARN) for the resource.
+#' @param resourceIdentifier &#91;required&#93; The identifier for the resource that Amazon Web Services shifts traffic
+#' for. The identifier is the Amazon Resource Name (ARN) for the resource.
 #' 
 #' At this time, supported resources are Network Load Balancers and
 #' Application Load Balancers with cross-zone load balancing turned off.
@@ -340,17 +377,52 @@ arczonalshift_start_zonal_shift <- function(awayFrom, comment, expiresIn, resour
     name = "StartZonalShift",
     http_method = "POST",
     http_path = "/zonalshifts",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$start_zonal_shift_input(awayFrom = awayFrom, comment = comment, expiresIn = expiresIn, resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$start_zonal_shift_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .arczonalshift$operations$start_zonal_shift <- arczonalshift_start_zonal_shift
+
+#' Update the status of autoshift observer notification
+#'
+#' @description
+#' Update the status of autoshift observer notification. Autoshift observer notification enables you to be notified, through Amazon EventBridge, when there is an autoshift event for zonal autoshift.
+#'
+#' See [https://www.paws-r-sdk.com/docs/arczonalshift_update_autoshift_observer_notification_status/](https://www.paws-r-sdk.com/docs/arczonalshift_update_autoshift_observer_notification_status/) for full documentation.
+#'
+#' @param status &#91;required&#93; The status to set for autoshift observer notification. If the status is
+#' `ENABLED`, Route 53 ARC includes all autoshift events when you use the
+#' Amazon EventBridge pattern `Autoshift In Progress`. When the status is
+#' `DISABLED`, Route 53 ARC includes only autoshift events for autoshifts
+#' when one or more of your resources is included in the autoshift.
+#'
+#' @keywords internal
+#'
+#' @rdname arczonalshift_update_autoshift_observer_notification_status
+arczonalshift_update_autoshift_observer_notification_status <- function(status) {
+  op <- new_operation(
+    name = "UpdateAutoshiftObserverNotificationStatus",
+    http_method = "PUT",
+    http_path = "/autoshift-observer-notification",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .arczonalshift$update_autoshift_observer_notification_status_input(status = status)
+  output <- .arczonalshift$update_autoshift_observer_notification_status_output()
+  config <- get_config()
+  svc <- .arczonalshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.arczonalshift$operations$update_autoshift_observer_notification_status <- arczonalshift_update_autoshift_observer_notification_status
 
 #' Update a practice run configuration to change one or more of the
 #' following: add, change, or remove the blocking alarm; change the outcome
@@ -402,23 +474,25 @@ arczonalshift_update_practice_run_configuration <- function(blockedDates = NULL,
     name = "UpdatePracticeRunConfiguration",
     http_method = "PATCH",
     http_path = "/configuration/{resourceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$update_practice_run_configuration_input(blockedDates = blockedDates, blockedWindows = blockedWindows, blockingAlarms = blockingAlarms, outcomeAlarms = outcomeAlarms, resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$update_practice_run_configuration_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .arczonalshift$operations$update_practice_run_configuration <- arczonalshift_update_practice_run_configuration
 
-#' You can update the zonal autoshift status for a resource, to enable or
-#' disable zonal autoshift
+#' The zonal autoshift configuration for a resource includes the practice
+#' run configuration and the status for running autoshifts, zonal autoshift
+#' status
 #'
 #' @description
-#' You can update the zonal autoshift status for a resource, to enable or disable zonal autoshift. When zonal autoshift is `ENABLED`, Amazon Web Services shifts away resource traffic from an Availability Zone, on your behalf, when Amazon Web Services determines that there's an issue in the Availability Zone that could potentially affect customers.
+#' The zonal autoshift configuration for a resource includes the practice run configuration and the status for running autoshifts, zonal autoshift status. When a resource has a practice run configuation, Route 53 ARC starts weekly zonal shifts for the resource, to shift traffic away from an Availability Zone. Weekly practice runs help you to make sure that your application can continue to operate normally with the loss of one Availability Zone.
 #'
 #' See [https://www.paws-r-sdk.com/docs/arczonalshift_update_zonal_autoshift_configuration/](https://www.paws-r-sdk.com/docs/arczonalshift_update_zonal_autoshift_configuration/) for full documentation.
 #'
@@ -426,7 +500,10 @@ arczonalshift_update_practice_run_configuration <- function(blockedDates = NULL,
 #' autoshift configuration for. The identifier is the Amazon Resource Name
 #' (ARN) for the resource.
 #' @param zonalAutoshiftStatus &#91;required&#93; The zonal autoshift status for the resource that you want to update the
-#' zonal autoshift configuration for.
+#' zonal autoshift configuration for. Choose `ENABLED` to authorize Amazon
+#' Web Services to shift away resource traffic for an application from an
+#' Availability Zone during events, on your behalf, to help reduce time to
+#' recovery.
 #'
 #' @keywords internal
 #'
@@ -436,12 +513,13 @@ arczonalshift_update_zonal_autoshift_configuration <- function(resourceIdentifie
     name = "UpdateZonalAutoshiftConfiguration",
     http_method = "PUT",
     http_path = "/managedresources/{resourceIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$update_zonal_autoshift_configuration_input(resourceIdentifier = resourceIdentifier, zonalAutoshiftStatus = zonalAutoshiftStatus)
   output <- .arczonalshift$update_zonal_autoshift_configuration_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -488,12 +566,13 @@ arczonalshift_update_zonal_shift <- function(comment = NULL, expiresIn = NULL, z
     name = "UpdateZonalShift",
     http_method = "PATCH",
     http_path = "/zonalshifts/{zonalShiftId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .arczonalshift$update_zonal_shift_input(comment = comment, expiresIn = expiresIn, zonalShiftId = zonalShiftId)
   output <- .arczonalshift$update_zonal_shift_output()
   config <- get_config()
-  svc <- .arczonalshift$service(config)
+  svc <- .arczonalshift$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -39,12 +39,13 @@ forecastqueryservice_query_forecast <- function(ForecastArn, StartDate = NULL, E
     name = "QueryForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastqueryservice$query_forecast_input(ForecastArn = ForecastArn, StartDate = StartDate, EndDate = EndDate, Filters = Filters, NextToken = NextToken)
   output <- .forecastqueryservice$query_forecast_output()
   config <- get_config()
-  svc <- .forecastqueryservice$service(config)
+  svc <- .forecastqueryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -86,12 +87,13 @@ forecastqueryservice_query_what_if_forecast <- function(WhatIfForecastArn, Start
     name = "QueryWhatIfForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .forecastqueryservice$query_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn, StartDate = StartDate, EndDate = EndDate, Filters = Filters, NextToken = NextToken)
   output <- .forecastqueryservice$query_what_if_forecast_output()
   config <- get_config()
-  svc <- .forecastqueryservice$service(config)
+  svc <- .forecastqueryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

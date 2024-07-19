@@ -158,7 +158,7 @@ cloudwatchrum <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = ""
 )
 
-.cloudwatchrum$service <- function(config = list()) {
+.cloudwatchrum$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.cloudwatchrum$metadata, handlers, config)
+  new_service(.cloudwatchrum$metadata, handlers, config, op)
 }

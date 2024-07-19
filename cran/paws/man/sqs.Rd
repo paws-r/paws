@@ -142,7 +142,7 @@ the following automatically:
 \link[paws.application.integration:sqs_remove_permission]{remove_permission} \tab Revokes any permissions in the queue policy that matches the specified Label parameter\cr
 \link[paws.application.integration:sqs_send_message]{send_message} \tab Delivers a message to the specified queue\cr
 \link[paws.application.integration:sqs_send_message_batch]{send_message_batch} \tab You can use SendMessageBatch to send up to 10 messages to the specified queue by assigning either identical or different values to each message (or by not assigning values at all)\cr
-\link[paws.application.integration:sqs_set_queue_attributes]{set_queue_attributes} \tab Sets the value of one or more queue attributes\cr
+\link[paws.application.integration:sqs_set_queue_attributes]{set_queue_attributes} \tab Sets the value of one or more queue attributes, like a policy\cr
 \link[paws.application.integration:sqs_start_message_move_task]{start_message_move_task} \tab Starts an asynchronous task to move messages from a specified source queue to a specified destination queue\cr
 \link[paws.application.integration:sqs_tag_queue]{tag_queue} \tab Add cost allocation tags to the specified Amazon SQS queue\cr
 \link[paws.application.integration:sqs_untag_queue]{untag_queue} \tab Remove cost allocation tags from the specified Amazon SQS queue

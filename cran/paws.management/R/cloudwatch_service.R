@@ -183,7 +183,7 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.cloudwatch$service <- function(config = list()) {
+.cloudwatch$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.cloudwatch$metadata, handlers, config)
+  new_service(.cloudwatch$metadata, handlers, config, op)
 }

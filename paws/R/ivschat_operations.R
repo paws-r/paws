@@ -81,12 +81,13 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
     name = "CreateChatToken",
     http_method = "POST",
     http_path = "/CreateChatToken",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$create_chat_token_input(attributes = attributes, capabilities = capabilities, roomIdentifier = roomIdentifier, sessionDurationInMinutes = sessionDurationInMinutes, userId = userId)
   output <- .ivschat$create_chat_token_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -177,12 +178,13 @@ ivschat_create_logging_configuration <- function(destinationConfiguration, name 
     name = "CreateLoggingConfiguration",
     http_method = "POST",
     http_path = "/CreateLoggingConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$create_logging_configuration_input(destinationConfiguration = destinationConfiguration, name = name, tags = tags)
   output <- .ivschat$create_logging_configuration_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +273,13 @@ ivschat_create_room <- function(loggingConfigurationIdentifiers = NULL, maximumM
     name = "CreateRoom",
     http_method = "POST",
     http_path = "/CreateRoom",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$create_room_input(loggingConfigurationIdentifiers = loggingConfigurationIdentifiers, maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name, tags = tags)
   output <- .ivschat$create_room_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -313,12 +316,13 @@ ivschat_delete_logging_configuration <- function(identifier) {
     name = "DeleteLoggingConfiguration",
     http_method = "POST",
     http_path = "/DeleteLoggingConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$delete_logging_configuration_input(identifier = identifier)
   output <- .ivschat$delete_logging_configuration_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -375,12 +379,13 @@ ivschat_delete_message <- function(id, reason = NULL, roomIdentifier) {
     name = "DeleteMessage",
     http_method = "POST",
     http_path = "/DeleteMessage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$delete_message_input(id = id, reason = reason, roomIdentifier = roomIdentifier)
   output <- .ivschat$delete_message_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -417,12 +422,13 @@ ivschat_delete_room <- function(identifier) {
     name = "DeleteRoom",
     http_method = "POST",
     http_path = "/DeleteRoom",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$delete_room_input(identifier = identifier)
   output <- .ivschat$delete_room_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -467,12 +473,13 @@ ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
     name = "DisconnectUser",
     http_method = "POST",
     http_path = "/DisconnectUser",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$disconnect_user_input(reason = reason, roomIdentifier = roomIdentifier, userId = userId)
   output <- .ivschat$disconnect_user_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -537,12 +544,13 @@ ivschat_get_logging_configuration <- function(identifier) {
     name = "GetLoggingConfiguration",
     http_method = "POST",
     http_path = "/GetLoggingConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$get_logging_configuration_input(identifier = identifier)
   output <- .ivschat$get_logging_configuration_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -605,12 +613,13 @@ ivschat_get_room <- function(identifier) {
     name = "GetRoom",
     http_method = "POST",
     http_path = "/GetRoom",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$get_room_input(identifier = identifier)
   output <- .ivschat$get_room_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -685,12 +694,13 @@ ivschat_list_logging_configurations <- function(maxResults = NULL, nextToken = N
     name = "ListLoggingConfigurations",
     http_method = "POST",
     http_path = "/ListLoggingConfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivschat$list_logging_configurations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivschat$list_logging_configurations_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -768,12 +778,13 @@ ivschat_list_rooms <- function(loggingConfigurationIdentifier = NULL, maxResults
     name = "ListRooms",
     http_method = "POST",
     http_path = "/ListRooms",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivschat$list_rooms_input(loggingConfigurationIdentifier = loggingConfigurationIdentifier, maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, name = name, nextToken = nextToken)
   output <- .ivschat$list_rooms_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -817,12 +828,13 @@ ivschat_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ivschat$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +886,13 @@ ivschat_send_event <- function(attributes = NULL, eventName, roomIdentifier) {
     name = "SendEvent",
     http_method = "POST",
     http_path = "/SendEvent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$send_event_input(attributes = attributes, eventName = eventName, roomIdentifier = roomIdentifier)
   output <- .ivschat$send_event_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -925,12 +938,13 @@ ivschat_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ivschat$tag_resource_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -976,12 +990,13 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ivschat$untag_resource_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1063,12 +1078,13 @@ ivschat_update_logging_configuration <- function(destinationConfiguration = NULL
     name = "UpdateLoggingConfiguration",
     http_method = "POST",
     http_path = "/UpdateLoggingConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$update_logging_configuration_input(destinationConfiguration = destinationConfiguration, identifier = identifier, name = name)
   output <- .ivschat$update_logging_configuration_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1152,12 +1168,13 @@ ivschat_update_room <- function(identifier, loggingConfigurationIdentifiers = NU
     name = "UpdateRoom",
     http_method = "POST",
     http_path = "/UpdateRoom",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivschat$update_room_input(identifier = identifier, loggingConfigurationIdentifiers = loggingConfigurationIdentifiers, maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name)
   output <- .ivschat$update_room_output()
   config <- get_config()
-  svc <- .ivschat$service(config)
+  svc <- .ivschat$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

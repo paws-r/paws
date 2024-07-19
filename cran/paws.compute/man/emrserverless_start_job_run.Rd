@@ -12,7 +12,9 @@ emrserverless_start_job_run(
   configurationOverrides = NULL,
   tags = NULL,
   executionTimeoutMinutes = NULL,
-  name = NULL
+  name = NULL,
+  mode = NULL,
+  retryPolicy = NULL
 )
 }
 \arguments{
@@ -33,6 +35,10 @@ unique for each request.}
 this duration, it will be automatically cancelled.}
 
 \item{name}{The optional job run name. This doesn't have to be unique.}
+
+\item{mode}{The mode of the job run when it starts.}
+
+\item{retryPolicy}{The retry policy when job run starts.}
 }
 \description{
 Starts a job run.

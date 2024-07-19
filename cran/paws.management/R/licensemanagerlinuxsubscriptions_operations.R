@@ -3,10 +3,74 @@
 #' @include licensemanagerlinuxsubscriptions_service.R
 NULL
 
-#' Lists the Linux subscriptions service settings
+#' Remove a third-party subscription provider from the Bring Your Own
+#' License (BYOL) subscriptions registered to your account
 #'
 #' @description
-#' Lists the Linux subscriptions service settings.
+#' Remove a third-party subscription provider from the Bring Your Own License (BYOL) subscriptions registered to your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_deregister_subscription_provider/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_deregister_subscription_provider/) for full documentation.
+#'
+#' @param SubscriptionProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the subscription provider resource to
+#' deregister.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerlinuxsubscriptions_de_su_pr
+licensemanagerlinuxsubscriptions_deregister_subscription_provider <- function(SubscriptionProviderArn) {
+  op <- new_operation(
+    name = "DeregisterSubscriptionProvider",
+    http_method = "POST",
+    http_path = "/subscription/DeregisterSubscriptionProvider",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .licensemanagerlinuxsubscriptions$deregister_subscription_provider_input(SubscriptionProviderArn = SubscriptionProviderArn)
+  output <- .licensemanagerlinuxsubscriptions$deregister_subscription_provider_output()
+  config <- get_config()
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerlinuxsubscriptions$operations$deregister_subscription_provider <- licensemanagerlinuxsubscriptions_deregister_subscription_provider
+
+#' Get details for a Bring Your Own License (BYOL) subscription that's
+#' registered to your account
+#'
+#' @description
+#' Get details for a Bring Your Own License (BYOL) subscription that's registered to your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_registered_subscription_provider/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_registered_subscription_provider/) for full documentation.
+#'
+#' @param SubscriptionProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the BYOL registration resource to get
+#' details for.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerlinuxsubscriptions_get_reg_sub_pro
+licensemanagerlinuxsubscriptions_get_registered_subscription_provider <- function(SubscriptionProviderArn) {
+  op <- new_operation(
+    name = "GetRegisteredSubscriptionProvider",
+    http_method = "POST",
+    http_path = "/subscription/GetRegisteredSubscriptionProvider",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .licensemanagerlinuxsubscriptions$get_registered_subscription_provider_input(SubscriptionProviderArn = SubscriptionProviderArn)
+  output <- .licensemanagerlinuxsubscriptions$get_registered_subscription_provider_output()
+  config <- get_config()
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerlinuxsubscriptions$operations$get_registered_subscription_provider <- licensemanagerlinuxsubscriptions_get_registered_subscription_provider
+
+#' Lists the Linux subscriptions service settings for your account
+#'
+#' @description
+#' Lists the Linux subscriptions service settings for your account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_service_settings/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_service_settings/) for full documentation.
 #'
@@ -20,12 +84,13 @@ licensemanagerlinuxsubscriptions_get_service_settings <- function() {
     name = "GetServiceSettings",
     http_method = "POST",
     http_path = "/subscription/GetServiceSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$get_service_settings_input()
   output <- .licensemanagerlinuxsubscriptions$get_service_settings_output()
   config <- get_config()
-  svc <- .licensemanagerlinuxsubscriptions$service(config)
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -40,39 +105,43 @@ licensemanagerlinuxsubscriptions_get_service_settings <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_linux_subscription_instances/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_linux_subscription_instances/) for full documentation.
 #'
-#' @param Filters An array of structures that you can use to filter the results to those
-#' that match one or more sets of key-value pairs that you specify. For
-#' example, you can filter by the name of `AmiID` with an optional operator
-#' to see subscriptions that match, partially match, or don't match a
-#' certain Amazon Machine Image (AMI) ID.
+#' @param Filters An array of structures that you can use to filter the results by your
+#' specified criteria. For example, you can specify `Region` in the `Name`,
+#' with the `contains` operator to list all subscriptions that match a
+#' partial string in the `Value`, such as `us-west`.
 #' 
-#' The valid names for this filter are:
-#' 
-#' -   `AmiID`
-#' 
-#' -   `InstanceID`
+#' For each filter, you can specify one of the following values for the
+#' `Name` key to streamline results:
 #' 
 #' -   `AccountID`
 #' 
-#' -   `Status`
+#' -   `AmiID`
 #' 
-#' -   `Region`
+#' -   `DualSubscription`
 #' 
-#' -   `UsageOperation`
-#' 
-#' -   `ProductCode`
+#' -   `InstanceID`
 #' 
 #' -   `InstanceType`
 #' 
-#' The valid Operators for this filter are:
+#' -   `ProductCode`
+#' 
+#' -   `Region`
+#' 
+#' -   `Status`
+#' 
+#' -   `UsageOperation`
+#' 
+#' For each filter, you can use one of the following `Operator` values to
+#' define the behavior of the filter:
 #' 
 #' -   `contains`
 #' 
 #' -   `equals`
 #' 
 #' -   `Notequal`
-#' @param MaxResults Maximum number of results to return in a single call.
-#' @param NextToken Token for the next set of results.
+#' @param MaxResults The maximum items to return in a request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -82,12 +151,13 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances <- function(F
     name = "ListLinuxSubscriptionInstances",
     http_method = "POST",
     http_path = "/subscription/ListLinuxSubscriptionInstances",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Instances")
   )
   input <- .licensemanagerlinuxsubscriptions$list_linux_subscription_instances_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerlinuxsubscriptions$list_linux_subscription_instances_output()
   config <- get_config()
-  svc <- .licensemanagerlinuxsubscriptions$service(config)
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -118,8 +188,9 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances <- function(F
 #' -   `equals`
 #' 
 #' -   `Notequal`
-#' @param MaxResults Maximum number of results to return in a single call.
-#' @param NextToken Token for the next set of results.
+#' @param MaxResults The maximum items to return in a request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -129,17 +200,188 @@ licensemanagerlinuxsubscriptions_list_linux_subscriptions <- function(Filters = 
     name = "ListLinuxSubscriptions",
     http_method = "POST",
     http_path = "/subscription/ListLinuxSubscriptions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Subscriptions")
   )
   input <- .licensemanagerlinuxsubscriptions$list_linux_subscriptions_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerlinuxsubscriptions$list_linux_subscriptions_output()
   config <- get_config()
-  svc <- .licensemanagerlinuxsubscriptions$service(config)
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .licensemanagerlinuxsubscriptions$operations$list_linux_subscriptions <- licensemanagerlinuxsubscriptions_list_linux_subscriptions
+
+#' List Bring Your Own License (BYOL) subscription registration resources
+#' for your account
+#'
+#' @description
+#' List Bring Your Own License (BYOL) subscription registration resources for your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_registered_subscription_providers/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_registered_subscription_providers/) for full documentation.
+#'
+#' @param MaxResults The maximum items to return in a request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
+#' @param SubscriptionProviderSources To filter your results, specify which subscription providers to return
+#' in the list.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerlinuxsubscriptions_lis_reg_sub_pro
+licensemanagerlinuxsubscriptions_list_registered_subscription_providers <- function(MaxResults = NULL, NextToken = NULL, SubscriptionProviderSources = NULL) {
+  op <- new_operation(
+    name = "ListRegisteredSubscriptionProviders",
+    http_method = "POST",
+    http_path = "/subscription/ListRegisteredSubscriptionProviders",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegisteredSubscriptionProviders")
+  )
+  input <- .licensemanagerlinuxsubscriptions$list_registered_subscription_providers_input(MaxResults = MaxResults, NextToken = NextToken, SubscriptionProviderSources = SubscriptionProviderSources)
+  output <- .licensemanagerlinuxsubscriptions$list_registered_subscription_providers_output()
+  config <- get_config()
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerlinuxsubscriptions$operations$list_registered_subscription_providers <- licensemanagerlinuxsubscriptions_list_registered_subscription_providers
+
+#' List the metadata tags that are assigned to the specified Amazon Web
+#' Services resource
+#'
+#' @description
+#' List the metadata tags that are assigned to the specified Amazon Web Services resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to list
+#' metadata tags.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerlinuxsubscriptions_list_tags_for_resource
+licensemanagerlinuxsubscriptions_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .licensemanagerlinuxsubscriptions$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .licensemanagerlinuxsubscriptions$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerlinuxsubscriptions$operations$list_tags_for_resource <- licensemanagerlinuxsubscriptions_list_tags_for_resource
+
+#' Register the supported third-party subscription provider for your Bring
+#' Your Own License (BYOL) subscription
+#'
+#' @description
+#' Register the supported third-party subscription provider for your Bring Your Own License (BYOL) subscription.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_register_subscription_provider/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_register_subscription_provider/) for full documentation.
+#'
+#' @param SecretArn &#91;required&#93; The Amazon Resource Name (ARN) of the secret where you've stored your
+#' subscription provider's access token. For RHEL subscriptions managed
+#' through the Red Hat Subscription Manager (RHSM), the secret contains
+#' your Red Hat Offline token.
+#' @param SubscriptionProviderSource &#91;required&#93; The supported Linux subscription provider to register.
+#' @param Tags The metadata tags to assign to your registered Linux subscription
+#' provider resource.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerlinuxsubscriptions_re_su_pr
+licensemanagerlinuxsubscriptions_register_subscription_provider <- function(SecretArn, SubscriptionProviderSource, Tags = NULL) {
+  op <- new_operation(
+    name = "RegisterSubscriptionProvider",
+    http_method = "POST",
+    http_path = "/subscription/RegisterSubscriptionProvider",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .licensemanagerlinuxsubscriptions$register_subscription_provider_input(SecretArn = SecretArn, SubscriptionProviderSource = SubscriptionProviderSource, Tags = Tags)
+  output <- .licensemanagerlinuxsubscriptions$register_subscription_provider_output()
+  config <- get_config()
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerlinuxsubscriptions$operations$register_subscription_provider <- licensemanagerlinuxsubscriptions_register_subscription_provider
+
+#' Add metadata tags to the specified Amazon Web Services resource
+#'
+#' @description
+#' Add metadata tags to the specified Amazon Web Services resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_tag_resource/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_tag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to
+#' which to add the specified metadata tags.
+#' @param tags &#91;required&#93; The metadata tags to assign to the Amazon Web Services resource. Tags
+#' are formatted as key value pairs.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerlinuxsubscriptions_tag_resource
+licensemanagerlinuxsubscriptions_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "PUT",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .licensemanagerlinuxsubscriptions$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .licensemanagerlinuxsubscriptions$tag_resource_output()
+  config <- get_config()
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerlinuxsubscriptions$operations$tag_resource <- licensemanagerlinuxsubscriptions_tag_resource
+
+#' Remove one or more metadata tag from the specified Amazon Web Services
+#' resource
+#'
+#' @description
+#' Remove one or more metadata tag from the specified Amazon Web Services resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_untag_resource/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_untag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to
+#' remove the metadata tags from.
+#' @param tagKeys &#91;required&#93; A list of metadata tag keys to remove from the requested resource.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerlinuxsubscriptions_untag_resource
+licensemanagerlinuxsubscriptions_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .licensemanagerlinuxsubscriptions$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .licensemanagerlinuxsubscriptions$untag_resource_output()
+  config <- get_config()
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerlinuxsubscriptions$operations$untag_resource <- licensemanagerlinuxsubscriptions_untag_resource
 
 #' Updates the service settings for Linux subscriptions
 #'
@@ -164,12 +406,13 @@ licensemanagerlinuxsubscriptions_update_service_settings <- function(AllowUpdate
     name = "UpdateServiceSettings",
     http_method = "POST",
     http_path = "/subscription/UpdateServiceSettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$update_service_settings_input(AllowUpdate = AllowUpdate, LinuxSubscriptionsDiscovery = LinuxSubscriptionsDiscovery, LinuxSubscriptionsDiscoverySettings = LinuxSubscriptionsDiscoverySettings)
   output <- .licensemanagerlinuxsubscriptions$update_service_settings_output()
   config <- get_config()
-  svc <- .licensemanagerlinuxsubscriptions$service(config)
+  svc <- .licensemanagerlinuxsubscriptions$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

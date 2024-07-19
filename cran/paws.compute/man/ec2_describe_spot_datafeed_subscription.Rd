@@ -13,7 +13,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes the data feed for Spot Instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
+Describes the data feed for Spot Instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_spot_datafeed_subscription/} for full documentation.
 }

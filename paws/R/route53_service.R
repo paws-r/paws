@@ -225,7 +225,7 @@ route53 <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = ""
 )
 
-.route53$service <- function(config = list()) {
+.route53$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restxml", "v4")
-  new_service(.route53$metadata, handlers, config)
+  new_service(.route53$metadata, handlers, config, op)
 }

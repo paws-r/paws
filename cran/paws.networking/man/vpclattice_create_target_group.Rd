@@ -19,8 +19,7 @@ successfully using the same client token and parameters, the retry
 succeeds without performing any actions. If the parameters aren't
 identical, the retry fails.}
 
-\item{config}{The target group configuration. If \code{type} is set to \code{LAMBDA}, this
-parameter doesn't apply.}
+\item{config}{The target group configuration.}
 
 \item{name}{[required] The name of the target group. The name must be unique within the
 account. The valid characters are a-z, 0-9, and hyphens (-). You can't

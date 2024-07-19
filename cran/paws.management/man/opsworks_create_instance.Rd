@@ -40,18 +40,23 @@ the \strong{API Name} column of the \strong{Available Instance Types} table.}
 \item{AutoScalingType}{For load-based or time-based instances, the type. Windows stacks can use
 only time-based instances.}
 
-\item{Hostname}{The instance host name.}
+\item{Hostname}{The instance host name. The following are character limits for instance
+host names.
+\itemize{
+\item Linux-based instances: 63 characters
+\item Windows-based instances: 15 characters
+}}
 
 \item{Os}{The instance's operating system, which must be set to one of the
 following.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
+\verb{Amazon Linux 2}, \verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
 \verb{Amazon Linux 2017.03}, \verb{Amazon Linux 2016.09},
 \verb{Amazon Linux 2016.03}, \verb{Amazon Linux 2015.09}, or
 \verb{Amazon Linux 2015.03}.
-\item A supported Ubuntu operating system, such as \verb{Ubuntu 16.04 LTS},
-\verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
+\item A supported Ubuntu operating system, such as \verb{Ubuntu 18.04 LTS},
+\verb{Ubuntu 16.04 LTS}, \verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
 \item \verb{CentOS Linux 7}
 \item \verb{Red Hat Enterprise Linux 7}
 \item A supported Windows operating system, such as
@@ -62,16 +67,15 @@ following.
 \item A custom AMI: \code{Custom}.
 }
 
-For more information about the supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
+Not all operating systems are supported with all versions of Chef. For
+more information about the supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{OpsWorks Stacks Operating Systems}.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to \code{Custom}, you must use the
 \code{\link[=opsworks_create_instance]{create_instance}} action's AmiId parameter
 to specify the custom AMI that you want to use. Block device mappings
 are not supported if the value is \code{Custom}. For more information about
-supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{Operating Systems}For
-more information about how to use custom AMIs with AWS OpsWorks Stacks,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.}
+how to use custom AMIs with OpsWorks Stacks, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.}
 
 \item{AmiId}{A custom AMI ID to be used to create the instance. The AMI should be
 based on one of the supported operating systems. For more information,
@@ -87,8 +91,7 @@ If you specify a custom AMI, you must set \code{Os} to \code{Custom}.}
 
 \item{SubnetId}{The ID of the instance's subnet. If the stack is running in a VPC, you
 can use this parameter to override the stack's default subnet ID value
-and direct AWS OpsWorks Stacks to launch the instance in a different
-subnet.}
+and direct OpsWorks Stacks to launch the instance in a different subnet.}
 
 \item{Architecture}{The instance architecture. The default option is \code{x86_64}. Instance
 types do not necessarily support both architectures. For a list of the
@@ -114,15 +117,14 @@ your instances have the latest security updates.}
 
 \item{EbsOptimized}{Whether to create an Amazon EBS-optimized instance.}
 
-\item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
+\item{AgentVersion}{The default OpsWorks Stacks agent version. You have the following
 options:
 \itemize{
 \item \code{INHERIT} - Use the stack's default agent version setting.
 \item \emph{version_number} - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version,
-edit the instance configuration and specify a new version. AWS
-OpsWorks Stacks then automatically installs that version on the
-instance.
+edit the instance configuration and specify a new version. OpsWorks
+Stacks installs that version on the instance.
 }
 
 The default setting is \code{INHERIT}. To specify an agent version, you must

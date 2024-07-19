@@ -10,20 +10,17 @@ NULL
 #' and reduces the need for specialized knowledge and integration code.
 #'
 #' @usage
-#' eventbridgepipes_create_pipe(Description, DesiredState, Enrichment,
-#'   EnrichmentParameters, LogConfiguration, Name, RoleArn, Source,
-#'   SourceParameters, Tags, Target, TargetParameters)
+#' eventbridgepipes_create_pipe(Name, Description, DesiredState, Source,
+#'   SourceParameters, Enrichment, EnrichmentParameters, Target,
+#'   TargetParameters, RoleArn, Tags, LogConfiguration)
 #'
+#' @param Name &#91;required&#93; The name of the pipe.
 #' @param Description A description of the pipe.
 #' @param DesiredState The state the pipe should be in.
-#' @param Enrichment The ARN of the enrichment resource.
-#' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
-#' @param LogConfiguration The logging configuration settings for the pipe.
-#' @param Name &#91;required&#93; The name of the pipe.
-#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
 #' @param Source &#91;required&#93; The ARN of the source resource.
 #' @param SourceParameters The parameters required to set up a source for your pipe.
-#' @param Tags The list of key-value pairs to associate with the pipe.
+#' @param Enrichment The ARN of the enrichment resource.
+#' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
 #' @param Target &#91;required&#93; The ARN of the target resource.
 #' @param TargetParameters The parameters required to set up a target for your pipe.
 #' 
@@ -31,86 +28,35 @@ NULL
 #' dynamic path parameters, see [Target
 #' parameters](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html)
 #' in the *Amazon EventBridge User Guide*.
+#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
+#' @param Tags The list of key-value pairs to associate with the pipe.
+#' @param LogConfiguration The logging configuration settings for the pipe.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   Arn = "string",
+#'   Name = "string",
+#'   DesiredState = "RUNNING"|"STOPPED",
+#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
-#'   DesiredState = "RUNNING"|"STOPPED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   Name = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_pipe(
+#'   Name = "string",
 #'   Description = "string",
 #'   DesiredState = "RUNNING"|"STOPPED",
-#'   Enrichment = "string",
-#'   EnrichmentParameters = list(
-#'     HttpParameters = list(
-#'       HeaderParameters = list(
-#'         "string"
-#'       ),
-#'       PathParameterValues = list(
-#'         "string"
-#'       ),
-#'       QueryStringParameters = list(
-#'         "string"
-#'       )
-#'     ),
-#'     InputTemplate = "string"
-#'   ),
-#'   LogConfiguration = list(
-#'     CloudwatchLogsLogDestination = list(
-#'       LogGroupArn = "string"
-#'     ),
-#'     FirehoseLogDestination = list(
-#'       DeliveryStreamArn = "string"
-#'     ),
-#'     IncludeExecutionData = list(
-#'       "ALL"
-#'     ),
-#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE",
-#'     S3LogDestination = list(
-#'       BucketName = "string",
-#'       BucketOwner = "string",
-#'       OutputFormat = "json"|"plain"|"w3c",
-#'       Prefix = "string"
-#'     )
-#'   ),
-#'   Name = "string",
-#'   RoleArn = "string",
 #'   Source = "string",
 #'   SourceParameters = list(
-#'     ActiveMQBrokerParameters = list(
-#'       BatchSize = 123,
-#'       Credentials = list(
-#'         BasicAuth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       QueueName = "string"
-#'     ),
-#'     DynamoDBStreamParameters = list(
-#'       BatchSize = 123,
-#'       DeadLetterConfig = list(
-#'         Arn = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       MaximumRecordAgeInSeconds = 123,
-#'       MaximumRetryAttempts = 123,
-#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
-#'       ParallelizationFactor = 123,
-#'       StartingPosition = "TRIM_HORIZON"|"LATEST"
-#'     ),
 #'     FilterCriteria = list(
 #'       Filters = list(
 #'         list(
@@ -123,135 +69,153 @@ NULL
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
 #'       ),
+#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       MaximumBatchingWindowInSeconds = 123,
 #'       MaximumRecordAgeInSeconds = 123,
 #'       MaximumRetryAttempts = 123,
-#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       ParallelizationFactor = 123,
 #'       StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
 #'       StartingPositionTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     ManagedStreamingKafkaParameters = list(
+#'     DynamoDBStreamParameters = list(
 #'       BatchSize = 123,
-#'       ConsumerGroupID = "string",
-#'       Credentials = list(
-#'         ClientCertificateTlsAuth = "string",
-#'         SaslScram512Auth = "string"
+#'       DeadLetterConfig = list(
+#'         Arn = "string"
 #'       ),
+#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       MaximumBatchingWindowInSeconds = 123,
-#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
-#'       TopicName = "string"
-#'     ),
-#'     RabbitMQBrokerParameters = list(
-#'       BatchSize = 123,
-#'       Credentials = list(
-#'         BasicAuth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       QueueName = "string",
-#'       VirtualHost = "string"
-#'     ),
-#'     SelfManagedKafkaParameters = list(
-#'       AdditionalBootstrapServers = list(
-#'         "string"
-#'       ),
-#'       BatchSize = 123,
-#'       ConsumerGroupID = "string",
-#'       Credentials = list(
-#'         BasicAuth = "string",
-#'         ClientCertificateTlsAuth = "string",
-#'         SaslScram256Auth = "string",
-#'         SaslScram512Auth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       ServerRootCaCertificate = "string",
-#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
-#'       TopicName = "string",
-#'       Vpc = list(
-#'         SecurityGroup = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
+#'       MaximumRecordAgeInSeconds = 123,
+#'       MaximumRetryAttempts = 123,
+#'       ParallelizationFactor = 123,
+#'       StartingPosition = "TRIM_HORIZON"|"LATEST"
 #'     ),
 #'     SqsQueueParameters = list(
 #'       BatchSize = 123,
 #'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     ActiveMQBrokerParameters = list(
+#'       Credentials = list(
+#'         BasicAuth = "string"
+#'       ),
+#'       QueueName = "string",
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     RabbitMQBrokerParameters = list(
+#'       Credentials = list(
+#'         BasicAuth = "string"
+#'       ),
+#'       QueueName = "string",
+#'       VirtualHost = "string",
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     ManagedStreamingKafkaParameters = list(
+#'       TopicName = "string",
+#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123,
+#'       ConsumerGroupID = "string",
+#'       Credentials = list(
+#'         SaslScram512Auth = "string",
+#'         ClientCertificateTlsAuth = "string"
+#'       )
+#'     ),
+#'     SelfManagedKafkaParameters = list(
+#'       TopicName = "string",
+#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
+#'       AdditionalBootstrapServers = list(
+#'         "string"
+#'       ),
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123,
+#'       ConsumerGroupID = "string",
+#'       Credentials = list(
+#'         BasicAuth = "string",
+#'         SaslScram512Auth = "string",
+#'         SaslScram256Auth = "string",
+#'         ClientCertificateTlsAuth = "string"
+#'       ),
+#'       ServerRootCaCertificate = "string",
+#'       Vpc = list(
+#'         Subnets = list(
+#'           "string"
+#'         ),
+#'         SecurityGroup = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
-#'   Tags = list(
-#'     "string"
+#'   Enrichment = "string",
+#'   EnrichmentParameters = list(
+#'     InputTemplate = "string",
+#'     HttpParameters = list(
+#'       PathParameterValues = list(
+#'         "string"
+#'       ),
+#'       HeaderParameters = list(
+#'         "string"
+#'       ),
+#'       QueryStringParameters = list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
 #'   Target = "string",
 #'   TargetParameters = list(
-#'     BatchJobParameters = list(
-#'       ArrayProperties = list(
-#'         Size = 123
-#'       ),
-#'       ContainerOverrides = list(
-#'         Command = list(
-#'           "string"
-#'         ),
-#'         Environment = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         InstanceType = "string",
-#'         ResourceRequirements = list(
-#'           list(
-#'             Type = "GPU"|"MEMORY"|"VCPU",
-#'             Value = "string"
-#'           )
-#'         )
-#'       ),
-#'       DependsOn = list(
-#'         list(
-#'           JobId = "string",
-#'           Type = "N_TO_N"|"SEQUENTIAL"
-#'         )
-#'       ),
-#'       JobDefinition = "string",
-#'       JobName = "string",
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       RetryStrategy = list(
-#'         Attempts = 123
-#'       )
+#'     InputTemplate = "string",
+#'     LambdaFunctionParameters = list(
+#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
 #'     ),
-#'     CloudWatchLogsParameters = list(
-#'       LogStreamName = "string",
-#'       Timestamp = "string"
+#'     StepFunctionStateMachineParameters = list(
+#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
+#'     ),
+#'     KinesisStreamParameters = list(
+#'       PartitionKey = "string"
 #'     ),
 #'     EcsTaskParameters = list(
+#'       TaskDefinitionArn = "string",
+#'       TaskCount = 123,
+#'       LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       NetworkConfiguration = list(
+#'         awsvpcConfiguration = list(
+#'           Subnets = list(
+#'             "string"
+#'           ),
+#'           SecurityGroups = list(
+#'             "string"
+#'           ),
+#'           AssignPublicIp = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       PlatformVersion = "string",
+#'       Group = "string",
 #'       CapacityProviderStrategy = list(
 #'         list(
-#'           base = 123,
 #'           capacityProvider = "string",
-#'           weight = 123
+#'           weight = 123,
+#'           base = 123
 #'         )
 #'       ),
 #'       EnableECSManagedTags = TRUE|FALSE,
 #'       EnableExecuteCommand = TRUE|FALSE,
-#'       Group = "string",
-#'       LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
-#'       NetworkConfiguration = list(
-#'         awsvpcConfiguration = list(
-#'           AssignPublicIp = "ENABLED"|"DISABLED",
-#'           SecurityGroups = list(
-#'             "string"
-#'           ),
-#'           Subnets = list(
-#'             "string"
-#'           )
+#'       PlacementConstraints = list(
+#'         list(
+#'           type = "distinctInstance"|"memberOf",
+#'           expression = "string"
 #'         )
 #'       ),
+#'       PlacementStrategy = list(
+#'         list(
+#'           type = "random"|"spread"|"binpack",
+#'           field = "string"
+#'         )
+#'       ),
+#'       PropagateTags = "TASK_DEFINITION",
+#'       ReferenceId = "string",
 #'       Overrides = list(
 #'         ContainerOverrides = list(
 #'           list(
@@ -296,66 +260,74 @@ NULL
 #'         Memory = "string",
 #'         TaskRoleArn = "string"
 #'       ),
-#'       PlacementConstraints = list(
-#'         list(
-#'           expression = "string",
-#'           type = "distinctInstance"|"memberOf"
-#'         )
-#'       ),
-#'       PlacementStrategy = list(
-#'         list(
-#'           field = "string",
-#'           type = "random"|"spread"|"binpack"
-#'         )
-#'       ),
-#'       PlatformVersion = "string",
-#'       PropagateTags = "TASK_DEFINITION",
-#'       ReferenceId = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
 #'           Value = "string"
 #'         )
-#'       ),
-#'       TaskCount = 123,
-#'       TaskDefinitionArn = "string"
+#'       )
 #'     ),
-#'     EventBridgeEventBusParameters = list(
-#'       DetailType = "string",
-#'       EndpointId = "string",
-#'       Resources = list(
-#'         "string"
+#'     BatchJobParameters = list(
+#'       JobDefinition = "string",
+#'       JobName = "string",
+#'       ArrayProperties = list(
+#'         Size = 123
 #'       ),
-#'       Source = "string",
-#'       Time = "string"
+#'       RetryStrategy = list(
+#'         Attempts = 123
+#'       ),
+#'       ContainerOverrides = list(
+#'         Command = list(
+#'           "string"
+#'         ),
+#'         Environment = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         InstanceType = "string",
+#'         ResourceRequirements = list(
+#'           list(
+#'             Type = "GPU"|"MEMORY"|"VCPU",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       DependsOn = list(
+#'         list(
+#'           JobId = "string",
+#'           Type = "N_TO_N"|"SEQUENTIAL"
+#'         )
+#'       ),
+#'       Parameters = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SqsQueueParameters = list(
+#'       MessageGroupId = "string",
+#'       MessageDeduplicationId = "string"
 #'     ),
 #'     HttpParameters = list(
-#'       HeaderParameters = list(
+#'       PathParameterValues = list(
 #'         "string"
 #'       ),
-#'       PathParameterValues = list(
+#'       HeaderParameters = list(
 #'         "string"
 #'       ),
 #'       QueryStringParameters = list(
 #'         "string"
 #'       )
 #'     ),
-#'     InputTemplate = "string",
-#'     KinesisStreamParameters = list(
-#'       PartitionKey = "string"
-#'     ),
-#'     LambdaFunctionParameters = list(
-#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
-#'     ),
 #'     RedshiftDataParameters = list(
+#'       SecretManagerArn = "string",
 #'       Database = "string",
 #'       DbUser = "string",
-#'       SecretManagerArn = "string",
+#'       StatementName = "string",
+#'       WithEvent = TRUE|FALSE,
 #'       Sqls = list(
 #'         "string"
-#'       ),
-#'       StatementName = "string",
-#'       WithEvent = TRUE|FALSE
+#'       )
 #'     ),
 #'     SageMakerPipelineParameters = list(
 #'       PipelineParameterList = list(
@@ -365,12 +337,73 @@ NULL
 #'         )
 #'       )
 #'     ),
-#'     SqsQueueParameters = list(
-#'       MessageDeduplicationId = "string",
-#'       MessageGroupId = "string"
+#'     EventBridgeEventBusParameters = list(
+#'       EndpointId = "string",
+#'       DetailType = "string",
+#'       Source = "string",
+#'       Resources = list(
+#'         "string"
+#'       ),
+#'       Time = "string"
 #'     ),
-#'     StepFunctionStateMachineParameters = list(
-#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
+#'     CloudWatchLogsParameters = list(
+#'       LogStreamName = "string",
+#'       Timestamp = "string"
+#'     ),
+#'     TimestreamParameters = list(
+#'       TimeValue = "string",
+#'       EpochTimeUnit = "MILLISECONDS"|"SECONDS"|"MICROSECONDS"|"NANOSECONDS",
+#'       TimeFieldType = "EPOCH"|"TIMESTAMP_FORMAT",
+#'       TimestampFormat = "string",
+#'       VersionValue = "string",
+#'       DimensionMappings = list(
+#'         list(
+#'           DimensionValue = "string",
+#'           DimensionValueType = "VARCHAR",
+#'           DimensionName = "string"
+#'         )
+#'       ),
+#'       SingleMeasureMappings = list(
+#'         list(
+#'           MeasureValue = "string",
+#'           MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP",
+#'           MeasureName = "string"
+#'         )
+#'       ),
+#'       MultiMeasureMappings = list(
+#'         list(
+#'           MultiMeasureName = "string",
+#'           MultiMeasureAttributeMappings = list(
+#'             list(
+#'               MeasureValue = "string",
+#'               MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP",
+#'               MultiMeasureAttributeName = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   LogConfiguration = list(
+#'     S3LogDestination = list(
+#'       BucketName = "string",
+#'       BucketOwner = "string",
+#'       OutputFormat = "json"|"plain"|"w3c",
+#'       Prefix = "string"
+#'     ),
+#'     FirehoseLogDestination = list(
+#'       DeliveryStreamArn = "string"
+#'     ),
+#'     CloudwatchLogsLogDestination = list(
+#'       LogGroupArn = "string"
+#'     ),
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE",
+#'     IncludeExecutionData = list(
+#'       "ALL"
 #'     )
 #'   )
 #' )
@@ -381,17 +414,18 @@ NULL
 #' @rdname eventbridgepipes_create_pipe
 #'
 #' @aliases eventbridgepipes_create_pipe
-eventbridgepipes_create_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, LogConfiguration = NULL, Name, RoleArn, Source, SourceParameters = NULL, Tags = NULL, Target, TargetParameters = NULL) {
+eventbridgepipes_create_pipe <- function(Name, Description = NULL, DesiredState = NULL, Source, SourceParameters = NULL, Enrichment = NULL, EnrichmentParameters = NULL, Target, TargetParameters = NULL, RoleArn, Tags = NULL, LogConfiguration = NULL) {
   op <- new_operation(
     name = "CreatePipe",
     http_method = "POST",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eventbridgepipes$create_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, LogConfiguration = LogConfiguration, Name = Name, RoleArn = RoleArn, Source = Source, SourceParameters = SourceParameters, Tags = Tags, Target = Target, TargetParameters = TargetParameters)
+  input <- .eventbridgepipes$create_pipe_input(Name = Name, Description = Description, DesiredState = DesiredState, Source = Source, SourceParameters = SourceParameters, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, Target = Target, TargetParameters = TargetParameters, RoleArn = RoleArn, Tags = Tags, LogConfiguration = LogConfiguration)
   output <- .eventbridgepipes$create_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -416,15 +450,15 @@ eventbridgepipes_create_pipe <- function(Description = NULL, DesiredState = NULL
 #' ```
 #' list(
 #'   Arn = "string",
+#'   Name = "string",
+#'   DesiredState = "RUNNING"|"STOPPED"|"DELETED",
+#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
-#'   DesiredState = "RUNNING"|"STOPPED"|"DELETED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   Name = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -445,12 +479,13 @@ eventbridgepipes_delete_pipe <- function(Name) {
     name = "DeletePipe",
     http_method = "DELETE",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$delete_pipe_input(Name = Name)
   output <- .eventbridgepipes$delete_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -475,72 +510,13 @@ eventbridgepipes_delete_pipe <- function(Name) {
 #' ```
 #' list(
 #'   Arn = "string",
-#'   CreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
+#'   Name = "string",
 #'   Description = "string",
 #'   DesiredState = "RUNNING"|"STOPPED"|"DELETED",
-#'   Enrichment = "string",
-#'   EnrichmentParameters = list(
-#'     HttpParameters = list(
-#'       HeaderParameters = list(
-#'         "string"
-#'       ),
-#'       PathParameterValues = list(
-#'         "string"
-#'       ),
-#'       QueryStringParameters = list(
-#'         "string"
-#'       )
-#'     ),
-#'     InputTemplate = "string"
-#'   ),
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LogConfiguration = list(
-#'     CloudwatchLogsLogDestination = list(
-#'       LogGroupArn = "string"
-#'     ),
-#'     FirehoseLogDestination = list(
-#'       DeliveryStreamArn = "string"
-#'     ),
-#'     IncludeExecutionData = list(
-#'       "ALL"
-#'     ),
-#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE",
-#'     S3LogDestination = list(
-#'       BucketName = "string",
-#'       BucketOwner = "string",
-#'       OutputFormat = "json"|"plain"|"w3c",
-#'       Prefix = "string"
-#'     )
-#'   ),
-#'   Name = "string",
-#'   RoleArn = "string",
+#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
+#'   StateReason = "string",
 #'   Source = "string",
 #'   SourceParameters = list(
-#'     ActiveMQBrokerParameters = list(
-#'       BatchSize = 123,
-#'       Credentials = list(
-#'         BasicAuth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       QueueName = "string"
-#'     ),
-#'     DynamoDBStreamParameters = list(
-#'       BatchSize = 123,
-#'       DeadLetterConfig = list(
-#'         Arn = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       MaximumRecordAgeInSeconds = 123,
-#'       MaximumRetryAttempts = 123,
-#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
-#'       ParallelizationFactor = 123,
-#'       StartingPosition = "TRIM_HORIZON"|"LATEST"
-#'     ),
 #'     FilterCriteria = list(
 #'       Filters = list(
 #'         list(
@@ -553,136 +529,153 @@ eventbridgepipes_delete_pipe <- function(Name) {
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
 #'       ),
+#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       MaximumBatchingWindowInSeconds = 123,
 #'       MaximumRecordAgeInSeconds = 123,
 #'       MaximumRetryAttempts = 123,
-#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       ParallelizationFactor = 123,
 #'       StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
 #'       StartingPositionTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     ManagedStreamingKafkaParameters = list(
+#'     DynamoDBStreamParameters = list(
 #'       BatchSize = 123,
-#'       ConsumerGroupID = "string",
-#'       Credentials = list(
-#'         ClientCertificateTlsAuth = "string",
-#'         SaslScram512Auth = "string"
+#'       DeadLetterConfig = list(
+#'         Arn = "string"
 #'       ),
+#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       MaximumBatchingWindowInSeconds = 123,
-#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
-#'       TopicName = "string"
-#'     ),
-#'     RabbitMQBrokerParameters = list(
-#'       BatchSize = 123,
-#'       Credentials = list(
-#'         BasicAuth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       QueueName = "string",
-#'       VirtualHost = "string"
-#'     ),
-#'     SelfManagedKafkaParameters = list(
-#'       AdditionalBootstrapServers = list(
-#'         "string"
-#'       ),
-#'       BatchSize = 123,
-#'       ConsumerGroupID = "string",
-#'       Credentials = list(
-#'         BasicAuth = "string",
-#'         ClientCertificateTlsAuth = "string",
-#'         SaslScram256Auth = "string",
-#'         SaslScram512Auth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       ServerRootCaCertificate = "string",
-#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
-#'       TopicName = "string",
-#'       Vpc = list(
-#'         SecurityGroup = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
+#'       MaximumRecordAgeInSeconds = 123,
+#'       MaximumRetryAttempts = 123,
+#'       ParallelizationFactor = 123,
+#'       StartingPosition = "TRIM_HORIZON"|"LATEST"
 #'     ),
 #'     SqsQueueParameters = list(
 #'       BatchSize = 123,
 #'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     ActiveMQBrokerParameters = list(
+#'       Credentials = list(
+#'         BasicAuth = "string"
+#'       ),
+#'       QueueName = "string",
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     RabbitMQBrokerParameters = list(
+#'       Credentials = list(
+#'         BasicAuth = "string"
+#'       ),
+#'       QueueName = "string",
+#'       VirtualHost = "string",
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     ManagedStreamingKafkaParameters = list(
+#'       TopicName = "string",
+#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123,
+#'       ConsumerGroupID = "string",
+#'       Credentials = list(
+#'         SaslScram512Auth = "string",
+#'         ClientCertificateTlsAuth = "string"
+#'       )
+#'     ),
+#'     SelfManagedKafkaParameters = list(
+#'       TopicName = "string",
+#'       StartingPosition = "TRIM_HORIZON"|"LATEST",
+#'       AdditionalBootstrapServers = list(
+#'         "string"
+#'       ),
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123,
+#'       ConsumerGroupID = "string",
+#'       Credentials = list(
+#'         BasicAuth = "string",
+#'         SaslScram512Auth = "string",
+#'         SaslScram256Auth = "string",
+#'         ClientCertificateTlsAuth = "string"
+#'       ),
+#'       ServerRootCaCertificate = "string",
+#'       Vpc = list(
+#'         Subnets = list(
+#'           "string"
+#'         ),
+#'         SecurityGroup = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
-#'   StateReason = "string",
-#'   Tags = list(
-#'     "string"
+#'   Enrichment = "string",
+#'   EnrichmentParameters = list(
+#'     InputTemplate = "string",
+#'     HttpParameters = list(
+#'       PathParameterValues = list(
+#'         "string"
+#'       ),
+#'       HeaderParameters = list(
+#'         "string"
+#'       ),
+#'       QueryStringParameters = list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
 #'   Target = "string",
 #'   TargetParameters = list(
-#'     BatchJobParameters = list(
-#'       ArrayProperties = list(
-#'         Size = 123
-#'       ),
-#'       ContainerOverrides = list(
-#'         Command = list(
-#'           "string"
-#'         ),
-#'         Environment = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         InstanceType = "string",
-#'         ResourceRequirements = list(
-#'           list(
-#'             Type = "GPU"|"MEMORY"|"VCPU",
-#'             Value = "string"
-#'           )
-#'         )
-#'       ),
-#'       DependsOn = list(
-#'         list(
-#'           JobId = "string",
-#'           Type = "N_TO_N"|"SEQUENTIAL"
-#'         )
-#'       ),
-#'       JobDefinition = "string",
-#'       JobName = "string",
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       RetryStrategy = list(
-#'         Attempts = 123
-#'       )
+#'     InputTemplate = "string",
+#'     LambdaFunctionParameters = list(
+#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
 #'     ),
-#'     CloudWatchLogsParameters = list(
-#'       LogStreamName = "string",
-#'       Timestamp = "string"
+#'     StepFunctionStateMachineParameters = list(
+#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
+#'     ),
+#'     KinesisStreamParameters = list(
+#'       PartitionKey = "string"
 #'     ),
 #'     EcsTaskParameters = list(
+#'       TaskDefinitionArn = "string",
+#'       TaskCount = 123,
+#'       LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       NetworkConfiguration = list(
+#'         awsvpcConfiguration = list(
+#'           Subnets = list(
+#'             "string"
+#'           ),
+#'           SecurityGroups = list(
+#'             "string"
+#'           ),
+#'           AssignPublicIp = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       PlatformVersion = "string",
+#'       Group = "string",
 #'       CapacityProviderStrategy = list(
 #'         list(
-#'           base = 123,
 #'           capacityProvider = "string",
-#'           weight = 123
+#'           weight = 123,
+#'           base = 123
 #'         )
 #'       ),
 #'       EnableECSManagedTags = TRUE|FALSE,
 #'       EnableExecuteCommand = TRUE|FALSE,
-#'       Group = "string",
-#'       LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
-#'       NetworkConfiguration = list(
-#'         awsvpcConfiguration = list(
-#'           AssignPublicIp = "ENABLED"|"DISABLED",
-#'           SecurityGroups = list(
-#'             "string"
-#'           ),
-#'           Subnets = list(
-#'             "string"
-#'           )
+#'       PlacementConstraints = list(
+#'         list(
+#'           type = "distinctInstance"|"memberOf",
+#'           expression = "string"
 #'         )
 #'       ),
+#'       PlacementStrategy = list(
+#'         list(
+#'           type = "random"|"spread"|"binpack",
+#'           field = "string"
+#'         )
+#'       ),
+#'       PropagateTags = "TASK_DEFINITION",
+#'       ReferenceId = "string",
 #'       Overrides = list(
 #'         ContainerOverrides = list(
 #'           list(
@@ -727,66 +720,74 @@ eventbridgepipes_delete_pipe <- function(Name) {
 #'         Memory = "string",
 #'         TaskRoleArn = "string"
 #'       ),
-#'       PlacementConstraints = list(
-#'         list(
-#'           expression = "string",
-#'           type = "distinctInstance"|"memberOf"
-#'         )
-#'       ),
-#'       PlacementStrategy = list(
-#'         list(
-#'           field = "string",
-#'           type = "random"|"spread"|"binpack"
-#'         )
-#'       ),
-#'       PlatformVersion = "string",
-#'       PropagateTags = "TASK_DEFINITION",
-#'       ReferenceId = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
 #'           Value = "string"
 #'         )
-#'       ),
-#'       TaskCount = 123,
-#'       TaskDefinitionArn = "string"
+#'       )
 #'     ),
-#'     EventBridgeEventBusParameters = list(
-#'       DetailType = "string",
-#'       EndpointId = "string",
-#'       Resources = list(
-#'         "string"
+#'     BatchJobParameters = list(
+#'       JobDefinition = "string",
+#'       JobName = "string",
+#'       ArrayProperties = list(
+#'         Size = 123
 #'       ),
-#'       Source = "string",
-#'       Time = "string"
+#'       RetryStrategy = list(
+#'         Attempts = 123
+#'       ),
+#'       ContainerOverrides = list(
+#'         Command = list(
+#'           "string"
+#'         ),
+#'         Environment = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         InstanceType = "string",
+#'         ResourceRequirements = list(
+#'           list(
+#'             Type = "GPU"|"MEMORY"|"VCPU",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       DependsOn = list(
+#'         list(
+#'           JobId = "string",
+#'           Type = "N_TO_N"|"SEQUENTIAL"
+#'         )
+#'       ),
+#'       Parameters = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SqsQueueParameters = list(
+#'       MessageGroupId = "string",
+#'       MessageDeduplicationId = "string"
 #'     ),
 #'     HttpParameters = list(
-#'       HeaderParameters = list(
+#'       PathParameterValues = list(
 #'         "string"
 #'       ),
-#'       PathParameterValues = list(
+#'       HeaderParameters = list(
 #'         "string"
 #'       ),
 #'       QueryStringParameters = list(
 #'         "string"
 #'       )
 #'     ),
-#'     InputTemplate = "string",
-#'     KinesisStreamParameters = list(
-#'       PartitionKey = "string"
-#'     ),
-#'     LambdaFunctionParameters = list(
-#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
-#'     ),
 #'     RedshiftDataParameters = list(
+#'       SecretManagerArn = "string",
 #'       Database = "string",
 #'       DbUser = "string",
-#'       SecretManagerArn = "string",
+#'       StatementName = "string",
+#'       WithEvent = TRUE|FALSE,
 #'       Sqls = list(
 #'         "string"
-#'       ),
-#'       StatementName = "string",
-#'       WithEvent = TRUE|FALSE
+#'       )
 #'     ),
 #'     SageMakerPipelineParameters = list(
 #'       PipelineParameterList = list(
@@ -796,12 +797,79 @@ eventbridgepipes_delete_pipe <- function(Name) {
 #'         )
 #'       )
 #'     ),
-#'     SqsQueueParameters = list(
-#'       MessageDeduplicationId = "string",
-#'       MessageGroupId = "string"
+#'     EventBridgeEventBusParameters = list(
+#'       EndpointId = "string",
+#'       DetailType = "string",
+#'       Source = "string",
+#'       Resources = list(
+#'         "string"
+#'       ),
+#'       Time = "string"
 #'     ),
-#'     StepFunctionStateMachineParameters = list(
-#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
+#'     CloudWatchLogsParameters = list(
+#'       LogStreamName = "string",
+#'       Timestamp = "string"
+#'     ),
+#'     TimestreamParameters = list(
+#'       TimeValue = "string",
+#'       EpochTimeUnit = "MILLISECONDS"|"SECONDS"|"MICROSECONDS"|"NANOSECONDS",
+#'       TimeFieldType = "EPOCH"|"TIMESTAMP_FORMAT",
+#'       TimestampFormat = "string",
+#'       VersionValue = "string",
+#'       DimensionMappings = list(
+#'         list(
+#'           DimensionValue = "string",
+#'           DimensionValueType = "VARCHAR",
+#'           DimensionName = "string"
+#'         )
+#'       ),
+#'       SingleMeasureMappings = list(
+#'         list(
+#'           MeasureValue = "string",
+#'           MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP",
+#'           MeasureName = "string"
+#'         )
+#'       ),
+#'       MultiMeasureMappings = list(
+#'         list(
+#'           MultiMeasureName = "string",
+#'           MultiMeasureAttributeMappings = list(
+#'             list(
+#'               MeasureValue = "string",
+#'               MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP",
+#'               MultiMeasureAttributeName = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LogConfiguration = list(
+#'     S3LogDestination = list(
+#'       BucketName = "string",
+#'       Prefix = "string",
+#'       BucketOwner = "string",
+#'       OutputFormat = "json"|"plain"|"w3c"
+#'     ),
+#'     FirehoseLogDestination = list(
+#'       DeliveryStreamArn = "string"
+#'     ),
+#'     CloudwatchLogsLogDestination = list(
+#'       LogGroupArn = "string"
+#'     ),
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE",
+#'     IncludeExecutionData = list(
+#'       "ALL"
 #'     )
 #'   )
 #' )
@@ -824,12 +892,13 @@ eventbridgepipes_describe_pipe <- function(Name) {
     name = "DescribePipe",
     http_method = "GET",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$describe_pipe_input(Name = Name)
   output <- .eventbridgepipes$describe_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -845,59 +914,59 @@ eventbridgepipes_describe_pipe <- function(Name) {
 #' in the Amazon EventBridge User Guide.
 #'
 #' @usage
-#' eventbridgepipes_list_pipes(CurrentState, DesiredState, Limit,
-#'   NamePrefix, NextToken, SourcePrefix, TargetPrefix)
+#' eventbridgepipes_list_pipes(NamePrefix, DesiredState, CurrentState,
+#'   SourcePrefix, TargetPrefix, NextToken, Limit)
 #'
-#' @param CurrentState The state the pipe is in.
-#' @param DesiredState The state the pipe should be in.
-#' @param Limit The maximum number of pipes to include in the response.
 #' @param NamePrefix A value that will return a subset of the pipes associated with this
 #' account. For example, `"NamePrefix": "ABC"` will return all endpoints
 #' with "ABC" in the name.
+#' @param DesiredState The state the pipe should be in.
+#' @param CurrentState The state the pipe is in.
+#' @param SourcePrefix The prefix matching the pipe source.
+#' @param TargetPrefix The prefix matching the pipe target.
 #' @param NextToken If `nextToken` is returned, there are more results available. The value
 #' of `nextToken` is a unique pagination token for each page. Make the call
 #' again using the returned token to retrieve the next page. Keep all other
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an HTTP 400 InvalidToken error.
-#' @param SourcePrefix The prefix matching the pipe source.
-#' @param TargetPrefix The prefix matching the pipe target.
+#' @param Limit The maximum number of pipes to include in the response.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   Pipes = list(
 #'     list(
+#'       Name = "string",
 #'       Arn = "string",
+#'       DesiredState = "RUNNING"|"STOPPED",
+#'       CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
+#'       StateReason = "string",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
-#'       DesiredState = "RUNNING"|"STOPPED",
-#'       Enrichment = "string",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       Name = "string",
 #'       Source = "string",
-#'       StateReason = "string",
-#'       Target = "string"
+#'       Target = "string",
+#'       Enrichment = "string"
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_pipes(
-#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
-#'   DesiredState = "RUNNING"|"STOPPED",
-#'   Limit = 123,
 #'   NamePrefix = "string",
-#'   NextToken = "string",
+#'   DesiredState = "RUNNING"|"STOPPED",
+#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
 #'   SourcePrefix = "string",
-#'   TargetPrefix = "string"
+#'   TargetPrefix = "string",
+#'   NextToken = "string",
+#'   Limit = 123
 #' )
 #' ```
 #'
@@ -906,17 +975,18 @@ eventbridgepipes_describe_pipe <- function(Name) {
 #' @rdname eventbridgepipes_list_pipes
 #'
 #' @aliases eventbridgepipes_list_pipes
-eventbridgepipes_list_pipes <- function(CurrentState = NULL, DesiredState = NULL, Limit = NULL, NamePrefix = NULL, NextToken = NULL, SourcePrefix = NULL, TargetPrefix = NULL) {
+eventbridgepipes_list_pipes <- function(NamePrefix = NULL, DesiredState = NULL, CurrentState = NULL, SourcePrefix = NULL, TargetPrefix = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListPipes",
     http_method = "GET",
     http_path = "/v1/pipes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Pipes")
   )
-  input <- .eventbridgepipes$list_pipes_input(CurrentState = CurrentState, DesiredState = DesiredState, Limit = Limit, NamePrefix = NamePrefix, NextToken = NextToken, SourcePrefix = SourcePrefix, TargetPrefix = TargetPrefix)
+  input <- .eventbridgepipes$list_pipes_input(NamePrefix = NamePrefix, DesiredState = DesiredState, CurrentState = CurrentState, SourcePrefix = SourcePrefix, TargetPrefix = TargetPrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridgepipes$list_pipes_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -960,12 +1030,13 @@ eventbridgepipes_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .eventbridgepipes$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -987,15 +1058,15 @@ eventbridgepipes_list_tags_for_resource <- function(resourceArn) {
 #' ```
 #' list(
 #'   Arn = "string",
+#'   Name = "string",
+#'   DesiredState = "RUNNING"|"STOPPED",
+#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
-#'   DesiredState = "RUNNING"|"STOPPED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   Name = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1016,12 +1087,13 @@ eventbridgepipes_start_pipe <- function(Name) {
     name = "StartPipe",
     http_method = "POST",
     http_path = "/v1/pipes/{Name}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$start_pipe_input(Name = Name)
   output <- .eventbridgepipes$start_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1043,15 +1115,15 @@ eventbridgepipes_start_pipe <- function(Name) {
 #' ```
 #' list(
 #'   Arn = "string",
+#'   Name = "string",
+#'   DesiredState = "RUNNING"|"STOPPED",
+#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
-#'   DesiredState = "RUNNING"|"STOPPED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   Name = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1072,12 +1144,13 @@ eventbridgepipes_stop_pipe <- function(Name) {
     name = "StopPipe",
     http_method = "POST",
     http_path = "/v1/pipes/{Name}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$stop_pipe_input(Name = Name)
   output <- .eventbridgepipes$stop_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1132,12 +1205,13 @@ eventbridgepipes_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .eventbridgepipes$tag_resource_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1178,12 +1252,13 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .eventbridgepipes$untag_resource_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1211,18 +1286,16 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #' in the Amazon EventBridge User Guide.
 #'
 #' @usage
-#' eventbridgepipes_update_pipe(Description, DesiredState, Enrichment,
-#'   EnrichmentParameters, LogConfiguration, Name, RoleArn, SourceParameters,
-#'   Target, TargetParameters)
+#' eventbridgepipes_update_pipe(Name, Description, DesiredState,
+#'   SourceParameters, Enrichment, EnrichmentParameters, Target,
+#'   TargetParameters, RoleArn, LogConfiguration)
 #'
+#' @param Name &#91;required&#93; The name of the pipe.
 #' @param Description A description of the pipe.
 #' @param DesiredState The state the pipe should be in.
+#' @param SourceParameters The parameters required to set up a source for your pipe.
 #' @param Enrichment The ARN of the enrichment resource.
 #' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
-#' @param LogConfiguration The logging configuration settings for the pipe.
-#' @param Name &#91;required&#93; The name of the pipe.
-#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
-#' @param SourceParameters The parameters required to set up a source for your pipe.
 #' @param Target The ARN of the target resource.
 #' @param TargetParameters The parameters required to set up a target for your pipe.
 #' 
@@ -1230,83 +1303,33 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #' dynamic path parameters, see [Target
 #' parameters](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html)
 #' in the *Amazon EventBridge User Guide*.
+#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
+#' @param LogConfiguration The logging configuration settings for the pipe.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   Arn = "string",
+#'   Name = "string",
+#'   DesiredState = "RUNNING"|"STOPPED",
+#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   CurrentState = "RUNNING"|"STOPPED"|"CREATING"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"CREATE_FAILED"|"UPDATE_FAILED"|"START_FAILED"|"STOP_FAILED"|"DELETE_FAILED"|"CREATE_ROLLBACK_FAILED"|"DELETE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_FAILED",
-#'   DesiredState = "RUNNING"|"STOPPED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
-#'   ),
-#'   Name = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_pipe(
+#'   Name = "string",
 #'   Description = "string",
 #'   DesiredState = "RUNNING"|"STOPPED",
-#'   Enrichment = "string",
-#'   EnrichmentParameters = list(
-#'     HttpParameters = list(
-#'       HeaderParameters = list(
-#'         "string"
-#'       ),
-#'       PathParameterValues = list(
-#'         "string"
-#'       ),
-#'       QueryStringParameters = list(
-#'         "string"
-#'       )
-#'     ),
-#'     InputTemplate = "string"
-#'   ),
-#'   LogConfiguration = list(
-#'     CloudwatchLogsLogDestination = list(
-#'       LogGroupArn = "string"
-#'     ),
-#'     FirehoseLogDestination = list(
-#'       DeliveryStreamArn = "string"
-#'     ),
-#'     IncludeExecutionData = list(
-#'       "ALL"
-#'     ),
-#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE",
-#'     S3LogDestination = list(
-#'       BucketName = "string",
-#'       BucketOwner = "string",
-#'       OutputFormat = "json"|"plain"|"w3c",
-#'       Prefix = "string"
-#'     )
-#'   ),
-#'   Name = "string",
-#'   RoleArn = "string",
 #'   SourceParameters = list(
-#'     ActiveMQBrokerParameters = list(
-#'       BatchSize = 123,
-#'       Credentials = list(
-#'         BasicAuth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123
-#'     ),
-#'     DynamoDBStreamParameters = list(
-#'       BatchSize = 123,
-#'       DeadLetterConfig = list(
-#'         Arn = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       MaximumRecordAgeInSeconds = 123,
-#'       MaximumRetryAttempts = 123,
-#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
-#'       ParallelizationFactor = 123
-#'     ),
 #'     FilterCriteria = list(
 #'       Filters = list(
 #'         list(
@@ -1319,117 +1342,136 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
 #'       ),
+#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       MaximumBatchingWindowInSeconds = 123,
 #'       MaximumRecordAgeInSeconds = 123,
 #'       MaximumRetryAttempts = 123,
-#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
 #'       ParallelizationFactor = 123
+#'     ),
+#'     DynamoDBStreamParameters = list(
+#'       BatchSize = 123,
+#'       DeadLetterConfig = list(
+#'         Arn = "string"
+#'       ),
+#'       OnPartialBatchItemFailure = "AUTOMATIC_BISECT",
+#'       MaximumBatchingWindowInSeconds = 123,
+#'       MaximumRecordAgeInSeconds = 123,
+#'       MaximumRetryAttempts = 123,
+#'       ParallelizationFactor = 123
+#'     ),
+#'     SqsQueueParameters = list(
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     ActiveMQBrokerParameters = list(
+#'       Credentials = list(
+#'         BasicAuth = "string"
+#'       ),
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123
+#'     ),
+#'     RabbitMQBrokerParameters = list(
+#'       Credentials = list(
+#'         BasicAuth = "string"
+#'       ),
+#'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123
 #'     ),
 #'     ManagedStreamingKafkaParameters = list(
 #'       BatchSize = 123,
 #'       Credentials = list(
-#'         ClientCertificateTlsAuth = "string",
-#'         SaslScram512Auth = "string"
-#'       ),
-#'       MaximumBatchingWindowInSeconds = 123
-#'     ),
-#'     RabbitMQBrokerParameters = list(
-#'       BatchSize = 123,
-#'       Credentials = list(
-#'         BasicAuth = "string"
+#'         SaslScram512Auth = "string",
+#'         ClientCertificateTlsAuth = "string"
 #'       ),
 #'       MaximumBatchingWindowInSeconds = 123
 #'     ),
 #'     SelfManagedKafkaParameters = list(
 #'       BatchSize = 123,
+#'       MaximumBatchingWindowInSeconds = 123,
 #'       Credentials = list(
 #'         BasicAuth = "string",
-#'         ClientCertificateTlsAuth = "string",
+#'         SaslScram512Auth = "string",
 #'         SaslScram256Auth = "string",
-#'         SaslScram512Auth = "string"
+#'         ClientCertificateTlsAuth = "string"
 #'       ),
-#'       MaximumBatchingWindowInSeconds = 123,
 #'       ServerRootCaCertificate = "string",
 #'       Vpc = list(
-#'         SecurityGroup = list(
+#'         Subnets = list(
 #'           "string"
 #'         ),
-#'         Subnets = list(
+#'         SecurityGroup = list(
 #'           "string"
 #'         )
 #'       )
-#'     ),
-#'     SqsQueueParameters = list(
-#'       BatchSize = 123,
-#'       MaximumBatchingWindowInSeconds = 123
+#'     )
+#'   ),
+#'   Enrichment = "string",
+#'   EnrichmentParameters = list(
+#'     InputTemplate = "string",
+#'     HttpParameters = list(
+#'       PathParameterValues = list(
+#'         "string"
+#'       ),
+#'       HeaderParameters = list(
+#'         "string"
+#'       ),
+#'       QueryStringParameters = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   Target = "string",
 #'   TargetParameters = list(
-#'     BatchJobParameters = list(
-#'       ArrayProperties = list(
-#'         Size = 123
-#'       ),
-#'       ContainerOverrides = list(
-#'         Command = list(
-#'           "string"
-#'         ),
-#'         Environment = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         InstanceType = "string",
-#'         ResourceRequirements = list(
-#'           list(
-#'             Type = "GPU"|"MEMORY"|"VCPU",
-#'             Value = "string"
-#'           )
-#'         )
-#'       ),
-#'       DependsOn = list(
-#'         list(
-#'           JobId = "string",
-#'           Type = "N_TO_N"|"SEQUENTIAL"
-#'         )
-#'       ),
-#'       JobDefinition = "string",
-#'       JobName = "string",
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       RetryStrategy = list(
-#'         Attempts = 123
-#'       )
+#'     InputTemplate = "string",
+#'     LambdaFunctionParameters = list(
+#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
 #'     ),
-#'     CloudWatchLogsParameters = list(
-#'       LogStreamName = "string",
-#'       Timestamp = "string"
+#'     StepFunctionStateMachineParameters = list(
+#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
+#'     ),
+#'     KinesisStreamParameters = list(
+#'       PartitionKey = "string"
 #'     ),
 #'     EcsTaskParameters = list(
+#'       TaskDefinitionArn = "string",
+#'       TaskCount = 123,
+#'       LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       NetworkConfiguration = list(
+#'         awsvpcConfiguration = list(
+#'           Subnets = list(
+#'             "string"
+#'           ),
+#'           SecurityGroups = list(
+#'             "string"
+#'           ),
+#'           AssignPublicIp = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       PlatformVersion = "string",
+#'       Group = "string",
 #'       CapacityProviderStrategy = list(
 #'         list(
-#'           base = 123,
 #'           capacityProvider = "string",
-#'           weight = 123
+#'           weight = 123,
+#'           base = 123
 #'         )
 #'       ),
 #'       EnableECSManagedTags = TRUE|FALSE,
 #'       EnableExecuteCommand = TRUE|FALSE,
-#'       Group = "string",
-#'       LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
-#'       NetworkConfiguration = list(
-#'         awsvpcConfiguration = list(
-#'           AssignPublicIp = "ENABLED"|"DISABLED",
-#'           SecurityGroups = list(
-#'             "string"
-#'           ),
-#'           Subnets = list(
-#'             "string"
-#'           )
+#'       PlacementConstraints = list(
+#'         list(
+#'           type = "distinctInstance"|"memberOf",
+#'           expression = "string"
 #'         )
 #'       ),
+#'       PlacementStrategy = list(
+#'         list(
+#'           type = "random"|"spread"|"binpack",
+#'           field = "string"
+#'         )
+#'       ),
+#'       PropagateTags = "TASK_DEFINITION",
+#'       ReferenceId = "string",
 #'       Overrides = list(
 #'         ContainerOverrides = list(
 #'           list(
@@ -1474,66 +1516,74 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #'         Memory = "string",
 #'         TaskRoleArn = "string"
 #'       ),
-#'       PlacementConstraints = list(
-#'         list(
-#'           expression = "string",
-#'           type = "distinctInstance"|"memberOf"
-#'         )
-#'       ),
-#'       PlacementStrategy = list(
-#'         list(
-#'           field = "string",
-#'           type = "random"|"spread"|"binpack"
-#'         )
-#'       ),
-#'       PlatformVersion = "string",
-#'       PropagateTags = "TASK_DEFINITION",
-#'       ReferenceId = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
 #'           Value = "string"
 #'         )
-#'       ),
-#'       TaskCount = 123,
-#'       TaskDefinitionArn = "string"
+#'       )
 #'     ),
-#'     EventBridgeEventBusParameters = list(
-#'       DetailType = "string",
-#'       EndpointId = "string",
-#'       Resources = list(
-#'         "string"
+#'     BatchJobParameters = list(
+#'       JobDefinition = "string",
+#'       JobName = "string",
+#'       ArrayProperties = list(
+#'         Size = 123
 #'       ),
-#'       Source = "string",
-#'       Time = "string"
+#'       RetryStrategy = list(
+#'         Attempts = 123
+#'       ),
+#'       ContainerOverrides = list(
+#'         Command = list(
+#'           "string"
+#'         ),
+#'         Environment = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         InstanceType = "string",
+#'         ResourceRequirements = list(
+#'           list(
+#'             Type = "GPU"|"MEMORY"|"VCPU",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       DependsOn = list(
+#'         list(
+#'           JobId = "string",
+#'           Type = "N_TO_N"|"SEQUENTIAL"
+#'         )
+#'       ),
+#'       Parameters = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SqsQueueParameters = list(
+#'       MessageGroupId = "string",
+#'       MessageDeduplicationId = "string"
 #'     ),
 #'     HttpParameters = list(
-#'       HeaderParameters = list(
+#'       PathParameterValues = list(
 #'         "string"
 #'       ),
-#'       PathParameterValues = list(
+#'       HeaderParameters = list(
 #'         "string"
 #'       ),
 #'       QueryStringParameters = list(
 #'         "string"
 #'       )
 #'     ),
-#'     InputTemplate = "string",
-#'     KinesisStreamParameters = list(
-#'       PartitionKey = "string"
-#'     ),
-#'     LambdaFunctionParameters = list(
-#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
-#'     ),
 #'     RedshiftDataParameters = list(
+#'       SecretManagerArn = "string",
 #'       Database = "string",
 #'       DbUser = "string",
-#'       SecretManagerArn = "string",
+#'       StatementName = "string",
+#'       WithEvent = TRUE|FALSE,
 #'       Sqls = list(
 #'         "string"
-#'       ),
-#'       StatementName = "string",
-#'       WithEvent = TRUE|FALSE
+#'       )
 #'     ),
 #'     SageMakerPipelineParameters = list(
 #'       PipelineParameterList = list(
@@ -1543,12 +1593,70 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #'         )
 #'       )
 #'     ),
-#'     SqsQueueParameters = list(
-#'       MessageDeduplicationId = "string",
-#'       MessageGroupId = "string"
+#'     EventBridgeEventBusParameters = list(
+#'       EndpointId = "string",
+#'       DetailType = "string",
+#'       Source = "string",
+#'       Resources = list(
+#'         "string"
+#'       ),
+#'       Time = "string"
 #'     ),
-#'     StepFunctionStateMachineParameters = list(
-#'       InvocationType = "REQUEST_RESPONSE"|"FIRE_AND_FORGET"
+#'     CloudWatchLogsParameters = list(
+#'       LogStreamName = "string",
+#'       Timestamp = "string"
+#'     ),
+#'     TimestreamParameters = list(
+#'       TimeValue = "string",
+#'       EpochTimeUnit = "MILLISECONDS"|"SECONDS"|"MICROSECONDS"|"NANOSECONDS",
+#'       TimeFieldType = "EPOCH"|"TIMESTAMP_FORMAT",
+#'       TimestampFormat = "string",
+#'       VersionValue = "string",
+#'       DimensionMappings = list(
+#'         list(
+#'           DimensionValue = "string",
+#'           DimensionValueType = "VARCHAR",
+#'           DimensionName = "string"
+#'         )
+#'       ),
+#'       SingleMeasureMappings = list(
+#'         list(
+#'           MeasureValue = "string",
+#'           MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP",
+#'           MeasureName = "string"
+#'         )
+#'       ),
+#'       MultiMeasureMappings = list(
+#'         list(
+#'           MultiMeasureName = "string",
+#'           MultiMeasureAttributeMappings = list(
+#'             list(
+#'               MeasureValue = "string",
+#'               MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP",
+#'               MultiMeasureAttributeName = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   LogConfiguration = list(
+#'     S3LogDestination = list(
+#'       BucketName = "string",
+#'       BucketOwner = "string",
+#'       OutputFormat = "json"|"plain"|"w3c",
+#'       Prefix = "string"
+#'     ),
+#'     FirehoseLogDestination = list(
+#'       DeliveryStreamArn = "string"
+#'     ),
+#'     CloudwatchLogsLogDestination = list(
+#'       LogGroupArn = "string"
+#'     ),
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE",
+#'     IncludeExecutionData = list(
+#'       "ALL"
 #'     )
 #'   )
 #' )
@@ -1559,17 +1667,18 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname eventbridgepipes_update_pipe
 #'
 #' @aliases eventbridgepipes_update_pipe
-eventbridgepipes_update_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, LogConfiguration = NULL, Name, RoleArn, SourceParameters = NULL, Target = NULL, TargetParameters = NULL) {
+eventbridgepipes_update_pipe <- function(Name, Description = NULL, DesiredState = NULL, SourceParameters = NULL, Enrichment = NULL, EnrichmentParameters = NULL, Target = NULL, TargetParameters = NULL, RoleArn, LogConfiguration = NULL) {
   op <- new_operation(
     name = "UpdatePipe",
     http_method = "PUT",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eventbridgepipes$update_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, LogConfiguration = LogConfiguration, Name = Name, RoleArn = RoleArn, SourceParameters = SourceParameters, Target = Target, TargetParameters = TargetParameters)
+  input <- .eventbridgepipes$update_pipe_input(Name = Name, Description = Description, DesiredState = DesiredState, SourceParameters = SourceParameters, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, Target = Target, TargetParameters = TargetParameters, RoleArn = RoleArn, LogConfiguration = LogConfiguration)
   output <- .eventbridgepipes$update_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

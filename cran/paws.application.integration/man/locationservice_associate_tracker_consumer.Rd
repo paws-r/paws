@@ -5,9 +5,12 @@
 \title{Creates an association between a geofence collection and a tracker
 resource}
 \usage{
-locationservice_associate_tracker_consumer(ConsumerArn, TrackerName)
+locationservice_associate_tracker_consumer(TrackerName, ConsumerArn)
 }
 \arguments{
+\item{TrackerName}{[required] The name of the tracker resource to be associated with a geofence
+collection.}
+
 \item{ConsumerArn}{[required] The Amazon Resource Name (ARN) for the geofence collection to be
 associated to tracker resource. Used when you need to specify a resource
 across all Amazon Web Services.
@@ -15,9 +18,6 @@ across all Amazon Web Services.
 \item Format example:
 \code{arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer}
 }}
-
-\item{TrackerName}{[required] The name of the tracker resource to be associated with a geofence
-collection.}
 }
 \description{
 Creates an association between a geofence collection and a tracker resource. This allows the tracker resource to communicate location data to the linked geofence collection.

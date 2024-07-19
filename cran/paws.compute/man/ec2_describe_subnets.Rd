@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_subnets}
 \alias{ec2_describe_subnets}
-\title{Describes one or more of your subnets}
+\title{Describes your subnets}
 \usage{
 ec2_describe_subnets(
   Filters = NULL,
@@ -98,7 +98,7 @@ output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes one or more of your subnets.
+Describes your subnets. The default is to describe all your subnets. Alternatively, you can specify specific subnet IDs or filter the results to include only the subnets that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_subnets/} for full documentation.
 }

@@ -7,10 +7,10 @@
 vpclattice_get_resource_policy(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] An IAM policy.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the service network or service.}
 }
 \description{
-Retrieves information about the resource policy. The resource policy is an IAM policy created by AWS RAM on behalf of the resource owner when they share a resource.
+Retrieves information about the resource policy. The resource policy is an IAM policy created on behalf of the resource owner when they share a resource.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_get_resource_policy/} for full documentation.
 }

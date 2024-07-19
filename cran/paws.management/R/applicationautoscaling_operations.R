@@ -20,7 +20,7 @@ NULL
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -83,18 +83,21 @@ NULL
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -102,8 +105,8 @@ NULL
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -157,10 +160,13 @@ NULL
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #'
 #' @keywords internal
 #'
@@ -170,12 +176,13 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
     name = "DeleteScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$delete_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$delete_scaling_policy_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -199,7 +206,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -262,18 +269,21 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -281,8 +291,8 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -336,10 +346,13 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #'
 #' @keywords internal
 #'
@@ -349,12 +362,13 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
     name = "DeleteScheduledAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$delete_scheduled_action_input(ServiceNamespace = ServiceNamespace, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$delete_scheduled_action_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -377,7 +391,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -440,18 +454,21 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -459,8 +476,8 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -514,10 +531,13 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #'
 #' @keywords internal
 #'
@@ -527,12 +547,13 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
     name = "DeregisterScalableTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$deregister_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$deregister_scalable_target_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -554,7 +575,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -617,20 +638,23 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' If you specify a scalable dimension, you must also specify a resource
 #' ID.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -638,8 +662,8 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -693,10 +717,13 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -715,12 +742,13 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
     name = "DescribeScalableTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalableTargets")
   )
   input <- .applicationautoscaling$describe_scalable_targets_input(ServiceNamespace = ServiceNamespace, ResourceIds = ResourceIds, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scalable_targets_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -743,7 +771,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -806,19 +834,22 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -826,8 +857,8 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -881,10 +912,13 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -909,12 +943,13 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingActivities")
   )
   input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
   output <- .applicationautoscaling$describe_scaling_activities_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -938,7 +973,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -1001,19 +1036,22 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -1021,8 +1059,8 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -1076,10 +1114,13 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 10. The default value is 10.
 #' 
@@ -1098,12 +1139,13 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
     name = "DescribeScalingPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPolicies")
   )
   input <- .applicationautoscaling$describe_scaling_policies_input(PolicyNames = PolicyNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scaling_policies_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1127,7 +1169,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -1190,19 +1232,22 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -1210,8 +1255,8 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -1265,10 +1310,13 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #' @param MaxResults The maximum number of scheduled action results. This value can be
 #' between 1 and 50. The default value is 50.
 #' 
@@ -1287,12 +1335,13 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledActions")
   )
   input <- .applicationautoscaling$describe_scheduled_actions_input(ScheduledActionNames = ScheduledActionNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scheduled_actions_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1323,12 +1372,13 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .applicationautoscaling$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1356,7 +1406,7 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -1419,18 +1469,21 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -1438,8 +1491,8 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -1493,10 +1546,13 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #' @param PolicyType The scaling policy type. This parameter is required if you are creating
 #' a scaling policy.
 #' 
@@ -1530,12 +1586,13 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
     name = "PutScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$put_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyType = PolicyType, StepScalingPolicyConfiguration = StepScalingPolicyConfiguration, TargetTrackingScalingPolicyConfiguration = TargetTrackingScalingPolicyConfiguration)
   output <- .applicationautoscaling$put_scaling_policy_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1575,9 +1632,8 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' For rate expressions, *value* is a positive integer and *unit* is
 #' `minute` | `minutes` | `hour` | `hours` | `day` | `days`.
 #' 
-#' For more information and examples, see [Example scheduled actions for
-#' Application Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/examples-scheduled-actions.html)
+#' For more information, see [Schedule recurring scaling actions using cron
+#' expressions](https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-using-cron-expressions.html)
 #' in the *Application Auto Scaling User Guide*.
 #' @param Timezone Specifies the time zone used when setting a scheduled action by using an
 #' at or cron expression. If a time zone is not provided, UTC is used by
@@ -1593,7 +1649,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -1656,18 +1712,21 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -1675,8 +1734,8 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -1730,10 +1789,13 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #' @param StartTime The date and time for this scheduled action to start, in UTC.
 #' @param EndTime The date and time for the recurring schedule to end, in UTC.
 #' @param ScalableTargetAction The new minimum and maximum capacity. You can set both values or just
@@ -1750,12 +1812,13 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
     name = "PutScheduledAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$put_scheduled_action_input(ServiceNamespace = ServiceNamespace, Schedule = Schedule, Timezone = Timezone, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension, StartTime = StartTime, EndTime = EndTime, ScalableTargetAction = ScalableTargetAction)
   output <- .applicationautoscaling$put_scheduled_action_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1778,7 +1841,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
+#'     `service/my-cluster/my-service`.
 #' 
 #' -   Spot Fleet - The resource type is `spot-fleet-request` and the
 #'     unique identifier is the Spot Fleet request ID. Example:
@@ -1841,18 +1904,21 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
-#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#' -   SageMaker serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
 #' -   SageMaker inference component - The resource type is
 #'     `inference-component` and the unique identifier is the resource ID.
 #'     Example: `inference-component/my-inference-component`.
+#' 
+#' -   Pool of WorkSpaces - The resource type is `workspacespool` and the
+#'     unique identifier is the pool ID. Example:
+#'     `workspacespool/wspool-123456`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
-#' -   `ecs:service:DesiredCount` - The desired task count of an ECS
-#'     service.
+#' -   `ecs:service:DesiredCount` - The task count of an ECS service.
 #' 
 #' -   `elasticmapreduce:instancegroup:InstanceCount` - The instance count
 #'     of an EMR Instance Group.
@@ -1860,8 +1926,8 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' -   `ec2:spot-fleet-request:TargetCapacity` - The target capacity of a
 #'     Spot Fleet.
 #' 
-#' -   `appstream:fleet:DesiredCapacity` - The desired capacity of an
-#'     AppStream 2.0 fleet.
+#' -   `appstream:fleet:DesiredCapacity` - The capacity of an AppStream 2.0
+#'     fleet.
 #' 
 #' -   `dynamodb:table:ReadCapacityUnits` - The provisioned read capacity
 #'     for a DynamoDB table.
@@ -1915,10 +1981,13 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     an Amazon Neptune DB cluster.
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
-#'     concurrency for a SageMaker Serverless endpoint.
+#'     concurrency for a SageMaker serverless endpoint.
 #' 
 #' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
 #'     copies across an endpoint for a SageMaker inference component.
+#' 
+#' -   `workspaces:workspacespool:DesiredUserSessions` - The number of user
+#'     sessions for the WorkSpaces in the pool.
 #' @param MinCapacity The minimum value that you plan to scale in to. When a scaling policy is
 #' in effect, Application Auto Scaling can scale in (contract) as needed to
 #' the minimum capacity limit in response to changing demand. This property
@@ -1938,7 +2007,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   SageMaker endpoint variants
 #' 
-#' -   SageMaker Serverless endpoint provisioned concurrency
+#' -   SageMaker inference components
+#' 
+#' -   SageMaker serverless endpoint provisioned concurrency
 #' 
 #' -   Spot Fleets
 #' 
@@ -1974,8 +2045,8 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' If the service supports service-linked roles, Application Auto Scaling
 #' uses a service-linked role, which it creates if it does not yet exist.
-#' For more information, see [Application Auto Scaling IAM
-#' roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles).
+#' For more information, see [How Application Auto Scaling works with
+#' IAM](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html).
 #' @param SuspendedState An embedded object that contains attributes and attribute values that
 #' are used to suspend and resume automatic scaling. Setting the value of
 #' an attribute to `true` suspends the specified scaling activities.
@@ -1995,7 +2066,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' -   For `ScheduledScalingSuspended`, while a suspension is in effect,
 #'     all scaling activities that involve scheduled actions are suspended.
 #' 
-#' For more information, see [Suspending and resuming
+#' For more information, see [Suspend and resume
 #' scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
 #' in the *Application Auto Scaling User Guide*.
 #' @param Tags Assigns one or more tags to the scalable target. Use this parameter to
@@ -2020,12 +2091,13 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
     name = "RegisterScalableTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$register_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MinCapacity = MinCapacity, MaxCapacity = MaxCapacity, RoleARN = RoleARN, SuspendedState = SuspendedState, Tags = Tags)
   output <- .applicationautoscaling$register_scalable_target_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2059,8 +2131,8 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
 #' 
 #' For information about the rules that apply to tag keys and tag values,
 #' see [User-defined tag
-#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
-#' in the *Amazon Web Services Billing and Cost Management User Guide*.
+#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)
+#' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2070,12 +2142,13 @@ applicationautoscaling_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .applicationautoscaling$tag_resource_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2107,12 +2180,13 @@ applicationautoscaling_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .applicationautoscaling$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .applicationautoscaling$untag_resource_output()
   config <- get_config()
-  svc <- .applicationautoscaling$service(config)
+  svc <- .applicationautoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

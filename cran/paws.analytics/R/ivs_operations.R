@@ -20,12 +20,13 @@ ivs_batch_get_channel <- function(arns) {
     name = "BatchGetChannel",
     http_method = "POST",
     http_path = "/BatchGetChannel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$batch_get_channel_input(arns = arns)
   output <- .ivs$batch_get_channel_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -49,12 +50,13 @@ ivs_batch_get_stream_key <- function(arns) {
     name = "BatchGetStreamKey",
     http_method = "POST",
     http_path = "/BatchGetStreamKey",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$batch_get_stream_key_input(arns = arns)
   output <- .ivs$batch_get_stream_key_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -79,12 +81,13 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
     name = "BatchStartViewerSessionRevocation",
     http_method = "POST",
     http_path = "/BatchStartViewerSessionRevocation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$batch_start_viewer_session_revocation_input(viewerSessions = viewerSessions)
   output <- .ivs$batch_start_viewer_session_revocation_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -136,12 +139,13 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/CreateChannel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
   output <- .ivs$create_channel_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -182,12 +186,13 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
     name = "CreatePlaybackRestrictionPolicy",
     http_method = "POST",
     http_path = "/CreatePlaybackRestrictionPolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$create_playback_restriction_policy_input(allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name, tags = tags)
   output <- .ivs$create_playback_restriction_policy_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -227,12 +232,13 @@ ivs_create_recording_configuration <- function(destinationConfiguration, name = 
     name = "CreateRecordingConfiguration",
     http_method = "POST",
     http_path = "/CreateRecordingConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, renditionConfiguration = renditionConfiguration, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
   output <- .ivs$create_recording_configuration_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -263,12 +269,13 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
     name = "CreateStreamKey",
     http_method = "POST",
     http_path = "/CreateStreamKey",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$create_stream_key_input(channelArn = channelArn, tags = tags)
   output <- .ivs$create_stream_key_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -292,12 +299,13 @@ ivs_delete_channel <- function(arn) {
     name = "DeleteChannel",
     http_method = "POST",
     http_path = "/DeleteChannel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$delete_channel_input(arn = arn)
   output <- .ivs$delete_channel_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -321,12 +329,13 @@ ivs_delete_playback_key_pair <- function(arn) {
     name = "DeletePlaybackKeyPair",
     http_method = "POST",
     http_path = "/DeletePlaybackKeyPair",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$delete_playback_key_pair_input(arn = arn)
   output <- .ivs$delete_playback_key_pair_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -350,12 +359,13 @@ ivs_delete_playback_restriction_policy <- function(arn) {
     name = "DeletePlaybackRestrictionPolicy",
     http_method = "POST",
     http_path = "/DeletePlaybackRestrictionPolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$delete_playback_restriction_policy_input(arn = arn)
   output <- .ivs$delete_playback_restriction_policy_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -379,12 +389,13 @@ ivs_delete_recording_configuration <- function(arn) {
     name = "DeleteRecordingConfiguration",
     http_method = "POST",
     http_path = "/DeleteRecordingConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$delete_recording_configuration_input(arn = arn)
   output <- .ivs$delete_recording_configuration_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -409,12 +420,13 @@ ivs_delete_stream_key <- function(arn) {
     name = "DeleteStreamKey",
     http_method = "POST",
     http_path = "/DeleteStreamKey",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$delete_stream_key_input(arn = arn)
   output <- .ivs$delete_stream_key_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -438,12 +450,13 @@ ivs_get_channel <- function(arn) {
     name = "GetChannel",
     http_method = "POST",
     http_path = "/GetChannel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$get_channel_input(arn = arn)
   output <- .ivs$get_channel_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -468,12 +481,13 @@ ivs_get_playback_key_pair <- function(arn) {
     name = "GetPlaybackKeyPair",
     http_method = "POST",
     http_path = "/GetPlaybackKeyPair",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$get_playback_key_pair_input(arn = arn)
   output <- .ivs$get_playback_key_pair_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -497,12 +511,13 @@ ivs_get_playback_restriction_policy <- function(arn) {
     name = "GetPlaybackRestrictionPolicy",
     http_method = "POST",
     http_path = "/GetPlaybackRestrictionPolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$get_playback_restriction_policy_input(arn = arn)
   output <- .ivs$get_playback_restriction_policy_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -526,12 +541,13 @@ ivs_get_recording_configuration <- function(arn) {
     name = "GetRecordingConfiguration",
     http_method = "POST",
     http_path = "/GetRecordingConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$get_recording_configuration_input(arn = arn)
   output <- .ivs$get_recording_configuration_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -555,12 +571,13 @@ ivs_get_stream <- function(channelArn) {
     name = "GetStream",
     http_method = "POST",
     http_path = "/GetStream",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$get_stream_input(channelArn = channelArn)
   output <- .ivs$get_stream_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -584,12 +601,13 @@ ivs_get_stream_key <- function(arn) {
     name = "GetStreamKey",
     http_method = "POST",
     http_path = "/GetStreamKey",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$get_stream_key_input(arn = arn)
   output <- .ivs$get_stream_key_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -616,12 +634,13 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
     name = "GetStreamSession",
     http_method = "POST",
     http_path = "/GetStreamSession",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$get_stream_session_input(channelArn = channelArn, streamId = streamId)
   output <- .ivs$get_stream_session_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -653,12 +672,13 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
     name = "ImportPlaybackKeyPair",
     http_method = "POST",
     http_path = "/ImportPlaybackKeyPair",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$import_playback_key_pair_input(name = name, publicKeyMaterial = publicKeyMaterial, tags = tags)
   output <- .ivs$import_playback_key_pair_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -689,12 +709,13 @@ ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPo
     name = "ListChannels",
     http_method = "POST",
     http_path = "/ListChannels",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_channels_input(filterByName = filterByName, filterByPlaybackRestrictionPolicyArn = filterByPlaybackRestrictionPolicyArn, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_channels_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -721,12 +742,13 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListPlaybackKeyPairs",
     http_method = "POST",
     http_path = "/ListPlaybackKeyPairs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_playback_key_pairs_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_playback_key_pairs_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -752,12 +774,13 @@ ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken 
     name = "ListPlaybackRestrictionPolicies",
     http_method = "POST",
     http_path = "/ListPlaybackRestrictionPolicies",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_playback_restriction_policies_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_playback_restriction_policies_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -786,12 +809,13 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
     name = "ListRecordingConfigurations",
     http_method = "POST",
     http_path = "/ListRecordingConfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_recording_configurations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_recording_configurations_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -818,12 +842,13 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
     name = "ListStreamKeys",
     http_method = "POST",
     http_path = "/ListStreamKeys",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_stream_keys_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_stream_keys_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -851,12 +876,13 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
     name = "ListStreamSessions",
     http_method = "POST",
     http_path = "/ListStreamSessions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_stream_sessions_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_stream_sessions_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -884,12 +910,13 @@ ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NUL
     name = "ListStreams",
     http_method = "POST",
     http_path = "/ListStreams",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_streams_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_streams_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -913,12 +940,13 @@ ivs_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ivs$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -944,12 +972,13 @@ ivs_put_metadata <- function(channelArn, metadata) {
     name = "PutMetadata",
     http_method = "POST",
     http_path = "/PutMetadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$put_metadata_input(channelArn = channelArn, metadata = metadata)
   output <- .ivs$put_metadata_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -980,12 +1009,13 @@ ivs_start_viewer_session_revocation <- function(channelArn, viewerId, viewerSess
     name = "StartViewerSessionRevocation",
     http_method = "POST",
     http_path = "/StartViewerSessionRevocation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$start_viewer_session_revocation_input(channelArn = channelArn, viewerId = viewerId, viewerSessionVersionsLessThanOrEqualTo = viewerSessionVersionsLessThanOrEqualTo)
   output <- .ivs$start_viewer_session_revocation_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1009,12 +1039,13 @@ ivs_stop_stream <- function(channelArn) {
     name = "StopStream",
     http_method = "POST",
     http_path = "/StopStream",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$stop_stream_input(channelArn = channelArn)
   output <- .ivs$stop_stream_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1046,12 +1077,13 @@ ivs_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ivs$tag_resource_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1082,12 +1114,13 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ivs$untag_resource_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1132,12 +1165,13 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
     name = "UpdateChannel",
     http_method = "POST",
     http_path = "/UpdateChannel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, type = type)
   output <- .ivs$update_channel_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1172,12 +1206,13 @@ ivs_update_playback_restriction_policy <- function(allowedCountries = NULL, allo
     name = "UpdatePlaybackRestrictionPolicy",
     http_method = "POST",
     http_path = "/UpdatePlaybackRestrictionPolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivs$update_playback_restriction_policy_input(allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, arn = arn, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name)
   output <- .ivs$update_playback_restriction_policy_output()
   config <- get_config()
-  svc <- .ivs$service(config)
+  svc <- .ivs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

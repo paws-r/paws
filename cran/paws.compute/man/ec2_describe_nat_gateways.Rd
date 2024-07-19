@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_nat_gateways}
 \alias{ec2_describe_nat_gateways}
-\title{Describes one or more of your NAT gateways}
+\title{Describes your NAT gateways}
 \usage{
 ec2_describe_nat_gateways(
   DryRun = NULL,
@@ -46,7 +46,7 @@ output. For more information, see
 continues from the end of the items returned by the previous request.}
 }
 \description{
-Describes one or more of your NAT gateways.
+Describes your NAT gateways. The default is to describe all your NAT gateways. Alternatively, you can specify specific NAT gateway IDs or filter the results to include only the NAT gateways that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_nat_gateways/} for full documentation.
 }

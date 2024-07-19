@@ -6,21 +6,21 @@
 \usage{
 locationservice_list_geofences(
   CollectionName,
-  MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
 \item{CollectionName}{[required] The name of the geofence collection storing the list of geofences.}
 
-\item{MaxResults}{An optional limit for the number of geofences returned in a single call.
-
-Default value: \code{100}}
-
 \item{NextToken}{The pagination token specifying which page of results to return in the
 response. If no token is provided, the default page is the first page.
 
 Default value: \code{null}}
+
+\item{MaxResults}{An optional limit for the number of geofences returned in a single call.
+
+Default value: \code{100}}
 }
 \description{
 Lists geofences stored in a given geofence collection.

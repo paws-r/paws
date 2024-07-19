@@ -16,7 +16,7 @@ managedgrafana_create_workspace_api_key(
 
 \item{keyRole}{[required] Specifies the permission level of the key.
 
-Valid values: \code{VIEWER}|\code{EDITOR}|\code{ADMIN}}
+Valid values: \code{ADMIN}|\code{EDITOR}|\code{VIEWER}}
 
 \item{secondsToLive}{[required] Specifies the time in seconds until the key expires. Keys can be valid
 for up to 30 days.}

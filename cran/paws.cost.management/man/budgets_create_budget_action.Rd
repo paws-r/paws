@@ -13,7 +13,8 @@ budgets_create_budget_action(
   Definition,
   ExecutionRoleArn,
   ApprovalModel,
-  Subscribers
+  Subscribers,
+  ResourceTags = NULL
 )
 }
 \arguments{
@@ -37,6 +38,10 @@ must be in the same account.}
 \item{ApprovalModel}{[required] This specifies if the action needs manual or automatic approval.}
 
 \item{Subscribers}{[required]}
+
+\item{ResourceTags}{An optional list of tags to associate with the specified budget action.
+Each tag consists of a key and a value, and each key must be unique for
+the resource.}
 }
 \description{
 Creates a budget action.

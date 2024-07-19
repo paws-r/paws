@@ -64,12 +64,13 @@ appfabric_batch_get_user_access_tasks <- function(appBundleIdentifier, taskIdLis
     name = "BatchGetUserAccessTasks",
     http_method = "POST",
     http_path = "/useraccess/batchget",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$batch_get_user_access_tasks_input(appBundleIdentifier = appBundleIdentifier, taskIdList = taskIdList)
   output <- .appfabric$batch_get_user_access_tasks_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -139,12 +140,13 @@ appfabric_connect_app_authorization <- function(appBundleIdentifier, appAuthoriz
     name = "ConnectAppAuthorization",
     http_method = "POST",
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}/connect",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$connect_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier, authRequest = authRequest)
   output <- .appfabric$connect_app_authorization_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -282,12 +284,13 @@ appfabric_create_app_authorization <- function(appBundleIdentifier, app, credent
     name = "CreateAppAuthorization",
     http_method = "POST",
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$create_app_authorization_input(appBundleIdentifier = appBundleIdentifier, app = app, credential = credential, tenant = tenant, authType = authType, clientToken = clientToken, tags = tags)
   output <- .appfabric$create_app_authorization_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -360,12 +363,13 @@ appfabric_create_app_bundle <- function(clientToken = NULL, customerManagedKeyId
     name = "CreateAppBundle",
     http_method = "POST",
     http_path = "/appbundles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$create_app_bundle_input(clientToken = clientToken, customerManagedKeyIdentifier = customerManagedKeyIdentifier, tags = tags)
   output <- .appfabric$create_app_bundle_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -477,12 +481,13 @@ appfabric_create_ingestion <- function(appBundleIdentifier, app, tenantId, inges
     name = "CreateIngestion",
     http_method = "POST",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$create_ingestion_input(appBundleIdentifier = appBundleIdentifier, app = app, tenantId = tenantId, ingestionType = ingestionType, clientToken = clientToken, tags = tags)
   output <- .appfabric$create_ingestion_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -608,12 +613,13 @@ appfabric_create_ingestion_destination <- function(appBundleIdentifier, ingestio
     name = "CreateIngestionDestination",
     http_method = "POST",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$create_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, processingConfiguration = processingConfiguration, destinationConfiguration = destinationConfiguration, clientToken = clientToken, tags = tags)
   output <- .appfabric$create_ingestion_destination_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -656,12 +662,13 @@ appfabric_delete_app_authorization <- function(appBundleIdentifier, appAuthoriza
     name = "DeleteAppAuthorization",
     http_method = "DELETE",
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$delete_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier)
   output <- .appfabric$delete_app_authorization_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -700,12 +707,13 @@ appfabric_delete_app_bundle <- function(appBundleIdentifier) {
     name = "DeleteAppBundle",
     http_method = "DELETE",
     http_path = "/appbundles/{appBundleIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$delete_app_bundle_input(appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$delete_app_bundle_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -748,12 +756,13 @@ appfabric_delete_ingestion <- function(appBundleIdentifier, ingestionIdentifier)
     name = "DeleteIngestion",
     http_method = "DELETE",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$delete_ingestion_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier)
   output <- .appfabric$delete_ingestion_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -804,12 +813,13 @@ appfabric_delete_ingestion_destination <- function(appBundleIdentifier, ingestio
     name = "DeleteIngestionDestination",
     http_method = "DELETE",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations/{ingestionDestinationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$delete_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, ingestionDestinationIdentifier = ingestionDestinationIdentifier)
   output <- .appfabric$delete_ingestion_destination_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +884,13 @@ appfabric_get_app_authorization <- function(appBundleIdentifier, appAuthorizatio
     name = "GetAppAuthorization",
     http_method = "GET",
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$get_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier)
   output <- .appfabric$get_app_authorization_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -925,12 +936,13 @@ appfabric_get_app_bundle <- function(appBundleIdentifier) {
     name = "GetAppBundle",
     http_method = "GET",
     http_path = "/appbundles/{appBundleIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$get_app_bundle_input(appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$get_app_bundle_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -989,12 +1001,13 @@ appfabric_get_ingestion <- function(appBundleIdentifier, ingestionIdentifier) {
     name = "GetIngestion",
     http_method = "GET",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$get_ingestion_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier)
   output <- .appfabric$get_ingestion_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1074,12 +1087,13 @@ appfabric_get_ingestion_destination <- function(appBundleIdentifier, ingestionId
     name = "GetIngestionDestination",
     http_method = "GET",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations/{ingestionDestinationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$get_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, ingestionDestinationIdentifier = ingestionDestinationIdentifier)
   output <- .appfabric$get_ingestion_destination_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1151,12 +1165,13 @@ appfabric_list_app_authorizations <- function(appBundleIdentifier, maxResults = 
     name = "ListAppAuthorizations",
     http_method = "GET",
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "appAuthorizationSummaryList")
   )
   input <- .appfabric$list_app_authorizations_input(appBundleIdentifier = appBundleIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_app_authorizations_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1214,12 +1229,13 @@ appfabric_list_app_bundles <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListAppBundles",
     http_method = "GET",
     http_path = "/appbundles",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "appBundleSummaryList")
   )
   input <- .appfabric$list_app_bundles_input(maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_app_bundles_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1285,12 +1301,13 @@ appfabric_list_ingestion_destinations <- function(appBundleIdentifier, ingestion
     name = "ListIngestionDestinations",
     http_method = "GET",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestionDestinations")
   )
   input <- .appfabric$list_ingestion_destinations_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_ingestion_destinations_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1354,12 +1371,13 @@ appfabric_list_ingestions <- function(appBundleIdentifier, maxResults = NULL, ne
     name = "ListIngestions",
     http_method = "GET",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestions")
   )
   input <- .appfabric$list_ingestions_input(appBundleIdentifier = appBundleIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_ingestions_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1407,12 +1425,13 @@ appfabric_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .appfabric$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1453,12 +1472,13 @@ appfabric_start_ingestion <- function(ingestionIdentifier, appBundleIdentifier) 
     name = "StartIngestion",
     http_method = "POST",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$start_ingestion_input(ingestionIdentifier = ingestionIdentifier, appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$start_ingestion_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1518,12 +1538,13 @@ appfabric_start_user_access_tasks <- function(appBundleIdentifier, email) {
     name = "StartUserAccessTasks",
     http_method = "POST",
     http_path = "/useraccess/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$start_user_access_tasks_input(appBundleIdentifier = appBundleIdentifier, email = email)
   output <- .appfabric$start_user_access_tasks_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1564,12 +1585,13 @@ appfabric_stop_ingestion <- function(ingestionIdentifier, appBundleIdentifier) {
     name = "StopIngestion",
     http_method = "POST",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$stop_ingestion_input(ingestionIdentifier = ingestionIdentifier, appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$stop_ingestion_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1614,12 +1636,13 @@ appfabric_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .appfabric$tag_resource_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1661,12 +1684,13 @@ appfabric_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .appfabric$untag_resource_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1758,12 +1782,13 @@ appfabric_update_app_authorization <- function(appBundleIdentifier, appAuthoriza
     name = "UpdateAppAuthorization",
     http_method = "PATCH",
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$update_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier, credential = credential, tenant = tenant)
   output <- .appfabric$update_app_authorization_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1862,12 +1887,13 @@ appfabric_update_ingestion_destination <- function(appBundleIdentifier, ingestio
     name = "UpdateIngestionDestination",
     http_method = "PATCH",
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations/{ingestionDestinationIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appfabric$update_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, ingestionDestinationIdentifier = ingestionDestinationIdentifier, destinationConfiguration = destinationConfiguration)
   output <- .appfabric$update_ingestion_destination_output()
   config <- get_config()
-  svc <- .appfabric$service(config)
+  svc <- .appfabric$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

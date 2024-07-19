@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_restore_backup}
 \alias{cloudhsmv2_restore_backup}
-\title{Restores a specified AWS CloudHSM backup that is in the PENDING_DELETION
+\title{Restores a specified CloudHSM backup that is in the PENDING_DELETION
 state}
 \usage{
 cloudhsmv2_restore_backup(BackupId)
@@ -12,7 +12,7 @@ cloudhsmv2_restore_backup(BackupId)
 \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
 \description{
-Restores a specified AWS CloudHSM backup that is in the \code{PENDING_DELETION} state. For mor information on deleting a backup, see \code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.
+Restores a specified CloudHSM backup that is in the \code{PENDING_DELETION} state. For more information on deleting a backup, see \code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/} for full documentation.
 }

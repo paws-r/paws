@@ -137,7 +137,7 @@ resourcegroupstaggingapi <- function(config = list(), credentials = list(), endp
   target_prefix = "ResourceGroupsTaggingAPI_20170126"
 )
 
-.resourcegroupstaggingapi$service <- function(config = list()) {
+.resourcegroupstaggingapi$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.resourcegroupstaggingapi$metadata, handlers, config)
+  new_service(.resourcegroupstaggingapi$metadata, handlers, config, op)
 }

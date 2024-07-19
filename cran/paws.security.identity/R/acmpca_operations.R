@@ -85,12 +85,13 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
     name = "CreateCertificateAuthority",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, IdempotencyToken = IdempotencyToken, KeyStorageSecurityStandard = KeyStorageSecurityStandard, Tags = Tags, UsageMode = UsageMode)
   output <- .acmpca$create_certificate_authority_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -121,12 +122,13 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
     name = "CreateCertificateAuthorityAuditReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$create_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, S3BucketName = S3BucketName, AuditReportResponseFormat = AuditReportResponseFormat)
   output <- .acmpca$create_certificate_authority_audit_report_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -164,12 +166,13 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
     name = "CreatePermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$create_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount, Actions = Actions)
   output <- .acmpca$create_permission_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -199,12 +202,13 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
     name = "DeleteCertificateAuthority",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$delete_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, PermanentDeletionTimeInDays = PermanentDeletionTimeInDays)
   output <- .acmpca$delete_certificate_authority_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -238,12 +242,13 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
     name = "DeletePermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$delete_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount)
   output <- .acmpca$delete_permission_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +276,13 @@ acmpca_delete_policy <- function(ResourceArn) {
     name = "DeletePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$delete_policy_input(ResourceArn = ResourceArn)
   output <- .acmpca$delete_policy_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -305,12 +311,13 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
     name = "DescribeCertificateAuthority",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$describe_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$describe_certificate_authority_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -341,12 +348,13 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
     name = "DescribeCertificateAuthorityAuditReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$describe_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, AuditReportId = AuditReportId)
   output <- .acmpca$describe_certificate_authority_audit_report_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -379,12 +387,13 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
     name = "GetCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$get_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, CertificateArn = CertificateArn)
   output <- .acmpca$get_certificate_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -411,12 +420,13 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
     name = "GetCertificateAuthorityCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$get_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$get_certificate_authority_certificate_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -445,12 +455,13 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
     name = "GetCertificateAuthorityCsr",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$get_certificate_authority_csr_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$get_certificate_authority_csr_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -467,6 +478,8 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
 #' policy retrieved. You can find the CA's ARN by calling the
 #' ListCertificateAuthorities action.
+#' 
+#'      </p> 
 #'
 #' @keywords internal
 #'
@@ -476,12 +489,13 @@ acmpca_get_policy <- function(ResourceArn) {
     name = "GetPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$get_policy_input(ResourceArn = ResourceArn)
   output <- .acmpca$get_policy_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -521,12 +535,13 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
     name = "ImportCertificateAuthorityCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$import_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, Certificate = Certificate, CertificateChain = CertificateChain)
   output <- .acmpca$import_certificate_authority_certificate_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -649,12 +664,13 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
     name = "IssueCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$issue_certificate_input(ApiPassthrough = ApiPassthrough, CertificateAuthorityArn = CertificateAuthorityArn, Csr = Csr, SigningAlgorithm = SigningAlgorithm, TemplateArn = TemplateArn, Validity = Validity, ValidityNotBefore = ValidityNotBefore, IdempotencyToken = IdempotencyToken)
   output <- .acmpca$issue_certificate_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -669,9 +685,6 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_list_certificate_authorities/](https://www.paws-r-sdk.com/docs/acmpca_list_certificate_authorities/) for full documentation.
 #'
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' the `NextToken` parameter from the response you just received.
 #' @param MaxResults Use this parameter when paginating results to specify the maximum number
 #' of items to return in the response on each page. If additional items
 #' exist beyond the number you specify, the `NextToken` element is sent in
@@ -680,23 +693,27 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #' 
 #' Although the maximum value is 1000, the action only returns a maximum of
 #' 100 items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after
+#' you receive a response with truncated results. Set it to the value of
+#' the `NextToken` parameter from the response you just received.
 #' @param ResourceOwner Use this parameter to filter the returned set of certificate authorities
 #' based on their owner. The default is SELF.
 #'
 #' @keywords internal
 #'
 #' @rdname acmpca_list_certificate_authorities
-acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = NULL, ResourceOwner = NULL) {
+acmpca_list_certificate_authorities <- function(MaxResults = NULL, NextToken = NULL, ResourceOwner = NULL) {
   op <- new_operation(
     name = "ListCertificateAuthorities",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CertificateAuthorities")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CertificateAuthorities")
   )
-  input <- .acmpca$list_certificate_authorities_input(NextToken = NextToken, MaxResults = MaxResults, ResourceOwner = ResourceOwner)
+  input <- .acmpca$list_certificate_authorities_input(MaxResults = MaxResults, NextToken = NextToken, ResourceOwner = ResourceOwner)
   output <- .acmpca$list_certificate_authorities_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -711,6 +728,14 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_list_permissions/](https://www.paws-r-sdk.com/docs/acmpca_list_permissions/) for full documentation.
 #'
+#' @param MaxResults When paginating results, use this parameter to specify the maximum
+#' number of items to return in the response. If additional items exist
+#' beyond the number you specify, the **NextToken** element is sent in the
+#' response. Use this **NextToken** value in a subsequent request to
+#' retrieve additional items.
+#' @param NextToken When paginating results, use this parameter in a subsequent request
+#' after you receive a response with truncated results. Set it to the value
+#' of **NextToken** from the response you just received.
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to inspect. You can
 #' find the ARN by calling the
 #' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
@@ -719,29 +744,22 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #' You can get a private CA's ARN by running the
 #' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action.
-#' @param NextToken When paginating results, use this parameter in a subsequent request
-#' after you receive a response with truncated results. Set it to the value
-#' of **NextToken** from the response you just received.
-#' @param MaxResults When paginating results, use this parameter to specify the maximum
-#' number of items to return in the response. If additional items exist
-#' beyond the number you specify, the **NextToken** element is sent in the
-#' response. Use this **NextToken** value in a subsequent request to
-#' retrieve additional items.
 #'
 #' @keywords internal
 #'
 #' @rdname acmpca_list_permissions
-acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL) {
+acmpca_list_permissions <- function(MaxResults = NULL, NextToken = NULL, CertificateAuthorityArn) {
   op <- new_operation(
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Permissions")
   )
-  input <- .acmpca$list_permissions_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .acmpca$list_permissions_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$list_permissions_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -756,34 +774,35 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_list_tags/](https://www.paws-r-sdk.com/docs/acmpca_list_tags/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
-#' [`create_certificate_authority`][acmpca_create_certificate_authority]
-#' action. This must be of the form:
-#' 
-#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' **NextToken** from the response you just received.
 #' @param MaxResults Use this parameter when paginating results to specify the maximum number
 #' of items to return in the response. If additional items exist beyond the
 #' number you specify, the **NextToken** element is sent in the response.
 #' Use this **NextToken** value in a subsequent request to retrieve
 #' additional items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after
+#' you receive a response with truncated results. Set it to the value of
+#' **NextToken** from the response you just received.
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
+#' action. This must be of the form:
+#' 
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #'
 #' @keywords internal
 #'
 #' @rdname acmpca_list_tags
-acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL) {
+acmpca_list_tags <- function(MaxResults = NULL, NextToken = NULL, CertificateAuthorityArn) {
   op <- new_operation(
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
-  input <- .acmpca$list_tags_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .acmpca$list_tags_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$list_tags_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -817,12 +836,13 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
     name = "PutPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$put_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .acmpca$put_policy_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -850,12 +870,13 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
     name = "RestoreCertificateAuthority",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$restore_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$restore_certificate_authority_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -897,12 +918,13 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
     name = "RevokeCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$revoke_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, CertificateSerial = CertificateSerial, RevocationReason = RevocationReason)
   output <- .acmpca$revoke_certificate_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -931,12 +953,13 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
     name = "TagCertificateAuthority",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$tag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
   output <- .acmpca$tag_certificate_authority_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -965,12 +988,13 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
     name = "UntagCertificateAuthority",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$untag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
   output <- .acmpca$untag_certificate_authority_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1025,12 +1049,13 @@ acmpca_update_certificate_authority <- function(CertificateAuthorityArn, Revocat
     name = "UpdateCertificateAuthority",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .acmpca$update_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, RevocationConfiguration = RevocationConfiguration, Status = Status)
   output <- .acmpca$update_certificate_authority_output()
   config <- get_config()
-  svc <- .acmpca$service(config)
+  svc <- .acmpca$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

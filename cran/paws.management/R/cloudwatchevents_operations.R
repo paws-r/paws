@@ -20,12 +20,13 @@ cloudwatchevents_activate_event_source <- function(Name) {
     name = "ActivateEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$activate_event_source_input(Name = Name)
   output <- .cloudwatchevents$activate_event_source_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -49,12 +50,13 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
     name = "CancelReplay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$cancel_replay_input(ReplayName = ReplayName)
   output <- .cloudwatchevents$cancel_replay_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -87,12 +89,13 @@ cloudwatchevents_create_api_destination <- function(Name, Description = NULL, Co
     name = "CreateApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .cloudwatchevents$create_api_destination_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -121,12 +124,13 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
     name = "CreateArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$create_archive_input(ArchiveName = ArchiveName, EventSourceArn = EventSourceArn, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .cloudwatchevents$create_archive_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -154,12 +158,13 @@ cloudwatchevents_create_connection <- function(Name, Description = NULL, Authori
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .cloudwatchevents$create_connection_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -193,12 +198,13 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
     name = "CreateEventBus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Tags = Tags)
   output <- .cloudwatchevents$create_event_bus_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -228,12 +234,13 @@ cloudwatchevents_create_partner_event_source <- function(Name, Account) {
     name = "CreatePartnerEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$create_partner_event_source_input(Name = Name, Account = Account)
   output <- .cloudwatchevents$create_partner_event_source_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -258,12 +265,13 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
     name = "DeactivateEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$deactivate_event_source_input(Name = Name)
   output <- .cloudwatchevents$deactivate_event_source_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -287,12 +295,13 @@ cloudwatchevents_deauthorize_connection <- function(Name) {
     name = "DeauthorizeConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$deauthorize_connection_input(Name = Name)
   output <- .cloudwatchevents$deauthorize_connection_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -316,12 +325,13 @@ cloudwatchevents_delete_api_destination <- function(Name) {
     name = "DeleteApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$delete_api_destination_input(Name = Name)
   output <- .cloudwatchevents$delete_api_destination_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -345,12 +355,13 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
     name = "DeleteArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$delete_archive_input(ArchiveName = ArchiveName)
   output <- .cloudwatchevents$delete_archive_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -374,12 +385,13 @@ cloudwatchevents_delete_connection <- function(Name) {
     name = "DeleteConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$delete_connection_input(Name = Name)
   output <- .cloudwatchevents$delete_connection_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -403,12 +415,13 @@ cloudwatchevents_delete_event_bus <- function(Name) {
     name = "DeleteEventBus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$delete_event_bus_input(Name = Name)
   output <- .cloudwatchevents$delete_event_bus_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -434,12 +447,13 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
     name = "DeletePartnerEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$delete_partner_event_source_input(Name = Name, Account = Account)
   output <- .cloudwatchevents$delete_partner_event_source_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -472,12 +486,13 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
     name = "DeleteRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$delete_rule_input(Name = Name, EventBusName = EventBusName, Force = Force)
   output <- .cloudwatchevents$delete_rule_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -501,12 +516,13 @@ cloudwatchevents_describe_api_destination <- function(Name) {
     name = "DescribeApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_api_destination_input(Name = Name)
   output <- .cloudwatchevents$describe_api_destination_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -530,12 +546,13 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
     name = "DescribeArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_archive_input(ArchiveName = ArchiveName)
   output <- .cloudwatchevents$describe_archive_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -559,12 +576,13 @@ cloudwatchevents_describe_connection <- function(Name) {
     name = "DescribeConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_connection_input(Name = Name)
   output <- .cloudwatchevents$describe_connection_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -589,12 +607,13 @@ cloudwatchevents_describe_event_bus <- function(Name = NULL) {
     name = "DescribeEventBus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_event_bus_input(Name = Name)
   output <- .cloudwatchevents$describe_event_bus_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -619,12 +638,13 @@ cloudwatchevents_describe_event_source <- function(Name) {
     name = "DescribeEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_event_source_input(Name = Name)
   output <- .cloudwatchevents$describe_event_source_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -649,12 +669,13 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
     name = "DescribePartnerEventSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_partner_event_source_input(Name = Name)
   output <- .cloudwatchevents$describe_partner_event_source_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -678,12 +699,13 @@ cloudwatchevents_describe_replay <- function(ReplayName) {
     name = "DescribeReplay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_replay_input(ReplayName = ReplayName)
   output <- .cloudwatchevents$describe_replay_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -709,12 +731,13 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
     name = "DescribeRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$describe_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .cloudwatchevents$describe_rule_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -740,12 +763,13 @@ cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
     name = "DisableRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$disable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .cloudwatchevents$disable_rule_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -771,12 +795,13 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
     name = "EnableRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$enable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .cloudwatchevents$enable_rule_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -805,12 +830,13 @@ cloudwatchevents_list_api_destinations <- function(NamePrefix = NULL, Connection
     name = "ListApiDestinations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_api_destinations_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -840,12 +866,13 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
     name = "ListArchives",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_archives_input(NamePrefix = NamePrefix, EventSourceArn = EventSourceArn, State = State, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_archives_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +901,13 @@ cloudwatchevents_list_connections <- function(NamePrefix = NULL, ConnectionState
     name = "ListConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_connections_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -910,12 +938,13 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
     name = "ListEventBuses",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_event_buses_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_event_buses_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -946,12 +975,13 @@ cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = N
     name = "ListEventSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_event_sources_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -983,12 +1013,13 @@ cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName,
     name = "ListPartnerEventSourceAccounts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_partner_event_source_accounts_input(EventSourceName = EventSourceName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_partner_event_source_accounts_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1019,12 +1050,13 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
     name = "ListPartnerEventSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_partner_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_partner_event_sources_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1054,12 +1086,13 @@ cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, Event
     name = "ListReplays",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_replays_input(NamePrefix = NamePrefix, State = State, EventSourceArn = EventSourceArn, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_replays_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1088,12 +1121,13 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
     name = "ListRuleNamesByTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_rule_names_by_target_input(TargetArn = TargetArn, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_rule_names_by_target_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1122,12 +1156,13 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, 
     name = "ListRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_rules_input(NamePrefix = NamePrefix, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_rules_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1151,12 +1186,13 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .cloudwatchevents$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1185,12 +1221,13 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
     name = "ListTargetsByRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$list_targets_by_rule_input(Rule = Rule, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_targets_by_rule_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1217,12 +1254,13 @@ cloudwatchevents_put_events <- function(Entries) {
     name = "PutEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$put_events_input(Entries = Entries)
   output <- .cloudwatchevents$put_events_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1247,12 +1285,13 @@ cloudwatchevents_put_partner_events <- function(Entries) {
     name = "PutPartnerEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$put_partner_events_input(Entries = Entries)
   output <- .cloudwatchevents$put_partner_events_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1309,12 +1348,13 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
     name = "PutPermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$put_permission_input(EventBusName = EventBusName, Action = Action, Principal = Principal, StatementId = StatementId, Condition = Condition, Policy = Policy)
   output <- .cloudwatchevents$put_permission_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1355,12 +1395,13 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
     name = "PutRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$put_rule_input(Name = Name, ScheduleExpression = ScheduleExpression, EventPattern = EventPattern, State = State, Description = Description, RoleArn = RoleArn, Tags = Tags, EventBusName = EventBusName)
   output <- .cloudwatchevents$put_rule_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1388,12 +1429,13 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
     name = "PutTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$put_targets_input(Rule = Rule, EventBusName = EventBusName, Targets = Targets)
   output <- .cloudwatchevents$put_targets_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1422,12 +1464,13 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
     name = "RemovePermission",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$remove_permission_input(StatementId = StatementId, RemoveAllPermissions = RemoveAllPermissions, EventBusName = EventBusName)
   output <- .cloudwatchevents$remove_permission_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1461,12 +1504,13 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
     name = "RemoveTargets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$remove_targets_input(Rule = Rule, EventBusName = EventBusName, Ids = Ids, Force = Force)
   output <- .cloudwatchevents$remove_targets_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1498,12 +1542,13 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
     name = "StartReplay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$start_replay_input(ReplayName = ReplayName, Description = Description, EventSourceArn = EventSourceArn, EventStartTime = EventStartTime, EventEndTime = EventEndTime, Destination = Destination)
   output <- .cloudwatchevents$start_replay_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1529,12 +1574,13 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .cloudwatchevents$tag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1578,12 +1624,13 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
     name = "TestEventPattern",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$test_event_pattern_input(EventPattern = EventPattern, Event = Event)
   output <- .cloudwatchevents$test_event_pattern_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1608,12 +1655,13 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .cloudwatchevents$untag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1643,12 +1691,13 @@ cloudwatchevents_update_api_destination <- function(Name, Description = NULL, Co
     name = "UpdateApiDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .cloudwatchevents$update_api_destination_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1675,12 +1724,13 @@ cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, Eve
     name = "UpdateArchive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$update_archive_input(ArchiveName = ArchiveName, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .cloudwatchevents$update_archive_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1707,12 +1757,13 @@ cloudwatchevents_update_connection <- function(Name, Description = NULL, Authori
     name = "UpdateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevents$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .cloudwatchevents$update_connection_output()
   config <- get_config()
-  svc <- .cloudwatchevents$service(config)
+  svc <- .cloudwatchevents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

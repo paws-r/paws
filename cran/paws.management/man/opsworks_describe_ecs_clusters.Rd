@@ -32,7 +32,7 @@ a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
 \description{
-Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the \code{MaxResults} and \code{NextToken} parameters to paginate the response. However, AWS OpsWorks Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
+Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the \code{MaxResults} and \code{NextToken} parameters to paginate the response. However, OpsWorks Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
 
 See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_ecs_clusters/} for full documentation.
 }

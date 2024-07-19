@@ -136,12 +136,13 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
     name = "CreateAccessPoint",
     http_method = "POST",
     http_path = "/2015-02-01/access-points",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$create_access_point_input(ClientToken = ClientToken, Tags = Tags, FileSystemId = FileSystemId, PosixUser = PosixUser, RootDirectory = RootDirectory)
   output <- .efs$create_access_point_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -213,7 +214,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' [`create_mount_target`][efs_create_mount_target]. You mount your Amazon
 #' EFS file system on an EC2 instances in your VPC by using the mount
 #' target. For more information, see [Amazon EFS: How it
-#' Works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html#how-it-works).
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:CreateFileSystem` action.
@@ -410,12 +411,13 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
     name = "CreateFileSystem",
     http_method = "POST",
     http_path = "/2015-02-01/file-systems",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$create_file_system_input(CreationToken = CreationToken, PerformanceMode = PerformanceMode, Encrypted = Encrypted, KmsKeyId = KmsKeyId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps, AvailabilityZoneName = AvailabilityZoneName, Backup = Backup, Tags = Tags)
   output <- .efs$create_file_system_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -444,7 +446,7 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' system's Availability Zone when creating the mount target.
 #' 
 #' For more information, see [Amazon EFS: How it
-#' Works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html#how-it-works).
 #' 
 #' To create a mount target for a file system, the file system's lifecycle
 #' state must be `available`. For more information, see
@@ -472,7 +474,7 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' on which you mount the file system by using the mount target can resolve
 #' the mount target's DNS name to its IP address. For more information, see
 #' [How it Works: Implementation
-#' Overview](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation).
+#' Overview](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html#how-it-works).
 #' 
 #' Note that you can create mount targets for a file system in only one
 #' VPC, and there can be only one mount target per Availability Zone. That
@@ -607,12 +609,13 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
     name = "CreateMountTarget",
     http_method = "POST",
     http_path = "/2015-02-01/mount-targets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$create_mount_target_input(FileSystemId = FileSystemId, SubnetId = SubnetId, IpAddress = IpAddress, SecurityGroups = SecurityGroups)
   output <- .efs$create_mount_target_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -757,12 +760,13 @@ efs_create_replication_configuration <- function(SourceFileSystemId, Destination
     name = "CreateReplicationConfiguration",
     http_method = "POST",
     http_path = "/2015-02-01/file-systems/{SourceFileSystemId}/replication-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$create_replication_configuration_input(SourceFileSystemId = SourceFileSystemId, Destinations = Destinations)
   output <- .efs$create_replication_configuration_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -832,12 +836,13 @@ efs_create_tags <- function(FileSystemId, Tags) {
     name = "CreateTags",
     http_method = "POST",
     http_path = "/2015-02-01/create-tags/{FileSystemId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$create_tags_input(FileSystemId = FileSystemId, Tags = Tags)
   output <- .efs$create_tags_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -880,12 +885,13 @@ efs_delete_access_point <- function(AccessPointId) {
     name = "DeleteAccessPoint",
     http_method = "DELETE",
     http_path = "/2015-02-01/access-points/{AccessPointId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$delete_access_point_input(AccessPointId = AccessPointId)
   output <- .efs$delete_access_point_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -956,12 +962,13 @@ efs_delete_file_system <- function(FileSystemId) {
     name = "DeleteFileSystem",
     http_method = "DELETE",
     http_path = "/2015-02-01/file-systems/{FileSystemId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$delete_file_system_input(FileSystemId = FileSystemId)
   output <- .efs$delete_file_system_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1006,12 +1013,13 @@ efs_delete_file_system_policy <- function(FileSystemId) {
     name = "DeleteFileSystemPolicy",
     http_method = "DELETE",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$delete_file_system_policy_input(FileSystemId = FileSystemId)
   output <- .efs$delete_file_system_policy_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1082,12 +1090,13 @@ efs_delete_mount_target <- function(MountTargetId) {
     name = "DeleteMountTarget",
     http_method = "DELETE",
     http_path = "/2015-02-01/mount-targets/{MountTargetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$delete_mount_target_input(MountTargetId = MountTargetId)
   output <- .efs$delete_mount_target_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1132,12 +1141,13 @@ efs_delete_replication_configuration <- function(SourceFileSystemId) {
     name = "DeleteReplicationConfiguration",
     http_method = "DELETE",
     http_path = "/2015-02-01/file-systems/{SourceFileSystemId}/replication-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$delete_replication_configuration_input(SourceFileSystemId = SourceFileSystemId)
   output <- .efs$delete_replication_configuration_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1200,12 +1210,13 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
     name = "DeleteTags",
     http_method = "POST",
     http_path = "/2015-02-01/delete-tags/{FileSystemId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$delete_tags_input(FileSystemId = FileSystemId, TagKeys = TagKeys)
   output <- .efs$delete_tags_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1300,12 +1311,13 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
     name = "DescribeAccessPoints",
     http_method = "GET",
     http_path = "/2015-02-01/access-points",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccessPoints")
   )
   input <- .efs$describe_access_points_input(MaxResults = MaxResults, NextToken = NextToken, AccessPointId = AccessPointId, FileSystemId = FileSystemId)
   output <- .efs$describe_access_points_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1363,12 +1375,13 @@ efs_describe_account_preferences <- function(NextToken = NULL, MaxResults = NULL
     name = "DescribeAccountPreferences",
     http_method = "GET",
     http_path = "/2015-02-01/account-preferences",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$describe_account_preferences_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .efs$describe_account_preferences_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1413,12 +1426,13 @@ efs_describe_backup_policy <- function(FileSystemId) {
     name = "DescribeBackupPolicy",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/backup-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$describe_backup_policy_input(FileSystemId = FileSystemId)
   output <- .efs$describe_backup_policy_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1464,12 +1478,13 @@ efs_describe_file_system_policy <- function(FileSystemId) {
     name = "DescribeFileSystemPolicy",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$describe_file_system_policy_input(FileSystemId = FileSystemId)
   output <- .efs$describe_file_system_policy_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1599,12 +1614,13 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
     name = "DescribeFileSystems",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "FileSystems")
   )
   input <- .efs$describe_file_systems_input(MaxItems = MaxItems, Marker = Marker, CreationToken = CreationToken, FileSystemId = FileSystemId)
   output <- .efs$describe_file_systems_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1671,12 +1687,13 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
     name = "DescribeLifecycleConfiguration",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/lifecycle-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$describe_lifecycle_configuration_input(FileSystemId = FileSystemId)
   output <- .efs$describe_lifecycle_configuration_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1740,12 +1757,13 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
     name = "DescribeMountTargetSecurityGroups",
     http_method = "GET",
     http_path = "/2015-02-01/mount-targets/{MountTargetId}/security-groups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$describe_mount_target_security_groups_input(MountTargetId = MountTargetId)
   output <- .efs$describe_mount_target_security_groups_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1842,12 +1860,13 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
     name = "DescribeMountTargets",
     http_method = "GET",
     http_path = "/2015-02-01/mount-targets",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "MountTargets")
   )
   input <- .efs$describe_mount_targets_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId, MountTargetId = MountTargetId, AccessPointId = AccessPointId)
   output <- .efs$describe_mount_targets_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1921,12 +1940,13 @@ efs_describe_replication_configurations <- function(FileSystemId = NULL, NextTok
     name = "DescribeReplicationConfigurations",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/replication-configurations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Replications")
   )
   input <- .efs$describe_replication_configurations_input(FileSystemId = FileSystemId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .efs$describe_replication_configurations_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2003,12 +2023,13 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
     name = "DescribeTags",
     http_method = "GET",
     http_path = "/2015-02-01/tags/{FileSystemId}/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Tags")
   )
   input <- .efs$describe_tags_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId)
   output <- .efs$describe_tags_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2069,12 +2090,13 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$list_tags_for_resource_input(ResourceId = ResourceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .efs$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2144,12 +2166,13 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
     name = "ModifyMountTargetSecurityGroups",
     http_method = "PUT",
     http_path = "/2015-02-01/mount-targets/{MountTargetId}/security-groups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$modify_mount_target_security_groups_input(MountTargetId = MountTargetId, SecurityGroups = SecurityGroups)
   output <- .efs$modify_mount_target_security_groups_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2217,12 +2240,13 @@ efs_put_account_preferences <- function(ResourceIdType) {
     name = "PutAccountPreferences",
     http_method = "PUT",
     http_path = "/2015-02-01/account-preferences",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$put_account_preferences_input(ResourceIdType = ResourceIdType)
   output <- .efs$put_account_preferences_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2272,12 +2296,13 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
     name = "PutBackupPolicy",
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/backup-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$put_backup_policy_input(FileSystemId = FileSystemId, BackupPolicy = BackupPolicy)
   output <- .efs$put_backup_policy_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2351,12 +2376,13 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
     name = "PutFileSystemPolicy",
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$put_file_system_policy_input(FileSystemId = FileSystemId, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck)
   output <- .efs$put_file_system_policy_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2515,12 +2541,13 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
     name = "PutLifecycleConfiguration",
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/lifecycle-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$put_lifecycle_configuration_input(FileSystemId = FileSystemId, LifecyclePolicies = LifecyclePolicies)
   output <- .efs$put_lifecycle_configuration_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2568,12 +2595,13 @@ efs_tag_resource <- function(ResourceId, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$tag_resource_input(ResourceId = ResourceId, Tags = Tags)
   output <- .efs$tag_resource_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2619,12 +2647,13 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$untag_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .efs$untag_resource_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2717,12 +2746,13 @@ efs_update_file_system <- function(FileSystemId, ThroughputMode = NULL, Provisio
     name = "UpdateFileSystem",
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$update_file_system_input(FileSystemId = FileSystemId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps)
   output <- .efs$update_file_system_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2786,12 +2816,13 @@ efs_update_file_system_protection <- function(FileSystemId, ReplicationOverwrite
     name = "UpdateFileSystemProtection",
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/protection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .efs$update_file_system_protection_input(FileSystemId = FileSystemId, ReplicationOverwriteProtection = ReplicationOverwriteProtection)
   output <- .efs$update_file_system_protection_output()
   config <- get_config()
-  svc <- .efs$service(config)
+  svc <- .efs$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

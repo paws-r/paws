@@ -41,12 +41,13 @@ finspace_create_environment <- function(name, description = NULL, kmsKeyId = NUL
     name = "CreateEnvironment",
     http_method = "POST",
     http_path = "/environment",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_environment_input(name = name, description = description, kmsKeyId = kmsKeyId, tags = tags, federationMode = federationMode, federationParameters = federationParameters, superuserParameters = superuserParameters, dataBundles = dataBundles)
   output <- .finspace$create_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -112,12 +113,13 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
     name = "CreateKxChangeset",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_changeset_input(environmentId = environmentId, databaseName = databaseName, changeRequests = changeRequests, clientToken = clientToken)
   output <- .finspace$create_kx_changeset_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -217,12 +219,13 @@ finspace_create_kx_cluster <- function(clientToken = NULL, environmentId, cluste
     name = "CreateKxCluster",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/clusters",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_cluster_input(clientToken = clientToken, environmentId = environmentId, clusterName = clusterName, clusterType = clusterType, tickerplantLogConfiguration = tickerplantLogConfiguration, databases = databases, cacheStorageConfigurations = cacheStorageConfigurations, autoScalingConfiguration = autoScalingConfiguration, clusterDescription = clusterDescription, capacityConfiguration = capacityConfiguration, releaseLabel = releaseLabel, vpcConfiguration = vpcConfiguration, initializationScript = initializationScript, commandLineArguments = commandLineArguments, code = code, executionRole = executionRole, savedownStorageConfiguration = savedownStorageConfiguration, azMode = azMode, availabilityZoneId = availabilityZoneId, tags = tags, scalingGroupConfiguration = scalingGroupConfiguration)
   output <- .finspace$create_kx_cluster_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -251,12 +254,13 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
     name = "CreateKxDatabase",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/databases",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_database_input(environmentId = environmentId, databaseName = databaseName, description = description, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_database_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -319,12 +323,13 @@ finspace_create_kx_dataview <- function(environmentId, databaseName, dataviewNam
     name = "CreateKxDataview",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, azMode = azMode, availabilityZoneId = availabilityZoneId, changesetId = changesetId, segmentConfigurations = segmentConfigurations, autoUpdate = autoUpdate, readWrite = readWrite, description = description, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_dataview_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -353,12 +358,13 @@ finspace_create_kx_environment <- function(name, description = NULL, kmsKeyId, t
     name = "CreateKxEnvironment",
     http_method = "POST",
     http_path = "/kx/environments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_environment_input(name = name, description = description, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -410,12 +416,13 @@ finspace_create_kx_scaling_group <- function(clientToken, environmentId, scaling
     name = "CreateKxScalingGroup",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/scalingGroups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_scaling_group_input(clientToken = clientToken, environmentId = environmentId, scalingGroupName = scalingGroupName, hostType = hostType, availabilityZoneId = availabilityZoneId, tags = tags)
   output <- .finspace$create_kx_scaling_group_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -445,12 +452,13 @@ finspace_create_kx_user <- function(environmentId, userName, iamRole, tags = NUL
     name = "CreateKxUser",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/users",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_user_input(environmentId = environmentId, userName = userName, iamRole = iamRole, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_user_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -491,12 +499,13 @@ finspace_create_kx_volume <- function(clientToken = NULL, environmentId, volumeT
     name = "CreateKxVolume",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/kxvolumes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$create_kx_volume_input(clientToken = clientToken, environmentId = environmentId, volumeType = volumeType, volumeName = volumeName, description = description, nas1Configuration = nas1Configuration, azMode = azMode, availabilityZoneIds = availabilityZoneIds, tags = tags)
   output <- .finspace$create_kx_volume_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -520,12 +529,13 @@ finspace_delete_environment <- function(environmentId) {
     name = "DeleteEnvironment",
     http_method = "DELETE",
     http_path = "/environment/{environmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_environment_input(environmentId = environmentId)
   output <- .finspace$delete_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -551,12 +561,13 @@ finspace_delete_kx_cluster <- function(environmentId, clusterName, clientToken =
     name = "DeleteKxCluster",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_cluster_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken)
   output <- .finspace$delete_kx_cluster_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -582,12 +593,13 @@ finspace_delete_kx_cluster_node <- function(environmentId, clusterName, nodeId) 
     name = "DeleteKxClusterNode",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes/{nodeId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_cluster_node_input(environmentId = environmentId, clusterName = clusterName, nodeId = nodeId)
   output <- .finspace$delete_kx_cluster_node_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -613,12 +625,13 @@ finspace_delete_kx_database <- function(environmentId, databaseName, clientToken
     name = "DeleteKxDatabase",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_database_input(environmentId = environmentId, databaseName = databaseName, clientToken = clientToken)
   output <- .finspace$delete_kx_database_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -646,12 +659,13 @@ finspace_delete_kx_dataview <- function(environmentId, databaseName, dataviewNam
     name = "DeleteKxDataview",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, clientToken = clientToken)
   output <- .finspace$delete_kx_dataview_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -676,12 +690,13 @@ finspace_delete_kx_environment <- function(environmentId, clientToken = NULL) {
     name = "DeleteKxEnvironment",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_environment_input(environmentId = environmentId, clientToken = clientToken)
   output <- .finspace$delete_kx_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -708,12 +723,13 @@ finspace_delete_kx_scaling_group <- function(environmentId, scalingGroupName, cl
     name = "DeleteKxScalingGroup",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_scaling_group_input(environmentId = environmentId, scalingGroupName = scalingGroupName, clientToken = clientToken)
   output <- .finspace$delete_kx_scaling_group_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -739,12 +755,13 @@ finspace_delete_kx_user <- function(userName, environmentId, clientToken = NULL)
     name = "DeleteKxUser",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/users/{userName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_user_input(userName = userName, environmentId = environmentId, clientToken = clientToken)
   output <- .finspace$delete_kx_user_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -771,12 +788,13 @@ finspace_delete_kx_volume <- function(environmentId, volumeName, clientToken = N
     name = "DeleteKxVolume",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$delete_kx_volume_input(environmentId = environmentId, volumeName = volumeName, clientToken = clientToken)
   output <- .finspace$delete_kx_volume_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -800,12 +818,13 @@ finspace_get_environment <- function(environmentId) {
     name = "GetEnvironment",
     http_method = "GET",
     http_path = "/environment/{environmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_environment_input(environmentId = environmentId)
   output <- .finspace$get_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -832,12 +851,13 @@ finspace_get_kx_changeset <- function(environmentId, databaseName, changesetId) 
     name = "GetKxChangeset",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets/{changesetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_changeset_input(environmentId = environmentId, databaseName = databaseName, changesetId = changesetId)
   output <- .finspace$get_kx_changeset_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -862,12 +882,13 @@ finspace_get_kx_cluster <- function(environmentId, clusterName) {
     name = "GetKxCluster",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_cluster_input(environmentId = environmentId, clusterName = clusterName)
   output <- .finspace$get_kx_cluster_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -896,12 +917,13 @@ finspace_get_kx_connection_string <- function(userArn, environmentId, clusterNam
     name = "GetKxConnectionString",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/connectionString",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_connection_string_input(userArn = userArn, environmentId = environmentId, clusterName = clusterName)
   output <- .finspace$get_kx_connection_string_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -926,12 +948,13 @@ finspace_get_kx_database <- function(environmentId, databaseName) {
     name = "GetKxDatabase",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_database_input(environmentId = environmentId, databaseName = databaseName)
   output <- .finspace$get_kx_database_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -958,12 +981,13 @@ finspace_get_kx_dataview <- function(environmentId, databaseName, dataviewName) 
     name = "GetKxDataview",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName)
   output <- .finspace$get_kx_dataview_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -987,12 +1011,13 @@ finspace_get_kx_environment <- function(environmentId) {
     name = "GetKxEnvironment",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_environment_input(environmentId = environmentId)
   output <- .finspace$get_kx_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1017,12 +1042,13 @@ finspace_get_kx_scaling_group <- function(environmentId, scalingGroupName) {
     name = "GetKxScalingGroup",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_scaling_group_input(environmentId = environmentId, scalingGroupName = scalingGroupName)
   output <- .finspace$get_kx_scaling_group_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1047,12 +1073,13 @@ finspace_get_kx_user <- function(userName, environmentId) {
     name = "GetKxUser",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/users/{userName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_user_input(userName = userName, environmentId = environmentId)
   output <- .finspace$get_kx_user_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1078,12 +1105,13 @@ finspace_get_kx_volume <- function(environmentId, volumeName) {
     name = "GetKxVolume",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$get_kx_volume_input(environmentId = environmentId, volumeName = volumeName)
   output <- .finspace$get_kx_volume_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1111,12 +1139,13 @@ finspace_list_environments <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListEnvironments",
     http_method = "GET",
     http_path = "/environment",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$list_environments_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_environments_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1143,12 +1172,13 @@ finspace_list_kx_changesets <- function(environmentId, databaseName, nextToken =
     name = "ListKxChangesets",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_changesets_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_changesets_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1175,12 +1205,13 @@ finspace_list_kx_cluster_nodes <- function(environmentId, clusterName, nextToken
     name = "ListKxClusterNodes",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_cluster_nodes_input(environmentId = environmentId, clusterName = clusterName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_cluster_nodes_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1238,12 +1269,13 @@ finspace_list_kx_clusters <- function(environmentId, clusterType = NULL, maxResu
     name = "ListKxClusters",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/clusters",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$list_kx_clusters_input(environmentId = environmentId, clusterType = clusterType, maxResults = maxResults, nextToken = nextToken)
   output <- .finspace$list_kx_clusters_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1269,12 +1301,13 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
     name = "ListKxDatabases",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_databases_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_databases_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1302,12 +1335,13 @@ finspace_list_kx_dataviews <- function(environmentId, databaseName, nextToken = 
     name = "ListKxDataviews",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_dataviews_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_dataviews_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1332,12 +1366,13 @@ finspace_list_kx_environments <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListKxEnvironments",
     http_method = "GET",
     http_path = "/kx/environments",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments")
   )
   input <- .finspace$list_kx_environments_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_environments_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1364,12 +1399,13 @@ finspace_list_kx_scaling_groups <- function(environmentId, maxResults = NULL, ne
     name = "ListKxScalingGroups",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/scalingGroups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_scaling_groups_input(environmentId = environmentId, maxResults = maxResults, nextToken = nextToken)
   output <- .finspace$list_kx_scaling_groups_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1395,12 +1431,13 @@ finspace_list_kx_users <- function(environmentId, nextToken = NULL, maxResults =
     name = "ListKxUsers",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/users",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$list_kx_users_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_users_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1429,12 +1466,13 @@ finspace_list_kx_volumes <- function(environmentId, maxResults = NULL, nextToken
     name = "ListKxVolumes",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/kxvolumes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$list_kx_volumes_input(environmentId = environmentId, maxResults = maxResults, nextToken = nextToken, volumeType = volumeType)
   output <- .finspace$list_kx_volumes_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1458,12 +1496,13 @@ finspace_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .finspace$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1488,12 +1527,13 @@ finspace_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .finspace$tag_resource_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1519,12 +1559,13 @@ finspace_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .finspace$untag_resource_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1558,12 +1599,13 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
     name = "UpdateEnvironment",
     http_method = "PUT",
     http_path = "/environment/{environmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_environment_input(environmentId = environmentId, name = name, description = description, federationMode = federationMode, federationParameters = federationParameters)
   output <- .finspace$update_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1601,12 +1643,13 @@ finspace_update_kx_cluster_code_configuration <- function(environmentId, cluster
     name = "UpdateKxClusterCodeConfiguration",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/code",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_cluster_code_configuration_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, code = code, initializationScript = initializationScript, commandLineArguments = commandLineArguments, deploymentConfiguration = deploymentConfiguration)
   output <- .finspace$update_kx_cluster_code_configuration_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1636,12 +1679,13 @@ finspace_update_kx_cluster_databases <- function(environmentId, clusterName, cli
     name = "UpdateKxClusterDatabases",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/databases",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_cluster_databases_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, databases = databases, deploymentConfiguration = deploymentConfiguration)
   output <- .finspace$update_kx_cluster_databases_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1668,12 +1712,13 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
     name = "UpdateKxDatabase",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_database_input(environmentId = environmentId, databaseName = databaseName, description = description, clientToken = clientToken)
   output <- .finspace$update_kx_database_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1708,12 +1753,13 @@ finspace_update_kx_dataview <- function(environmentId, databaseName, dataviewNam
     name = "UpdateKxDataview",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, description = description, changesetId = changesetId, segmentConfigurations = segmentConfigurations, clientToken = clientToken)
   output <- .finspace$update_kx_dataview_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1740,12 +1786,13 @@ finspace_update_kx_environment <- function(environmentId, name = NULL, descripti
     name = "UpdateKxEnvironment",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_environment_input(environmentId = environmentId, name = name, description = description, clientToken = clientToken)
   output <- .finspace$update_kx_environment_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1775,12 +1822,13 @@ finspace_update_kx_environment_network <- function(environmentId, transitGateway
     name = "UpdateKxEnvironmentNetwork",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/network",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_environment_network_input(environmentId = environmentId, transitGatewayConfiguration = transitGatewayConfiguration, customDNSConfiguration = customDNSConfiguration, clientToken = clientToken)
   output <- .finspace$update_kx_environment_network_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1807,12 +1855,13 @@ finspace_update_kx_user <- function(environmentId, userName, iamRole, clientToke
     name = "UpdateKxUser",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/users/{userName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_user_input(environmentId = environmentId, userName = userName, iamRole = iamRole, clientToken = clientToken)
   output <- .finspace$update_kx_user_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1842,12 +1891,13 @@ finspace_update_kx_volume <- function(environmentId, volumeName, description = N
     name = "UpdateKxVolume",
     http_method = "PATCH",
     http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .finspace$update_kx_volume_input(environmentId = environmentId, volumeName = volumeName, description = description, clientToken = clientToken, nas1Configuration = nas1Configuration)
   output <- .finspace$update_kx_volume_output()
   config <- get_config()
-  svc <- .finspace$service(config)
+  svc <- .finspace$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

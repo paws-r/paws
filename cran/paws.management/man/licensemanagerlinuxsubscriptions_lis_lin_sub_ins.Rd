@@ -12,34 +12,37 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances(
 )
 }
 \arguments{
-\item{Filters}{An array of structures that you can use to filter the results to those
-that match one or more sets of key-value pairs that you specify. For
-example, you can filter by the name of \code{AmiID} with an optional operator
-to see subscriptions that match, partially match, or don't match a
-certain Amazon Machine Image (AMI) ID.
+\item{Filters}{An array of structures that you can use to filter the results by your
+specified criteria. For example, you can specify \code{Region} in the \code{Name},
+with the \code{contains} operator to list all subscriptions that match a
+partial string in the \code{Value}, such as \code{us-west}.
 
-The valid names for this filter are:
+For each filter, you can specify one of the following values for the
+\code{Name} key to streamline results:
 \itemize{
-\item \code{AmiID}
-\item \code{InstanceID}
 \item \code{AccountID}
-\item \code{Status}
-\item \code{Region}
-\item \code{UsageOperation}
-\item \code{ProductCode}
+\item \code{AmiID}
+\item \code{DualSubscription}
+\item \code{InstanceID}
 \item \code{InstanceType}
+\item \code{ProductCode}
+\item \code{Region}
+\item \code{Status}
+\item \code{UsageOperation}
 }
 
-The valid Operators for this filter are:
+For each filter, you can use one of the following \code{Operator} values to
+define the behavior of the filter:
 \itemize{
 \item \code{contains}
 \item \code{equals}
 \item \code{Notequal}
 }}
 
-\item{MaxResults}{Maximum number of results to return in a single call.}
+\item{MaxResults}{The maximum items to return in a request.}
 
-\item{NextToken}{Token for the next set of results.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
+a previously truncated response.}
 }
 \description{
 Lists the running Amazon EC2 instances that were discovered with commercial Linux subscriptions.

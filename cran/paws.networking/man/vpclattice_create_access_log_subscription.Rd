@@ -28,7 +28,7 @@ delivery streams, and Amazon S3 buckets.}
 \item{tags}{The tags for the access log subscription.}
 }
 \description{
-Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose. The service network owner can use the access logs to audit the services in the network. The service network owner will only see access logs from clients and services that are associated with their service network. Access log entries represent traffic originated from VPCs associated with that network. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html}{Access logs} in the \emph{Amazon VPC Lattice User Guide}.
+Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose. The service network owner can use the access logs to audit the services in the network. The service network owner can only see access logs from clients and services that are associated with their service network. Access log entries represent traffic originated from VPCs associated with that network. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html}{Access logs} in the \emph{Amazon VPC Lattice User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_create_access_log_subscription/} for full documentation.
 }

@@ -71,12 +71,13 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
     name = "BatchDeleteAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$batch_delete_attributes_input(DomainName = DomainName, Items = Items)
   output <- .simpledb$batch_delete_attributes_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -180,12 +181,13 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
     name = "BatchPutAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$batch_put_attributes_input(DomainName = DomainName, Items = Items)
   output <- .simpledb$batch_put_attributes_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -236,12 +238,13 @@ simpledb_create_domain <- function(DomainName) {
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$create_domain_input(DomainName = DomainName)
   output <- .simpledb$create_domain_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -315,12 +318,13 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
     name = "DeleteAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$delete_attributes_input(DomainName = DomainName, ItemName = ItemName, Attributes = Attributes, Expected = Expected)
   output <- .simpledb$delete_attributes_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -364,12 +368,13 @@ simpledb_delete_domain <- function(DomainName) {
     name = "DeleteDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$delete_domain_input(DomainName = DomainName)
   output <- .simpledb$delete_domain_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -421,12 +426,13 @@ simpledb_domain_metadata <- function(DomainName) {
     name = "DomainMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$domain_metadata_input(DomainName = DomainName)
   output <- .simpledb$domain_metadata_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -497,12 +503,13 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
     name = "GetAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$get_attributes_input(DomainName = DomainName, ItemName = ItemName, AttributeNames = AttributeNames, ConsistentRead = ConsistentRead)
   output <- .simpledb$get_attributes_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -558,12 +565,13 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxNumberOfDomains", result_key = "DomainNames")
   )
   input <- .simpledb$list_domains_input(MaxNumberOfDomains = MaxNumberOfDomains, NextToken = NextToken)
   output <- .simpledb$list_domains_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -661,12 +669,13 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
     name = "PutAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .simpledb$put_attributes_input(DomainName = DomainName, ItemName = ItemName, Attributes = Attributes, Expected = Expected)
   output <- .simpledb$put_attributes_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -745,12 +754,13 @@ simpledb_select <- function(SelectExpression, NextToken = NULL, ConsistentRead =
     name = "Select",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Items")
   )
   input <- .simpledb$select_input(SelectExpression = SelectExpression, NextToken = NextToken, ConsistentRead = ConsistentRead)
   output <- .simpledb$select_output()
   config <- get_config()
-  svc <- .simpledb$service(config)
+  svc <- .simpledb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

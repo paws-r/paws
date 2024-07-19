@@ -4,11 +4,9 @@
 \alias{locationservice_list_keys}
 \title{Lists API key resources in your Amazon Web Services account}
 \usage{
-locationservice_list_keys(Filter = NULL, MaxResults = NULL, NextToken = NULL)
+locationservice_list_keys(MaxResults = NULL, NextToken = NULL, Filter = NULL)
 }
 \arguments{
-\item{Filter}{Optionally filter the list to only \code{Active} or \code{Expired} API keys.}
-
 \item{MaxResults}{An optional limit for the number of resources returned in a single call.
 
 Default value: \code{100}}
@@ -17,6 +15,8 @@ Default value: \code{100}}
 response. If no token is provided, the default page is the first page.
 
 Default value: \code{null}}
+
+\item{Filter}{Optionally filter the list to only \code{Active} or \code{Expired} API keys.}
 }
 \description{
 Lists API key resources in your Amazon Web Services account.

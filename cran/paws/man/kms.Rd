@@ -183,6 +183,7 @@ policies, by using the console.
 \link[paws.security.identity:kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
 \link[paws.security.identity:kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
 \link[paws.security.identity:kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that was previously imported\cr
+\link[paws.security.identity:kms_derive_shared_secret]{derive_shared_secret} \tab Derives a shared secret using a key agreement algorithm\cr
 \link[paws.security.identity:kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and Region\cr
 \link[paws.security.identity:kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
 \link[paws.security.identity:kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr

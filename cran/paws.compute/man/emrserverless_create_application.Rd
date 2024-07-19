@@ -19,7 +19,8 @@ emrserverless_create_application(
   imageConfiguration = NULL,
   workerTypeSpecifications = NULL,
   runtimeConfiguration = NULL,
-  monitoringConfiguration = NULL
+  monitoringConfiguration = NULL,
+  interactiveConfiguration = NULL
 )
 }
 \arguments{
@@ -70,6 +71,9 @@ consists of a classification and properties. This configuration is
 applied to all the job runs submitted under the application.}
 
 \item{monitoringConfiguration}{The configuration setting for monitoring.}
+
+\item{interactiveConfiguration}{The interactive configuration object that enables the interactive use
+cases to use when running an application.}
 }
 \description{
 Creates an application.

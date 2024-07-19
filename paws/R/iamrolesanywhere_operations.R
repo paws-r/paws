@@ -107,12 +107,13 @@ iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NU
     name = "CreateProfile",
     http_method = "POST",
     http_path = "/profiles",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$create_profile_input(durationSeconds = durationSeconds, enabled = enabled, managedPolicyArns = managedPolicyArns, name = name, requireInstanceProperties = requireInstanceProperties, roleArns = roleArns, sessionPolicy = sessionPolicy, tags = tags)
   output <- .iamrolesanywhere$create_profile_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -216,12 +217,13 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
     name = "CreateTrustAnchor",
     http_method = "POST",
     http_path = "/trustanchors",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$create_trust_anchor_input(enabled = enabled, name = name, notificationSettings = notificationSettings, source = source, tags = tags)
   output <- .iamrolesanywhere$create_trust_anchor_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -304,12 +306,13 @@ iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileI
     name = "DeleteAttributeMapping",
     http_method = "DELETE",
     http_path = "/profiles/{profileId}/mappings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$delete_attribute_mapping_input(certificateField = certificateField, profileId = profileId, specifiers = specifiers)
   output <- .iamrolesanywhere$delete_attribute_mapping_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -366,12 +369,13 @@ iamrolesanywhere_delete_crl <- function(crlId) {
     name = "DeleteCrl",
     http_method = "DELETE",
     http_path = "/crl/{crlId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$delete_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$delete_crl_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -446,12 +450,13 @@ iamrolesanywhere_delete_profile <- function(profileId) {
     name = "DeleteProfile",
     http_method = "DELETE",
     http_path = "/profile/{profileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$delete_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$delete_profile_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -522,12 +527,13 @@ iamrolesanywhere_delete_trust_anchor <- function(trustAnchorId) {
     name = "DeleteTrustAnchor",
     http_method = "DELETE",
     http_path = "/trustanchor/{trustAnchorId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$delete_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$delete_trust_anchor_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -584,12 +590,13 @@ iamrolesanywhere_disable_crl <- function(crlId) {
     name = "DisableCrl",
     http_method = "POST",
     http_path = "/crl/{crlId}/disable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$disable_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$disable_crl_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -665,12 +672,13 @@ iamrolesanywhere_disable_profile <- function(profileId) {
     name = "DisableProfile",
     http_method = "POST",
     http_path = "/profile/{profileId}/disable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$disable_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$disable_profile_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -742,12 +750,13 @@ iamrolesanywhere_disable_trust_anchor <- function(trustAnchorId) {
     name = "DisableTrustAnchor",
     http_method = "POST",
     http_path = "/trustanchor/{trustAnchorId}/disable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$disable_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$disable_trust_anchor_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -805,12 +814,13 @@ iamrolesanywhere_enable_crl <- function(crlId) {
     name = "EnableCrl",
     http_method = "POST",
     http_path = "/crl/{crlId}/enable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$enable_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$enable_crl_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -885,12 +895,13 @@ iamrolesanywhere_enable_profile <- function(profileId) {
     name = "EnableProfile",
     http_method = "POST",
     http_path = "/profile/{profileId}/enable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$enable_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$enable_profile_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -962,12 +973,13 @@ iamrolesanywhere_enable_trust_anchor <- function(trustAnchorId) {
     name = "EnableTrustAnchor",
     http_method = "POST",
     http_path = "/trustanchor/{trustAnchorId}/enable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$enable_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$enable_trust_anchor_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1024,12 +1036,13 @@ iamrolesanywhere_get_crl <- function(crlId) {
     name = "GetCrl",
     http_method = "GET",
     http_path = "/crl/{crlId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$get_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$get_crl_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1104,12 +1117,13 @@ iamrolesanywhere_get_profile <- function(profileId) {
     name = "GetProfile",
     http_method = "GET",
     http_path = "/profile/{profileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$get_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$get_profile_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1195,12 +1209,13 @@ iamrolesanywhere_get_subject <- function(subjectId) {
     name = "GetSubject",
     http_method = "GET",
     http_path = "/subject/{subjectId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$get_subject_input(subjectId = subjectId)
   output <- .iamrolesanywhere$get_subject_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1271,12 +1286,13 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
     name = "GetTrustAnchor",
     http_method = "GET",
     http_path = "/trustanchor/{trustAnchorId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$get_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$get_trust_anchor_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1351,12 +1367,13 @@ iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NU
     name = "ImportCrl",
     http_method = "POST",
     http_path = "/crls",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$import_crl_input(crlData = crlData, enabled = enabled, name = name, tags = tags, trustAnchorArn = trustAnchorArn)
   output <- .iamrolesanywhere$import_crl_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1422,12 +1439,13 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
     name = "ListCrls",
     http_method = "GET",
     http_path = "/crls",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "crls")
   )
   input <- .iamrolesanywhere$list_crls_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_crls_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1511,12 +1529,13 @@ iamrolesanywhere_list_profiles <- function(nextToken = NULL, pageSize = NULL) {
     name = "ListProfiles",
     http_method = "GET",
     http_path = "/profiles",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "profiles")
   )
   input <- .iamrolesanywhere$list_profiles_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_profiles_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1583,12 +1602,13 @@ iamrolesanywhere_list_subjects <- function(nextToken = NULL, pageSize = NULL) {
     name = "ListSubjects",
     http_method = "GET",
     http_path = "/subjects",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "subjects")
   )
   input <- .iamrolesanywhere$list_subjects_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_subjects_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1637,12 +1657,13 @@ iamrolesanywhere_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/ListTagsForResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .iamrolesanywhere$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1722,12 +1743,13 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
     name = "ListTrustAnchors",
     http_method = "GET",
     http_path = "/trustanchors",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "trustAnchors")
   )
   input <- .iamrolesanywhere$list_trust_anchors_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_trust_anchors_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1812,12 +1834,13 @@ iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRule
     name = "PutAttributeMapping",
     http_method = "PUT",
     http_path = "/profiles/{profileId}/mappings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$put_attribute_mapping_input(certificateField = certificateField, mappingRules = mappingRules, profileId = profileId)
   output <- .iamrolesanywhere$put_attribute_mapping_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1902,12 +1925,13 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
     name = "PutNotificationSettings",
     http_method = "PATCH",
     http_path = "/put-notifications-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$put_notification_settings_input(notificationSettings = notificationSettings, trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$put_notification_settings_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1989,12 +2013,13 @@ iamrolesanywhere_reset_notification_settings <- function(notificationSettingKeys
     name = "ResetNotificationSettings",
     http_method = "PATCH",
     http_path = "/reset-notifications-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$reset_notification_settings_input(notificationSettingKeys = notificationSettingKeys, trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$reset_notification_settings_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2040,12 +2065,13 @@ iamrolesanywhere_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/TagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .iamrolesanywhere$tag_resource_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2088,12 +2114,13 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/UntagResource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .iamrolesanywhere$untag_resource_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2157,12 +2184,13 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
     name = "UpdateCrl",
     http_method = "PATCH",
     http_path = "/crl/{crlId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$update_crl_input(crlData = crlData, crlId = crlId, name = name)
   output <- .iamrolesanywhere$update_crl_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2262,12 +2290,13 @@ iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolic
     name = "UpdateProfile",
     http_method = "PATCH",
     http_path = "/profile/{profileId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$update_profile_input(durationSeconds = durationSeconds, managedPolicyArns = managedPolicyArns, name = name, profileId = profileId, roleArns = roleArns, sessionPolicy = sessionPolicy)
   output <- .iamrolesanywhere$update_profile_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2354,12 +2383,13 @@ iamrolesanywhere_update_trust_anchor <- function(name = NULL, source = NULL, tru
     name = "UpdateTrustAnchor",
     http_method = "PATCH",
     http_path = "/trustanchor/{trustAnchorId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .iamrolesanywhere$update_trust_anchor_input(name = name, source = source, trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$update_trust_anchor_output()
   config <- get_config()
-  svc <- .iamrolesanywhere$service(config)
+  svc <- .iamrolesanywhere$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

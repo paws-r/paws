@@ -2,8 +2,9 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_describe_maintenance_start_time}
 \alias{storagegateway_describe_maintenance_start_time}
-\title{Returns your gateway's weekly maintenance start time including the day
-and time of the week}
+\title{Returns your gateway's maintenance window schedule information, with
+values for monthly or weekly cadence, specific day and time to begin
+maintenance, and which types of updates to apply}
 \usage{
 storagegateway_describe_maintenance_start_time(GatewayARN)
 }
@@ -11,7 +12,7 @@ storagegateway_describe_maintenance_start_time(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \description{
-Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone.
+Returns your gateway's maintenance window schedule information, with values for monthly or weekly cadence, specific day and time to begin maintenance, and which types of updates to apply. Time values returned are for the gateway's time zone.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_maintenance_start_time/} for full documentation.
 }

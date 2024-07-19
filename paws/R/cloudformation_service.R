@@ -249,7 +249,7 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.cloudformation$service <- function(config = list()) {
+.cloudformation$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.cloudformation$metadata, handlers, config)
+  new_service(.cloudformation$metadata, handlers, config, op)
 }

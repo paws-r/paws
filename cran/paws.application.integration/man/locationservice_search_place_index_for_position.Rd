@@ -6,17 +6,28 @@
 \usage{
 locationservice_search_place_index_for_position(
   IndexName,
-  Key = NULL,
-  Language = NULL,
+  Position,
   MaxResults = NULL,
-  Position
+  Language = NULL,
+  Key = NULL
 )
 }
 \arguments{
 \item{IndexName}{[required] The name of the place index resource you want to use for the search.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
-to authorize the request.}
+\item{Position}{[required] Specifies the longitude and latitude of the position to query.
+
+This parameter must contain a pair of numbers. The first number
+represents the X coordinate, or longitude; the second number represents
+the Y coordinate, or latitude.
+
+For example, \verb{[-123.1174, 49.2847]} represents a position with longitude
+\code{-123.1174} and latitude \code{49.2847}.}
+
+\item{MaxResults}{An optional parameter. The maximum number of results returned per
+request.
+
+Default value: \code{50}}
 
 \item{Language}{The preferred language used to return results. The value must be a valid
 BCP 47 language tag, for example, \code{en} for English.
@@ -36,19 +47,8 @@ in the results will more likely be returned as \eqn{A\Theta\eta\nu\alpha}.
 If the data provider does not have a value for Greek, the result will be
 in a language that the provider does support.}
 
-\item{MaxResults}{An optional parameter. The maximum number of results returned per
-request.
-
-Default value: \code{50}}
-
-\item{Position}{[required] Specifies the longitude and latitude of the position to query.
-
-This parameter must contain a pair of numbers. The first number
-represents the X coordinate, or longitude; the second number represents
-the Y coordinate, or latitude.
-
-For example, \verb{[-123.1174, 49.2847]} represents a position with longitude
-\code{-123.1174} and latitude \code{49.2847}.}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 }
 \description{
 Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places or points of interest near a given position.

@@ -92,10 +92,10 @@ single production domain that contains all published artifacts so
 that teams can find and share packages across their organization.
 \item \strong{Package}: A \emph{package} is a bundle of software and the metadata
 required to resolve dependencies and install the software.
-CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, and
-generic package formats. For more information about the supported
-package formats and how to use CodeArtifact with them, see the
-\href{https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html}{CodeArtifact User Guide}.
+CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, Cargo,
+and generic package formats. For more information about the
+supported package formats and how to use CodeArtifact with them, see
+the \href{https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html}{CodeArtifact User Guide}.
 
 In CodeArtifact, a package consists of:
 \itemize{
@@ -202,6 +202,7 @@ Gets the readme file or descriptive text for a package version.
 Returns the endpoint of a repository for a specific package format.
 A repository has one endpoint for each package format:
 \itemize{
+\item \code{cargo}
 \item \code{generic}
 \item \code{maven}
 \item \code{npm}

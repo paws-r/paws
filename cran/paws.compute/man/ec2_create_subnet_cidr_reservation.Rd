@@ -37,7 +37,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to assign to the subnet CIDR reservation.}
 }
 \description{
-Creates a subnet CIDR reservation. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html}{Subnet CIDR reservations} in the \emph{Amazon Virtual Private Cloud User Guide} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html}{Assign prefixes to network interfaces} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Creates a subnet CIDR reservation. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html}{Subnet CIDR reservations} in the \emph{Amazon VPC User Guide} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html}{Assign prefixes to network interfaces} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_subnet_cidr_reservation/} for full documentation.
 }

@@ -372,7 +372,7 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
   target_prefix = "AwsProton20200720"
 )
 
-.proton$service <- function(config = list()) {
+.proton$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.proton$metadata, handlers, config)
+  new_service(.proton$metadata, handlers, config, op)
 }

@@ -71,12 +71,13 @@ ecrpublic_batch_check_layer_availability <- function(registryId = NULL, reposito
     name = "BatchCheckLayerAvailability",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$batch_check_layer_availability_input(registryId = registryId, repositoryName = repositoryName, layerDigests = layerDigests)
   output <- .ecrpublic$batch_check_layer_availability_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -156,12 +157,13 @@ ecrpublic_batch_delete_image <- function(registryId = NULL, repositoryName, imag
     name = "BatchDeleteImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$batch_delete_image_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds)
   output <- .ecrpublic$batch_delete_image_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -231,12 +233,13 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
     name = "CompleteLayerUpload",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$complete_layer_upload_input(registryId = registryId, repositoryName = repositoryName, uploadId = uploadId, layerDigests = layerDigests)
   output <- .ecrpublic$complete_layer_upload_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -330,12 +333,13 @@ ecrpublic_create_repository <- function(repositoryName, catalogData = NULL, tags
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$create_repository_input(repositoryName = repositoryName, catalogData = catalogData, tags = tags)
   output <- .ecrpublic$create_repository_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -396,12 +400,13 @@ ecrpublic_delete_repository <- function(registryId = NULL, repositoryName, force
     name = "DeleteRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$delete_repository_input(registryId = registryId, repositoryName = repositoryName, force = force)
   output <- .ecrpublic$delete_repository_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -452,12 +457,13 @@ ecrpublic_delete_repository_policy <- function(registryId = NULL, repositoryName
     name = "DeleteRepositoryPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$delete_repository_policy_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecrpublic$delete_repository_policy_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -543,12 +549,13 @@ ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nex
     name = "DescribeImageTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageTagDetails")
   )
   input <- .ecrpublic$describe_image_tags_input(registryId = registryId, repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_image_tags_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -647,12 +654,13 @@ ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageId
     name = "DescribeImages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageDetails")
   )
   input <- .ecrpublic$describe_images_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_images_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -731,12 +739,13 @@ ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
     name = "DescribeRegistries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "registries")
   )
   input <- .ecrpublic$describe_registries_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_registries_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -823,12 +832,13 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
     name = "DescribeRepositories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "repositories")
   )
   input <- .ecrpublic$describe_repositories_input(registryId = registryId, repositoryNames = repositoryNames, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_repositories_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -878,12 +888,13 @@ ecrpublic_get_authorization_token <- function() {
     name = "GetAuthorizationToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$get_authorization_token_input()
   output <- .ecrpublic$get_authorization_token_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -925,12 +936,13 @@ ecrpublic_get_registry_catalog_data <- function() {
     name = "GetRegistryCatalogData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$get_registry_catalog_data_input()
   output <- .ecrpublic$get_registry_catalog_data_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -989,12 +1001,13 @@ ecrpublic_get_repository_catalog_data <- function(registryId = NULL, repositoryN
     name = "GetRepositoryCatalogData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$get_repository_catalog_data_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecrpublic$get_repository_catalog_data_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1042,12 +1055,13 @@ ecrpublic_get_repository_policy <- function(registryId = NULL, repositoryName) {
     name = "GetRepositoryPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$get_repository_policy_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecrpublic$get_repository_policy_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1103,12 +1117,13 @@ ecrpublic_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
     name = "InitiateLayerUpload",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$initiate_layer_upload_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecrpublic$initiate_layer_upload_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1157,12 +1172,13 @@ ecrpublic_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ecrpublic$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1241,12 +1257,13 @@ ecrpublic_put_image <- function(registryId = NULL, repositoryName, imageManifest
     name = "PutImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$put_image_input(registryId = registryId, repositoryName = repositoryName, imageManifest = imageManifest, imageManifestMediaType = imageManifestMediaType, imageTag = imageTag, imageDigest = imageDigest)
   output <- .ecrpublic$put_image_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1294,12 +1311,13 @@ ecrpublic_put_registry_catalog_data <- function(displayName = NULL) {
     name = "PutRegistryCatalogData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$put_registry_catalog_data_input(displayName = displayName)
   output <- .ecrpublic$put_registry_catalog_data_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1374,12 +1392,13 @@ ecrpublic_put_repository_catalog_data <- function(registryId = NULL, repositoryN
     name = "PutRepositoryCatalogData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$put_repository_catalog_data_input(registryId = registryId, repositoryName = repositoryName, catalogData = catalogData)
   output <- .ecrpublic$put_repository_catalog_data_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1443,12 +1462,13 @@ ecrpublic_set_repository_policy <- function(registryId = NULL, repositoryName, p
     name = "SetRepositoryPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$set_repository_policy_input(registryId = registryId, repositoryName = repositoryName, policyText = policyText, force = force)
   output <- .ecrpublic$set_repository_policy_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1499,12 +1519,13 @@ ecrpublic_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ecrpublic$tag_resource_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1546,12 +1567,13 @@ ecrpublic_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ecrpublic$untag_resource_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1622,12 +1644,13 @@ ecrpublic_upload_layer_part <- function(registryId = NULL, repositoryName, uploa
     name = "UploadLayerPart",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ecrpublic$upload_layer_part_input(registryId = registryId, repositoryName = repositoryName, uploadId = uploadId, partFirstByte = partFirstByte, partLastByte = partLastByte, layerPartBlob = layerPartBlob)
   output <- .ecrpublic$upload_layer_part_output()
   config <- get_config()
-  svc <- .ecrpublic$service(config)
+  svc <- .ecrpublic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

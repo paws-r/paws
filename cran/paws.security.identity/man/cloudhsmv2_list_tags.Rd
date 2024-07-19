@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_list_tags}
 \alias{cloudhsmv2_list_tags}
-\title{Gets a list of tags for the specified AWS CloudHSM cluster}
+\title{Gets a list of tags for the specified CloudHSM cluster}
 \usage{
 cloudhsmv2_list_tags(ResourceId, NextToken = NULL, MaxResults = NULL)
 }
@@ -19,7 +19,7 @@ more tags than the number you specify, the response contains a
 \code{NextToken} value.}
 }
 \description{
-Gets a list of tags for the specified AWS CloudHSM cluster.
+Gets a list of tags for the specified CloudHSM cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/} for full documentation.
 }

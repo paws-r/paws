@@ -140,7 +140,7 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "DynamoDBStreams_20120810"
 )
 
-.dynamodbstreams$service <- function(config = list()) {
+.dynamodbstreams$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.dynamodbstreams$metadata, handlers, config)
+  new_service(.dynamodbstreams$metadata, handlers, config, op)
 }

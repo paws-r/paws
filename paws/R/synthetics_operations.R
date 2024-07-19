@@ -41,12 +41,13 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
     name = "AssociateResource",
     http_method = "PATCH",
     http_path = "/group/{groupIdentifier}/associate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$associate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
   output <- .synthetics$associate_resource_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -282,12 +283,13 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
     name = "CreateCanary",
     http_method = "POST",
     http_path = "/canary",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, Tags = Tags, ArtifactConfig = ArtifactConfig)
   output <- .synthetics$create_canary_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -374,12 +376,13 @@ synthetics_create_group <- function(Name, Tags = NULL) {
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/group",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$create_group_input(Name = Name, Tags = Tags)
   output <- .synthetics$create_group_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -447,12 +450,13 @@ synthetics_delete_canary <- function(Name, DeleteLambda = NULL) {
     name = "DeleteCanary",
     http_method = "DELETE",
     http_path = "/canary/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$delete_canary_input(Name = Name, DeleteLambda = DeleteLambda)
   output <- .synthetics$delete_canary_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -496,12 +500,13 @@ synthetics_delete_group <- function(GroupIdentifier) {
     name = "DeleteGroup",
     http_method = "DELETE",
     http_path = "/group/{groupIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$delete_group_input(GroupIdentifier = GroupIdentifier)
   output <- .synthetics$delete_group_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -652,12 +657,13 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
     name = "DescribeCanaries",
     http_method = "POST",
     http_path = "/canaries",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$describe_canaries_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -759,12 +765,13 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
     name = "DescribeCanariesLastRun",
     http_method = "POST",
     http_path = "/canaries/last-run",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_last_run_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -828,12 +835,13 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
     name = "DescribeRuntimeVersions",
     http_method = "POST",
     http_path = "/runtime-versions",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$describe_runtime_versions_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$describe_runtime_versions_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +882,13 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
     name = "DisassociateResource",
     http_method = "PATCH",
     http_path = "/group/{groupIdentifier}/disassociate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$disassociate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
   output <- .synthetics$disassociate_resource_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -993,12 +1002,13 @@ synthetics_get_canary <- function(Name) {
     name = "GetCanary",
     http_method = "GET",
     http_path = "/canary/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$get_canary_input(Name = Name)
   output <- .synthetics$get_canary_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1069,12 +1079,13 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
     name = "GetCanaryRuns",
     http_method = "POST",
     http_path = "/canary/{name}/runs",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$get_canary_runs_input(Name = Name, NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$get_canary_runs_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1131,12 +1142,13 @@ synthetics_get_group <- function(GroupIdentifier) {
     name = "GetGroup",
     http_method = "GET",
     http_path = "/group/{groupIdentifier}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$get_group_input(GroupIdentifier = GroupIdentifier)
   output <- .synthetics$get_group_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1196,12 +1208,13 @@ synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NUL
     name = "ListAssociatedGroups",
     http_method = "POST",
     http_path = "/resource/{resourceArn}/groups",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$list_associated_groups_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .synthetics$list_associated_groups_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1258,12 +1271,13 @@ synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL,
     name = "ListGroupResources",
     http_method = "POST",
     http_path = "/group/{groupIdentifier}/resources",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$list_group_resources_input(NextToken = NextToken, MaxResults = MaxResults, GroupIdentifier = GroupIdentifier)
   output <- .synthetics$list_group_resources_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1320,12 +1334,13 @@ synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListGroups",
     http_method = "POST",
     http_path = "/groups",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$list_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$list_groups_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1375,12 +1390,13 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .synthetics$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1421,12 +1437,13 @@ synthetics_start_canary <- function(Name) {
     name = "StartCanary",
     http_method = "POST",
     http_path = "/canary/{name}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$start_canary_input(Name = Name)
   output <- .synthetics$start_canary_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1472,12 +1489,13 @@ synthetics_stop_canary <- function(Name) {
     name = "StopCanary",
     http_method = "POST",
     http_path = "/canary/{name}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$stop_canary_input(Name = Name)
   output <- .synthetics$stop_canary_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1542,12 +1560,13 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .synthetics$tag_resource_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1594,12 +1613,13 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .synthetics$untag_resource_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1749,12 +1769,13 @@ synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL,
     name = "UpdateCanary",
     http_method = "PATCH",
     http_path = "/canary/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig)
   output <- .synthetics$update_canary_output()
   config <- get_config()
-  svc <- .synthetics$service(config)
+  svc <- .synthetics$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

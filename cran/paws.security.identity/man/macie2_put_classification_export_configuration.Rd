@@ -2,7 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_put_classification_export_configuration}
 \alias{macie2_put_classification_export_configuration}
-\title{Creates or updates the configuration settings for storing data
+\title{Adds or updates the configuration settings for storing data
 classification results}
 \usage{
 macie2_put_classification_export_configuration(configuration)
@@ -12,7 +12,7 @@ macie2_put_classification_export_configuration(configuration)
 settings to use when storing results in that location.}
 }
 \description{
-Creates or updates the configuration settings for storing data classification results.
+Adds or updates the configuration settings for storing data classification results.
 
 See \url{https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/} for full documentation.
 }

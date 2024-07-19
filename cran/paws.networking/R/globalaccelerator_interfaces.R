@@ -547,7 +547,7 @@ NULL
 
 .globalaccelerator$update_accelerator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -583,7 +583,7 @@ NULL
 
 .globalaccelerator$update_custom_routing_accelerator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

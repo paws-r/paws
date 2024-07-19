@@ -154,7 +154,7 @@ route53recoverycontrolconfig <- function(config = list(), credentials = list(), 
   target_prefix = ""
 )
 
-.route53recoverycontrolconfig$service <- function(config = list()) {
+.route53recoverycontrolconfig$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.route53recoverycontrolconfig$metadata, handlers, config)
+  new_service(.route53recoverycontrolconfig$metadata, handlers, config, op)
 }

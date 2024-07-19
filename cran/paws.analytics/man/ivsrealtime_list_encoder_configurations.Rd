@@ -5,13 +5,13 @@
 \title{Gets summary information about all EncoderConfigurations in your
 account, in the AWS region where the API request is processed}
 \usage{
-ivsrealtime_list_encoder_configurations(maxResults = NULL, nextToken = NULL)
+ivsrealtime_list_encoder_configurations(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{Maximum number of results to return. Default: 100.}
-
 \item{nextToken}{The first encoder configuration to retrieve. This is used for
 pagination; see the \code{nextToken} response field.}
+
+\item{maxResults}{Maximum number of results to return. Default: 100.}
 }
 \description{
 Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed.

@@ -209,7 +209,7 @@ codestar <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = "CodeStar_20170419"
 )
 
-.codestar$service <- function(config = list()) {
+.codestar$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.codestar$metadata, handlers, config)
+  new_service(.codestar$metadata, handlers, config, op)
 }

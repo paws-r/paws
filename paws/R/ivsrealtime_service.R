@@ -5,44 +5,38 @@ NULL
 #' Amazon Interactive Video Service RealTime
 #'
 #' @description
-#' **Introduction**
-#' 
 #' The Amazon Interactive Video Service (IVS) real-time API is REST
 #' compatible, using a standard HTTP API and an AWS EventBridge event
 #' stream for responses. JSON is used for both requests and responses,
 #' including errors.
 #' 
-#' Terminology:
+#' **Key Concepts**
 #' 
-#' -   A *stage* is a virtual space where participants can exchange video
-#'     in real time.
+#' -   **Stage** — A virtual space where participants can exchange video in
+#'     real time.
 #' 
-#' -   A *participant token* is a token that authenticates a participant
+#' -   **Participant token** — A token that authenticates a participant
 #'     when they join a stage.
 #' 
-#' -   A *participant object* represents participants (people) in the stage
-#'     and contains information about them. When a token is created, it
-#'     includes a participant ID; when a participant uses that token to
+#' -   **Participant object** — Represents participants (people) in the
+#'     stage and contains information about them. When a token is created,
+#'     it includes a participant ID; when a participant uses that token to
 #'     join a stage, the participant is associated with that participant
 #'     ID. There is a 1:1 mapping between participant tokens and
 #'     participants.
 #' 
-#' -   Server-side composition: The *composition* process composites
-#'     participants of a stage into a single video and forwards it to a set
-#'     of outputs (e.g., IVS channels). Composition endpoints support this
-#'     process.
+#' For server-side composition:
 #' 
-#' -   Server-side composition: A *composition* controls the look of the
-#'     outputs, including how participants are positioned in the video.
+#' -   **Composition process** — Composites participants of a stage into a
+#'     single video and forwards it to a set of outputs (e.g., IVS
+#'     channels). Composition endpoints support this process.
 #' 
-#' **Resources**
+#' -   **Composition** — Controls the look of the outputs, including how
+#'     participants are positioned in the video.
 #' 
-#' The following resources contain information about your IVS live stream
-#' (see [Getting Started with Amazon IVS Real-Time
-#' Streaming](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html)):
-#' 
-#' -   **Stage** — A stage is a virtual space where participants can
-#'     exchange video in real time.
+#' For more information about your IVS live stream, also see [Getting
+#' Started with Amazon IVS Real-Time
+#' Streaming](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html).
 #' 
 #' **Tagging**
 #' 
@@ -67,109 +61,6 @@ NULL
 #' following resource supports tagging: Stage.
 #' 
 #' At most 50 tags can be applied to a resource.
-#' 
-#' **Stages Endpoints**
-#' 
-#' -   [`create_participant_token`][ivsrealtime_create_participant_token] —
-#'     Creates an additional token for a specified stage. This can be done
-#'     after stage creation or when tokens expire.
-#' 
-#' -   [`create_stage`][ivsrealtime_create_stage] — Creates a new stage
-#'     (and optionally participant tokens).
-#' 
-#' -   [`delete_stage`][ivsrealtime_delete_stage] — Shuts down and deletes
-#'     the specified stage (disconnecting all participants).
-#' 
-#' -   [`disconnect_participant`][ivsrealtime_disconnect_participant] —
-#'     Disconnects a specified participant and revokes the participant
-#'     permanently from a specified stage.
-#' 
-#' -   [`get_participant`][ivsrealtime_get_participant] — Gets information
-#'     about the specified participant token.
-#' 
-#' -   [`get_stage`][ivsrealtime_get_stage] — Gets information for the
-#'     specified stage.
-#' 
-#' -   [`get_stage_session`][ivsrealtime_get_stage_session] — Gets
-#'     information for the specified stage session.
-#' 
-#' -   [`list_participant_events`][ivsrealtime_list_participant_events] —
-#'     Lists events for a specified participant that occurred during a
-#'     specified stage session.
-#' 
-#' -   [`list_participants`][ivsrealtime_list_participants] — Lists all
-#'     participants in a specified stage session.
-#' 
-#' -   [`list_stages`][ivsrealtime_list_stages] — Gets summary information
-#'     about all stages in your account, in the AWS region where the API
-#'     request is processed.
-#' 
-#' -   [`list_stage_sessions`][ivsrealtime_list_stage_sessions] — Gets all
-#'     sessions for a specified stage.
-#' 
-#' -   [`update_stage`][ivsrealtime_update_stage] — Updates a stage’s
-#'     configuration.
-#' 
-#' **Composition Endpoints**
-#' 
-#' -   [`get_composition`][ivsrealtime_get_composition] — Gets information
-#'     about the specified Composition resource.
-#' 
-#' -   [`list_compositions`][ivsrealtime_list_compositions] — Gets summary
-#'     information about all Compositions in your account, in the AWS
-#'     region where the API request is processed.
-#' 
-#' -   [`start_composition`][ivsrealtime_start_composition] — Starts a
-#'     Composition from a stage based on the configuration provided in the
-#'     request.
-#' 
-#' -   [`stop_composition`][ivsrealtime_stop_composition] — Stops and
-#'     deletes a Composition resource. Any broadcast from the Composition
-#'     resource is stopped.
-#' 
-#' **EncoderConfiguration Endpoints**
-#' 
-#' -   [`create_encoder_configuration`][ivsrealtime_create_encoder_configuration]
-#'     — Creates an EncoderConfiguration object.
-#' 
-#' -   [`delete_encoder_configuration`][ivsrealtime_delete_encoder_configuration]
-#'     — Deletes an EncoderConfiguration resource. Ensures that no
-#'     Compositions are using this template; otherwise, returns an error.
-#' 
-#' -   [`get_encoder_configuration`][ivsrealtime_get_encoder_configuration]
-#'     — Gets information about the specified EncoderConfiguration
-#'     resource.
-#' 
-#' -   [`list_encoder_configurations`][ivsrealtime_list_encoder_configurations]
-#'     — Gets summary information about all EncoderConfigurations in your
-#'     account, in the AWS region where the API request is processed.
-#' 
-#' **StorageConfiguration Endpoints**
-#' 
-#' -   [`create_storage_configuration`][ivsrealtime_create_storage_configuration]
-#'     — Creates a new storage configuration, used to enable recording to
-#'     Amazon S3.
-#' 
-#' -   [`delete_storage_configuration`][ivsrealtime_delete_storage_configuration]
-#'     — Deletes the storage configuration for the specified ARN.
-#' 
-#' -   [`get_storage_configuration`][ivsrealtime_get_storage_configuration]
-#'     — Gets the storage configuration for the specified ARN.
-#' 
-#' -   [`list_storage_configurations`][ivsrealtime_list_storage_configurations]
-#'     — Gets summary information about all storage configurations in your
-#'     account, in the AWS region where the API request is processed.
-#' 
-#' **Tags Endpoints**
-#' 
-#' -   [`list_tags_for_resource`][ivsrealtime_list_tags_for_resource] —
-#'     Gets information about AWS tags for the specified ARN.
-#' 
-#' -   [`tag_resource`][ivsrealtime_tag_resource] — Adds or updates tags
-#'     for the AWS resource with the specified ARN.
-#' 
-#' -   [`untag_resource`][ivsrealtime_untag_resource] — Removes tags from
-#'     the resource with the specified ARN.
 #'
 #' @param
 #' config
@@ -259,19 +150,23 @@ NULL
 #'  \link[=ivsrealtime_create_stage]{create_stage} \tab Creates a new stage (and optionally participant tokens)\cr
 #'  \link[=ivsrealtime_create_storage_configuration]{create_storage_configuration} \tab Creates a new storage configuration, used to enable recording to Amazon S3\cr
 #'  \link[=ivsrealtime_delete_encoder_configuration]{delete_encoder_configuration} \tab Deletes an EncoderConfiguration resource\cr
+#'  \link[=ivsrealtime_delete_public_key]{delete_public_key} \tab Deletes the specified public key used to sign stage participant tokens\cr
 #'  \link[=ivsrealtime_delete_stage]{delete_stage} \tab Shuts down and deletes the specified stage (disconnecting all participants)\cr
 #'  \link[=ivsrealtime_delete_storage_configuration]{delete_storage_configuration} \tab Deletes the storage configuration for the specified ARN\cr
 #'  \link[=ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant and revokes the participant permanently from a specified stage\cr
 #'  \link[=ivsrealtime_get_composition]{get_composition} \tab Get information about the specified Composition resource\cr
 #'  \link[=ivsrealtime_get_encoder_configuration]{get_encoder_configuration} \tab Gets information about the specified EncoderConfiguration resource\cr
 #'  \link[=ivsrealtime_get_participant]{get_participant} \tab Gets information about the specified participant token\cr
+#'  \link[=ivsrealtime_get_public_key]{get_public_key} \tab Gets information for the specified public key\cr
 #'  \link[=ivsrealtime_get_stage]{get_stage} \tab Gets information for the specified stage\cr
 #'  \link[=ivsrealtime_get_stage_session]{get_stage_session} \tab Gets information for the specified stage session\cr
 #'  \link[=ivsrealtime_get_storage_configuration]{get_storage_configuration} \tab Gets the storage configuration for the specified ARN\cr
+#'  \link[=ivsrealtime_import_public_key]{import_public_key} \tab Import a public key to be used for signing stage participant tokens\cr
 #'  \link[=ivsrealtime_list_compositions]{list_compositions} \tab Gets summary information about all Compositions in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_encoder_configurations]{list_encoder_configurations} \tab Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_participant_events]{list_participant_events} \tab Lists events for a specified participant that occurred during a specified stage session\cr
 #'  \link[=ivsrealtime_list_participants]{list_participants} \tab Lists all participants in a specified stage session\cr
+#'  \link[=ivsrealtime_list_public_keys]{list_public_keys} \tab Gets summary information about all public keys in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_stages]{list_stages} \tab Gets summary information about all stages in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_stage_sessions]{list_stage_sessions} \tab Gets all sessions for a specified stage\cr
 #'  \link[=ivsrealtime_list_storage_configurations]{list_storage_configurations} \tab Gets summary information about all storage configurations in your account, in the AWS region where the API request is processed\cr
@@ -316,11 +211,11 @@ ivsrealtime <- function(config = list(), credentials = list(), endpoint = NULL, 
   service_id = "IVS RealTime",
   api_version = "2020-07-14",
   signing_name = "ivs",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 
-.ivsrealtime$service <- function(config = list()) {
+.ivsrealtime$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.ivsrealtime$metadata, handlers, config)
+  new_service(.ivsrealtime$metadata, handlers, config, op)
 }

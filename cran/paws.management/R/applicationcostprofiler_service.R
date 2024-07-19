@@ -145,7 +145,7 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
   target_prefix = ""
 )
 
-.applicationcostprofiler$service <- function(config = list()) {
+.applicationcostprofiler$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.applicationcostprofiler$metadata, handlers, config)
+  new_service(.applicationcostprofiler$metadata, handlers, config, op)
 }

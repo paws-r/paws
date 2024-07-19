@@ -42,7 +42,8 @@ NULL
 #'       LogStreamARN = "string",
 #'       RoleARN = "string"
 #'     )
-#'   )
+#'   ),
+#'   OperationId = "string"
 #' )
 #' ```
 #'
@@ -68,12 +69,13 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
     name = "AddApplicationCloudWatchLoggingOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOption = CloudWatchLoggingOption, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -226,12 +228,13 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
     name = "AddApplicationInput",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_input_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, Input = Input)
   output <- .kinesisanalyticsv2$add_application_input_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -308,12 +311,13 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
     name = "AddApplicationInputProcessingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_input_processing_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, InputId = InputId, InputProcessingConfiguration = InputProcessingConfiguration)
   output <- .kinesisanalyticsv2$add_application_input_processing_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -425,12 +429,13 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
     name = "AddApplicationOutput",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_output_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, Output = Output)
   output <- .kinesisanalyticsv2$add_application_output_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -556,12 +561,13 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
     name = "AddApplicationReferenceDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_reference_data_source_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ReferenceDataSource = ReferenceDataSource)
   output <- .kinesisanalyticsv2$add_application_reference_data_source_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -621,7 +627,8 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     )
-#'   )
+#'   ),
+#'   OperationId = "string"
 #' )
 #' ```
 #'
@@ -652,12 +659,13 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
     name = "AddApplicationVpcConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$add_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfiguration = VpcConfiguration, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_vpc_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -704,7 +712,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -878,6 +886,9 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'       ApplicationSnapshotConfigurationDescription = list(
 #'         SnapshotsEnabled = TRUE|FALSE
 #'       ),
+#'       ApplicationSystemRollbackConfigurationDescription = list(
+#'         RollbackEnabled = TRUE|FALSE
+#'       ),
 #'       VpcConfigurationDescriptions = list(
 #'         list(
 #'           VpcConfigurationId = "string",
@@ -935,6 +946,9 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'     ),
 #'     ApplicationVersionUpdatedFrom = 123,
 #'     ApplicationVersionRolledBackFrom = 123,
+#'     ApplicationVersionCreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     ConditionalToken = "string",
 #'     ApplicationVersionRolledBackTo = 123,
 #'     ApplicationMode = "STREAMING"|"INTERACTIVE"
@@ -947,7 +961,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' svc$create_application(
 #'   ApplicationName = "string",
 #'   ApplicationDescription = "string",
-#'   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18",
+#'   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19",
 #'   ServiceExecutionRole = "string",
 #'   ApplicationConfiguration = list(
 #'     SqlApplicationConfiguration = list(
@@ -1085,6 +1099,9 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'     ApplicationSnapshotConfiguration = list(
 #'       SnapshotsEnabled = TRUE|FALSE
 #'     ),
+#'     ApplicationSystemRollbackConfiguration = list(
+#'       RollbackEnabled = TRUE|FALSE
+#'     ),
 #'     VpcConfigurations = list(
 #'       list(
 #'         SubnetIds = list(
@@ -1152,12 +1169,13 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$create_application_input(ApplicationName = ApplicationName, ApplicationDescription = ApplicationDescription, RuntimeEnvironment = RuntimeEnvironment, ServiceExecutionRole = ServiceExecutionRole, ApplicationConfiguration = ApplicationConfiguration, CloudWatchLoggingOptions = CloudWatchLoggingOptions, Tags = Tags, ApplicationMode = ApplicationMode)
   output <- .kinesisanalyticsv2$create_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1222,12 +1240,13 @@ kinesisanalyticsv2_create_application_presigned_url <- function(ApplicationName,
     name = "CreateApplicationPresignedUrl",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$create_application_presigned_url_input(ApplicationName = ApplicationName, UrlType = UrlType, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
   output <- .kinesisanalyticsv2$create_application_presigned_url_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1267,12 +1286,13 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
     name = "CreateApplicationSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$create_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName)
   output <- .kinesisanalyticsv2$create_application_snapshot_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1316,12 +1336,13 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
     name = "DeleteApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_input(ApplicationName = ApplicationName, CreateTimestamp = CreateTimestamp)
   output <- .kinesisanalyticsv2$delete_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1370,7 +1391,8 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #'       LogStreamARN = "string",
 #'       RoleARN = "string"
 #'     )
-#'   )
+#'   ),
+#'   OperationId = "string"
 #' )
 #' ```
 #'
@@ -1394,12 +1416,13 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
     name = "DeleteApplicationCloudWatchLoggingOption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOptionId = CloudWatchLoggingOptionId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1455,12 +1478,13 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
     name = "DeleteApplicationInputProcessingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_input_processing_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, InputId = InputId)
   output <- .kinesisanalyticsv2$delete_application_input_processing_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1524,12 +1548,13 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
     name = "DeleteApplicationOutput",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_output_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, OutputId = OutputId)
   output <- .kinesisanalyticsv2$delete_application_output_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1593,12 +1618,13 @@ kinesisanalyticsv2_delete_application_reference_data_source <- function(Applicat
     name = "DeleteApplicationReferenceDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_reference_data_source_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ReferenceId = ReferenceId)
   output <- .kinesisanalyticsv2$delete_application_reference_data_source_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1643,12 +1669,13 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
     name = "DeleteApplicationSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName, SnapshotCreationTimestamp = SnapshotCreationTimestamp)
   output <- .kinesisanalyticsv2$delete_application_snapshot_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1686,7 +1713,8 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 #' ```
 #' list(
 #'   ApplicationARN = "string",
-#'   ApplicationVersionId = 123
+#'   ApplicationVersionId = 123,
+#'   OperationId = "string"
 #' )
 #' ```
 #'
@@ -1710,12 +1738,13 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
     name = "DeleteApplicationVpcConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$delete_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfigurationId = VpcConfigurationId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_vpc_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1749,7 +1778,7 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -1923,6 +1952,9 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'       ApplicationSnapshotConfigurationDescription = list(
 #'         SnapshotsEnabled = TRUE|FALSE
 #'       ),
+#'       ApplicationSystemRollbackConfigurationDescription = list(
+#'         RollbackEnabled = TRUE|FALSE
+#'       ),
 #'       VpcConfigurationDescriptions = list(
 #'         list(
 #'           VpcConfigurationId = "string",
@@ -1980,6 +2012,9 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'     ),
 #'     ApplicationVersionUpdatedFrom = 123,
 #'     ApplicationVersionRolledBackFrom = 123,
+#'     ApplicationVersionCreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     ConditionalToken = "string",
 #'     ApplicationVersionRolledBackTo = 123,
 #'     ApplicationMode = "STREAMING"|"INTERACTIVE"
@@ -2005,17 +2040,90 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
     name = "DescribeApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$describe_application_input(ApplicationName = ApplicationName, IncludeAdditionalDetails = IncludeAdditionalDetails)
   output <- .kinesisanalyticsv2$describe_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .kinesisanalyticsv2$operations$describe_application <- kinesisanalyticsv2_describe_application
+
+#' Returns information about a specific operation performed on a Managed
+#' Service for Apache Flink application
+#'
+#' @description
+#' Returns information about a specific operation performed on a Managed
+#' Service for Apache Flink application
+#'
+#' @usage
+#' kinesisanalyticsv2_describe_application_operation(ApplicationName,
+#'   OperationId)
+#'
+#' @param ApplicationName &#91;required&#93; 
+#' @param OperationId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationOperationInfoDetails = list(
+#'     Operation = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     OperationStatus = "IN_PROGRESS"|"CANCELLED"|"SUCCESSFUL"|"FAILED",
+#'     ApplicationVersionChangeDetails = list(
+#'       ApplicationVersionUpdatedFrom = 123,
+#'       ApplicationVersionUpdatedTo = 123
+#'     ),
+#'     OperationFailureDetails = list(
+#'       RollbackOperationId = "string",
+#'       ErrorInfo = list(
+#'         ErrorString = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_application_operation(
+#'   ApplicationName = "string",
+#'   OperationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_describe_application_operation
+#'
+#' @aliases kinesisanalyticsv2_describe_application_operation
+kinesisanalyticsv2_describe_application_operation <- function(ApplicationName, OperationId) {
+  op <- new_operation(
+    name = "DescribeApplicationOperation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$describe_application_operation_input(ApplicationName = ApplicationName, OperationId = OperationId)
+  output <- .kinesisanalyticsv2$describe_application_operation_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$describe_application_operation <- kinesisanalyticsv2_describe_application_operation
 
 #' Returns information about a snapshot of application state data
 #'
@@ -2041,7 +2149,7 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
 #'     SnapshotCreationTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19"
 #'   )
 #' )
 #' ```
@@ -2064,12 +2172,13 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
     name = "DescribeApplicationSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$describe_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName)
   output <- .kinesisanalyticsv2$describe_application_snapshot_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2105,7 +2214,7 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -2279,6 +2388,9 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #'       ApplicationSnapshotConfigurationDescription = list(
 #'         SnapshotsEnabled = TRUE|FALSE
 #'       ),
+#'       ApplicationSystemRollbackConfigurationDescription = list(
+#'         RollbackEnabled = TRUE|FALSE
+#'       ),
 #'       VpcConfigurationDescriptions = list(
 #'         list(
 #'           VpcConfigurationId = "string",
@@ -2336,6 +2448,9 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #'     ),
 #'     ApplicationVersionUpdatedFrom = 123,
 #'     ApplicationVersionRolledBackFrom = 123,
+#'     ApplicationVersionCreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     ConditionalToken = "string",
 #'     ApplicationVersionRolledBackTo = 123,
 #'     ApplicationMode = "STREAMING"|"INTERACTIVE"
@@ -2361,12 +2476,13 @@ kinesisanalyticsv2_describe_application_version <- function(ApplicationName, App
     name = "DescribeApplicationVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$describe_application_version_input(ApplicationName = ApplicationName, ApplicationVersionId = ApplicationVersionId)
   output <- .kinesisanalyticsv2$describe_application_version_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2474,17 +2590,90 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
     name = "DiscoverInputSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$discover_input_schema_input(ResourceARN = ResourceARN, ServiceExecutionRole = ServiceExecutionRole, InputStartingPositionConfiguration = InputStartingPositionConfiguration, S3Configuration = S3Configuration, InputProcessingConfiguration = InputProcessingConfiguration)
   output <- .kinesisanalyticsv2$discover_input_schema_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .kinesisanalyticsv2$operations$discover_input_schema <- kinesisanalyticsv2_discover_input_schema
+
+#' Lists information about operations performed on a Managed Service for
+#' Apache Flink application
+#'
+#' @description
+#' Lists information about operations performed on a Managed Service for
+#' Apache Flink application
+#'
+#' @usage
+#' kinesisanalyticsv2_list_application_operations(ApplicationName, Limit,
+#'   NextToken, Operation, OperationStatus)
+#'
+#' @param ApplicationName &#91;required&#93; 
+#' @param Limit 
+#' @param NextToken 
+#' @param Operation 
+#' @param OperationStatus 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationOperationInfoList = list(
+#'     list(
+#'       Operation = "string",
+#'       OperationId = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OperationStatus = "IN_PROGRESS"|"CANCELLED"|"SUCCESSFUL"|"FAILED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_application_operations(
+#'   ApplicationName = "string",
+#'   Limit = 123,
+#'   NextToken = "string",
+#'   Operation = "string",
+#'   OperationStatus = "IN_PROGRESS"|"CANCELLED"|"SUCCESSFUL"|"FAILED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_list_application_operations
+#'
+#' @aliases kinesisanalyticsv2_list_application_operations
+kinesisanalyticsv2_list_application_operations <- function(ApplicationName, Limit = NULL, NextToken = NULL, Operation = NULL, OperationStatus = NULL) {
+  op <- new_operation(
+    name = "ListApplicationOperations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationOperationInfoList")
+  )
+  input <- .kinesisanalyticsv2$list_application_operations_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken, Operation = Operation, OperationStatus = OperationStatus)
+  output <- .kinesisanalyticsv2$list_application_operations_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$list_application_operations <- kinesisanalyticsv2_list_application_operations
 
 #' Lists information about the current application snapshots
 #'
@@ -2514,7 +2703,7 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 #'       SnapshotCreationTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"
+#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2540,12 +2729,13 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
     name = "ListApplicationSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "SnapshotSummaries")
   )
   input <- .kinesisanalyticsv2$list_application_snapshots_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_application_snapshots_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2613,12 +2803,13 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
     name = "ListApplicationVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationVersionSummaries")
   )
   input <- .kinesisanalyticsv2$list_application_versions_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_application_versions_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2655,7 +2846,7 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
 #'       ApplicationARN = "string",
 #'       ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'       ApplicationVersionId = 123,
-#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18",
+#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19",
 #'       ApplicationMode = "STREAMING"|"INTERACTIVE"
 #'     )
 #'   ),
@@ -2681,12 +2872,13 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
     name = "ListApplications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationSummaries")
   )
   input <- .kinesisanalyticsv2$list_applications_input(Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_applications_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2735,12 +2927,13 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .kinesisanalyticsv2$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2751,17 +2944,15 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' @description
 #' Reverts the application to the previous running version. You can roll
-#' back an application if you suspect it is stuck in a transient status.
+#' back an application if you suspect it is stuck in a transient status or
+#' in the running status.
 #' 
-#' You can roll back an application only if it is in the `UPDATING` or
-#' `AUTOSCALING` status.
+#' You can roll back an application only if it is in the `UPDATING`,
+#' `AUTOSCALING`, or `RUNNING` statuses.
 #' 
 #' When you rollback an application, it loads state data from the last
 #' successful snapshot. If the application has no snapshots, Managed
 #' Service for Apache Flink rejects the rollback request.
-#' 
-#' This action is not supported for Managed Service for Apache Flink for
-#' SQL applications.
 #'
 #' @usage
 #' kinesisanalyticsv2_rollback_application(ApplicationName,
@@ -2780,7 +2971,7 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -2954,6 +3145,9 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #'       ApplicationSnapshotConfigurationDescription = list(
 #'         SnapshotsEnabled = TRUE|FALSE
 #'       ),
+#'       ApplicationSystemRollbackConfigurationDescription = list(
+#'         RollbackEnabled = TRUE|FALSE
+#'       ),
 #'       VpcConfigurationDescriptions = list(
 #'         list(
 #'           VpcConfigurationId = "string",
@@ -3011,10 +3205,14 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #'     ),
 #'     ApplicationVersionUpdatedFrom = 123,
 #'     ApplicationVersionRolledBackFrom = 123,
+#'     ApplicationVersionCreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     ConditionalToken = "string",
 #'     ApplicationVersionRolledBackTo = 123,
 #'     ApplicationMode = "STREAMING"|"INTERACTIVE"
-#'   )
+#'   ),
+#'   OperationId = "string"
 #' )
 #' ```
 #'
@@ -3036,12 +3234,13 @@ kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentAppl
     name = "RollbackApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$rollback_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId)
   output <- .kinesisanalyticsv2$rollback_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3063,7 +3262,12 @@ kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentAppl
 #' for Apache Flink application.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3099,12 +3303,13 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
     name = "StartApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$start_application_input(ApplicationName = ApplicationName, RunConfiguration = RunConfiguration)
   output <- .kinesisanalyticsv2$start_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3145,7 +3350,12 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
 #' `AUTOSCALING`, or `RUNNING` status.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3165,12 +3375,13 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
     name = "StopApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$stop_application_input(ApplicationName = ApplicationName, Force = Force)
   output <- .kinesisanalyticsv2$stop_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3219,12 +3430,13 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .kinesisanalyticsv2$tag_resource_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3269,12 +3481,13 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .kinesisanalyticsv2$untag_resource_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3335,7 +3548,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -3509,6 +3722,9 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'       ApplicationSnapshotConfigurationDescription = list(
 #'         SnapshotsEnabled = TRUE|FALSE
 #'       ),
+#'       ApplicationSystemRollbackConfigurationDescription = list(
+#'         RollbackEnabled = TRUE|FALSE
+#'       ),
 #'       VpcConfigurationDescriptions = list(
 #'         list(
 #'           VpcConfigurationId = "string",
@@ -3566,10 +3782,14 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ),
 #'     ApplicationVersionUpdatedFrom = 123,
 #'     ApplicationVersionRolledBackFrom = 123,
+#'     ApplicationVersionCreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     ConditionalToken = "string",
 #'     ApplicationVersionRolledBackTo = 123,
 #'     ApplicationMode = "STREAMING"|"INTERACTIVE"
-#'   )
+#'   ),
+#'   OperationId = "string"
 #' )
 #' ```
 #'
@@ -3717,6 +3937,9 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ApplicationSnapshotConfigurationUpdate = list(
 #'       SnapshotsEnabledUpdate = TRUE|FALSE
 #'     ),
+#'     ApplicationSystemRollbackConfigurationUpdate = list(
+#'       RollbackEnabledUpdate = TRUE|FALSE
+#'     ),
 #'     VpcConfigurationUpdates = list(
 #'       list(
 #'         VpcConfigurationId = "string",
@@ -3777,7 +4000,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     )
 #'   ),
 #'   ConditionalToken = "string",
-#'   RuntimeEnvironmentUpdate = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"
+#'   RuntimeEnvironmentUpdate = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19"
 #' )
 #' ```
 #'
@@ -3791,12 +4014,13 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$update_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ApplicationConfigurationUpdate = ApplicationConfigurationUpdate, ServiceExecutionRoleUpdate = ServiceExecutionRoleUpdate, RunConfigurationUpdate = RunConfigurationUpdate, CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdates, ConditionalToken = ConditionalToken, RuntimeEnvironmentUpdate = RuntimeEnvironmentUpdate)
   output <- .kinesisanalyticsv2$update_application_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3872,12 +4096,13 @@ kinesisanalyticsv2_update_application_maintenance_configuration <- function(Appl
     name = "UpdateApplicationMaintenanceConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesisanalyticsv2$update_application_maintenance_configuration_input(ApplicationName = ApplicationName, ApplicationMaintenanceConfigurationUpdate = ApplicationMaintenanceConfigurationUpdate)
   output <- .kinesisanalyticsv2$update_application_maintenance_configuration_output()
   config <- get_config()
-  svc <- .kinesisanalyticsv2$service(config)
+  svc <- .kinesisanalyticsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -49,7 +49,8 @@ rds_restore_db_instance_to_point_in_time(
   StorageThroughput = NULL,
   AllocatedStorage = NULL,
   DedicatedLogVolume = NULL,
-  CACertificateIdentifier = NULL
+  CACertificateIdentifier = NULL,
+  EngineLifecycleSupport = NULL
 )
 }
 \arguments{
@@ -161,10 +162,24 @@ This setting doesn't apply to RDS Custom.}
 
 \item{LicenseModel}{The license model information for the restored DB instance.
 
-This setting doesn't apply to RDS Custom.
+License models for RDS for Db2 require additional configuration. The
+Bring Your Own License (BYOL) model requires a custom parameter group.
+The Db2 license through Amazon Web Services Marketplace model requires
+an Amazon Web Services Marketplace subscription. For more information,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html}{RDS for Db2 licensing options}
+in the \emph{Amazon RDS User Guide}.
 
-Valid Values: \code{license-included} | \code{bring-your-own-license} |
-\code{general-public-license}
+This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.
+
+Valid Values:
+\itemize{
+\item RDS for Db2 - \code{bring-your-own-license | marketplace-license}
+\item RDS for MariaDB - \code{general-public-license}
+\item RDS for Microsoft SQL Server - \code{license-included}
+\item RDS for MySQL - \code{general-public-license}
+\item RDS for Oracle - \code{bring-your-own-license | license-included}
+\item RDS for PostgreSQL - \code{postgresql-license}
+}
 
 Default: Same as the source.}
 
@@ -461,6 +476,31 @@ This setting doesn't apply to RDS Custom DB instances.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
 in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
 in the \emph{Amazon Aurora User Guide}.}
+
+\item{EngineLifecycleSupport}{The life cycle type for this DB instance.
+
+By default, this value is set to \code{open-source-rds-extended-support},
+which enrolls your DB instance into Amazon RDS Extended Support. At the
+end of standard support, you can avoid charges for Extended Support by
+setting the value to \code{open-source-rds-extended-support-disabled}. In
+this case, RDS automatically upgrades your restored DB instance to a
+higher engine version, if the major engine version is past its end of
+standard support date.
+
+You can use this setting to enroll your DB instance into Amazon RDS
+Extended Support. With RDS Extended Support, you can run the selected
+major engine version on your DB instance past the end of standard
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon RDS User Guide}.
+
+This setting applies only to RDS for MySQL and RDS for PostgreSQL. For
+Amazon Aurora DB instances, the life cycle type is managed by the DB
+cluster.
+
+Valid Values:
+\code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
+
+Default: \code{open-source-rds-extended-support}}
 }
 \description{
 Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the \code{LatestRestorableTime} property. You can restore to a point up to the number of days specified by the \code{BackupRetentionPeriod} property.

@@ -127,6 +127,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_feature_group]{create_feature_group} \tab Create a new FeatureGroup\cr
 \link[paws.machine.learning:sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition\cr
 \link[paws.machine.learning:sagemaker_create_hub]{create_hub} \tab Create a hub\cr
+\link[paws.machine.learning:sagemaker_create_hub_content_reference]{create_hub_content_reference} \tab Create a hub content reference in order to add a model in the JumpStart public hub to a private hub\cr
 \link[paws.machine.learning:sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface\cr
 \link[paws.machine.learning:sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
 \link[paws.machine.learning:sagemaker_create_image]{create_image} \tab Creates a custom SageMaker image\cr
@@ -135,6 +136,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_inference_experiment]{create_inference_experiment} \tab Creates an inference experiment using the configurations specified in the request\cr
 \link[paws.machine.learning:sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
 \link[paws.machine.learning:sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
+\link[paws.machine.learning:sagemaker_create_mlflow_tracking_server]{create_mlflow_tracking_server} \tab Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store\cr
 \link[paws.machine.learning:sagemaker_create_model]{create_model} \tab Creates a model in SageMaker\cr
 \link[paws.machine.learning:sagemaker_create_model_bias_job_definition]{create_model_bias_job_definition} \tab Creates the definition for a model bias job\cr
 \link[paws.machine.learning:sagemaker_create_model_card]{create_model_card} \tab Creates an Amazon SageMaker Model Card\cr
@@ -146,12 +148,14 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endpoint\cr
 \link[paws.machine.learning:sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an SageMaker notebook instance\cr
 \link[paws.machine.learning:sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config} \tab Creates a lifecycle configuration that you can associate with a notebook instance\cr
+\link[paws.machine.learning:sagemaker_create_optimization_job]{create_optimization_job} \tab Creates a job that optimizes a model for inference performance\cr
 \link[paws.machine.learning:sagemaker_create_pipeline]{create_pipeline} \tab Creates a pipeline using a JSON pipeline definition\cr
 \link[paws.machine.learning:sagemaker_create_presigned_domain_url]{create_presigned_domain_url} \tab Creates a URL for a specified UserProfile in a Domain\cr
+\link[paws.machine.learning:sagemaker_create_presigned_mlflow_tracking_server_url]{create_presigned_mlflow_tracking_server_url} \tab Returns a presigned URL that you can use to connect to the MLflow UI attached to your tracking server\cr
 \link[paws.machine.learning:sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url} \tab Returns a URL that you can use to connect to the Jupyter server from a notebook instance\cr
 \link[paws.machine.learning:sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
 \link[paws.machine.learning:sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
-\link[paws.machine.learning:sagemaker_create_space]{create_space} \tab Creates a space used for real time collaboration in a domain\cr
+\link[paws.machine.learning:sagemaker_create_space]{create_space} \tab Creates a private space or a space used for real time collaboration in a domain\cr
 \link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Amazon SageMaker Studio Lifecycle Configuration\cr
 \link[paws.machine.learning:sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
 \link[paws.machine.learning:sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
@@ -182,12 +186,14 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_delete_flow_definition]{delete_flow_definition} \tab Deletes the specified flow definition\cr
 \link[paws.machine.learning:sagemaker_delete_hub]{delete_hub} \tab Delete a hub\cr
 \link[paws.machine.learning:sagemaker_delete_hub_content]{delete_hub_content} \tab Delete the contents of a hub\cr
+\link[paws.machine.learning:sagemaker_delete_hub_content_reference]{delete_hub_content_reference} \tab Delete a hub content reference in order to remove a model from a private hub\cr
 \link[paws.machine.learning:sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
 \link[paws.machine.learning:sagemaker_delete_hyper_parameter_tuning_job]{delete_hyper_parameter_tuning_job} \tab Deletes a hyperparameter tuning job\cr
 \link[paws.machine.learning:sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
 \link[paws.machine.learning:sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
 \link[paws.machine.learning:sagemaker_delete_inference_component]{delete_inference_component} \tab Deletes an inference component\cr
 \link[paws.machine.learning:sagemaker_delete_inference_experiment]{delete_inference_experiment} \tab Deletes an inference experiment\cr
+\link[paws.machine.learning:sagemaker_delete_mlflow_tracking_server]{delete_mlflow_tracking_server} \tab Deletes an MLflow Tracking Server\cr
 \link[paws.machine.learning:sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
 \link[paws.machine.learning:sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker model bias job definition\cr
 \link[paws.machine.learning:sagemaker_delete_model_card]{delete_model_card} \tab Deletes an Amazon SageMaker Model Card\cr
@@ -199,6 +205,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_delete_monitoring_schedule]{delete_monitoring_schedule} \tab Deletes a monitoring schedule\cr
 \link[paws.machine.learning:sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an SageMaker notebook instance\cr
 \link[paws.machine.learning:sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration\cr
+\link[paws.machine.learning:sagemaker_delete_optimization_job]{delete_optimization_job} \tab Deletes an optimization job\cr
 \link[paws.machine.learning:sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
 \link[paws.machine.learning:sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
 \link[paws.machine.learning:sagemaker_delete_space]{delete_space} \tab Used to delete a space\cr
@@ -218,7 +225,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an AutoML job created by calling CreateAutoMLJob\cr
 \link[paws.machine.learning:sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob\cr
 \link[paws.machine.learning:sagemaker_describe_cluster]{describe_cluster} \tab Retrieves information of a SageMaker HyperPod cluster\cr
-\link[paws.machine.learning:sagemaker_describe_cluster_node]{describe_cluster_node} \tab Retrieves information of an instance (also called a node interchangeably) of a SageMaker HyperPod cluster\cr
+\link[paws.machine.learning:sagemaker_describe_cluster_node]{describe_cluster_node} \tab Retrieves information of a node (also called a instance interchangeably) of a SageMaker HyperPod cluster\cr
 \link[paws.machine.learning:sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 \link[paws.machine.learning:sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
 \link[paws.machine.learning:sagemaker_describe_context]{describe_context} \tab Describes a context\cr
@@ -234,7 +241,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_feature_group]{describe_feature_group} \tab Use this operation to describe a FeatureGroup\cr
 \link[paws.machine.learning:sagemaker_describe_feature_metadata]{describe_feature_metadata} \tab Shows the metadata for a feature within a feature group\cr
 \link[paws.machine.learning:sagemaker_describe_flow_definition]{describe_flow_definition} \tab Returns information about the specified flow definition\cr
-\link[paws.machine.learning:sagemaker_describe_hub]{describe_hub} \tab Describe a hub\cr
+\link[paws.machine.learning:sagemaker_describe_hub]{describe_hub} \tab Describes a hub\cr
 \link[paws.machine.learning:sagemaker_describe_hub_content]{describe_hub_content} \tab Describe the content of a hub\cr
 \link[paws.machine.learning:sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface (worker task template)\cr
 \link[paws.machine.learning:sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Returns a description of a hyperparameter tuning job, depending on the fields selected\cr
@@ -245,6 +252,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
 \link[paws.machine.learning:sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
 \link[paws.machine.learning:sagemaker_describe_lineage_group]{describe_lineage_group} \tab Provides a list of properties for the requested lineage group\cr
+\link[paws.machine.learning:sagemaker_describe_mlflow_tracking_server]{describe_mlflow_tracking_server} \tab Returns information about an MLflow Tracking Server\cr
 \link[paws.machine.learning:sagemaker_describe_model]{describe_model} \tab Describes a model that you created using the CreateModel API\cr
 \link[paws.machine.learning:sagemaker_describe_model_bias_job_definition]{describe_model_bias_job_definition} \tab Returns a description of a model bias job definition\cr
 \link[paws.machine.learning:sagemaker_describe_model_card]{describe_model_card} \tab Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card\cr
@@ -256,6 +264,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_monitoring_schedule]{describe_monitoring_schedule} \tab Describes the schedule for a monitoring job\cr
 \link[paws.machine.learning:sagemaker_describe_notebook_instance]{describe_notebook_instance} \tab Returns information about a notebook instance\cr
 \link[paws.machine.learning:sagemaker_describe_notebook_instance_lifecycle_config]{describe_notebook_instance_lifecycle_config} \tab Returns a description of a notebook instance lifecycle configuration\cr
+\link[paws.machine.learning:sagemaker_describe_optimization_job]{describe_optimization_job} \tab Provides the properties of the specified optimization job\cr
 \link[paws.machine.learning:sagemaker_describe_pipeline]{describe_pipeline} \tab Describes the details of a pipeline\cr
 \link[paws.machine.learning:sagemaker_describe_pipeline_definition_for_execution]{describe_pipeline_definition_for_execution} \tab Describes the details of an execution's pipeline definition\cr
 \link[paws.machine.learning:sagemaker_describe_pipeline_execution]{describe_pipeline_execution} \tab Describes the details of a pipeline execution\cr
@@ -320,6 +329,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_list_labeling_jobs]{list_labeling_jobs} \tab Gets a list of labeling jobs\cr
 \link[paws.machine.learning:sagemaker_list_labeling_jobs_for_workteam]{list_labeling_jobs_for_workteam} \tab Gets a list of labeling jobs assigned to a specified work team\cr
 \link[paws.machine.learning:sagemaker_list_lineage_groups]{list_lineage_groups} \tab A list of lineage groups shared with your Amazon Web Services account\cr
+\link[paws.machine.learning:sagemaker_list_mlflow_tracking_servers]{list_mlflow_tracking_servers} \tab Lists all MLflow Tracking Servers\cr
 \link[paws.machine.learning:sagemaker_list_model_bias_job_definitions]{list_model_bias_job_definitions} \tab Lists model bias jobs definitions that satisfy various filters\cr
 \link[paws.machine.learning:sagemaker_list_model_card_export_jobs]{list_model_card_export_jobs} \tab List the export jobs for the Amazon SageMaker Model Card\cr
 \link[paws.machine.learning:sagemaker_list_model_cards]{list_model_cards} \tab List existing model cards\cr
@@ -336,6 +346,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_list_monitoring_schedules]{list_monitoring_schedules} \tab Returns list of all monitoring schedules\cr
 \link[paws.machine.learning:sagemaker_list_notebook_instance_lifecycle_configs]{list_notebook_instance_lifecycle_configs} \tab Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API\cr
 \link[paws.machine.learning:sagemaker_list_notebook_instances]{list_notebook_instances} \tab Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region\cr
+\link[paws.machine.learning:sagemaker_list_optimization_jobs]{list_optimization_jobs} \tab Lists the optimization jobs in your account and their properties\cr
 \link[paws.machine.learning:sagemaker_list_pipeline_executions]{list_pipeline_executions} \tab Gets a list of the pipeline executions\cr
 \link[paws.machine.learning:sagemaker_list_pipeline_execution_steps]{list_pipeline_execution_steps} \tab Gets a list of PipeLineExecutionStep objects\cr
 \link[paws.machine.learning:sagemaker_list_pipeline_parameters_for_execution]{list_pipeline_parameters_for_execution} \tab Gets a list of parameters for a pipeline execution\cr
@@ -366,6 +377,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_send_pipeline_execution_step_success]{send_pipeline_execution_step_success} \tab Notifies the pipeline that the execution of a callback step succeeded and provides a list of the step's output parameters\cr
 \link[paws.machine.learning:sagemaker_start_edge_deployment_stage]{start_edge_deployment_stage} \tab Starts a stage in an edge deployment plan\cr
 \link[paws.machine.learning:sagemaker_start_inference_experiment]{start_inference_experiment} \tab Starts an inference experiment\cr
+\link[paws.machine.learning:sagemaker_start_mlflow_tracking_server]{start_mlflow_tracking_server} \tab Programmatically start an MLflow Tracking Server\cr
 \link[paws.machine.learning:sagemaker_start_monitoring_schedule]{start_monitoring_schedule} \tab Starts a previously stopped monitoring schedule\cr
 \link[paws.machine.learning:sagemaker_start_notebook_instance]{start_notebook_instance} \tab Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\cr
 \link[paws.machine.learning:sagemaker_start_pipeline_execution]{start_pipeline_execution} \tab Starts a pipeline execution\cr
@@ -377,8 +389,10 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_stop_inference_experiment]{stop_inference_experiment} \tab Stops an inference experiment\cr
 \link[paws.machine.learning:sagemaker_stop_inference_recommendations_job]{stop_inference_recommendations_job} \tab Stops an Inference Recommender job\cr
 \link[paws.machine.learning:sagemaker_stop_labeling_job]{stop_labeling_job} \tab Stops a running labeling job\cr
+\link[paws.machine.learning:sagemaker_stop_mlflow_tracking_server]{stop_mlflow_tracking_server} \tab Programmatically stop an MLflow Tracking Server\cr
 \link[paws.machine.learning:sagemaker_stop_monitoring_schedule]{stop_monitoring_schedule} \tab Stops a previously started monitoring schedule\cr
 \link[paws.machine.learning:sagemaker_stop_notebook_instance]{stop_notebook_instance} \tab Terminates the ML compute instance\cr
+\link[paws.machine.learning:sagemaker_stop_optimization_job]{stop_optimization_job} \tab Ends a running inference optimization job\cr
 \link[paws.machine.learning:sagemaker_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops a pipeline execution\cr
 \link[paws.machine.learning:sagemaker_stop_processing_job]{stop_processing_job} \tab Stops a processing job\cr
 \link[paws.machine.learning:sagemaker_stop_training_job]{stop_training_job} \tab Stops a training job\cr
@@ -404,6 +418,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_update_inference_component]{update_inference_component} \tab Updates an inference component\cr
 \link[paws.machine.learning:sagemaker_update_inference_component_runtime_config]{update_inference_component_runtime_config} \tab Runtime settings for a model that is deployed with an inference component\cr
 \link[paws.machine.learning:sagemaker_update_inference_experiment]{update_inference_experiment} \tab Updates an inference experiment that you created\cr
+\link[paws.machine.learning:sagemaker_update_mlflow_tracking_server]{update_mlflow_tracking_server} \tab Updates properties of an existing MLflow Tracking Server\cr
 \link[paws.machine.learning:sagemaker_update_model_card]{update_model_card} \tab Update an Amazon SageMaker Model Card\cr
 \link[paws.machine.learning:sagemaker_update_model_package]{update_model_package} \tab Updates a versioned model\cr
 \link[paws.machine.learning:sagemaker_update_monitoring_alert]{update_monitoring_alert} \tab Update the parameters of a model monitor alert\cr

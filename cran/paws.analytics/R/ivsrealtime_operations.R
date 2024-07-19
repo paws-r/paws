@@ -11,29 +11,30 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_create_encoder_configuration/](https://www.paws-r-sdk.com/docs/ivsrealtime_create_encoder_configuration/) for full documentation.
 #'
 #' @param name Optional name to identify the resource.
+#' @param video Video configuration. Default: video resolution 1280x720, bitrate 2500
+#' kbps, 30 fps.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
 #' `string:string (key:value)`. See [Tagging AWS
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' for details, including restrictions that apply to tags and "Tag naming
 #' limits and requirements"; Amazon IVS has no constraints on tags beyond
 #' what is documented there.
-#' @param video Video configuration. Default: video resolution 1280x720, bitrate 2500
-#' kbps, 30 fps.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_create_encoder_configuration
-ivsrealtime_create_encoder_configuration <- function(name = NULL, tags = NULL, video = NULL) {
+ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateEncoderConfiguration",
     http_method = "POST",
     http_path = "/CreateEncoderConfiguration",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$create_encoder_configuration_input(name = name, tags = tags, video = video)
+  input <- .ivsrealtime$create_encoder_configuration_input(name = name, video = video, tags = tags)
   output <- .ivsrealtime$create_encoder_configuration_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -47,6 +48,13 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, tags = NULL, v
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_create_participant_token/](https://www.paws-r-sdk.com/docs/ivsrealtime_create_participant_token/) for full documentation.
 #'
+#' @param stageArn &#91;required&#93; ARN of the stage to which this token is scoped.
+#' @param duration Duration (in minutes), after which the token expires. Default: 720 (12
+#' hours).
+#' @param userId Name that can be specified to help identify the token. This can be any
+#' UTF-8 encoded text. *This field is exposed to all stage participants and
+#' should not be used for personally identifying, confidential, or
+#' sensitive information.*
 #' @param attributes Application-provided attributes to encode into the token and attach to a
 #' stage. Map keys and values can contain UTF-8 encoded text. The maximum
 #' length of this field is 1 KB total. *This field is exposed to all stage
@@ -54,28 +62,22 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, tags = NULL, v
 #' confidential, or sensitive information.*
 #' @param capabilities Set of capabilities that the user is allowed to perform in the stage.
 #' Default: `PUBLISH, SUBSCRIBE`.
-#' @param duration Duration (in minutes), after which the token expires. Default: 720 (12
-#' hours).
-#' @param stageArn &#91;required&#93; ARN of the stage to which this token is scoped.
-#' @param userId Name that can be specified to help identify the token. This can be any
-#' UTF-8 encoded text. *This field is exposed to all stage participants and
-#' should not be used for personally identifying, confidential, or
-#' sensitive information.*
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_create_participant_token
-ivsrealtime_create_participant_token <- function(attributes = NULL, capabilities = NULL, duration = NULL, stageArn, userId = NULL) {
+ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, userId = NULL, attributes = NULL, capabilities = NULL) {
   op <- new_operation(
     name = "CreateParticipantToken",
     http_method = "POST",
     http_path = "/CreateParticipantToken",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$create_participant_token_input(attributes = attributes, capabilities = capabilities, duration = duration, stageArn = stageArn, userId = userId)
+  input <- .ivsrealtime$create_participant_token_input(stageArn = stageArn, duration = duration, userId = userId, attributes = attributes, capabilities = capabilities)
   output <- .ivsrealtime$create_participant_token_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -98,21 +100,24 @@ ivsrealtime_create_participant_token <- function(attributes = NULL, capabilities
 #' for details, including restrictions that apply to tags and "Tag naming
 #' limits and requirements"; Amazon IVS has no constraints on tags beyond
 #' what is documented there.
+#' @param autoParticipantRecordingConfiguration Configuration object for individual participant recording, to attach to
+#' the new stage.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_create_stage
-ivsrealtime_create_stage <- function(name = NULL, participantTokenConfigurations = NULL, tags = NULL) {
+ivsrealtime_create_stage <- function(name = NULL, participantTokenConfigurations = NULL, tags = NULL, autoParticipantRecordingConfiguration = NULL) {
   op <- new_operation(
     name = "CreateStage",
     http_method = "POST",
     http_path = "/CreateStage",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$create_stage_input(name = name, participantTokenConfigurations = participantTokenConfigurations, tags = tags)
+  input <- .ivsrealtime$create_stage_input(name = name, participantTokenConfigurations = participantTokenConfigurations, tags = tags, autoParticipantRecordingConfiguration = autoParticipantRecordingConfiguration)
   output <- .ivsrealtime$create_stage_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -145,12 +150,13 @@ ivsrealtime_create_storage_configuration <- function(name = NULL, s3, tags = NUL
     name = "CreateStorageConfiguration",
     http_method = "POST",
     http_path = "/CreateStorageConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$create_storage_configuration_input(name = name, s3 = s3, tags = tags)
   output <- .ivsrealtime$create_storage_configuration_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -174,17 +180,48 @@ ivsrealtime_delete_encoder_configuration <- function(arn) {
     name = "DeleteEncoderConfiguration",
     http_method = "POST",
     http_path = "/DeleteEncoderConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$delete_encoder_configuration_input(arn = arn)
   output <- .ivsrealtime$delete_encoder_configuration_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .ivsrealtime$operations$delete_encoder_configuration <- ivsrealtime_delete_encoder_configuration
+
+#' Deletes the specified public key used to sign stage participant tokens
+#'
+#' @description
+#' Deletes the specified public key used to sign stage participant tokens. This invalidates future participant tokens generated using the key pair’s private key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_delete_public_key/](https://www.paws-r-sdk.com/docs/ivsrealtime_delete_public_key/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the public key to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_delete_public_key
+ivsrealtime_delete_public_key <- function(arn) {
+  op <- new_operation(
+    name = "DeletePublicKey",
+    http_method = "POST",
+    http_path = "/DeletePublicKey",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ivsrealtime$delete_public_key_input(arn = arn)
+  output <- .ivsrealtime$delete_public_key_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$delete_public_key <- ivsrealtime_delete_public_key
 
 #' Shuts down and deletes the specified stage (disconnecting all
 #' participants)
@@ -204,12 +241,13 @@ ivsrealtime_delete_stage <- function(arn) {
     name = "DeleteStage",
     http_method = "POST",
     http_path = "/DeleteStage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$delete_stage_input(arn = arn)
   output <- .ivsrealtime$delete_stage_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -233,12 +271,13 @@ ivsrealtime_delete_storage_configuration <- function(arn) {
     name = "DeleteStorageConfiguration",
     http_method = "POST",
     http_path = "/DeleteStorageConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$delete_storage_configuration_input(arn = arn)
   output <- .ivsrealtime$delete_storage_configuration_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -253,26 +292,27 @@ ivsrealtime_delete_storage_configuration <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_disconnect_participant/](https://www.paws-r-sdk.com/docs/ivsrealtime_disconnect_participant/) for full documentation.
 #'
+#' @param stageArn &#91;required&#93; ARN of the stage to which the participant is attached.
 #' @param participantId &#91;required&#93; Identifier of the participant to be disconnected. This is assigned by
 #' IVS and returned by
 #' [`create_participant_token`][ivsrealtime_create_participant_token].
 #' @param reason Description of why this participant is being disconnected.
-#' @param stageArn &#91;required&#93; ARN of the stage to which the participant is attached.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_disconnect_participant
-ivsrealtime_disconnect_participant <- function(participantId, reason = NULL, stageArn) {
+ivsrealtime_disconnect_participant <- function(stageArn, participantId, reason = NULL) {
   op <- new_operation(
     name = "DisconnectParticipant",
     http_method = "POST",
     http_path = "/DisconnectParticipant",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$disconnect_participant_input(participantId = participantId, reason = reason, stageArn = stageArn)
+  input <- .ivsrealtime$disconnect_participant_input(stageArn = stageArn, participantId = participantId, reason = reason)
   output <- .ivsrealtime$disconnect_participant_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -296,12 +336,13 @@ ivsrealtime_get_composition <- function(arn) {
     name = "GetComposition",
     http_method = "POST",
     http_path = "/GetComposition",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$get_composition_input(arn = arn)
   output <- .ivsrealtime$get_composition_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -325,12 +366,13 @@ ivsrealtime_get_encoder_configuration <- function(arn) {
     name = "GetEncoderConfiguration",
     http_method = "POST",
     http_path = "/GetEncoderConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$get_encoder_configuration_input(arn = arn)
   output <- .ivsrealtime$get_encoder_configuration_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -344,31 +386,62 @@ ivsrealtime_get_encoder_configuration <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_get_participant/](https://www.paws-r-sdk.com/docs/ivsrealtime_get_participant/) for full documentation.
 #'
+#' @param stageArn &#91;required&#93; Stage ARN.
+#' @param sessionId &#91;required&#93; ID of a session within the stage.
 #' @param participantId &#91;required&#93; Unique identifier for the participant. This is assigned by IVS and
 #' returned by
 #' [`create_participant_token`][ivsrealtime_create_participant_token].
-#' @param sessionId &#91;required&#93; ID of a session within the stage.
-#' @param stageArn &#91;required&#93; Stage ARN.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_get_participant
-ivsrealtime_get_participant <- function(participantId, sessionId, stageArn) {
+ivsrealtime_get_participant <- function(stageArn, sessionId, participantId) {
   op <- new_operation(
     name = "GetParticipant",
     http_method = "POST",
     http_path = "/GetParticipant",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$get_participant_input(participantId = participantId, sessionId = sessionId, stageArn = stageArn)
+  input <- .ivsrealtime$get_participant_input(stageArn = stageArn, sessionId = sessionId, participantId = participantId)
   output <- .ivsrealtime$get_participant_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .ivsrealtime$operations$get_participant <- ivsrealtime_get_participant
+
+#' Gets information for the specified public key
+#'
+#' @description
+#' Gets information for the specified public key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_get_public_key/](https://www.paws-r-sdk.com/docs/ivsrealtime_get_public_key/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the public key for which the information is to be retrieved.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_get_public_key
+ivsrealtime_get_public_key <- function(arn) {
+  op <- new_operation(
+    name = "GetPublicKey",
+    http_method = "POST",
+    http_path = "/GetPublicKey",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ivsrealtime$get_public_key_input(arn = arn)
+  output <- .ivsrealtime$get_public_key_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$get_public_key <- ivsrealtime_get_public_key
 
 #' Gets information for the specified stage
 #'
@@ -387,12 +460,13 @@ ivsrealtime_get_stage <- function(arn) {
     name = "GetStage",
     http_method = "POST",
     http_path = "/GetStage",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$get_stage_input(arn = arn)
   output <- .ivsrealtime$get_stage_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -406,23 +480,24 @@ ivsrealtime_get_stage <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_get_stage_session/](https://www.paws-r-sdk.com/docs/ivsrealtime_get_stage_session/) for full documentation.
 #'
-#' @param sessionId &#91;required&#93; ID of a session within the stage.
 #' @param stageArn &#91;required&#93; ARN of the stage for which the information is to be retrieved.
+#' @param sessionId &#91;required&#93; ID of a session within the stage.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_get_stage_session
-ivsrealtime_get_stage_session <- function(sessionId, stageArn) {
+ivsrealtime_get_stage_session <- function(stageArn, sessionId) {
   op <- new_operation(
     name = "GetStageSession",
     http_method = "POST",
     http_path = "/GetStageSession",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$get_stage_session_input(sessionId = sessionId, stageArn = stageArn)
+  input <- .ivsrealtime$get_stage_session_input(stageArn = stageArn, sessionId = sessionId)
   output <- .ivsrealtime$get_stage_session_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -446,17 +521,55 @@ ivsrealtime_get_storage_configuration <- function(arn) {
     name = "GetStorageConfiguration",
     http_method = "POST",
     http_path = "/GetStorageConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$get_storage_configuration_input(arn = arn)
   output <- .ivsrealtime$get_storage_configuration_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .ivsrealtime$operations$get_storage_configuration <- ivsrealtime_get_storage_configuration
+
+#' Import a public key to be used for signing stage participant tokens
+#'
+#' @description
+#' Import a public key to be used for signing stage participant tokens.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_import_public_key/](https://www.paws-r-sdk.com/docs/ivsrealtime_import_public_key/) for full documentation.
+#'
+#' @param publicKeyMaterial &#91;required&#93; The content of the public key to be imported.
+#' @param name Name of the public key to be imported.
+#' @param tags Tags attached to the resource. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS has no constraints on tags beyond
+#' what is documented there.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_import_public_key
+ivsrealtime_import_public_key <- function(publicKeyMaterial, name = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "ImportPublicKey",
+    http_method = "POST",
+    http_path = "/ImportPublicKey",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ivsrealtime$import_public_key_input(publicKeyMaterial = publicKeyMaterial, name = name, tags = tags)
+  output <- .ivsrealtime$import_public_key_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$import_public_key <- ivsrealtime_import_public_key
 
 #' Gets summary information about all Compositions in your account, in the
 #' AWS region where the API request is processed
@@ -466,27 +579,28 @@ ivsrealtime_get_storage_configuration <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_compositions/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_compositions/) for full documentation.
 #'
+#' @param filterByStageArn Filters the Composition list to match the specified Stage ARN.
 #' @param filterByEncoderConfigurationArn Filters the Composition list to match the specified EncoderConfiguration
 #' attached to at least one of its output.
-#' @param filterByStageArn Filters the Composition list to match the specified Stage ARN.
-#' @param maxResults Maximum number of results to return. Default: 100.
 #' @param nextToken The first Composition to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 100.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_list_compositions
-ivsrealtime_list_compositions <- function(filterByEncoderConfigurationArn = NULL, filterByStageArn = NULL, maxResults = NULL, nextToken = NULL) {
+ivsrealtime_list_compositions <- function(filterByStageArn = NULL, filterByEncoderConfigurationArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCompositions",
     http_method = "POST",
     http_path = "/ListCompositions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivsrealtime$list_compositions_input(filterByEncoderConfigurationArn = filterByEncoderConfigurationArn, filterByStageArn = filterByStageArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivsrealtime$list_compositions_input(filterByStageArn = filterByStageArn, filterByEncoderConfigurationArn = filterByEncoderConfigurationArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_compositions_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -501,24 +615,25 @@ ivsrealtime_list_compositions <- function(filterByEncoderConfigurationArn = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_encoder_configurations/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_encoder_configurations/) for full documentation.
 #'
-#' @param maxResults Maximum number of results to return. Default: 100.
 #' @param nextToken The first encoder configuration to retrieve. This is used for
 #' pagination; see the `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 100.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_list_encoder_configurations
-ivsrealtime_list_encoder_configurations <- function(maxResults = NULL, nextToken = NULL) {
+ivsrealtime_list_encoder_configurations <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEncoderConfigurations",
     http_method = "POST",
     http_path = "/ListEncoderConfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivsrealtime$list_encoder_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivsrealtime$list_encoder_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_encoder_configurations_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -533,29 +648,30 @@ ivsrealtime_list_encoder_configurations <- function(maxResults = NULL, nextToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_participant_events/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_participant_events/) for full documentation.
 #'
-#' @param maxResults Maximum number of results to return. Default: 50.
-#' @param nextToken The first participant event to retrieve. This is used for pagination;
-#' see the `nextToken` response field.
+#' @param stageArn &#91;required&#93; Stage ARN.
+#' @param sessionId &#91;required&#93; ID of a session within the stage.
 #' @param participantId &#91;required&#93; Unique identifier for this participant. This is assigned by IVS and
 #' returned by
 #' [`create_participant_token`][ivsrealtime_create_participant_token].
-#' @param sessionId &#91;required&#93; ID of a session within the stage.
-#' @param stageArn &#91;required&#93; Stage ARN.
+#' @param nextToken The first participant event to retrieve. This is used for pagination;
+#' see the `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 50.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_list_participant_events
-ivsrealtime_list_participant_events <- function(maxResults = NULL, nextToken = NULL, participantId, sessionId, stageArn) {
+ivsrealtime_list_participant_events <- function(stageArn, sessionId, participantId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListParticipantEvents",
     http_method = "POST",
     http_path = "/ListParticipantEvents",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivsrealtime$list_participant_events_input(maxResults = maxResults, nextToken = nextToken, participantId = participantId, sessionId = sessionId, stageArn = stageArn)
+  input <- .ivsrealtime$list_participant_events_input(stageArn = stageArn, sessionId = sessionId, participantId = participantId, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_participant_events_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -569,42 +685,82 @@ ivsrealtime_list_participant_events <- function(maxResults = NULL, nextToken = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_participants/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_participants/) for full documentation.
 #'
-#' @param filterByPublished Filters the response list to only show participants who published during
-#' the stage session. Only one of `filterByUserId`, `filterByPublished`, or
-#' `filterByState` can be provided per request.
-#' @param filterByState Filters the response list to only show participants in the specified
-#' state. Only one of `filterByUserId`, `filterByPublished`, or
-#' `filterByState` can be provided per request.
+#' @param stageArn &#91;required&#93; Stage ARN.
+#' @param sessionId &#91;required&#93; ID of the session within the stage.
 #' @param filterByUserId Filters the response list to match the specified user ID. Only one of
-#' `filterByUserId`, `filterByPublished`, or `filterByState` can be
-#' provided per request. A `userId` is a customer-assigned name to help
-#' identify the token; this can be used to link a participant to a user in
-#' the customer’s own systems.
-#' @param maxResults Maximum number of results to return. Default: 50.
+#' `filterByUserId`, `filterByPublished`, `filterByState`, or
+#' `filterByRecordingState` can be provided per request. A `userId` is a
+#' customer-assigned name to help identify the token; this can be used to
+#' link a participant to a user in the customer’s own systems.
+#' @param filterByPublished Filters the response list to only show participants who published during
+#' the stage session. Only one of `filterByUserId`, `filterByPublished`,
+#' `filterByState`, or `filterByRecordingState` can be provided per
+#' request.
+#' @param filterByState Filters the response list to only show participants in the specified
+#' state. Only one of `filterByUserId`, `filterByPublished`,
+#' `filterByState`, or `filterByRecordingState` can be provided per
+#' request.
 #' @param nextToken The first participant to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
-#' @param sessionId &#91;required&#93; ID of the session within the stage.
-#' @param stageArn &#91;required&#93; Stage ARN.
+#' @param maxResults Maximum number of results to return. Default: 50.
+#' @param filterByRecordingState Filters the response list to only show participants with the specified
+#' recording state. Only one of `filterByUserId`, `filterByPublished`,
+#' `filterByState`, or `filterByRecordingState` can be provided per
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_list_participants
-ivsrealtime_list_participants <- function(filterByPublished = NULL, filterByState = NULL, filterByUserId = NULL, maxResults = NULL, nextToken = NULL, sessionId, stageArn) {
+ivsrealtime_list_participants <- function(stageArn, sessionId, filterByUserId = NULL, filterByPublished = NULL, filterByState = NULL, nextToken = NULL, maxResults = NULL, filterByRecordingState = NULL) {
   op <- new_operation(
     name = "ListParticipants",
     http_method = "POST",
     http_path = "/ListParticipants",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivsrealtime$list_participants_input(filterByPublished = filterByPublished, filterByState = filterByState, filterByUserId = filterByUserId, maxResults = maxResults, nextToken = nextToken, sessionId = sessionId, stageArn = stageArn)
+  input <- .ivsrealtime$list_participants_input(stageArn = stageArn, sessionId = sessionId, filterByUserId = filterByUserId, filterByPublished = filterByPublished, filterByState = filterByState, nextToken = nextToken, maxResults = maxResults, filterByRecordingState = filterByRecordingState)
   output <- .ivsrealtime$list_participants_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .ivsrealtime$operations$list_participants <- ivsrealtime_list_participants
+
+#' Gets summary information about all public keys in your account, in the
+#' AWS region where the API request is processed
+#'
+#' @description
+#' Gets summary information about all public keys in your account, in the AWS region where the API request is processed.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_public_keys/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_public_keys/) for full documentation.
+#'
+#' @param nextToken The first public key to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 50.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_list_public_keys
+ivsrealtime_list_public_keys <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListPublicKeys",
+    http_method = "POST",
+    http_path = "/ListPublicKeys",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "publicKeys")
+  )
+  input <- .ivsrealtime$list_public_keys_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .ivsrealtime$list_public_keys_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$list_public_keys <- ivsrealtime_list_public_keys
 
 #' Gets all sessions for a specified stage
 #'
@@ -613,25 +769,26 @@ ivsrealtime_list_participants <- function(filterByPublished = NULL, filterByStat
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_stage_sessions/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_stage_sessions/) for full documentation.
 #'
-#' @param maxResults Maximum number of results to return. Default: 50.
+#' @param stageArn &#91;required&#93; Stage ARN.
 #' @param nextToken The first stage session to retrieve. This is used for pagination; see
 #' the `nextToken` response field.
-#' @param stageArn &#91;required&#93; Stage ARN.
+#' @param maxResults Maximum number of results to return. Default: 50.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_list_stage_sessions
-ivsrealtime_list_stage_sessions <- function(maxResults = NULL, nextToken = NULL, stageArn) {
+ivsrealtime_list_stage_sessions <- function(stageArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStageSessions",
     http_method = "POST",
     http_path = "/ListStageSessions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivsrealtime$list_stage_sessions_input(maxResults = maxResults, nextToken = nextToken, stageArn = stageArn)
+  input <- .ivsrealtime$list_stage_sessions_input(stageArn = stageArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_stage_sessions_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -646,24 +803,25 @@ ivsrealtime_list_stage_sessions <- function(maxResults = NULL, nextToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_stages/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_stages/) for full documentation.
 #'
-#' @param maxResults Maximum number of results to return. Default: 50.
 #' @param nextToken The first stage to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 50.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_list_stages
-ivsrealtime_list_stages <- function(maxResults = NULL, nextToken = NULL) {
+ivsrealtime_list_stages <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStages",
     http_method = "POST",
     http_path = "/ListStages",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivsrealtime$list_stages_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivsrealtime$list_stages_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_stages_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -678,25 +836,26 @@ ivsrealtime_list_stages <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_storage_configurations/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_storage_configurations/) for full documentation.
 #'
-#' @param maxResults Maximum number of storage configurations to return. Default: your
-#' service quota or 100, whichever is smaller.
 #' @param nextToken The first storage configuration to retrieve. This is used for
 #' pagination; see the `nextToken` response field.
+#' @param maxResults Maximum number of storage configurations to return. Default: your
+#' service quota or 100, whichever is smaller.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_list_storage_configurations
-ivsrealtime_list_storage_configurations <- function(maxResults = NULL, nextToken = NULL) {
+ivsrealtime_list_storage_configurations <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStorageConfigurations",
     http_method = "POST",
     http_path = "/ListStorageConfigurations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivsrealtime$list_storage_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivsrealtime$list_storage_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_storage_configurations_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -720,12 +879,13 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ivsrealtime$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -740,10 +900,10 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_start_composition/](https://www.paws-r-sdk.com/docs/ivsrealtime_start_composition/) for full documentation.
 #'
-#' @param destinations &#91;required&#93; Array of destination configuration.
+#' @param stageArn &#91;required&#93; ARN of the stage to be used for compositing.
 #' @param idempotencyToken Idempotency token.
 #' @param layout Layout object to configure composition parameters.
-#' @param stageArn &#91;required&#93; ARN of the stage to be used for compositing.
+#' @param destinations &#91;required&#93; Array of destination configuration.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
 #' `string:string (key:value)`. See [Tagging AWS
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
@@ -754,17 +914,18 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_start_composition
-ivsrealtime_start_composition <- function(destinations, idempotencyToken = NULL, layout = NULL, stageArn, tags = NULL) {
+ivsrealtime_start_composition <- function(stageArn, idempotencyToken = NULL, layout = NULL, destinations, tags = NULL) {
   op <- new_operation(
     name = "StartComposition",
     http_method = "POST",
     http_path = "/StartComposition",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$start_composition_input(destinations = destinations, idempotencyToken = idempotencyToken, layout = layout, stageArn = stageArn, tags = tags)
+  input <- .ivsrealtime$start_composition_input(stageArn = stageArn, idempotencyToken = idempotencyToken, layout = layout, destinations = destinations, tags = tags)
   output <- .ivsrealtime$start_composition_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -788,12 +949,13 @@ ivsrealtime_stop_composition <- function(arn) {
     name = "StopComposition",
     http_method = "POST",
     http_path = "/StopComposition",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$stop_composition_input(arn = arn)
   output <- .ivsrealtime$stop_composition_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -823,12 +985,13 @@ ivsrealtime_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ivsrealtime$tag_resource_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -858,12 +1021,13 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ivsrealtime$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ivsrealtime$untag_resource_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -879,21 +1043,24 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param arn &#91;required&#93; ARN of the stage to be updated.
 #' @param name Name of the stage to be updated.
+#' @param autoParticipantRecordingConfiguration Configuration object for individual participant recording, to attach to
+#' the stage. Note that this cannot be updated while recording is active.
 #'
 #' @keywords internal
 #'
 #' @rdname ivsrealtime_update_stage
-ivsrealtime_update_stage <- function(arn, name = NULL) {
+ivsrealtime_update_stage <- function(arn, name = NULL, autoParticipantRecordingConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateStage",
     http_method = "POST",
     http_path = "/UpdateStage",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .ivsrealtime$update_stage_input(arn = arn, name = name)
+  input <- .ivsrealtime$update_stage_input(arn = arn, name = name, autoParticipantRecordingConfiguration = autoParticipantRecordingConfiguration)
   output <- .ivsrealtime$update_stage_output()
   config <- get_config()
-  svc <- .ivsrealtime$service(config)
+  svc <- .ivsrealtime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

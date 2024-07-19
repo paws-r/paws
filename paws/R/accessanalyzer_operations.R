@@ -39,12 +39,13 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, ruleName, clientToken
     name = "ApplyArchiveRule",
     http_method = "PUT",
     http_path = "/archive-rule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$apply_archive_rule_input(analyzerArn = analyzerArn, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$apply_archive_rule_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -87,12 +88,13 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
     name = "CancelPolicyGeneration",
     http_method = "PUT",
     http_path = "/policy/generation/{jobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$cancel_policy_generation_input(jobId = jobId)
   output <- .accessanalyzer$cancel_policy_generation_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -110,7 +112,12 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #'
 #' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
 #' @param access &#91;required&#93; An access object containing the permissions that shouldn't be granted by
-#' the specified policy.
+#' the specified policy. If only actions are specified, IAM Access Analyzer
+#' checks for access of the actions on all resources in the policy. If only
+#' resources are specified, then IAM Access Analyzer checks which actions
+#' have access to the specified resources. If both actions and resources
+#' are specified, then IAM Access Analyzer checks which of the specified
+#' actions have access to the specified resources.
 #' @param policyType &#91;required&#93; The type of policy. Identity policies grant permissions to IAM
 #' principals. Identity policies include managed and inline policies for
 #' IAM roles, users, and groups.
@@ -145,12 +152,57 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #'     list(
 #'       actions = list(
 #'         "string"
+#'       ),
+#'       resources = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
 #'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' #
+#' svc$check_access_not_granted(
+#'   access = list(
+#'     list(
+#'       actions = list(
+#'         "s3:PutObject"
+#'       )
+#'     )
+#'   ),
+#'   policyDocument = "\{"Version":"2012-10-17","Id":"123","Statement":[\{"Sid":...",
+#'   policyType = "RESOURCE_POLICY"
+#' )
+#' 
+#' #
+#' svc$check_access_not_granted(
+#'   access = list(
+#'     list(
+#'       resources = list(
+#'         "arn:aws:s3:::sensitive-bucket/*"
+#'       )
+#'     )
+#'   ),
+#'   policyDocument = "\{"Version":"2012-10-17","Id":"123","Statement":[\{"Sid":...",
+#'   policyType = "RESOURCE_POLICY"
+#' )
+#' 
+#' #
+#' svc$check_access_not_granted(
+#'   access = list(
+#'     list(
+#'       resources = list(
+#'         "arn:aws:s3:::my-bucket/*"
+#'       )
+#'     )
+#'   ),
+#'   policyDocument = "\{"Version":"2012-10-17","Id":"123","Statement":[\{"Sid":...",
+#'   policyType = "RESOURCE_POLICY"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -162,12 +214,13 @@ accessanalyzer_check_access_not_granted <- function(policyDocument, access, poli
     name = "CheckAccessNotGranted",
     http_method = "POST",
     http_path = "/policy/check-access-not-granted",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$check_access_not_granted_input(policyDocument = policyDocument, access = access, policyType = policyType)
   output <- .accessanalyzer$check_access_not_granted_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -239,17 +292,98 @@ accessanalyzer_check_no_new_access <- function(newPolicyDocument, existingPolicy
     name = "CheckNoNewAccess",
     http_method = "POST",
     http_path = "/policy/check-no-new-access",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$check_no_new_access_input(newPolicyDocument = newPolicyDocument, existingPolicyDocument = existingPolicyDocument, policyType = policyType)
   output <- .accessanalyzer$check_no_new_access_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .accessanalyzer$operations$check_no_new_access <- accessanalyzer_check_no_new_access
+
+#' Checks whether a resource policy can grant public access to the
+#' specified resource type
+#'
+#' @description
+#' Checks whether a resource policy can grant public access to the
+#' specified resource type.
+#'
+#' @usage
+#' accessanalyzer_check_no_public_access(policyDocument, resourceType)
+#'
+#' @param policyDocument &#91;required&#93; The JSON policy document to evaluate for public access.
+#' @param resourceType &#91;required&#93; The type of resource to evaluate for public access. For example, to
+#' check for public access to Amazon S3 buckets, you can choose
+#' `AWS::S3::Bucket` for the resource type.
+#' 
+#' For resource types not supported as valid values, IAM Access Analyzer
+#' will return an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = "PASS"|"FAIL",
+#'   message = "string",
+#'   reasons = list(
+#'     list(
+#'       description = "string",
+#'       statementIndex = 123,
+#'       statementId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$check_no_public_access(
+#'   policyDocument = "string",
+#'   resourceType = "AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::EFS::FileSystem"|"AWS::OpenSearchService::Domain"|"AWS::Kinesis::Stream"|"AWS::Kinesis::StreamConsumer"|"AWS::KMS::Key"|"AWS::Lambda::Function"|"AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3Express::DirectoryBucket"|"AWS::S3::Glacier"|"AWS::S3Outposts::Bucket"|"AWS::S3Outposts::AccessPoint"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SQS::Queue"|"AWS::IAM::AssumeRolePolicyDocument"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' #
+#' svc$check_no_public_access(
+#'   policyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Bob\",\"Effe...",
+#'   resourceType = "AWS::S3::Bucket"
+#' )
+#' 
+#' #
+#' svc$check_no_public_access(
+#'   policyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Bob\",\"Effe...",
+#'   resourceType = "AWS::S3::Bucket"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_check_no_public_access
+#'
+#' @aliases accessanalyzer_check_no_public_access
+accessanalyzer_check_no_public_access <- function(policyDocument, resourceType) {
+  op <- new_operation(
+    name = "CheckNoPublicAccess",
+    http_method = "POST",
+    http_path = "/policy/check-no-public-access",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .accessanalyzer$check_no_public_access_input(policyDocument = policyDocument, resourceType = resourceType)
+  output <- .accessanalyzer$check_no_public_access_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$check_no_public_access <- accessanalyzer_check_no_public_access
 
 #' Creates an access preview that allows you to preview IAM Access Analyzer
 #' findings for your resource before deploying resource permissions
@@ -413,12 +547,13 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
     name = "CreateAccessPreview",
     http_method = "PUT",
     http_path = "/access-preview",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$create_access_preview_input(analyzerArn = analyzerArn, configurations = configurations, clientToken = clientToken)
   output <- .accessanalyzer$create_access_preview_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -503,12 +638,13 @@ accessanalyzer_create_analyzer <- function(analyzerName, type, archiveRules = NU
     name = "CreateAnalyzer",
     http_method = "PUT",
     http_path = "/analyzer",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, type = type, archiveRules = archiveRules, tags = tags, clientToken = clientToken, configuration = configuration)
   output <- .accessanalyzer$create_analyzer_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -572,12 +708,13 @@ accessanalyzer_create_archive_rule <- function(analyzerName, ruleName, filter, c
     name = "CreateArchiveRule",
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$create_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$create_archive_rule_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -619,12 +756,13 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
     name = "DeleteAnalyzer",
     http_method = "DELETE",
     http_path = "/analyzer/{analyzerName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$delete_analyzer_input(analyzerName = analyzerName, clientToken = clientToken)
   output <- .accessanalyzer$delete_analyzer_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -666,17 +804,80 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientTok
     name = "DeleteArchiveRule",
     http_method = "DELETE",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$delete_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$delete_archive_rule_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .accessanalyzer$operations$delete_archive_rule <- accessanalyzer_delete_archive_rule
+
+#' Creates a recommendation for an unused permissions finding
+#'
+#' @description
+#' Creates a recommendation for an unused permissions finding.
+#'
+#' @usage
+#' accessanalyzer_generate_finding_recommendation(analyzerArn, id)
+#'
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' used to generate the finding recommendation.
+#' @param id &#91;required&#93; The unique ID for the finding recommendation.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$generate_finding_recommendation(
+#'   analyzerArn = "string",
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' #
+#' svc$generate_finding_recommendation(
+#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
+#'   id = "finding-id"
+#' )
+#' 
+#' #
+#' svc$generate_finding_recommendation(
+#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
+#'   id = "!"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_generate_finding_recommendation
+#'
+#' @aliases accessanalyzer_generate_finding_recommendation
+accessanalyzer_generate_finding_recommendation <- function(analyzerArn, id) {
+  op <- new_operation(
+    name = "GenerateFindingRecommendation",
+    http_method = "POST",
+    http_path = "/recommendation/{id}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .accessanalyzer$generate_finding_recommendation_input(analyzerArn = analyzerArn, id = id)
+  output <- .accessanalyzer$generate_finding_recommendation_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$generate_finding_recommendation <- accessanalyzer_generate_finding_recommendation
 
 #' Retrieves information about an access preview for the specified analyzer
 #'
@@ -843,12 +1044,13 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
     name = "GetAccessPreview",
     http_method = "GET",
     http_path = "/access-preview/{accessPreviewId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$get_access_preview_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn)
   output <- .accessanalyzer$get_access_preview_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -916,12 +1118,13 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
     name = "GetAnalyzedResource",
     http_method = "GET",
     http_path = "/analyzed-resource",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$get_analyzed_resource_input(analyzerArn = analyzerArn, resourceArn = resourceArn)
   output <- .accessanalyzer$get_analyzed_resource_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -986,12 +1189,13 @@ accessanalyzer_get_analyzer <- function(analyzerName) {
     name = "GetAnalyzer",
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$get_analyzer_input(analyzerName = analyzerName)
   output <- .accessanalyzer$get_analyzer_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1062,12 +1266,13 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
     name = "GetArchiveRule",
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$get_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName)
   output <- .accessanalyzer$get_archive_rule_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1151,17 +1356,133 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
     name = "GetFinding",
     http_method = "GET",
     http_path = "/finding/{id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$get_finding_input(analyzerArn = analyzerArn, id = id)
   output <- .accessanalyzer$get_finding_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .accessanalyzer$operations$get_finding <- accessanalyzer_get_finding
+
+#' Retrieves information about a finding recommendation for the specified
+#' analyzer
+#'
+#' @description
+#' Retrieves information about a finding recommendation for the specified
+#' analyzer.
+#'
+#' @usage
+#' accessanalyzer_get_finding_recommendation(analyzerArn, id, maxResults,
+#'   nextToken)
+#'
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' used to generate the finding recommendation.
+#' @param id &#91;required&#93; The unique ID for the finding recommendation.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   startedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   completedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   nextToken = "string",
+#'   error = list(
+#'     code = "string",
+#'     message = "string"
+#'   ),
+#'   resourceArn = "string",
+#'   recommendedSteps = list(
+#'     list(
+#'       unusedPermissionsRecommendedStep = list(
+#'         policyUpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         recommendedAction = "CREATE_POLICY"|"DETACH_POLICY",
+#'         recommendedPolicy = "string",
+#'         existingPolicyId = "string"
+#'       )
+#'     )
+#'   ),
+#'   recommendationType = "UnusedPermissionRecommendation",
+#'   status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_finding_recommendation(
+#'   analyzerArn = "string",
+#'   id = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' #
+#' svc$get_finding_recommendation(
+#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
+#'   id = "finding-id",
+#'   maxResults = 3L,
+#'   nextToken = "token"
+#' )
+#' 
+#' #
+#' svc$get_finding_recommendation(
+#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
+#'   id = "finding-id",
+#'   maxResults = 3L
+#' )
+#' 
+#' #
+#' svc$get_finding_recommendation(
+#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
+#'   id = "finding-id",
+#'   maxResults = 3L
+#' )
+#' 
+#' #
+#' svc$get_finding_recommendation(
+#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
+#'   id = "!"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_get_finding_recommendation
+#'
+#' @aliases accessanalyzer_get_finding_recommendation
+accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetFindingRecommendation",
+    http_method = "GET",
+    http_path = "/recommendation/{id}",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendedSteps")
+  )
+  input <- .accessanalyzer$get_finding_recommendation_input(analyzerArn = analyzerArn, id = id, maxResults = maxResults, nextToken = nextToken)
+  output <- .accessanalyzer$get_finding_recommendation_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$get_finding_recommendation <- accessanalyzer_get_finding_recommendation
 
 #' Retrieves information about the specified finding
 #'
@@ -1280,12 +1601,13 @@ accessanalyzer_get_finding_v2 <- function(analyzerArn, id, maxResults = NULL, ne
     name = "GetFindingV2",
     http_method = "GET",
     http_path = "/findingv2/{id}",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingDetails")
   )
   input <- .accessanalyzer$get_finding_v2_input(analyzerArn = analyzerArn, id = id, maxResults = maxResults, nextToken = nextToken)
   output <- .accessanalyzer$get_finding_v2_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1390,12 +1712,13 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
     name = "GetGeneratedPolicy",
     http_method = "GET",
     http_path = "/policy/generation/{jobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$get_generated_policy_input(jobId = jobId, includeResourcePlaceholders = includeResourcePlaceholders, includeServiceLevelTemplate = includeServiceLevelTemplate)
   output <- .accessanalyzer$get_generated_policy_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1498,12 +1821,13 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
     name = "ListAccessPreviewFindings",
     http_method = "POST",
     http_path = "/access-preview/{accessPreviewId}",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .accessanalyzer$list_access_preview_findings_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_preview_findings_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1564,12 +1888,13 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
     name = "ListAccessPreviews",
     http_method = "GET",
     http_path = "/access-preview",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accessPreviews")
   )
   input <- .accessanalyzer$list_access_previews_input(analyzerArn = analyzerArn, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_previews_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1630,12 +1955,13 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
     name = "ListAnalyzedResources",
     http_method = "POST",
     http_path = "/analyzed-resource",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "analyzedResources")
   )
   input <- .accessanalyzer$list_analyzed_resources_input(analyzerArn = analyzerArn, resourceType = resourceType, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_analyzed_resources_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1707,12 +2033,13 @@ accessanalyzer_list_analyzers <- function(nextToken = NULL, maxResults = NULL, t
     name = "ListAnalyzers",
     http_method = "GET",
     http_path = "/analyzer",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "analyzers")
   )
   input <- .accessanalyzer$list_analyzers_input(nextToken = nextToken, maxResults = maxResults, type = type)
   output <- .accessanalyzer$list_analyzers_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1783,12 +2110,13 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
     name = "ListArchiveRules",
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}/archive-rule",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "archiveRules")
   )
   input <- .accessanalyzer$list_archive_rules_input(analyzerName = analyzerName, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_archive_rules_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1903,12 +2231,13 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
     name = "ListFindings",
     http_method = "POST",
     http_path = "/finding",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .accessanalyzer$list_findings_input(analyzerArn = analyzerArn, filter = filter, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_findings_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2005,12 +2334,13 @@ accessanalyzer_list_findings_v2 <- function(analyzerArn, filter = NULL, maxResul
     name = "ListFindingsV2",
     http_method = "POST",
     http_path = "/findingv2",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .accessanalyzer$list_findings_v2_input(analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken, sort = sort)
   output <- .accessanalyzer$list_findings_v2_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2072,12 +2402,13 @@ accessanalyzer_list_policy_generations <- function(principalArn = NULL, maxResul
     name = "ListPolicyGenerations",
     http_method = "GET",
     http_path = "/policy/generation",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyGenerations")
   )
   input <- .accessanalyzer$list_policy_generations_input(principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
   output <- .accessanalyzer$list_policy_generations_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2121,12 +2452,13 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .accessanalyzer$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2202,12 +2534,13 @@ accessanalyzer_start_policy_generation <- function(policyGenerationDetails, clou
     name = "StartPolicyGeneration",
     http_method = "PUT",
     http_path = "/policy/generation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$start_policy_generation_input(policyGenerationDetails = policyGenerationDetails, cloudTrailDetails = cloudTrailDetails, clientToken = clientToken)
   output <- .accessanalyzer$start_policy_generation_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2255,12 +2588,13 @@ accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn, resourc
     name = "StartResourceScan",
     http_method = "POST",
     http_path = "/resource/scan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$start_resource_scan_input(analyzerArn = analyzerArn, resourceArn = resourceArn, resourceOwnerAccount = resourceOwnerAccount)
   output <- .accessanalyzer$start_resource_scan_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2301,12 +2635,13 @@ accessanalyzer_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .accessanalyzer$tag_resource_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2347,12 +2682,13 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .accessanalyzer$untag_resource_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2410,12 +2746,13 @@ accessanalyzer_update_archive_rule <- function(analyzerName, ruleName, filter, c
     name = "UpdateArchiveRule",
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$update_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$update_archive_rule_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2467,12 +2804,13 @@ accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, reso
     name = "UpdateFindings",
     http_method = "PUT",
     http_path = "/finding",
+    host_prefix = "",
     paginator = list()
   )
   input <- .accessanalyzer$update_findings_input(analyzerArn = analyzerArn, status = status, ids = ids, resourceArn = resourceArn, clientToken = clientToken)
   output <- .accessanalyzer$update_findings_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2585,12 +2923,13 @@ accessanalyzer_validate_policy <- function(locale = NULL, maxResults = NULL, nex
     name = "ValidatePolicy",
     http_method = "POST",
     http_path = "/policy/validation",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .accessanalyzer$validate_policy_input(locale = locale, maxResults = maxResults, nextToken = nextToken, policyDocument = policyDocument, policyType = policyType, validatePolicyResourceType = validatePolicyResourceType)
   output <- .accessanalyzer$validate_policy_output()
   config <- get_config()
-  svc <- .accessanalyzer$service(config)
+  svc <- .accessanalyzer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

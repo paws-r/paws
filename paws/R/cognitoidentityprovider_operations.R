@@ -66,12 +66,13 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
     name = "AddCustomAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$add_custom_attributes_input(UserPoolId = UserPoolId, CustomAttributes = CustomAttributes)
   output <- .cognitoidentityprovider$add_custom_attributes_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -132,12 +133,13 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
     name = "AdminAddUserToGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_add_user_to_group_input(UserPoolId = UserPoolId, Username = Username, GroupName = GroupName)
   output <- .cognitoidentityprovider$admin_add_user_to_group_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -238,12 +240,13 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
     name = "AdminConfirmSignUp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_confirm_sign_up_input(UserPoolId = UserPoolId, Username = Username, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_confirm_sign_up_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -453,7 +456,7 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #'       "2015-01-01"
 #'     ),
 #'     Enabled = TRUE|FALSE,
-#'     UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'     UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD"|"EXTERNAL_PROVIDER",
 #'     MFAOptions = list(
 #'       list(
 #'         DeliveryMedium = "SMS"|"EMAIL",
@@ -532,12 +535,13 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
     name = "AdminCreateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_create_user_input(UserPoolId = UserPoolId, Username = Username, UserAttributes = UserAttributes, ValidationData = ValidationData, TemporaryPassword = TemporaryPassword, ForceAliasCreation = ForceAliasCreation, MessageAction = MessageAction, DesiredDeliveryMediums = DesiredDeliveryMediums, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_create_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -593,12 +597,13 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
     name = "AdminDeleteUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_delete_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_delete_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -665,12 +670,13 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
     name = "AdminDeleteUserAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_delete_user_attributes_input(UserPoolId = UserPoolId, Username = Username, UserAttributeNames = UserAttributeNames)
   output <- .cognitoidentityprovider$admin_delete_user_attributes_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -758,12 +764,13 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
     name = "AdminDisableProviderForUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_disable_provider_for_user_input(UserPoolId = UserPoolId, User = User)
   output <- .cognitoidentityprovider$admin_disable_provider_for_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -822,12 +829,13 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
     name = "AdminDisableUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_disable_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_disable_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -883,12 +891,13 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
     name = "AdminEnableUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_enable_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_enable_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -947,12 +956,13 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
     name = "AdminForgetDevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_forget_device_input(UserPoolId = UserPoolId, Username = Username, DeviceKey = DeviceKey)
   output <- .cognitoidentityprovider$admin_forget_device_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1033,12 +1043,13 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
     name = "AdminGetDevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_get_device_input(DeviceKey = DeviceKey, UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_get_device_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1093,7 +1104,7 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #'     "2015-01-01"
 #'   ),
 #'   Enabled = TRUE|FALSE,
-#'   UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'   UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD"|"EXTERNAL_PROVIDER",
 #'   MFAOptions = list(
 #'     list(
 #'       DeliveryMedium = "SMS"|"EMAIL",
@@ -1125,12 +1136,13 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
     name = "AdminGetUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_get_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_get_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1361,12 +1373,13 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
     name = "AdminInitiateAuth",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_initiate_auth_input(UserPoolId = UserPoolId, ClientId = ClientId, AuthFlow = AuthFlow, AuthParameters = AuthParameters, ClientMetadata = ClientMetadata, AnalyticsMetadata = AnalyticsMetadata, ContextData = ContextData)
   output <- .cognitoidentityprovider$admin_initiate_auth_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1496,12 +1509,13 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
     name = "AdminLinkProviderForUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_link_provider_for_user_input(UserPoolId = UserPoolId, DestinationUser = DestinationUser, SourceUser = SourceUser)
   output <- .cognitoidentityprovider$admin_link_provider_for_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1592,12 +1606,13 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
     name = "AdminListDevices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_list_devices_input(UserPoolId = UserPoolId, Username = Username, Limit = Limit, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$admin_list_devices_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1680,12 +1695,13 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
     name = "AdminListGroupsForUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
   )
   input <- .cognitoidentityprovider$admin_list_groups_for_user_input(Username = Username, UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_groups_for_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1790,12 +1806,13 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
     name = "AdminListUserAuthEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthEvents")
   )
   input <- .cognitoidentityprovider$admin_list_user_auth_events_input(UserPoolId = UserPoolId, Username = Username, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_user_auth_events_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1854,12 +1871,13 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
     name = "AdminRemoveUserFromGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_remove_user_from_group_input(UserPoolId = UserPoolId, Username = Username, GroupName = GroupName)
   output <- .cognitoidentityprovider$admin_remove_user_from_group_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1983,12 +2001,13 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
     name = "AdminResetUserPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_reset_user_password_input(UserPoolId = UserPoolId, Username = Username, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_reset_user_password_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2248,12 +2267,13 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
     name = "AdminRespondToAuthChallenge",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_respond_to_auth_challenge_input(UserPoolId = UserPoolId, ClientId = ClientId, ChallengeName = ChallengeName, ChallengeResponses = ChallengeResponses, Session = Session, AnalyticsMetadata = AnalyticsMetadata, ContextData = ContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_respond_to_auth_challenge_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2326,12 +2346,13 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
     name = "AdminSetUserMFAPreference",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_set_user_mfa_preference_input(SMSMfaSettings = SMSMfaSettings, SoftwareTokenMfaSettings = SoftwareTokenMfaSettings, Username = Username, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$admin_set_user_mfa_preference_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2419,12 +2440,13 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
     name = "AdminSetUserPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_set_user_password_input(UserPoolId = UserPoolId, Username = Username, Password = Password, Permanent = Permanent)
   output <- .cognitoidentityprovider$admin_set_user_password_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2494,12 +2516,13 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
     name = "AdminSetUserSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_set_user_settings_input(UserPoolId = UserPoolId, Username = Username, MFAOptions = MFAOptions)
   output <- .cognitoidentityprovider$admin_set_user_settings_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2568,12 +2591,13 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
     name = "AdminUpdateAuthEventFeedback",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_update_auth_event_feedback_input(UserPoolId = UserPoolId, Username = Username, EventId = EventId, FeedbackValue = FeedbackValue)
   output <- .cognitoidentityprovider$admin_update_auth_event_feedback_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2634,12 +2658,13 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
     name = "AdminUpdateDeviceStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_update_device_status_input(UserPoolId = UserPoolId, Username = Username, DeviceKey = DeviceKey, DeviceRememberedStatus = DeviceRememberedStatus)
   output <- .cognitoidentityprovider$admin_update_device_status_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2780,12 +2805,13 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
     name = "AdminUpdateUserAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_update_user_attributes_input(UserPoolId = UserPoolId, Username = Username, UserAttributes = UserAttributes, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_update_user_attributes_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2867,12 +2893,13 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
     name = "AdminUserGlobalSignOut",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$admin_user_global_sign_out_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_user_global_sign_out_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2951,12 +2978,13 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
     name = "AssociateSoftwareToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$associate_software_token_input(AccessToken = AccessToken, Session = Session)
   output <- .cognitoidentityprovider$associate_software_token_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3010,12 +3038,13 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
     name = "ChangePassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$change_password_input(PreviousPassword = PreviousPassword, ProposedPassword = ProposedPassword, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$change_password_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3082,12 +3111,13 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
     name = "ConfirmDevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$confirm_device_input(AccessToken = AccessToken, DeviceKey = DeviceKey, DeviceSecretVerifierConfig = DeviceSecretVerifierConfig, DeviceName = DeviceName)
   output <- .cognitoidentityprovider$confirm_device_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3199,12 +3229,13 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
     name = "ConfirmForgotPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$confirm_forgot_password_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, ConfirmationCode = ConfirmationCode, Password = Password, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$confirm_forgot_password_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3332,12 +3363,13 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
     name = "ConfirmSignUp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$confirm_sign_up_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, ConfirmationCode = ConfirmationCode, ForceAliasCreation = ForceAliasCreation, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$confirm_sign_up_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3429,12 +3461,13 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$create_group_input(GroupName = GroupName, UserPoolId = UserPoolId, Description = Description, RoleArn = RoleArn, Precedence = Precedence)
   output <- .cognitoidentityprovider$create_group_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3589,12 +3622,13 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
     name = "CreateIdentityProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$create_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName, ProviderType = ProviderType, ProviderDetails = ProviderDetails, AttributeMapping = AttributeMapping, IdpIdentifiers = IdpIdentifiers)
   output <- .cognitoidentityprovider$create_identity_provider_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3680,12 +3714,13 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
     name = "CreateResourceServer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$create_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier, Name = Name, Scopes = Scopes)
   output <- .cognitoidentityprovider$create_resource_server_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3767,12 +3802,13 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
     name = "CreateUserImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$create_user_import_job_input(JobName = JobName, UserPoolId = UserPoolId, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn)
   output <- .cognitoidentityprovider$create_user_import_job_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4341,12 +4377,13 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
     name = "CreateUserPool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, UserAttributeUpdateSettings = UserAttributeUpdateSettings, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$create_user_pool_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4835,12 +4872,13 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
     name = "CreateUserPoolClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$create_user_pool_client_input(UserPoolId = UserPoolId, ClientName = ClientName, GenerateSecret = GenerateSecret, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$create_user_pool_client_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4913,12 +4951,13 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
     name = "CreateUserPoolDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$create_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, CustomDomainConfig = CustomDomainConfig)
   output <- .cognitoidentityprovider$create_user_pool_domain_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4959,12 +4998,13 @@ cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
     name = "DeleteGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_group_input(GroupName = GroupName, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_group_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5004,12 +5044,13 @@ cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, Provide
     name = "DeleteIdentityProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName)
   output <- .cognitoidentityprovider$delete_identity_provider_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5048,12 +5089,13 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
     name = "DeleteResourceServer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier)
   output <- .cognitoidentityprovider$delete_resource_server_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5102,12 +5144,13 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
     name = "DeleteUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_user_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$delete_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5165,12 +5208,13 @@ cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, A
     name = "DeleteUserAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_user_attributes_input(UserAttributeNames = UserAttributeNames, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$delete_user_attributes_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5207,12 +5251,13 @@ cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
     name = "DeleteUserPool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_user_pool_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_user_pool_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5251,12 +5296,13 @@ cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId
     name = "DeleteUserPoolClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$delete_user_pool_client_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5297,12 +5343,13 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
     name = "DeleteUserPoolDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$delete_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_user_pool_domain_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5366,12 +5413,13 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
     name = "DescribeIdentityProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$describe_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName)
   output <- .cognitoidentityprovider$describe_identity_provider_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5432,12 +5480,13 @@ cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identif
     name = "DescribeResourceServer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$describe_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier)
   output <- .cognitoidentityprovider$describe_resource_server_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5540,12 +5589,13 @@ cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, Clie
     name = "DescribeRiskConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$describe_risk_configuration_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$describe_risk_configuration_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5610,12 +5660,13 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
     name = "DescribeUserImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$describe_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$describe_user_import_job_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5810,12 +5861,13 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
     name = "DescribeUserPool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$describe_user_pool_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$describe_user_pool_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5930,12 +5982,13 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
     name = "DescribeUserPoolClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$describe_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$describe_user_pool_client_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5990,12 +6043,13 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
     name = "DescribeUserPoolDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$describe_user_pool_domain_input(Domain = Domain)
   output <- .cognitoidentityprovider$describe_user_pool_domain_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6048,12 +6102,13 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
     name = "ForgetDevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$forget_device_input(AccessToken = AccessToken, DeviceKey = DeviceKey)
   output <- .cognitoidentityprovider$forget_device_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6202,12 +6257,13 @@ cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL,
     name = "ForgotPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$forgot_password_input(ClientId = ClientId, SecretHash = SecretHash, UserContextData = UserContextData, Username = Username, AnalyticsMetadata = AnalyticsMetadata, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$forgot_password_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6255,12 +6311,13 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
     name = "GetCSVHeader",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_csv_header_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_csv_header_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6335,12 +6392,13 @@ cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
     name = "GetDevice",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_device_input(DeviceKey = DeviceKey, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$get_device_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6398,12 +6456,13 @@ cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
     name = "GetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_group_input(GroupName = GroupName, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_group_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6467,12 +6526,13 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
     name = "GetIdentityProviderByIdentifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_identity_provider_by_identifier_input(UserPoolId = UserPoolId, IdpIdentifier = IdpIdentifier)
   output <- .cognitoidentityprovider$get_identity_provider_by_identifier_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6526,12 +6586,13 @@ cognitoidentityprovider_get_log_delivery_configuration <- function(UserPoolId) {
     name = "GetLogDeliveryConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_log_delivery_configuration_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_log_delivery_configuration_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6579,12 +6640,13 @@ cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
     name = "GetSigningCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_signing_certificate_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_signing_certificate_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6645,12 +6707,13 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
     name = "GetUICustomization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_ui_customization_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$get_ui_customization_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6720,12 +6783,13 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
     name = "GetUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_user_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$get_user_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6841,12 +6905,13 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
     name = "GetUserAttributeVerificationCode",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_user_attribute_verification_code_input(AccessToken = AccessToken, AttributeName = AttributeName, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$get_user_attribute_verification_code_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6899,12 +6964,13 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
     name = "GetUserPoolMfaConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$get_user_pool_mfa_config_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_user_pool_mfa_config_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6978,12 +7044,13 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
     name = "GlobalSignOut",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$global_sign_out_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$global_sign_out_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7223,12 +7290,13 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
     name = "InitiateAuth",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$initiate_auth_input(AuthFlow = AuthFlow, AuthParameters = AuthParameters, ClientMetadata = ClientMetadata, ClientId = ClientId, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData)
   output <- .cognitoidentityprovider$initiate_auth_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7316,12 +7384,13 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
     name = "ListDevices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$list_devices_input(AccessToken = AccessToken, Limit = Limit, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$list_devices_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7397,12 +7466,13 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
   )
   input <- .cognitoidentityprovider$list_groups_input(UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_groups_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7474,12 +7544,13 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
     name = "ListIdentityProviders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Providers")
   )
   input <- .cognitoidentityprovider$list_identity_providers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_identity_providers_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7552,12 +7623,13 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
     name = "ListResourceServers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceServers")
   )
   input <- .cognitoidentityprovider$list_resource_servers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_resource_servers_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7608,12 +7680,13 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cognitoidentityprovider$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7702,12 +7775,13 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
     name = "ListUserImportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$list_user_import_jobs_input(UserPoolId = UserPoolId, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$list_user_import_jobs_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7778,12 +7852,13 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
     name = "ListUserPoolClients",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPoolClients")
   )
   input <- .cognitoidentityprovider$list_user_pool_clients_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_user_pool_clients_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7881,12 +7956,13 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
     name = "ListUserPools",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPools")
   )
   input <- .cognitoidentityprovider$list_user_pools_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cognitoidentityprovider$list_user_pools_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8020,7 +8096,7 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #'         "2015-01-01"
 #'       ),
 #'       Enabled = TRUE|FALSE,
-#'       UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'       UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD"|"EXTERNAL_PROVIDER",
 #'       MFAOptions = list(
 #'         list(
 #'           DeliveryMedium = "SMS"|"EMAIL",
@@ -8073,12 +8149,13 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "PaginationToken", limit_key = "Limit", output_token = "PaginationToken", result_key = "Users")
   )
   input <- .cognitoidentityprovider$list_users_input(UserPoolId = UserPoolId, AttributesToGet = AttributesToGet, Limit = Limit, PaginationToken = PaginationToken, Filter = Filter)
   output <- .cognitoidentityprovider$list_users_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8134,7 +8211,7 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #'         "2015-01-01"
 #'       ),
 #'       Enabled = TRUE|FALSE,
-#'       UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'       UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD"|"EXTERNAL_PROVIDER",
 #'       MFAOptions = list(
 #'         list(
 #'           DeliveryMedium = "SMS"|"EMAIL",
@@ -8167,12 +8244,13 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
     name = "ListUsersInGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Users")
   )
   input <- .cognitoidentityprovider$list_users_in_group_input(UserPoolId = UserPoolId, GroupName = GroupName, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_users_in_group_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8304,12 +8382,13 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
     name = "ResendConfirmationCode",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$resend_confirmation_code_input(ClientId = ClientId, SecretHash = SecretHash, UserContextData = UserContextData, Username = Username, AnalyticsMetadata = AnalyticsMetadata, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$resend_confirmation_code_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8541,12 +8620,13 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
     name = "RespondToAuthChallenge",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$respond_to_auth_challenge_input(ClientId = ClientId, ChallengeName = ChallengeName, Session = Session, ChallengeResponses = ChallengeResponses, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$respond_to_auth_challenge_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8600,12 +8680,13 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
     name = "RevokeToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$revoke_token_input(Token = Token, ClientId = ClientId, ClientSecret = ClientSecret)
   output <- .cognitoidentityprovider$revoke_token_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8673,12 +8754,13 @@ cognitoidentityprovider_set_log_delivery_configuration <- function(UserPoolId, L
     name = "SetLogDeliveryConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$set_log_delivery_configuration_input(UserPoolId = UserPoolId, LogConfigurations = LogConfigurations)
   output <- .cognitoidentityprovider$set_log_delivery_configuration_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8848,12 +8930,13 @@ cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId 
     name = "SetRiskConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$set_risk_configuration_input(UserPoolId = UserPoolId, ClientId = ClientId, CompromisedCredentialsRiskConfiguration = CompromisedCredentialsRiskConfiguration, AccountTakeoverRiskConfiguration = AccountTakeoverRiskConfiguration, RiskExceptionConfiguration = RiskExceptionConfiguration)
   output <- .cognitoidentityprovider$set_risk_configuration_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8927,12 +9010,13 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
     name = "SetUICustomization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$set_ui_customization_input(UserPoolId = UserPoolId, ClientId = ClientId, CSS = CSS, ImageFile = ImageFile)
   output <- .cognitoidentityprovider$set_ui_customization_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9003,12 +9087,13 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
     name = "SetUserMFAPreference",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$set_user_mfa_preference_input(SMSMfaSettings = SMSMfaSettings, SoftwareTokenMfaSettings = SoftwareTokenMfaSettings, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$set_user_mfa_preference_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9106,12 +9191,13 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
     name = "SetUserPoolMfaConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$set_user_pool_mfa_config_input(UserPoolId = UserPoolId, SmsMfaConfiguration = SmsMfaConfiguration, SoftwareTokenMfaConfiguration = SoftwareTokenMfaConfiguration, MfaConfiguration = MfaConfiguration)
   output <- .cognitoidentityprovider$set_user_pool_mfa_config_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9172,12 +9258,13 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
     name = "SetUserSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$set_user_settings_input(AccessToken = AccessToken, MFAOptions = MFAOptions)
   output <- .cognitoidentityprovider$set_user_settings_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9342,12 +9429,13 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
     name = "SignUp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$sign_up_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, Password = Password, UserAttributes = UserAttributes, ValidationData = ValidationData, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$sign_up_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9412,12 +9500,13 @@ cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
     name = "StartUserImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$start_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$start_user_import_job_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9482,12 +9571,13 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
     name = "StopUserImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$stop_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$stop_user_import_job_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9546,12 +9636,13 @@ cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cognitoidentityprovider$tag_resource_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9594,12 +9685,13 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cognitoidentityprovider$untag_resource_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9666,12 +9758,13 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
     name = "UpdateAuthEventFeedback",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_auth_event_feedback_input(UserPoolId = UserPoolId, Username = Username, EventId = EventId, FeedbackToken = FeedbackToken, FeedbackValue = FeedbackValue)
   output <- .cognitoidentityprovider$update_auth_event_feedback_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9727,12 +9820,13 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
     name = "UpdateDeviceStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_device_status_input(AccessToken = AccessToken, DeviceKey = DeviceKey, DeviceRememberedStatus = DeviceRememberedStatus)
   output <- .cognitoidentityprovider$update_device_status_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9811,12 +9905,13 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_group_input(GroupName = GroupName, UserPoolId = UserPoolId, Description = Description, RoleArn = RoleArn, Precedence = Precedence)
   output <- .cognitoidentityprovider$update_group_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9966,12 +10061,13 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
     name = "UpdateIdentityProvider",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName, ProviderDetails = ProviderDetails, AttributeMapping = AttributeMapping, IdpIdentifiers = IdpIdentifiers)
   output <- .cognitoidentityprovider$update_identity_provider_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10059,12 +10155,13 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
     name = "UpdateResourceServer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier, Name = Name, Scopes = Scopes)
   output <- .cognitoidentityprovider$update_resource_server_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10197,12 +10294,13 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
     name = "UpdateUserAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_user_attributes_input(UserAttributes = UserAttributes, AccessToken = AccessToken, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$update_user_attributes_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10459,12 +10557,13 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
     name = "UpdateUserPool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_user_pool_input(UserPoolId = UserPoolId, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, UserAttributeUpdateSettings = UserAttributeUpdateSettings, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$update_user_pool_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10884,12 +10983,13 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
     name = "UpdateUserPoolClient",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId, ClientName = ClientName, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$update_user_pool_client_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10990,12 +11090,13 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
     name = "UpdateUserPoolDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$update_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, CustomDomainConfig = CustomDomainConfig)
   output <- .cognitoidentityprovider$update_user_pool_domain_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11061,12 +11162,13 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
     name = "VerifySoftwareToken",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$verify_software_token_input(AccessToken = AccessToken, Session = Session, UserCode = UserCode, FriendlyDeviceName = FriendlyDeviceName)
   output <- .cognitoidentityprovider$verify_software_token_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11125,12 +11227,13 @@ cognitoidentityprovider_verify_user_attribute <- function(AccessToken, Attribute
     name = "VerifyUserAttribute",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cognitoidentityprovider$verify_user_attribute_input(AccessToken = AccessToken, AttributeName = AttributeName, Code = Code)
   output <- .cognitoidentityprovider$verify_user_attribute_output()
   config <- get_config()
-  svc <- .cognitoidentityprovider$service(config)
+  svc <- .cognitoidentityprovider$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -217,7 +217,7 @@ comprehend <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = "Comprehend_20171127"
 )
 
-.comprehend$service <- function(config = list()) {
+.comprehend$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.comprehend$metadata, handlers, config)
+  new_service(.comprehend$metadata, handlers, config, op)
 }

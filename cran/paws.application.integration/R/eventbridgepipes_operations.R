@@ -10,16 +10,13 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridgepipes_create_pipe/](https://www.paws-r-sdk.com/docs/eventbridgepipes_create_pipe/) for full documentation.
 #'
+#' @param Name &#91;required&#93; The name of the pipe.
 #' @param Description A description of the pipe.
 #' @param DesiredState The state the pipe should be in.
-#' @param Enrichment The ARN of the enrichment resource.
-#' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
-#' @param LogConfiguration The logging configuration settings for the pipe.
-#' @param Name &#91;required&#93; The name of the pipe.
-#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
 #' @param Source &#91;required&#93; The ARN of the source resource.
 #' @param SourceParameters The parameters required to set up a source for your pipe.
-#' @param Tags The list of key-value pairs to associate with the pipe.
+#' @param Enrichment The ARN of the enrichment resource.
+#' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
 #' @param Target &#91;required&#93; The ARN of the target resource.
 #' @param TargetParameters The parameters required to set up a target for your pipe.
 #' 
@@ -27,21 +24,25 @@ NULL
 #' dynamic path parameters, see [Target
 #' parameters](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html)
 #' in the *Amazon EventBridge User Guide*.
+#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
+#' @param Tags The list of key-value pairs to associate with the pipe.
+#' @param LogConfiguration The logging configuration settings for the pipe.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridgepipes_create_pipe
-eventbridgepipes_create_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, LogConfiguration = NULL, Name, RoleArn, Source, SourceParameters = NULL, Tags = NULL, Target, TargetParameters = NULL) {
+eventbridgepipes_create_pipe <- function(Name, Description = NULL, DesiredState = NULL, Source, SourceParameters = NULL, Enrichment = NULL, EnrichmentParameters = NULL, Target, TargetParameters = NULL, RoleArn, Tags = NULL, LogConfiguration = NULL) {
   op <- new_operation(
     name = "CreatePipe",
     http_method = "POST",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eventbridgepipes$create_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, LogConfiguration = LogConfiguration, Name = Name, RoleArn = RoleArn, Source = Source, SourceParameters = SourceParameters, Tags = Tags, Target = Target, TargetParameters = TargetParameters)
+  input <- .eventbridgepipes$create_pipe_input(Name = Name, Description = Description, DesiredState = DesiredState, Source = Source, SourceParameters = SourceParameters, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, Target = Target, TargetParameters = TargetParameters, RoleArn = RoleArn, Tags = Tags, LogConfiguration = LogConfiguration)
   output <- .eventbridgepipes$create_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -65,12 +66,13 @@ eventbridgepipes_delete_pipe <- function(Name) {
     name = "DeletePipe",
     http_method = "DELETE",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$delete_pipe_input(Name = Name)
   output <- .eventbridgepipes$delete_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -94,12 +96,13 @@ eventbridgepipes_describe_pipe <- function(Name) {
     name = "DescribePipe",
     http_method = "GET",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$describe_pipe_input(Name = Name)
   output <- .eventbridgepipes$describe_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -113,34 +116,35 @@ eventbridgepipes_describe_pipe <- function(Name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridgepipes_list_pipes/](https://www.paws-r-sdk.com/docs/eventbridgepipes_list_pipes/) for full documentation.
 #'
-#' @param CurrentState The state the pipe is in.
-#' @param DesiredState The state the pipe should be in.
-#' @param Limit The maximum number of pipes to include in the response.
 #' @param NamePrefix A value that will return a subset of the pipes associated with this
 #' account. For example, `"NamePrefix": "ABC"` will return all endpoints
 #' with "ABC" in the name.
+#' @param DesiredState The state the pipe should be in.
+#' @param CurrentState The state the pipe is in.
+#' @param SourcePrefix The prefix matching the pipe source.
+#' @param TargetPrefix The prefix matching the pipe target.
 #' @param NextToken If `nextToken` is returned, there are more results available. The value
 #' of `nextToken` is a unique pagination token for each page. Make the call
 #' again using the returned token to retrieve the next page. Keep all other
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an HTTP 400 InvalidToken error.
-#' @param SourcePrefix The prefix matching the pipe source.
-#' @param TargetPrefix The prefix matching the pipe target.
+#' @param Limit The maximum number of pipes to include in the response.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridgepipes_list_pipes
-eventbridgepipes_list_pipes <- function(CurrentState = NULL, DesiredState = NULL, Limit = NULL, NamePrefix = NULL, NextToken = NULL, SourcePrefix = NULL, TargetPrefix = NULL) {
+eventbridgepipes_list_pipes <- function(NamePrefix = NULL, DesiredState = NULL, CurrentState = NULL, SourcePrefix = NULL, TargetPrefix = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListPipes",
     http_method = "GET",
     http_path = "/v1/pipes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Pipes")
   )
-  input <- .eventbridgepipes$list_pipes_input(CurrentState = CurrentState, DesiredState = DesiredState, Limit = Limit, NamePrefix = NamePrefix, NextToken = NextToken, SourcePrefix = SourcePrefix, TargetPrefix = TargetPrefix)
+  input <- .eventbridgepipes$list_pipes_input(NamePrefix = NamePrefix, DesiredState = DesiredState, CurrentState = CurrentState, SourcePrefix = SourcePrefix, TargetPrefix = TargetPrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridgepipes$list_pipes_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -164,12 +168,13 @@ eventbridgepipes_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .eventbridgepipes$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -193,12 +198,13 @@ eventbridgepipes_start_pipe <- function(Name) {
     name = "StartPipe",
     http_method = "POST",
     http_path = "/v1/pipes/{Name}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$start_pipe_input(Name = Name)
   output <- .eventbridgepipes$start_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -222,12 +228,13 @@ eventbridgepipes_stop_pipe <- function(Name) {
     name = "StopPipe",
     http_method = "POST",
     http_path = "/v1/pipes/{Name}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$stop_pipe_input(Name = Name)
   output <- .eventbridgepipes$stop_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -252,12 +259,13 @@ eventbridgepipes_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .eventbridgepipes$tag_resource_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -282,12 +290,13 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .eventbridgepipes$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .eventbridgepipes$untag_resource_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -301,14 +310,12 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridgepipes_update_pipe/](https://www.paws-r-sdk.com/docs/eventbridgepipes_update_pipe/) for full documentation.
 #'
+#' @param Name &#91;required&#93; The name of the pipe.
 #' @param Description A description of the pipe.
 #' @param DesiredState The state the pipe should be in.
+#' @param SourceParameters The parameters required to set up a source for your pipe.
 #' @param Enrichment The ARN of the enrichment resource.
 #' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
-#' @param LogConfiguration The logging configuration settings for the pipe.
-#' @param Name &#91;required&#93; The name of the pipe.
-#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
-#' @param SourceParameters The parameters required to set up a source for your pipe.
 #' @param Target The ARN of the target resource.
 #' @param TargetParameters The parameters required to set up a target for your pipe.
 #' 
@@ -316,21 +323,24 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #' dynamic path parameters, see [Target
 #' parameters](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html)
 #' in the *Amazon EventBridge User Guide*.
+#' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
+#' @param LogConfiguration The logging configuration settings for the pipe.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridgepipes_update_pipe
-eventbridgepipes_update_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, LogConfiguration = NULL, Name, RoleArn, SourceParameters = NULL, Target = NULL, TargetParameters = NULL) {
+eventbridgepipes_update_pipe <- function(Name, Description = NULL, DesiredState = NULL, SourceParameters = NULL, Enrichment = NULL, EnrichmentParameters = NULL, Target = NULL, TargetParameters = NULL, RoleArn, LogConfiguration = NULL) {
   op <- new_operation(
     name = "UpdatePipe",
     http_method = "PUT",
     http_path = "/v1/pipes/{Name}",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .eventbridgepipes$update_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, LogConfiguration = LogConfiguration, Name = Name, RoleArn = RoleArn, SourceParameters = SourceParameters, Target = Target, TargetParameters = TargetParameters)
+  input <- .eventbridgepipes$update_pipe_input(Name = Name, Description = Description, DesiredState = DesiredState, SourceParameters = SourceParameters, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, Target = Target, TargetParameters = TargetParameters, RoleArn = RoleArn, LogConfiguration = LogConfiguration)
   output <- .eventbridgepipes$update_pipe_output()
   config <- get_config()
-  svc <- .eventbridgepipes$service(config)
+  svc <- .eventbridgepipes$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

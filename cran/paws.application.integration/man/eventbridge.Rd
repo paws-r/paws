@@ -167,7 +167,8 @@ For more information about the features of Amazon EventBridge, see the
 \link[=eventbridge_update_api_destination]{update_api_destination} \tab Updates an API destination\cr
 \link[=eventbridge_update_archive]{update_archive} \tab Updates the specified archive\cr
 \link[=eventbridge_update_connection]{update_connection} \tab Updates settings for a connection\cr
-\link[=eventbridge_update_endpoint]{update_endpoint} \tab Update an existing endpoint
+\link[=eventbridge_update_endpoint]{update_endpoint} \tab Update an existing endpoint\cr
+\link[=eventbridge_update_event_bus]{update_event_bus} \tab Updates the specified event bus
 }
 }
 

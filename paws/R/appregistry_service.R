@@ -157,7 +157,7 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = ""
 )
 
-.appregistry$service <- function(config = list()) {
+.appregistry$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.appregistry$metadata, handlers, config)
+  new_service(.appregistry$metadata, handlers, config, op)
 }

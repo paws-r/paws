@@ -32,16 +32,17 @@ opsworks_create_layer(
 same type. It can have any number of custom layers. Built-in layers are
 not available in Chef 12 stacks.}
 
-\item{Name}{[required] The layer name, which is used by the console.}
+\item{Name}{[required] The layer name, which is used by the console. Layer names can be a
+maximum of 32 characters.}
 
 \item{Shortname}{[required] For custom layers only, use this parameter to specify the layer's short
-name, which is used internally by AWS OpsWorks Stacks and by Chef
-recipes. The short name is also used as the name for the directory where
-your app files are installed. It can have a maximum of 200 characters,
-which are limited to the alphanumeric characters, '-', '_', and '.'.
+name, which is used internally by OpsWorks Stacks and by Chef recipes.
+The short name is also used as the name for the directory where your app
+files are installed. It can have a maximum of 32 characters, which are
+limited to the alphanumeric characters, '-', '_', and '.'.
 
-The built-in layers' short names are defined by AWS OpsWorks Stacks. For
-more information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
+Built-in layer short names are defined by OpsWorks Stacks. For more
+information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.
@@ -58,7 +59,7 @@ more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 \item{CustomJson}{A JSON-formatted string containing custom stack configuration and
 deployment attributes to be installed on the layer's instances. For more
 information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}.
-This feature is supported as of version 1.7.42 of the AWS CLI.}
+This feature is supported as of version 1.7.42 of the CLI.}
 
 \item{CustomSecurityGroupIds}{An array containing the layer custom security group IDs.}
 

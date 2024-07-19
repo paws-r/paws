@@ -38,12 +38,13 @@ auditmanager_associate_assessment_report_evidence_folder <- function(assessmentI
     name = "AssociateAssessmentReportEvidenceFolder",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/associateToAssessmentReport",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$associate_assessment_report_evidence_folder_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId)
   output <- .auditmanager$associate_assessment_report_evidence_folder_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -103,12 +104,13 @@ auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId
     name = "BatchAssociateAssessmentReportEvidence",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/batchAssociateToAssessmentReport",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$batch_associate_assessment_report_evidence_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId, evidenceIds = evidenceIds)
   output <- .auditmanager$batch_associate_assessment_report_evidence_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -190,12 +192,13 @@ auditmanager_batch_create_delegation_by_assessment <- function(createDelegationR
     name = "BatchCreateDelegationByAssessment",
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/delegations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$batch_create_delegation_by_assessment_input(createDelegationRequests = createDelegationRequests, assessmentId = assessmentId)
   output <- .auditmanager$batch_create_delegation_by_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -248,12 +251,13 @@ auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, as
     name = "BatchDeleteDelegationByAssessment",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/delegations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$batch_delete_delegation_by_assessment_input(delegationIds = delegationIds, assessmentId = assessmentId)
   output <- .auditmanager$batch_delete_delegation_by_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -313,12 +317,13 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
     name = "BatchDisassociateAssessmentReportEvidence",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/batchDisassociateFromAssessmentReport",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$batch_disassociate_assessment_report_evidence_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId, evidenceIds = evidenceIds)
   output <- .auditmanager$batch_disassociate_assessment_report_evidence_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -406,12 +411,13 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
     name = "BatchImportEvidenceToAssessmentControl",
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/controls/{controlId}/evidence",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$batch_import_evidence_to_assessment_control_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, manualEvidence = manualEvidence)
   output <- .auditmanager$batch_import_evidence_to_assessment_control_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -624,12 +630,13 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
     name = "CreateAssessment",
     http_method = "POST",
     http_path = "/assessments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$create_assessment_input(name = name, description = description, assessmentReportsDestination = assessmentReportsDestination, scope = scope, roles = roles, frameworkId = frameworkId, tags = tags)
   output <- .auditmanager$create_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -673,7 +680,7 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'           list(
 #'             arn = "string",
 #'             id = "string",
-#'             type = "Standard"|"Custom",
+#'             type = "Standard"|"Custom"|"Core",
 #'             name = "string",
 #'             description = "string",
 #'             testingInformation = "string",
@@ -686,7 +693,7 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'                 sourceName = "string",
 #'                 sourceDescription = "string",
 #'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'                 sourceKeyword = list(
 #'                   keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'                   keywordValue = "string"
@@ -705,7 +712,8 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'             lastUpdatedBy = "string",
 #'             tags = list(
 #'               "string"
-#'             )
+#'             ),
+#'             state = "ACTIVE"|"END_OF_SUPPORT"
 #'           )
 #'         )
 #'       )
@@ -757,12 +765,13 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
     name = "CreateAssessmentFramework",
     http_method = "POST",
     http_path = "/assessmentFrameworks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$create_assessment_framework_input(name = name, description = description, complianceType = complianceType, controlSets = controlSets, tags = tags)
   output <- .auditmanager$create_assessment_framework_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -841,12 +850,13 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
     name = "CreateAssessmentReport",
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/reports",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$create_assessment_report_input(name = name, description = description, assessmentId = assessmentId, queryStatement = queryStatement)
   output <- .auditmanager$create_assessment_report_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -877,7 +887,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #'   control = list(
 #'     arn = "string",
 #'     id = "string",
-#'     type = "Standard"|"Custom",
+#'     type = "Standard"|"Custom"|"Core",
 #'     name = "string",
 #'     description = "string",
 #'     testingInformation = "string",
@@ -890,7 +900,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #'         sourceName = "string",
 #'         sourceDescription = "string",
 #'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'         sourceKeyword = list(
 #'           keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'           keywordValue = "string"
@@ -909,7 +919,8 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #'     lastUpdatedBy = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     state = "ACTIVE"|"END_OF_SUPPORT"
 #'   )
 #' )
 #' ```
@@ -927,7 +938,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #'       sourceName = "string",
 #'       sourceDescription = "string",
 #'       sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'       sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'       sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'       sourceKeyword = list(
 #'         keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'         keywordValue = "string"
@@ -952,12 +963,13 @@ auditmanager_create_control <- function(name, description = NULL, testingInforma
     name = "CreateControl",
     http_method = "POST",
     http_path = "/controls",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$create_control_input(name = name, description = description, testingInformation = testingInformation, actionPlanTitle = actionPlanTitle, actionPlanInstructions = actionPlanInstructions, controlMappingSources = controlMappingSources, tags = tags)
   output <- .auditmanager$create_control_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -994,12 +1006,13 @@ auditmanager_delete_assessment <- function(assessmentId) {
     name = "DeleteAssessment",
     http_method = "DELETE",
     http_path = "/assessments/{assessmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$delete_assessment_input(assessmentId = assessmentId)
   output <- .auditmanager$delete_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1036,12 +1049,13 @@ auditmanager_delete_assessment_framework <- function(frameworkId) {
     name = "DeleteAssessmentFramework",
     http_method = "DELETE",
     http_path = "/assessmentFrameworks/{frameworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$delete_assessment_framework_input(frameworkId = frameworkId)
   output <- .auditmanager$delete_assessment_framework_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1081,12 +1095,13 @@ auditmanager_delete_assessment_framework_share <- function(requestId, requestTyp
     name = "DeleteAssessmentFrameworkShare",
     http_method = "DELETE",
     http_path = "/assessmentFrameworkShareRequests/{requestId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$delete_assessment_framework_share_input(requestId = requestId, requestType = requestType)
   output <- .auditmanager$delete_assessment_framework_share_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1153,12 +1168,13 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
     name = "DeleteAssessmentReport",
     http_method = "DELETE",
     http_path = "/assessments/{assessmentId}/reports/{assessmentReportId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$delete_assessment_report_input(assessmentId = assessmentId, assessmentReportId = assessmentReportId)
   output <- .auditmanager$delete_assessment_report_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1201,12 +1217,13 @@ auditmanager_delete_control <- function(controlId) {
     name = "DeleteControl",
     http_method = "DELETE",
     http_path = "/controls/{controlId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$delete_control_input(controlId = controlId)
   output <- .auditmanager$delete_control_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1256,12 +1273,13 @@ auditmanager_deregister_account <- function() {
     name = "DeregisterAccount",
     http_method = "POST",
     http_path = "/account/deregisterAccount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$deregister_account_input()
   output <- .auditmanager$deregister_account_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1366,12 +1384,13 @@ auditmanager_deregister_organization_admin_account <- function(adminAccountId = 
     name = "DeregisterOrganizationAdminAccount",
     http_method = "POST",
     http_path = "/account/deregisterOrganizationAdminAccount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$deregister_organization_admin_account_input(adminAccountId = adminAccountId)
   output <- .auditmanager$deregister_organization_admin_account_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1413,12 +1432,13 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
     name = "DisassociateAssessmentReportEvidenceFolder",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/disassociateFromAssessmentReport",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$disassociate_assessment_report_evidence_folder_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId)
   output <- .auditmanager$disassociate_assessment_report_evidence_folder_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1458,12 +1478,13 @@ auditmanager_get_account_status <- function() {
     name = "GetAccountStatus",
     http_method = "GET",
     http_path = "/account/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_account_status_input()
   output <- .auditmanager$get_account_status_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1642,12 +1663,13 @@ auditmanager_get_assessment <- function(assessmentId) {
     name = "GetAssessment",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_assessment_input(assessmentId = assessmentId)
   output <- .auditmanager$get_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1685,7 +1707,7 @@ auditmanager_get_assessment <- function(assessmentId) {
 #'           list(
 #'             arn = "string",
 #'             id = "string",
-#'             type = "Standard"|"Custom",
+#'             type = "Standard"|"Custom"|"Core",
 #'             name = "string",
 #'             description = "string",
 #'             testingInformation = "string",
@@ -1698,7 +1720,7 @@ auditmanager_get_assessment <- function(assessmentId) {
 #'                 sourceName = "string",
 #'                 sourceDescription = "string",
 #'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'                 sourceKeyword = list(
 #'                   keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'                   keywordValue = "string"
@@ -1717,7 +1739,8 @@ auditmanager_get_assessment <- function(assessmentId) {
 #'             lastUpdatedBy = "string",
 #'             tags = list(
 #'               "string"
-#'             )
+#'             ),
+#'             state = "ACTIVE"|"END_OF_SUPPORT"
 #'           )
 #'         )
 #'       )
@@ -1754,12 +1777,13 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
     name = "GetAssessmentFramework",
     http_method = "GET",
     http_path = "/assessmentFrameworks/{frameworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_assessment_framework_input(frameworkId = frameworkId)
   output <- .auditmanager$get_assessment_framework_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1806,12 +1830,13 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
     name = "GetAssessmentReportUrl",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/reports/{assessmentReportId}/url",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_assessment_report_url_input(assessmentReportId = assessmentReportId, assessmentId = assessmentId)
   output <- .auditmanager$get_assessment_report_url_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1874,12 +1899,13 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
     name = "GetChangeLogs",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/changelogs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_change_logs_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_change_logs_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1903,7 +1929,7 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 #'   control = list(
 #'     arn = "string",
 #'     id = "string",
-#'     type = "Standard"|"Custom",
+#'     type = "Standard"|"Custom"|"Core",
 #'     name = "string",
 #'     description = "string",
 #'     testingInformation = "string",
@@ -1916,7 +1942,7 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 #'         sourceName = "string",
 #'         sourceDescription = "string",
 #'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'         sourceKeyword = list(
 #'           keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'           keywordValue = "string"
@@ -1935,7 +1961,8 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 #'     lastUpdatedBy = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     state = "ACTIVE"|"END_OF_SUPPORT"
 #'   )
 #' )
 #' ```
@@ -1957,12 +1984,13 @@ auditmanager_get_control <- function(controlId) {
     name = "GetControl",
     http_method = "GET",
     http_path = "/controls/{controlId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_control_input(controlId = controlId)
   output <- .auditmanager$get_control_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2020,12 +2048,13 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
     name = "GetDelegations",
     http_method = "GET",
     http_path = "/delegations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_delegations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_delegations_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2100,12 +2129,13 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
     name = "GetEvidence",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/evidenceFolders/{evidenceFolderId}/evidence/{evidenceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_evidence_input(assessmentId = assessmentId, controlSetId = controlSetId, evidenceFolderId = evidenceFolderId, evidenceId = evidenceId)
   output <- .auditmanager$get_evidence_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2186,12 +2216,13 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
     name = "GetEvidenceByEvidenceFolder",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/evidenceFolders/{evidenceFolderId}/evidence",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_evidence_by_evidence_folder_input(assessmentId = assessmentId, controlSetId = controlSetId, evidenceFolderId = evidenceFolderId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_by_evidence_folder_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2256,12 +2287,13 @@ auditmanager_get_evidence_file_upload_url <- function(fileName) {
     name = "GetEvidenceFileUploadUrl",
     http_method = "GET",
     http_path = "/evidenceFileUploadUrl",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_evidence_file_upload_url_input(fileName = fileName)
   output <- .auditmanager$get_evidence_file_upload_url_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2329,12 +2361,13 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
     name = "GetEvidenceFolder",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/evidenceFolders/{evidenceFolderId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_evidence_folder_input(assessmentId = assessmentId, controlSetId = controlSetId, evidenceFolderId = evidenceFolderId)
   output <- .auditmanager$get_evidence_folder_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2406,12 +2439,13 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
     name = "GetEvidenceFoldersByAssessment",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/evidenceFolders",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_evidence_folders_by_assessment_input(assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_folders_by_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2489,12 +2523,13 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
     name = "GetEvidenceFoldersByAssessmentControl",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/evidenceFolders-by-assessment-control/{controlSetId}/{controlId}",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_evidence_folders_by_assessment_control_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_folders_by_assessment_control_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2544,12 +2579,13 @@ auditmanager_get_insights <- function() {
     name = "GetInsights",
     http_method = "GET",
     http_path = "/insights",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_insights_input()
   output <- .auditmanager$get_insights_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2600,12 +2636,13 @@ auditmanager_get_insights_by_assessment <- function(assessmentId) {
     name = "GetInsightsByAssessment",
     http_method = "GET",
     http_path = "/insights/assessments/{assessmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_insights_by_assessment_input(assessmentId = assessmentId)
   output <- .auditmanager$get_insights_by_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2648,28 +2685,36 @@ auditmanager_get_organization_admin_account <- function() {
     name = "GetOrganizationAdminAccount",
     http_method = "GET",
     http_path = "/account/organizationAdminAccount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_organization_admin_account_input()
   output <- .auditmanager$get_organization_admin_account_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .auditmanager$operations$get_organization_admin_account <- auditmanager_get_organization_admin_account
 
-#' Gets a list of all of the Amazon Web Services that you can choose to
-#' include in your assessment
+#' Gets a list of the Amazon Web Services from which Audit Manager can
+#' collect evidence
 #'
 #' @description
-#' Gets a list of all of the Amazon Web Services that you can choose to
-#' include in your assessment. When you [create an
-#' assessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html),
-#' specify which of these services you want to include to narrow the
-#' assessment's
-#' [scope](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html).
+#' Gets a list of the Amazon Web Services from which Audit Manager can
+#' collect evidence.
+#' 
+#' Audit Manager defines which Amazon Web Services are in scope for an
+#' assessment. Audit Manager infers this scope by examining the
+#' assessment’s controls and their data sources, and then mapping this
+#' information to one or more of the corresponding Amazon Web Services that
+#' are in this list.
+#' 
+#' For information about why it's no longer possible to specify services in
+#' scope manually, see [I can't edit the services in scope for my
+#' assessment](https://docs.aws.amazon.com/audit-manager/latest/userguide/evidence-collection-issues.html#unable-to-edit-services)
+#' in the *Troubleshooting* section of the Audit Manager user guide.
 #'
 #' @usage
 #' auditmanager_get_services_in_scope()
@@ -2706,12 +2751,13 @@ auditmanager_get_services_in_scope <- function() {
     name = "GetServicesInScope",
     http_method = "GET",
     http_path = "/services",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_services_in_scope_input()
   output <- .auditmanager$get_services_in_scope_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2780,12 +2826,13 @@ auditmanager_get_settings <- function(attribute) {
     name = "GetSettings",
     http_method = "GET",
     http_path = "/settings/{attribute}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$get_settings_input(attribute = attribute)
   output <- .auditmanager$get_settings_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2810,6 +2857,12 @@ auditmanager_get_settings <- function(attribute) {
 #'   controlDomainId, assessmentId, nextToken, maxResults)
 #'
 #' @param controlDomainId &#91;required&#93; The unique identifier for the control domain.
+#' 
+#' Audit Manager supports the control domains that are provided by Amazon
+#' Web Services Control Catalog. For information about how to find a list
+#' of available control domains, see
+#' [`ListDomains`](https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html)
+#' in the Amazon Web Services Control Catalog API Reference.
 #' @param assessmentId &#91;required&#93; The unique identifier for the active assessment.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results on a page or for an API request
@@ -2858,12 +2911,13 @@ auditmanager_list_assessment_control_insights_by_control_domain <- function(cont
     name = "ListAssessmentControlInsightsByControlDomain",
     http_method = "GET",
     http_path = "/insights/controls-by-assessment",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_control_insights_by_control_domain_input(controlDomainId = controlDomainId, assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_control_insights_by_control_domain_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2939,12 +2993,13 @@ auditmanager_list_assessment_framework_share_requests <- function(requestType, n
     name = "ListAssessmentFrameworkShareRequests",
     http_method = "GET",
     http_path = "/assessmentFrameworkShareRequests",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_framework_share_requests_input(requestType = requestType, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_framework_share_requests_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3014,12 +3069,13 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
     name = "ListAssessmentFrameworks",
     http_method = "GET",
     http_path = "/assessmentFrameworks",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_frameworks_input(frameworkType = frameworkType, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_frameworks_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3078,12 +3134,13 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
     name = "ListAssessmentReports",
     http_method = "GET",
     http_path = "/assessmentReports",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_reports_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_reports_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3169,12 +3226,13 @@ auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxRe
     name = "ListAssessments",
     http_method = "GET",
     http_path = "/assessments",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessments_input(status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessments_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3187,6 +3245,12 @@ auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxRe
 #' @description
 #' Lists the latest analytics data for control domains across all of your
 #' active assessments.
+#' 
+#' Audit Manager supports the control domains that are provided by Amazon
+#' Web Services Control Catalog. For information about how to find a list
+#' of available control domains, see
+#' [`ListDomains`](https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html)
+#' in the Amazon Web Services Control Catalog API Reference.
 #' 
 #' A control domain is listed only if at least one of the controls within
 #' that domain collected evidence on the `lastUpdated` date of
@@ -3242,12 +3306,13 @@ auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResul
     name = "ListControlDomainInsights",
     http_method = "GET",
     http_path = "/insights/control-domains",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_control_domain_insights_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_domain_insights_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3260,6 +3325,12 @@ auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResul
 #' @description
 #' Lists analytics data for control domains within a specified active
 #' assessment.
+#' 
+#' Audit Manager supports the control domains that are provided by Amazon
+#' Web Services Control Catalog. For information about how to find a list
+#' of available control domains, see
+#' [`ListDomains`](https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html)
+#' in the Amazon Web Services Control Catalog API Reference.
 #' 
 #' A control domain is listed only if at least one of the controls within
 #' that domain collected evidence on the `lastUpdated` date of
@@ -3318,12 +3389,13 @@ auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId
     name = "ListControlDomainInsightsByAssessment",
     http_method = "GET",
     http_path = "/insights/control-domains-by-assessment",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_control_domain_insights_by_assessment_input(assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_domain_insights_by_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3347,6 +3419,12 @@ auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId
 #'   nextToken, maxResults)
 #'
 #' @param controlDomainId &#91;required&#93; The unique identifier for the control domain.
+#' 
+#' Audit Manager supports the control domains that are provided by Amazon
+#' Web Services Control Catalog. For information about how to find a list
+#' of available control domains, see
+#' [`ListDomains`](https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html)
+#' in the Amazon Web Services Control Catalog API Reference.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
@@ -3392,12 +3470,13 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
     name = "ListControlInsightsByControlDomain",
     http_method = "GET",
     http_path = "/insights/controls",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_control_insights_by_control_domain_input(controlDomainId = controlDomainId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_insights_by_control_domain_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3410,12 +3489,36 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
 #' Returns a list of controls from Audit Manager.
 #'
 #' @usage
-#' auditmanager_list_controls(controlType, nextToken, maxResults)
+#' auditmanager_list_controls(controlType, nextToken, maxResults,
+#'   controlCatalogId)
 #'
-#' @param controlType &#91;required&#93; The type of control, such as a standard control or a custom control.
+#' @param controlType &#91;required&#93; A filter that narrows the list of controls to a specific type.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results on a page or for an API request
-#' call.
+#' @param maxResults The maximum number of results on a page or for an API request call.
+#' @param controlCatalogId A filter that narrows the list of controls to a specific resource from
+#' the Amazon Web Services Control Catalog.
+#' 
+#' To use this parameter, specify the ARN of the Control Catalog resource.
+#' You can specify either a control domain, a control objective, or a
+#' common control. For information about how to find the ARNs for these
+#' resources, see
+#' [`ListDomains`](https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html)
+#' ,
+#' [`ListObjectives`](https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListObjectives.html)
+#' , and
+#' [`ListCommonControls`](https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListCommonControls.html)
+#' .
+#' 
+#' You can only filter by one Control Catalog resource at a time.
+#' Specifying multiple resource ARNs isn’t currently supported. If you want
+#' to filter by more than one ARN, we recommend that you run the
+#' [`list_controls`][auditmanager_list_controls] operation separately for
+#' each ARN.
+#' 
+#' Alternatively, specify `UNCATEGORIZED` to list controls that aren't
+#' mapped to a Control Catalog resource. For example, this operation might
+#' return a list of custom controls that don't belong to any control domain
+#' or control objective.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3442,9 +3545,10 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
 #' @section Request syntax:
 #' ```
 #' svc$list_controls(
-#'   controlType = "Standard"|"Custom",
+#'   controlType = "Standard"|"Custom"|"Core",
 #'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   controlCatalogId = "string"
 #' )
 #' ```
 #'
@@ -3453,17 +3557,18 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
 #' @rdname auditmanager_list_controls
 #'
 #' @aliases auditmanager_list_controls
-auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults = NULL) {
+auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults = NULL, controlCatalogId = NULL) {
   op <- new_operation(
     name = "ListControls",
     http_method = "GET",
     http_path = "/controls",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .auditmanager$list_controls_input(controlType = controlType, nextToken = nextToken, maxResults = maxResults)
+  input <- .auditmanager$list_controls_input(controlType = controlType, nextToken = nextToken, maxResults = maxResults, controlCatalogId = controlCatalogId)
   output <- .auditmanager$list_controls_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3516,12 +3621,13 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
     name = "ListKeywordsForDataSource",
     http_method = "GET",
     http_path = "/dataSourceKeywords",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_keywords_for_data_source_input(source = source, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_keywords_for_data_source_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3580,12 +3686,13 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
     name = "ListNotifications",
     http_method = "GET",
     http_path = "/notifications",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_notifications_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_notifications_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3629,12 +3736,13 @@ auditmanager_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .auditmanager$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3678,12 +3786,13 @@ auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount =
     name = "RegisterAccount",
     http_method = "POST",
     http_path = "/account/registerAccount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$register_account_input(kmsKey = kmsKey, delegatedAdminAccount = delegatedAdminAccount)
   output <- .auditmanager$register_account_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3728,12 +3837,13 @@ auditmanager_register_organization_admin_account <- function(adminAccountId) {
     name = "RegisterOrganizationAdminAccount",
     http_method = "POST",
     http_path = "/account/registerOrganizationAdminAccount",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$register_organization_admin_account_input(adminAccountId = adminAccountId)
   output <- .auditmanager$register_organization_admin_account_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3847,12 +3957,13 @@ auditmanager_start_assessment_framework_share <- function(frameworkId, destinati
     name = "StartAssessmentFrameworkShare",
     http_method = "POST",
     http_path = "/assessmentFrameworks/{frameworkId}/shareRequests",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$start_assessment_framework_share_input(frameworkId = frameworkId, destinationAccount = destinationAccount, destinationRegion = destinationRegion, comment = comment)
   output <- .auditmanager$start_assessment_framework_share_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3893,12 +4004,13 @@ auditmanager_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .auditmanager$tag_resource_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3939,12 +4051,13 @@ auditmanager_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .auditmanager$untag_resource_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4152,12 +4265,13 @@ auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, 
     name = "UpdateAssessment",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_assessment_input(assessmentId = assessmentId, assessmentName = assessmentName, assessmentDescription = assessmentDescription, scope = scope, assessmentReportsDestination = assessmentReportsDestination, roles = roles)
   output <- .auditmanager$update_assessment_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4228,12 +4342,13 @@ auditmanager_update_assessment_control <- function(assessmentId, controlSetId, c
     name = "UpdateAssessmentControl",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/controls/{controlId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_assessment_control_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, controlStatus = controlStatus, commentBody = commentBody)
   output <- .auditmanager$update_assessment_control_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4336,12 +4451,13 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
     name = "UpdateAssessmentControlSetStatus",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_assessment_control_set_status_input(assessmentId = assessmentId, controlSetId = controlSetId, status = status, comment = comment)
   output <- .auditmanager$update_assessment_control_set_status_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4385,7 +4501,7 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #'           list(
 #'             arn = "string",
 #'             id = "string",
-#'             type = "Standard"|"Custom",
+#'             type = "Standard"|"Custom"|"Core",
 #'             name = "string",
 #'             description = "string",
 #'             testingInformation = "string",
@@ -4398,7 +4514,7 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #'                 sourceName = "string",
 #'                 sourceDescription = "string",
 #'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'                 sourceKeyword = list(
 #'                   keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'                   keywordValue = "string"
@@ -4417,7 +4533,8 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #'             lastUpdatedBy = "string",
 #'             tags = list(
 #'               "string"
-#'             )
+#'             ),
+#'             state = "ACTIVE"|"END_OF_SUPPORT"
 #'           )
 #'         )
 #'       )
@@ -4468,12 +4585,13 @@ auditmanager_update_assessment_framework <- function(frameworkId, name, descript
     name = "UpdateAssessmentFramework",
     http_method = "PUT",
     http_path = "/assessmentFrameworks/{frameworkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_assessment_framework_input(frameworkId = frameworkId, name = name, description = description, complianceType = complianceType, controlSets = controlSets)
   output <- .auditmanager$update_assessment_framework_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4543,12 +4661,13 @@ auditmanager_update_assessment_framework_share <- function(requestId, requestTyp
     name = "UpdateAssessmentFrameworkShare",
     http_method = "PUT",
     http_path = "/assessmentFrameworkShareRequests/{requestId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_assessment_framework_share_input(requestId = requestId, requestType = requestType, action = action)
   output <- .auditmanager$update_assessment_framework_share_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4725,12 +4844,13 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
     name = "UpdateAssessmentStatus",
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/status",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_assessment_status_input(assessmentId = assessmentId, status = status)
   output <- .auditmanager$update_assessment_status_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4762,7 +4882,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #'   control = list(
 #'     arn = "string",
 #'     id = "string",
-#'     type = "Standard"|"Custom",
+#'     type = "Standard"|"Custom"|"Core",
 #'     name = "string",
 #'     description = "string",
 #'     testingInformation = "string",
@@ -4775,7 +4895,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #'         sourceName = "string",
 #'         sourceDescription = "string",
 #'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'         sourceKeyword = list(
 #'           keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'           keywordValue = "string"
@@ -4794,7 +4914,8 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #'     lastUpdatedBy = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     state = "ACTIVE"|"END_OF_SUPPORT"
 #'   )
 #' )
 #' ```
@@ -4814,7 +4935,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #'       sourceName = "string",
 #'       sourceDescription = "string",
 #'       sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
-#'       sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'       sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL"|"Common_Control"|"Core_Control",
 #'       sourceKeyword = list(
 #'         keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'         keywordValue = "string"
@@ -4836,12 +4957,13 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
     name = "UpdateControl",
     http_method = "PUT",
     http_path = "/controls/{controlId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_control_input(controlId = controlId, name = name, description = description, testingInformation = testingInformation, actionPlanTitle = actionPlanTitle, actionPlanInstructions = actionPlanInstructions, controlMappingSources = controlMappingSources)
   output <- .auditmanager$update_control_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4950,12 +5072,13 @@ auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentRepor
     name = "UpdateSettings",
     http_method = "PUT",
     http_path = "/settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey, evidenceFinderEnabled = evidenceFinderEnabled, deregistrationPolicy = deregistrationPolicy, defaultExportDestination = defaultExportDestination)
   output <- .auditmanager$update_settings_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5004,12 +5127,13 @@ auditmanager_validate_assessment_report_integrity <- function(s3RelativePath) {
     name = "ValidateAssessmentReportIntegrity",
     http_method = "POST",
     http_path = "/assessmentReports/integrity",
+    host_prefix = "",
     paginator = list()
   )
   input <- .auditmanager$validate_assessment_report_integrity_input(s3RelativePath = s3RelativePath)
   output <- .auditmanager$validate_assessment_report_integrity_output()
   config <- get_config()
-  svc <- .auditmanager$service(config)
+  svc <- .auditmanager$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -28,7 +28,7 @@ opsworks_update_stack(
 \arguments{
 \item{StackId}{[required] The stack ID.}
 
-\item{Name}{The stack's new name.}
+\item{Name}{The stack's new name. Stack names can be a maximum of 64 characters.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.}
@@ -41,12 +41,12 @@ stack's EC2 instances. For more information about IAM ARNs, see \href{https://do
 \item{DefaultOs}{The stack's operating system, which must be set to one of the following:
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
+\verb{Amazon Linux 2}, \verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
 \verb{Amazon Linux 2017.03}, \verb{Amazon Linux 2016.09},
 \verb{Amazon Linux 2016.03}, \verb{Amazon Linux 2015.09}, or
 \verb{Amazon Linux 2015.03}.
-\item A supported Ubuntu operating system, such as \verb{Ubuntu 16.04 LTS},
-\verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
+\item A supported Ubuntu operating system, such as \verb{Ubuntu 18.04 LTS},
+\verb{Ubuntu 16.04 LTS}, \verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
 \item \verb{CentOS Linux 7}
 \item \verb{Red Hat Enterprise Linux 7}
 \item A supported Windows operating system, such as
@@ -59,8 +59,9 @@ when you create instances. For more information about how to use
 custom AMIs with OpsWorks, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 }
 
-The default option is the stack's current operating system. For more
-information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.}
+The default option is the stack's current operating system. Not all
+operating systems are supported with all versions of Chef. For more
+information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{OpsWorks Stacks Operating Systems}.}
 
 \item{HostnameTheme}{The stack's new host name theme, with spaces replaced by underscores.
 The theme is used to generate host names for the stack's instances. By
@@ -121,9 +122,9 @@ repository. For more information, see \href{https://docs.aws.amazon.com/opsworks
 or \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html}{Cookbooks and Recipes}.}
 
 \item{DefaultSshKeyName}{A default Amazon EC2 key-pair name. The default value is \code{none}. If you
-specify a key-pair name, AWS OpsWorks Stacks installs the public key on
-the instance and you can use the private key with an SSH client to log
-in to the instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html}{Using SSH to Communicate with an Instance}
+specify a key-pair name, OpsWorks Stacks installs the public key on the
+instance and you can use the private key with an SSH client to log in to
+the instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html}{Using SSH to Communicate with an Instance}
 and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html}{Managing SSH Access}.
 You can override this setting by specifying a different key pair, or no
 key pair, when you \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{create an instance}.}
@@ -132,39 +133,39 @@ key pair, when you \href{https://docs.aws.amazon.com/opsworks/latest/userguide/w
 instances in the stack, but you can override it when you create an
 instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
 
-\item{UseOpsworksSecurityGroups}{Whether to associate the AWS OpsWorks Stacks built-in security groups
-with the stack's layers.
+\item{UseOpsworksSecurityGroups}{Whether to associate the OpsWorks Stacks built-in security groups with
+the stack's layers.
 
-AWS OpsWorks Stacks provides a standard set of built-in security groups,
-one for each layer, which are associated with layers by default.
+OpsWorks Stacks provides a standard set of built-in security groups, one
+for each layer, which are associated with layers by default.
 \code{UseOpsworksSecurityGroups} allows you to provide your own custom
 security groups instead of using the built-in groups.
 \code{UseOpsworksSecurityGroups} has the following settings:
 \itemize{
-\item True - AWS OpsWorks Stacks automatically associates the appropriate
+\item True - OpsWorks Stacks automatically associates the appropriate
 built-in security group with each layer (default setting). You can
 associate additional security groups with a layer after you create
 it, but you cannot delete the built-in security group.
-\item False - AWS OpsWorks Stacks does not associate built-in security
-groups with layers. You must create appropriate EC2 security groups
-and associate a security group with each layer that you create.
-However, you can still manually associate a built-in security group
-with a layer on. Custom security groups are required only for those
-layers that need custom settings.
+\item False - OpsWorks Stacks does not associate built-in security groups
+with layers. You must create appropriate EC2 security groups and
+associate a security group with each layer that you create. However,
+you can still manually associate a built-in security group with a
+layer on. Custom security groups are required only for those layers
+that need custom settings.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
 
-\item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
+\item{AgentVersion}{The default OpsWorks Stacks agent version. You have the following
 options:
 \itemize{
-\item Auto-update - Set this parameter to \code{LATEST}. AWS OpsWorks Stacks
+\item Auto-update - Set this parameter to \code{LATEST}. OpsWorks Stacks
 automatically installs new agent versions on the stack's instances
 as soon as they are available.
 \item Fixed version - Set this parameter to your preferred agent version.
 To update the agent version, you must edit the stack configuration
-and specify a new version. AWS OpsWorks Stacks then automatically
-installs that version on the stack's instances.
+and specify a new version. OpsWorks Stacks installs that version on
+the stack's instances.
 }
 
 The default setting is \code{LATEST}. To specify an agent version, you must

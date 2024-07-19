@@ -7,7 +7,8 @@
 bedrock_get_guardrail(guardrailIdentifier, guardrailVersion = NULL)
 }
 \arguments{
-\item{guardrailIdentifier}{[required] The unique identifier of the guardrail for which to get details.}
+\item{guardrailIdentifier}{[required] The unique identifier of the guardrail for which to get details. This
+can be an ID or the ARN.}
 
 \item{guardrailVersion}{The version of the guardrail for which to get details. If you don't
 specify a version, the response returns details for the \code{DRAFT} version.}

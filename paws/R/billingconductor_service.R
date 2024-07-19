@@ -180,7 +180,7 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.billingconductor$service <- function(config = list()) {
+.billingconductor$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.billingconductor$metadata, handlers, config)
+  new_service(.billingconductor$metadata, handlers, config, op)
 }

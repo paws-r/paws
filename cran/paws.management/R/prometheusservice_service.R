@@ -177,7 +177,7 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
   target_prefix = ""
 )
 
-.prometheusservice$service <- function(config = list()) {
+.prometheusservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.prometheusservice$metadata, handlers, config)
+  new_service(.prometheusservice$metadata, handlers, config, op)
 }

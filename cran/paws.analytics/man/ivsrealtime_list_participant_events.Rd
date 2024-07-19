@@ -6,26 +6,26 @@
 specified stage session}
 \usage{
 ivsrealtime_list_participant_events(
-  maxResults = NULL,
-  nextToken = NULL,
-  participantId,
+  stageArn,
   sessionId,
-  stageArn
+  participantId,
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
-\item{maxResults}{Maximum number of results to return. Default: 50.}
+\item{stageArn}{[required] Stage ARN.}
 
-\item{nextToken}{The first participant event to retrieve. This is used for pagination;
-see the \code{nextToken} response field.}
+\item{sessionId}{[required] ID of a session within the stage.}
 
 \item{participantId}{[required] Unique identifier for this participant. This is assigned by IVS and
 returned by
 \code{\link[=ivsrealtime_create_participant_token]{create_participant_token}}.}
 
-\item{sessionId}{[required] ID of a session within the stage.}
+\item{nextToken}{The first participant event to retrieve. This is used for pagination;
+see the \code{nextToken} response field.}
 
-\item{stageArn}{[required] Stage ARN.}
+\item{maxResults}{Maximum number of results to return. Default: 50.}
 }
 \description{
 Lists events for a specified participant that occurred during a specified stage session.

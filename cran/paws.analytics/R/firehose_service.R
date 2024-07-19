@@ -13,7 +13,7 @@ NULL
 #' Amazon Data Firehose is a fully managed service that delivers real-time
 #' streaming data to destinations such as Amazon Simple Storage Service
 #' (Amazon S3), Amazon OpenSearch Service, Amazon Redshift, Splunk, and
-#' various other supportd destinations.
+#' various other supported destinations.
 #'
 #' @param
 #' config
@@ -149,7 +149,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = "Firehose_20150804"
 )
 
-.firehose$service <- function(config = list()) {
+.firehose$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.firehose$metadata, handlers, config)
+  new_service(.firehose$metadata, handlers, config, op)
 }

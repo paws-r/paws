@@ -136,12 +136,13 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
     name = "InvokeEndpoint",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
-  svc <- .sagemakerruntime$service(config)
+  svc <- .sagemakerruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -248,12 +249,13 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
     name = "InvokeEndpointAsync",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/async-invocations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sagemakerruntime$invoke_endpoint_async_input(EndpointName = EndpointName, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, InferenceId = InferenceId, InputLocation = InputLocation, RequestTTLSeconds = RequestTTLSeconds, InvocationTimeoutSeconds = InvocationTimeoutSeconds)
   output <- .sagemakerruntime$invoke_endpoint_async_output()
   config <- get_config()
-  svc <- .sagemakerruntime$service(config)
+  svc <- .sagemakerruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -401,12 +403,13 @@ sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, 
     name = "InvokeEndpointWithResponseStream",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations-response-stream",
+    host_prefix = "",
     paginator = list()
   )
   input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_with_response_stream_output()
   config <- get_config()
-  svc <- .sagemakerruntime$service(config)
+  svc <- .sagemakerruntime$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

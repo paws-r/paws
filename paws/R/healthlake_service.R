@@ -144,7 +144,7 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = "HealthLake"
 )
 
-.healthlake$service <- function(config = list()) {
+.healthlake$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.healthlake$metadata, handlers, config)
+  new_service(.healthlake$metadata, handlers, config, op)
 }

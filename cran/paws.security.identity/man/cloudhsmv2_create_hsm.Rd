@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_create_hsm}
 \alias{cloudhsmv2_create_hsm}
-\title{Creates a new hardware security module (HSM) in the specified AWS
-CloudHSM cluster}
+\title{Creates a new hardware security module (HSM) in the specified CloudHSM
+cluster}
 \usage{
 cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress = NULL)
 }
@@ -21,7 +21,7 @@ creating the HSM. If you don't specify an IP address, one is chosen for
 you from that subnet.}
 }
 \description{
-Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.
+Creates a new hardware security module (HSM) in the specified CloudHSM cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/} for full documentation.
 }

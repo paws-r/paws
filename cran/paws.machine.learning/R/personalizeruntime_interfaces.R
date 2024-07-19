@@ -23,7 +23,7 @@ NULL
 
 .personalizeruntime$get_personalized_ranking_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(personalizedRanking = structure(list(structure(list(itemId = structure(logical(0), tags = list(type = "string")), score = structure(logical(0), tags = list(type = "double")), promotionName = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(personalizedRanking = structure(list(structure(list(itemId = structure(logical(0), tags = list(type = "string")), score = structure(logical(0), tags = list(type = "double")), promotionName = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), reason = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -35,6 +35,6 @@ NULL
 
 .personalizeruntime$get_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(itemList = structure(list(structure(list(itemId = structure(logical(0), tags = list(type = "string")), score = structure(logical(0), tags = list(type = "double")), promotionName = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(itemList = structure(list(structure(list(itemId = structure(logical(0), tags = list(type = "string")), score = structure(logical(0), tags = list(type = "double")), promotionName = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), reason = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

@@ -175,7 +175,7 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
   target_prefix = ""
 )
 
-.serverlessapplicationrepository$service <- function(config = list()) {
+.serverlessapplicationrepository$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.serverlessapplicationrepository$metadata, handlers, config)
+  new_service(.serverlessapplicationrepository$metadata, handlers, config, op)
 }

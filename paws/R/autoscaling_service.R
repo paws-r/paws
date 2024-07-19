@@ -12,8 +12,8 @@ NULL
 #' scheduled actions, and health checks.
 #' 
 #' For more information, see the [Amazon EC2 Auto Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/) and the
-#' [Amazon EC2 Auto Scaling API
+#' Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
+#' and the [Amazon EC2 Auto Scaling API
 #' Reference](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.html).
 #'
 #' @param
@@ -208,7 +208,7 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = ""
 )
 
-.autoscaling$service <- function(config = list()) {
+.autoscaling$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.autoscaling$metadata, handlers, config)
+  new_service(.autoscaling$metadata, handlers, config, op)
 }

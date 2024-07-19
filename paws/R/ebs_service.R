@@ -164,7 +164,7 @@ ebs <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.ebs$service <- function(config = list()) {
+.ebs$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.ebs$metadata, handlers, config)
+  new_service(.ebs$metadata, handlers, config, op)
 }

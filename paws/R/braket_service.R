@@ -148,7 +148,7 @@ braket <- function(config = list(), credentials = list(), endpoint = NULL, regio
   target_prefix = ""
 )
 
-.braket$service <- function(config = list()) {
+.braket$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.braket$metadata, handlers, config)
+  new_service(.braket$metadata, handlers, config, op)
 }

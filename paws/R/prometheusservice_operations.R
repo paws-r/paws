@@ -57,12 +57,13 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
     name = "CreateAlertManagerDefinition",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$create_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
   output <- .prometheusservice$create_alert_manager_definition_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -119,12 +120,13 @@ prometheusservice_create_logging_configuration <- function(clientToken = NULL, l
     name = "CreateLoggingConfiguration",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/logging",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$create_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
   output <- .prometheusservice$create_logging_configuration_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -201,12 +203,13 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
     name = "CreateRuleGroupsNamespace",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$create_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, tags = tags, workspaceId = workspaceId)
   output <- .prometheusservice$create_rule_groups_namespace_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -313,12 +316,13 @@ prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, d
     name = "CreateScraper",
     http_method = "POST",
     http_path = "/scrapers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$create_scraper_input(alias = alias, clientToken = clientToken, destination = destination, scrapeConfiguration = scrapeConfiguration, source = source, tags = tags)
   output <- .prometheusservice$create_scraper_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -387,12 +391,13 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
     name = "CreateWorkspace",
     http_method = "POST",
     http_path = "/workspaces",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .prometheusservice$create_workspace_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -433,12 +438,13 @@ prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL
     name = "DeleteAlertManagerDefinition",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$delete_alert_manager_definition_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_alert_manager_definition_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -478,12 +484,13 @@ prometheusservice_delete_logging_configuration <- function(clientToken = NULL, w
     name = "DeleteLoggingConfiguration",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/logging",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$delete_logging_configuration_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_logging_configuration_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -529,12 +536,13 @@ prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, n
     name = "DeleteRuleGroupsNamespace",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$delete_rule_groups_namespace_input(clientToken = clientToken, name = name, workspaceId = workspaceId)
   output <- .prometheusservice$delete_rule_groups_namespace_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -585,12 +593,13 @@ prometheusservice_delete_scraper <- function(clientToken = NULL, scraperId) {
     name = "DeleteScraper",
     http_method = "DELETE",
     http_path = "/scrapers/{scraperId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$delete_scraper_input(clientToken = clientToken, scraperId = scraperId)
   output <- .prometheusservice$delete_scraper_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -634,12 +643,13 @@ prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) 
     name = "DeleteWorkspace",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$delete_workspace_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_workspace_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -695,12 +705,13 @@ prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
     name = "DescribeAlertManagerDefinition",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$describe_alert_manager_definition_input(workspaceId = workspaceId)
   output <- .prometheusservice$describe_alert_manager_definition_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -757,12 +768,13 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
     name = "DescribeLoggingConfiguration",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/logging",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$describe_logging_configuration_input(workspaceId = workspaceId)
   output <- .prometheusservice$describe_logging_configuration_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -825,12 +837,13 @@ prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) 
     name = "DescribeRuleGroupsNamespace",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$describe_rule_groups_namespace_input(name = name, workspaceId = workspaceId)
   output <- .prometheusservice$describe_rule_groups_namespace_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -911,12 +924,13 @@ prometheusservice_describe_scraper <- function(scraperId) {
     name = "DescribeScraper",
     http_method = "GET",
     http_path = "/scrapers/{scraperId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$describe_scraper_input(scraperId = scraperId)
   output <- .prometheusservice$describe_scraper_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -973,12 +987,13 @@ prometheusservice_describe_workspace <- function(workspaceId) {
     name = "DescribeWorkspace",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$describe_workspace_input(workspaceId = workspaceId)
   output <- .prometheusservice$describe_workspace_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1022,12 +1037,13 @@ prometheusservice_get_default_scraper_configuration <- function() {
     name = "GetDefaultScraperConfiguration",
     http_method = "GET",
     http_path = "/scraperconfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$get_default_scraper_configuration_input()
   output <- .prometheusservice$get_default_scraper_configuration_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1104,12 +1120,13 @@ prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, nam
     name = "ListRuleGroupsNamespaces",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleGroupsNamespaces")
   )
   input <- .prometheusservice$list_rule_groups_namespaces_input(maxResults = maxResults, name = name, nextToken = nextToken, workspaceId = workspaceId)
   output <- .prometheusservice$list_rule_groups_namespaces_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1219,12 +1236,13 @@ prometheusservice_list_scrapers <- function(filters = NULL, maxResults = NULL, n
     name = "ListScrapers",
     http_method = "GET",
     http_path = "/scrapers",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scrapers")
   )
   input <- .prometheusservice$list_scrapers_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .prometheusservice$list_scrapers_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1273,12 +1291,13 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .prometheusservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1355,12 +1374,13 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
     name = "ListWorkspaces",
     http_method = "GET",
     http_path = "/workspaces",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces")
   )
   input <- .prometheusservice$list_workspaces_input(alias = alias, maxResults = maxResults, nextToken = nextToken)
   output <- .prometheusservice$list_workspaces_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1418,12 +1438,13 @@ prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, d
     name = "PutAlertManagerDefinition",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$put_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
   output <- .prometheusservice$put_alert_manager_definition_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1496,12 +1517,13 @@ prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data
     name = "PutRuleGroupsNamespace",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$put_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, workspaceId = workspaceId)
   output <- .prometheusservice$put_rule_groups_namespace_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1553,12 +1575,13 @@ prometheusservice_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .prometheusservice$tag_resource_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1602,12 +1625,13 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .prometheusservice$untag_resource_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1661,12 +1685,13 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
     name = "UpdateLoggingConfiguration",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/logging",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$update_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
   output <- .prometheusservice$update_logging_configuration_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1712,12 +1737,13 @@ prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken =
     name = "UpdateWorkspaceAlias",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/alias",
+    host_prefix = "",
     paginator = list()
   )
   input <- .prometheusservice$update_workspace_alias_input(alias = alias, clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$update_workspace_alias_output()
   config <- get_config()
-  svc <- .prometheusservice$service(config)
+  svc <- .prometheusservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

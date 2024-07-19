@@ -48,12 +48,13 @@ fms_associate_admin_account <- function(AdminAccount) {
     name = "AssociateAdminAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$associate_admin_account_input(AdminAccount = AdminAccount)
   output <- .fms$associate_admin_account_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -99,12 +100,13 @@ fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
     name = "AssociateThirdPartyFirewall",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$associate_third_party_firewall_input(ThirdPartyFirewall = ThirdPartyFirewall)
   output <- .fms$associate_third_party_firewall_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -159,12 +161,13 @@ fms_batch_associate_resource <- function(ResourceSetIdentifier, Items) {
     name = "BatchAssociateResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$batch_associate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
   output <- .fms$batch_associate_resource_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -219,12 +222,13 @@ fms_batch_disassociate_resource <- function(ResourceSetIdentifier, Items) {
     name = "BatchDisassociateResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$batch_disassociate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
   output <- .fms$batch_disassociate_resource_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -264,12 +268,13 @@ fms_delete_apps_list <- function(ListId) {
     name = "DeleteAppsList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$delete_apps_list_input(ListId = ListId)
   output <- .fms$delete_apps_list_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -308,12 +313,13 @@ fms_delete_notification_channel <- function() {
     name = "DeleteNotificationChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$delete_notification_channel_input()
   output <- .fms$delete_notification_channel_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -384,12 +390,13 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
     name = "DeletePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$delete_policy_input(PolicyId = PolicyId, DeleteAllPolicyResources = DeleteAllPolicyResources)
   output <- .fms$delete_policy_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -429,12 +436,13 @@ fms_delete_protocols_list <- function(ListId) {
     name = "DeleteProtocolsList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$delete_protocols_list_input(ListId = ListId)
   output <- .fms$delete_protocols_list_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -472,12 +480,13 @@ fms_delete_resource_set <- function(Identifier) {
     name = "DeleteResourceSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$delete_resource_set_input(Identifier = Identifier)
   output <- .fms$delete_resource_set_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -521,12 +530,13 @@ fms_disassociate_admin_account <- function() {
     name = "DisassociateAdminAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$disassociate_admin_account_input()
   output <- .fms$disassociate_admin_account_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -573,12 +583,13 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
     name = "DisassociateThirdPartyFirewall",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$disassociate_third_party_firewall_input(ThirdPartyFirewall = ThirdPartyFirewall)
   output <- .fms$disassociate_third_party_firewall_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -621,12 +632,13 @@ fms_get_admin_account <- function() {
     name = "GetAdminAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_admin_account_input()
   output <- .fms$get_admin_account_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -698,12 +710,13 @@ fms_get_admin_scope <- function(AdminAccount) {
     name = "GetAdminScope",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_admin_scope_input(AdminAccount = AdminAccount)
   output <- .fms$get_admin_scope_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -778,12 +791,13 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
     name = "GetAppsList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_apps_list_input(ListId = ListId, DefaultList = DefaultList)
   output <- .fms$get_apps_list_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -857,12 +871,13 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
     name = "GetComplianceDetail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_compliance_detail_input(PolicyId = PolicyId, MemberAccount = MemberAccount)
   output <- .fms$get_compliance_detail_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -905,12 +920,13 @@ fms_get_notification_channel <- function() {
     name = "GetNotificationChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_notification_channel_input()
   output <- .fms$get_notification_channel_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1037,12 +1053,13 @@ fms_get_policy <- function(PolicyId) {
     name = "GetPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_policy_input(PolicyId = PolicyId)
   output <- .fms$get_policy_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1121,12 +1138,13 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
     name = "GetProtectionStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_protection_status_input(PolicyId = PolicyId, MemberAccountId = MemberAccountId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$get_protection_status_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1191,12 +1209,13 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
     name = "GetProtocolsList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_protocols_list_input(ListId = ListId, DefaultList = DefaultList)
   output <- .fms$get_protocols_list_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1252,12 +1271,13 @@ fms_get_resource_set <- function(Identifier) {
     name = "GetResourceSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_resource_set_input(Identifier = Identifier)
   output <- .fms$get_resource_set_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1302,12 +1322,13 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
     name = "GetThirdPartyFirewallAssociationStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_third_party_firewall_association_status_input(ThirdPartyFirewall = ThirdPartyFirewall)
   output <- .fms$get_third_party_firewall_association_status_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2059,12 +2080,13 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
     name = "GetViolationDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$get_violation_details_input(PolicyId = PolicyId, MemberAccount = MemberAccount, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .fms$get_violation_details_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2129,12 +2151,13 @@ fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResult
     name = "ListAdminAccountsForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts")
   )
   input <- .fms$list_admin_accounts_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admin_accounts_for_organization_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2193,12 +2216,13 @@ fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL
     name = "ListAdminsManagingAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts")
   )
   input <- .fms$list_admins_managing_account_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admins_managing_account_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2269,12 +2293,13 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
     name = "ListAppsLists",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AppsLists")
   )
   input <- .fms$list_apps_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_apps_lists_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2354,12 +2379,13 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
     name = "ListComplianceStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyComplianceStatusList")
   )
   input <- .fms$list_compliance_status_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_compliance_status_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2429,12 +2455,13 @@ fms_list_discovered_resources <- function(MemberAccountIds, ResourceType, MaxRes
     name = "ListDiscoveredResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$list_discovered_resources_input(MemberAccountIds = MemberAccountIds, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fms$list_discovered_resources_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2495,12 +2522,13 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListMemberAccounts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MemberAccounts")
   )
   input <- .fms$list_member_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_member_accounts_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2567,12 +2595,13 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyList")
   )
   input <- .fms$list_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_policies_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2639,12 +2668,13 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
     name = "ListProtocolsLists",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProtocolsLists")
   )
   input <- .fms$list_protocols_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_protocols_lists_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2706,12 +2736,13 @@ fms_list_resource_set_resources <- function(Identifier, MaxResults = NULL, NextT
     name = "ListResourceSetResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$list_resource_set_resources_input(Identifier = Identifier, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fms$list_resource_set_resources_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2773,12 +2804,13 @@ fms_list_resource_sets <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListResourceSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$list_resource_sets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_resource_sets_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2829,12 +2861,13 @@ fms_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .fms$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2901,12 +2934,13 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
     name = "ListThirdPartyFirewallFirewallPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ThirdPartyFirewallFirewallPolicies")
   )
   input <- .fms$list_third_party_firewall_firewall_policies_input(ThirdPartyFirewall = ThirdPartyFirewall, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_third_party_firewall_firewall_policies_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2994,12 +3028,13 @@ fms_put_admin_account <- function(AdminAccount, AdminScope = NULL) {
     name = "PutAdminAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$put_admin_account_input(AdminAccount = AdminAccount, AdminScope = AdminScope)
   output <- .fms$put_admin_account_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3101,12 +3136,13 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
     name = "PutAppsList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$put_apps_list_input(AppsList = AppsList, TagList = TagList)
   output <- .fms$put_apps_list_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3159,12 +3195,13 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
     name = "PutNotificationChannel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$put_notification_channel_input(SnsTopicArn = SnsTopicArn, SnsRoleName = SnsRoleName)
   output <- .fms$put_notification_channel_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3433,12 +3470,13 @@ fms_put_policy <- function(Policy, TagList = NULL) {
     name = "PutPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$put_policy_input(Policy = Policy, TagList = TagList)
   output <- .fms$put_policy_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3524,12 +3562,13 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
     name = "PutProtocolsList",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$put_protocols_list_input(ProtocolsList = ProtocolsList, TagList = TagList)
   output <- .fms$put_protocols_list_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3611,12 +3650,13 @@ fms_put_resource_set <- function(ResourceSet, TagList = NULL) {
     name = "PutResourceSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$put_resource_set_input(ResourceSet = ResourceSet, TagList = TagList)
   output <- .fms$put_resource_set_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3662,12 +3702,13 @@ fms_tag_resource <- function(ResourceArn, TagList) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$tag_resource_input(ResourceArn = ResourceArn, TagList = TagList)
   output <- .fms$tag_resource_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3710,12 +3751,13 @@ fms_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .fms$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .fms$untag_resource_output()
   config <- get_config()
-  svc <- .fms$service(config)
+  svc <- .fms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

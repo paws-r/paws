@@ -147,7 +147,7 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
   target_prefix = "AWSEC2InstanceConnectService"
 )
 
-.ec2instanceconnect$service <- function(config = list()) {
+.ec2instanceconnect$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.ec2instanceconnect$metadata, handlers, config)
+  new_service(.ec2instanceconnect$metadata, handlers, config, op)
 }

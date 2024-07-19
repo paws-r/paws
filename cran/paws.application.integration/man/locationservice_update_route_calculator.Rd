@@ -6,17 +6,17 @@
 \usage{
 locationservice_update_route_calculator(
   CalculatorName,
-  Description = NULL,
-  PricingPlan = NULL
+  PricingPlan = NULL,
+  Description = NULL
 )
 }
 \arguments{
 \item{CalculatorName}{[required] The name of the route calculator resource to update.}
 
-\item{Description}{Updates the description for the route calculator resource.}
-
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
+
+\item{Description}{Updates the description for the route calculator resource.}
 }
 \description{
 Updates the specified properties for a given route calculator resource.

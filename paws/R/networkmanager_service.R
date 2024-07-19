@@ -216,7 +216,7 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.networkmanager$service <- function(config = list()) {
+.networkmanager$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.networkmanager$metadata, handlers, config)
+  new_service(.networkmanager$metadata, handlers, config, op)
 }

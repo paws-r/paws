@@ -45,12 +45,13 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
     name = "AssociateDRTLogBucket",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$associate_drt_log_bucket_input(LogBucket = LogBucket)
   output <- .shield$associate_drt_log_bucket_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -75,9 +76,8 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
 #' request, you must attach the `AWSShieldDRTAccessPolicy` managed policy
 #' to the role that you'll specify in the request. You can access this
-#' policy in the IAM console at
-#' [AWSShieldDRTAccessPolicy](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy).
-#' For more information see [Adding and removing IAM identity
+#' policy in the IAM console at AWSShieldDRTAccessPolicy. For more
+#' information see [Adding and removing IAM identity
 #' permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html).
 #' The role must also trust the service principal
 #' `drt.shield.amazonaws.com`. For more information, see [IAM JSON policy
@@ -110,10 +110,9 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' your Amazon Web Services account.
 #' 
 #' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
-#' request, you must attach the
-#' [AWSShieldDRTAccessPolicy](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
-#' managed policy to this role. For more information see Attaching and
-#' Detaching IAM Policies.
+#' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
+#' this role. For more information see Attaching and Detaching IAM
+#' Policies.
 #'
 #' @return
 #' An empty list.
@@ -135,12 +134,13 @@ shield_associate_drt_role <- function(RoleArn) {
     name = "AssociateDRTRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$associate_drt_role_input(RoleArn = RoleArn)
   output <- .shield$associate_drt_role_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -191,12 +191,13 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
     name = "AssociateHealthCheck",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$associate_health_check_input(ProtectionId = ProtectionId, HealthCheckArn = HealthCheckArn)
   output <- .shield$associate_health_check_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -268,12 +269,13 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
     name = "AssociateProactiveEngagementDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$associate_proactive_engagement_details_input(EmergencyContactList = EmergencyContactList)
   output <- .shield$associate_proactive_engagement_details_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -358,12 +360,13 @@ shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
     name = "CreateProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$create_protection_input(Name = Name, ResourceArn = ResourceArn, Tags = Tags)
   output <- .shield$create_protection_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -446,12 +449,13 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
     name = "CreateProtectionGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$create_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members, Tags = Tags)
   output <- .shield$create_protection_group_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -495,12 +499,13 @@ shield_create_subscription <- function() {
     name = "CreateSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$create_subscription_input()
   output <- .shield$create_subscription_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -537,12 +542,13 @@ shield_delete_protection <- function(ProtectionId) {
     name = "DeleteProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$delete_protection_input(ProtectionId = ProtectionId)
   output <- .shield$delete_protection_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -581,12 +587,13 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
     name = "DeleteProtectionGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$delete_protection_group_input(ProtectionGroupId = ProtectionGroupId)
   output <- .shield$delete_protection_group_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -623,12 +630,13 @@ shield_delete_subscription <- function() {
     name = "DeleteSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$delete_subscription_input()
   output <- .shield$delete_subscription_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -739,12 +747,13 @@ shield_describe_attack <- function(AttackId) {
     name = "DescribeAttack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$describe_attack_input(AttackId = AttackId)
   output <- .shield$describe_attack_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -822,12 +831,13 @@ shield_describe_attack_statistics <- function() {
     name = "DescribeAttackStatistics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$describe_attack_statistics_input()
   output <- .shield$describe_attack_statistics_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +884,13 @@ shield_describe_drt_access <- function() {
     name = "DescribeDRTAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$describe_drt_access_input()
   output <- .shield$describe_drt_access_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -931,12 +942,13 @@ shield_describe_emergency_contact_settings <- function() {
     name = "DescribeEmergencyContactSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$describe_emergency_contact_settings_input()
   output <- .shield$describe_emergency_contact_settings_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -999,12 +1011,13 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
     name = "DescribeProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$describe_protection_input(ProtectionId = ProtectionId, ResourceArn = ResourceArn)
   output <- .shield$describe_protection_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1057,12 +1070,13 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
     name = "DescribeProtectionGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$describe_protection_group_input(ProtectionGroupId = ProtectionGroupId)
   output <- .shield$describe_protection_group_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1137,12 +1151,13 @@ shield_describe_subscription <- function() {
     name = "DescribeSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$describe_subscription_input()
   output <- .shield$describe_subscription_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1183,12 +1198,13 @@ shield_disable_application_layer_automatic_response <- function(ResourceArn) {
     name = "DisableApplicationLayerAutomaticResponse",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$disable_application_layer_automatic_response_input(ResourceArn = ResourceArn)
   output <- .shield$disable_application_layer_automatic_response_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1227,12 +1243,13 @@ shield_disable_proactive_engagement <- function() {
     name = "DisableProactiveEngagement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$disable_proactive_engagement_input()
   output <- .shield$disable_proactive_engagement_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1271,12 +1288,13 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
     name = "DisassociateDRTLogBucket",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$disassociate_drt_log_bucket_input(LogBucket = LogBucket)
   output <- .shield$disassociate_drt_log_bucket_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1313,12 +1331,13 @@ shield_disassociate_drt_role <- function() {
     name = "DisassociateDRTRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$disassociate_drt_role_input()
   output <- .shield$disassociate_drt_role_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1369,12 +1388,13 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
     name = "DisassociateHealthCheck",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$disassociate_health_check_input(ProtectionId = ProtectionId, HealthCheckArn = HealthCheckArn)
   output <- .shield$disassociate_health_check_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1451,12 +1471,13 @@ shield_enable_application_layer_automatic_response <- function(ResourceArn, Acti
     name = "EnableApplicationLayerAutomaticResponse",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$enable_application_layer_automatic_response_input(ResourceArn = ResourceArn, Action = Action)
   output <- .shield$enable_application_layer_automatic_response_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1495,12 +1516,13 @@ shield_enable_proactive_engagement <- function() {
     name = "EnableProactiveEngagement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$enable_proactive_engagement_input()
   output <- .shield$enable_proactive_engagement_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1540,12 +1562,13 @@ shield_get_subscription_state <- function() {
     name = "GetSubscriptionState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$get_subscription_state_input()
   output <- .shield$get_subscription_state_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1661,12 +1684,13 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
     name = "ListAttacks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttackSummaries")
   )
   input <- .shield$list_attacks_input(ResourceArns = ResourceArns, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .shield$list_attacks_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1764,12 +1788,13 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, I
     name = "ListProtectionGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .shield$list_protection_groups_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protection_groups_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1870,12 +1895,13 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, Inclusi
     name = "ListProtections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Protections")
   )
   input <- .shield$list_protections_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protections_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1947,12 +1973,13 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
     name = "ListResourcesInProtectionGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .shield$list_resources_in_protection_group_input(ProtectionGroupId = ProtectionGroupId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .shield$list_resources_in_protection_group_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2001,12 +2028,13 @@ shield_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .shield$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2051,12 +2079,13 @@ shield_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .shield$tag_resource_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2098,12 +2127,13 @@ shield_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .shield$untag_resource_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2153,12 +2183,13 @@ shield_update_application_layer_automatic_response <- function(ResourceArn, Acti
     name = "UpdateApplicationLayerAutomaticResponse",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$update_application_layer_automatic_response_input(ResourceArn = ResourceArn, Action = Action)
   output <- .shield$update_application_layer_automatic_response_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2213,12 +2244,13 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
     name = "UpdateEmergencyContactSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$update_emergency_contact_settings_input(EmergencyContactList = EmergencyContactList)
   output <- .shield$update_emergency_contact_settings_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2293,12 +2325,13 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
     name = "UpdateProtectionGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$update_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members)
   output <- .shield$update_protection_group_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2346,12 +2379,13 @@ shield_update_subscription <- function(AutoRenew = NULL) {
     name = "UpdateSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .shield$update_subscription_input(AutoRenew = AutoRenew)
   output <- .shield$update_subscription_output()
   config <- get_config()
-  svc <- .shield$service(config)
+  svc <- .shield$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

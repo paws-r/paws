@@ -24,12 +24,13 @@ worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, 
     name = "AssociateDomain",
     http_method = "POST",
     http_path = "/associateDomain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$associate_domain_input(FleetArn = FleetArn, DomainName = DomainName, DisplayName = DisplayName, AcmCertificateArn = AcmCertificateArn)
   output <- .worklink$associate_domain_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -56,12 +57,13 @@ worklink_associate_website_authorization_provider <- function(FleetArn, Authoriz
     name = "AssociateWebsiteAuthorizationProvider",
     http_method = "POST",
     http_path = "/associateWebsiteAuthorizationProvider",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$associate_website_authorization_provider_input(FleetArn = FleetArn, AuthorizationProviderType = AuthorizationProviderType, DomainName = DomainName)
   output <- .worklink$associate_website_authorization_provider_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -89,12 +91,13 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
     name = "AssociateWebsiteCertificateAuthority",
     http_method = "POST",
     http_path = "/associateWebsiteCertificateAuthority",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$associate_website_certificate_authority_input(FleetArn = FleetArn, Certificate = Certificate, DisplayName = DisplayName)
   output <- .worklink$associate_website_certificate_authority_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -123,12 +126,13 @@ worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndU
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/createFleet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$create_fleet_input(FleetName = FleetName, DisplayName = DisplayName, OptimizeForEndUserLocation = OptimizeForEndUserLocation, Tags = Tags)
   output <- .worklink$create_fleet_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -152,12 +156,13 @@ worklink_delete_fleet <- function(FleetArn) {
     name = "DeleteFleet",
     http_method = "POST",
     http_path = "/deleteFleet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$delete_fleet_input(FleetArn = FleetArn)
   output <- .worklink$delete_fleet_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -182,12 +187,13 @@ worklink_describe_audit_stream_configuration <- function(FleetArn) {
     name = "DescribeAuditStreamConfiguration",
     http_method = "POST",
     http_path = "/describeAuditStreamConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_audit_stream_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_audit_stream_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -212,12 +218,13 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
     name = "DescribeCompanyNetworkConfiguration",
     http_method = "POST",
     http_path = "/describeCompanyNetworkConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_company_network_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_company_network_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -242,12 +249,13 @@ worklink_describe_device <- function(FleetArn, DeviceId) {
     name = "DescribeDevice",
     http_method = "POST",
     http_path = "/describeDevice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_device_input(FleetArn = FleetArn, DeviceId = DeviceId)
   output <- .worklink$describe_device_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +279,13 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
     name = "DescribeDevicePolicyConfiguration",
     http_method = "POST",
     http_path = "/describeDevicePolicyConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_device_policy_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_device_policy_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -301,12 +310,13 @@ worklink_describe_domain <- function(FleetArn, DomainName) {
     name = "DescribeDomain",
     http_method = "POST",
     http_path = "/describeDomain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_domain_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$describe_domain_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -331,12 +341,13 @@ worklink_describe_fleet_metadata <- function(FleetArn) {
     name = "DescribeFleetMetadata",
     http_method = "POST",
     http_path = "/describeFleetMetadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_fleet_metadata_input(FleetArn = FleetArn)
   output <- .worklink$describe_fleet_metadata_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -360,12 +371,13 @@ worklink_describe_identity_provider_configuration <- function(FleetArn) {
     name = "DescribeIdentityProviderConfiguration",
     http_method = "POST",
     http_path = "/describeIdentityProviderConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_identity_provider_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_identity_provider_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -390,12 +402,13 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
     name = "DescribeWebsiteCertificateAuthority",
     http_method = "POST",
     http_path = "/describeWebsiteCertificateAuthority",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$describe_website_certificate_authority_input(FleetArn = FleetArn, WebsiteCaId = WebsiteCaId)
   output <- .worklink$describe_website_certificate_authority_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -420,12 +433,13 @@ worklink_disassociate_domain <- function(FleetArn, DomainName) {
     name = "DisassociateDomain",
     http_method = "POST",
     http_path = "/disassociateDomain",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$disassociate_domain_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$disassociate_domain_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -450,12 +464,13 @@ worklink_disassociate_website_authorization_provider <- function(FleetArn, Autho
     name = "DisassociateWebsiteAuthorizationProvider",
     http_method = "POST",
     http_path = "/disassociateWebsiteAuthorizationProvider",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$disassociate_website_authorization_provider_input(FleetArn = FleetArn, AuthorizationProviderId = AuthorizationProviderId)
   output <- .worklink$disassociate_website_authorization_provider_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -480,12 +495,13 @@ worklink_disassociate_website_certificate_authority <- function(FleetArn, Websit
     name = "DisassociateWebsiteCertificateAuthority",
     http_method = "POST",
     http_path = "/disassociateWebsiteCertificateAuthority",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$disassociate_website_certificate_authority_input(FleetArn = FleetArn, WebsiteCaId = WebsiteCaId)
   output <- .worklink$disassociate_website_certificate_authority_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -512,12 +528,13 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     name = "ListDevices",
     http_method = "POST",
     http_path = "/listDevices",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_devices_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_devices_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -544,12 +561,13 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     name = "ListDomains",
     http_method = "POST",
     http_path = "/listDomains",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_domains_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_domains_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -575,12 +593,13 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListFleets",
     http_method = "POST",
     http_path = "/listFleets",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_fleets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_fleets_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -604,12 +623,13 @@ worklink_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .worklink$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -637,12 +657,13 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
     name = "ListWebsiteAuthorizationProviders",
     http_method = "POST",
     http_path = "/listWebsiteAuthorizationProviders",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_website_authorization_providers_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_website_authorization_providers_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -670,12 +691,13 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
     name = "ListWebsiteCertificateAuthorities",
     http_method = "POST",
     http_path = "/listWebsiteCertificateAuthorities",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_website_certificate_authorities_input(FleetArn = FleetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .worklink$list_website_certificate_authorities_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -700,12 +722,13 @@ worklink_restore_domain_access <- function(FleetArn, DomainName) {
     name = "RestoreDomainAccess",
     http_method = "POST",
     http_path = "/restoreDomainAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$restore_domain_access_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$restore_domain_access_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -730,12 +753,13 @@ worklink_revoke_domain_access <- function(FleetArn, DomainName) {
     name = "RevokeDomainAccess",
     http_method = "POST",
     http_path = "/revokeDomainAccess",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$revoke_domain_access_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$revoke_domain_access_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -760,12 +784,13 @@ worklink_sign_out_user <- function(FleetArn, Username) {
     name = "SignOutUser",
     http_method = "POST",
     http_path = "/signOutUser",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$sign_out_user_input(FleetArn = FleetArn, Username = Username)
   output <- .worklink$sign_out_user_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -791,12 +816,13 @@ worklink_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .worklink$tag_resource_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -821,12 +847,13 @@ worklink_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .worklink$untag_resource_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -852,12 +879,13 @@ worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn 
     name = "UpdateAuditStreamConfiguration",
     http_method = "POST",
     http_path = "/updateAuditStreamConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$update_audit_stream_configuration_input(FleetArn = FleetArn, AuditStreamArn = AuditStreamArn)
   output <- .worklink$update_audit_stream_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -885,12 +913,13 @@ worklink_update_company_network_configuration <- function(FleetArn, VpcId, Subne
     name = "UpdateCompanyNetworkConfiguration",
     http_method = "POST",
     http_path = "/updateCompanyNetworkConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$update_company_network_configuration_input(FleetArn = FleetArn, VpcId = VpcId, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds)
   output <- .worklink$update_company_network_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -916,12 +945,13 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
     name = "UpdateDevicePolicyConfiguration",
     http_method = "POST",
     http_path = "/updateDevicePolicyConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$update_device_policy_configuration_input(FleetArn = FleetArn, DeviceCaCertificate = DeviceCaCertificate)
   output <- .worklink$update_device_policy_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -947,12 +977,13 @@ worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = 
     name = "UpdateDomainMetadata",
     http_method = "POST",
     http_path = "/updateDomainMetadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$update_domain_metadata_input(FleetArn = FleetArn, DomainName = DomainName, DisplayName = DisplayName)
   output <- .worklink$update_domain_metadata_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -981,12 +1012,13 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
     name = "UpdateFleetMetadata",
     http_method = "POST",
     http_path = "/UpdateFleetMetadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$update_fleet_metadata_input(FleetArn = FleetArn, DisplayName = DisplayName, OptimizeForEndUserLocation = OptimizeForEndUserLocation)
   output <- .worklink$update_fleet_metadata_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1013,12 +1045,13 @@ worklink_update_identity_provider_configuration <- function(FleetArn, IdentityPr
     name = "UpdateIdentityProviderConfiguration",
     http_method = "POST",
     http_path = "/updateIdentityProviderConfiguration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .worklink$update_identity_provider_configuration_input(FleetArn = FleetArn, IdentityProviderType = IdentityProviderType, IdentityProviderSamlMetadata = IdentityProviderSamlMetadata)
   output <- .worklink$update_identity_provider_configuration_output()
   config <- get_config()
-  svc <- .worklink$service(config)
+  svc <- .worklink$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

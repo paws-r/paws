@@ -167,12 +167,13 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
     name = "BatchExecuteStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$batch_execute_statement_input(Statements = Statements, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_execute_statement_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -520,12 +521,13 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
     name = "BatchGetItem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "RequestItems", output_token = "UnprocessedKeys")
   )
   input <- .dynamodb$batch_get_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_get_item_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -630,6 +632,10 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' -   Any individual item in a batch exceeds 400 KB.
 #' 
 #' -   The total request size exceeds 16 MB.
+#' 
+#' -   Any individual items with keys exceeding the key length limits. For
+#'     a partition key, the limit is 2048 bytes and for a sort key, the
+#'     limit is 1024 bytes.
 #'
 #' @usage
 #' dynamodb_batch_write_item(RequestItems, ReturnConsumedCapacity,
@@ -929,12 +935,13 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
     name = "BatchWriteItem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$batch_write_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics)
   output <- .dynamodb$batch_write_item_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1023,12 +1030,13 @@ dynamodb_create_backup <- function(TableName, BackupName) {
     name = "CreateBackup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$create_backup_input(TableName = TableName, BackupName = BackupName)
   output <- .dynamodb$create_backup_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1042,16 +1050,18 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' replication relationship between two or more DynamoDB tables with the
 #' same table name in the provided Regions.
 #' 
-#' This operation only applies to [Version 2017.11.29
-#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' when creating new global tables, as it provides greater flexibility,
-#' higher efficiency and consumes less write capacity than 2017.11.29
-#' (Legacy). To determine which version you are using, see [Determining the
-#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' This documentation is for version 2017.11.29 (Legacy) of global tables,
+#' which should be avoided for new global tables. Customers should use
+#' [Global Tables version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+#' when possible, because it provides greater flexibility, higher
+#' efficiency, and consumes less write capacity than 2017.11.29 (Legacy).
+#' 
+#' To determine which version you're using, see [Determining the global
+#' table version you are
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
-#' version 2019.11.21 (Current), see [Updating global
+#' version 2019.11.21 (Current), see [Upgrading global
 #' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #' 
 #' If you want to add a new replica table to a global table, each of the
@@ -1114,11 +1124,17 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -1165,12 +1181,13 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
     name = "CreateGlobalTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$create_global_table_input(GlobalTableName = GlobalTableName, ReplicationGroup = ReplicationGroup)
   output <- .dynamodb$create_global_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1205,7 +1222,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
 #'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
 #'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags,
-#'   TableClass, DeletionProtectionEnabled, ResourcePolicy)
+#'   TableClass, DeletionProtectionEnabled, ResourcePolicy,
+#'   OnDemandThroughput)
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
 #' indexes.
@@ -1327,12 +1345,13 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
 #'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'     Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
+#'     capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' 
 #' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
 #'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
-#'     [On-Demand
-#'     Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand).
+#'     [On-demand capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
 #' @param ProvisionedThroughput Represents the provisioned throughput settings for a specified table or
 #' index. The settings can be modified using the
 #' [`update_table`][dynamodb_update_table] operation.
@@ -1378,14 +1397,20 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' that will be attached to the table.
 #' 
 #' When you attach a resource-based policy while creating a table, the
-#' policy creation is *strongly consistent*.
+#' policy application is *strongly consistent*.
 #' 
 #' The maximum size supported for a resource-based policy document is 20
 #' KB. DynamoDB counts whitespaces when calculating the size of a policy
-#' against this limit. You can’t request an increase for this limit. For a
-#' full list of all considerations that you should keep in mind while
-#' attaching a resource-based policy, see [Resource-based policy
+#' against this limit. For a full list of all considerations that apply for
+#' resource-based policies, see [Resource-based policy
 #' considerations](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html).
+#' 
+#' You need to specify the [`create_table`][dynamodb_create_table] and
+#' [`put_resource_policy`][dynamodb_put_resource_policy] IAM actions for
+#' authorizing a user to create a table with a resource-based policy.
+#' @param OnDemandThroughput Sets the maximum number of read and write units for the specified table
+#' in on-demand capacity mode. If you use this parameter, you must specify
+#' `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1480,7 +1505,11 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         ),
 #'         IndexSizeBytes = 123,
 #'         ItemCount = 123,
-#'         IndexArn = "string"
+#'         IndexArn = "string",
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
+#'         )
 #'       )
 #'     ),
 #'     StreamSpecification = list(
@@ -1500,11 +1529,17 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -1548,7 +1583,11 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     DeletionProtectionEnabled = TRUE|FALSE
+#'     DeletionProtectionEnabled = TRUE|FALSE,
+#'     OnDemandThroughput = list(
+#'       MaxReadRequestUnits = 123,
+#'       MaxWriteRequestUnits = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -1604,6 +1643,10 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'       ProvisionedThroughput = list(
 #'         ReadCapacityUnits = 123,
 #'         WriteCapacityUnits = 123
+#'       ),
+#'       OnDemandThroughput = list(
+#'         MaxReadRequestUnits = 123,
+#'         MaxWriteRequestUnits = 123
 #'       )
 #'     )
 #'   ),
@@ -1629,7 +1672,11 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'   ),
 #'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
 #'   DeletionProtectionEnabled = TRUE|FALSE,
-#'   ResourcePolicy = "string"
+#'   ResourcePolicy = "string",
+#'   OnDemandThroughput = list(
+#'     MaxReadRequestUnits = 123,
+#'     MaxWriteRequestUnits = 123
+#'   )
 #' )
 #' ```
 #'
@@ -1670,17 +1717,18 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @rdname dynamodb_create_table
 #'
 #' @aliases dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, ResourcePolicy = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, ResourcePolicy = ResourcePolicy)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput)
   output <- .dynamodb$create_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1736,6 +1784,10 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
 #'         ReadCapacityUnits = 123,
 #'         WriteCapacityUnits = 123
 #'       ),
+#'       OnDemandThroughput = list(
+#'         MaxReadRequestUnits = 123,
+#'         MaxWriteRequestUnits = 123
+#'       ),
 #'       ItemCount = 123,
 #'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST"
 #'     ),
@@ -1775,6 +1827,10 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
 #'           ProvisionedThroughput = list(
 #'             ReadCapacityUnits = 123,
 #'             WriteCapacityUnits = 123
+#'           ),
+#'           OnDemandThroughput = list(
+#'             MaxReadRequestUnits = 123,
+#'             MaxWriteRequestUnits = 123
 #'           )
 #'         )
 #'       ),
@@ -1816,12 +1872,13 @@ dynamodb_delete_backup <- function(BackupArn) {
     name = "DeleteBackup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$delete_backup_input(BackupArn = BackupArn)
   output <- .dynamodb$delete_backup_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2200,12 +2257,13 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
     name = "DeleteItem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$delete_item_input(TableName = TableName, Key = Key, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$delete_item_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2281,12 +2339,13 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$delete_resource_policy_input(ResourceArn = ResourceArn, ExpectedRevisionId = ExpectedRevisionId)
   output <- .dynamodb$delete_resource_policy_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2305,9 +2364,8 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #' not exist, DynamoDB returns a `ResourceNotFoundException`. If table is
 #' already in the `DELETING` state, no error is returned.
 #' 
-#' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' of global tables.
+#' For global tables, this operation only applies to global tables using
+#' Version 2019.11.21 (Current version).
 #' 
 #' DynamoDB might continue to accept data read and write operations, such
 #' as [`get_item`][dynamodb_get_item] and [`put_item`][dynamodb_put_item],
@@ -2421,7 +2479,11 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         ),
 #'         IndexSizeBytes = 123,
 #'         ItemCount = 123,
-#'         IndexArn = "string"
+#'         IndexArn = "string",
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
+#'         )
 #'       )
 #'     ),
 #'     StreamSpecification = list(
@@ -2441,11 +2503,17 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -2489,7 +2557,11 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     DeletionProtectionEnabled = TRUE|FALSE
+#'     DeletionProtectionEnabled = TRUE|FALSE,
+#'     OnDemandThroughput = list(
+#'       MaxReadRequestUnits = 123,
+#'       MaxWriteRequestUnits = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -2519,12 +2591,13 @@ dynamodb_delete_table <- function(TableName) {
     name = "DeleteTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$delete_table_input(TableName = TableName)
   output <- .dynamodb$delete_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2580,6 +2653,10 @@ dynamodb_delete_table <- function(TableName) {
 #'         ReadCapacityUnits = 123,
 #'         WriteCapacityUnits = 123
 #'       ),
+#'       OnDemandThroughput = list(
+#'         MaxReadRequestUnits = 123,
+#'         MaxWriteRequestUnits = 123
+#'       ),
 #'       ItemCount = 123,
 #'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST"
 #'     ),
@@ -2619,6 +2696,10 @@ dynamodb_delete_table <- function(TableName) {
 #'           ProvisionedThroughput = list(
 #'             ReadCapacityUnits = 123,
 #'             WriteCapacityUnits = 123
+#'           ),
+#'           OnDemandThroughput = list(
+#'             MaxReadRequestUnits = 123,
+#'             MaxWriteRequestUnits = 123
 #'           )
 #'         )
 #'       ),
@@ -2660,12 +2741,13 @@ dynamodb_describe_backup <- function(BackupArn) {
     name = "DescribeBackup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_backup_input(BackupArn = BackupArn)
   output <- .dynamodb$describe_backup_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2738,12 +2820,13 @@ dynamodb_describe_continuous_backups <- function(TableName) {
     name = "DescribeContinuousBackups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_continuous_backups_input(TableName = TableName)
   output <- .dynamodb$describe_continuous_backups_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2802,12 +2885,13 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
     name = "DescribeContributorInsights",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_contributor_insights_input(TableName = TableName, IndexName = IndexName)
   output <- .dynamodb$describe_contributor_insights_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2854,12 +2938,13 @@ dynamodb_describe_endpoints <- function() {
     name = "DescribeEndpoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_endpoints_input()
   output <- .dynamodb$describe_endpoints_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2937,12 +3022,13 @@ dynamodb_describe_export <- function(ExportArn) {
     name = "DescribeExport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_export_input(ExportArn = ExportArn)
   output <- .dynamodb$describe_export_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2954,16 +3040,18 @@ dynamodb_describe_export <- function(ExportArn) {
 #' @description
 #' Returns information about the specified global table.
 #' 
-#' This operation only applies to [Version 2017.11.29
-#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' when creating new global tables, as it provides greater flexibility,
-#' higher efficiency and consumes less write capacity than 2017.11.29
-#' (Legacy). To determine which version you are using, see [Determining the
-#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' This documentation is for version 2017.11.29 (Legacy) of global tables,
+#' which should be avoided for new global tables. Customers should use
+#' [Global Tables version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+#' when possible, because it provides greater flexibility, higher
+#' efficiency, and consumes less write capacity than 2017.11.29 (Legacy).
+#' 
+#' To determine which version you're using, see [Determining the global
+#' table version you are
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
-#' version 2019.11.21 (Current), see [Updating global
+#' version 2019.11.21 (Current), see [Upgrading global
 #' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
@@ -2986,11 +3074,17 @@ dynamodb_describe_export <- function(ExportArn) {
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -3032,12 +3126,13 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
     name = "DescribeGlobalTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_global_table_input(GlobalTableName = GlobalTableName)
   output <- .dynamodb$describe_global_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3049,16 +3144,18 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #' @description
 #' Describes Region-specific settings for a global table.
 #' 
-#' This operation only applies to [Version 2017.11.29
-#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' when creating new global tables, as it provides greater flexibility,
-#' higher efficiency and consumes less write capacity than 2017.11.29
-#' (Legacy). To determine which version you are using, see [Determining the
-#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' This documentation is for version 2017.11.29 (Legacy) of global tables,
+#' which should be avoided for new global tables. Customers should use
+#' [Global Tables version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+#' when possible, because it provides greater flexibility, higher
+#' efficiency, and consumes less write capacity than 2017.11.29 (Legacy).
+#' 
+#' To determine which version you're using, see [Determining the global
+#' table version you are
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
-#' version 2019.11.21 (Current), see [Updating global
+#' version 2019.11.21 (Current), see [Upgrading global
 #' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
@@ -3187,12 +3284,13 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
     name = "DescribeGlobalTableSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_global_table_settings_input(GlobalTableName = GlobalTableName)
   output <- .dynamodb$describe_global_table_settings_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3256,6 +3354,10 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #'         ReadCapacityUnits = 123,
 #'         WriteCapacityUnits = 123
 #'       ),
+#'       OnDemandThroughput = list(
+#'         MaxReadRequestUnits = 123,
+#'         MaxWriteRequestUnits = 123
+#'       ),
 #'       SSESpecification = list(
 #'         Enabled = TRUE|FALSE,
 #'         SSEType = "AES256"|"KMS",
@@ -3279,6 +3381,10 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #'           ProvisionedThroughput = list(
 #'             ReadCapacityUnits = 123,
 #'             WriteCapacityUnits = 123
+#'           ),
+#'           OnDemandThroughput = list(
+#'             MaxReadRequestUnits = 123,
+#'             MaxWriteRequestUnits = 123
 #'           )
 #'         )
 #'       )
@@ -3315,12 +3421,13 @@ dynamodb_describe_import <- function(ImportArn) {
     name = "DescribeImport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_import_input(ImportArn = ImportArn)
   output <- .dynamodb$describe_import_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3371,12 +3478,13 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
     name = "DescribeKinesisStreamingDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_kinesis_streaming_destination_input(TableName = TableName)
   output <- .dynamodb$describe_kinesis_streaming_destination_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3498,12 +3606,13 @@ dynamodb_describe_limits <- function() {
     name = "DescribeLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_limits_input()
   output <- .dynamodb$describe_limits_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3519,9 +3628,8 @@ dynamodb_describe_limits <- function() {
 #' table, when it was created, the primary key schema, and any indexes on
 #' the table.
 #' 
-#' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' of global tables.
+#' For global tables, this operation only applies to global tables using
+#' Version 2019.11.21 (Current version).
 #' 
 #' If you issue a [`describe_table`][dynamodb_describe_table] request
 #' immediately after a [`create_table`][dynamodb_create_table] request,
@@ -3630,7 +3738,11 @@ dynamodb_describe_limits <- function() {
 #'         ),
 #'         IndexSizeBytes = 123,
 #'         ItemCount = 123,
-#'         IndexArn = "string"
+#'         IndexArn = "string",
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
+#'         )
 #'       )
 #'     ),
 #'     StreamSpecification = list(
@@ -3650,11 +3762,17 @@ dynamodb_describe_limits <- function() {
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -3698,7 +3816,11 @@ dynamodb_describe_limits <- function() {
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     DeletionProtectionEnabled = TRUE|FALSE
+#'     DeletionProtectionEnabled = TRUE|FALSE,
+#'     OnDemandThroughput = list(
+#'       MaxReadRequestUnits = 123,
+#'       MaxWriteRequestUnits = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -3728,12 +3850,13 @@ dynamodb_describe_table <- function(TableName) {
     name = "DescribeTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_table_input(TableName = TableName)
   output <- .dynamodb$describe_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3747,9 +3870,8 @@ dynamodb_describe_table <- function(TableName) {
 #' Describes auto scaling settings across replicas of the global table at
 #' once.
 #' 
-#' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' of global tables.
+#' For global tables, this operation only applies to global tables using
+#' Version 2019.11.21 (Current version).
 #'
 #' @usage
 #' dynamodb_describe_table_replica_auto_scaling(TableName)
@@ -3865,12 +3987,13 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
     name = "DescribeTableReplicaAutoScaling",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_table_replica_auto_scaling_input(TableName = TableName)
   output <- .dynamodb$describe_table_replica_auto_scaling_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3918,12 +4041,13 @@ dynamodb_describe_time_to_live <- function(TableName) {
     name = "DescribeTimeToLive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$describe_time_to_live_input(TableName = TableName)
   output <- .dynamodb$describe_time_to_live_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3979,12 +4103,13 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn,
     name = "DisableKinesisStreamingDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$disable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$disable_kinesis_streaming_destination_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4043,12 +4168,13 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn, 
     name = "EnableKinesisStreamingDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$enable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$enable_kinesis_streaming_destination_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4235,12 +4361,13 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken, ReturnConsumedCapacity = ReturnConsumedCapacity, Limit = Limit, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$execute_statement_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4382,12 +4509,13 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
     name = "ExecuteTransaction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$execute_transaction_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4529,12 +4657,13 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
     name = "ExportTableToPointInTime",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$export_table_to_point_in_time_input(TableArn = TableArn, ExportTime = ExportTime, ClientToken = ClientToken, S3Bucket = S3Bucket, S3BucketOwner = S3BucketOwner, S3Prefix = S3Prefix, S3SseAlgorithm = S3SseAlgorithm, S3SseKmsKeyId = S3SseKmsKeyId, ExportFormat = ExportFormat, ExportType = ExportType, IncrementalExportSpecification = IncrementalExportSpecification)
   output <- .dynamodb$export_table_to_point_in_time_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4750,12 +4879,13 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
     name = "GetItem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$get_item_input(TableName = TableName, Key = Key, AttributesToGet = AttributesToGet, ConsistentRead = ConsistentRead, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, ExpressionAttributeNames = ExpressionAttributeNames)
   output <- .dynamodb$get_item_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4800,13 +4930,12 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' 
 #' After a [`get_resource_policy`][dynamodb_get_resource_policy] request
 #' returns a policy created using the
-#' [`put_resource_policy`][dynamodb_put_resource_policy] request, you can
-#' assume the policy will start getting applied in the authorization of
-#' requests to the resource. Because this process is eventually consistent,
-#' it will take some time to apply the policy to all requests to a
-#' resource. Policies that you attach while creating a table using the
-#' [`create_table`][dynamodb_create_table] request will always be applied
-#' to all requests for that table.
+#' [`put_resource_policy`][dynamodb_put_resource_policy] request, the
+#' policy will be applied in the authorization of requests to the resource.
+#' Because this process is eventually consistent, it will take some time to
+#' apply the policy to all requests to a resource. Policies that you attach
+#' while creating a table using the [`create_table`][dynamodb_create_table]
+#' request will always be applied to all requests for that table.
 #'
 #' @usage
 #' dynamodb_get_resource_policy(ResourceArn)
@@ -4841,12 +4970,13 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
     name = "GetResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .dynamodb$get_resource_policy_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4929,6 +5059,10 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
 #'         ReadCapacityUnits = 123,
 #'         WriteCapacityUnits = 123
 #'       ),
+#'       OnDemandThroughput = list(
+#'         MaxReadRequestUnits = 123,
+#'         MaxWriteRequestUnits = 123
+#'       ),
 #'       SSESpecification = list(
 #'         Enabled = TRUE|FALSE,
 #'         SSEType = "AES256"|"KMS",
@@ -4952,6 +5086,10 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
 #'           ProvisionedThroughput = list(
 #'             ReadCapacityUnits = 123,
 #'             WriteCapacityUnits = 123
+#'           ),
+#'           OnDemandThroughput = list(
+#'             MaxReadRequestUnits = 123,
+#'             MaxWriteRequestUnits = 123
 #'           )
 #'         )
 #'       )
@@ -5009,6 +5147,10 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
 #'       ReadCapacityUnits = 123,
 #'       WriteCapacityUnits = 123
 #'     ),
+#'     OnDemandThroughput = list(
+#'       MaxReadRequestUnits = 123,
+#'       MaxWriteRequestUnits = 123
+#'     ),
 #'     SSESpecification = list(
 #'       Enabled = TRUE|FALSE,
 #'       SSEType = "AES256"|"KMS",
@@ -5032,6 +5174,10 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
 #'         ProvisionedThroughput = list(
 #'           ReadCapacityUnits = 123,
 #'           WriteCapacityUnits = 123
+#'         ),
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
 #'         )
 #'       )
 #'     )
@@ -5049,12 +5195,13 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
     name = "ImportTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$import_table_input(ClientToken = ClientToken, S3BucketSource = S3BucketSource, InputFormat = InputFormat, InputFormatOptions = InputFormatOptions, InputCompressionType = InputCompressionType, TableCreationParameters = TableCreationParameters)
   output <- .dynamodb$import_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5163,12 +5310,13 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
     name = "ListBackups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$list_backups_input(TableName = TableName, Limit = Limit, TimeRangeLowerBound = TimeRangeLowerBound, TimeRangeUpperBound = TimeRangeUpperBound, ExclusiveStartBackupArn = ExclusiveStartBackupArn, BackupType = BackupType)
   output <- .dynamodb$list_backups_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5224,12 +5372,13 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
     name = "ListContributorInsights",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .dynamodb$list_contributor_insights_input(TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .dynamodb$list_contributor_insights_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5284,12 +5433,13 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
     name = "ListExports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .dynamodb$list_exports_input(TableArn = TableArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dynamodb$list_exports_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5301,16 +5451,18 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' @description
 #' Lists all global tables that have a replica in the specified Region.
 #' 
-#' This operation only applies to [Version 2017.11.29
-#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' when creating new global tables, as it provides greater flexibility,
-#' higher efficiency and consumes less write capacity than 2017.11.29
-#' (Legacy). To determine which version you are using, see [Determining the
-#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' This documentation is for version 2017.11.29 (Legacy) of global tables,
+#' which should be avoided for new global tables. Customers should use
+#' [Global Tables version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+#' when possible, because it provides greater flexibility, higher
+#' efficiency, and consumes less write capacity than 2017.11.29 (Legacy).
+#' 
+#' To determine which version you're using, see [Determining the global
+#' table version you are
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
-#' version 2019.11.21 (Current), see [Updating global
+#' version 2019.11.21 (Current), see [Upgrading global
 #' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
@@ -5365,12 +5517,13 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
     name = "ListGlobalTables",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$list_global_tables_input(ExclusiveStartGlobalTableName = ExclusiveStartGlobalTableName, Limit = Limit, RegionName = RegionName)
   output <- .dynamodb$list_global_tables_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5439,12 +5592,13 @@ dynamodb_list_imports <- function(TableArn = NULL, PageSize = NULL, NextToken = 
     name = "ListImports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken")
   )
   input <- .dynamodb$list_imports_input(TableArn = TableArn, PageSize = PageSize, NextToken = NextToken)
   output <- .dynamodb$list_imports_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5504,12 +5658,13 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "ExclusiveStartTableName", limit_key = "Limit", output_token = "LastEvaluatedTableName", result_key = "TableNames")
   )
   input <- .dynamodb$list_tables_input(ExclusiveStartTableName = ExclusiveStartTableName, Limit = Limit)
   output <- .dynamodb$list_tables_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5567,12 +5722,13 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
     name = "ListTagsOfResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$list_tags_of_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .dynamodb$list_tags_of_resource_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5989,12 +6145,13 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
     name = "PutItem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$put_item_input(TableName = TableName, Item = Item, Expected = Expected, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionalOperator = ConditionalOperator, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$put_item_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6014,7 +6171,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' [`put_resource_policy`][dynamodb_put_resource_policy] is an idempotent
 #' operation; running it multiple times on the same resource using the same
 #' policy document will return the same revision ID. If you specify an
-#' `ExpectedRevisionId` which doesn't match the current policy's
+#' `ExpectedRevisionId` that doesn't match the current policy's
 #' `RevisionId`, the `PolicyNotFoundException` will be returned.
 #' 
 #' [`put_resource_policy`][dynamodb_put_resource_policy] is an asynchronous
@@ -6046,20 +6203,27 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' document.
 #' @param Policy &#91;required&#93; An Amazon Web Services resource-based policy document in JSON format.
 #' 
-#' The maximum size supported for a resource-based policy document is 20
-#' KB. DynamoDB counts whitespaces when calculating the size of a policy
-#' against this limit. For a full list of all considerations that you
-#' should keep in mind while attaching a resource-based policy, see
-#' [Resource-based policy
+#' -   The maximum size supported for a resource-based policy document is
+#'     20 KB. DynamoDB counts whitespaces when calculating the size of a
+#'     policy against this limit.
+#' 
+#' -   Within a resource-based policy, if the action for a DynamoDB
+#'     service-linked role (SLR) to replicate data for a global table is
+#'     denied, adding or deleting a replica will fail with an error.
+#' 
+#' For a full list of all considerations that apply while attaching a
+#' resource-based policy, see [Resource-based policy
 #' considerations](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html).
 #' @param ExpectedRevisionId A string value that you can use to conditionally update your policy. You
 #' can provide the revision ID of your existing policy to make mutating
-#' requests against that policy. When you provide an expected revision ID,
-#' if the revision ID of the existing policy on the resource doesn't match
-#' or if there's no policy attached to the resource, your request will be
-#' rejected with a `PolicyNotFoundException`.
+#' requests against that policy.
 #' 
-#' To conditionally put a policy when no policy exists for the resource,
+#' When you provide an expected revision ID, if the revision ID of the
+#' existing policy on the resource doesn't match or if there's no policy
+#' attached to the resource, your request will be rejected with a
+#' `PolicyNotFoundException`.
+#' 
+#' To conditionally attach a policy when no policy exists for the resource,
 #' specify `NO_POLICY` for the revision ID.
 #' @param ConfirmRemoveSelfResourceAccess Set this parameter to `true` to confirm that you want to remove your
 #' permissions to change the policy of this resource in the future.
@@ -6092,12 +6256,13 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy, ExpectedRevisionId = ExpectedRevisionId, ConfirmRemoveSelfResourceAccess = ConfirmRemoveSelfResourceAccess)
   output <- .dynamodb$put_resource_policy_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6685,12 +6850,13 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
     name = "Query",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
   )
   input <- .dynamodb$query_input(TableName = TableName, IndexName = IndexName, Select = Select, AttributesToGet = AttributesToGet, Limit = Limit, ConsistentRead = ConsistentRead, KeyConditions = KeyConditions, QueryFilter = QueryFilter, ConditionalOperator = ConditionalOperator, ScanIndexForward = ScanIndexForward, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, KeyConditionExpression = KeyConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
   output <- .dynamodb$query_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6726,7 +6892,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' dynamodb_restore_table_from_backup(TargetTableName, BackupArn,
 #'   BillingModeOverride, GlobalSecondaryIndexOverride,
 #'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
-#'   SSESpecificationOverride)
+#'   OnDemandThroughputOverride, SSESpecificationOverride)
 #'
 #' @param TargetTableName &#91;required&#93; The name of the new table to which the backup must be restored.
 #' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
@@ -6738,6 +6904,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' provided should match existing secondary indexes. You can choose to
 #' exclude some or all of the indexes at the time of restore.
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
+#' @param OnDemandThroughputOverride 
 #' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
 #'
 #' @return
@@ -6833,7 +7000,11 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         ),
 #'         IndexSizeBytes = 123,
 #'         ItemCount = 123,
-#'         IndexArn = "string"
+#'         IndexArn = "string",
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
+#'         )
 #'       )
 #'     ),
 #'     StreamSpecification = list(
@@ -6853,11 +7024,17 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -6901,7 +7078,11 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     DeletionProtectionEnabled = TRUE|FALSE
+#'     DeletionProtectionEnabled = TRUE|FALSE,
+#'     OnDemandThroughput = list(
+#'       MaxReadRequestUnits = 123,
+#'       MaxWriteRequestUnits = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -6930,6 +7111,10 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'       ProvisionedThroughput = list(
 #'         ReadCapacityUnits = 123,
 #'         WriteCapacityUnits = 123
+#'       ),
+#'       OnDemandThroughput = list(
+#'         MaxReadRequestUnits = 123,
+#'         MaxWriteRequestUnits = 123
 #'       )
 #'     )
 #'   ),
@@ -6954,6 +7139,10 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'     ReadCapacityUnits = 123,
 #'     WriteCapacityUnits = 123
 #'   ),
+#'   OnDemandThroughputOverride = list(
+#'     MaxReadRequestUnits = 123,
+#'     MaxWriteRequestUnits = 123
+#'   ),
 #'   SSESpecificationOverride = list(
 #'     Enabled = TRUE|FALSE,
 #'     SSEType = "AES256"|"KMS",
@@ -6967,17 +7156,18 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' @rdname dynamodb_restore_table_from_backup
 #'
 #' @aliases dynamodb_restore_table_from_backup
-dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, SSESpecificationOverride = NULL) {
+dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, OnDemandThroughputOverride = NULL, SSESpecificationOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableFromBackup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
+  input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_from_backup_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7033,7 +7223,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'   TargetTableName, UseLatestRestorableTime, RestoreDateTime,
 #'   BillingModeOverride, GlobalSecondaryIndexOverride,
 #'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
-#'   SSESpecificationOverride)
+#'   OnDemandThroughputOverride, SSESpecificationOverride)
 #'
 #' @param SourceTableArn The DynamoDB table that will be restored. This value is an Amazon
 #' Resource Name (ARN).
@@ -7051,6 +7241,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' provided should match existing secondary indexes. You can choose to
 #' exclude some or all of the indexes at the time of restore.
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
+#' @param OnDemandThroughputOverride 
 #' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
 #'
 #' @return
@@ -7146,7 +7337,11 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         ),
 #'         IndexSizeBytes = 123,
 #'         ItemCount = 123,
-#'         IndexArn = "string"
+#'         IndexArn = "string",
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
+#'         )
 #'       )
 #'     ),
 #'     StreamSpecification = list(
@@ -7166,11 +7361,17 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -7214,7 +7415,11 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     DeletionProtectionEnabled = TRUE|FALSE
+#'     DeletionProtectionEnabled = TRUE|FALSE,
+#'     OnDemandThroughput = list(
+#'       MaxReadRequestUnits = 123,
+#'       MaxWriteRequestUnits = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -7248,6 +7453,10 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'       ProvisionedThroughput = list(
 #'         ReadCapacityUnits = 123,
 #'         WriteCapacityUnits = 123
+#'       ),
+#'       OnDemandThroughput = list(
+#'         MaxReadRequestUnits = 123,
+#'         MaxWriteRequestUnits = 123
 #'       )
 #'     )
 #'   ),
@@ -7272,6 +7481,10 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'     ReadCapacityUnits = 123,
 #'     WriteCapacityUnits = 123
 #'   ),
+#'   OnDemandThroughputOverride = list(
+#'     MaxReadRequestUnits = 123,
+#'     MaxWriteRequestUnits = 123
+#'   ),
 #'   SSESpecificationOverride = list(
 #'     Enabled = TRUE|FALSE,
 #'     SSEType = "AES256"|"KMS",
@@ -7285,17 +7498,18 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' @rdname dynamodb_restore_table_to_point_in_time
 #'
 #' @aliases dynamodb_restore_table_to_point_in_time
-dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, SourceTableName = NULL, TargetTableName, UseLatestRestorableTime = NULL, RestoreDateTime = NULL, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, SSESpecificationOverride = NULL) {
+dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, SourceTableName = NULL, TargetTableName, UseLatestRestorableTime = NULL, RestoreDateTime = NULL, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, OnDemandThroughputOverride = NULL, SSESpecificationOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableToPointInTime",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableArn = SourceTableArn, SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
+  input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableArn = SourceTableArn, SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_to_point_in_time_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7801,12 +8015,13 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
     name = "Scan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
   )
   input <- .dynamodb$scan_input(TableName = TableName, IndexName = IndexName, AttributesToGet = AttributesToGet, Limit = Limit, Select = Select, ScanFilter = ScanFilter, ConditionalOperator = ConditionalOperator, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, TotalSegments = TotalSegments, Segment = Segment, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ConsistentRead = ConsistentRead)
   output <- .dynamodb$scan_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7858,12 +8073,13 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .dynamodb$tag_resource_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8024,12 +8240,13 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
     name = "TransactGetItems",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$transact_get_items_input(TransactItems = TransactItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$transact_get_items_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8454,12 +8671,13 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
     name = "TransactWriteItems",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$transact_write_items_input(TransactItems = TransactItems, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ClientRequestToken = ClientRequestToken)
   output <- .dynamodb$transact_write_items_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8508,12 +8726,13 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .dynamodb$untag_resource_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8587,12 +8806,13 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
     name = "UpdateContinuousBackups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_continuous_backups_input(TableName = TableName, PointInTimeRecoverySpecification = PointInTimeRecoverySpecification)
   output <- .dynamodb$update_continuous_backups_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8650,12 +8870,13 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
     name = "UpdateContributorInsights",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_contributor_insights_input(TableName = TableName, IndexName = IndexName, ContributorInsightsAction = ContributorInsightsAction)
   output <- .dynamodb$update_contributor_insights_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8671,22 +8892,24 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' same key schema, have DynamoDB Streams enabled, and have the same
 #' provisioned and maximum write capacity units.
 #' 
-#' This operation only applies to [Version 2017.11.29
-#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' when creating new global tables, as it provides greater flexibility,
-#' higher efficiency and consumes less write capacity than 2017.11.29
-#' (Legacy). To determine which version you are using, see [Determining the
-#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' This documentation is for version 2017.11.29 (Legacy) of global tables,
+#' which should be avoided for new global tables. Customers should use
+#' [Global Tables version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+#' when possible, because it provides greater flexibility, higher
+#' efficiency, and consumes less write capacity than 2017.11.29 (Legacy).
+#' 
+#' To determine which version you're using, see [Determining the global
+#' table version you are
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
-#' version 2019.11.21 (Current), see [Updating global
+#' version 2019.11.21 (Current), see [Upgrading global
 #' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. If you are using global tables [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
+#' For global tables, this operation only applies to global tables using
+#' Version 2019.11.21 (Current version). If you are using global tables
+#' [Version
+#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
 #' you can use [`update_table`][dynamodb_update_table] instead.
 #' 
 #' Although you can use
@@ -8726,11 +8949,17 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -8782,12 +9011,13 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
     name = "UpdateGlobalTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_global_table_input(GlobalTableName = GlobalTableName, ReplicaUpdates = ReplicaUpdates)
   output <- .dynamodb$update_global_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8799,16 +9029,18 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' @description
 #' Updates settings for a global table.
 #' 
-#' This operation only applies to [Version 2017.11.29
-#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' when creating new global tables, as it provides greater flexibility,
-#' higher efficiency and consumes less write capacity than 2017.11.29
-#' (Legacy). To determine which version you are using, see [Determining the
-#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' This documentation is for version 2017.11.29 (Legacy) of global tables,
+#' which should be avoided for new global tables. Customers should use
+#' [Global Tables version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+#' when possible, because it provides greater flexibility, higher
+#' efficiency, and consumes less write capacity than 2017.11.29 (Legacy).
+#' 
+#' To determine which version you're using, see [Determining the global
+#' table version you are
+#' using](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
 #' To update existing global tables from version 2017.11.29 (Legacy) to
-#' version 2019.11.21 (Current), see [Updating global
+#' version 2019.11.21 (Current), see [Upgrading global
 #' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
@@ -8824,12 +9056,13 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' 
 #' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
 #'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'     Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
+#'     capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' 
 #' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
 #'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
-#'     [On-Demand
-#'     Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand).
+#'     [On-demand capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
 #' @param GlobalTableProvisionedWriteCapacityUnits The maximum number of writes consumed per second before DynamoDB returns
 #' a `ThrottlingException.`
 #' @param GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate Auto scaling settings for managing provisioned write capacity for the
@@ -9041,12 +9274,13 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
     name = "UpdateGlobalTableSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_global_table_settings_input(GlobalTableName = GlobalTableName, GlobalTableBillingMode = GlobalTableBillingMode, GlobalTableProvisionedWriteCapacityUnits = GlobalTableProvisionedWriteCapacityUnits, GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate, GlobalTableGlobalSecondaryIndexSettingsUpdate = GlobalTableGlobalSecondaryIndexSettingsUpdate, ReplicaSettingsUpdate = ReplicaSettingsUpdate)
   output <- .dynamodb$update_global_table_settings_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9561,12 +9795,13 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
     name = "UpdateItem",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_item_input(TableName = TableName, Key = Key, AttributeUpdates = AttributeUpdates, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, UpdateExpression = UpdateExpression, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$update_item_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9621,12 +9856,13 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
     name = "UpdateKinesisStreamingDestination",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, UpdateKinesisStreamingConfiguration = UpdateKinesisStreamingConfiguration)
   output <- .dynamodb$update_kinesis_streaming_destination_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9640,9 +9876,8 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' Modifies the provisioned throughput settings, global secondary indexes,
 #' or DynamoDB Streams settings for a given table.
 #' 
-#' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' of global tables.
+#' For global tables, this operation only applies to global tables using
+#' Version 2019.11.21 (Current version).
 #' 
 #' You can only perform one of the following operations at once:
 #' 
@@ -9664,7 +9899,8 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @usage
 #' dynamodb_update_table(AttributeDefinitions, TableName, BillingMode,
 #'   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
-#'   SSESpecification, ReplicaUpdates, TableClass, DeletionProtectionEnabled)
+#'   SSESpecification, ReplicaUpdates, TableClass, DeletionProtectionEnabled,
+#'   OnDemandThroughput)
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -9680,12 +9916,13 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' 
 #' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
 #'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'     Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
+#'     capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' 
 #' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
 #'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
-#'     [On-Demand
-#'     Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand).
+#'     [On-demand capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
 #' @param ProvisionedThroughput The new provisioned throughput settings for the specified table or
 #' index.
 #' @param GlobalSecondaryIndexUpdates An array of one or more global secondary indexes for the table. For each
@@ -9713,13 +9950,15 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @param ReplicaUpdates A list of replica update actions (create, delete, or update) for the
 #' table.
 #' 
-#' This property only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' of global tables.
+#' For global tables, this property only applies to global tables using
+#' Version 2019.11.21 (Current version).
 #' @param TableClass The table class of the table to be updated. Valid values are `STANDARD`
 #' and `STANDARD_INFREQUENT_ACCESS`.
 #' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
 #' disabled (false) on the table.
+#' @param OnDemandThroughput Updates the maximum number of read and write units for the specified
+#' table in on-demand capacity mode. If you use this parameter, you must
+#' specify `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9814,7 +10053,11 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         ),
 #'         IndexSizeBytes = 123,
 #'         ItemCount = 123,
-#'         IndexArn = "string"
+#'         IndexArn = "string",
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
+#'         )
 #'       )
 #'     ),
 #'     StreamSpecification = list(
@@ -9834,11 +10077,17 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -9882,7 +10131,11 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         "2015-01-01"
 #'       )
 #'     ),
-#'     DeletionProtectionEnabled = TRUE|FALSE
+#'     DeletionProtectionEnabled = TRUE|FALSE,
+#'     OnDemandThroughput = list(
+#'       MaxReadRequestUnits = 123,
+#'       MaxWriteRequestUnits = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -9909,6 +10162,10 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         ProvisionedThroughput = list(
 #'           ReadCapacityUnits = 123,
 #'           WriteCapacityUnits = 123
+#'         ),
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
 #'         )
 #'       ),
 #'       Create = list(
@@ -9928,6 +10185,10 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         ProvisionedThroughput = list(
 #'           ReadCapacityUnits = 123,
 #'           WriteCapacityUnits = 123
+#'         ),
+#'         OnDemandThroughput = list(
+#'           MaxReadRequestUnits = 123,
+#'           MaxWriteRequestUnits = 123
 #'         )
 #'       ),
 #'       Delete = list(
@@ -9952,11 +10213,17 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -9968,11 +10235,17 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         ProvisionedThroughputOverride = list(
 #'           ReadCapacityUnits = 123
 #'         ),
+#'         OnDemandThroughputOverride = list(
+#'           MaxReadRequestUnits = 123
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
 #'             ProvisionedThroughputOverride = list(
 #'               ReadCapacityUnits = 123
+#'             ),
+#'             OnDemandThroughputOverride = list(
+#'               MaxReadRequestUnits = 123
 #'             )
 #'           )
 #'         ),
@@ -9984,7 +10257,11 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'     )
 #'   ),
 #'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
-#'   DeletionProtectionEnabled = TRUE|FALSE
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   OnDemandThroughput = list(
+#'     MaxReadRequestUnits = 123,
+#'     MaxWriteRequestUnits = 123
+#'   )
 #' )
 #' ```
 #'
@@ -10006,17 +10283,18 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @rdname dynamodb_update_table
 #'
 #' @aliases dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, OnDemandThroughput = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, OnDemandThroughput = OnDemandThroughput)
   output <- .dynamodb$update_table_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10028,9 +10306,8 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' @description
 #' Updates auto scaling settings on your global tables at once.
 #' 
-#' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-#' of global tables.
+#' For global tables, this operation only applies to global tables using
+#' Version 2019.11.21 (Current version).
 #'
 #' @usage
 #' dynamodb_update_table_replica_auto_scaling(GlobalSecondaryIndexUpdates,
@@ -10227,12 +10504,13 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
     name = "UpdateTableReplicaAutoScaling",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_table_replica_auto_scaling_input(GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, TableName = TableName, ProvisionedWriteCapacityAutoScalingUpdate = ProvisionedWriteCapacityAutoScalingUpdate, ReplicaUpdates = ReplicaUpdates)
   output <- .dynamodb$update_table_replica_auto_scaling_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10315,12 +10593,13 @@ dynamodb_update_time_to_live <- function(TableName, TimeToLiveSpecification) {
     name = "UpdateTimeToLive",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .dynamodb$update_time_to_live_input(TableName = TableName, TimeToLiveSpecification = TimeToLiveSpecification)
   output <- .dynamodb$update_time_to_live_output()
   config <- get_config()
-  svc <- .dynamodb$service(config)
+  svc <- .dynamodb$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

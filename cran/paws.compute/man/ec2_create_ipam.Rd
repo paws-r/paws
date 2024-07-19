@@ -36,7 +36,7 @@ the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{T
 for the filter value.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{Tier}{IPAM is offered in a Free Tier and an Advanced Tier. For more
 information about the features available in each tier and the costs

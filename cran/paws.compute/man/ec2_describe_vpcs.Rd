@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_vpcs}
 \alias{ec2_describe_vpcs}
-\title{Describes one or more of your VPCs}
+\title{Describes your VPCs}
 \usage{
 ec2_describe_vpcs(
   Filters = NULL,
@@ -49,9 +49,7 @@ regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC.
 }}
 
-\item{VpcIds}{The IDs of the VPCs.
-
-Default: Describes all your VPCs.}
+\item{VpcIds}{The IDs of the VPCs.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -67,7 +65,7 @@ output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes one or more of your VPCs.
+Describes your VPCs. The default is to describe all your VPCs. Alternatively, you can specify specific VPC IDs or filter the results to include only the VPCs that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpcs/} for full documentation.
 }

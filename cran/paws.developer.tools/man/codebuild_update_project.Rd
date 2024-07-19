@@ -50,6 +50,7 @@ build. If a pull request ID is specified, it must use the format
 \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
 specified, the branch's HEAD commit ID is used. If not specified,
 the default branch's HEAD commit ID is used.
+\item For GitLab: the commit ID, branch, or Git tag to use.
 \item For Bitbucket: the commit ID, branch name, or tag name that
 corresponds to the version of the source code you want to build. If
 a branch name is specified, the branch's HEAD commit ID is used. If
@@ -83,9 +84,9 @@ project.}
 with dependent Amazon Web Services services on behalf of the Amazon Web
 Services account.}
 
-\item{timeoutInMinutes}{The replacement value in minutes, from 5 to 480 (8 hours), for CodeBuild
-to wait before timing out any related build that did not get marked as
-completed.}
+\item{timeoutInMinutes}{The replacement value in minutes, from 5 to 2160 (36 hours), for
+CodeBuild to wait before timing out any related build that did not get
+marked as completed.}
 
 \item{queuedTimeoutInMinutes}{The number of minutes a build is allowed to be queued before it times
 out.}

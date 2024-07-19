@@ -23,7 +23,7 @@ URIs.}
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
-Creates a prompt. For more information about prompts, such as supported file types and maximum length, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html}{Create prompts} in the \emph{Amazon Connect Administrator's Guide}.
+Creates a prompt. For more information about prompts, such as supported file types and maximum length, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html}{Create prompts} in the \emph{Amazon Connect Administrator Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_prompt/} for full documentation.
 }

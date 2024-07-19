@@ -4,7 +4,7 @@
 \alias{ec2_delete_public_ipv_4_pool}
 \title{Delete a public IPv4 pool}
 \usage{
-ec2_delete_public_ipv_4_pool(DryRun = NULL, PoolId)
+ec2_delete_public_ipv_4_pool(DryRun = NULL, PoolId, NetworkBorderGroup = NULL)
 }
 \arguments{
 \item{DryRun}{A check for whether you have the required permissions for the action
@@ -13,6 +13,12 @@ you have the required permissions, the error response is
 \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PoolId}{[required] The ID of the public IPv4 pool you want to delete.}
+
+\item{NetworkBorderGroup}{The Availability Zone (AZ) or Local Zone (LZ) network border group that
+the resource that the IP address is assigned to is in. Defaults to an AZ
+network border group. For more information on available Local Zones, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail}{Local Zone availability}
+in the \emph{Amazon EC2 User Guide}.}
 }
 \description{
 Delete a public IPv4 pool. A public IPv4 pool is an EC2 IP address pool required for the public IPv4 CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools only.

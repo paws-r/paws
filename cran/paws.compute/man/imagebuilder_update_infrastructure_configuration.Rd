@@ -70,7 +70,7 @@ following links:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options}
 in the \emph{Amazon EC2 User Guide} for Linux instances.
-\item \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options}
+\item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options}
 in the \emph{Amazon EC2 Windows Guide} for Windows instances.
 }}
 }

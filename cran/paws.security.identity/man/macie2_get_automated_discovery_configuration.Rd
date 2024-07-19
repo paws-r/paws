@@ -3,12 +3,12 @@
 \name{macie2_get_automated_discovery_configuration}
 \alias{macie2_get_automated_discovery_configuration}
 \title{Retrieves the configuration settings and status of automated sensitive
-data discovery for an account}
+data discovery for an organization or standalone account}
 \usage{
 macie2_get_automated_discovery_configuration()
 }
 \description{
-Retrieves the configuration settings and status of automated sensitive data discovery for an account.
+Retrieves the configuration settings and status of automated sensitive data discovery for an organization or standalone account.
 
 See \url{https://www.paws-r-sdk.com/docs/macie2_get_automated_discovery_configuration/} for full documentation.
 }

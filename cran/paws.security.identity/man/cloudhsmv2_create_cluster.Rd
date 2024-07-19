@@ -2,26 +2,28 @@
 % Please edit documentation in R/cloudhsmv2_operations.R
 \name{cloudhsmv2_create_cluster}
 \alias{cloudhsmv2_create_cluster}
-\title{Creates a new AWS CloudHSM cluster}
+\title{Creates a new CloudHSM cluster}
 \usage{
 cloudhsmv2_create_cluster(
   BackupRetentionPolicy = NULL,
   HsmType,
   SourceBackupId = NULL,
   SubnetIds,
-  TagList = NULL
+  TagList = NULL,
+  Mode = NULL
 )
 }
 \arguments{
 \item{BackupRetentionPolicy}{A policy that defines how the service retains backups.}
 
-\item{HsmType}{[required] The type of HSM to use in the cluster. Currently the only allowed value
-is \code{hsm1.medium}.}
+\item{HsmType}{[required] The type of HSM to use in the cluster. The allowed values are
+\code{hsm1.medium} and \code{hsm2m.medium}.}
 
-\item{SourceBackupId}{The identifier (ID) of the cluster backup to restore. Use this value to
-restore the cluster from a backup instead of creating a new cluster. To
-find the backup ID, use
-\code{\link[=cloudhsmv2_describe_backups]{describe_backups}}.}
+\item{SourceBackupId}{The identifier (ID) or the Amazon Resource Name (ARN) of the cluster
+backup to restore. Use this value to restore the cluster from a backup
+instead of creating a new cluster. To find the backup ID or ARN, use
+\code{\link[=cloudhsmv2_describe_backups]{describe_backups}}. \emph{If using a backup in
+another account, the full ARN must be supplied.}}
 
 \item{SubnetIds}{[required] The identifiers (IDs) of the subnets where you are creating the cluster.
 You must specify at least one subnet. If you specify multiple subnets,
@@ -32,9 +34,12 @@ they must meet the following criteria:
 }}
 
 \item{TagList}{Tags to apply to the CloudHSM cluster during creation.}
+
+\item{Mode}{The mode to use in the cluster. The allowed values are \code{FIPS} and
+\code{NON_FIPS}.}
 }
 \description{
-Creates a new AWS CloudHSM cluster.
+Creates a new CloudHSM cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/} for full documentation.
 }

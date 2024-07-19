@@ -133,12 +133,13 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
     name = "BatchCreatePartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_create_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionInputList = PartitionInputList)
   output <- .glue$batch_create_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -193,12 +194,13 @@ glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
     name = "BatchDeleteConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_delete_connection_input(CatalogId = CatalogId, ConnectionNameList = ConnectionNameList)
   output <- .glue$batch_delete_connection_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -265,12 +267,13 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
     name = "BatchDeletePartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_delete_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToDelete = PartitionsToDelete)
   output <- .glue$batch_delete_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -344,12 +347,13 @@ glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDele
     name = "BatchDeleteTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TablesToDelete = TablesToDelete, TransactionId = TransactionId)
   output <- .glue$batch_delete_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -413,12 +417,13 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
     name = "BatchDeleteTableVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_delete_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionIds = VersionIds)
   output <- .glue$batch_delete_table_version_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -495,12 +500,13 @@ glue_batch_get_blueprints <- function(Names, IncludeBlueprint = NULL, IncludePar
     name = "BatchGetBlueprints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_blueprints_input(Names = Names, IncludeBlueprint = IncludeBlueprint, IncludeParameterSpec = IncludeParameterSpec)
   output <- .glue$batch_get_blueprints_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -687,12 +693,13 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
     name = "BatchGetCrawlers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_crawlers_input(CrawlerNames = CrawlerNames)
   output <- .glue$batch_get_crawlers_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -749,12 +756,13 @@ glue_batch_get_custom_entity_types <- function(Names) {
     name = "BatchGetCustomEntityTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_custom_entity_types_input(Names = Names)
   output <- .glue$batch_get_custom_entity_types_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -866,12 +874,13 @@ glue_batch_get_data_quality_result <- function(ResultIds) {
     name = "BatchGetDataQualityResult",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_data_quality_result_input(ResultIds = ResultIds)
   output <- .glue$batch_get_data_quality_result_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -963,12 +972,13 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
     name = "BatchGetDevEndpoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_dev_endpoints_input(DevEndpointNames = DevEndpointNames)
   output <- .glue$batch_get_dev_endpoints_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -997,6 +1007,7 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'   Jobs = list(
 #'     list(
 #'       Name = "string",
+#'       JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'       Description = "string",
 #'       LogUri = "string",
 #'       Role = "string",
@@ -2276,6 +2287,23 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             RecipeReference = list(
 #'               RecipeArn = "string",
 #'               RecipeVersion = "string"
+#'             ),
+#'             RecipeSteps = list(
+#'               list(
+#'                 Action = list(
+#'                   Operation = "string",
+#'                   Parameters = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 ConditionExpressions = list(
+#'                   list(
+#'                     Condition = "string",
+#'                     Value = "string",
+#'                     TargetColumn = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           SnowflakeSource = list(
@@ -2426,7 +2454,9 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'         LastCommitId = "string",
 #'         AuthStrategy = "PERSONAL_ACCESS_TOKEN"|"AWS_SECRETS_MANAGER",
 #'         AuthToken = "string"
-#'       )
+#'       ),
+#'       MaintenanceWindow = "string",
+#'       ProfileName = "string"
 #'     )
 #'   ),
 #'   JobsNotFound = list(
@@ -2454,12 +2484,13 @@ glue_batch_get_jobs <- function(JobNames) {
     name = "BatchGetJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_jobs_input(JobNames = JobNames)
   output <- .glue$batch_get_jobs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2603,12 +2634,13 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
     name = "BatchGetPartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToGet = PartitionsToGet)
   output <- .glue$batch_get_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2699,12 +2731,13 @@ glue_batch_get_table_optimizer <- function(Entries) {
     name = "BatchGetTableOptimizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_table_optimizer_input(Entries = Entries)
   output <- .glue$batch_get_table_optimizer_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2759,7 +2792,7 @@ glue_batch_get_table_optimizer <- function(Entries) {
 #'           list(
 #'             LogicalOperator = "EQUALS",
 #'             JobName = "string",
-#'             State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'             State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'             CrawlerName = "string",
 #'             CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'           )
@@ -2796,12 +2829,13 @@ glue_batch_get_triggers <- function(TriggerNames) {
     name = "BatchGetTriggers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_triggers_input(TriggerNames = TriggerNames)
   output <- .glue$batch_get_triggers_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2902,7 +2936,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                       list(
 #'                         LogicalOperator = "EQUALS",
 #'                         JobName = "string",
-#'                         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                         CrawlerName = "string",
 #'                         CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'                       )
@@ -2922,6 +2956,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                     PreviousRunId = "string",
 #'                     TriggerName = "string",
 #'                     JobName = "string",
+#'                     JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'                     StartedOn = as.POSIXct(
 #'                       "2015-01-01"
 #'                     ),
@@ -2931,7 +2966,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                     CompletedOn = as.POSIXct(
 #'                       "2015-01-01"
 #'                     ),
-#'                     JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                     JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                     Arguments = list(
 #'                       "string"
 #'                     ),
@@ -2955,7 +2990,9 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                     ),
 #'                     GlueVersion = "string",
 #'                     DPUSeconds = 123.0,
-#'                     ExecutionClass = "FLEX"|"STANDARD"
+#'                     ExecutionClass = "FLEX"|"STANDARD",
+#'                     MaintenanceWindow = "string",
+#'                     ProfileName = "string"
 #'                   )
 #'                 )
 #'               ),
@@ -3024,7 +3061,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                     list(
 #'                       LogicalOperator = "EQUALS",
 #'                       JobName = "string",
-#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                       CrawlerName = "string",
 #'                       CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'                     )
@@ -3044,6 +3081,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                   PreviousRunId = "string",
 #'                   TriggerName = "string",
 #'                   JobName = "string",
+#'                   JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'                   StartedOn = as.POSIXct(
 #'                     "2015-01-01"
 #'                   ),
@@ -3053,7 +3091,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                   CompletedOn = as.POSIXct(
 #'                     "2015-01-01"
 #'                   ),
-#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                   Arguments = list(
 #'                     "string"
 #'                   ),
@@ -3077,7 +3115,9 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                   ),
 #'                   GlueVersion = "string",
 #'                   DPUSeconds = 123.0,
-#'                   ExecutionClass = "FLEX"|"STANDARD"
+#'                   ExecutionClass = "FLEX"|"STANDARD",
+#'                   MaintenanceWindow = "string",
+#'                   ProfileName = "string"
 #'                 )
 #'               )
 #'             ),
@@ -3139,12 +3179,13 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
     name = "BatchGetWorkflows",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_get_workflows_input(Names = Names, IncludeGraph = IncludeGraph)
   output <- .glue$batch_get_workflows_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3206,12 +3247,13 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
     name = "BatchStopJobRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_stop_job_run_input(JobName = JobName, JobRunIds = JobRunIds)
   output <- .glue$batch_stop_job_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3352,12 +3394,13 @@ glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableNam
     name = "BatchUpdatePartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$batch_update_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Entries = Entries)
   output <- .glue$batch_update_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3396,12 +3439,13 @@ glue_cancel_data_quality_rule_recommendation_run <- function(RunId) {
     name = "CancelDataQualityRuleRecommendationRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$cancel_data_quality_rule_recommendation_run_input(RunId = RunId)
   output <- .glue$cancel_data_quality_rule_recommendation_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3438,12 +3482,13 @@ glue_cancel_data_quality_ruleset_evaluation_run <- function(RunId) {
     name = "CancelDataQualityRulesetEvaluationRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$cancel_data_quality_ruleset_evaluation_run_input(RunId = RunId)
   output <- .glue$cancel_data_quality_ruleset_evaluation_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3493,12 +3538,13 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
     name = "CancelMLTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$cancel_ml_task_run_input(TransformId = TransformId, TaskRunId = TaskRunId)
   output <- .glue$cancel_ml_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3539,12 +3585,13 @@ glue_cancel_statement <- function(SessionId, Id, RequestOrigin = NULL) {
     name = "CancelStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$cancel_statement_input(SessionId = SessionId, Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$cancel_statement_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3593,12 +3640,13 @@ glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
     name = "CheckSchemaVersionValidity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$check_schema_version_validity_input(DataFormat = DataFormat, SchemaDefinition = SchemaDefinition)
   output <- .glue$check_schema_version_validity_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3648,12 +3696,13 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
     name = "CreateBlueprint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_blueprint_input(Name = Name, Description = Description, BlueprintLocation = BlueprintLocation, Tags = Tags)
   output <- .glue$create_blueprint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3726,12 +3775,13 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
     name = "CreateClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier, CsvClassifier = CsvClassifier)
   output <- .glue$create_classifier_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3755,7 +3805,12 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' @param Tags The tags you assign to the connection.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateConnectionStatus = "READY"|"IN_PROGRESS"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3764,7 +3819,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -3777,7 +3832,27 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'         "string"
 #'       ),
 #'       AvailabilityZone = "string"
-#'     )
+#'     ),
+#'     AuthenticationConfiguration = list(
+#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'       SecretArn = "string",
+#'       OAuth2Properties = list(
+#'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'         OAuth2ClientApplication = list(
+#'           UserManagedClientApplicationClientId = "string",
+#'           AWSManagedClientApplicationReference = "string"
+#'         ),
+#'         TokenUrl = "string",
+#'         TokenUrlParametersMap = list(
+#'           "string"
+#'         ),
+#'         AuthorizationCodeProperties = list(
+#'           AuthorizationCode = "string",
+#'           RedirectUri = "string"
+#'         )
+#'       )
+#'     ),
+#'     ValidateCredentials = TRUE|FALSE
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -3795,12 +3870,13 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput, Tags = NUL
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_connection_input(CatalogId = CatalogId, ConnectionInput = ConnectionInput, Tags = Tags)
   output <- .glue$create_connection_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3988,12 +4064,13 @@ glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = N
     name = "CreateCrawler",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, LakeFormationConfiguration = LakeFormationConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration, Tags = Tags)
   output <- .glue$create_crawler_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4057,12 +4134,13 @@ glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NUL
     name = "CreateCustomEntityType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_custom_entity_type_input(Name = Name, RegexString = RegexString, ContextWords = ContextWords, Tags = Tags)
   output <- .glue$create_custom_entity_type_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4129,12 +4207,13 @@ glue_create_data_quality_ruleset <- function(Name, Description = NULL, Ruleset, 
     name = "CreateDataQualityRuleset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_data_quality_ruleset_input(Name = Name, Description = Description, Ruleset = Ruleset, Tags = Tags, TargetTable = TargetTable, ClientToken = ClientToken)
   output <- .glue$create_data_quality_ruleset_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4204,12 +4283,13 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
     name = "CreateDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_database_input(CatalogId = CatalogId, DatabaseInput = DatabaseInput, Tags = Tags)
   output <- .glue$create_database_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4376,12 +4456,13 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
     name = "CreateDevEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_dev_endpoint_input(EndpointName = EndpointName, RoleArn = RoleArn, SecurityGroupIds = SecurityGroupIds, SubnetId = SubnetId, PublicKey = PublicKey, PublicKeys = PublicKeys, NumberOfNodes = NumberOfNodes, WorkerType = WorkerType, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, ExtraPythonLibsS3Path = ExtraPythonLibsS3Path, ExtraJarsS3Path = ExtraJarsS3Path, SecurityConfiguration = SecurityConfiguration, Tags = Tags, Arguments = Arguments)
   output <- .glue$create_dev_endpoint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4394,15 +4475,26 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' Creates a new job definition.
 #'
 #' @usage
-#' glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
-#'   Command, DefaultArguments, NonOverridableArguments, Connections,
-#'   MaxRetries, AllocatedCapacity, Timeout, MaxCapacity,
+#' glue_create_job(Name, JobMode, Description, LogUri, Role,
+#'   ExecutionProperty, Command, DefaultArguments, NonOverridableArguments,
+#'   Connections, MaxRetries, AllocatedCapacity, Timeout, MaxCapacity,
 #'   SecurityConfiguration, Tags, NotificationProperty, GlueVersion,
 #'   NumberOfWorkers, WorkerType, CodeGenConfigurationNodes, ExecutionClass,
-#'   SourceControlDetails)
+#'   SourceControlDetails, MaintenanceWindow)
 #'
 #' @param Name &#91;required&#93; The name you assign to this job definition. It must be unique in your
 #' account.
+#' @param JobMode A mode that describes how a job was created. Valid values are:
+#' 
+#' -   `SCRIPT` - The job was created using the Glue Studio script editor.
+#' 
+#' -   `VISUAL` - The job was created using the Glue Studio visual editor.
+#' 
+#' -   `NOTEBOOK` - The job was created using an interactive sessions
+#'     notebook.
+#' 
+#' When the `JobMode` field is missing or null, `SCRIPT` is assigned as the
+#' default value.
 #' @param Description Description of the job being defined.
 #' @param LogUri This field is reserved for future use.
 #' @param Role &#91;required&#93; The name or Amazon Resource Name (ARN) of the IAM role associated with
@@ -4447,7 +4539,13 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' pricing page](https://aws.amazon.com/glue/pricing/).
 #' @param Timeout The job timeout in minutes. This is the maximum time that a job run can
 #' consume resources before it is terminated and enters `TIMEOUT` status.
-#' The default is 2,880 minutes (48 hours).
+#' The default is 2,880 minutes (48 hours) for batch jobs.
+#' 
+#' Streaming jobs must have timeout values less than 7 days or 10080
+#' minutes. When the value is left blank, the job will be restarted after 7
+#' days based if you have not setup a maintenance window. If you have setup
+#' maintenance window, it will be restarted during the maintenance window
+#' after 7 days.
 #' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
 #' the number of Glue data processing units (DPUs) that can be allocated
 #' when this job runs. A DPU is a relative measure of processing power that
@@ -4556,6 +4654,15 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' execution class is available for Spark jobs.
 #' @param SourceControlDetails The details for a source control configuration for a job, allowing
 #' synchronization of job artifacts to or from a remote repository.
+#' @param MaintenanceWindow This field specifies a day of the week and hour for a maintenance window
+#' for streaming jobs. Glue periodically performs maintenance activities.
+#' During these maintenance windows, Glue will need to restart your
+#' streaming jobs.
+#' 
+#' Glue will restart the job within 3 hours of the specified maintenance
+#' window. For instance, if you set up the maintenance window for Monday at
+#' 10:00AM GMT, your jobs will be restarted between 10:00AM GMT to 1:00PM
+#' GMT.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4569,6 +4676,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' ```
 #' svc$create_job(
 #'   Name = "string",
+#'   JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'   Description = "string",
 #'   LogUri = "string",
 #'   Role = "string",
@@ -5845,6 +5953,23 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'         RecipeReference = list(
 #'           RecipeArn = "string",
 #'           RecipeVersion = "string"
+#'         ),
+#'         RecipeSteps = list(
+#'           list(
+#'             Action = list(
+#'               Operation = "string",
+#'               Parameters = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ConditionExpressions = list(
+#'               list(
+#'                 Condition = "string",
+#'                 Value = "string",
+#'                 TargetColumn = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       SnowflakeSource = list(
@@ -5995,7 +6120,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'     LastCommitId = "string",
 #'     AuthStrategy = "PERSONAL_ACCESS_TOKEN"|"AWS_SECRETS_MANAGER",
 #'     AuthToken = "string"
-#'   )
+#'   ),
+#'   MaintenanceWindow = "string"
 #' )
 #' ```
 #'
@@ -6004,17 +6130,18 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @rdname glue_create_job
 #'
 #' @aliases glue_create_job
-glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL, CodeGenConfigurationNodes = NULL, ExecutionClass = NULL, SourceControlDetails = NULL) {
+glue_create_job <- function(Name, JobMode = NULL, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL, CodeGenConfigurationNodes = NULL, ExecutionClass = NULL, SourceControlDetails = NULL, MaintenanceWindow = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .glue$create_job_input(Name = Name, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, CodeGenConfigurationNodes = CodeGenConfigurationNodes, ExecutionClass = ExecutionClass, SourceControlDetails = SourceControlDetails)
+  input <- .glue$create_job_input(Name = Name, JobMode = JobMode, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, CodeGenConfigurationNodes = CodeGenConfigurationNodes, ExecutionClass = ExecutionClass, SourceControlDetails = SourceControlDetails, MaintenanceWindow = MaintenanceWindow)
   output <- .glue$create_job_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6202,12 +6329,13 @@ glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables
     name = "CreateMLTransform",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_ml_transform_input(Name = Name, Description = Description, InputRecordTables = InputRecordTables, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries, Tags = Tags, TransformEncryption = TransformEncryption)
   output <- .glue$create_ml_transform_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6326,12 +6454,13 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
     name = "CreatePartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionInput = PartitionInput)
   output <- .glue$create_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6383,12 +6512,13 @@ glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
     name = "CreatePartitionIndex",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_partition_index_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionIndex = PartitionIndex)
   output <- .glue$create_partition_index_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6446,12 +6576,13 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
     name = "CreateRegistry",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_registry_input(RegistryName = RegistryName, Description = Description, Tags = Tags)
   output <- .glue$create_registry_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6590,12 +6721,13 @@ glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compat
     name = "CreateSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_schema_input(RegistryId = RegistryId, SchemaName = SchemaName, DataFormat = DataFormat, Compatibility = Compatibility, Description = Description, Tags = Tags, SchemaDefinition = SchemaDefinition)
   output <- .glue$create_schema_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6661,12 +6793,13 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
     name = "CreateScript",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_script_input(DagNodes = DagNodes, DagEdges = DagEdges, Language = Language)
   output <- .glue$create_script_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6733,12 +6866,13 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
     name = "CreateSecurityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_security_configuration_input(Name = Name, EncryptionConfiguration = EncryptionConfiguration)
   output <- .glue$create_security_configuration_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6853,7 +6987,8 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'     ),
 #'     ExecutionTime = 123.0,
 #'     DPUSeconds = 123.0,
-#'     IdleTimeout = 123
+#'     IdleTimeout = 123,
+#'     ProfileName = "string"
 #'   )
 #' )
 #' ```
@@ -6900,12 +7035,13 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
     name = "CreateSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_session_input(Id = Id, Description = Description, Role = Role, Command = Command, Timeout = Timeout, IdleTimeout = IdleTimeout, DefaultArguments = DefaultArguments, Connections = Connections, MaxCapacity = MaxCapacity, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, SecurityConfiguration = SecurityConfiguration, GlueVersion = GlueVersion, Tags = Tags, RequestOrigin = RequestOrigin)
   output <- .glue$create_session_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7033,6 +7169,22 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #'       DatabaseName = "string",
 #'       Name = "string",
 #'       Region = "string"
+#'     ),
+#'     ViewDefinition = list(
+#'       IsProtected = TRUE|FALSE,
+#'       Definer = "string",
+#'       Representations = list(
+#'         list(
+#'           Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'           DialectVersion = "string",
+#'           ViewOriginalText = "string",
+#'           ValidationConnection = "string",
+#'           ViewExpandedText = "string"
+#'         )
+#'       ),
+#'       SubObjects = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   PartitionIndexes = list(
@@ -7063,12 +7215,13 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, PartitionIndexes = PartitionIndexes, TransactionId = TransactionId, OpenTableFormatInput = OpenTableFormatInput)
   output <- .glue$create_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7120,12 +7273,13 @@ glue_create_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
     name = "CreateTableOptimizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, TableOptimizerConfiguration = TableOptimizerConfiguration)
   output <- .glue$create_table_optimizer_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7187,7 +7341,7 @@ glue_create_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
 #'       list(
 #'         LogicalOperator = "EQUALS",
 #'         JobName = "string",
-#'         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'         CrawlerName = "string",
 #'         CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'       )
@@ -7229,17 +7383,96 @@ glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL
     name = "CreateTrigger",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_trigger_input(Name = Name, WorkflowName = WorkflowName, Type = Type, Schedule = Schedule, Predicate = Predicate, Actions = Actions, Description = Description, StartOnCreation = StartOnCreation, Tags = Tags, EventBatchingCondition = EventBatchingCondition)
   output <- .glue$create_trigger_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .glue$operations$create_trigger <- glue_create_trigger
+
+#' Creates an Glue usage profile
+#'
+#' @description
+#' Creates an Glue usage profile.
+#'
+#' @usage
+#' glue_create_usage_profile(Name, Description, Configuration, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the usage profile.
+#' @param Description A description of the usage profile.
+#' @param Configuration &#91;required&#93; A `ProfileConfiguration` object specifying the job and session values
+#' for the profile.
+#' @param Tags A list of tags applied to the usage profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_usage_profile(
+#'   Name = "string",
+#'   Description = "string",
+#'   Configuration = list(
+#'     SessionConfiguration = list(
+#'       list(
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         MinValue = "string",
+#'         MaxValue = "string"
+#'       )
+#'     ),
+#'     JobConfiguration = list(
+#'       list(
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         MinValue = "string",
+#'         MaxValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_usage_profile
+#'
+#' @aliases glue_create_usage_profile
+glue_create_usage_profile <- function(Name, Description = NULL, Configuration, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateUsageProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$create_usage_profile_input(Name = Name, Description = Description, Configuration = Configuration, Tags = Tags)
+  output <- .glue$create_usage_profile_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_usage_profile <- glue_create_usage_profile
 
 #' Creates a new function definition in the Data Catalog
 #'
@@ -7289,12 +7522,13 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
     name = "CreateUserDefinedFunction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionInput = FunctionInput)
   output <- .glue$create_user_defined_function_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7355,12 +7589,13 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
     name = "CreateWorkflow",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$create_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties, Tags = Tags, MaxConcurrentRuns = MaxConcurrentRuns)
   output <- .glue$create_workflow_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7402,12 +7637,13 @@ glue_delete_blueprint <- function(Name) {
     name = "DeleteBlueprint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_blueprint_input(Name = Name)
   output <- .glue$delete_blueprint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7444,12 +7680,13 @@ glue_delete_classifier <- function(Name) {
     name = "DeleteClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_classifier_input(Name = Name)
   output <- .glue$delete_classifier_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7501,12 +7738,13 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
     name = "DeleteColumnStatisticsForPartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnName = ColumnName)
   output <- .glue$delete_column_statistics_for_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7554,12 +7792,13 @@ glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
     name = "DeleteColumnStatisticsForTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnName = ColumnName)
   output <- .glue$delete_column_statistics_for_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7599,12 +7838,13 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
     name = "DeleteConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_connection_input(CatalogId = CatalogId, ConnectionName = ConnectionName)
   output <- .glue$delete_connection_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7643,12 +7883,13 @@ glue_delete_crawler <- function(Name) {
     name = "DeleteCrawler",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_crawler_input(Name = Name)
   output <- .glue$delete_crawler_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7690,12 +7931,13 @@ glue_delete_custom_entity_type <- function(Name) {
     name = "DeleteCustomEntityType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_custom_entity_type_input(Name = Name)
   output <- .glue$delete_custom_entity_type_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7732,12 +7974,13 @@ glue_delete_data_quality_ruleset <- function(Name) {
     name = "DeleteDataQualityRuleset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_data_quality_ruleset_input(Name = Name)
   output <- .glue$delete_data_quality_ruleset_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7795,12 +8038,13 @@ glue_delete_database <- function(CatalogId = NULL, Name) {
     name = "DeleteDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_database_input(CatalogId = CatalogId, Name = Name)
   output <- .glue$delete_database_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7837,12 +8081,13 @@ glue_delete_dev_endpoint <- function(EndpointName) {
     name = "DeleteDevEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_dev_endpoint_input(EndpointName = EndpointName)
   output <- .glue$delete_dev_endpoint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7885,12 +8130,13 @@ glue_delete_job <- function(JobName) {
     name = "DeleteJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_job_input(JobName = JobName)
   output <- .glue$delete_job_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7938,12 +8184,13 @@ glue_delete_ml_transform <- function(TransformId) {
     name = "DeleteMLTransform",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_ml_transform_input(TransformId = TransformId)
   output <- .glue$delete_ml_transform_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7990,12 +8237,13 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
     name = "DeletePartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues)
   output <- .glue$delete_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8041,12 +8289,13 @@ glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
     name = "DeletePartitionIndex",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_partition_index_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, IndexName = IndexName)
   output <- .glue$delete_partition_index_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8101,12 +8350,13 @@ glue_delete_registry <- function(RegistryId) {
     name = "DeleteRegistry",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_registry_input(RegistryId = RegistryId)
   output <- .glue$delete_registry_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8145,12 +8395,13 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_resource_policy_input(PolicyHashCondition = PolicyHashCondition, ResourceArn = ResourceArn)
   output <- .glue$delete_resource_policy_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8206,12 +8457,13 @@ glue_delete_schema <- function(SchemaId) {
     name = "DeleteSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_schema_input(SchemaId = SchemaId)
   output <- .glue$delete_schema_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8291,12 +8543,13 @@ glue_delete_schema_versions <- function(SchemaId, Versions) {
     name = "DeleteSchemaVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_schema_versions_input(SchemaId = SchemaId, Versions = Versions)
   output <- .glue$delete_schema_versions_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8333,12 +8586,13 @@ glue_delete_security_configuration <- function(Name) {
     name = "DeleteSecurityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_security_configuration_input(Name = Name)
   output <- .glue$delete_security_configuration_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8382,12 +8636,13 @@ glue_delete_session <- function(Id, RequestOrigin = NULL) {
     name = "DeleteSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_session_input(Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$delete_session_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8446,12 +8701,13 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionI
     name = "DeleteTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId)
   output <- .glue$delete_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8495,12 +8751,13 @@ glue_delete_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
     name = "DeleteTableOptimizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type)
   output <- .glue$delete_table_optimizer_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8547,12 +8804,13 @@ glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName,
     name = "DeleteTableVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId)
   output <- .glue$delete_table_version_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8595,17 +8853,61 @@ glue_delete_trigger <- function(Name) {
     name = "DeleteTrigger",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_trigger_input(Name = Name)
   output <- .glue$delete_trigger_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .glue$operations$delete_trigger <- glue_delete_trigger
+
+#' Deletes the Glue specified usage profile
+#'
+#' @description
+#' Deletes the Glue specified usage profile.
+#'
+#' @usage
+#' glue_delete_usage_profile(Name)
+#'
+#' @param Name &#91;required&#93; The name of the usage profile to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_usage_profile(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_usage_profile
+#'
+#' @aliases glue_delete_usage_profile
+glue_delete_usage_profile <- function(Name) {
+  op <- new_operation(
+    name = "DeleteUsageProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$delete_usage_profile_input(Name = Name)
+  output <- .glue$delete_usage_profile_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_usage_profile <- glue_delete_usage_profile
 
 #' Deletes an existing function definition from the Data Catalog
 #'
@@ -8643,12 +8945,13 @@ glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
     name = "DeleteUserDefinedFunction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionName = FunctionName)
   output <- .glue$delete_user_defined_function_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8690,12 +8993,13 @@ glue_delete_workflow <- function(Name) {
     name = "DeleteWorkflow",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$delete_workflow_input(Name = Name)
   output <- .glue$delete_workflow_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8764,12 +9068,13 @@ glue_get_blueprint <- function(Name, IncludeBlueprint = NULL, IncludeParameterSp
     name = "GetBlueprint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_blueprint_input(Name = Name, IncludeBlueprint = IncludeBlueprint, IncludeParameterSpec = IncludeParameterSpec)
   output <- .glue$get_blueprint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8828,12 +9133,13 @@ glue_get_blueprint_run <- function(BlueprintName, RunId) {
     name = "GetBlueprintRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_blueprint_run_input(BlueprintName = BlueprintName, RunId = RunId)
   output <- .glue$get_blueprint_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8897,12 +9203,13 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
     name = "GetBlueprintRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_blueprint_runs_input(BlueprintName = BlueprintName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_blueprint_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8951,12 +9258,13 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
     name = "GetCatalogImportStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_catalog_import_status_input(CatalogId = CatalogId)
   output <- .glue$get_catalog_import_status_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9058,12 +9366,13 @@ glue_get_classifier <- function(Name) {
     name = "GetClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_classifier_input(Name = Name)
   output <- .glue$get_classifier_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9170,12 +9479,13 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
     name = "GetClassifiers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_classifiers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_classifiers_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9304,12 +9614,13 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
     name = "GetColumnStatisticsForPartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnNames = ColumnNames)
   output <- .glue$get_column_statistics_for_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9434,12 +9745,13 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
     name = "GetColumnStatisticsForTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnNames = ColumnNames)
   output <- .glue$get_column_statistics_for_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9512,12 +9824,13 @@ glue_get_column_statistics_task_run <- function(ColumnStatisticsTaskRunId) {
     name = "GetColumnStatisticsTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_column_statistics_task_run_input(ColumnStatisticsTaskRunId = ColumnStatisticsTaskRunId)
   output <- .glue$get_column_statistics_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9599,12 +9912,13 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
     name = "GetColumnStatisticsTaskRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_column_statistics_task_runs_input(DatabaseName = DatabaseName, TableName = TableName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_column_statistics_task_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9636,7 +9950,7 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #'   Connection = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -9656,7 +9970,27 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     LastUpdatedBy = "string"
+#'     LastUpdatedBy = "string",
+#'     Status = "READY"|"IN_PROGRESS"|"FAILED",
+#'     StatusReason = "string",
+#'     LastConnectionValidationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AuthenticationConfiguration = list(
+#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'       SecretArn = "string",
+#'       OAuth2Properties = list(
+#'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'         OAuth2ClientApplication = list(
+#'           UserManagedClientApplicationClientId = "string",
+#'           AWSManagedClientApplicationReference = "string"
+#'         ),
+#'         TokenUrl = "string",
+#'         TokenUrlParametersMap = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -9680,12 +10014,13 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
     name = "GetConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_connection_input(CatalogId = CatalogId, Name = Name, HidePassword = HidePassword)
   output <- .glue$get_connection_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9721,7 +10056,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'     list(
 #'       Name = "string",
 #'       Description = "string",
-#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
+#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE",
 #'       MatchCriteria = list(
 #'         "string"
 #'       ),
@@ -9741,7 +10076,27 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'       LastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LastUpdatedBy = "string"
+#'       LastUpdatedBy = "string",
+#'       Status = "READY"|"IN_PROGRESS"|"FAILED",
+#'       StatusReason = "string",
+#'       LastConnectionValidationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AuthenticationConfiguration = list(
+#'         AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'         SecretArn = "string",
+#'         OAuth2Properties = list(
+#'           OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'           OAuth2ClientApplication = list(
+#'             UserManagedClientApplicationClientId = "string",
+#'             AWSManagedClientApplicationReference = "string"
+#'           ),
+#'           TokenUrl = "string",
+#'           TokenUrlParametersMap = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -9756,7 +10111,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"
 #'   ),
 #'   HidePassword = TRUE|FALSE,
 #'   NextToken = "string",
@@ -9774,12 +10129,13 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
     name = "GetConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_connections_input(CatalogId = CatalogId, Filter = Filter, HidePassword = HidePassword, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_connections_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9954,12 +10310,13 @@ glue_get_crawler <- function(Name) {
     name = "GetCrawler",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_crawler_input(Name = Name)
   output <- .glue$get_crawler_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10019,12 +10376,13 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
     name = "GetCrawlerMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_crawler_metrics_input(CrawlerNameList = CrawlerNameList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_crawler_metrics_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10204,12 +10562,13 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
     name = "GetCrawlers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_crawlers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_crawlers_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10255,12 +10614,13 @@ glue_get_custom_entity_type <- function(Name) {
     name = "GetCustomEntityType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_custom_entity_type_input(Name = Name)
   output <- .glue$get_custom_entity_type_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10314,12 +10674,13 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
     name = "GetDataCatalogEncryptionSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_data_catalog_encryption_settings_input(CatalogId = CatalogId)
   output <- .glue$get_data_catalog_encryption_settings_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10422,12 +10783,13 @@ glue_get_data_quality_result <- function(ResultId) {
     name = "GetDataQualityResult",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_data_quality_result_input(ResultId = ResultId)
   output <- .glue$get_data_quality_result_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10497,12 +10859,13 @@ glue_get_data_quality_rule_recommendation_run <- function(RunId) {
     name = "GetDataQualityRuleRecommendationRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_data_quality_rule_recommendation_run_input(RunId = RunId)
   output <- .glue$get_data_quality_rule_recommendation_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10558,12 +10921,13 @@ glue_get_data_quality_ruleset <- function(Name) {
     name = "GetDataQualityRuleset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_data_quality_ruleset_input(Name = Name)
   output <- .glue$get_data_quality_ruleset_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10603,7 +10967,8 @@ glue_get_data_quality_ruleset <- function(Name) {
 #'   Timeout = 123,
 #'   AdditionalRunOptions = list(
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
-#'     ResultsS3Prefix = "string"
+#'     ResultsS3Prefix = "string",
+#'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW"
 #'   ),
 #'   Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
 #'   ErrorString = "string",
@@ -10656,12 +11021,13 @@ glue_get_data_quality_ruleset_evaluation_run <- function(RunId) {
     name = "GetDataQualityRulesetEvaluationRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_data_quality_ruleset_evaluation_run_input(RunId = RunId)
   output <- .glue$get_data_quality_ruleset_evaluation_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10737,12 +11103,13 @@ glue_get_database <- function(CatalogId = NULL, Name) {
     name = "GetDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_database_input(CatalogId = CatalogId, Name = Name)
   output <- .glue$get_database_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10755,7 +11122,8 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' Retrieves all databases defined in a given Data Catalog.
 #'
 #' @usage
-#' glue_get_databases(CatalogId, NextToken, MaxResults, ResourceShareType)
+#' glue_get_databases(CatalogId, NextToken, MaxResults, ResourceShareType,
+#'   AttributesToGet)
 #'
 #' @param CatalogId The ID of the Data Catalog from which to retrieve `Databases`. If none
 #' is provided, the Amazon Web Services account ID is used by default.
@@ -10772,6 +11140,9 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' 
 #' -   If set to `ALL`, will list the databases shared with your account,
 #'     as well as the databases in yor local account.
+#' @param AttributesToGet Specifies the database fields returned by the
+#' [`get_databases`][glue_get_databases] call. This parameter doesn’t
+#' accept an empty list. The request must include the `NAME`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10820,7 +11191,10 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #'   CatalogId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   ResourceShareType = "FOREIGN"|"ALL"|"FEDERATED"
+#'   ResourceShareType = "FOREIGN"|"ALL"|"FEDERATED",
+#'   AttributesToGet = list(
+#'     "NAME"
+#'   )
 #' )
 #' ```
 #'
@@ -10829,17 +11203,18 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' @rdname glue_get_databases
 #'
 #' @aliases glue_get_databases
-glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = NULL, ResourceShareType = NULL) {
+glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = NULL, ResourceShareType = NULL, AttributesToGet = NULL) {
   op <- new_operation(
     name = "GetDatabases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
-  input <- .glue$get_databases_input(CatalogId = CatalogId, NextToken = NextToken, MaxResults = MaxResults, ResourceShareType = ResourceShareType)
+  input <- .glue$get_databases_input(CatalogId = CatalogId, NextToken = NextToken, MaxResults = MaxResults, ResourceShareType = ResourceShareType, AttributesToGet = AttributesToGet)
   output <- .glue$get_databases_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10901,12 +11276,13 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
     name = "GetDataflowGraph",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_dataflow_graph_input(PythonScript = PythonScript)
   output <- .glue$get_dataflow_graph_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10989,12 +11365,13 @@ glue_get_dev_endpoint <- function(EndpointName) {
     name = "GetDevEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_dev_endpoint_input(EndpointName = EndpointName)
   output <- .glue$get_dev_endpoint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11084,12 +11461,13 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
     name = "GetDevEndpoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_dev_endpoints_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_dev_endpoints_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11112,6 +11490,7 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #' list(
 #'   Job = list(
 #'     Name = "string",
+#'     JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'     Description = "string",
 #'     LogUri = "string",
 #'     Role = "string",
@@ -12391,6 +12770,23 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #'           RecipeReference = list(
 #'             RecipeArn = "string",
 #'             RecipeVersion = "string"
+#'           ),
+#'           RecipeSteps = list(
+#'             list(
+#'               Action = list(
+#'                 Operation = "string",
+#'                 Parameters = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ConditionExpressions = list(
+#'                 list(
+#'                   Condition = "string",
+#'                   Value = "string",
+#'                   TargetColumn = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         SnowflakeSource = list(
@@ -12541,7 +12937,9 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #'       LastCommitId = "string",
 #'       AuthStrategy = "PERSONAL_ACCESS_TOKEN"|"AWS_SECRETS_MANAGER",
 #'       AuthToken = "string"
-#'     )
+#'     ),
+#'     MaintenanceWindow = "string",
+#'     ProfileName = "string"
 #'   )
 #' )
 #' ```
@@ -12563,12 +12961,13 @@ glue_get_job <- function(JobName) {
     name = "GetJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_job_input(JobName = JobName)
   output <- .glue$get_job_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12631,12 +13030,13 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
     name = "GetJobBookmark",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_job_bookmark_input(JobName = JobName, RunId = RunId)
   output <- .glue$get_job_bookmark_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12646,7 +13046,8 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #' Retrieves the metadata for a given job run
 #'
 #' @description
-#' Retrieves the metadata for a given job run.
+#' Retrieves the metadata for a given job run. Job run history is
+#' accessible for 90 days for your workflow and job run.
 #'
 #' @usage
 #' glue_get_job_run(JobName, RunId, PredecessorsIncluded)
@@ -12665,6 +13066,7 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #'     PreviousRunId = "string",
 #'     TriggerName = "string",
 #'     JobName = "string",
+#'     JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'     StartedOn = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -12674,7 +13076,7 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #'     CompletedOn = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'     JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'     Arguments = list(
 #'       "string"
 #'     ),
@@ -12698,7 +13100,9 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #'     ),
 #'     GlueVersion = "string",
 #'     DPUSeconds = 123.0,
-#'     ExecutionClass = "FLEX"|"STANDARD"
+#'     ExecutionClass = "FLEX"|"STANDARD",
+#'     MaintenanceWindow = "string",
+#'     ProfileName = "string"
 #'   )
 #' )
 #' ```
@@ -12722,12 +13126,13 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
     name = "GetJobRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_job_run_input(JobName = JobName, RunId = RunId, PredecessorsIncluded = PredecessorsIncluded)
   output <- .glue$get_job_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12757,6 +13162,7 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #'       PreviousRunId = "string",
 #'       TriggerName = "string",
 #'       JobName = "string",
+#'       JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'       StartedOn = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -12766,7 +13172,7 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #'       CompletedOn = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'       JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'       Arguments = list(
 #'         "string"
 #'       ),
@@ -12790,7 +13196,9 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #'       ),
 #'       GlueVersion = "string",
 #'       DPUSeconds = 123.0,
-#'       ExecutionClass = "FLEX"|"STANDARD"
+#'       ExecutionClass = "FLEX"|"STANDARD",
+#'       MaintenanceWindow = "string",
+#'       ProfileName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -12816,12 +13224,13 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
     name = "GetJobRuns",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobRuns")
   )
   input <- .glue$get_job_runs_input(JobName = JobName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_job_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12846,6 +13255,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'   Jobs = list(
 #'     list(
 #'       Name = "string",
+#'       JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'       Description = "string",
 #'       LogUri = "string",
 #'       Role = "string",
@@ -14125,6 +14535,23 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             RecipeReference = list(
 #'               RecipeArn = "string",
 #'               RecipeVersion = "string"
+#'             ),
+#'             RecipeSteps = list(
+#'               list(
+#'                 Action = list(
+#'                   Operation = "string",
+#'                   Parameters = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 ConditionExpressions = list(
+#'                   list(
+#'                     Condition = "string",
+#'                     Value = "string",
+#'                     TargetColumn = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           SnowflakeSource = list(
@@ -14275,7 +14702,9 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'         LastCommitId = "string",
 #'         AuthStrategy = "PERSONAL_ACCESS_TOKEN"|"AWS_SECRETS_MANAGER",
 #'         AuthToken = "string"
-#'       )
+#'       ),
+#'       MaintenanceWindow = "string",
+#'       ProfileName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -14300,12 +14729,13 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
     name = "GetJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Jobs")
   )
   input <- .glue$get_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_jobs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14386,12 +14816,13 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
     name = "GetMLTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_ml_task_run_input(TransformId = TransformId, TaskRunId = TaskRunId)
   output <- .glue$get_ml_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14500,12 +14931,13 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
     name = "GetMLTaskRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_ml_task_runs_input(TransformId = TransformId, NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort)
   output <- .glue$get_ml_task_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14625,12 +15057,13 @@ glue_get_ml_transform <- function(TransformId) {
     name = "GetMLTransform",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_ml_transform_input(TransformId = TransformId)
   output <- .glue$get_ml_transform_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14786,12 +15219,13 @@ glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter =
     name = "GetMLTransforms",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_ml_transforms_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort)
   output <- .glue$get_ml_transforms_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14876,12 +15310,13 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
     name = "GetMapping",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_mapping_input(Source = Source, Sinks = Sinks, Location = Location)
   output <- .glue$get_mapping_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15011,12 +15446,13 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
     name = "GetPartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues)
   output <- .glue$get_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15091,12 +15527,13 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
     name = "GetPartitionIndexes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PartitionIndexDescriptorList")
   )
   input <- .glue$get_partition_indexes_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken)
   output <- .glue$get_partition_indexes_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15337,12 +15774,13 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
     name = "GetPartitions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
   output <- .glue$get_partitions_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15445,12 +15883,13 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
     name = "GetPlan",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_plan_input(Mapping = Mapping, Source = Source, Sinks = Sinks, Location = Location, Language = Language, AdditionalPlanOptionsMap = AdditionalPlanOptionsMap)
   output <- .glue$get_plan_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15501,12 +15940,13 @@ glue_get_registry <- function(RegistryId) {
     name = "GetRegistry",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_registry_input(RegistryId = RegistryId)
   output <- .glue$get_registry_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15569,12 +16009,13 @@ glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
     name = "GetResourcePolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "GetResourcePoliciesResponseList")
   )
   input <- .glue$get_resource_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_resource_policies_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15628,12 +16069,13 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
     name = "GetResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .glue$get_resource_policy_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15699,12 +16141,13 @@ glue_get_schema <- function(SchemaId) {
     name = "GetSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_schema_input(SchemaId = SchemaId)
   output <- .glue$get_schema_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15768,12 +16211,13 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
     name = "GetSchemaByDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_schema_by_definition_input(SchemaId = SchemaId, SchemaDefinition = SchemaDefinition)
   output <- .glue$get_schema_by_definition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15845,12 +16289,13 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
     name = "GetSchemaVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_schema_version_input(SchemaId = SchemaId, SchemaVersionId = SchemaVersionId, SchemaVersionNumber = SchemaVersionNumber)
   output <- .glue$get_schema_version_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15921,12 +16366,13 @@ glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, Se
     name = "GetSchemaVersionsDiff",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_schema_versions_diff_input(SchemaId = SchemaId, FirstSchemaVersionNumber = FirstSchemaVersionNumber, SecondSchemaVersionNumber = SecondSchemaVersionNumber, SchemaDiffType = SchemaDiffType)
   output <- .glue$get_schema_versions_diff_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15989,12 +16435,13 @@ glue_get_security_configuration <- function(Name) {
     name = "GetSecurityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_security_configuration_input(Name = Name)
   output <- .glue$get_security_configuration_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16062,12 +16509,13 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
     name = "GetSecurityConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityConfigurations")
   )
   input <- .glue$get_security_configurations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_security_configurations_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16121,7 +16569,8 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 #'     ),
 #'     ExecutionTime = 123.0,
 #'     DPUSeconds = 123.0,
-#'     IdleTimeout = 123
+#'     IdleTimeout = 123,
+#'     ProfileName = "string"
 #'   )
 #' )
 #' ```
@@ -16144,12 +16593,13 @@ glue_get_session <- function(Id, RequestOrigin = NULL) {
     name = "GetSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_session_input(Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$get_session_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16214,12 +16664,13 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
     name = "GetStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_statement_input(SessionId = SessionId, Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$get_statement_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16372,6 +16823,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'           DialectVersion = "string",
 #'           ViewOriginalText = "string",
 #'           ViewExpandedText = "string",
+#'           ValidationConnection = "string",
 #'           IsStale = TRUE|FALSE
 #'         )
 #'       )
@@ -16404,12 +16856,13 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
     name = "GetTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
   output <- .glue$get_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16484,12 +16937,13 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
     name = "GetTableOptimizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type)
   output <- .glue$get_table_optimizer_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16639,6 +17093,7 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #'             DialectVersion = "string",
 #'             ViewOriginalText = "string",
 #'             ViewExpandedText = "string",
+#'             ValidationConnection = "string",
 #'             IsStale = TRUE|FALSE
 #'           )
 #'         )
@@ -16670,12 +17125,13 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
     name = "GetTableVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId)
   output <- .glue$get_table_version_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16829,6 +17285,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'               DialectVersion = "string",
 #'               ViewOriginalText = "string",
 #'               ViewExpandedText = "string",
+#'               ValidationConnection = "string",
 #'               IsStale = TRUE|FALSE
 #'             )
 #'           )
@@ -16863,12 +17320,13 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
     name = "GetTableVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_table_versions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_table_versions_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17025,6 +17483,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'             DialectVersion = "string",
 #'             ViewOriginalText = "string",
 #'             ViewExpandedText = "string",
+#'             ValidationConnection = "string",
 #'             IsStale = TRUE|FALSE
 #'           )
 #'         )
@@ -17061,12 +17520,13 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
     name = "GetTables",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
   output <- .glue$get_tables_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17111,12 +17571,13 @@ glue_get_tags <- function(ResourceArn) {
     name = "GetTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_tags_input(ResourceArn = ResourceArn)
   output <- .glue$get_tags_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17165,7 +17626,7 @@ glue_get_tags <- function(ResourceArn) {
 #'         list(
 #'           LogicalOperator = "EQUALS",
 #'           JobName = "string",
-#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'           CrawlerName = "string",
 #'           CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'         )
@@ -17196,12 +17657,13 @@ glue_get_trigger <- function(Name) {
     name = "GetTrigger",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_trigger_input(Name = Name)
   output <- .glue$get_trigger_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17255,7 +17717,7 @@ glue_get_trigger <- function(Name) {
 #'           list(
 #'             LogicalOperator = "EQUALS",
 #'             JobName = "string",
-#'             State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'             State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'             CrawlerName = "string",
 #'             CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'           )
@@ -17290,12 +17752,13 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
     name = "GetTriggers",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Triggers")
   )
   input <- .glue$get_triggers_input(NextToken = NextToken, DependentJobName = DependentJobName, MaxResults = MaxResults)
   output <- .glue$get_triggers_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17464,12 +17927,13 @@ glue_get_unfiltered_partition_metadata <- function(Region = NULL, CatalogId, Dat
     name = "GetUnfilteredPartitionMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_unfiltered_partition_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_partition_metadata_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17731,12 +18195,13 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
     name = "GetUnfilteredPartitionsMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_unfiltered_partitions_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_partitions_metadata_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17936,6 +18401,7 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'           DialectVersion = "string",
 #'           ViewOriginalText = "string",
 #'           ViewExpandedText = "string",
+#'           ValidationConnection = "string",
 #'           IsStale = TRUE|FALSE
 #'         )
 #'       )
@@ -18013,17 +18479,95 @@ glue_get_unfiltered_table_metadata <- function(Region = NULL, CatalogId, Databas
     name = "GetUnfilteredTableMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_unfiltered_table_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, ParentResourceArn = ParentResourceArn, RootResourceArn = RootResourceArn, SupportedDialect = SupportedDialect, Permissions = Permissions, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_table_metadata_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .glue$operations$get_unfiltered_table_metadata <- glue_get_unfiltered_table_metadata
+
+#' Retrieves information about the specified Glue usage profile
+#'
+#' @description
+#' Retrieves information about the specified Glue usage profile.
+#'
+#' @usage
+#' glue_get_usage_profile(Name)
+#'
+#' @param Name &#91;required&#93; The name of the usage profile to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Description = "string",
+#'   Configuration = list(
+#'     SessionConfiguration = list(
+#'       list(
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         MinValue = "string",
+#'         MaxValue = "string"
+#'       )
+#'     ),
+#'     JobConfiguration = list(
+#'       list(
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         MinValue = "string",
+#'         MaxValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   CreatedOn = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedOn = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_usage_profile(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_usage_profile
+#'
+#' @aliases glue_get_usage_profile
+glue_get_usage_profile <- function(Name) {
+  op <- new_operation(
+    name = "GetUsageProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$get_usage_profile_input(Name = Name)
+  output <- .glue$get_usage_profile_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_usage_profile <- glue_get_usage_profile
 
 #' Retrieves a specified function definition from the Data Catalog
 #'
@@ -18082,12 +18626,13 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
     name = "GetUserDefinedFunction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionName = FunctionName)
   output <- .glue$get_user_defined_function_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18162,12 +18707,13 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
     name = "GetUserDefinedFunctions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_user_defined_functions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Pattern = Pattern, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_user_defined_functions_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18262,7 +18808,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                     list(
 #'                       LogicalOperator = "EQUALS",
 #'                       JobName = "string",
-#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                       CrawlerName = "string",
 #'                       CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'                     )
@@ -18282,6 +18828,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                   PreviousRunId = "string",
 #'                   TriggerName = "string",
 #'                   JobName = "string",
+#'                   JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'                   StartedOn = as.POSIXct(
 #'                     "2015-01-01"
 #'                   ),
@@ -18291,7 +18838,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                   CompletedOn = as.POSIXct(
 #'                     "2015-01-01"
 #'                   ),
-#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                   Arguments = list(
 #'                     "string"
 #'                   ),
@@ -18315,7 +18862,9 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                   ),
 #'                   GlueVersion = "string",
 #'                   DPUSeconds = 123.0,
-#'                   ExecutionClass = "FLEX"|"STANDARD"
+#'                   ExecutionClass = "FLEX"|"STANDARD",
+#'                   MaintenanceWindow = "string",
+#'                   ProfileName = "string"
 #'                 )
 #'               )
 #'             ),
@@ -18384,7 +18933,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                   list(
 #'                     LogicalOperator = "EQUALS",
 #'                     JobName = "string",
-#'                     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                     CrawlerName = "string",
 #'                     CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'                   )
@@ -18404,6 +18953,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                 PreviousRunId = "string",
 #'                 TriggerName = "string",
 #'                 JobName = "string",
+#'                 JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'                 StartedOn = as.POSIXct(
 #'                   "2015-01-01"
 #'                 ),
@@ -18413,7 +18963,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                 CompletedOn = as.POSIXct(
 #'                   "2015-01-01"
 #'                 ),
-#'                 JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                 JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                 Arguments = list(
 #'                   "string"
 #'                 ),
@@ -18437,7 +18987,9 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                 ),
 #'                 GlueVersion = "string",
 #'                 DPUSeconds = 123.0,
-#'                 ExecutionClass = "FLEX"|"STANDARD"
+#'                 ExecutionClass = "FLEX"|"STANDARD",
+#'                 MaintenanceWindow = "string",
+#'                 ProfileName = "string"
 #'               )
 #'             )
 #'           ),
@@ -18493,12 +19045,13 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
     name = "GetWorkflow",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_workflow_input(Name = Name, IncludeGraph = IncludeGraph)
   output <- .glue$get_workflow_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18508,7 +19061,8 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #' Retrieves the metadata for a given workflow run
 #'
 #' @description
-#' Retrieves the metadata for a given workflow run.
+#' Retrieves the metadata for a given workflow run. Job run history is
+#' accessible for 90 days for your workflow and job run.
 #'
 #' @usage
 #' glue_get_workflow_run(Name, RunId, IncludeGraph)
@@ -18581,7 +19135,7 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #'                   list(
 #'                     LogicalOperator = "EQUALS",
 #'                     JobName = "string",
-#'                     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                     CrawlerName = "string",
 #'                     CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'                   )
@@ -18601,6 +19155,7 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #'                 PreviousRunId = "string",
 #'                 TriggerName = "string",
 #'                 JobName = "string",
+#'                 JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'                 StartedOn = as.POSIXct(
 #'                   "2015-01-01"
 #'                 ),
@@ -18610,7 +19165,7 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #'                 CompletedOn = as.POSIXct(
 #'                   "2015-01-01"
 #'                 ),
-#'                 JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                 JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                 Arguments = list(
 #'                   "string"
 #'                 ),
@@ -18634,7 +19189,9 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #'                 ),
 #'                 GlueVersion = "string",
 #'                 DPUSeconds = 123.0,
-#'                 ExecutionClass = "FLEX"|"STANDARD"
+#'                 ExecutionClass = "FLEX"|"STANDARD",
+#'                 MaintenanceWindow = "string",
+#'                 ProfileName = "string"
 #'               )
 #'             )
 #'           ),
@@ -18690,12 +19247,13 @@ glue_get_workflow_run <- function(Name, RunId, IncludeGraph = NULL) {
     name = "GetWorkflowRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_workflow_run_input(Name = Name, RunId = RunId, IncludeGraph = IncludeGraph)
   output <- .glue$get_workflow_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18741,12 +19299,13 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
     name = "GetWorkflowRunProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$get_workflow_run_properties_input(Name = Name, RunId = RunId)
   output <- .glue$get_workflow_run_properties_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18831,7 +19390,7 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #'                     list(
 #'                       LogicalOperator = "EQUALS",
 #'                       JobName = "string",
-#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                       CrawlerName = "string",
 #'                       CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'                     )
@@ -18851,6 +19410,7 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #'                   PreviousRunId = "string",
 #'                   TriggerName = "string",
 #'                   JobName = "string",
+#'                   JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'                   StartedOn = as.POSIXct(
 #'                     "2015-01-01"
 #'                   ),
@@ -18860,7 +19420,7 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #'                   CompletedOn = as.POSIXct(
 #'                     "2015-01-01"
 #'                   ),
-#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'                   Arguments = list(
 #'                     "string"
 #'                   ),
@@ -18884,7 +19444,9 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #'                   ),
 #'                   GlueVersion = "string",
 #'                   DPUSeconds = 123.0,
-#'                   ExecutionClass = "FLEX"|"STANDARD"
+#'                   ExecutionClass = "FLEX"|"STANDARD",
+#'                   MaintenanceWindow = "string",
+#'                   ProfileName = "string"
 #'                 )
 #'               )
 #'             ),
@@ -18943,12 +19505,13 @@ glue_get_workflow_runs <- function(Name, IncludeGraph = NULL, NextToken = NULL, 
     name = "GetWorkflowRuns",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Runs")
   )
   input <- .glue$get_workflow_runs_input(Name = Name, IncludeGraph = IncludeGraph, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_workflow_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18986,12 +19549,13 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
     name = "ImportCatalogToGlue",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$import_catalog_to_glue_input(CatalogId = CatalogId)
   output <- .glue$import_catalog_to_glue_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19042,12 +19606,13 @@ glue_list_blueprints <- function(NextToken = NULL, MaxResults = NULL, Tags = NUL
     name = "ListBlueprints",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Blueprints")
   )
   input <- .glue$list_blueprints_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_blueprints_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19094,12 +19659,13 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
     name = "ListColumnStatisticsTaskRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_column_statistics_task_runs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_column_statistics_task_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19159,12 +19725,13 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
     name = "ListCrawlers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_crawlers_input(MaxResults = MaxResults, NextToken = NextToken, Tags = Tags)
   output <- .glue$list_crawlers_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19254,12 +19821,13 @@ glue_list_crawls <- function(CrawlerName, MaxResults = NULL, Filters = NULL, Nex
     name = "ListCrawls",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$list_crawls_input(CrawlerName = CrawlerName, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .glue$list_crawls_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19316,12 +19884,13 @@ glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL, T
     name = "ListCustomEntityTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_custom_entity_types_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_custom_entity_types_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19408,12 +19977,13 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
     name = "ListDataQualityResults",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_results_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_data_quality_results_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19498,12 +20068,13 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
     name = "ListDataQualityRuleRecommendationRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_rule_recommendation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_data_quality_rule_recommendation_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19590,12 +20161,13 @@ glue_list_data_quality_ruleset_evaluation_runs <- function(Filter = NULL, NextTo
     name = "ListDataQualityRulesetEvaluationRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_ruleset_evaluation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_data_quality_ruleset_evaluation_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19686,12 +20258,13 @@ glue_list_data_quality_rulesets <- function(NextToken = NULL, MaxResults = NULL,
     name = "ListDataQualityRulesets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_rulesets_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Tags = Tags)
   output <- .glue$list_data_quality_rulesets_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19751,12 +20324,13 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
     name = "ListDevEndpoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_dev_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_dev_endpoints_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19816,12 +20390,13 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
     name = "ListJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobNames")
   )
   input <- .glue$list_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_jobs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19910,12 +20485,13 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
     name = "ListMLTransforms",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_ml_transforms_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort, Tags = Tags)
   output <- .glue$list_ml_transforms_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19974,12 +20550,13 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListRegistries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Registries")
   )
   input <- .glue$list_registries_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_registries_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20051,12 +20628,13 @@ glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = N
     name = "ListSchemaVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas")
   )
   input <- .glue$list_schema_versions_input(SchemaId = SchemaId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_schema_versions_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20123,12 +20701,13 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
     name = "ListSchemas",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas")
   )
   input <- .glue$list_schemas_input(RegistryId = RegistryId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_schemas_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20189,7 +20768,8 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 #'       ),
 #'       ExecutionTime = 123.0,
 #'       DPUSeconds = 123.0,
-#'       IdleTimeout = 123
+#'       IdleTimeout = 123,
+#'       ProfileName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -20218,12 +20798,13 @@ glue_list_sessions <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL,
     name = "ListSessions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_sessions_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags, RequestOrigin = RequestOrigin)
   output <- .glue$list_sessions_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20291,12 +20872,13 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
     name = "ListStatements",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$list_statements_input(SessionId = SessionId, RequestOrigin = RequestOrigin, NextToken = NextToken)
   output <- .glue$list_statements_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20371,12 +20953,13 @@ glue_list_table_optimizer_runs <- function(CatalogId, DatabaseName, TableName, T
     name = "ListTableOptimizerRuns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_table_optimizer_runs_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_table_optimizer_runs_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20440,17 +21023,80 @@ glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxRes
     name = "ListTriggers",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TriggerNames")
   )
   input <- .glue$list_triggers_input(NextToken = NextToken, DependentJobName = DependentJobName, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_triggers_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .glue$operations$list_triggers <- glue_list_triggers
+
+#' List all the Glue usage profiles
+#'
+#' @description
+#' List all the Glue usage profiles.
+#'
+#' @usage
+#' glue_list_usage_profiles(NextToken, MaxResults)
+#'
+#' @param NextToken A continuation token, included if this is a continuation call.
+#' @param MaxResults The maximum number of usage profiles to return in a single response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Profiles = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       CreatedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_usage_profiles(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_usage_profiles
+#'
+#' @aliases glue_list_usage_profiles
+glue_list_usage_profiles <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListUsageProfiles",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Profiles")
+  )
+  input <- .glue$list_usage_profiles_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .glue$list_usage_profiles_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_usage_profiles <- glue_list_usage_profiles
 
 #' Lists names of workflows created in the account
 #'
@@ -20492,12 +21138,13 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListWorkflows",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Workflows")
   )
   input <- .glue$list_workflows_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_workflows_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20550,12 +21197,13 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
     name = "PutDataCatalogEncryptionSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$put_data_catalog_encryption_settings_input(CatalogId = CatalogId, DataCatalogEncryptionSettings = DataCatalogEncryptionSettings)
   output <- .glue$put_data_catalog_encryption_settings_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20622,12 +21270,13 @@ glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHas
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$put_resource_policy_input(PolicyInJson = PolicyInJson, ResourceArn = ResourceArn, PolicyHashCondition = PolicyHashCondition, PolicyExistsCondition = PolicyExistsCondition, EnableHybrid = EnableHybrid)
   output <- .glue$put_resource_policy_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20695,12 +21344,13 @@ glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumbe
     name = "PutSchemaVersionMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$put_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataKeyValue = MetadataKeyValue)
   output <- .glue$put_schema_version_metadata_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20746,12 +21396,13 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
     name = "PutWorkflowRunProperties",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$put_workflow_run_properties_input(Name = Name, RunId = RunId, RunProperties = RunProperties)
   output <- .glue$put_workflow_run_properties_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20832,12 +21483,13 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
     name = "QuerySchemaVersionMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$query_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataList = MetadataList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$query_schema_version_metadata_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20910,12 +21562,13 @@ glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
     name = "RegisterSchemaVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$register_schema_version_input(SchemaId = SchemaId, SchemaDefinition = SchemaDefinition)
   output <- .glue$register_schema_version_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20984,12 +21637,13 @@ glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNu
     name = "RemoveSchemaVersionMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$remove_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataKeyValue = MetadataKeyValue)
   output <- .glue$remove_schema_version_metadata_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21052,12 +21706,13 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
     name = "ResetJobBookmark",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$reset_job_bookmark_input(JobName = JobName, RunId = RunId)
   output <- .glue$reset_job_bookmark_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21112,12 +21767,13 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
     name = "ResumeWorkflowRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$resume_workflow_run_input(Name = Name, RunId = RunId, NodeIds = NodeIds)
   output <- .glue$resume_workflow_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21163,12 +21819,13 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
     name = "RunStatement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$run_statement_input(SessionId = SessionId, Code = Code, RequestOrigin = RequestOrigin)
   output <- .glue$run_statement_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21352,6 +22009,7 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #'             DialectVersion = "string",
 #'             ViewOriginalText = "string",
 #'             ViewExpandedText = "string",
+#'             ValidationConnection = "string",
 #'             IsStale = TRUE|FALSE
 #'           )
 #'         )
@@ -21396,12 +22054,13 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
     name = "SearchTables",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$search_tables_input(CatalogId = CatalogId, NextToken = NextToken, Filters = Filters, SearchText = SearchText, SortCriteria = SortCriteria, MaxResults = MaxResults, ResourceShareType = ResourceShareType)
   output <- .glue$search_tables_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21447,12 +22106,13 @@ glue_start_blueprint_run <- function(BlueprintName, Parameters = NULL, RoleArn) 
     name = "StartBlueprintRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_blueprint_run_input(BlueprintName = BlueprintName, Parameters = Parameters, RoleArn = RoleArn)
   output <- .glue$start_blueprint_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21513,12 +22173,13 @@ glue_start_column_statistics_task_run <- function(DatabaseName, TableName, Colum
     name = "StartColumnStatisticsTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_column_statistics_task_run_input(DatabaseName = DatabaseName, TableName = TableName, ColumnNameList = ColumnNameList, Role = Role, SampleSize = SampleSize, CatalogID = CatalogID, SecurityConfiguration = SecurityConfiguration)
   output <- .glue$start_column_statistics_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21558,12 +22219,13 @@ glue_start_crawler <- function(Name) {
     name = "StartCrawler",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_crawler_input(Name = Name)
   output <- .glue$start_crawler_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21604,12 +22266,13 @@ glue_start_crawler_schedule <- function(CrawlerName) {
     name = "StartCrawlerSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_crawler_schedule_input(CrawlerName = CrawlerName)
   output <- .glue$start_crawler_schedule_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21682,12 +22345,13 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
     name = "StartDataQualityRuleRecommendationRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, ClientToken = ClientToken)
   output <- .glue$start_data_quality_rule_recommendation_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21751,7 +22415,8 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
 #'   ClientToken = "string",
 #'   AdditionalRunOptions = list(
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
-#'     ResultsS3Prefix = "string"
+#'     ResultsS3Prefix = "string",
+#'     CompositeRuleEvaluationMethod = "COLUMN"|"ROW"
 #'   ),
 #'   RulesetNames = list(
 #'     "string"
@@ -21782,12 +22447,13 @@ glue_start_data_quality_ruleset_evaluation_run <- function(DataSource, Role, Num
     name = "StartDataQualityRulesetEvaluationRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_data_quality_ruleset_evaluation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, ClientToken = ClientToken, AdditionalRunOptions = AdditionalRunOptions, RulesetNames = RulesetNames, AdditionalDataSources = AdditionalDataSources)
   output <- .glue$start_data_quality_ruleset_evaluation_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21842,12 +22508,13 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
     name = "StartExportLabelsTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_export_labels_task_run_input(TransformId = TransformId, OutputS3Path = OutputS3Path)
   output <- .glue$start_export_labels_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21930,12 +22597,13 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
     name = "StartImportLabelsTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_import_labels_task_run_input(TransformId = TransformId, InputS3Path = InputS3Path, ReplaceAllLabels = ReplaceAllLabels)
   output <- .glue$start_import_labels_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21989,8 +22657,11 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' can consume resources before it is terminated and enters `TIMEOUT`
 #' status. This value overrides the timeout value set in the parent job.
 #' 
-#' Streaming jobs do not have a timeout. The default for non-streaming jobs
-#' is 2,880 minutes (48 hours).
+#' Streaming jobs must have timeout values less than 7 days or 10080
+#' minutes. When the value is left blank, the job will be restarted after 7
+#' days based if you have not setup a maintenance window. If you have setup
+#' maintenance window, it will be restarted during the maintenance window
+#' after 7 days.
 #' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
 #' the number of Glue data processing units (DPUs) that can be allocated
 #' when this job runs. A DPU is a relative measure of processing power that
@@ -22115,12 +22786,13 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
     name = "StartJobRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_job_run_input(JobName = JobName, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass)
   output <- .glue$start_job_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22170,12 +22842,13 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
     name = "StartMLEvaluationTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_ml_evaluation_task_run_input(TransformId = TransformId)
   output <- .glue$start_ml_evaluation_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22242,12 +22915,13 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
     name = "StartMLLabelingSetGenerationTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_ml_labeling_set_generation_task_run_input(TransformId = TransformId, OutputS3Path = OutputS3Path)
   output <- .glue$start_ml_labeling_set_generation_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22291,12 +22965,13 @@ glue_start_trigger <- function(Name) {
     name = "StartTrigger",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_trigger_input(Name = Name)
   output <- .glue$start_trigger_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22342,12 +23017,13 @@ glue_start_workflow_run <- function(Name, RunProperties = NULL) {
     name = "StartWorkflowRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$start_workflow_run_input(Name = Name, RunProperties = RunProperties)
   output <- .glue$start_workflow_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22386,12 +23062,13 @@ glue_stop_column_statistics_task_run <- function(DatabaseName, TableName) {
     name = "StopColumnStatisticsTaskRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$stop_column_statistics_task_run_input(DatabaseName = DatabaseName, TableName = TableName)
   output <- .glue$stop_column_statistics_task_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22428,12 +23105,13 @@ glue_stop_crawler <- function(Name) {
     name = "StopCrawler",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$stop_crawler_input(Name = Name)
   output <- .glue$stop_crawler_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22472,12 +23150,13 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
     name = "StopCrawlerSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$stop_crawler_schedule_input(CrawlerName = CrawlerName)
   output <- .glue$stop_crawler_schedule_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22521,12 +23200,13 @@ glue_stop_session <- function(Id, RequestOrigin = NULL) {
     name = "StopSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$stop_session_input(Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$stop_session_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22568,12 +23248,13 @@ glue_stop_trigger <- function(Name) {
     name = "StopTrigger",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$stop_trigger_input(Name = Name)
   output <- .glue$stop_trigger_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22612,12 +23293,13 @@ glue_stop_workflow_run <- function(Name, RunId) {
     name = "StopWorkflowRun",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$stop_workflow_run_input(Name = Name, RunId = RunId)
   output <- .glue$stop_workflow_run_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22664,12 +23346,13 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$tag_resource_input(ResourceArn = ResourceArn, TagsToAdd = TagsToAdd)
   output <- .glue$tag_resource_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22711,12 +23394,13 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$untag_resource_input(ResourceArn = ResourceArn, TagsToRemove = TagsToRemove)
   output <- .glue$untag_resource_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22762,12 +23446,13 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
     name = "UpdateBlueprint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_blueprint_input(Name = Name, Description = Description, BlueprintLocation = BlueprintLocation)
   output <- .glue$update_blueprint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22841,12 +23526,13 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
     name = "UpdateClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier, CsvClassifier = CsvClassifier)
   output <- .glue$update_classifier_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23031,12 +23717,13 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
     name = "UpdateColumnStatisticsForPartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnStatisticsList = ColumnStatisticsList)
   output <- .glue$update_column_statistics_for_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23217,12 +23904,13 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
     name = "UpdateColumnStatisticsForTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnStatisticsList = ColumnStatisticsList)
   output <- .glue$update_column_statistics_for_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23253,7 +23941,7 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -23266,7 +23954,27 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #'         "string"
 #'       ),
 #'       AvailabilityZone = "string"
-#'     )
+#'     ),
+#'     AuthenticationConfiguration = list(
+#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'       SecretArn = "string",
+#'       OAuth2Properties = list(
+#'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'         OAuth2ClientApplication = list(
+#'           UserManagedClientApplicationClientId = "string",
+#'           AWSManagedClientApplicationReference = "string"
+#'         ),
+#'         TokenUrl = "string",
+#'         TokenUrlParametersMap = list(
+#'           "string"
+#'         ),
+#'         AuthorizationCodeProperties = list(
+#'           AuthorizationCode = "string",
+#'           RedirectUri = "string"
+#'         )
+#'       )
+#'     ),
+#'     ValidateCredentials = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -23281,12 +23989,13 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
     name = "UpdateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_connection_input(CatalogId = CatalogId, Name = Name, ConnectionInput = ConnectionInput)
   output <- .glue$update_connection_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23463,12 +24172,13 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
     name = "UpdateCrawler",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, LakeFormationConfiguration = LakeFormationConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration)
   output <- .glue$update_crawler_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23511,12 +24221,13 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
     name = "UpdateCrawlerSchedule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_crawler_schedule_input(CrawlerName = CrawlerName, Schedule = Schedule)
   output <- .glue$update_crawler_schedule_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23565,12 +24276,13 @@ glue_update_data_quality_ruleset <- function(Name, Description = NULL, Ruleset =
     name = "UpdateDataQualityRuleset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_data_quality_ruleset_input(Name = Name, Description = Description, Ruleset = Ruleset)
   output <- .glue$update_data_quality_ruleset_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23640,12 +24352,13 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
     name = "UpdateDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_database_input(CatalogId = CatalogId, Name = Name, DatabaseInput = DatabaseInput)
   output <- .glue$update_database_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23722,12 +24435,13 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
     name = "UpdateDevEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_dev_endpoint_input(EndpointName = EndpointName, PublicKey = PublicKey, AddPublicKeys = AddPublicKeys, DeletePublicKeys = DeletePublicKeys, CustomLibraries = CustomLibraries, UpdateEtlLibraries = UpdateEtlLibraries, DeleteArguments = DeleteArguments, AddArguments = AddArguments)
   output <- .glue$update_dev_endpoint_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23760,6 +24474,7 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #' svc$update_job(
 #'   JobName = "string",
 #'   JobUpdate = list(
+#'     JobMode = "SCRIPT"|"VISUAL"|"NOTEBOOK",
 #'     Description = "string",
 #'     LogUri = "string",
 #'     Role = "string",
@@ -25033,6 +25748,23 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #'           RecipeReference = list(
 #'             RecipeArn = "string",
 #'             RecipeVersion = "string"
+#'           ),
+#'           RecipeSteps = list(
+#'             list(
+#'               Action = list(
+#'                 Operation = "string",
+#'                 Parameters = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ConditionExpressions = list(
+#'                 list(
+#'                   Condition = "string",
+#'                   Value = "string",
+#'                   TargetColumn = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         SnowflakeSource = list(
@@ -25183,7 +25915,8 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #'       LastCommitId = "string",
 #'       AuthStrategy = "PERSONAL_ACCESS_TOKEN"|"AWS_SECRETS_MANAGER",
 #'       AuthToken = "string"
-#'     )
+#'     ),
+#'     MaintenanceWindow = "string"
 #'   )
 #' )
 #' ```
@@ -25198,12 +25931,13 @@ glue_update_job <- function(JobName, JobUpdate) {
     name = "UpdateJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_job_input(JobName = JobName, JobUpdate = JobUpdate)
   output <- .glue$update_job_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25272,12 +26006,13 @@ glue_update_job_from_source_control <- function(JobName = NULL, Provider = NULL,
     name = "UpdateJobFromSourceControl",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_job_from_source_control_input(JobName = JobName, Provider = Provider, RepositoryName = RepositoryName, RepositoryOwner = RepositoryOwner, BranchName = BranchName, Folder = Folder, CommitId = CommitId, AuthStrategy = AuthStrategy, AuthToken = AuthToken)
   output <- .glue$update_job_from_source_control_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25386,12 +26121,13 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
     name = "UpdateMLTransform",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_ml_transform_input(TransformId = TransformId, Name = Name, Description = Description, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries)
   output <- .glue$update_ml_transform_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25516,12 +26252,13 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
     name = "UpdatePartition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValueList = PartitionValueList, PartitionInput = PartitionInput)
   output <- .glue$update_partition_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25574,12 +26311,13 @@ glue_update_registry <- function(RegistryId, Description) {
     name = "UpdateRegistry",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_registry_input(RegistryId = RegistryId, Description = Description)
   output <- .glue$update_registry_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25659,12 +26397,13 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
     name = "UpdateSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_schema_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, Compatibility = Compatibility, Description = Description)
   output <- .glue$update_schema_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25733,12 +26472,13 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
     name = "UpdateSourceControlFromJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_source_control_from_job_input(JobName = JobName, Provider = Provider, RepositoryName = RepositoryName, RepositoryOwner = RepositoryOwner, BranchName = BranchName, Folder = Folder, CommitId = CommitId, AuthStrategy = AuthStrategy, AuthToken = AuthToken)
   output <- .glue$update_source_control_from_job_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25752,7 +26492,7 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #'
 #' @usage
 #' glue_update_table(CatalogId, DatabaseName, TableInput, SkipArchive,
-#'   TransactionId, VersionId)
+#'   TransactionId, VersionId, ViewUpdateAction, Force)
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -25766,6 +26506,9 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' not create the archived version.
 #' @param TransactionId The transaction ID at which to update the table contents.
 #' @param VersionId The version ID at which to update the table contents.
+#' @param ViewUpdateAction The operation to be performed when updating the view.
+#' @param Force A flag that can be set to true to ignore matching storage descriptor and
+#' subobject matching requirements.
 #'
 #' @return
 #' An empty list.
@@ -25867,11 +26610,29 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #'       DatabaseName = "string",
 #'       Name = "string",
 #'       Region = "string"
+#'     ),
+#'     ViewDefinition = list(
+#'       IsProtected = TRUE|FALSE,
+#'       Definer = "string",
+#'       Representations = list(
+#'         list(
+#'           Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'           DialectVersion = "string",
+#'           ViewOriginalText = "string",
+#'           ValidationConnection = "string",
+#'           ViewExpandedText = "string"
+#'         )
+#'       ),
+#'       SubObjects = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   SkipArchive = TRUE|FALSE,
 #'   TransactionId = "string",
-#'   VersionId = "string"
+#'   VersionId = "string",
+#'   ViewUpdateAction = "ADD"|"REPLACE"|"ADD_OR_REPLACE"|"DROP",
+#'   Force = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -25880,17 +26641,18 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' @rdname glue_update_table
 #'
 #' @aliases glue_update_table
-glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL) {
+glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL, ViewUpdateAction = NULL, Force = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId)
+  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId, ViewUpdateAction = ViewUpdateAction, Force = Force)
   output <- .glue$update_table_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25941,12 +26703,13 @@ glue_update_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
     name = "UpdateTableOptimizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, TableOptimizerConfiguration = TableOptimizerConfiguration)
   output <- .glue$update_table_optimizer_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25996,7 +26759,7 @@ glue_update_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
 #'         list(
 #'           LogicalOperator = "EQUALS",
 #'           JobName = "string",
-#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'           CrawlerName = "string",
 #'           CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'         )
@@ -26038,7 +26801,7 @@ glue_update_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
 #'         list(
 #'           LogicalOperator = "EQUALS",
 #'           JobName = "string",
-#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING",
+#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"|"ERROR"|"WAITING"|"EXPIRED",
 #'           CrawlerName = "string",
 #'           CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"|"ERROR"
 #'         )
@@ -26062,17 +26825,92 @@ glue_update_trigger <- function(Name, TriggerUpdate) {
     name = "UpdateTrigger",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_trigger_input(Name = Name, TriggerUpdate = TriggerUpdate)
   output <- .glue$update_trigger_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .glue$operations$update_trigger <- glue_update_trigger
+
+#' Update an Glue usage profile
+#'
+#' @description
+#' Update an Glue usage profile.
+#'
+#' @usage
+#' glue_update_usage_profile(Name, Description, Configuration)
+#'
+#' @param Name &#91;required&#93; The name of the usage profile.
+#' @param Description A description of the usage profile.
+#' @param Configuration &#91;required&#93; A `ProfileConfiguration` object specifying the job and session values
+#' for the profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_usage_profile(
+#'   Name = "string",
+#'   Description = "string",
+#'   Configuration = list(
+#'     SessionConfiguration = list(
+#'       list(
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         MinValue = "string",
+#'         MaxValue = "string"
+#'       )
+#'     ),
+#'     JobConfiguration = list(
+#'       list(
+#'         DefaultValue = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         MinValue = "string",
+#'         MaxValue = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_usage_profile
+#'
+#' @aliases glue_update_usage_profile
+glue_update_usage_profile <- function(Name, Description = NULL, Configuration) {
+  op <- new_operation(
+    name = "UpdateUsageProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$update_usage_profile_input(Name = Name, Description = Description, Configuration = Configuration)
+  output <- .glue$update_usage_profile_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_usage_profile <- glue_update_usage_profile
 
 #' Updates an existing function definition in the Data Catalog
 #'
@@ -26126,12 +26964,13 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
     name = "UpdateUserDefinedFunction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionName = FunctionName, FunctionInput = FunctionInput)
   output <- .glue$update_user_defined_function_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -26187,12 +27026,13 @@ glue_update_workflow <- function(Name, Description = NULL, DefaultRunProperties 
     name = "UpdateWorkflow",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glue$update_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties, MaxConcurrentRuns = MaxConcurrentRuns)
   output <- .glue$update_workflow_output()
   config <- get_config()
-  svc <- .glue$service(config)
+  svc <- .glue$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

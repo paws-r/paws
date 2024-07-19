@@ -27,12 +27,13 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
     name = "DescribeAcceleratorOfferings",
     http_method = "POST",
     http_path = "/describe-accelerator-offerings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticinference$describe_accelerator_offerings_input(locationType = locationType, acceleratorTypes = acceleratorTypes)
   output <- .elasticinference$describe_accelerator_offerings_output()
   config <- get_config()
-  svc <- .elasticinference$service(config)
+  svc <- .elasticinference$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -57,12 +58,13 @@ elasticinference_describe_accelerator_types <- function() {
     name = "DescribeAcceleratorTypes",
     http_method = "GET",
     http_path = "/describe-accelerator-types",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticinference$describe_accelerator_types_input()
   output <- .elasticinference$describe_accelerator_types_output()
   config <- get_config()
-  svc <- .elasticinference$service(config)
+  svc <- .elasticinference$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -99,12 +101,13 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
     name = "DescribeAccelerators",
     http_method = "POST",
     http_path = "/describe-accelerators",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "acceleratorSet")
   )
   input <- .elasticinference$describe_accelerators_input(acceleratorIds = acceleratorIds, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .elasticinference$describe_accelerators_output()
   config <- get_config()
-  svc <- .elasticinference$service(config)
+  svc <- .elasticinference$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -128,12 +131,13 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticinference$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .elasticinference$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .elasticinference$service(config)
+  svc <- .elasticinference$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -158,12 +162,13 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticinference$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .elasticinference$tag_resource_output()
   config <- get_config()
-  svc <- .elasticinference$service(config)
+  svc <- .elasticinference$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -188,12 +193,13 @@ elasticinference_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .elasticinference$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .elasticinference$untag_resource_output()
   config <- get_config()
-  svc <- .elasticinference$service(config)
+  svc <- .elasticinference$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

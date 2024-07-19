@@ -31,14 +31,22 @@ and jobs with any status are returned. If you don't specify a status,
 only \code{RUNNING} jobs are returned.}
 
 \item{maxResults}{The maximum number of results returned by \code{\link[=batch_list_jobs]{list_jobs}}
-in paginated output. When this parameter is used,
-\code{\link[=batch_list_jobs]{list_jobs}} only returns \code{maxResults} results in a
-single page and a \code{nextToken} response element. The remaining results of
-the initial request can be seen by sending another
+in a paginated output. When this parameter is used,
+\code{\link[=batch_list_jobs]{list_jobs}} returns up to \code{maxResults} results in a
+single page and a \code{nextToken} response element, if applicable. The
+remaining results of the initial request can be seen by sending another
 \code{\link[=batch_list_jobs]{list_jobs}} request with the returned \code{nextToken}
-value. This value can be between 1 and 100. If this parameter isn't
-used, then \code{\link[=batch_list_jobs]{list_jobs}} returns up to 100 results and
-a \code{nextToken} value if applicable.}
+value.
+
+The following outlines key parameters and limitations:
+\itemize{
+\item The minimum value is 1.
+\item When \code{--job-status} is used, Batch returns up to 1000 values.
+\item When \code{--filters} is used, Batch returns up to 100 values.
+\item If neither parameter is used, then \code{\link[=batch_list_jobs]{list_jobs}}
+returns up to 1000 results (jobs that are in the \code{RUNNING} status)
+and a \code{nextToken} value, if applicable.
+}}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{\link[=batch_list_jobs]{list_jobs}} request where \code{maxResults} was used and

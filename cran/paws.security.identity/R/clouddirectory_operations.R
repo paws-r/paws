@@ -25,12 +25,13 @@ clouddirectory_add_facet_to_object <- function(DirectoryArn, SchemaFacet, Object
     name = "AddFacetToObject",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/object/facets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$add_facet_to_object_input(DirectoryArn = DirectoryArn, SchemaFacet = SchemaFacet, ObjectAttributeList = ObjectAttributeList, ObjectReference = ObjectReference)
   output <- .clouddirectory$add_facet_to_object_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -58,12 +59,13 @@ clouddirectory_apply_schema <- function(PublishedSchemaArn, DirectoryArn) {
     name = "ApplySchema",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema/apply",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$apply_schema_input(PublishedSchemaArn = PublishedSchemaArn, DirectoryArn = DirectoryArn)
   output <- .clouddirectory$apply_schema_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -91,12 +93,13 @@ clouddirectory_attach_object <- function(DirectoryArn, ParentReference, ChildRef
     name = "AttachObject",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/object/attach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$attach_object_input(DirectoryArn = DirectoryArn, ParentReference = ParentReference, ChildReference = ChildReference, LinkName = LinkName)
   output <- .clouddirectory$attach_object_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -124,12 +127,13 @@ clouddirectory_attach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
     name = "AttachPolicy",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/policy/attach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$attach_policy_input(DirectoryArn = DirectoryArn, PolicyReference = PolicyReference, ObjectReference = ObjectReference)
   output <- .clouddirectory$attach_policy_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -156,12 +160,13 @@ clouddirectory_attach_to_index <- function(DirectoryArn, IndexReference, TargetR
     name = "AttachToIndex",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/index/attach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$attach_to_index_input(DirectoryArn = DirectoryArn, IndexReference = IndexReference, TargetReference = TargetReference)
   output <- .clouddirectory$attach_to_index_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -190,12 +195,13 @@ clouddirectory_attach_typed_link <- function(DirectoryArn, SourceObjectReference
     name = "AttachTypedLink",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/attach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$attach_typed_link_input(DirectoryArn = DirectoryArn, SourceObjectReference = SourceObjectReference, TargetObjectReference = TargetObjectReference, TypedLinkFacet = TypedLinkFacet, Attributes = Attributes)
   output <- .clouddirectory$attach_typed_link_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -224,12 +230,13 @@ clouddirectory_batch_read <- function(DirectoryArn, Operations, ConsistencyLevel
     name = "BatchRead",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/batchread",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$batch_read_input(DirectoryArn = DirectoryArn, Operations = Operations, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$batch_read_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -255,12 +262,13 @@ clouddirectory_batch_write <- function(DirectoryArn, Operations) {
     name = "BatchWrite",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/batchwrite",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$batch_write_input(DirectoryArn = DirectoryArn, Operations = Operations)
   output <- .clouddirectory$batch_write_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -286,12 +294,13 @@ clouddirectory_create_directory <- function(Name, SchemaArn) {
     name = "CreateDirectory",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/directory/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$create_directory_input(Name = Name, SchemaArn = SchemaArn)
   output <- .clouddirectory$create_directory_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -337,12 +346,13 @@ clouddirectory_create_facet <- function(SchemaArn, Name, Attributes = NULL, Obje
     name = "CreateFacet",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/facet/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$create_facet_input(SchemaArn = SchemaArn, Name = Name, Attributes = Attributes, ObjectType = ObjectType, FacetStyle = FacetStyle)
   output <- .clouddirectory$create_facet_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -372,12 +382,13 @@ clouddirectory_create_index <- function(DirectoryArn, OrderedIndexedAttributeLis
     name = "CreateIndex",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/index",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$create_index_input(DirectoryArn = DirectoryArn, OrderedIndexedAttributeList = OrderedIndexedAttributeList, IsUnique = IsUnique, ParentReference = ParentReference, LinkName = LinkName)
   output <- .clouddirectory$create_index_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -409,12 +420,13 @@ clouddirectory_create_object <- function(DirectoryArn, SchemaFacets, ObjectAttri
     name = "CreateObject",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/object",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$create_object_input(DirectoryArn = DirectoryArn, SchemaFacets = SchemaFacets, ObjectAttributeList = ObjectAttributeList, ParentReference = ParentReference, LinkName = LinkName)
   output <- .clouddirectory$create_object_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -439,12 +451,13 @@ clouddirectory_create_schema <- function(Name) {
     name = "CreateSchema",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$create_schema_input(Name = Name)
   output <- .clouddirectory$create_schema_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -470,12 +483,13 @@ clouddirectory_create_typed_link_facet <- function(SchemaArn, Facet) {
     name = "CreateTypedLinkFacet",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/create",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$create_typed_link_facet_input(SchemaArn = SchemaArn, Facet = Facet)
   output <- .clouddirectory$create_typed_link_facet_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -499,12 +513,13 @@ clouddirectory_delete_directory <- function(DirectoryArn) {
     name = "DeleteDirectory",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/directory",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$delete_directory_input(DirectoryArn = DirectoryArn)
   output <- .clouddirectory$delete_directory_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -530,12 +545,13 @@ clouddirectory_delete_facet <- function(SchemaArn, Name) {
     name = "DeleteFacet",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/facet/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$delete_facet_input(SchemaArn = SchemaArn, Name = Name)
   output <- .clouddirectory$delete_facet_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -561,12 +577,13 @@ clouddirectory_delete_object <- function(DirectoryArn, ObjectReference) {
     name = "DeleteObject",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/object/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$delete_object_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference)
   output <- .clouddirectory$delete_object_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -591,12 +608,13 @@ clouddirectory_delete_schema <- function(SchemaArn) {
     name = "DeleteSchema",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$delete_schema_input(SchemaArn = SchemaArn)
   output <- .clouddirectory$delete_schema_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -622,12 +640,13 @@ clouddirectory_delete_typed_link_facet <- function(SchemaArn, Name) {
     name = "DeleteTypedLinkFacet",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$delete_typed_link_facet_input(SchemaArn = SchemaArn, Name = Name)
   output <- .clouddirectory$delete_typed_link_facet_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -654,12 +673,13 @@ clouddirectory_detach_from_index <- function(DirectoryArn, IndexReference, Targe
     name = "DetachFromIndex",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/index/detach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$detach_from_index_input(DirectoryArn = DirectoryArn, IndexReference = IndexReference, TargetReference = TargetReference)
   output <- .clouddirectory$detach_from_index_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -687,12 +707,13 @@ clouddirectory_detach_object <- function(DirectoryArn, ParentReference, LinkName
     name = "DetachObject",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/object/detach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$detach_object_input(DirectoryArn = DirectoryArn, ParentReference = ParentReference, LinkName = LinkName)
   output <- .clouddirectory$detach_object_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -720,12 +741,13 @@ clouddirectory_detach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
     name = "DetachPolicy",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/policy/detach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$detach_policy_input(DirectoryArn = DirectoryArn, PolicyReference = PolicyReference, ObjectReference = ObjectReference)
   output <- .clouddirectory$detach_policy_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -751,12 +773,13 @@ clouddirectory_detach_typed_link <- function(DirectoryArn, TypedLinkSpecifier) {
     name = "DetachTypedLink",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/detach",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$detach_typed_link_input(DirectoryArn = DirectoryArn, TypedLinkSpecifier = TypedLinkSpecifier)
   output <- .clouddirectory$detach_typed_link_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -780,12 +803,13 @@ clouddirectory_disable_directory <- function(DirectoryArn) {
     name = "DisableDirectory",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/directory/disable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$disable_directory_input(DirectoryArn = DirectoryArn)
   output <- .clouddirectory$disable_directory_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -809,12 +833,13 @@ clouddirectory_enable_directory <- function(DirectoryArn) {
     name = "EnableDirectory",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/directory/enable",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$enable_directory_input(DirectoryArn = DirectoryArn)
   output <- .clouddirectory$enable_directory_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -839,12 +864,13 @@ clouddirectory_get_applied_schema_version <- function(SchemaArn) {
     name = "GetAppliedSchemaVersion",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/getappliedschema",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_applied_schema_version_input(SchemaArn = SchemaArn)
   output <- .clouddirectory$get_applied_schema_version_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -868,12 +894,13 @@ clouddirectory_get_directory <- function(DirectoryArn) {
     name = "GetDirectory",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/directory/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_directory_input(DirectoryArn = DirectoryArn)
   output <- .clouddirectory$get_directory_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -900,12 +927,13 @@ clouddirectory_get_facet <- function(SchemaArn, Name) {
     name = "GetFacet",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/facet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_facet_input(SchemaArn = SchemaArn, Name = Name)
   output <- .clouddirectory$get_facet_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -935,12 +963,13 @@ clouddirectory_get_link_attributes <- function(DirectoryArn, TypedLinkSpecifier,
     name = "GetLinkAttributes",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/attributes/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_link_attributes_input(DirectoryArn = DirectoryArn, TypedLinkSpecifier = TypedLinkSpecifier, AttributeNames = AttributeNames, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$get_link_attributes_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -970,12 +999,13 @@ clouddirectory_get_object_attributes <- function(DirectoryArn, ObjectReference, 
     name = "GetObjectAttributes",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/attributes/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_object_attributes_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, ConsistencyLevel = ConsistencyLevel, SchemaFacet = SchemaFacet, AttributeNames = AttributeNames)
   output <- .clouddirectory$get_object_attributes_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1001,12 +1031,13 @@ clouddirectory_get_object_information <- function(DirectoryArn, ObjectReference,
     name = "GetObjectInformation",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/information",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_object_information_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$get_object_information_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1061,13 @@ clouddirectory_get_schema_as_json <- function(SchemaArn) {
     name = "GetSchemaAsJson",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/json",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_schema_as_json_input(SchemaArn = SchemaArn)
   output <- .clouddirectory$get_schema_as_json_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1061,12 +1093,13 @@ clouddirectory_get_typed_link_facet_information <- function(SchemaArn, Name) {
     name = "GetTypedLinkFacetInformation",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/get",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$get_typed_link_facet_information_input(SchemaArn = SchemaArn, Name = Name)
   output <- .clouddirectory$get_typed_link_facet_information_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1096,12 +1129,13 @@ clouddirectory_list_applied_schema_arns <- function(DirectoryArn, SchemaArn = NU
     name = "ListAppliedSchemaArns",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/applied",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_applied_schema_arns_input(DirectoryArn = DirectoryArn, SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_applied_schema_arns_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1129,12 +1163,13 @@ clouddirectory_list_attached_indices <- function(DirectoryArn, TargetReference, 
     name = "ListAttachedIndices",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/indices",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_attached_indices_input(DirectoryArn = DirectoryArn, TargetReference = TargetReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$list_attached_indices_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1160,12 +1195,13 @@ clouddirectory_list_development_schema_arns <- function(NextToken = NULL, MaxRes
     name = "ListDevelopmentSchemaArns",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/development",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_development_schema_arns_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_development_schema_arns_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1192,12 +1228,13 @@ clouddirectory_list_directories <- function(NextToken = NULL, MaxResults = NULL,
     name = "ListDirectories",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/directory/list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_directories_input(NextToken = NextToken, MaxResults = MaxResults, state = state)
   output <- .clouddirectory$list_directories_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1224,12 +1261,13 @@ clouddirectory_list_facet_attributes <- function(SchemaArn, Name, NextToken = NU
     name = "ListFacetAttributes",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/facet/attributes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_facet_attributes_input(SchemaArn = SchemaArn, Name = Name, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_facet_attributes_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1255,12 +1293,13 @@ clouddirectory_list_facet_names <- function(SchemaArn, NextToken = NULL, MaxResu
     name = "ListFacetNames",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/facet/list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_facet_names_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_facet_names_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1296,12 +1335,13 @@ clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReferen
     name = "ListIncomingTypedLinks",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/incoming",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$list_incoming_typed_links_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, FilterAttributeRanges = FilterAttributeRanges, FilterTypedLink = FilterTypedLink, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$list_incoming_typed_links_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1333,12 +1373,13 @@ clouddirectory_list_index <- function(DirectoryArn, RangesOnIndexedValues = NULL
     name = "ListIndex",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/index/targets",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_index_input(DirectoryArn = DirectoryArn, RangesOnIndexedValues = RangesOnIndexedValues, IndexReference = IndexReference, MaxResults = MaxResults, NextToken = NextToken, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$list_index_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1365,12 +1406,13 @@ clouddirectory_list_managed_schema_arns <- function(SchemaArn = NULL, NextToken 
     name = "ListManagedSchemaArns",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/managed",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_managed_schema_arns_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_managed_schema_arns_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1405,12 +1447,13 @@ clouddirectory_list_object_attributes <- function(DirectoryArn, ObjectReference,
     name = "ListObjectAttributes",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/attributes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_object_attributes_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel, FacetFilter = FacetFilter)
   output <- .clouddirectory$list_object_attributes_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1444,12 +1487,13 @@ clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, N
     name = "ListObjectChildren",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/children",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_object_children_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$list_object_children_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1478,12 +1522,13 @@ clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReferenc
     name = "ListObjectParentPaths",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/parentpaths",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_object_parent_paths_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_object_parent_paths_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1519,12 +1564,13 @@ clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, Ne
     name = "ListObjectParents",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/parent",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_object_parents_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel, IncludeAllLinksToEachParent = IncludeAllLinksToEachParent)
   output <- .clouddirectory$list_object_parents_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1556,12 +1602,13 @@ clouddirectory_list_object_policies <- function(DirectoryArn, ObjectReference, N
     name = "ListObjectPolicies",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/policy",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_object_policies_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$list_object_policies_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1597,12 +1644,13 @@ clouddirectory_list_outgoing_typed_links <- function(DirectoryArn, ObjectReferen
     name = "ListOutgoingTypedLinks",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/outgoing",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$list_outgoing_typed_links_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, FilterAttributeRanges = FilterAttributeRanges, FilterTypedLink = FilterTypedLink, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$list_outgoing_typed_links_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1634,12 +1682,13 @@ clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference
     name = "ListPolicyAttachments",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/policy/attachment",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_policy_attachments_input(DirectoryArn = DirectoryArn, PolicyReference = PolicyReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
   output <- .clouddirectory$list_policy_attachments_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1668,12 +1717,13 @@ clouddirectory_list_published_schema_arns <- function(SchemaArn = NULL, NextToke
     name = "ListPublishedSchemaArns",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/published",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_published_schema_arns_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_published_schema_arns_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1702,12 +1752,13 @@ clouddirectory_list_tags_for_resource <- function(ResourceArn, NextToken = NULL,
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/tags",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1736,12 +1787,13 @@ clouddirectory_list_typed_link_facet_attributes <- function(SchemaArn, Name, Nex
     name = "ListTypedLinkFacetAttributes",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_typed_link_facet_attributes_input(SchemaArn = SchemaArn, Name = Name, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_typed_link_facet_attributes_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1769,12 +1821,13 @@ clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NU
     name = "ListTypedLinkFacetNames",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/list",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$list_typed_link_facet_names_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$list_typed_link_facet_names_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1804,12 +1857,13 @@ clouddirectory_lookup_policy <- function(DirectoryArn, ObjectReference, NextToke
     name = "LookupPolicy",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/policy/lookup",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .clouddirectory$lookup_policy_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults)
   output <- .clouddirectory$lookup_policy_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1842,12 +1896,13 @@ clouddirectory_publish_schema <- function(DevelopmentSchemaArn, Version, MinorVe
     name = "PublishSchema",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema/publish",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$publish_schema_input(DevelopmentSchemaArn = DevelopmentSchemaArn, Version = Version, MinorVersion = MinorVersion, Name = Name)
   output <- .clouddirectory$publish_schema_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1872,12 +1927,13 @@ clouddirectory_put_schema_from_json <- function(SchemaArn, Document) {
     name = "PutSchemaFromJson",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema/json",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$put_schema_from_json_input(SchemaArn = SchemaArn, Document = Document)
   output <- .clouddirectory$put_schema_from_json_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1903,12 +1959,13 @@ clouddirectory_remove_facet_from_object <- function(DirectoryArn, SchemaFacet, O
     name = "RemoveFacetFromObject",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/object/facets/delete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$remove_facet_from_object_input(DirectoryArn = DirectoryArn, SchemaFacet = SchemaFacet, ObjectReference = ObjectReference)
   output <- .clouddirectory$remove_facet_from_object_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1934,12 +1991,13 @@ clouddirectory_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/tags/add",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .clouddirectory$tag_resource_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1965,12 +2023,13 @@ clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/tags/remove",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .clouddirectory$untag_resource_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2001,12 +2060,13 @@ clouddirectory_update_facet <- function(SchemaArn, Name, AttributeUpdates = NULL
     name = "UpdateFacet",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/facet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$update_facet_input(SchemaArn = SchemaArn, Name = Name, AttributeUpdates = AttributeUpdates, ObjectType = ObjectType)
   output <- .clouddirectory$update_facet_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2035,12 +2095,13 @@ clouddirectory_update_link_attributes <- function(DirectoryArn, TypedLinkSpecifi
     name = "UpdateLinkAttributes",
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/attributes/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$update_link_attributes_input(DirectoryArn = DirectoryArn, TypedLinkSpecifier = TypedLinkSpecifier, AttributeUpdates = AttributeUpdates)
   output <- .clouddirectory$update_link_attributes_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2067,12 +2128,13 @@ clouddirectory_update_object_attributes <- function(DirectoryArn, ObjectReferenc
     name = "UpdateObjectAttributes",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/object/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$update_object_attributes_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, AttributeUpdates = AttributeUpdates)
   output <- .clouddirectory$update_object_attributes_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2098,12 +2160,13 @@ clouddirectory_update_schema <- function(SchemaArn, Name) {
     name = "UpdateSchema",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema/update",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$update_schema_input(SchemaArn = SchemaArn, Name = Name)
   output <- .clouddirectory$update_schema_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2140,12 +2203,13 @@ clouddirectory_update_typed_link_facet <- function(SchemaArn, Name, AttributeUpd
     name = "UpdateTypedLinkFacet",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$update_typed_link_facet_input(SchemaArn = SchemaArn, Name = Name, AttributeUpdates = AttributeUpdates, IdentityAttributeOrder = IdentityAttributeOrder)
   output <- .clouddirectory$update_typed_link_facet_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2175,12 +2239,13 @@ clouddirectory_upgrade_applied_schema <- function(PublishedSchemaArn, DirectoryA
     name = "UpgradeAppliedSchema",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema/upgradeapplied",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$upgrade_applied_schema_input(PublishedSchemaArn = PublishedSchemaArn, DirectoryArn = DirectoryArn, DryRun = DryRun)
   output <- .clouddirectory$upgrade_applied_schema_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2213,12 +2278,13 @@ clouddirectory_upgrade_published_schema <- function(DevelopmentSchemaArn, Publis
     name = "UpgradePublishedSchema",
     http_method = "PUT",
     http_path = "/amazonclouddirectory/2017-01-11/schema/upgradepublished",
+    host_prefix = "",
     paginator = list()
   )
   input <- .clouddirectory$upgrade_published_schema_input(DevelopmentSchemaArn = DevelopmentSchemaArn, PublishedSchemaArn = PublishedSchemaArn, MinorVersion = MinorVersion, DryRun = DryRun)
   output <- .clouddirectory$upgrade_published_schema_output()
   config <- get_config()
-  svc <- .clouddirectory$service(config)
+  svc <- .clouddirectory$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

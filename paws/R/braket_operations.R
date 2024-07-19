@@ -39,12 +39,13 @@ braket_cancel_job <- function(jobArn) {
     name = "CancelJob",
     http_method = "PUT",
     http_path = "/job/{jobArn}/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$cancel_job_input(jobArn = jobArn)
   output <- .braket$cancel_job_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -89,12 +90,13 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
     name = "CancelQuantumTask",
     http_method = "PUT",
     http_path = "/quantum-task/{quantumTaskArn}/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$cancel_quantum_task_input(clientToken = clientToken, quantumTaskArn = quantumTaskArn)
   output <- .braket$cancel_quantum_task_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -218,12 +220,13 @@ braket_create_job <- function(algorithmSpecification, associations = NULL, check
     name = "CreateJob",
     http_method = "POST",
     http_path = "/job",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$create_job_input(algorithmSpecification = algorithmSpecification, associations = associations, checkpointConfig = checkpointConfig, clientToken = clientToken, deviceConfig = deviceConfig, hyperParameters = hyperParameters, inputDataConfig = inputDataConfig, instanceConfig = instanceConfig, jobName = jobName, outputDataConfig = outputDataConfig, roleArn = roleArn, stoppingCondition = stoppingCondition, tags = tags)
   output <- .braket$create_job_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -294,12 +297,13 @@ braket_create_quantum_task <- function(action, associations = NULL, clientToken,
     name = "CreateQuantumTask",
     http_method = "POST",
     http_path = "/quantum-task",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$create_quantum_task_input(action = action, associations = associations, clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, jobToken = jobToken, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, shots = shots, tags = tags)
   output <- .braket$create_quantum_task_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -363,12 +367,13 @@ braket_get_device <- function(deviceArn) {
     name = "GetDevice",
     http_method = "GET",
     http_path = "/device/{deviceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$get_device_input(deviceArn = deviceArn)
   output <- .braket$get_device_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -494,12 +499,13 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
     name = "GetJob",
     http_method = "GET",
     http_path = "/job/{jobArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$get_job_input(additionalAttributeNames = additionalAttributeNames, jobArn = jobArn)
   output <- .braket$get_job_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -574,12 +580,13 @@ braket_get_quantum_task <- function(additionalAttributeNames = NULL, quantumTask
     name = "GetQuantumTask",
     http_method = "GET",
     http_path = "/quantum-task/{quantumTaskArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$get_quantum_task_input(additionalAttributeNames = additionalAttributeNames, quantumTaskArn = quantumTaskArn)
   output <- .braket$get_quantum_task_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -623,12 +630,13 @@ braket_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .braket$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -692,12 +700,13 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
     name = "SearchDevices",
     http_method = "POST",
     http_path = "/devices",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "devices")
   )
   input <- .braket$search_devices_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .braket$search_devices_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -773,12 +782,13 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
     name = "SearchJobs",
     http_method = "POST",
     http_path = "/jobs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs")
   )
   input <- .braket$search_jobs_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .braket$search_jobs_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -853,12 +863,13 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
     name = "SearchQuantumTasks",
     http_method = "POST",
     http_path = "/quantum-tasks",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quantumTasks")
   )
   input <- .braket$search_quantum_tasks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .braket$search_quantum_tasks_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -899,12 +910,13 @@ braket_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .braket$tag_resource_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -946,12 +958,13 @@ braket_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .braket$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .braket$untag_resource_output()
   config <- get_config()
-  svc <- .braket$service(config)
+  svc <- .braket$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

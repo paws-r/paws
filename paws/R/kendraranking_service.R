@@ -139,7 +139,7 @@ kendraranking <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = "AWSKendraRerankingFrontendService"
 )
 
-.kendraranking$service <- function(config = list()) {
+.kendraranking$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.kendraranking$metadata, handlers, config)
+  new_service(.kendraranking$metadata, handlers, config, op)
 }

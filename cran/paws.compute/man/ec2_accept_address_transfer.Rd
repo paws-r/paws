@@ -21,7 +21,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Accepts an Elastic IP address transfer. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#using-instance-addressing-eips-transfer-accept}{Accept a transferred Elastic IP address} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Accepts an Elastic IP address transfer. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#using-instance-addressing-eips-transfer-accept}{Accept a transferred Elastic IP address} in the \emph{Amazon VPC User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_accept_address_transfer/} for full documentation.
 }

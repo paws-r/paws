@@ -4,12 +4,19 @@
 \alias{ivsrealtime_update_stage}
 \title{Updates a stage’s configuration}
 \usage{
-ivsrealtime_update_stage(arn, name = NULL)
+ivsrealtime_update_stage(
+  arn,
+  name = NULL,
+  autoParticipantRecordingConfiguration = NULL
+)
 }
 \arguments{
 \item{arn}{[required] ARN of the stage to be updated.}
 
 \item{name}{Name of the stage to be updated.}
+
+\item{autoParticipantRecordingConfiguration}{Configuration object for individual participant recording, to attach to
+the stage. Note that this cannot be updated while recording is active.}
 }
 \description{
 Updates a stage’s configuration.

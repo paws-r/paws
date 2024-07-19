@@ -120,6 +120,14 @@ test_that("list_triggers", {
   expect_error(svc$list_triggers(MaxResults = 20), NA)
 })
 
+test_that("list_usage_profiles", {
+  expect_error(svc$list_usage_profiles(), NA)
+})
+
+test_that("list_usage_profiles", {
+  expect_error(svc$list_usage_profiles(MaxResults = 20), NA)
+})
+
 test_that("list_workflows", {
   expect_error(svc$list_workflows(), NA)
 })

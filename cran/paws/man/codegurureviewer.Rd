@@ -62,7 +62,7 @@ By proactively detecting and providing recommendations for addressing
 code defects and implementing best practices, CodeGuru Reviewer improves
 the overall quality and maintainability of your code base during the
 code review stage. For more information about CodeGuru Reviewer, see the
-\emph{\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{Amazon CodeGuru Reviewer User Guide}.}
+\emph{\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{AmazonCodeGuru Reviewer User Guide}.}
 
 To improve the security of your CodeGuru Reviewer API calls, you can
 establish a private connection between your VPC and CodeGuru Reviewer by

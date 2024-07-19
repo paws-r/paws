@@ -177,7 +177,7 @@ paymentcryptographycontrolplane <- function(config = list(), credentials = list(
   target_prefix = "PaymentCryptographyControlPlane"
 )
 
-.paymentcryptographycontrolplane$service <- function(config = list()) {
+.paymentcryptographycontrolplane$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.paymentcryptographycontrolplane$metadata, handlers, config)
+  new_service(.paymentcryptographycontrolplane$metadata, handlers, config, op)
 }

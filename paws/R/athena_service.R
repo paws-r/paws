@@ -212,7 +212,7 @@ athena <- function(config = list(), credentials = list(), endpoint = NULL, regio
   target_prefix = "AmazonAthena"
 )
 
-.athena$service <- function(config = list()) {
+.athena$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.athena$metadata, handlers, config)
+  new_service(.athena$metadata, handlers, config, op)
 }

@@ -13,7 +13,7 @@ vpclattice_delete_service_network_service_association(
 \item{serviceNetworkServiceAssociationIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the association.}
 }
 \description{
-Deletes the association between a specified service and the specific service network. This request will fail if an association is still in progress.
+Deletes the association between a specified service and the specific service network. This operation fails if an association is still in progress.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_delete_service_network_service_association/} for full documentation.
 }

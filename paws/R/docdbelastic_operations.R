@@ -99,12 +99,13 @@ docdbelastic_copy_cluster_snapshot <- function(copyTags = NULL, kmsKeyId = NULL,
     name = "CopyClusterSnapshot",
     http_method = "POST",
     http_path = "/cluster-snapshot/{snapshotArn}/copy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$copy_cluster_snapshot_input(copyTags = copyTags, kmsKeyId = kmsKeyId, snapshotArn = snapshotArn, tags = tags, targetSnapshotName = targetSnapshotName)
   output <- .docdbelastic$copy_cluster_snapshot_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -269,12 +270,13 @@ docdbelastic_create_cluster <- function(adminUserName, adminUserPassword, authTy
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/cluster",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$create_cluster_input(adminUserName = adminUserName, adminUserPassword = adminUserPassword, authType = authType, backupRetentionPeriod = backupRetentionPeriod, clientToken = clientToken, clusterName = clusterName, kmsKeyId = kmsKeyId, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, shardInstanceCount = shardInstanceCount, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$create_cluster_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -339,12 +341,13 @@ docdbelastic_create_cluster_snapshot <- function(clusterArn, snapshotName, tags 
     name = "CreateClusterSnapshot",
     http_method = "POST",
     http_path = "/cluster-snapshot",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$create_cluster_snapshot_input(clusterArn = clusterArn, snapshotName = snapshotName, tags = tags)
   output <- .docdbelastic$create_cluster_snapshot_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -414,12 +417,13 @@ docdbelastic_delete_cluster <- function(clusterArn) {
     name = "DeleteCluster",
     http_method = "DELETE",
     http_path = "/cluster/{clusterArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$delete_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$delete_cluster_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -478,12 +482,13 @@ docdbelastic_delete_cluster_snapshot <- function(snapshotArn) {
     name = "DeleteClusterSnapshot",
     http_method = "DELETE",
     http_path = "/cluster-snapshot/{snapshotArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$delete_cluster_snapshot_input(snapshotArn = snapshotArn)
   output <- .docdbelastic$delete_cluster_snapshot_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -553,12 +558,13 @@ docdbelastic_get_cluster <- function(clusterArn) {
     name = "GetCluster",
     http_method = "GET",
     http_path = "/cluster/{clusterArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$get_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$get_cluster_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -616,12 +622,13 @@ docdbelastic_get_cluster_snapshot <- function(snapshotArn) {
     name = "GetClusterSnapshot",
     http_method = "GET",
     http_path = "/cluster-snapshot/{snapshotArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$get_cluster_snapshot_input(snapshotArn = snapshotArn)
   output <- .docdbelastic$get_cluster_snapshot_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -692,12 +699,13 @@ docdbelastic_list_cluster_snapshots <- function(clusterArn = NULL, maxResults = 
     name = "ListClusterSnapshots",
     http_method = "GET",
     http_path = "/cluster-snapshots",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshots")
   )
   input <- .docdbelastic$list_cluster_snapshots_input(clusterArn = clusterArn, maxResults = maxResults, nextToken = nextToken, snapshotType = snapshotType)
   output <- .docdbelastic$list_cluster_snapshots_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -755,12 +763,13 @@ docdbelastic_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListClusters",
     http_method = "GET",
     http_path = "/clusters",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "clusters")
   )
   input <- .docdbelastic$list_clusters_input(maxResults = maxResults, nextToken = nextToken)
   output <- .docdbelastic$list_clusters_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -804,12 +813,13 @@ docdbelastic_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .docdbelastic$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -916,12 +926,13 @@ docdbelastic_restore_cluster_from_snapshot <- function(clusterName, kmsKeyId = N
     name = "RestoreClusterFromSnapshot",
     http_method = "POST",
     http_path = "/cluster-snapshot/{snapshotArn}/restore",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$restore_cluster_from_snapshot_input(clusterName = clusterName, kmsKeyId = kmsKeyId, shardCapacity = shardCapacity, shardInstanceCount = shardInstanceCount, snapshotArn = snapshotArn, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$restore_cluster_from_snapshot_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -991,12 +1002,13 @@ docdbelastic_start_cluster <- function(clusterArn) {
     name = "StartCluster",
     http_method = "POST",
     http_path = "/cluster/{clusterArn}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$start_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$start_cluster_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1067,12 +1079,13 @@ docdbelastic_stop_cluster <- function(clusterArn) {
     name = "StopCluster",
     http_method = "POST",
     http_path = "/cluster/{clusterArn}/stop",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$stop_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$stop_cluster_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1113,12 +1126,13 @@ docdbelastic_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .docdbelastic$tag_resource_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1159,12 +1173,13 @@ docdbelastic_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .docdbelastic$untag_resource_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1288,12 +1303,13 @@ docdbelastic_update_cluster <- function(adminUserPassword = NULL, authType = NUL
     name = "UpdateCluster",
     http_method = "PUT",
     http_path = "/cluster/{clusterArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .docdbelastic$update_cluster_input(adminUserPassword = adminUserPassword, authType = authType, backupRetentionPeriod = backupRetentionPeriod, clientToken = clientToken, clusterArn = clusterArn, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, shardInstanceCount = shardInstanceCount, subnetIds = subnetIds, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$update_cluster_output()
   config <- get_config()
-  svc <- .docdbelastic$service(config)
+  svc <- .docdbelastic$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

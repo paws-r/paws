@@ -144,7 +144,7 @@ elasticinference <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.elasticinference$service <- function(config = list()) {
+.elasticinference$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.elasticinference$metadata, handlers, config)
+  new_service(.elasticinference$metadata, handlers, config, op)
 }

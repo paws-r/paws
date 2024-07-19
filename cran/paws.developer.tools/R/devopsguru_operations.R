@@ -22,12 +22,13 @@ devopsguru_add_notification_channel <- function(Config) {
     name = "AddNotificationChannel",
     http_method = "PUT",
     http_path = "/channels",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$add_notification_channel_input(Config = Config)
   output <- .devopsguru$add_notification_channel_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -52,12 +53,13 @@ devopsguru_delete_insight <- function(Id) {
     name = "DeleteInsight",
     http_method = "DELETE",
     http_path = "/insights/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$delete_insight_input(Id = Id)
   output <- .devopsguru$delete_insight_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -83,12 +85,13 @@ devopsguru_describe_account_health <- function() {
     name = "DescribeAccountHealth",
     http_method = "GET",
     http_path = "/accounts/health",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_account_health_input()
   output <- .devopsguru$describe_account_health_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -121,12 +124,13 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
     name = "DescribeAccountOverview",
     http_method = "POST",
     http_path = "/accounts/overview",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_account_overview_input(FromTime = FromTime, ToTime = ToTime)
   output <- .devopsguru$describe_account_overview_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -151,12 +155,13 @@ devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
     name = "DescribeAnomaly",
     http_method = "GET",
     http_path = "/anomalies/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_anomaly_input(Id = Id, AccountId = AccountId)
   output <- .devopsguru$describe_anomaly_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -181,12 +186,13 @@ devopsguru_describe_event_sources_config <- function() {
     name = "DescribeEventSourcesConfig",
     http_method = "POST",
     http_path = "/event-sources",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_event_sources_config_input()
   output <- .devopsguru$describe_event_sources_config_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -211,12 +217,13 @@ devopsguru_describe_feedback <- function(InsightId = NULL) {
     name = "DescribeFeedback",
     http_method = "POST",
     http_path = "/feedback",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_feedback_input(InsightId = InsightId)
   output <- .devopsguru$describe_feedback_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -241,12 +248,13 @@ devopsguru_describe_insight <- function(Id, AccountId = NULL) {
     name = "DescribeInsight",
     http_method = "GET",
     http_path = "/insights/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_insight_input(Id = Id, AccountId = AccountId)
   output <- .devopsguru$describe_insight_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -272,12 +280,13 @@ devopsguru_describe_organization_health <- function(AccountIds = NULL, Organizat
     name = "DescribeOrganizationHealth",
     http_method = "POST",
     http_path = "/organization/health",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_organization_health_input(AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds)
   output <- .devopsguru$describe_organization_health_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -310,12 +319,13 @@ devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, A
     name = "DescribeOrganizationOverview",
     http_method = "POST",
     http_path = "/organization/overview",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_organization_overview_input(FromTime = FromTime, ToTime = ToTime, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds)
   output <- .devopsguru$describe_organization_overview_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -353,12 +363,13 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
     name = "DescribeOrganizationResourceCollectionHealth",
     http_method = "POST",
     http_path = "/organization/health/resource-collection",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Account", "Service", "Tags"))
   )
   input <- .devopsguru$describe_organization_resource_collection_health_input(OrganizationResourceCollectionType = OrganizationResourceCollectionType, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .devopsguru$describe_organization_resource_collection_health_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -393,12 +404,13 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
     name = "DescribeResourceCollectionHealth",
     http_method = "GET",
     http_path = "/accounts/health/resource-collection/{ResourceCollectionType}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Service", "Tags"))
   )
   input <- .devopsguru$describe_resource_collection_health_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$describe_resource_collection_health_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -423,12 +435,13 @@ devopsguru_describe_service_integration <- function() {
     name = "DescribeServiceIntegration",
     http_method = "GET",
     http_path = "/service-integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$describe_service_integration_input()
   output <- .devopsguru$describe_service_integration_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -454,12 +467,13 @@ devopsguru_get_cost_estimation <- function(NextToken = NULL) {
     name = "GetCostEstimation",
     http_method = "GET",
     http_path = "/cost-estimation",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", non_aggregate_keys = list("Status", "TotalCost", "TimeRange", "ResourceCollection"), output_token = "NextToken", result_key = list("Costs"))
   )
   input <- .devopsguru$get_cost_estimation_input(NextToken = NextToken)
   output <- .devopsguru$get_cost_estimation_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -488,12 +502,13 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
     name = "GetResourceCollection",
     http_method = "GET",
     http_path = "/resource-collections/{ResourceCollectionType}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", non_aggregate_keys = list("ResourceCollection"), output_token = "NextToken", result_key = list("ResourceCollection.CloudFormation.StackNames", "ResourceCollection.Tags"))
   )
   input <- .devopsguru$get_resource_collection_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$get_resource_collection_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -527,12 +542,13 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
     name = "ListAnomaliesForInsight",
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ReactiveAnomalies", "ProactiveAnomalies"))
   )
   input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId, Filters = Filters)
   output <- .devopsguru$list_anomalies_for_insight_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -561,12 +577,13 @@ devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, N
     name = "ListAnomalousLogGroups",
     http_method = "POST",
     http_path = "/list-log-anomalies",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("InsightId", "AnomalousLogGroups"))
   )
   input <- .devopsguru$list_anomalous_log_groups_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_anomalous_log_groups_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -597,12 +614,13 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL,
     name = "ListEvents",
     http_method = "POST",
     http_path = "/events",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
   )
   input <- .devopsguru$list_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .devopsguru$list_events_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -632,12 +650,13 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
     name = "ListInsights",
     http_method = "POST",
     http_path = "/insights",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_insights_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -668,12 +687,13 @@ devopsguru_list_monitored_resources <- function(Filters = NULL, MaxResults = NUL
     name = "ListMonitoredResources",
     http_method = "POST",
     http_path = "/monitoredResources",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("MonitoredResourceIdentifiers"))
   )
   input <- .devopsguru$list_monitored_resources_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_monitored_resources_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -698,12 +718,13 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
     name = "ListNotificationChannels",
     http_method = "POST",
     http_path = "/channels",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Channels")
   )
   input <- .devopsguru$list_notification_channels_input(NextToken = NextToken)
   output <- .devopsguru$list_notification_channels_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -734,12 +755,13 @@ devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NUL
     name = "ListOrganizationInsights",
     http_method = "POST",
     http_path = "/organization/insights",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_organization_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken)
   output <- .devopsguru$list_organization_insights_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -767,12 +789,13 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale 
     name = "ListRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Recommendations")
   )
   input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken, Locale = Locale, AccountId = AccountId)
   output <- .devopsguru$list_recommendations_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -797,12 +820,13 @@ devopsguru_put_feedback <- function(InsightFeedback = NULL) {
     name = "PutFeedback",
     http_method = "PUT",
     http_path = "/feedback",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$put_feedback_input(InsightFeedback = InsightFeedback)
   output <- .devopsguru$put_feedback_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -826,12 +850,13 @@ devopsguru_remove_notification_channel <- function(Id) {
     name = "RemoveNotificationChannel",
     http_method = "DELETE",
     http_path = "/channels/{Id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$remove_notification_channel_input(Id = Id)
   output <- .devopsguru$remove_notification_channel_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -864,12 +889,13 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
     name = "SearchInsights",
     http_method = "POST",
     http_path = "/insights/search",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_insights_input(StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_insights_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -902,12 +928,13 @@ devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, 
     name = "SearchOrganizationInsights",
     http_method = "POST",
     http_path = "/organization/insights/search",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_organization_insights_input(AccountIds = AccountIds, StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_organization_insights_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -934,12 +961,13 @@ devopsguru_start_cost_estimation <- function(ResourceCollection, ClientToken = N
     name = "StartCostEstimation",
     http_method = "PUT",
     http_path = "/cost-estimation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$start_cost_estimation_input(ResourceCollection = ResourceCollection, ClientToken = ClientToken)
   output <- .devopsguru$start_cost_estimation_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -965,12 +993,13 @@ devopsguru_update_event_sources_config <- function(EventSources = NULL) {
     name = "UpdateEventSourcesConfig",
     http_method = "PUT",
     http_path = "/event-sources",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$update_event_sources_config_input(EventSources = EventSources)
   output <- .devopsguru$update_event_sources_config_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -996,12 +1025,13 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
     name = "UpdateResourceCollection",
     http_method = "PUT",
     http_path = "/resource-collections",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$update_resource_collection_input(Action = Action, ResourceCollection = ResourceCollection)
   output <- .devopsguru$update_resource_collection_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1028,12 +1058,13 @@ devopsguru_update_service_integration <- function(ServiceIntegration) {
     name = "UpdateServiceIntegration",
     http_method = "PUT",
     http_path = "/service-integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .devopsguru$update_service_integration_input(ServiceIntegration = ServiceIntegration)
   output <- .devopsguru$update_service_integration_output()
   config <- get_config()
-  svc <- .devopsguru$service(config)
+  svc <- .devopsguru$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

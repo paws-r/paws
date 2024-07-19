@@ -39,6 +39,30 @@ NULL
   return(populate(args, shape))
 }
 
+.managedgrafana$create_workspace_service_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(grafanaRole = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$create_workspace_service_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(grafanaRole = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$create_workspace_service_account_token_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), secondsToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), serviceAccountId = structure(logical(0), tags = list(location = "uri", locationName = "serviceAccountId", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$create_workspace_service_account_token_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceAccountId = structure(logical(0), tags = list(type = "string")), serviceAccountToken = structure(list(id = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .managedgrafana$delete_workspace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
@@ -60,6 +84,30 @@ NULL
 .managedgrafana$delete_workspace_api_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(keyName = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$delete_workspace_service_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceAccountId = structure(logical(0), tags = list(location = "uri", locationName = "serviceAccountId", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$delete_workspace_service_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceAccountId = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$delete_workspace_service_account_token_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceAccountId = structure(logical(0), tags = list(location = "uri", locationName = "serviceAccountId", type = "string")), tokenId = structure(logical(0), tags = list(location = "uri", locationName = "tokenId", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$delete_workspace_service_account_token_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceAccountId = structure(logical(0), tags = list(type = "string")), tokenId = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -144,6 +192,30 @@ NULL
 .managedgrafana$list_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(grafanaVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$list_workspace_service_account_tokens_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), serviceAccountId = structure(logical(0), tags = list(location = "uri", locationName = "serviceAccountId", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$list_workspace_service_account_tokens_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), serviceAccountId = structure(logical(0), tags = list(type = "string")), serviceAccountTokens = structure(list(structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp")), expiresAt = structure(logical(0), tags = list(type = "timestamp")), id = structure(logical(0), tags = list(type = "string")), lastUsedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$list_workspace_service_accounts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$list_workspace_service_accounts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), serviceAccounts = structure(list(structure(list(grafanaRole = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), isDisabled = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -6,12 +6,22 @@
 Manager (ACM) service principal (acm}
 \usage{
 acmpca_list_permissions(
-  CertificateAuthorityArn,
+  MaxResults = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  CertificateAuthorityArn
 )
 }
 \arguments{
+\item{MaxResults}{When paginating results, use this parameter to specify the maximum
+number of items to return in the response. If additional items exist
+beyond the number you specify, the \strong{NextToken} element is sent in the
+response. Use this \strong{NextToken} value in a subsequent request to
+retrieve additional items.}
+
+\item{NextToken}{When paginating results, use this parameter in a subsequent request
+after you receive a response with truncated results. Set it to the value
+of \strong{NextToken} from the response you just received.}
+
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Number (ARN) of the private CA to inspect. You can
 find the ARN by calling the
 \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
@@ -20,16 +30,6 @@ action. This must be of the form:
 You can get a private CA's ARN by running the
 \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
 action.}
-
-\item{NextToken}{When paginating results, use this parameter in a subsequent request
-after you receive a response with truncated results. Set it to the value
-of \strong{NextToken} from the response you just received.}
-
-\item{MaxResults}{When paginating results, use this parameter to specify the maximum
-number of items to return in the response. If additional items exist
-beyond the number you specify, the \strong{NextToken} element is sent in the
-response. Use this \strong{NextToken} value in a subsequent request to
-retrieve additional items.}
 }
 \description{
 List all permissions on a private CA, if any, granted to the Certificate Manager (ACM) service principal (acm.amazonaws.com).

@@ -91,9 +91,21 @@ You cannot specify a scheme for a Gateway Load Balancer.}
 
 \item{Type}{The type of load balancer. The default is \code{application}.}
 
-\item{IpAddressType}{The type of IP addresses used by the subnets for your load balancer. The
-possible values are \code{ipv4} (for IPv4 addresses) and \code{dualstack} (for
-IPv4 and IPv6 addresses).}
+\item{IpAddressType}{Note: Internal load balancers must use the \code{ipv4} IP address type.
+
+[Application Load Balancers] The IP address type. The possible values
+are \code{ipv4} (for only IPv4 addresses), \code{dualstack} (for IPv4 and IPv6
+addresses), and \code{dualstack-without-public-ipv4} (for IPv6 only public
+addresses, with private IPv4 and IPv6 addresses).
+
+[Network Load Balancers] The IP address type. The possible values are
+\code{ipv4} (for only IPv4 addresses) and \code{dualstack} (for IPv4 and IPv6
+addresses). You can’t specify \code{dualstack} for a load balancer with a UDP
+or TCP_UDP listener.
+
+[Gateway Load Balancers] The IP address type. The possible values are
+\code{ipv4} (for only IPv4 addresses) and \code{dualstack} (for IPv4 and IPv6
+addresses).}
 
 \item{CustomerOwnedIpv4Pool}{[Application Load Balancers on Outposts] The ID of the customer-owned
 address pool (CoIP pool).}

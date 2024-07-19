@@ -157,7 +157,7 @@ identitystore <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = "AWSIdentityStore"
 )
 
-.identitystore$service <- function(config = list()) {
+.identitystore$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.identitystore$metadata, handlers, config)
+  new_service(.identitystore$metadata, handlers, config, op)
 }

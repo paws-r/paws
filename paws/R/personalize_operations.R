@@ -125,12 +125,13 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
     name = "CreateBatchInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig, tags = tags, batchInferenceJobMode = batchInferenceJobMode, themeGenerationConfig = themeGenerationConfig)
   output <- .personalize$create_batch_inference_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -143,7 +144,7 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' Creates a batch segment job. The operation can handle up to 50 million
 #' records and the input file must be in JSON format. For more information,
 #' see [Getting batch recommendations and user
-#' segments](https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html).
+#' segments](https://docs.aws.amazon.com/personalize/latest/dg/).
 #'
 #' @usage
 #' personalize_create_batch_segment_job(jobName, solutionVersionArn,
@@ -215,12 +216,13 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
     name = "CreateBatchSegmentJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_batch_segment_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, tags = tags)
   output <- .personalize$create_batch_segment_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -366,17 +368,132 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
     name = "CreateCampaign",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_campaign_input(name = name, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig, tags = tags)
   output <- .personalize$create_campaign_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .personalize$operations$create_campaign <- personalize_create_campaign
+
+#' Creates a batch job that deletes all references to specific users from
+#' an Amazon Personalize dataset group in batches
+#'
+#' @description
+#' Creates a batch job that deletes all references to specific users from
+#' an Amazon Personalize dataset group in batches. You specify the users to
+#' delete in a CSV file of userIds in an Amazon S3 bucket. After a job
+#' completes, Amazon Personalize no longer trains on the users’ data and no
+#' longer considers the users when generating user segments. For more
+#' information about creating a data deletion job, see [Deleting
+#' users](https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html).
+#' 
+#' -   Your input file must be a CSV file with a single USER_ID column that
+#'     lists the users IDs. For more information about preparing the CSV
+#'     file, see [Preparing your data deletion file and uploading it to
+#'     Amazon
+#'     S3](https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html).
+#' 
+#' -   To give Amazon Personalize permission to access your input CSV file
+#'     of userIds, you must specify an IAM service role that has permission
+#'     to read from the data source. This role needs `GetObject` and
+#'     `ListBucket` permissions for the bucket and its content. These
+#'     permissions are the same as importing data. For information on
+#'     granting access to your Amazon S3 bucket, see [Giving Amazon
+#'     Personalize Access to Amazon S3
+#'     Resources](https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html).
+#' 
+#' After you create a job, it can take up to a day to delete all references
+#' to the users from datasets and models. Until the job completes, Amazon
+#' Personalize continues to use the data when training. And if you use a
+#' User Segmentation recipe, the users might appear in user segments.
+#' 
+#' **Status**
+#' 
+#' A data deletion job can have one of the following statuses:
+#' 
+#' -   PENDING \> IN_PROGRESS \> COMPLETED -or- FAILED
+#' 
+#' To get the status of the data deletion job, call
+#' [`describe_data_deletion_job`][personalize_describe_data_deletion_job]
+#' API operation and specify the Amazon Resource Name (ARN) of the job. If
+#' the status is FAILED, the response includes a `failureReason` key, which
+#' describes why the job failed.
+#' 
+#' **Related APIs**
+#' 
+#' -   [`list_data_deletion_jobs`][personalize_list_data_deletion_jobs]
+#' 
+#' -   [`describe_data_deletion_job`][personalize_describe_data_deletion_job]
+#'
+#' @usage
+#' personalize_create_data_deletion_job(jobName, datasetGroupArn,
+#'   dataSource, roleArn, tags)
+#'
+#' @param jobName &#91;required&#93; The name for the data deletion job.
+#' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group that has the
+#' datasets you want to delete records from.
+#' @param dataSource &#91;required&#93; The Amazon S3 bucket that contains the list of userIds of the users to
+#' delete.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that has permissions to
+#' read from the Amazon S3 data source.
+#' @param tags A list of
+#' [tags](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html)
+#' to apply to the data deletion job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataDeletionJobArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_data_deletion_job(
+#'   jobName = "string",
+#'   datasetGroupArn = "string",
+#'   dataSource = list(
+#'     dataLocation = "string"
+#'   ),
+#'   roleArn = "string",
+#'   tags = list(
+#'     list(
+#'       tagKey = "string",
+#'       tagValue = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_data_deletion_job
+#'
+#' @aliases personalize_create_data_deletion_job
+personalize_create_data_deletion_job <- function(jobName, datasetGroupArn, dataSource, roleArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateDataDeletionJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .personalize$create_data_deletion_job_input(jobName = jobName, datasetGroupArn = datasetGroupArn, dataSource = dataSource, roleArn = roleArn, tags = tags)
+  output <- .personalize$create_data_deletion_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_data_deletion_job <- personalize_create_data_deletion_job
 
 #' Creates an empty dataset and adds it to the specified dataset group
 #'
@@ -480,12 +597,13 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_dataset_input(name = name, schemaArn = schemaArn, datasetGroupArn = datasetGroupArn, datasetType = datasetType, tags = tags)
   output <- .personalize$create_dataset_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -575,12 +693,13 @@ personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestion
     name = "CreateDatasetExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_dataset_export_job_input(jobName = jobName, datasetArn = datasetArn, ingestionMode = ingestionMode, roleArn = roleArn, jobOutput = jobOutput, tags = tags)
   output <- .personalize$create_dataset_export_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -700,12 +819,13 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
     name = "CreateDatasetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_dataset_group_input(name = name, roleArn = roleArn, kmsKeyArn = kmsKeyArn, domain = domain, tags = tags)
   output <- .personalize$create_dataset_group_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -821,12 +941,13 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_dataset_import_job_input(jobName = jobName, datasetArn = datasetArn, dataSource = dataSource, roleArn = roleArn, tags = tags, importMode = importMode, publishAttributionMetricsToS3 = publishAttributionMetricsToS3)
   output <- .personalize$create_dataset_import_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -917,12 +1038,13 @@ personalize_create_event_tracker <- function(name, datasetGroupArn, tags = NULL)
     name = "CreateEventTracker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_event_tracker_input(name = name, datasetGroupArn = datasetGroupArn, tags = tags)
   output <- .personalize$create_event_tracker_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -983,12 +1105,13 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression, t
     name = "CreateFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_filter_input(name = name, datasetGroupArn = datasetGroupArn, filterExpression = filterExpression, tags = tags)
   output <- .personalize$create_filter_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1058,12 +1181,13 @@ personalize_create_metric_attribution <- function(name, datasetGroupArn, metrics
     name = "CreateMetricAttribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_metric_attribution_input(name = name, datasetGroupArn = datasetGroupArn, metrics = metrics, metricsOutputConfig = metricsOutputConfig)
   output <- .personalize$create_metric_attribution_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1202,12 +1326,13 @@ personalize_create_recommender <- function(name, datasetGroupArn, recipeArn, rec
     name = "CreateRecommender",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_recommender_input(name = name, datasetGroupArn = datasetGroupArn, recipeArn = recipeArn, recommenderConfig = recommenderConfig, tags = tags)
   output <- .personalize$create_recommender_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1270,12 +1395,13 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
     name = "CreateSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_schema_input(name = name, schema = schema, domain = domain)
   output <- .personalize$create_schema_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1524,12 +1650,13 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
     name = "CreateSolution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
   output <- .personalize$create_solution_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1651,12 +1778,13 @@ personalize_create_solution_version <- function(name = NULL, solutionArn, traini
     name = "CreateSolutionVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$create_solution_version_input(name = name, solutionArn = solutionArn, trainingMode = trainingMode, tags = tags)
   output <- .personalize$create_solution_version_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1698,12 +1826,13 @@ personalize_delete_campaign <- function(campaignArn) {
     name = "DeleteCampaign",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_campaign_input(campaignArn = campaignArn)
   output <- .personalize$delete_campaign_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1743,12 +1872,13 @@ personalize_delete_dataset <- function(datasetArn) {
     name = "DeleteDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_dataset_input(datasetArn = datasetArn)
   output <- .personalize$delete_dataset_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1792,12 +1922,13 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
     name = "DeleteDatasetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_dataset_group_input(datasetGroupArn = datasetGroupArn)
   output <- .personalize$delete_dataset_group_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1836,12 +1967,13 @@ personalize_delete_event_tracker <- function(eventTrackerArn) {
     name = "DeleteEventTracker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_event_tracker_input(eventTrackerArn = eventTrackerArn)
   output <- .personalize$delete_event_tracker_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1878,12 +2010,13 @@ personalize_delete_filter <- function(filterArn) {
     name = "DeleteFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_filter_input(filterArn = filterArn)
   output <- .personalize$delete_filter_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1920,12 +2053,13 @@ personalize_delete_metric_attribution <- function(metricAttributionArn) {
     name = "DeleteMetricAttribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_metric_attribution_input(metricAttributionArn = metricAttributionArn)
   output <- .personalize$delete_metric_attribution_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1965,12 +2099,13 @@ personalize_delete_recommender <- function(recommenderArn) {
     name = "DeleteRecommender",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$delete_recommender_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2009,12 +2144,13 @@ personalize_delete_schema <- function(schemaArn) {
     name = "DeleteSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_schema_input(schemaArn = schemaArn)
   output <- .personalize$delete_schema_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2058,12 +2194,13 @@ personalize_delete_solution <- function(solutionArn) {
     name = "DeleteSolution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$delete_solution_input(solutionArn = solutionArn)
   output <- .personalize$delete_solution_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2153,12 +2290,13 @@ personalize_describe_algorithm <- function(algorithmArn) {
     name = "DescribeAlgorithm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_algorithm_input(algorithmArn = algorithmArn)
   output <- .personalize$describe_algorithm_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2242,12 +2380,13 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
     name = "DescribeBatchInferenceJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_batch_inference_job_input(batchInferenceJobArn = batchInferenceJobArn)
   output <- .personalize$describe_batch_inference_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2320,12 +2459,13 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
     name = "DescribeBatchSegmentJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_batch_segment_job_input(batchSegmentJobArn = batchSegmentJobArn)
   output <- .personalize$describe_batch_segment_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2418,17 +2558,86 @@ personalize_describe_campaign <- function(campaignArn) {
     name = "DescribeCampaign",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_campaign_input(campaignArn = campaignArn)
   output <- .personalize$describe_campaign_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .personalize$operations$describe_campaign <- personalize_describe_campaign
+
+#' Describes the data deletion job created by CreateDataDeletionJob,
+#' including the job status
+#'
+#' @description
+#' Describes the data deletion job created by
+#' [`create_data_deletion_job`][personalize_create_data_deletion_job],
+#' including the job status.
+#'
+#' @usage
+#' personalize_describe_data_deletion_job(dataDeletionJobArn)
+#'
+#' @param dataDeletionJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the data deletion job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataDeletionJob = list(
+#'     jobName = "string",
+#'     dataDeletionJobArn = "string",
+#'     datasetGroupArn = "string",
+#'     dataSource = list(
+#'       dataLocation = "string"
+#'     ),
+#'     roleArn = "string",
+#'     status = "string",
+#'     numDeleted = 123,
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_deletion_job(
+#'   dataDeletionJobArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_data_deletion_job
+#'
+#' @aliases personalize_describe_data_deletion_job
+personalize_describe_data_deletion_job <- function(dataDeletionJobArn) {
+  op <- new_operation(
+    name = "DescribeDataDeletionJob",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .personalize$describe_data_deletion_job_input(dataDeletionJobArn = dataDeletionJobArn)
+  output <- .personalize$describe_data_deletion_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_data_deletion_job <- personalize_describe_data_deletion_job
 
 #' Describes the given dataset
 #'
@@ -2491,12 +2700,13 @@ personalize_describe_dataset <- function(datasetArn) {
     name = "DescribeDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_dataset_input(datasetArn = datasetArn)
   output <- .personalize$describe_dataset_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2561,12 +2771,13 @@ personalize_describe_dataset_export_job <- function(datasetExportJobArn) {
     name = "DescribeDatasetExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_dataset_export_job_input(datasetExportJobArn = datasetExportJobArn)
   output <- .personalize$describe_dataset_export_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2623,12 +2834,13 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
     name = "DescribeDatasetGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_dataset_group_input(datasetGroupArn = datasetGroupArn)
   output <- .personalize$describe_dataset_group_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2691,12 +2903,13 @@ personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
     name = "DescribeDatasetImportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_dataset_import_job_input(datasetImportJobArn = datasetImportJobArn)
   output <- .personalize$describe_dataset_import_job_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2753,12 +2966,13 @@ personalize_describe_event_tracker <- function(eventTrackerArn) {
     name = "DescribeEventTracker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_event_tracker_input(eventTrackerArn = eventTrackerArn)
   output <- .personalize$describe_event_tracker_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2814,12 +3028,13 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
     name = "DescribeFeatureTransformation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_feature_transformation_input(featureTransformationArn = featureTransformationArn)
   output <- .personalize$describe_feature_transformation_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2874,12 +3089,13 @@ personalize_describe_filter <- function(filterArn) {
     name = "DescribeFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_filter_input(filterArn = filterArn)
   output <- .personalize$describe_filter_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2940,12 +3156,13 @@ personalize_describe_metric_attribution <- function(metricAttributionArn) {
     name = "DescribeMetricAttribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_metric_attribution_input(metricAttributionArn = metricAttributionArn)
   output <- .personalize$describe_metric_attribution_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3020,12 +3237,13 @@ personalize_describe_recipe <- function(recipeArn) {
     name = "DescribeRecipe",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_recipe_input(recipeArn = recipeArn)
   output <- .personalize$describe_recipe_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3139,12 +3357,13 @@ personalize_describe_recommender <- function(recommenderArn) {
     name = "DescribeRecommender",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$describe_recommender_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3198,12 +3417,13 @@ personalize_describe_schema <- function(schemaArn) {
     name = "DescribeSchema",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_schema_input(schemaArn = schemaArn)
   output <- .personalize$describe_schema_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3342,12 +3562,13 @@ personalize_describe_solution <- function(solutionArn) {
     name = "DescribeSolution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_solution_input(solutionArn = solutionArn)
   output <- .personalize$describe_solution_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3479,12 +3700,13 @@ personalize_describe_solution_version <- function(solutionVersionArn) {
     name = "DescribeSolutionVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$describe_solution_version_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$describe_solution_version_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3530,12 +3752,13 @@ personalize_get_solution_metrics <- function(solutionVersionArn) {
     name = "GetSolutionMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$get_solution_metrics_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$get_solution_metrics_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3602,12 +3825,13 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
     name = "ListBatchInferenceJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchInferenceJobs")
   )
   input <- .personalize$list_batch_inference_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_inference_jobs_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3673,12 +3897,13 @@ personalize_list_batch_segment_jobs <- function(solutionVersionArn = NULL, nextT
     name = "ListBatchSegmentJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchSegmentJobs")
   )
   input <- .personalize$list_batch_segment_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_segment_jobs_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3746,17 +3971,96 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
     name = "ListCampaigns",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "campaigns")
   )
   input <- .personalize$list_campaigns_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_campaigns_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .personalize$operations$list_campaigns <- personalize_list_campaigns
+
+#' Returns a list of data deletion jobs for a dataset group ordered by
+#' creation time, with the most recent first
+#'
+#' @description
+#' Returns a list of data deletion jobs for a dataset group ordered by
+#' creation time, with the most recent first. When a dataset group is not
+#' specified, all the data deletion jobs associated with the account are
+#' listed. The response provides the properties for each job, including the
+#' Amazon Resource Name (ARN). For more information on data deletion jobs,
+#' see [Deleting
+#' users](https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html).
+#'
+#' @usage
+#' personalize_list_data_deletion_jobs(datasetGroupArn, nextToken,
+#'   maxResults)
+#'
+#' @param datasetGroupArn The Amazon Resource Name (ARN) of the dataset group to list data
+#' deletion jobs for.
+#' @param nextToken A token returned from the previous call to
+#' [`list_data_deletion_jobs`][personalize_list_data_deletion_jobs] for
+#' getting the next set of jobs (if they exist).
+#' @param maxResults The maximum number of data deletion jobs to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataDeletionJobs = list(
+#'     list(
+#'       dataDeletionJobArn = "string",
+#'       datasetGroupArn = "string",
+#'       jobName = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_deletion_jobs(
+#'   datasetGroupArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_data_deletion_jobs
+#'
+#' @aliases personalize_list_data_deletion_jobs
+personalize_list_data_deletion_jobs <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListDataDeletionJobs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .personalize$list_data_deletion_jobs_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_data_deletion_jobs_output()
+  config <- get_config()
+  svc <- .personalize$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_data_deletion_jobs <- personalize_list_data_deletion_jobs
 
 #' Returns a list of dataset export jobs that use the given dataset
 #'
@@ -3821,12 +4125,13 @@ personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = 
     name = "ListDatasetExportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetExportJobs")
   )
   input <- .personalize$list_dataset_export_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_export_jobs_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3890,12 +4195,13 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
     name = "ListDatasetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetGroups")
   )
   input <- .personalize$list_dataset_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_groups_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3966,12 +4272,13 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
     name = "ListDatasetImportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetImportJobs")
   )
   input <- .personalize$list_dataset_import_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_import_jobs_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4037,12 +4344,13 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
     name = "ListDatasets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasets")
   )
   input <- .personalize$list_datasets_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_datasets_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4107,12 +4415,13 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
     name = "ListEventTrackers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTrackers")
   )
   input <- .personalize$list_event_trackers_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_event_trackers_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4175,12 +4484,13 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
     name = "ListFilters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "Filters")
   )
   input <- .personalize$list_filters_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_filters_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4236,12 +4546,13 @@ personalize_list_metric_attribution_metrics <- function(metricAttributionArn = N
     name = "ListMetricAttributionMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metrics")
   )
   input <- .personalize$list_metric_attribution_metrics_input(metricAttributionArn = metricAttributionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attribution_metrics_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4304,12 +4615,13 @@ personalize_list_metric_attributions <- function(datasetGroupArn = NULL, nextTok
     name = "ListMetricAttributions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metricAttributions")
   )
   input <- .personalize$list_metric_attributions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attributions_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4377,12 +4689,13 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
     name = "ListRecipes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recipes")
   )
   input <- .personalize$list_recipes_input(recipeProvider = recipeProvider, nextToken = nextToken, maxResults = maxResults, domain = domain)
   output <- .personalize$list_recipes_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4466,12 +4779,13 @@ personalize_list_recommenders <- function(datasetGroupArn = NULL, nextToken = NU
     name = "ListRecommenders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recommenders")
   )
   input <- .personalize$list_recommenders_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_recommenders_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4533,12 +4847,13 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListSchemas",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "schemas")
   )
   input <- .personalize$list_schemas_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_schemas_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4604,12 +4919,13 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
     name = "ListSolutionVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutionVersions")
   )
   input <- .personalize$list_solution_versions_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solution_versions_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4675,12 +4991,13 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
     name = "ListSolutions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutions")
   )
   input <- .personalize$list_solutions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solutions_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4729,12 +5046,13 @@ personalize_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .personalize$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4778,12 +5096,13 @@ personalize_start_recommender <- function(recommenderArn) {
     name = "StartRecommender",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$start_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$start_recommender_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4826,12 +5145,13 @@ personalize_stop_recommender <- function(recommenderArn) {
     name = "StopRecommender",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$stop_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$stop_recommender_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4884,12 +5204,13 @@ personalize_stop_solution_version_creation <- function(solutionVersionArn) {
     name = "StopSolutionVersionCreation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$stop_solution_version_creation_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$stop_solution_version_creation_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4935,12 +5256,13 @@ personalize_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .personalize$tag_resource_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4983,12 +5305,13 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .personalize$untag_resource_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5088,12 +5411,13 @@ personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, 
     name = "UpdateCampaign",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$update_campaign_input(campaignArn = campaignArn, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig)
   output <- .personalize$update_campaign_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5139,12 +5463,13 @@ personalize_update_dataset <- function(datasetArn, schemaArn) {
     name = "UpdateDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$update_dataset_input(datasetArn = datasetArn, schemaArn = schemaArn)
   output <- .personalize$update_dataset_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5207,12 +5532,13 @@ personalize_update_metric_attribution <- function(addMetrics = NULL, removeMetri
     name = "UpdateMetricAttribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$update_metric_attribution_input(addMetrics = addMetrics, removeMetrics = removeMetrics, metricsOutputConfig = metricsOutputConfig, metricAttributionArn = metricAttributionArn)
   output <- .personalize$update_metric_attribution_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5276,12 +5602,13 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
     name = "UpdateRecommender",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .personalize$update_recommender_input(recommenderArn = recommenderArn, recommenderConfig = recommenderConfig)
   output <- .personalize$update_recommender_output()
   config <- get_config()
-  svc <- .personalize$service(config)
+  svc <- .personalize$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

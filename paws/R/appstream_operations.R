@@ -44,12 +44,13 @@ appstream_associate_app_block_builder_app_block <- function(AppBlockArn, AppBloc
     name = "AssociateAppBlockBuilderAppBlock",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$associate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
   output <- .appstream$associate_app_block_builder_app_block_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -97,12 +98,13 @@ appstream_associate_application_fleet <- function(FleetName, ApplicationArn) {
     name = "AssociateApplicationFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$associate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
   output <- .appstream$associate_application_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -144,12 +146,13 @@ appstream_associate_application_to_entitlement <- function(StackName, Entitlemen
     name = "AssociateApplicationToEntitlement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$associate_application_to_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
   output <- .appstream$associate_application_to_entitlement_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -188,12 +191,13 @@ appstream_associate_fleet <- function(FleetName, StackName) {
     name = "AssociateFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$associate_fleet_input(FleetName = FleetName, StackName = StackName)
   output <- .appstream$associate_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -255,12 +259,13 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
     name = "BatchAssociateUserStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$batch_associate_user_stack_input(UserStackAssociations = UserStackAssociations)
   output <- .appstream$batch_associate_user_stack_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -320,12 +325,13 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
     name = "BatchDisassociateUserStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$batch_disassociate_user_stack_input(UserStackAssociations = UserStackAssociations)
   output <- .appstream$batch_disassociate_user_stack_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -379,12 +385,13 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
     name = "CopyImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$copy_image_input(SourceImageName = SourceImageName, DestinationImageName = DestinationImageName, DestinationRegion = DestinationRegion, DestinationImageDescription = DestinationImageDescription)
   output <- .appstream$copy_image_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -512,12 +519,13 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
     name = "CreateAppBlock",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_app_block_input(Name = Name, Description = Description, DisplayName = DisplayName, SourceS3Location = SourceS3Location, SetupScriptDetails = SetupScriptDetails, Tags = Tags, PostSetupScriptDetails = PostSetupScriptDetails, PackagingType = PackagingType)
   output <- .appstream$create_app_block_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -675,12 +683,13 @@ appstream_create_app_block_builder <- function(Name, Description = NULL, Display
     name = "CreateAppBlockBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Tags = Tags, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints)
   output <- .appstream$create_app_block_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -729,12 +738,13 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
     name = "CreateAppBlockBuilderStreamingURL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_app_block_builder_streaming_url_input(AppBlockBuilderName = AppBlockBuilderName, Validity = Validity)
   output <- .appstream$create_app_block_builder_streaming_url_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -847,12 +857,13 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, Platforms = Platforms, InstanceFamilies = InstanceFamilies, AppBlockArn = AppBlockArn, Tags = Tags)
   output <- .appstream$create_application_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -940,12 +951,13 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
     name = "CreateDirectoryConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$create_directory_config_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1024,12 +1036,13 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
     name = "CreateEntitlement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
   output <- .appstream$create_entitlement_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1367,12 +1380,13 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
   output <- .appstream$create_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1608,12 +1622,13 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
     name = "CreateImageBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints)
   output <- .appstream$create_image_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1661,12 +1676,13 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
     name = "CreateImageBuilderStreamingURL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_image_builder_streaming_url_input(Name = Name, Validity = Validity)
   output <- .appstream$create_image_builder_streaming_url_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1835,12 +1851,13 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
     name = "CreateStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
   output <- .appstream$create_stack_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1905,12 +1922,13 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
     name = "CreateStreamingURL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_streaming_url_input(StackName = StackName, FleetName = FleetName, UserId = UserId, ApplicationId = ApplicationId, Validity = Validity, SessionContext = SessionContext)
   output <- .appstream$create_streaming_url_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2057,12 +2075,13 @@ appstream_create_updated_image <- function(existingImageName, newImageName, newI
     name = "CreateUpdatedImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_updated_image_input(existingImageName = existingImageName, newImageName = newImageName, newImageDescription = newImageDescription, newImageDisplayName = newImageDisplayName, newImageTags = newImageTags, dryRun = dryRun)
   output <- .appstream$create_updated_image_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2103,12 +2122,13 @@ appstream_create_usage_report_subscription <- function() {
     name = "CreateUsageReportSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_usage_report_subscription_input()
   output <- .appstream$create_usage_report_subscription_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2166,12 +2186,13 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$create_user_input(UserName = UserName, MessageAction = MessageAction, FirstName = FirstName, LastName = LastName, AuthenticationType = AuthenticationType)
   output <- .appstream$create_user_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2208,12 +2229,13 @@ appstream_delete_app_block <- function(Name) {
     name = "DeleteAppBlock",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_app_block_input(Name = Name)
   output <- .appstream$delete_app_block_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2253,12 +2275,13 @@ appstream_delete_app_block_builder <- function(Name) {
     name = "DeleteAppBlockBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_app_block_builder_input(Name = Name)
   output <- .appstream$delete_app_block_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2295,12 +2318,13 @@ appstream_delete_application <- function(Name) {
     name = "DeleteApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_application_input(Name = Name)
   output <- .appstream$delete_application_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2339,12 +2363,13 @@ appstream_delete_directory_config <- function(DirectoryName) {
     name = "DeleteDirectoryConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_directory_config_input(DirectoryName = DirectoryName)
   output <- .appstream$delete_directory_config_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2383,12 +2408,13 @@ appstream_delete_entitlement <- function(Name, StackName) {
     name = "DeleteEntitlement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_entitlement_input(Name = Name, StackName = StackName)
   output <- .appstream$delete_entitlement_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2425,12 +2451,13 @@ appstream_delete_fleet <- function(Name) {
     name = "DeleteFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_fleet_input(Name = Name)
   output <- .appstream$delete_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2539,12 +2566,13 @@ appstream_delete_image <- function(Name) {
     name = "DeleteImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_image_input(Name = Name)
   output <- .appstream$delete_image_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2636,12 +2664,13 @@ appstream_delete_image_builder <- function(Name) {
     name = "DeleteImageBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_image_builder_input(Name = Name)
   output <- .appstream$delete_image_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2683,12 +2712,13 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
     name = "DeleteImagePermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId)
   output <- .appstream$delete_image_permissions_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2728,12 +2758,13 @@ appstream_delete_stack <- function(Name) {
     name = "DeleteStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_stack_input(Name = Name)
   output <- .appstream$delete_stack_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2768,12 +2799,13 @@ appstream_delete_usage_report_subscription <- function() {
     name = "DeleteUsageReportSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_usage_report_subscription_input()
   output <- .appstream$delete_usage_report_subscription_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2814,12 +2846,13 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
     name = "DeleteUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$delete_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$delete_user_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2877,12 +2910,13 @@ appstream_describe_app_block_builder_app_block_associations <- function(AppBlock
     name = "DescribeAppBlockBuilderAppBlockAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_app_block_builder_app_block_associations_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_app_block_builder_app_block_associations_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2974,12 +3008,13 @@ appstream_describe_app_block_builders <- function(Names = NULL, NextToken = NULL
     name = "DescribeAppBlockBuilders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_app_block_builders_input(Names = Names, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_app_block_builders_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3069,12 +3104,13 @@ appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResu
     name = "DescribeAppBlocks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_app_blocks_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_app_blocks_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3132,12 +3168,13 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
     name = "DescribeApplicationFleetAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_application_fleet_associations_input(FleetName = FleetName, ApplicationArn = ApplicationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_application_fleet_associations_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3216,12 +3253,13 @@ appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxRe
     name = "DescribeApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_applications_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_applications_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3298,12 +3336,13 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
     name = "DescribeDirectoryConfigs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_directory_configs_input(DirectoryNames = DirectoryNames, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_directory_configs_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3372,12 +3411,13 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
     name = "DescribeEntitlements",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_entitlements_input(Name = Name, StackName = StackName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_entitlements_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3487,12 +3527,13 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
     name = "DescribeFleets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_fleets_input(Names = Names, NextToken = NextToken)
   output <- .appstream$describe_fleets_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3597,12 +3638,13 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
     name = "DescribeImageBuilders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_image_builders_input(Names = Names, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_image_builders_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3668,12 +3710,13 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
     name = "DescribeImagePermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_image_permissions_input(Name = Name, MaxResults = MaxResults, SharedAwsAccountIds = SharedAwsAccountIds, NextToken = NextToken)
   output <- .appstream$describe_image_permissions_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3799,12 +3842,13 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
     name = "DescribeImages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_images_input(Names = Names, Arns = Arns, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_images_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3891,12 +3935,13 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
     name = "DescribeSessions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_sessions_input(StackName = StackName, FleetName = FleetName, UserId = UserId, NextToken = NextToken, Limit = Limit, AuthenticationType = AuthenticationType, InstanceId = InstanceId)
   output <- .appstream$describe_sessions_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3998,12 +4043,13 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
     name = "DescribeStacks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_stacks_input(Names = Names, NextToken = NextToken)
   output <- .appstream$describe_stacks_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4063,12 +4109,13 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
     name = "DescribeUsageReportSubscriptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_usage_report_subscriptions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_usage_report_subscriptions_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4137,12 +4184,13 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
     name = "DescribeUserStackAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_user_stack_associations_input(StackName = StackName, UserName = UserName, AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_user_stack_associations_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4206,12 +4254,13 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
     name = "DescribeUsers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$describe_users_input(AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_users_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4254,12 +4303,13 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
     name = "DisableUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$disable_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$disable_user_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4299,12 +4349,13 @@ appstream_disassociate_app_block_builder_app_block <- function(AppBlockArn, AppB
     name = "DisassociateAppBlockBuilderAppBlock",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$disassociate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
   output <- .appstream$disassociate_app_block_builder_app_block_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4343,12 +4394,13 @@ appstream_disassociate_application_fleet <- function(FleetName, ApplicationArn) 
     name = "DisassociateApplicationFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$disassociate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
   output <- .appstream$disassociate_application_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4390,12 +4442,13 @@ appstream_disassociate_application_from_entitlement <- function(StackName, Entit
     name = "DisassociateApplicationFromEntitlement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$disassociate_application_from_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
   output <- .appstream$disassociate_application_from_entitlement_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4434,12 +4487,13 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
     name = "DisassociateFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$disassociate_fleet_input(FleetName = FleetName, StackName = StackName)
   output <- .appstream$disassociate_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4485,12 +4539,13 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
     name = "EnableUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$enable_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$enable_user_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4527,12 +4582,13 @@ appstream_expire_session <- function(SessionId) {
     name = "ExpireSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$expire_session_input(SessionId = SessionId)
   output <- .appstream$expire_session_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4582,12 +4638,13 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
     name = "ListAssociatedFleets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$list_associated_fleets_input(StackName = StackName, NextToken = NextToken)
   output <- .appstream$list_associated_fleets_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4637,12 +4694,13 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
     name = "ListAssociatedStacks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$list_associated_stacks_input(FleetName = FleetName, NextToken = NextToken)
   output <- .appstream$list_associated_stacks_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4697,12 +4755,13 @@ appstream_list_entitled_applications <- function(StackName, EntitlementName, Nex
     name = "ListEntitledApplications",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$list_entitled_applications_input(StackName = StackName, EntitlementName = EntitlementName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$list_entitled_applications_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4751,12 +4810,13 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .appstream$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4845,12 +4905,13 @@ appstream_start_app_block_builder <- function(Name) {
     name = "StartAppBlockBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$start_app_block_builder_input(Name = Name)
   output <- .appstream$start_app_block_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4887,12 +4948,13 @@ appstream_start_fleet <- function(Name) {
     name = "StartFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$start_fleet_input(Name = Name)
   output <- .appstream$start_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4987,12 +5049,13 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
     name = "StartImageBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$start_image_builder_input(Name = Name, AppstreamAgentVersion = AppstreamAgentVersion)
   output <- .appstream$start_image_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5077,12 +5140,13 @@ appstream_stop_app_block_builder <- function(Name) {
     name = "StopAppBlockBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$stop_app_block_builder_input(Name = Name)
   output <- .appstream$stop_app_block_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5119,12 +5183,13 @@ appstream_stop_fleet <- function(Name) {
     name = "StopFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$stop_fleet_input(Name = Name)
   output <- .appstream$stop_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5216,12 +5281,13 @@ appstream_stop_image_builder <- function(Name) {
     name = "StopImageBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$stop_image_builder_input(Name = Name)
   output <- .appstream$stop_image_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5285,12 +5351,13 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .appstream$tag_resource_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5339,12 +5406,13 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .appstream$untag_resource_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5495,12 +5563,13 @@ appstream_update_app_block_builder <- function(Name, Description = NULL, Display
     name = "UpdateAppBlockBuilder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$update_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_app_block_builder_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5594,12 +5663,13 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$update_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, AppBlockArn = AppBlockArn, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_application_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5686,12 +5756,13 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
     name = "UpdateDirectoryConfig",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$update_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$update_directory_config_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5764,12 +5835,13 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
     name = "UpdateEntitlement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$update_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
   output <- .appstream$update_entitlement_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6099,12 +6171,13 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
     name = "UpdateFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
   output <- .appstream$update_fleet_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6150,12 +6223,13 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
     name = "UpdateImagePermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$update_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId, ImagePermissions = ImagePermissions)
   output <- .appstream$update_image_permissions_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6311,12 +6385,13 @@ appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name,
     name = "UpdateStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
   output <- .appstream$update_stack_output()
   config <- get_config()
-  svc <- .appstream$service(config)
+  svc <- .appstream$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

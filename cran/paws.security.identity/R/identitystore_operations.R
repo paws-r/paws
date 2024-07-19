@@ -25,12 +25,13 @@ identitystore_create_group <- function(IdentityStoreId, DisplayName = NULL, Desc
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$create_group_input(IdentityStoreId = IdentityStoreId, DisplayName = DisplayName, Description = Description)
   output <- .identitystore$create_group_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -58,12 +59,13 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
     name = "CreateGroupMembership",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$create_group_membership_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
   output <- .identitystore$create_group_membership_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -113,12 +115,13 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone)
   output <- .identitystore$create_user_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -143,12 +146,13 @@ identitystore_delete_group <- function(IdentityStoreId, GroupId) {
     name = "DeleteGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$delete_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId)
   output <- .identitystore$delete_group_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -173,12 +177,13 @@ identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId)
     name = "DeleteGroupMembership",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$delete_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
   output <- .identitystore$delete_group_membership_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -203,12 +208,13 @@ identitystore_delete_user <- function(IdentityStoreId, UserId) {
     name = "DeleteUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$delete_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId)
   output <- .identitystore$delete_user_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -238,12 +244,13 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
     name = "DescribeGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$describe_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId)
   output <- .identitystore$describe_group_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -269,12 +276,13 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
     name = "DescribeGroupMembership",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$describe_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
   output <- .identitystore$describe_group_membership_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -304,12 +312,13 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
     name = "DescribeUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$describe_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId)
   output <- .identitystore$describe_user_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -338,12 +347,13 @@ identitystore_get_group_id <- function(IdentityStoreId, AlternateIdentifier) {
     name = "GetGroupId",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$get_group_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
   output <- .identitystore$get_group_id_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -371,12 +381,13 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
     name = "GetGroupMembershipId",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$get_group_membership_id_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
   output <- .identitystore$get_group_membership_id_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -405,12 +416,13 @@ identitystore_get_user_id <- function(IdentityStoreId, AlternateIdentifier) {
     name = "GetUserId",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$get_user_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
   output <- .identitystore$get_user_id_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -437,12 +449,13 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
     name = "IsMemberInGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$is_member_in_groups_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, GroupIds = GroupIds)
   output <- .identitystore$is_member_in_groups_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -480,12 +493,13 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
     name = "ListGroupMemberships",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships")
   )
   input <- .identitystore$list_group_memberships_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -526,12 +540,13 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
     name = "ListGroupMembershipsForMember",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships")
   )
   input <- .identitystore$list_group_memberships_for_member_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_for_member_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -573,12 +588,13 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Groups")
   )
   input <- .identitystore$list_groups_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_groups_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -620,12 +636,13 @@ identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextTok
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users")
   )
   input <- .identitystore$list_users_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_users_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -653,12 +670,13 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$update_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, Operations = Operations)
   output <- .identitystore$update_group_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -686,12 +704,13 @@ identitystore_update_user <- function(IdentityStoreId, UserId, Operations) {
     name = "UpdateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .identitystore$update_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Operations = Operations)
   output <- .identitystore$update_user_output()
   config <- get_config()
-  svc <- .identitystore$service(config)
+  svc <- .identitystore$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

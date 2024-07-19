@@ -32,12 +32,13 @@ kms_cancel_key_deletion <- function(KeyId) {
     name = "CancelKeyDeletion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$cancel_key_deletion_input(KeyId = KeyId)
   output <- .kms$cancel_key_deletion_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -64,12 +65,13 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
     name = "ConnectCustomKeyStore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$connect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$connect_custom_key_store_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -125,12 +127,13 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
     name = "CreateAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$create_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
   output <- .kms$create_alias_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -305,12 +308,13 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
     name = "CreateCustomKeyStore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, KeyStorePassword = KeyStorePassword, CustomKeyStoreType = CustomKeyStoreType, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$create_custom_key_store_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -451,12 +455,13 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
     name = "CreateGrant",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name, DryRun = DryRun)
   output <- .kms$create_grant_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -528,14 +533,17 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #' -   For HMAC KMS keys (symmetric), specify `GENERATE_VERIFY_MAC`.
 #' 
-#' -   For asymmetric KMS keys with RSA key material, specify
+#' -   For asymmetric KMS keys with RSA key pairs, specify
 #'     `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
 #' 
-#' -   For asymmetric KMS keys with ECC key material, specify
+#' -   For asymmetric KMS keys with NIST-recommended elliptic curve key
+#'     pairs, specify `SIGN_VERIFY` or `KEY_AGREEMENT`.
+#' 
+#' -   For asymmetric KMS keys with `ECC_SECG_P256K1` key pairs specify
 #'     `SIGN_VERIFY`.
 #' 
-#' -   For asymmetric KMS keys with SM2 key material (China Regions only),
-#'     specify `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
+#' -   For asymmetric KMS keys with SM2 key pairs (China Regions only),
+#'     specify `ENCRYPT_DECRYPT`, `SIGN_VERIFY`, or `KEY_AGREEMENT`.
 #' @param CustomerMasterKeySpec Instead, use the `KeySpec` parameter.
 #' 
 #' The `KeySpec` and `CustomerMasterKeySpec` parameters work the same way.
@@ -583,7 +591,8 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `HMAC_512`
 #' 
-#' -   Asymmetric RSA key pairs
+#' -   Asymmetric RSA key pairs (encryption and decryption -or- signing and
+#'     verification)
 #' 
 #'     -   `RSA_2048`
 #' 
@@ -591,7 +600,8 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `RSA_4096`
 #' 
-#' -   Asymmetric NIST-recommended elliptic curve key pairs
+#' -   Asymmetric NIST-recommended elliptic curve key pairs (signing and
+#'     verification -or- deriving shared secrets)
 #' 
 #'     -   `ECC_NIST_P256` (secp256r1)
 #' 
@@ -599,14 +609,15 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `ECC_NIST_P521` (secp521r1)
 #' 
-#' -   Other asymmetric elliptic curve key pairs
+#' -   Other asymmetric elliptic curve key pairs (signing and verification)
 #' 
 #'     -   `ECC_SECG_P256K1` (secp256k1), commonly used for
 #'         cryptocurrencies.
 #' 
-#' -   SM2 key pairs (China Regions only)
+#' -   SM2 key pairs (encryption and decryption -or- signing and
+#'     verification -or- deriving shared secrets)
 #' 
-#'     -   `SM2`
+#'     -   `SM2` (China Regions only)
 #' @param Origin The source of the key material for the KMS key. You cannot change the
 #' origin after you create the KMS key. The default is `AWS_KMS`, which
 #' means that KMS creates the key material.
@@ -753,12 +764,13 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
     name = "CreateKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$create_key_input(Policy = Policy, Description = Description, KeyUsage = KeyUsage, CustomerMasterKeySpec = CustomerMasterKeySpec, KeySpec = KeySpec, Origin = Origin, CustomKeyStoreId = CustomKeyStoreId, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, Tags = Tags, MultiRegion = MultiRegion, XksKeyId = XksKeyId)
   output <- .kms$create_key_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -880,12 +892,13 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
     name = "Decrypt",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$decrypt_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -910,12 +923,13 @@ kms_delete_alias <- function(AliasName) {
     name = "DeleteAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$delete_alias_input(AliasName = AliasName)
   output <- .kms$delete_alias_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -942,12 +956,13 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
     name = "DeleteCustomKeyStore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$delete_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$delete_custom_key_store_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -984,17 +999,136 @@ kms_delete_imported_key_material <- function(KeyId) {
     name = "DeleteImportedKeyMaterial",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$delete_imported_key_material_input(KeyId = KeyId)
   output <- .kms$delete_imported_key_material_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .kms$operations$delete_imported_key_material <- kms_delete_imported_key_material
+
+#' Derives a shared secret using a key agreement algorithm
+#'
+#' @description
+#' Derives a shared secret using a key agreement algorithm.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kms_derive_shared_secret/](https://www.paws-r-sdk.com/docs/kms_derive_shared_secret/) for full documentation.
+#'
+#' @param KeyId &#91;required&#93; Identifies an asymmetric NIST-recommended ECC or SM2 (China Regions
+#' only) KMS key. KMS uses the private key in the specified key pair to
+#' derive the shared secret. The key usage of the KMS key must be
+#' `KEY_AGREEMENT`. To find the `KeyUsage` of a KMS key, use the
+#' [`describe_key`][kms_describe_key] operation.
+#' 
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
+#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
+#' key in a different Amazon Web Services account, you must use the key ARN
+#' or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' To get the key ID and key ARN for a KMS key, use
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
+#' get the alias name and alias ARN, use
+#' [`list_aliases`][kms_list_aliases].
+#' @param KeyAgreementAlgorithm &#91;required&#93; Specifies the key agreement algorithm used to derive the shared secret.
+#' The only valid value is `ECDH`.
+#' @param PublicKey &#91;required&#93; Specifies the public key in your peer's NIST-recommended elliptic curve
+#' (ECC) or SM2 (China Regions only) key pair.
+#' 
+#' The public key must be a DER-encoded X.509 public key, also known as
+#' `SubjectPublicKeyInfo` (SPKI), as defined in [RFC
+#' 5280](https://datatracker.ietf.org/doc/html/rfc5280).
+#' 
+#' [`get_public_key`][kms_get_public_key] returns the public key of an
+#' asymmetric KMS key pair in the required DER-encoded format.
+#' 
+#' If you use [Amazon Web Services CLI version
+#' 1](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-welcome.html),
+#' you must provide the DER-encoded X.509 public key in a file. Otherwise,
+#' the Amazon Web Services CLI Base64-encodes the public key a second time,
+#' resulting in a `ValidationException`.
+#' 
+#' You can specify the public key as binary data in a file using fileb
+#' (`fileb://<path-to-file>`) or in-line using a Base64 encoded string.
+#' @param GrantTokens A list of grant tokens.
+#' 
+#' Use a grant token when your permission to call this operation comes from
+#' a new grant that has not yet achieved *eventual consistency*. For more
+#' information, see [Grant
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
+#' and [Using a grant
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
+#' @param Recipient A signed [attestation
+#' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
+#' from an Amazon Web Services Nitro enclave and the encryption algorithm
+#' to use with the enclave's public key. The only valid encryption
+#' algorithm is `RSAES_OAEP_SHA_256`.
+#' 
+#' This parameter only supports attestation documents for Amazon Web
+#' Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
+#' Services Nitro Enclaves, use the [Amazon Web Services Nitro Enclaves
+#' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
+#' to generate the attestation document and then use the Recipient
+#' parameter from any Amazon Web Services SDK to provide the attestation
+#' document for the enclave.
+#' 
+#' When you use this parameter, instead of returning a plaintext copy of
+#' the shared secret, KMS encrypts the plaintext shared secret under the
+#' public key in the attestation document, and returns the resulting
+#' ciphertext in the `CiphertextForRecipient` field in the response. This
+#' ciphertext can be decrypted only with the private key in the enclave.
+#' The `CiphertextBlob` field in the response contains the encrypted shared
+#' secret derived from the KMS key specified by the `KeyId` parameter and
+#' public key specified by the `PublicKey` parameter. The `SharedSecret`
+#' field in the response is null or empty.
+#' 
+#' For information about the interaction between KMS and Amazon Web
+#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
+#' uses
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
+#' in the *Key Management Service Developer Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname kms_derive_shared_secret
+kms_derive_shared_secret <- function(KeyId, KeyAgreementAlgorithm, PublicKey, GrantTokens = NULL, DryRun = NULL, Recipient = NULL) {
+  op <- new_operation(
+    name = "DeriveSharedSecret",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .kms$derive_shared_secret_input(KeyId = KeyId, KeyAgreementAlgorithm = KeyAgreementAlgorithm, PublicKey = PublicKey, GrantTokens = GrantTokens, DryRun = DryRun, Recipient = Recipient)
+  output <- .kms$derive_shared_secret_output()
+  config <- get_config()
+  svc <- .kms$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kms$operations$derive_shared_secret <- kms_derive_shared_secret
 
 #' Gets information about custom key stores in the account and Region
 #'
@@ -1032,12 +1166,13 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
     name = "DescribeCustomKeyStores",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "CustomKeyStores")
   )
   input <- .kms$describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, Marker = Marker)
   output <- .kms$describe_custom_key_stores_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1097,12 +1232,13 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
     name = "DescribeKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$describe_key_input(KeyId = KeyId, GrantTokens = GrantTokens)
   output <- .kms$describe_key_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1138,12 +1274,13 @@ kms_disable_key <- function(KeyId) {
     name = "DisableKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$disable_key_input(KeyId = KeyId)
   output <- .kms$disable_key_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1188,12 +1325,13 @@ kms_disable_key_rotation <- function(KeyId) {
     name = "DisableKeyRotation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$disable_key_rotation_input(KeyId = KeyId)
   output <- .kms$disable_key_rotation_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1220,12 +1358,13 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
     name = "DisconnectCustomKeyStore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$disconnect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$disconnect_custom_key_store_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1261,12 +1400,13 @@ kms_enable_key <- function(KeyId) {
     name = "EnableKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$enable_key_input(KeyId = KeyId)
   output <- .kms$enable_key_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1326,12 +1466,13 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
     name = "EnableKeyRotation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$enable_key_rotation_input(KeyId = KeyId, RotationPeriodInDays = RotationPeriodInDays)
   output <- .kms$enable_key_rotation_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1424,12 +1565,13 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
     name = "Encrypt",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$encrypt_input(KeyId = KeyId, Plaintext = Plaintext, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, EncryptionAlgorithm = EncryptionAlgorithm, DryRun = DryRun)
   output <- .kms$encrypt_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1548,12 +1690,13 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
     name = "GenerateDataKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1632,10 +1775,12 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' algorithm is `RSAES_OAEP_SHA_256`.
 #' 
 #' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To include this parameter, use the [Amazon Web
-#' Services Nitro Enclaves
+#' Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
+#' Services Nitro Enclaves, use the [Amazon Web Services Nitro Enclaves
 #' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' or any Amazon Web Services SDK.
+#' to generate the attestation document and then use the Recipient
+#' parameter from any Amazon Web Services SDK to provide the attestation
+#' document for the enclave.
 #' 
 #' When you use this parameter, instead of returning a plaintext copy of
 #' the private data key, KMS encrypts the plaintext private data key under
@@ -1666,12 +1811,13 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
     name = "GenerateDataKeyPair",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$generate_data_key_pair_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1757,12 +1903,13 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
     name = "GenerateDataKeyPairWithoutPlaintext",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$generate_data_key_pair_without_plaintext_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_without_plaintext_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1847,12 +1994,13 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
     name = "GenerateDataKeyWithoutPlaintext",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$generate_data_key_without_plaintext_input(KeyId = KeyId, EncryptionContext = EncryptionContext, KeySpec = KeySpec, NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_without_plaintext_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1908,12 +2056,13 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, D
     name = "GenerateMac",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$generate_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_mac_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1971,12 +2120,13 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
     name = "GenerateRandom",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$generate_random_input(NumberOfBytes = NumberOfBytes, CustomKeyStoreId = CustomKeyStoreId, Recipient = Recipient)
   output <- .kms$generate_random_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2016,12 +2166,13 @@ kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
     name = "GetKeyPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$get_key_policy_input(KeyId = KeyId, PolicyName = PolicyName)
   output <- .kms$get_key_policy_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2061,12 +2212,13 @@ kms_get_key_rotation_status <- function(KeyId) {
     name = "GetKeyRotationStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$get_key_rotation_status_input(KeyId = KeyId)
   output <- .kms$get_key_rotation_status_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2151,12 +2303,13 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
     name = "GetParametersForImport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$get_parameters_for_import_input(KeyId = KeyId, WrappingAlgorithm = WrappingAlgorithm, WrappingKeySpec = WrappingKeySpec)
   output <- .kms$get_parameters_for_import_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2210,12 +2363,13 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
     name = "GetPublicKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$get_public_key_input(KeyId = KeyId, GrantTokens = GrantTokens)
   output <- .kms$get_public_key_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2304,12 +2458,13 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
     name = "ImportKeyMaterial",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, ExpirationModel = ExpirationModel)
   output <- .kms$import_key_material_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2360,12 +2515,13 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Aliases")
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_aliases_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2416,12 +2572,13 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     name = "ListGrants",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
   output <- .kms$list_grants_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2468,12 +2625,13 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListKeyPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "PolicyNames")
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_policies_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2519,12 +2677,13 @@ kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListKeyRotations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Rotations")
   )
   input <- .kms$list_key_rotations_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_rotations_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2557,12 +2716,13 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     name = "ListKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Keys")
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
   output <- .kms$list_keys_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2610,12 +2770,13 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListResourceTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Tags")
   )
   input <- .kms$list_resource_tags_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_resource_tags_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2658,12 +2819,13 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     name = "ListRetirableGrants",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal)
   output <- .kms$list_retirable_grants_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2754,12 +2916,13 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
     name = "PutKeyPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$put_key_policy_input(KeyId = KeyId, PolicyName = PolicyName, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck)
   output <- .kms$put_key_policy_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2906,12 +3069,13 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
     name = "ReEncrypt",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$re_encrypt_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3082,12 +3246,13 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
     name = "ReplicateKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$replicate_key_input(KeyId = KeyId, ReplicaRegion = ReplicaRegion, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, Description = Description, Tags = Tags)
   output <- .kms$replicate_key_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3135,12 +3300,13 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
     name = "RetireGrant",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$retire_grant_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3187,12 +3353,13 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
     name = "RevokeGrant",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$revoke_grant_input(KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$revoke_grant_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3240,12 +3407,13 @@ kms_rotate_key_on_demand <- function(KeyId) {
     name = "RotateKeyOnDemand",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$rotate_key_on_demand_input(KeyId = KeyId)
   output <- .kms$rotate_key_on_demand_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3294,12 +3462,13 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
     name = "ScheduleKeyDeletion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$schedule_key_deletion_input(KeyId = KeyId, PendingWindowInDays = PendingWindowInDays)
   output <- .kms$schedule_key_deletion_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3409,12 +3578,13 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
     name = "Sign",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$sign_input(KeyId = KeyId, Message = Message, MessageType = MessageType, GrantTokens = GrantTokens, SigningAlgorithm = SigningAlgorithm, DryRun = DryRun)
   output <- .kms$sign_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3459,12 +3629,13 @@ kms_tag_resource <- function(KeyId, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$tag_resource_input(KeyId = KeyId, Tags = Tags)
   output <- .kms$tag_resource_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3501,12 +3672,13 @@ kms_untag_resource <- function(KeyId, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$untag_resource_input(KeyId = KeyId, TagKeys = TagKeys)
   output <- .kms$untag_resource_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3561,12 +3733,13 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
     name = "UpdateAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$update_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
   output <- .kms$update_alias_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3694,12 +3867,13 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
     name = "UpdateCustomKeyStore",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, CloudHsmClusterId = CloudHsmClusterId, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$update_custom_key_store_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3739,12 +3913,13 @@ kms_update_key_description <- function(KeyId, Description) {
     name = "UpdateKeyDescription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$update_key_description_input(KeyId = KeyId, Description = Description)
   output <- .kms$update_key_description_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3787,12 +3962,13 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
     name = "UpdatePrimaryRegion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$update_primary_region_input(KeyId = KeyId, PrimaryRegion = PrimaryRegion)
   output <- .kms$update_primary_region_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3900,12 +4076,13 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
     name = "Verify",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$verify_input(KeyId = KeyId, Message = Message, MessageType = MessageType, Signature = Signature, SigningAlgorithm = SigningAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3962,12 +4139,13 @@ kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL
     name = "VerifyMac",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kms$verify_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, Mac = Mac, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_mac_output()
   config <- get_config()
-  svc <- .kms$service(config)
+  svc <- .kms$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

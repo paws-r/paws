@@ -170,7 +170,7 @@ datapipeline <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = "DataPipeline"
 )
 
-.datapipeline$service <- function(config = list()) {
+.datapipeline$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.datapipeline$metadata, handlers, config)
+  new_service(.datapipeline$metadata, handlers, config, op)
 }

@@ -8,7 +8,8 @@ codegurusecurity_tag_resource(resourceArn, tags)
 }
 \arguments{
 \item{resourceArn}{[required] The ARN of the \code{ScanName} object. You can retrieve this ARN by calling
-\code{\link[=codegurusecurity_list_scans]{list_scans}} or
+\code{\link[=codegurusecurity_create_scan]{create_scan}},
+\code{\link[=codegurusecurity_list_scans]{list_scans}}, or
 \code{\link[=codegurusecurity_get_scan]{get_scan}}.}
 
 \item{tags}{[required] An array of key-value pairs used to tag an existing scan. A tag is a

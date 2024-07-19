@@ -12,7 +12,7 @@ opensearchservice_delete_data_source(DomainName, Name)
 \item{Name}{[required] The name of the data source to delete.}
 }
 \description{
-Deletes a direct-query data source. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-delete.html}{Deleting an Amazon OpenSearch Service data source with Amazon S3}.
+Deletes a direct-query data source. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/}{Deleting an Amazon OpenSearch Service data source with Amazon S3}.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_delete_data_source/} for full documentation.
 }

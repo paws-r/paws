@@ -180,7 +180,7 @@ licensemanager <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = "AWSLicenseManager"
 )
 
-.licensemanager$service <- function(config = list()) {
+.licensemanager$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.licensemanager$metadata, handlers, config)
+  new_service(.licensemanager$metadata, handlers, config, op)
 }

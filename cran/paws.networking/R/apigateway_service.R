@@ -253,7 +253,7 @@ apigateway <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.apigateway$service <- function(config = list()) {
+.apigateway$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.apigateway$metadata, handlers, config)
+  new_service(.apigateway$metadata, handlers, config, op)
 }

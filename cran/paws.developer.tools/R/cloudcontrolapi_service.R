@@ -139,7 +139,7 @@ cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NU
   target_prefix = "CloudApiService"
 )
 
-.cloudcontrolapi$service <- function(config = list()) {
+.cloudcontrolapi$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.cloudcontrolapi$metadata, handlers, config)
+  new_service(.cloudcontrolapi$metadata, handlers, config, op)
 }

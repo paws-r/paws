@@ -308,7 +308,7 @@ codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL,
   target_prefix = ""
 )
 
-.codecatalyst$service <- function(config = list()) {
+.codecatalyst$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "bearer")
-  new_service(.codecatalyst$metadata, handlers, config)
+  new_service(.codecatalyst$metadata, handlers, config, op)
 }

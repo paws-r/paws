@@ -185,7 +185,7 @@ lookoutequipment <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = "AWSLookoutEquipmentFrontendService"
 )
 
-.lookoutequipment$service <- function(config = list()) {
+.lookoutequipment$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.lookoutequipment$metadata, handlers, config)
+  new_service(.lookoutequipment$metadata, handlers, config, op)
 }

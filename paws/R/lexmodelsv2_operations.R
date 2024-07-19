@@ -76,12 +76,13 @@ lexmodelsv2_batch_create_custom_vocabulary_item <- function(botId, botVersion, l
     name = "BatchCreateCustomVocabularyItem",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchcreate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$batch_create_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
   output <- .lexmodelsv2$batch_create_custom_vocabulary_item_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -159,12 +160,13 @@ lexmodelsv2_batch_delete_custom_vocabulary_item <- function(botId, botVersion, l
     name = "BatchDeleteCustomVocabularyItem",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchdelete",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$batch_delete_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
   output <- .lexmodelsv2$batch_delete_custom_vocabulary_item_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -245,12 +247,13 @@ lexmodelsv2_batch_update_custom_vocabulary_item <- function(botId, botVersion, l
     name = "BatchUpdateCustomVocabularyItem",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchupdate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$batch_update_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
   output <- .lexmodelsv2$batch_update_custom_vocabulary_item_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -310,12 +313,13 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
     name = "BuildBotLocale",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$build_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$build_bot_locale_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -432,12 +436,13 @@ lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPri
     name = "CreateBot",
     http_method = "PUT",
     http_path = "/bots/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_bot_input(botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botTags = botTags, testBotAliasTags = testBotAliasTags, botType = botType, botMembers = botMembers)
   output <- .lexmodelsv2$create_bot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -604,12 +609,13 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
     name = "CreateBotAlias",
     http_method = "PUT",
     http_path = "/bots/{botId}/botaliases/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_bot_alias_input(botAliasName = botAliasName, description = description, botVersion = botVersion, botAliasLocaleSettings = botAliasLocaleSettings, conversationLogSettings = conversationLogSettings, sentimentAnalysisSettings = sentimentAnalysisSettings, botId = botId, tags = tags)
   output <- .lexmodelsv2$create_bot_alias_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -755,12 +761,13 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
     name = "CreateBotLocale",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
   output <- .lexmodelsv2$create_bot_locale_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -813,12 +820,13 @@ lexmodelsv2_create_bot_replica <- function(botId, replicaRegion) {
     name = "CreateBotReplica",
     http_method = "PUT",
     http_path = "/bots/{botId}/replicas/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_bot_replica_input(botId = botId, replicaRegion = replicaRegion)
   output <- .lexmodelsv2$create_bot_replica_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -889,12 +897,13 @@ lexmodelsv2_create_bot_version <- function(botId, description = NULL, botVersion
     name = "CreateBotVersion",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_bot_version_input(botId = botId, description = description, botVersionLocaleSpecification = botVersionLocaleSpecification)
   output <- .lexmodelsv2$create_bot_version_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -996,12 +1005,13 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
     name = "CreateExport",
     http_method = "PUT",
     http_path = "/exports/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_export_input(resourceSpecification = resourceSpecification, fileFormat = fileFormat, filePassword = filePassword)
   output <- .lexmodelsv2$create_export_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8552,12 +8562,13 @@ lexmodelsv2_create_intent <- function(intentName, description = NULL, parentInte
     name = "CreateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration)
   output <- .lexmodelsv2$create_intent_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8610,12 +8621,13 @@ lexmodelsv2_create_resource_policy <- function(resourceArn, policy) {
     name = "CreateResourcePolicy",
     http_method = "POST",
     http_path = "/policy/{resourceArn}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_resource_policy_input(resourceArn = resourceArn, policy = policy)
   output <- .lexmodelsv2$create_resource_policy_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8710,12 +8722,13 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
     name = "CreateResourcePolicyStatement",
     http_method = "POST",
     http_path = "/policy/{resourceArn}/statements/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_resource_policy_statement_input(resourceArn = resourceArn, statementId = statementId, effect = effect, principal = principal, action = action, condition = condition, expectedRevisionId = expectedRevisionId)
   output <- .lexmodelsv2$create_resource_policy_statement_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12340,12 +12353,13 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
     name = "CreateSlot",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_slot_input(slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting, subSlotSetting = subSlotSetting)
   output <- .lexmodelsv2$create_slot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12516,12 +12530,13 @@ lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotT
     name = "CreateSlotType",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_slot_type_input(slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting, compositeSlotTypeSetting = compositeSlotTypeSetting)
   output <- .lexmodelsv2$create_slot_type_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12584,12 +12599,13 @@ lexmodelsv2_create_test_set_discrepancy_report <- function(testSetId, target) {
     name = "CreateTestSetDiscrepancyReport",
     http_method = "POST",
     http_path = "/testsets/{testSetId}/testsetdiscrepancy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_test_set_discrepancy_report_input(testSetId = testSetId, target = target)
   output <- .lexmodelsv2$create_test_set_discrepancy_report_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12632,12 +12648,13 @@ lexmodelsv2_create_upload_url <- function() {
     name = "CreateUploadUrl",
     http_method = "POST",
     http_path = "/createuploadurl/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$create_upload_url_input()
   output <- .lexmodelsv2$create_upload_url_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12697,12 +12714,13 @@ lexmodelsv2_delete_bot <- function(botId, skipResourceInUseCheck = NULL) {
     name = "DeleteBot",
     http_method = "DELETE",
     http_path = "/bots/{botId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_bot_input(botId = botId, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .lexmodelsv2$delete_bot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12754,12 +12772,13 @@ lexmodelsv2_delete_bot_alias <- function(botAliasId, botId, skipResourceInUseChe
     name = "DeleteBotAlias",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botaliases/{botAliasId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_bot_alias_input(botAliasId = botAliasId, botId = botId, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .lexmodelsv2$delete_bot_alias_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12814,12 +12833,13 @@ lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
     name = "DeleteBotLocale",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$delete_bot_locale_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12866,12 +12886,13 @@ lexmodelsv2_delete_bot_replica <- function(botId, replicaRegion) {
     name = "DeleteBotReplica",
     http_method = "DELETE",
     http_path = "/bots/{botId}/replicas/{replicaRegion}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_bot_replica_input(botId = botId, replicaRegion = replicaRegion)
   output <- .lexmodelsv2$delete_bot_replica_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12925,12 +12946,13 @@ lexmodelsv2_delete_bot_version <- function(botId, botVersion, skipResourceInUseC
     name = "DeleteBotVersion",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botversions/{botVersion}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_bot_version_input(botId = botId, botVersion = botVersion, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .lexmodelsv2$delete_bot_version_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12982,12 +13004,13 @@ lexmodelsv2_delete_custom_vocabulary <- function(botId, botVersion, localeId) {
     name = "DeleteCustomVocabulary",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_custom_vocabulary_input(botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$delete_custom_vocabulary_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13032,12 +13055,13 @@ lexmodelsv2_delete_export <- function(exportId) {
     name = "DeleteExport",
     http_method = "DELETE",
     http_path = "/exports/{exportId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_export_input(exportId = exportId)
   output <- .lexmodelsv2$delete_export_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13081,12 +13105,13 @@ lexmodelsv2_delete_import <- function(importId) {
     name = "DeleteImport",
     http_method = "DELETE",
     http_path = "/imports/{importId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_import_input(importId = importId)
   output <- .lexmodelsv2$delete_import_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13134,12 +13159,13 @@ lexmodelsv2_delete_intent <- function(intentId, botId, botVersion, localeId) {
     name = "DeleteIntent",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_intent_input(intentId = intentId, botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$delete_intent_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13190,12 +13216,13 @@ lexmodelsv2_delete_resource_policy <- function(resourceArn, expectedRevisionId =
     name = "DeleteResourcePolicy",
     http_method = "DELETE",
     http_path = "/policy/{resourceArn}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_resource_policy_input(resourceArn = resourceArn, expectedRevisionId = expectedRevisionId)
   output <- .lexmodelsv2$delete_resource_policy_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13252,12 +13279,13 @@ lexmodelsv2_delete_resource_policy_statement <- function(resourceArn, statementI
     name = "DeleteResourcePolicyStatement",
     http_method = "DELETE",
     http_path = "/policy/{resourceArn}/statements/{statementId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_resource_policy_statement_input(resourceArn = resourceArn, statementId = statementId, expectedRevisionId = expectedRevisionId)
   output <- .lexmodelsv2$delete_resource_policy_statement_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13305,12 +13333,13 @@ lexmodelsv2_delete_slot <- function(slotId, botId, botVersion, localeId, intentI
     name = "DeleteSlot",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/{slotId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_slot_input(slotId = slotId, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId)
   output <- .lexmodelsv2$delete_slot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13367,12 +13396,13 @@ lexmodelsv2_delete_slot_type <- function(slotTypeId, botId, botVersion, localeId
     name = "DeleteSlotType",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/{slotTypeId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_slot_type_input(slotTypeId = slotTypeId, botId = botId, botVersion = botVersion, localeId = localeId, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .lexmodelsv2$delete_slot_type_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13409,12 +13439,13 @@ lexmodelsv2_delete_test_set <- function(testSetId) {
     name = "DeleteTestSet",
     http_method = "DELETE",
     http_path = "/testsets/{testSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_test_set_input(testSetId = testSetId)
   output <- .lexmodelsv2$delete_test_set_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13477,12 +13508,13 @@ lexmodelsv2_delete_utterances <- function(botId, localeId = NULL, sessionId = NU
     name = "DeleteUtterances",
     http_method = "DELETE",
     http_path = "/bots/{botId}/utterances/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$delete_utterances_input(botId = botId, localeId = localeId, sessionId = sessionId)
   output <- .lexmodelsv2$delete_utterances_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13551,12 +13583,13 @@ lexmodelsv2_describe_bot <- function(botId) {
     name = "DescribeBot",
     http_method = "GET",
     http_path = "/bots/{botId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_bot_input(botId = botId)
   output <- .lexmodelsv2$describe_bot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13669,12 +13702,13 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
     name = "DescribeBotAlias",
     http_method = "GET",
     http_path = "/bots/{botId}/botaliases/{botAliasId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_bot_alias_input(botAliasId = botAliasId, botId = botId)
   output <- .lexmodelsv2$describe_bot_alias_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13781,12 +13815,13 @@ lexmodelsv2_describe_bot_locale <- function(botId, botVersion, localeId) {
     name = "DescribeBotLocale",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$describe_bot_locale_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13895,12 +13930,13 @@ lexmodelsv2_describe_bot_recommendation <- function(botId, botVersion, localeId,
     name = "DescribeBotRecommendation",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_bot_recommendation_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId)
   output <- .lexmodelsv2$describe_bot_recommendation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13953,12 +13989,13 @@ lexmodelsv2_describe_bot_replica <- function(botId, replicaRegion) {
     name = "DescribeBotReplica",
     http_method = "GET",
     http_path = "/bots/{botId}/replicas/{replicaRegion}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_bot_replica_input(botId = botId, replicaRegion = replicaRegion)
   output <- .lexmodelsv2$describe_bot_replica_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14030,12 +14067,13 @@ lexmodelsv2_describe_bot_resource_generation <- function(botId, botVersion, loca
     name = "DescribeBotResourceGeneration",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/generations/{generationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_bot_resource_generation_input(botId = botId, botVersion = botVersion, localeId = localeId, generationId = generationId)
   output <- .lexmodelsv2$describe_bot_resource_generation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14110,12 +14148,13 @@ lexmodelsv2_describe_bot_version <- function(botId, botVersion) {
     name = "DescribeBotVersion",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_bot_version_input(botId = botId, botVersion = botVersion)
   output <- .lexmodelsv2$describe_bot_version_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14172,12 +14211,13 @@ lexmodelsv2_describe_custom_vocabulary_metadata <- function(botId, botVersion, l
     name = "DescribeCustomVocabularyMetadata",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/metadata",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_custom_vocabulary_metadata_input(botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$describe_custom_vocabulary_metadata_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14250,12 +14290,13 @@ lexmodelsv2_describe_export <- function(exportId) {
     name = "DescribeExport",
     http_method = "GET",
     http_path = "/exports/{exportId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_export_input(exportId = exportId)
   output <- .lexmodelsv2$describe_export_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14359,12 +14400,13 @@ lexmodelsv2_describe_import <- function(importId) {
     name = "DescribeImport",
     http_method = "GET",
     http_path = "/imports/{importId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_import_input(importId = importId)
   output <- .lexmodelsv2$describe_import_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18126,12 +18168,13 @@ lexmodelsv2_describe_intent <- function(intentId, botId, botVersion, localeId) {
     name = "DescribeIntent",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_intent_input(intentId = intentId, botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$describe_intent_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18176,12 +18219,13 @@ lexmodelsv2_describe_resource_policy <- function(resourceArn) {
     name = "DescribeResourcePolicy",
     http_method = "GET",
     http_path = "/policy/{resourceArn}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_resource_policy_input(resourceArn = resourceArn)
   output <- .lexmodelsv2$describe_resource_policy_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20014,12 +20058,13 @@ lexmodelsv2_describe_slot <- function(slotId, botId, botVersion, localeId, inten
     name = "DescribeSlot",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/{slotId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_slot_input(slotId = slotId, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId)
   output <- .lexmodelsv2$describe_slot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20120,12 +20165,13 @@ lexmodelsv2_describe_slot_type <- function(slotTypeId, botId, botVersion, locale
     name = "DescribeSlotType",
     http_method = "GET",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/{slotTypeId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_slot_type_input(slotTypeId = slotTypeId, botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$describe_slot_type_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20188,12 +20234,13 @@ lexmodelsv2_describe_test_execution <- function(testExecutionId) {
     name = "DescribeTestExecution",
     http_method = "GET",
     http_path = "/testexecutions/{testExecutionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_test_execution_input(testExecutionId = testExecutionId)
   output <- .lexmodelsv2$describe_test_execution_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20252,12 +20299,13 @@ lexmodelsv2_describe_test_set <- function(testSetId) {
     name = "DescribeTestSet",
     http_method = "GET",
     http_path = "/testsets/{testSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_test_set_input(testSetId = testSetId)
   output <- .lexmodelsv2$describe_test_set_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20334,12 +20382,13 @@ lexmodelsv2_describe_test_set_discrepancy_report <- function(testSetDiscrepancyR
     name = "DescribeTestSetDiscrepancyReport",
     http_method = "GET",
     http_path = "/testsetdiscrepancy/{testSetDiscrepancyReportId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_test_set_discrepancy_report_input(testSetDiscrepancyReportId = testSetDiscrepancyReportId)
   output <- .lexmodelsv2$describe_test_set_discrepancy_report_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20416,12 +20465,13 @@ lexmodelsv2_describe_test_set_generation <- function(testSetGenerationId) {
     name = "DescribeTestSetGeneration",
     http_method = "GET",
     http_path = "/testsetgenerations/{testSetGenerationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$describe_test_set_generation_input(testSetGenerationId = testSetGenerationId)
   output <- .lexmodelsv2$describe_test_set_generation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20477,12 +20527,13 @@ lexmodelsv2_generate_bot_element <- function(intentId, botId, botVersion, locale
     name = "GenerateBotElement",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/generate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$generate_bot_element_input(intentId = intentId, botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$generate_bot_element_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20527,12 +20578,13 @@ lexmodelsv2_get_test_execution_artifacts_url <- function(testExecutionId) {
     name = "GetTestExecutionArtifactsUrl",
     http_method = "GET",
     http_path = "/testexecutions/{testExecutionId}/artifacturl",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$get_test_execution_artifacts_url_input(testExecutionId = testExecutionId)
   output <- .lexmodelsv2$get_test_execution_artifacts_url_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20676,12 +20728,13 @@ lexmodelsv2_list_aggregated_utterances <- function(botId, botAliasId = NULL, bot
     name = "ListAggregatedUtterances",
     http_method = "POST",
     http_path = "/bots/{botId}/aggregatedutterances/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_aggregated_utterances_input(botId = botId, botAliasId = botAliasId, botVersion = botVersion, localeId = localeId, aggregationDuration = aggregationDuration, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_aggregated_utterances_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20754,12 +20807,13 @@ lexmodelsv2_list_bot_alias_replicas <- function(botId, replicaRegion, maxResults
     name = "ListBotAliasReplicas",
     http_method = "POST",
     http_path = "/bots/{botId}/replicas/{replicaRegion}/botaliases/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_alias_replicas_input(botId = botId, replicaRegion = replicaRegion, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_alias_replicas_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20827,12 +20881,13 @@ lexmodelsv2_list_bot_aliases <- function(botId, maxResults = NULL, nextToken = N
     name = "ListBotAliases",
     http_method = "POST",
     http_path = "/bots/{botId}/botaliases/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_aliases_input(botId = botId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_aliases_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20921,12 +20976,13 @@ lexmodelsv2_list_bot_locales <- function(botId, botVersion, sortBy = NULL, filte
     name = "ListBotLocales",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_locales_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_locales_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -20999,12 +21055,13 @@ lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, ma
     name = "ListBotRecommendations",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_recommendations_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_recommendations_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21059,12 +21116,13 @@ lexmodelsv2_list_bot_replicas <- function(botId) {
     name = "ListBotReplicas",
     http_method = "POST",
     http_path = "/bots/{botId}/replicas/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$list_bot_replicas_input(botId = botId)
   output <- .lexmodelsv2$list_bot_replicas_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21140,12 +21198,13 @@ lexmodelsv2_list_bot_resource_generations <- function(botId, botVersion, localeI
     name = "ListBotResourceGenerations",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/generations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_resource_generations_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_resource_generations_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21216,12 +21275,13 @@ lexmodelsv2_list_bot_version_replicas <- function(botId, replicaRegion, maxResul
     name = "ListBotVersionReplicas",
     http_method = "POST",
     http_path = "/bots/{botId}/replicas/{replicaRegion}/botversions/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_version_replicas_input(botId = botId, replicaRegion = replicaRegion, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy)
   output <- .lexmodelsv2$list_bot_version_replicas_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21301,12 +21361,13 @@ lexmodelsv2_list_bot_versions <- function(botId, sortBy = NULL, maxResults = NUL
     name = "ListBotVersions",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_versions_input(botId = botId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_versions_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21391,12 +21452,13 @@ lexmodelsv2_list_bots <- function(sortBy = NULL, filters = NULL, maxResults = NU
     name = "ListBots",
     http_method = "POST",
     http_path = "/bots/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bots_input(sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bots_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21473,12 +21535,13 @@ lexmodelsv2_list_built_in_intents <- function(localeId, sortBy = NULL, maxResult
     name = "ListBuiltInIntents",
     http_method = "POST",
     http_path = "/builtins/locales/{localeId}/intents/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_built_in_intents_input(localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_built_in_intents_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21549,12 +21612,13 @@ lexmodelsv2_list_built_in_slot_types <- function(localeId, sortBy = NULL, maxRes
     name = "ListBuiltInSlotTypes",
     http_method = "POST",
     http_path = "/builtins/locales/{localeId}/slottypes/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_built_in_slot_types_input(localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_built_in_slot_types_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21622,12 +21686,13 @@ lexmodelsv2_list_custom_vocabulary_items <- function(botId, botVersion, localeId
     name = "ListCustomVocabularyItems",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/list",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_custom_vocabulary_items_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_custom_vocabulary_items_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21744,12 +21809,13 @@ lexmodelsv2_list_exports <- function(botId = NULL, botVersion = NULL, sortBy = N
     name = "ListExports",
     http_method = "POST",
     http_path = "/exports/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_exports_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken, localeId = localeId)
   output <- .lexmodelsv2$list_exports_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -21850,12 +21916,13 @@ lexmodelsv2_list_imports <- function(botId = NULL, botVersion = NULL, sortBy = N
     name = "ListImports",
     http_method = "POST",
     http_path = "/imports/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_imports_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken, localeId = localeId)
   output <- .lexmodelsv2$list_imports_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22015,12 +22082,13 @@ lexmodelsv2_list_intent_metrics <- function(botId, startDateTime, endDateTime, m
     name = "ListIntentMetrics",
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/intentmetrics",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_intent_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_intent_metrics_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22115,12 +22183,13 @@ lexmodelsv2_list_intent_paths <- function(botId, startDateTime, endDateTime, int
     name = "ListIntentPaths",
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/intentpaths",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$list_intent_paths_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, intentPath = intentPath, filters = filters)
   output <- .lexmodelsv2$list_intent_paths_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22280,12 +22349,13 @@ lexmodelsv2_list_intent_stage_metrics <- function(botId, startDateTime, endDateT
     name = "ListIntentStageMetrics",
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/intentstagemetrics",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_intent_stage_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_intent_stage_metrics_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22395,12 +22465,13 @@ lexmodelsv2_list_intents <- function(botId, botVersion, localeId, sortBy = NULL,
     name = "ListIntents",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_intents_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_intents_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22474,12 +22545,13 @@ lexmodelsv2_list_recommended_intents <- function(botId, botVersion, localeId, bo
     name = "ListRecommendedIntents",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/intents",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_recommended_intents_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelsv2$list_recommended_intents_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22600,12 +22672,13 @@ lexmodelsv2_list_session_analytics_data <- function(botId, startDateTime, endDat
     name = "ListSessionAnalyticsData",
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/sessions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_session_analytics_data_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_session_analytics_data_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22766,12 +22839,13 @@ lexmodelsv2_list_session_metrics <- function(botId, startDateTime, endDateTime, 
     name = "ListSessionMetrics",
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/sessionmetrics",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_session_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_session_metrics_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -22866,12 +22940,13 @@ lexmodelsv2_list_slot_types <- function(botId, botVersion, localeId, sortBy = NU
     name = "ListSlotTypes",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_slot_types_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_slot_types_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23048,12 +23123,13 @@ lexmodelsv2_list_slots <- function(botId, botVersion, localeId, intentId, sortBy
     name = "ListSlots",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_slots_input(botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_slots_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23099,12 +23175,13 @@ lexmodelsv2_list_tags_for_resource <- function(resourceARN) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceARN}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$list_tags_for_resource_input(resourceARN = resourceARN)
   output <- .lexmodelsv2$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23350,12 +23427,13 @@ lexmodelsv2_list_test_execution_result_items <- function(testExecutionId, result
     name = "ListTestExecutionResultItems",
     http_method = "POST",
     http_path = "/testexecutions/{testExecutionId}/results",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_execution_result_items_input(testExecutionId = testExecutionId, resultFilterBy = resultFilterBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_execution_result_items_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23432,12 +23510,13 @@ lexmodelsv2_list_test_executions <- function(sortBy = NULL, maxResults = NULL, n
     name = "ListTestExecutions",
     http_method = "POST",
     http_path = "/testexecutions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_executions_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_executions_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23557,12 +23636,13 @@ lexmodelsv2_list_test_set_records <- function(testSetId, maxResults = NULL, next
     name = "ListTestSetRecords",
     http_method = "POST",
     http_path = "/testsets/{testSetId}/records",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_set_records_input(testSetId = testSetId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_set_records_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23638,12 +23718,13 @@ lexmodelsv2_list_test_sets <- function(sortBy = NULL, maxResults = NULL, nextTok
     name = "ListTestSets",
     http_method = "POST",
     http_path = "/testsets",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_sets_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_sets_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23801,12 +23882,13 @@ lexmodelsv2_list_utterance_analytics_data <- function(botId, startDateTime, endD
     name = "ListUtteranceAnalyticsData",
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/utterances",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_utterance_analytics_data_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_utterance_analytics_data_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -23991,12 +24073,13 @@ lexmodelsv2_list_utterance_metrics <- function(botId, startDateTime, endDateTime
     name = "ListUtteranceMetrics",
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/utterancemetrics",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_utterance_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, attributes = attributes, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_utterance_metrics_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24082,12 +24165,13 @@ lexmodelsv2_search_associated_transcripts <- function(botId, botVersion, localeI
     name = "SearchAssociatedTranscripts",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/associatedtranscripts",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$search_associated_transcripts_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId, searchOrder = searchOrder, filters = filters, maxResults = maxResults, nextIndex = nextIndex)
   output <- .lexmodelsv2$search_associated_transcripts_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24209,12 +24293,13 @@ lexmodelsv2_start_bot_recommendation <- function(botId, botVersion, localeId, tr
     name = "StartBotRecommendation",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$start_bot_recommendation_input(botId = botId, botVersion = botVersion, localeId = localeId, transcriptSourceSetting = transcriptSourceSetting, encryptionSetting = encryptionSetting)
   output <- .lexmodelsv2$start_bot_recommendation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24283,12 +24368,13 @@ lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, bot
     name = "StartBotResourceGeneration",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/startgeneration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$start_bot_resource_generation_input(generationInputPrompt = generationInputPrompt, botId = botId, botVersion = botVersion, localeId = localeId)
   output <- .lexmodelsv2$start_bot_resource_generation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24447,12 +24533,13 @@ lexmodelsv2_start_import <- function(importId, resourceSpecification, mergeStrat
     name = "StartImport",
     http_method = "PUT",
     http_path = "/imports/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$start_import_input(importId = importId, resourceSpecification = resourceSpecification, mergeStrategy = mergeStrategy, filePassword = filePassword)
   output <- .lexmodelsv2$start_import_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24523,12 +24610,13 @@ lexmodelsv2_start_test_execution <- function(testSetId, target, apiMode, testExe
     name = "StartTestExecution",
     http_method = "POST",
     http_path = "/testsets/{testSetId}/testexecutions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$start_test_execution_input(testSetId = testSetId, target = target, apiMode = apiMode, testExecutionModality = testExecutionModality)
   output <- .lexmodelsv2$start_test_execution_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24638,12 +24726,13 @@ lexmodelsv2_start_test_set_generation <- function(testSetName, description = NUL
     name = "StartTestSetGeneration",
     http_method = "PUT",
     http_path = "/testsetgenerations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$start_test_set_generation_input(testSetName = testSetName, description = description, storageLocation = storageLocation, generationDataSource = generationDataSource, roleArn = roleArn, testSetTags = testSetTags)
   output <- .lexmodelsv2$start_test_set_generation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24700,12 +24789,13 @@ lexmodelsv2_stop_bot_recommendation <- function(botId, botVersion, localeId, bot
     name = "StopBotRecommendation",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/stopbotrecommendation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$stop_bot_recommendation_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId)
   output <- .lexmodelsv2$stop_bot_recommendation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24749,12 +24839,13 @@ lexmodelsv2_tag_resource <- function(resourceARN, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceARN}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$tag_resource_input(resourceARN = resourceARN, tags = tags)
   output <- .lexmodelsv2$tag_resource_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24796,12 +24887,13 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceARN}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
   output <- .lexmodelsv2$untag_resource_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -24904,12 +24996,13 @@ lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, 
     name = "UpdateBot",
     http_method = "PUT",
     http_path = "/bots/{botId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_bot_input(botId = botId, botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botType = botType, botMembers = botMembers)
   output <- .lexmodelsv2$update_bot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25058,12 +25151,13 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
     name = "UpdateBotAlias",
     http_method = "PUT",
     http_path = "/bots/{botId}/botaliases/{botAliasId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_bot_alias_input(botAliasId = botAliasId, botAliasName = botAliasName, description = description, botVersion = botVersion, botAliasLocaleSettings = botAliasLocaleSettings, conversationLogSettings = conversationLogSettings, sentimentAnalysisSettings = sentimentAnalysisSettings, botId = botId)
   output <- .lexmodelsv2$update_bot_alias_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25199,12 +25293,13 @@ lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, descripti
     name = "UpdateBotLocale",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
   output <- .lexmodelsv2$update_bot_locale_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25304,12 +25399,13 @@ lexmodelsv2_update_bot_recommendation <- function(botId, botVersion, localeId, b
     name = "UpdateBotRecommendation",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_bot_recommendation_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId, encryptionSetting = encryptionSetting)
   output <- .lexmodelsv2$update_bot_recommendation_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -25385,12 +25481,13 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
     name = "UpdateExport",
     http_method = "PUT",
     http_path = "/exports/{exportId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_export_input(exportId = exportId, filePassword = filePassword)
   output <- .lexmodelsv2$update_export_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -32885,12 +32982,13 @@ lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, 
     name = "UpdateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration)
   output <- .lexmodelsv2$update_intent_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -32953,12 +33051,13 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
     name = "UpdateResourcePolicy",
     http_method = "PUT",
     http_path = "/policy/{resourceArn}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_resource_policy_input(resourceArn = resourceArn, policy = policy, expectedRevisionId = expectedRevisionId)
   output <- .lexmodelsv2$update_resource_policy_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -36578,12 +36677,13 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
     name = "UpdateSlot",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/{slotId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_slot_input(slotId = slotId, slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting, subSlotSetting = subSlotSetting)
   output <- .lexmodelsv2$update_slot_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -36737,12 +36837,13 @@ lexmodelsv2_update_slot_type <- function(slotTypeId, slotTypeName, description =
     name = "UpdateSlotType",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/{slotTypeId}/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_slot_type_input(slotTypeId = slotTypeId, slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting, compositeSlotTypeSetting = compositeSlotTypeSetting)
   output <- .lexmodelsv2$update_slot_type_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -36805,12 +36906,13 @@ lexmodelsv2_update_test_set <- function(testSetId, testSetName, description = NU
     name = "UpdateTestSet",
     http_method = "PUT",
     http_path = "/testsets/{testSetId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexmodelsv2$update_test_set_input(testSetId = testSetId, testSetName = testSetName, description = description)
   output <- .lexmodelsv2$update_test_set_output()
   config <- get_config()
-  svc <- .lexmodelsv2$service(config)
+  svc <- .lexmodelsv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

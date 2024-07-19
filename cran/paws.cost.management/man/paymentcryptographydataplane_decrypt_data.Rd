@@ -6,18 +6,26 @@
 asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme}
 \usage{
 paymentcryptographydataplane_decrypt_data(
+  KeyIdentifier,
   CipherText,
   DecryptionAttributes,
-  KeyIdentifier
+  WrappedKey = NULL
 )
 }
 \arguments{
+\item{KeyIdentifier}{[required] The \code{keyARN} of the encryption key that Amazon Web Services Payment
+Cryptography uses for ciphertext decryption.
+
+When a WrappedKeyBlock is provided, this value will be the identifier to
+the key wrapping key. Otherwise, it is the key identifier used to
+perform the operation.}
+
 \item{CipherText}{[required] The ciphertext to decrypt.}
 
 \item{DecryptionAttributes}{[required] The encryption key type and attributes for ciphertext decryption.}
 
-\item{KeyIdentifier}{[required] The \code{keyARN} of the encryption key that Amazon Web Services Payment
-Cryptography uses for ciphertext decryption.}
+\item{WrappedKey}{The WrappedKeyBlock containing the encryption key for ciphertext
+decryption.}
 }
 \description{
 Decrypts ciphertext data to plaintext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html}{Decrypt data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

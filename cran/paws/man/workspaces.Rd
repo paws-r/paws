@@ -131,6 +131,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_create_workspace_bundle]{create_workspace_bundle} \tab Creates the specified WorkSpace bundle\cr
 \link[paws.end.user.computing:workspaces_create_workspace_image]{create_workspace_image} \tab Creates a new WorkSpace image from an existing WorkSpace\cr
 \link[paws.end.user.computing:workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_create_workspaces_pool]{create_workspaces_pool} \tab Creates a pool of WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_delete_account_link_invitation]{delete_account_link_invitation} \tab Deletes the account link invitation\cr
 \link[paws.end.user.computing:workspaces_delete_client_branding]{delete_client_branding} \tab Deletes customized client branding\cr
 \link[paws.end.user.computing:workspaces_delete_connect_client_add_in]{delete_connect_client_add_in} \tab Deletes a client-add-in for Amazon Connect that is configured within a directory\cr
@@ -162,6 +163,8 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_describe_workspaces]{describe_workspaces} \tab Describes the specified WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_describe_workspaces_connection_status]{describe_workspaces_connection_status} \tab Describes the connection status of the specified WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace\cr
+\link[paws.end.user.computing:workspaces_describe_workspaces_pools]{describe_workspaces_pools} \tab Describes the specified WorkSpaces Pools\cr
+\link[paws.end.user.computing:workspaces_describe_workspaces_pool_sessions]{describe_workspaces_pool_sessions} \tab Retrieves a list that describes the streaming sessions for a specified pool\cr
 \link[paws.end.user.computing:workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
 \link[paws.end.user.computing:workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
 \link[paws.end.user.computing:workspaces_disassociate_workspace_application]{disassociate_workspace_application} \tab Disassociates the specified application from a WorkSpace\cr
@@ -176,6 +179,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_modify_client_properties]{modify_client_properties} \tab Modifies the properties of the specified Amazon WorkSpaces clients\cr
 \link[paws.end.user.computing:workspaces_modify_saml_properties]{modify_saml_properties} \tab Modifies multiple properties related to SAML 2\cr
 \link[paws.end.user.computing:workspaces_modify_selfservice_permissions]{modify_selfservice_permissions} \tab Modifies the self-service WorkSpace management capabilities for your users\cr
+\link[paws.end.user.computing:workspaces_modify_streaming_properties]{modify_streaming_properties} \tab Modifies the specified streaming properties\cr
 \link[paws.end.user.computing:workspaces_modify_workspace_access_properties]{modify_workspace_access_properties} \tab Specifies which devices and operating systems users can use to access their WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_modify_workspace_creation_properties]{modify_workspace_creation_properties} \tab Modify the default properties used to create WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_modify_workspace_properties]{modify_workspace_properties} \tab Modifies the specified WorkSpace properties\cr
@@ -187,13 +191,18 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_restore_workspace]{restore_workspace} \tab Restores the specified WorkSpace to its last known healthy state\cr
 \link[paws.end.user.computing:workspaces_revoke_ip_rules]{revoke_ip_rules} \tab Removes one or more rules from the specified IP access control group\cr
 \link[paws.end.user.computing:workspaces_start_workspaces]{start_workspaces} \tab Starts the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_start_workspaces_pool]{start_workspaces_pool} \tab Starts the specified pool\cr
 \link[paws.end.user.computing:workspaces_stop_workspaces]{stop_workspaces} \tab Stops the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_stop_workspaces_pool]{stop_workspaces_pool} \tab Stops the specified pool\cr
 \link[paws.end.user.computing:workspaces_terminate_workspaces]{terminate_workspaces} \tab Terminates the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_terminate_workspaces_pool]{terminate_workspaces_pool} \tab Terminates the specified pool\cr
+\link[paws.end.user.computing:workspaces_terminate_workspaces_pool_session]{terminate_workspaces_pool_session} \tab Terminates the pool session\cr
 \link[paws.end.user.computing:workspaces_update_connect_client_add_in]{update_connect_client_add_in} \tab Updates a Amazon Connect client add-in\cr
 \link[paws.end.user.computing:workspaces_update_connection_alias_permission]{update_connection_alias_permission} \tab Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory\cr
 \link[paws.end.user.computing:workspaces_update_rules_of_ip_group]{update_rules_of_ip_group} \tab Replaces the current rules of the specified IP access control group with the specified rules\cr
 \link[paws.end.user.computing:workspaces_update_workspace_bundle]{update_workspace_bundle} \tab Updates a WorkSpace bundle with a new image\cr
-\link[paws.end.user.computing:workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image
+\link[paws.end.user.computing:workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image\cr
+\link[paws.end.user.computing:workspaces_update_workspaces_pool]{update_workspaces_pool} \tab Updates the specified pool
 }
 }
 

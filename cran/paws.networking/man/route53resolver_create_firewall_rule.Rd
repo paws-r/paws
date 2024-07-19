@@ -84,15 +84,15 @@ This setting is required if the \code{BlockResponse} setting is \code{OVERRIDE}.
 \item{Name}{[required] A name that lets you identify the rule in the rule group.}
 
 \item{FirewallDomainRedirectionAction}{How you want the the rule to evaluate DNS redirection in the DNS
-redirection chain, such as CNAME, DNAME, ot ALIAS.
+redirection chain, such as CNAME or DNAME.
 
 \code{Inspect_Redirection_Domain }(Default) inspects all domains in the
 redirection chain. The individual domains in the redirection chain must
-be added to the allow domain list.
+be added to the domain list.
 
 \code{Trust_Redirection_Domain } inspects only the first domain in the
 redirection chain. You don't need to add the subsequent domains in the
-redirection list to the domain alloww list.}
+domain in the redirection list to the domain list.}
 
 \item{Qtype}{The DNS query type you want the rule to evaluate. Allowed values are;
 \itemize{

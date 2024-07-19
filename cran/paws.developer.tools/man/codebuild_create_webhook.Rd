@@ -11,7 +11,9 @@ codebuild_create_webhook(
   projectName,
   branchFilter = NULL,
   filterGroups = NULL,
-  buildType = NULL
+  buildType = NULL,
+  manualCreation = NULL,
+  scopeConfiguration = NULL
 )
 }
 \arguments{
@@ -33,6 +35,18 @@ For a build to be triggered, at least one filter group in the
 filters must pass.}
 
 \item{buildType}{Specifies the type of build this webhook will trigger.}
+
+\item{manualCreation}{If manualCreation is true, CodeBuild doesn't create a webhook in GitHub
+and instead returns \code{payloadUrl} and \code{secret} values for the webhook.
+The \code{payloadUrl} and \code{secret} values in the output can be used to
+manually create a webhook within GitHub.
+
+\code{manualCreation} is only available for GitHub webhooks.}
+
+\item{scopeConfiguration}{The scope configuration for global or organization webhooks.
+
+Global or organization webhooks are only available for GitHub and Github
+Enterprise webhooks.}
 }
 \description{
 For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.

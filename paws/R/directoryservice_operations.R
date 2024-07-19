@@ -55,12 +55,13 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
     name = "AcceptSharedDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$accept_shared_directory_input(SharedDirectoryId = SharedDirectoryId)
   output <- .directoryservice$accept_shared_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -171,12 +172,13 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
     name = "AddIpRoutes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$add_ip_routes_input(DirectoryId = DirectoryId, IpRoutes = IpRoutes, UpdateSecurityGroupForDirectoryControllers = UpdateSecurityGroupForDirectoryControllers)
   output <- .directoryservice$add_ip_routes_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -226,12 +228,13 @@ directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
     name = "AddRegion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$add_region_input(DirectoryId = DirectoryId, RegionName = RegionName, VPCSettings = VPCSettings)
   output <- .directoryservice$add_region_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -277,12 +280,13 @@ directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
     name = "AddTagsToResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$add_tags_to_resource_input(ResourceId = ResourceId, Tags = Tags)
   output <- .directoryservice$add_tags_to_resource_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -325,12 +329,13 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
     name = "CancelSchemaExtension",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$cancel_schema_extension_input(DirectoryId = DirectoryId, SchemaExtensionId = SchemaExtensionId)
   output <- .directoryservice$cancel_schema_extension_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -409,12 +414,13 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
     name = "ConnectDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$connect_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, ConnectSettings = ConnectSettings, Tags = Tags)
   output <- .directoryservice$connect_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -468,12 +474,13 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
     name = "CreateAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_alias_input(DirectoryId = DirectoryId, Alias = Alias)
   output <- .directoryservice$create_alias_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -541,12 +548,13 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
     name = "CreateComputer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_computer_input(DirectoryId = DirectoryId, ComputerName = ComputerName, Password = Password, OrganizationalUnitDistinguishedName = OrganizationalUnitDistinguishedName, ComputerAttributes = ComputerAttributes)
   output <- .directoryservice$create_computer_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -597,12 +605,13 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
     name = "CreateConditionalForwarder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs)
   output <- .directoryservice$create_conditional_forwarder_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -709,12 +718,13 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
     name = "CreateDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, VpcSettings = VpcSettings, Tags = Tags)
   output <- .directoryservice$create_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -759,12 +769,13 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
     name = "CreateLogSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_log_subscription_input(DirectoryId = DirectoryId, LogGroupName = LogGroupName)
   output <- .directoryservice$create_log_subscription_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -852,12 +863,13 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
     name = "CreateMicrosoftAD",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_microsoft_ad_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, VpcSettings = VpcSettings, Edition = Edition, Tags = Tags)
   output <- .directoryservice$create_microsoft_ad_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -905,12 +917,13 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
     name = "CreateSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_snapshot_input(DirectoryId = DirectoryId, Name = Name)
   output <- .directoryservice$create_snapshot_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -982,12 +995,13 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
     name = "CreateTrust",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$create_trust_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, TrustPassword = TrustPassword, TrustDirection = TrustDirection, TrustType = TrustType, ConditionalForwarderIpAddrs = ConditionalForwarderIpAddrs, SelectiveAuth = SelectiveAuth)
   output <- .directoryservice$create_trust_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1044,13 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
     name = "DeleteConditionalForwarder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$delete_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName)
   output <- .directoryservice$delete_conditional_forwarder_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1085,12 +1100,13 @@ directoryservice_delete_directory <- function(DirectoryId) {
     name = "DeleteDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$delete_directory_input(DirectoryId = DirectoryId)
   output <- .directoryservice$delete_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1127,12 +1143,13 @@ directoryservice_delete_log_subscription <- function(DirectoryId) {
     name = "DeleteLogSubscription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$delete_log_subscription_input(DirectoryId = DirectoryId)
   output <- .directoryservice$delete_log_subscription_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1174,12 +1191,13 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
     name = "DeleteSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$delete_snapshot_input(SnapshotId = SnapshotId)
   output <- .directoryservice$delete_snapshot_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1226,12 +1244,13 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
     name = "DeleteTrust",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$delete_trust_input(TrustId = TrustId, DeleteAssociatedConditionalForwarder = DeleteAssociatedConditionalForwarder)
   output <- .directoryservice$delete_trust_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1272,12 +1291,13 @@ directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) 
     name = "DeregisterCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$deregister_certificate_input(DirectoryId = DirectoryId, CertificateId = CertificateId)
   output <- .directoryservice$deregister_certificate_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1320,12 +1340,13 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
     name = "DeregisterEventTopic",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$deregister_event_topic_input(DirectoryId = DirectoryId, TopicName = TopicName)
   output <- .directoryservice$deregister_event_topic_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1386,12 +1407,13 @@ directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
     name = "DescribeCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$describe_certificate_input(DirectoryId = DirectoryId, CertificateId = CertificateId)
   output <- .directoryservice$describe_certificate_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1461,12 +1483,13 @@ directoryservice_describe_client_authentication_settings <- function(DirectoryId
     name = "DescribeClientAuthenticationSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ClientAuthenticationSettingsInfo")
   )
   input <- .directoryservice$describe_client_authentication_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_client_authentication_settings_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1527,12 +1550,13 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
     name = "DescribeConditionalForwarders",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$describe_conditional_forwarders_input(DirectoryId = DirectoryId, RemoteDomainNames = RemoteDomainNames)
   output <- .directoryservice$describe_conditional_forwarders_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1705,12 +1729,13 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
     name = "DescribeDirectories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "DirectoryDescriptions")
   )
   input <- .directoryservice$describe_directories_input(DirectoryIds = DirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_directories_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1783,12 +1808,13 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
     name = "DescribeDomainControllers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .directoryservice$describe_domain_controllers_input(DirectoryId = DirectoryId, DomainControllerIds = DomainControllerIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_domain_controllers_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1855,12 +1881,13 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
     name = "DescribeEventTopics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$describe_event_topics_input(DirectoryId = DirectoryId, TopicNames = TopicNames)
   output <- .directoryservice$describe_event_topics_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1919,12 +1946,13 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
     name = "DescribeLDAPSSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LDAPSSettingsInfo")
   )
   input <- .directoryservice$describe_ldaps_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_ldaps_settings_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1998,12 +2026,13 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
     name = "DescribeRegions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RegionsDescription")
   )
   input <- .directoryservice$describe_regions_input(DirectoryId = DirectoryId, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_regions_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2075,12 +2104,13 @@ directoryservice_describe_settings <- function(DirectoryId, Status = NULL, NextT
     name = "DescribeSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$describe_settings_input(DirectoryId = DirectoryId, Status = Status, NextToken = NextToken)
   output <- .directoryservice$describe_settings_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2151,12 +2181,13 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
     name = "DescribeSharedDirectories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SharedDirectories")
   )
   input <- .directoryservice$describe_shared_directories_input(OwnerDirectoryId = OwnerDirectoryId, SharedDirectoryIds = SharedDirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_shared_directories_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2236,12 +2267,13 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Snapshots")
   )
   input <- .directoryservice$describe_snapshots_input(DirectoryId = DirectoryId, SnapshotIds = SnapshotIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_snapshots_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2324,12 +2356,13 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
     name = "DescribeTrusts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Trusts")
   )
   input <- .directoryservice$describe_trusts_input(DirectoryId = DirectoryId, TrustIds = TrustIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_trusts_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2405,12 +2438,13 @@ directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, 
     name = "DescribeUpdateDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "UpdateActivities")
   )
   input <- .directoryservice$describe_update_directory_input(DirectoryId = DirectoryId, UpdateType = UpdateType, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_update_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2452,12 +2486,13 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
     name = "DisableClientAuthentication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$disable_client_authentication_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$disable_client_authentication_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2497,12 +2532,13 @@ directoryservice_disable_ldaps <- function(DirectoryId, Type) {
     name = "DisableLDAPS",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$disable_ldaps_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$disable_ldaps_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2543,12 +2579,13 @@ directoryservice_disable_radius <- function(DirectoryId) {
     name = "DisableRadius",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$disable_radius_input(DirectoryId = DirectoryId)
   output <- .directoryservice$disable_radius_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2599,12 +2636,13 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
     name = "DisableSso",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$disable_sso_input(DirectoryId = DirectoryId, UserName = UserName, Password = Password)
   output <- .directoryservice$disable_sso_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2648,12 +2686,13 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
     name = "EnableClientAuthentication",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$enable_client_authentication_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$enable_client_authentication_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2695,12 +2734,13 @@ directoryservice_enable_ldaps <- function(DirectoryId, Type) {
     name = "EnableLDAPS",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$enable_ldaps_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$enable_ldaps_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2755,12 +2795,13 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
     name = "EnableRadius",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$enable_radius_input(DirectoryId = DirectoryId, RadiusSettings = RadiusSettings)
   output <- .directoryservice$enable_radius_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2814,12 +2855,13 @@ directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password =
     name = "EnableSso",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$enable_sso_input(DirectoryId = DirectoryId, UserName = UserName, Password = Password)
   output <- .directoryservice$enable_sso_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2869,12 +2911,13 @@ directoryservice_get_directory_limits <- function() {
     name = "GetDirectoryLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$get_directory_limits_input()
   output <- .directoryservice$get_directory_limits_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2920,12 +2963,13 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
     name = "GetSnapshotLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$get_snapshot_limits_input(DirectoryId = DirectoryId)
   output <- .directoryservice$get_snapshot_limits_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2987,12 +3031,13 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
     name = "ListCertificates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "CertificatesInfo")
   )
   input <- .directoryservice$list_certificates_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_certificates_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3054,12 +3099,13 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
     name = "ListIpRoutes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "IpRoutesInfo")
   )
   input <- .directoryservice$list_ip_routes_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_ip_routes_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3118,12 +3164,13 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
     name = "ListLogSubscriptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LogSubscriptions")
   )
   input <- .directoryservice$list_log_subscriptions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_log_subscriptions_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3187,12 +3234,13 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
     name = "ListSchemaExtensions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SchemaExtensionsInfo")
   )
   input <- .directoryservice$list_schema_extensions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_schema_extensions_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3244,12 +3292,13 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Tags")
   )
   input <- .directoryservice$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3305,12 +3354,13 @@ directoryservice_register_certificate <- function(DirectoryId, CertificateData, 
     name = "RegisterCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$register_certificate_input(DirectoryId = DirectoryId, CertificateData = CertificateData, Type = Type, ClientCertAuthSettings = ClientCertAuthSettings)
   output <- .directoryservice$register_certificate_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3357,12 +3407,13 @@ directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
     name = "RegisterEventTopic",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$register_event_topic_input(DirectoryId = DirectoryId, TopicName = TopicName)
   output <- .directoryservice$register_event_topic_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3407,12 +3458,13 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
     name = "RejectSharedDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$reject_shared_directory_input(SharedDirectoryId = SharedDirectoryId)
   output <- .directoryservice$reject_shared_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3454,12 +3506,13 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
     name = "RemoveIpRoutes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$remove_ip_routes_input(DirectoryId = DirectoryId, CidrIps = CidrIps)
   output <- .directoryservice$remove_ip_routes_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3501,12 +3554,13 @@ directoryservice_remove_region <- function(DirectoryId) {
     name = "RemoveRegion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$remove_region_input(DirectoryId = DirectoryId)
   output <- .directoryservice$remove_region_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3547,12 +3601,13 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
     name = "RemoveTagsFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$remove_tags_from_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .directoryservice$remove_tags_from_resource_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3612,12 +3667,13 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
     name = "ResetUserPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$reset_user_password_input(DirectoryId = DirectoryId, UserName = UserName, NewPassword = NewPassword)
   output <- .directoryservice$reset_user_password_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3664,12 +3720,13 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
     name = "RestoreFromSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$restore_from_snapshot_input(SnapshotId = SnapshotId)
   output <- .directoryservice$restore_from_snapshot_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3750,12 +3807,13 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
     name = "ShareDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$share_directory_input(DirectoryId = DirectoryId, ShareNotes = ShareNotes, ShareTarget = ShareTarget, ShareMethod = ShareMethod)
   output <- .directoryservice$share_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3809,12 +3867,13 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
     name = "StartSchemaExtension",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$start_schema_extension_input(DirectoryId = DirectoryId, CreateSnapshotBeforeSchemaExtension = CreateSnapshotBeforeSchemaExtension, LdifContent = LdifContent, Description = Description)
   output <- .directoryservice$start_schema_extension_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3865,12 +3924,13 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
     name = "UnshareDirectory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$unshare_directory_input(DirectoryId = DirectoryId, UnshareTarget = UnshareTarget)
   output <- .directoryservice$unshare_directory_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3919,12 +3979,13 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
     name = "UpdateConditionalForwarder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$update_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs)
   output <- .directoryservice$update_conditional_forwarder_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3973,12 +4034,13 @@ directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSU
     name = "UpdateDirectorySetup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$update_directory_setup_input(DirectoryId = DirectoryId, UpdateType = UpdateType, OSUpdateSettings = OSUpdateSettings, CreateSnapshotBeforeUpdate = CreateSnapshotBeforeUpdate)
   output <- .directoryservice$update_directory_setup_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4024,12 +4086,13 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
     name = "UpdateNumberOfDomainControllers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$update_number_of_domain_controllers_input(DirectoryId = DirectoryId, DesiredNumber = DesiredNumber)
   output <- .directoryservice$update_number_of_domain_controllers_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4083,12 +4146,13 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
     name = "UpdateRadius",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$update_radius_input(DirectoryId = DirectoryId, RadiusSettings = RadiusSettings)
   output <- .directoryservice$update_radius_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4137,12 +4201,13 @@ directoryservice_update_settings <- function(DirectoryId, Settings) {
     name = "UpdateSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$update_settings_input(DirectoryId = DirectoryId, Settings = Settings)
   output <- .directoryservice$update_settings_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4189,12 +4254,13 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
     name = "UpdateTrust",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$update_trust_input(TrustId = TrustId, SelectiveAuth = SelectiveAuth)
   output <- .directoryservice$update_trust_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4241,12 +4307,13 @@ directoryservice_verify_trust <- function(TrustId) {
     name = "VerifyTrust",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directoryservice$verify_trust_input(TrustId = TrustId)
   output <- .directoryservice$verify_trust_output()
   config <- get_config()
-  svc <- .directoryservice$service(config)
+  svc <- .directoryservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

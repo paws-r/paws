@@ -48,12 +48,13 @@ codebuild_batch_delete_builds <- function(ids) {
     name = "BatchDeleteBuilds",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$batch_delete_builds_input(ids = ids)
   output <- .codebuild$batch_delete_builds_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -332,12 +333,13 @@ codebuild_batch_get_build_batches <- function(ids) {
     name = "BatchGetBuildBatches",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$batch_get_build_batches_input(ids = ids)
   output <- .codebuild$batch_get_build_batches_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -578,12 +580,13 @@ codebuild_batch_get_builds <- function(ids) {
     name = "BatchGetBuilds",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$batch_get_builds_input(ids = ids)
   output <- .codebuild$batch_get_builds_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -617,7 +620,7 @@ codebuild_batch_get_builds <- function(ids) {
 #'       ),
 #'       status = list(
 #'         statusCode = "CREATING"|"UPDATING"|"ROTATING"|"PENDING_DELETION"|"DELETING"|"CREATE_FAILED"|"UPDATE_ROLLBACK_FAILED"|"ACTIVE",
-#'         context = "CREATE_FAILED"|"UPDATE_FAILED",
+#'         context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED",
 #'         message = "string"
 #'       ),
 #'       baseCapacity = 123,
@@ -635,6 +638,16 @@ codebuild_batch_get_builds <- function(ids) {
 #'         desiredCapacity = 123
 #'       ),
 #'       overflowBehavior = "QUEUE"|"ON_DEMAND",
+#'       vpcConfig = list(
+#'         vpcId = "string",
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       fleetServiceRole = "string",
 #'       tags = list(
 #'         list(
 #'           key = "string",
@@ -668,12 +681,13 @@ codebuild_batch_get_fleets <- function(names) {
     name = "BatchGetFleets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$batch_get_fleets_input(names = names)
   output <- .codebuild$batch_get_fleets_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -836,8 +850,14 @@ codebuild_batch_get_fleets <- function(names) {
 #'           )
 #'         ),
 #'         buildType = "BUILD"|"BUILD_BATCH",
+#'         manualCreation = TRUE|FALSE,
 #'         lastModifiedSecret = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         scopeConfiguration = list(
+#'           name = "string",
+#'           domain = "string",
+#'           scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
 #'         )
 #'       ),
 #'       vpcConfig = list(
@@ -918,12 +938,13 @@ codebuild_batch_get_projects <- function(names) {
     name = "BatchGetProjects",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$batch_get_projects_input(names = names)
   output <- .codebuild$batch_get_projects_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1000,12 +1021,13 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
     name = "BatchGetReportGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$batch_get_report_groups_input(reportGroupArns = reportGroupArns)
   output <- .codebuild$batch_get_report_groups_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1094,12 +1116,13 @@ codebuild_batch_get_reports <- function(reportArns) {
     name = "BatchGetReports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$batch_get_reports_input(reportArns = reportArns)
   output <- .codebuild$batch_get_reports_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1113,7 +1136,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'
 #' @usage
 #' codebuild_create_fleet(name, baseCapacity, environmentType, computeType,
-#'   scalingConfiguration, overflowBehavior, tags)
+#'   scalingConfiguration, overflowBehavior, vpcConfig, fleetServiceRole,
+#'   tags)
 #'
 #' @param name &#91;required&#93; The name of the compute fleet.
 #' @param baseCapacity &#91;required&#93; The initial number of machines allocated to the ﬂeet, which defines the
@@ -1203,6 +1227,19 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' 
 #' -   For overflow behavior `ON_DEMAND`, your overflow builds run on
 #'     CodeBuild on-demand.
+#' 
+#'     If you choose to set your overflow behavior to on-demand while
+#'     creating a VPC-connected fleet, make sure that you add the required
+#'     VPC permissions to your project service role. For more information,
+#'     see [Example policy statement to allow CodeBuild access to Amazon
+#'     Web Services services required to create a VPC network
+#'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
+#' @param vpcConfig 
+#' @param fleetServiceRole The service role associated with the compute fleet. For more
+#' information, see [Allow a user to add a permission policy for a fleet
+#' service
+#' role](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-permission-policy-fleet-service-role.html)
+#' in the *CodeBuild User Guide*.
 #' @param tags A list of tag key and value pairs associated with this compute fleet.
 #' 
 #' These tags are available for use by Amazon Web Services services that
@@ -1224,7 +1261,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     ),
 #'     status = list(
 #'       statusCode = "CREATING"|"UPDATING"|"ROTATING"|"PENDING_DELETION"|"DELETING"|"CREATE_FAILED"|"UPDATE_ROLLBACK_FAILED"|"ACTIVE",
-#'       context = "CREATE_FAILED"|"UPDATE_FAILED",
+#'       context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED",
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
@@ -1242,6 +1279,16 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       desiredCapacity = 123
 #'     ),
 #'     overflowBehavior = "QUEUE"|"ON_DEMAND",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     fleetServiceRole = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
@@ -1270,6 +1317,16 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     maxCapacity = 123
 #'   ),
 #'   overflowBehavior = "QUEUE"|"ON_DEMAND",
+#'   vpcConfig = list(
+#'     vpcId = "string",
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   fleetServiceRole = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -1284,17 +1341,18 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @rdname codebuild_create_fleet
 #'
 #' @aliases codebuild_create_fleet
-codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, tags = NULL) {
+codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, tags = tags)
+  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$create_fleet_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1329,6 +1387,8 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     specified, the branch's HEAD commit ID is used. If not specified,
 #'     the default branch's HEAD commit ID is used.
 #' 
+#' -   For GitLab: the commit ID, branch, or Git tag to use.
+#' 
 #' -   For Bitbucket: the commit ID, branch name, or tag name that
 #'     corresponds to the version of the source code you want to build. If
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
@@ -1354,7 +1414,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #' @param serviceRole &#91;required&#93; The ARN of the IAM role that enables CodeBuild to interact with
 #' dependent Amazon Web Services services on behalf of the Amazon Web
 #' Services account.
-#' @param timeoutInMinutes How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait
+#' @param timeoutInMinutes How long, in minutes, from 5 to 2160 (36 hours), for CodeBuild to wait
 #' before it times out any build that has not been marked as completed. The
 #' default is 60 minutes.
 #' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times
@@ -1372,6 +1432,9 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #' These tags are available for use by Amazon Web Services services that
 #' support CodeBuild build project tags.
 #' @param vpcConfig VpcConfig enables CodeBuild to access resources in an Amazon VPC.
+#' 
+#' If you're using compute fleets during project creation, do not provide
+#' vpcConfig.
 #' @param badgeEnabled Set this to true to generate a publicly accessible URL for your
 #' project's build badge.
 #' @param logsConfig Information about logs for the build project. These can be logs in
@@ -1532,8 +1595,14 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'         )
 #'       ),
 #'       buildType = "BUILD"|"BUILD_BATCH",
+#'       manualCreation = TRUE|FALSE,
 #'       lastModifiedSecret = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       scopeConfiguration = list(
+#'         name = "string",
+#'         domain = "string",
+#'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
 #'       )
 #'     ),
 #'     vpcConfig = list(
@@ -1768,12 +1837,13 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$create_project_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1868,12 +1938,13 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
     name = "CreateReportGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$create_report_group_input(name = name, type = type, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$create_report_group_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1903,7 +1974,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'
 #' @usage
 #' codebuild_create_webhook(projectName, branchFilter, filterGroups,
-#'   buildType)
+#'   buildType, manualCreation, scopeConfiguration)
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
@@ -1920,6 +1991,16 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' `filterGroups` array must pass. For a filter group to pass, each of its
 #' filters must pass.
 #' @param buildType Specifies the type of build this webhook will trigger.
+#' @param manualCreation If manualCreation is true, CodeBuild doesn't create a webhook in GitHub
+#' and instead returns `payloadUrl` and `secret` values for the webhook.
+#' The `payloadUrl` and `secret` values in the output can be used to
+#' manually create a webhook within GitHub.
+#' 
+#' `manualCreation` is only available for GitHub webhooks.
+#' @param scopeConfiguration The scope configuration for global or organization webhooks.
+#' 
+#' Global or organization webhooks are only available for GitHub and Github
+#' Enterprise webhooks.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1940,8 +2021,14 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'       )
 #'     ),
 #'     buildType = "BUILD"|"BUILD_BATCH",
+#'     manualCreation = TRUE|FALSE,
 #'     lastModifiedSecret = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     scopeConfiguration = list(
+#'       name = "string",
+#'       domain = "string",
+#'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
 #'     )
 #'   )
 #' )
@@ -1961,7 +2048,13 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'       )
 #'     )
 #'   ),
-#'   buildType = "BUILD"|"BUILD_BATCH"
+#'   buildType = "BUILD"|"BUILD_BATCH",
+#'   manualCreation = TRUE|FALSE,
+#'   scopeConfiguration = list(
+#'     name = "string",
+#'     domain = "string",
+#'     scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
+#'   )
 #' )
 #' ```
 #'
@@ -1970,17 +2063,18 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' @rdname codebuild_create_webhook
 #'
 #' @aliases codebuild_create_webhook
-codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL, buildType = NULL) {
+codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL, buildType = NULL, manualCreation = NULL, scopeConfiguration = NULL) {
   op <- new_operation(
     name = "CreateWebhook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType)
+  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType, manualCreation = manualCreation, scopeConfiguration = scopeConfiguration)
   output <- .codebuild$create_webhook_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2031,12 +2125,13 @@ codebuild_delete_build_batch <- function(id) {
     name = "DeleteBuildBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_build_batch_input(id = id)
   output <- .codebuild$delete_build_batch_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2074,12 +2169,13 @@ codebuild_delete_fleet <- function(arn) {
     name = "DeleteFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_fleet_input(arn = arn)
   output <- .codebuild$delete_fleet_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2117,12 +2213,13 @@ codebuild_delete_project <- function(name) {
     name = "DeleteProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_project_input(name = name)
   output <- .codebuild$delete_project_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2159,12 +2256,13 @@ codebuild_delete_report <- function(arn) {
     name = "DeleteReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_report_input(arn = arn)
   output <- .codebuild$delete_report_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2212,12 +2310,13 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
     name = "DeleteReportGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_report_group_input(arn = arn, deleteReports = deleteReports)
   output <- .codebuild$delete_report_group_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2254,12 +2353,13 @@ codebuild_delete_resource_policy <- function(resourceArn) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_resource_policy_input(resourceArn = resourceArn)
   output <- .codebuild$delete_resource_policy_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2303,12 +2403,13 @@ codebuild_delete_source_credentials <- function(arn) {
     name = "DeleteSourceCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_source_credentials_input(arn = arn)
   output <- .codebuild$delete_source_credentials_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2349,12 +2450,13 @@ codebuild_delete_webhook <- function(projectName) {
     name = "DeleteWebhook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$delete_webhook_input(projectName = projectName)
   output <- .codebuild$delete_webhook_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2436,12 +2538,13 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
     name = "DescribeCodeCoverages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "codeCoverages")
   )
   input <- .codebuild$describe_code_coverages_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy, minLineCoveragePercentage = minLineCoveragePercentage, maxLineCoveragePercentage = maxLineCoveragePercentage)
   output <- .codebuild$describe_code_coverages_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2514,12 +2617,13 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
     name = "DescribeTestCases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "testCases")
   )
   input <- .codebuild$describe_test_cases_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$describe_test_cases_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2624,12 +2728,13 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
     name = "GetReportGroupTrend",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$get_report_group_trend_input(reportGroupArn = reportGroupArn, numOfReports = numOfReports, trendField = trendField)
   output <- .codebuild$get_report_group_trend_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2671,12 +2776,13 @@ codebuild_get_resource_policy <- function(resourceArn) {
     name = "GetResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$get_resource_policy_input(resourceArn = resourceArn)
   output <- .codebuild$get_resource_policy_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2699,11 +2805,14 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This parameter
 #' is not valid for other types of source providers or connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
-#' Bitbucket, this is either the access token or the app password.
+#' Bitbucket, this is either the access token or the app password. For the
+#' `authType` CODECONNECTIONS, this is the `connectionArn`.
 #' @param serverType &#91;required&#93; The source provider used for this project.
 #' @param authType &#91;required&#93; The type of authentication used to connect to a GitHub, GitHub
-#' Enterprise, or Bitbucket repository. An OAUTH connection is not
-#' supported by the API and must be created using the CodeBuild console.
+#' Enterprise, GitLab, GitLab Self Managed, or Bitbucket repository. An
+#' OAUTH connection is not supported by the API and must be created using
+#' the CodeBuild console. Note that CODECONNECTIONS is only valid for
+#' GitLab and GitLab Self Managed.
 #' @param shouldOverwrite Set to `false` to prevent overwriting the repository source credentials.
 #' Set to `true` to overwrite the repository source credentials. The
 #' default value is `true`.
@@ -2737,12 +2846,13 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
     name = "ImportSourceCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$import_source_credentials_input(username = username, token = token, serverType = serverType, authType = authType, shouldOverwrite = shouldOverwrite)
   output <- .codebuild$import_source_credentials_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2779,12 +2889,13 @@ codebuild_invalidate_project_cache <- function(projectName) {
     name = "InvalidateProjectCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$invalidate_project_cache_input(projectName = projectName)
   output <- .codebuild$invalidate_project_cache_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2846,12 +2957,13 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
     name = "ListBuildBatches",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_build_batches_input(filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2916,12 +3028,13 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
     name = "ListBuildBatchesForProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_build_batches_for_project_input(projectName = projectName, filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_for_project_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2978,12 +3091,13 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
     name = "ListBuilds",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_builds_input(sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3052,12 +3166,13 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
     name = "ListBuildsForProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_builds_for_project_input(projectName = projectName, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_for_project_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3115,12 +3230,13 @@ codebuild_list_curated_environment_images <- function() {
     name = "ListCuratedEnvironmentImages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$list_curated_environment_images_input()
   output <- .codebuild$list_curated_environment_images_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3197,12 +3313,13 @@ codebuild_list_fleets <- function(nextToken = NULL, maxResults = NULL, sortOrder
     name = "ListFleets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codebuild$list_fleets_input(nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy)
   output <- .codebuild$list_fleets_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3276,12 +3393,13 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
     name = "ListProjects",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "projects")
   )
   input <- .codebuild$list_projects_input(sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_projects_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3351,12 +3469,13 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
     name = "ListReportGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups")
   )
   input <- .codebuild$list_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_report_groups_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3426,12 +3545,13 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
     name = "ListReports",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports")
   )
   input <- .codebuild$list_reports_input(sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3496,12 +3616,13 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
     name = "ListReportsForReportGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports")
   )
   input <- .codebuild$list_reports_for_report_group_input(reportGroupArn = reportGroupArn, nextToken = nextToken, sortOrder = sortOrder, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_for_report_group_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3572,12 +3693,13 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
     name = "ListSharedProjects",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "projects")
   )
   input <- .codebuild$list_shared_projects_input(sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .codebuild$list_shared_projects_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3649,12 +3771,13 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
     name = "ListSharedReportGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups")
   )
   input <- .codebuild$list_shared_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_shared_report_groups_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3701,12 +3824,13 @@ codebuild_list_source_credentials <- function() {
     name = "ListSourceCredentials",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$list_source_credentials_input()
   output <- .codebuild$list_source_credentials_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3756,12 +3880,13 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
   output <- .codebuild$put_resource_policy_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4002,12 +4127,13 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
     name = "RetryBuild",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$retry_build_input(id = id, idempotencyToken = idempotencyToken)
   output <- .codebuild$retry_build_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4291,12 +4417,13 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
     name = "RetryBuildBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$retry_build_batch_input(id = id, idempotencyToken = idempotencyToken, retryType = retryType)
   output <- .codebuild$retry_build_batch_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4351,6 +4478,10 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' specified, the branch's HEAD commit ID is used. If not specified, the
 #' default branch's HEAD commit ID is used.
 #' 
+#' **GitLab**
+#' 
+#' The commit ID, branch, or Git tag to use.
+#' 
 #' **Bitbucket**
 #' 
 #' The commit ID, branch name, or tag name that corresponds to the version
@@ -4380,7 +4511,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' one defined in the build project.
 #' @param sourceAuthOverride An authorization type for this build that overrides the one defined in
 #' the build project. This override applies only if the build project's
-#' source is BitBucket or GitHub.
+#' source is BitBucket, GitHub, GitLab, or GitLab Self Managed.
 #' @param gitCloneDepthOverride The user-defined depth of history, with a minimum value of 0, that
 #' overrides, for this build only, any previous depth of history defined in
 #' the build project.
@@ -4440,7 +4571,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param serviceRoleOverride The name of a service role for this build that overrides the one
 #' specified in the build project.
 #' @param privilegedModeOverride Enable this flag to override privileged mode in the build project.
-#' @param timeoutInMinutesOverride The number of build timeout minutes, from 5 to 480 (8 hours), that
+#' @param timeoutInMinutesOverride The number of build timeout minutes, from 5 to 2160 (36 hours), that
 #' overrides, for this build only, the latest setting already defined in
 #' the build project.
 #' @param queuedTimeoutInMinutesOverride The number of minutes a build is allowed to be queued before it times
@@ -4819,12 +4950,13 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
     name = "StartBuild",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride)
   output <- .codebuild$start_build_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5370,12 +5502,13 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
     name = "StartBuildBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride, debugSessionEnabled = debugSessionEnabled)
   output <- .codebuild$start_build_batch_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5609,12 +5742,13 @@ codebuild_stop_build <- function(id) {
     name = "StopBuild",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$stop_build_input(id = id)
   output <- .codebuild$stop_build_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5886,12 +6020,13 @@ codebuild_stop_build_batch <- function(id) {
     name = "StopBuildBatch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$stop_build_batch_input(id = id)
   output <- .codebuild$stop_build_batch_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5905,7 +6040,8 @@ codebuild_stop_build_batch <- function(id) {
 #'
 #' @usage
 #' codebuild_update_fleet(arn, baseCapacity, environmentType, computeType,
-#'   scalingConfiguration, overflowBehavior, tags)
+#'   scalingConfiguration, overflowBehavior, vpcConfig, fleetServiceRole,
+#'   tags)
 #'
 #' @param arn &#91;required&#93; The ARN of the compute fleet.
 #' @param baseCapacity The initial number of machines allocated to the compute ﬂeet, which
@@ -5995,6 +6131,19 @@ codebuild_stop_build_batch <- function(id) {
 #' 
 #' -   For overflow behavior `ON_DEMAND`, your overflow builds run on
 #'     CodeBuild on-demand.
+#' 
+#'     If you choose to set your overflow behavior to on-demand while
+#'     creating a VPC-connected fleet, make sure that you add the required
+#'     VPC permissions to your project service role. For more information,
+#'     see [Example policy statement to allow CodeBuild access to Amazon
+#'     Web Services services required to create a VPC network
+#'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
+#' @param vpcConfig 
+#' @param fleetServiceRole The service role associated with the compute fleet. For more
+#' information, see [Allow a user to add a permission policy for a fleet
+#' service
+#' role](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-permission-policy-fleet-service-role.html)
+#' in the *CodeBuild User Guide*.
 #' @param tags A list of tag key and value pairs associated with this compute fleet.
 #' 
 #' These tags are available for use by Amazon Web Services services that
@@ -6016,7 +6165,7 @@ codebuild_stop_build_batch <- function(id) {
 #'     ),
 #'     status = list(
 #'       statusCode = "CREATING"|"UPDATING"|"ROTATING"|"PENDING_DELETION"|"DELETING"|"CREATE_FAILED"|"UPDATE_ROLLBACK_FAILED"|"ACTIVE",
-#'       context = "CREATE_FAILED"|"UPDATE_FAILED",
+#'       context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED",
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
@@ -6034,6 +6183,16 @@ codebuild_stop_build_batch <- function(id) {
 #'       desiredCapacity = 123
 #'     ),
 #'     overflowBehavior = "QUEUE"|"ON_DEMAND",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     fleetServiceRole = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
@@ -6062,6 +6221,16 @@ codebuild_stop_build_batch <- function(id) {
 #'     maxCapacity = 123
 #'   ),
 #'   overflowBehavior = "QUEUE"|"ON_DEMAND",
+#'   vpcConfig = list(
+#'     vpcId = "string",
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   fleetServiceRole = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -6076,17 +6245,18 @@ codebuild_stop_build_batch <- function(id) {
 #' @rdname codebuild_update_fleet
 #'
 #' @aliases codebuild_update_fleet
-codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, tags = NULL) {
+codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, tags = tags)
+  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$update_fleet_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6124,6 +6294,8 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     specified, the branch's HEAD commit ID is used. If not specified,
 #'     the default branch's HEAD commit ID is used.
 #' 
+#' -   For GitLab: the commit ID, branch, or Git tag to use.
+#' 
 #' -   For Bitbucket: the commit ID, branch name, or tag name that
 #'     corresponds to the version of the source code you want to build. If
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
@@ -6151,9 +6323,9 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #' @param serviceRole The replacement ARN of the IAM role that enables CodeBuild to interact
 #' with dependent Amazon Web Services services on behalf of the Amazon Web
 #' Services account.
-#' @param timeoutInMinutes The replacement value in minutes, from 5 to 480 (8 hours), for CodeBuild
-#' to wait before timing out any related build that did not get marked as
-#' completed.
+#' @param timeoutInMinutes The replacement value in minutes, from 5 to 2160 (36 hours), for
+#' CodeBuild to wait before timing out any related build that did not get
+#' marked as completed.
 #' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times
 #' out.
 #' @param encryptionKey The Key Management Service customer master key (CMK) to be used for
@@ -6331,8 +6503,14 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'         )
 #'       ),
 #'       buildType = "BUILD"|"BUILD_BATCH",
+#'       manualCreation = TRUE|FALSE,
 #'       lastModifiedSecret = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       scopeConfiguration = list(
+#'         name = "string",
+#'         domain = "string",
+#'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
 #'       )
 #'     ),
 #'     vpcConfig = list(
@@ -6567,12 +6745,13 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
     name = "UpdateProject",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$update_project_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6654,12 +6833,13 @@ codebuild_update_project_visibility <- function(projectArn, projectVisibility, r
     name = "UpdateProjectVisibility",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$update_project_visibility_input(projectArn = projectArn, projectVisibility = projectVisibility, resourceAccessRole = resourceAccessRole)
   output <- .codebuild$update_project_visibility_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6756,12 +6936,13 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
     name = "UpdateReportGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$update_report_group_input(arn = arn, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$update_report_group_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6813,8 +6994,14 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'       )
 #'     ),
 #'     buildType = "BUILD"|"BUILD_BATCH",
+#'     manualCreation = TRUE|FALSE,
 #'     lastModifiedSecret = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     scopeConfiguration = list(
+#'       name = "string",
+#'       domain = "string",
+#'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
 #'     )
 #'   )
 #' )
@@ -6849,12 +7036,13 @@ codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSec
     name = "UpdateWebhook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups, buildType = buildType)
   output <- .codebuild$update_webhook_output()
   config <- get_config()
-  svc <- .codebuild$service(config)
+  svc <- .codebuild$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

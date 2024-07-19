@@ -156,7 +156,7 @@ dax <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "AmazonDAXV3"
 )
 
-.dax$service <- function(config = list()) {
+.dax$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.dax$metadata, handlers, config)
+  new_service(.dax$metadata, handlers, config, op)
 }

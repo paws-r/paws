@@ -5,13 +5,15 @@
 \title{Retrieves glyphs used to display labels on a map}
 \usage{
 locationservice_get_map_glyphs(
+  MapName,
   FontStack,
   FontUnicodeRange,
-  Key = NULL,
-  MapName
+  Key = NULL
 )
 }
 \arguments{
+\item{MapName}{[required] The map resource associated with the glyph file.}
+
 \item{FontStack}{[required] A comma-separated list of fonts to load glyphs from in order of
 preference. For example, \verb{Noto Sans Regular, Arial Unicode}.
 
@@ -28,7 +30,7 @@ styles:
 \verb{Roboto Condensed Light Italic}
 \item VectorEsriStreets – \verb{Arial Regular} | \verb{Arial Italic} | \verb{Arial Bold}
 \item VectorEsriNavigation – \verb{Arial Regular} | \verb{Arial Italic} |
-\verb{Arial Bold} | \verb{Arial Unicode MS Bold} | \verb{Arial Unicode MS Regular}
+\verb{Arial Bold}
 }
 
 Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/HERE.html}{HERE Technologies}
@@ -79,8 +81,6 @@ range \code{U+0000} to \verb{00FF}. Must be aligned to multiples of 256.}
 
 \item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
-
-\item{MapName}{[required] The map resource associated with the glyph file.}
 }
 \description{
 Retrieves glyphs used to display labels on a map.

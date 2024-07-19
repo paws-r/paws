@@ -250,6 +250,10 @@ instance hostnames with DNS AAAA records.
 \item \code{private-dns-name-options.hostname-type} - The type of hostname
 (\code{ip-name} | \code{resource-name}).
 \item \code{private-ip-address} - The private IPv4 address of the instance.
+This can only be used to filter by the primary IP address of the
+network interface attached to the instance. To filter by additional
+IP addresses assigned to the network interface, use the filter
+\code{network-interface.addresses.private-ip-address}.
 \item \code{product-code} - The product code associated with the AMI used to
 launch the instance.
 \item \code{product-code.type} - The type of product code (\code{devpay} |

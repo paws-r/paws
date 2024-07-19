@@ -142,7 +142,7 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
   target_prefix = ""
 )
 
-.licensemanagerusersubscriptions$service <- function(config = list()) {
+.licensemanagerusersubscriptions$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.licensemanagerusersubscriptions$metadata, handlers, config)
+  new_service(.licensemanagerusersubscriptions$metadata, handlers, config, op)
 }

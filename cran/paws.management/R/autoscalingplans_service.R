@@ -163,7 +163,7 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = "AnyScaleScalingPlannerFrontendService"
 )
 
-.autoscalingplans$service <- function(config = list()) {
+.autoscalingplans$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.autoscalingplans$metadata, handlers, config)
+  new_service(.autoscalingplans$metadata, handlers, config, op)
 }

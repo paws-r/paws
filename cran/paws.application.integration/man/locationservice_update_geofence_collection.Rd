@@ -6,20 +6,20 @@
 \usage{
 locationservice_update_geofence_collection(
   CollectionName,
-  Description = NULL,
   PricingPlan = NULL,
-  PricingPlanDataSource = NULL
+  PricingPlanDataSource = NULL,
+  Description = NULL
 )
 }
 \arguments{
 \item{CollectionName}{[required] The name of the geofence collection to update.}
 
-\item{Description}{Updates the description for the geofence collection.}
-
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
 
 \item{PricingPlanDataSource}{This parameter is no longer used.}
+
+\item{Description}{Updates the description for the geofence collection.}
 }
 \description{
 Updates the specified properties of a given geofence collection.

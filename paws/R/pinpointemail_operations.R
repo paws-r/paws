@@ -73,12 +73,13 @@ pinpointemail_create_configuration_set <- function(ConfigurationSetName, Trackin
     name = "CreateConfigurationSet",
     http_method = "POST",
     http_path = "/v1/email/configuration-sets",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions, Tags = Tags)
   output <- .pinpointemail$create_configuration_set_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -154,12 +155,13 @@ pinpointemail_create_configuration_set_event_destination <- function(Configurati
     name = "CreateConfigurationSetEventDestination",
     http_method = "POST",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/event-destinations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$create_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName, EventDestination = EventDestination)
   output <- .pinpointemail$create_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -208,12 +210,13 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
     name = "CreateDedicatedIpPool",
     http_method = "POST",
     http_path = "/v1/email/dedicated-ip-pools",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$create_dedicated_ip_pool_input(PoolName = PoolName, Tags = Tags)
   output <- .pinpointemail$create_dedicated_ip_pool_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -305,12 +308,13 @@ pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, F
     name = "CreateDeliverabilityTestReport",
     http_method = "POST",
     http_path = "/v1/email/deliverability-dashboard/test",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$create_deliverability_test_report_input(ReportName = ReportName, FromEmailAddress = FromEmailAddress, Content = Content, Tags = Tags)
   output <- .pinpointemail$create_deliverability_test_report_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -384,12 +388,13 @@ pinpointemail_create_email_identity <- function(EmailIdentity, Tags = NULL) {
     name = "CreateEmailIdentity",
     http_method = "POST",
     http_path = "/v1/email/identities",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags)
   output <- .pinpointemail$create_email_identity_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -432,12 +437,13 @@ pinpointemail_delete_configuration_set <- function(ConfigurationSetName) {
     name = "DeleteConfigurationSet",
     http_method = "DELETE",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$delete_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointemail$delete_configuration_set_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -485,12 +491,13 @@ pinpointemail_delete_configuration_set_event_destination <- function(Configurati
     name = "DeleteConfigurationSetEventDestination",
     http_method = "DELETE",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$delete_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName)
   output <- .pinpointemail$delete_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -527,12 +534,13 @@ pinpointemail_delete_dedicated_ip_pool <- function(PoolName) {
     name = "DeleteDedicatedIpPool",
     http_method = "DELETE",
     http_path = "/v1/email/dedicated-ip-pools/{PoolName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$delete_dedicated_ip_pool_input(PoolName = PoolName)
   output <- .pinpointemail$delete_dedicated_ip_pool_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -573,12 +581,13 @@ pinpointemail_delete_email_identity <- function(EmailIdentity) {
     name = "DeleteEmailIdentity",
     http_method = "DELETE",
     http_path = "/v1/email/identities/{EmailIdentity}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$delete_email_identity_input(EmailIdentity = EmailIdentity)
   output <- .pinpointemail$delete_email_identity_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -628,12 +637,13 @@ pinpointemail_get_account <- function() {
     name = "GetAccount",
     http_method = "GET",
     http_path = "/v1/email/account",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_account_input()
   output <- .pinpointemail$get_account_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -691,12 +701,13 @@ pinpointemail_get_blacklist_reports <- function(BlacklistItemNames) {
     name = "GetBlacklistReports",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/blacklist-report",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_blacklist_reports_input(BlacklistItemNames = BlacklistItemNames)
   output <- .pinpointemail$get_blacklist_reports_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -771,12 +782,13 @@ pinpointemail_get_configuration_set <- function(ConfigurationSetName) {
     name = "GetConfigurationSet",
     http_method = "GET",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointemail$get_configuration_set_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -855,12 +867,13 @@ pinpointemail_get_configuration_set_event_destinations <- function(Configuration
     name = "GetConfigurationSetEventDestinations",
     http_method = "GET",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/event-destinations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_configuration_set_event_destinations_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointemail$get_configuration_set_event_destinations_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -913,12 +926,13 @@ pinpointemail_get_dedicated_ip <- function(Ip) {
     name = "GetDedicatedIp",
     http_method = "GET",
     http_path = "/v1/email/dedicated-ips/{IP}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_dedicated_ip_input(Ip = Ip)
   output <- .pinpointemail$get_dedicated_ip_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -980,12 +994,13 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
     name = "GetDedicatedIps",
     http_method = "GET",
     http_path = "/v1/email/dedicated-ips",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$get_dedicated_ips_input(PoolName = PoolName, NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$get_dedicated_ips_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1069,12 +1084,13 @@ pinpointemail_get_deliverability_dashboard_options <- function() {
     name = "GetDeliverabilityDashboardOptions",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_deliverability_dashboard_options_input()
   output <- .pinpointemail$get_deliverability_dashboard_options_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1151,12 +1167,13 @@ pinpointemail_get_deliverability_test_report <- function(ReportId) {
     name = "GetDeliverabilityTestReport",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/test-reports/{ReportId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_deliverability_test_report_input(ReportId = ReportId)
   output <- .pinpointemail$get_deliverability_test_report_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1229,12 +1246,13 @@ pinpointemail_get_domain_deliverability_campaign <- function(CampaignId) {
     name = "GetDomainDeliverabilityCampaign",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/campaigns/{CampaignId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_domain_deliverability_campaign_input(CampaignId = CampaignId)
   output <- .pinpointemail$get_domain_deliverability_campaign_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1328,12 +1346,13 @@ pinpointemail_get_domain_statistics_report <- function(Domain, StartDate, EndDat
     name = "GetDomainStatisticsReport",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/statistics-report/{Domain}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_domain_statistics_report_input(Domain = Domain, StartDate = StartDate, EndDate = EndDate)
   output <- .pinpointemail$get_domain_statistics_report_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1399,12 +1418,13 @@ pinpointemail_get_email_identity <- function(EmailIdentity) {
     name = "GetEmailIdentity",
     http_method = "GET",
     http_path = "/v1/email/identities/{EmailIdentity}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$get_email_identity_input(EmailIdentity = EmailIdentity)
   output <- .pinpointemail$get_email_identity_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1465,12 +1485,13 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
     name = "ListConfigurationSets",
     http_method = "GET",
     http_path = "/v1/email/configuration-sets",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_configuration_sets_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_configuration_sets_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1525,12 +1546,13 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
     name = "ListDedicatedIpPools",
     http_method = "GET",
     http_path = "/v1/email/dedicated-ip-pools",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_dedicated_ip_pools_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_dedicated_ip_pools_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1601,12 +1623,13 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
     name = "ListDeliverabilityTestReports",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/test-reports",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_deliverability_test_reports_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_deliverability_test_reports_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1703,12 +1726,13 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
     name = "ListDomainDeliverabilityCampaigns",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_domain_deliverability_campaigns_input(StartDate = StartDate, EndDate = EndDate, SubscribedDomain = SubscribedDomain, NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_domain_deliverability_campaigns_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1772,12 +1796,13 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
     name = "ListEmailIdentities",
     http_method = "GET",
     http_path = "/v1/email/identities",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_email_identities_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_email_identities_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1831,12 +1856,13 @@ pinpointemail_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/v1/email/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .pinpointemail$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1879,12 +1905,13 @@ pinpointemail_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupE
     name = "PutAccountDedicatedIpWarmupAttributes",
     http_method = "PUT",
     http_path = "/v1/email/account/dedicated-ips/warmup",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_account_dedicated_ip_warmup_attributes_input(AutoWarmupEnabled = AutoWarmupEnabled)
   output <- .pinpointemail$put_account_dedicated_ip_warmup_attributes_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1925,12 +1952,13 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
     name = "PutAccountSendingAttributes",
     http_method = "PUT",
     http_path = "/v1/email/account/sending",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_account_sending_attributes_input(SendingEnabled = SendingEnabled)
   output <- .pinpointemail$put_account_sending_attributes_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1980,12 +2008,13 @@ pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSe
     name = "PutConfigurationSetDeliveryOptions",
     http_method = "PUT",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/delivery-options",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, TlsPolicy = TlsPolicy, SendingPoolName = SendingPoolName)
   output <- .pinpointemail$put_configuration_set_delivery_options_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2030,12 +2059,13 @@ pinpointemail_put_configuration_set_reputation_options <- function(Configuration
     name = "PutConfigurationSetReputationOptions",
     http_method = "PUT",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/reputation-options",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_configuration_set_reputation_options_input(ConfigurationSetName = ConfigurationSetName, ReputationMetricsEnabled = ReputationMetricsEnabled)
   output <- .pinpointemail$put_configuration_set_reputation_options_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2079,12 +2109,13 @@ pinpointemail_put_configuration_set_sending_options <- function(ConfigurationSet
     name = "PutConfigurationSetSendingOptions",
     http_method = "PUT",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/sending",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_configuration_set_sending_options_input(ConfigurationSetName = ConfigurationSetName, SendingEnabled = SendingEnabled)
   output <- .pinpointemail$put_configuration_set_sending_options_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2127,12 +2158,13 @@ pinpointemail_put_configuration_set_tracking_options <- function(ConfigurationSe
     name = "PutConfigurationSetTrackingOptions",
     http_method = "PUT",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/tracking-options",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, CustomRedirectDomain = CustomRedirectDomain)
   output <- .pinpointemail$put_configuration_set_tracking_options_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2182,12 +2214,13 @@ pinpointemail_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
     name = "PutDedicatedIpInPool",
     http_method = "PUT",
     http_path = "/v1/email/dedicated-ips/{IP}/pool",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_dedicated_ip_in_pool_input(Ip = Ip, DestinationPoolName = DestinationPoolName)
   output <- .pinpointemail$put_dedicated_ip_in_pool_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2228,12 +2261,13 @@ pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentag
     name = "PutDedicatedIpWarmupAttributes",
     http_method = "PUT",
     http_path = "/v1/email/dedicated-ips/{IP}/warmup",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_dedicated_ip_warmup_attributes_input(Ip = Ip, WarmupPercentage = WarmupPercentage)
   output <- .pinpointemail$put_dedicated_ip_warmup_attributes_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2299,12 +2333,13 @@ pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled, 
     name = "PutDeliverabilityDashboardOption",
     http_method = "PUT",
     http_path = "/v1/email/deliverability-dashboard",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_deliverability_dashboard_option_input(DashboardEnabled = DashboardEnabled, SubscribedDomains = SubscribedDomains)
   output <- .pinpointemail$put_deliverability_dashboard_option_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2349,12 +2384,13 @@ pinpointemail_put_email_identity_dkim_attributes <- function(EmailIdentity, Sign
     name = "PutEmailIdentityDkimAttributes",
     http_method = "PUT",
     http_path = "/v1/email/identities/{EmailIdentity}/dkim",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_email_identity_dkim_attributes_input(EmailIdentity = EmailIdentity, SigningEnabled = SigningEnabled)
   output <- .pinpointemail$put_email_identity_dkim_attributes_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2422,12 +2458,13 @@ pinpointemail_put_email_identity_feedback_attributes <- function(EmailIdentity, 
     name = "PutEmailIdentityFeedbackAttributes",
     http_method = "PUT",
     http_path = "/v1/email/identities/{EmailIdentity}/feedback",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_email_identity_feedback_attributes_input(EmailIdentity = EmailIdentity, EmailForwardingEnabled = EmailForwardingEnabled)
   output <- .pinpointemail$put_email_identity_feedback_attributes_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2488,12 +2525,13 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
     name = "PutEmailIdentityMailFromAttributes",
     http_method = "PUT",
     http_path = "/v1/email/identities/{EmailIdentity}/mail-from",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$put_email_identity_mail_from_attributes_input(EmailIdentity = EmailIdentity, MailFromDomain = MailFromDomain, BehaviorOnMxFailure = BehaviorOnMxFailure)
   output <- .pinpointemail$put_email_identity_mail_from_attributes_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2609,12 +2647,13 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
     name = "SendEmail",
     http_method = "POST",
     http_path = "/v1/email/outbound-emails",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$send_email_input(FromEmailAddress = FromEmailAddress, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointemail$send_email_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2671,12 +2710,13 @@ pinpointemail_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/v1/email/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .pinpointemail$tag_resource_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2725,12 +2765,13 @@ pinpointemail_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/v1/email/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .pinpointemail$untag_resource_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2805,12 +2846,13 @@ pinpointemail_update_configuration_set_event_destination <- function(Configurati
     name = "UpdateConfigurationSetEventDestination",
     http_method = "PUT",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpointemail$update_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName, EventDestination = EventDestination)
   output <- .pinpointemail$update_configuration_set_event_destination_output()
   config <- get_config()
-  svc <- .pinpointemail$service(config)
+  svc <- .pinpointemail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -33,8 +33,8 @@ your request.}
 In releases prior to June 12, 2017, this parameter was ignored by the
 API. It is now discontinued.}
 
-\item{blueprintId}{[required] The ID for a virtual private server image (\code{app_wordpress_4_4} or
-\code{app_lamp_7_0}). Use the \verb{get blueprints} operation to return a list of
+\item{blueprintId}{[required] The ID for a virtual private server image (\code{app_wordpress_x_x} or
+\code{app_lamp_x_x}). Use the \verb{get blueprints} operation to return a list of
 available images (or \emph{blueprints}).
 
 Use active blueprints when creating new instances. Inactive blueprints
@@ -44,7 +44,7 @@ inactive when they become outdated due to operating system updates or
 new application releases.}
 
 \item{bundleId}{[required] The bundle of specification information for your virtual private server
-(or \emph{instance}), including the pricing plan (\code{micro_1_0}).}
+(or \emph{instance}), including the pricing plan (\code{medium_x_x}).}
 
 \item{userData}{A launch script you can create that configures a server with additional
 user data. For example, you might want to run \verb{apt-get -y update}.
@@ -66,8 +66,8 @@ instance.}
 
 \item{ipAddressType}{The IP address type for the instance.
 
-The possible values are \code{ipv4} for IPv4 only, and \code{dualstack} for IPv4
-and IPv6.
+The possible values are \code{ipv4} for IPv4 only, \code{ipv6} for IPv6 only, and
+\code{dualstack} for IPv4 and IPv6.
 
 The default value is \code{dualstack}.}
 }

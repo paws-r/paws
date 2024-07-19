@@ -201,12 +201,13 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
     name = "AnalyzeDocument",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$analyze_document_input(Document = Document, FeatureTypes = FeatureTypes, HumanLoopConfig = HumanLoopConfig, QueriesConfig = QueriesConfig, AdaptersConfig = AdaptersConfig)
   output <- .textract$analyze_document_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -443,12 +444,13 @@ textract_analyze_expense <- function(Document) {
     name = "AnalyzeExpense",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$analyze_expense_input(Document = Document)
   output <- .textract$analyze_expense_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -578,12 +580,13 @@ textract_analyze_id <- function(DocumentPages) {
     name = "AnalyzeID",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$analyze_id_input(DocumentPages = DocumentPages)
   output <- .textract$analyze_id_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -650,12 +653,13 @@ textract_create_adapter <- function(AdapterName, ClientRequestToken = NULL, Desc
     name = "CreateAdapter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$create_adapter_input(AdapterName = AdapterName, ClientRequestToken = ClientRequestToken, Description = Description, FeatureTypes = FeatureTypes, AutoUpdate = AutoUpdate, Tags = Tags)
   output <- .textract$create_adapter_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -731,12 +735,13 @@ textract_create_adapter_version <- function(AdapterId, ClientRequestToken = NULL
     name = "CreateAdapterVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$create_adapter_version_input(AdapterId = AdapterId, ClientRequestToken = ClientRequestToken, DatasetConfig = DatasetConfig, KMSKeyId = KMSKeyId, OutputConfig = OutputConfig, Tags = Tags)
   output <- .textract$create_adapter_version_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -774,12 +779,13 @@ textract_delete_adapter <- function(AdapterId) {
     name = "DeleteAdapter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$delete_adapter_input(AdapterId = AdapterId)
   output <- .textract$delete_adapter_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -821,12 +827,13 @@ textract_delete_adapter_version <- function(AdapterId, AdapterVersion) {
     name = "DeleteAdapterVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$delete_adapter_version_input(AdapterId = AdapterId, AdapterVersion = AdapterVersion)
   output <- .textract$delete_adapter_version_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -947,12 +954,13 @@ textract_detect_document_text <- function(Document) {
     name = "DetectDocumentText",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$detect_document_text_input(Document = Document)
   output <- .textract$detect_document_text_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1010,12 +1018,13 @@ textract_get_adapter <- function(AdapterId) {
     name = "GetAdapter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$get_adapter_input(AdapterId = AdapterId)
   output <- .textract$get_adapter_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1106,12 +1115,13 @@ textract_get_adapter_version <- function(AdapterId, AdapterVersion) {
     name = "GetAdapterVersion",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$get_adapter_version_input(AdapterId = AdapterId, AdapterVersion = AdapterVersion)
   output <- .textract$get_adapter_version_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1290,12 +1300,13 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
     name = "GetDocumentAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$get_document_analysis_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .textract$get_document_analysis_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1450,12 +1461,13 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
     name = "GetDocumentTextDetection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$get_document_text_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .textract$get_document_text_detection_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1726,12 +1738,13 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
     name = "GetExpenseAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$get_expense_analysis_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .textract$get_expense_analysis_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2146,12 +2159,13 @@ textract_get_lending_analysis <- function(JobId, MaxResults = NULL, NextToken = 
     name = "GetLendingAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$get_lending_analysis_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .textract$get_lending_analysis_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2256,12 +2270,13 @@ textract_get_lending_analysis_summary <- function(JobId) {
     name = "GetLendingAnalysisSummary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$get_lending_analysis_summary_input(JobId = JobId)
   output <- .textract$get_lending_analysis_summary_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2338,12 +2353,13 @@ textract_list_adapter_versions <- function(AdapterId = NULL, AfterCreationTime =
     name = "ListAdapterVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdapterVersions")
   )
   input <- .textract$list_adapter_versions_input(AdapterId = AdapterId, AfterCreationTime = AfterCreationTime, BeforeCreationTime = BeforeCreationTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .textract$list_adapter_versions_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2412,12 +2428,13 @@ textract_list_adapters <- function(AfterCreationTime = NULL, BeforeCreationTime 
     name = "ListAdapters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Adapters")
   )
   input <- .textract$list_adapters_input(AfterCreationTime = AfterCreationTime, BeforeCreationTime = BeforeCreationTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .textract$list_adapters_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2462,12 +2479,13 @@ textract_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .textract$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2605,12 +2623,13 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
     name = "StartDocumentAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$start_document_analysis_input(DocumentLocation = DocumentLocation, FeatureTypes = FeatureTypes, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId, QueriesConfig = QueriesConfig, AdaptersConfig = AdaptersConfig)
   output <- .textract$start_document_analysis_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2712,12 +2731,13 @@ textract_start_document_text_detection <- function(DocumentLocation, ClientReque
     name = "StartDocumentTextDetection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$start_document_text_detection_input(DocumentLocation = DocumentLocation, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
   output <- .textract$start_document_text_detection_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2822,12 +2842,13 @@ textract_start_expense_analysis <- function(DocumentLocation, ClientRequestToken
     name = "StartExpenseAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$start_expense_analysis_input(DocumentLocation = DocumentLocation, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
   output <- .textract$start_expense_analysis_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2936,12 +2957,13 @@ textract_start_lending_analysis <- function(DocumentLocation, ClientRequestToken
     name = "StartLendingAnalysis",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$start_lending_analysis_input(DocumentLocation = DocumentLocation, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
   output <- .textract$start_lending_analysis_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2982,12 +3004,13 @@ textract_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .textract$tag_resource_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3030,12 +3053,13 @@ textract_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .textract$untag_resource_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3094,12 +3118,13 @@ textract_update_adapter <- function(AdapterId, Description = NULL, AdapterName =
     name = "UpdateAdapter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .textract$update_adapter_input(AdapterId = AdapterId, Description = Description, AdapterName = AdapterName, AutoUpdate = AutoUpdate)
   output <- .textract$update_adapter_output()
   config <- get_config()
-  svc <- .textract$service(config)
+  svc <- .textract$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

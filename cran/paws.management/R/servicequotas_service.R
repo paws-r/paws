@@ -152,7 +152,7 @@ servicequotas <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = "ServiceQuotasV20190624"
 )
 
-.servicequotas$service <- function(config = list()) {
+.servicequotas$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.servicequotas$metadata, handlers, config)
+  new_service(.servicequotas$metadata, handlers, config, op)
 }

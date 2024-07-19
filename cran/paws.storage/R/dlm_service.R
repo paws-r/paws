@@ -145,7 +145,7 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.dlm$service <- function(config = list()) {
+.dlm$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.dlm$metadata, handlers, config)
+  new_service(.dlm$metadata, handlers, config, op)
 }

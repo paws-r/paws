@@ -26,16 +26,14 @@ Endpoint.}
 specify a security group, the default security group for your VPC will
 be associated with the endpoint.}
 
-\item{PreserveClientIp}{Indicates whether your client's IP address is preserved as the source.
-The value is \code{true} or \code{false}.
+\item{PreserveClientIp}{Indicates whether the client IP address is preserved as the source. The
+following are the possible values.
 \itemize{
-\item If \code{true}, your client's IP address is used when you connect to a
-resource.
-\item If \code{false}, the elastic network interface IP address is used when
-you connect to a resource.
+\item \code{true} - Use the client IP address as the source.
+\item \code{false} - Use the network interface IP address as the source.
 }
 
-Default: \code{true}}
+Default: \code{false}}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}

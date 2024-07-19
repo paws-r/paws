@@ -2,7 +2,7 @@
 % Please edit documentation in R/codegurusecurity_operations.R
 \name{codegurusecurity_create_scan}
 \alias{codegurusecurity_create_scan}
-\title{Use to create a scan using code uploaded to an S3 bucket}
+\title{Use to create a scan using code uploaded to an Amazon S3 bucket}
 \usage{
 codegurusecurity_create_scan(
   analysisType = NULL,
@@ -23,11 +23,11 @@ quality findings. Defaults to \code{Security} type if missing.}
 this value to prevent the accidental creation of duplicate scans if
 there are failures and retries.}
 
-\item{resourceId}{[required] The identifier for an input resource used to create a scan.}
+\item{resourceId}{[required] The identifier for the resource object to be scanned.}
 
 \item{scanName}{[required] The unique name that CodeGuru Security uses to track revisions across
 multiple scans of the same resource. Only allowed for a \code{STANDARD} scan
-type. If not specified, it will be auto generated.}
+type.}
 
 \item{scanType}{The type of scan, either \code{Standard} or \code{Express}. Defaults to \code{Standard}
 type if missing.
@@ -48,7 +48,7 @@ using an empty string. Tag values are case sensitive.
 }}
 }
 \description{
-Use to create a scan using code uploaded to an S3 bucket.
+Use to create a scan using code uploaded to an Amazon S3 bucket.
 
 See \url{https://www.paws-r-sdk.com/docs/codegurusecurity_create_scan/} for full documentation.
 }

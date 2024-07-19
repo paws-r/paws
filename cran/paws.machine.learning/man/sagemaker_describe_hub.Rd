@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_hub}
 \alias{sagemaker_describe_hub}
-\title{Describe a hub}
+\title{Describes a hub}
 \usage{
 sagemaker_describe_hub(HubName)
 }
@@ -10,7 +10,7 @@ sagemaker_describe_hub(HubName)
 \item{HubName}{[required] The name of the hub to describe.}
 }
 \description{
-Describe a hub.
+Describes a hub.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_hub/} for full documentation.
 }

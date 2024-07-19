@@ -23,12 +23,13 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
     name = "BatchDetectDominantLanguage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$batch_detect_dominant_language_input(TextList = TextList)
   output <- .comprehend$batch_detect_dominant_language_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -58,12 +59,13 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
     name = "BatchDetectEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$batch_detect_entities_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_entities_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -92,12 +94,13 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
     name = "BatchDetectKeyPhrases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$batch_detect_key_phrases_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_key_phrases_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -127,12 +130,13 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
     name = "BatchDetectSentiment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$batch_detect_sentiment_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_sentiment_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -163,12 +167,13 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
     name = "BatchDetectSyntax",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$batch_detect_syntax_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_syntax_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -197,12 +202,13 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
     name = "BatchDetectTargetedSentiment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$batch_detect_targeted_sentiment_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_targeted_sentiment_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -260,12 +266,13 @@ comprehend_classify_document <- function(Text = NULL, EndpointArn, Bytes = NULL,
     name = "ClassifyDocument",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$classify_document_input(Text = Text, EndpointArn = EndpointArn, Bytes = Bytes, DocumentReaderConfig = DocumentReaderConfig)
   output <- .comprehend$classify_document_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -292,12 +299,13 @@ comprehend_contains_pii_entities <- function(Text, LanguageCode) {
     name = "ContainsPiiEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$contains_pii_entities_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$contains_pii_entities_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -333,12 +341,13 @@ comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NU
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$create_dataset_input(FlywheelArn = FlywheelArn, DatasetName = DatasetName, DatasetType = DatasetType, Description = Description, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .comprehend$create_dataset_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -426,12 +435,13 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, Versio
     name = "CreateDocumentClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, VersionName = VersionName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Mode = Mode, ModelKmsKeyId = ModelKmsKeyId, ModelPolicy = ModelPolicy)
   output <- .comprehend$create_document_classifier_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -475,12 +485,13 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn = NULL, DesiredInf
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn, FlywheelArn = FlywheelArn)
   output <- .comprehend$create_endpoint_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -563,12 +574,13 @@ comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NU
     name = "CreateEntityRecognizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, VersionName = VersionName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, ModelKmsKeyId = ModelKmsKeyId, ModelPolicy = ModelPolicy)
   output <- .comprehend$create_entity_recognizer_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -611,12 +623,13 @@ comprehend_create_flywheel <- function(FlywheelName, ActiveModelArn = NULL, Data
     name = "CreateFlywheel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$create_flywheel_input(FlywheelName = FlywheelName, ActiveModelArn = ActiveModelArn, DataAccessRoleArn = DataAccessRoleArn, TaskConfig = TaskConfig, ModelType = ModelType, DataLakeS3Uri = DataLakeS3Uri, DataSecurityConfig = DataSecurityConfig, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .comprehend$create_flywheel_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -640,12 +653,13 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
     name = "DeleteDocumentClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$delete_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
   output <- .comprehend$delete_document_classifier_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -669,12 +683,13 @@ comprehend_delete_endpoint <- function(EndpointArn) {
     name = "DeleteEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$delete_endpoint_input(EndpointArn = EndpointArn)
   output <- .comprehend$delete_endpoint_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -698,12 +713,13 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
     name = "DeleteEntityRecognizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$delete_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
   output <- .comprehend$delete_entity_recognizer_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -727,12 +743,13 @@ comprehend_delete_flywheel <- function(FlywheelArn) {
     name = "DeleteFlywheel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$delete_flywheel_input(FlywheelArn = FlywheelArn)
   output <- .comprehend$delete_flywheel_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -758,12 +775,13 @@ comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NU
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$delete_resource_policy_input(ResourceArn = ResourceArn, PolicyRevisionId = PolicyRevisionId)
   output <- .comprehend$delete_resource_policy_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -787,12 +805,13 @@ comprehend_describe_dataset <- function(DatasetArn) {
     name = "DescribeDataset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_dataset_input(DatasetArn = DatasetArn)
   output <- .comprehend$describe_dataset_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -818,12 +837,13 @@ comprehend_describe_document_classification_job <- function(JobId) {
     name = "DescribeDocumentClassificationJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_document_classification_job_input(JobId = JobId)
   output <- .comprehend$describe_document_classification_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -850,12 +870,13 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
     name = "DescribeDocumentClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
   output <- .comprehend$describe_document_classifier_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -881,12 +902,13 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
     name = "DescribeDominantLanguageDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_dominant_language_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_dominant_language_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -910,12 +932,13 @@ comprehend_describe_endpoint <- function(EndpointArn) {
     name = "DescribeEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_endpoint_input(EndpointArn = EndpointArn)
   output <- .comprehend$describe_endpoint_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -941,12 +964,13 @@ comprehend_describe_entities_detection_job <- function(JobId) {
     name = "DescribeEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_entities_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -971,12 +995,13 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
     name = "DescribeEntityRecognizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
   output <- .comprehend$describe_entity_recognizer_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1000,12 +1025,13 @@ comprehend_describe_events_detection_job <- function(JobId) {
     name = "DescribeEventsDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_events_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_events_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1029,12 +1055,13 @@ comprehend_describe_flywheel <- function(FlywheelArn) {
     name = "DescribeFlywheel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_flywheel_input(FlywheelArn = FlywheelArn)
   output <- .comprehend$describe_flywheel_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1059,12 +1086,13 @@ comprehend_describe_flywheel_iteration <- function(FlywheelArn, FlywheelIteratio
     name = "DescribeFlywheelIteration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_flywheel_iteration_input(FlywheelArn = FlywheelArn, FlywheelIterationId = FlywheelIterationId)
   output <- .comprehend$describe_flywheel_iteration_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1090,12 +1118,13 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
     name = "DescribeKeyPhrasesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_key_phrases_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_key_phrases_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1120,12 +1149,13 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
     name = "DescribePiiEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_pii_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_pii_entities_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1151,12 +1181,13 @@ comprehend_describe_resource_policy <- function(ResourceArn) {
     name = "DescribeResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_resource_policy_input(ResourceArn = ResourceArn)
   output <- .comprehend$describe_resource_policy_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1181,12 +1212,13 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
     name = "DescribeSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_sentiment_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1212,12 +1244,13 @@ comprehend_describe_targeted_sentiment_detection_job <- function(JobId) {
     name = "DescribeTargetedSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_targeted_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_targeted_sentiment_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1241,12 +1274,13 @@ comprehend_describe_topics_detection_job <- function(JobId) {
     name = "DescribeTopicsDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$describe_topics_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_topics_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1271,12 +1305,13 @@ comprehend_detect_dominant_language <- function(Text) {
     name = "DetectDominantLanguage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_dominant_language_input(Text = Text)
   output <- .comprehend$detect_dominant_language_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1343,12 +1378,13 @@ comprehend_detect_entities <- function(Text = NULL, LanguageCode = NULL, Endpoin
     name = "DetectEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_entities_input(Text = Text, LanguageCode = LanguageCode, EndpointArn = EndpointArn, Bytes = Bytes, DocumentReaderConfig = DocumentReaderConfig)
   output <- .comprehend$detect_entities_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1376,12 +1412,13 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
     name = "DetectKeyPhrases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_key_phrases_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_key_phrases_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1408,12 +1445,13 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
     name = "DetectPiiEntities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_pii_entities_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_pii_entities_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1441,12 +1479,13 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
     name = "DetectSentiment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_sentiment_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_sentiment_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1474,12 +1513,13 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
     name = "DetectSyntax",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_syntax_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_syntax_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1506,12 +1546,13 @@ comprehend_detect_targeted_sentiment <- function(Text, LanguageCode) {
     name = "DetectTargetedSentiment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_targeted_sentiment_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_targeted_sentiment_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1539,12 +1580,13 @@ comprehend_detect_toxic_content <- function(TextSegments, LanguageCode) {
     name = "DetectToxicContent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$detect_toxic_content_input(TextSegments = TextSegments, LanguageCode = LanguageCode)
   output <- .comprehend$detect_toxic_content_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1590,12 +1632,13 @@ comprehend_import_model <- function(SourceModelArn, ModelName = NULL, VersionNam
     name = "ImportModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$import_model_input(SourceModelArn = SourceModelArn, ModelName = ModelName, VersionName = VersionName, ModelKmsKeyId = ModelKmsKeyId, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags)
   output <- .comprehend$import_model_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1622,12 +1665,13 @@ comprehend_list_datasets <- function(FlywheelArn = NULL, Filter = NULL, NextToke
     name = "ListDatasets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_datasets_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_datasets_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1657,12 +1701,13 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
     name = "ListDocumentClassificationJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_document_classification_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_document_classification_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1689,12 +1734,13 @@ comprehend_list_document_classifier_summaries <- function(NextToken = NULL, MaxR
     name = "ListDocumentClassifierSummaries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_document_classifier_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_document_classifier_summaries_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1723,12 +1769,13 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
     name = "ListDocumentClassifiers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_document_classifiers_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_document_classifiers_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1758,12 +1805,13 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
     name = "ListDominantLanguageDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_dominant_language_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_dominant_language_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1792,12 +1840,13 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
     name = "ListEndpoints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EndpointPropertiesList")
   )
   input <- .comprehend$list_endpoints_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_endpoints_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1826,12 +1875,13 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
     name = "ListEntitiesDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_entities_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_entities_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1858,12 +1908,13 @@ comprehend_list_entity_recognizer_summaries <- function(NextToken = NULL, MaxRes
     name = "ListEntityRecognizerSummaries",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_entity_recognizer_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_entity_recognizer_summaries_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1893,12 +1944,13 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
     name = "ListEntityRecognizers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_entity_recognizers_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_entity_recognizers_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1926,12 +1978,13 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
     name = "ListEventsDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_events_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_events_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1958,12 +2011,13 @@ comprehend_list_flywheel_iteration_history <- function(FlywheelArn, Filter = NUL
     name = "ListFlywheelIterationHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_flywheel_iteration_history_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_flywheel_iteration_history_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1991,12 +2045,13 @@ comprehend_list_flywheels <- function(Filter = NULL, NextToken = NULL, MaxResult
     name = "ListFlywheels",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_flywheels_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_flywheels_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2025,12 +2080,13 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
     name = "ListKeyPhrasesDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_key_phrases_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_key_phrases_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2058,12 +2114,13 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
     name = "ListPiiEntitiesDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PiiEntitiesDetectionJobPropertiesList")
   )
   input <- .comprehend$list_pii_entities_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_pii_entities_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2092,12 +2149,13 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
     name = "ListSentimentDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_sentiment_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_sentiment_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2122,12 +2180,13 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .comprehend$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2156,12 +2215,13 @@ comprehend_list_targeted_sentiment_detection_jobs <- function(Filter = NULL, Nex
     name = "ListTargetedSentimentDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_targeted_sentiment_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_targeted_sentiment_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2190,12 +2250,13 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
     name = "ListTopicsDetectionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_topics_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_topics_detection_jobs_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2236,12 +2297,13 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$put_resource_policy_input(ResourceArn = ResourceArn, ResourcePolicy = ResourcePolicy, PolicyRevisionId = PolicyRevisionId)
   output <- .comprehend$put_resource_policy_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2293,12 +2355,13 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
     name = "StartDocumentClassificationJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags, FlywheelArn = FlywheelArn)
   output <- .comprehend$start_document_classification_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2348,12 +2411,13 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
     name = "StartDominantLanguageDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_dominant_language_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2414,12 +2478,13 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
     name = "StartEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags, FlywheelArn = FlywheelArn)
   output <- .comprehend$start_entities_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2455,12 +2520,13 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
     name = "StartEventsDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_events_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, TargetEventTypes = TargetEventTypes, Tags = Tags)
   output <- .comprehend$start_events_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2486,12 +2552,13 @@ comprehend_start_flywheel_iteration <- function(FlywheelArn, ClientRequestToken 
     name = "StartFlywheelIteration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_flywheel_iteration_input(FlywheelArn = FlywheelArn, ClientRequestToken = ClientRequestToken)
   output <- .comprehend$start_flywheel_iteration_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2544,12 +2611,13 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
     name = "StartKeyPhrasesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_key_phrases_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2594,12 +2662,13 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
     name = "StartPiiEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_pii_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, Mode = Mode, RedactionConfig = RedactionConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .comprehend$start_pii_entities_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2652,12 +2721,13 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
     name = "StartSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_sentiment_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2705,12 +2775,13 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
     name = "StartTargetedSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_targeted_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_targeted_sentiment_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2763,12 +2834,13 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
     name = "StartTopicsDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_topics_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2792,12 +2864,13 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
     name = "StopDominantLanguageDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_dominant_language_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_dominant_language_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2821,12 +2894,13 @@ comprehend_stop_entities_detection_job <- function(JobId) {
     name = "StopEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_entities_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2850,12 +2924,13 @@ comprehend_stop_events_detection_job <- function(JobId) {
     name = "StopEventsDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_events_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_events_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2879,12 +2954,13 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
     name = "StopKeyPhrasesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_key_phrases_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_key_phrases_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2908,12 +2984,13 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
     name = "StopPiiEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_pii_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_pii_entities_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2937,12 +3014,13 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
     name = "StopSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_sentiment_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2966,12 +3044,13 @@ comprehend_stop_targeted_sentiment_detection_job <- function(JobId) {
     name = "StopTargetedSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_targeted_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_targeted_sentiment_detection_job_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2996,12 +3075,13 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
     name = "StopTrainingDocumentClassifier",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_training_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
   output <- .comprehend$stop_training_document_classifier_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3026,12 +3106,13 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
     name = "StopTrainingEntityRecognizer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$stop_training_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
   output <- .comprehend$stop_training_entity_recognizer_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3059,12 +3140,13 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .comprehend$tag_resource_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3093,12 +3175,13 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .comprehend$untag_resource_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3129,12 +3212,13 @@ comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, Desi
     name = "UpdateEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$update_endpoint_input(EndpointArn = EndpointArn, DesiredModelArn = DesiredModelArn, DesiredInferenceUnits = DesiredInferenceUnits, DesiredDataAccessRoleArn = DesiredDataAccessRoleArn, FlywheelArn = FlywheelArn)
   output <- .comprehend$update_endpoint_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3162,12 +3246,13 @@ comprehend_update_flywheel <- function(FlywheelArn, ActiveModelArn = NULL, DataA
     name = "UpdateFlywheel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .comprehend$update_flywheel_input(FlywheelArn = FlywheelArn, ActiveModelArn = ActiveModelArn, DataAccessRoleArn = DataAccessRoleArn, DataSecurityConfig = DataSecurityConfig)
   output <- .comprehend$update_flywheel_output()
   config <- get_config()
-  svc <- .comprehend$service(config)
+  svc <- .comprehend$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

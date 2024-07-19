@@ -49,7 +49,7 @@ configuration.}
 \item{AmazonOpenSearchServerlessDestinationUpdate}{Describes an update for a destination in the Serverless offering for
 Amazon OpenSearch Service.}
 
-\item{SnowflakeDestinationUpdate}{Update to the Snowflake destination condiguration settings}
+\item{SnowflakeDestinationUpdate}{Update to the Snowflake destination configuration settings.}
 }
 \description{
 Updates the specified destination of the specified delivery stream.

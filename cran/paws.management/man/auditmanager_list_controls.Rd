@@ -4,15 +4,44 @@
 \alias{auditmanager_list_controls}
 \title{Returns a list of controls from Audit Manager}
 \usage{
-auditmanager_list_controls(controlType, nextToken = NULL, maxResults = NULL)
+auditmanager_list_controls(
+  controlType,
+  nextToken = NULL,
+  maxResults = NULL,
+  controlCatalogId = NULL
+)
 }
 \arguments{
-\item{controlType}{[required] The type of control, such as a standard control or a custom control.}
+\item{controlType}{[required] A filter that narrows the list of controls to a specific type.}
 
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{The maximum number of results on a page or for an API request call.}
+
+\item{controlCatalogId}{A filter that narrows the list of controls to a specific resource from
+the Amazon Web Services Control Catalog.
+
+To use this parameter, specify the ARN of the Control Catalog resource.
+You can specify either a control domain, a control objective, or a
+common control. For information about how to find the ARNs for these
+resources, see
+\href{https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html}{\code{ListDomains}}
+,
+\href{https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListObjectives.html}{\code{ListObjectives}}
+, and
+\href{https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListCommonControls.html}{\code{ListCommonControls}}
+.
+
+You can only filter by one Control Catalog resource at a time.
+Specifying multiple resource ARNs isn’t currently supported. If you want
+to filter by more than one ARN, we recommend that you run the
+\code{\link[=auditmanager_list_controls]{list_controls}} operation separately for
+each ARN.
+
+Alternatively, specify \code{UNCATEGORIZED} to list controls that aren't
+mapped to a Control Catalog resource. For example, this operation might
+return a list of custom controls that don't belong to any control domain
+or control objective.}
 }
 \description{
 Returns a list of controls from Audit Manager.

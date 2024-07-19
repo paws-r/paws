@@ -44,12 +44,13 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
     name = "CreateCallAnalyticsCategory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$create_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, InputType = InputType)
   output <- .transcribeservice$create_call_analytics_category_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -117,12 +118,13 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
     name = "CreateLanguageModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$create_language_model_input(LanguageCode = LanguageCode, BaseModelName = BaseModelName, ModelName = ModelName, InputDataConfig = InputDataConfig, Tags = Tags)
   output <- .transcribeservice$create_language_model_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -165,12 +167,13 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
     name = "CreateMedicalVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$create_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri, Tags = Tags)
   output <- .transcribeservice$create_medical_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -253,12 +256,13 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
     name = "CreateVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$create_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -343,12 +347,13 @@ transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, Lan
     name = "CreateVocabularyFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$create_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, LanguageCode = LanguageCode, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$create_vocabulary_filter_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -373,12 +378,13 @@ transcribeservice_delete_call_analytics_category <- function(CategoryName) {
     name = "DeleteCallAnalyticsCategory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_call_analytics_category_input(CategoryName = CategoryName)
   output <- .transcribeservice$delete_call_analytics_category_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -403,12 +409,13 @@ transcribeservice_delete_call_analytics_job <- function(CallAnalyticsJobName) {
     name = "DeleteCallAnalyticsJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName)
   output <- .transcribeservice$delete_call_analytics_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -433,12 +440,13 @@ transcribeservice_delete_language_model <- function(ModelName) {
     name = "DeleteLanguageModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_language_model_input(ModelName = ModelName)
   output <- .transcribeservice$delete_language_model_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -463,12 +471,13 @@ transcribeservice_delete_medical_scribe_job <- function(MedicalScribeJobName) {
     name = "DeleteMedicalScribeJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName)
   output <- .transcribeservice$delete_medical_scribe_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -493,12 +502,13 @@ transcribeservice_delete_medical_transcription_job <- function(MedicalTranscript
     name = "DeleteMedicalTranscriptionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName)
   output <- .transcribeservice$delete_medical_transcription_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -523,12 +533,13 @@ transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
     name = "DeleteMedicalVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_medical_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$delete_medical_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -553,12 +564,13 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
     name = "DeleteTranscriptionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_transcription_job_input(TranscriptionJobName = TranscriptionJobName)
   output <- .transcribeservice$delete_transcription_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -583,12 +595,13 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
     name = "DeleteVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$delete_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -613,12 +626,13 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
     name = "DeleteVocabularyFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$delete_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName)
   output <- .transcribeservice$delete_vocabulary_filter_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -643,12 +657,13 @@ transcribeservice_describe_language_model <- function(ModelName) {
     name = "DescribeLanguageModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$describe_language_model_input(ModelName = ModelName)
   output <- .transcribeservice$describe_language_model_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -673,12 +688,13 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
     name = "GetCallAnalyticsCategory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_call_analytics_category_input(CategoryName = CategoryName)
   output <- .transcribeservice$get_call_analytics_category_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -703,12 +719,13 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
     name = "GetCallAnalyticsJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName)
   output <- .transcribeservice$get_call_analytics_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -733,12 +750,13 @@ transcribeservice_get_medical_scribe_job <- function(MedicalScribeJobName) {
     name = "GetMedicalScribeJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName)
   output <- .transcribeservice$get_medical_scribe_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -763,12 +781,13 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
     name = "GetMedicalTranscriptionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName)
   output <- .transcribeservice$get_medical_transcription_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -793,12 +812,13 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
     name = "GetMedicalVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_medical_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$get_medical_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -823,12 +843,13 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
     name = "GetTranscriptionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_transcription_job_input(TranscriptionJobName = TranscriptionJobName)
   output <- .transcribeservice$get_transcription_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -853,12 +874,13 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
     name = "GetVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$get_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -883,12 +905,13 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
     name = "GetVocabularyFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$get_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName)
   output <- .transcribeservice$get_vocabulary_filter_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -923,12 +946,13 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
     name = "ListCallAnalyticsCategories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_categories_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_categories_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -967,12 +991,13 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
     name = "ListCallAnalyticsJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_jobs_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1011,12 +1036,13 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
     name = "ListLanguageModels",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_language_models_input(StatusEquals = StatusEquals, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_language_models_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1055,12 +1081,13 @@ transcribeservice_list_medical_scribe_jobs <- function(Status = NULL, JobNameCon
     name = "ListMedicalScribeJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_scribe_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_medical_scribe_jobs_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1100,12 +1127,13 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
     name = "ListMedicalTranscriptionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_medical_transcription_jobs_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1146,12 +1174,13 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
     name = "ListMedicalVocabularies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_medical_vocabularies_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1185,12 +1214,13 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .transcribeservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1229,12 +1259,13 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
     name = "ListTranscriptionJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_transcription_jobs_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1273,12 +1304,13 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
     name = "ListVocabularies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_vocabularies_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1315,12 +1347,13 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
     name = "ListVocabularyFilters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabulary_filters_input(NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains)
   output <- .transcribeservice$list_vocabulary_filters_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1426,12 +1459,13 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
     name = "StartCallAnalyticsJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$start_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName, Media = Media, OutputLocation = OutputLocation, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions)
   output <- .transcribeservice$start_call_analytics_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1541,12 +1575,13 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
     name = "StartMedicalScribeJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$start_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions, Tags = Tags)
   output <- .transcribeservice$start_medical_scribe_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1708,12 +1743,13 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
     name = "StartMedicalTranscriptionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$start_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ContentIdentificationType = ContentIdentificationType, Specialty = Specialty, Type = Type, Tags = Tags)
   output <- .transcribeservice$start_medical_transcription_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1999,12 +2035,13 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
     name = "StartTranscriptionJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, IdentifyMultipleLanguages = IdentifyMultipleLanguages, LanguageOptions = LanguageOptions, Subtitles = Subtitles, Tags = Tags, LanguageIdSettings = LanguageIdSettings, ToxicityDetection = ToxicityDetection)
   output <- .transcribeservice$start_transcription_job_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2043,12 +2080,13 @@ transcribeservice_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .transcribeservice$tag_resource_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2083,12 +2121,13 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .transcribeservice$untag_resource_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2121,12 +2160,13 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
     name = "UpdateCallAnalyticsCategory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$update_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, InputType = InputType)
   output <- .transcribeservice$update_call_analytics_category_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2159,12 +2199,13 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
     name = "UpdateMedicalVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$update_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri)
   output <- .transcribeservice$update_medical_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2238,12 +2279,13 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
     name = "UpdateVocabulary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$update_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$update_vocabulary_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2305,12 +2347,13 @@ transcribeservice_update_vocabulary_filter <- function(VocabularyFilterName, Wor
     name = "UpdateVocabularyFilter",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .transcribeservice$update_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$update_vocabulary_filter_output()
   config <- get_config()
-  svc <- .transcribeservice$service(config)
+  svc <- .transcribeservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

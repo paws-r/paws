@@ -244,7 +244,7 @@ workmail <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = "WorkMailService"
 )
 
-.workmail$service <- function(config = list()) {
+.workmail$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.workmail$metadata, handlers, config)
+  new_service(.workmail$metadata, handlers, config, op)
 }

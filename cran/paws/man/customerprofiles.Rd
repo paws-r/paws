@@ -58,8 +58,11 @@ contact center that has pre-built connectors powered by AppFlow that
 make it easy to combine customer information from third party
 applications, such as Salesforce (CRM), ServiceNow (ITSM), and your
 enterprise resource planning (ERP), with contact history from your
-Amazon Connect contact center. If you're new to Amazon Connect, you
-might find it helpful to review the \href{https://docs.aws.amazon.com/connect/latest/adminguide/}{Amazon Connect Administrator Guide}.
+Amazon Connect contact center.
+
+For more information about the Amazon Connect Customer Profiles feature,
+see \href{https://docs.aws.amazon.com/connect/latest/adminguide/customer-profiles.html}{Use Customer Profiles}
+in the \emph{Amazon Connect Administrator's Guide}.
 }
 \section{Service syntax}{
 

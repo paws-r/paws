@@ -173,7 +173,7 @@ memorydb <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = "AmazonMemoryDB"
 )
 
-.memorydb$service <- function(config = list()) {
+.memorydb$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.memorydb$metadata, handlers, config)
+  new_service(.memorydb$metadata, handlers, config, op)
 }

@@ -22,12 +22,13 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
     name = "AddTagsToStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$add_tags_to_stream_input(StreamName = StreamName, Tags = Tags, StreamARN = StreamARN)
   output <- .kinesis$add_tags_to_stream_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -62,12 +63,13 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
     name = "CreateStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails)
   output <- .kinesis$create_stream_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -96,12 +98,13 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
     name = "DecreaseStreamRetentionPeriod",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$decrease_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN)
   output <- .kinesis$decrease_stream_retention_period_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -125,12 +128,13 @@ kinesis_delete_resource_policy <- function(ResourceARN) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$delete_resource_policy_input(ResourceARN = ResourceARN)
   output <- .kinesis$delete_resource_policy_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -159,12 +163,13 @@ kinesis_delete_stream <- function(StreamName = NULL, EnforceConsumerDeletion = N
     name = "DeleteStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$delete_stream_input(StreamName = StreamName, EnforceConsumerDeletion = EnforceConsumerDeletion, StreamARN = StreamARN)
   output <- .kinesis$delete_stream_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -198,12 +203,13 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
     name = "DeregisterStreamConsumer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$deregister_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, ConsumerARN = ConsumerARN)
   output <- .kinesis$deregister_stream_consumer_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -227,12 +233,13 @@ kinesis_describe_limits <- function() {
     name = "DescribeLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$describe_limits_input()
   output <- .kinesis$describe_limits_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -269,12 +276,13 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
     name = "DescribeStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards")
   )
   input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, StreamARN = StreamARN)
   output <- .kinesis$describe_stream_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -305,12 +313,13 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
     name = "DescribeStreamConsumer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$describe_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, ConsumerARN = ConsumerARN)
   output <- .kinesis$describe_stream_consumer_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -336,12 +345,13 @@ kinesis_describe_stream_summary <- function(StreamName = NULL, StreamARN = NULL)
     name = "DescribeStreamSummary",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$describe_stream_summary_input(StreamName = StreamName, StreamARN = StreamARN)
   output <- .kinesis$describe_stream_summary_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -392,12 +402,13 @@ kinesis_disable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMet
     name = "DisableEnhancedMonitoring",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$disable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN)
   output <- .kinesis$disable_enhanced_monitoring_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -447,12 +458,13 @@ kinesis_enable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetr
     name = "EnableEnhancedMonitoring",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$enable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN)
   output <- .kinesis$enable_enhanced_monitoring_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -483,12 +495,13 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL) {
     name = "GetRecords",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$get_records_input(ShardIterator = ShardIterator, Limit = Limit, StreamARN = StreamARN)
   output <- .kinesis$get_records_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -512,12 +525,13 @@ kinesis_get_resource_policy <- function(ResourceARN) {
     name = "GetResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$get_resource_policy_input(ResourceARN = ResourceARN)
   output <- .kinesis$get_resource_policy_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -575,12 +589,13 @@ kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIterator
     name = "GetShardIterator",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$get_shard_iterator_input(StreamName = StreamName, ShardId = ShardId, ShardIteratorType = ShardIteratorType, StartingSequenceNumber = StartingSequenceNumber, Timestamp = Timestamp, StreamARN = StreamARN)
   output <- .kinesis$get_shard_iterator_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -609,12 +624,13 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
     name = "IncreaseStreamRetentionPeriod",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$increase_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN)
   output <- .kinesis$increase_stream_retention_period_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -713,12 +729,13 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
     name = "ListShards",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$list_shards_input(StreamName = StreamName, NextToken = NextToken, ExclusiveStartShardId = ExclusiveStartShardId, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, ShardFilter = ShardFilter, StreamARN = StreamARN)
   output <- .kinesis$list_shards_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -783,12 +800,13 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
     name = "ListStreamConsumers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .kinesis$list_stream_consumers_input(StreamARN = StreamARN, NextToken = NextToken, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp)
   output <- .kinesis$list_stream_consumers_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -815,12 +833,13 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL, 
     name = "ListStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", more_results = "HasMoreStreams", output_token = "NextToken", result_key = list("StreamNames", "StreamSummaries"))
   )
   input <- .kinesis$list_streams_input(Limit = Limit, ExclusiveStartStreamName = ExclusiveStartStreamName, NextToken = NextToken)
   output <- .kinesis$list_streams_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -852,12 +871,13 @@ kinesis_list_tags_for_stream <- function(StreamName = NULL, ExclusiveStartTagKey
     name = "ListTagsForStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$list_tags_for_stream_input(StreamName = StreamName, ExclusiveStartTagKey = ExclusiveStartTagKey, Limit = Limit, StreamARN = StreamARN)
   output <- .kinesis$list_tags_for_stream_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -887,12 +907,13 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
     name = "MergeShards",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$merge_shards_input(StreamName = StreamName, ShardToMerge = ShardToMerge, AdjacentShardToMerge = AdjacentShardToMerge, StreamARN = StreamARN)
   output <- .kinesis$merge_shards_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -938,12 +959,13 @@ kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHa
     name = "PutRecord",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$put_record_input(StreamName = StreamName, Data = Data, PartitionKey = PartitionKey, ExplicitHashKey = ExplicitHashKey, SequenceNumberForOrdering = SequenceNumberForOrdering, StreamARN = StreamARN)
   output <- .kinesis$put_record_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -970,12 +992,13 @@ kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL) {
     name = "PutRecords",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$put_records_input(Records = Records, StreamName = StreamName, StreamARN = StreamARN)
   output <- .kinesis$put_records_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1002,12 +1025,13 @@ kinesis_put_resource_policy <- function(ResourceARN, Policy) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$put_resource_policy_input(ResourceARN = ResourceARN, Policy = Policy)
   output <- .kinesis$put_resource_policy_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1036,12 +1060,13 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
     name = "RegisterStreamConsumer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$register_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName)
   output <- .kinesis$register_stream_consumer_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1067,12 +1092,13 @@ kinesis_remove_tags_from_stream <- function(StreamName = NULL, TagKeys, StreamAR
     name = "RemoveTagsFromStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$remove_tags_from_stream_input(StreamName = StreamName, TagKeys = TagKeys, StreamARN = StreamARN)
   output <- .kinesis$remove_tags_from_stream_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1107,12 +1133,13 @@ kinesis_split_shard <- function(StreamName = NULL, ShardToSplit, NewStartingHash
     name = "SplitShard",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$split_shard_input(StreamName = StreamName, ShardToSplit = ShardToSplit, NewStartingHashKey = NewStartingHashKey, StreamARN = StreamARN)
   output <- .kinesis$split_shard_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1157,12 +1184,13 @@ kinesis_start_stream_encryption <- function(StreamName = NULL, EncryptionType, K
     name = "StartStreamEncryption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$start_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN)
   output <- .kinesis$start_stream_encryption_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1206,12 +1234,13 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
     name = "StopStreamEncryption",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$stop_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN)
   output <- .kinesis$stop_stream_encryption_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1252,12 +1281,13 @@ kinesis_update_shard_count <- function(StreamName = NULL, TargetShardCount, Scal
     name = "UpdateShardCount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$update_shard_count_input(StreamName = StreamName, TargetShardCount = TargetShardCount, ScalingType = ScalingType, StreamARN = StreamARN)
   output <- .kinesis$update_shard_count_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1286,12 +1316,13 @@ kinesis_update_stream_mode <- function(StreamARN, StreamModeDetails) {
     name = "UpdateStreamMode",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .kinesis$update_stream_mode_input(StreamARN = StreamARN, StreamModeDetails = StreamModeDetails)
   output <- .kinesis$update_stream_mode_output()
   config <- get_config()
-  svc <- .kinesis$service(config)
+  svc <- .kinesis$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

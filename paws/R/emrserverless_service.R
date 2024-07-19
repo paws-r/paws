@@ -116,6 +116,7 @@ NULL
 #'  \link[=emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Creates and returns a URL that you can use to access the application UIs for a job run\cr
 #'  \link[=emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
 #'  \link[=emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
+#'  \link[=emrserverless_list_job_run_attempts]{list_job_run_attempts} \tab Lists all attempt of a job run\cr
 #'  \link[=emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
 #'  \link[=emrserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to the resources\cr
 #'  \link[=emrserverless_start_application]{start_application} \tab Starts a specified application and initializes initial capacity if configured\cr
@@ -163,7 +164,7 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = ""
 )
 
-.emrserverless$service <- function(config = list()) {
+.emrserverless$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.emrserverless$metadata, handlers, config)
+  new_service(.emrserverless$metadata, handlers, config, op)
 }

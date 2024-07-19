@@ -168,7 +168,7 @@ cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = ""
 )
 
-.cloudsearch$service <- function(config = list()) {
+.cloudsearch$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.cloudsearch$metadata, handlers, config)
+  new_service(.cloudsearch$metadata, handlers, config, op)
 }

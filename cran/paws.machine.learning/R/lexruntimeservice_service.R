@@ -145,7 +145,7 @@ lexruntimeservice <- function(config = list(), credentials = list(), endpoint = 
   target_prefix = ""
 )
 
-.lexruntimeservice$service <- function(config = list()) {
+.lexruntimeservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.lexruntimeservice$metadata, handlers, config)
+  new_service(.lexruntimeservice$metadata, handlers, config, op)
 }

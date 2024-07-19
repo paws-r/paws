@@ -24,12 +24,13 @@ voiceid_associate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
     name = "AssociateFraudster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$associate_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId, WatchlistId = WatchlistId)
   output <- .voiceid$associate_fraudster_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -66,12 +67,13 @@ voiceid_create_domain <- function(ClientToken = NULL, Description = NULL, Name, 
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$create_domain_input(ClientToken = ClientToken, Description = Description, Name = Name, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration, Tags = Tags)
   output <- .voiceid$create_domain_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -102,12 +104,13 @@ voiceid_create_watchlist <- function(ClientToken = NULL, Description = NULL, Dom
     name = "CreateWatchlist",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$create_watchlist_input(ClientToken = ClientToken, Description = Description, DomainId = DomainId, Name = Name)
   output <- .voiceid$create_watchlist_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -131,12 +134,13 @@ voiceid_delete_domain <- function(DomainId) {
     name = "DeleteDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$delete_domain_input(DomainId = DomainId)
   output <- .voiceid$delete_domain_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -161,12 +165,13 @@ voiceid_delete_fraudster <- function(DomainId, FraudsterId) {
     name = "DeleteFraudster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$delete_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId)
   output <- .voiceid$delete_fraudster_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -191,12 +196,13 @@ voiceid_delete_speaker <- function(DomainId, SpeakerId) {
     name = "DeleteSpeaker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$delete_speaker_input(DomainId = DomainId, SpeakerId = SpeakerId)
   output <- .voiceid$delete_speaker_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -221,12 +227,13 @@ voiceid_delete_watchlist <- function(DomainId, WatchlistId) {
     name = "DeleteWatchlist",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$delete_watchlist_input(DomainId = DomainId, WatchlistId = WatchlistId)
   output <- .voiceid$delete_watchlist_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -250,12 +257,13 @@ voiceid_describe_domain <- function(DomainId) {
     name = "DescribeDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$describe_domain_input(DomainId = DomainId)
   output <- .voiceid$describe_domain_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -280,12 +288,13 @@ voiceid_describe_fraudster <- function(DomainId, FraudsterId) {
     name = "DescribeFraudster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$describe_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId)
   output <- .voiceid$describe_fraudster_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -311,12 +320,13 @@ voiceid_describe_fraudster_registration_job <- function(DomainId, JobId) {
     name = "DescribeFraudsterRegistrationJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$describe_fraudster_registration_job_input(DomainId = DomainId, JobId = JobId)
   output <- .voiceid$describe_fraudster_registration_job_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -341,12 +351,13 @@ voiceid_describe_speaker <- function(DomainId, SpeakerId) {
     name = "DescribeSpeaker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$describe_speaker_input(DomainId = DomainId, SpeakerId = SpeakerId)
   output <- .voiceid$describe_speaker_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -371,12 +382,13 @@ voiceid_describe_speaker_enrollment_job <- function(DomainId, JobId) {
     name = "DescribeSpeakerEnrollmentJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$describe_speaker_enrollment_job_input(DomainId = DomainId, JobId = JobId)
   output <- .voiceid$describe_speaker_enrollment_job_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -401,12 +413,13 @@ voiceid_describe_watchlist <- function(DomainId, WatchlistId) {
     name = "DescribeWatchlist",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$describe_watchlist_input(DomainId = DomainId, WatchlistId = WatchlistId)
   output <- .voiceid$describe_watchlist_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -433,12 +446,13 @@ voiceid_disassociate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
     name = "DisassociateFraudster",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$disassociate_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId, WatchlistId = WatchlistId)
   output <- .voiceid$disassociate_fraudster_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -465,12 +479,13 @@ voiceid_evaluate_session <- function(DomainId, SessionNameOrId) {
     name = "EvaluateSession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$evaluate_session_input(DomainId = DomainId, SessionNameOrId = SessionNameOrId)
   output <- .voiceid$evaluate_session_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -500,12 +515,13 @@ voiceid_list_domains <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DomainSummaries")
   )
   input <- .voiceid$list_domains_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_domains_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -539,12 +555,13 @@ voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL,
     name = "ListFraudsterRegistrationJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobSummaries")
   )
   input <- .voiceid$list_fraudster_registration_jobs_input(DomainId = DomainId, JobStatus = JobStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_fraudster_registration_jobs_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -578,12 +595,13 @@ voiceid_list_fraudsters <- function(DomainId, MaxResults = NULL, NextToken = NUL
     name = "ListFraudsters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FraudsterSummaries")
   )
   input <- .voiceid$list_fraudsters_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken, WatchlistId = WatchlistId)
   output <- .voiceid$list_fraudsters_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -616,12 +634,13 @@ voiceid_list_speaker_enrollment_jobs <- function(DomainId, JobStatus = NULL, Max
     name = "ListSpeakerEnrollmentJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobSummaries")
   )
   input <- .voiceid$list_speaker_enrollment_jobs_input(DomainId = DomainId, JobStatus = JobStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_speaker_enrollment_jobs_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -652,12 +671,13 @@ voiceid_list_speakers <- function(DomainId, MaxResults = NULL, NextToken = NULL)
     name = "ListSpeakers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SpeakerSummaries")
   )
   input <- .voiceid$list_speakers_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_speakers_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -682,12 +702,13 @@ voiceid_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .voiceid$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -718,12 +739,13 @@ voiceid_list_watchlists <- function(DomainId, MaxResults = NULL, NextToken = NUL
     name = "ListWatchlists",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "WatchlistSummaries")
   )
   input <- .voiceid$list_watchlists_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_watchlists_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -748,12 +770,13 @@ voiceid_opt_out_speaker <- function(DomainId, SpeakerId) {
     name = "OptOutSpeaker",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$opt_out_speaker_input(DomainId = DomainId, SpeakerId = SpeakerId)
   output <- .voiceid$opt_out_speaker_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -797,12 +820,13 @@ voiceid_start_fraudster_registration_job <- function(ClientToken = NULL, DataAcc
     name = "StartFraudsterRegistrationJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$start_fraudster_registration_job_input(ClientToken = ClientToken, DataAccessRoleArn = DataAccessRoleArn, DomainId = DomainId, InputDataConfig = InputDataConfig, JobName = JobName, OutputDataConfig = OutputDataConfig, RegistrationConfig = RegistrationConfig)
   output <- .voiceid$start_fraudster_registration_job_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -847,12 +871,13 @@ voiceid_start_speaker_enrollment_job <- function(ClientToken = NULL, DataAccessR
     name = "StartSpeakerEnrollmentJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$start_speaker_enrollment_job_input(ClientToken = ClientToken, DataAccessRoleArn = DataAccessRoleArn, DomainId = DomainId, EnrollmentConfig = EnrollmentConfig, InputDataConfig = InputDataConfig, JobName = JobName, OutputDataConfig = OutputDataConfig)
   output <- .voiceid$start_speaker_enrollment_job_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -877,12 +902,13 @@ voiceid_tag_resource <- function(ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .voiceid$tag_resource_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -908,12 +934,13 @@ voiceid_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .voiceid$untag_resource_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -946,12 +973,13 @@ voiceid_update_domain <- function(Description = NULL, DomainId, Name, ServerSide
     name = "UpdateDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$update_domain_input(Description = Description, DomainId = DomainId, Name = Name, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration)
   output <- .voiceid$update_domain_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -978,12 +1006,13 @@ voiceid_update_watchlist <- function(Description = NULL, DomainId, Name = NULL, 
     name = "UpdateWatchlist",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .voiceid$update_watchlist_input(Description = Description, DomainId = DomainId, Name = Name, WatchlistId = WatchlistId)
   output <- .voiceid$update_watchlist_output()
   config <- get_config()
-  svc <- .voiceid$service(config)
+  svc <- .voiceid$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

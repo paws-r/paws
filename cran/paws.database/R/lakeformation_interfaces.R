@@ -255,6 +255,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lakeformation$get_data_lake_principal_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$get_data_lake_principal_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Identity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lakeformation$get_data_lake_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

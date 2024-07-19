@@ -21,12 +21,13 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
     name = "CancelResourceRequest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudcontrolapi$cancel_resource_request_input(RequestToken = RequestToken)
   output <- .cloudcontrolapi$cancel_resource_request_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -101,12 +102,13 @@ cloudcontrolapi_create_resource <- function(TypeName, TypeVersionId = NULL, Role
     name = "CreateResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudcontrolapi$create_resource_input(TypeName = TypeName, TypeVersionId = TypeVersionId, RoleArn = RoleArn, ClientToken = ClientToken, DesiredState = DesiredState)
   output <- .cloudcontrolapi$create_resource_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -176,12 +178,13 @@ cloudcontrolapi_delete_resource <- function(TypeName, TypeVersionId = NULL, Role
     name = "DeleteResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudcontrolapi$delete_resource_input(TypeName = TypeName, TypeVersionId = TypeVersionId, RoleArn = RoleArn, ClientToken = ClientToken, Identifier = Identifier)
   output <- .cloudcontrolapi$delete_resource_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -236,12 +239,13 @@ cloudcontrolapi_get_resource <- function(TypeName, TypeVersionId = NULL, RoleArn
     name = "GetResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudcontrolapi$get_resource_input(TypeName = TypeName, TypeVersionId = TypeVersionId, RoleArn = RoleArn, Identifier = Identifier)
   output <- .cloudcontrolapi$get_resource_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -269,12 +273,13 @@ cloudcontrolapi_get_resource_request_status <- function(RequestToken) {
     name = "GetResourceRequestStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudcontrolapi$get_resource_request_status_input(RequestToken = RequestToken)
   output <- .cloudcontrolapi$get_resource_request_status_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -310,12 +315,13 @@ cloudcontrolapi_list_resource_requests <- function(MaxResults = NULL, NextToken 
     name = "ListResourceRequests",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceRequestStatusSummaries")
   )
   input <- .cloudcontrolapi$list_resource_requests_input(MaxResults = MaxResults, NextToken = NextToken, ResourceRequestStatusFilter = ResourceRequestStatusFilter)
   output <- .cloudcontrolapi$list_resource_requests_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -363,12 +369,13 @@ cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleA
     name = "ListResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceDescriptions")
   )
   input <- .cloudcontrolapi$list_resources_input(TypeName = TypeName, TypeVersionId = TypeVersionId, RoleArn = RoleArn, NextToken = NextToken, MaxResults = MaxResults, ResourceModel = ResourceModel)
   output <- .cloudcontrolapi$list_resources_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -443,12 +450,13 @@ cloudcontrolapi_update_resource <- function(TypeName, TypeVersionId = NULL, Role
     name = "UpdateResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudcontrolapi$update_resource_input(TypeName = TypeName, TypeVersionId = TypeVersionId, RoleArn = RoleArn, ClientToken = ClientToken, Identifier = Identifier, PatchDocument = PatchDocument)
   output <- .cloudcontrolapi$update_resource_output()
   config <- get_config()
-  svc <- .cloudcontrolapi$service(config)
+  svc <- .cloudcontrolapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

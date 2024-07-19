@@ -328,7 +328,7 @@ cognitoidentityprovider <- function(config = list(), credentials = list(), endpo
   target_prefix = "AWSCognitoIdentityProviderService"
 )
 
-.cognitoidentityprovider$service <- function(config = list()) {
+.cognitoidentityprovider$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.cognitoidentityprovider$metadata, handlers, config)
+  new_service(.cognitoidentityprovider$metadata, handlers, config, op)
 }

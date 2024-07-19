@@ -205,7 +205,7 @@ clouddirectory <- function(config = list(), credentials = list(), endpoint = NUL
   target_prefix = ""
 )
 
-.clouddirectory$service <- function(config = list()) {
+.clouddirectory$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.clouddirectory$metadata, handlers, config)
+  new_service(.clouddirectory$metadata, handlers, config, op)
 }

@@ -4,12 +4,12 @@
 \alias{locationservice_get_device_position}
 \title{Retrieves a device's most recent position according to its sample time}
 \usage{
-locationservice_get_device_position(DeviceId, TrackerName)
+locationservice_get_device_position(TrackerName, DeviceId)
 }
 \arguments{
-\item{DeviceId}{[required] The device whose position you want to retrieve.}
-
 \item{TrackerName}{[required] The tracker resource receiving the position update.}
+
+\item{DeviceId}{[required] The device whose position you want to retrieve.}
 }
 \description{
 Retrieves a device's most recent position according to its sample time.

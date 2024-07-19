@@ -167,7 +167,7 @@ servicediscovery <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = "Route53AutoNaming_v20170314"
 )
 
-.servicediscovery$service <- function(config = list()) {
+.servicediscovery$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.servicediscovery$metadata, handlers, config)
+  new_service(.servicediscovery$metadata, handlers, config, op)
 }

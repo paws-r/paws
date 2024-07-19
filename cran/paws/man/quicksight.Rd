@@ -100,6 +100,8 @@ manage Amazon QuickSight.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.analytics:quicksight_batch_create_topic_reviewed_answer]{batch_create_topic_reviewed_answer} \tab Creates new reviewed answers for a Q Topic\cr
+\link[paws.analytics:quicksight_batch_delete_topic_reviewed_answer]{batch_delete_topic_reviewed_answer} \tab Deletes reviewed answers for Q Topic\cr
 \link[paws.analytics:quicksight_cancel_ingestion]{cancel_ingestion} \tab Cancels an ongoing ingestion of data into SPICE\cr
 \link[paws.analytics:quicksight_create_account_customization]{create_account_customization} \tab Creates Amazon QuickSight customizations for the current Amazon Web Services Region\cr
 \link[paws.analytics:quicksight_create_account_subscription]{create_account_subscription} \tab Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight Q\cr
@@ -175,6 +177,7 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_describe_iam_policy_assignment]{describe_iam_policy_assignment} \tab Describes an existing IAM policy assignment, as specified by the assignment name\cr
 \link[paws.analytics:quicksight_describe_ingestion]{describe_ingestion} \tab Describes a SPICE ingestion\cr
 \link[paws.analytics:quicksight_describe_ip_restriction]{describe_ip_restriction} \tab Provides a summary and status of IP rules\cr
+\link[paws.analytics:quicksight_describe_key_registration]{describe_key_registration} \tab Describes all customer managed key registrations in a Amazon QuickSight account\cr
 \link[paws.analytics:quicksight_describe_namespace]{describe_namespace} \tab Describes the current namespace\cr
 \link[paws.analytics:quicksight_describe_refresh_schedule]{describe_refresh_schedule} \tab Provides a summary of a refresh schedule\cr
 \link[paws.analytics:quicksight_describe_role_custom_permission]{describe_role_custom_permission} \tab Describes all custom permissions that are mapped to a role\cr
@@ -221,6 +224,7 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_list_themes]{list_themes} \tab Lists all the themes in the current Amazon Web Services account\cr
 \link[paws.analytics:quicksight_list_theme_versions]{list_theme_versions} \tab Lists all the versions of the themes in the current Amazon Web Services account\cr
 \link[paws.analytics:quicksight_list_topic_refresh_schedules]{list_topic_refresh_schedules} \tab Lists all of the refresh schedules for a topic\cr
+\link[paws.analytics:quicksight_list_topic_reviewed_answers]{list_topic_reviewed_answers} \tab Lists all reviewed answers for a Q Topic\cr
 \link[paws.analytics:quicksight_list_topics]{list_topics} \tab Lists all of the topics within an account\cr
 \link[paws.analytics:quicksight_list_user_groups]{list_user_groups} \tab Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of\cr
 \link[paws.analytics:quicksight_list_users]{list_users} \tab Returns a list of all of the Amazon QuickSight users belonging to this account\cr
@@ -257,6 +261,7 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_update_iam_policy_assignment]{update_iam_policy_assignment} \tab Updates an existing IAM policy assignment\cr
 \link[paws.analytics:quicksight_update_identity_propagation_config]{update_identity_propagation_config} \tab Adds or updates services and authorized targets to configure what the Amazon QuickSight IAM Identity Center application can access\cr
 \link[paws.analytics:quicksight_update_ip_restriction]{update_ip_restriction} \tab Updates the content and status of IP rules\cr
+\link[paws.analytics:quicksight_update_key_registration]{update_key_registration} \tab Updates a customer managed key in a Amazon QuickSight account\cr
 \link[paws.analytics:quicksight_update_public_sharing_settings]{update_public_sharing_settings} \tab Use the UpdatePublicSharingSettings operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard\cr
 \link[paws.analytics:quicksight_update_refresh_schedule]{update_refresh_schedule} \tab Updates a refresh schedule for a dataset\cr
 \link[paws.analytics:quicksight_update_role_custom_permission]{update_role_custom_permission} \tab Updates the custom permissions that are associated with a role\cr
@@ -278,7 +283,7 @@ manage Amazon QuickSight.
 \examples{
 \dontrun{
 svc <- quicksight()
-svc$cancel_ingestion(
+svc$batch_create_topic_reviewed_answer(
   Foo = 123
 )
 }

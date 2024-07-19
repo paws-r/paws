@@ -5,15 +5,25 @@
 \title{Creates a place index resource in your Amazon Web Services account}
 \usage{
 locationservice_create_place_index(
-  DataSource,
-  DataSourceConfiguration = NULL,
-  Description = NULL,
   IndexName,
+  DataSource,
   PricingPlan = NULL,
+  Description = NULL,
+  DataSourceConfiguration = NULL,
   Tags = NULL
 )
 }
 \arguments{
+\item{IndexName}{[required] The name of the place index resource.
+
+Requirements:
+\itemize{
+\item Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-),
+periods (.), and underscores (_).
+\item Must be a unique place index resource name.
+\item No spaces allowed. For example, \code{ExamplePlaceIndex}.
+}}
+
 \item{DataSource}{[required] Specifies the geospatial data provider for the new place index.
 
 This field is case-sensitive. Enter the valid values as shown. For
@@ -41,22 +51,12 @@ Amazon Location Service.
 For additional information , see \href{https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html}{Data providers}
 on the \emph{Amazon Location Service Developer Guide}.}
 
-\item{DataSourceConfiguration}{Specifies the data storage option requesting Places.}
+\item{PricingPlan}{No longer used. If included, the only allowed value is
+\code{RequestBasedUsage}.}
 
 \item{Description}{The optional description for the place index resource.}
 
-\item{IndexName}{[required] The name of the place index resource.
-
-Requirements:
-\itemize{
-\item Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-),
-periods (.), and underscores (_).
-\item Must be a unique place index resource name.
-\item No spaces allowed. For example, \code{ExamplePlaceIndex}.
-}}
-
-\item{PricingPlan}{No longer used. If included, the only allowed value is
-\code{RequestBasedUsage}.}
+\item{DataSourceConfiguration}{Specifies the data storage option requesting Places.}
 
 \item{Tags}{Applies one or more tags to the place index resource. A tag is a
 key-value pair that helps you manage, identify, search, and filter your

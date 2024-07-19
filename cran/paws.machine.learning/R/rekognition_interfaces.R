@@ -53,7 +53,7 @@ NULL
 
 .rekognition$create_dataset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatasetSource = structure(list(GroundTruthManifest = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DatasetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DatasetType = structure(logical(0), tags = list(type = "string")), ProjectArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DatasetSource = structure(list(GroundTruthManifest = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DatasetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DatasetType = structure(logical(0), tags = list(type = "string")), ProjectArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,7 +77,7 @@ NULL
 
 .rekognition$create_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProjectName = structure(logical(0), tags = list(type = "string")), Feature = structure(logical(0), tags = list(type = "string")), AutoUpdate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProjectName = structure(logical(0), tags = list(type = "string")), Feature = structure(logical(0), tags = list(type = "string")), AutoUpdate = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

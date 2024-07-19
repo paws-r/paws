@@ -64,7 +64,7 @@ underscores, or digits (0- 9).
 \item Can't be a word reserved by the specified database engine.
 
 For more information about reserved words in MySQL, see the Keywords
-and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, and
+and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/8.4/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, and
 \href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
 }
 
@@ -100,7 +100,7 @@ Constraints:
 \item Can't be a reserved word for the chosen database engine.
 
 For more information about reserved words in MySQL 5.6 or 5.7, see
-the Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, or
+the Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/8.4/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, or
 \href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
 }
 

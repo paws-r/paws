@@ -237,7 +237,7 @@ dynamodb <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = "DynamoDB_20120810"
 )
 
-.dynamodb$service <- function(config = list()) {
+.dynamodb$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.dynamodb$metadata, handlers, config)
+  new_service(.dynamodb$metadata, handlers, config, op)
 }

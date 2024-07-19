@@ -16,7 +16,7 @@ codegurusecurity_get_findings(
 parameter when paginating results. If additional results exist beyond
 the number you specify, the \code{nextToken} element is returned in the
 response. Use \code{nextToken} in a subsequent request to retrieve additional
-results.}
+results. If not specified, returns 1000 results.}
 
 \item{nextToken}{A token to use for paginating results that are returned in the response.
 Set the value of this parameter to null for the first request. For

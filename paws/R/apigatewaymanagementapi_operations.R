@@ -33,12 +33,13 @@ apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
     name = "DeleteConnection",
     http_method = "DELETE",
     http_path = "/@connections/{connectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewaymanagementapi$delete_connection_input(ConnectionId = ConnectionId)
   output <- .apigatewaymanagementapi$delete_connection_output()
   config <- get_config()
-  svc <- .apigatewaymanagementapi$service(config)
+  svc <- .apigatewaymanagementapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -89,12 +90,13 @@ apigatewaymanagementapi_get_connection <- function(ConnectionId) {
     name = "GetConnection",
     http_method = "GET",
     http_path = "/@connections/{connectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewaymanagementapi$get_connection_input(ConnectionId = ConnectionId)
   output <- .apigatewaymanagementapi$get_connection_output()
   config <- get_config()
-  svc <- .apigatewaymanagementapi$service(config)
+  svc <- .apigatewaymanagementapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -133,12 +135,13 @@ apigatewaymanagementapi_post_to_connection <- function(Data, ConnectionId) {
     name = "PostToConnection",
     http_method = "POST",
     http_path = "/@connections/{connectionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewaymanagementapi$post_to_connection_input(Data = Data, ConnectionId = ConnectionId)
   output <- .apigatewaymanagementapi$post_to_connection_output()
   config <- get_config()
-  svc <- .apigatewaymanagementapi$service(config)
+  svc <- .apigatewaymanagementapi$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

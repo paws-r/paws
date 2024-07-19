@@ -178,7 +178,7 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.iamrolesanywhere$service <- function(config = list()) {
+.iamrolesanywhere$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.iamrolesanywhere$metadata, handlers, config)
+  new_service(.iamrolesanywhere$metadata, handlers, config, op)
 }

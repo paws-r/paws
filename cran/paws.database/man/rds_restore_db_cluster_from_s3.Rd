@@ -41,7 +41,8 @@ rds_restore_db_cluster_from_s3(
   NetworkType = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
-  StorageType = NULL
+  StorageType = NULL,
+  EngineLifecycleSupport = NULL
 )
 }
 \arguments{
@@ -317,6 +318,35 @@ Valid Values: \code{aurora}, \code{aurora-iopt1}
 Default: \code{aurora}
 
 Valid for: Aurora DB clusters only}
+
+\item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
+
+By default, this value is set to \code{open-source-rds-extended-support},
+which enrolls your DB cluster into Amazon RDS Extended Support. At the
+end of standard support, you can avoid charges for Extended Support by
+setting the value to \code{open-source-rds-extended-support-disabled}. In
+this case, RDS automatically upgrades your restored DB cluster to a
+higher engine version, if the major engine version is past its end of
+standard support date.
+
+You can use this setting to enroll your DB cluster into Amazon RDS
+Extended Support. With RDS Extended Support, you can run the selected
+major engine version on your DB cluster past the end of standard support
+for that engine version. For more information, see the following
+sections:
+\itemize{
+\item Amazon Aurora (PostgreSQL only) - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon Aurora User Guide}
+\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+in the \emph{Amazon RDS User Guide}
+}
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Valid Values:
+\code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
+
+Default: \code{open-source-rds-extended-support}}
 }
 \description{
 Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket} in the \emph{Amazon Aurora User Guide}.

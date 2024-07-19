@@ -44,12 +44,13 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
     name = "AssociateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$associate_web_acl_input(WebACLArn = WebACLArn, ResourceArn = ResourceArn)
   output <- .wafv2$associate_web_acl_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -88,12 +89,13 @@ wafv2_check_capacity <- function(Scope, Rules) {
     name = "CheckCapacity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$check_capacity_input(Scope = Scope, Rules = Rules)
   output <- .wafv2$check_capacity_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -135,12 +137,13 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
     name = "CreateAPIKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$create_api_key_input(Scope = Scope, TokenDomains = TokenDomains)
   output <- .wafv2$create_api_key_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -219,12 +222,13 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
     name = "CreateIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$create_ip_set_input(Name = Name, Scope = Scope, Description = Description, IPAddressVersion = IPAddressVersion, Addresses = Addresses, Tags = Tags)
   output <- .wafv2$create_ip_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -267,12 +271,13 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
     name = "CreateRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$create_regex_pattern_set_input(Name = Name, Scope = Scope, Description = Description, RegularExpressionList = RegularExpressionList, Tags = Tags)
   output <- .wafv2$create_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -349,12 +354,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$create_rule_group_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -450,12 +456,13 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     name = "CreateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -492,12 +499,13 @@ wafv2_delete_api_key <- function(Scope, APIKey) {
     name = "DeleteAPIKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$delete_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$delete_api_key_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -530,12 +538,13 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
     name = "DeleteFirewallManagerRuleGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$delete_firewall_manager_rule_groups_input(WebACLArn = WebACLArn, WebACLLockToken = WebACLLockToken)
   output <- .wafv2$delete_firewall_manager_rule_groups_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -584,12 +593,13 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
     name = "DeleteIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$delete_ip_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_ip_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -605,21 +615,38 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
 #' delete the LoggingConfiguration.
+#' @param LogType Used to distinguish between various logging options. Currently, there is
+#' one option.
+#' 
+#' Default: `WAF_LOGS`
+#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER`
+#' for the configurations that you manage.
+#' 
+#' The log scope `SECURITY_LAKE` indicates a configuration that is managed
+#' through Amazon Security Lake. You can use Security Lake to collect log
+#' and event data from various sources for normalization, analysis, and
+#' management. For information, see [Collecting data from Amazon Web
+#' Services
+#' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
+#' in the *Amazon Security Lake user guide*.
+#' 
+#' Default: `CUSTOMER`
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_logging_configuration
-wafv2_delete_logging_configuration <- function(ResourceArn) {
+wafv2_delete_logging_configuration <- function(ResourceArn, LogType = NULL, LogScope = NULL) {
   op <- new_operation(
     name = "DeleteLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .wafv2$delete_logging_configuration_input(ResourceArn = ResourceArn)
+  input <- .wafv2$delete_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$delete_logging_configuration_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -646,12 +673,13 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
     name = "DeletePermissionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$delete_permission_policy_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -700,12 +728,13 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
     name = "DeleteRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$delete_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -754,12 +783,13 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
     name = "DeleteRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$delete_rule_group_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_rule_group_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -808,12 +838,13 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
     name = "DeleteWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$delete_web_acl_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_web_acl_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -851,12 +882,13 @@ wafv2_describe_all_managed_products <- function(Scope) {
     name = "DescribeAllManagedProducts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$describe_all_managed_products_input(Scope = Scope)
   output <- .wafv2$describe_all_managed_products_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -895,12 +927,13 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
     name = "DescribeManagedProductsByVendor",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$describe_managed_products_by_vendor_input(VendorName = VendorName, Scope = Scope)
   output <- .wafv2$describe_managed_products_by_vendor_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -944,12 +977,13 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
     name = "DescribeManagedRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$describe_managed_rule_group_input(VendorName = VendorName, Name = Name, Scope = Scope, VersionName = VersionName)
   output <- .wafv2$describe_managed_rule_group_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -995,12 +1029,13 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
     name = "DisassociateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$disassociate_web_acl_input(ResourceArn = ResourceArn)
   output <- .wafv2$disassociate_web_acl_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1026,12 +1061,13 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
     name = "GenerateMobileSdkReleaseUrl",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$generate_mobile_sdk_release_url_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$generate_mobile_sdk_release_url_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1068,12 +1104,13 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
     name = "GetDecryptedAPIKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_decrypted_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$get_decrypted_api_key_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1114,12 +1151,13 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
     name = "GetIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_ip_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_ip_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1135,21 +1173,38 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
 #' the LoggingConfiguration.
+#' @param LogType Used to distinguish between various logging options. Currently, there is
+#' one option.
+#' 
+#' Default: `WAF_LOGS`
+#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER`
+#' for the configurations that you manage.
+#' 
+#' The log scope `SECURITY_LAKE` indicates a configuration that is managed
+#' through Amazon Security Lake. You can use Security Lake to collect log
+#' and event data from various sources for normalization, analysis, and
+#' management. For information, see [Collecting data from Amazon Web
+#' Services
+#' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
+#' in the *Amazon Security Lake user guide*.
+#' 
+#' Default: `CUSTOMER`
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_get_logging_configuration
-wafv2_get_logging_configuration <- function(ResourceArn) {
+wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScope = NULL) {
   op <- new_operation(
     name = "GetLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .wafv2$get_logging_configuration_input(ResourceArn = ResourceArn)
+  input <- .wafv2$get_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$get_logging_configuration_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1193,12 +1248,13 @@ wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
     name = "GetManagedRuleSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_managed_rule_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_managed_rule_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1224,12 +1280,13 @@ wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
     name = "GetMobileSdkRelease",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_mobile_sdk_release_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$get_mobile_sdk_release_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1254,12 +1311,13 @@ wafv2_get_permission_policy <- function(ResourceArn) {
     name = "GetPermissionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_permission_policy_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1308,12 +1366,13 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
     name = "GetRateBasedStatementManagedKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_rate_based_statement_managed_keys_input(Scope = Scope, WebACLName = WebACLName, WebACLId = WebACLId, RuleGroupRuleName = RuleGroupRuleName, RuleName = RuleName)
   output <- .wafv2$get_rate_based_statement_managed_keys_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1354,12 +1413,13 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
     name = "GetRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1401,12 +1461,13 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
     name = "GetRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_rule_group_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_rule_group_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1461,12 +1522,13 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
     name = "GetSampledRequests",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_sampled_requests_input(WebAclArn = WebAclArn, RuleMetricName = RuleMetricName, Scope = Scope, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .wafv2$get_sampled_requests_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1507,12 +1569,13 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
     name = "GetWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_web_acl_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1557,12 +1620,13 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
     name = "GetWebACLForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$get_web_acl_for_resource_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_web_acl_for_resource_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1607,12 +1671,13 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
     name = "ListAPIKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_api_keys_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_api_keys_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1661,12 +1726,13 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
     name = "ListAvailableManagedRuleGroupVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_available_managed_rule_group_versions_input(VendorName = VendorName, Name = Name, Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_group_versions_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1711,12 +1777,13 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
     name = "ListAvailableManagedRuleGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_available_managed_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_groups_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1761,12 +1828,13 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
     name = "ListIPSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_ip_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_ip_sets_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1801,21 +1869,34 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' request. If more objects are available, in the response, WAF provides a
 #' `NextMarker` value that you can use in a subsequent call to get the next
 #' batch of objects.
+#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER`
+#' for the configurations that you manage.
+#' 
+#' The log scope `SECURITY_LAKE` indicates a configuration that is managed
+#' through Amazon Security Lake. You can use Security Lake to collect log
+#' and event data from various sources for normalization, analysis, and
+#' management. For information, see [Collecting data from Amazon Web
+#' Services
+#' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
+#' in the *Amazon Security Lake user guide*.
+#' 
+#' Default: `CUSTOMER`
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_list_logging_configurations
-wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = NULL) {
+wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = NULL, LogScope = NULL) {
   op <- new_operation(
     name = "ListLoggingConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .wafv2$list_logging_configurations_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
+  input <- .wafv2$list_logging_configurations_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit, LogScope = LogScope)
   output <- .wafv2$list_logging_configurations_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1859,12 +1940,13 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
     name = "ListManagedRuleSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_managed_rule_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_managed_rule_sets_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1897,12 +1979,13 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
     name = "ListMobileSdkReleases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_mobile_sdk_releases_input(Platform = Platform, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_mobile_sdk_releases_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1947,12 +2030,13 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
     name = "ListRegexPatternSets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_regex_pattern_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_regex_pattern_sets_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1987,12 +2071,13 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
     name = "ListResourcesForWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_resources_for_web_acl_input(WebACLArn = WebACLArn, ResourceType = ResourceType)
   output <- .wafv2$list_resources_for_web_acl_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2037,12 +2122,13 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
     name = "ListRuleGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_rule_groups_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2074,12 +2160,13 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .wafv2$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2124,12 +2211,13 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
     name = "ListWebACLs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$list_web_ac_ls_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_web_ac_ls_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2154,12 +2242,13 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
     name = "PutLoggingConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .wafv2$put_logging_configuration_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2216,12 +2305,13 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
     name = "PutManagedRuleSetVersions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$put_managed_rule_set_versions_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, RecommendedVersion = RecommendedVersion, VersionsToPublish = VersionsToPublish)
   output <- .wafv2$put_managed_rule_set_versions_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2266,12 +2356,13 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
     name = "PutPermissionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .wafv2$put_permission_policy_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2296,12 +2387,13 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .wafv2$tag_resource_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2326,12 +2418,13 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .wafv2$untag_resource_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2418,12 +2511,13 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
     name = "UpdateIPSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$update_ip_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Addresses = Addresses, LockToken = LockToken)
   output <- .wafv2$update_ip_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2481,12 +2575,13 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
     name = "UpdateManagedRuleSetVersionExpiryDate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$update_managed_rule_set_version_expiry_date_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, VersionToExpire = VersionToExpire, ExpiryTimestamp = ExpiryTimestamp)
   output <- .wafv2$update_managed_rule_set_version_expiry_date_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2537,12 +2632,13 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
     name = "UpdateRegexPatternSet",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$update_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, RegularExpressionList = RegularExpressionList, LockToken = LockToken)
   output <- .wafv2$update_regex_pattern_set_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2612,12 +2708,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$update_rule_group_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2723,12 +2820,13 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     name = "UpdateWebACL",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
-  svc <- .wafv2$service(config)
+  svc <- .wafv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -34,11 +34,13 @@ NULL
 #' 
 #' -   Amazon SageMaker endpoint variants
 #' 
-#' -   Amazon SageMaker Serverless endpoint provisioned concurrency
-#' 
 #' -   Amazon SageMaker inference components
 #' 
+#' -   Amazon SageMaker serverless endpoint provisioned concurrency
+#' 
 #' -   Spot Fleets (Amazon EC2)
+#' 
+#' -   Pool of WorkSpaces
 #' 
 #' -   Custom resources provided by your own applications or services
 #' 
@@ -210,7 +212,7 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
   target_prefix = "AnyScaleFrontendService"
 )
 
-.applicationautoscaling$service <- function(config = list()) {
+.applicationautoscaling$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.applicationautoscaling$metadata, handlers, config)
+  new_service(.applicationautoscaling$metadata, handlers, config, op)
 }

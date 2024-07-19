@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Prefix}{The prefix for the data feed file names.}
 }
 \description{
-Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
+Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_spot_datafeed_subscription/} for full documentation.
 }

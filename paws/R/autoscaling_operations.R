@@ -18,8 +18,8 @@ NULL
 #' target groups attached to your Auto Scaling group, the instances are
 #' also registered with the target groups.
 #' 
-#' For more information, see [Attach EC2 instances to your Auto Scaling
-#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html)
+#' For more information, see [Detach or attach
+#' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -63,12 +63,13 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
     name = "AttachInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$attach_instances_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$attach_instances_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -163,12 +164,13 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
     name = "AttachLoadBalancerTargetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$attach_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, TargetGroupARNs = TargetGroupARNs)
   output <- .autoscaling$attach_load_balancer_target_groups_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -251,12 +253,13 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
     name = "AttachLoadBalancers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$attach_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, LoadBalancerNames = LoadBalancerNames)
   output <- .autoscaling$attach_load_balancers_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -339,12 +342,13 @@ autoscaling_attach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
     name = "AttachTrafficSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$attach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources)
   output <- .autoscaling$attach_traffic_sources_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -400,12 +404,13 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
     name = "BatchDeleteScheduledAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$batch_delete_scheduled_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionNames = ScheduledActionNames)
   output <- .autoscaling$batch_delete_scheduled_action_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -473,12 +478,13 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
     name = "BatchPutScheduledUpdateGroupAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$batch_put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledUpdateGroupActions = ScheduledUpdateGroupActions)
   output <- .autoscaling$batch_put_scheduled_update_group_action_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -540,12 +546,13 @@ autoscaling_cancel_instance_refresh <- function(AutoScalingGroupName) {
     name = "CancelInstanceRefresh",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$cancel_instance_refresh_input(AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$cancel_instance_refresh_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -641,12 +648,13 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
     name = "CompleteLifecycleAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$complete_lifecycle_action_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName, LifecycleActionToken = LifecycleActionToken, LifecycleActionResult = LifecycleActionResult, InstanceId = InstanceId)
   output <- .autoscaling$complete_lifecycle_action_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -715,8 +723,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' (`LaunchConfigurationName` or `InstanceId`).
 #' 
 #' The launch template that is specified must be configured for use with an
-#' Auto Scaling group. For more information, see [Creating a launch
-#' template for an Auto Scaling
+#' Auto Scaling group. For more information, see [Create a launch template
+#' for an Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MixedInstancesPolicy The mixed instances policy. For more information, see [Auto Scaling
@@ -728,8 +736,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' the specified instance to create a new launch configuration. To get the
 #' instance ID, use the Amazon EC2
 #' [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
-#' API operation. For more information, see [Creating an Auto Scaling group
-#' using an EC2
+#' API operation. For more information, see [Create an Auto Scaling group
+#' using parameters from an existing
 #' instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MinSize &#91;required&#93; The minimum size of the group.
@@ -777,8 +785,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' 
 #' The valid values are `EC2`, `ELB`, and `VPC_LATTICE`. `EC2` is the
 #' default health check and cannot be disabled. For more information, see
-#' [Health checks for Auto Scaling
-#' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
+#' [Health checks for instances in an Auto Scaling
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Only specify `EC2` if you must clear a value that was previously set.
@@ -806,8 +814,9 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' specify must reside in those Availability Zones.
 #' @param TerminationPolicies A policy or a list of policies that are used to select the instance to
 #' terminate. These policies are executed in the order that you list them.
-#' For more information, see [Work with Amazon EC2 Auto Scaling termination
-#' policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html)
+#' For more information, see [Configure termination policies for Amazon EC2
+#' Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Valid values: `Default` | `AllocationStrategy` |
@@ -817,7 +826,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' @param NewInstancesProtectedFromScaleIn Indicates whether newly launched instances are protected from
 #' termination by Amazon EC2 Auto Scaling when scaling in. For more
 #' information about preventing instances from terminating on scale in, see
-#' [Using instance scale-in
+#' [Use instance scale-in
 #' protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param CapacityRebalance Indicates whether Capacity Rebalancing is enabled. Otherwise, Capacity
@@ -851,7 +860,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' @param MaxInstanceLifetime The maximum amount of time, in seconds, that an instance can be in
 #' service. The default is null. If specified, the value must be either 0
 #' or a number equal to or greater than 86,400 seconds (1 day). For more
-#' information, see [Replacing Auto Scaling instances based on maximum
+#' information, see [Replace Auto Scaling instances based on maximum
 #' instance
 #' lifetime](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
@@ -859,7 +868,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' @param DesiredCapacityType The unit of measurement for the value specified for desired capacity.
 #' Amazon EC2 Auto Scaling supports `DesiredCapacityType` for
 #' attribute-based instance type selection only. For more information, see
-#' [Creating an Auto Scaling group using attribute-based instance type
+#' [Create a mixed instances group using attribute-based instance type
 #' selection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
@@ -1195,12 +1204,13 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
     name = "CreateAutoScalingGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
   output <- .autoscaling$create_auto_scaling_group_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1243,18 +1253,18 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' @param LaunchConfigurationName &#91;required&#93; The name of the launch configuration. This name must be unique per
 #' Region per account.
 #' @param ImageId The ID of the Amazon Machine Image (AMI) that was assigned during
-#' registration. For more information, see [Finding a Linux
+#' registration. For more information, see [Find a Linux
 #' AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html)
 #' in the *Amazon EC2 User Guide for Linux Instances*.
 #' 
 #' If you specify `InstanceId`, an `ImageId` is not required.
 #' @param KeyName The name of the key pair. For more information, see [Amazon EC2 key
-#' pairs and Linux
+#' pairs and Amazon EC2
 #' instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 #' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param SecurityGroups A list that contains the security group IDs to assign to the instances
 #' in the Auto Scaling group. For more information, see [Control traffic to
-#' resources using security
+#' your Amazon Web Services resources using security
 #' groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' @param ClassicLinkVPCId Available for backward compatibility.
@@ -1263,7 +1273,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' information, see [Instance metadata and user
 #' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 #' (Linux) and [Instance metadata and user
-#' data](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html)
+#' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 #' (Windows). If you are using a command line tool, base64-encoding is
 #' performed for you, and you can load the text from a file. Otherwise, you
 #' must provide base64-encoded text. User data is limited to 16 KB.
@@ -1274,8 +1284,8 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' To create a launch configuration with a block device mapping or override
 #' any other instance attributes, specify them as part of the same request.
 #' 
-#' For more information, see [Creating a launch configuration using an EC2
-#' instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html)
+#' For more information, see [Create a launch
+#' configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param InstanceType Specifies the instance type of the EC2 instance. For information about
 #' available instance types, see [Available instance
@@ -1287,13 +1297,13 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see [User provided
-#' kernels](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
+#' kernels](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param RamdiskId The ID of the RAM disk to select.
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see [User provided
-#' kernels](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
+#' kernels](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param BlockDeviceMappings The block device mapping entries that define the block devices to attach
 #' to the instances at launch. By default, the block devices specified in
@@ -1309,8 +1319,8 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' When detailed monitoring is enabled, Amazon CloudWatch generates metrics
 #' every minute and your account is charged a fee. When you disable
 #' detailed monitoring, CloudWatch generates metrics every 5 minutes. For
-#' more information, see [Configure Monitoring for Auto Scaling
-#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/enable-as-instance-metrics.html)
+#' more information, see [Configure monitoring for Auto Scaling
+#' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/enable-as-instance-metrics.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param SpotPrice The maximum hourly price to be paid for any Spot Instance launched to
 #' fulfill the request. Spot Instances are launched when the price you
@@ -1351,8 +1361,8 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' address on the subnet.
 #' 
 #' If you specify `true`, each instance in the Auto Scaling group receives
-#' a unique public IPv4 address. For more information, see [Launching Auto
-#' Scaling instances in a
+#' a unique public IPv4 address. For more information, see [Provide network
+#' connectivity for your Auto Scaling instances using Amazon
 #' VPC](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
@@ -1363,18 +1373,15 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' hardware and can only be launched into a VPC. To launch dedicated
 #' instances into a shared tenancy VPC (a VPC with the instance placement
 #' tenancy attribute set to `default`), you must set the value of this
-#' property to `dedicated`. For more information, see [Configuring instance
-#' tenancy with Amazon EC2 Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/advanced-settings-for-your-launch-template.html)
-#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' property to `dedicated`.
 #' 
 #' If you specify `PlacementTenancy`, you must specify at least one subnet
 #' for `VPCZoneIdentifier` when you create your group.
 #' 
 #' Valid values: `default` | `dedicated`
 #' @param MetadataOptions The metadata options for the instances. For more information, see
-#' [Configuring the Instance Metadata
-#' Options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds)
+#' [Configure the instance metadata
+#' options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @return
@@ -1454,12 +1461,13 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
     name = "CreateLaunchConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$create_launch_configuration_input(LaunchConfigurationName = LaunchConfigurationName, ImageId = ImageId, KeyName = KeyName, SecurityGroups = SecurityGroups, ClassicLinkVPCId = ClassicLinkVPCId, ClassicLinkVPCSecurityGroups = ClassicLinkVPCSecurityGroups, UserData = UserData, InstanceId = InstanceId, InstanceType = InstanceType, KernelId = KernelId, RamdiskId = RamdiskId, BlockDeviceMappings = BlockDeviceMappings, InstanceMonitoring = InstanceMonitoring, SpotPrice = SpotPrice, IamInstanceProfile = IamInstanceProfile, EbsOptimized = EbsOptimized, AssociatePublicIpAddress = AssociatePublicIpAddress, PlacementTenancy = PlacementTenancy, MetadataOptions = MetadataOptions)
   output <- .autoscaling$create_launch_configuration_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1535,12 +1543,13 @@ autoscaling_create_or_update_tags <- function(Tags) {
     name = "CreateOrUpdateTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$create_or_update_tags_input(Tags = Tags)
   output <- .autoscaling$create_or_update_tags_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1622,12 +1631,13 @@ autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDel
     name = "DeleteAutoScalingGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, ForceDelete = ForceDelete)
   output <- .autoscaling$delete_auto_scaling_group_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1676,12 +1686,13 @@ autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
     name = "DeleteLaunchConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_launch_configuration_input(LaunchConfigurationName = LaunchConfigurationName)
   output <- .autoscaling$delete_launch_configuration_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1734,12 +1745,13 @@ autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGrou
     name = "DeleteLifecycleHook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_lifecycle_hook_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$delete_lifecycle_hook_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1789,12 +1801,13 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
     name = "DeleteNotificationConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_notification_configuration_input(AutoScalingGroupName = AutoScalingGroupName, TopicARN = TopicARN)
   output <- .autoscaling$delete_notification_configuration_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1810,7 +1823,7 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
 #' the underlying alarm action, but does not delete the alarm, even if it
 #' no longer has an associated action.
 #' 
-#' For more information, see [Deleting a scaling
+#' For more information, see [Delete a scaling
 #' policy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
@@ -1850,12 +1863,13 @@ autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
     name = "DeletePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_policy_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName)
   output <- .autoscaling$delete_policy_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1905,12 +1919,13 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
     name = "DeleteScheduledAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_scheduled_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionName = ScheduledActionName)
   output <- .autoscaling$delete_scheduled_action_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1971,12 +1986,13 @@ autoscaling_delete_tags <- function(Tags) {
     name = "DeleteTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_tags_input(Tags = Tags)
   output <- .autoscaling$delete_tags_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2022,12 +2038,13 @@ autoscaling_delete_warm_pool <- function(AutoScalingGroupName, ForceDelete = NUL
     name = "DeleteWarmPool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$delete_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, ForceDelete = ForceDelete)
   output <- .autoscaling$delete_warm_pool_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2083,12 +2100,13 @@ autoscaling_describe_account_limits <- function() {
     name = "DescribeAccountLimits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_account_limits_input()
   output <- .autoscaling$describe_account_limits_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2145,12 +2163,13 @@ autoscaling_describe_adjustment_types <- function() {
     name = "DescribeAdjustmentTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_adjustment_types_input()
   output <- .autoscaling$describe_adjustment_types_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2435,12 +2454,13 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
     name = "DescribeAutoScalingGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingGroups")
   )
   input <- .autoscaling$describe_auto_scaling_groups_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords, Filters = Filters)
   output <- .autoscaling$describe_auto_scaling_groups_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2525,12 +2545,13 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
     name = "DescribeAutoScalingInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingInstances")
   )
   input <- .autoscaling$describe_auto_scaling_instances_input(InstanceIds = InstanceIds, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_auto_scaling_instances_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2577,12 +2598,13 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
     name = "DescribeAutoScalingNotificationTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_auto_scaling_notification_types_input()
   output <- .autoscaling$describe_auto_scaling_notification_types_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2826,12 +2848,13 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
     name = "DescribeInstanceRefreshes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_instance_refreshes_input(AutoScalingGroupName = AutoScalingGroupName, InstanceRefreshIds = InstanceRefreshIds, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_instance_refreshes_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2948,12 +2971,13 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
     name = "DescribeLaunchConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LaunchConfigurations")
   )
   input <- .autoscaling$describe_launch_configurations_input(LaunchConfigurationNames = LaunchConfigurationNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_launch_configurations_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3004,12 +3028,13 @@ autoscaling_describe_lifecycle_hook_types <- function() {
     name = "DescribeLifecycleHookTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_lifecycle_hook_types_input()
   output <- .autoscaling$describe_lifecycle_hook_types_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3080,12 +3105,13 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
     name = "DescribeLifecycleHooks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_lifecycle_hooks_input(AutoScalingGroupName = AutoScalingGroupName, LifecycleHookNames = LifecycleHookNames)
   output <- .autoscaling$describe_lifecycle_hooks_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3197,12 +3223,13 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
     name = "DescribeLoadBalancerTargetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_load_balancer_target_groups_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3314,12 +3341,13 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
     name = "DescribeLoadBalancers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_load_balancers_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3371,12 +3399,13 @@ autoscaling_describe_metric_collection_types <- function() {
     name = "DescribeMetricCollectionTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_metric_collection_types_input()
   output <- .autoscaling$describe_metric_collection_types_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3447,12 +3476,13 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
     name = "DescribeNotificationConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "NotificationConfigurations")
   )
   input <- .autoscaling$describe_notification_configurations_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_notification_configurations_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3690,12 +3720,13 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
     name = "DescribePolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScalingPolicies")
   )
   input <- .autoscaling$describe_policies_input(AutoScalingGroupName = AutoScalingGroupName, PolicyNames = PolicyNames, PolicyTypes = PolicyTypes, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_policies_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3708,7 +3739,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' Gets information about the scaling activities in the account and Region.
 #' 
 #' When scaling events occur, you see a record of the scaling activity in
-#' the scaling activities. For more information, see [Verifying a scaling
+#' the scaling activities. For more information, see [Verify a scaling
 #' activity for an Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
@@ -3800,12 +3831,13 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Activities")
   )
   input <- .autoscaling$describe_scaling_activities_input(ActivityIds = ActivityIds, AutoScalingGroupName = AutoScalingGroupName, IncludeDeletedGroups = IncludeDeletedGroups, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_scaling_activities_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3855,12 +3887,13 @@ autoscaling_describe_scaling_process_types <- function() {
     name = "DescribeScalingProcessTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_scaling_process_types_input()
   output <- .autoscaling$describe_scaling_process_types_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3964,12 +3997,13 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScheduledUpdateGroupActions")
   )
   input <- .autoscaling$describe_scheduled_actions_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionNames = ScheduledActionNames, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_scheduled_actions_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4062,12 +4096,13 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Tags")
   )
   input <- .autoscaling$describe_tags_input(Filters = Filters, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_tags_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4079,8 +4114,9 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
 #' @description
 #' Describes the termination policies supported by Amazon EC2 Auto Scaling.
 #' 
-#' For more information, see [Work with Amazon EC2 Auto Scaling termination
-#' policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html)
+#' For more information, see [Configure termination policies for Amazon EC2
+#' Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -4116,12 +4152,13 @@ autoscaling_describe_termination_policy_types <- function() {
     name = "DescribeTerminationPolicyTypes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$describe_termination_policy_types_input()
   output <- .autoscaling$describe_termination_policy_types_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4207,12 +4244,13 @@ autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSo
     name = "DescribeTrafficSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSourceType = TrafficSourceType, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_traffic_sources_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4291,12 +4329,13 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
     name = "DescribeWarmPool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Instances")
   )
   input <- .autoscaling$describe_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_warm_pool_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4320,8 +4359,8 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
 #' target groups attached to the Auto Scaling group, the instances are
 #' deregistered from the target groups.
 #' 
-#' For more information, see [Detach EC2 instances from your Auto Scaling
-#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html)
+#' For more information, see [Detach or attach
+#' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -4394,12 +4433,13 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
     name = "DetachInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$detach_instances_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
   output <- .autoscaling$detach_instances_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4480,12 +4520,13 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
     name = "DetachLoadBalancerTargetGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$detach_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, TargetGroupARNs = TargetGroupARNs)
   output <- .autoscaling$detach_load_balancer_target_groups_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4566,12 +4607,13 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
     name = "DetachLoadBalancers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$detach_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, LoadBalancerNames = LoadBalancerNames)
   output <- .autoscaling$detach_load_balancers_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4638,12 +4680,13 @@ autoscaling_detach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
     name = "DetachTrafficSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$detach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources)
   output <- .autoscaling$detach_traffic_sources_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4705,8 +4748,8 @@ autoscaling_detach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
 #' 
 #' If you omit this property, all metrics are disabled.
 #' 
-#' For more information, see [Auto Scaling group
-#' metrics](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html#as-group-metrics)
+#' For more information, see [Amazon CloudWatch metrics for Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-metrics.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @return
@@ -4744,12 +4787,13 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
     name = "DisableMetricsCollection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$disable_metrics_collection_input(AutoScalingGroupName = AutoScalingGroupName, Metrics = Metrics)
   output <- .autoscaling$disable_metrics_collection_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4821,8 +4865,8 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 #' If you specify `Granularity` and don't specify any metrics, all metrics
 #' are enabled.
 #' 
-#' For more information, see [Auto Scaling group
-#' metrics](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html#as-group-metrics)
+#' For more information, see [Amazon CloudWatch metrics for Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-metrics.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param Granularity &#91;required&#93; The frequency at which Amazon EC2 Auto Scaling sends aggregated data to
 #' CloudWatch. The only valid value is `1Minute`.
@@ -4861,12 +4905,13 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
     name = "EnableMetricsCollection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$enable_metrics_collection_input(AutoScalingGroupName = AutoScalingGroupName, Metrics = Metrics, Granularity = Granularity)
   output <- .autoscaling$enable_metrics_collection_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4961,12 +5006,13 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
     name = "EnterStandby",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$enter_standby_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
   output <- .autoscaling$enter_standby_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5043,12 +5089,13 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
     name = "ExecutePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$execute_policy_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName, HonorCooldown = HonorCooldown, MetricValue = MetricValue, BreachThreshold = BreachThreshold)
   output <- .autoscaling$execute_policy_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5132,12 +5179,13 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
     name = "ExitStandby",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$exit_standby_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$exit_standby_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5323,12 +5371,13 @@ autoscaling_get_predictive_scaling_forecast <- function(AutoScalingGroupName, Po
     name = "GetPredictiveScalingForecast",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$get_predictive_scaling_forecast_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName, StartTime = StartTime, EndTime = EndTime)
   output <- .autoscaling$get_predictive_scaling_forecast_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5475,12 +5524,13 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
     name = "PutLifecycleHook",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$put_lifecycle_hook_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName, LifecycleTransition = LifecycleTransition, RoleARN = RoleARN, NotificationTargetARN = NotificationTargetARN, NotificationMetadata = NotificationMetadata, HeartbeatTimeout = HeartbeatTimeout, DefaultResult = DefaultResult)
   output <- .autoscaling$put_lifecycle_hook_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5497,9 +5547,9 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' 
 #' This configuration overwrites any existing configuration.
 #' 
-#' For more information, see [Getting Amazon SNS notifications when your
-#' Auto Scaling group
-#' scales](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-sns-notifications.html)
+#' For more information, see [Amazon SNS notification options for Amazon
+#' EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-sns-notifications.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' If you exceed your maximum limit of SNS topics, which is 10 per Auto
@@ -5553,12 +5603,13 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
     name = "PutNotificationConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$put_notification_configuration_input(AutoScalingGroupName = AutoScalingGroupName, TopicARN = TopicARN, NotificationTypes = NotificationTypes)
   output <- .autoscaling$put_notification_configuration_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5698,7 +5749,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' 
 #' Required if the policy type is `TargetTrackingScaling`.
 #' @param Enabled Indicates whether the scaling policy is enabled or disabled. The default
-#' is enabled. For more information, see [Disabling a scaling policy for an
+#' is enabled. For more information, see [Disable a scaling policy for an
 #' Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
@@ -5917,12 +5968,13 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
     name = "PutScalingPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$put_scaling_policy_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName, PolicyType = PolicyType, AdjustmentType = AdjustmentType, MinAdjustmentStep = MinAdjustmentStep, MinAdjustmentMagnitude = MinAdjustmentMagnitude, ScalingAdjustment = ScalingAdjustment, Cooldown = Cooldown, MetricAggregationType = MetricAggregationType, StepAdjustments = StepAdjustments, EstimatedInstanceWarmup = EstimatedInstanceWarmup, TargetTrackingConfiguration = TargetTrackingConfiguration, Enabled = Enabled, PredictiveScalingConfiguration = PredictiveScalingConfiguration)
   output <- .autoscaling$put_scaling_policy_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6041,12 +6093,13 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
     name = "PutScheduledUpdateGroupAction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionName = ScheduledActionName, Time = Time, StartTime = StartTime, EndTime = EndTime, Recurrence = Recurrence, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, TimeZone = TimeZone)
   output <- .autoscaling$put_scheduled_update_group_action_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6060,20 +6113,19 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' warm pool is a pool of pre-initialized EC2 instances that sits alongside
 #' the Auto Scaling group. Whenever your application needs to scale out,
 #' the Auto Scaling group can draw on the warm pool to meet its new desired
-#' capacity. For more information and example configurations, see [Warm
-#' pools for Amazon EC2 Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
-#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' capacity.
 #' 
 #' This operation must be called from the Region in which the Auto Scaling
-#' group was created. This operation cannot be called on an Auto Scaling
-#' group that has a mixed instances policy or a launch template or launch
-#' configuration that requests Spot Instances.
+#' group was created.
 #' 
 #' You can view the instances in the warm pool using the
 #' [`describe_warm_pool`][autoscaling_describe_warm_pool] API call. If you
 #' are no longer using a warm pool, you can delete it by calling the
 #' [`delete_warm_pool`][autoscaling_delete_warm_pool] API.
+#' 
+#' For more information, see [Warm pools for Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_put_warm_pool(AutoScalingGroupName,
@@ -6149,12 +6201,13 @@ autoscaling_put_warm_pool <- function(AutoScalingGroupName, MaxGroupPreparedCapa
     name = "PutWarmPool",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$put_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxGroupPreparedCapacity = MaxGroupPreparedCapacity, MinSize = MinSize, PoolState = PoolState, InstanceReusePolicy = InstanceReusePolicy)
   output <- .autoscaling$put_warm_pool_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6247,12 +6300,13 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
     name = "RecordLifecycleActionHeartbeat",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$record_lifecycle_action_heartbeat_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName, LifecycleActionToken = LifecycleActionToken, InstanceId = InstanceId)
   output <- .autoscaling$record_lifecycle_action_heartbeat_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6266,7 +6320,7 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
 #' Resumes the specified suspended auto scaling processes, or all suspended
 #' process, for the specified Auto Scaling group.
 #' 
-#' For more information, see [Suspending and resuming scaling
+#' For more information, see [Suspend and resume Amazon EC2 Auto Scaling
 #' processes](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
@@ -6331,12 +6385,13 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
     name = "ResumeProcesses",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$resume_processes_input(AutoScalingGroupName = AutoScalingGroupName, ScalingProcesses = ScalingProcesses)
   output <- .autoscaling$resume_processes_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6406,12 +6461,13 @@ autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName) {
     name = "RollbackInstanceRefresh",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$rollback_instance_refresh_input(AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$rollback_instance_refresh_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6477,12 +6533,13 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
     name = "SetDesiredCapacity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$set_desired_capacity_input(AutoScalingGroupName = AutoScalingGroupName, DesiredCapacity = DesiredCapacity, HonorCooldown = HonorCooldown)
   output <- .autoscaling$set_desired_capacity_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6494,8 +6551,9 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #' @description
 #' Sets the health status of the specified instance.
 #' 
-#' For more information, see [Health checks for Auto Scaling
-#' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
+#' For more information, see [Health checks for instances in an Auto
+#' Scaling
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -6512,9 +6570,10 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #' respects the grace period. Set this to `False`, to have the call not
 #' respect the grace period associated with the group.
 #' 
-#' For more information about the health check grace period, see
-#' [`create_auto_scaling_group`][autoscaling_create_auto_scaling_group] in
-#' the *Amazon EC2 Auto Scaling API Reference*.
+#' For more information about the health check grace period, see [Set the
+#' health check grace period for an Auto Scaling
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-check-grace-period.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @return
 #' An empty list.
@@ -6548,12 +6607,13 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
     name = "SetInstanceHealth",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$set_instance_health_input(InstanceId = InstanceId, HealthStatus = HealthStatus, ShouldRespectGracePeriod = ShouldRespectGracePeriod)
   output <- .autoscaling$set_instance_health_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6566,8 +6626,7 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 #' Updates the instance protection settings of the specified instances.
 #' This operation cannot be called on instances in a warm pool.
 #' 
-#' For more information about preventing instances that are part of an Auto
-#' Scaling group from terminating on scale in, see [Using instance scale-in
+#' For more information, see [Use instance scale-in
 #' protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
@@ -6628,12 +6687,13 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
     name = "SetInstanceProtection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$set_instance_protection_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName, ProtectedFromScaleIn = ProtectedFromScaleIn)
   output <- .autoscaling$set_instance_protection_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6889,12 +6949,13 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
     name = "StartInstanceRefresh",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$start_instance_refresh_input(AutoScalingGroupName = AutoScalingGroupName, Strategy = Strategy, DesiredConfiguration = DesiredConfiguration, Preferences = Preferences)
   output <- .autoscaling$start_instance_refresh_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6910,7 +6971,7 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
 #' 
 #' If you suspend either the `Launch` or `Terminate` process types, it can
 #' prevent other process types from functioning properly. For more
-#' information, see [Suspending and resuming scaling
+#' information, see [Suspend and resume Amazon EC2 Auto Scaling
 #' processes](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
@@ -6978,12 +7039,13 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
     name = "SuspendProcesses",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$suspend_processes_input(AutoScalingGroupName = AutoScalingGroupName, ScalingProcesses = ScalingProcesses)
   output <- .autoscaling$suspend_processes_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7010,9 +7072,8 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #' Availability Zones. If you decrement the desired capacity, your Auto
 #' Scaling group can become unbalanced between Availability Zones. Amazon
 #' EC2 Auto Scaling tries to rebalance the group, and rebalancing might
-#' terminate instances in other zones. For more information, see
-#' [Rebalancing
-#' activities](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage)
+#' terminate instances in other zones. For more information, see [Manual
+#' scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-manually.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -7077,12 +7138,13 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
     name = "TerminateInstanceInAutoScalingGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$terminate_instance_in_auto_scaling_group_input(InstanceId = InstanceId, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
   output <- .autoscaling$terminate_instance_in_auto_scaling_group_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7189,8 +7251,8 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' 
 #' The valid values are `EC2`, `ELB`, and `VPC_LATTICE`. `EC2` is the
 #' default health check and cannot be disabled. For more information, see
-#' [Health checks for Auto Scaling
-#' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
+#' [Health checks for instances in an Auto Scaling
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Only specify `EC2` if you must clear a value that was previously set.
@@ -7215,8 +7277,9 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' that you specify must reside in those Availability Zones.
 #' @param TerminationPolicies A policy or a list of policies that are used to select the instances to
 #' terminate. The policies are executed in the order that you list them.
-#' For more information, see [Work with Amazon EC2 Auto Scaling termination
-#' policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html)
+#' For more information, see [Configure termination policies for Amazon EC2
+#' Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Valid values: `Default` | `AllocationStrategy` |
@@ -7226,7 +7289,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @param NewInstancesProtectedFromScaleIn Indicates whether newly launched instances are protected from
 #' termination by Amazon EC2 Auto Scaling when scaling in. For more
 #' information about preventing instances from terminating on scale in, see
-#' [Using instance scale-in
+#' [Use instance scale-in
 #' protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param ServiceLinkedRoleARN The Amazon Resource Name (ARN) of the service-linked role that the Auto
@@ -7249,7 +7312,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @param DesiredCapacityType The unit of measurement for the value specified for desired capacity.
 #' Amazon EC2 Auto Scaling supports `DesiredCapacityType` for
 #' attribute-based instance type selection only. For more information, see
-#' [Creating an Auto Scaling group using attribute-based instance type
+#' [Create a mixed instances group using attribute-based instance type
 #' selection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
@@ -7445,12 +7508,13 @@ autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
     name = "UpdateAutoScalingGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .autoscaling$update_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, CapacityRebalance = CapacityRebalance, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
   output <- .autoscaling$update_auto_scaling_group_output()
   config <- get_config()
-  svc <- .autoscaling$service(config)
+  svc <- .autoscaling$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -24,12 +24,13 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
     name = "AddTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$add_tags_input(Tags = Tags, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$add_tags_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -68,12 +69,13 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
     name = "CreateBatchPrediction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$create_batch_prediction_input(BatchPredictionId = BatchPredictionId, BatchPredictionName = BatchPredictionName, MLModelId = MLModelId, BatchPredictionDataSourceId = BatchPredictionDataSourceId, OutputUri = OutputUri)
   output <- .machinelearning$create_batch_prediction_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -155,12 +157,13 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
     name = "CreateDataSourceFromRDS",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$create_data_source_from_rds_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, RDSData = RDSData, RoleARN = RoleARN, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_rds_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -230,12 +233,13 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
     name = "CreateDataSourceFromRedshift",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$create_data_source_from_redshift_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, DataSpec = DataSpec, RoleARN = RoleARN, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_redshift_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -279,12 +283,13 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
     name = "CreateDataSourceFromS3",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$create_data_source_from_s3_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, DataSpec = DataSpec, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_s3_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -315,12 +320,13 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
     name = "CreateEvaluation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$create_evaluation_input(EvaluationId = EvaluationId, EvaluationName = EvaluationName, MLModelId = MLModelId, EvaluationDataSourceId = EvaluationDataSourceId)
   output <- .machinelearning$create_evaluation_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -408,12 +414,13 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
     name = "CreateMLModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$create_ml_model_input(MLModelId = MLModelId, MLModelName = MLModelName, MLModelType = MLModelType, Parameters = Parameters, TrainingDataSourceId = TrainingDataSourceId, Recipe = Recipe, RecipeUri = RecipeUri)
   output <- .machinelearning$create_ml_model_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -437,12 +444,13 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
     name = "CreateRealtimeEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$create_realtime_endpoint_input(MLModelId = MLModelId)
   output <- .machinelearning$create_realtime_endpoint_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -466,12 +474,13 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
     name = "DeleteBatchPrediction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$delete_batch_prediction_input(BatchPredictionId = BatchPredictionId)
   output <- .machinelearning$delete_batch_prediction_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -495,12 +504,13 @@ machinelearning_delete_data_source <- function(DataSourceId) {
     name = "DeleteDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$delete_data_source_input(DataSourceId = DataSourceId)
   output <- .machinelearning$delete_data_source_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -524,12 +534,13 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
     name = "DeleteEvaluation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$delete_evaluation_input(EvaluationId = EvaluationId)
   output <- .machinelearning$delete_evaluation_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -553,12 +564,13 @@ machinelearning_delete_ml_model <- function(MLModelId) {
     name = "DeleteMLModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$delete_ml_model_input(MLModelId = MLModelId)
   output <- .machinelearning$delete_ml_model_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -582,12 +594,13 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
     name = "DeleteRealtimeEndpoint",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$delete_realtime_endpoint_input(MLModelId = MLModelId)
   output <- .machinelearning$delete_realtime_endpoint_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -613,12 +626,13 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
     name = "DeleteTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$delete_tags_input(TagKeys = TagKeys, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$delete_tags_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -706,12 +720,13 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
     name = "DescribeBatchPredictions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_batch_predictions_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_batch_predictions_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -791,12 +806,13 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
     name = "DescribeDataSources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_data_sources_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_data_sources_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -883,12 +899,13 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
     name = "DescribeEvaluations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_evaluations_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_evaluations_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -977,12 +994,13 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
     name = "DescribeMLModels",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_ml_models_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_ml_models_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1007,12 +1025,13 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$describe_tags_input(ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$describe_tags_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1037,12 +1056,13 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
     name = "GetBatchPrediction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$get_batch_prediction_input(BatchPredictionId = BatchPredictionId)
   output <- .machinelearning$get_batch_prediction_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1074,12 +1094,13 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
     name = "GetDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$get_data_source_input(DataSourceId = DataSourceId, Verbose = Verbose)
   output <- .machinelearning$get_data_source_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1106,12 +1127,13 @@ machinelearning_get_evaluation <- function(EvaluationId) {
     name = "GetEvaluation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$get_evaluation_input(EvaluationId = EvaluationId)
   output <- .machinelearning$get_evaluation_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1142,12 +1164,13 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
     name = "GetMLModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$get_ml_model_input(MLModelId = MLModelId, Verbose = Verbose)
   output <- .machinelearning$get_ml_model_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1173,12 +1196,13 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
     name = "Predict",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$predict_input(MLModelId = MLModelId, Record = Record, PredictEndpoint = PredictEndpoint)
   output <- .machinelearning$predict_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1203,12 +1227,13 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
     name = "UpdateBatchPrediction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$update_batch_prediction_input(BatchPredictionId = BatchPredictionId, BatchPredictionName = BatchPredictionName)
   output <- .machinelearning$update_batch_prediction_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1234,12 +1259,13 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
     name = "UpdateDataSource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$update_data_source_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName)
   output <- .machinelearning$update_data_source_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1265,12 +1291,13 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
     name = "UpdateEvaluation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$update_evaluation_input(EvaluationId = EvaluationId, EvaluationName = EvaluationName)
   output <- .machinelearning$update_evaluation_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1302,12 +1329,13 @@ machinelearning_update_ml_model <- function(MLModelId, MLModelName = NULL, Score
     name = "UpdateMLModel",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .machinelearning$update_ml_model_input(MLModelId = MLModelId, MLModelName = MLModelName, ScoreThreshold = ScoreThreshold)
   output <- .machinelearning$update_ml_model_output()
   config <- get_config()
-  svc <- .machinelearning$service(config)
+  svc <- .machinelearning$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

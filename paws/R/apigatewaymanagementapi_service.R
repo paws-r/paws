@@ -138,7 +138,7 @@ apigatewaymanagementapi <- function(config = list(), credentials = list(), endpo
   target_prefix = ""
 )
 
-.apigatewaymanagementapi$service <- function(config = list()) {
+.apigatewaymanagementapi$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.apigatewaymanagementapi$metadata, handlers, config)
+  new_service(.apigatewaymanagementapi$metadata, handlers, config, op)
 }

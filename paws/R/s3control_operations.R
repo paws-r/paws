@@ -58,12 +58,13 @@ s3control_associate_access_grants_identity_center <- function(AccountId, Identit
     name = "AssociateAccessGrantsIdentityCenter",
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance/identitycenter",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$associate_access_grants_identity_center_input(AccountId = AccountId, IdentityCenterArn = IdentityCenterArn)
   output <- .s3control$associate_access_grants_identity_center_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -197,12 +198,13 @@ s3control_create_access_grant <- function(AccountId, AccessGrantsLocationId, Acc
     name = "CreateAccessGrant",
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance/grant",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_access_grant_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId, AccessGrantsLocationConfiguration = AccessGrantsLocationConfiguration, Grantee = Grantee, Permission = Permission, ApplicationArn = ApplicationArn, S3PrefixType = S3PrefixType, Tags = Tags)
   output <- .s3control$create_access_grant_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -285,12 +287,13 @@ s3control_create_access_grants_instance <- function(AccountId, IdentityCenterArn
     name = "CreateAccessGrantsInstance",
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_access_grants_instance_input(AccountId = AccountId, IdentityCenterArn = IdentityCenterArn, Tags = Tags)
   output <- .s3control$create_access_grants_instance_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -388,12 +391,13 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
     name = "CreateAccessGrantsLocation",
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance/location",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_access_grants_location_input(AccountId = AccountId, LocationScope = LocationScope, IAMRoleArn = IAMRoleArn, Tags = Tags)
   output <- .s3control$create_access_grants_location_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -511,12 +515,13 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
     name = "CreateAccessPoint",
     http_method = "PUT",
     http_path = "/v20180820/accesspoint/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId)
   output <- .s3control$create_access_point_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -601,12 +606,13 @@ s3control_create_access_point_for_object_lambda <- function(AccountId, Name, Con
     name = "CreateAccessPointForObjectLambda",
     http_method = "PUT",
     http_path = "/v20180820/accesspointforobjectlambda/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_access_point_for_object_lambda_input(AccountId = AccountId, Name = Name, Configuration = Configuration)
   output <- .s3control$create_access_point_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -734,12 +740,13 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
     name = "CreateBucket",
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .s3control$create_bucket_input(ACL = ACL, Bucket = Bucket, CreateBucketConfiguration = CreateBucketConfiguration, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWrite = GrantWrite, GrantWriteACP = GrantWriteACP, ObjectLockEnabledForBucket = ObjectLockEnabledForBucket, OutpostId = OutpostId)
   output <- .s3control$create_bucket_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1024,12 +1031,13 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
     name = "CreateJob",
     http_method = "POST",
     http_path = "/v20180820/jobs",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_job_input(AccountId = AccountId, ConfirmationRequired = ConfirmationRequired, Operation = Operation, Report = Report, ClientRequestToken = ClientRequestToken, Manifest = Manifest, Description = Description, Priority = Priority, RoleArn = RoleArn, Tags = Tags, ManifestGenerator = ManifestGenerator)
   output <- .s3control$create_job_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1123,12 +1131,13 @@ s3control_create_multi_region_access_point <- function(AccountId, ClientToken, D
     name = "CreateMultiRegionAccessPoint",
     http_method = "POST",
     http_path = "/v20180820/async-requests/mrap/create",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_multi_region_access_point_input(AccountId = AccountId, ClientToken = ClientToken, Details = Details)
   output <- .s3control$create_multi_region_access_point_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1265,12 +1274,13 @@ s3control_create_storage_lens_group <- function(AccountId, StorageLensGroup, Tag
     name = "CreateStorageLensGroup",
     http_method = "POST",
     http_path = "/v20180820/storagelensgroup",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$create_storage_lens_group_input(AccountId = AccountId, StorageLensGroup = StorageLensGroup, Tags = Tags)
   output <- .s3control$create_storage_lens_group_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1317,12 +1327,13 @@ s3control_delete_access_grant <- function(AccountId, AccessGrantId) {
     name = "DeleteAccessGrant",
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/grant/{id}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_grant_input(AccountId = AccountId, AccessGrantId = AccessGrantId)
   output <- .s3control$delete_access_grant_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1374,12 +1385,13 @@ s3control_delete_access_grants_instance <- function(AccountId) {
     name = "DeleteAccessGrantsInstance",
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_grants_instance_input(AccountId = AccountId)
   output <- .s3control$delete_access_grants_instance_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1424,12 +1436,13 @@ s3control_delete_access_grants_instance_resource_policy <- function(AccountId) {
     name = "DeleteAccessGrantsInstanceResourcePolicy",
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_grants_instance_resource_policy_input(AccountId = AccountId)
   output <- .s3control$delete_access_grants_instance_resource_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1484,12 +1497,13 @@ s3control_delete_access_grants_location <- function(AccountId, AccessGrantsLocat
     name = "DeleteAccessGrantsLocation",
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/location/{id}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId)
   output <- .s3control$delete_access_grants_location_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1563,12 +1577,13 @@ s3control_delete_access_point <- function(AccountId, Name) {
     name = "DeleteAccessPoint",
     http_method = "DELETE",
     http_path = "/v20180820/accesspoint/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_point_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1619,12 +1634,13 @@ s3control_delete_access_point_for_object_lambda <- function(AccountId, Name) {
     name = "DeleteAccessPointForObjectLambda",
     http_method = "DELETE",
     http_path = "/v20180820/accesspointforobjectlambda/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_point_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1695,12 +1711,13 @@ s3control_delete_access_point_policy <- function(AccountId, Name) {
     name = "DeleteAccessPointPolicy",
     http_method = "DELETE",
     http_path = "/v20180820/accesspoint/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_point_policy_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1750,12 +1767,13 @@ s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Na
     name = "DeleteAccessPointPolicyForObjectLambda",
     http_method = "DELETE",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_access_point_policy_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_policy_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1834,12 +1852,13 @@ s3control_delete_bucket <- function(AccountId, Bucket) {
     name = "DeleteBucket",
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_bucket_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1929,12 +1948,13 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
     name = "DeleteBucketLifecycleConfiguration",
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/lifecycleconfiguration",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_bucket_lifecycle_configuration_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_lifecycle_configuration_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1972,7 +1992,7 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' 
 #' For more information about bucket policies, see [Using Bucket Policies
 #' and User
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -2031,12 +2051,13 @@ s3control_delete_bucket_policy <- function(AccountId, Bucket) {
     name = "DeleteBucketPolicy",
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_bucket_policy_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2135,12 +2156,13 @@ s3control_delete_bucket_replication <- function(AccountId, Bucket) {
     name = "DeleteBucketReplication",
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/replication",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_bucket_replication_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_replication_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2223,12 +2245,13 @@ s3control_delete_bucket_tagging <- function(AccountId, Bucket) {
     name = "DeleteBucketTagging",
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_bucket_tagging_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2285,12 +2308,13 @@ s3control_delete_job_tagging <- function(AccountId, JobId) {
     name = "DeleteJobTagging",
     http_method = "DELETE",
     http_path = "/v20180820/jobs/{id}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_job_tagging_input(AccountId = AccountId, JobId = JobId)
   output <- .s3control$delete_job_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2369,12 +2393,13 @@ s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, D
     name = "DeleteMultiRegionAccessPoint",
     http_method = "POST",
     http_path = "/v20180820/async-requests/mrap/delete",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_multi_region_access_point_input(AccountId = AccountId, ClientToken = ClientToken, Details = Details)
   output <- .s3control$delete_multi_region_access_point_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2422,12 +2447,13 @@ s3control_delete_public_access_block <- function(AccountId) {
     name = "DeletePublicAccessBlock",
     http_method = "DELETE",
     http_path = "/v20180820/configuration/publicAccessBlock",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_public_access_block_input(AccountId = AccountId)
   output <- .s3control$delete_public_access_block_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2478,12 +2504,13 @@ s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
     name = "DeleteStorageLensConfiguration",
     http_method = "DELETE",
     http_path = "/v20180820/storagelens/{storagelensid}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_storage_lens_configuration_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$delete_storage_lens_configuration_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2534,12 +2561,13 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
     name = "DeleteStorageLensConfigurationTagging",
     http_method = "DELETE",
     http_path = "/v20180820/storagelens/{storagelensid}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_storage_lens_configuration_tagging_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$delete_storage_lens_configuration_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2589,12 +2617,13 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
     name = "DeleteStorageLensGroup",
     http_method = "DELETE",
     http_path = "/v20180820/storagelensgroup/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$delete_storage_lens_group_input(Name = Name, AccountId = AccountId)
   output <- .s3control$delete_storage_lens_group_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2880,12 +2909,13 @@ s3control_describe_job <- function(AccountId, JobId) {
     name = "DescribeJob",
     http_method = "GET",
     http_path = "/v20180820/jobs/{id}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$describe_job_input(AccountId = AccountId, JobId = JobId)
   output <- .s3control$describe_job_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2999,12 +3029,13 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
     name = "DescribeMultiRegionAccessPointOperation",
     http_method = "GET",
     http_path = "/v20180820/async-requests/mrap/{request_token+}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$describe_multi_region_access_point_operation_input(AccountId = AccountId, RequestTokenARN = RequestTokenARN)
   output <- .s3control$describe_multi_region_access_point_operation_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3053,12 +3084,13 @@ s3control_dissociate_access_grants_identity_center <- function(AccountId) {
     name = "DissociateAccessGrantsIdentityCenter",
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/identitycenter",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$dissociate_access_grants_identity_center_input(AccountId = AccountId)
   output <- .s3control$dissociate_access_grants_identity_center_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3122,12 +3154,13 @@ s3control_get_access_grant <- function(AccountId, AccessGrantId) {
     name = "GetAccessGrant",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/grant/{id}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_grant_input(AccountId = AccountId, AccessGrantId = AccessGrantId)
   output <- .s3control$get_access_grant_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3179,12 +3212,13 @@ s3control_get_access_grants_instance <- function(AccountId) {
     name = "GetAccessGrantsInstance",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_grants_instance_input(AccountId = AccountId)
   output <- .s3control$get_access_grants_instance_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3240,12 +3274,13 @@ s3control_get_access_grants_instance_for_prefix <- function(AccountId, S3Prefix)
     name = "GetAccessGrantsInstanceForPrefix",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/prefix",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_grants_instance_for_prefix_input(AccountId = AccountId, S3Prefix = S3Prefix)
   output <- .s3control$get_access_grants_instance_for_prefix_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3296,12 +3331,13 @@ s3control_get_access_grants_instance_resource_policy <- function(AccountId) {
     name = "GetAccessGrantsInstanceResourcePolicy",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_grants_instance_resource_policy_input(AccountId = AccountId)
   output <- .s3control$get_access_grants_instance_resource_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3361,12 +3397,13 @@ s3control_get_access_grants_location <- function(AccountId, AccessGrantsLocation
     name = "GetAccessGrantsLocation",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/location/{id}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId)
   output <- .s3control$get_access_grants_location_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3466,12 +3503,13 @@ s3control_get_access_point <- function(AccountId, Name) {
     name = "GetAccessPoint",
     http_method = "GET",
     http_path = "/v20180820/accesspoint/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_point_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3544,12 +3582,13 @@ s3control_get_access_point_configuration_for_object_lambda <- function(AccountId
     name = "GetAccessPointConfigurationForObjectLambda",
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/configuration",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_point_configuration_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_configuration_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3619,12 +3658,13 @@ s3control_get_access_point_for_object_lambda <- function(AccountId, Name) {
     name = "GetAccessPointForObjectLambda",
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_point_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3691,12 +3731,13 @@ s3control_get_access_point_policy <- function(AccountId, Name) {
     name = "GetAccessPointPolicy",
     http_method = "GET",
     http_path = "/v20180820/accesspoint/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_point_policy_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3750,12 +3791,13 @@ s3control_get_access_point_policy_for_object_lambda <- function(AccountId, Name)
     name = "GetAccessPointPolicyForObjectLambda",
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_point_policy_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3807,12 +3849,13 @@ s3control_get_access_point_policy_status <- function(AccountId, Name) {
     name = "GetAccessPointPolicyStatus",
     http_method = "GET",
     http_path = "/v20180820/accesspoint/{name}/policyStatus",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_point_policy_status_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_status_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3863,12 +3906,13 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
     name = "GetAccessPointPolicyStatusForObjectLambda",
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policyStatus",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_access_point_policy_status_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_status_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3962,12 +4006,13 @@ s3control_get_bucket <- function(AccountId, Bucket) {
     name = "GetBucket",
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_bucket_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3995,9 +4040,9 @@ s3control_get_bucket <- function(AccountId, Bucket) {
 #' owner has this permission, by default. The bucket owner can grant this
 #' permission to others. For more information about permissions, see
 #' [Permissions Related to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -4126,12 +4171,13 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
     name = "GetBucketLifecycleConfiguration",
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/lifecycleconfiguration",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_bucket_lifecycle_configuration_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_lifecycle_configuration_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4170,7 +4216,7 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' 
 #' For more information about bucket policies, see [Using Bucket Policies
 #' and User
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -4236,12 +4282,13 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
     name = "GetBucketPolicy",
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_bucket_policy_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4416,12 +4463,13 @@ s3control_get_bucket_replication <- function(AccountId, Bucket) {
     name = "GetBucketReplication",
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/replication",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_bucket_replication_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_replication_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4519,12 +4567,13 @@ s3control_get_bucket_tagging <- function(AccountId, Bucket) {
     name = "GetBucketTagging",
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_bucket_tagging_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4606,12 +4655,13 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
     name = "GetBucketVersioning",
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/versioning",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_bucket_versioning_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_versioning_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4713,12 +4763,13 @@ s3control_get_data_access <- function(AccountId, Target, Permission, DurationSec
     name = "GetDataAccess",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/dataaccess",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_data_access_input(AccountId = AccountId, Target = Target, Permission = Permission, DurationSeconds = DurationSeconds, Privilege = Privilege, TargetType = TargetType)
   output <- .s3control$get_data_access_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4784,12 +4835,13 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
     name = "GetJobTagging",
     http_method = "GET",
     http_path = "/v20180820/jobs/{id}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_job_tagging_input(AccountId = AccountId, JobId = JobId)
   output <- .s3control$get_job_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4880,12 +4932,13 @@ s3control_get_multi_region_access_point <- function(AccountId, Name) {
     name = "GetMultiRegionAccessPoint",
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{name+}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_multi_region_access_point_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4958,12 +5011,13 @@ s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
     name = "GetMultiRegionAccessPointPolicy",
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{name+}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_policy_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_multi_region_access_point_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5031,12 +5085,13 @@ s3control_get_multi_region_access_point_policy_status <- function(AccountId, Nam
     name = "GetMultiRegionAccessPointPolicyStatus",
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{name+}/policystatus",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_policy_status_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_multi_region_access_point_policy_status_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5105,12 +5160,13 @@ s3control_get_multi_region_access_point_routes <- function(AccountId, Mrap) {
     name = "GetMultiRegionAccessPointRoutes",
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{mrap+}/routes",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_routes_input(AccountId = AccountId, Mrap = Mrap)
   output <- .s3control$get_multi_region_access_point_routes_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5169,12 +5225,13 @@ s3control_get_public_access_block <- function(AccountId) {
     name = "GetPublicAccessBlock",
     http_method = "GET",
     http_path = "/v20180820/configuration/publicAccessBlock",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_public_access_block_input(AccountId = AccountId)
   output <- .s3control$get_public_access_block_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5321,12 +5378,13 @@ s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
     name = "GetStorageLensConfiguration",
     http_method = "GET",
     http_path = "/v20180820/storagelens/{storagelensid}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_storage_lens_configuration_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$get_storage_lens_configuration_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5387,12 +5445,13 @@ s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId
     name = "GetStorageLensConfigurationTagging",
     http_method = "GET",
     http_path = "/v20180820/storagelens/{storagelensid}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_storage_lens_configuration_tagging_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$get_storage_lens_configuration_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5517,12 +5576,13 @@ s3control_get_storage_lens_group <- function(Name, AccountId) {
     name = "GetStorageLensGroup",
     http_method = "GET",
     http_path = "/v20180820/storagelensgroup/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$get_storage_lens_group_input(Name = Name, AccountId = AccountId)
   output <- .s3control$get_storage_lens_group_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5638,12 +5698,13 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
     name = "ListAccessGrants",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/grants",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_grants_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, GranteeType = GranteeType, GranteeIdentifier = GranteeIdentifier, Permission = Permission, GrantScope = GrantScope, ApplicationArn = ApplicationArn)
   output <- .s3control$list_access_grants_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5711,12 +5772,13 @@ s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, 
     name = "ListAccessGrantsInstances",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstances",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_grants_instances_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_grants_instances_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5795,12 +5857,13 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
     name = "ListAccessGrantsLocations",
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/locations",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_grants_locations_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, LocationScope = LocationScope)
   output <- .s3control$list_access_grants_locations_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5908,12 +5971,13 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     name = "ListAccessPoints",
     http_method = "GET",
     http_path = "/v20180820/accesspoint",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5992,12 +6056,13 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
     name = "ListAccessPointsForObjectLambda",
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ObjectLambdaAccessPointList")
   )
   input <- .s3control$list_access_points_for_object_lambda_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6098,12 +6163,13 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
     name = "ListJobs",
     http_method = "GET",
     http_path = "/v20180820/jobs",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_jobs_input(AccountId = AccountId, JobStatuses = JobStatuses, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_jobs_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6195,12 +6261,13 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
     name = "ListMultiRegionAccessPoints",
     http_method = "GET",
     http_path = "/v20180820/mrap/instances",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_multi_region_access_points_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_multi_region_access_points_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6274,12 +6341,13 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
     name = "ListRegionalBuckets",
     http_method = "GET",
     http_path = "/v20180820/bucket",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_regional_buckets_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
   output <- .s3control$list_regional_buckets_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6343,12 +6411,13 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
     name = "ListStorageLensConfigurations",
     http_method = "GET",
     http_path = "/v20180820/storagelens",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .s3control$list_storage_lens_configurations_input(AccountId = AccountId, NextToken = NextToken)
   output <- .s3control$list_storage_lens_configurations_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6410,12 +6479,13 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
     name = "ListStorageLensGroups",
     http_method = "GET",
     http_path = "/v20180820/storagelensgroup",
+    host_prefix = "{AccountId}.",
     paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .s3control$list_storage_lens_groups_input(AccountId = AccountId, NextToken = NextToken)
   output <- .s3control$list_storage_lens_groups_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6490,12 +6560,13 @@ s3control_list_tags_for_resource <- function(AccountId, ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/v20180820/tags/{resourceArn+}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$list_tags_for_resource_input(AccountId = AccountId, ResourceArn = ResourceArn)
   output <- .s3control$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6553,12 +6624,13 @@ s3control_put_access_grants_instance_resource_policy <- function(AccountId, Poli
     name = "PutAccessGrantsInstanceResourcePolicy",
     http_method = "PUT",
     http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_access_grants_instance_resource_policy_input(AccountId = AccountId, Policy = Policy, Organization = Organization)
   output <- .s3control$put_access_grants_instance_resource_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6627,12 +6699,13 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
     name = "PutAccessPointConfigurationForObjectLambda",
     http_method = "PUT",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/configuration",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_access_point_configuration_for_object_lambda_input(AccountId = AccountId, Name = Name, Configuration = Configuration)
   output <- .s3control$put_access_point_configuration_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6713,12 +6786,13 @@ s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
     name = "PutAccessPointPolicy",
     http_method = "PUT",
     http_path = "/v20180820/accesspoint/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_access_point_policy_input(AccountId = AccountId, Name = Name, Policy = Policy)
   output <- .s3control$put_access_point_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6773,12 +6847,13 @@ s3control_put_access_point_policy_for_object_lambda <- function(AccountId, Name,
     name = "PutAccessPointPolicyForObjectLambda",
     http_method = "PUT",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_access_point_policy_for_object_lambda_input(AccountId = AccountId, Name = Name, Policy = Policy)
   output <- .s3control$put_access_point_policy_for_object_lambda_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6902,12 +6977,13 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
     name = "PutBucketLifecycleConfiguration",
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/lifecycleconfiguration",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_bucket_lifecycle_configuration_input(AccountId = AccountId, Bucket = Bucket, LifecycleConfiguration = LifecycleConfiguration)
   output <- .s3control$put_bucket_lifecycle_configuration_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6946,7 +7022,7 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
 #' 
 #' For more information about bucket policies, see [Using Bucket Policies
 #' and User
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -7013,12 +7089,13 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
     name = "PutBucketPolicy",
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_bucket_policy_input(AccountId = AccountId, Bucket = Bucket, ConfirmRemoveSelfBucketAccess = ConfirmRemoveSelfBucketAccess, Policy = Policy)
   output <- .s3control$put_bucket_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7230,12 +7307,13 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
     name = "PutBucketReplication",
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/replication",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_bucket_replication_input(AccountId = AccountId, Bucket = Bucket, ReplicationConfiguration = ReplicationConfiguration)
   output <- .s3control$put_bucket_replication_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7274,9 +7352,9 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
 #' this permission by default and can grant this permission to others. For
 #' more information about permissions, see [Permissions Related to Bucket
 #' Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing access permissions to your Amazon S3
-#' resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' [`put_bucket_tagging`][s3control_put_bucket_tagging] has the following
 #' special errors:
@@ -7286,9 +7364,9 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
 #'     -   Description: The tag provided was not a valid tag. This error
 #'         can occur if the tag did not pass input validation. For
 #'         information about tag restrictions, see [User-Defined Tag
-#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)
 #'         and [Amazon Web Services-Generated Cost Allocation Tag
-#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tag-restrictions.html).
+#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tags.html).
 #' 
 #' -   Error code: `MalformedXMLError`
 #' 
@@ -7370,12 +7448,13 @@ s3control_put_bucket_tagging <- function(AccountId, Bucket, Tagging) {
     name = "PutBucketTagging",
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_bucket_tagging_input(AccountId = AccountId, Bucket = Bucket, Tagging = Tagging)
   output <- .s3control$put_bucket_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7480,12 +7559,13 @@ s3control_put_bucket_versioning <- function(AccountId, Bucket, MFA = NULL, Versi
     name = "PutBucketVersioning",
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/versioning",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_bucket_versioning_input(AccountId = AccountId, Bucket = Bucket, MFA = MFA, VersioningConfiguration = VersioningConfiguration)
   output <- .s3control$put_bucket_versioning_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7533,7 +7613,7 @@ s3control_put_bucket_versioning <- function(AccountId, Bucket, MFA = NULL, Versi
 #' 
 #'     -   For tagging-related restrictions related to characters and
 #'         encodings, see [User-Defined Tag
-#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)
 #'         in the *Billing and Cost Management User Guide*.
 #' 
 #' ### Permissions
@@ -7584,12 +7664,13 @@ s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
     name = "PutJobTagging",
     http_method = "PUT",
     http_path = "/v20180820/jobs/{id}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_job_tagging_input(AccountId = AccountId, JobId = JobId, Tags = Tags)
   output <- .s3control$put_job_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7660,12 +7741,13 @@ s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToke
     name = "PutMultiRegionAccessPointPolicy",
     http_method = "POST",
     http_path = "/v20180820/async-requests/mrap/put-policy",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_multi_region_access_point_policy_input(AccountId = AccountId, ClientToken = ClientToken, Details = Details)
   output <- .s3control$put_multi_region_access_point_policy_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7724,12 +7806,13 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
     name = "PutPublicAccessBlock",
     http_method = "PUT",
     http_path = "/v20180820/configuration/publicAccessBlock",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_public_access_block_input(PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, AccountId = AccountId)
   output <- .s3control$put_public_access_block_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7883,12 +7966,13 @@ s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, Storag
     name = "PutStorageLensConfiguration",
     http_method = "PUT",
     http_path = "/v20180820/storagelens/{storagelensid}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_storage_lens_configuration_input(ConfigId = ConfigId, AccountId = AccountId, StorageLensConfiguration = StorageLensConfiguration, Tags = Tags)
   output <- .s3control$put_storage_lens_configuration_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7949,12 +8033,13 @@ s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId
     name = "PutStorageLensConfigurationTagging",
     http_method = "PUT",
     http_path = "/v20180820/storagelens/{storagelensid}/tagging",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$put_storage_lens_configuration_tagging_input(ConfigId = ConfigId, AccountId = AccountId, Tags = Tags)
   output <- .s3control$put_storage_lens_configuration_tagging_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8036,12 +8121,13 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
     name = "SubmitMultiRegionAccessPointRoutes",
     http_method = "PATCH",
     http_path = "/v20180820/mrap/instances/{mrap+}/routes",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$submit_multi_region_access_point_routes_input(AccountId = AccountId, Mrap = Mrap, RouteUpdates = RouteUpdates)
   output <- .s3control$submit_multi_region_access_point_routes_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8115,12 +8201,13 @@ s3control_tag_resource <- function(AccountId, ResourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/v20180820/tags/{resourceArn+}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$tag_resource_input(AccountId = AccountId, ResourceArn = ResourceArn, Tags = Tags)
   output <- .s3control$tag_resource_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8189,12 +8276,13 @@ s3control_untag_resource <- function(AccountId, ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/v20180820/tags/{resourceArn+}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$untag_resource_input(AccountId = AccountId, ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .s3control$untag_resource_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8272,12 +8360,13 @@ s3control_update_access_grants_location <- function(AccountId, AccessGrantsLocat
     name = "UpdateAccessGrantsLocation",
     http_method = "PUT",
     http_path = "/v20180820/accessgrantsinstance/location/{id}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$update_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId, IAMRoleArn = IAMRoleArn)
   output <- .s3control$update_access_grants_location_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8344,12 +8433,13 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
     name = "UpdateJobPriority",
     http_method = "POST",
     http_path = "/v20180820/jobs/{id}/priority",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$update_job_priority_input(AccountId = AccountId, JobId = JobId, Priority = Priority)
   output <- .s3control$update_job_priority_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8421,12 +8511,13 @@ s3control_update_job_status <- function(AccountId, JobId, RequestedJobStatus, St
     name = "UpdateJobStatus",
     http_method = "POST",
     http_path = "/v20180820/jobs/{id}/status",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$update_job_status_input(AccountId = AccountId, JobId = JobId, RequestedJobStatus = RequestedJobStatus, StatusUpdateReason = StatusUpdateReason)
   output <- .s3control$update_job_status_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8546,12 +8637,13 @@ s3control_update_storage_lens_group <- function(Name, AccountId, StorageLensGrou
     name = "UpdateStorageLensGroup",
     http_method = "PUT",
     http_path = "/v20180820/storagelensgroup/{name}",
+    host_prefix = "{AccountId}.",
     paginator = list()
   )
   input <- .s3control$update_storage_lens_group_input(Name = Name, AccountId = AccountId, StorageLensGroup = StorageLensGroup)
   output <- .s3control$update_storage_lens_group_output()
   config <- get_config()
-  svc <- .s3control$service(config)
+  svc <- .s3control$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -252,7 +252,7 @@ second.
 \link[paws.security.identity:securityhub_update_action_target]{update_action_target} \tab Updates the name and description of a custom action target in Security Hub\cr
 \link[paws.security.identity:securityhub_update_configuration_policy]{update_configuration_policy} \tab Updates a configuration policy\cr
 \link[paws.security.identity:securityhub_update_finding_aggregator]{update_finding_aggregator} \tab Updates the finding aggregation configuration\cr
-\link[paws.security.identity:securityhub_update_findings]{update_findings} \tab UpdateFindings is deprecated\cr
+\link[paws.security.identity:securityhub_update_findings]{update_findings} \tab UpdateFindings is a deprecated operation\cr
 \link[paws.security.identity:securityhub_update_insight]{update_insight} \tab Updates the Security Hub insight identified by the specified insight ARN\cr
 \link[paws.security.identity:securityhub_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration of your organization in Security Hub\cr
 \link[paws.security.identity:securityhub_update_security_control]{update_security_control} \tab Updates the properties of a security control\cr

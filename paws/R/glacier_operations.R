@@ -76,12 +76,13 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
     name = "AbortMultipartUpload",
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$abort_multipart_upload_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId)
   output <- .glacier$abort_multipart_upload_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -156,12 +157,13 @@ glacier_abort_vault_lock <- function(accountId, vaultName) {
     name = "AbortVaultLock",
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$abort_vault_lock_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$abort_vault_lock_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -229,12 +231,13 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
     name = "AddTagsToVault",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/tags?operation=add",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$add_tags_to_vault_input(accountId = accountId, vaultName = vaultName, Tags = Tags)
   output <- .glacier$add_tags_to_vault_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -359,12 +362,13 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
     name = "CompleteMultipartUpload",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$complete_multipart_upload_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, archiveSize = archiveSize, checksum = checksum)
   output <- .glacier$complete_multipart_upload_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -442,12 +446,13 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
     name = "CompleteVaultLock",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$complete_vault_lock_input(accountId = accountId, vaultName = vaultName, lockId = lockId)
   output <- .glacier$complete_vault_lock_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -531,12 +536,13 @@ glacier_create_vault <- function(accountId, vaultName) {
     name = "CreateVault",
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$create_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$create_vault_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -619,12 +625,13 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
     name = "DeleteArchive",
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/archives/{archiveId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$delete_archive_input(accountId = accountId, vaultName = vaultName, archiveId = archiveId)
   output <- .glacier$delete_archive_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -703,12 +710,13 @@ glacier_delete_vault <- function(accountId, vaultName) {
     name = "DeleteVault",
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$delete_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$delete_vault_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -772,12 +780,13 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
     name = "DeleteVaultAccessPolicy",
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/access-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$delete_vault_access_policy_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$delete_vault_access_policy_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -848,12 +857,13 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
     name = "DeleteVaultNotifications",
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/notification-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$delete_vault_notifications_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$delete_vault_notifications_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1019,12 +1029,13 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
     name = "DescribeJob",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs/{jobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$describe_job_input(accountId = accountId, vaultName = vaultName, jobId = jobId)
   output <- .glacier$describe_job_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1114,12 +1125,13 @@ glacier_describe_vault <- function(accountId, vaultName) {
     name = "DescribeVault",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$describe_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$describe_vault_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1185,12 +1197,13 @@ glacier_get_data_retrieval_policy <- function(accountId) {
     name = "GetDataRetrievalPolicy",
     http_method = "GET",
     http_path = "/{accountId}/policies/data-retrieval",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$get_data_retrieval_policy_input(accountId = accountId)
   output <- .glacier$get_data_retrieval_policy_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1340,12 +1353,13 @@ glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
     name = "GetJobOutput",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$get_job_output_input(accountId = accountId, vaultName = vaultName, jobId = jobId, range = range)
   output <- .glacier$get_job_output_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1414,12 +1428,13 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
     name = "GetVaultAccessPolicy",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/access-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$get_vault_access_policy_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$get_vault_access_policy_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1507,12 +1522,13 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
     name = "GetVaultLock",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$get_vault_lock_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$get_vault_lock_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1598,12 +1614,13 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
     name = "GetVaultNotifications",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/notification-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$get_vault_notifications_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$get_vault_notifications_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1744,12 +1761,13 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
     name = "InitiateJob",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/jobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$initiate_job_input(accountId = accountId, vaultName = vaultName, jobParameters = jobParameters)
   output <- .glacier$initiate_job_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1859,12 +1877,13 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
     name = "InitiateMultipartUpload",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$initiate_multipart_upload_input(accountId = accountId, vaultName = vaultName, archiveDescription = archiveDescription, partSize = partSize)
   output <- .glacier$initiate_multipart_upload_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1969,12 +1988,13 @@ glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
     name = "InitiateVaultLock",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$initiate_vault_lock_input(accountId = accountId, vaultName = vaultName, policy = policy)
   output <- .glacier$initiate_vault_lock_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2167,12 +2187,13 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
     name = "ListJobs",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs",
+    host_prefix = "",
     paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "JobList")
   )
   input <- .glacier$list_jobs_input(accountId = accountId, vaultName = vaultName, limit = limit, marker = marker, statuscode = statuscode, completed = completed)
   output <- .glacier$list_jobs_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2285,12 +2306,13 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
     name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
+    host_prefix = "",
     paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "UploadsList")
   )
   input <- .glacier$list_multipart_uploads_input(accountId = accountId, vaultName = vaultName, marker = marker, limit = limit)
   output <- .glacier$list_multipart_uploads_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2400,12 +2422,13 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
     name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
+    host_prefix = "",
     paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "Parts")
   )
   input <- .glacier$list_parts_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, marker = marker, limit = limit)
   output <- .glacier$list_parts_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2467,12 +2490,13 @@ glacier_list_provisioned_capacity <- function(accountId) {
     name = "ListProvisionedCapacity",
     http_method = "GET",
     http_path = "/{accountId}/provisioned-capacity",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$list_provisioned_capacity_input(accountId = accountId)
   output <- .glacier$list_provisioned_capacity_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2534,12 +2558,13 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
     name = "ListTagsForVault",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/tags",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$list_tags_for_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$list_tags_for_vault_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2637,12 +2662,13 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
     name = "ListVaults",
     http_method = "GET",
     http_path = "/{accountId}/vaults",
+    host_prefix = "",
     paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "VaultList")
   )
   input <- .glacier$list_vaults_input(accountId = accountId, marker = marker, limit = limit)
   output <- .glacier$list_vaults_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2696,12 +2722,13 @@ glacier_purchase_provisioned_capacity <- function(accountId) {
     name = "PurchaseProvisionedCapacity",
     http_method = "POST",
     http_path = "/{accountId}/provisioned-capacity",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$purchase_provisioned_capacity_input(accountId = accountId)
   output <- .glacier$purchase_provisioned_capacity_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2766,12 +2793,13 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
     name = "RemoveTagsFromVault",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/tags?operation=remove",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$remove_tags_from_vault_input(accountId = accountId, vaultName = vaultName, TagKeys = TagKeys)
   output <- .glacier$remove_tags_from_vault_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2847,12 +2875,13 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
     name = "SetDataRetrievalPolicy",
     http_method = "PUT",
     http_path = "/{accountId}/policies/data-retrieval",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$set_data_retrieval_policy_input(accountId = accountId, Policy = Policy)
   output <- .glacier$set_data_retrieval_policy_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2920,12 +2949,13 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
     name = "SetVaultAccessPolicy",
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}/access-policy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$set_vault_access_policy_input(accountId = accountId, vaultName = vaultName, policy = policy)
   output <- .glacier$set_vault_access_policy_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3032,12 +3062,13 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
     name = "SetVaultNotifications",
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}/notification-configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$set_vault_notifications_input(accountId = accountId, vaultName = vaultName, vaultNotificationConfig = vaultNotificationConfig)
   output <- .glacier$set_vault_notifications_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3148,12 +3179,13 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
     name = "UploadArchive",
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/archives",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$upload_archive_input(vaultName = vaultName, accountId = accountId, archiveDescription = archiveDescription, checksum = checksum, body = body)
   output <- .glacier$upload_archive_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3277,12 +3309,13 @@ glacier_upload_multipart_part <- function(accountId, vaultName, uploadId, checks
     name = "UploadMultipartPart",
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .glacier$upload_multipart_part_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, checksum = checksum, range = range, body = body)
   output <- .glacier$upload_multipart_part_output()
   config <- get_config()
-  svc <- .glacier$service(config)
+  svc <- .glacier$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

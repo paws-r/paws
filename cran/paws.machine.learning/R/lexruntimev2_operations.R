@@ -23,12 +23,13 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
     name = "DeleteSession",
     http_method = "DELETE",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexruntimev2$delete_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$delete_session_output()
   config <- get_config()
-  svc <- .lexruntimev2$service(config)
+  svc <- .lexruntimev2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -55,12 +56,13 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
     name = "GetSession",
     http_method = "GET",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexruntimev2$get_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$get_session_output()
   config <- get_config()
-  svc <- .lexruntimev2$service(config)
+  svc <- .lexruntimev2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -104,12 +106,13 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
     name = "PutSession",
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexruntimev2$put_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, messages = messages, sessionState = sessionState, requestAttributes = requestAttributes, responseContentType = responseContentType)
   output <- .lexruntimev2$put_session_output()
   config <- get_config()
-  svc <- .lexruntimev2$service(config)
+  svc <- .lexruntimev2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -143,12 +146,13 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
     name = "RecognizeText",
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/text",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexruntimev2$recognize_text_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, text = text, sessionState = sessionState, requestAttributes = requestAttributes)
   output <- .lexruntimev2$recognize_text_output()
   config <- get_config()
-  svc <- .lexruntimev2$service(config)
+  svc <- .lexruntimev2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -238,12 +242,13 @@ lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessio
     name = "RecognizeUtterance",
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/utterance",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lexruntimev2$recognize_utterance_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, sessionState = sessionState, requestAttributes = requestAttributes, requestContentType = requestContentType, responseContentType = responseContentType, inputStream = inputStream)
   output <- .lexruntimev2$recognize_utterance_output()
   config <- get_config()
-  svc <- .lexruntimev2$service(config)
+  svc <- .lexruntimev2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

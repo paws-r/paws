@@ -46,12 +46,13 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
     name = "AssociateAttributeGroup",
     http_method = "PUT",
     http_path = "/applications/{application}/attribute-groups/{attributeGroup}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$associate_attribute_group_input(application = application, attributeGroup = attributeGroup)
   output <- .appregistry$associate_attribute_group_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -136,12 +137,13 @@ appregistry_associate_resource <- function(application, resourceType, resource, 
     name = "AssociateResource",
     http_method = "PUT",
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$associate_resource_input(application = application, resourceType = resourceType, resource = resource, options = options)
   output <- .appregistry$associate_resource_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -215,12 +217,13 @@ appregistry_create_application <- function(name, description = NULL, tags = NULL
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/applications",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$create_application_input(name = name, description = description, tags = tags, clientToken = clientToken)
   output <- .appregistry$create_application_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -295,12 +298,13 @@ appregistry_create_attribute_group <- function(name, description = NULL, attribu
     name = "CreateAttributeGroup",
     http_method = "POST",
     http_path = "/attribute-groups",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$create_attribute_group_input(name = name, description = description, attributes = attributes, tags = tags, clientToken = clientToken)
   output <- .appregistry$create_attribute_group_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -356,12 +360,13 @@ appregistry_delete_application <- function(application) {
     name = "DeleteApplication",
     http_method = "DELETE",
     http_path = "/applications/{application}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$delete_application_input(application = application)
   output <- .appregistry$delete_application_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -418,12 +423,13 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
     name = "DeleteAttributeGroup",
     http_method = "DELETE",
     http_path = "/attribute-groups/{attributeGroup}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$delete_attribute_group_input(attributeGroup = attributeGroup)
   output <- .appregistry$delete_attribute_group_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -474,12 +480,13 @@ appregistry_disassociate_attribute_group <- function(application, attributeGroup
     name = "DisassociateAttributeGroup",
     http_method = "DELETE",
     http_path = "/applications/{application}/attribute-groups/{attributeGroup}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$disassociate_attribute_group_input(application = application, attributeGroup = attributeGroup)
   output <- .appregistry$disassociate_attribute_group_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -555,12 +562,13 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
     name = "DisassociateResource",
     http_method = "DELETE",
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$disassociate_resource_input(application = application, resourceType = resourceType, resource = resource)
   output <- .appregistry$disassociate_resource_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -635,12 +643,13 @@ appregistry_get_application <- function(application) {
     name = "GetApplication",
     http_method = "GET",
     http_path = "/applications/{application}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$get_application_input(application = application)
   output <- .appregistry$get_application_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -727,12 +736,13 @@ appregistry_get_associated_resource <- function(application, resourceType, resou
     name = "GetAssociatedResource",
     http_method = "GET",
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$get_associated_resource_input(application = application, resourceType = resourceType, resource = resource, nextToken = nextToken, resourceTagStatus = resourceTagStatus, maxResults = maxResults)
   output <- .appregistry$get_associated_resource_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -790,12 +800,13 @@ appregistry_get_attribute_group <- function(attributeGroup) {
     name = "GetAttributeGroup",
     http_method = "GET",
     http_path = "/attribute-groups/{attributeGroup}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$get_attribute_group_input(attributeGroup = attributeGroup)
   output <- .appregistry$get_attribute_group_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -836,12 +847,13 @@ appregistry_get_configuration <- function() {
     name = "GetConfiguration",
     http_method = "GET",
     http_path = "/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$get_configuration_input()
   output <- .appregistry$get_configuration_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -901,12 +913,13 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications")
   )
   input <- .appregistry$list_applications_input(nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_applications_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -960,12 +973,13 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
     name = "ListAssociatedAttributeGroups",
     http_method = "GET",
     http_path = "/applications/{application}/attribute-groups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroups")
   )
   input <- .appregistry$list_associated_attribute_groups_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_associated_attribute_groups_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1034,12 +1048,13 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
     name = "ListAssociatedResources",
     http_method = "GET",
     http_path = "/applications/{application}/resources",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources")
   )
   input <- .appregistry$list_associated_resources_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_associated_resources_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1101,12 +1116,13 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
     name = "ListAttributeGroups",
     http_method = "GET",
     http_path = "/attribute-groups",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroups")
   )
   input <- .appregistry$list_attribute_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_attribute_groups_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1165,12 +1181,13 @@ appregistry_list_attribute_groups_for_application <- function(application, nextT
     name = "ListAttributeGroupsForApplication",
     http_method = "GET",
     http_path = "/applications/{application}/attribute-group-details",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroupsDetails")
   )
   input <- .appregistry$list_attribute_groups_for_application_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_attribute_groups_for_application_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1214,12 +1231,13 @@ appregistry_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .appregistry$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1260,12 +1278,13 @@ appregistry_put_configuration <- function(configuration) {
     name = "PutConfiguration",
     http_method = "PUT",
     http_path = "/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$put_configuration_input(configuration = configuration)
   output <- .appregistry$put_configuration_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1318,12 +1337,13 @@ appregistry_sync_resource <- function(resourceType, resource) {
     name = "SyncResource",
     http_method = "POST",
     http_path = "/sync/{resourceType}/{resource}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$sync_resource_input(resourceType = resourceType, resource = resource)
   output <- .appregistry$sync_resource_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1370,12 +1390,13 @@ appregistry_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .appregistry$tag_resource_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1418,12 +1439,13 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .appregistry$untag_resource_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1488,12 +1510,13 @@ appregistry_update_application <- function(application, name = NULL, description
     name = "UpdateApplication",
     http_method = "PATCH",
     http_path = "/applications/{application}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$update_application_input(application = application, name = name, description = description)
   output <- .appregistry$update_application_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1560,12 +1583,13 @@ appregistry_update_attribute_group <- function(attributeGroup, name = NULL, desc
     name = "UpdateAttributeGroup",
     http_method = "PATCH",
     http_path = "/attribute-groups/{attributeGroup}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .appregistry$update_attribute_group_input(attributeGroup = attributeGroup, name = name, description = description, attributes = attributes)
   output <- .appregistry$update_attribute_group_output()
   config <- get_config()
-  svc <- .appregistry$service(config)
+  svc <- .appregistry$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

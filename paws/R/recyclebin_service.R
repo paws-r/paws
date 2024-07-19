@@ -157,7 +157,7 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.recyclebin$service <- function(config = list()) {
+.recyclebin$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.recyclebin$metadata, handlers, config)
+  new_service(.recyclebin$metadata, handlers, config, op)
 }

@@ -169,7 +169,7 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = "BackupOnPremises_v20210101"
 )
 
-.backupgateway$service <- function(config = list()) {
+.backupgateway$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.backupgateway$metadata, handlers, config)
+  new_service(.backupgateway$metadata, handlers, config, op)
 }

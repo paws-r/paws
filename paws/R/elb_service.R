@@ -198,7 +198,7 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = ""
 )
 
-.elb$service <- function(config = list()) {
+.elb$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("query", "v4")
-  new_service(.elb$metadata, handlers, config)
+  new_service(.elb$metadata, handlers, config, op)
 }

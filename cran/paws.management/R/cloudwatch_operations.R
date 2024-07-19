@@ -20,12 +20,13 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
     name = "DeleteAlarms",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$delete_alarms_input(AlarmNames = AlarmNames)
   output <- .cloudwatch$delete_alarms_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -89,12 +90,13 @@ cloudwatch_delete_anomaly_detector <- function(Namespace = NULL, MetricName = NU
     name = "DeleteAnomalyDetector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$delete_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
   output <- .cloudwatch$delete_anomaly_detector_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -118,12 +120,13 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
     name = "DeleteDashboards",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$delete_dashboards_input(DashboardNames = DashboardNames)
   output <- .cloudwatch$delete_dashboards_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -149,12 +152,13 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
     name = "DeleteInsightRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$delete_insight_rules_input(RuleNames = RuleNames)
   output <- .cloudwatch$delete_insight_rules_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -178,12 +182,13 @@ cloudwatch_delete_metric_stream <- function(Name) {
     name = "DeleteMetricStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$delete_metric_stream_input(Name = Name)
   output <- .cloudwatch$delete_metric_stream_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -220,12 +225,13 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
     name = "DescribeAlarmHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AlarmHistoryItems")
   )
   input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
   output <- .cloudwatch$describe_alarm_history_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -306,12 +312,13 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
     name = "DescribeAlarms",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = list("MetricAlarms", "CompositeAlarms"))
   )
   input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, AlarmTypes = AlarmTypes, ChildrenOfAlarmName = ChildrenOfAlarmName, ParentsOfAlarmName = ParentsOfAlarmName, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .cloudwatch$describe_alarms_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -345,12 +352,13 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
     name = "DescribeAlarmsForMetric",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "MetricAlarms")
   )
   input <- .cloudwatch$describe_alarms_for_metric_input(MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit)
   output <- .cloudwatch$describe_alarms_for_metric_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -392,12 +400,13 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
     name = "DescribeAnomalyDetectors",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnomalyDetectors")
   )
   input <- .cloudwatch$describe_anomaly_detectors_input(NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, AnomalyDetectorTypes = AnomalyDetectorTypes)
   output <- .cloudwatch$describe_anomaly_detectors_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -424,12 +433,13 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
     name = "DescribeInsightRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$describe_insight_rules_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$describe_insight_rules_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -453,12 +463,13 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
     name = "DisableAlarmActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$disable_alarm_actions_input(AlarmNames = AlarmNames)
   output <- .cloudwatch$disable_alarm_actions_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -484,12 +495,13 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
     name = "DisableInsightRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$disable_insight_rules_input(RuleNames = RuleNames)
   output <- .cloudwatch$disable_insight_rules_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -513,12 +525,13 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
     name = "EnableAlarmActions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$enable_alarm_actions_input(AlarmNames = AlarmNames)
   output <- .cloudwatch$enable_alarm_actions_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -544,12 +557,13 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
     name = "EnableInsightRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$enable_insight_rules_input(RuleNames = RuleNames)
   output <- .cloudwatch$enable_insight_rules_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -573,12 +587,13 @@ cloudwatch_get_dashboard <- function(DashboardName) {
     name = "GetDashboard",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$get_dashboard_input(DashboardName = DashboardName)
   output <- .cloudwatch$get_dashboard_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -644,12 +659,13 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
     name = "GetInsightRuleReport",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$get_insight_rule_report_input(RuleName = RuleName, StartTime = StartTime, EndTime = EndTime, Period = Period, MaxContributorCount = MaxContributorCount, Metrics = Metrics, OrderBy = OrderBy)
   output <- .cloudwatch$get_insight_rule_report_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -734,12 +750,13 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
     name = "GetMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxDatapoints", output_token = "NextToken", result_key = list("MetricDataResults", "Messages"))
   )
   input <- .cloudwatch$get_metric_data_input(MetricDataQueries = MetricDataQueries, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, ScanBy = ScanBy, MaxDatapoints = MaxDatapoints, LabelOptions = LabelOptions)
   output <- .cloudwatch$get_metric_data_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -845,12 +862,13 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
     name = "GetMetricStatistics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$get_metric_statistics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, StartTime = StartTime, EndTime = EndTime, Period = Period, Statistics = Statistics, ExtendedStatistics = ExtendedStatistics, Unit = Unit)
   output <- .cloudwatch$get_metric_statistics_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -874,12 +892,13 @@ cloudwatch_get_metric_stream <- function(Name) {
     name = "GetMetricStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$get_metric_stream_input(Name = Name)
   output <- .cloudwatch$get_metric_stream_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -947,12 +966,13 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
     name = "GetMetricWidgetImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$get_metric_widget_image_input(MetricWidget = MetricWidget, OutputFormat = OutputFormat)
   output <- .cloudwatch$get_metric_widget_image_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -980,12 +1000,13 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
     name = "ListDashboards",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "DashboardEntries")
   )
   input <- .cloudwatch$list_dashboards_input(DashboardNamePrefix = DashboardNamePrefix, NextToken = NextToken)
   output <- .cloudwatch$list_dashboards_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1015,12 +1036,13 @@ cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL,
     name = "ListManagedInsightRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$list_managed_insight_rules_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_managed_insight_rules_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1046,12 +1068,13 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
     name = "ListMetricStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$list_metric_streams_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_metric_streams_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1098,12 +1121,13 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
     name = "ListMetrics",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "Metrics", "OwningAccounts"))
   )
   input <- .cloudwatch$list_metrics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, NextToken = NextToken, RecentlyActive = RecentlyActive, IncludeLinkedAccounts = IncludeLinkedAccounts, OwningAccount = OwningAccount)
   output <- .cloudwatch$list_metrics_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1138,12 +1162,13 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .cloudwatch$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1214,12 +1239,13 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
     name = "PutAnomalyDetector",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, Configuration = Configuration, MetricCharacteristics = MetricCharacteristics, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
   output <- .cloudwatch$put_anomaly_detector_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1394,12 +1420,13 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
     name = "PutCompositeAlarm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_composite_alarm_input(ActionsEnabled = ActionsEnabled, AlarmActions = AlarmActions, AlarmDescription = AlarmDescription, AlarmName = AlarmName, AlarmRule = AlarmRule, InsufficientDataActions = InsufficientDataActions, OKActions = OKActions, Tags = Tags, ActionsSuppressor = ActionsSuppressor, ActionsSuppressorWaitPeriod = ActionsSuppressorWaitPeriod, ActionsSuppressorExtensionPeriod = ActionsSuppressorExtensionPeriod)
   output <- .cloudwatch$put_composite_alarm_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1434,12 +1461,13 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
     name = "PutDashboard",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_dashboard_input(DashboardName = DashboardName, DashboardBody = DashboardBody)
   output <- .cloudwatch$put_dashboard_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1482,12 +1510,13 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
     name = "PutInsightRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_insight_rule_input(RuleName = RuleName, RuleState = RuleState, RuleDefinition = RuleDefinition, Tags = Tags)
   output <- .cloudwatch$put_insight_rule_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1512,12 +1541,13 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
     name = "PutManagedInsightRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_managed_insight_rules_input(ManagedRules = ManagedRules)
   output <- .cloudwatch$put_managed_insight_rules_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1864,12 +1894,13 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
     name = "PutMetricAlarm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags, ThresholdMetricId = ThresholdMetricId)
   output <- .cloudwatch$put_metric_alarm_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1899,12 +1930,13 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
     name = "PutMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_metric_data_input(Namespace = Namespace, MetricData = MetricData)
   output <- .cloudwatch$put_metric_data_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1989,12 +2021,13 @@ cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFil
     name = "PutMetricStream",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$put_metric_stream_input(Name = Name, IncludeFilters = IncludeFilters, ExcludeFilters = ExcludeFilters, FirehoseArn = FirehoseArn, RoleArn = RoleArn, OutputFormat = OutputFormat, Tags = Tags, StatisticsConfigurations = StatisticsConfigurations, IncludeLinkedAccountsMetrics = IncludeLinkedAccountsMetrics)
   output <- .cloudwatch$put_metric_stream_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2027,12 +2060,13 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
     name = "SetAlarmState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$set_alarm_state_input(AlarmName = AlarmName, StateValue = StateValue, StateReason = StateReason, StateReasonData = StateReasonData)
   output <- .cloudwatch$set_alarm_state_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2060,12 +2094,13 @@ cloudwatch_start_metric_streams <- function(Names) {
     name = "StartMetricStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$start_metric_streams_input(Names = Names)
   output <- .cloudwatch$start_metric_streams_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2093,12 +2128,13 @@ cloudwatch_stop_metric_streams <- function(Names) {
     name = "StopMetricStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$stop_metric_streams_input(Names = Names)
   output <- .cloudwatch$stop_metric_streams_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2135,12 +2171,13 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .cloudwatch$tag_resource_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2176,12 +2213,13 @@ cloudwatch_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatch$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .cloudwatch$untag_resource_output()
   config <- get_config()
-  svc <- .cloudwatch$service(config)
+  svc <- .cloudwatch$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

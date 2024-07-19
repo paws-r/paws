@@ -10,9 +10,12 @@ NULL
 #' make it easy to combine customer information from third party
 #' applications, such as Salesforce (CRM), ServiceNow (ITSM), and your
 #' enterprise resource planning (ERP), with contact history from your
-#' Amazon Connect contact center. If you're new to Amazon Connect, you
-#' might find it helpful to review the [Amazon Connect Administrator
-#' Guide](https://docs.aws.amazon.com/connect/latest/adminguide/).
+#' Amazon Connect contact center.
+#' 
+#' For more information about the Amazon Connect Customer Profiles feature,
+#' see [Use Customer
+#' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/customer-profiles.html)
+#' in the *Amazon Connect Administrator's Guide*.
 #'
 #' @param
 #' config
@@ -188,7 +191,7 @@ customerprofiles <- function(config = list(), credentials = list(), endpoint = N
   target_prefix = ""
 )
 
-.customerprofiles$service <- function(config = list()) {
+.customerprofiles$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.customerprofiles$metadata, handlers, config)
+  new_service(.customerprofiles$metadata, handlers, config, op)
 }

@@ -5,6 +5,12 @@ NULL
 #' Amazon Connect Service
 #'
 #' @description
+#' -   [Amazon Connect
+#'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html)
+#' 
+#' -   [Amazon Connect data
+#'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html)
+#' 
 #' Amazon Connect is a cloud-based contact center solution that you use to
 #' set up and manage a customer contact center and provide reliable
 #' customer engagement at any scale.
@@ -124,9 +130,11 @@ NULL
 #'  \link[=connect_associate_user_proficiencies]{associate_user_proficiencies} \tab >Associates a set of proficiencies with a user\cr
 #'  \link[=connect_batch_associate_analytics_data_set]{batch_associate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_batch_disassociate_analytics_data_set]{batch_disassociate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_batch_get_attached_file_metadata]{batch_get_attached_file_metadata} \tab Allows you to retrieve metadata about multiple attached files on an associated resource\cr
 #'  \link[=connect_batch_get_flow_association]{batch_get_flow_association} \tab Retrieve the flow associations for the given resources\cr
 #'  \link[=connect_batch_put_contact]{batch_put_contact} \tab Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API\cr
 #'  \link[=connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
+#'  \link[=connect_complete_attached_file_upload]{complete_attached_file_upload} \tab Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in the StartAttachedFileUpload API\cr
 #'  \link[=connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Amazon Connect instance\cr
 #'  \link[=connect_create_contact_flow_module]{create_contact_flow_module} \tab Creates a flow module for the specified Amazon Connect instance\cr
@@ -152,6 +160,7 @@ NULL
 #'  \link[=connect_create_view_version]{create_view_version} \tab Publishes a new version of the view identifier\cr
 #'  \link[=connect_create_vocabulary]{create_vocabulary} \tab Creates a custom vocabulary associated with your Amazon Connect instance\cr
 #'  \link[=connect_deactivate_evaluation_form]{deactivate_evaluation_form} \tab Deactivates an evaluation form in the specified Amazon Connect instance\cr
+#'  \link[=connect_delete_attached_file]{delete_attached_file} \tab Deletes an attached file along with the underlying S3 Object\cr
 #'  \link[=connect_delete_contact_evaluation]{delete_contact_evaluation} \tab Deletes a contact evaluation in the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_contact_flow]{delete_contact_flow} \tab Deletes a flow for the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_contact_flow_module]{delete_contact_flow_module} \tab Deletes the specified flow module\cr
@@ -175,6 +184,7 @@ NULL
 #'  \link[=connect_delete_view_version]{delete_view_version} \tab Deletes the particular version specified in ViewVersion identifier\cr
 #'  \link[=connect_delete_vocabulary]{delete_vocabulary} \tab Deletes the vocabulary that has the given identifier\cr
 #'  \link[=connect_describe_agent_status]{describe_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_describe_authentication_profile]{describe_authentication_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_describe_contact]{describe_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_describe_contact_evaluation]{describe_contact_evaluation} \tab Describes a contact evaluation in the specified Amazon Connect instance\cr
 #'  \link[=connect_describe_contact_flow]{describe_contact_flow} \tab Describes the specified flow\cr
@@ -212,6 +222,7 @@ NULL
 #'  \link[=connect_disassociate_traffic_distribution_group_user]{disassociate_traffic_distribution_group_user} \tab Disassociates an agent from a traffic distribution group\cr
 #'  \link[=connect_disassociate_user_proficiencies]{disassociate_user_proficiencies} \tab Disassociates a set of proficiencies from a user\cr
 #'  \link[=connect_dismiss_user_contact]{dismiss_user_contact} \tab Dismisses contacts from an agent’s CCP and returns the agent to an available state, which allows the agent to receive a new routed contact\cr
+#'  \link[=connect_get_attached_file]{get_attached_file} \tab Provides a pre-signed URL for download of an approved attached file\cr
 #'  \link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
 #'  \link[=connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
 #'  \link[=connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Amazon Connect instance\cr
@@ -226,6 +237,7 @@ NULL
 #'  \link[=connect_list_agent_statuses]{list_agent_statuses} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_list_analytics_data_associations]{list_analytics_data_associations} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_list_approved_origins]{list_approved_origins} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_list_authentication_profiles]{list_authentication_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_list_bots]{list_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_list_contact_evaluations]{list_contact_evaluations} \tab Lists contact evaluations in the specified Amazon Connect instance\cr
 #'  \link[=connect_list_contact_flow_modules]{list_contact_flow_modules} \tab Provides information about the flow modules for the specified Amazon Connect instance\cr
@@ -275,6 +287,8 @@ NULL
 #'  \link[=connect_resume_contact]{resume_contact} \tab Allows resuming a task contact in a paused state\cr
 #'  \link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both\cr
 #'  \link[=connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
+#'  \link[=connect_search_contact_flow_modules]{search_contact_flow_modules} \tab Searches the flow modules in an Amazon Connect instance, with optional filtering\cr
+#'  \link[=connect_search_contact_flows]{search_contact_flows} \tab Searches the contact flows in an Amazon Connect instance, with optional filtering\cr
 #'  \link[=connect_search_contacts]{search_contacts} \tab Searches contacts in an Amazon Connect instance\cr
 #'  \link[=connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
 #'  \link[=connect_search_predefined_attributes]{search_predefined_attributes} \tab Predefined attributes that meet certain criteria\cr
@@ -287,6 +301,7 @@ NULL
 #'  \link[=connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
 #'  \link[=connect_search_vocabularies]{search_vocabularies} \tab Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode\cr
 #'  \link[=connect_send_chat_integration_event]{send_chat_integration_event} \tab Processes chat integration events from Amazon Web Services or external integrations to Amazon Connect\cr
+#'  \link[=connect_start_attached_file_upload]{start_attached_file_upload} \tab Provides a pre-signed Amazon S3 URL in response for uploading your content\cr
 #'  \link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a flow to start a new chat for the customer\cr
 #'  \link[=connect_start_contact_evaluation]{start_contact_evaluation} \tab Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for the particular contact\cr
 #'  \link[=connect_start_contact_recording]{start_contact_recording} \tab Starts recording the contact:\cr
@@ -305,6 +320,7 @@ NULL
 #'  \link[=connect_untag_contact]{untag_contact} \tab Removes the specified tags from the contact resource\cr
 #'  \link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 #'  \link[=connect_update_agent_status]{update_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_update_authentication_profile]{update_authentication_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_update_contact]{update_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_update_contact_attributes]{update_contact_attributes} \tab Creates or updates user-defined contact attributes associated with the specified contact\cr
 #'  \link[=connect_update_contact_evaluation]{update_contact_evaluation} \tab Updates details about a contact evaluation in the specified Amazon Connect instance\cr
@@ -313,7 +329,7 @@ NULL
 #'  \link[=connect_update_contact_flow_module_content]{update_contact_flow_module_content} \tab Updates specified flow module for the specified Amazon Connect instance\cr
 #'  \link[=connect_update_contact_flow_module_metadata]{update_contact_flow_module_metadata} \tab Updates metadata about specified flow module\cr
 #'  \link[=connect_update_contact_flow_name]{update_contact_flow_name} \tab The name of the flow\cr
-#'  \link[=connect_update_contact_routing_data]{update_contact_routing_data} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_update_contact_routing_data]{update_contact_routing_data} \tab Updates routing priority and age on the contact (QueuePriority and QueueTimeAdjustmentInSeconds)\cr
 #'  \link[=connect_update_contact_schedule]{update_contact_schedule} \tab Updates the scheduled time of a task contact that is already scheduled\cr
 #'  \link[=connect_update_evaluation_form]{update_evaluation_form} \tab Updates details about a specific evaluation form version in the specified Amazon Connect instance\cr
 #'  \link[=connect_update_hours_of_operation]{update_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -389,7 +405,7 @@ connect <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = ""
 )
 
-.connect$service <- function(config = list()) {
+.connect$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.connect$metadata, handlers, config)
+  new_service(.connect$metadata, handlers, config, op)
 }

@@ -8,7 +8,8 @@ cloudformation_delete_stack(
   StackName,
   RetainResources = NULL,
   RoleARN = NULL,
-  ClientRequestToken = NULL
+  ClientRequestToken = NULL,
+  DeletionMode = NULL
 )
 }
 \arguments{
@@ -51,6 +52,14 @@ identify the stack operation . For example, if you create a stack using
 the console, each stack event would be assigned the same token in the
 following format:
 \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
+
+\item{DeletionMode}{Specifies the deletion mode for the stack. Possible values are:
+\itemize{
+\item \code{STANDARD} - Use the standard behavior. Specifying this value is the
+same as not specifying this parameter.
+\item \code{FORCE_DELETE_STACK} - Delete the stack if it's stuck in a
+\code{DELETE_FAILED} state due to resource deletion failure.
+}}
 }
 \description{
 Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks don't show up in the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation if the deletion has been completed successfully.

@@ -43,12 +43,13 @@ ssmsap_delete_resource_permission <- function(ActionType = NULL, SourceResourceA
     name = "DeleteResourcePermission",
     http_method = "POST",
     http_path = "/delete-resource-permission",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$delete_resource_permission_input(ActionType = ActionType, SourceResourceArn = SourceResourceArn, ResourceArn = ResourceArn)
   output <- .ssmsap$delete_resource_permission_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -87,12 +88,13 @@ ssmsap_deregister_application <- function(ApplicationId) {
     name = "DeregisterApplication",
     http_method = "POST",
     http_path = "/deregister-application",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$deregister_application_input(ApplicationId = ApplicationId)
   output <- .ssmsap$deregister_application_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -156,12 +158,13 @@ ssmsap_get_application <- function(ApplicationId = NULL, ApplicationArn = NULL, 
     name = "GetApplication",
     http_method = "POST",
     http_path = "/get-application",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$get_application_input(ApplicationId = ApplicationId, ApplicationArn = ApplicationArn, AppRegistryArn = AppRegistryArn)
   output <- .ssmsap$get_application_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -267,12 +270,13 @@ ssmsap_get_component <- function(ApplicationId, ComponentId) {
     name = "GetComponent",
     http_method = "POST",
     http_path = "/get-component",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$get_component_input(ApplicationId = ApplicationId, ComponentId = ComponentId)
   output <- .ssmsap$get_component_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -345,12 +349,13 @@ ssmsap_get_database <- function(ApplicationId = NULL, ComponentId = NULL, Databa
     name = "GetDatabase",
     http_method = "POST",
     http_path = "/get-database",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$get_database_input(ApplicationId = ApplicationId, ComponentId = ComponentId, DatabaseId = DatabaseId, DatabaseArn = DatabaseArn)
   output <- .ssmsap$get_database_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -412,12 +417,13 @@ ssmsap_get_operation <- function(OperationId) {
     name = "GetOperation",
     http_method = "POST",
     http_path = "/get-operation",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$get_operation_input(OperationId = OperationId)
   output <- .ssmsap$get_operation_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -461,12 +467,13 @@ ssmsap_get_resource_permission <- function(ActionType = NULL, ResourceArn) {
     name = "GetResourcePermission",
     http_method = "POST",
     http_path = "/get-resource-permission",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$get_resource_permission_input(ActionType = ActionType, ResourceArn = ResourceArn)
   output <- .ssmsap$get_resource_permission_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -531,12 +538,13 @@ ssmsap_list_applications <- function(NextToken = NULL, MaxResults = NULL, Filter
     name = "ListApplications",
     http_method = "POST",
     http_path = "/list-applications",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Applications")
   )
   input <- .ssmsap$list_applications_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ssmsap$list_applications_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -598,12 +606,13 @@ ssmsap_list_components <- function(ApplicationId = NULL, NextToken = NULL, MaxRe
     name = "ListComponents",
     http_method = "POST",
     http_path = "/list-components",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Components")
   )
   input <- .ssmsap$list_components_input(ApplicationId = ApplicationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmsap$list_components_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -668,17 +677,105 @@ ssmsap_list_databases <- function(ApplicationId = NULL, ComponentId = NULL, Next
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/list-databases",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Databases")
   )
   input <- .ssmsap$list_databases_input(ApplicationId = ApplicationId, ComponentId = ComponentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmsap$list_databases_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .ssmsap$operations$list_databases <- ssmsap_list_databases
+
+#' Returns a list of operations events
+#'
+#' @description
+#' Returns a list of operations events.
+#' 
+#' Available parameters include `OperationID`, as well as optional
+#' parameters `MaxResults`, `NextToken`, and `Filters`.
+#'
+#' @usage
+#' ssmsap_list_operation_events(OperationId, MaxResults, NextToken,
+#'   Filters)
+#'
+#' @param OperationId &#91;required&#93; The ID of the operation.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' 
+#' If you do not specify a value for `MaxResults`, the request returns 50
+#' items per page by default.
+#' @param NextToken The token to use to retrieve the next page of results. This value is
+#' null when there are no more results to return.
+#' @param Filters Optionally specify filters to narrow the returned operation event items.
+#' 
+#' Valid filter names include `status`, `resourceID`, and `resourceType`.
+#' The valid operator for all three filters is `Equals`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationEvents = list(
+#'     list(
+#'       Description = "string",
+#'       Resource = list(
+#'         ResourceArn = "string",
+#'         ResourceType = "string"
+#'       ),
+#'       Status = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'       StatusMessage = "string",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_operation_events(
+#'   OperationId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string",
+#'       Operator = "Equals"|"GreaterThanOrEquals"|"LessThanOrEquals"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_list_operation_events
+#'
+#' @aliases ssmsap_list_operation_events
+ssmsap_list_operation_events <- function(OperationId, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListOperationEvents",
+    http_method = "POST",
+    http_path = "/list-operation-events",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OperationEvents")
+  )
+  input <- .ssmsap$list_operation_events_input(OperationId = OperationId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .ssmsap$list_operation_events_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$list_operation_events <- ssmsap_list_operation_events
 
 #' Lists the operations performed by AWS Systems Manager for SAP
 #'
@@ -753,12 +850,13 @@ ssmsap_list_operations <- function(ApplicationId, MaxResults = NULL, NextToken =
     name = "ListOperations",
     http_method = "POST",
     http_path = "/list-operations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Operations")
   )
   input <- .ssmsap$list_operations_input(ApplicationId = ApplicationId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssmsap$list_operations_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -804,12 +902,13 @@ ssmsap_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ssmsap$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -856,12 +955,13 @@ ssmsap_put_resource_permission <- function(ActionType, SourceResourceArn, Resour
     name = "PutResourcePermission",
     http_method = "POST",
     http_path = "/put-resource-permission",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$put_resource_permission_input(ActionType = ActionType, SourceResourceArn = SourceResourceArn, ResourceArn = ResourceArn)
   output <- .ssmsap$put_resource_permission_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -953,17 +1053,68 @@ ssmsap_register_application <- function(ApplicationId, ApplicationType, Instance
     name = "RegisterApplication",
     http_method = "POST",
     http_path = "/register-application",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$register_application_input(ApplicationId = ApplicationId, ApplicationType = ApplicationType, Instances = Instances, SapInstanceNumber = SapInstanceNumber, Sid = Sid, Tags = Tags, Credentials = Credentials, DatabaseArn = DatabaseArn)
   output <- .ssmsap$register_application_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .ssmsap$operations$register_application <- ssmsap_register_application
+
+#' Request is an operation which starts an application
+#'
+#' @description
+#' Request is an operation which starts an application.
+#' 
+#' Parameter `ApplicationId` is required.
+#'
+#' @usage
+#' ssmsap_start_application(ApplicationId)
+#'
+#' @param ApplicationId &#91;required&#93; The ID of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_application(
+#'   ApplicationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_start_application
+#'
+#' @aliases ssmsap_start_application
+ssmsap_start_application <- function(ApplicationId) {
+  op <- new_operation(
+    name = "StartApplication",
+    http_method = "POST",
+    http_path = "/start-application",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ssmsap$start_application_input(ApplicationId = ApplicationId)
+  output <- .ssmsap$start_application_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$start_application <- ssmsap_start_application
 
 #' Refreshes a registered application
 #'
@@ -1000,17 +1151,79 @@ ssmsap_start_application_refresh <- function(ApplicationId) {
     name = "StartApplicationRefresh",
     http_method = "POST",
     http_path = "/start-application-refresh",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$start_application_refresh_input(ApplicationId = ApplicationId)
   output <- .ssmsap$start_application_refresh_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .ssmsap$operations$start_application_refresh <- ssmsap_start_application_refresh
+
+#' Request is an operation to stop an application
+#'
+#' @description
+#' Request is an operation to stop an application.
+#' 
+#' Parameter `ApplicationId` is required. Parameters `StopConnectedEntity`
+#' and `IncludeEc2InstanceShutdown` are optional.
+#'
+#' @usage
+#' ssmsap_stop_application(ApplicationId, StopConnectedEntity,
+#'   IncludeEc2InstanceShutdown)
+#'
+#' @param ApplicationId &#91;required&#93; The ID of the application.
+#' @param StopConnectedEntity Specify the `ConnectedEntityType`. Accepted type is `DBMS`.
+#' 
+#' If this parameter is included, the connected DBMS (Database Management
+#' System) will be stopped.
+#' @param IncludeEc2InstanceShutdown Boolean. If included and if set to `True`, the StopApplication operation
+#' will shut down the associated Amazon EC2 instance in addition to the
+#' application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_application(
+#'   ApplicationId = "string",
+#'   StopConnectedEntity = "DBMS",
+#'   IncludeEc2InstanceShutdown = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmsap_stop_application
+#'
+#' @aliases ssmsap_stop_application
+ssmsap_stop_application <- function(ApplicationId, StopConnectedEntity = NULL, IncludeEc2InstanceShutdown = NULL) {
+  op <- new_operation(
+    name = "StopApplication",
+    http_method = "POST",
+    http_path = "/stop-application",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ssmsap$stop_application_input(ApplicationId = ApplicationId, StopConnectedEntity = StopConnectedEntity, IncludeEc2InstanceShutdown = IncludeEc2InstanceShutdown)
+  output <- .ssmsap$stop_application_output()
+  config <- get_config()
+  svc <- .ssmsap$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmsap$operations$stop_application <- ssmsap_stop_application
 
 #' Creates tag for a resource by specifying the ARN
 #'
@@ -1046,12 +1259,13 @@ ssmsap_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ssmsap$tag_resource_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1093,12 +1307,13 @@ ssmsap_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ssmsap$untag_resource_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1170,12 +1385,13 @@ ssmsap_update_application_settings <- function(ApplicationId, CredentialsToAddOr
     name = "UpdateApplicationSettings",
     http_method = "POST",
     http_path = "/update-application-settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmsap$update_application_settings_input(ApplicationId = ApplicationId, CredentialsToAddOrUpdate = CredentialsToAddOrUpdate, CredentialsToRemove = CredentialsToRemove, Backint = Backint, DatabaseArn = DatabaseArn)
   output <- .ssmsap$update_application_settings_output()
   config <- get_config()
-  svc <- .ssmsap$service(config)
+  svc <- .ssmsap$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

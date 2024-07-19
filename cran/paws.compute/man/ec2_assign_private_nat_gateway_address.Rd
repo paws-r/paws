@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_assign_private_nat_gateway_address}
 \alias{ec2_assign_private_nat_gateway_address}
-\title{Assigns one or more private IPv4 addresses to a private NAT gateway}
+\title{Assigns private IPv4 addresses to a private NAT gateway}
 \usage{
 ec2_assign_private_nat_gateway_address(
   NatGatewayId,
@@ -26,7 +26,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Assigns one or more private IPv4 addresses to a private NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with}{Work with NAT gateways} in the \emph{Amazon VPC User Guide}.
+Assigns private IPv4 addresses to a private NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with}{Work with NAT gateways} in the \emph{Amazon VPC User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_assign_private_nat_gateway_address/} for full documentation.
 }

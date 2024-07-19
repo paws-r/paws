@@ -34,7 +34,7 @@ customerprofiles_create_profile(
 \arguments{
 \item{DomainName}{[required] The unique name of the domain.}
 
-\item{AccountNumber}{A unique account number that you have given to the customer.}
+\item{AccountNumber}{An account number that you have given to the customer.}
 
 \item{AdditionalInformation}{Any additional information relevant to the customer’s profile.}
 

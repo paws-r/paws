@@ -121,6 +121,7 @@ NULL
 #'  \link[=guardduty_create_detector]{create_detector} \tab Creates a single GuardDuty detector\cr
 #'  \link[=guardduty_create_filter]{create_filter} \tab Creates a filter using the specified finding criteria\cr
 #'  \link[=guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet, which is called a trusted IP list in the console user interface\cr
+#'  \link[=guardduty_create_malware_protection_plan]{create_malware_protection_plan} \tab Creates a new Malware Protection plan for the protected resource\cr
 #'  \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs\cr
 #'  \link[=guardduty_create_publishing_destination]{create_publishing_destination} \tab Creates a publishing destination to export findings to\cr
 #'  \link[=guardduty_create_sample_findings]{create_sample_findings} \tab Generates sample findings of types specified by the list of finding types\cr
@@ -130,6 +131,7 @@ NULL
 #'  \link[=guardduty_delete_filter]{delete_filter} \tab Deletes the filter specified by the filter name\cr
 #'  \link[=guardduty_delete_invitations]{delete_invitations} \tab Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs\cr
 #'  \link[=guardduty_delete_ip_set]{delete_ip_set} \tab Deletes the IPSet specified by the ipSetId\cr
+#'  \link[=guardduty_delete_malware_protection_plan]{delete_malware_protection_plan} \tab Deletes the Malware Protection plan ID associated with the Malware Protection plan resource\cr
 #'  \link[=guardduty_delete_members]{delete_members} \tab Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs\cr
 #'  \link[=guardduty_delete_publishing_destination]{delete_publishing_destination} \tab Deletes the publishing definition with the specified destinationId\cr
 #'  \link[=guardduty_delete_threat_intel_set]{delete_threat_intel_set} \tab Deletes the ThreatIntelSet specified by the ThreatIntelSet ID\cr
@@ -149,6 +151,7 @@ NULL
 #'  \link[=guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists Amazon GuardDuty findings statistics for the specified detector ID\cr
 #'  \link[=guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation\cr
 #'  \link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId\cr
+#'  \link[=guardduty_get_malware_protection_plan]{get_malware_protection_plan} \tab Retrieves the Malware Protection plan details associated with a Malware Protection plan ID\cr
 #'  \link[=guardduty_get_malware_scan_settings]{get_malware_scan_settings} \tab Returns the details of the malware scan settings\cr
 #'  \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[=guardduty_get_member_detectors]{get_member_detectors} \tab Describes which data sources are enabled for the member account's detector\cr
@@ -164,6 +167,7 @@ NULL
 #'  \link[=guardduty_list_findings]{list_findings} \tab Lists GuardDuty findings for the specified detector ID\cr
 #'  \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 #'  \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
+#'  \link[=guardduty_list_malware_protection_plans]{list_malware_protection_plans} \tab Lists the Malware Protection plan IDs associated with the protected resources in your Amazon Web Services account\cr
 #'  \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty administrator account\cr
 #'  \link[=guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts designated as GuardDuty delegated administrators\cr
 #'  \link[=guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified detectorId\cr
@@ -179,6 +183,7 @@ NULL
 #'  \link[=guardduty_update_filter]{update_filter} \tab Updates the filter specified by the filter name\cr
 #'  \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks the specified GuardDuty findings as useful or not useful\cr
 #'  \link[=guardduty_update_ip_set]{update_ip_set} \tab Updates the IPSet specified by the IPSet ID\cr
+#'  \link[=guardduty_update_malware_protection_plan]{update_malware_protection_plan} \tab Updates an existing Malware Protection plan resource\cr
 #'  \link[=guardduty_update_malware_scan_settings]{update_malware_scan_settings} \tab Updates the malware scan settings\cr
 #'  \link[=guardduty_update_member_detectors]{update_member_detectors} \tab Contains information on member accounts to be updated\cr
 #'  \link[=guardduty_update_organization_configuration]{update_organization_configuration} \tab Configures the delegated administrator account with the provided values\cr
@@ -223,7 +228,7 @@ guardduty <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = ""
 )
 
-.guardduty$service <- function(config = list()) {
+.guardduty$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.guardduty$metadata, handlers, config)
+  new_service(.guardduty$metadata, handlers, config, op)
 }

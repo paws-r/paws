@@ -229,7 +229,7 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
   target_prefix = "SWBExternalService"
 )
 
-.ssoadmin$service <- function(config = list()) {
+.ssoadmin$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.ssoadmin$metadata, handlers, config)
+  new_service(.ssoadmin$metadata, handlers, config, op)
 }

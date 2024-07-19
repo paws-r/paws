@@ -8,6 +8,7 @@ globalaccelerator_update_custom_routing_accelerator(
   AcceleratorArn,
   Name = NULL,
   IpAddressType = NULL,
+  IpAddresses = NULL,
   Enabled = NULL
 )
 }
@@ -20,6 +21,8 @@ hyphens (-), and must not begin or end with a hyphen or period.}
 
 \item{IpAddressType}{The IP address type that an accelerator supports. For a custom routing
 accelerator, the value must be IPV4.}
+
+\item{IpAddresses}{The IP addresses for an accelerator.}
 
 \item{Enabled}{Indicates whether an accelerator is enabled. The value is true or false.
 The default value is true.

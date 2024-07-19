@@ -22,10 +22,10 @@ ec2_allocate_hosts(
 \item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
 match its instance type configuration, or if it only accepts Host
 tenancy instance launches that specify its unique host ID. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
 in the \emph{Amazon EC2 User Guide}.
 
-Default: \code{on}}
+Default: \code{off}}
 
 \item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
 

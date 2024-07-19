@@ -6,17 +6,19 @@ NULL
 #' Assigns a Grafana Enterprise license to a workspace
 #'
 #' @description
-#' Assigns a Grafana Enterprise license to a workspace. Upgrading to
-#' Grafana Enterprise incurs additional fees. For more information, see
-#' [Upgrade a workspace to Grafana
+#' Assigns a Grafana Enterprise license to a workspace. To upgrade, you
+#' must use `ENTERPRISE` for the `licenseType`, and pass in a valid Grafana
+#' Labs token for the `grafanaToken`. Upgrading to Grafana Enterprise
+#' incurs additional fees. For more information, see [Upgrade a workspace
+#' to Grafana
 #' Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html).
 #'
 #' @usage
 #' managedgrafana_associate_license(grafanaToken, licenseType, workspaceId)
 #'
 #' @param grafanaToken A token from Grafana Labs that ties your Amazon Web Services account
-#' with a Grafana Labs account. For more information, see [Register with
-#' Grafana
+#' with a Grafana Labs account. For more information, see [Link your
+#' account with Grafana
 #' Labs](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html#AMG-workspace-register-enterprise).
 #' @param licenseType &#91;required&#93; The type of license to associate with the workspace.
 #' 
@@ -112,12 +114,13 @@ managedgrafana_associate_license <- function(grafanaToken = NULL, licenseType, w
     name = "AssociateLicense",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/licenses/{licenseType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$associate_license_input(grafanaToken = grafanaToken, licenseType = licenseType, workspaceId = workspaceId)
   output <- .managedgrafana$associate_license_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -162,7 +165,7 @@ managedgrafana_associate_license <- function(grafanaToken = NULL, licenseType, w
 #' [Working in your Grafana
 #' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
 #' @param grafanaVersion Specifies the version of Grafana to support in the new workspace. If not
-#' specified, defaults to the latest version (for example, 9.4).
+#' specified, defaults to the latest version (for example, 10.4).
 #' 
 #' To get a list of supported versions, use the
 #' [`list_versions`][managedgrafana_list_versions] operation.
@@ -350,12 +353,13 @@ managedgrafana_create_workspace <- function(accountAccessType, authenticationPro
     name = "CreateWorkspace",
     http_method = "POST",
     http_path = "/workspaces",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$create_workspace_input(accountAccessType = accountAccessType, authenticationProviders = authenticationProviders, clientToken = clientToken, configuration = configuration, grafanaVersion = grafanaVersion, networkAccessControl = networkAccessControl, organizationRoleName = organizationRoleName, permissionType = permissionType, stackSetName = stackSetName, tags = tags, vpcConfiguration = vpcConfiguration, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
   output <- .managedgrafana$create_workspace_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -369,6 +373,10 @@ managedgrafana_create_workspace <- function(accountAccessType, authenticationPro
 #' authenticate requests sent to the workspace's HTTP API. See
 #' <https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html>
 #' for available APIs and example requests.
+#' 
+#' In workspaces compatible with Grafana version 9 or above, use workspace
+#' service accounts instead of API keys. API keys will be removed in a
+#' future release.
 #'
 #' @usage
 #' managedgrafana_create_workspace_api_key(keyName, keyRole, secondsToLive,
@@ -377,7 +385,7 @@ managedgrafana_create_workspace <- function(accountAccessType, authenticationPro
 #' @param keyName &#91;required&#93; Specifies the name of the key. Keynames must be unique to the workspace.
 #' @param keyRole &#91;required&#93; Specifies the permission level of the key.
 #' 
-#' Valid values: `VIEWER`|`EDITOR`|`ADMIN`
+#' Valid values: `ADMIN`|`EDITOR`|`VIEWER`
 #' @param secondsToLive &#91;required&#93; Specifies the time in seconds until the key expires. Keys can be valid
 #' for up to 30 days.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to create an API key.
@@ -412,17 +420,175 @@ managedgrafana_create_workspace_api_key <- function(keyName, keyRole, secondsToL
     name = "CreateWorkspaceApiKey",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/apikeys",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$create_workspace_api_key_input(keyName = keyName, keyRole = keyRole, secondsToLive = secondsToLive, workspaceId = workspaceId)
   output <- .managedgrafana$create_workspace_api_key_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .managedgrafana$operations$create_workspace_api_key <- managedgrafana_create_workspace_api_key
+
+#' Creates a service account for the workspace
+#'
+#' @description
+#' Creates a service account for the workspace. A service account can be
+#' used to call Grafana HTTP APIs, and run automated workloads. After
+#' creating the service account with the correct `GrafanaRole` for your use
+#' case, use
+#' [`create_workspace_service_account_token`][managedgrafana_create_workspace_service_account_token]
+#' to create a token that can be used to authenticate and authorize Grafana
+#' HTTP API calls.
+#' 
+#' You can only create service accounts for workspaces that are compatible
+#' with Grafana version 9 and above.
+#' 
+#' For more information about service accounts, see [Service
+#' accounts](https://docs.aws.amazon.com/grafana/latest/userguide/service-accounts.html)
+#' in the *Amazon Managed Grafana User Guide*.
+#' 
+#' For more information about the Grafana HTTP APIs, see [Using Grafana
+#' HTTP
+#' APIs](https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html)
+#' in the *Amazon Managed Grafana User Guide*.
+#'
+#' @usage
+#' managedgrafana_create_workspace_service_account(grafanaRole, name,
+#'   workspaceId)
+#'
+#' @param grafanaRole &#91;required&#93; The permission level to use for this service account.
+#' 
+#' For more information about the roles and the permissions each has, see
+#' [User
+#' roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html)
+#' in the *Amazon Managed Grafana User Guide*.
+#' @param name &#91;required&#93; A name for the service account. The name must be unique within the
+#' workspace, as it determines the ID associated with the service account.
+#' @param workspaceId &#91;required&#93; The ID of the workspace within which to create the service account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   grafanaRole = "ADMIN"|"EDITOR"|"VIEWER",
+#'   id = "string",
+#'   name = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workspace_service_account(
+#'   grafanaRole = "ADMIN"|"EDITOR"|"VIEWER",
+#'   name = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_create_workspace_service_account
+#'
+#' @aliases managedgrafana_create_workspace_service_account
+managedgrafana_create_workspace_service_account <- function(grafanaRole, name, workspaceId) {
+  op <- new_operation(
+    name = "CreateWorkspaceServiceAccount",
+    http_method = "POST",
+    http_path = "/workspaces/{workspaceId}/serviceaccounts",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .managedgrafana$create_workspace_service_account_input(grafanaRole = grafanaRole, name = name, workspaceId = workspaceId)
+  output <- .managedgrafana$create_workspace_service_account_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$create_workspace_service_account <- managedgrafana_create_workspace_service_account
+
+#' Creates a token that can be used to authenticate and authorize Grafana
+#' HTTP API operations for the given workspace service account
+#'
+#' @description
+#' Creates a token that can be used to authenticate and authorize Grafana
+#' HTTP API operations for the given [workspace service
+#' account](https://docs.aws.amazon.com/grafana/latest/userguide/service-accounts.html).
+#' The service account acts as a user for the API operations, and defines
+#' the permissions that are used by the API.
+#' 
+#' When you create the service account token, you will receive a key that
+#' is used when calling Grafana APIs. Do not lose this key, as it will not
+#' be retrievable again.
+#' 
+#' If you do lose the key, you can delete the token and recreate it to
+#' receive a new key. This will disable the initial key.
+#' 
+#' Service accounts are only available for workspaces that are compatible
+#' with Grafana version 9 and above.
+#'
+#' @usage
+#' managedgrafana_create_workspace_service_account_token(name,
+#'   secondsToLive, serviceAccountId, workspaceId)
+#'
+#' @param name &#91;required&#93; A name for the token to create.
+#' @param secondsToLive &#91;required&#93; Sets how long the token will be valid, in seconds. You can set the time
+#' up to 30 days in the future.
+#' @param serviceAccountId &#91;required&#93; The ID of the service account for which to create a token.
+#' @param workspaceId &#91;required&#93; The ID of the workspace the service account resides within.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceAccountId = "string",
+#'   serviceAccountToken = list(
+#'     id = "string",
+#'     key = "string",
+#'     name = "string"
+#'   ),
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workspace_service_account_token(
+#'   name = "string",
+#'   secondsToLive = 123,
+#'   serviceAccountId = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_create_workspace_service_account_token
+#'
+#' @aliases managedgrafana_create_workspace_service_account_token
+managedgrafana_create_workspace_service_account_token <- function(name, secondsToLive, serviceAccountId, workspaceId) {
+  op <- new_operation(
+    name = "CreateWorkspaceServiceAccountToken",
+    http_method = "POST",
+    http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}/tokens",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .managedgrafana$create_workspace_service_account_token_input(name = name, secondsToLive = secondsToLive, serviceAccountId = serviceAccountId, workspaceId = workspaceId)
+  output <- .managedgrafana$create_workspace_service_account_token_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$create_workspace_service_account_token <- managedgrafana_create_workspace_service_account_token
 
 #' Deletes an Amazon Managed Grafana workspace
 #'
@@ -520,12 +686,13 @@ managedgrafana_delete_workspace <- function(workspaceId) {
     name = "DeleteWorkspace",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$delete_workspace_input(workspaceId = workspaceId)
   output <- .managedgrafana$delete_workspace_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -536,6 +703,10 @@ managedgrafana_delete_workspace <- function(workspaceId) {
 #'
 #' @description
 #' Deletes a Grafana API key for the workspace.
+#' 
+#' In workspaces compatible with Grafana version 9 or above, use workspace
+#' service accounts instead of API keys. API keys will be removed in a
+#' future release.
 #'
 #' @usage
 #' managedgrafana_delete_workspace_api_key(keyName, workspaceId)
@@ -570,17 +741,139 @@ managedgrafana_delete_workspace_api_key <- function(keyName, workspaceId) {
     name = "DeleteWorkspaceApiKey",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/apikeys/{keyName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$delete_workspace_api_key_input(keyName = keyName, workspaceId = workspaceId)
   output <- .managedgrafana$delete_workspace_api_key_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .managedgrafana$operations$delete_workspace_api_key <- managedgrafana_delete_workspace_api_key
+
+#' Deletes a workspace service account from the workspace
+#'
+#' @description
+#' Deletes a workspace service account from the workspace.
+#' 
+#' This will delete any tokens created for the service account, as well. If
+#' the tokens are currently in use, the will fail to authenticate /
+#' authorize after they are deleted.
+#' 
+#' Service accounts are only available for workspaces that are compatible
+#' with Grafana version 9 and above.
+#'
+#' @usage
+#' managedgrafana_delete_workspace_service_account(serviceAccountId,
+#'   workspaceId)
+#'
+#' @param serviceAccountId &#91;required&#93; The ID of the service account to delete.
+#' @param workspaceId &#91;required&#93; The ID of the workspace where the service account resides.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceAccountId = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_workspace_service_account(
+#'   serviceAccountId = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_delete_workspace_service_account
+#'
+#' @aliases managedgrafana_delete_workspace_service_account
+managedgrafana_delete_workspace_service_account <- function(serviceAccountId, workspaceId) {
+  op <- new_operation(
+    name = "DeleteWorkspaceServiceAccount",
+    http_method = "DELETE",
+    http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .managedgrafana$delete_workspace_service_account_input(serviceAccountId = serviceAccountId, workspaceId = workspaceId)
+  output <- .managedgrafana$delete_workspace_service_account_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$delete_workspace_service_account <- managedgrafana_delete_workspace_service_account
+
+#' Deletes a token for the workspace service account
+#'
+#' @description
+#' Deletes a token for the workspace service account.
+#' 
+#' This will disable the key associated with the token. If any automation
+#' is currently using the key, it will no longer be authenticated or
+#' authorized to perform actions with the Grafana HTTP APIs.
+#' 
+#' Service accounts are only available for workspaces that are compatible
+#' with Grafana version 9 and above.
+#'
+#' @usage
+#' managedgrafana_delete_workspace_service_account_token(serviceAccountId,
+#'   tokenId, workspaceId)
+#'
+#' @param serviceAccountId &#91;required&#93; The ID of the service account from which to delete the token.
+#' @param tokenId &#91;required&#93; The ID of the token to delete.
+#' @param workspaceId &#91;required&#93; The ID of the workspace from which to delete the token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceAccountId = "string",
+#'   tokenId = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_workspace_service_account_token(
+#'   serviceAccountId = "string",
+#'   tokenId = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_delete_workspace_service_account_token
+#'
+#' @aliases managedgrafana_delete_workspace_service_account_token
+managedgrafana_delete_workspace_service_account_token <- function(serviceAccountId, tokenId, workspaceId) {
+  op <- new_operation(
+    name = "DeleteWorkspaceServiceAccountToken",
+    http_method = "DELETE",
+    http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}/tokens/{tokenId}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .managedgrafana$delete_workspace_service_account_token_input(serviceAccountId = serviceAccountId, tokenId = tokenId, workspaceId = workspaceId)
+  output <- .managedgrafana$delete_workspace_service_account_token_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$delete_workspace_service_account_token <- managedgrafana_delete_workspace_service_account_token
 
 #' Displays information about one Amazon Managed Grafana workspace
 #'
@@ -678,12 +971,13 @@ managedgrafana_describe_workspace <- function(workspaceId) {
     name = "DescribeWorkspace",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$describe_workspace_input(workspaceId = workspaceId)
   output <- .managedgrafana$describe_workspace_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -763,12 +1057,13 @@ managedgrafana_describe_workspace_authentication <- function(workspaceId) {
     name = "DescribeWorkspaceAuthentication",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/authentication",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$describe_workspace_authentication_input(workspaceId = workspaceId)
   output <- .managedgrafana$describe_workspace_authentication_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -811,12 +1106,13 @@ managedgrafana_describe_workspace_configuration <- function(workspaceId) {
     name = "DescribeWorkspaceConfiguration",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$describe_workspace_configuration_input(workspaceId = workspaceId)
   output <- .managedgrafana$describe_workspace_configuration_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -921,12 +1217,13 @@ managedgrafana_disassociate_license <- function(licenseType, workspaceId) {
     name = "DisassociateLicense",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/licenses/{licenseType}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$disassociate_license_input(licenseType = licenseType, workspaceId = workspaceId)
   output <- .managedgrafana$disassociate_license_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -999,12 +1296,13 @@ managedgrafana_list_permissions <- function(groupId = NULL, maxResults = NULL, n
     name = "ListPermissions",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/permissions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions")
   )
   input <- .managedgrafana$list_permissions_input(groupId = groupId, maxResults = maxResults, nextToken = nextToken, userId = userId, userType = userType, workspaceId = workspaceId)
   output <- .managedgrafana$list_permissions_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1053,12 +1351,13 @@ managedgrafana_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .managedgrafana$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1113,17 +1412,168 @@ managedgrafana_list_versions <- function(maxResults = NULL, nextToken = NULL, wo
     name = "ListVersions",
     http_method = "GET",
     http_path = "/versions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grafanaVersions")
   )
   input <- .managedgrafana$list_versions_input(maxResults = maxResults, nextToken = nextToken, workspaceId = workspaceId)
   output <- .managedgrafana$list_versions_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .managedgrafana$operations$list_versions <- managedgrafana_list_versions
+
+#' Returns a list of tokens for a workspace service account
+#'
+#' @description
+#' Returns a list of tokens for a workspace service account.
+#' 
+#' This does not return the key for each token. You cannot access keys
+#' after they are created. To create a new key, delete the token and
+#' recreate it.
+#' 
+#' Service accounts are only available for workspaces that are compatible
+#' with Grafana version 9 and above.
+#'
+#' @usage
+#' managedgrafana_list_workspace_service_account_tokens(maxResults,
+#'   nextToken, serviceAccountId, workspaceId)
+#'
+#' @param maxResults The maximum number of tokens to include in the results.
+#' @param nextToken The token for the next set of service accounts to return. (You receive
+#' this token from a previous
+#' [`list_workspace_service_account_tokens`][managedgrafana_list_workspace_service_account_tokens]
+#' operation.)
+#' @param serviceAccountId &#91;required&#93; The ID of the service account for which to return tokens.
+#' @param workspaceId &#91;required&#93; The ID of the workspace for which to return tokens.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   serviceAccountId = "string",
+#'   serviceAccountTokens = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       expiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       id = "string",
+#'       lastUsedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string"
+#'     )
+#'   ),
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workspace_service_account_tokens(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   serviceAccountId = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_list_workspace_service_account_tokens
+#'
+#' @aliases managedgrafana_list_workspace_service_account_tokens
+managedgrafana_list_workspace_service_account_tokens <- function(maxResults = NULL, nextToken = NULL, serviceAccountId, workspaceId) {
+  op <- new_operation(
+    name = "ListWorkspaceServiceAccountTokens",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}/tokens",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceAccountTokens")
+  )
+  input <- .managedgrafana$list_workspace_service_account_tokens_input(maxResults = maxResults, nextToken = nextToken, serviceAccountId = serviceAccountId, workspaceId = workspaceId)
+  output <- .managedgrafana$list_workspace_service_account_tokens_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$list_workspace_service_account_tokens <- managedgrafana_list_workspace_service_account_tokens
+
+#' Returns a list of service accounts for a workspace
+#'
+#' @description
+#' Returns a list of service accounts for a workspace.
+#' 
+#' Service accounts are only available for workspaces that are compatible
+#' with Grafana version 9 and above.
+#'
+#' @usage
+#' managedgrafana_list_workspace_service_accounts(maxResults, nextToken,
+#'   workspaceId)
+#'
+#' @param maxResults The maximum number of service accounts to include in the results.
+#' @param nextToken The token for the next set of service accounts to return. (You receive
+#' this token from a previous
+#' [`list_workspace_service_accounts`][managedgrafana_list_workspace_service_accounts]
+#' operation.)
+#' @param workspaceId &#91;required&#93; The workspace for which to list service accounts.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   serviceAccounts = list(
+#'     list(
+#'       grafanaRole = "ADMIN"|"EDITOR"|"VIEWER",
+#'       id = "string",
+#'       isDisabled = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workspace_service_accounts(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_list_workspace_service_accounts
+#'
+#' @aliases managedgrafana_list_workspace_service_accounts
+managedgrafana_list_workspace_service_accounts <- function(maxResults = NULL, nextToken = NULL, workspaceId) {
+  op <- new_operation(
+    name = "ListWorkspaceServiceAccounts",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/serviceaccounts",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceAccounts")
+  )
+  input <- .managedgrafana$list_workspace_service_accounts_input(maxResults = maxResults, nextToken = nextToken, workspaceId = workspaceId)
+  output <- .managedgrafana$list_workspace_service_accounts_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$list_workspace_service_accounts <- managedgrafana_list_workspace_service_accounts
 
 #' Returns a list of Amazon Managed Grafana workspaces in the account, with
 #' some information about each workspace
@@ -1198,12 +1648,13 @@ managedgrafana_list_workspaces <- function(maxResults = NULL, nextToken = NULL) 
     name = "ListWorkspaces",
     http_method = "GET",
     http_path = "/workspaces",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces")
   )
   input <- .managedgrafana$list_workspaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .managedgrafana$list_workspaces_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1254,12 +1705,13 @@ managedgrafana_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .managedgrafana$tag_resource_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1302,12 +1754,13 @@ managedgrafana_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .managedgrafana$untag_resource_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1379,12 +1832,13 @@ managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceI
     name = "UpdatePermissions",
     http_method = "PATCH",
     http_path = "/workspaces/{workspaceId}/permissions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$update_permissions_input(updateInstructionBatch = updateInstructionBatch, workspaceId = workspaceId)
   output <- .managedgrafana$update_permissions_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1611,12 +2065,13 @@ managedgrafana_update_workspace <- function(accountAccessType = NULL, networkAcc
     name = "UpdateWorkspace",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$update_workspace_input(accountAccessType = accountAccessType, networkAccessControl = networkAccessControl, organizationRoleName = organizationRoleName, permissionType = permissionType, removeNetworkAccessConfiguration = removeNetworkAccessConfiguration, removeVpcConfiguration = removeVpcConfiguration, stackSetName = stackSetName, vpcConfiguration = vpcConfiguration, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceId = workspaceId, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
   output <- .managedgrafana$update_workspace_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1741,12 +2196,13 @@ managedgrafana_update_workspace_authentication <- function(authenticationProvide
     name = "UpdateWorkspaceAuthentication",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/authentication",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$update_workspace_authentication_input(authenticationProviders = authenticationProviders, samlConfiguration = samlConfiguration, workspaceId = workspaceId)
   output <- .managedgrafana$update_workspace_authentication_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1799,12 +2255,13 @@ managedgrafana_update_workspace_configuration <- function(configuration, grafana
     name = "UpdateWorkspaceConfiguration",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/configuration",
+    host_prefix = "",
     paginator = list()
   )
   input <- .managedgrafana$update_workspace_configuration_input(configuration = configuration, grafanaVersion = grafanaVersion, workspaceId = workspaceId)
   output <- .managedgrafana$update_workspace_configuration_output()
   config <- get_config()
-  svc <- .managedgrafana$service(config)
+  svc <- .managedgrafana$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

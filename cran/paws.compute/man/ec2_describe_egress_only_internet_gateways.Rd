@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_egress_only_internet_gateways}
 \alias{ec2_describe_egress_only_internet_gateways}
-\title{Describes one or more of your egress-only internet gateways}
+\title{Describes your egress-only internet gateways}
 \usage{
 ec2_describe_egress_only_internet_gateways(
   DryRun = NULL,
@@ -41,7 +41,7 @@ regardless of the tag value.
 }}
 }
 \description{
-Describes one or more of your egress-only internet gateways.
+Describes your egress-only internet gateways. The default is to describe all your egress-only internet gateways. Alternatively, you can specify specific egress-only internet gateway IDs or filter the results to include only the egress-only internet gateways that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_egress_only_internet_gateways/} for full documentation.
 }

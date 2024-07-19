@@ -29,9 +29,10 @@ The valid Operators for this filter are:
 \item \code{Notequal}
 }}
 
-\item{MaxResults}{Maximum number of results to return in a single call.}
+\item{MaxResults}{The maximum items to return in a request.}
 
-\item{NextToken}{Token for the next set of results.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
+a previously truncated response.}
 }
 \description{
 Lists the Linux subscriptions that have been discovered. If you have linked your organization, the returned results will include data aggregated across your accounts in Organizations.

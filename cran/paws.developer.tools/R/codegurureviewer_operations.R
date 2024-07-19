@@ -43,12 +43,13 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
     name = "AssociateRepository",
     http_method = "POST",
     http_path = "/associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken, Tags = Tags, KMSKeyDetails = KMSKeyDetails)
   output <- .codegurureviewer$associate_repository_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -85,12 +86,13 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
     name = "CreateCodeReview",
     http_method = "POST",
     http_path = "/codereviews",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$create_code_review_input(Name = Name, RepositoryAssociationArn = RepositoryAssociationArn, Type = Type, ClientRequestToken = ClientRequestToken)
   output <- .codegurureviewer$create_code_review_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -117,12 +119,13 @@ codegurureviewer_describe_code_review <- function(CodeReviewArn) {
     name = "DescribeCodeReview",
     http_method = "GET",
     http_path = "/codereviews/{CodeReviewArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$describe_code_review_input(CodeReviewArn = CodeReviewArn)
   output <- .codegurureviewer$describe_code_review_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -158,12 +161,13 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
     name = "DescribeRecommendationFeedback",
     http_method = "GET",
     http_path = "/feedback/{CodeReviewArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$describe_recommendation_feedback_input(CodeReviewArn = CodeReviewArn, RecommendationId = RecommendationId, UserId = UserId)
   output <- .codegurureviewer$describe_recommendation_feedback_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -191,12 +195,13 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
     name = "DescribeRepositoryAssociation",
     http_method = "GET",
     http_path = "/associations/{AssociationArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$describe_repository_association_input(AssociationArn = AssociationArn)
   output <- .codegurureviewer$describe_repository_association_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -224,12 +229,13 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
     name = "DisassociateRepository",
     http_method = "DELETE",
     http_path = "/associations/{AssociationArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$disassociate_repository_input(AssociationArn = AssociationArn)
   output <- .codegurureviewer$disassociate_repository_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -278,12 +284,13 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
     name = "ListCodeReviews",
     http_method = "GET",
     http_path = "/codereviews",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codegurureviewer$list_code_reviews_input(ProviderTypes = ProviderTypes, States = States, RepositoryNames = RepositoryNames, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codegurureviewer$list_code_reviews_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -326,12 +333,13 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
     name = "ListRecommendationFeedback",
     http_method = "GET",
     http_path = "/feedback/{CodeReviewArn}/RecommendationFeedback",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codegurureviewer$list_recommendation_feedback_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn, UserIds = UserIds, RecommendationIds = RecommendationIds)
   output <- .codegurureviewer$list_recommendation_feedback_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -360,12 +368,13 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
     name = "ListRecommendations",
     http_method = "GET",
     http_path = "/codereviews/{CodeReviewArn}/Recommendations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codegurureviewer$list_recommendations_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn)
   output <- .codegurureviewer$list_recommendations_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -449,12 +458,13 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
     name = "ListRepositoryAssociations",
     http_method = "GET",
     http_path = "/associations",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RepositoryAssociationSummaries")
   )
   input <- .codegurureviewer$list_repository_associations_input(ProviderTypes = ProviderTypes, States = States, Names = Names, Owners = Owners, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codegurureviewer$list_repository_associations_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -482,12 +492,13 @@ codegurureviewer_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codegurureviewer$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -517,12 +528,13 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
     name = "PutRecommendationFeedback",
     http_method = "PUT",
     http_path = "/feedback",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$put_recommendation_feedback_input(CodeReviewArn = CodeReviewArn, RecommendationId = RecommendationId, Reactions = Reactions)
   output <- .codegurureviewer$put_recommendation_feedback_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -559,12 +571,13 @@ codegurureviewer_tag_resource <- function(resourceArn, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$tag_resource_input(resourceArn = resourceArn, Tags = Tags)
   output <- .codegurureviewer$tag_resource_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -593,12 +606,13 @@ codegurureviewer_untag_resource <- function(resourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codegurureviewer$untag_resource_input(resourceArn = resourceArn, TagKeys = TagKeys)
   output <- .codegurureviewer$untag_resource_output()
   config <- get_config()
-  svc <- .codegurureviewer$service(config)
+  svc <- .codegurureviewer$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

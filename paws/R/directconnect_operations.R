@@ -78,12 +78,13 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
     name = "AcceptDirectConnectGatewayAssociationProposal",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$accept_direct_connect_gateway_association_proposal_input(directConnectGatewayId = directConnectGatewayId, proposalId = proposalId, associatedGatewayOwnerAccount = associatedGatewayOwnerAccount, overrideAllowedPrefixesToDirectConnectGateway = overrideAllowedPrefixesToDirectConnectGateway)
   output <- .directconnect$accept_direct_connect_gateway_association_proposal_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -183,12 +184,13 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
     name = "AllocateConnectionOnInterconnect",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$allocate_connection_on_interconnect_input(bandwidth = bandwidth, connectionName = connectionName, ownerAccount = ownerAccount, interconnectId = interconnectId, vlan = vlan)
   output <- .directconnect$allocate_connection_on_interconnect_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -218,10 +220,10 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #' @param ownerAccount &#91;required&#93; The ID of the Amazon Web Services account ID of the customer for the
 #' connection.
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection. The possible values are 50Mbps,
-#' 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
-#' 10Gbps. Note that only those Direct Connect Partners who have met
-#' specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
-#' 10Gbps hosted connection.
+#' 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps,
+#' 10Gbps, and 25Gbps. Note that only those Direct Connect Partners who
+#' have met specific requirements are allowed to create a 1Gbps, 2Gbps,
+#' 5Gbps, 10Gbps, or 25Gbps hosted connection.
 #' @param connectionName &#91;required&#93; The name of the hosted connection.
 #' @param vlan &#91;required&#93; The dedicated VLAN provisioned to the hosted connection.
 #' @param tags The tags associated with the connection.
@@ -296,12 +298,13 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
     name = "AllocateHostedConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$allocate_hosted_connection_input(connectionId = connectionId, ownerAccount = ownerAccount, bandwidth = bandwidth, connectionName = connectionName, vlan = vlan, tags = tags)
   output <- .directconnect$allocate_hosted_connection_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -420,12 +423,13 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
     name = "AllocatePrivateVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$allocate_private_virtual_interface_input(connectionId = connectionId, ownerAccount = ownerAccount, newPrivateVirtualInterfaceAllocation = newPrivateVirtualInterfaceAllocation)
   output <- .directconnect$allocate_private_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -556,12 +560,13 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
     name = "AllocatePublicVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$allocate_public_virtual_interface_input(connectionId = connectionId, ownerAccount = ownerAccount, newPublicVirtualInterfaceAllocation = newPublicVirtualInterfaceAllocation)
   output <- .directconnect$allocate_public_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -686,12 +691,13 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
     name = "AllocateTransitVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$allocate_transit_virtual_interface_input(connectionId = connectionId, ownerAccount = ownerAccount, newTransitVirtualInterfaceAllocation = newTransitVirtualInterfaceAllocation)
   output <- .directconnect$allocate_transit_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -788,12 +794,13 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
     name = "AssociateConnectionWithLag",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$associate_connection_with_lag_input(connectionId = connectionId, lagId = lagId)
   output <- .directconnect$associate_connection_with_lag_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -881,12 +888,13 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
     name = "AssociateHostedConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$associate_hosted_connection_input(connectionId = connectionId, parentConnectionId = parentConnectionId)
   output <- .directconnect$associate_hosted_connection_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -983,12 +991,13 @@ directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, 
     name = "AssociateMacSecKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$associate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN, ckn = ckn, cak = cak)
   output <- .directconnect$associate_mac_sec_key_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1095,12 +1104,13 @@ directconnect_associate_virtual_interface <- function(virtualInterfaceId, connec
     name = "AssociateVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$associate_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, connectionId = connectionId)
   output <- .directconnect$associate_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1148,12 +1158,13 @@ directconnect_confirm_connection <- function(connectionId) {
     name = "ConfirmConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$confirm_connection_input(connectionId = connectionId)
   output <- .directconnect$confirm_connection_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1197,12 +1208,13 @@ directconnect_confirm_customer_agreement <- function(agreementName = NULL) {
     name = "ConfirmCustomerAgreement",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$confirm_customer_agreement_input(agreementName = agreementName)
   output <- .directconnect$confirm_customer_agreement_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1255,12 +1267,13 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
     name = "ConfirmPrivateVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$confirm_private_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, virtualGatewayId = virtualGatewayId, directConnectGatewayId = directConnectGatewayId)
   output <- .directconnect$confirm_private_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1307,12 +1320,13 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
     name = "ConfirmPublicVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$confirm_public_virtual_interface_input(virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$confirm_public_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1363,12 +1377,13 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
     name = "ConfirmTransitVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$confirm_transit_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, directConnectGatewayId = directConnectGatewayId)
   output <- .directconnect$confirm_transit_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1490,12 +1505,13 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
     name = "CreateBGPPeer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, newBGPPeer = newBGPPeer)
   output <- .directconnect$create_bgp_peer_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1612,12 +1628,13 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_connection_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1681,12 +1698,13 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
     name = "CreateDirectConnectGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_direct_connect_gateway_input(directConnectGatewayName = directConnectGatewayName, amazonSideAsn = amazonSideAsn)
   output <- .directconnect$create_direct_connect_gateway_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1770,12 +1788,13 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
     name = "CreateDirectConnectGatewayAssociation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_direct_connect_gateway_association_input(directConnectGatewayId = directConnectGatewayId, gatewayId = gatewayId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$create_direct_connect_gateway_association_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1864,12 +1883,13 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
     name = "CreateDirectConnectGatewayAssociationProposal",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_direct_connect_gateway_association_proposal_input(directConnectGatewayId = directConnectGatewayId, directConnectGatewayOwnerAccount = directConnectGatewayOwnerAccount, gatewayId = gatewayId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, removeAllowedPrefixesToDirectConnectGateway = removeAllowedPrefixesToDirectConnectGateway)
   output <- .directconnect$create_direct_connect_gateway_association_proposal_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1911,7 +1931,7 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'   lagId, tags, providerName)
 #'
 #' @param interconnectName &#91;required&#93; The name of the interconnect.
-#' @param bandwidth &#91;required&#93; The port bandwidth, in Gbps. The possible values are 1 and 10.
+#' @param bandwidth &#91;required&#93; The port bandwidth, in Gbps. The possible values are 1, 10, and 100.
 #' @param location &#91;required&#93; The location of the interconnect.
 #' @param lagId The ID of the LAG.
 #' @param tags The tags to associate with the interconnect.
@@ -1973,12 +1993,13 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
     name = "CreateInterconnect",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags, providerName = providerName)
   output <- .directconnect$create_interconnect_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1996,12 +2017,13 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' uses the Link Aggregation Control Protocol (LACP) to aggregate multiple
 #' interfaces, enabling you to treat them as a single interface.
 #' 
-#' All connections in a LAG must use the same bandwidth (either 1Gbps or
-#' 10Gbps) and must terminate at the same Direct Connect endpoint.
+#' All connections in a LAG must use the same bandwidth (either 1Gbps,
+#' 10Gbps, 100Gbps, or 400Gbps) and must terminate at the same Direct
+#' Connect endpoint.
 #' 
-#' You can have up to 10 dedicated connections per LAG. Regardless of this
-#' limit, if you request more connections for the LAG than Direct Connect
-#' can allocate on a single endpoint, no LAG is created.
+#' You can have up to 10 dedicated connections per location. Regardless of
+#' this limit, if you request more connections for the LAG than Direct
+#' Connect can allocate on a single endpoint, no LAG is created..
 #' 
 #' You can specify an existing physical dedicated connection or
 #' interconnect to include in the LAG (which counts towards the total
@@ -2024,10 +2046,11 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'
 #' @param numberOfConnections &#91;required&#93; The number of physical dedicated connections initially provisioned and
 #' bundled by the LAG. You can have a maximum of four connections when the
-#' port speed is 1G or 10G, or two when the port speed is 100G.
+#' port speed is 1Gbps or 10Gbps, or two when the port speed is 100Gbps or
+#' 400Gbps.
 #' @param location &#91;required&#93; The location for the LAG.
 #' @param connectionsBandwidth &#91;required&#93; The bandwidth of the individual physical dedicated connections bundled
-#' by the LAG. The possible values are 1Gbps and 10Gbps.
+#' by the LAG. The possible values are 1Gbps,10Gbps, 100Gbps, and 400Gbps.
 #' @param lagName &#91;required&#93; The name of the LAG.
 #' @param connectionId The ID of an existing dedicated connection to migrate to the LAG.
 #' @param tags The tags to associate with the LAG.
@@ -2155,12 +2178,13 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
     name = "CreateLag",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_lag_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2179,7 +2203,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #' private virtual interface to a VGW only provides access to a single VPC
 #' within the same Region.
 #' 
-#' Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
+#' Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
 #' an update to the underlying physical connection if it wasn't updated to
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
@@ -2287,12 +2311,13 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
     name = "CreatePrivateVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_private_virtual_interface_input(connectionId = connectionId, newPrivateVirtualInterface = newPrivateVirtualInterface)
   output <- .directconnect$create_private_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2410,12 +2435,13 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
     name = "CreatePublicVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_public_virtual_interface_input(connectionId = connectionId, newPublicVirtualInterface = newPublicVirtualInterface)
   output <- .directconnect$create_public_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2546,12 +2572,13 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
     name = "CreateTransitVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$create_transit_virtual_interface_input(connectionId = connectionId, newTransitVirtualInterface = newTransitVirtualInterface)
   output <- .directconnect$create_transit_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2654,12 +2681,13 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
     name = "DeleteBGPPeer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, asn = asn, customerAddress = customerAddress, bgpPeerId = bgpPeerId)
   output <- .directconnect$delete_bgp_peer_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2741,12 +2769,13 @@ directconnect_delete_connection <- function(connectionId) {
     name = "DeleteConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_connection_input(connectionId = connectionId)
   output <- .directconnect$delete_connection_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2798,12 +2827,13 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
     name = "DeleteDirectConnectGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_direct_connect_gateway_input(directConnectGatewayId = directConnectGatewayId)
   output <- .directconnect$delete_direct_connect_gateway_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2877,12 +2907,13 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
     name = "DeleteDirectConnectGatewayAssociation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_direct_connect_gateway_association_input(associationId = associationId, directConnectGatewayId = directConnectGatewayId, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$delete_direct_connect_gateway_association_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2948,12 +2979,13 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
     name = "DeleteDirectConnectGatewayAssociationProposal",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_direct_connect_gateway_association_proposal_input(proposalId = proposalId)
   output <- .directconnect$delete_direct_connect_gateway_association_proposal_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2997,12 +3029,13 @@ directconnect_delete_interconnect <- function(interconnectId) {
     name = "DeleteInterconnect",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_interconnect_input(interconnectId = interconnectId)
   output <- .directconnect$delete_interconnect_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3116,12 +3149,13 @@ directconnect_delete_lag <- function(lagId) {
     name = "DeleteLag",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_lag_input(lagId = lagId)
   output <- .directconnect$delete_lag_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3163,12 +3197,13 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
     name = "DeleteVirtualInterface",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$delete_virtual_interface_input(virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$delete_virtual_interface_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3232,12 +3267,13 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
     name = "DescribeConnectionLoa",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_connection_loa_input(connectionId = connectionId, providerName = providerName, loaContentType = loaContentType)
   output <- .directconnect$describe_connection_loa_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3318,12 +3354,13 @@ directconnect_describe_connections <- function(connectionId = NULL) {
     name = "DescribeConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "connections")
   )
   input <- .directconnect$describe_connections_input(connectionId = connectionId)
   output <- .directconnect$describe_connections_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3411,12 +3448,13 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
     name = "DescribeConnectionsOnInterconnect",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "connections")
   )
   input <- .directconnect$describe_connections_on_interconnect_input(interconnectId = interconnectId)
   output <- .directconnect$describe_connections_on_interconnect_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3463,12 +3501,13 @@ directconnect_describe_customer_metadata <- function() {
     name = "DescribeCustomerMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_customer_metadata_input()
   output <- .directconnect$describe_customer_metadata_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3551,12 +3590,13 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
     name = "DescribeDirectConnectGatewayAssociationProposals",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_direct_connect_gateway_association_proposals_input(directConnectGatewayId = directConnectGatewayId, proposalId = proposalId, associatedGatewayId = associatedGatewayId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_direct_connect_gateway_association_proposals_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3664,12 +3704,13 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
     name = "DescribeDirectConnectGatewayAssociations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_direct_connect_gateway_associations_input(associationId = associationId, associatedGatewayId = associatedGatewayId, directConnectGatewayId = directConnectGatewayId, maxResults = maxResults, nextToken = nextToken, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$describe_direct_connect_gateway_associations_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3742,12 +3783,13 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
     name = "DescribeDirectConnectGatewayAttachments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_direct_connect_gateway_attachments_input(directConnectGatewayId = directConnectGatewayId, virtualInterfaceId = virtualInterfaceId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_direct_connect_gateway_attachments_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3811,12 +3853,13 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
     name = "DescribeDirectConnectGateways",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_direct_connect_gateways_input(directConnectGatewayId = directConnectGatewayId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_direct_connect_gateways_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3901,12 +3944,13 @@ directconnect_describe_hosted_connections <- function(connectionId) {
     name = "DescribeHostedConnections",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_hosted_connections_input(connectionId = connectionId)
   output <- .directconnect$describe_hosted_connections_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3968,12 +4012,13 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
     name = "DescribeInterconnectLoa",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_interconnect_loa_input(interconnectId = interconnectId, providerName = providerName, loaContentType = loaContentType)
   output <- .directconnect$describe_interconnect_loa_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4042,12 +4087,13 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
     name = "DescribeInterconnects",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "interconnects")
   )
   input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId)
   output <- .directconnect$describe_interconnects_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4164,12 +4210,13 @@ directconnect_describe_lags <- function(lagId = NULL) {
     name = "DescribeLags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_lags_input(lagId = lagId)
   output <- .directconnect$describe_lags_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4228,12 +4275,13 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
     name = "DescribeLoa",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_loa_input(connectionId = connectionId, providerName = providerName, loaContentType = loaContentType)
   output <- .directconnect$describe_loa_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4289,12 +4337,13 @@ directconnect_describe_locations <- function() {
     name = "DescribeLocations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "locations")
   )
   input <- .directconnect$describe_locations_input()
   output <- .directconnect$describe_locations_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4350,12 +4399,13 @@ directconnect_describe_router_configuration <- function(virtualInterfaceId, rout
     name = "DescribeRouterConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_router_configuration_input(virtualInterfaceId = virtualInterfaceId, routerTypeIdentifier = routerTypeIdentifier)
   output <- .directconnect$describe_router_configuration_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4411,22 +4461,26 @@ directconnect_describe_tags <- function(resourceArns) {
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$describe_tags_input(resourceArns = resourceArns)
   output <- .directconnect$describe_tags_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .directconnect$operations$describe_tags <- directconnect_describe_tags
 
-#' Lists the virtual private gateways owned by the Amazon Web Services
-#' account
+#' Deprecated
 #'
 #' @description
+#' Deprecated. Use `DescribeVpnGateways` instead. See
+#' [DescribeVPNGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html)
+#' in the *Amazon Elastic Compute Cloud API Reference*.
+#' 
 #' Lists the virtual private gateways owned by the Amazon Web Services
 #' account.
 #' 
@@ -4463,12 +4517,13 @@ directconnect_describe_virtual_gateways <- function() {
     name = "DescribeVirtualGateways",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "virtualGateways")
   )
   input <- .directconnect$describe_virtual_gateways_input()
   output <- .directconnect$describe_virtual_gateways_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4572,12 +4627,13 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
     name = "DescribeVirtualInterfaces",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "virtualInterfaces")
   )
   input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$describe_virtual_interfaces_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4668,12 +4724,13 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
     name = "DisassociateConnectionFromLag",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$disassociate_connection_from_lag_input(connectionId = connectionId, lagId = lagId)
   output <- .directconnect$disassociate_connection_from_lag_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4735,12 +4792,13 @@ directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
     name = "DisassociateMacSecKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$disassociate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN)
   output <- .directconnect$disassociate_mac_sec_key_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4819,12 +4877,13 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
     name = "ListVirtualInterfaceTestHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$list_virtual_interface_test_history_input(testId = testId, virtualInterfaceId = virtualInterfaceId, bgpPeers = bgpPeers, status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$list_virtual_interface_test_history_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4907,12 +4966,13 @@ directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers =
     name = "StartBgpFailoverTest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$start_bgp_failover_test_input(virtualInterfaceId = virtualInterfaceId, bgpPeers = bgpPeers, testDurationInMinutes = testDurationInMinutes)
   output <- .directconnect$start_bgp_failover_test_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4969,12 +5029,13 @@ directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
     name = "StopBgpFailoverTest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$stop_bgp_failover_test_input(virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$stop_bgp_failover_test_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5023,12 +5084,13 @@ directconnect_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .directconnect$tag_resource_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5069,12 +5131,13 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .directconnect$untag_resource_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5167,12 +5230,13 @@ directconnect_update_connection <- function(connectionId, connectionName = NULL,
     name = "UpdateConnection",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$update_connection_input(connectionId = connectionId, connectionName = connectionName, encryptionMode = encryptionMode)
   output <- .directconnect$update_connection_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5224,12 +5288,13 @@ directconnect_update_direct_connect_gateway <- function(directConnectGatewayId, 
     name = "UpdateDirectConnectGateway",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$update_direct_connect_gateway_input(directConnectGatewayId = directConnectGatewayId, newDirectConnectGatewayName = newDirectConnectGatewayName)
   output <- .directconnect$update_direct_connect_gateway_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5310,12 +5375,13 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
     name = "UpdateDirectConnectGatewayAssociation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$update_direct_connect_gateway_association_input(associationId = associationId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, removeAllowedPrefixesToDirectConnectGateway = removeAllowedPrefixesToDirectConnectGateway)
   output <- .directconnect$update_direct_connect_gateway_association_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5456,12 +5522,13 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
     name = "UpdateLag",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$update_lag_input(lagId = lagId, lagName = lagName, minimumLinks = minimumLinks, encryptionMode = encryptionMode)
   output <- .directconnect$update_lag_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5475,7 +5542,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #' Updates the specified attributes of the specified virtual private
 #' interface.
 #' 
-#' Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
+#' Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
 #' an update to the underlying physical connection if it wasn't updated to
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
@@ -5491,7 +5558,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual private interface.
 #' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are
-#' 1500 and 9001. The default value is 1500.
+#' 1500 and 8500. The default value is 1500.
 #' @param enableSiteLink Indicates whether to enable or disable SiteLink.
 #' @param virtualInterfaceName The name of the virtual private interface.
 #'
@@ -5570,12 +5637,13 @@ directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId
     name = "UpdateVirtualInterfaceAttributes",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName)
   output <- .directconnect$update_virtual_interface_attributes_output()
   config <- get_config()
-  svc <- .directconnect$service(config)
+  svc <- .directconnect$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

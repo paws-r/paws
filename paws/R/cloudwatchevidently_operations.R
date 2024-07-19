@@ -85,12 +85,13 @@ cloudwatchevidently_batch_evaluate_feature <- function(project, requests) {
     name = "BatchEvaluateFeature",
     http_method = "POST",
     http_path = "/projects/{project}/evaluations",
+    host_prefix = "dataplane.",
     paginator = list()
   )
   input <- .cloudwatchevidently$batch_evaluate_feature_input(project = project, requests = requests)
   output <- .cloudwatchevidently$batch_evaluate_feature_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -281,12 +282,13 @@ cloudwatchevidently_create_experiment <- function(description = NULL, metricGoal
     name = "CreateExperiment",
     http_method = "POST",
     http_path = "/projects/{project}/experiments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$create_experiment_input(description = description, metricGoals = metricGoals, name = name, onlineAbConfig = onlineAbConfig, project = project, randomizationSalt = randomizationSalt, samplingRate = samplingRate, segment = segment, tags = tags, treatments = treatments)
   output <- .cloudwatchevidently$create_experiment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -431,12 +433,13 @@ cloudwatchevidently_create_feature <- function(defaultVariation = NULL, descript
     name = "CreateFeature",
     http_method = "POST",
     http_path = "/projects/{project}/features",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$create_feature_input(defaultVariation = defaultVariation, description = description, entityOverrides = entityOverrides, evaluationStrategy = evaluationStrategy, name = name, project = project, tags = tags, variations = variations)
   output <- .cloudwatchevidently$create_feature_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -628,12 +631,13 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
     name = "CreateLaunch",
     http_method = "POST",
     http_path = "/projects/{project}/launches",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$create_launch_input(description = description, groups = groups, metricMonitors = metricMonitors, name = name, project = project, randomizationSalt = randomizationSalt, scheduledSplitsConfig = scheduledSplitsConfig, tags = tags)
   output <- .cloudwatchevidently$create_launch_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -764,12 +768,13 @@ cloudwatchevidently_create_project <- function(appConfigResource = NULL, dataDel
     name = "CreateProject",
     http_method = "POST",
     http_path = "/projects",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$create_project_input(appConfigResource = appConfigResource, dataDelivery = dataDelivery, description = description, name = name, tags = tags)
   output <- .cloudwatchevidently$create_project_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -867,12 +872,13 @@ cloudwatchevidently_create_segment <- function(description = NULL, name, pattern
     name = "CreateSegment",
     http_method = "POST",
     http_path = "/segments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$create_segment_input(description = description, name = name, pattern = pattern, tags = tags)
   output <- .cloudwatchevidently$create_segment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -915,12 +921,13 @@ cloudwatchevidently_delete_experiment <- function(experiment, project) {
     name = "DeleteExperiment",
     http_method = "DELETE",
     http_path = "/projects/{project}/experiments/{experiment}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$delete_experiment_input(experiment = experiment, project = project)
   output <- .cloudwatchevidently$delete_experiment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -959,12 +966,13 @@ cloudwatchevidently_delete_feature <- function(feature, project) {
     name = "DeleteFeature",
     http_method = "DELETE",
     http_path = "/projects/{project}/features/{feature}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$delete_feature_input(feature = feature, project = project)
   output <- .cloudwatchevidently$delete_feature_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1007,12 +1015,13 @@ cloudwatchevidently_delete_launch <- function(launch, project) {
     name = "DeleteLaunch",
     http_method = "DELETE",
     http_path = "/projects/{project}/launches/{launch}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$delete_launch_input(launch = launch, project = project)
   output <- .cloudwatchevidently$delete_launch_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1051,12 +1060,13 @@ cloudwatchevidently_delete_project <- function(project) {
     name = "DeleteProject",
     http_method = "DELETE",
     http_path = "/projects/{project}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$delete_project_input(project = project)
   output <- .cloudwatchevidently$delete_project_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1095,12 +1105,13 @@ cloudwatchevidently_delete_segment <- function(segment) {
     name = "DeleteSegment",
     http_method = "DELETE",
     http_path = "/segments/{segment}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$delete_segment_input(segment = segment)
   output <- .cloudwatchevidently$delete_segment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1202,12 +1213,13 @@ cloudwatchevidently_evaluate_feature <- function(entityId, evaluationContext = N
     name = "EvaluateFeature",
     http_method = "POST",
     http_path = "/projects/{project}/evaluations/{feature}",
+    host_prefix = "dataplane.",
     paginator = list()
   )
   input <- .cloudwatchevidently$evaluate_feature_input(entityId = entityId, evaluationContext = evaluationContext, feature = feature, project = project)
   output <- .cloudwatchevidently$evaluate_feature_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1313,12 +1325,13 @@ cloudwatchevidently_get_experiment <- function(experiment, project) {
     name = "GetExperiment",
     http_method = "GET",
     http_path = "/projects/{project}/experiments/{experiment}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$get_experiment_input(experiment = experiment, project = project)
   output <- .cloudwatchevidently$get_experiment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1453,12 +1466,13 @@ cloudwatchevidently_get_experiment_results <- function(baseStat = NULL, endTime 
     name = "GetExperimentResults",
     http_method = "POST",
     http_path = "/projects/{project}/experiments/{experiment}/results",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$get_experiment_results_input(baseStat = baseStat, endTime = endTime, experiment = experiment, metricNames = metricNames, period = period, project = project, reportNames = reportNames, resultStats = resultStats, startTime = startTime, treatmentNames = treatmentNames)
   output <- .cloudwatchevidently$get_experiment_results_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1542,12 +1556,13 @@ cloudwatchevidently_get_feature <- function(feature, project) {
     name = "GetFeature",
     http_method = "GET",
     http_path = "/projects/{project}/features/{feature}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$get_feature_input(feature = feature, project = project)
   output <- .cloudwatchevidently$get_feature_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1660,12 +1675,13 @@ cloudwatchevidently_get_launch <- function(launch, project) {
     name = "GetLaunch",
     http_method = "GET",
     http_path = "/projects/{project}/launches/{launch}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$get_launch_input(launch = launch, project = project)
   output <- .cloudwatchevidently$get_launch_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1742,12 +1758,13 @@ cloudwatchevidently_get_project <- function(project) {
     name = "GetProject",
     http_method = "GET",
     http_path = "/projects/{project}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$get_project_input(project = project)
   output <- .cloudwatchevidently$get_project_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1806,12 +1823,13 @@ cloudwatchevidently_get_segment <- function(segment) {
     name = "GetSegment",
     http_method = "GET",
     http_path = "/segments/{segment}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$get_segment_input(segment = segment)
   output <- .cloudwatchevidently$get_segment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1928,12 +1946,13 @@ cloudwatchevidently_list_experiments <- function(maxResults = NULL, nextToken = 
     name = "ListExperiments",
     http_method = "GET",
     http_path = "/projects/{project}/experiments",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "experiments")
   )
   input <- .cloudwatchevidently$list_experiments_input(maxResults = maxResults, nextToken = nextToken, project = project, status = status)
   output <- .cloudwatchevidently$list_experiments_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2008,12 +2027,13 @@ cloudwatchevidently_list_features <- function(maxResults = NULL, nextToken = NUL
     name = "ListFeatures",
     http_method = "GET",
     http_path = "/projects/{project}/features",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "features")
   )
   input <- .cloudwatchevidently$list_features_input(maxResults = maxResults, nextToken = nextToken, project = project)
   output <- .cloudwatchevidently$list_features_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2137,12 +2157,13 @@ cloudwatchevidently_list_launches <- function(maxResults = NULL, nextToken = NUL
     name = "ListLaunches",
     http_method = "GET",
     http_path = "/projects/{project}/launches",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "launches")
   )
   input <- .cloudwatchevidently$list_launches_input(maxResults = maxResults, nextToken = nextToken, project = project, status = status)
   output <- .cloudwatchevidently$list_launches_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2212,12 +2233,13 @@ cloudwatchevidently_list_projects <- function(maxResults = NULL, nextToken = NUL
     name = "ListProjects",
     http_method = "GET",
     http_path = "/projects",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "projects")
   )
   input <- .cloudwatchevidently$list_projects_input(maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchevidently$list_projects_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2284,12 +2306,13 @@ cloudwatchevidently_list_segment_references <- function(maxResults = NULL, nextT
     name = "ListSegmentReferences",
     http_method = "GET",
     http_path = "/segments/{segment}/references",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "referencedBy")
   )
   input <- .cloudwatchevidently$list_segment_references_input(maxResults = maxResults, nextToken = nextToken, segment = segment, type = type)
   output <- .cloudwatchevidently$list_segment_references_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2357,12 +2380,13 @@ cloudwatchevidently_list_segments <- function(maxResults = NULL, nextToken = NUL
     name = "ListSegments",
     http_method = "GET",
     http_path = "/segments",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "segments")
   )
   input <- .cloudwatchevidently$list_segments_input(maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchevidently$list_segments_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2406,12 +2430,13 @@ cloudwatchevidently_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .cloudwatchevidently$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2472,12 +2497,13 @@ cloudwatchevidently_put_project_events <- function(events, project) {
     name = "PutProjectEvents",
     http_method = "POST",
     http_path = "/events/projects/{project}",
+    host_prefix = "dataplane.",
     paginator = list()
   )
   input <- .cloudwatchevidently$put_project_events_input(events = events, project = project)
   output <- .cloudwatchevidently$put_project_events_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2530,12 +2556,13 @@ cloudwatchevidently_start_experiment <- function(analysisCompleteTime, experimen
     name = "StartExperiment",
     http_method = "POST",
     http_path = "/projects/{project}/experiments/{experiment}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$start_experiment_input(analysisCompleteTime = analysisCompleteTime, experiment = experiment, project = project)
   output <- .cloudwatchevidently$start_experiment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2647,12 +2674,13 @@ cloudwatchevidently_start_launch <- function(launch, project) {
     name = "StartLaunch",
     http_method = "POST",
     http_path = "/projects/{project}/launches/{launch}/start",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$start_launch_input(launch = launch, project = project)
   output <- .cloudwatchevidently$start_launch_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2705,12 +2733,13 @@ cloudwatchevidently_stop_experiment <- function(desiredState = NULL, experiment,
     name = "StopExperiment",
     http_method = "POST",
     http_path = "/projects/{project}/experiments/{experiment}/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$stop_experiment_input(desiredState = desiredState, experiment = experiment, project = project, reason = reason)
   output <- .cloudwatchevidently$stop_experiment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2767,12 +2796,13 @@ cloudwatchevidently_stop_launch <- function(desiredState = NULL, launch, project
     name = "StopLaunch",
     http_method = "POST",
     http_path = "/projects/{project}/launches/{launch}/cancel",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$stop_launch_input(desiredState = desiredState, launch = launch, project = project, reason = reason)
   output <- .cloudwatchevidently$stop_launch_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2835,12 +2865,13 @@ cloudwatchevidently_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .cloudwatchevidently$tag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2888,12 +2919,13 @@ cloudwatchevidently_test_segment_pattern <- function(pattern, payload) {
     name = "TestSegmentPattern",
     http_method = "POST",
     http_path = "/test-segment-pattern",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$test_segment_pattern_input(pattern = pattern, payload = payload)
   output <- .cloudwatchevidently$test_segment_pattern_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2935,12 +2967,13 @@ cloudwatchevidently_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .cloudwatchevidently$untag_resource_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3108,12 +3141,13 @@ cloudwatchevidently_update_experiment <- function(description = NULL, experiment
     name = "UpdateExperiment",
     http_method = "PATCH",
     http_path = "/projects/{project}/experiments/{experiment}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$update_experiment_input(description = description, experiment = experiment, metricGoals = metricGoals, onlineAbConfig = onlineAbConfig, project = project, randomizationSalt = randomizationSalt, removeSegment = removeSegment, samplingRate = samplingRate, segment = segment, treatments = treatments)
   output <- .cloudwatchevidently$update_experiment_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3245,12 +3279,13 @@ cloudwatchevidently_update_feature <- function(addOrUpdateVariations = NULL, def
     name = "UpdateFeature",
     http_method = "PATCH",
     http_path = "/projects/{project}/features/{feature}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$update_feature_input(addOrUpdateVariations = addOrUpdateVariations, defaultVariation = defaultVariation, description = description, entityOverrides = entityOverrides, evaluationStrategy = evaluationStrategy, feature = feature, project = project, removeVariations = removeVariations)
   output <- .cloudwatchevidently$update_feature_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3420,12 +3455,13 @@ cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL,
     name = "UpdateLaunch",
     http_method = "PATCH",
     http_path = "/projects/{project}/launches/{launch}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$update_launch_input(description = description, groups = groups, launch = launch, metricMonitors = metricMonitors, project = project, randomizationSalt = randomizationSalt, scheduledSplitsConfig = scheduledSplitsConfig)
   output <- .cloudwatchevidently$update_launch_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3526,12 +3562,13 @@ cloudwatchevidently_update_project <- function(appConfigResource = NULL, descrip
     name = "UpdateProject",
     http_method = "PATCH",
     http_path = "/projects/{project}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$update_project_input(appConfigResource = appConfigResource, description = description, project = project)
   output <- .cloudwatchevidently$update_project_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3626,12 +3663,13 @@ cloudwatchevidently_update_project_data_delivery <- function(cloudWatchLogs = NU
     name = "UpdateProjectDataDelivery",
     http_method = "PATCH",
     http_path = "/projects/{project}/data-delivery",
+    host_prefix = "",
     paginator = list()
   )
   input <- .cloudwatchevidently$update_project_data_delivery_input(cloudWatchLogs = cloudWatchLogs, project = project, s3Destination = s3Destination)
   output <- .cloudwatchevidently$update_project_data_delivery_output()
   config <- get_config()
-  svc <- .cloudwatchevidently$service(config)
+  svc <- .cloudwatchevidently$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

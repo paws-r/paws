@@ -141,7 +141,7 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
   target_prefix = "AWSMPEntitlementService"
 )
 
-.marketplaceentitlementservice$service <- function(config = list()) {
+.marketplaceentitlementservice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.marketplaceentitlementservice$metadata, handlers, config)
+  new_service(.marketplaceentitlementservice$metadata, handlers, config, op)
 }

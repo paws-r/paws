@@ -23,13 +23,16 @@ Queue URLs and names are case-sensitive.}
 is 256 KiB.
 
 A message can include only XML, JSON, and unformatted text. The
-following Unicode characters are allowed:
+following Unicode characters are allowed. For more information, see the
+\href{https://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.
 
 \verb{#x9} | \verb{#xA} | \verb{#xD} | \verb{#x20} to \verb{#xD7FF} | \verb{#xE000} to \verb{#xFFFD} |
 \verb{#x10000} to \verb{#x10FFFF}
 
-Any characters not included in this list will be rejected. For more
-information, see the \href{https://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.}
+Amazon SQS does not throw an exception or completely reject the message
+if it contains invalid characters. Instead, it replaces those invalid
+characters with \code{U+FFFD} before storing the message in the queue, as
+long as the message body contains at least one valid character.}
 
 \item{DelaySeconds}{The length of time, in seconds, for which to delay a specific message.
 Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive
@@ -128,7 +131,7 @@ messages are sorted by time sent. The caller can't specify a
 \code{MessageGroupId}.
 }
 
-The length of \code{MessageGroupId} is 128 characters. Valid values:
+The maximum length of \code{MessageGroupId} is 128 characters. Valid values:
 alphanumeric characters and punctuation
 \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 

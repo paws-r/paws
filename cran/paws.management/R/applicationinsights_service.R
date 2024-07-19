@@ -175,7 +175,7 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
   target_prefix = "EC2WindowsBarleyService"
 )
 
-.applicationinsights$service <- function(config = list()) {
+.applicationinsights$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.applicationinsights$metadata, handlers, config)
+  new_service(.applicationinsights$metadata, handlers, config, op)
 }

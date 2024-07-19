@@ -54,12 +54,13 @@ datapipeline_activate_pipeline <- function(pipelineId, parameterValues = NULL, s
     name = "ActivatePipeline",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$activate_pipeline_input(pipelineId = pipelineId, parameterValues = parameterValues, startTimestamp = startTimestamp)
   output <- .datapipeline$activate_pipeline_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -103,12 +104,13 @@ datapipeline_add_tags <- function(pipelineId, tags) {
     name = "AddTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$add_tags_input(pipelineId = pipelineId, tags = tags)
   output <- .datapipeline$add_tags_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -183,12 +185,13 @@ datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tag
     name = "CreatePipeline",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$create_pipeline_input(name = name, uniqueId = uniqueId, description = description, tags = tags)
   output <- .datapipeline$create_pipeline_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -235,12 +238,13 @@ datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
     name = "DeactivatePipeline",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$deactivate_pipeline_input(pipelineId = pipelineId, cancelActive = cancelActive)
   output <- .datapipeline$deactivate_pipeline_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -285,12 +289,13 @@ datapipeline_delete_pipeline <- function(pipelineId) {
     name = "DeletePipeline",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$delete_pipeline_input(pipelineId = pipelineId)
   output <- .datapipeline$delete_pipeline_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -364,12 +369,13 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
     name = "DescribeObjects",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineObjects")
   )
   input <- .datapipeline$describe_objects_input(pipelineId = pipelineId, objectIds = objectIds, evaluateExpressions = evaluateExpressions, marker = marker)
   output <- .datapipeline$describe_objects_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -444,12 +450,13 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
     name = "DescribePipelines",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(result_key = "pipelineDescriptionList")
   )
   input <- .datapipeline$describe_pipelines_input(pipelineIds = pipelineIds)
   output <- .datapipeline$describe_pipelines_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -499,12 +506,13 @@ datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
     name = "EvaluateExpression",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$evaluate_expression_input(pipelineId = pipelineId, objectId = objectId, expression = expression)
   output <- .datapipeline$evaluate_expression_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -582,12 +590,13 @@ datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
     name = "GetPipelineDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$get_pipeline_definition_input(pipelineId = pipelineId, version = version)
   output <- .datapipeline$get_pipeline_definition_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -641,12 +650,13 @@ datapipeline_list_pipelines <- function(marker = NULL) {
     name = "ListPipelines",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineIdList")
   )
   input <- .datapipeline$list_pipelines_input(marker = marker)
   output <- .datapipeline$list_pipelines_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -744,12 +754,13 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
     name = "PollForTask",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$poll_for_task_input(workerGroup = workerGroup, hostname = hostname, instanceIdentity = instanceIdentity)
   output <- .datapipeline$poll_for_task_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -862,12 +873,13 @@ datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, pa
     name = "PutPipelineDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$put_pipeline_definition_input(pipelineId = pipelineId, pipelineObjects = pipelineObjects, parameterObjects = parameterObjects, parameterValues = parameterValues)
   output <- .datapipeline$put_pipeline_definition_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -944,12 +956,13 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
     name = "QueryObjects",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "marker", limit_key = "limit", more_results = "hasMoreResults", output_token = "marker", result_key = "ids")
   )
   input <- .datapipeline$query_objects_input(pipelineId = pipelineId, query = query, sphere = sphere, marker = marker, limit = limit)
   output <- .datapipeline$query_objects_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -990,12 +1003,13 @@ datapipeline_remove_tags <- function(pipelineId, tagKeys) {
     name = "RemoveTags",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$remove_tags_input(pipelineId = pipelineId, tagKeys = tagKeys)
   output <- .datapipeline$remove_tags_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1063,12 +1077,13 @@ datapipeline_report_task_progress <- function(taskId, fields = NULL) {
     name = "ReportTaskProgress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$report_task_progress_input(taskId = taskId, fields = fields)
   output <- .datapipeline$report_task_progress_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1130,12 +1145,13 @@ datapipeline_report_task_runner_heartbeat <- function(taskrunnerId, workerGroup 
     name = "ReportTaskRunnerHeartbeat",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$report_task_runner_heartbeat_input(taskrunnerId = taskrunnerId, workerGroup = workerGroup, hostname = hostname)
   output <- .datapipeline$report_task_runner_heartbeat_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1187,12 +1203,13 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
     name = "SetStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$set_status_input(pipelineId = pipelineId, objectIds = objectIds, status = status)
   output <- .datapipeline$set_status_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1256,12 +1273,13 @@ datapipeline_set_task_status <- function(taskId, taskStatus, errorId = NULL, err
     name = "SetTaskStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$set_task_status_input(taskId = taskId, taskStatus = taskStatus, errorId = errorId, errorMessage = errorMessage, errorStackTrace = errorStackTrace)
   output <- .datapipeline$set_task_status_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1356,12 +1374,13 @@ datapipeline_validate_pipeline_definition <- function(pipelineId, pipelineObject
     name = "ValidatePipelineDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .datapipeline$validate_pipeline_definition_input(pipelineId = pipelineId, pipelineObjects = pipelineObjects, parameterObjects = parameterObjects, parameterValues = parameterValues)
   output <- .datapipeline$validate_pipeline_definition_output()
   config <- get_config()
-  svc <- .datapipeline$service(config)
+  svc <- .datapipeline$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

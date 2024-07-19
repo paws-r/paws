@@ -12,6 +12,10 @@ test_that("list_allow_lists", {
   expect_error(svc$list_allow_lists(), NA)
 })
 
+test_that("list_automated_discovery_accounts", {
+  expect_error(svc$list_automated_discovery_accounts(), NA)
+})
+
 test_that("list_classification_jobs", {
   expect_error(svc$list_classification_jobs(), NA)
 })

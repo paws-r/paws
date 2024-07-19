@@ -52,22 +52,21 @@ regardless of the tag value.
 \code{io2} | \code{st1} | \code{sc1}| \code{standard})
 }}
 
-\item{VolumeIds}{The volume IDs.}
+\item{VolumeIds}{The volume IDs. If not specified, then all volumes are included in the
+response.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{MaxResults}{The maximum number of volumes to return for this request. This value can
-be between 5 and 500; if you specify a value larger than 500, only 500
-items are returned. If this parameter is not used, then all items are
-returned. You cannot specify this parameter and the volume IDs parameter
-in the same request. For more information, see
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned from the previous request.}
+continues from the end of the items returned by the previous request.}
 }
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.

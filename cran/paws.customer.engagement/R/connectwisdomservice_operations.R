@@ -41,12 +41,13 @@ connectwisdomservice_create_assistant <- function(clientToken = NULL, descriptio
     name = "CreateAssistant",
     http_method = "POST",
     http_path = "/assistants",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$create_assistant_input(clientToken = clientToken, description = description, name = name, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, tags = tags, type = type)
   output <- .connectwisdomservice$create_assistant_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -80,12 +81,13 @@ connectwisdomservice_create_assistant_association <- function(assistantId, assoc
     name = "CreateAssistantAssociation",
     http_method = "POST",
     http_path = "/assistants/{assistantId}/associations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$create_assistant_association_input(assistantId = assistantId, association = association, associationType = associationType, clientToken = clientToken, tags = tags)
   output <- .connectwisdomservice$create_assistant_association_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -132,12 +134,13 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
     name = "CreateContent",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/contents",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$create_content_input(clientToken = clientToken, knowledgeBaseId = knowledgeBaseId, metadata = metadata, name = name, overrideLinkOutUri = overrideLinkOutUri, tags = tags, title = title, uploadId = uploadId)
   output <- .connectwisdomservice$create_content_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -184,12 +187,13 @@ connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, descr
     name = "CreateKnowledgeBase",
     http_method = "POST",
     http_path = "/knowledgeBases",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$create_knowledge_base_input(clientToken = clientToken, description = description, knowledgeBaseType = knowledgeBaseType, name = name, renderingConfiguration = renderingConfiguration, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, sourceConfiguration = sourceConfiguration, tags = tags)
   output <- .connectwisdomservice$create_knowledge_base_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -241,12 +245,13 @@ connectwisdomservice_create_quick_response <- function(channels = NULL, clientTo
     name = "CreateQuickResponse",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$create_quick_response_input(channels = channels, clientToken = clientToken, content = content, contentType = contentType, description = description, groupingConfiguration = groupingConfiguration, isActive = isActive, knowledgeBaseId = knowledgeBaseId, language = language, name = name, shortcutKey = shortcutKey, tags = tags)
   output <- .connectwisdomservice$create_quick_response_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -279,12 +284,13 @@ connectwisdomservice_create_session <- function(assistantId, clientToken = NULL,
     name = "CreateSession",
     http_method = "POST",
     http_path = "/assistants/{assistantId}/sessions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$create_session_input(assistantId = assistantId, clientToken = clientToken, description = description, name = name, tags = tags)
   output <- .connectwisdomservice$create_session_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -309,12 +315,13 @@ connectwisdomservice_delete_assistant <- function(assistantId) {
     name = "DeleteAssistant",
     http_method = "DELETE",
     http_path = "/assistants/{assistantId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$delete_assistant_input(assistantId = assistantId)
   output <- .connectwisdomservice$delete_assistant_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -341,12 +348,13 @@ connectwisdomservice_delete_assistant_association <- function(assistantAssociati
     name = "DeleteAssistantAssociation",
     http_method = "DELETE",
     http_path = "/assistants/{assistantId}/associations/{assistantAssociationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$delete_assistant_association_input(assistantAssociationId = assistantAssociationId, assistantId = assistantId)
   output <- .connectwisdomservice$delete_assistant_association_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -375,12 +383,13 @@ connectwisdomservice_delete_content <- function(contentId, knowledgeBaseId) {
     name = "DeleteContent",
     http_method = "DELETE",
     http_path = "/knowledgeBases/{knowledgeBaseId}/contents/{contentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$delete_content_input(contentId = contentId, knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$delete_content_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -407,12 +416,13 @@ connectwisdomservice_delete_import_job <- function(importJobId, knowledgeBaseId)
     name = "DeleteImportJob",
     http_method = "DELETE",
     http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs/{importJobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$delete_import_job_input(importJobId = importJobId, knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$delete_import_job_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -437,12 +447,13 @@ connectwisdomservice_delete_knowledge_base <- function(knowledgeBaseId) {
     name = "DeleteKnowledgeBase",
     http_method = "DELETE",
     http_path = "/knowledgeBases/{knowledgeBaseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$delete_knowledge_base_input(knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$delete_knowledge_base_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -469,12 +480,13 @@ connectwisdomservice_delete_quick_response <- function(knowledgeBaseId, quickRes
     name = "DeleteQuickResponse",
     http_method = "DELETE",
     http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$delete_quick_response_input(knowledgeBaseId = knowledgeBaseId, quickResponseId = quickResponseId)
   output <- .connectwisdomservice$delete_quick_response_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -499,12 +511,13 @@ connectwisdomservice_get_assistant <- function(assistantId) {
     name = "GetAssistant",
     http_method = "GET",
     http_path = "/assistants/{assistantId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_assistant_input(assistantId = assistantId)
   output <- .connectwisdomservice$get_assistant_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -531,12 +544,13 @@ connectwisdomservice_get_assistant_association <- function(assistantAssociationI
     name = "GetAssistantAssociation",
     http_method = "GET",
     http_path = "/assistants/{assistantId}/associations/{assistantAssociationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_assistant_association_input(assistantAssociationId = assistantAssociationId, assistantId = assistantId)
   output <- .connectwisdomservice$get_assistant_association_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -565,12 +579,13 @@ connectwisdomservice_get_content <- function(contentId, knowledgeBaseId) {
     name = "GetContent",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/contents/{contentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_content_input(contentId = contentId, knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$get_content_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -599,12 +614,13 @@ connectwisdomservice_get_content_summary <- function(contentId, knowledgeBaseId)
     name = "GetContentSummary",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/contents/{contentId}/summary",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_content_summary_input(contentId = contentId, knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$get_content_summary_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -629,12 +645,13 @@ connectwisdomservice_get_import_job <- function(importJobId, knowledgeBaseId) {
     name = "GetImportJob",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs/{importJobId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_import_job_input(importJobId = importJobId, knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$get_import_job_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -661,12 +678,13 @@ connectwisdomservice_get_knowledge_base <- function(knowledgeBaseId) {
     name = "GetKnowledgeBase",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_knowledge_base_input(knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$get_knowledge_base_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -692,12 +710,13 @@ connectwisdomservice_get_quick_response <- function(knowledgeBaseId, quickRespon
     name = "GetQuickResponse",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_quick_response_input(knowledgeBaseId = knowledgeBaseId, quickResponseId = quickResponseId)
   output <- .connectwisdomservice$get_quick_response_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -730,12 +749,13 @@ connectwisdomservice_get_recommendations <- function(assistantId, maxResults = N
     name = "GetRecommendations",
     http_method = "GET",
     http_path = "/assistants/{assistantId}/sessions/{sessionId}/recommendations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_recommendations_input(assistantId = assistantId, maxResults = maxResults, sessionId = sessionId, waitTimeSeconds = waitTimeSeconds)
   output <- .connectwisdomservice$get_recommendations_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -762,12 +782,13 @@ connectwisdomservice_get_session <- function(assistantId, sessionId) {
     name = "GetSession",
     http_method = "GET",
     http_path = "/assistants/{assistantId}/sessions/{sessionId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$get_session_input(assistantId = assistantId, sessionId = sessionId)
   output <- .connectwisdomservice$get_session_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -796,12 +817,13 @@ connectwisdomservice_list_assistant_associations <- function(assistantId, maxRes
     name = "ListAssistantAssociations",
     http_method = "GET",
     http_path = "/assistants/{assistantId}/associations",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assistantAssociationSummaries")
   )
   input <- .connectwisdomservice$list_assistant_associations_input(assistantId = assistantId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_assistant_associations_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -828,12 +850,13 @@ connectwisdomservice_list_assistants <- function(maxResults = NULL, nextToken = 
     name = "ListAssistants",
     http_method = "GET",
     http_path = "/assistants",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assistantSummaries")
   )
   input <- .connectwisdomservice$list_assistants_input(maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_assistants_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -864,12 +887,13 @@ connectwisdomservice_list_contents <- function(knowledgeBaseId, maxResults = NUL
     name = "ListContents",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/contents",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "contentSummaries")
   )
   input <- .connectwisdomservice$list_contents_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_contents_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -900,12 +924,13 @@ connectwisdomservice_list_import_jobs <- function(knowledgeBaseId, maxResults = 
     name = "ListImportJobs",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "importJobSummaries")
   )
   input <- .connectwisdomservice$list_import_jobs_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_import_jobs_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -932,12 +957,13 @@ connectwisdomservice_list_knowledge_bases <- function(maxResults = NULL, nextTok
     name = "ListKnowledgeBases",
     http_method = "GET",
     http_path = "/knowledgeBases",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "knowledgeBaseSummaries")
   )
   input <- .connectwisdomservice$list_knowledge_bases_input(maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_knowledge_bases_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -968,12 +994,13 @@ connectwisdomservice_list_quick_responses <- function(knowledgeBaseId, maxResult
     name = "ListQuickResponses",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quickResponseSummaries")
   )
   input <- .connectwisdomservice$list_quick_responses_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_quick_responses_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -997,12 +1024,13 @@ connectwisdomservice_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .connectwisdomservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1031,12 +1059,13 @@ connectwisdomservice_notify_recommendations_received <- function(assistantId, re
     name = "NotifyRecommendationsReceived",
     http_method = "POST",
     http_path = "/assistants/{assistantId}/sessions/{sessionId}/recommendations/notify",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$notify_recommendations_received_input(assistantId = assistantId, recommendationIds = recommendationIds, sessionId = sessionId)
   output <- .connectwisdomservice$notify_recommendations_received_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1066,12 +1095,13 @@ connectwisdomservice_query_assistant <- function(assistantId, maxResults = NULL,
     name = "QueryAssistant",
     http_method = "POST",
     http_path = "/assistants/{assistantId}/query",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "results")
   )
   input <- .connectwisdomservice$query_assistant_input(assistantId = assistantId, maxResults = maxResults, nextToken = nextToken, queryText = queryText)
   output <- .connectwisdomservice$query_assistant_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1098,12 +1128,13 @@ connectwisdomservice_remove_knowledge_base_template_uri <- function(knowledgeBas
     name = "RemoveKnowledgeBaseTemplateUri",
     http_method = "DELETE",
     http_path = "/knowledgeBases/{knowledgeBaseId}/templateUri",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$remove_knowledge_base_template_uri_input(knowledgeBaseId = knowledgeBaseId)
   output <- .connectwisdomservice$remove_knowledge_base_template_uri_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1135,12 +1166,13 @@ connectwisdomservice_search_content <- function(knowledgeBaseId, maxResults = NU
     name = "SearchContent",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/search",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "contentSummaries")
   )
   input <- .connectwisdomservice$search_content_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken, searchExpression = searchExpression)
   output <- .connectwisdomservice$search_content_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1174,12 +1206,13 @@ connectwisdomservice_search_quick_responses <- function(attributes = NULL, knowl
     name = "SearchQuickResponses",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/search/quickResponses",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "results")
   )
   input <- .connectwisdomservice$search_quick_responses_input(attributes = attributes, knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken, searchExpression = searchExpression)
   output <- .connectwisdomservice$search_quick_responses_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1209,12 +1242,13 @@ connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL,
     name = "SearchSessions",
     http_method = "POST",
     http_path = "/assistants/{assistantId}/searchSessions",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionSummaries")
   )
   input <- .connectwisdomservice$search_sessions_input(assistantId = assistantId, maxResults = maxResults, nextToken = nextToken, searchExpression = searchExpression)
   output <- .connectwisdomservice$search_sessions_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1244,12 +1278,13 @@ connectwisdomservice_start_content_upload <- function(contentType, knowledgeBase
     name = "StartContentUpload",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/upload",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$start_content_upload_input(contentType = contentType, knowledgeBaseId = knowledgeBaseId, presignedUrlTimeToLive = presignedUrlTimeToLive)
   output <- .connectwisdomservice$start_content_upload_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1290,12 +1325,13 @@ connectwisdomservice_start_import_job <- function(clientToken = NULL, externalSo
     name = "StartImportJob",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$start_import_job_input(clientToken = clientToken, externalSourceConfiguration = externalSourceConfiguration, importJobType = importJobType, knowledgeBaseId = knowledgeBaseId, metadata = metadata, uploadId = uploadId)
   output <- .connectwisdomservice$start_import_job_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1320,12 +1356,13 @@ connectwisdomservice_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .connectwisdomservice$tag_resource_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1350,12 +1387,13 @@ connectwisdomservice_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .connectwisdomservice$untag_resource_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1403,12 +1441,13 @@ connectwisdomservice_update_content <- function(contentId, knowledgeBaseId, meta
     name = "UpdateContent",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/contents/{contentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$update_content_input(contentId = contentId, knowledgeBaseId = knowledgeBaseId, metadata = metadata, overrideLinkOutUri = overrideLinkOutUri, removeOverrideLinkOutUri = removeOverrideLinkOutUri, revisionId = revisionId, title = title, uploadId = uploadId)
   output <- .connectwisdomservice$update_content_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1436,12 +1475,13 @@ connectwisdomservice_update_knowledge_base_template_uri <- function(knowledgeBas
     name = "UpdateKnowledgeBaseTemplateUri",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/templateUri",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$update_knowledge_base_template_uri_input(knowledgeBaseId = knowledgeBaseId, templateUri = templateUri)
   output <- .connectwisdomservice$update_knowledge_base_template_uri_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1491,12 +1531,13 @@ connectwisdomservice_update_quick_response <- function(channels = NULL, content 
     name = "UpdateQuickResponse",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .connectwisdomservice$update_quick_response_input(channels = channels, content = content, contentType = contentType, description = description, groupingConfiguration = groupingConfiguration, isActive = isActive, knowledgeBaseId = knowledgeBaseId, language = language, name = name, quickResponseId = quickResponseId, removeDescription = removeDescription, removeGroupingConfiguration = removeGroupingConfiguration, removeShortcutKey = removeShortcutKey, shortcutKey = shortcutKey)
   output <- .connectwisdomservice$update_quick_response_output()
   config <- get_config()
-  svc <- .connectwisdomservice$service(config)
+  svc <- .connectwisdomservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

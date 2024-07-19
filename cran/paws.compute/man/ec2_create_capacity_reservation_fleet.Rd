@@ -21,7 +21,7 @@ ec2_create_capacity_reservation_fleet(
 of the specified instance types to use. Currently, only the
 \code{prioritized} allocation strategy is supported. For more information,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#allocation-strategy}{Allocation strategy}
-in the Amazon EC2 User Guide.
+in the \emph{Amazon EC2 User Guide}.
 
 Valid values: \code{prioritized}}
 
@@ -46,7 +46,7 @@ that you assign to each instance type used by the Fleet determine the
 number of instances for which the Fleet reserves capacity. Both values
 are based on units that make sense for your workload. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#target-capacity}{Total target capacity}
-in the Amazon EC2 User Guide.}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{EndDate}{The date and time at which the Capacity Reservation Fleet expires. When
 the Capacity Reservation Fleet expires, its state changes to \code{expired}
@@ -76,7 +76,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Creates a Capacity Reservation Fleet. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet}{Create a Capacity Reservation Fleet} in the Amazon EC2 User Guide.
+Creates a Capacity Reservation Fleet. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet}{Create a Capacity Reservation Fleet} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/} for full documentation.
 }

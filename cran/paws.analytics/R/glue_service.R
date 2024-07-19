@@ -134,6 +134,7 @@ NULL
 #'  \link[=glue_create_table]{create_table} \tab Creates a new table definition in the Data Catalog\cr
 #'  \link[=glue_create_table_optimizer]{create_table_optimizer} \tab Creates a new table optimizer for a specific function\cr
 #'  \link[=glue_create_trigger]{create_trigger} \tab Creates a new trigger\cr
+#'  \link[=glue_create_usage_profile]{create_usage_profile} \tab Creates an Glue usage profile\cr
 #'  \link[=glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog\cr
 #'  \link[=glue_create_workflow]{create_workflow} \tab Creates a new workflow\cr
 #'  \link[=glue_delete_blueprint]{delete_blueprint} \tab Deletes an existing blueprint\cr
@@ -160,6 +161,7 @@ NULL
 #'  \link[=glue_delete_table_optimizer]{delete_table_optimizer} \tab Deletes an optimizer and all associated metadata for a table\cr
 #'  \link[=glue_delete_table_version]{delete_table_version} \tab Deletes a specified version of a table\cr
 #'  \link[=glue_delete_trigger]{delete_trigger} \tab Deletes a specified trigger\cr
+#'  \link[=glue_delete_usage_profile]{delete_usage_profile} \tab Deletes the Glue specified usage profile\cr
 #'  \link[=glue_delete_user_defined_function]{delete_user_defined_function} \tab Deletes an existing function definition from the Data Catalog\cr
 #'  \link[=glue_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
 #'  \link[=glue_get_blueprint]{get_blueprint} \tab Retrieves the details of a blueprint\cr
@@ -224,6 +226,7 @@ NULL
 #'  \link[=glue_get_unfiltered_partition_metadata]{get_unfiltered_partition_metadata} \tab Retrieves partition metadata from the Data Catalog that contains unfiltered metadata\cr
 #'  \link[=glue_get_unfiltered_partitions_metadata]{get_unfiltered_partitions_metadata} \tab Retrieves partition metadata from the Data Catalog that contains unfiltered metadata\cr
 #'  \link[=glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata} \tab Allows a third-party analytical engine to retrieve unfiltered table metadata from the Data Catalog\cr
+#'  \link[=glue_get_usage_profile]{get_usage_profile} \tab Retrieves information about the specified Glue usage profile\cr
 #'  \link[=glue_get_user_defined_function]{get_user_defined_function} \tab Retrieves a specified function definition from the Data Catalog\cr
 #'  \link[=glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves multiple function definitions from the Data Catalog\cr
 #'  \link[=glue_get_workflow]{get_workflow} \tab Retrieves resource metadata for a workflow\cr
@@ -250,6 +253,7 @@ NULL
 #'  \link[=glue_list_statements]{list_statements} \tab Lists statements for the session\cr
 #'  \link[=glue_list_table_optimizer_runs]{list_table_optimizer_runs} \tab Lists the history of previous optimizer runs for a specific table\cr
 #'  \link[=glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag\cr
+#'  \link[=glue_list_usage_profiles]{list_usage_profiles} \tab List all the Glue usage profiles\cr
 #'  \link[=glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
 #'  \link[=glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
 #'  \link[=glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control\cr
@@ -303,6 +307,7 @@ NULL
 #'  \link[=glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog\cr
 #'  \link[=glue_update_table_optimizer]{update_table_optimizer} \tab Updates the configuration for an existing table optimizer\cr
 #'  \link[=glue_update_trigger]{update_trigger} \tab Updates a trigger definition\cr
+#'  \link[=glue_update_usage_profile]{update_usage_profile} \tab Update an Glue usage profile\cr
 #'  \link[=glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog\cr
 #'  \link[=glue_update_workflow]{update_workflow} \tab Updates an existing workflow
 #' }
@@ -344,7 +349,7 @@ glue <- function(config = list(), credentials = list(), endpoint = NULL, region 
   target_prefix = "AWSGlue"
 )
 
-.glue$service <- function(config = list()) {
+.glue$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.glue$metadata, handlers, config)
+  new_service(.glue$metadata, handlers, config, op)
 }

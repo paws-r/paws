@@ -200,7 +200,7 @@ glacier <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = ""
 )
 
-.glacier$service <- function(config = list()) {
+.glacier$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.glacier$metadata, handlers, config)
+  new_service(.glacier$metadata, handlers, config, op)
 }

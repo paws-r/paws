@@ -21,10 +21,10 @@ specified, the global table defaults to \code{PROVISIONED} capacity billing
 mode.
 \itemize{
 \item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
-workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual}{Provisioned Mode}.
+workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html}{Provisioned capacity mode}.
 \item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
 unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand}{On-Demand Mode}.
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html}{On-demand capacity mode}.
 }}
 
 \item{GlobalTableProvisionedWriteCapacityUnits}{The maximum number of writes consumed per second before DynamoDB returns

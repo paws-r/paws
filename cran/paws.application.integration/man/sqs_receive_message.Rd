@@ -7,6 +7,7 @@
 sqs_receive_message(
   QueueUrl,
   AttributeNames = NULL,
+  MessageSystemAttributeNames = NULL,
   MessageAttributeNames = NULL,
   MaxNumberOfMessages = NULL,
   VisibilityTimeout = NULL,
@@ -19,7 +20,44 @@ sqs_receive_message(
 
 Queue URLs and names are case-sensitive.}
 
-\item{AttributeNames}{A list of attributes that need to be returned along with each message.
+\item{AttributeNames}{This parameter has been deprecated but will be supported for backward
+compatibility. To provide attribute names, you are encouraged to use
+\code{MessageSystemAttributeNames}.
+
+A list of attributes that need to be returned along with each message.
+These attributes include:
+\itemize{
+\item \code{All} – Returns all values.
+\item \code{ApproximateFirstReceiveTimestamp} – Returns the time the message
+was first received from the queue (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
+\item \code{ApproximateReceiveCount} – Returns the number of times a message
+has been received across all queues but not deleted.
+\item \code{AWSTraceHeader} – Returns the X-Ray trace header string.
+\item \code{SenderId}
+\itemize{
+\item For a user, returns the user ID, for example
+\code{ABCDEFGHI1JKLMNOPQ23R}.
+\item For an IAM role, returns the IAM role ID, for example
+\code{ABCDE1F2GH3I4JK5LMNOP:i-a123b456}.
+}
+\item \code{SentTimestamp} – Returns the time the message was sent to the queue
+(\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in
+milliseconds).
+\item \code{SqsManagedSseEnabled} – Enables server-side queue encryption using
+SQS owned encryption keys. Only one server-side encryption option is
+supported per queue (for example,
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
+or
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
+\item \code{MessageDeduplicationId} – Returns the value provided by the
+producer that calls the \code{\link[=sqs_send_message]{send_message}} action.
+\item \code{MessageGroupId} – Returns the value provided by the producer that
+calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with
+the same \code{MessageGroupId} are returned in sequence.
+\item \code{SequenceNumber} – Returns the value provided by Amazon SQS.
+}}
+
+\item{MessageSystemAttributeNames}{A list of attributes that need to be returned along with each message.
 These attributes include:
 \itemize{
 \item \code{All} – Returns all values.
@@ -81,8 +119,7 @@ subsequent retrieve requests after being retrieved by a
 \item{WaitTimeSeconds}{The duration (in seconds) for which the call waits for a message to
 arrive in the queue before returning. If a message is available, the
 call returns sooner than \code{WaitTimeSeconds}. If no messages are available
-and the wait time expires, the call returns successfully with an empty
-list of messages.
+and the wait time expires, the call does not return a message list.
 
 To avoid HTTP errors, ensure that the HTTP response timeout for
 \code{\link[=sqs_receive_message]{receive_message}} requests is longer than the
@@ -108,9 +145,6 @@ not yet expired.
 \item When you set \code{FifoQueue}, a caller of the
 \code{\link[=sqs_receive_message]{receive_message}} action can provide a
 \code{ReceiveRequestAttemptId} explicitly.
-\item If a caller of the \code{\link[=sqs_receive_message]{receive_message}} action
-doesn't provide a \code{ReceiveRequestAttemptId}, Amazon SQS generates a
-\code{ReceiveRequestAttemptId}.
 \item It is possible to retry the \code{\link[=sqs_receive_message]{receive_message}}
 action with the same \code{ReceiveRequestAttemptId} if none of the
 messages have been modified (deleted or had their visibility

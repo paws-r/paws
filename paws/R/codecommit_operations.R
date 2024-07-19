@@ -44,12 +44,13 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
     name = "AssociateApprovalRuleTemplateWithRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$associate_approval_rule_template_with_repository_input(approvalRuleTemplateName = approvalRuleTemplateName, repositoryName = repositoryName)
   output <- .codecommit$associate_approval_rule_template_with_repository_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -111,12 +112,13 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
     name = "BatchAssociateApprovalRuleTemplateWithRepositories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$batch_associate_approval_rule_template_with_repositories_input(approvalRuleTemplateName = approvalRuleTemplateName, repositoryNames = repositoryNames)
   output <- .codecommit$batch_associate_approval_rule_template_with_repositories_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -262,12 +264,13 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
     name = "BatchDescribeMergeConflicts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$batch_describe_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, maxMergeHunks = maxMergeHunks, maxConflictFiles = maxConflictFiles, filePaths = filePaths, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
   output <- .codecommit$batch_describe_merge_conflicts_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -330,12 +333,13 @@ codecommit_batch_disassociate_approval_rule_template_from_repositories <- functi
     name = "BatchDisassociateApprovalRuleTemplateFromRepositories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$batch_disassociate_approval_rule_template_from_repositories_input(approvalRuleTemplateName = approvalRuleTemplateName, repositoryNames = repositoryNames)
   output <- .codecommit$batch_disassociate_approval_rule_template_from_repositories_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -413,12 +417,13 @@ codecommit_batch_get_commits <- function(commitIds, repositoryName) {
     name = "BatchGetCommits",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$batch_get_commits_input(commitIds = commitIds, repositoryName = repositoryName)
   output <- .codecommit$batch_get_commits_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -501,12 +506,13 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
     name = "BatchGetRepositories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$batch_get_repositories_input(repositoryNames = repositoryNames)
   output <- .codecommit$batch_get_repositories_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -610,12 +616,13 @@ codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, a
     name = "CreateApprovalRuleTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$create_approval_rule_template_input(approvalRuleTemplateName = approvalRuleTemplateName, approvalRuleTemplateContent = approvalRuleTemplateContent, approvalRuleTemplateDescription = approvalRuleTemplateDescription)
   output <- .codecommit$create_approval_rule_template_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -659,12 +666,13 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
     name = "CreateBranch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$create_branch_input(repositoryName = repositoryName, branchName = branchName, commitId = commitId)
   output <- .codecommit$create_branch_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -774,12 +782,13 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
     name = "CreateCommit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$create_commit_input(repositoryName = repositoryName, branchName = branchName, parentCommitId = parentCommitId, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, putFiles = putFiles, deleteFiles = deleteFiles, setFileModes = setFileModes)
   output <- .codecommit$create_commit_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -895,12 +904,13 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
     name = "CreatePullRequest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$create_pull_request_input(title = title, description = description, targets = targets, clientRequestToken = clientRequestToken)
   output <- .codecommit$create_pull_request_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -997,12 +1007,13 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
     name = "CreatePullRequestApprovalRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$create_pull_request_approval_rule_input(pullRequestId = pullRequestId, approvalRuleName = approvalRuleName, approvalRuleContent = approvalRuleContent)
   output <- .codecommit$create_pull_request_approval_rule_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1090,12 +1101,13 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$create_repository_input(repositoryName = repositoryName, repositoryDescription = repositoryDescription, tags = tags, kmsKeyId = kmsKeyId)
   output <- .codecommit$create_repository_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1205,12 +1217,13 @@ codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCo
     name = "CreateUnreferencedMergeCommit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$create_unreferenced_merge_commit_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, mergeOption = mergeOption, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
   output <- .codecommit$create_unreferenced_merge_commit_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1254,12 +1267,13 @@ codecommit_delete_approval_rule_template <- function(approvalRuleTemplateName) {
     name = "DeleteApprovalRuleTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$delete_approval_rule_template_input(approvalRuleTemplateName = approvalRuleTemplateName)
   output <- .codecommit$delete_approval_rule_template_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1308,12 +1322,13 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
     name = "DeleteBranch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$delete_branch_input(repositoryName = repositoryName, branchName = branchName)
   output <- .codecommit$delete_branch_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1379,12 +1394,13 @@ codecommit_delete_comment_content <- function(commentId) {
     name = "DeleteCommentContent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$delete_comment_content_input(commentId = commentId)
   output <- .codecommit$delete_comment_content_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1462,12 +1478,13 @@ codecommit_delete_file <- function(repositoryName, branchName, filePath, parentC
     name = "DeleteFile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$delete_file_input(repositoryName = repositoryName, branchName = branchName, filePath = filePath, parentCommitId = parentCommitId, keepEmptyFolders = keepEmptyFolders, commitMessage = commitMessage, name = name, email = email)
   output <- .codecommit$delete_file_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1518,12 +1535,13 @@ codecommit_delete_pull_request_approval_rule <- function(pullRequestId, approval
     name = "DeletePullRequestApprovalRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$delete_pull_request_approval_rule_input(pullRequestId = pullRequestId, approvalRuleName = approvalRuleName)
   output <- .codecommit$delete_pull_request_approval_rule_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1570,12 +1588,13 @@ codecommit_delete_repository <- function(repositoryName) {
     name = "DeleteRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$delete_repository_input(repositoryName = repositoryName)
   output <- .codecommit$delete_repository_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1706,12 +1725,13 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
     name = "DescribeMergeConflicts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxMergeHunks", output_token = "nextToken")
   )
   input <- .codecommit$describe_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, maxMergeHunks = maxMergeHunks, filePath = filePath, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
   output <- .codecommit$describe_merge_conflicts_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1817,12 +1837,13 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
     name = "DescribePullRequestEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$describe_pull_request_events_input(pullRequestId = pullRequestId, pullRequestEventType = pullRequestEventType, actorArn = actorArn, nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$describe_pull_request_events_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1869,12 +1890,13 @@ codecommit_disassociate_approval_rule_template_from_repository <- function(appro
     name = "DisassociateApprovalRuleTemplateFromRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$disassociate_approval_rule_template_from_repository_input(approvalRuleTemplateName = approvalRuleTemplateName, repositoryName = repositoryName)
   output <- .codecommit$disassociate_approval_rule_template_from_repository_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1932,12 +1954,13 @@ codecommit_evaluate_pull_request_approval_rules <- function(pullRequestId, revis
     name = "EvaluatePullRequestApprovalRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$evaluate_pull_request_approval_rules_input(pullRequestId = pullRequestId, revisionId = revisionId)
   output <- .codecommit$evaluate_pull_request_approval_rules_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1993,12 +2016,13 @@ codecommit_get_approval_rule_template <- function(approvalRuleTemplateName) {
     name = "GetApprovalRuleTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_approval_rule_template_input(approvalRuleTemplateName = approvalRuleTemplateName)
   output <- .codecommit$get_approval_rule_template_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2044,12 +2068,13 @@ codecommit_get_blob <- function(repositoryName, blobId) {
     name = "GetBlob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_blob_input(repositoryName = repositoryName, blobId = blobId)
   output <- .codecommit$get_blob_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2099,12 +2124,13 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
     name = "GetBranch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_branch_input(repositoryName = repositoryName, branchName = branchName)
   output <- .codecommit$get_branch_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2174,12 +2200,13 @@ codecommit_get_comment <- function(commentId) {
     name = "GetComment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_comment_input(commentId = commentId)
   output <- .codecommit$get_comment_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2245,12 +2272,13 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
     name = "GetCommentReactions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$get_comment_reactions_input(commentId = commentId, reactionUserArn = reactionUserArn, nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$get_comment_reactions_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2347,12 +2375,13 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
     name = "GetCommentsForComparedCommit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$get_comments_for_compared_commit_input(repositoryName = repositoryName, beforeCommitId = beforeCommitId, afterCommitId = afterCommitId, nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$get_comments_for_compared_commit_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2458,12 +2487,13 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
     name = "GetCommentsForPullRequest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$get_comments_for_pull_request_input(pullRequestId = pullRequestId, repositoryName = repositoryName, beforeCommitId = beforeCommitId, afterCommitId = afterCommitId, nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$get_comments_for_pull_request_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2527,12 +2557,13 @@ codecommit_get_commit <- function(repositoryName, commitId) {
     name = "GetCommit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_commit_input(repositoryName = repositoryName, commitId = commitId)
   output <- .codecommit$get_commit_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2619,12 +2650,13 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
     name = "GetDifferences",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .codecommit$get_differences_input(repositoryName = repositoryName, beforeCommitSpecifier = beforeCommitSpecifier, afterCommitSpecifier = afterCommitSpecifier, beforePath = beforePath, afterPath = afterPath, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codecommit$get_differences_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2682,12 +2714,13 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
     name = "GetFile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_file_input(repositoryName = repositoryName, commitSpecifier = commitSpecifier, filePath = filePath)
   output <- .codecommit$get_file_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2772,12 +2805,13 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
     name = "GetFolder",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_folder_input(repositoryName = repositoryName, commitSpecifier = commitSpecifier, folderPath = folderPath)
   output <- .codecommit$get_folder_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2842,12 +2876,13 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
     name = "GetMergeCommit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_merge_commit_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy)
   output <- .codecommit$get_merge_commit_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2955,12 +2990,13 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
     name = "GetMergeConflicts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxConflictFiles", output_token = "nextToken")
   )
   input <- .codecommit$get_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, conflictDetailLevel = conflictDetailLevel, maxConflictFiles = maxConflictFiles, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
   output <- .codecommit$get_merge_conflicts_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3030,12 +3066,13 @@ codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, 
     name = "GetMergeOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_merge_options_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy)
   output <- .codecommit$get_merge_options_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3127,12 +3164,13 @@ codecommit_get_pull_request <- function(pullRequestId) {
     name = "GetPullRequest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_pull_request_input(pullRequestId = pullRequestId)
   output <- .codecommit$get_pull_request_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3183,12 +3221,13 @@ codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionI
     name = "GetPullRequestApprovalStates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_pull_request_approval_states_input(pullRequestId = pullRequestId, revisionId = revisionId)
   output <- .codecommit$get_pull_request_approval_states_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3242,12 +3281,13 @@ codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId
     name = "GetPullRequestOverrideState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_pull_request_override_state_input(pullRequestId = pullRequestId, revisionId = revisionId)
   output <- .codecommit$get_pull_request_override_state_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3312,12 +3352,13 @@ codecommit_get_repository <- function(repositoryName) {
     name = "GetRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_repository_input(repositoryName = repositoryName)
   output <- .codecommit$get_repository_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3372,12 +3413,13 @@ codecommit_get_repository_triggers <- function(repositoryName) {
     name = "GetRepositoryTriggers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$get_repository_triggers_input(repositoryName = repositoryName)
   output <- .codecommit$get_repository_triggers_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3430,12 +3472,13 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
     name = "ListApprovalRuleTemplates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$list_approval_rule_templates_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$list_approval_rule_templates_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3490,12 +3533,13 @@ codecommit_list_associated_approval_rule_templates_for_repository <- function(re
     name = "ListAssociatedApprovalRuleTemplatesForRepository",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$list_associated_approval_rule_templates_for_repository_input(repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$list_associated_approval_rule_templates_for_repository_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3542,12 +3586,13 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
     name = "ListBranches",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "branches")
   )
   input <- .codecommit$list_branches_input(repositoryName = repositoryName, nextToken = nextToken)
   output <- .codecommit$list_branches_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3631,12 +3676,13 @@ codecommit_list_file_commit_history <- function(repositoryName, commitSpecifier 
     name = "ListFileCommitHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$list_file_commit_history_input(repositoryName = repositoryName, commitSpecifier = commitSpecifier, filePath = filePath, maxResults = maxResults, nextToken = nextToken)
   output <- .codecommit$list_file_commit_history_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3696,12 +3742,13 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
     name = "ListPullRequests",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$list_pull_requests_input(repositoryName = repositoryName, authorArn = authorArn, pullRequestStatus = pullRequestStatus, nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$list_pull_requests_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3756,12 +3803,13 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
     name = "ListRepositories",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "repositories")
   )
   input <- .codecommit$list_repositories_input(nextToken = nextToken, sortBy = sortBy, order = order)
   output <- .codecommit$list_repositories_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3816,12 +3864,13 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
     name = "ListRepositoriesForApprovalRuleTemplate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codecommit$list_repositories_for_approval_rule_template_input(approvalRuleTemplateName = approvalRuleTemplateName, nextToken = nextToken, maxResults = maxResults)
   output <- .codecommit$list_repositories_for_approval_rule_template_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3875,12 +3924,13 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken)
   output <- .codecommit$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3932,12 +3982,13 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
     name = "MergeBranchesByFastForward",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$merge_branches_by_fast_forward_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, targetBranch = targetBranch)
   output <- .codecommit$merge_branches_by_fast_forward_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4038,12 +4089,13 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
     name = "MergeBranchesBySquash",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$merge_branches_by_squash_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, targetBranch = targetBranch, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
   output <- .codecommit$merge_branches_by_squash_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4143,12 +4195,13 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
     name = "MergeBranchesByThreeWay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$merge_branches_by_three_way_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, targetBranch = targetBranch, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
   output <- .codecommit$merge_branches_by_three_way_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4253,12 +4306,13 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
     name = "MergePullRequestByFastForward",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$merge_pull_request_by_fast_forward_input(pullRequestId = pullRequestId, repositoryName = repositoryName, sourceCommitId = sourceCommitId)
   output <- .codecommit$merge_pull_request_by_fast_forward_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4410,12 +4464,13 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
     name = "MergePullRequestBySquash",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$merge_pull_request_by_squash_input(pullRequestId = pullRequestId, repositoryName = repositoryName, sourceCommitId = sourceCommitId, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, commitMessage = commitMessage, authorName = authorName, email = email, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
   output <- .codecommit$merge_pull_request_by_squash_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4568,12 +4623,13 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
     name = "MergePullRequestByThreeWay",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$merge_pull_request_by_three_way_input(pullRequestId = pullRequestId, repositoryName = repositoryName, sourceCommitId = sourceCommitId, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, commitMessage = commitMessage, authorName = authorName, email = email, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
   output <- .codecommit$merge_pull_request_by_three_way_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4623,12 +4679,13 @@ codecommit_override_pull_request_approval_rules <- function(pullRequestId, revis
     name = "OverridePullRequestApprovalRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$override_pull_request_approval_rules_input(pullRequestId = pullRequestId, revisionId = revisionId, overrideStatus = overrideStatus)
   output <- .codecommit$override_pull_request_approval_rules_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4722,12 +4779,13 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
     name = "PostCommentForComparedCommit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$post_comment_for_compared_commit_input(repositoryName = repositoryName, beforeCommitId = beforeCommitId, afterCommitId = afterCommitId, location = location, content = content, clientRequestToken = clientRequestToken)
   output <- .codecommit$post_comment_for_compared_commit_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4828,12 +4886,13 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
     name = "PostCommentForPullRequest",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$post_comment_for_pull_request_input(pullRequestId = pullRequestId, repositoryName = repositoryName, beforeCommitId = beforeCommitId, afterCommitId = afterCommitId, location = location, content = content, clientRequestToken = clientRequestToken)
   output <- .codecommit$post_comment_for_pull_request_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4908,12 +4967,13 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
     name = "PostCommentReply",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$post_comment_reply_input(inReplyTo = inReplyTo, clientRequestToken = clientRequestToken, content = content)
   output <- .codecommit$post_comment_reply_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4960,12 +5020,13 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
     name = "PutCommentReaction",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$put_comment_reaction_input(commentId = commentId, reactionValue = reactionValue)
   output <- .codecommit$put_comment_reaction_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5044,12 +5105,13 @@ codecommit_put_file <- function(repositoryName, branchName, fileContent, filePat
     name = "PutFile",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$put_file_input(repositoryName = repositoryName, branchName = branchName, fileContent = fileContent, filePath = filePath, fileMode = fileMode, parentCommitId = parentCommitId, commitMessage = commitMessage, name = name, email = email)
   output <- .codecommit$put_file_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5107,12 +5169,13 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
     name = "PutRepositoryTriggers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$put_repository_triggers_input(repositoryName = repositoryName, triggers = triggers)
   output <- .codecommit$put_repository_triggers_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5157,12 +5220,13 @@ codecommit_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codecommit$tag_resource_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5230,12 +5294,13 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
     name = "TestRepositoryTriggers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$test_repository_triggers_input(repositoryName = repositoryName, triggers = triggers)
   output <- .codecommit$test_repository_triggers_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5280,12 +5345,13 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codecommit$untag_resource_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5351,12 +5417,13 @@ codecommit_update_approval_rule_template_content <- function(approvalRuleTemplat
     name = "UpdateApprovalRuleTemplateContent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_approval_rule_template_content_input(approvalRuleTemplateName = approvalRuleTemplateName, newRuleContent = newRuleContent, existingRuleContentSha256 = existingRuleContentSha256)
   output <- .codecommit$update_approval_rule_template_content_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5414,12 +5481,13 @@ codecommit_update_approval_rule_template_description <- function(approvalRuleTem
     name = "UpdateApprovalRuleTemplateDescription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_approval_rule_template_description_input(approvalRuleTemplateName = approvalRuleTemplateName, approvalRuleTemplateDescription = approvalRuleTemplateDescription)
   output <- .codecommit$update_approval_rule_template_description_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5477,12 +5545,13 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
     name = "UpdateApprovalRuleTemplateName",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_approval_rule_template_name_input(oldApprovalRuleTemplateName = oldApprovalRuleTemplateName, newApprovalRuleTemplateName = newApprovalRuleTemplateName)
   output <- .codecommit$update_approval_rule_template_name_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5549,12 +5618,13 @@ codecommit_update_comment <- function(commentId, content) {
     name = "UpdateComment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_comment_input(commentId = commentId, content = content)
   output <- .codecommit$update_comment_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5598,12 +5668,13 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
     name = "UpdateDefaultBranch",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_default_branch_input(repositoryName = repositoryName, defaultBranchName = defaultBranchName)
   output <- .codecommit$update_default_branch_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5703,12 +5774,13 @@ codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, 
     name = "UpdatePullRequestApprovalRuleContent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_pull_request_approval_rule_content_input(pullRequestId = pullRequestId, approvalRuleName = approvalRuleName, existingRuleContentSha256 = existingRuleContentSha256, newRuleContent = newRuleContent)
   output <- .codecommit$update_pull_request_approval_rule_content_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5751,12 +5823,13 @@ codecommit_update_pull_request_approval_state <- function(pullRequestId, revisio
     name = "UpdatePullRequestApprovalState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_pull_request_approval_state_input(pullRequestId = pullRequestId, revisionId = revisionId, approvalState = approvalState)
   output <- .codecommit$update_pull_request_approval_state_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5851,12 +5924,13 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
     name = "UpdatePullRequestDescription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_pull_request_description_input(pullRequestId = pullRequestId, description = description)
   output <- .codecommit$update_pull_request_description_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5952,12 +6026,13 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
     name = "UpdatePullRequestStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_pull_request_status_input(pullRequestId = pullRequestId, pullRequestStatus = pullRequestStatus)
   output <- .codecommit$update_pull_request_status_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6051,12 +6126,13 @@ codecommit_update_pull_request_title <- function(pullRequestId, title) {
     name = "UpdatePullRequestTitle",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_pull_request_title_input(pullRequestId = pullRequestId, title = title)
   output <- .codecommit$update_pull_request_title_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6105,12 +6181,13 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
     name = "UpdateRepositoryDescription",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_repository_description_input(repositoryName = repositoryName, repositoryDescription = repositoryDescription)
   output <- .codecommit$update_repository_description_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6163,12 +6240,13 @@ codecommit_update_repository_encryption_key <- function(repositoryName, kmsKeyId
     name = "UpdateRepositoryEncryptionKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_repository_encryption_key_input(repositoryName = repositoryName, kmsKeyId = kmsKeyId)
   output <- .codecommit$update_repository_encryption_key_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6213,12 +6291,13 @@ codecommit_update_repository_name <- function(oldName, newName) {
     name = "UpdateRepositoryName",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .codecommit$update_repository_name_input(oldName = oldName, newName = newName)
   output <- .codecommit$update_repository_name_output()
   config <- get_config()
-  svc <- .codecommit$service(config)
+  svc <- .codecommit$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -2,7 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_space}
 \alias{sagemaker_create_space}
-\title{Creates a space used for real time collaboration in a domain}
+\title{Creates a private space or a space used for real time collaboration in a
+domain}
 \usage{
 sagemaker_create_space(
   DomainId,
@@ -32,7 +33,7 @@ searchable using the \code{\link[=sagemaker_search]{search}} API.}
 \item{SpaceDisplayName}{The name of the space that appears in the SageMaker Studio UI.}
 }
 \description{
-Creates a space used for real time collaboration in a domain.
+Creates a private space or a space used for real time collaboration in a domain.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_space/} for full documentation.
 }

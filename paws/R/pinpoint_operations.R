@@ -51,12 +51,13 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
     name = "CreateApp",
     http_method = "POST",
     http_path = "/v1/apps",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_app_input(CreateApplicationRequest = CreateApplicationRequest)
   output <- .pinpoint$create_app_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -154,6 +155,12 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -405,6 +412,12 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       EmailMessage = list(
 #'         Body = "string",
 #'         FromAddress = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         HtmlBody = "string",
 #'         Title = "string"
 #'       ),
@@ -649,6 +662,12 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -889,6 +908,12 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       EmailMessage = list(
 #'         Body = "string",
 #'         FromAddress = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         HtmlBody = "string",
 #'         Title = "string"
 #'       ),
@@ -1063,12 +1088,13 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
     name = "CreateCampaign",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/campaigns",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_campaign_input(ApplicationId = ApplicationId, WriteCampaignRequest = WriteCampaignRequest)
   output <- .pinpoint$create_campaign_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1111,6 +1137,12 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 #'     HtmlPart = "string",
 #'     RecommenderId = "string",
 #'     Subject = "string",
+#'     Headers = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -1131,12 +1163,13 @@ pinpoint_create_email_template <- function(EmailTemplateRequest, TemplateName) {
     name = "CreateEmailTemplate",
     http_method = "POST",
     http_path = "/v1/templates/{template-name}/email",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_email_template_input(EmailTemplateRequest = EmailTemplateRequest, TemplateName = TemplateName)
   output <- .pinpoint$create_email_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1207,12 +1240,13 @@ pinpoint_create_export_job <- function(ApplicationId, ExportJobRequest) {
     name = "CreateExportJob",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/jobs/export",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_export_job_input(ApplicationId = ApplicationId, ExportJobRequest = ExportJobRequest)
   output <- .pinpoint$create_export_job_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1291,12 +1325,13 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
     name = "CreateImportJob",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/jobs/import",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_import_job_input(ApplicationId = ApplicationId, ImportJobRequest = ImportJobRequest)
   output <- .pinpoint$create_import_job_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1418,12 +1453,13 @@ pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) 
     name = "CreateInAppTemplate",
     http_method = "POST",
     http_path = "/v1/templates/{template-name}/inapp",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_in_app_template_input(InAppTemplateRequest = InAppTemplateRequest, TemplateName = TemplateName)
   output <- .pinpoint$create_in_app_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2419,12 +2455,13 @@ pinpoint_create_journey <- function(ApplicationId, WriteJourneyRequest) {
     name = "CreateJourney",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/journeys",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_journey_input(ApplicationId = ApplicationId, WriteJourneyRequest = WriteJourneyRequest)
   output <- .pinpoint$create_journey_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2534,12 +2571,13 @@ pinpoint_create_push_template <- function(PushNotificationTemplateRequest, Templ
     name = "CreatePushTemplate",
     http_method = "POST",
     http_path = "/v1/templates/{template-name}/push",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_push_template_input(PushNotificationTemplateRequest = PushNotificationTemplateRequest, TemplateName = TemplateName)
   output <- .pinpoint$create_push_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2609,12 +2647,13 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
     name = "CreateRecommenderConfiguration",
     http_method = "POST",
     http_path = "/v1/recommenders",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_recommender_configuration_input(CreateRecommenderConfiguration = CreateRecommenderConfiguration)
   output <- .pinpoint$create_recommender_configuration_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3056,12 +3095,13 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
     name = "CreateSegment",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/segments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_segment_input(ApplicationId = ApplicationId, WriteSegmentRequest = WriteSegmentRequest)
   output <- .pinpoint$create_segment_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3122,12 +3162,13 @@ pinpoint_create_sms_template <- function(SMSTemplateRequest, TemplateName) {
     name = "CreateSmsTemplate",
     http_method = "POST",
     http_path = "/v1/templates/{template-name}/sms",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_sms_template_input(SMSTemplateRequest = SMSTemplateRequest, TemplateName = TemplateName)
   output <- .pinpoint$create_sms_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3189,12 +3230,13 @@ pinpoint_create_voice_template <- function(TemplateName, VoiceTemplateRequest) {
     name = "CreateVoiceTemplate",
     http_method = "POST",
     http_path = "/v1/templates/{template-name}/voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$create_voice_template_input(TemplateName = TemplateName, VoiceTemplateRequest = VoiceTemplateRequest)
   output <- .pinpoint$create_voice_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3250,12 +3292,13 @@ pinpoint_delete_adm_channel <- function(ApplicationId) {
     name = "DeleteAdmChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/adm",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_adm_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_adm_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3313,12 +3356,13 @@ pinpoint_delete_apns_channel <- function(ApplicationId) {
     name = "DeleteApnsChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/apns",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_apns_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_apns_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3376,12 +3420,13 @@ pinpoint_delete_apns_sandbox_channel <- function(ApplicationId) {
     name = "DeleteApnsSandboxChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/apns_sandbox",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_apns_sandbox_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_apns_sandbox_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3439,12 +3484,13 @@ pinpoint_delete_apns_voip_channel <- function(ApplicationId) {
     name = "DeleteApnsVoipChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/apns_voip",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_apns_voip_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_apns_voip_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3502,12 +3548,13 @@ pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
     name = "DeleteApnsVoipSandboxChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/apns_voip_sandbox",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_apns_voip_sandbox_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_apns_voip_sandbox_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3558,12 +3605,13 @@ pinpoint_delete_app <- function(ApplicationId) {
     name = "DeleteApp",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_app_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_app_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3620,12 +3668,13 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
     name = "DeleteBaiduChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/baidu",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_baidu_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_baidu_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3721,6 +3770,12 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -3972,6 +4027,12 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'       EmailMessage = list(
 #'         Body = "string",
 #'         FromAddress = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         HtmlBody = "string",
 #'         Title = "string"
 #'       ),
@@ -4158,12 +4219,13 @@ pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
     name = "DeleteCampaign",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/campaigns/{campaign-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_campaign_input(ApplicationId = ApplicationId, CampaignId = CampaignId)
   output <- .pinpoint$delete_campaign_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4225,12 +4287,13 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
     name = "DeleteEmailChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/email",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_email_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_email_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4303,12 +4366,13 @@ pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
     name = "DeleteEmailTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/email",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_email_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_email_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4399,12 +4463,13 @@ pinpoint_delete_endpoint <- function(ApplicationId, EndpointId) {
     name = "DeleteEndpoint",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/endpoints/{endpoint-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_endpoint_input(ApplicationId = ApplicationId, EndpointId = EndpointId)
   output <- .pinpoint$delete_endpoint_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4454,12 +4519,13 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
     name = "DeleteEventStream",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/eventstream",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_event_stream_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_event_stream_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4518,12 +4584,13 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
     name = "DeleteGcmChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/gcm",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_gcm_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_gcm_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4596,12 +4663,13 @@ pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
     name = "DeleteInAppTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/inapp",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_in_app_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_in_app_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5124,12 +5192,13 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
     name = "DeleteJourney",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_journey_input(ApplicationId = ApplicationId, JourneyId = JourneyId)
   output <- .pinpoint$delete_journey_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5202,12 +5271,13 @@ pinpoint_delete_push_template <- function(TemplateName, Version = NULL) {
     name = "DeletePushTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/push",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_push_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_push_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5266,12 +5336,13 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
     name = "DeleteRecommenderConfiguration",
     http_method = "DELETE",
     http_path = "/v1/recommenders/{recommender-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_recommender_configuration_input(RecommenderId = RecommenderId)
   output <- .pinpoint$delete_recommender_configuration_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5521,12 +5592,13 @@ pinpoint_delete_segment <- function(ApplicationId, SegmentId) {
     name = "DeleteSegment",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/segments/{segment-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_segment_input(ApplicationId = ApplicationId, SegmentId = SegmentId)
   output <- .pinpoint$delete_segment_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5586,12 +5658,13 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
     name = "DeleteSmsChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/sms",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_sms_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_sms_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5664,12 +5737,13 @@ pinpoint_delete_sms_template <- function(TemplateName, Version = NULL) {
     name = "DeleteSmsTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/sms",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_sms_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_sms_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5763,12 +5837,13 @@ pinpoint_delete_user_endpoints <- function(ApplicationId, UserId) {
     name = "DeleteUserEndpoints",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/users/{user-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_user_endpoints_input(ApplicationId = ApplicationId, UserId = UserId)
   output <- .pinpoint$delete_user_endpoints_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5824,12 +5899,13 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
     name = "DeleteVoiceChannel",
     http_method = "DELETE",
     http_path = "/v1/apps/{application-id}/channels/voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_voice_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_voice_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5902,12 +5978,13 @@ pinpoint_delete_voice_template <- function(TemplateName, Version = NULL) {
     name = "DeleteVoiceTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$delete_voice_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_voice_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5963,12 +6040,13 @@ pinpoint_get_adm_channel <- function(ApplicationId) {
     name = "GetAdmChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/adm",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_adm_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_adm_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6026,12 +6104,13 @@ pinpoint_get_apns_channel <- function(ApplicationId) {
     name = "GetApnsChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/apns",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_apns_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_apns_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6089,12 +6168,13 @@ pinpoint_get_apns_sandbox_channel <- function(ApplicationId) {
     name = "GetApnsSandboxChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/apns_sandbox",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_apns_sandbox_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_apns_sandbox_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6152,12 +6232,13 @@ pinpoint_get_apns_voip_channel <- function(ApplicationId) {
     name = "GetApnsVoipChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/apns_voip",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_apns_voip_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_apns_voip_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6215,12 +6296,13 @@ pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
     name = "GetApnsVoipSandboxChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/apns_voip_sandbox",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_apns_voip_sandbox_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_apns_voip_sandbox_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6271,12 +6353,13 @@ pinpoint_get_app <- function(ApplicationId) {
     name = "GetApp",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_app_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_app_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6383,12 +6466,13 @@ pinpoint_get_application_date_range_kpi <- function(ApplicationId, EndTime = NUL
     name = "GetApplicationDateRangeKpi",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/kpis/daterange/{kpi-name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_application_date_range_kpi_input(ApplicationId = ApplicationId, EndTime = EndTime, KpiName = KpiName, NextToken = NextToken, PageSize = PageSize, StartTime = StartTime)
   output <- .pinpoint$get_application_date_range_kpi_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6458,12 +6542,13 @@ pinpoint_get_application_settings <- function(ApplicationId) {
     name = "GetApplicationSettings",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_application_settings_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_application_settings_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6525,12 +6610,13 @@ pinpoint_get_apps <- function(PageSize = NULL, Token = NULL) {
     name = "GetApps",
     http_method = "GET",
     http_path = "/v1/apps",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_apps_input(PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_apps_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6587,12 +6673,13 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
     name = "GetBaiduChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/baidu",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_baidu_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_baidu_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6690,6 +6777,12 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -6941,6 +7034,12 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'       EmailMessage = list(
 #'         Body = "string",
 #'         FromAddress = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         HtmlBody = "string",
 #'         Title = "string"
 #'       ),
@@ -7127,12 +7226,13 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
     name = "GetCampaign",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/campaigns/{campaign-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_campaign_input(ApplicationId = ApplicationId, CampaignId = CampaignId)
   output <- .pinpoint$get_campaign_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7207,12 +7307,13 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
     name = "GetCampaignActivities",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/campaigns/{campaign-id}/activities",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_campaign_activities_input(ApplicationId = ApplicationId, CampaignId = CampaignId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_campaign_activities_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7322,12 +7423,13 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
     name = "GetCampaignDateRangeKpi",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/campaigns/{campaign-id}/kpis/daterange/{kpi-name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_campaign_date_range_kpi_input(ApplicationId = ApplicationId, CampaignId = CampaignId, EndTime = EndTime, KpiName = KpiName, NextToken = NextToken, PageSize = PageSize, StartTime = StartTime)
   output <- .pinpoint$get_campaign_date_range_kpi_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7426,6 +7528,12 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -7677,6 +7785,12 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'       EmailMessage = list(
 #'         Body = "string",
 #'         FromAddress = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         HtmlBody = "string",
 #'         Title = "string"
 #'       ),
@@ -7864,12 +7978,13 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
     name = "GetCampaignVersion",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_campaign_version_input(ApplicationId = ApplicationId, CampaignId = CampaignId, Version = Version)
   output <- .pinpoint$get_campaign_version_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7975,6 +8090,12 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'               EmailMessage = list(
 #'                 Body = "string",
 #'                 FromAddress = "string",
+#'                 Headers = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Value = "string"
+#'                   )
+#'                 ),
 #'                 HtmlBody = "string",
 #'                 Title = "string"
 #'               ),
@@ -8226,6 +8347,12 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -8417,12 +8544,13 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
     name = "GetCampaignVersions",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/campaigns/{campaign-id}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_campaign_versions_input(ApplicationId = ApplicationId, CampaignId = CampaignId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_campaign_versions_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8526,6 +8654,12 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'               EmailMessage = list(
 #'                 Body = "string",
 #'                 FromAddress = "string",
+#'                 Headers = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Value = "string"
+#'                   )
+#'                 ),
 #'                 HtmlBody = "string",
 #'                 Title = "string"
 #'               ),
@@ -8777,6 +8911,12 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -8967,12 +9107,13 @@ pinpoint_get_campaigns <- function(ApplicationId, PageSize = NULL, Token = NULL)
     name = "GetCampaigns",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/campaigns",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_campaigns_input(ApplicationId = ApplicationId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_campaigns_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9031,12 +9172,13 @@ pinpoint_get_channels <- function(ApplicationId) {
     name = "GetChannels",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_channels_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_channels_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9098,12 +9240,13 @@ pinpoint_get_email_channel <- function(ApplicationId) {
     name = "GetEmailChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/email",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_email_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_email_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9159,6 +9302,12 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #'     LastModifiedDate = "string",
 #'     RecommenderId = "string",
 #'     Subject = "string",
+#'     Headers = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -9189,12 +9338,13 @@ pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
     name = "GetEmailTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/email",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_email_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_email_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9287,12 +9437,13 @@ pinpoint_get_endpoint <- function(ApplicationId, EndpointId) {
     name = "GetEndpoint",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/endpoints/{endpoint-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_endpoint_input(ApplicationId = ApplicationId, EndpointId = EndpointId)
   output <- .pinpoint$get_endpoint_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9343,12 +9494,13 @@ pinpoint_get_event_stream <- function(ApplicationId) {
     name = "GetEventStream",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/eventstream",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_event_stream_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_event_stream_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9416,12 +9568,13 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
     name = "GetExportJob",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/jobs/export/{job-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_export_job_input(ApplicationId = ApplicationId, JobId = JobId)
   output <- .pinpoint$get_export_job_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9499,12 +9652,13 @@ pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
     name = "GetExportJobs",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/jobs/export",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_export_jobs_input(ApplicationId = ApplicationId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_export_jobs_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9563,12 +9717,13 @@ pinpoint_get_gcm_channel <- function(ApplicationId) {
     name = "GetGcmChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/gcm",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_gcm_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_gcm_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9640,12 +9795,13 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
     name = "GetImportJob",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/jobs/import/{job-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_import_job_input(ApplicationId = ApplicationId, JobId = JobId)
   output <- .pinpoint$get_import_job_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9727,12 +9883,13 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
     name = "GetImportJobs",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/jobs/import",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_import_jobs_input(ApplicationId = ApplicationId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_import_jobs_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9886,12 +10043,13 @@ pinpoint_get_in_app_messages <- function(ApplicationId, EndpointId) {
     name = "GetInAppMessages",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/endpoints/{endpoint-id}/inappmessages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_in_app_messages_input(ApplicationId = ApplicationId, EndpointId = EndpointId)
   output <- .pinpoint$get_in_app_messages_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10036,12 +10194,13 @@ pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
     name = "GetInAppTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/inapp",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_in_app_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_in_app_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10566,12 +10725,13 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
     name = "GetJourney",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_journey_input(ApplicationId = ApplicationId, JourneyId = JourneyId)
   output <- .pinpoint$get_journey_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10681,12 +10841,13 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
     name = "GetJourneyDateRangeKpi",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}/kpis/daterange/{kpi-name}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_journey_date_range_kpi_input(ApplicationId = ApplicationId, EndTime = EndTime, JourneyId = JourneyId, KpiName = KpiName, NextToken = NextToken, PageSize = PageSize, StartTime = StartTime)
   output <- .pinpoint$get_journey_date_range_kpi_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10753,12 +10914,13 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
     name = "GetJourneyExecutionActivityMetrics",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}/activities/{journey-activity-id}/execution-metrics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_journey_execution_activity_metrics_input(ApplicationId = ApplicationId, JourneyActivityId = JourneyActivityId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize)
   output <- .pinpoint$get_journey_execution_activity_metrics_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10821,12 +10983,13 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
     name = "GetJourneyExecutionMetrics",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}/execution-metrics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_journey_execution_metrics_input(ApplicationId = ApplicationId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize)
   output <- .pinpoint$get_journey_execution_metrics_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10908,12 +11071,13 @@ pinpoint_get_journey_run_execution_activity_metrics <- function(ApplicationId, J
     name = "GetJourneyRunExecutionActivityMetrics",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/activities/{journey-activity-id}/execution-metrics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_journey_run_execution_activity_metrics_input(ApplicationId = ApplicationId, JourneyActivityId = JourneyActivityId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize, RunId = RunId)
   output <- .pinpoint$get_journey_run_execution_activity_metrics_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10990,12 +11154,13 @@ pinpoint_get_journey_run_execution_metrics <- function(ApplicationId, JourneyId,
     name = "GetJourneyRunExecutionMetrics",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/execution-metrics",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_journey_run_execution_metrics_input(ApplicationId = ApplicationId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize, RunId = RunId)
   output <- .pinpoint$get_journey_run_execution_metrics_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11066,12 +11231,13 @@ pinpoint_get_journey_runs <- function(ApplicationId, JourneyId, PageSize = NULL,
     name = "GetJourneyRuns",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_journey_runs_input(ApplicationId = ApplicationId, JourneyId = JourneyId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_journey_runs_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11203,12 +11369,13 @@ pinpoint_get_push_template <- function(TemplateName, Version = NULL) {
     name = "GetPushTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/push",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_push_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_push_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11269,12 +11436,13 @@ pinpoint_get_recommender_configuration <- function(RecommenderId) {
     name = "GetRecommenderConfiguration",
     http_method = "GET",
     http_path = "/v1/recommenders/{recommender-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_recommender_configuration_input(RecommenderId = RecommenderId)
   output <- .pinpoint$get_recommender_configuration_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11343,12 +11511,13 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
     name = "GetRecommenderConfigurations",
     http_method = "GET",
     http_path = "/v1/recommenders",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_recommender_configurations_input(PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_recommender_configurations_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11600,12 +11769,13 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
     name = "GetSegment",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/segments/{segment-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_segment_input(ApplicationId = ApplicationId, SegmentId = SegmentId)
   output <- .pinpoint$get_segment_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11686,12 +11856,13 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
     name = "GetSegmentExportJobs",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/segments/{segment-id}/jobs/export",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_segment_export_jobs_input(ApplicationId = ApplicationId, PageSize = PageSize, SegmentId = SegmentId, Token = Token)
   output <- .pinpoint$get_segment_export_jobs_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11776,12 +11947,13 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
     name = "GetSegmentImportJobs",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/segments/{segment-id}/jobs/import",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_segment_import_jobs_input(ApplicationId = ApplicationId, PageSize = PageSize, SegmentId = SegmentId, Token = Token)
   output <- .pinpoint$get_segment_import_jobs_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12037,12 +12209,13 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
     name = "GetSegmentVersion",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/segments/{segment-id}/versions/{version}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_segment_version_input(ApplicationId = ApplicationId, SegmentId = SegmentId, Version = Version)
   output <- .pinpoint$get_segment_version_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12308,12 +12481,13 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
     name = "GetSegmentVersions",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/segments/{segment-id}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_segment_versions_input(ApplicationId = ApplicationId, PageSize = PageSize, SegmentId = SegmentId, Token = Token)
   output <- .pinpoint$get_segment_versions_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12575,12 +12749,13 @@ pinpoint_get_segments <- function(ApplicationId, PageSize = NULL, Token = NULL) 
     name = "GetSegments",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/segments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_segments_input(ApplicationId = ApplicationId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$get_segments_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12640,12 +12815,13 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
     name = "GetSmsChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/sms",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_sms_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_sms_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12729,12 +12905,13 @@ pinpoint_get_sms_template <- function(TemplateName, Version = NULL) {
     name = "GetSmsTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/sms",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_sms_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_sms_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12830,12 +13007,13 @@ pinpoint_get_user_endpoints <- function(ApplicationId, UserId) {
     name = "GetUserEndpoints",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/users/{user-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_user_endpoints_input(ApplicationId = ApplicationId, UserId = UserId)
   output <- .pinpoint$get_user_endpoints_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12891,12 +13069,13 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
     name = "GetVoiceChannel",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/channels/voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_voice_channel_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_voice_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12981,12 +13160,13 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
     name = "GetVoiceTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$get_voice_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_voice_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13521,12 +13701,13 @@ pinpoint_list_journeys <- function(ApplicationId, PageSize = NULL, Token = NULL)
     name = "ListJourneys",
     http_method = "GET",
     http_path = "/v1/apps/{application-id}/journeys",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$list_journeys_input(ApplicationId = ApplicationId, PageSize = PageSize, Token = Token)
   output <- .pinpoint$list_journeys_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13574,12 +13755,13 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/v1/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .pinpoint$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13653,12 +13835,13 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
     name = "ListTemplateVersions",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/{template-type}/versions",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$list_template_versions_input(NextToken = NextToken, PageSize = PageSize, TemplateName = TemplateName, TemplateType = TemplateType)
   output <- .pinpoint$list_template_versions_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13733,12 +13916,13 @@ pinpoint_list_templates <- function(NextToken = NULL, PageSize = NULL, Prefix = 
     name = "ListTemplates",
     http_method = "GET",
     http_path = "/v1/templates",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$list_templates_input(NextToken = NextToken, PageSize = PageSize, Prefix = Prefix, TemplateType = TemplateType)
   output <- .pinpoint$list_templates_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13798,12 +13982,13 @@ pinpoint_phone_number_validate <- function(NumberValidateRequest) {
     name = "PhoneNumberValidate",
     http_method = "POST",
     http_path = "/v1/phone/number/validate",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$phone_number_validate_input(NumberValidateRequest = NumberValidateRequest)
   output <- .pinpoint$phone_number_validate_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13860,12 +14045,13 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
     name = "PutEventStream",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/eventstream",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$put_event_stream_input(ApplicationId = ApplicationId, WriteEventStream = WriteEventStream)
   output <- .pinpoint$put_event_stream_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13997,12 +14183,13 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
     name = "PutEvents",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/events",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$put_events_input(ApplicationId = ApplicationId, EventsRequest = EventsRequest)
   output <- .pinpoint$put_events_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14075,12 +14262,13 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
     name = "RemoveAttributes",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/attributes/{attribute-type}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$remove_attributes_input(ApplicationId = ApplicationId, AttributeType = AttributeType, UpdateAttributesRequest = UpdateAttributesRequest)
   output <- .pinpoint$remove_attributes_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14286,6 +14474,12 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'           TextPart = list(
 #'             Charset = "string",
 #'             Data = "string"
+#'           ),
+#'           Headers = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
 #'           )
 #'         ),
 #'         Substitutions = list(
@@ -14384,12 +14578,13 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
     name = "SendMessages",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/messages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$send_messages_input(ApplicationId = ApplicationId, MessageRequest = MessageRequest)
   output <- .pinpoint$send_messages_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14468,12 +14663,13 @@ pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParame
     name = "SendOTPMessage",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/otp",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$send_otp_message_input(ApplicationId = ApplicationId, SendOTPMessageRequestParameters = SendOTPMessageRequestParameters)
   output <- .pinpoint$send_otp_message_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14641,6 +14837,12 @@ pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParame
 #'           TextPart = list(
 #'             Charset = "string",
 #'             Data = "string"
+#'           ),
+#'           Headers = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
 #'           )
 #'         ),
 #'         Substitutions = list(
@@ -14754,12 +14956,13 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
     name = "SendUsersMessages",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/users-messages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$send_users_messages_input(ApplicationId = ApplicationId, SendUsersMessageRequest = SendUsersMessageRequest)
   output <- .pinpoint$send_users_messages_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14804,12 +15007,13 @@ pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/v1/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$tag_resource_input(ResourceArn = ResourceArn, TagsModel = TagsModel)
   output <- .pinpoint$tag_resource_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14854,12 +15058,13 @@ pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/v1/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .pinpoint$untag_resource_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14921,12 +15126,13 @@ pinpoint_update_adm_channel <- function(ADMChannelRequest, ApplicationId) {
     name = "UpdateAdmChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/adm",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_adm_channel_input(ADMChannelRequest = ADMChannelRequest, ApplicationId = ApplicationId)
   output <- .pinpoint$update_adm_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14995,12 +15201,13 @@ pinpoint_update_apns_channel <- function(APNSChannelRequest, ApplicationId) {
     name = "UpdateApnsChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/apns",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_apns_channel_input(APNSChannelRequest = APNSChannelRequest, ApplicationId = ApplicationId)
   output <- .pinpoint$update_apns_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15070,12 +15277,13 @@ pinpoint_update_apns_sandbox_channel <- function(APNSSandboxChannelRequest, Appl
     name = "UpdateApnsSandboxChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/apns_sandbox",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_apns_sandbox_channel_input(APNSSandboxChannelRequest = APNSSandboxChannelRequest, ApplicationId = ApplicationId)
   output <- .pinpoint$update_apns_sandbox_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15144,12 +15352,13 @@ pinpoint_update_apns_voip_channel <- function(APNSVoipChannelRequest, Applicatio
     name = "UpdateApnsVoipChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/apns_voip",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_apns_voip_channel_input(APNSVoipChannelRequest = APNSVoipChannelRequest, ApplicationId = ApplicationId)
   output <- .pinpoint$update_apns_voip_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15219,12 +15428,13 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
     name = "UpdateApnsVoipSandboxChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/apns_voip_sandbox",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_apns_voip_sandbox_channel_input(APNSVoipSandboxChannelRequest = APNSVoipSandboxChannelRequest, ApplicationId = ApplicationId)
   output <- .pinpoint$update_apns_voip_sandbox_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15324,12 +15534,13 @@ pinpoint_update_application_settings <- function(ApplicationId, WriteApplication
     name = "UpdateApplicationSettings",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/settings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_application_settings_input(ApplicationId = ApplicationId, WriteApplicationSettingsRequest = WriteApplicationSettingsRequest)
   output <- .pinpoint$update_application_settings_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15392,12 +15603,13 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
     name = "UpdateBaiduChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/baidu",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_baidu_channel_input(ApplicationId = ApplicationId, BaiduChannelRequest = BaiduChannelRequest)
   output <- .pinpoint$update_baidu_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15495,6 +15707,12 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -15746,6 +15964,12 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       EmailMessage = list(
 #'         Body = "string",
 #'         FromAddress = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         HtmlBody = "string",
 #'         Title = "string"
 #'       ),
@@ -15991,6 +16215,12 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'           EmailMessage = list(
 #'             Body = "string",
 #'             FromAddress = "string",
+#'             Headers = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
 #'             HtmlBody = "string",
 #'             Title = "string"
 #'           ),
@@ -16231,6 +16461,12 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       EmailMessage = list(
 #'         Body = "string",
 #'         FromAddress = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         HtmlBody = "string",
 #'         Title = "string"
 #'       ),
@@ -16405,12 +16641,13 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
     name = "UpdateCampaign",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/campaigns/{campaign-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_campaign_input(ApplicationId = ApplicationId, CampaignId = CampaignId, WriteCampaignRequest = WriteCampaignRequest)
   output <- .pinpoint$update_campaign_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16481,12 +16718,13 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
     name = "UpdateEmailChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/email",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_email_channel_input(ApplicationId = ApplicationId, EmailChannelRequest = EmailChannelRequest)
   output <- .pinpoint$update_email_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16561,6 +16799,12 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #'     HtmlPart = "string",
 #'     RecommenderId = "string",
 #'     Subject = "string",
+#'     Headers = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -16582,12 +16826,13 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
     name = "UpdateEmailTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/email",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_email_template_input(CreateNewVersion = CreateNewVersion, EmailTemplateRequest = EmailTemplateRequest, TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$update_email_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16684,12 +16929,13 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
     name = "UpdateEndpoint",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/endpoints/{endpoint-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_endpoint_input(ApplicationId = ApplicationId, EndpointId = EndpointId, EndpointRequest = EndpointRequest)
   output <- .pinpoint$update_endpoint_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16790,12 +17036,13 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
     name = "UpdateEndpointsBatch",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/endpoints",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_endpoints_batch_input(ApplicationId = ApplicationId, EndpointBatchRequest = EndpointBatchRequest)
   output <- .pinpoint$update_endpoints_batch_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16861,12 +17108,13 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
     name = "UpdateGcmChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/gcm",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_gcm_channel_input(ApplicationId = ApplicationId, GCMChannelRequest = GCMChannelRequest)
   output <- .pinpoint$update_gcm_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -17021,12 +17269,13 @@ pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTempla
     name = "UpdateInAppTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/inapp",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_in_app_template_input(CreateNewVersion = CreateNewVersion, InAppTemplateRequest = InAppTemplateRequest, TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$update_in_app_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18024,12 +18273,13 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
     name = "UpdateJourney",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_journey_input(ApplicationId = ApplicationId, JourneyId = JourneyId, WriteJourneyRequest = WriteJourneyRequest)
   output <- .pinpoint$update_journey_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18557,12 +18807,13 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
     name = "UpdateJourneyState",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/journeys/{journey-id}/state",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_journey_state_input(ApplicationId = ApplicationId, JourneyId = JourneyId, JourneyStateRequest = JourneyStateRequest)
   output <- .pinpoint$update_journey_state_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18704,12 +18955,13 @@ pinpoint_update_push_template <- function(CreateNewVersion = NULL, PushNotificat
     name = "UpdatePushTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/push",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_push_template_input(CreateNewVersion = CreateNewVersion, PushNotificationTemplateRequest = PushNotificationTemplateRequest, TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$update_push_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -18783,12 +19035,13 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
     name = "UpdateRecommenderConfiguration",
     http_method = "PUT",
     http_path = "/v1/recommenders/{recommender-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_recommender_configuration_input(RecommenderId = RecommenderId, UpdateRecommenderConfiguration = UpdateRecommenderConfiguration)
   output <- .pinpoint$update_recommender_configuration_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19232,12 +19485,13 @@ pinpoint_update_segment <- function(ApplicationId, SegmentId, WriteSegmentReques
     name = "UpdateSegment",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/segments/{segment-id}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_segment_input(ApplicationId = ApplicationId, SegmentId = SegmentId, WriteSegmentRequest = WriteSegmentRequest)
   output <- .pinpoint$update_segment_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19303,12 +19557,13 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
     name = "UpdateSmsChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/sms",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_sms_channel_input(ApplicationId = ApplicationId, SMSChannelRequest = SMSChannelRequest)
   output <- .pinpoint$update_sms_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19402,12 +19657,13 @@ pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateReq
     name = "UpdateSmsTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/sms",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_sms_template_input(CreateNewVersion = CreateNewVersion, SMSTemplateRequest = SMSTemplateRequest, TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$update_sms_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19464,12 +19720,13 @@ pinpoint_update_template_active_version <- function(TemplateActiveVersionRequest
     name = "UpdateTemplateActiveVersion",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/{template-type}/active-version",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_template_active_version_input(TemplateActiveVersionRequest = TemplateActiveVersionRequest, TemplateName = TemplateName, TemplateType = TemplateType)
   output <- .pinpoint$update_template_active_version_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19529,12 +19786,13 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
     name = "UpdateVoiceChannel",
     http_method = "PUT",
     http_path = "/v1/apps/{application-id}/channels/voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_voice_channel_input(ApplicationId = ApplicationId, VoiceChannelRequest = VoiceChannelRequest)
   output <- .pinpoint$update_voice_channel_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19629,12 +19887,13 @@ pinpoint_update_voice_template <- function(CreateNewVersion = NULL, TemplateName
     name = "UpdateVoiceTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/voice",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$update_voice_template_input(CreateNewVersion = CreateNewVersion, TemplateName = TemplateName, Version = Version, VoiceTemplateRequest = VoiceTemplateRequest)
   output <- .pinpoint$update_voice_template_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -19685,12 +19944,13 @@ pinpoint_verify_otp_message <- function(ApplicationId, VerifyOTPMessageRequestPa
     name = "VerifyOTPMessage",
     http_method = "POST",
     http_path = "/v1/apps/{application-id}/verify-otp",
+    host_prefix = "",
     paginator = list()
   )
   input <- .pinpoint$verify_otp_message_input(ApplicationId = ApplicationId, VerifyOTPMessageRequestParameters = VerifyOTPMessageRequestParameters)
   output <- .pinpoint$verify_otp_message_output()
   config <- get_config()
-  svc <- .pinpoint$service(config)
+  svc <- .pinpoint$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -216,7 +216,7 @@ opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = "OpsWorksCM_V2016_11_01"
 )
 
-.opsworkscm$service <- function(config = list()) {
+.opsworkscm$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.opsworkscm$metadata, handlers, config)
+  new_service(.opsworkscm$metadata, handlers, config, op)
 }

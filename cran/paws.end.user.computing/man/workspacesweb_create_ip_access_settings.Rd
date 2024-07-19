@@ -35,7 +35,7 @@ the Amazon Web Services SDK.}
 
 \item{ipRules}{[required] The IP rules of the IP access settings.}
 
-\item{tags}{The tags to add to the browser settings resource. A tag is a key-value
+\item{tags}{The tags to add to the IP access settings resource. A tag is a key-value
 pair.}
 }
 \description{

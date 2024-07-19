@@ -198,7 +198,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
   target_prefix = "RedshiftServerless"
 )
 
-.redshiftserverless$service <- function(config = list()) {
+.redshiftserverless$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.redshiftserverless$metadata, handlers, config)
+  new_service(.redshiftserverless$metadata, handlers, config, op)
 }

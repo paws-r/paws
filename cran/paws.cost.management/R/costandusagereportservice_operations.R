@@ -21,12 +21,13 @@ costandusagereportservice_delete_report_definition <- function(ReportName) {
     name = "DeleteReportDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costandusagereportservice$delete_report_definition_input(ReportName = ReportName)
   output <- .costandusagereportservice$delete_report_definition_output()
   config <- get_config()
-  svc <- .costandusagereportservice$service(config)
+  svc <- .costandusagereportservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -52,12 +53,13 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
     name = "DescribeReportDefinitions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costandusagereportservice$describe_report_definitions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .costandusagereportservice$describe_report_definitions_output()
   config <- get_config()
-  svc <- .costandusagereportservice$service(config)
+  svc <- .costandusagereportservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -82,12 +84,13 @@ costandusagereportservice_list_tags_for_resource <- function(ReportName) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costandusagereportservice$list_tags_for_resource_input(ReportName = ReportName)
   output <- .costandusagereportservice$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .costandusagereportservice$service(config)
+  svc <- .costandusagereportservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -112,12 +115,13 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
     name = "ModifyReportDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costandusagereportservice$modify_report_definition_input(ReportName = ReportName, ReportDefinition = ReportDefinition)
   output <- .costandusagereportservice$modify_report_definition_output()
   config <- get_config()
-  svc <- .costandusagereportservice$service(config)
+  svc <- .costandusagereportservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -143,12 +147,13 @@ costandusagereportservice_put_report_definition <- function(ReportDefinition, Ta
     name = "PutReportDefinition",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costandusagereportservice$put_report_definition_input(ReportDefinition = ReportDefinition, Tags = Tags)
   output <- .costandusagereportservice$put_report_definition_output()
   config <- get_config()
-  svc <- .costandusagereportservice$service(config)
+  svc <- .costandusagereportservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -174,12 +179,13 @@ costandusagereportservice_tag_resource <- function(ReportName, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costandusagereportservice$tag_resource_input(ReportName = ReportName, Tags = Tags)
   output <- .costandusagereportservice$tag_resource_output()
   config <- get_config()
-  svc <- .costandusagereportservice$service(config)
+  svc <- .costandusagereportservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -205,12 +211,13 @@ costandusagereportservice_untag_resource <- function(ReportName, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .costandusagereportservice$untag_resource_input(ReportName = ReportName, TagKeys = TagKeys)
   output <- .costandusagereportservice$untag_resource_output()
   config <- get_config()
-  svc <- .costandusagereportservice$service(config)
+  svc <- .costandusagereportservice$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

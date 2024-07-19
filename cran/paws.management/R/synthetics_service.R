@@ -168,7 +168,7 @@ synthetics <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.synthetics$service <- function(config = list()) {
+.synthetics$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.synthetics$metadata, handlers, config)
+  new_service(.synthetics$metadata, handlers, config, op)
 }

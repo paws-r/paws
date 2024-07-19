@@ -25,12 +25,13 @@ organizations_accept_handshake <- function(HandshakeId) {
     name = "AcceptHandshake",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$accept_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$accept_handshake_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -79,12 +80,13 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
     name = "AttachPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$attach_policy_input(PolicyId = PolicyId, TargetId = TargetId)
   output <- .organizations$attach_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -115,12 +117,13 @@ organizations_cancel_handshake <- function(HandshakeId) {
     name = "CancelHandshake",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$cancel_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$cancel_handshake_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -145,12 +148,13 @@ organizations_close_account <- function(AccountId) {
     name = "CloseAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$close_account_input(AccountId = AccountId)
   output <- .organizations$close_account_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -251,12 +255,13 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
     name = "CreateAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$create_account_input(Email = Email, AccountName = AccountName, RoleName = RoleName, IamUserAccessToBilling = IamUserAccessToBilling, Tags = Tags)
   output <- .organizations$create_account_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -374,12 +379,13 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
     name = "CreateGovCloudAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$create_gov_cloud_account_input(Email = Email, AccountName = AccountName, RoleName = RoleName, IamUserAccessToBilling = IamUserAccessToBilling, Tags = Tags)
   output <- .organizations$create_gov_cloud_account_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -420,12 +426,13 @@ organizations_create_organization <- function(FeatureSet = NULL) {
     name = "CreateOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$create_organization_input(FeatureSet = FeatureSet)
   output <- .organizations$create_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -472,12 +479,13 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
     name = "CreateOrganizationalUnit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$create_organizational_unit_input(ParentId = ParentId, Name = Name, Tags = Tags)
   output <- .organizations$create_organizational_unit_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -535,12 +543,13 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
     name = "CreatePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$create_policy_input(Content = Content, Description = Description, Name = Name, Type = Type, Tags = Tags)
   output <- .organizations$create_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -571,12 +580,13 @@ organizations_decline_handshake <- function(HandshakeId) {
     name = "DeclineHandshake",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$decline_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$decline_handshake_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -600,12 +610,13 @@ organizations_delete_organization <- function() {
     name = "DeleteOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$delete_organization_input()
   output <- .organizations$delete_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -638,12 +649,13 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
     name = "DeleteOrganizationalUnit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$delete_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId)
   output <- .organizations$delete_organizational_unit_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -674,12 +686,13 @@ organizations_delete_policy <- function(PolicyId) {
     name = "DeletePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$delete_policy_input(PolicyId = PolicyId)
   output <- .organizations$delete_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -703,12 +716,13 @@ organizations_delete_resource_policy <- function() {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$delete_resource_policy_input()
   output <- .organizations$delete_resource_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -742,12 +756,13 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
     name = "DeregisterDelegatedAdministrator",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$deregister_delegated_administrator_input(AccountId = AccountId, ServicePrincipal = ServicePrincipal)
   output <- .organizations$deregister_delegated_administrator_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -778,12 +793,13 @@ organizations_describe_account <- function(AccountId) {
     name = "DescribeAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_account_input(AccountId = AccountId)
   output <- .organizations$describe_account_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -817,12 +833,13 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
     name = "DescribeCreateAccountStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_create_account_status_input(CreateAccountRequestId = CreateAccountRequestId)
   output <- .organizations$describe_create_account_status_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -857,12 +874,13 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
     name = "DescribeEffectivePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_effective_policy_input(PolicyType = PolicyType, TargetId = TargetId)
   output <- .organizations$describe_effective_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -896,12 +914,13 @@ organizations_describe_handshake <- function(HandshakeId) {
     name = "DescribeHandshake",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$describe_handshake_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -926,12 +945,13 @@ organizations_describe_organization <- function() {
     name = "DescribeOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_organization_input()
   output <- .organizations$describe_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -964,12 +984,13 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
     name = "DescribeOrganizationalUnit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId)
   output <- .organizations$describe_organizational_unit_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1001,12 +1022,13 @@ organizations_describe_policy <- function(PolicyId) {
     name = "DescribePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_policy_input(PolicyId = PolicyId)
   output <- .organizations$describe_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1030,12 +1052,13 @@ organizations_describe_resource_policy <- function() {
     name = "DescribeResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$describe_resource_policy_input()
   output <- .organizations$describe_resource_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1085,12 +1108,13 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
     name = "DetachPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$detach_policy_input(PolicyId = PolicyId, TargetId = TargetId)
   output <- .organizations$detach_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1118,12 +1142,13 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
     name = "DisableAWSServiceAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$disable_aws_service_access_input(ServicePrincipal = ServicePrincipal)
   output <- .organizations$disable_aws_service_access_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1163,12 +1188,13 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
     name = "DisablePolicyType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$disable_policy_type_input(RootId = RootId, PolicyType = PolicyType)
   output <- .organizations$disable_policy_type_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1195,12 +1221,13 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
     name = "EnableAWSServiceAccess",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$enable_aws_service_access_input(ServicePrincipal = ServicePrincipal)
   output <- .organizations$enable_aws_service_access_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1224,12 +1251,13 @@ organizations_enable_all_features <- function() {
     name = "EnableAllFeatures",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$enable_all_features_input()
   output <- .organizations$enable_all_features_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1269,12 +1297,13 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
     name = "EnablePolicyType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$enable_policy_type_input(RootId = RootId, PolicyType = PolicyType)
   output <- .organizations$enable_policy_type_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1336,12 +1365,13 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
     name = "InviteAccountToOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$invite_account_to_organization_input(Target = Target, Notes = Notes, Tags = Tags)
   output <- .organizations$invite_account_to_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1365,12 +1395,13 @@ organizations_leave_organization <- function() {
     name = "LeaveOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$leave_organization_input()
   output <- .organizations$leave_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1409,12 +1440,13 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
     name = "ListAWSServiceAccessForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_aws_service_access_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_aws_service_access_for_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1452,12 +1484,13 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListAccounts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1498,12 +1531,13 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
     name = "ListAccountsForParent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_accounts_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_for_parent_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1556,12 +1590,13 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
     name = "ListChildren",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_children_input(ParentId = ParentId, ChildType = ChildType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_children_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1602,12 +1637,13 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
     name = "ListCreateAccountStatus",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_create_account_status_input(States = States, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_create_account_status_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1651,12 +1687,13 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
     name = "ListDelegatedAdministrators",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedAdministrators")
   )
   input <- .organizations$list_delegated_administrators_input(ServicePrincipal = ServicePrincipal, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_administrators_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1697,12 +1734,13 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
     name = "ListDelegatedServicesForAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedServices")
   )
   input <- .organizations$list_delegated_services_for_account_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_services_for_account_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1748,12 +1786,13 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
     name = "ListHandshakesForAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_handshakes_for_account_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_account_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1799,12 +1838,13 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
     name = "ListHandshakesForOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_handshakes_for_organization_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1856,12 +1896,13 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
     name = "ListOrganizationalUnitsForParent",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_organizational_units_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_organizational_units_for_parent_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1912,12 +1953,13 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
     name = "ListParents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_parents_input(ChildId = ChildId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_parents_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1966,12 +2008,13 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_policies_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2035,12 +2078,13 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
     name = "ListPoliciesForTarget",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_policies_for_target_input(TargetId = TargetId, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_for_target_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2078,12 +2122,13 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListRoots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_roots_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_roots_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2125,12 +2170,13 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
   )
   input <- .organizations$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken)
   output <- .organizations$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2175,12 +2221,13 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
     name = "ListTargetsForPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_targets_for_policy_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_targets_for_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2234,12 +2281,13 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
     name = "MoveAccount",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$move_account_input(AccountId = AccountId, SourceParentId = SourceParentId, DestinationParentId = DestinationParentId)
   output <- .organizations$move_account_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2278,12 +2326,13 @@ organizations_put_resource_policy <- function(Content, Tags = NULL) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$put_resource_policy_input(Content = Content, Tags = Tags)
   output <- .organizations$put_resource_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2311,12 +2360,13 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
     name = "RegisterDelegatedAdministrator",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$register_delegated_administrator_input(AccountId = AccountId, ServicePrincipal = ServicePrincipal)
   output <- .organizations$register_delegated_administrator_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2344,12 +2394,13 @@ organizations_remove_account_from_organization <- function(AccountId) {
     name = "RemoveAccountFromOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$remove_account_from_organization_input(AccountId = AccountId)
   output <- .organizations$remove_account_from_organization_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2393,12 +2444,13 @@ organizations_tag_resource <- function(ResourceId, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$tag_resource_input(ResourceId = ResourceId, Tags = Tags)
   output <- .organizations$tag_resource_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2436,12 +2488,13 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$untag_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .organizations$untag_resource_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2479,12 +2532,13 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
     name = "UpdateOrganizationalUnit",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$update_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId, Name = Name)
   output <- .organizations$update_organizational_unit_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2528,12 +2582,13 @@ organizations_update_policy <- function(PolicyId, Name = NULL, Description = NUL
     name = "UpdatePolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .organizations$update_policy_input(PolicyId = PolicyId, Name = Name, Description = Description, Content = Content)
   output <- .organizations$update_policy_output()
   config <- get_config()
-  svc <- .organizations$service(config)
+  svc <- .organizations$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

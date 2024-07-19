@@ -68,8 +68,8 @@ in the \emph{Amazon S3 User Guide}.
 
 \item{EncodingType}{Encoding type used by Amazon S3 to encode object keys in the response.
 If using \code{url}, non-ASCII characters used in an object's key name will
-be URL encoded. For example, the object test_file(3).png will appear as
-test_file\%283\%29.png.}
+be URL encoded. For example, the object \verb{test_file(3).png} will appear
+as \verb{test_file\%283\%29.png}.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. By default,
 the action returns up to 1,000 key names. The response might contain

@@ -8,7 +8,8 @@ network}
 vpclattice_put_resource_policy(policy, resourceArn)
 }
 \arguments{
-\item{policy}{[required] An IAM policy.}
+\item{policy}{[required] An IAM policy. The policy string in JSON must not contain newlines or
+blank lines.}
 
 \item{resourceArn}{[required] The ID or Amazon Resource Name (ARN) of the service network or service
 for which the policy is created.}

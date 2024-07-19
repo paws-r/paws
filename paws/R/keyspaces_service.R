@@ -172,7 +172,7 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
   target_prefix = "KeyspacesService"
 )
 
-.keyspaces$service <- function(config = list()) {
+.keyspaces$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.keyspaces$metadata, handlers, config)
+  new_service(.keyspaces$metadata, handlers, config, op)
 }

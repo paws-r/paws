@@ -2,7 +2,7 @@
 % Please edit documentation in R/codegurusecurity_operations.R
 \name{codegurusecurity_get_metrics_summary}
 \alias{codegurusecurity_get_metrics_summary}
-\title{Returns top level metrics about an account from a specified date,
+\title{Returns a summary of metrics for an account from a specified date,
 including number of open findings, the categories with most findings,
 the scans with most open findings, and scans with most open critical
 findings}
@@ -11,12 +11,10 @@ codegurusecurity_get_metrics_summary(date)
 }
 \arguments{
 \item{date}{[required] The date you want to retrieve summary metrics from, rounded to the
-nearest day. The date must be within the past two years since metrics
-data is only stored for two years. If a date outside of this range is
-passed, the response will be empty.}
+nearest day. The date must be within the past two years.}
 }
 \description{
-Returns top level metrics about an account from a specified date, including number of open findings, the categories with most findings, the scans with most open findings, and scans with most open critical findings.
+Returns a summary of metrics for an account from a specified date, including number of open findings, the categories with most findings, the scans with most open findings, and scans with most open critical findings.
 
 See \url{https://www.paws-r-sdk.com/docs/codegurusecurity_get_metrics_summary/} for full documentation.
 }

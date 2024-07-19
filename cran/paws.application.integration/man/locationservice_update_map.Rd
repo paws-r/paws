@@ -5,22 +5,22 @@
 \title{Updates the specified properties of a given map resource}
 \usage{
 locationservice_update_map(
-  ConfigurationUpdate = NULL,
-  Description = NULL,
   MapName,
-  PricingPlan = NULL
+  PricingPlan = NULL,
+  Description = NULL,
+  ConfigurationUpdate = NULL
 )
 }
 \arguments{
-\item{ConfigurationUpdate}{Updates the parts of the map configuration that can be updated,
-including the political view.}
-
-\item{Description}{Updates the description for the map resource.}
-
 \item{MapName}{[required] The name of the map resource to update.}
 
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
+
+\item{Description}{Updates the description for the map resource.}
+
+\item{ConfigurationUpdate}{Updates the parts of the map configuration that can be updated,
+including the political view.}
 }
 \description{
 Updates the specified properties of a given map resource.

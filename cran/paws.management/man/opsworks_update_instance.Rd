@@ -34,18 +34,23 @@ the \strong{API Name} column of the \strong{Available Instance Types} table.}
 \item{AutoScalingType}{For load-based or time-based instances, the type. Windows stacks can use
 only time-based instances.}
 
-\item{Hostname}{The instance host name.}
+\item{Hostname}{The instance host name. The following are character limits for instance
+host names.
+\itemize{
+\item Linux-based instances: 63 characters
+\item Windows-based instances: 15 characters
+}}
 
 \item{Os}{The instance's operating system, which must be set to one of the
 following. You cannot update an instance that is using a custom AMI.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
+\verb{Amazon Linux 2}, \verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
 \verb{Amazon Linux 2017.03}, \verb{Amazon Linux 2016.09},
 \verb{Amazon Linux 2016.03}, \verb{Amazon Linux 2015.09}, or
 \verb{Amazon Linux 2015.03}.
-\item A supported Ubuntu operating system, such as \verb{Ubuntu 16.04 LTS},
-\verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
+\item A supported Ubuntu operating system, such as \verb{Ubuntu 18.04 LTS},
+\verb{Ubuntu 16.04 LTS}, \verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
 \item \verb{CentOS Linux 7}
 \item \verb{Red Hat Enterprise Linux 7}
 \item A supported Windows operating system, such as
@@ -55,14 +60,13 @@ following. You cannot update an instance that is using a custom AMI.
 \verb{Microsoft Windows Server 2012 R2 with SQL Server Web}.
 }
 
-For more information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
+Not all operating systems are supported with all versions of Chef. For
+more information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{OpsWorks Stacks Operating Systems}.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to \code{Custom}, you must use the AmiId parameter to specify the
-custom AMI that you want to use. For more information about supported
-operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{Operating Systems}.
-For more information about how to use custom AMIs with OpsWorks, see
-\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
+custom AMI that you want to use. For more information about how to use
+custom AMIs with OpsWorks, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 
 You can specify a different Linux operating system for the updated
 stack, but you cannot change from Linux to Windows or Windows to Linux.}
@@ -92,15 +96,14 @@ your instances have the latest security updates.}
 
 \item{EbsOptimized}{This property cannot be updated.}
 
-\item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
+\item{AgentVersion}{The default OpsWorks Stacks agent version. You have the following
 options:
 \itemize{
 \item \code{INHERIT} - Use the stack's default agent version setting.
 \item \emph{version_number} - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version,
 you must edit the instance configuration and specify a new version.
-AWS OpsWorks Stacks then automatically installs that version on the
-instance.
+OpsWorks Stacks installs that version on the instance.
 }
 
 The default setting is \code{INHERIT}. To specify an agent version, you must

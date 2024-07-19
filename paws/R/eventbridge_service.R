@@ -165,7 +165,8 @@ NULL
 #'  \link[=eventbridge_update_api_destination]{update_api_destination} \tab Updates an API destination\cr
 #'  \link[=eventbridge_update_archive]{update_archive} \tab Updates the specified archive\cr
 #'  \link[=eventbridge_update_connection]{update_connection} \tab Updates settings for a connection\cr
-#'  \link[=eventbridge_update_endpoint]{update_endpoint} \tab Update an existing endpoint
+#'  \link[=eventbridge_update_endpoint]{update_endpoint} \tab Update an existing endpoint\cr
+#'  \link[=eventbridge_update_event_bus]{update_event_bus} \tab Updates the specified event bus
 #' }
 #'
 #' @return
@@ -205,7 +206,7 @@ eventbridge <- function(config = list(), credentials = list(), endpoint = NULL, 
   target_prefix = "AWSEvents"
 )
 
-.eventbridge$service <- function(config = list()) {
+.eventbridge$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.eventbridge$metadata, handlers, config)
+  new_service(.eventbridge$metadata, handlers, config, op)
 }

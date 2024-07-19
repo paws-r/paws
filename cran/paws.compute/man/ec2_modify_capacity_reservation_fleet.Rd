@@ -21,7 +21,7 @@ that you assign to each instance type used by the Fleet determine the
 number of instances for which the Fleet reserves capacity. Both values
 are based on units that make sense for your workload. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#target-capacity}{Total target capacity}
-in the Amazon EC2 User Guide.}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{EndDate}{The date and time at which the Capacity Reservation Fleet expires. When
 the Capacity Reservation Fleet expires, its state changes to \code{expired}

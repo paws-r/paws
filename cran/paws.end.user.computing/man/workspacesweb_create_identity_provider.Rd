@@ -10,7 +10,8 @@ workspacesweb_create_identity_provider(
   identityProviderDetails,
   identityProviderName,
   identityProviderType,
-  portalArn
+  portalArn,
+  tags = NULL
 )
 }
 \arguments{
@@ -79,6 +80,9 @@ oidc_issuer key}
 \item{identityProviderType}{[required] The identity provider type.}
 
 \item{portalArn}{[required] The ARN of the web portal.}
+
+\item{tags}{The tags to add to the identity provider resource. A tag is a key-value
+pair.}
 }
 \description{
 Creates an identity provider resource that is then associated with a web portal.

@@ -7,6 +7,9 @@
 datazone_create_environment(
   description = NULL,
   domainIdentifier,
+  environmentAccountIdentifier = NULL,
+  environmentAccountRegion = NULL,
+  environmentBlueprintIdentifier = NULL,
   environmentProfileIdentifier,
   glossaryTerms = NULL,
   name,
@@ -19,6 +22,12 @@ datazone_create_environment(
 
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which the environment is
 created.}
+
+\item{environmentAccountIdentifier}{The ID of the account in which the environment is being created.}
+
+\item{environmentAccountRegion}{The region of the account in which the environment is being created.}
+
+\item{environmentBlueprintIdentifier}{The ID of the blueprint with which the environment is being created.}
 
 \item{environmentProfileIdentifier}{[required] The identifier of the environment profile that is used to create this
 Amazon DataZone environment.}

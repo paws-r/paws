@@ -57,12 +57,13 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
     name = "AssociateDelegateToResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$associate_delegate_to_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, EntityId = EntityId)
   output <- .workmail$associate_delegate_to_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -123,12 +124,13 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
     name = "AssociateMemberToGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$associate_member_to_group_input(OrganizationId = OrganizationId, GroupId = GroupId, MemberId = MemberId)
   output <- .workmail$associate_member_to_group_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -176,12 +178,13 @@ workmail_assume_impersonation_role <- function(OrganizationId, ImpersonationRole
     name = "AssumeImpersonationRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$assume_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$assume_impersonation_role_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -225,12 +228,13 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
     name = "CancelMailboxExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$cancel_mailbox_export_job_input(ClientToken = ClientToken, JobId = JobId, OrganizationId = OrganizationId)
   output <- .workmail$cancel_mailbox_export_job_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -271,12 +275,13 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
     name = "CreateAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_alias_input(OrganizationId = OrganizationId, EntityId = EntityId, Alias = Alias)
   output <- .workmail$create_alias_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -336,12 +341,13 @@ workmail_create_availability_configuration <- function(ClientToken = NULL, Organ
     name = "CreateAvailabilityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_availability_configuration_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$create_availability_configuration_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -390,12 +396,13 @@ workmail_create_group <- function(OrganizationId, Name, HiddenFromGlobalAddressL
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_group_input(OrganizationId = OrganizationId, Name = Name, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_group_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -467,12 +474,13 @@ workmail_create_impersonation_role <- function(ClientToken = NULL, OrganizationI
     name = "CreateImpersonationRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_impersonation_role_input(ClientToken = ClientToken, OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, Rules = Rules)
   output <- .workmail$create_impersonation_role_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -564,12 +572,13 @@ workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToke
     name = "CreateMobileDeviceAccessRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_mobile_device_access_rule_input(OrganizationId = OrganizationId, ClientToken = ClientToken, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
   output <- .workmail$create_mobile_device_access_rule_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -650,12 +659,13 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
     name = "CreateOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_organization_input(DirectoryId = DirectoryId, Alias = Alias, ClientToken = ClientToken, Domains = Domains, KmsKeyArn = KmsKeyArn, EnableInteroperability = EnableInteroperability)
   output <- .workmail$create_organization_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -709,12 +719,13 @@ workmail_create_resource <- function(OrganizationId, Name, Type, Description = N
     name = "CreateResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_resource_input(OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -779,12 +790,13 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password = N
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$create_user_input(OrganizationId = OrganizationId, Name = Name, DisplayName = DisplayName, Password = Password, Role = Role, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_user_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -827,12 +839,13 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
     name = "DeleteAccessControlRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_access_control_rule_input(OrganizationId = OrganizationId, Name = Name)
   output <- .workmail$delete_access_control_rule_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -878,12 +891,13 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
     name = "DeleteAlias",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_alias_input(OrganizationId = OrganizationId, EntityId = EntityId, Alias = Alias)
   output <- .workmail$delete_alias_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -925,12 +939,13 @@ workmail_delete_availability_configuration <- function(OrganizationId, DomainNam
     name = "DeleteAvailabilityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$delete_availability_configuration_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -968,12 +983,13 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
     name = "DeleteEmailMonitoringConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_email_monitoring_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$delete_email_monitoring_configuration_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1020,12 +1036,13 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
     name = "DeleteGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_group_input(OrganizationId = OrganizationId, GroupId = GroupId)
   output <- .workmail$delete_group_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1064,12 +1081,13 @@ workmail_delete_impersonation_role <- function(OrganizationId, ImpersonationRole
     name = "DeleteImpersonationRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$delete_impersonation_role_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1133,12 +1151,13 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
     name = "DeleteMailboxPermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, GranteeId = GranteeId)
   output <- .workmail$delete_mailbox_permissions_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1195,12 +1214,13 @@ workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId
     name = "DeleteMobileDeviceAccessOverride",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
   output <- .workmail$delete_mobile_device_access_override_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1246,12 +1266,13 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
     name = "DeleteMobileDeviceAccessRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId)
   output <- .workmail$delete_mobile_device_access_rule_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1309,12 +1330,13 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
     name = "DeleteOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory, ForceDelete = ForceDelete)
   output <- .workmail$delete_organization_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1361,12 +1383,13 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
     name = "DeleteResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId)
   output <- .workmail$delete_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1405,12 +1428,13 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
     name = "DeleteRetentionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_retention_policy_input(OrganizationId = OrganizationId, Id = Id)
   output <- .workmail$delete_retention_policy_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1463,12 +1487,13 @@ workmail_delete_user <- function(OrganizationId, UserId) {
     name = "DeleteUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$delete_user_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$delete_user_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1522,12 +1547,13 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
     name = "DeregisterFromWorkMail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$deregister_from_work_mail_input(OrganizationId = OrganizationId, EntityId = EntityId)
   output <- .workmail$deregister_from_work_mail_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1570,12 +1596,13 @@ workmail_deregister_mail_domain <- function(OrganizationId, DomainName) {
     name = "DeregisterMailDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$deregister_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$deregister_mail_domain_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1621,12 +1648,13 @@ workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
     name = "DescribeEmailMonitoringConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_email_monitoring_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_email_monitoring_configuration_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1672,12 +1700,13 @@ workmail_describe_entity <- function(OrganizationId, Email) {
     name = "DescribeEntity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_entity_input(OrganizationId = OrganizationId, Email = Email)
   output <- .workmail$describe_entity_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1741,12 +1770,13 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
     name = "DescribeGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_group_input(OrganizationId = OrganizationId, GroupId = GroupId)
   output <- .workmail$describe_group_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1788,12 +1818,13 @@ workmail_describe_inbound_dmarc_settings <- function(OrganizationId) {
     name = "DescribeInboundDmarcSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_inbound_dmarc_settings_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_inbound_dmarc_settings_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1852,12 +1883,13 @@ workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
     name = "DescribeMailboxExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_mailbox_export_job_input(JobId = JobId, OrganizationId = OrganizationId)
   output <- .workmail$describe_mailbox_export_job_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1913,12 +1945,13 @@ workmail_describe_organization <- function(OrganizationId) {
     name = "DescribeOrganization",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_organization_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_organization_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1989,12 +2022,13 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
     name = "DescribeResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId)
   output <- .workmail$describe_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2078,12 +2112,13 @@ workmail_describe_user <- function(OrganizationId, UserId) {
     name = "DescribeUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$describe_user_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$describe_user_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2146,12 +2181,13 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
     name = "DisassociateDelegateFromResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$disassociate_delegate_from_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, EntityId = EntityId)
   output <- .workmail$disassociate_delegate_from_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2213,12 +2249,13 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
     name = "DisassociateMemberFromGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$disassociate_member_from_group_input(OrganizationId = OrganizationId, GroupId = GroupId, MemberId = MemberId)
   output <- .workmail$disassociate_member_from_group_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2279,12 +2316,13 @@ workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action
     name = "GetAccessControlEffect",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_access_control_effect_input(OrganizationId = OrganizationId, IpAddress = IpAddress, Action = Action, UserId = UserId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$get_access_control_effect_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2336,12 +2374,13 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
     name = "GetDefaultRetentionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_default_retention_policy_input(OrganizationId = OrganizationId)
   output <- .workmail$get_default_retention_policy_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2408,12 +2447,13 @@ workmail_get_impersonation_role <- function(OrganizationId, ImpersonationRoleId)
     name = "GetImpersonationRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$get_impersonation_role_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2476,12 +2516,13 @@ workmail_get_impersonation_role_effect <- function(OrganizationId, Impersonation
     name = "GetImpersonationRoleEffect",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_impersonation_role_effect_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, TargetUser = TargetUser)
   output <- .workmail$get_impersonation_role_effect_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2537,12 +2578,13 @@ workmail_get_mail_domain <- function(OrganizationId, DomainName) {
     name = "GetMailDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$get_mail_domain_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2598,12 +2640,13 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
     name = "GetMailboxDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_mailbox_details_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$get_mailbox_details_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2664,12 +2707,13 @@ workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType 
     name = "GetMobileDeviceAccessEffect",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_mobile_device_access_effect_input(OrganizationId = OrganizationId, DeviceType = DeviceType, DeviceModel = DeviceModel, DeviceOperatingSystem = DeviceOperatingSystem, DeviceUserAgent = DeviceUserAgent)
   output <- .workmail$get_mobile_device_access_effect_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2736,12 +2780,13 @@ workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, D
     name = "GetMobileDeviceAccessOverride",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$get_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
   output <- .workmail$get_mobile_device_access_override_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2819,12 +2864,13 @@ workmail_list_access_control_rules <- function(OrganizationId) {
     name = "ListAccessControlRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$list_access_control_rules_input(OrganizationId = OrganizationId)
   output <- .workmail$list_access_control_rules_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2878,12 +2924,13 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_aliases_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_aliases_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2953,12 +3000,13 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
     name = "ListAvailabilityConfigurations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AvailabilityConfigurations")
   )
   input <- .workmail$list_availability_configurations_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_availability_configurations_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3034,12 +3082,13 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
     name = "ListGroupMembers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_group_members_input(OrganizationId = OrganizationId, GroupId = GroupId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_group_members_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3107,12 +3156,13 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_groups_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_groups_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3182,12 +3232,13 @@ workmail_list_groups_for_entity <- function(OrganizationId, EntityId, Filters = 
     name = "ListGroupsForEntity",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_groups_for_entity_input(OrganizationId = OrganizationId, EntityId = EntityId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_groups_for_entity_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3248,12 +3299,13 @@ workmail_list_impersonation_roles <- function(OrganizationId, NextToken = NULL, 
     name = "ListImpersonationRoles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_impersonation_roles_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_impersonation_roles_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3306,12 +3358,13 @@ workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextTo
     name = "ListMailDomains",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mail_domains_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_mail_domains_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3376,12 +3429,13 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
     name = "ListMailboxExportJobs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mailbox_export_jobs_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_export_jobs_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3454,12 +3508,13 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
     name = "ListMailboxPermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_permissions_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3536,12 +3591,13 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
     name = "ListMobileDeviceAccessOverrides",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mobile_device_access_overrides_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mobile_device_access_overrides_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3622,12 +3678,13 @@ workmail_list_mobile_device_access_rules <- function(OrganizationId) {
     name = "ListMobileDeviceAccessRules",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$list_mobile_device_access_rules_input(OrganizationId = OrganizationId)
   output <- .workmail$list_mobile_device_access_rules_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3681,12 +3738,13 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListOrganizations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_organizations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_organizations_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3753,12 +3811,13 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
     name = "ListResourceDelegates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_resource_delegates_input(OrganizationId = OrganizationId, ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_resource_delegates_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3828,12 +3887,13 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
     name = "ListResources",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_resources_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_resources_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3880,12 +3940,13 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .workmail$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3956,12 +4017,13 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_users_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_users_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4046,12 +4108,13 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
     name = "PutAccessControlRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$put_access_control_rule_input(Name = Name, Effect = Effect, Description = Description, IpRanges = IpRanges, NotIpRanges = NotIpRanges, Actions = Actions, NotActions = NotActions, UserIds = UserIds, NotUserIds = NotUserIds, OrganizationId = OrganizationId, ImpersonationRoleIds = ImpersonationRoleIds, NotImpersonationRoleIds = NotImpersonationRoleIds)
   output <- .workmail$put_access_control_rule_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4098,12 +4161,13 @@ workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn,
     name = "PutEmailMonitoringConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$put_email_monitoring_configuration_input(OrganizationId = OrganizationId, RoleArn = RoleArn, LogGroupArn = LogGroupArn)
   output <- .workmail$put_email_monitoring_configuration_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4142,12 +4206,13 @@ workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
     name = "PutInboundDmarcSettings",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$put_inbound_dmarc_settings_input(OrganizationId = OrganizationId, Enforced = Enforced)
   output <- .workmail$put_inbound_dmarc_settings_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4225,12 +4290,13 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
     name = "PutMailboxPermissions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$put_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, GranteeId = GranteeId, PermissionValues = PermissionValues)
   output <- .workmail$put_mailbox_permissions_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4287,12 +4353,13 @@ workmail_put_mobile_device_access_override <- function(OrganizationId, UserId, D
     name = "PutMobileDeviceAccessOverride",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$put_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, Effect = Effect, Description = Description)
   output <- .workmail$put_mobile_device_access_override_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4344,12 +4411,13 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
     name = "PutRetentionPolicy",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$put_retention_policy_input(OrganizationId = OrganizationId, Id = Id, Name = Name, Description = Description, FolderConfigurations = FolderConfigurations)
   output <- .workmail$put_retention_policy_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4394,12 +4462,13 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
     name = "RegisterMailDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$register_mail_domain_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$register_mail_domain_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4463,12 +4532,13 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
     name = "RegisterToWorkMail",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$register_to_work_mail_input(OrganizationId = OrganizationId, EntityId = EntityId, Email = Email)
   output <- .workmail$register_to_work_mail_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4510,12 +4580,13 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
     name = "ResetPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$reset_password_input(OrganizationId = OrganizationId, UserId = UserId, Password = Password)
   output <- .workmail$reset_password_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4592,12 +4663,13 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
     name = "StartMailboxExportJob",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$start_mailbox_export_job_input(ClientToken = ClientToken, OrganizationId = OrganizationId, EntityId = EntityId, Description = Description, RoleArn = RoleArn, KmsKeyArn = KmsKeyArn, S3BucketName = S3BucketName, S3Prefix = S3Prefix)
   output <- .workmail$start_mailbox_export_job_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4643,12 +4715,13 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .workmail$tag_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4718,12 +4791,13 @@ workmail_test_availability_configuration <- function(OrganizationId, DomainName 
     name = "TestAvailabilityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$test_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$test_availability_configuration_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4766,12 +4840,13 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .workmail$untag_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4830,12 +4905,13 @@ workmail_update_availability_configuration <- function(OrganizationId, DomainNam
     name = "UpdateAvailabilityConfiguration",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$update_availability_configuration_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4876,12 +4952,13 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
     name = "UpdateDefaultMailDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_default_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$update_default_mail_domain_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4933,12 +5010,13 @@ workmail_update_group <- function(OrganizationId, GroupId, HiddenFromGlobalAddre
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_group_input(OrganizationId = OrganizationId, GroupId = GroupId, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$update_group_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5000,12 +5078,13 @@ workmail_update_impersonation_role <- function(OrganizationId, ImpersonationRole
     name = "UpdateImpersonationRole",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, Name = Name, Type = Type, Description = Description, Rules = Rules)
   output <- .workmail$update_impersonation_role_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5059,12 +5138,13 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
     name = "UpdateMailboxQuota",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_mailbox_quota_input(OrganizationId = OrganizationId, UserId = UserId, MailboxQuota = MailboxQuota)
   output <- .workmail$update_mailbox_quota_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5151,12 +5231,13 @@ workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDevi
     name = "UpdateMobileDeviceAccessRule",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
   output <- .workmail$update_mobile_device_access_rule_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5212,12 +5293,13 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
     name = "UpdatePrimaryEmailAddress",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_primary_email_address_input(OrganizationId = OrganizationId, EntityId = EntityId, Email = Email)
   output <- .workmail$update_primary_email_address_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5284,12 +5366,13 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
     name = "UpdateResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, Name = Name, BookingOptions = BookingOptions, Description = Description, Type = Type, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$update_resource_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5375,12 +5458,13 @@ workmail_update_user <- function(OrganizationId, UserId, Role = NULL, DisplayNam
     name = "UpdateUser",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .workmail$update_user_input(OrganizationId = OrganizationId, UserId = UserId, Role = Role, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, Initials = Initials, Telephone = Telephone, Street = Street, JobTitle = JobTitle, City = City, Company = Company, ZipCode = ZipCode, Department = Department, Country = Country, Office = Office)
   output <- .workmail$update_user_output()
   config <- get_config()
-  svc <- .workmail$service(config)
+  svc <- .workmail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

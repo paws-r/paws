@@ -221,7 +221,7 @@ frauddetector <- function(config = list(), credentials = list(), endpoint = NULL
   target_prefix = "AWSHawksNestServiceFacade"
 )
 
-.frauddetector$service <- function(config = list()) {
+.frauddetector$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.frauddetector$metadata, handlers, config)
+  new_service(.frauddetector$metadata, handlers, config, op)
 }

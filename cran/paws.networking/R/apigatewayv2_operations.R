@@ -62,12 +62,13 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfig
     name = "CreateApi",
     http_method = "POST",
     http_path = "/v2/apis",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_api_input(ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, DisableExecuteApiEndpoint = DisableExecuteApiEndpoint, Name = Name, ProtocolType = ProtocolType, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Tags = Tags, Target = Target, Version = Version)
   output <- .apigatewayv2$create_api_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -94,12 +95,13 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
     name = "CreateApiMapping",
     http_method = "POST",
     http_path = "/v2/domainnames/{domainName}/apimappings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_api_mapping_input(ApiId = ApiId, ApiMappingKey = ApiMappingKey, DomainName = DomainName, Stage = Stage)
   output <- .apigatewayv2$create_api_mapping_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -186,12 +188,13 @@ apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
     name = "CreateAuthorizer",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/authorizers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_authorizer_input(ApiId = ApiId, AuthorizerCredentialsArn = AuthorizerCredentialsArn, AuthorizerPayloadFormatVersion = AuthorizerPayloadFormatVersion, AuthorizerResultTtlInSeconds = AuthorizerResultTtlInSeconds, AuthorizerType = AuthorizerType, AuthorizerUri = AuthorizerUri, EnableSimpleResponses = EnableSimpleResponses, IdentitySource = IdentitySource, IdentityValidationExpression = IdentityValidationExpression, JwtConfiguration = JwtConfiguration, Name = Name)
   output <- .apigatewayv2$create_authorizer_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -217,12 +220,13 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
     name = "CreateDeployment",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/deployments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_deployment_input(ApiId = ApiId, Description = Description, StageName = StageName)
   output <- .apigatewayv2$create_deployment_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -249,12 +253,13 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
     name = "CreateDomainName",
     http_method = "POST",
     http_path = "/v2/domainnames",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication, Tags = Tags)
   output <- .apigatewayv2$create_domain_name_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -410,12 +415,13 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
     name = "CreateIntegration",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationMethod = IntegrationMethod, IntegrationSubtype = IntegrationSubtype, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, ResponseParameters = ResponseParameters, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis, TlsConfig = TlsConfig)
   output <- .apigatewayv2$create_integration_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -471,12 +477,13 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
     name = "CreateIntegrationResponse",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_integration_response_input(ApiId = ApiId, ContentHandlingStrategy = ContentHandlingStrategy, IntegrationId = IntegrationId, IntegrationResponseKey = IntegrationResponseKey, ResponseParameters = ResponseParameters, ResponseTemplates = ResponseTemplates, TemplateSelectionExpression = TemplateSelectionExpression)
   output <- .apigatewayv2$create_integration_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -505,12 +512,13 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
     name = "CreateModel",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/models",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_model_input(ApiId = ApiId, ContentType = ContentType, Description = Description, Name = Name, Schema = Schema)
   output <- .apigatewayv2$create_model_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -554,12 +562,13 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
     name = "CreateRoute",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/routes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_route_input(ApiId = ApiId, ApiKeyRequired = ApiKeyRequired, AuthorizationScopes = AuthorizationScopes, AuthorizationType = AuthorizationType, AuthorizerId = AuthorizerId, ModelSelectionExpression = ModelSelectionExpression, OperationName = OperationName, RequestModels = RequestModels, RequestParameters = RequestParameters, RouteKey = RouteKey, RouteResponseSelectionExpression = RouteResponseSelectionExpression, Target = Target)
   output <- .apigatewayv2$create_route_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -589,12 +598,13 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
     name = "CreateRouteResponse",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/routes/{routeId}/routeresponses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_route_response_input(ApiId = ApiId, ModelSelectionExpression = ModelSelectionExpression, ResponseModels = ResponseModels, ResponseParameters = ResponseParameters, RouteId = RouteId, RouteResponseKey = RouteResponseKey)
   output <- .apigatewayv2$create_route_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -633,12 +643,13 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
     name = "CreateStage",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/stages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, AutoDeploy = AutoDeploy, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables, Tags = Tags)
   output <- .apigatewayv2$create_stage_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -665,12 +676,13 @@ apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetId
     name = "CreateVpcLink",
     http_method = "POST",
     http_path = "/v2/vpclinks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$create_vpc_link_input(Name = Name, SecurityGroupIds = SecurityGroupIds, SubnetIds = SubnetIds, Tags = Tags)
   output <- .apigatewayv2$create_vpc_link_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -696,12 +708,13 @@ apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
     name = "DeleteAccessLogSettings",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/stages/{stageName}/accesslogsettings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_access_log_settings_input(ApiId = ApiId, StageName = StageName)
   output <- .apigatewayv2$delete_access_log_settings_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -725,12 +738,13 @@ apigatewayv2_delete_api <- function(ApiId) {
     name = "DeleteApi",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_api_input(ApiId = ApiId)
   output <- .apigatewayv2$delete_api_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -755,12 +769,13 @@ apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
     name = "DeleteApiMapping",
     http_method = "DELETE",
     http_path = "/v2/domainnames/{domainName}/apimappings/{apiMappingId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_api_mapping_input(ApiMappingId = ApiMappingId, DomainName = DomainName)
   output <- .apigatewayv2$delete_api_mapping_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -785,12 +800,13 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
     name = "DeleteAuthorizer",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/authorizers/{authorizerId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_authorizer_input(ApiId = ApiId, AuthorizerId = AuthorizerId)
   output <- .apigatewayv2$delete_authorizer_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -814,12 +830,13 @@ apigatewayv2_delete_cors_configuration <- function(ApiId) {
     name = "DeleteCorsConfiguration",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/cors",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_cors_configuration_input(ApiId = ApiId)
   output <- .apigatewayv2$delete_cors_configuration_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -844,12 +861,13 @@ apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
     name = "DeleteDeployment",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/deployments/{deploymentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_deployment_input(ApiId = ApiId, DeploymentId = DeploymentId)
   output <- .apigatewayv2$delete_deployment_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -873,12 +891,13 @@ apigatewayv2_delete_domain_name <- function(DomainName) {
     name = "DeleteDomainName",
     http_method = "DELETE",
     http_path = "/v2/domainnames/{domainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_domain_name_input(DomainName = DomainName)
   output <- .apigatewayv2$delete_domain_name_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -903,12 +922,13 @@ apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
     name = "DeleteIntegration",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_integration_input(ApiId = ApiId, IntegrationId = IntegrationId)
   output <- .apigatewayv2$delete_integration_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -934,12 +954,13 @@ apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, Integ
     name = "DeleteIntegrationResponse",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses/{integrationResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_integration_response_input(ApiId = ApiId, IntegrationId = IntegrationId, IntegrationResponseId = IntegrationResponseId)
   output <- .apigatewayv2$delete_integration_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -964,12 +985,13 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
     name = "DeleteModel",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/models/{modelId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_model_input(ApiId = ApiId, ModelId = ModelId)
   output <- .apigatewayv2$delete_model_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -994,12 +1016,13 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
     name = "DeleteRoute",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/routes/{routeId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_route_input(ApiId = ApiId, RouteId = RouteId)
   output <- .apigatewayv2$delete_route_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1025,12 +1048,13 @@ apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterK
     name = "DeleteRouteRequestParameter",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/routes/{routeId}/requestparameters/{requestParameterKey}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_route_request_parameter_input(ApiId = ApiId, RequestParameterKey = RequestParameterKey, RouteId = RouteId)
   output <- .apigatewayv2$delete_route_request_parameter_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1056,12 +1080,13 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
     name = "DeleteRouteResponse",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/routes/{routeId}/routeresponses/{routeResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_route_response_input(ApiId = ApiId, RouteId = RouteId, RouteResponseId = RouteResponseId)
   output <- .apigatewayv2$delete_route_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1088,12 +1113,13 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
     name = "DeleteRouteSettings",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/stages/{stageName}/routesettings/{routeKey}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_route_settings_input(ApiId = ApiId, RouteKey = RouteKey, StageName = StageName)
   output <- .apigatewayv2$delete_route_settings_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1119,12 +1145,13 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
     name = "DeleteStage",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/stages/{stageName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_stage_input(ApiId = ApiId, StageName = StageName)
   output <- .apigatewayv2$delete_stage_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1148,12 +1175,13 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
     name = "DeleteVpcLink",
     http_method = "DELETE",
     http_path = "/v2/vpclinks/{vpcLinkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$delete_vpc_link_input(VpcLinkId = VpcLinkId)
   output <- .apigatewayv2$delete_vpc_link_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1189,12 +1217,13 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
     name = "ExportApi",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/exports/{specification}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$export_api_input(ApiId = ApiId, ExportVersion = ExportVersion, IncludeExtensions = IncludeExtensions, OutputType = OutputType, Specification = Specification, StageName = StageName)
   output <- .apigatewayv2$export_api_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1221,12 +1250,13 @@ apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
     name = "ResetAuthorizersCache",
     http_method = "DELETE",
     http_path = "/v2/apis/{apiId}/stages/{stageName}/cache/authorizers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$reset_authorizers_cache_input(ApiId = ApiId, StageName = StageName)
   output <- .apigatewayv2$reset_authorizers_cache_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1250,12 +1280,13 @@ apigatewayv2_get_api <- function(ApiId) {
     name = "GetApi",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_api_input(ApiId = ApiId)
   output <- .apigatewayv2$get_api_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1280,12 +1311,13 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
     name = "GetApiMapping",
     http_method = "GET",
     http_path = "/v2/domainnames/{domainName}/apimappings/{apiMappingId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_api_mapping_input(ApiMappingId = ApiMappingId, DomainName = DomainName)
   output <- .apigatewayv2$get_api_mapping_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1312,12 +1344,13 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
     name = "GetApiMappings",
     http_method = "GET",
     http_path = "/v2/domainnames/{domainName}/apimappings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_api_mappings_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_api_mappings_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1343,12 +1376,13 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
     name = "GetApis",
     http_method = "GET",
     http_path = "/v2/apis",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_apis_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_apis_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1373,12 +1407,13 @@ apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
     name = "GetAuthorizer",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/authorizers/{authorizerId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_authorizer_input(ApiId = ApiId, AuthorizerId = AuthorizerId)
   output <- .apigatewayv2$get_authorizer_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1405,12 +1440,13 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
     name = "GetAuthorizers",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/authorizers",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_authorizers_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_authorizers_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1435,12 +1471,13 @@ apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
     name = "GetDeployment",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/deployments/{deploymentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_deployment_input(ApiId = ApiId, DeploymentId = DeploymentId)
   output <- .apigatewayv2$get_deployment_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1467,12 +1504,13 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
     name = "GetDeployments",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/deployments",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_deployments_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_deployments_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1496,12 +1534,13 @@ apigatewayv2_get_domain_name <- function(DomainName) {
     name = "GetDomainName",
     http_method = "GET",
     http_path = "/v2/domainnames/{domainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_domain_name_input(DomainName = DomainName)
   output <- .apigatewayv2$get_domain_name_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1527,12 +1566,13 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
     name = "GetDomainNames",
     http_method = "GET",
     http_path = "/v2/domainnames",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_domain_names_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_domain_names_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1557,12 +1597,13 @@ apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
     name = "GetIntegration",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_integration_input(ApiId = ApiId, IntegrationId = IntegrationId)
   output <- .apigatewayv2$get_integration_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1588,12 +1629,13 @@ apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, Integrat
     name = "GetIntegrationResponse",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses/{integrationResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_integration_response_input(ApiId = ApiId, IntegrationId = IntegrationId, IntegrationResponseId = IntegrationResponseId)
   output <- .apigatewayv2$get_integration_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1621,12 +1663,13 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
     name = "GetIntegrationResponses",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_integration_responses_input(ApiId = ApiId, IntegrationId = IntegrationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_integration_responses_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1653,12 +1696,13 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
     name = "GetIntegrations",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/integrations",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_integrations_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_integrations_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1683,12 +1727,13 @@ apigatewayv2_get_model <- function(ApiId, ModelId) {
     name = "GetModel",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/models/{modelId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_model_input(ApiId = ApiId, ModelId = ModelId)
   output <- .apigatewayv2$get_model_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1713,12 +1758,13 @@ apigatewayv2_get_model_template <- function(ApiId, ModelId) {
     name = "GetModelTemplate",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/models/{modelId}/template",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_model_template_input(ApiId = ApiId, ModelId = ModelId)
   output <- .apigatewayv2$get_model_template_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1745,12 +1791,13 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
     name = "GetModels",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/models",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_models_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_models_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1775,12 +1822,13 @@ apigatewayv2_get_route <- function(ApiId, RouteId) {
     name = "GetRoute",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/routes/{routeId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_route_input(ApiId = ApiId, RouteId = RouteId)
   output <- .apigatewayv2$get_route_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1806,12 +1854,13 @@ apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
     name = "GetRouteResponse",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/routes/{routeId}/routeresponses/{routeResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_route_response_input(ApiId = ApiId, RouteId = RouteId, RouteResponseId = RouteResponseId)
   output <- .apigatewayv2$get_route_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1839,12 +1888,13 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
     name = "GetRouteResponses",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/routes/{routeId}/routeresponses",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_route_responses_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken, RouteId = RouteId)
   output <- .apigatewayv2$get_route_responses_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1871,12 +1921,13 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
     name = "GetRoutes",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/routes",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_routes_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_routes_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1902,12 +1953,13 @@ apigatewayv2_get_stage <- function(ApiId, StageName) {
     name = "GetStage",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/stages/{stageName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_stage_input(ApiId = ApiId, StageName = StageName)
   output <- .apigatewayv2$get_stage_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1934,12 +1986,13 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
     name = "GetStages",
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/stages",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_stages_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_stages_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1963,12 +2016,13 @@ apigatewayv2_get_tags <- function(ResourceArn) {
     name = "GetTags",
     http_method = "GET",
     http_path = "/v2/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_tags_input(ResourceArn = ResourceArn)
   output <- .apigatewayv2$get_tags_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1992,12 +2046,13 @@ apigatewayv2_get_vpc_link <- function(VpcLinkId) {
     name = "GetVpcLink",
     http_method = "GET",
     http_path = "/v2/vpclinks/{vpcLinkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_vpc_link_input(VpcLinkId = VpcLinkId)
   output <- .apigatewayv2$get_vpc_link_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2023,12 +2078,13 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
     name = "GetVpcLinks",
     http_method = "GET",
     http_path = "/v2/vpclinks",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$get_vpc_links_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .apigatewayv2$get_vpc_links_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2060,12 +2116,13 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
     name = "ImportApi",
     http_method = "PUT",
     http_path = "/v2/apis",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$import_api_input(Basepath = Basepath, Body = Body, FailOnWarnings = FailOnWarnings)
   output <- .apigatewayv2$import_api_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2098,12 +2155,13 @@ apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnin
     name = "ReimportApi",
     http_method = "PUT",
     http_path = "/v2/apis/{apiId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$reimport_api_input(ApiId = ApiId, Basepath = Basepath, Body = Body, FailOnWarnings = FailOnWarnings)
   output <- .apigatewayv2$reimport_api_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2129,12 +2187,13 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/v2/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .apigatewayv2$tag_resource_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2159,12 +2218,13 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/v2/tags/{resource-arn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .apigatewayv2$untag_resource_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2226,12 +2286,13 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Cor
     name = "UpdateApi",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_api_input(ApiId = ApiId, ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, DisableExecuteApiEndpoint = DisableExecuteApiEndpoint, Name = Name, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Target = Target, Version = Version)
   output <- .apigatewayv2$update_api_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2259,12 +2320,13 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
     name = "UpdateApiMapping",
     http_method = "PATCH",
     http_path = "/v2/domainnames/{domainName}/apimappings/{apiMappingId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_api_mapping_input(ApiId = ApiId, ApiMappingId = ApiMappingId, ApiMappingKey = ApiMappingKey, DomainName = DomainName, Stage = Stage)
   output <- .apigatewayv2$update_api_mapping_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2351,12 +2413,13 @@ apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
     name = "UpdateAuthorizer",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/authorizers/{authorizerId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_authorizer_input(ApiId = ApiId, AuthorizerCredentialsArn = AuthorizerCredentialsArn, AuthorizerId = AuthorizerId, AuthorizerPayloadFormatVersion = AuthorizerPayloadFormatVersion, AuthorizerResultTtlInSeconds = AuthorizerResultTtlInSeconds, AuthorizerType = AuthorizerType, AuthorizerUri = AuthorizerUri, EnableSimpleResponses = EnableSimpleResponses, IdentitySource = IdentitySource, IdentityValidationExpression = IdentityValidationExpression, JwtConfiguration = JwtConfiguration, Name = Name)
   output <- .apigatewayv2$update_authorizer_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2382,12 +2445,13 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
     name = "UpdateDeployment",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/deployments/{deploymentId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_deployment_input(ApiId = ApiId, DeploymentId = DeploymentId, Description = Description)
   output <- .apigatewayv2$update_deployment_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2413,12 +2477,13 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
     name = "UpdateDomainName",
     http_method = "PATCH",
     http_path = "/v2/domainnames/{domainName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication)
   output <- .apigatewayv2$update_domain_name_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2576,12 +2641,13 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
     name = "UpdateIntegration",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationId = IntegrationId, IntegrationMethod = IntegrationMethod, IntegrationSubtype = IntegrationSubtype, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, ResponseParameters = ResponseParameters, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis, TlsConfig = TlsConfig)
   output <- .apigatewayv2$update_integration_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2638,12 +2704,13 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
     name = "UpdateIntegrationResponse",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses/{integrationResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_integration_response_input(ApiId = ApiId, ContentHandlingStrategy = ContentHandlingStrategy, IntegrationId = IntegrationId, IntegrationResponseId = IntegrationResponseId, IntegrationResponseKey = IntegrationResponseKey, ResponseParameters = ResponseParameters, ResponseTemplates = ResponseTemplates, TemplateSelectionExpression = TemplateSelectionExpression)
   output <- .apigatewayv2$update_integration_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2673,12 +2740,13 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
     name = "UpdateModel",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/models/{modelId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_model_input(ApiId = ApiId, ContentType = ContentType, Description = Description, ModelId = ModelId, Name = Name, Schema = Schema)
   output <- .apigatewayv2$update_model_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2723,12 +2791,13 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
     name = "UpdateRoute",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/routes/{routeId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_route_input(ApiId = ApiId, ApiKeyRequired = ApiKeyRequired, AuthorizationScopes = AuthorizationScopes, AuthorizationType = AuthorizationType, AuthorizerId = AuthorizerId, ModelSelectionExpression = ModelSelectionExpression, OperationName = OperationName, RequestModels = RequestModels, RequestParameters = RequestParameters, RouteId = RouteId, RouteKey = RouteKey, RouteResponseSelectionExpression = RouteResponseSelectionExpression, Target = Target)
   output <- .apigatewayv2$update_route_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2759,12 +2828,13 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
     name = "UpdateRouteResponse",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/routes/{routeId}/routeresponses/{routeResponseId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_route_response_input(ApiId = ApiId, ModelSelectionExpression = ModelSelectionExpression, ResponseModels = ResponseModels, ResponseParameters = ResponseParameters, RouteId = RouteId, RouteResponseId = RouteResponseId, RouteResponseKey = RouteResponseKey)
   output <- .apigatewayv2$update_route_response_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2803,12 +2873,13 @@ apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
     name = "UpdateStage",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/stages/{stageName}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, AutoDeploy = AutoDeploy, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables)
   output <- .apigatewayv2$update_stage_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2833,12 +2904,13 @@ apigatewayv2_update_vpc_link <- function(Name = NULL, VpcLinkId) {
     name = "UpdateVpcLink",
     http_method = "PATCH",
     http_path = "/v2/vpclinks/{vpcLinkId}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .apigatewayv2$update_vpc_link_input(Name = Name, VpcLinkId = VpcLinkId)
   output <- .apigatewayv2$update_vpc_link_output()
   config <- get_config()
-  svc <- .apigatewayv2$service(config)
+  svc <- .apigatewayv2$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

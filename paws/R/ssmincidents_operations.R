@@ -86,12 +86,13 @@ ssmincidents_batch_get_incident_findings <- function(findingIds, incidentRecordA
     name = "BatchGetIncidentFindings",
     http_method = "POST",
     http_path = "/batchGetIncidentFindings",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$batch_get_incident_findings_input(findingIds = findingIds, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$batch_get_incident_findings_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -147,12 +148,13 @@ ssmincidents_create_replication_set <- function(clientToken = NULL, regions, tag
     name = "CreateReplicationSet",
     http_method = "POST",
     http_path = "/createReplicationSet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$create_replication_set_input(clientToken = clientToken, regions = regions, tags = tags)
   output <- .ssmincidents$create_replication_set_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -269,12 +271,13 @@ ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL
     name = "CreateResponsePlan",
     http_method = "POST",
     http_path = "/createResponsePlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$create_response_plan_input(actions = actions, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplate = incidentTemplate, integrations = integrations, name = name, tags = tags)
   output <- .ssmincidents$create_response_plan_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -353,12 +356,13 @@ ssmincidents_create_timeline_event <- function(clientToken = NULL, eventData, ev
     name = "CreateTimelineEvent",
     http_method = "POST",
     http_path = "/createTimelineEvent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$create_timeline_event_input(clientToken = clientToken, eventData = eventData, eventReferences = eventReferences, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$create_timeline_event_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -395,12 +399,13 @@ ssmincidents_delete_incident_record <- function(arn) {
     name = "DeleteIncidentRecord",
     http_method = "POST",
     http_path = "/deleteIncidentRecord",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$delete_incident_record_input(arn = arn)
   output <- .ssmincidents$delete_incident_record_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -438,12 +443,13 @@ ssmincidents_delete_replication_set <- function(arn) {
     name = "DeleteReplicationSet",
     http_method = "POST",
     http_path = "/deleteReplicationSet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$delete_replication_set_input(arn = arn)
   output <- .ssmincidents$delete_replication_set_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -485,12 +491,13 @@ ssmincidents_delete_resource_policy <- function(policyId, resourceArn) {
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/deleteResourcePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$delete_resource_policy_input(policyId = policyId, resourceArn = resourceArn)
   output <- .ssmincidents$delete_resource_policy_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -529,12 +536,13 @@ ssmincidents_delete_response_plan <- function(arn) {
     name = "DeleteResponsePlan",
     http_method = "POST",
     http_path = "/deleteResponsePlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$delete_response_plan_input(arn = arn)
   output <- .ssmincidents$delete_response_plan_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -576,12 +584,13 @@ ssmincidents_delete_timeline_event <- function(eventId, incidentRecordArn) {
     name = "DeleteTimelineEvent",
     http_method = "POST",
     http_path = "/deleteTimelineEvent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$delete_timeline_event_input(eventId = eventId, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$delete_timeline_event_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -662,12 +671,13 @@ ssmincidents_get_incident_record <- function(arn) {
     name = "GetIncidentRecord",
     http_method = "GET",
     http_path = "/getIncidentRecord",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$get_incident_record_input(arn = arn)
   output <- .ssmincidents$get_incident_record_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -732,12 +742,13 @@ ssmincidents_get_replication_set <- function(arn) {
     name = "GetReplicationSet",
     http_method = "GET",
     http_path = "/getReplicationSet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$get_replication_set_input(arn = arn)
   output <- .ssmincidents$get_replication_set_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -793,12 +804,13 @@ ssmincidents_get_resource_policies <- function(maxResults = NULL, nextToken = NU
     name = "GetResourcePolicies",
     http_method = "POST",
     http_path = "/getResourcePolicies",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resourcePolicies")
   )
   input <- .ssmincidents$get_resource_policies_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .ssmincidents$get_resource_policies_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -896,12 +908,13 @@ ssmincidents_get_response_plan <- function(arn) {
     name = "GetResponsePlan",
     http_method = "GET",
     http_path = "/getResponsePlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$get_response_plan_input(arn = arn)
   output <- .ssmincidents$get_response_plan_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -964,12 +977,13 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
     name = "GetTimelineEvent",
     http_method = "GET",
     http_path = "/getTimelineEvent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$get_timeline_event_input(eventId = eventId, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$get_timeline_event_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1031,12 +1045,13 @@ ssmincidents_list_incident_findings <- function(incidentRecordArn, maxResults = 
     name = "ListIncidentFindings",
     http_method = "POST",
     http_path = "/listIncidentFindings",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .ssmincidents$list_incident_findings_input(incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_incident_findings_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1145,12 +1160,13 @@ ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL
     name = "ListIncidentRecords",
     http_method = "POST",
     http_path = "/listIncidentRecords",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "incidentRecordSummaries")
   )
   input <- .ssmincidents$list_incident_records_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_incident_records_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1218,12 +1234,13 @@ ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL
     name = "ListRelatedItems",
     http_method = "POST",
     http_path = "/listRelatedItems",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "relatedItems")
   )
   input <- .ssmincidents$list_related_items_input(incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_related_items_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1271,12 +1288,13 @@ ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NU
     name = "ListReplicationSets",
     http_method = "POST",
     http_path = "/listReplicationSets",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "replicationSetArns")
   )
   input <- .ssmincidents$list_replication_sets_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_replication_sets_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1328,12 +1346,13 @@ ssmincidents_list_response_plans <- function(maxResults = NULL, nextToken = NULL
     name = "ListResponsePlans",
     http_method = "POST",
     http_path = "/listResponsePlans",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responsePlanSummaries")
   )
   input <- .ssmincidents$list_response_plans_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_response_plans_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1379,12 +1398,13 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ssmincidents$list_tags_for_resource_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1497,12 +1517,13 @@ ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn,
     name = "ListTimelineEvents",
     http_method = "POST",
     http_path = "/listTimelineEvents",
+    host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "eventSummaries")
   )
   input <- .ssmincidents$list_timeline_events_input(filters = filters, incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .ssmincidents$list_timeline_events_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1551,12 +1572,13 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/putResourcePolicy",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
   output <- .ssmincidents$put_resource_policy_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1655,12 +1677,13 @@ ssmincidents_start_incident <- function(clientToken = NULL, impact = NULL, relat
     name = "StartIncident",
     http_method = "POST",
     http_path = "/startIncident",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$start_incident_input(clientToken = clientToken, impact = impact, relatedItems = relatedItems, responsePlanArn = responsePlanArn, title = title, triggerDetails = triggerDetails)
   output <- .ssmincidents$start_incident_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1702,12 +1725,13 @@ ssmincidents_tag_resource <- function(resourceArn, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ssmincidents$tag_resource_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1749,12 +1773,13 @@ ssmincidents_untag_resource <- function(resourceArn, tagKeys) {
     name = "UntagResource",
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ssmincidents$untag_resource_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1799,12 +1824,13 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
     name = "UpdateDeletionProtection",
     http_method = "POST",
     http_path = "/updateDeletionProtection",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$update_deletion_protection_input(arn = arn, clientToken = clientToken, deletionProtected = deletionProtected)
   output <- .ssmincidents$update_deletion_protection_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1888,12 +1914,13 @@ ssmincidents_update_incident_record <- function(arn, chatChannel = NULL, clientT
     name = "UpdateIncidentRecord",
     http_method = "POST",
     http_path = "/updateIncidentRecord",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$update_incident_record_input(arn = arn, chatChannel = chatChannel, clientToken = clientToken, impact = impact, notificationTargets = notificationTargets, status = status, summary = summary, title = title)
   output <- .ssmincidents$update_incident_record_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1970,12 +1997,13 @@ ssmincidents_update_related_items <- function(clientToken = NULL, incidentRecord
     name = "UpdateRelatedItems",
     http_method = "POST",
     http_path = "/updateRelatedItems",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$update_related_items_input(clientToken = clientToken, incidentRecordArn = incidentRecordArn, relatedItemsUpdate = relatedItemsUpdate)
   output <- .ssmincidents$update_related_items_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2027,12 +2055,13 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
     name = "UpdateReplicationSet",
     http_method = "POST",
     http_path = "/updateReplicationSet",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$update_replication_set_input(actions = actions, arn = arn, clientToken = clientToken)
   output <- .ssmincidents$update_replication_set_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2168,12 +2197,13 @@ ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel =
     name = "UpdateResponsePlan",
     http_method = "POST",
     http_path = "/updateResponsePlan",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$update_response_plan_input(actions = actions, arn = arn, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplateDedupeString = incidentTemplateDedupeString, incidentTemplateImpact = incidentTemplateImpact, incidentTemplateNotificationTargets = incidentTemplateNotificationTargets, incidentTemplateSummary = incidentTemplateSummary, incidentTemplateTags = incidentTemplateTags, incidentTemplateTitle = incidentTemplateTitle, integrations = integrations)
   output <- .ssmincidents$update_response_plan_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2246,12 +2276,13 @@ ssmincidents_update_timeline_event <- function(clientToken = NULL, eventData = N
     name = "UpdateTimelineEvent",
     http_method = "POST",
     http_path = "/updateTimelineEvent",
+    host_prefix = "",
     paginator = list()
   )
   input <- .ssmincidents$update_timeline_event_input(clientToken = clientToken, eventData = eventData, eventId = eventId, eventReferences = eventReferences, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$update_timeline_event_output()
   config <- get_config()
-  svc <- .ssmincidents$service(config)
+  svc <- .ssmincidents$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

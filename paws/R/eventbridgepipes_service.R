@@ -141,11 +141,11 @@ eventbridgepipes <- function(config = list(), credentials = list(), endpoint = N
   service_id = "Pipes",
   api_version = "2015-10-07",
   signing_name = "pipes",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 
-.eventbridgepipes$service <- function(config = list()) {
+.eventbridgepipes$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.eventbridgepipes$metadata, handlers, config)
+  new_service(.eventbridgepipes$metadata, handlers, config, op)
 }

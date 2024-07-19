@@ -187,7 +187,7 @@ vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, r
   target_prefix = ""
 )
 
-.vpclattice$service <- function(config = list()) {
+.vpclattice$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.vpclattice$metadata, handlers, config)
+  new_service(.vpclattice$metadata, handlers, config, op)
 }

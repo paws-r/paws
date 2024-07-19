@@ -197,6 +197,7 @@ NULL
 #'  \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
 #'  \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
 #'  \link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that was previously imported\cr
+#'  \link[=kms_derive_shared_secret]{derive_shared_secret} \tab Derives a shared secret using a key agreement algorithm\cr
 #'  \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and Region\cr
 #'  \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
 #'  \link[=kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr
@@ -278,7 +279,7 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
   target_prefix = "TrentService"
 )
 
-.kms$service <- function(config = list()) {
+.kms$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.kms$metadata, handlers, config)
+  new_service(.kms$metadata, handlers, config, op)
 }

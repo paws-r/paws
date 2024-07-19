@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_internet_gateways}
 \alias{ec2_describe_internet_gateways}
-\title{Describes one or more of your internet gateways}
+\title{Describes your internet gateways}
 \usage{
 ec2_describe_internet_gateways(
   Filters = NULL,
@@ -50,7 +50,7 @@ output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes one or more of your internet gateways.
+Describes your internet gateways. The default is to describe all your internet gateways. Alternatively, you can specify specific internet gateway IDs or filter the results to include only the internet gateways that match specific criteria.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_internet_gateways/} for full documentation.
 }

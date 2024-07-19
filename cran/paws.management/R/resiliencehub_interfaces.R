@@ -315,6 +315,18 @@ NULL
   return(populate(args, shape))
 }
 
+.resiliencehub$list_app_assessment_resource_drifts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resiliencehub$list_app_assessment_resource_drifts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resourceDrifts = structure(list(structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), diffType = structure(logical(0), tags = list(type = "string")), referenceId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(list(logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .resiliencehub$list_app_assessments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(appArn = structure(logical(0), tags = list(location = "querystring", locationName = "appArn", type = "string")), assessmentName = structure(logical(0), tags = list(location = "querystring", locationName = "assessmentName", type = "string")), assessmentStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "assessmentStatus", type = "list")), complianceStatus = structure(logical(0), tags = list(location = "querystring", locationName = "complianceStatus", type = "string")), invoker = structure(logical(0), tags = list(location = "querystring", locationName = "invoker", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), reverseOrder = structure(logical(0), tags = list(location = "querystring", locationName = "reverseOrder", type = "boolean", box = TRUE))), tags = list(type = "structure"))

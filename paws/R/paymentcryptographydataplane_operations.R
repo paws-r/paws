@@ -55,13 +55,19 @@ NULL
 #' -   [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
 #'
 #' @usage
-#' paymentcryptographydataplane_decrypt_data(CipherText,
-#'   DecryptionAttributes, KeyIdentifier)
+#' paymentcryptographydataplane_decrypt_data(KeyIdentifier, CipherText,
+#'   DecryptionAttributes, WrappedKey)
 #'
-#' @param CipherText &#91;required&#93; The ciphertext to decrypt.
-#' @param DecryptionAttributes &#91;required&#93; The encryption key type and attributes for ciphertext decryption.
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the encryption key that Amazon Web Services Payment
 #' Cryptography uses for ciphertext decryption.
+#' 
+#' When a WrappedKeyBlock is provided, this value will be the identifier to
+#' the key wrapping key. Otherwise, it is the key identifier used to
+#' perform the operation.
+#' @param CipherText &#91;required&#93; The ciphertext to decrypt.
+#' @param DecryptionAttributes &#91;required&#93; The encryption key type and attributes for ciphertext decryption.
+#' @param WrappedKey The WrappedKeyBlock containing the encryption key for ciphertext
+#' decryption.
 #'
 #' @return
 #' A list with the following syntax:
@@ -76,33 +82,39 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$decrypt_data(
+#'   KeyIdentifier = "string",
 #'   CipherText = "string",
 #'   DecryptionAttributes = list(
+#'     Symmetric = list(
+#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
+#'       InitializationVector = "string",
+#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'     ),
 #'     Asymmetric = list(
 #'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
 #'     ),
 #'     Dukpt = list(
+#'       KeySerialNumber = "string",
+#'       Mode = "ECB"|"CBC",
 #'       DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
 #'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       InitializationVector = "string",
-#'       KeySerialNumber = "string",
-#'       Mode = "ECB"|"CBC"
+#'       InitializationVector = "string"
 #'     ),
 #'     Emv = list(
-#'       InitializationVector = "string",
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
-#'       Mode = "ECB"|"CBC",
-#'       PanSequenceNumber = "string",
 #'       PrimaryAccountNumber = "string",
-#'       SessionDerivationData = "string"
-#'     ),
-#'     Symmetric = list(
-#'       InitializationVector = "string",
-#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
-#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'       PanSequenceNumber = "string",
+#'       SessionDerivationData = "string",
+#'       Mode = "ECB"|"CBC",
+#'       InitializationVector = "string"
 #'     )
 #'   ),
-#'   KeyIdentifier = "string"
+#'   WrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string"
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'   )
 #' )
 #' ```
 #'
@@ -111,17 +123,18 @@ NULL
 #' @rdname paymentcryptographydataplane_decrypt_data
 #'
 #' @aliases paymentcryptographydataplane_decrypt_data
-paymentcryptographydataplane_decrypt_data <- function(CipherText, DecryptionAttributes, KeyIdentifier) {
+paymentcryptographydataplane_decrypt_data <- function(KeyIdentifier, CipherText, DecryptionAttributes, WrappedKey = NULL) {
   op <- new_operation(
     name = "DecryptData",
     http_method = "POST",
     http_path = "/keys/{KeyIdentifier}/decrypt",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$decrypt_data_input(CipherText = CipherText, DecryptionAttributes = DecryptionAttributes, KeyIdentifier = KeyIdentifier)
+  input <- .paymentcryptographydataplane$decrypt_data_input(KeyIdentifier = KeyIdentifier, CipherText = CipherText, DecryptionAttributes = DecryptionAttributes, WrappedKey = WrappedKey)
   output <- .paymentcryptographydataplane$decrypt_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -188,12 +201,15 @@ paymentcryptographydataplane_decrypt_data <- function(CipherText, DecryptionAttr
 #' -   [`re_encrypt_data`][paymentcryptographydataplane_re_encrypt_data]
 #'
 #' @usage
-#' paymentcryptographydataplane_encrypt_data(EncryptionAttributes,
-#'   KeyIdentifier, PlainText)
+#' paymentcryptographydataplane_encrypt_data(KeyIdentifier, PlainText,
+#'   EncryptionAttributes, WrappedKey)
 #'
-#' @param EncryptionAttributes &#91;required&#93; The encryption key type and attributes for plaintext encryption.
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the encryption key that Amazon Web Services Payment
 #' Cryptography uses for plaintext encryption.
+#' 
+#' When a WrappedKeyBlock is provided, this value will be the identifier to
+#' the key wrapping key. Otherwise, it is the key identifier used to
+#' perform the operation.
 #' @param PlainText &#91;required&#93; The plaintext to be encrypted.
 #' 
 #' For encryption using asymmetric keys, plaintext data length is
@@ -202,47 +218,56 @@ paymentcryptographydataplane_decrypt_data <- function(CipherText, DecryptionAttr
 #' For more information, see [Encrypt
 #' data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html)
 #' in the *Amazon Web Services Payment Cryptography User Guide*.
+#' @param EncryptionAttributes &#91;required&#93; The encryption key type and attributes for plaintext encryption.
+#' @param WrappedKey The WrappedKeyBlock containing the encryption key for plaintext
+#' encryption.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   CipherText = "string",
 #'   KeyArn = "string",
-#'   KeyCheckValue = "string"
+#'   KeyCheckValue = "string",
+#'   CipherText = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$encrypt_data(
+#'   KeyIdentifier = "string",
+#'   PlainText = "string",
 #'   EncryptionAttributes = list(
+#'     Symmetric = list(
+#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
+#'       InitializationVector = "string",
+#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'     ),
 #'     Asymmetric = list(
 #'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
 #'     ),
 #'     Dukpt = list(
+#'       KeySerialNumber = "string",
+#'       Mode = "ECB"|"CBC",
 #'       DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
 #'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       InitializationVector = "string",
-#'       KeySerialNumber = "string",
-#'       Mode = "ECB"|"CBC"
+#'       InitializationVector = "string"
 #'     ),
 #'     Emv = list(
-#'       InitializationVector = "string",
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
-#'       Mode = "ECB"|"CBC",
-#'       PanSequenceNumber = "string",
 #'       PrimaryAccountNumber = "string",
-#'       SessionDerivationData = "string"
-#'     ),
-#'     Symmetric = list(
-#'       InitializationVector = "string",
-#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
-#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'       PanSequenceNumber = "string",
+#'       SessionDerivationData = "string",
+#'       Mode = "ECB"|"CBC",
+#'       InitializationVector = "string"
 #'     )
 #'   ),
-#'   KeyIdentifier = "string",
-#'   PlainText = "string"
+#'   WrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string"
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'   )
 #' )
 #' ```
 #'
@@ -251,17 +276,18 @@ paymentcryptographydataplane_decrypt_data <- function(CipherText, DecryptionAttr
 #' @rdname paymentcryptographydataplane_encrypt_data
 #'
 #' @aliases paymentcryptographydataplane_encrypt_data
-paymentcryptographydataplane_encrypt_data <- function(EncryptionAttributes, KeyIdentifier, PlainText) {
+paymentcryptographydataplane_encrypt_data <- function(KeyIdentifier, PlainText, EncryptionAttributes, WrappedKey = NULL) {
   op <- new_operation(
     name = "EncryptData",
     http_method = "POST",
     http_path = "/keys/{KeyIdentifier}/encrypt",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$encrypt_data_input(EncryptionAttributes = EncryptionAttributes, KeyIdentifier = KeyIdentifier, PlainText = PlainText)
+  input <- .paymentcryptographydataplane$encrypt_data_input(KeyIdentifier = KeyIdentifier, PlainText = PlainText, EncryptionAttributes = EncryptionAttributes, WrappedKey = WrappedKey)
   output <- .paymentcryptographydataplane$encrypt_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -311,16 +337,16 @@ paymentcryptographydataplane_encrypt_data <- function(EncryptionAttributes, KeyI
 #'
 #' @usage
 #' paymentcryptographydataplane_generate_card_validation_data(
-#'   GenerationAttributes, KeyIdentifier, PrimaryAccountNumber,
+#'   KeyIdentifier, PrimaryAccountNumber, GenerationAttributes,
 #'   ValidationDataLength)
 #'
-#' @param GenerationAttributes &#91;required&#93; The algorithm for generating CVV or CSC values for the card within
-#' Amazon Web Services Payment Cryptography.
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the CVK encryption key that Amazon Web Services Payment
 #' Cryptography uses to generate card data.
 #' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
 #' credit or debit card that associates the card with a specific account
 #' holder.
+#' @param GenerationAttributes &#91;required&#93; The algorithm for generating CVV or CSC values for the card within
+#' Amazon Web Services Payment Cryptography.
 #' @param ValidationDataLength The length of the CVV or CSC to be generated. The default value is 3.
 #'
 #' @return
@@ -336,6 +362,8 @@ paymentcryptographydataplane_encrypt_data <- function(EncryptionAttributes, KeyI
 #' @section Request syntax:
 #' ```
 #' svc$generate_card_validation_data(
+#'   KeyIdentifier = "string",
+#'   PrimaryAccountNumber = "string",
 #'   GenerationAttributes = list(
 #'     AmexCardSecurityCodeVersion1 = list(
 #'       CardExpiryDate = "string"
@@ -344,11 +372,6 @@ paymentcryptographydataplane_encrypt_data <- function(EncryptionAttributes, KeyI
 #'       CardExpiryDate = "string",
 #'       ServiceCode = "string"
 #'     ),
-#'     CardHolderVerificationValue = list(
-#'       ApplicationTransactionCounter = "string",
-#'       PanSequenceNumber = "string",
-#'       UnpredictableNumber = "string"
-#'     ),
 #'     CardVerificationValue1 = list(
 #'       CardExpiryDate = "string",
 #'       ServiceCode = "string"
@@ -356,21 +379,24 @@ paymentcryptographydataplane_encrypt_data <- function(EncryptionAttributes, KeyI
 #'     CardVerificationValue2 = list(
 #'       CardExpiryDate = "string"
 #'     ),
-#'     DynamicCardVerificationCode = list(
-#'       ApplicationTransactionCounter = "string",
+#'     CardHolderVerificationValue = list(
+#'       UnpredictableNumber = "string",
 #'       PanSequenceNumber = "string",
-#'       TrackData = "string",
-#'       UnpredictableNumber = "string"
+#'       ApplicationTransactionCounter = "string"
+#'     ),
+#'     DynamicCardVerificationCode = list(
+#'       UnpredictableNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string",
+#'       TrackData = "string"
 #'     ),
 #'     DynamicCardVerificationValue = list(
-#'       ApplicationTransactionCounter = "string",
-#'       CardExpiryDate = "string",
 #'       PanSequenceNumber = "string",
-#'       ServiceCode = "string"
+#'       CardExpiryDate = "string",
+#'       ServiceCode = "string",
+#'       ApplicationTransactionCounter = "string"
 #'     )
 #'   ),
-#'   KeyIdentifier = "string",
-#'   PrimaryAccountNumber = "string",
 #'   ValidationDataLength = 123
 #' )
 #' ```
@@ -380,17 +406,18 @@ paymentcryptographydataplane_encrypt_data <- function(EncryptionAttributes, KeyI
 #' @rdname paymentcryptographydataplane_generate_card_validation_data
 #'
 #' @aliases paymentcryptographydataplane_generate_card_validation_data
-paymentcryptographydataplane_generate_card_validation_data <- function(GenerationAttributes, KeyIdentifier, PrimaryAccountNumber, ValidationDataLength = NULL) {
+paymentcryptographydataplane_generate_card_validation_data <- function(KeyIdentifier, PrimaryAccountNumber, GenerationAttributes, ValidationDataLength = NULL) {
   op <- new_operation(
     name = "GenerateCardValidationData",
     http_method = "POST",
     http_path = "/cardvalidationdata/generate",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$generate_card_validation_data_input(GenerationAttributes = GenerationAttributes, KeyIdentifier = KeyIdentifier, PrimaryAccountNumber = PrimaryAccountNumber, ValidationDataLength = ValidationDataLength)
+  input <- .paymentcryptographydataplane$generate_card_validation_data_input(KeyIdentifier = KeyIdentifier, PrimaryAccountNumber = PrimaryAccountNumber, GenerationAttributes = GenerationAttributes, ValidationDataLength = ValidationDataLength)
   output <- .paymentcryptographydataplane$generate_card_validation_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -433,15 +460,15 @@ paymentcryptographydataplane_generate_card_validation_data <- function(Generatio
 #' -   [`verify_mac`][paymentcryptographydataplane_verify_mac]
 #'
 #' @usage
-#' paymentcryptographydataplane_generate_mac(GenerationAttributes,
-#'   KeyIdentifier, MacLength, MessageData)
+#' paymentcryptographydataplane_generate_mac(KeyIdentifier, MessageData,
+#'   GenerationAttributes, MacLength)
 #'
-#' @param GenerationAttributes &#91;required&#93; The attributes and data values to use for MAC generation within Amazon
-#' Web Services Payment Cryptography.
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the MAC generation encryption key.
-#' @param MacLength The length of a MAC under generation.
 #' @param MessageData &#91;required&#93; The data for which a MAC is under generation. This value must be
 #' hexBinary.
+#' @param GenerationAttributes &#91;required&#93; The attributes and data values to use for MAC generation within Amazon
+#' Web Services Payment Cryptography.
+#' @param MacLength The length of a MAC under generation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -456,37 +483,37 @@ paymentcryptographydataplane_generate_card_validation_data <- function(Generatio
 #' @section Request syntax:
 #' ```
 #' svc$generate_mac(
+#'   KeyIdentifier = "string",
+#'   MessageData = "string",
 #'   GenerationAttributes = list(
 #'     Algorithm = "ISO9797_ALGORITHM1"|"ISO9797_ALGORITHM3"|"CMAC"|"HMAC_SHA224"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512",
-#'     DukptCmac = list(
-#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       KeySerialNumber = "string"
-#'     ),
-#'     DukptIso9797Algorithm1 = list(
-#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       KeySerialNumber = "string"
-#'     ),
-#'     DukptIso9797Algorithm3 = list(
-#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       KeySerialNumber = "string"
-#'     ),
 #'     EmvMac = list(
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
-#'       PanSequenceNumber = "string",
 #'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
 #'       SessionKeyDerivationMode = "EMV_COMMON_SESSION_KEY"|"EMV2000"|"AMEX"|"MASTERCARD_SESSION_KEY"|"VISA",
 #'       SessionKeyDerivationValue = list(
 #'         ApplicationCryptogram = "string",
 #'         ApplicationTransactionCounter = "string"
 #'       )
+#'     ),
+#'     DukptIso9797Algorithm1 = list(
+#'       KeySerialNumber = "string",
+#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
+#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
+#'     ),
+#'     DukptIso9797Algorithm3 = list(
+#'       KeySerialNumber = "string",
+#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
+#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
+#'     ),
+#'     DukptCmac = list(
+#'       KeySerialNumber = "string",
+#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
+#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
 #'     )
 #'   ),
-#'   KeyIdentifier = "string",
-#'   MacLength = 123,
-#'   MessageData = "string"
+#'   MacLength = 123
 #' )
 #' ```
 #'
@@ -495,17 +522,18 @@ paymentcryptographydataplane_generate_card_validation_data <- function(Generatio
 #' @rdname paymentcryptographydataplane_generate_mac
 #'
 #' @aliases paymentcryptographydataplane_generate_mac
-paymentcryptographydataplane_generate_mac <- function(GenerationAttributes, KeyIdentifier, MacLength = NULL, MessageData) {
+paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData, GenerationAttributes, MacLength = NULL) {
   op <- new_operation(
     name = "GenerateMac",
     http_method = "POST",
     http_path = "/mac/generate",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$generate_mac_input(GenerationAttributes = GenerationAttributes, KeyIdentifier = KeyIdentifier, MacLength = MacLength, MessageData = MessageData)
+  input <- .paymentcryptographydataplane$generate_mac_input(KeyIdentifier = KeyIdentifier, MessageData = MessageData, GenerationAttributes = GenerationAttributes, MacLength = MacLength)
   output <- .paymentcryptographydataplane$generate_mac_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -548,15 +576,19 @@ paymentcryptographydataplane_generate_mac <- function(GenerationAttributes, KeyI
 #' -   [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
 #'
 #' @usage
-#' paymentcryptographydataplane_generate_pin_data(EncryptionKeyIdentifier,
-#'   GenerationAttributes, GenerationKeyIdentifier, PinBlockFormat,
-#'   PinDataLength, PrimaryAccountNumber)
+#' paymentcryptographydataplane_generate_pin_data(GenerationKeyIdentifier,
+#'   EncryptionKeyIdentifier, GenerationAttributes, PinDataLength,
+#'   PrimaryAccountNumber, PinBlockFormat)
 #'
+#' @param GenerationKeyIdentifier &#91;required&#93; The `keyARN` of the PEK that Amazon Web Services Payment Cryptography
+#' uses for pin data generation.
 #' @param EncryptionKeyIdentifier &#91;required&#93; The `keyARN` of the PEK that Amazon Web Services Payment Cryptography
 #' uses to encrypt the PIN Block.
 #' @param GenerationAttributes &#91;required&#93; The attributes and values to use for PIN, PVV, or PIN Offset generation.
-#' @param GenerationKeyIdentifier &#91;required&#93; The `keyARN` of the PEK that Amazon Web Services Payment Cryptography
-#' uses for pin data generation.
+#' @param PinDataLength The length of PIN under generation.
+#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
+#' credit or debit card that associates the card with a specific account
+#' holder.
 #' @param PinBlockFormat &#91;required&#93; The PIN encoding format for pin data generation as specified in ISO
 #' 9564. Amazon Web Services Payment Cryptography supports `ISO_Format_0`
 #' and `ISO_Format_3`.
@@ -567,20 +599,16 @@ paymentcryptographydataplane_generate_mac <- function(GenerationAttributes, KeyI
 #' 
 #' The `ISO_Format_3` PIN block format is the same as `ISO_Format_0` except
 #' that the fill digits are random values from 10 to 15.
-#' @param PinDataLength The length of PIN under generation.
-#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
-#' credit or debit card that associates the card with a specific account
-#' holder.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   EncryptedPinBlock = "string",
-#'   EncryptionKeyArn = "string",
-#'   EncryptionKeyCheckValue = "string",
 #'   GenerationKeyArn = "string",
 #'   GenerationKeyCheckValue = "string",
+#'   EncryptionKeyArn = "string",
+#'   EncryptionKeyCheckValue = "string",
+#'   EncryptedPinBlock = "string",
 #'   PinData = list(
 #'     PinOffset = "string",
 #'     VerificationValue = "string"
@@ -591,42 +619,42 @@ paymentcryptographydataplane_generate_mac <- function(GenerationAttributes, KeyI
 #' @section Request syntax:
 #' ```
 #' svc$generate_pin_data(
+#'   GenerationKeyIdentifier = "string",
 #'   EncryptionKeyIdentifier = "string",
 #'   GenerationAttributes = list(
-#'     Ibm3624NaturalPin = list(
-#'       DecimalizationTable = "string",
-#'       PinValidationData = "string",
-#'       PinValidationDataPadCharacter = "string"
-#'     ),
-#'     Ibm3624PinFromOffset = list(
-#'       DecimalizationTable = "string",
-#'       PinOffset = "string",
-#'       PinValidationData = "string",
-#'       PinValidationDataPadCharacter = "string"
-#'     ),
-#'     Ibm3624PinOffset = list(
-#'       DecimalizationTable = "string",
-#'       EncryptedPinBlock = "string",
-#'       PinValidationData = "string",
-#'       PinValidationDataPadCharacter = "string"
-#'     ),
-#'     Ibm3624RandomPin = list(
-#'       DecimalizationTable = "string",
-#'       PinValidationData = "string",
-#'       PinValidationDataPadCharacter = "string"
-#'     ),
 #'     VisaPin = list(
 #'       PinVerificationKeyIndex = 123
 #'     ),
 #'     VisaPinVerificationValue = list(
 #'       EncryptedPinBlock = "string",
 #'       PinVerificationKeyIndex = 123
+#'     ),
+#'     Ibm3624PinOffset = list(
+#'       EncryptedPinBlock = "string",
+#'       DecimalizationTable = "string",
+#'       PinValidationDataPadCharacter = "string",
+#'       PinValidationData = "string"
+#'     ),
+#'     Ibm3624NaturalPin = list(
+#'       DecimalizationTable = "string",
+#'       PinValidationDataPadCharacter = "string",
+#'       PinValidationData = "string"
+#'     ),
+#'     Ibm3624RandomPin = list(
+#'       DecimalizationTable = "string",
+#'       PinValidationDataPadCharacter = "string",
+#'       PinValidationData = "string"
+#'     ),
+#'     Ibm3624PinFromOffset = list(
+#'       DecimalizationTable = "string",
+#'       PinValidationDataPadCharacter = "string",
+#'       PinValidationData = "string",
+#'       PinOffset = "string"
 #'     )
 #'   ),
-#'   GenerationKeyIdentifier = "string",
-#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3",
 #'   PinDataLength = 123,
-#'   PrimaryAccountNumber = "string"
+#'   PrimaryAccountNumber = "string",
+#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3"
 #' )
 #' ```
 #'
@@ -635,29 +663,28 @@ paymentcryptographydataplane_generate_mac <- function(GenerationAttributes, KeyI
 #' @rdname paymentcryptographydataplane_generate_pin_data
 #'
 #' @aliases paymentcryptographydataplane_generate_pin_data
-paymentcryptographydataplane_generate_pin_data <- function(EncryptionKeyIdentifier, GenerationAttributes, GenerationKeyIdentifier, PinBlockFormat, PinDataLength = NULL, PrimaryAccountNumber) {
+paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifier, EncryptionKeyIdentifier, GenerationAttributes, PinDataLength = NULL, PrimaryAccountNumber, PinBlockFormat) {
   op <- new_operation(
     name = "GeneratePinData",
     http_method = "POST",
     http_path = "/pindata/generate",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$generate_pin_data_input(EncryptionKeyIdentifier = EncryptionKeyIdentifier, GenerationAttributes = GenerationAttributes, GenerationKeyIdentifier = GenerationKeyIdentifier, PinBlockFormat = PinBlockFormat, PinDataLength = PinDataLength, PrimaryAccountNumber = PrimaryAccountNumber)
+  input <- .paymentcryptographydataplane$generate_pin_data_input(GenerationKeyIdentifier = GenerationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, GenerationAttributes = GenerationAttributes, PinDataLength = PinDataLength, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat)
   output <- .paymentcryptographydataplane$generate_pin_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
 .paymentcryptographydataplane$operations$generate_pin_data <- paymentcryptographydataplane_generate_pin_data
 
-#' Re-encrypt ciphertext using DUKPT, Symmetric and Asymmetric Data
-#' Encryption Keys
+#' Re-encrypt ciphertext using DUKPT or Symmetric data encryption keys
 #'
 #' @description
-#' Re-encrypt ciphertext using DUKPT, Symmetric and Asymmetric Data
-#' Encryption Keys.
+#' Re-encrypt ciphertext using DUKPT or Symmetric data encryption keys.
 #' 
 #' You can either generate an encryption key within Amazon Web Services
 #' Payment Cryptography by calling
@@ -665,18 +692,13 @@ paymentcryptographydataplane_generate_pin_data <- function(EncryptionKeyIdentifi
 #' or import your own encryption key by calling
 #' [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html).
 #' The `KeyArn` for use with this operation must be in a compatible key
-#' state with `KeyModesOfUse` set to `Encrypt`. In asymmetric encryption,
-#' ciphertext is encrypted using public component (imported by calling
-#' [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html))
-#' of the asymmetric key pair created outside of Amazon Web Services
-#' Payment Cryptography.
+#' state with `KeyModesOfUse` set to `Encrypt`.
 #' 
 #' For symmetric and DUKPT encryption, Amazon Web Services Payment
-#' Cryptography supports `TDES` and `AES` algorithms. For asymmetric
-#' encryption, Amazon Web Services Payment Cryptography supports `RSA`. To
-#' encrypt using DUKPT, a DUKPT key must already exist within your account
-#' with `KeyModesOfUse` set to `DeriveKey` or a new DUKPT can be generated
-#' by calling
+#' Cryptography supports `TDES` and `AES` algorithms. To encrypt using
+#' DUKPT, a DUKPT key must already exist within your account with
+#' `KeyModesOfUse` set to `DeriveKey` or a new DUKPT can be generated by
+#' calling
 #' [CreateKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html).
 #' 
 #' For information about valid keys for this operation, see [Understanding
@@ -700,63 +722,83 @@ paymentcryptographydataplane_generate_pin_data <- function(EncryptionKeyIdentifi
 #' -   [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
 #'
 #' @usage
-#' paymentcryptographydataplane_re_encrypt_data(CipherText,
-#'   IncomingEncryptionAttributes, IncomingKeyIdentifier,
-#'   OutgoingEncryptionAttributes, OutgoingKeyIdentifier)
+#' paymentcryptographydataplane_re_encrypt_data(IncomingKeyIdentifier,
+#'   OutgoingKeyIdentifier, CipherText, IncomingEncryptionAttributes,
+#'   OutgoingEncryptionAttributes, IncomingWrappedKey, OutgoingWrappedKey)
 #'
+#' @param IncomingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key of incoming ciphertext data.
+#' 
+#' When a WrappedKeyBlock is provided, this value will be the identifier to
+#' the key wrapping key. Otherwise, it is the key identifier used to
+#' perform the operation.
+#' @param OutgoingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key of outgoing ciphertext data after
+#' encryption by Amazon Web Services Payment Cryptography.
 #' @param CipherText &#91;required&#93; Ciphertext to be encrypted. The minimum allowed length is 16 bytes and
 #' maximum allowed length is 4096 bytes.
 #' @param IncomingEncryptionAttributes &#91;required&#93; The attributes and values for incoming ciphertext.
-#' @param IncomingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key of incoming ciphertext data.
 #' @param OutgoingEncryptionAttributes &#91;required&#93; The attributes and values for outgoing ciphertext data after encryption
 #' by Amazon Web Services Payment Cryptography.
-#' @param OutgoingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key of outgoing ciphertext data after
-#' encryption by Amazon Web Services Payment Cryptography.
+#' @param IncomingWrappedKey The WrappedKeyBlock containing the encryption key of incoming ciphertext
+#' data.
+#' @param OutgoingWrappedKey The WrappedKeyBlock containing the encryption key of outgoing ciphertext
+#' data after encryption by Amazon Web Services Payment Cryptography.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   CipherText = "string",
 #'   KeyArn = "string",
-#'   KeyCheckValue = "string"
+#'   KeyCheckValue = "string",
+#'   CipherText = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$re_encrypt_data(
+#'   IncomingKeyIdentifier = "string",
+#'   OutgoingKeyIdentifier = "string",
 #'   CipherText = "string",
 #'   IncomingEncryptionAttributes = list(
+#'     Symmetric = list(
+#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
+#'       InitializationVector = "string",
+#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'     ),
 #'     Dukpt = list(
+#'       KeySerialNumber = "string",
+#'       Mode = "ECB"|"CBC",
 #'       DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
 #'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       InitializationVector = "string",
-#'       KeySerialNumber = "string",
-#'       Mode = "ECB"|"CBC"
-#'     ),
-#'     Symmetric = list(
-#'       InitializationVector = "string",
-#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
-#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'       InitializationVector = "string"
 #'     )
 #'   ),
-#'   IncomingKeyIdentifier = "string",
 #'   OutgoingEncryptionAttributes = list(
+#'     Symmetric = list(
+#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
+#'       InitializationVector = "string",
+#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'     ),
 #'     Dukpt = list(
+#'       KeySerialNumber = "string",
+#'       Mode = "ECB"|"CBC",
 #'       DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
 #'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       InitializationVector = "string",
-#'       KeySerialNumber = "string",
-#'       Mode = "ECB"|"CBC"
-#'     ),
-#'     Symmetric = list(
-#'       InitializationVector = "string",
-#'       Mode = "ECB"|"CBC"|"CFB"|"CFB1"|"CFB8"|"CFB64"|"CFB128"|"OFB",
-#'       PaddingType = "PKCS1"|"OAEP_SHA1"|"OAEP_SHA256"|"OAEP_SHA512"
+#'       InitializationVector = "string"
 #'     )
 #'   ),
-#'   OutgoingKeyIdentifier = "string"
+#'   IncomingWrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string"
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'   ),
+#'   OutgoingWrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string"
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'   )
 #' )
 #' ```
 #'
@@ -765,17 +807,18 @@ paymentcryptographydataplane_generate_pin_data <- function(EncryptionKeyIdentifi
 #' @rdname paymentcryptographydataplane_re_encrypt_data
 #'
 #' @aliases paymentcryptographydataplane_re_encrypt_data
-paymentcryptographydataplane_re_encrypt_data <- function(CipherText, IncomingEncryptionAttributes, IncomingKeyIdentifier, OutgoingEncryptionAttributes, OutgoingKeyIdentifier) {
+paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, OutgoingKeyIdentifier, CipherText, IncomingEncryptionAttributes, OutgoingEncryptionAttributes, IncomingWrappedKey = NULL, OutgoingWrappedKey = NULL) {
   op <- new_operation(
     name = "ReEncryptData",
     http_method = "POST",
     http_path = "/keys/{IncomingKeyIdentifier}/reencrypt",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$re_encrypt_data_input(CipherText = CipherText, IncomingEncryptionAttributes = IncomingEncryptionAttributes, IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingEncryptionAttributes = OutgoingEncryptionAttributes, OutgoingKeyIdentifier = OutgoingKeyIdentifier)
+  input <- .paymentcryptographydataplane$re_encrypt_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, CipherText = CipherText, IncomingEncryptionAttributes = IncomingEncryptionAttributes, OutgoingEncryptionAttributes = OutgoingEncryptionAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey)
   output <- .paymentcryptographydataplane$re_encrypt_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -826,46 +869,50 @@ paymentcryptographydataplane_re_encrypt_data <- function(CipherText, IncomingEnc
 #' -   [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
 #'
 #' @usage
-#' paymentcryptographydataplane_translate_pin_data(EncryptedPinBlock,
-#'   IncomingDukptAttributes, IncomingKeyIdentifier,
-#'   IncomingTranslationAttributes, OutgoingDukptAttributes,
-#'   OutgoingKeyIdentifier, OutgoingTranslationAttributes)
+#' paymentcryptographydataplane_translate_pin_data(IncomingKeyIdentifier,
+#'   OutgoingKeyIdentifier, IncomingTranslationAttributes,
+#'   OutgoingTranslationAttributes, EncryptedPinBlock,
+#'   IncomingDukptAttributes, OutgoingDukptAttributes, IncomingWrappedKey,
+#'   OutgoingWrappedKey)
 #'
+#' @param IncomingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key under which incoming PIN block data
+#' is encrypted. This key type can be PEK or BDK.
+#' 
+#' When a WrappedKeyBlock is provided, this value will be the identifier to
+#' the key wrapping key for PIN block. Otherwise, it is the key identifier
+#' used to perform the operation.
+#' @param OutgoingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key for encrypting outgoing PIN block
+#' data. This key type can be PEK or BDK.
+#' @param IncomingTranslationAttributes &#91;required&#93; The format of the incoming PIN block data for translation within Amazon
+#' Web Services Payment Cryptography.
+#' @param OutgoingTranslationAttributes &#91;required&#93; The format of the outgoing PIN block data after translation by Amazon
+#' Web Services Payment Cryptography.
 #' @param EncryptedPinBlock &#91;required&#93; The encrypted PIN block data that Amazon Web Services Payment
 #' Cryptography translates.
 #' @param IncomingDukptAttributes The attributes and values to use for incoming DUKPT encryption key for
 #' PIN block translation.
-#' @param IncomingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key under which incoming PIN block data
-#' is encrypted. This key type can be PEK or BDK.
-#' @param IncomingTranslationAttributes &#91;required&#93; The format of the incoming PIN block data for translation within Amazon
-#' Web Services Payment Cryptography.
 #' @param OutgoingDukptAttributes The attributes and values to use for outgoing DUKPT encryption key after
 #' PIN block translation.
-#' @param OutgoingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key for encrypting outgoing PIN block
-#' data. This key type can be PEK or BDK.
-#' @param OutgoingTranslationAttributes &#91;required&#93; The format of the outgoing PIN block data after translation by Amazon
-#' Web Services Payment Cryptography.
+#' @param IncomingWrappedKey The WrappedKeyBlock containing the encryption key under which incoming
+#' PIN block data is encrypted.
+#' @param OutgoingWrappedKey The WrappedKeyBlock containing the encryption key for encrypting
+#' outgoing PIN block data.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   PinBlock = "string",
 #'   KeyArn = "string",
-#'   KeyCheckValue = "string",
-#'   PinBlock = "string"
+#'   KeyCheckValue = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$translate_pin_data(
-#'   EncryptedPinBlock = "string",
-#'   IncomingDukptAttributes = list(
-#'     DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'     DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'     KeySerialNumber = "string"
-#'   ),
 #'   IncomingKeyIdentifier = "string",
+#'   OutgoingKeyIdentifier = "string",
 #'   IncomingTranslationAttributes = list(
 #'     IsoFormat0 = list(
 #'       PrimaryAccountNumber = "string"
@@ -878,12 +925,6 @@ paymentcryptographydataplane_re_encrypt_data <- function(CipherText, IncomingEnc
 #'       PrimaryAccountNumber = "string"
 #'     )
 #'   ),
-#'   OutgoingDukptAttributes = list(
-#'     DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'     DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'     KeySerialNumber = "string"
-#'   ),
-#'   OutgoingKeyIdentifier = "string",
 #'   OutgoingTranslationAttributes = list(
 #'     IsoFormat0 = list(
 #'       PrimaryAccountNumber = "string"
@@ -895,6 +936,29 @@ paymentcryptographydataplane_re_encrypt_data <- function(CipherText, IncomingEnc
 #'     IsoFormat4 = list(
 #'       PrimaryAccountNumber = "string"
 #'     )
+#'   ),
+#'   EncryptedPinBlock = "string",
+#'   IncomingDukptAttributes = list(
+#'     KeySerialNumber = "string",
+#'     DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'     DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE"
+#'   ),
+#'   OutgoingDukptAttributes = list(
+#'     KeySerialNumber = "string",
+#'     DukptKeyDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'     DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE"
+#'   ),
+#'   IncomingWrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string"
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'   ),
+#'   OutgoingWrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string"
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   )
 #' )
 #' ```
@@ -904,17 +968,18 @@ paymentcryptographydataplane_re_encrypt_data <- function(CipherText, IncomingEnc
 #' @rdname paymentcryptographydataplane_translate_pin_data
 #'
 #' @aliases paymentcryptographydataplane_translate_pin_data
-paymentcryptographydataplane_translate_pin_data <- function(EncryptedPinBlock, IncomingDukptAttributes = NULL, IncomingKeyIdentifier, IncomingTranslationAttributes, OutgoingDukptAttributes = NULL, OutgoingKeyIdentifier, OutgoingTranslationAttributes) {
+paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifier, OutgoingKeyIdentifier, IncomingTranslationAttributes, OutgoingTranslationAttributes, EncryptedPinBlock, IncomingDukptAttributes = NULL, OutgoingDukptAttributes = NULL, IncomingWrappedKey = NULL, OutgoingWrappedKey = NULL) {
   op <- new_operation(
     name = "TranslatePinData",
     http_method = "POST",
     http_path = "/pindata/translate",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$translate_pin_data_input(EncryptedPinBlock = EncryptedPinBlock, IncomingDukptAttributes = IncomingDukptAttributes, IncomingKeyIdentifier = IncomingKeyIdentifier, IncomingTranslationAttributes = IncomingTranslationAttributes, OutgoingDukptAttributes = OutgoingDukptAttributes, OutgoingKeyIdentifier = OutgoingKeyIdentifier, OutgoingTranslationAttributes = OutgoingTranslationAttributes)
+  input <- .paymentcryptographydataplane$translate_pin_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, IncomingTranslationAttributes = IncomingTranslationAttributes, OutgoingTranslationAttributes = OutgoingTranslationAttributes, EncryptedPinBlock = EncryptedPinBlock, IncomingDukptAttributes = IncomingDukptAttributes, OutgoingDukptAttributes = OutgoingDukptAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey)
   output <- .paymentcryptographydataplane$translate_pin_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -962,17 +1027,18 @@ paymentcryptographydataplane_translate_pin_data <- function(EncryptedPinBlock, I
 #'
 #' @usage
 #' paymentcryptographydataplane_verify_auth_request_cryptogram(
-#'   AuthRequestCryptogram, AuthResponseAttributes, KeyIdentifier,
-#'   MajorKeyDerivationMode, SessionKeyDerivationAttributes, TransactionData)
+#'   KeyIdentifier, TransactionData, AuthRequestCryptogram,
+#'   MajorKeyDerivationMode, SessionKeyDerivationAttributes,
+#'   AuthResponseAttributes)
 #'
+#' @param KeyIdentifier &#91;required&#93; The `keyARN` of the major encryption key that Amazon Web Services
+#' Payment Cryptography uses for ARQC verification.
+#' @param TransactionData &#91;required&#93; The transaction data that Amazon Web Services Payment Cryptography uses
+#' for ARQC verification. The same transaction is used for ARQC generation
+#' outside of Amazon Web Services Payment Cryptography.
 #' @param AuthRequestCryptogram &#91;required&#93; The auth request cryptogram imported into Amazon Web Services Payment
 #' Cryptography for ARQC verification using a major encryption key and
 #' transaction data.
-#' @param AuthResponseAttributes The attributes and values for auth request cryptogram verification.
-#' These parameters are required in case using ARPC Method 1 or Method 2
-#' for ARQC verification.
-#' @param KeyIdentifier &#91;required&#93; The `keyARN` of the major encryption key that Amazon Web Services
-#' Payment Cryptography uses for ARQC verification.
 #' @param MajorKeyDerivationMode &#91;required&#93; The method to use when deriving the major encryption key for ARQC
 #' verification within Amazon Web Services Payment Cryptography. The same
 #' key derivation mode was used for ARQC generation outside of Amazon Web
@@ -981,24 +1047,53 @@ paymentcryptographydataplane_translate_pin_data <- function(EncryptedPinBlock, I
 #' verification within Amazon Web Services Payment Cryptography. The same
 #' attributes were used for ARQC generation outside of Amazon Web Services
 #' Payment Cryptography.
-#' @param TransactionData &#91;required&#93; The transaction data that Amazon Web Services Payment Cryptography uses
-#' for ARQC verification. The same transaction is used for ARQC generation
-#' outside of Amazon Web Services Payment Cryptography.
+#' @param AuthResponseAttributes The attributes and values for auth request cryptogram verification.
+#' These parameters are required in case using ARPC Method 1 or Method 2
+#' for ARQC verification.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   AuthResponseValue = "string",
 #'   KeyArn = "string",
-#'   KeyCheckValue = "string"
+#'   KeyCheckValue = "string",
+#'   AuthResponseValue = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$verify_auth_request_cryptogram(
+#'   KeyIdentifier = "string",
+#'   TransactionData = "string",
 #'   AuthRequestCryptogram = "string",
+#'   MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
+#'   SessionKeyDerivationAttributes = list(
+#'     EmvCommon = list(
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string"
+#'     ),
+#'     Mastercard = list(
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string",
+#'       UnpredictableNumber = "string"
+#'     ),
+#'     Emv2000 = list(
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string"
+#'     ),
+#'     Amex = list(
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string"
+#'     ),
+#'     Visa = list(
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string"
+#'     )
+#'   ),
 #'   AuthResponseAttributes = list(
 #'     ArpcMethod1 = list(
 #'       AuthResponseCode = "string"
@@ -1007,36 +1102,7 @@ paymentcryptographydataplane_translate_pin_data <- function(EncryptedPinBlock, I
 #'       CardStatusUpdate = "string",
 #'       ProprietaryAuthenticationData = "string"
 #'     )
-#'   ),
-#'   KeyIdentifier = "string",
-#'   MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
-#'   SessionKeyDerivationAttributes = list(
-#'     Amex = list(
-#'       PanSequenceNumber = "string",
-#'       PrimaryAccountNumber = "string"
-#'     ),
-#'     Emv2000 = list(
-#'       ApplicationTransactionCounter = "string",
-#'       PanSequenceNumber = "string",
-#'       PrimaryAccountNumber = "string"
-#'     ),
-#'     EmvCommon = list(
-#'       ApplicationTransactionCounter = "string",
-#'       PanSequenceNumber = "string",
-#'       PrimaryAccountNumber = "string"
-#'     ),
-#'     Mastercard = list(
-#'       ApplicationTransactionCounter = "string",
-#'       PanSequenceNumber = "string",
-#'       PrimaryAccountNumber = "string",
-#'       UnpredictableNumber = "string"
-#'     ),
-#'     Visa = list(
-#'       PanSequenceNumber = "string",
-#'       PrimaryAccountNumber = "string"
-#'     )
-#'   ),
-#'   TransactionData = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1045,17 +1111,18 @@ paymentcryptographydataplane_translate_pin_data <- function(EncryptedPinBlock, I
 #' @rdname paymentcryptographydataplane_verify_auth_request_cryptogram
 #'
 #' @aliases paymentcryptographydataplane_verify_auth_request_cryptogram
-paymentcryptographydataplane_verify_auth_request_cryptogram <- function(AuthRequestCryptogram, AuthResponseAttributes = NULL, KeyIdentifier, MajorKeyDerivationMode, SessionKeyDerivationAttributes, TransactionData) {
+paymentcryptographydataplane_verify_auth_request_cryptogram <- function(KeyIdentifier, TransactionData, AuthRequestCryptogram, MajorKeyDerivationMode, SessionKeyDerivationAttributes, AuthResponseAttributes = NULL) {
   op <- new_operation(
     name = "VerifyAuthRequestCryptogram",
     http_method = "POST",
     http_path = "/cryptogram/verify",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$verify_auth_request_cryptogram_input(AuthRequestCryptogram = AuthRequestCryptogram, AuthResponseAttributes = AuthResponseAttributes, KeyIdentifier = KeyIdentifier, MajorKeyDerivationMode = MajorKeyDerivationMode, SessionKeyDerivationAttributes = SessionKeyDerivationAttributes, TransactionData = TransactionData)
+  input <- .paymentcryptographydataplane$verify_auth_request_cryptogram_input(KeyIdentifier = KeyIdentifier, TransactionData = TransactionData, AuthRequestCryptogram = AuthRequestCryptogram, MajorKeyDerivationMode = MajorKeyDerivationMode, SessionKeyDerivationAttributes = SessionKeyDerivationAttributes, AuthResponseAttributes = AuthResponseAttributes)
   output <- .paymentcryptographydataplane$verify_auth_request_cryptogram_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1105,17 +1172,17 @@ paymentcryptographydataplane_verify_auth_request_cryptogram <- function(AuthRequ
 #'
 #' @usage
 #' paymentcryptographydataplane_verify_card_validation_data(KeyIdentifier,
-#'   PrimaryAccountNumber, ValidationData, VerificationAttributes)
+#'   PrimaryAccountNumber, VerificationAttributes, ValidationData)
 #'
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the CVK encryption key that Amazon Web Services Payment
 #' Cryptography uses to verify card data.
 #' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
 #' credit or debit card that associates the card with a specific account
 #' holder.
-#' @param ValidationData &#91;required&#93; The CVV or CSC value for use for card data verification within Amazon
-#' Web Services Payment Cryptography.
 #' @param VerificationAttributes &#91;required&#93; The algorithm to use for verification of card data within Amazon Web
 #' Services Payment Cryptography.
+#' @param ValidationData &#91;required&#93; The CVV or CSC value for use for card data verification within Amazon
+#' Web Services Payment Cryptography.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1131,7 +1198,6 @@ paymentcryptographydataplane_verify_auth_request_cryptogram <- function(AuthRequ
 #' svc$verify_card_validation_data(
 #'   KeyIdentifier = "string",
 #'   PrimaryAccountNumber = "string",
-#'   ValidationData = "string",
 #'   VerificationAttributes = list(
 #'     AmexCardSecurityCodeVersion1 = list(
 #'       CardExpiryDate = "string"
@@ -1140,11 +1206,6 @@ paymentcryptographydataplane_verify_auth_request_cryptogram <- function(AuthRequ
 #'       CardExpiryDate = "string",
 #'       ServiceCode = "string"
 #'     ),
-#'     CardHolderVerificationValue = list(
-#'       ApplicationTransactionCounter = "string",
-#'       PanSequenceNumber = "string",
-#'       UnpredictableNumber = "string"
-#'     ),
 #'     CardVerificationValue1 = list(
 #'       CardExpiryDate = "string",
 #'       ServiceCode = "string"
@@ -1152,24 +1213,30 @@ paymentcryptographydataplane_verify_auth_request_cryptogram <- function(AuthRequ
 #'     CardVerificationValue2 = list(
 #'       CardExpiryDate = "string"
 #'     ),
-#'     DiscoverDynamicCardVerificationCode = list(
-#'       ApplicationTransactionCounter = "string",
-#'       CardExpiryDate = "string",
-#'       UnpredictableNumber = "string"
+#'     CardHolderVerificationValue = list(
+#'       UnpredictableNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string"
 #'     ),
 #'     DynamicCardVerificationCode = list(
-#'       ApplicationTransactionCounter = "string",
+#'       UnpredictableNumber = "string",
 #'       PanSequenceNumber = "string",
-#'       TrackData = "string",
-#'       UnpredictableNumber = "string"
+#'       ApplicationTransactionCounter = "string",
+#'       TrackData = "string"
 #'     ),
 #'     DynamicCardVerificationValue = list(
-#'       ApplicationTransactionCounter = "string",
-#'       CardExpiryDate = "string",
 #'       PanSequenceNumber = "string",
-#'       ServiceCode = "string"
+#'       CardExpiryDate = "string",
+#'       ServiceCode = "string",
+#'       ApplicationTransactionCounter = "string"
+#'     ),
+#'     DiscoverDynamicCardVerificationCode = list(
+#'       CardExpiryDate = "string",
+#'       UnpredictableNumber = "string",
+#'       ApplicationTransactionCounter = "string"
 #'     )
-#'   )
+#'   ),
+#'   ValidationData = "string"
 #' )
 #' ```
 #'
@@ -1178,17 +1245,18 @@ paymentcryptographydataplane_verify_auth_request_cryptogram <- function(AuthRequ
 #' @rdname paymentcryptographydataplane_verify_card_validation_data
 #'
 #' @aliases paymentcryptographydataplane_verify_card_validation_data
-paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifier, PrimaryAccountNumber, ValidationData, VerificationAttributes) {
+paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifier, PrimaryAccountNumber, VerificationAttributes, ValidationData) {
   op <- new_operation(
     name = "VerifyCardValidationData",
     http_method = "POST",
     http_path = "/cardvalidationdata/verify",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$verify_card_validation_data_input(KeyIdentifier = KeyIdentifier, PrimaryAccountNumber = PrimaryAccountNumber, ValidationData = ValidationData, VerificationAttributes = VerificationAttributes)
+  input <- .paymentcryptographydataplane$verify_card_validation_data_input(KeyIdentifier = KeyIdentifier, PrimaryAccountNumber = PrimaryAccountNumber, VerificationAttributes = VerificationAttributes, ValidationData = ValidationData)
   output <- .paymentcryptographydataplane$verify_card_validation_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1221,17 +1289,17 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
 #' -   [`generate_mac`][paymentcryptographydataplane_generate_mac]
 #'
 #' @usage
-#' paymentcryptographydataplane_verify_mac(KeyIdentifier, Mac, MacLength,
-#'   MessageData, VerificationAttributes)
+#' paymentcryptographydataplane_verify_mac(KeyIdentifier, MessageData, Mac,
+#'   VerificationAttributes, MacLength)
 #'
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the encryption key that Amazon Web Services Payment
 #' Cryptography uses to verify MAC data.
-#' @param Mac &#91;required&#93; The MAC being verified.
-#' @param MacLength The length of the MAC.
 #' @param MessageData &#91;required&#93; The data on for which MAC is under verification. This value must be
 #' hexBinary.
+#' @param Mac &#91;required&#93; The MAC being verified.
 #' @param VerificationAttributes &#91;required&#93; The attributes and data values to use for MAC verification within Amazon
 #' Web Services Payment Cryptography.
+#' @param MacLength The length of the MAC.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1246,37 +1314,37 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
 #' ```
 #' svc$verify_mac(
 #'   KeyIdentifier = "string",
-#'   Mac = "string",
-#'   MacLength = 123,
 #'   MessageData = "string",
+#'   Mac = "string",
 #'   VerificationAttributes = list(
 #'     Algorithm = "ISO9797_ALGORITHM1"|"ISO9797_ALGORITHM3"|"CMAC"|"HMAC_SHA224"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512",
-#'     DukptCmac = list(
-#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       KeySerialNumber = "string"
-#'     ),
-#'     DukptIso9797Algorithm1 = list(
-#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       KeySerialNumber = "string"
-#'     ),
-#'     DukptIso9797Algorithm3 = list(
-#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
-#'       KeySerialNumber = "string"
-#'     ),
 #'     EmvMac = list(
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
-#'       PanSequenceNumber = "string",
 #'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
 #'       SessionKeyDerivationMode = "EMV_COMMON_SESSION_KEY"|"EMV2000"|"AMEX"|"MASTERCARD_SESSION_KEY"|"VISA",
 #'       SessionKeyDerivationValue = list(
 #'         ApplicationCryptogram = "string",
 #'         ApplicationTransactionCounter = "string"
 #'       )
+#'     ),
+#'     DukptIso9797Algorithm1 = list(
+#'       KeySerialNumber = "string",
+#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
+#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
+#'     ),
+#'     DukptIso9797Algorithm3 = list(
+#'       KeySerialNumber = "string",
+#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
+#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
+#'     ),
+#'     DukptCmac = list(
+#'       KeySerialNumber = "string",
+#'       DukptKeyVariant = "BIDIRECTIONAL"|"REQUEST"|"RESPONSE",
+#'       DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
 #'     )
-#'   )
+#'   ),
+#'   MacLength = 123
 #' )
 #' ```
 #'
@@ -1285,17 +1353,18 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
 #' @rdname paymentcryptographydataplane_verify_mac
 #'
 #' @aliases paymentcryptographydataplane_verify_mac
-paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, Mac, MacLength = NULL, MessageData, VerificationAttributes) {
+paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, Mac, VerificationAttributes, MacLength = NULL) {
   op <- new_operation(
     name = "VerifyMac",
     http_method = "POST",
     http_path = "/mac/verify",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$verify_mac_input(KeyIdentifier = KeyIdentifier, Mac = Mac, MacLength = MacLength, MessageData = MessageData, VerificationAttributes = VerificationAttributes)
+  input <- .paymentcryptographydataplane$verify_mac_input(KeyIdentifier = KeyIdentifier, MessageData = MessageData, Mac = Mac, VerificationAttributes = VerificationAttributes, MacLength = MacLength)
   output <- .paymentcryptographydataplane$verify_mac_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1335,16 +1404,19 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, Mac, MacLengt
 #' -   [`translate_pin_data`][paymentcryptographydataplane_translate_pin_data]
 #'
 #' @usage
-#' paymentcryptographydataplane_verify_pin_data(DukptAttributes,
-#'   EncryptedPinBlock, EncryptionKeyIdentifier, PinBlockFormat,
-#'   PinDataLength, PrimaryAccountNumber, VerificationAttributes,
-#'   VerificationKeyIdentifier)
+#' paymentcryptographydataplane_verify_pin_data(VerificationKeyIdentifier,
+#'   EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock,
+#'   PrimaryAccountNumber, PinBlockFormat, PinDataLength, DukptAttributes)
 #'
-#' @param DukptAttributes The attributes and values for the DUKPT encrypted PIN block data.
-#' @param EncryptedPinBlock &#91;required&#93; The encrypted PIN block data that Amazon Web Services Payment
-#' Cryptography verifies.
+#' @param VerificationKeyIdentifier &#91;required&#93; The `keyARN` of the PIN verification key.
 #' @param EncryptionKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key under which the PIN block data is
 #' encrypted. This key type can be PEK or BDK.
+#' @param VerificationAttributes &#91;required&#93; The attributes and values for PIN data verification.
+#' @param EncryptedPinBlock &#91;required&#93; The encrypted PIN block data that Amazon Web Services Payment
+#' Cryptography verifies.
+#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
+#' credit or debit card that associates the card with a specific account
+#' holder.
 #' @param PinBlockFormat &#91;required&#93; The PIN encoding format for pin data generation as specified in ISO
 #' 9564. Amazon Web Services Payment Cryptography supports `ISO_Format_0`
 #' and `ISO_Format_3`.
@@ -1356,48 +1428,44 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, Mac, MacLengt
 #' The `ISO_Format_3` PIN block format is the same as `ISO_Format_0` except
 #' that the fill digits are random values from 10 to 15.
 #' @param PinDataLength The length of PIN being verified.
-#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
-#' credit or debit card that associates the card with a specific account
-#' holder.
-#' @param VerificationAttributes &#91;required&#93; The attributes and values for PIN data verification.
-#' @param VerificationKeyIdentifier &#91;required&#93; The `keyARN` of the PIN verification key.
+#' @param DukptAttributes The attributes and values for the DUKPT encrypted PIN block data.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   EncryptionKeyArn = "string",
-#'   EncryptionKeyCheckValue = "string",
 #'   VerificationKeyArn = "string",
-#'   VerificationKeyCheckValue = "string"
+#'   VerificationKeyCheckValue = "string",
+#'   EncryptionKeyArn = "string",
+#'   EncryptionKeyCheckValue = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$verify_pin_data(
-#'   DukptAttributes = list(
-#'     DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
-#'     KeySerialNumber = "string"
-#'   ),
-#'   EncryptedPinBlock = "string",
+#'   VerificationKeyIdentifier = "string",
 #'   EncryptionKeyIdentifier = "string",
-#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3",
-#'   PinDataLength = 123,
-#'   PrimaryAccountNumber = "string",
 #'   VerificationAttributes = list(
-#'     Ibm3624Pin = list(
-#'       DecimalizationTable = "string",
-#'       PinOffset = "string",
-#'       PinValidationData = "string",
-#'       PinValidationDataPadCharacter = "string"
-#'     ),
 #'     VisaPin = list(
 #'       PinVerificationKeyIndex = 123,
 #'       VerificationValue = "string"
+#'     ),
+#'     Ibm3624Pin = list(
+#'       DecimalizationTable = "string",
+#'       PinValidationDataPadCharacter = "string",
+#'       PinValidationData = "string",
+#'       PinOffset = "string"
 #'     )
 #'   ),
-#'   VerificationKeyIdentifier = "string"
+#'   EncryptedPinBlock = "string",
+#'   PrimaryAccountNumber = "string",
+#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3",
+#'   PinDataLength = 123,
+#'   DukptAttributes = list(
+#'     KeySerialNumber = "string",
+#'     DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
+#'   )
 #' )
 #' ```
 #'
@@ -1406,17 +1474,18 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, Mac, MacLengt
 #' @rdname paymentcryptographydataplane_verify_pin_data
 #'
 #' @aliases paymentcryptographydataplane_verify_pin_data
-paymentcryptographydataplane_verify_pin_data <- function(DukptAttributes = NULL, EncryptedPinBlock, EncryptionKeyIdentifier, PinBlockFormat, PinDataLength = NULL, PrimaryAccountNumber, VerificationAttributes, VerificationKeyIdentifier) {
+paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifier, EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock, PrimaryAccountNumber, PinBlockFormat, PinDataLength = NULL, DukptAttributes = NULL) {
   op <- new_operation(
     name = "VerifyPinData",
     http_method = "POST",
     http_path = "/pindata/verify",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .paymentcryptographydataplane$verify_pin_data_input(DukptAttributes = DukptAttributes, EncryptedPinBlock = EncryptedPinBlock, EncryptionKeyIdentifier = EncryptionKeyIdentifier, PinBlockFormat = PinBlockFormat, PinDataLength = PinDataLength, PrimaryAccountNumber = PrimaryAccountNumber, VerificationAttributes = VerificationAttributes, VerificationKeyIdentifier = VerificationKeyIdentifier)
+  input <- .paymentcryptographydataplane$verify_pin_data_input(VerificationKeyIdentifier = VerificationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, VerificationAttributes = VerificationAttributes, EncryptedPinBlock = EncryptedPinBlock, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat, PinDataLength = PinDataLength, DukptAttributes = DukptAttributes)
   output <- .paymentcryptographydataplane$verify_pin_data_output()
   config <- get_config()
-  svc <- .paymentcryptographydataplane$service(config)
+  svc <- .paymentcryptographydataplane$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

@@ -60,12 +60,13 @@ lightsail_allocate_static_ip <- function(staticIpName) {
     name = "AllocateStaticIp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$allocate_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$allocate_static_ip_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -159,12 +160,13 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
     name = "AttachCertificateToDistribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$attach_certificate_to_distribution_input(distributionName = distributionName, certificateName = certificateName)
   output <- .lightsail$attach_certificate_to_distribution_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -245,12 +247,13 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath, autoMounting
     name = "AttachDisk",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$attach_disk_input(diskName = diskName, instanceName = instanceName, diskPath = diskPath, autoMounting = autoMounting)
   output <- .lightsail$attach_disk_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -335,12 +338,13 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
     name = "AttachInstancesToLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$attach_instances_to_load_balancer_input(loadBalancerName = loadBalancerName, instanceNames = instanceNames)
   output <- .lightsail$attach_instances_to_load_balancer_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -425,12 +429,13 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
     name = "AttachLoadBalancerTlsCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$attach_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName)
   output <- .lightsail$attach_load_balancer_tls_certificate_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -496,12 +501,13 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
     name = "AttachStaticIp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$attach_static_ip_input(staticIpName = staticIpName, instanceName = instanceName)
   output <- .lightsail$attach_static_ip_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -560,7 +566,7 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #'   portInfo = list(
 #'     fromPort = 123,
 #'     toPort = 123,
-#'     protocol = "tcp"|"all"|"udp"|"icmp",
+#'     protocol = "tcp"|"all"|"udp"|"icmp"|"icmpv6",
 #'     cidrs = list(
 #'       "string"
 #'     ),
@@ -585,12 +591,13 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
     name = "CloseInstancePublicPorts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$close_instance_public_ports_input(portInfo = portInfo, instanceName = instanceName)
   output <- .lightsail$close_instance_public_ports_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -722,12 +729,13 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
     name = "CopySnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$copy_snapshot_input(sourceSnapshotName = sourceSnapshotName, sourceResourceName = sourceResourceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot, targetSnapshotName = targetSnapshotName, sourceRegion = sourceRegion)
   output <- .lightsail$copy_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -878,12 +886,13 @@ lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObj
     name = "CreateBucket",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_bucket_input(bucketName = bucketName, bundleId = bundleId, tags = tags, enableObjectVersioning = enableObjectVersioning)
   output <- .lightsail$create_bucket_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -980,12 +989,13 @@ lightsail_create_bucket_access_key <- function(bucketName) {
     name = "CreateBucketAccessKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_bucket_access_key_input(bucketName = bucketName)
   output <- .lightsail$create_bucket_access_key_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1174,12 +1184,13 @@ lightsail_create_certificate <- function(certificateName, domainName, subjectAlt
     name = "CreateCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_certificate_input(certificateName = certificateName, domainName = domainName, subjectAlternativeNames = subjectAlternativeNames, tags = tags)
   output <- .lightsail$create_certificate_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1264,12 +1275,13 @@ lightsail_create_cloud_formation_stack <- function(instances) {
     name = "CreateCloudFormationStack",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_cloud_formation_stack_input(instances = instances)
   output <- .lightsail$create_cloud_formation_stack_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1378,12 +1390,13 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
     name = "CreateContactMethod",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_contact_method_input(protocol = protocol, contactEndpoint = contactEndpoint)
   output <- .lightsail$create_contact_method_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1669,12 +1682,13 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
     name = "CreateContainerService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_container_service_input(serviceName = serviceName, power = power, scale = scale, tags = tags, publicDomainNames = publicDomainNames, deployment = deployment, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$create_container_service_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1867,12 +1881,13 @@ lightsail_create_container_service_deployment <- function(serviceName, container
     name = "CreateContainerServiceDeployment",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_container_service_deployment_input(serviceName = serviceName, containers = containers, publicEndpoint = publicEndpoint)
   output <- .lightsail$create_container_service_deployment_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -1943,12 +1958,13 @@ lightsail_create_container_service_registry_login <- function() {
     name = "CreateContainerServiceRegistryLogin",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_container_service_registry_login_input()
   output <- .lightsail$create_container_service_registry_login_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2052,12 +2068,13 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
     name = "CreateDisk",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_disk_input(diskName = diskName, availabilityZone = availabilityZone, sizeInGb = sizeInGb, tags = tags, addOns = addOns)
   output <- .lightsail$create_disk_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2220,12 +2237,13 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
     name = "CreateDiskFromSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_disk_from_snapshot_input(diskName = diskName, diskSnapshotName = diskSnapshotName, availabilityZone = availabilityZone, sizeInGb = sizeInGb, tags = tags, addOns = addOns, sourceDiskName = sourceDiskName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
   output <- .lightsail$create_disk_from_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2343,12 +2361,13 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
     name = "CreateDiskSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_disk_snapshot_input(diskName = diskName, diskSnapshotName = diskSnapshotName, instanceName = instanceName, tags = tags)
   output <- .lightsail$create_disk_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2474,7 +2493,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'       )
 #'     ),
 #'     ableToUpdateBundle = TRUE|FALSE,
-#'     ipAddressType = "dualstack"|"ipv4",
+#'     ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'     tags = list(
 #'       list(
 #'         key = "string",
@@ -2552,7 +2571,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'     )
 #'   ),
 #'   bundleId = "string",
-#'   ipAddressType = "dualstack"|"ipv4",
+#'   ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -2574,12 +2593,13 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
     name = "CreateDistribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, ipAddressType = ipAddressType, tags = tags, certificateName = certificateName, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion)
   output <- .lightsail$create_distribution_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2655,12 +2675,13 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_domain_input(domainName = domainName, tags = tags)
   output <- .lightsail$create_domain_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2746,12 +2767,13 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
     name = "CreateDomainEntry",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$create_domain_entry_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2811,12 +2833,13 @@ lightsail_create_gui_session_access_details <- function(resourceName) {
     name = "CreateGUISessionAccessDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_gui_session_access_details_input(resourceName = resourceName)
   output <- .lightsail$create_gui_session_access_details_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2900,12 +2923,13 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
     name = "CreateInstanceSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName, instanceName = instanceName, tags = tags)
   output <- .lightsail$create_instance_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -2939,8 +2963,8 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' 
 #' In releases prior to June 12, 2017, this parameter was ignored by the
 #' API. It is now discontinued.
-#' @param blueprintId &#91;required&#93; The ID for a virtual private server image (`app_wordpress_4_4` or
-#' `app_lamp_7_0`). Use the `get blueprints` operation to return a list of
+#' @param blueprintId &#91;required&#93; The ID for a virtual private server image (`app_wordpress_x_x` or
+#' `app_lamp_x_x`). Use the `get blueprints` operation to return a list of
 #' available images (or *blueprints*).
 #' 
 #' Use active blueprints when creating new instances. Inactive blueprints
@@ -2949,7 +2973,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' inactive when they become outdated due to operating system updates or
 #' new application releases.
 #' @param bundleId &#91;required&#93; The bundle of specification information for your virtual private server
-#' (or *instance*), including the pricing plan (`micro_1_0`).
+#' (or *instance*), including the pricing plan (`medium_x_x`).
 #' @param userData A launch script you can create that configures a server with additional
 #' user data. For example, you might want to run `apt-get -y update`.
 #' 
@@ -2967,8 +2991,8 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' instance.
 #' @param ipAddressType The IP address type for the instance.
 #' 
-#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
-#' and IPv6.
+#' The possible values are `ipv4` for IPv4 only, `ipv6` for IPv6 only, and
+#' `dualstack` for IPv4 and IPv6.
 #' 
 #' The default value is `dualstack`.
 #'
@@ -3032,7 +3056,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #'       )
 #'     )
 #'   ),
-#'   ipAddressType = "dualstack"|"ipv4"
+#'   ipAddressType = "dualstack"|"ipv4"|"ipv6"
 #' )
 #' ```
 #'
@@ -3046,12 +3070,13 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
     name = "CreateInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_instances_input(instanceNames = instanceNames, availabilityZone = availabilityZone, customImageName = customImageName, blueprintId = blueprintId, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType)
   output <- .lightsail$create_instances_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3095,7 +3120,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'     `source instance name` parameter. The `instance snapshot name` and
 #'     `source instance name` parameters are mutually exclusive.
 #' @param bundleId &#91;required&#93; The bundle of specification information for your virtual private server
-#' (or *instance*), including the pricing plan (`micro_1_0`).
+#' (or *instance*), including the pricing plan (`micro_x_x`).
 #' @param userData You can create a launch script that configures a server with additional
 #' user data. For example, `apt-get -y update`.
 #' 
@@ -3113,8 +3138,8 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' instance.
 #' @param ipAddressType The IP address type for the instance.
 #' 
-#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
-#' and IPv6.
+#' The possible values are `ipv4` for IPv4 only, `ipv6` for IPv6 only, and
+#' `dualstack` for IPv4 and IPv6.
 #' 
 #' The default value is `dualstack`.
 #' @param sourceInstanceName The name of the source instance from which the source automatic snapshot
@@ -3228,7 +3253,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'       )
 #'     )
 #'   ),
-#'   ipAddressType = "dualstack"|"ipv4",
+#'   ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'   sourceInstanceName = "string",
 #'   restoreDate = "string",
 #'   useLatestRestorableAutoSnapshot = TRUE|FALSE
@@ -3245,12 +3270,13 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
     name = "CreateInstancesFromSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_instances_from_snapshot_input(instanceNames = instanceNames, attachedDiskMapping = attachedDiskMapping, availabilityZone = availabilityZone, instanceSnapshotName = instanceSnapshotName, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType, sourceInstanceName = sourceInstanceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
   output <- .lightsail$create_instances_from_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3355,12 +3381,13 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
     name = "CreateKeyPair",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_key_pair_input(keyPairName = keyPairName, tags = tags)
   output <- .lightsail$create_key_pair_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3418,8 +3445,8 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' resource after it's created.
 #' @param ipAddressType The IP address type for the load balancer.
 #' 
-#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
-#' and IPv6.
+#' The possible values are `ipv4` for IPv4 only, `ipv6` for IPv6 only, and
+#' `dualstack` for IPv4 and IPv6.
 #' 
 #' The default value is `dualstack`.
 #' @param tlsPolicyName The name of the TLS policy to apply to the load balancer.
@@ -3480,7 +3507,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #'       value = "string"
 #'     )
 #'   ),
-#'   ipAddressType = "dualstack"|"ipv4",
+#'   ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'   tlsPolicyName = "string"
 #' )
 #' ```
@@ -3495,12 +3522,13 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
     name = "CreateLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_load_balancer_input(loadBalancerName = loadBalancerName, instancePort = instancePort, healthCheckPath = healthCheckPath, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags, ipAddressType = ipAddressType, tlsPolicyName = tlsPolicyName)
   output <- .lightsail$create_load_balancer_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3604,12 +3632,13 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
     name = "CreateLoadBalancerTlsCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags)
   output <- .lightsail$create_load_balancer_tls_certificate_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -3677,7 +3706,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #'     For more information about reserved words in MySQL, see the Keywords
 #'     and Reserved Words articles for [MySQL
-#'     5.6](https://dev.mysql.com/doc/refman/8.0/en/keywords.html), [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
 #'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and
 #'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
@@ -3721,7 +3750,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #'     For more information about reserved words in MySQL 5.6 or 5.7, see
 #'     the Keywords and Reserved Words articles for [MySQL
-#'     5.6](https://dev.mysql.com/doc/refman/8.0/en/keywords.html), [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
 #'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or
 #'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
@@ -3867,12 +3896,13 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
     name = "CreateRelationalDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_relational_database_input(relationalDatabaseName = relationalDatabaseName, availabilityZone = availabilityZone, relationalDatabaseBlueprintId = relationalDatabaseBlueprintId, relationalDatabaseBundleId = relationalDatabaseBundleId, masterDatabaseName = masterDatabaseName, masterUsername = masterUsername, masterUserPassword = masterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, publiclyAccessible = publiclyAccessible, tags = tags)
   output <- .lightsail$create_relational_database_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4022,12 +4052,13 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
     name = "CreateRelationalDatabaseFromSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_relational_database_from_snapshot_input(relationalDatabaseName = relationalDatabaseName, availabilityZone = availabilityZone, publiclyAccessible = publiclyAccessible, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, relationalDatabaseBundleId = relationalDatabaseBundleId, sourceRelationalDatabaseName = sourceRelationalDatabaseName, restoreTime = restoreTime, useLatestRestorableTime = useLatestRestorableTime, tags = tags)
   output <- .lightsail$create_relational_database_from_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4117,12 +4148,13 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
     name = "CreateRelationalDatabaseSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$create_relational_database_snapshot_input(relationalDatabaseName = relationalDatabaseName, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, tags = tags)
   output <- .lightsail$create_relational_database_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4192,12 +4224,13 @@ lightsail_delete_alarm <- function(alarmName) {
     name = "DeleteAlarm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_alarm_input(alarmName = alarmName)
   output <- .lightsail$delete_alarm_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4268,12 +4301,13 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
     name = "DeleteAutoSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_auto_snapshot_input(resourceName = resourceName, date = date)
   output <- .lightsail$delete_auto_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4363,12 +4397,13 @@ lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
     name = "DeleteBucket",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_bucket_input(bucketName = bucketName, forceDelete = forceDelete)
   output <- .lightsail$delete_bucket_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4445,12 +4480,13 @@ lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
     name = "DeleteBucketAccessKey",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_bucket_access_key_input(bucketName = bucketName, accessKeyId = accessKeyId)
   output <- .lightsail$delete_bucket_access_key_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4524,12 +4560,13 @@ lightsail_delete_certificate <- function(certificateName) {
     name = "DeleteCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_certificate_input(certificateName = certificateName)
   output <- .lightsail$delete_certificate_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4607,12 +4644,13 @@ lightsail_delete_contact_method <- function(protocol) {
     name = "DeleteContactMethod",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_contact_method_input(protocol = protocol)
   output <- .lightsail$delete_contact_method_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4664,12 +4702,13 @@ lightsail_delete_container_image <- function(serviceName, image) {
     name = "DeleteContainerImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_container_image_input(serviceName = serviceName, image = image)
   output <- .lightsail$delete_container_image_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4706,12 +4745,13 @@ lightsail_delete_container_service <- function(serviceName) {
     name = "DeleteContainerService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_container_service_input(serviceName = serviceName)
   output <- .lightsail$delete_container_service_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4785,12 +4825,13 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
     name = "DeleteDisk",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_disk_input(diskName = diskName, forceDeleteAddOns = forceDeleteAddOns)
   output <- .lightsail$delete_disk_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4868,12 +4909,13 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
     name = "DeleteDiskSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_disk_snapshot_input(diskSnapshotName = diskSnapshotName)
   output <- .lightsail$delete_disk_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -4940,12 +4982,13 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
     name = "DeleteDistribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_distribution_input(distributionName = distributionName)
   output <- .lightsail$delete_distribution_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5012,12 +5055,13 @@ lightsail_delete_domain <- function(domainName) {
     name = "DeleteDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_domain_input(domainName = domainName)
   output <- .lightsail$delete_domain_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5096,12 +5140,13 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
     name = "DeleteDomainEntry",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$delete_domain_entry_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5173,12 +5218,13 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
     name = "DeleteInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_instance_input(instanceName = instanceName, forceDeleteAddOns = forceDeleteAddOns)
   output <- .lightsail$delete_instance_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5248,12 +5294,13 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
     name = "DeleteInstanceSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName)
   output <- .lightsail$delete_instance_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5335,12 +5382,13 @@ lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
     name = "DeleteKeyPair",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_key_pair_input(keyPairName = keyPairName, expectedFingerprint = expectedFingerprint)
   output <- .lightsail$delete_key_pair_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5416,12 +5464,13 @@ lightsail_delete_known_host_keys <- function(instanceName) {
     name = "DeleteKnownHostKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_known_host_keys_input(instanceName = instanceName)
   output <- .lightsail$delete_known_host_keys_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5495,12 +5544,13 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
     name = "DeleteLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_load_balancer_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$delete_load_balancer_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5582,12 +5632,13 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
     name = "DeleteLoadBalancerTlsCertificate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName, force = force)
   output <- .lightsail$delete_load_balancer_tls_certificate_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5680,12 +5731,13 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
     name = "DeleteRelationalDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_relational_database_input(relationalDatabaseName = relationalDatabaseName, skipFinalSnapshot = skipFinalSnapshot, finalRelationalDatabaseSnapshotName = finalRelationalDatabaseSnapshotName)
   output <- .lightsail$delete_relational_database_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5756,12 +5808,13 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
     name = "DeleteRelationalDatabaseSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$delete_relational_database_snapshot_input(relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$delete_relational_database_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5831,12 +5884,13 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
     name = "DetachCertificateFromDistribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$detach_certificate_from_distribution_input(distributionName = distributionName)
   output <- .lightsail$detach_certificate_from_distribution_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5908,12 +5962,13 @@ lightsail_detach_disk <- function(diskName) {
     name = "DetachDisk",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$detach_disk_input(diskName = diskName)
   output <- .lightsail$detach_disk_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -5992,12 +6047,13 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
     name = "DetachInstancesFromLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$detach_instances_from_load_balancer_input(loadBalancerName = loadBalancerName, instanceNames = instanceNames)
   output <- .lightsail$detach_instances_from_load_balancer_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6063,12 +6119,13 @@ lightsail_detach_static_ip <- function(staticIpName) {
     name = "DetachStaticIp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$detach_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$detach_static_ip_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6136,12 +6193,13 @@ lightsail_disable_add_on <- function(addOnType, resourceName) {
     name = "DisableAddOn",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$disable_add_on_input(addOnType = addOnType, resourceName = resourceName)
   output <- .lightsail$disable_add_on_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6188,12 +6246,13 @@ lightsail_download_default_key_pair <- function() {
     name = "DownloadDefaultKeyPair",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$download_default_key_pair_input()
   output <- .lightsail$download_default_key_pair_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6271,12 +6330,13 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
     name = "EnableAddOn",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$enable_add_on_input(resourceName = resourceName, addOnRequest = addOnRequest)
   output <- .lightsail$enable_add_on_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6361,12 +6421,13 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
     name = "ExportSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$export_snapshot_input(sourceSnapshotName = sourceSnapshotName)
   output <- .lightsail$export_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6416,12 +6477,13 @@ lightsail_get_active_names <- function(pageToken = NULL) {
     name = "GetActiveNames",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_active_names_input(pageToken = pageToken)
   output <- .lightsail$get_active_names_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6523,12 +6585,13 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
     name = "GetAlarms",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_alarms_input(alarmName = alarmName, pageToken = pageToken, monitoredResourceName = monitoredResourceName)
   output <- .lightsail$get_alarms_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6589,12 +6652,13 @@ lightsail_get_auto_snapshots <- function(resourceName) {
     name = "GetAutoSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_auto_snapshots_input(resourceName = resourceName)
   output <- .lightsail$get_auto_snapshots_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6676,12 +6740,13 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL, a
     name = "GetBlueprints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_blueprints_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_blueprints_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6747,12 +6812,13 @@ lightsail_get_bucket_access_keys <- function(bucketName) {
     name = "GetBucketAccessKeys",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_bucket_access_keys_input(bucketName = bucketName)
   output <- .lightsail$get_bucket_access_keys_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6810,12 +6876,13 @@ lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
     name = "GetBucketBundles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_bucket_bundles_input(includeInactive = includeInactive)
   output <- .lightsail$get_bucket_bundles_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -6948,12 +7015,13 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
     name = "GetBucketMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_bucket_metric_data_input(bucketName = bucketName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics, unit = unit)
   output <- .lightsail$get_bucket_metric_data_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7072,12 +7140,13 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
     name = "GetBuckets",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources)
   output <- .lightsail$get_buckets_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7160,12 +7229,13 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
     name = "GetBundles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_bundles_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_bundles_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7329,12 +7399,13 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
     name = "GetCertificates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName, pageToken = pageToken)
   output <- .lightsail$get_certificates_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7412,12 +7483,13 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
     name = "GetCloudFormationStackRecords",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_cloud_formation_stack_records_input(pageToken = pageToken)
   output <- .lightsail$get_cloud_formation_stack_records_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7492,12 +7564,13 @@ lightsail_get_contact_methods <- function(protocols = NULL) {
     name = "GetContactMethods",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_contact_methods_input(protocols = protocols)
   output <- .lightsail$get_contact_methods_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7543,12 +7616,13 @@ lightsail_get_container_api_metadata <- function() {
     name = "GetContainerAPIMetadata",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_container_api_metadata_input()
   output <- .lightsail$get_container_api_metadata_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7606,12 +7680,13 @@ lightsail_get_container_images <- function(serviceName) {
     name = "GetContainerImages",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_container_images_input(serviceName = serviceName)
   output <- .lightsail$get_container_images_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7734,12 +7809,13 @@ lightsail_get_container_log <- function(serviceName, containerName, startTime = 
     name = "GetContainerLog",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_container_log_input(serviceName = serviceName, containerName = containerName, startTime = startTime, endTime = endTime, filterPattern = filterPattern, pageToken = pageToken)
   output <- .lightsail$get_container_log_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7827,12 +7903,13 @@ lightsail_get_container_service_deployments <- function(serviceName) {
     name = "GetContainerServiceDeployments",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_container_service_deployments_input(serviceName = serviceName)
   output <- .lightsail$get_container_service_deployments_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -7959,12 +8036,13 @@ lightsail_get_container_service_metric_data <- function(serviceName, metricName,
     name = "GetContainerServiceMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_container_service_metric_data_input(serviceName = serviceName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics)
   output <- .lightsail$get_container_service_metric_data_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8018,12 +8096,13 @@ lightsail_get_container_service_powers <- function() {
     name = "GetContainerServicePowers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_container_service_powers_input()
   output <- .lightsail$get_container_service_powers_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8178,12 +8257,13 @@ lightsail_get_container_services <- function(serviceName = NULL) {
     name = "GetContainerServices",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_container_services_input(serviceName = serviceName)
   output <- .lightsail$get_container_services_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8290,12 +8370,13 @@ lightsail_get_cost_estimate <- function(resourceName, startTime, endTime) {
     name = "GetCostEstimate",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_cost_estimate_input(resourceName = resourceName, startTime = startTime, endTime = endTime)
   output <- .lightsail$get_cost_estimate_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8375,12 +8456,13 @@ lightsail_get_disk <- function(diskName) {
     name = "GetDisk",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_disk_input(diskName = diskName)
   output <- .lightsail$get_disk_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8448,12 +8530,13 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
     name = "GetDiskSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_disk_snapshot_input(diskSnapshotName = diskSnapshotName)
   output <- .lightsail$get_disk_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8531,12 +8614,13 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
     name = "GetDiskSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_disk_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_disk_snapshots_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8626,12 +8710,13 @@ lightsail_get_disks <- function(pageToken = NULL) {
     name = "GetDisks",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_disks_input(pageToken = pageToken)
   output <- .lightsail$get_disks_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8684,12 +8769,13 @@ lightsail_get_distribution_bundles <- function() {
     name = "GetDistributionBundles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_distribution_bundles_input()
   output <- .lightsail$get_distribution_bundles_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8743,12 +8829,13 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
     name = "GetDistributionLatestCacheReset",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_distribution_latest_cache_reset_input(distributionName = distributionName)
   output <- .lightsail$get_distribution_latest_cache_reset_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -8936,12 +9023,13 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
     name = "GetDistributionMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_distribution_metric_data_input(distributionName = distributionName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, unit = unit, statistics = statistics)
   output <- .lightsail$get_distribution_metric_data_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9037,7 +9125,7 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
 #'         )
 #'       ),
 #'       ableToUpdateBundle = TRUE|FALSE,
-#'       ipAddressType = "dualstack"|"ipv4",
+#'       ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'       tags = list(
 #'         list(
 #'           key = "string",
@@ -9069,12 +9157,13 @@ lightsail_get_distributions <- function(distributionName = NULL, pageToken = NUL
     name = "GetDistributions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_distributions_input(distributionName = distributionName, pageToken = pageToken)
   output <- .lightsail$get_distributions_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9156,12 +9245,13 @@ lightsail_get_domain <- function(domainName) {
     name = "GetDomain",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_domain_input(domainName = domainName)
   output <- .lightsail$get_domain_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9251,12 +9341,13 @@ lightsail_get_domains <- function(pageToken = NULL) {
     name = "GetDomains",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_domains_input(pageToken = pageToken)
   output <- .lightsail$get_domains_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9355,12 +9446,13 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
     name = "GetExportSnapshotRecords",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_export_snapshot_records_input(pageToken = pageToken)
   output <- .lightsail$get_export_snapshot_records_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9420,7 +9512,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #'     ipv6Addresses = list(
 #'       "string"
 #'     ),
-#'     ipAddressType = "dualstack"|"ipv4",
+#'     ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'     hardware = list(
 #'       cpuCount = 123,
 #'       disks = list(
@@ -9474,7 +9566,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #'         list(
 #'           fromPort = 123,
 #'           toPort = 123,
-#'           protocol = "tcp"|"all"|"udp"|"icmp",
+#'           protocol = "tcp"|"all"|"udp"|"icmp"|"icmpv6",
 #'           accessFrom = "string",
 #'           accessType = "Public"|"Private",
 #'           commonName = "string",
@@ -9525,12 +9617,13 @@ lightsail_get_instance <- function(instanceName) {
     name = "GetInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instance_input(instanceName = instanceName)
   output <- .lightsail$get_instance_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9617,12 +9710,13 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
     name = "GetInstanceAccessDetails",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instance_access_details_input(instanceName = instanceName, protocol = protocol)
   output <- .lightsail$get_instance_access_details_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9840,12 +9934,13 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
     name = "GetInstanceMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instance_metric_data_input(instanceName = instanceName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_instance_metric_data_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -9874,7 +9969,7 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
 #'     list(
 #'       fromPort = 123,
 #'       toPort = 123,
-#'       protocol = "tcp"|"all"|"udp"|"icmp",
+#'       protocol = "tcp"|"all"|"udp"|"icmp"|"icmpv6",
 #'       state = "open"|"closed",
 #'       cidrs = list(
 #'         "string"
@@ -9907,12 +10002,13 @@ lightsail_get_instance_port_states <- function(instanceName) {
     name = "GetInstancePortStates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instance_port_states_input(instanceName = instanceName)
   output <- .lightsail$get_instance_port_states_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10021,12 +10117,13 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
     name = "GetInstanceSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName)
   output <- .lightsail$get_instance_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10143,12 +10240,13 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
     name = "GetInstanceSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instance_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_instance_snapshots_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10194,12 +10292,13 @@ lightsail_get_instance_state <- function(instanceName) {
     name = "GetInstanceState",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instance_state_input(instanceName = instanceName)
   output <- .lightsail$get_instance_state_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10265,7 +10364,7 @@ lightsail_get_instance_state <- function(instanceName) {
 #'       ipv6Addresses = list(
 #'         "string"
 #'       ),
-#'       ipAddressType = "dualstack"|"ipv4",
+#'       ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'       hardware = list(
 #'         cpuCount = 123,
 #'         disks = list(
@@ -10319,7 +10418,7 @@ lightsail_get_instance_state <- function(instanceName) {
 #'           list(
 #'             fromPort = 123,
 #'             toPort = 123,
-#'             protocol = "tcp"|"all"|"udp"|"icmp",
+#'             protocol = "tcp"|"all"|"udp"|"icmp"|"icmpv6",
 #'             accessFrom = "string",
 #'             accessType = "Public"|"Private",
 #'             commonName = "string",
@@ -10372,12 +10471,13 @@ lightsail_get_instances <- function(pageToken = NULL) {
     name = "GetInstances",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_instances_input(pageToken = pageToken)
   output <- .lightsail$get_instances_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10438,12 +10538,13 @@ lightsail_get_key_pair <- function(keyPairName) {
     name = "GetKeyPair",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_key_pair_input(keyPairName = keyPairName)
   output <- .lightsail$get_key_pair_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10515,12 +10616,13 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
     name = "GetKeyPairs",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_key_pairs_input(pageToken = pageToken, includeDefaultKeyPair = includeDefaultKeyPair)
   output <- .lightsail$get_key_pairs_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10583,7 +10685,7 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
 #'     configurationOptions = list(
 #'       "string"
 #'     ),
-#'     ipAddressType = "dualstack"|"ipv4",
+#'     ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'     httpsRedirectionEnabled = TRUE|FALSE,
 #'     tlsPolicyName = "string"
 #'   )
@@ -10607,12 +10709,13 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
     name = "GetLoadBalancer",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_load_balancer_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$get_load_balancer_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10831,12 +10934,13 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
     name = "GetLoadBalancerMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_load_balancer_metric_data_input(loadBalancerName = loadBalancerName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_load_balancer_metric_data_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -10955,12 +11059,13 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
     name = "GetLoadBalancerTlsCertificates",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_load_balancer_tls_certificates_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$get_load_balancer_tls_certificates_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11028,12 +11133,13 @@ lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
     name = "GetLoadBalancerTlsPolicies",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_load_balancer_tls_policies_input(pageToken = pageToken)
   output <- .lightsail$get_load_balancer_tls_policies_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11102,7 +11208,7 @@ lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
 #'       configurationOptions = list(
 #'         "string"
 #'       ),
-#'       ipAddressType = "dualstack"|"ipv4",
+#'       ipAddressType = "dualstack"|"ipv4"|"ipv6",
 #'       httpsRedirectionEnabled = TRUE|FALSE,
 #'       tlsPolicyName = "string"
 #'     )
@@ -11128,12 +11234,13 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
     name = "GetLoadBalancers",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_load_balancers_input(pageToken = pageToken)
   output <- .lightsail$get_load_balancers_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11197,12 +11304,13 @@ lightsail_get_operation <- function(operationId) {
     name = "GetOperation",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_operation_input(operationId = operationId)
   output <- .lightsail$get_operation_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11277,12 +11385,13 @@ lightsail_get_operations <- function(pageToken = NULL) {
     name = "GetOperations",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_operations_input(pageToken = pageToken)
   output <- .lightsail$get_operations_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11356,12 +11465,13 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
     name = "GetOperationsForResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_operations_for_resource_input(resourceName = resourceName, pageToken = pageToken)
   output <- .lightsail$get_operations_for_resource_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11431,12 +11541,13 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
     name = "GetRegions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_regions_input(includeAvailabilityZones = includeAvailabilityZones, includeRelationalDatabaseAvailabilityZones = includeRelationalDatabaseAvailabilityZones)
   output <- .lightsail$get_regions_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11536,12 +11647,13 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
     name = "GetRelationalDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$get_relational_database_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11603,12 +11715,13 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
     name = "GetRelationalDatabaseBlueprints",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_blueprints_input(pageToken = pageToken)
   output <- .lightsail$get_relational_database_blueprints_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11676,12 +11789,13 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeI
     name = "GetRelationalDatabaseBundles",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_bundles_input(pageToken = pageToken, includeInactive = includeInactive)
   output <- .lightsail$get_relational_database_bundles_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11751,12 +11865,13 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
     name = "GetRelationalDatabaseEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_events_input(relationalDatabaseName = relationalDatabaseName, durationInMinutes = durationInMinutes, pageToken = pageToken)
   output <- .lightsail$get_relational_database_events_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11855,12 +11970,13 @@ lightsail_get_relational_database_log_events <- function(relationalDatabaseName,
     name = "GetRelationalDatabaseLogEvents",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_log_events_input(relationalDatabaseName = relationalDatabaseName, logStreamName = logStreamName, startTime = startTime, endTime = endTime, startFromHead = startFromHead, pageToken = pageToken)
   output <- .lightsail$get_relational_database_log_events_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11906,12 +12022,13 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
     name = "GetRelationalDatabaseLogStreams",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_log_streams_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$get_relational_database_log_streams_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -11974,12 +12091,13 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
     name = "GetRelationalDatabaseMasterUserPassword",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_master_user_password_input(relationalDatabaseName = relationalDatabaseName, passwordVersion = passwordVersion)
   output <- .lightsail$get_relational_database_master_user_password_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12155,12 +12273,13 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
     name = "GetRelationalDatabaseMetricData",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_metric_data_input(relationalDatabaseName = relationalDatabaseName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_relational_database_metric_data_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12230,12 +12349,13 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
     name = "GetRelationalDatabaseParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_parameters_input(relationalDatabaseName = relationalDatabaseName, pageToken = pageToken)
   output <- .lightsail$get_relational_database_parameters_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12306,12 +12426,13 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
     name = "GetRelationalDatabaseSnapshot",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_snapshot_input(relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$get_relational_database_snapshot_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12390,12 +12511,13 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
     name = "GetRelationalDatabaseSnapshots",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_database_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_relational_database_snapshots_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12504,12 +12626,13 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
     name = "GetRelationalDatabases",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_relational_databases_input(pageToken = pageToken)
   output <- .lightsail$get_relational_databases_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12599,12 +12722,13 @@ lightsail_get_setup_history <- function(resourceName, pageToken = NULL) {
     name = "GetSetupHistory",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_setup_history_input(resourceName = resourceName, pageToken = pageToken)
   output <- .lightsail$get_setup_history_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12661,12 +12785,13 @@ lightsail_get_static_ip <- function(staticIpName) {
     name = "GetStaticIp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$get_static_ip_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12731,12 +12856,13 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
     name = "GetStaticIps",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$get_static_ips_input(pageToken = pageToken)
   output <- .lightsail$get_static_ips_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12800,12 +12926,13 @@ lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
     name = "ImportKeyPair",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$import_key_pair_input(keyPairName = keyPairName, publicKeyBase64 = publicKeyBase64)
   output <- .lightsail$import_key_pair_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12845,12 +12972,13 @@ lightsail_is_vpc_peered <- function() {
     name = "IsVpcPeered",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$is_vpc_peered_input()
   output <- .lightsail$is_vpc_peered_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -12912,7 +13040,7 @@ lightsail_is_vpc_peered <- function() {
 #'   portInfo = list(
 #'     fromPort = 123,
 #'     toPort = 123,
-#'     protocol = "tcp"|"all"|"udp"|"icmp",
+#'     protocol = "tcp"|"all"|"udp"|"icmp"|"icmpv6",
 #'     cidrs = list(
 #'       "string"
 #'     ),
@@ -12937,12 +13065,13 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
     name = "OpenInstancePublicPorts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$open_instance_public_ports_input(portInfo = portInfo, instanceName = instanceName)
   output <- .lightsail$open_instance_public_ports_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13002,12 +13131,13 @@ lightsail_peer_vpc <- function() {
     name = "PeerVpc",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$peer_vpc_input()
   output <- .lightsail$peer_vpc_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13217,12 +13347,13 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
     name = "PutAlarm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$put_alarm_input(alarmName = alarmName, metricName = metricName, monitoredResourceName = monitoredResourceName, comparisonOperator = comparisonOperator, threshold = threshold, evaluationPeriods = evaluationPeriods, datapointsToAlarm = datapointsToAlarm, treatMissingData = treatMissingData, contactProtocols = contactProtocols, notificationTriggers = notificationTriggers, notificationEnabled = notificationEnabled)
   output <- .lightsail$put_alarm_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13292,7 +13423,7 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #'     list(
 #'       fromPort = 123,
 #'       toPort = 123,
-#'       protocol = "tcp"|"all"|"udp"|"icmp",
+#'       protocol = "tcp"|"all"|"udp"|"icmp"|"icmpv6",
 #'       cidrs = list(
 #'         "string"
 #'       ),
@@ -13318,12 +13449,13 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
     name = "PutInstancePublicPorts",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$put_instance_public_ports_input(portInfos = portInfos, instanceName = instanceName)
   output <- .lightsail$put_instance_public_ports_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13392,12 +13524,13 @@ lightsail_reboot_instance <- function(instanceName) {
     name = "RebootInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$reboot_instance_input(instanceName = instanceName)
   output <- .lightsail$reboot_instance_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13467,12 +13600,13 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
     name = "RebootRelationalDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$reboot_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$reboot_relational_database_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13555,12 +13689,13 @@ lightsail_register_container_image <- function(serviceName, label, digest) {
     name = "RegisterContainerImage",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$register_container_image_input(serviceName = serviceName, label = label, digest = digest)
   output <- .lightsail$register_container_image_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13624,12 +13759,13 @@ lightsail_release_static_ip <- function(staticIpName) {
     name = "ReleaseStaticIp",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$release_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$release_static_ip_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13703,12 +13839,13 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
     name = "ResetDistributionCache",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$reset_distribution_cache_input(distributionName = distributionName)
   output <- .lightsail$reset_distribution_cache_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13789,12 +13926,13 @@ lightsail_send_contact_method_verification <- function(protocol) {
     name = "SendContactMethodVerification",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$send_contact_method_verification_input(protocol = protocol)
   output <- .lightsail$send_contact_method_verification_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13811,7 +13949,8 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #' action to disable dual-stack, and enable IPv4 only.
 #'
 #' @usage
-#' lightsail_set_ip_address_type(resourceType, resourceName, ipAddressType)
+#' lightsail_set_ip_address_type(resourceType, resourceName, ipAddressType,
+#'   acceptBundleUpdate)
 #'
 #' @param resourceType &#91;required&#93; The resource type.
 #' 
@@ -13824,8 +13963,19 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #' @param resourceName &#91;required&#93; The name of the resource for which to set the IP address type.
 #' @param ipAddressType &#91;required&#93; The IP address type to set for the specified resource.
 #' 
-#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
-#' and IPv6.
+#' The possible values are `ipv4` for IPv4 only, `ipv6` for IPv6 only, and
+#' `dualstack` for IPv4 and IPv6.
+#' @param acceptBundleUpdate Required parameter to accept the instance bundle update when changing
+#' to, and from, IPv6-only.
+#' 
+#' An instance bundle will change when switching from `dual-stack` or
+#' `ipv4`, to `ipv6`. It also changes when switching from `ipv6`, to
+#' `dual-stack` or `ipv4`.
+#' 
+#' You must include this parameter in the command to update the bundle. For
+#' example, if you switch from `dual-stack` to `ipv6`, the bundle will be
+#' updated, and billing for the IPv6-only instance bundle begins
+#' immediately.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13862,7 +14012,8 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #' svc$set_ip_address_type(
 #'   resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'   resourceName = "string",
-#'   ipAddressType = "dualstack"|"ipv4"
+#'   ipAddressType = "dualstack"|"ipv4"|"ipv6",
+#'   acceptBundleUpdate = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -13871,17 +14022,18 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #' @rdname lightsail_set_ip_address_type
 #'
 #' @aliases lightsail_set_ip_address_type
-lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressType) {
+lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressType, acceptBundleUpdate = NULL) {
   op <- new_operation(
     name = "SetIpAddressType",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
-  input <- .lightsail$set_ip_address_type_input(resourceType = resourceType, resourceName = resourceName, ipAddressType = ipAddressType)
+  input <- .lightsail$set_ip_address_type_input(resourceType = resourceType, resourceName = resourceName, ipAddressType = ipAddressType, acceptBundleUpdate = acceptBundleUpdate)
   output <- .lightsail$set_ip_address_type_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -13964,12 +14116,13 @@ lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, a
     name = "SetResourceAccessForBucket",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$set_resource_access_for_bucket_input(resourceName = resourceName, bucketName = bucketName, access = access)
   output <- .lightsail$set_resource_access_for_bucket_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14049,12 +14202,13 @@ lightsail_setup_instance_https <- function(instanceName, emailAddress, domainNam
     name = "SetupInstanceHttps",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$setup_instance_https_input(instanceName = instanceName, emailAddress = emailAddress, domainNames = domainNames, certificateProvider = certificateProvider)
   output <- .lightsail$setup_instance_https_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14122,12 +14276,13 @@ lightsail_start_gui_session <- function(resourceName) {
     name = "StartGUISession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$start_gui_session_input(resourceName = resourceName)
   output <- .lightsail$start_gui_session_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14203,12 +14358,13 @@ lightsail_start_instance <- function(instanceName) {
     name = "StartInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$start_instance_input(instanceName = instanceName)
   output <- .lightsail$start_instance_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14279,12 +14435,13 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
     name = "StartRelationalDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$start_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$start_relational_database_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14351,12 +14508,13 @@ lightsail_stop_gui_session <- function(resourceName) {
     name = "StopGUISession",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$stop_gui_session_input(resourceName = resourceName)
   output <- .lightsail$stop_gui_session_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14438,12 +14596,13 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
     name = "StopInstance",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$stop_instance_input(instanceName = instanceName, force = force)
   output <- .lightsail$stop_instance_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14517,12 +14676,13 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
     name = "StopRelationalDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$stop_relational_database_input(relationalDatabaseName = relationalDatabaseName, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$stop_relational_database_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14606,12 +14766,13 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
     name = "TagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$tag_resource_input(resourceName = resourceName, resourceArn = resourceArn, tags = tags)
   output <- .lightsail$tag_resource_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14696,12 +14857,13 @@ lightsail_test_alarm <- function(alarmName, state) {
     name = "TestAlarm",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$test_alarm_input(alarmName = alarmName, state = state)
   output <- .lightsail$test_alarm_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14761,12 +14923,13 @@ lightsail_unpeer_vpc <- function() {
     name = "UnpeerVpc",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$unpeer_vpc_input()
   output <- .lightsail$unpeer_vpc_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14845,12 +15008,13 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
     name = "UntagResource",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$untag_resource_input(resourceName = resourceName, resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .lightsail$untag_resource_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -14994,12 +15158,13 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
     name = "UpdateBucket",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig)
   output <- .lightsail$update_bucket_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15087,12 +15252,13 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
     name = "UpdateBucketBundle",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_bucket_bundle_input(bucketName = bucketName, bundleId = bundleId)
   output <- .lightsail$update_bucket_bundle_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15302,12 +15468,13 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
     name = "UpdateContainerService",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_container_service_input(serviceName = serviceName, power = power, scale = scale, isDisabled = isDisabled, publicDomainNames = publicDomainNames, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$update_container_service_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15454,12 +15621,13 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
     name = "UpdateDistribution",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, isEnabled = isEnabled, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion, certificateName = certificateName, useDefaultCertificate = useDefaultCertificate)
   output <- .lightsail$update_distribution_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15544,12 +15712,13 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
     name = "UpdateDistributionBundle",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_distribution_bundle_input(distributionName = distributionName, bundleId = bundleId)
   output <- .lightsail$update_distribution_bundle_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15630,12 +15799,13 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
     name = "UpdateDomainEntry",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$update_domain_entry_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15740,12 +15910,13 @@ lightsail_update_instance_metadata_options <- function(instanceName, httpTokens 
     name = "UpdateInstanceMetadataOptions",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_instance_metadata_options_input(instanceName = instanceName, httpTokens = httpTokens, httpEndpoint = httpEndpoint, httpPutResponseHopLimit = httpPutResponseHopLimit, httpProtocolIpv6 = httpProtocolIpv6)
   output <- .lightsail$update_instance_metadata_options_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -15852,12 +16023,13 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
     name = "UpdateLoadBalancerAttribute",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_load_balancer_attribute_input(loadBalancerName = loadBalancerName, attributeName = attributeName, attributeValue = attributeValue)
   output <- .lightsail$update_load_balancer_attribute_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16024,12 +16196,13 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
     name = "UpdateRelationalDatabase",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_relational_database_input(relationalDatabaseName = relationalDatabaseName, masterUserPassword = masterUserPassword, rotateMasterUserPassword = rotateMasterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, enableBackupRetention = enableBackupRetention, disableBackupRetention = disableBackupRetention, publiclyAccessible = publiclyAccessible, applyImmediately = applyImmediately, caCertificateIdentifier = caCertificateIdentifier, relationalDatabaseBlueprintId = relationalDatabaseBlueprintId)
   output <- .lightsail$update_relational_database_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
@@ -16123,12 +16296,13 @@ lightsail_update_relational_database_parameters <- function(relationalDatabaseNa
     name = "UpdateRelationalDatabaseParameters",
     http_method = "POST",
     http_path = "/",
+    host_prefix = "",
     paginator = list()
   )
   input <- .lightsail$update_relational_database_parameters_input(relationalDatabaseName = relationalDatabaseName, parameters = parameters)
   output <- .lightsail$update_relational_database_parameters_output()
   config <- get_config()
-  svc <- .lightsail$service(config)
+  svc <- .lightsail$service(config, op)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)

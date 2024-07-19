@@ -21,12 +21,13 @@ directconnect_create_lag(
 \arguments{
 \item{numberOfConnections}{[required] The number of physical dedicated connections initially provisioned and
 bundled by the LAG. You can have a maximum of four connections when the
-port speed is 1G or 10G, or two when the port speed is 100G.}
+port speed is 1Gbps or 10Gbps, or two when the port speed is 100Gbps or
+400Gbps.}
 
 \item{location}{[required] The location for the LAG.}
 
 \item{connectionsBandwidth}{[required] The bandwidth of the individual physical dedicated connections bundled
-by the LAG. The possible values are 1Gbps and 10Gbps.}
+by the LAG. The possible values are 1Gbps,10Gbps, 100Gbps, and 400Gbps.}
 
 \item{lagName}{[required] The name of the LAG.}
 

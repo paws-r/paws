@@ -13,7 +13,13 @@ auditmanager_list_assessment_control_insights_by_control_domain(
 )
 }
 \arguments{
-\item{controlDomainId}{[required] The unique identifier for the control domain.}
+\item{controlDomainId}{[required] The unique identifier for the control domain.
+
+Audit Manager supports the control domains that are provided by Amazon
+Web Services Control Catalog. For information about how to find a list
+of available control domains, see
+\href{https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html}{\code{ListDomains}}
+in the Amazon Web Services Control Catalog API Reference.}
 
 \item{assessmentId}{[required] The unique identifier for the active assessment.}
 

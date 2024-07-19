@@ -27,7 +27,7 @@ to the latest AMI version of the cluster's Kubernetes version. If you
 specify \code{launchTemplate}, and your launch template uses a custom AMI,
 then don't specify \code{version}, or the node group update will fail. For
 more information about using launch templates with Amazon EKS, see
-\href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+\href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Customizing managed nodes with launch templates}
 in the \emph{Amazon EKS User Guide}.}
 
 \item{releaseVersion}{The AMI version of the Amazon EKS optimized AMI to use for the update.
@@ -42,7 +42,7 @@ in the \emph{Amazon EKS User Guide}.
 If you specify \code{launchTemplate}, and your launch template uses a custom
 AMI, then don't specify \code{releaseVersion}, or the node group update will
 fail. For more information about using launch templates with Amazon EKS,
-see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Customizing managed nodes with launch templates}
 in the \emph{Amazon EKS User Guide}.}
 
 \item{launchTemplate}{An object representing a node group's launch template specification. You
