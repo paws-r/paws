@@ -21,6 +21,7 @@ Operation <- struct(
 #' @param name The API operation name.
 #' @param http_method The HTTP method, e.g. `"GET"` or `"POST"`.
 #' @param http_path The HTTP path.
+#' @param host_prefix The HTTP prefix
 #' @param paginator Currently unused.
 #' @param before_presign_fn Currently unused.
 #'
