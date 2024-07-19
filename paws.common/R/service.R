@@ -89,6 +89,8 @@ new_handlers <- function(protocol, signer) {
 #'
 #' @param cfgs A config defined by the service. Defaults to null.
 #'
+#' @param operation A operation defined by the service.
+#'
 #' @family API request functions
 #'
 #' @examples
@@ -112,13 +114,16 @@ new_handlers <- function(protocol, signer) {
 #' service <- new_service(metadata, handlers)
 #' }
 #'
+#' @seealso [new_operation()]
+#'
 #' @export
-new_service <- function(metadata, handlers, cfgs = NULL) {
+new_service <- function(metadata, handlers, cfgs = NULL, operation = Operation()) {
   cfg <- client_config(
     service_name = metadata$service_name,
     endpoints = metadata$endpoints,
     cfgs = cfgs,
-    service_id = metadata$service_id
+    service_id = metadata$service_id,
+    operation = operation
   )
 
   signing_name <- metadata$signing_name

@@ -8,6 +8,7 @@ new_operation(
   name,
   http_method,
   http_path,
+  host_prefix,
   paginator,
   before_presign_fn = NULL
 )
@@ -18,6 +19,8 @@ new_operation(
 \item{http_method}{The HTTP method, e.g. \code{"GET"} or \code{"POST"}.}
 
 \item{http_path}{The HTTP path.}
+
+\item{host_prefix}{The HTTP prefix}
 
 \item{paginator}{Currently unused.}
 

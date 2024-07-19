@@ -1,3 +1,6 @@
+# paws.common 0.7.5
+* build endpoint with host_prefix (#804), thanks to @joseale2310 and @lyschoening for raising issue.
+
 # paws.common 0.7.4
 * fix `transpose` to correctly parse lists with empty first elements (#791), thanks to @FMKerckhof for raising issue.
 * support refreshable credentials for `sso` (#793)

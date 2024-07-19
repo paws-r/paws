@@ -241,7 +241,7 @@ s3_generate_presigned_url <- function(client_method,
   config <- get_config()
 
   # get service
-  svc <- get(.pkg_api, envir = getNamespace(pkg_name))[["service"]](config)
+  svc <- get(.pkg_api, envir = getNamespace(pkg_name))[["service"]](config, op)
 
   # create new request
   request <- new_request(svc, op, input, output)

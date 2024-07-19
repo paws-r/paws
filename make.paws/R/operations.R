@@ -37,12 +37,13 @@ operation_template <- template(
       name = ${operation_name},
       http_method = ${http_method},
       http_path = ${http_path},
+      host_prefix = ${host_prefix},
       paginator = ${paginator}
     )
     input <- .${service}$${operation_input}
     output <- .${service}$${operation_output}
     config <- get_config()
-    svc <- .${service}$service(config)
+    svc <- .${service}$service(config, op)
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
     return(response)
@@ -64,6 +65,7 @@ make_operation <- function(operation, api, doc_maker) {
     operation_output = get_operation_output(operation),
     http_method = quoted(operation$http$method),
     http_path = quoted(operation$http$requestUri),
+    host_prefix = quoted(operation[["endpoint"]][["hostPrefix"]] %||% ""),
     paginator = set_paginator(operation$paginators)
   )
 }

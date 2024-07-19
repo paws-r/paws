@@ -4,7 +4,7 @@
 \alias{new_service}
 \title{Return an AWS API service object}
 \usage{
-new_service(metadata, handlers, cfgs = NULL)
+new_service(metadata, handlers, cfgs = NULL, operation = Operation())
 }
 \arguments{
 \item{metadata}{A named list of API metadata. It should look like:
@@ -23,6 +23,8 @@ new_service(metadata, handlers, cfgs = NULL)
 \item{handlers}{A set of handlers, e.g. from \code{new_handlers}.}
 
 \item{cfgs}{A config defined by the service. Defaults to null.}
+
+\item{operation}{A operation defined by the service.}
 }
 \description{
 Return an API service object with information and handlers needed to make
@@ -71,6 +73,8 @@ service <- new_service(metadata, handlers)
 
 }
 \seealso{
+\code{\link[=new_operation]{new_operation()}}
+
 Other API request functions: 
 \code{\link{new_handlers}()},
 \code{\link{new_operation}()},

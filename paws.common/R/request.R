@@ -7,6 +7,7 @@ Operation <- struct(
   name = "",
   http_method = "",
   http_path = "",
+  host_prefix = "",
   paginator = list(),
   before_presign_fn = function() {}
 )
@@ -20,6 +21,7 @@ Operation <- struct(
 #' @param name The API operation name.
 #' @param http_method The HTTP method, e.g. `"GET"` or `"POST"`.
 #' @param http_path The HTTP path.
+#' @param host_prefix The HTTP prefix
 #' @param paginator Currently unused.
 #' @param before_presign_fn Currently unused.
 #'
@@ -35,7 +37,7 @@ Operation <- struct(
 #' )
 #'
 #' @export
-new_operation <- function(name, http_method, http_path, paginator, before_presign_fn = NULL) {
+new_operation <- function(name, http_method, http_path, host_prefix, paginator, before_presign_fn = NULL) {
   args <- as.list(environment())
   args[lengths(args) == 0] <- NULL
   return(do.call(Operation, args))
