@@ -90,12 +90,13 @@ test_that("make_operation", {
         name = \"Operation\",
         http_method = \"POST\",
         http_path = \"/abc\",
+        host_prefix = \"\",
         paginator = list()
       )
       input <- .api$operation_input(Input1 = Input1, Input2 = Input2, Input3 = Input3)
       output <- .api$operation_output()
       config <- get_config()
-      svc <- .api$service(config)
+      svc <- .api$service(config, op)
       request <- new_request(svc, op, input, output)
       response <- send_request(request)
       return(response)
