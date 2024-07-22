@@ -37,7 +37,7 @@ creds(
 )
 }
 \arguments{
-\item{credentials}{\code{credentials()} or \code{list} is same format.
+\item{credentials}{\code{credentials()} or \code{list} in same format.
 \itemize{
 \item{\strong{creds}: \code{creds()} or \code{list} in same format.
 \itemize{
@@ -116,12 +116,12 @@ config(credentials(creds("dummy", "secret")))
 
 # set service parameter access_key_id and secret_access_key using using lists
 config(
-  credentials = list(
-    creds = list(
-      access_key_id = "dummy",
-      secret_access_key = "secret"
+    credentials = list(
+        creds = list(
+            access_key_id = "dummy",
+            secret_access_key = "secret"
+        )
     )
-  )
 )
 
 }

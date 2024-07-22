@@ -7,7 +7,7 @@
 #' @description
 #' Help functions for setting the parameters for services
 #'
-#' @param credentials \code{credentials()} or \code{list} is same format.
+#' @param credentials \code{credentials()} or \code{list} in same format.
 #' \itemize{
 #' \item{\strong{creds}: \code{creds()} or \code{list} in same format.
 #' \itemize{
@@ -64,49 +64,45 @@
 #'
 #' # set service parameter access_key_id and secret_access_key using using lists
 #' config(
-#'   credentials = list(
-#'     creds = list(
-#'       access_key_id = "dummy",
-#'       secret_access_key = "secret"
+#'     credentials = list(
+#'         creds = list(
+#'             access_key_id = "dummy",
+#'             secret_access_key = "secret"
+#'         )
 #'     )
-#'   )
 #' )
 #'
 #' @name set_service_parameter
 #' @export
-config <- function(
-    credentials = list(creds = list(
-      access_key_id = "",
-      secret_access_key = "", session_token = "", access_token = "",
-      expiration = Inf
-    ), profile = "", anonymous = FALSE), endpoint = "",
-    region = "", close_connection = FALSE, max_retries = 3, connect_timeout = 60,
-    s3_force_path_style = FALSE, sts_regional_endpoint = "",
-    signature_version = "") {
-  .args <- as.list(environment(), all.names = TRUE)
-  class(.args) <- "struct"
-  return(.args)
+config <- function (credentials = list(creds = list(access_key_id = "", 
+    secret_access_key = "", session_token = "", access_token = "", 
+    expiration = Inf), profile = "", anonymous = FALSE), endpoint = "", 
+    region = "", close_connection = FALSE, max_retries = 3, connect_timeout = 60, 
+    s3_force_path_style = FALSE, sts_regional_endpoint = "", 
+    signature_version = "") 
+{
+    .args <- as.list(environment(), all.names = TRUE)
+    class(.args) <- "struct"
+    return(.args)
 }
 
 #' @rdname set_service_parameter
 #' @export
-credentials <- function(
-    creds = list(
-      access_key_id = "", secret_access_key = "",
-      session_token = "", access_token = "", expiration = Inf
-    ),
-    profile = "", anonymous = FALSE) {
-  .args <- as.list(environment(), all.names = TRUE)
-  class(.args) <- "struct"
-  return(.args)
+credentials <- function (creds = list(access_key_id = "", secret_access_key = "", 
+    session_token = "", access_token = "", expiration = Inf), 
+    profile = "", anonymous = FALSE) 
+{
+    .args <- as.list(environment(), all.names = TRUE)
+    class(.args) <- "struct"
+    return(.args)
 }
 
 #' @rdname set_service_parameter
 #' @export
-creds <- function(
-    access_key_id = "", secret_access_key = "", session_token = "",
-    access_token = "", expiration = Inf) {
-  .args <- as.list(environment(), all.names = TRUE)
-  class(.args) <- "struct"
-  return(.args)
+creds <- function (access_key_id = "", secret_access_key = "", session_token = "", 
+    access_token = "", expiration = Inf) 
+{
+    .args <- as.list(environment(), all.names = TRUE)
+    class(.args) <- "struct"
+    return(.args)
 }

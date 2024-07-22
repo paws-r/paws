@@ -7,7 +7,7 @@
 #' @description
 #' Help functions for setting the parameters for services
 #'
-#' @param credentials \code{credentials()} or \code{list} is same format.
+#' @param credentials \code{credentials()} or \code{list} in same format.
 #' \itemize{
 #' \item{\strong{creds}: \code{creds()} or \code{list} in same format.
 #' \itemize{
