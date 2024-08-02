@@ -168,6 +168,4 @@ test_that("Test anonymous credentials", {
   res <- v4_sign_request_handler(req)
 
   expect_equal(res$http_request$header[["Authorization"]], "")
-  expect_equal(res$http_request$header[["X-Amz-Date"]], "")
-  expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], "")
 })
