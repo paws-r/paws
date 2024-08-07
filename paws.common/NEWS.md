@@ -1,4 +1,4 @@
-# paws.common 0.7.5 (development)
+# paws.common 0.7.5
 * build endpoint with host_prefix (#804), thanks to @joseale2310 and @lyschoening for raising issue.
 * fix `unix_time` ensure seconds is numeric (#804), thanks to @joseale2310 and @lyschoening for raising issue.
 * fix stop anonymous credentials removing `x-amz-*` headers (#815) thanks to @cgostic for raising issue
