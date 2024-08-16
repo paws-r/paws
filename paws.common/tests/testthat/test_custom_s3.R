@@ -404,3 +404,105 @@ test_that("redirect error without region", {
   )
   expect_equal(error$status_code, 301)
 })
+
+
+build_copy_object_request <- function(bucket, key, copy_source, operation) {
+  metadata <- list(
+    endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
+    service_name = "s3"
+  )
+  svc <-  new_service(metadata,  new_handlers("restxml", "s3"))
+  op <-  new_operation(
+    name = operation,
+    http_method = "GET",
+    http_path = "/{Bucket}",
+    paginator = list()
+  )
+  input <-  tag_add(list(Bucket = bucket, Key = key, CopySource = copy_source), list(type = "structure"))
+  output <- list()
+  request <-  new_request(svc, op, input, output)
+  return(request)
+}
+
+test_that("check CopySource character encoded", {
+  req <- build_copy_object_request(
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = "/foo/%01file%/output.txt",
+    operation = "CopyObject"
+  )
+
+  req <- handle_copy_source_param(req)
+  expect_equal(req$params$CopySource, "/foo/%2501file%25/output.txt")
+})
+
+test_that("check CopySource character versionId encoded", {
+  req <- build_copy_object_request(
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = "/foo/%01file%/output.txt?versionId=123",
+    operation = "CopyObject"
+  )
+
+  req <- handle_copy_source_param(req)
+  expect_equal(req$params$CopySource, "/foo/%2501file%25/output.txt?versionId=123")
+})
+
+test_that("check CopySource list encoded", {
+  req <- build_copy_object_request(
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = list(
+      Bucket = "foo",
+      Key = "%01file%/output.txt"
+    ),
+    operation = "CopyObject"
+  )
+
+  req <- handle_copy_source_param(req)
+  expect_equal(req$params$CopySource, "foo/%2501file%25/output.txt")
+})
+
+test_that("check CopySource list versionId encoded", {
+  req <- build_copy_object_request(
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = list(
+      Bucket = "foo",
+      Key = "%01file%/output.txt",
+      VersionId = "123"
+    ),
+    operation = "CopyObject"
+  )
+
+  req <- handle_copy_source_param(req)
+  expect_equal(req$params$CopySource, "foo/%2501file%25/output.txt?versionId=123")
+})
+
+test_that("check CopySource list missing params", {
+  req1 <- build_copy_object_request(
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = list(
+      Key = "%01file%/output.txt"
+    ),
+    operation = "CopyObject"
+  )
+  req2 <- build_copy_object_request(
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = list(
+      Bucket = "foo"
+    ),
+    operation = "CopyObject"
+  )
+  expect_error(
+    handle_copy_source_param(req1),
+    "CopySource list is missing required parameter: Bucket"
+  )
+  expect_error(
+    handle_copy_source_param(req2),
+    "CopySource list is missing required parameter: Key"
+  )
+})
+
