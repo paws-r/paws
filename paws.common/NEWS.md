@@ -3,6 +3,37 @@
 * fix `unix_time` ensure seconds is numeric (#804), thanks to @joseale2310 and @lyschoening for raising issue.
 * fix stop anonymous credentials removing `x-amz-*` headers (#815) thanks to @cgostic for raising issue
 * fix s3 redirect for download_file
+* fix encode `CopySource` in operation `CopyObject` (#819)
+* enable lists to be passed to `CopySource` for `CopyObject` operations (#819). This is to align with `boto3` implementation.
+
+```r
+library(paws)
+client <- s3()
+
+bucket = "BUCKET"
+key = "%01file%/output.txt"
+
+resp <- client$put_object(
+  Bucket = bucket,
+  Key = key,
+  Body = charToRaw("helloworld")
+)
+
+client$copy_object(
+  Bucket = bucket,
+  Key = "file_out_1.txt",
+  CopySource = sprintf("/%s/%s", bucket, key)
+)
+
+client$copy_object(
+  Bucket = bucket,
+  Key = "file_out_2.txt",
+  CopySource = list(
+    Bucket = bucket,
+    Key = key
+  )
+)
+```
 
 # paws.common 0.7.4
 * fix `transpose` to correctly parse lists with empty first elements (#791), thanks to @FMKerckhof for raising issue.

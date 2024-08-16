@@ -484,7 +484,7 @@ set_request_url <- function(original_endpoint,
 
 ################################################################################
 handle_copy_source_param <- function(request) {
-  if (request$operation$name != "CopyObject") {
+  if (!(request$operation$name %in% c("CopyObject", "CopyPart"))) {
     return(request)
   }
   source <- request$params$CopySource
