@@ -120,7 +120,7 @@ rest_unmarshal_meta <- function(request) {
 
 # Unmarshal the body from a REST protocol API response.
 rest_unmarshal <- function(request) {
-  values <- request$data
+  values <- request[["data"]]
   if ((payload_name <- tag_get(values, "payload")) != "") {
     if ((payload_type <- tag_get(values[[payload_name]], "type")) == "blob") {
       payload <- request$http_response$body
