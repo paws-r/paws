@@ -135,13 +135,11 @@ issue <- function(http_request) {
   )
 
   response <- HttpResponse(
-    status_code = httr::status_code(r),
-    header = httr::headers(r),
-    content_length = as.integer(httr::headers(r)$`content-length`),
+    status_code = r$status_code,
+    header = r$headers,
+    content_length = as.integer(r$headers$`content-length`),
     # Prevent reading in data when output is set
-    body = (
-      if (is.null(http_request$dest)) httr::content(r, as = "raw") else raw()
-    )
+    body = resp_body(r, http_request$dest)
   )
 
   # Decode gzipped response bodies that are not automatically decompressed
@@ -151,6 +149,19 @@ issue <- function(http_request) {
   }
 
   return(response)
+}
+
+resp_body <- function(resp, path) {
+  if (is.null(path)) {
+    body <- httr::content(resp, as = "raw")
+  # return error message if call has failed or needs redirecting
+  } else if (resp$status_code %in% c(301, 400)) {
+    body <- readBin(path, "raw", file.info(path)$size)
+    unlink(path)
+  } else {
+    body <- raw()
+  }
+  return(body)
 }
 
 # Return whether an HTTP response body is (still) compressed by checking

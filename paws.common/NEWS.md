@@ -2,6 +2,7 @@
 * build endpoint with host_prefix (#804), thanks to @joseale2310 and @lyschoening for raising issue.
 * fix `unix_time` ensure seconds is numeric (#804), thanks to @joseale2310 and @lyschoening for raising issue.
 * fix stop anonymous credentials removing `x-amz-*` headers (#815) thanks to @cgostic for raising issue
+* fix s3 redirect for download_file
 
 # paws.common 0.7.4
 * fix `transpose` to correctly parse lists with empty first elements (#791), thanks to @FMKerckhof for raising issue.
