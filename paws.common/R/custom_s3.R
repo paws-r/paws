@@ -5,7 +5,7 @@
 #' @include head_bucket.R
 NULL
 
-VERSION_ID_SUFFIX <- '\\?versionId=[^\\s]+$'
+VERSION_ID_SUFFIX <- '?versionId='
 ACCESSPOINT_ARN <- paste0(
   "^arn:(aws).*:(s3|s3-object-lambda):[a-z\\-0-9]*:[0-9]{12}:accesspoint[/:]",
   "[a-zA-Z0-9\\-.]{1,63}$"
@@ -497,13 +497,11 @@ handle_copy_source_param <- function(request) {
 }
 
 quote_source_header <- function(source) {
-  result <- regexpr(VERSION_ID_SUFFIX, source, perl = TRUE)
-  if (result != -1) {
-    first <- substr(source, 1, result-1)
-    version_id <- substr(source, result, nchar(source))
-    return(paste0(paws_url_encoder(first, '-._~/'), version_id))
+  result <- strsplit(source, VERSION_ID_SUFFIX, fixed = T)[[1]]
+  if (is.na(result[2])) {
+    return(paws_url_encoder(result[1], '-._~/'))
   } else {
-    return(paws_url_encoder(source, '-._~/'))
+    return(paste0(paws_url_encoder(result[1], '-._~/'), VERSION_ID_SUFFIX, result[2]))
   }
 }
 
@@ -521,7 +519,7 @@ quote_source_header_from_list <- function(source) {
   }
   final <- paws_url_encoder(final, '-._~/')
   if (!is.null(version_id <- source[['VersionId']])) {
-    final <- paste0(final, "?versionId=", version_id)
+    final <- paste0(final, VERSION_ID_SUFFIX, version_id)
   }
   return(final)
 }
