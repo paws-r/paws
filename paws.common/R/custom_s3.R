@@ -5,6 +5,18 @@
 #' @include head_bucket.R
 NULL
 
+VERSION_ID_SUFFIX <- '\\?versionId=[^\\s]+$'
+ACCESSPOINT_ARN <- paste0(
+  "^arn:(aws).*:(s3|s3-object-lambda):[a-z\\-0-9]*:[0-9]{12}:accesspoint[/:]",
+  "[a-zA-Z0-9\\-.]{1,63}$"
+)
+OUTPOST_ARN = paste0(
+  '^arn:(aws).*:s3-outposts:[a-z\\-0-9]+:[0-9]{12}:outpost[/:]',
+  '[a-zA-Z0-9\\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\\-]{1,63}$'
+)
+
+VALID_S3_ARN <- paste(ACCESSPOINT_ARN, OUTPOST_ARN, sep = "|")
+
 ################################################################################
 
 convert_file_to_raw <- function(request) {
@@ -471,6 +483,50 @@ set_request_url <- function(original_endpoint,
 }
 
 ################################################################################
+handle_copy_source_param <- function(request) {
+  if (request$operation$name != "CopyObject") {
+    return(request)
+  }
+  source <- request$params$CopySource
+  if (is.character(source)) {
+    request$params$CopySource <- quote_source_header(source)
+  } else if (is.list(source)) {
+    request$params$CopySource <- quote_source_header_from_list(source)
+  }
+  return(request)
+}
+
+quote_source_header <- function(source) {
+  result <- regexpr(VERSION_ID_SUFFIX, source, perl = TRUE)
+  if (result != 1) {
+    first <- substr(source, 1, result-1)
+    version_id <- substr(source, result, nchar(source))
+    return(paste0(paws_url_encoder(first, '-._~/'), version_id))
+  } else {
+    return(paws_url_encoder(source, '-._~/'))
+  }
+}
+
+quote_source_header_from_list <- function(source) {
+  if(is.null(bucket <- source[['Bucket']])) {
+    stopf('CopySource list is missing required parameter: Bucket')
+  }
+  if (is.null(key <- source[['Key']])) {
+    stopf('CopySource list is missing required parameter: Key')
+  }
+  if (grepl(VALID_S3_ARN, bucket, perl = T)) {
+    final <- sprintf('%s/object/%s', bucket, key)
+  } else {
+    final <- sprintf('%s/%s', bucket, key)
+  }
+  final <- paws_url_encoder(final, '-._~/')
+  if (!is.null(version_id <- source[['VersionId']])) {
+    final <- paste0(final, version_id)
+  }
+  return(final)
+}
+
+################################################################################
 
 customizations$s3 <- function(handlers) {
   handlers$build <- handlers_add_front(
@@ -484,6 +540,10 @@ customizations$s3 <- function(handlers) {
   handlers$build <- handlers_add_front(
     handlers$build,
     convert_file_to_raw
+  )
+  handlers$build <- handlers_add_front(
+    handlers$build,
+    handle_copy_source_param
   )
   handlers$build <- handlers_add_front(
     handlers$build,
