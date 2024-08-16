@@ -498,7 +498,7 @@ handle_copy_source_param <- function(request) {
 
 quote_source_header <- function(source) {
   result <- regexpr(VERSION_ID_SUFFIX, source, perl = TRUE)
-  if (result != 1) {
+  if (result != -1) {
     first <- substr(source, 1, result-1)
     version_id <- substr(source, result, nchar(source))
     return(paste0(paws_url_encoder(first, '-._~/'), version_id))
@@ -521,7 +521,7 @@ quote_source_header_from_list <- function(source) {
   }
   final <- paws_url_encoder(final, '-._~/')
   if (!is.null(version_id <- source[['VersionId']])) {
-    final <- paste0(final, version_id)
+    final <- paste0(final, "?versionId=", version_id)
   }
   return(final)
 }
