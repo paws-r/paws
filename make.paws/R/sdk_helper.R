@@ -128,7 +128,7 @@ paws_check_rhub_sub_cat <- function(in_dir = "../cran",
 
 #' @rdname paws_check_rhub
 #' @export
-paws_rhub_action_check <- function (packages = "paws", platforms = c("linux", "macos", "macos-arm64", "windows")) {
+paws_rhub_action_check <- function(packages = "paws", platforms = c("linux", "macos", "macos-arm64", "windows")) {
   url <- "https://api.github.com/repos/paws-r/paws-rhub/actions/workflows/rhub.yaml/dispatches"
   pat <- gitcreds::gitcreds_get(url = "https://github.com/paws-r/paws-rhub")$password
   config <- list(platforms = platforms)
@@ -143,10 +143,11 @@ paws_rhub_action_check <- function (packages = "paws", platforms = c("linux", "m
       httr2::req_method("POST")
   }) |> httr2::req_perform_parallel()
   names(resps) <- unlist(packages)
-  
+
   for (pkg in names(resps)) {
-    if (resps[[pkg]]$status_code != 204) 
+    if (resps[[pkg]]$status_code != 204) {
       stop(sprintf("Failed to start rhub action for package: %s", pkg))
+    }
   }
   writeLines("Please check results: https://github.com/paws-r/paws-rhub/actions")
   invisible(NULL)
