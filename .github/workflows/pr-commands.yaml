@@ -66,7 +66,7 @@ jobs:
 
       - name: Style
         run: |
-          styler::style_pkg(pkg = 'paws.common')
+          styler::style_pkg(pkg = 'paws.common', exclude_files = c("R/RcppExports\\.R", "R/cpp11\\.R", "R/import-standalone.*\\.R", "R/service_parameter_helper\\.R"))
           styler::style_pkg(pkg = 'make.paws')
         shell: Rscript {0}
 
