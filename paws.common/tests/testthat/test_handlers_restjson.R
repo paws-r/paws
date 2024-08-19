@@ -8,9 +8,7 @@ svc <- Client(
   )
 )
 svc$handlers$build <- HandlerList(restjson_build)
-options(idempotency_rand_fn = function(len) {
-  rep(0, len)
-})
+UUID_V4_PATTERN <- "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 
 test_that("no parameters", {
   op1 <- Operation(
@@ -583,7 +581,7 @@ test_that("auto-fill idempotency token", {
   req <- build(req)
   r <- req$http_request
   expect_equal(build_url(r$url), "https://test/path")
-  expect_equal(r$body, '{"Token":"00000000-0000-4000-8000-000000000000"}')
+  expect_true(grepl(sprintf('\\{"Token":"%s"\\}', UUID_V4_PATTERN), r$body))
 })
 
 # TODO: JSON value traits.

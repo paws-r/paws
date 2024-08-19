@@ -10,9 +10,7 @@ svc <- Client(
   )
 )
 svc$handlers$build <- HandlerList(jsonrpc_build)
-options(idempotency_rand_fn = function(len) {
-  rep(0, len)
-})
+UUID_V4_PATTERN <- "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 
 op_input1 <- function(Name) {
   args <- list(Name = Name)
@@ -308,7 +306,7 @@ test_that("build idempotency token", {
   input <- op_input12()
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, '{"Token":"00000000-0000-4000-8000-000000000000"}')
+  expect_true(grepl(sprintf('\\{"Token":"%s"\\}', UUID_V4_PATTERN), req$body))
 })
 
 op_input13 <- function(FooEnum, ListEnums) {

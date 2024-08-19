@@ -35,6 +35,8 @@ client$copy_object(
 )
 ```
 
+* convert `uuid` to `cpp` for performance improvement.
+
 # paws.common 0.7.4
 * fix `transpose` to correctly parse lists with empty first elements (#791), thanks to @FMKerckhof for raising issue.
 * support refreshable credentials for `sso` (#793)

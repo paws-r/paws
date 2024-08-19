@@ -6,6 +6,7 @@ op <- Operation(name = "OperationName")
 svc <- Client()
 svc$client_info$api_version <- "2014-01-01"
 svc$handlers$build <- HandlerList(query_build)
+UUID_V4_PATTERN <- "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 
 op_input1 <- function(Foo = NULL, Bar = NULL, Baz = NULL) {
   args <- list(Foo = Foo, Bar = Bar, Baz = Baz)
@@ -360,7 +361,7 @@ test_that("build idempotency token auto-fill", {
   input <- op_input14()
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&Token=00000000-0000-4000-8000-000000000000&Version=2014-01-01")
+  expect_true(grepl(sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN), req$body))
 })
 
 op_input15 <- function(FooEnum = NULL, ListEnums = NULL) {
