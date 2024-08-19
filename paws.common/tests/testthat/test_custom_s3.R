@@ -406,14 +406,14 @@ test_that("redirect error without region", {
 })
 
 
-build_copy_object_request <- function(bucket, key, copy_source, operation) {
+build_copy_object_request <- function(bucket, key, copy_source) {
   metadata <- list(
     endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
     service_name = "s3"
   )
   svc <- new_service(metadata, new_handlers("restxml", "s3"))
   op <- new_operation(
-    name = operation,
+    name = "CopyObject",
     http_method = "GET",
     http_path = "/{Bucket}",
     paginator = list()
@@ -426,27 +426,48 @@ build_copy_object_request <- function(bucket, key, copy_source, operation) {
 
 test_that("check CopySource character encoded", {
   req <- build_copy_object_request(
-    bucket = "foo",
-    key = "file.txt",
-    copy_source = "/foo/%01file%/output.txt",
-    operation = "CopyObject"
+    bucket = "foo", key = "file.txt", copy_source = "/foo/%01file%/output.txt"
   )
 
   req <- handle_copy_source_param(req)
   expect_equal(req$params$CopySource, "/foo/%2501file%25/output.txt")
 })
 
+test_that("check CopySource only quote url path not version id", {
+  req <- build_copy_object_request(
+    bucket = "foo", key = "file.txt", copy_source = "/foo/bar++baz?versionId=123"
+  )
+  req <- handle_copy_source_param(req)
+  expect_equal(req$params$CopySource, "/foo/bar%2B%2Bbaz?versionId=123")
+})
+
+test_that("check CopySource only version id is special cased", {
+  req <- build_copy_object_request(
+    bucket = "foo", key = "file.txt", copy_source = "/foo/bar++baz?notVersion=foo+"
+  )
+  req <- handle_copy_source_param(req)
+  expect_equal(req$params$CopySource, "/foo/bar%2B%2Bbaz%3FnotVersion%3Dfoo%2B")
+})
+
 test_that("check CopySource character versionId encoded", {
   req <- build_copy_object_request(
     bucket = "foo",
     key = "file.txt",
-    copy_source = "/foo/%01file%/output.txt?versionId=123",
-    operation = "CopyObject"
+    copy_source = "/foo/%01file%/output.txt?versionId=123"
   )
 
   req <- handle_copy_source_param(req)
   expect_equal(req$params$CopySource, "/foo/%2501file%25/output.txt?versionId=123")
 })
+
+test_that("check CopySource with multiple questions", {
+  req <- build_copy_object_request(
+    bucket = "foo", key = "file.txt", copy_source = "/foo/bar+baz?a=baz+?versionId=a+"
+  )
+  req <- handle_copy_source_param(req)
+  expect_equal(req$params$CopySource, "/foo/bar%2Bbaz%3Fa%3Dbaz%2B?versionId=a+")
+})
+
 
 test_that("check CopySource list encoded", {
   req <- build_copy_object_request(
@@ -455,8 +476,7 @@ test_that("check CopySource list encoded", {
     copy_source = list(
       Bucket = "foo",
       Key = "%01file%/output.txt"
-    ),
-    operation = "CopyObject"
+    )
   )
 
   req <- handle_copy_source_param(req)
@@ -471,12 +491,28 @@ test_that("check CopySource list versionId encoded", {
       Bucket = "foo",
       Key = "%01file%/output.txt",
       VersionId = "123"
-    ),
-    operation = "CopyObject"
+    )
   )
 
   req <- handle_copy_source_param(req)
   expect_equal(req$params$CopySource, "foo/%2501file%25/output.txt?versionId=123")
+})
+
+test_that("check CopySource list bucket s3 access point", {
+  req <- build_copy_object_request(
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = list(
+      Bucket = "arn:aws:s3:us-west-2:123456789012:accesspoint/test",
+      Key = "%01file%/output.txt"
+    )
+  )
+
+  req <- handle_copy_source_param(req)
+  expect_equal(
+    req$params$CopySource,
+    "arn%3Aaws%3As3%3Aus-west-2%3A123456789012%3Aaccesspoint/test/object/%2501file%25/output.txt"
+  )
 })
 
 test_that("check CopySource list missing params", {
@@ -485,16 +521,14 @@ test_that("check CopySource list missing params", {
     key = "file.txt",
     copy_source = list(
       Key = "%01file%/output.txt"
-    ),
-    operation = "CopyObject"
+    )
   )
   req2 <- build_copy_object_request(
     bucket = "foo",
     key = "file.txt",
     copy_source = list(
       Bucket = "foo"
-    ),
-    operation = "CopyObject"
+    )
   )
   expect_error(
     handle_copy_source_param(req1),
