@@ -499,9 +499,9 @@ handle_copy_source_param <- function(request) {
 quote_source_header <- function(source) {
   result <- strsplit(source, VERSION_ID_SUFFIX, fixed = T)[[1]]
   if (is.na(result[2])) {
-    return(paws_url_encoder(result[1], "-._~/"))
+    return(paws_url_encoder(result[1], "/"))
   } else {
-    return(paste0(paws_url_encoder(result[1], "-._~/"), VERSION_ID_SUFFIX, result[2]))
+    return(paste0(paws_url_encoder(result[1], "/"), VERSION_ID_SUFFIX, result[2]))
   }
 }
 
@@ -517,7 +517,7 @@ quote_source_header_from_list <- function(source) {
   } else {
     final <- sprintf("%s/%s", bucket, key)
   }
-  final <- paws_url_encoder(final, "-._~/")
+  final <- paws_url_encoder(final, "/")
   if (!is.null(version_id <- source[["VersionId"]])) {
     final <- paste0(final, VERSION_ID_SUFFIX, version_id)
   }
