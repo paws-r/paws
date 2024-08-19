@@ -154,7 +154,7 @@ issue <- function(http_request) {
 resp_body <- function(resp, path) {
   if (is.null(path)) {
     body <- httr::content(resp, as = "raw")
-  # return error message if call has failed or needs redirecting
+    # return error message if call has failed or needs redirecting
   } else if (resp$status_code %in% c(301, 400)) {
     body <- readBin(path, "raw", file.info(path)$size)
     unlink(path)

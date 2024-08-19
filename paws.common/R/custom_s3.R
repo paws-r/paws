@@ -5,14 +5,14 @@
 #' @include head_bucket.R
 NULL
 
-VERSION_ID_SUFFIX <- '?versionId='
+VERSION_ID_SUFFIX <- "?versionId="
 ACCESSPOINT_ARN <- paste0(
   "^arn:(aws).*:(s3|s3-object-lambda):[a-z\\-0-9]*:[0-9]{12}:accesspoint[/:]",
   "[a-zA-Z0-9\\-.]{1,63}$"
 )
-OUTPOST_ARN = paste0(
-  '^arn:(aws).*:s3-outposts:[a-z\\-0-9]+:[0-9]{12}:outpost[/:]',
-  '[a-zA-Z0-9\\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\\-]{1,63}$'
+OUTPOST_ARN <- paste0(
+  "^arn:(aws).*:s3-outposts:[a-z\\-0-9]+:[0-9]{12}:outpost[/:]",
+  "[a-zA-Z0-9\\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\\-]{1,63}$"
 )
 
 VALID_S3_ARN <- paste(ACCESSPOINT_ARN, OUTPOST_ARN, sep = "|")
@@ -499,26 +499,26 @@ handle_copy_source_param <- function(request) {
 quote_source_header <- function(source) {
   result <- strsplit(source, VERSION_ID_SUFFIX, fixed = T)[[1]]
   if (is.na(result[2])) {
-    return(paws_url_encoder(result[1], '-._~/'))
+    return(paws_url_encoder(result[1], "-._~/"))
   } else {
-    return(paste0(paws_url_encoder(result[1], '-._~/'), VERSION_ID_SUFFIX, result[2]))
+    return(paste0(paws_url_encoder(result[1], "-._~/"), VERSION_ID_SUFFIX, result[2]))
   }
 }
 
 quote_source_header_from_list <- function(source) {
-  if(is.null(bucket <- source[['Bucket']])) {
-    stopf('CopySource list is missing required parameter: Bucket')
+  if (is.null(bucket <- source[["Bucket"]])) {
+    stopf("CopySource list is missing required parameter: Bucket")
   }
-  if (is.null(key <- source[['Key']])) {
-    stopf('CopySource list is missing required parameter: Key')
+  if (is.null(key <- source[["Key"]])) {
+    stopf("CopySource list is missing required parameter: Key")
   }
   if (grepl(VALID_S3_ARN, bucket, perl = T)) {
-    final <- sprintf('%s/object/%s', bucket, key)
+    final <- sprintf("%s/object/%s", bucket, key)
   } else {
-    final <- sprintf('%s/%s', bucket, key)
+    final <- sprintf("%s/%s", bucket, key)
   }
-  final <- paws_url_encoder(final, '-._~/')
-  if (!is.null(version_id <- source[['VersionId']])) {
+  final <- paws_url_encoder(final, "-._~/")
+  if (!is.null(version_id <- source[["VersionId"]])) {
     final <- paste0(final, VERSION_ID_SUFFIX, version_id)
   }
   return(final)

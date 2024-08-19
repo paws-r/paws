@@ -26,7 +26,7 @@ serialization_error <- function(request) {
   )
 }
 
-get_retry_info <- function(retry_count){
+get_retry_info <- function(retry_count) {
   if (retry_count) {
     retry_msg <- sprintf(" (reached max retries: %d)", retry_count)
   } else {

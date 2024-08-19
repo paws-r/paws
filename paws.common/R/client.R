@@ -112,8 +112,9 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   }
   signing_region <- if (e[["global"]]) "us-east-1" else region
   endpoint <- endpoint_unescape(e[["endpoint"]], service, signing_region)
-  if (grepl(HOST_PREFIX_RE, host_prefix))
+  if (grepl(HOST_PREFIX_RE, host_prefix)) {
     endpoint <- sprintf("%s%s", host_prefix, endpoint)
+  }
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
   return(list(

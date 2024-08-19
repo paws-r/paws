@@ -411,16 +411,16 @@ build_copy_object_request <- function(bucket, key, copy_source, operation) {
     endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
     service_name = "s3"
   )
-  svc <-  new_service(metadata,  new_handlers("restxml", "s3"))
-  op <-  new_operation(
+  svc <- new_service(metadata, new_handlers("restxml", "s3"))
+  op <- new_operation(
     name = operation,
     http_method = "GET",
     http_path = "/{Bucket}",
     paginator = list()
   )
-  input <-  tag_add(list(Bucket = bucket, Key = key, CopySource = copy_source), list(type = "structure"))
+  input <- tag_add(list(Bucket = bucket, Key = key, CopySource = copy_source), list(type = "structure"))
   output <- list()
-  request <-  new_request(svc, op, input, output)
+  request <- new_request(svc, op, input, output)
   return(request)
 }
 
@@ -505,4 +505,3 @@ test_that("check CopySource list missing params", {
     "CopySource list is missing required parameter: Key"
   )
 })
-
