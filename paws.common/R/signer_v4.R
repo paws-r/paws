@@ -141,9 +141,9 @@ sign_sdk_request_with_curr_time <- function(request,
 
   # set headers for anonymous credentials
   if (isTRUE(request$config$credentials$anonymous)) {
-    request$http_request$header <- anonymous_headers(
-      request$http_request$header
-    )
+    # Clear down headers for anonymous credentials
+    # https://github.com/aws/aws-sdk-go/blob/a7b02935e4fefa40f175f4d2143ec9c88a5f90f5/aws/signer/v4/v4_test.go#L321-L355
+    request$http_request$header["Authorization"] <- ""
   }
 
   return(request)
@@ -461,11 +461,4 @@ get_uri_path <- function(url) {
   }
 
   return(uri)
-}
-
-# Clear down headers for anonymous credentials
-# https://github.com/aws/aws-sdk-go/blob/a7b02935e4fefa40f175f4d2143ec9c88a5f90f5/aws/signer/v4/v4_test.go#L321-L355
-anonymous_headers <- function(headers) {
-  headers["Authorization"] <- ""
-  return(headers)
 }

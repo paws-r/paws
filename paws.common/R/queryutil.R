@@ -34,8 +34,7 @@ query_parse_structure <- function(values, value, prefix, tag, is_ec2 = FALSE) {
     }
 
     if (can_set_idempotency_token(field)) {
-      token <- get_idempotency_token()
-      field[[1]] <- token
+      field[[1]] <- get_idempotency_token()
     }
 
     name <- ""

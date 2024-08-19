@@ -80,6 +80,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// uuid_v4
+CharacterVector uuid_v4(size_t n);
+RcppExport SEXP _paws_common_uuid_v4(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< size_t >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(uuid_v4(n));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_paws_url_encoder", (DL_FUNC) &_paws_common_paws_url_encoder, 2},
@@ -88,6 +99,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_endpoint_unescape", (DL_FUNC) &_paws_common_endpoint_unescape, 3},
     {"_paws_common_get_region_pattern", (DL_FUNC) &_paws_common_get_region_pattern, 2},
     {"_paws_common_char_sort", (DL_FUNC) &_paws_common_char_sort, 1},
+    {"_paws_common_uuid_v4", (DL_FUNC) &_paws_common_uuid_v4, 1},
     {NULL, NULL, 0}
 };
 

@@ -37,3 +37,9 @@ char_sort <- function(str) {
     .Call('_paws_common_char_sort', PACKAGE = 'paws.common', str)
 }
 
+#' @useDynLib paws.common _paws_common_uuid_v4
+#' @importFrom Rcpp evalCpp
+uuid_v4 <- function(n = 1L) {
+    .Call('_paws_common_uuid_v4', PACKAGE = 'paws.common', n)
+}
+
