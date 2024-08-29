@@ -1,5 +1,6 @@
 # paws.common 0.7.6
 * fix `handle_copy_source_param` encoding redirected calls.
+* fix `handle_copy_source_param` removing attributes
 
 # paws.common 0.7.5
 * build endpoint with host_prefix (#804), thanks to @joseale2310 and @lyschoening for raising issue.
