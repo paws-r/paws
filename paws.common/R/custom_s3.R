@@ -484,7 +484,8 @@ set_request_url <- function(original_endpoint,
 
 ################################################################################
 handle_copy_source_param <- function(request) {
-  if (!(request$operation$name %in% c("CopyObject", "CopyPart"))) {
+
+  if (!(request$operation$name %in% c("CopyObject", "CopyPart")) | isTRUE(request$context$s3_redirect)) {
     return(request)
   }
   source <- request$params$CopySource
