@@ -489,24 +489,25 @@ handle_copy_source_param <- function(request) {
     return(request)
   }
   source <- request$params$CopySource
+  tags <- tag_get_all(source)
   if (is.character(source)) {
-    request$params$CopySource <- quote_source_header(source)
+    request$params$CopySource <- quote_source_header(source, tags)
   } else if (is.list(source)) {
-    request$params$CopySource <- quote_source_header_from_list(source)
+    request$params$CopySource <- quote_source_header_from_list(source, tags)
   }
   return(request)
 }
 
-quote_source_header <- function(source) {
+quote_source_header <- function(source, tags) {
   result <- strsplit(source, VERSION_ID_SUFFIX, fixed = T)[[1]]
   if (is.na(result[2])) {
-    return(paws_url_encoder(result[1], "/"))
+    return(tag_add(paws_url_encoder(result[1], "/"), tags))
   } else {
-    return(paste0(paws_url_encoder(result[1], "/"), VERSION_ID_SUFFIX, result[2]))
+    return(tag_add(paste0(paws_url_encoder(result[1], "/"), VERSION_ID_SUFFIX, result[2]), tags))
   }
 }
 
-quote_source_header_from_list <- function(source) {
+quote_source_header_from_list <- function(source, tags) {
   if (is.null(bucket <- source[["Bucket"]])) {
     stopf("CopySource list is missing required parameter: Bucket")
   }
@@ -522,7 +523,7 @@ quote_source_header_from_list <- function(source) {
   if (!is.null(version_id <- source[["VersionId"]])) {
     final <- paste0(final, VERSION_ID_SUFFIX, version_id)
   }
-  return(final)
+  return(tag_add(final, tags))
 }
 
 ################################################################################
