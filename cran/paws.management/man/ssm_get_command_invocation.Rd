@@ -29,7 +29,7 @@ of the step you want details for. Alternatively, use
 attribute of the \code{CommandPlugin} object in the \code{CommandPlugins} list.}
 }
 \description{
-Returns detailed information about command execution for an invocation or plugin.
+Returns detailed information about command execution for an invocation or plugin. The Run Command API follows an eventual consistency model, due to the distributed nature of the system supporting the API. This means that the result of an API command you run that affects your resources might not be immediately visible to all subsequent commands you run. You should keep this in mind when you carry out an API command that immediately follows a previous API command.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_get_command_invocation/} for full documentation.
 }

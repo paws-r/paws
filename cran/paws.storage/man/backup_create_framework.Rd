@@ -20,16 +20,15 @@ A-Z), numbers (0-9), and underscores (_).}
 \item{FrameworkDescription}{An optional description of the framework with a maximum of 1,024
 characters.}
 
-\item{FrameworkControls}{[required] A list of the controls that make up the framework. Each control in the
-list has a name, input parameters, and scope.}
+\item{FrameworkControls}{[required] The controls that make up the framework. Each control in the list has a
+name, input parameters, and scope.}
 
 \item{IdempotencyToken}{A customer-chosen string that you can use to distinguish between
 otherwise identical calls to \code{CreateFrameworkInput}. Retrying a
 successful request with the same idempotency token results in a success
 message with no action taken.}
 
-\item{FrameworkTags}{Metadata that you can assign to help organize the frameworks that you
-create. Each tag is a key-value pair.}
+\item{FrameworkTags}{The tags to assign to the framework.}
 }
 \description{
 Creates a framework with one or more controls. A framework is a collection of controls that you can use to evaluate your backup practices. By using pre-built customizable controls to define your policies, you can evaluate whether your backup practices comply with your policies and which resources are not yet in compliance.

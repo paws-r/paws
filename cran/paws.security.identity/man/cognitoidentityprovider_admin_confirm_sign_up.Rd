@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_confirm_sign_up}
 \alias{cognitoidentityprovider_admin_confirm_sign_up}
-\title{This IAM-authenticated API operation provides a code that Amazon Cognito
-sent to your user when they signed up in your user pool}
+\title{This IAM-authenticated API operation confirms user sign-up as an
+administrator}
 \usage{
 cognitoidentityprovider_admin_confirm_sign_up(
   UserPoolId,
@@ -49,7 +49,7 @@ provide sensitive information.
 }}
 }
 \description{
-This IAM-authenticated API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool. After your user enters their code, they confirm ownership of the email address or phone number that they provided, and their user account becomes active. Depending on your user pool configuration, your users will receive their confirmation code in an email or SMS message.
+This IAM-authenticated API operation confirms user sign-up as an administrator. Unlike \code{\link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up}}, your IAM credentials authorize user account confirmation. No confirmation code is required.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/} for full documentation.
 }

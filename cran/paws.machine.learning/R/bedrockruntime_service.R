@@ -131,7 +131,7 @@ bedrockruntime <- function(config = list(), credentials = list(), endpoint = NUL
   service_id = "Bedrock Runtime",
   api_version = "2023-09-30",
   signing_name = "bedrock",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

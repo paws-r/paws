@@ -2318,10 +2318,10 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 }
 .wafv2$operations$put_managed_rule_set_versions <- wafv2_put_managed_rule_set_versions
 
-#' Attaches an IAM policy to the specified resource
+#' Use this to share a rule group with other accounts
 #'
 #' @description
-#' Attaches an IAM policy to the specified resource. Use this to share a rule group across accounts.
+#' Use this to share a rule group with other accounts.
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/](https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/) for full documentation.
 #'

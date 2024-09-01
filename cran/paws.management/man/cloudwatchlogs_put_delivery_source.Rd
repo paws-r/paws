@@ -16,8 +16,9 @@ sending logs. For example,
 
 \item{logType}{[required] Defines the type of log that the source is sending.
 \itemize{
+\item For Amazon Bedrock, the valid value is \code{APPLICATION_LOGS}.
 \item For Amazon CodeWhisperer, the valid value is \code{EVENT_LOGS}.
-\item For IAM Identity Centerr, the valid value is \code{ERROR_LOGS}.
+\item For IAM Identity Center, the valid value is \code{ERROR_LOGS}.
 \item For Amazon WorkMail, the valid values are \code{ACCESS_CONTROL_LOGS},
 \code{AUTHENTICATION_LOGS}, \code{WORKMAIL_AVAILABILITY_PROVIDER_LOGS}, and
 \code{WORKMAIL_MAILBOX_ACCESS_LOGS}.

@@ -547,7 +547,12 @@ fis_get_action <- function(id) {
 #'     roleArn = "string",
 #'     state = list(
 #'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
-#'       reason = "string"
+#'       reason = "string",
+#'       error = list(
+#'         accountId = "string",
+#'         code = "string",
+#'         location = "string"
+#'       )
 #'     ),
 #'     targets = list(
 #'       list(
@@ -1239,7 +1244,12 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #'       experimentTemplateId = "string",
 #'       state = list(
 #'         status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
-#'         reason = "string"
+#'         reason = "string",
+#'         error = list(
+#'           accountId = "string",
+#'           code = "string",
+#'           location = "string"
+#'         )
 #'       ),
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1488,7 +1498,12 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #'     roleArn = "string",
 #'     state = list(
 #'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
-#'       reason = "string"
+#'       reason = "string",
+#'       error = list(
+#'         accountId = "string",
+#'         code = "string",
+#'         location = "string"
+#'       )
 #'     ),
 #'     targets = list(
 #'       list(
@@ -1634,7 +1649,12 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, experimentOp
 #'     roleArn = "string",
 #'     state = list(
 #'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
-#'       reason = "string"
+#'       reason = "string",
+#'       error = list(
+#'         accountId = "string",
+#'         code = "string",
+#'         location = "string"
+#'       )
 #'     ),
 #'     targets = list(
 #'       list(

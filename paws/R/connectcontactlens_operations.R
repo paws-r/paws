@@ -14,7 +14,7 @@ NULL
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
-#' @param MaxResults The maximimum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -56,6 +56,11 @@ NULL
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       PostContactSummary = list(
+#'         Content = "string",
+#'         Status = "FAILED"|"COMPLETED",
+#'         FailureCode = "QUOTA_EXCEEDED"|"INSUFFICIENT_CONVERSATION_CONTENT"|"FAILED_SAFETY_GUIDELINES"|"INVALID_ANALYSIS_CONFIGURATION"|"INTERNAL_ERROR"
 #'       )
 #'     )
 #'   ),

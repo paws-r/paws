@@ -131,7 +131,10 @@ ssmsap_deregister_application <- function(ApplicationId) {
 #'     LastUpdated = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     StatusMessage = "string"
+#'     StatusMessage = "string",
+#'     AssociatedApplicationArns = list(
+#'       "string"
+#'     )
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -321,6 +324,9 @@ ssmsap_get_component <- function(ApplicationId, ComponentId) {
 #'     SQLPort = 123,
 #'     LastUpdated = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     ConnectedComponentArns = list(
+#'       "string"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -1013,7 +1019,10 @@ ssmsap_put_resource_permission <- function(ActionType, SourceResourceArn, Resour
 #'     LastUpdated = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     StatusMessage = "string"
+#'     StatusMessage = "string",
+#'     AssociatedApplicationArns = list(
+#'       "string"
+#'     )
 #'   ),
 #'   OperationId = "string"
 #' )

@@ -73,16 +73,14 @@ The the value ANY returns count of all message categories.
 \code{AGGREGATE_ALL} aggregates job counts for all message categories and
 returns the sum.}
 
-\item{AggregationPeriod}{This is the period that sets the boundaries for returned results.
-
-Acceptable values include
+\item{AggregationPeriod}{The period for the returned results.
 \itemize{
-\item \code{ONE_DAY} for daily job count for the prior 14 days.
-\item \code{SEVEN_DAYS} for the aggregated job count for the prior 7 days.
-\item \code{FOURTEEN_DAYS} for aggregated job count for prior 14 days.
+\item \code{ONE_DAY} - The daily job count for the prior 14 days.
+\item \code{SEVEN_DAYS} - The aggregated job count for the prior 7 days.
+\item \code{FOURTEEN_DAYS} - The aggregated job count for prior 14 days.
 }}
 
-\item{MaxResults}{This parameter sets the maximum number of items to be returned.
+\item{MaxResults}{The maximum number of items to be returned.
 
 The value is an integer. Range of accepted values is from 1 to 500.}
 

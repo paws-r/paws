@@ -12,7 +12,8 @@ batch_create_compute_environment(
   computeResources = NULL,
   serviceRole = NULL,
   tags = NULL,
-  eksConfiguration = NULL
+  eksConfiguration = NULL,
+  context = NULL
 )
 }
 \arguments{
@@ -99,6 +100,8 @@ don't propagate to the underlying compute resources.}
 
 \item{eksConfiguration}{The details for the Amazon EKS cluster that supports the compute
 environment.}
+
+\item{context}{Reserved.}
 }
 \description{
 Creates an Batch compute environment. You can create \code{MANAGED} or \code{UNMANAGED} compute environments. \code{MANAGED} compute environments can use Amazon EC2 or Fargate resources. \code{UNMANAGED} compute environments can only use EC2 resources.

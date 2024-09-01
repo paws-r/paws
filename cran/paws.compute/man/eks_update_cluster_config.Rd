@@ -9,7 +9,8 @@ eks_update_cluster_config(
   resourcesVpcConfig = NULL,
   logging = NULL,
   clientRequestToken = NULL,
-  accessConfig = NULL
+  accessConfig = NULL,
+  upgradePolicy = NULL
 )
 }
 \arguments{
@@ -30,6 +31,11 @@ apply to exported control plane logs. For more information, see
 idempotency of the request.}
 
 \item{accessConfig}{The access configuration for the cluster.}
+
+\item{upgradePolicy}{You can enable or disable extended support for clusters currently on
+standard support. You cannot disable extended support once it starts.
+You must enable extended support before your cluster exits standard
+support.}
 }
 \description{
 Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with \code{\link[=eks_describe_update]{describe_update}}"/\>.

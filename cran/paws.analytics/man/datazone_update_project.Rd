@@ -16,8 +16,7 @@ datazone_update_project(
 \item{description}{The description to be updated as part of the
 \code{\link[=datazone_update_project]{update_project}} action.}
 
-\item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which a project is to be
-updated.}
+\item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where a project is being updated.}
 
 \item{glossaryTerms}{The glossary terms to be updated as part of the
 \code{\link[=datazone_update_project]{update_project}} action.}

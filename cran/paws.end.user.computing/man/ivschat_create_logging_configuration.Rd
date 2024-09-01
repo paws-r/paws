@@ -6,17 +6,17 @@
 sent messages}
 \usage{
 ivschat_create_logging_configuration(
-  destinationConfiguration,
   name = NULL,
+  destinationConfiguration,
   tags = NULL
 )
 }
 \arguments{
+\item{name}{Logging-configuration name. The value does not need to be unique.}
+
 \item{destinationConfiguration}{[required] A complex type that contains a destination configuration for where chat
 content will be logged. There can be only one type of destination
 (\code{cloudWatchLogs}, \code{firehose}, or \code{s3}) in a \code{destinationConfiguration}.}
-
-\item{name}{Logging-configuration name. The value does not need to be unique.}
 
 \item{tags}{Tags to attach to the resource. Array of maps, each of the form
 \code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}

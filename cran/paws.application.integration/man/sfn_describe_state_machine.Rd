@@ -5,7 +5,7 @@
 \title{Provides information about a state machine's definition, its IAM role
 Amazon Resource Name (ARN), and configuration}
 \usage{
-sfn_describe_state_machine(stateMachineArn)
+sfn_describe_state_machine(stateMachineArn, includedData = NULL)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine for which you want
@@ -15,6 +15,17 @@ If you specify a state machine version ARN, this API returns details
 about that version. The version ARN is a combination of state machine
 ARN and the version number separated by a colon (:). For example,
 \code{stateMachineARN:1}.}
+
+\item{includedData}{If your state machine definition is encrypted with a KMS key, callers
+must have \code{kms:Decrypt} permission to decrypt the definition.
+Alternatively, you can call the API with \code{includedData = METADATA_ONLY}
+to get a successful response without the encrypted definition.
+
+When calling a labelled ARN for an encrypted state machine, the
+\code{includedData = METADATA_ONLY} parameter will not apply because Step
+Functions needs to decrypt the entire state machine definition to get
+the Distributed Map state’s definition. In this case, the API caller
+needs to have \code{kms:Decrypt} permission.}
 }
 \description{
 Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration.

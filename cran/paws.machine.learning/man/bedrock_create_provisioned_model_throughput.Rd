@@ -30,7 +30,7 @@ commitment. You must first visit the Amazon Web Services support center
 to request MUs.
 
 For model unit quotas, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html#prov-thru-quotas}{Provisioned Throughput quotas}
-in the Amazon Bedrock User Guide.
+in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 For more information about what an MU specifies, contact your Amazon Web
 Services account manager.}
@@ -40,7 +40,7 @@ Services account manager.}
 \item{modelId}{[required] The Amazon Resource Name (ARN) or name of the model to associate with
 this Provisioned Throughput. For a list of models for which you can
 purchase Provisioned Throughput, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#prov-throughput-models}{Amazon Bedrock model IDs for purchasing Provisioned Throughput}
-in the Amazon Bedrock User Guide.}
+in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
 
 \item{commitmentDuration}{The commitment duration requested for the Provisioned Throughput.
 Billing occurs hourly and is discounted for longer commitment terms. To
@@ -48,12 +48,12 @@ request a no-commit Provisioned Throughput, omit this field.
 
 Custom models support all levels of commitment. To see which base models
 support no commitment, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/pt-supported.html}{Supported regions and models for Provisioned Throughput}
-in the Amazon Bedrock User Guide}
+in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}}
 
 \item{tags}{Tags to associate with this Provisioned Throughput.}
 }
 \description{
-Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify. For pricing details, see \href{https://aws.amazon.com/bedrock/pricing/}{Amazon Bedrock Pricing}. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the Amazon Bedrock User Guide.
+Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify. For pricing details, see \href{https://aws.amazon.com/bedrock/pricing/}{Amazon Bedrock Pricing}. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_create_provisioned_model_throughput/} for full documentation.
 }

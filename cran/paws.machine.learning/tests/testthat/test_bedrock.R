@@ -16,8 +16,28 @@ test_that("list_guardrails", {
   expect_error(svc$list_guardrails(), NA)
 })
 
+test_that("list_imported_models", {
+  expect_error(svc$list_imported_models(), NA)
+})
+
+test_that("list_inference_profiles", {
+  expect_error(svc$list_inference_profiles(), NA)
+})
+
+test_that("list_model_copy_jobs", {
+  expect_error(svc$list_model_copy_jobs(), NA)
+})
+
 test_that("list_model_customization_jobs", {
   expect_error(svc$list_model_customization_jobs(), NA)
+})
+
+test_that("list_model_import_jobs", {
+  expect_error(svc$list_model_import_jobs(), NA)
+})
+
+test_that("list_model_invocation_jobs", {
+  expect_error(svc$list_model_invocation_jobs(), NA)
 })
 
 test_that("list_provisioned_model_throughputs", {

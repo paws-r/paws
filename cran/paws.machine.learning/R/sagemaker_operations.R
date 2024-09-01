@@ -516,11 +516,12 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' This attribute must not be set for the time-series forecasting problem
 #' type, as Autopilot automatically splits the input dataset into training
 #' and validation sets.
+#' @param AutoMLComputeConfig Specifies the compute configuration for the AutoML job V2.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_auto_ml_job_v2
-sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataConfig, OutputDataConfig, AutoMLProblemTypeConfig, RoleArn, Tags = NULL, SecurityConfig = NULL, AutoMLJobObjective = NULL, ModelDeployConfig = NULL, DataSplitConfig = NULL) {
+sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataConfig, OutputDataConfig, AutoMLProblemTypeConfig, RoleArn, Tags = NULL, SecurityConfig = NULL, AutoMLJobObjective = NULL, ModelDeployConfig = NULL, DataSplitConfig = NULL, AutoMLComputeConfig = NULL) {
   op <- new_operation(
     name = "CreateAutoMLJobV2",
     http_method = "POST",
@@ -528,7 +529,7 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
     host_prefix = "",
     paginator = list()
   )
-  input <- .sagemaker$create_auto_ml_job_v2_input(AutoMLJobName = AutoMLJobName, AutoMLJobInputDataConfig = AutoMLJobInputDataConfig, OutputDataConfig = OutputDataConfig, AutoMLProblemTypeConfig = AutoMLProblemTypeConfig, RoleArn = RoleArn, Tags = Tags, SecurityConfig = SecurityConfig, AutoMLJobObjective = AutoMLJobObjective, ModelDeployConfig = ModelDeployConfig, DataSplitConfig = DataSplitConfig)
+  input <- .sagemaker$create_auto_ml_job_v2_input(AutoMLJobName = AutoMLJobName, AutoMLJobInputDataConfig = AutoMLJobInputDataConfig, OutputDataConfig = OutputDataConfig, AutoMLProblemTypeConfig = AutoMLProblemTypeConfig, RoleArn = RoleArn, Tags = Tags, SecurityConfig = SecurityConfig, AutoMLJobObjective = AutoMLJobObjective, ModelDeployConfig = ModelDeployConfig, DataSplitConfig = DataSplitConfig, AutoMLComputeConfig = AutoMLComputeConfig)
   output <- .sagemaker$create_auto_ml_job_v2_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)

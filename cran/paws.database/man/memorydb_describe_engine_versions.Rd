@@ -2,7 +2,7 @@
 % Please edit documentation in R/memorydb_operations.R
 \name{memorydb_describe_engine_versions}
 \alias{memorydb_describe_engine_versions}
-\title{Returns a list of the available Redis engine versions}
+\title{Returns a list of the available Redis OSS engine versions}
 \usage{
 memorydb_describe_engine_versions(
   EngineVersion = NULL,
@@ -13,7 +13,7 @@ memorydb_describe_engine_versions(
 )
 }
 \arguments{
-\item{EngineVersion}{The Redis engine version}
+\item{EngineVersion}{The Redis OSS engine version}
 
 \item{ParameterGroupFamily}{The name of a specific parameter group family to return details for.}
 
@@ -31,7 +31,7 @@ the next page. Keep all other arguments unchanged.}
 or engine and major version combination is to be returned.}
 }
 \description{
-Returns a list of the available Redis engine versions.
+Returns a list of the available Redis OSS engine versions.
 
 See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_engine_versions/} for full documentation.
 }

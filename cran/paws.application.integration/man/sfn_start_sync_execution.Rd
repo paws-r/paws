@@ -8,7 +8,8 @@ sfn_start_sync_execution(
   stateMachineArn,
   name = NULL,
   input = NULL,
-  traceHeader = NULL
+  traceHeader = NULL,
+  includedData = NULL
 )
 }
 \arguments{
@@ -29,6 +30,11 @@ in UTF-8 encoding.}
 
 \item{traceHeader}{Passes the X-Ray trace header. The trace header can also be passed in
 the request payload.}
+
+\item{includedData}{If your state machine definition is encrypted with a KMS key, callers
+must have \code{kms:Decrypt} permission to decrypt the definition.
+Alternatively, you can call the API with \code{includedData = METADATA_ONLY}
+to get a successful response without the encrypted definition.}
 }
 \description{
 Starts a Synchronous Express state machine execution. \code{\link[=sfn_start_sync_execution]{start_sync_execution}} is not available for \code{STANDARD} workflows.

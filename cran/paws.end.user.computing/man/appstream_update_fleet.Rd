@@ -106,7 +106,7 @@ disconnection or network interruption within this time interval, they
 are connected to their previous session. Otherwise, they are connected
 to a new session with a new streaming instance.
 
-Specify a value between 60 and 360000.}
+Specify a value between 60 and 36000.}
 
 \item{DeleteVpcConfig}{Deletes the VPC association for the specified fleet.}
 
@@ -132,7 +132,7 @@ user activity. If users continue to be idle after the time interval in
 \code{IdleDisconnectTimeoutInSeconds} elapses, they are disconnected.
 
 To prevent users from being disconnected due to inactivity, specify a
-value of 0. Otherwise, specify a value between 60 and 3600. The default
+value of 0. Otherwise, specify a value between 60 and 36000. The default
 value is 0.
 
 If you enable this feature, we recommend that you specify a value that

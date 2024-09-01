@@ -14,7 +14,7 @@ ses_send_bulk_templated_email(
   DefaultTags = NULL,
   Template,
   TemplateArn = NULL,
-  DefaultTemplateData = NULL,
+  DefaultTemplateData,
   Destinations
 )
 }
@@ -91,7 +91,7 @@ that you send to a destination using
 
 \item{TemplateArn}{The ARN of the template to use when sending this email.}
 
-\item{DefaultTemplateData}{A list of replacement values to apply to the template when replacement
+\item{DefaultTemplateData}{[required] A list of replacement values to apply to the template when replacement
 data is not specified in a Destination object. These values act as a
 default or fallback option when no other data is available.
 

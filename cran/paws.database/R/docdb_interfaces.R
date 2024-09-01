@@ -429,6 +429,18 @@ NULL
   return(populate(args, shape))
 }
 
+.docdb$failover_global_cluster_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GlobalClusterIdentifier = structure(logical(0), tags = list(type = "string")), TargetDbClusterIdentifier = structure(logical(0), tags = list(type = "string")), AllowDataLoss = structure(logical(0), tags = list(type = "boolean")), Switchover = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdb$failover_global_cluster_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GlobalCluster = structure(list(GlobalClusterIdentifier = structure(logical(0), tags = list(type = "string")), GlobalClusterResourceId = structure(logical(0), tags = list(type = "string")), GlobalClusterArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), StorageEncrypted = structure(logical(0), tags = list(type = "boolean")), DeletionProtection = structure(logical(0), tags = list(type = "boolean")), GlobalClusterMembers = structure(list(structure(list(DBClusterArn = structure(logical(0), tags = list(type = "string")), Readers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IsWriter = structure(logical(0), tags = list(type = "boolean"))), tags = list(locationName = "GlobalClusterMember", type = "structure", wrapper = TRUE))), tags = list(locationNameList = "GlobalClusterMember", type = "list"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure", resultWrapper = "FailoverGlobalClusterResult"))
+  return(populate(args, shape))
+}
+
 .docdb$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameList = "Value", type = "list"))), tags = list(locationName = "Filter", type = "structure"))), tags = list(locationNameList = "Filter", type = "list"))), tags = list(type = "structure"))

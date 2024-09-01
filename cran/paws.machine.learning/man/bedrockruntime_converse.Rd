@@ -18,10 +18,14 @@ bedrockruntime_converse(
 \arguments{
 \item{modelId}{[required] The identifier for the model that you want to call.
 
-The \code{modelId} to provide depends on the type of model that you use:
+The \code{modelId} to provide depends on the type of model or throughput that
+you use:
 \itemize{
 \item If you use a base model, specify the model ID or its ARN. For a list
 of model IDs for base models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns}{Amazon Bedrock base model IDs (on-demand throughput)}
+in the Amazon Bedrock User Guide.
+\item If you use an inference profile, specify the inference profile ID or
+its ARN. For a list of inference profile IDs, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html}{Supported Regions and models for cross-region inference}
 in the Amazon Bedrock User Guide.
 \item If you use a provisioned model, specify the ARN of the Provisioned
 Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html}{Run inference using a Provisioned Throughput}
@@ -30,7 +34,9 @@ in the Amazon Bedrock User Guide.
 it. Then specify the ARN of the resulting provisioned model. For
 more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html}{Use a custom model in Amazon Bedrock}
 in the Amazon Bedrock User Guide.
-}}
+}
+
+The Converse API doesn't support \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{imported models}.}
 
 \item{messages}{[required] The messages that you want to send to the model.}
 
@@ -70,7 +76,7 @@ Pointer is valid, but the requested field is not in the model response,
 it is ignored by \code{\link[=bedrockruntime_converse]{converse}}.}
 }
 \description{
-Sends messages to the specified Amazon Bedrock model. \code{\link[=bedrockruntime_converse]{converse}} provides a consistent interface that works with all models that support messages. This allows you to write code once and use it with different models. Should a model have unique inference parameters, you can also pass those unique parameters to the model.
+Sends messages to the specified Amazon Bedrock model. \code{\link[=bedrockruntime_converse]{converse}} provides a consistent interface that works with all models that support messages. This allows you to write code once and use it with different models. If a model has unique inference parameters, you can also pass those unique parameters to the model.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockruntime_converse/} for full documentation.
 }

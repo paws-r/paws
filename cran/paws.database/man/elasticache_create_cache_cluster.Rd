@@ -97,8 +97,8 @@ Default: System chosen Availability Zones.}
 
 \item{NumCacheNodes}{The initial number of cache nodes that the cluster has.
 
-For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 40.
+For clusters running Redis OSS, this value must be 1. For clusters
+running Memcached, this value must be between 1 and 40.
 
 If you need more than 40 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
@@ -121,7 +121,7 @@ previous generation counterparts.
 
 For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
-\strong{M6g node types} (available only for Redis engine version
+\strong{M6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
@@ -134,7 +134,7 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
-\strong{T4g node types} (available only for Redis engine version
+\strong{T4g node types} (available only for Redis OSS engine version
 5.0.6 onward and Memcached engine version 1.5.16 onward):
 \code{cache.t4g.micro}, \code{cache.t4g.small}, \code{cache.t4g.medium}
 
@@ -173,7 +173,7 @@ for these types.)
 
 For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
-\strong{R6g node types} (available only for Redis engine version
+\strong{R6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.r6g.large}, \code{cache.r6g.xlarge}, \code{cache.r6g.2xlarge},
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
@@ -202,12 +202,12 @@ for these types.)
 \itemize{
 \item All current generation instance types are created in Amazon VPC by
 default.
-\item Redis append-only files (AOF) are not supported for T1 or T2
+\item Redis OSS append-only files (AOF) are not supported for T1 or T2
 instances.
-\item Redis Multi-AZ with automatic failover is not supported on T1
+\item Redis OSS Multi-AZ with automatic failover is not supported on T1
 instances.
-\item Redis configuration variables \code{appendonly} and \code{appendfsync} are not
-supported on Redis version 2.8.22 and later.
+\item Redis OSS configuration variables \code{appendonly} and \code{appendfsync} are
+not supported on Redis OSS version 2.8.22 and later.
 }}
 
 \item{Engine}{The name of the cache engine to be used for this cluster.
@@ -250,15 +250,15 @@ Virtual Private Cloud (Amazon VPC).}
 \item{Tags}{A list of tags to be added to this resource.}
 
 \item{SnapshotArns}{A single-element string list containing an Amazon Resource Name (ARN)
-that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
-The snapshot file is used to populate the node group (shard). The Amazon
-S3 object name in the ARN cannot contain any commas.
+that uniquely identifies a Redis OSS RDB snapshot file stored in Amazon
+S3. The snapshot file is used to populate the node group (shard). The
+Amazon S3 object name in the ARN cannot contain any commas.
 
 This parameter is only valid if the \code{Engine} parameter is \code{redis}.
 
 Example of an Amazon S3 ARN: \code{arn:aws:s3:::my_bucket/snapshot1.rdb}}
 
-\item{SnapshotName}{The name of a Redis snapshot from which to restore data into the new
+\item{SnapshotName}{The name of a Redis OSS snapshot from which to restore data into the new
 node group (shard). The snapshot status changes to \code{restoring} while the
 new node group (shard) is being created.
 
@@ -276,7 +276,7 @@ is a 60 minute period.}
 
 The Amazon SNS topic owner must be the same as the cluster owner.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+\item{AutoMinorVersionUpgrade}{If you are running Redis OSS engine version 6.0 or later, set this
 parameter to yes if you want to opt-in to the next auto minor version
 upgrade campaign. This parameter is disabled for previous versions.}
 
@@ -313,7 +313,7 @@ length.
 the AUTH token.
 }
 
-For more information, see \href{https://redis.io/docs/latest/commands/auth/}{AUTH password} at
+For more information, see AUTH password at
 http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single
@@ -328,16 +328,16 @@ outpost or across multiple outposts.}
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to true.}
 
 \item{NetworkType}{Must be either \code{ipv4} | \code{ipv6} | \code{dual_stack}. IPv6 is supported for
-workloads using Redis engine version 6.2 onward or Memcached engine
+workloads using Redis OSS engine version 6.2 onward or Memcached engine
 version 1.6.6 on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 
 \item{IpDiscovery}{The network type you choose when modifying a cluster, either \code{ipv4} |
-\code{ipv6}. IPv6 is supported for workloads using Redis engine version 6.2
-onward or Memcached engine version 1.6.6 on all instances built on the
-\href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+\code{ipv6}. IPv6 is supported for workloads using Redis OSS engine version
+6.2 onward or Memcached engine version 1.6.6 on all instances built on
+the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 }
 \description{
-Creates a cluster. All nodes in the cluster run the same protocol-compliant cache engine software, either Memcached or Redis.
+Creates a cluster. All nodes in the cluster run the same protocol-compliant cache engine software, either Memcached or Redis OSS.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_cache_cluster/} for full documentation.
 }

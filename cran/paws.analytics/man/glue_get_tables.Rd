@@ -12,7 +12,9 @@ glue_get_tables(
   NextToken = NULL,
   MaxResults = NULL,
   TransactionId = NULL,
-  QueryAsOfTime = NULL
+  QueryAsOfTime = NULL,
+  IncludeStatusDetails = NULL,
+  AttributesToGet = NULL
 )
 }
 \arguments{
@@ -34,6 +36,19 @@ match the pattern are returned.}
 \item{QueryAsOfTime}{The time as of when to read the table contents. If not set, the most
 recent transaction commit time will be used. Cannot be specified along
 with \code{TransactionId}.}
+
+\item{IncludeStatusDetails}{Specifies whether to include status details related to a request to
+create or update an Glue Data Catalog view.}
+
+\item{AttributesToGet}{Specifies the table fields returned by the
+\code{\link[=glue_get_tables]{get_tables}} call. This parameter doesn’t accept an
+empty list. The request must include \code{NAME}.
+
+The following are the valid combinations of values:
+\itemize{
+\item \code{NAME} - Names of all tables in the database.
+\item \code{NAME}, \code{TABLE_TYPE} - Names of all tables and the table types.
+}}
 }
 \description{
 Retrieves the definitions of some or all of the tables in a given \code{Database}.

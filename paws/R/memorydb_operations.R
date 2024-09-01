@@ -400,7 +400,7 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' If you do not specify this parameter, MemoryDB automatically chooses an
 #' appropriate time range.
 #' @param ACLName &#91;required&#93; The name of the Access Control List to associate with the cluster.
-#' @param EngineVersion The version number of the Redis engine to be used for the cluster.
+#' @param EngineVersion The version number of the Redis OSS engine to be used for the cluster.
 #' @param AutoMinorVersionUpgrade When set to true, the cluster will automatically receive minor engine
 #' version upgrades after launch.
 #' @param DataTiering Enables data tiering. Data tiering is only supported for clusters using
@@ -953,6 +953,10 @@ memorydb_delete_acl <- function(ACLName) {
 #' @description
 #' Deletes a cluster. It also deletes all associated nodes and node
 #' endpoints
+#' 
+#' [`create_snapshot`][memorydb_create_snapshot] permission is required to
+#' create a final snapshot. Without this permission, the API call will fail
+#' with an `Access Denied` exception.
 #'
 #' @usage
 #' memorydb_delete_cluster(ClusterName, FinalSnapshotName)
@@ -1556,16 +1560,16 @@ memorydb_describe_clusters <- function(ClusterName = NULL, MaxResults = NULL, Ne
 }
 .memorydb$operations$describe_clusters <- memorydb_describe_clusters
 
-#' Returns a list of the available Redis engine versions
+#' Returns a list of the available Redis OSS engine versions
 #'
 #' @description
-#' Returns a list of the available Redis engine versions.
+#' Returns a list of the available Redis OSS engine versions.
 #'
 #' @usage
 #' memorydb_describe_engine_versions(EngineVersion, ParameterGroupFamily,
 #'   MaxResults, NextToken, DefaultOnly)
 #'
-#' @param EngineVersion The Redis engine version
+#' @param EngineVersion The Redis OSS engine version
 #' @param ParameterGroupFamily The name of a specific parameter group family to return details for.
 #' @param MaxResults The maximum number of records to include in the response. If more
 #' records exist than the specified MaxResults value, a token is included

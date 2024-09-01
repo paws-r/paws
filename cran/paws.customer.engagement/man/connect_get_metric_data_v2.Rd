@@ -67,6 +67,7 @@ be less than 35 days.
 following resources:
 \itemize{
 \item Agents
+\item Campaigns
 \item Channels
 \item Feature
 \item Queues
@@ -78,6 +79,9 @@ following resources:
 At least one filter must be passed from queues, routing profiles,
 agents, or user hierarchy groups.
 
+For metrics for outbound campaigns analytics, you can also use campaigns
+to satisfy at least one filter requirement.
+
 To filter by phone number, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/create-historical-metrics-report.html}{Create a historical metrics report}
 in the \emph{Amazon Connect Administrator Guide}.
 
@@ -87,9 +91,10 @@ Note the following limits:
 single request. Valid filter keys: \code{AGENT} |
 \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} |
 \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} |
-\code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} |
-\code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{FEATURE}
-| \code{FLOW_TYPE} | \code{FLOWS_NEXT_RESOURCE_ID} |
+\code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS}
+| \code{CAMPAIGN} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
+\code{contact/segmentAttributes/connect:Subtype} | \code{DISCONNECT_REASON} |
+\code{FEATURE} | \code{FLOW_TYPE} | \code{FLOWS_NEXT_RESOURCE_ID} |
 \code{FLOWS_NEXT_RESOURCE_QUEUE_ID} | \code{FLOWS_OUTCOME_TYPE} |
 \code{FLOWS_RESOURCE_ID} | \code{INITIATION_METHOD} |
 \code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
@@ -124,6 +129,9 @@ Connect enabled as part of the flow
 }
 
 This filter is available only for contact record-driven metrics.
+
+\href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_Campaign.html}{Campaign}
+ARNs are valid \code{filterValues} for the \code{CAMPAIGN} filter key.
 }}
 
 \item{Groupings}{The grouping applied to the metrics that are returned. For example, when
@@ -136,11 +144,12 @@ If no grouping is specified, a summary of all metrics is returned.
 Valid grouping keys: \code{AGENT} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
 \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} |
 \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} |
-\code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
-\code{contact/segmentAttributes/connect:Subtype} | \code{FLOWS_RESOURCE_ID} |
-\code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOW_TYPE} | \code{FLOWS_OUTCOME_TYPE} |
-\code{INITIATION_METHOD} | \code{Q_CONNECT_ENABLED} | \code{QUEUE} |
-\code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
+\code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{CAMPAIGN} | \code{CASE_TEMPLATE_ARN}
+| \code{CASE_STATUS} | \code{CHANNEL} |
+\code{contact/segmentAttributes/connect:Subtype} | \code{DISCONNECT_REASON} |
+\code{FLOWS_RESOURCE_ID} | \code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOW_TYPE} |
+\code{FLOWS_OUTCOME_TYPE} | \code{INITIATION_METHOD} | \code{Q_CONNECT_ENABLED} |
+\code{QUEUE} | \code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
 \code{ROUTING_STEP_EXPRESSION}}
 
 \item{Metrics}{[required] The metrics to retrieve. Specify the name, groupings, and filters for
@@ -346,6 +355,17 @@ in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-conversation-duration-historical}{Average conversation duration}
 
+\strong{AVG_DIALS_PER_MINUTE}
+
+This metric is available only for contacts analyzed by outbound
+campaigns analytics.
+
+Unit: Count
+
+Valid groupings and filters: Campaign, Agent, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-dials-historical}{Average dials per minute}
+
 \strong{AVG_FLOW_TIME}
 
 Unit: Seconds
@@ -529,6 +549,47 @@ Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-customer-historical}{Average customer talk time}
 
+\strong{AVG_WAIT_TIME_AFTER_CUSTOMER_CONNECTION}
+
+This metric is available only for contacts analyzed by outbound
+campaigns analytics.
+
+Unit: Seconds
+
+Valid groupings and filters: Campaign
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-wait-time-historical}{Average wait time after customer connection}
+
+\strong{CAMPAIGN_CONTACTS_ABANDONED_AFTER_X}
+
+This metric is available only for contacts analyzed by outbound
+campaigns analytics.
+
+Unit: Count
+
+Valid groupings and filters: Campaign, Agent
+
+Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
+(inclusive), in seconds. For \code{Comparison}, you must enter \code{GT} (for
+\emph{Greater than}).
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-contacts-abandoned-historical}{Campaign contacts abandoned after X}
+
+\strong{CAMPAIGN_CONTACTS_ABANDONED_AFTER_X_RATE}
+
+This metric is available only for contacts analyzed by outbound
+campaigns analytics.
+
+Unit: Percent
+
+Valid groupings and filters: Campaign, Agent
+
+Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
+(inclusive), in seconds. For \code{Comparison}, you must enter \code{GT} (for
+\emph{Greater than}).
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-contacts-abandoned-rate-historical}{Campaign contacts abandoned after X rate}
+
 \strong{CASES_CREATED}
 
 Unit: Count
@@ -537,7 +598,7 @@ Required filter key: CASE_TEMPLATE_ARN
 
 Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html##cases-created-historical}{Cases created}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-created-historical}{Cases created}
 
 \strong{CONTACTS_CREATED}
 
@@ -660,7 +721,7 @@ Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
 "Less than").
 
-UI name: This metric is not available in Amazon Connect admin website.
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-removed-historical}{Contacts removed from queue in X seconds}
 
 \strong{CONTACTS_RESOLVED_IN_X}
 
@@ -715,6 +776,39 @@ Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#current-cases-historical}{Current cases}
 
+\strong{DELIVERY_ATTEMPTS}
+
+This metric is available only for contacts analyzed by outbound
+campaigns analytics.
+
+Unit: Count
+
+Valid metric filter key: \code{ANSWERING_MACHINE_DETECTION_STATUS},
+\code{DISCONNECT_REASON}
+
+Valid groupings and filters: Campaign, Agent, Queue, Routing Profile,
+Answering Machine Detection Status, Disconnect Reason
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempts-historical}{Delivery attempts}
+
+\strong{DELIVERY_ATTEMPT_DISPOSITION_RATE}
+
+This metric is available only for contacts analyzed by outbound
+campaigns analytics, and with the answering machine detection enabled.
+
+Unit: Percent
+
+Valid metric filter key: \code{ANSWERING_MACHINE_DETECTION_STATUS},
+\code{DISCONNECT_REASON}
+
+Valid groupings and filters: Campaign, Agent, Answering Machine
+Detection Status, Disconnect Reason
+
+Answering Machine Detection Status and Disconnect Reason are valid
+filters but not valid groupings.
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempt-disposition-rate-historical}{Delivery attempt disposition rate}
+
 \strong{FLOWS_OUTCOME}
 
 Unit: Count
@@ -737,6 +831,17 @@ resource ID, Flows resource ID, Initiation method, Resource published
 timestamp
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-started-historical}{Flows started}
+
+\strong{HUMAN_ANSWERED_CALLS}
+
+This metric is available only for contacts analyzed by outbound
+campaigns analytics, and with the answering machine detection enabled.
+
+Unit: Count
+
+Valid groupings and filters: Campaign, Agent
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#human-answered-historical}{Human answered}
 
 \strong{MAX_FLOW_TIME}
 

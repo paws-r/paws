@@ -7,6 +7,7 @@
 datazone_create_project(
   description = NULL,
   domainIdentifier,
+  domainUnitId = NULL,
   glossaryTerms = NULL,
   name
 )
@@ -15,6 +16,10 @@ datazone_create_project(
 \item{description}{The description of the Amazon DataZone project.}
 
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which this project is created.}
+
+\item{domainUnitId}{The ID of the domain unit. This parameter is not required and if it is
+not specified, then the project is created at the root domain unit
+level.}
 
 \item{glossaryTerms}{The glossary terms that can be used in this Amazon DataZone project.}
 

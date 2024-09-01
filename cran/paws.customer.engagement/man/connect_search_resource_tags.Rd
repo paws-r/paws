@@ -19,7 +19,19 @@ instanceId in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ResourceTypes}{The list of resource types to be used to search tags from. If not
 provided or if any empty list is provided, this API will search from all
-supported resource types.}
+supported resource types.
+
+\strong{Supported resource types}
+\itemize{
+\item AGENT
+\item ROUTING_PROFILE
+\item STANDARD_QUEUE
+\item SECURITY_PROFILE
+\item OPERATING_HOURS
+\item PROMPT
+\item CONTACT_FLOW
+\item FLOW_MODULE
+}}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

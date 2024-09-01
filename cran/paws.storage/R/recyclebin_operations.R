@@ -6,7 +6,7 @@ NULL
 #' Creates a Recycle Bin retention rule
 #'
 #' @description
-#' Creates a Recycle Bin retention rule. For more information, see [Create Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Creates a Recycle Bin retention rule. For more information, see [Create Recycle Bin retention rules](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-rules.html#recycle-bin-create-rule) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/recyclebin_create_rule/](https://www.paws-r-sdk.com/docs/recyclebin_create_rule/) for full documentation.
 #'
@@ -60,7 +60,7 @@ recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = N
 #' Deletes a Recycle Bin retention rule
 #'
 #' @description
-#' Deletes a Recycle Bin retention rule. For more information, see [Delete Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Deletes a Recycle Bin retention rule. For more information, see [Delete Recycle Bin retention rules](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/recyclebin_delete_rule/](https://www.paws-r-sdk.com/docs/recyclebin_delete_rule/) for full documentation.
 #'
@@ -316,7 +316,7 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates an existing Recycle Bin retention rule
 #'
 #' @description
-#' Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see [Update Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see [Update Recycle Bin retention rules](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-rules.html#recycle-bin-update-rule) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/recyclebin_update_rule/](https://www.paws-r-sdk.com/docs/recyclebin_update_rule/) for full documentation.
 #'

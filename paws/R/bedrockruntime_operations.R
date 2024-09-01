@@ -150,9 +150,12 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' Sends messages to the specified Amazon Bedrock model.
 #' [`converse`][bedrockruntime_converse] provides a consistent interface
 #' that works with all models that support messages. This allows you to
-#' write code once and use it with different models. Should a model have
-#' unique inference parameters, you can also pass those unique parameters
-#' to the model.
+#' write code once and use it with different models. If a model has unique
+#' inference parameters, you can also pass those unique parameters to the
+#' model.
+#' 
+#' Amazon Bedrock doesn't store any text, images, or documents that you
+#' provide as content. The data is only used to generate the response.
 #' 
 #' For information about the Converse API, see *Use the Converse API* in
 #' the *Amazon Bedrock User Guide*. To use a guardrail, see *Use a
@@ -172,12 +175,19 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'
 #' @param modelId &#91;required&#93; The identifier for the model that you want to call.
 #' 
-#' The `modelId` to provide depends on the type of model that you use:
+#' The `modelId` to provide depends on the type of model or throughput that
+#' you use:
 #' 
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
 #'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use an inference profile, specify the inference profile ID or
+#'     its ARN. For a list of inference profile IDs, see [Supported Regions
+#'     and models for cross-region
+#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -191,6 +201,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'     more information, see [Use a custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
+#' 
+#' The Converse API doesn't support [imported
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html).
 #' @param messages &#91;required&#93; The messages that you want to send to the model.
 #' @param system A system prompt to pass to the model.
 #' @param inferenceConfig Inference parameters to pass to the model.
@@ -593,6 +606,12 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #' [GetFoundationModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html)
 #' and check the `responseStreamingSupported` field in the response.
 #' 
+#' The CLI doesn't support streaming operations in Amazon Bedrock,
+#' including [`converse_stream`][bedrockruntime_converse_stream].
+#' 
+#' Amazon Bedrock doesn't store any text, images, or documents that you
+#' provide as content. The data is only used to generate the response.
+#' 
 #' For information about the Converse API, see *Use the Converse API* in
 #' the *Amazon Bedrock User Guide*. To use a guardrail, see *Use a
 #' guardrail with the Converse API* in the *Amazon Bedrock User Guide*. To
@@ -612,12 +631,19 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'
 #' @param modelId &#91;required&#93; The ID for the model.
 #' 
-#' The `modelId` to provide depends on the type of model that you use:
+#' The `modelId` to provide depends on the type of model or throughput that
+#' you use:
 #' 
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
 #'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use an inference profile, specify the inference profile ID or
+#'     its ARN. For a list of inference profile IDs, see [Supported Regions
+#'     and models for cross-region
+#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -631,6 +657,9 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'     more information, see [Use a custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
+#' 
+#' The Converse API doesn't support [imported
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html).
 #' @param messages &#91;required&#93; The messages that you want to send to the model.
 #' @param system A system prompt to send to the model.
 #' @param inferenceConfig Inference parameters to pass to the model.
@@ -859,6 +888,9 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'     ),
 #'     throttlingException = list(
 #'       message = "string"
+#'     ),
+#'     serviceUnavailableException = list(
+#'       message = "string"
 #'     )
 #'   )
 #' )
@@ -1054,6 +1086,13 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #'     more information, see [Use a custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use an [imported
+#'     model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html),
+#'     specify the ARN of the imported model. You can get the model ARN
+#'     from a successful call to
+#'     [CreateModelImportJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html)
+#'     or from the Imported models page in the Amazon Bedrock console.
 #' @param trace Specifies whether to enable or disable the Bedrock trace. If enabled,
 #' you can see the full Bedrock trace.
 #' @param guardrailIdentifier The unique identifier of the guardrail that you want to use. If you
@@ -1128,7 +1167,8 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' [GetFoundationModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html)
 #' and check the `responseStreamingSupported` field in the response.
 #' 
-#' The CLI doesn't support
+#' The CLI doesn't support streaming operations in Amazon Bedrock,
+#' including
 #' [`invoke_model_with_response_stream`][bedrockruntime_invoke_model_with_response_stream].
 #' 
 #' For example code, see *Invoke model with streaming code example* in the
@@ -1174,6 +1214,13 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #'     more information, see [Use a custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use an [imported
+#'     model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html),
+#'     specify the ARN of the imported model. You can get the model ARN
+#'     from a successful call to
+#'     [CreateModelImportJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html)
+#'     or from the Imported models page in the Amazon Bedrock console.
 #' @param trace Specifies whether to enable or disable the Bedrock trace. If enabled,
 #' you can see the full Bedrock trace.
 #' @param guardrailIdentifier The unique identifier of the guardrail that you want to use. If you
@@ -1214,6 +1261,9 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #'       message = "string"
 #'     ),
 #'     modelTimeoutException = list(
+#'       message = "string"
+#'     ),
+#'     serviceUnavailableException = list(
 #'       message = "string"
 #'     )
 #'   ),

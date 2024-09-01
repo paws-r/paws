@@ -143,9 +143,10 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_cancel_spot_instance_requests]{cancel_spot_instance_requests} \tab Cancels one or more Spot Instance requests\cr
 \link[=ec2_confirm_product_instance]{confirm_product_instance} \tab Determines whether a product code is associated with an instance\cr
 \link[=ec2_copy_fpga_image]{copy_fpga_image} \tab Copies the specified Amazon FPGA Image (AFI) to the current Region\cr
-\link[=ec2_copy_image]{copy_image} \tab Initiates the copy of an AMI\cr
+\link[=ec2_copy_image]{copy_image} \tab Initiates an AMI copy operation\cr
 \link[=ec2_copy_snapshot]{copy_snapshot} \tab Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3\cr
 \link[=ec2_create_capacity_reservation]{create_capacity_reservation} \tab Creates a new Capacity Reservation with the specified attributes\cr
+\link[=ec2_create_capacity_reservation_by_splitting]{create_capacity_reservation_by_splitting} \tab Create a new Capacity Reservation by splitting the available capacity of the source Capacity Reservation\cr
 \link[=ec2_create_capacity_reservation_fleet]{create_capacity_reservation_fleet} \tab Creates a Capacity Reservation Fleet\cr
 \link[=ec2_create_carrier_gateway]{create_carrier_gateway} \tab Creates a carrier gateway\cr
 \link[=ec2_create_client_vpn_endpoint]{create_client_vpn_endpoint} \tab Creates a Client VPN endpoint\cr
@@ -166,6 +167,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_create_instance_export_task]{create_instance_export_task} \tab Exports a running or stopped instance to an Amazon S3 bucket\cr
 \link[=ec2_create_internet_gateway]{create_internet_gateway} \tab Creates an internet gateway for use with a VPC\cr
 \link[=ec2_create_ipam]{create_ipam} \tab Create an IPAM\cr
+\link[=ec2_create_ipam_external_resource_verification_token]{create_ipam_external_resource_verification_token} \tab Create a verification token\cr
 \link[=ec2_create_ipam_pool]{create_ipam_pool} \tab Create an IP address pool for Amazon VPC IP Address Manager (IPAM)\cr
 \link[=ec2_create_ipam_resource_discovery]{create_ipam_resource_discovery} \tab Creates an IPAM resource discovery\cr
 \link[=ec2_create_ipam_scope]{create_ipam_scope} \tab Create an IPAM scope\cr
@@ -242,6 +244,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_delete_instance_event_window]{delete_instance_event_window} \tab Deletes the specified event window\cr
 \link[=ec2_delete_internet_gateway]{delete_internet_gateway} \tab Deletes the specified internet gateway\cr
 \link[=ec2_delete_ipam]{delete_ipam} \tab Delete an IPAM\cr
+\link[=ec2_delete_ipam_external_resource_verification_token]{delete_ipam_external_resource_verification_token} \tab Delete a verification token\cr
 \link[=ec2_delete_ipam_pool]{delete_ipam_pool} \tab Delete an IPAM pool\cr
 \link[=ec2_delete_ipam_resource_discovery]{delete_ipam_resource_discovery} \tab Deletes an IPAM resource discovery\cr
 \link[=ec2_delete_ipam_scope]{delete_ipam_scope} \tab Delete the scope for an IPAM\cr
@@ -366,6 +369,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_describe_instance_types]{describe_instance_types} \tab Describes the specified instance types\cr
 \link[=ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes your internet gateways\cr
 \link[=ec2_describe_ipam_byoasn]{describe_ipam_byoasn} \tab Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated\cr
+\link[=ec2_describe_ipam_external_resource_verification_tokens]{describe_ipam_external_resource_verification_tokens} \tab Describe verification tokens\cr
 \link[=ec2_describe_ipam_pools]{describe_ipam_pools} \tab Get information about your IPAM pools\cr
 \link[=ec2_describe_ipam_resource_discoveries]{describe_ipam_resource_discoveries} \tab Describes IPAM resource discoveries\cr
 \link[=ec2_describe_ipam_resource_discovery_associations]{describe_ipam_resource_discovery_associations} \tab Describes resource discovery association with an Amazon VPC IPAM\cr
@@ -579,7 +583,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_lock_snapshot]{lock_snapshot} \tab Locks an Amazon EBS snapshot in either governance or compliance mode to protect it against accidental or malicious deletions for a specific duration\cr
 \link[=ec2_modify_address_attribute]{modify_address_attribute} \tab Modifies an attribute of the specified Elastic IP address\cr
 \link[=ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Changes the opt-in status of the specified zone group for your account\cr
-\link[=ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity and the conditions under which it is to be released\cr
+\link[=ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity, instance eligibility, and the conditions under which it is to be released\cr
 \link[=ec2_modify_capacity_reservation_fleet]{modify_capacity_reservation_fleet} \tab Modifies a Capacity Reservation Fleet\cr
 \link[=ec2_modify_client_vpn_endpoint]{modify_client_vpn_endpoint} \tab Modifies the specified Client VPN endpoint\cr
 \link[=ec2_modify_default_credit_specification]{modify_default_credit_specification} \tab Modifies the default credit option for CPU usage of burstable performance instances\cr
@@ -645,6 +649,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_monitor_instances]{monitor_instances} \tab Enables detailed monitoring for a running instance\cr
 \link[=ec2_move_address_to_vpc]{move_address_to_vpc} \tab This action is deprecated\cr
 \link[=ec2_move_byoip_cidr_to_ipam]{move_byoip_cidr_to_ipam} \tab Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool\cr
+\link[=ec2_move_capacity_reservation_instances]{move_capacity_reservation_instances} \tab Move available capacity from a source Capacity Reservation to a destination Capacity Reservation\cr
 \link[=ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
 \link[=ec2_provision_ipam_byoasn]{provision_ipam_byoasn} \tab Provisions your Autonomous System Number (ASN) for use in your Amazon Web Services account\cr
 \link[=ec2_provision_ipam_pool_cidr]{provision_ipam_pool_cidr} \tab Provision a CIDR to an IPAM pool\cr

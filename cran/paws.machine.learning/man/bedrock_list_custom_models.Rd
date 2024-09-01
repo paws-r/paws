@@ -14,7 +14,8 @@ bedrock_list_custom_models(
   maxResults = NULL,
   nextToken = NULL,
   sortBy = NULL,
-  sortOrder = NULL
+  sortOrder = NULL,
+  isOwned = NULL
 )
 }
 \arguments{
@@ -30,14 +31,21 @@ matches this parameter.}
 \item{foundationModelArnEquals}{Return custom models only if the foundation model Amazon Resource Name
 (ARN) matches this parameter.}
 
-\item{maxResults}{Maximum number of results to return in the response.}
+\item{maxResults}{The maximum number of results to return in the response. If the total
+number of results is greater than this value, use the token returned in
+the response in the \code{nextToken} field when making another request to
+return the next batch of results.}
 
-\item{nextToken}{Continuation token from the previous response, for Amazon Bedrock to
-list the next set of results.}
+\item{nextToken}{If the total number of results is greater than the \code{maxResults} value
+provided in the request, enter the token returned in the \code{nextToken}
+field in the response in this field to return the next batch of results.}
 
 \item{sortBy}{The field to sort by in the returned list of models.}
 
 \item{sortOrder}{The sort order of the results.}
+
+\item{isOwned}{Return custom models depending on if the current account owns them
+(\code{true}) or if they were shared with the current account (\code{false}).}
 }
 \description{
 Returns a list of the custom models that you have created with the \code{\link[=bedrock_create_model_customization_job]{create_model_customization_job}} operation.

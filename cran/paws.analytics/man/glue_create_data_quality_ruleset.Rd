@@ -11,6 +11,7 @@ glue_create_data_quality_ruleset(
   Ruleset,
   Tags = NULL,
   TargetTable = NULL,
+  DataQualitySecurityConfiguration = NULL,
   ClientToken = NULL
 )
 }
@@ -25,6 +26,9 @@ see the Glue developer guide.}
 \item{Tags}{A list of tags applied to the data quality ruleset.}
 
 \item{TargetTable}{A target table associated with the data quality ruleset.}
+
+\item{DataQualitySecurityConfiguration}{The name of the security configuration created with the data quality
+encryption option.}
 
 \item{ClientToken}{Used for idempotency and is recommended to be set to a random ID (such
 as a UUID) to avoid creating or starting multiple instances of the same

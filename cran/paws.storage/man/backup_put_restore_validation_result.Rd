@@ -14,7 +14,7 @@ backup_put_restore_validation_result(
 \arguments{
 \item{RestoreJobId}{[required] This is a unique identifier of a restore job within Backup.}
 
-\item{ValidationStatus}{[required] This is the status of your restore validation.}
+\item{ValidationStatus}{[required] The status of your restore validation.}
 
 \item{ValidationStatusMessage}{This is an optional message string you can input to describe the
 validation status for the restore test validation.}

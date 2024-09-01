@@ -63,8 +63,8 @@ capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created. New capacity providers can be
 created with the
-\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
-operation.
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/}{CreateClusterCapacityProvider}
+API operation.
 
 To use a Fargate capacity provider, specify either the \code{FARGATE} or
 \code{FARGATE_SPOT} capacity providers. The Fargate capacity providers are
@@ -72,9 +72,9 @@ available to all accounts and only need to be associated with a cluster
 to be used.
 
 The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
-API operation is used to update the list of available capacity providers
-for a cluster after the cluster is created.}
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}API
+operation is used to update the list of available capacity providers for
+a cluster after the cluster is created.}
 
 \item{deploymentConfiguration}{Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.}

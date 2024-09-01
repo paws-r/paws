@@ -3,10 +3,48 @@
 #' @include resiliencehub_service.R
 NULL
 
+#' Accepts the resource grouping recommendations suggested by Resilience
+#' Hub for your application
+#'
+#' @description
+#' Accepts the resource grouping recommendations suggested by Resilience Hub for your application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_accept_resource_grouping_recommendations/](https://www.paws-r-sdk.com/docs/resiliencehub_accept_resource_grouping_recommendations/) for full documentation.
+#'
+#' @param appArn &#91;required&#93; Amazon Resource Name (ARN) of the Resilience Hub application. The format
+#' for this ARN is:
+#' arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`. For more
+#' information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *Amazon Web Services General Reference* guide.
+#' @param entries &#91;required&#93; Indicates the list of resource grouping recommendations you want to
+#' include in your application.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_accept_resource_grouping_recommendations
+resiliencehub_accept_resource_grouping_recommendations <- function(appArn, entries) {
+  op <- new_operation(
+    name = "AcceptResourceGroupingRecommendations",
+    http_method = "POST",
+    http_path = "/accept-resource-grouping-recommendations",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .resiliencehub$accept_resource_grouping_recommendations_input(appArn = appArn, entries = entries)
+  output <- .resiliencehub$accept_resource_grouping_recommendations_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$accept_resource_grouping_recommendations <- resiliencehub_accept_resource_grouping_recommendations
+
 #' Adds the source of resource-maps to the draft version of an application
 #'
 #' @description
-#' Adds the source of resource-maps to the draft version of an application. During assessment, Resilience Hub will use these resource-maps to resolve the latest physical ID for each resource in the application template. For more information about different types of resources suported by Resilience Hub and how to add them in your application, see [Step 2: How is your application managed?](https://docs.aws.amazon.com/resilience-hub/latest/userguide/how-app-manage.html) in the Resilience Hub User Guide.
+#' Adds the source of resource-maps to the draft version of an application. During assessment, Resilience Hub will use these resource-maps to resolve the latest physical ID for each resource in the application template. For more information about different types of resources supported by Resilience Hub and how to add them in your application, see [Step 2: How is your application managed?](https://docs.aws.amazon.com/resilience-hub/latest/userguide/how-app-manage.html) in the Resilience Hub User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/resiliencehub_add_draft_app_version_resource_mappings/](https://www.paws-r-sdk.com/docs/resiliencehub_add_draft_app_version_resource_mappings/) for full documentation.
 #'
@@ -941,6 +979,43 @@ resiliencehub_describe_resiliency_policy <- function(policyArn) {
 }
 .resiliencehub$operations$describe_resiliency_policy <- resiliencehub_describe_resiliency_policy
 
+#' Describes the resource grouping recommendation tasks run by Resilience
+#' Hub for your application
+#'
+#' @description
+#' Describes the resource grouping recommendation tasks run by Resilience Hub for your application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_resource_grouping_recommendation_task/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_resource_grouping_recommendation_task/) for full documentation.
+#'
+#' @param appArn &#91;required&#93; Amazon Resource Name (ARN) of the Resilience Hub application. The format
+#' for this ARN is:
+#' arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`. For more
+#' information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *Amazon Web Services General Reference* guide.
+#' @param groupingId Indicates the identifier of the grouping recommendation task.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_describe_resource_grouping_recommendation_task
+resiliencehub_describe_resource_grouping_recommendation_task <- function(appArn, groupingId = NULL) {
+  op <- new_operation(
+    name = "DescribeResourceGroupingRecommendationTask",
+    http_method = "POST",
+    http_path = "/describe-resource-grouping-recommendation-task",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .resiliencehub$describe_resource_grouping_recommendation_task_input(appArn = appArn, groupingId = groupingId)
+  output <- .resiliencehub$describe_resource_grouping_recommendation_task_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$describe_resource_grouping_recommendation_task <- resiliencehub_describe_resource_grouping_recommendation_task
+
 #' Imports resources to Resilience Hub application draft version from
 #' different input sources
 #'
@@ -1035,10 +1110,8 @@ resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults =
 #' For more information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param maxResults Indicates the maximum number of applications requested.
-#' @param nextToken Indicates the unique token number of the next application to be checked
-#' for compliance and regulatory requirements from the list of
-#' applications.
+#' @param maxResults Indicates the maximum number of compliance drifts requested.
+#' @param nextToken Null, or the token from a previous call to get the next set of results.
 #'
 #' @keywords internal
 #'
@@ -1449,7 +1522,7 @@ resiliencehub_list_app_versions <- function(appArn, endTime = NULL, maxResults =
 #' @param nextToken Null, or the token from a previous call to get the next set of results.
 #' @param reverseOrder The application list is sorted based on the values of
 #' `lastAppComplianceEvaluationTime` field. By default, application list is
-#' sorted in ascending order. To sort the appliation list in descending
+#' sorted in ascending order. To sort the application list in descending
 #' order, set this field to `True`.
 #' @param toLastAssessmentTime Indicates the upper limit of the range that is used to filter the
 #' applications based on their last assessment times.
@@ -1552,6 +1625,45 @@ resiliencehub_list_resiliency_policies <- function(maxResults = NULL, nextToken 
   return(response)
 }
 .resiliencehub$operations$list_resiliency_policies <- resiliencehub_list_resiliency_policies
+
+#' Lists the resource grouping recommendations suggested by Resilience Hub
+#' for your application
+#'
+#' @description
+#' Lists the resource grouping recommendations suggested by Resilience Hub for your application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_resource_grouping_recommendations/](https://www.paws-r-sdk.com/docs/resiliencehub_list_resource_grouping_recommendations/) for full documentation.
+#'
+#' @param appArn Amazon Resource Name (ARN) of the Resilience Hub application. The format
+#' for this ARN is:
+#' arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`. For more
+#' information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *Amazon Web Services General Reference* guide.
+#' @param maxResults Maximum number of grouping recommendations to be displayed per
+#' Resilience Hub application.
+#' @param nextToken Null, or the token from a previous call to get the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_list_resource_grouping_recommendations
+resiliencehub_list_resource_grouping_recommendations <- function(appArn = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourceGroupingRecommendations",
+    http_method = "GET",
+    http_path = "/list-resource-grouping-recommendations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "groupingRecommendations")
+  )
+  input <- .resiliencehub$list_resource_grouping_recommendations_input(appArn = appArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .resiliencehub$list_resource_grouping_recommendations_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$list_resource_grouping_recommendations <- resiliencehub_list_resource_grouping_recommendations
 
 #' Lists the standard operating procedure (SOP) recommendations for the
 #' Resilience Hub applications
@@ -2032,6 +2144,43 @@ resiliencehub_put_draft_app_version_template <- function(appArn, appTemplateBody
 }
 .resiliencehub$operations$put_draft_app_version_template <- resiliencehub_put_draft_app_version_template
 
+#' Rejects resource grouping recommendations
+#'
+#' @description
+#' Rejects resource grouping recommendations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_reject_resource_grouping_recommendations/](https://www.paws-r-sdk.com/docs/resiliencehub_reject_resource_grouping_recommendations/) for full documentation.
+#'
+#' @param appArn &#91;required&#93; Amazon Resource Name (ARN) of the Resilience Hub application. The format
+#' for this ARN is:
+#' arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`. For more
+#' information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *Amazon Web Services General Reference* guide.
+#' @param entries &#91;required&#93; Indicates the list of resource grouping recommendations you have
+#' selected to exclude from your application.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_reject_resource_grouping_recommendations
+resiliencehub_reject_resource_grouping_recommendations <- function(appArn, entries) {
+  op <- new_operation(
+    name = "RejectResourceGroupingRecommendations",
+    http_method = "POST",
+    http_path = "/reject-resource-grouping-recommendations",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .resiliencehub$reject_resource_grouping_recommendations_input(appArn = appArn, entries = entries)
+  output <- .resiliencehub$reject_resource_grouping_recommendations_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$reject_resource_grouping_recommendations <- resiliencehub_reject_resource_grouping_recommendations
+
 #' Removes resource mappings from a draft application version
 #'
 #' @description
@@ -2158,6 +2307,41 @@ resiliencehub_start_app_assessment <- function(appArn, appVersion, assessmentNam
   return(response)
 }
 .resiliencehub$operations$start_app_assessment <- resiliencehub_start_app_assessment
+
+#' Starts grouping recommendation task
+#'
+#' @description
+#' Starts grouping recommendation task.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_start_resource_grouping_recommendation_task/](https://www.paws-r-sdk.com/docs/resiliencehub_start_resource_grouping_recommendation_task/) for full documentation.
+#'
+#' @param appArn &#91;required&#93; Amazon Resource Name (ARN) of the Resilience Hub application. The format
+#' for this ARN is:
+#' arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`. For more
+#' information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *Amazon Web Services General Reference* guide.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_start_resource_grouping_recommendation_task
+resiliencehub_start_resource_grouping_recommendation_task <- function(appArn) {
+  op <- new_operation(
+    name = "StartResourceGroupingRecommendationTask",
+    http_method = "POST",
+    http_path = "/start-resource-grouping-recommendation-task",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .resiliencehub$start_resource_grouping_recommendation_task_input(appArn = appArn)
+  output <- .resiliencehub$start_resource_grouping_recommendation_task_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$start_resource_grouping_recommendation_task <- resiliencehub_start_resource_grouping_recommendation_task
 
 #' Applies one or more tags to a resource
 #'

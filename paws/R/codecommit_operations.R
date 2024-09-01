@@ -1049,7 +1049,8 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' @param kmsKeyId The ID of the encryption key. You can view the ID of an encryption key
 #' in the KMS console, or use the KMS APIs to programmatically retrieve a
 #' key ID. For more information about acceptable values for kmsKeyID, see
-#' KeyId in the Decrypt API description in the *Key Management Service API
+#' [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html#KMS-Decrypt-request-KeyId)
+#' in the Decrypt API description in the *Key Management Service API
 #' Reference*.
 #' 
 #' If no key is specified, the default `aws/codecommit` Amazon Web Services
@@ -6209,7 +6210,8 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #' @param kmsKeyId &#91;required&#93; The ID of the encryption key. You can view the ID of an encryption key
 #' in the KMS console, or use the KMS APIs to programmatically retrieve a
 #' key ID. For more information about acceptable values for keyID, see
-#' KeyId in the Decrypt API description in the *Key Management Service API
+#' [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html#KMS-Decrypt-request-KeyId)
+#' in the Decrypt API description in the *Key Management Service API
 #' Reference*.
 #'
 #' @return

@@ -5,15 +5,15 @@
 \title{Gets summary information about live streams in your account, in the
 Amazon Web Services region where the API request is processed}
 \usage{
-ivs_list_streams(filterBy = NULL, maxResults = NULL, nextToken = NULL)
+ivs_list_streams(filterBy = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{filterBy}{Filters the stream list to match the specified criterion.}
 
-\item{maxResults}{Maximum number of streams to return. Default: 100.}
-
 \item{nextToken}{The first stream to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}
+
+\item{maxResults}{Maximum number of streams to return. Default: 100.}
 }
 \description{
 Gets summary information about live streams in your account, in the Amazon Web Services region where the API request is processed.

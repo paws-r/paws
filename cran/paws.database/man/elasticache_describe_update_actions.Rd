@@ -24,8 +24,8 @@ elasticache_describe_update_actions(
 
 \item{CacheClusterIds}{The cache cluster IDs}
 
-\item{Engine}{The Elasticache engine to which the update applies. Either Redis or
-Memcached}
+\item{Engine}{The Elasticache engine to which the update applies. Either Redis OSS or
+Memcached.}
 
 \item{ServiceUpdateStatus}{The status of the service update}
 

@@ -53,7 +53,13 @@ You must set this value when you specify \code{true} for
 
 \item{EnableDns64}{Indicates whether DNS queries made to the Amazon-provided DNS Resolver
 in this subnet should return synthetic IPv6 addresses for IPv4-only
-destinations.}
+destinations.
+
+You must first configure a NAT gateway in a public subnet (separate from
+the subnet containing the IPv6-only workloads). For example, the subnet
+containing the NAT gateway should have a \verb{0.0.0.0/0} route pointing to
+the internet gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-nat64-dns64.html#nat-gateway-nat64-dns64-walkthrough}{Configure DNS64 and NAT64}
+in the \emph{Amazon VPC User Guide}.}
 
 \item{PrivateDnsHostnameTypeOnLaunch}{The type of hostname to assign to instances in the subnet at launch. For
 IPv4-only and dual-stack (IPv4 and IPv6) subnets, an instance DNS name

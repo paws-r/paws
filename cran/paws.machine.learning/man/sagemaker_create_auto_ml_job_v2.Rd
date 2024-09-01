@@ -15,7 +15,8 @@ sagemaker_create_auto_ml_job_v2(
   SecurityConfig = NULL,
   AutoMLJobObjective = NULL,
   ModelDeployConfig = NULL,
-  DataSplitConfig = NULL
+  DataSplitConfig = NULL,
+  AutoMLComputeConfig = NULL
 )
 }
 \arguments{
@@ -86,6 +87,8 @@ dataset must be less than 2 GB in size.
 This attribute must not be set for the time-series forecasting problem
 type, as Autopilot automatically splits the input dataset into training
 and validation sets.}
+
+\item{AutoMLComputeConfig}{Specifies the compute configuration for the AutoML job V2.}
 }
 \description{
 Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2.

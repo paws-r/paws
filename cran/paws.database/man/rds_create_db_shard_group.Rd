@@ -9,6 +9,7 @@ rds_create_db_shard_group(
   DBClusterIdentifier,
   ComputeRedundancy = NULL,
   MaxACU,
+  MinACU = NULL,
   PubliclyAccessible = NULL
 )
 }
@@ -30,6 +31,9 @@ different AZs for each physical shard.
 }}
 
 \item{MaxACU}{[required] The maximum capacity of the DB shard group in Aurora capacity units
+(ACUs).}
+
+\item{MinACU}{The minimum capacity of the DB shard group in Aurora capacity units
 (ACUs).}
 
 \item{PubliclyAccessible}{Specifies whether the DB shard group is publicly accessible.

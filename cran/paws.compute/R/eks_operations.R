@@ -306,7 +306,7 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' for the Kubernetes control plane to make calls to Amazon Web Services
 #' API operations on your behalf. For more information, see [Amazon EKS
 #' Service IAM
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/cluster_IAM_role.html)
 #' in the *Amazon EKS User Guide* .
 #' @param resourcesVpcConfig &#91;required&#93; The VPC configuration that's used by the cluster control plane. Amazon
 #' EKS VPC resources have specific requirements to work properly with
@@ -349,11 +349,14 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' 
 #' Use this option when you plan to install third-party alternative add-ons
 #' or self-manage the default networking add-ons.
+#' @param upgradePolicy New clusters, by default, have extended support enabled. You can disable
+#' extended support when creating a cluster by setting this value to
+#' `STANDARD`.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -361,7 +364,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
     host_prefix = "",
     paginator = list()
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2262,11 +2265,15 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param accessConfig The access configuration for the cluster.
+#' @param upgradePolicy You can enable or disable extended support for clusters currently on
+#' standard support. You cannot disable extended support once it starts.
+#' You must enable extended support before your cluster exits standard
+#' support.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
@@ -2274,7 +2281,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     host_prefix = "",
     paginator = list()
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)

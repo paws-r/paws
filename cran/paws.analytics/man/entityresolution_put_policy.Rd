@@ -10,7 +10,13 @@ entityresolution_put_policy(arn, policy, token = NULL)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the resource for which the policy
 needs to be updated.}
 
-\item{policy}{[required] The resource-based policy.}
+\item{policy}{[required] The resource-based policy.
+
+If you set the value of the \code{effect} parameter in the \code{policy} to \code{Deny}
+for the \code{\link[=entityresolution_put_policy]{put_policy}} operation, you must
+also set the value of the \code{effect} parameter to \code{Deny} for the
+\code{\link[=entityresolution_add_policy_statement]{add_policy_statement}}
+operation.}
 
 \item{token}{A unique identifier for the current revision of the policy.}
 }

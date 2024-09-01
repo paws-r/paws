@@ -8,6 +8,7 @@ redshiftserverless_update_workgroup(
   baseCapacity = NULL,
   configParameters = NULL,
   enhancedVpcRouting = NULL,
+  ipAddressType = NULL,
   maxCapacity = NULL,
   port = NULL,
   publiclyAccessible = NULL,
@@ -30,6 +31,9 @@ monitoring rules and available metrics, see \href{https://docs.aws.amazon.com/re
 \item{enhancedVpcRouting}{The value that specifies whether to turn on enhanced virtual private
 cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 traffic through your VPC.}
+
+\item{ipAddressType}{The IP address type that the workgroup supports. Possible values are
+\code{ipv4} and \code{dualstack}.}
 
 \item{maxCapacity}{The maximum data-warehouse capacity Amazon Redshift Serverless uses to
 serve queries. The max capacity is specified in RPUs.}

@@ -1362,6 +1362,12 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' 
 #' You can only set this preference for the Amazon EC2 instance and Auto
 #' Scaling group resource types.
+#' 
+#' -   Amazon EC2 instance lookback preferences can be set at the
+#'     organization, account, and resource levels.
+#' 
+#' -   Auto Scaling group lookback preferences can only be set at the
+#'     resource level.
 #' @param utilizationPreferences The preference to control the resource’s CPU utilization threshold, CPU
 #' utilization headroom, and memory utilization headroom. When this
 #' preference isn't specified, we use the following default values.

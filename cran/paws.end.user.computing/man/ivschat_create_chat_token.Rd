@@ -6,30 +6,30 @@
 establish an individual WebSocket chat connection to a room}
 \usage{
 ivschat_create_chat_token(
-  attributes = NULL,
-  capabilities = NULL,
   roomIdentifier,
+  userId,
+  capabilities = NULL,
   sessionDurationInMinutes = NULL,
-  userId
+  attributes = NULL
 )
 }
 \arguments{
-\item{attributes}{Application-provided attributes to encode into the token and attach to a
-chat session. Map keys and values can contain UTF-8 encoded text. The
-maximum length of this field is 1 KB total.}
+\item{roomIdentifier}{[required] Identifier of the room that the client is trying to access. Currently
+this must be an ARN.}
+
+\item{userId}{[required] Application-provided ID that uniquely identifies the user associated
+with this token. This can be any UTF-8 encoded text.}
 
 \item{capabilities}{Set of capabilities that the user is allowed to perform in the room.
 Default: None (the capability to view messages is implicitly included in
 all requests).}
 
-\item{roomIdentifier}{[required] Identifier of the room that the client is trying to access. Currently
-this must be an ARN.}
-
 \item{sessionDurationInMinutes}{Session duration (in minutes), after which the session expires. Default:
 60 (1 hour).}
 
-\item{userId}{[required] Application-provided ID that uniquely identifies the user associated
-with this token. This can be any UTF-8 encoded text.}
+\item{attributes}{Application-provided attributes to encode into the token and attach to a
+chat session. Map keys and values can contain UTF-8 encoded text. The
+maximum length of this field is 1 KB total.}
 }
 \description{
 Creates an encrypted token that is used by a chat participant to establish an individual WebSocket chat connection to a room. When the token is used to connect to chat, the connection is valid for the session duration specified in the request. The token becomes invalid at the token-expiration timestamp included in the response.

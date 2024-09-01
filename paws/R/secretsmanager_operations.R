@@ -293,6 +293,13 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' 
 #' To encrypt the secret with a KMS key other than `aws/secretsmanager`,
 #' you need `kms:GenerateDataKey` and `kms:Decrypt` permission to the key.
+#' 
+#' When you enter commands in a command shell, there is a risk of the
+#' command history being accessed or utilities having access to your
+#' command parameters. This is a concern if the command includes the value
+#' of a secret. Learn how to [Mitigate the risks of using command-line
+#' tools to store Secrets Manager
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/security_cli-exposure-risks.html).
 #'
 #' @usage
 #' secretsmanager_create_secret(Name, ClientRequestToken, Description,
@@ -1573,6 +1580,13 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
+#' 
+#' When you enter commands in a command shell, there is a risk of the
+#' command history being accessed or utilities having access to your
+#' command parameters. This is a concern if the command includes the value
+#' of a secret. Learn how to [Mitigate the risks of using command-line
+#' tools to store Secrets Manager
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/security_cli-exposure-risks.html).
 #'
 #' @usage
 #' secretsmanager_put_secret_value(SecretId, ClientRequestToken,
@@ -2460,10 +2474,17 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' If you use a customer managed key, you must also have
 #' `kms:GenerateDataKey`, `kms:Encrypt`, and `kms:Decrypt` permissions on
 #' the key. If you change the KMS key and you don't have `kms:Encrypt`
-#' permission to the new key, Secrets Manager does not re-ecrypt existing
+#' permission to the new key, Secrets Manager does not re-encrypt existing
 #' secret versions with the new key. For more information, see [Secret
 #' encryption and
 #' decryption](https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-encryption.html).
+#' 
+#' When you enter commands in a command shell, there is a risk of the
+#' command history being accessed or utilities having access to your
+#' command parameters. This is a concern if the command includes the value
+#' of a secret. Learn how to [Mitigate the risks of using command-line
+#' tools to store Secrets Manager
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/security_cli-exposure-risks.html).
 #'
 #' @usage
 #' secretsmanager_update_secret(SecretId, ClientRequestToken, Description,
@@ -2497,7 +2518,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' encrypt new secret versions as well as any existing versions with the
 #' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. If you
 #' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
-#' not re-ecrypt existing secret versions with the new key. For more
+#' not re-encrypt existing secret versions with the new key. For more
 #' information about versions and staging labels, see [Concepts:
 #' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 

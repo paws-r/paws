@@ -2,8 +2,8 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_add_permission}
 \alias{lambda_add_permission}
-\title{Grants an Amazon Web Service, Amazon Web Services account, or Amazon Web
-Services organization permission to use a function}
+\title{Grants an Amazon Web Servicesservice, Amazon Web Services account, or
+Amazon Web Services organization permission to use a function}
 \usage{
 lambda_add_permission(
   FunctionName,
@@ -41,21 +41,23 @@ the same policy.}
 \item{Action}{[required] The action that the principal can use on the function. For example,
 \code{lambda:InvokeFunction} or \code{lambda:GetFunction}.}
 
-\item{Principal}{[required] The Amazon Web Service or Amazon Web Services account that invokes the
-function. If you specify a service, use \code{SourceArn} or \code{SourceAccount}
-to limit who can invoke the function through that service.}
+\item{Principal}{[required] The Amazon Web Servicesservice or Amazon Web Services account that
+invokes the function. If you specify a service, use \code{SourceArn} or
+\code{SourceAccount} to limit who can invoke the function through that
+service.}
 
-\item{SourceArn}{For Amazon Web Services, the ARN of the Amazon Web Services resource
-that invokes the function. For example, an Amazon S3 bucket or Amazon
-SNS topic.
+\item{SourceArn}{For Amazon Web Servicesservices, the ARN of the Amazon Web Services
+resource that invokes the function. For example, an Amazon S3 bucket or
+Amazon SNS topic.
 
 Note that Lambda configures the comparison using the \code{StringLike}
 operator.}
 
-\item{SourceAccount}{For Amazon Web Service, the ID of the Amazon Web Services account that
-owns the resource. Use this together with \code{SourceArn} to ensure that the
-specified account owns the resource. It is possible for an Amazon S3
-bucket to be deleted by its owner and recreated by another account.}
+\item{SourceAccount}{For Amazon Web Servicesservice, the ID of the Amazon Web Services
+account that owns the resource. Use this together with \code{SourceArn} to
+ensure that the specified account owns the resource. It is possible for
+an Amazon S3 bucket to be deleted by its owner and recreated by another
+account.}
 
 \item{EventSourceToken}{For Alexa Smart Home functions, a token that the invoker must supply.}
 
@@ -76,7 +78,7 @@ if you want to restrict access to authenticated users only. Set to
 endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Security and auth model for Lambda function URLs}.}
 }
 \description{
-Grants an Amazon Web Service, Amazon Web Services account, or Amazon Web Services organization permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
+Grants an Amazon Web Servicesservice, Amazon Web Services account, or Amazon Web Services organization permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_add_permission/} for full documentation.
 }

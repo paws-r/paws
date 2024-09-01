@@ -25,7 +25,13 @@ the principal.}
 \item{condition}{A set of condition keys that you can use in key policies.}
 
 \item{effect}{[required] Determines whether the permissions specified in the policy are to be
-allowed (\code{Allow}) or denied (\code{Deny}).}
+allowed (\code{Allow}) or denied (\code{Deny}).
+
+If you set the value of the \code{effect} parameter to \code{Deny} for the
+\code{\link[=entityresolution_add_policy_statement]{add_policy_statement}}
+operation, you must also set the value of the \code{effect} parameter in the
+\code{policy} to \code{Deny} for the \code{\link[=entityresolution_put_policy]{put_policy}}
+operation.}
 
 \item{principal}{[required] The Amazon Web Services service or Amazon Web Services account that can
 access the resource defined as ARN.}

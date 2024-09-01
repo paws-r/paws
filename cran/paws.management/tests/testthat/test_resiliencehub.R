@@ -16,6 +16,10 @@ test_that("list_resiliency_policies", {
   expect_error(svc$list_resiliency_policies(), NA)
 })
 
+test_that("list_resource_grouping_recommendations", {
+  expect_error(svc$list_resource_grouping_recommendations(), NA)
+})
+
 test_that("list_suggested_resiliency_policies", {
   expect_error(svc$list_suggested_resiliency_policies(), NA)
 })

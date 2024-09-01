@@ -575,10 +575,10 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 }
 .personalize$operations$create_schema <- personalize_create_schema
 
-#' After you create a solution, you can’t change its configuration
+#' By default, all new solutions use automatic training
 #'
 #' @description
-#' After you create a solution, you can’t change its configuration. By default, all new solutions use automatic training. With automatic training, you incur training costs while your solution is active. You can't stop automatic training for a solution. To avoid unnecessary costs, make sure to delete the solution when you are finished. For information about training costs, see [Amazon Personalize pricing](https://aws.amazon.com/personalize/pricing/).
+#' By default, all new solutions use automatic training. With automatic training, you incur training costs while your solution is active. To avoid unnecessary costs, when you are finished you can [update the solution](https://docs.aws.amazon.com/personalize/latest/dg/API_UpdateSolution.html) to turn off automatic training. For information about training costs, see [Amazon Personalize pricing](https://aws.amazon.com/personalize/pricing/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalize_create_solution/](https://www.paws-r-sdk.com/docs/personalize_create_solution/) for full documentation.
 #'
@@ -610,9 +610,9 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' information about automatic training, see [Configuring automatic
 #' training](https://docs.aws.amazon.com/personalize/latest/dg/solution-config-auto-training.html).
 #' 
-#' Automatic solution version creation starts one hour after the solution
-#' is ACTIVE. If you manually create a solution version within the hour,
-#' the solution skips the first automatic training.
+#' Automatic solution version creation starts within one hour after the
+#' solution is ACTIVE. If you manually create a solution version within the
+#' hour, the solution skips the first automatic training.
 #' 
 #' After training starts, you can get the solution version's Amazon
 #' Resource Name (ARN) with the
@@ -631,9 +631,9 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' 
 #' If you do not provide an `eventType`, Amazon Personalize will use all
 #' interactions for training with equal weight regardless of type.
-#' @param solutionConfig The configuration to use with the solution. When `performAutoML` is set
-#' to true, Amazon Personalize only evaluates the `autoMLConfig` section of
-#' the solution configuration.
+#' @param solutionConfig The configuration properties for the solution. When `performAutoML` is
+#' set to true, Amazon Personalize only evaluates the `autoMLConfig`
+#' section of the solution configuration.
 #' 
 #' Amazon Personalize doesn't support configuring the `hpoObjective` at
 #' this time.
@@ -2490,3 +2490,52 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
   return(response)
 }
 .personalize$operations$update_recommender <- personalize_update_recommender
+
+#' Updates an Amazon Personalize solution to use a different automatic
+#' training configuration
+#'
+#' @description
+#' Updates an Amazon Personalize solution to use a different automatic training configuration. When you update a solution, you can change whether the solution uses automatic training, and you can change the training frequency. For more information about updating a solution, see [Updating a solution](https://docs.aws.amazon.com/personalize/latest/dg/updating-solution.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/personalize_update_solution/](https://www.paws-r-sdk.com/docs/personalize_update_solution/) for full documentation.
+#'
+#' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution to update.
+#' @param performAutoTraining Whether the solution uses automatic training to create new solution
+#' versions (trained models). You can change the training frequency by
+#' specifying a `schedulingExpression` in the `AutoTrainingConfig` as part
+#' of solution configuration.
+#' 
+#' If you turn on automatic training, the first automatic training starts
+#' within one hour after the solution update completes. If you manually
+#' create a solution version within the hour, the solution skips the first
+#' automatic training. For more information about automatic training, see
+#' [Configuring automatic
+#' training](https://docs.aws.amazon.com/personalize/latest/dg/solution-config-auto-training.html).
+#' 
+#' After training starts, you can get the solution version's Amazon
+#' Resource Name (ARN) with the
+#' [`list_solution_versions`][personalize_list_solution_versions] API
+#' operation. To get its status, use the
+#' [`describe_solution_version`][personalize_describe_solution_version].
+#' @param solutionUpdateConfig The new configuration details of the solution.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_update_solution
+personalize_update_solution <- function(solutionArn, performAutoTraining = NULL, solutionUpdateConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateSolution",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .personalize$update_solution_input(solutionArn = solutionArn, performAutoTraining = performAutoTraining, solutionUpdateConfig = solutionUpdateConfig)
+  output <- .personalize$update_solution_output()
+  config <- get_config()
+  svc <- .personalize$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$update_solution <- personalize_update_solution

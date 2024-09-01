@@ -16,13 +16,17 @@ NULL
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
-#' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
+#' @param Database The name of the database. This parameter is required when authenticating
 #' using either Secrets Manager or temporary credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
+#' @param SessionId The session identifier of the query.
+#' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query
+#' finishes. The maximum time a session can keep alive is 24 hours. After
+#' 24 hours, the session is forced closed and the query is terminated.
 #' @param Sqls &#91;required&#93; One or more SQL statements to run.
 #' 
 #'      The SQL statements are run as a single transaction. They run serially in the order of the array. Subsequent SQL statements don\'t start until the previous statement in the array completes. If any SQL statement fails, then because they are run as one transaction, all work is rolled back.</p> 
@@ -37,7 +41,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_batch_execute_statement
-redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database, DbUser = NULL, SecretArn = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
@@ -45,7 +49,7 @@ redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, C
     host_prefix = "",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$batch_execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, SecretArn = SecretArn, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$batch_execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -200,7 +204,7 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
-#' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
+#' @param Database The name of the database. This parameter is required when authenticating
 #' using either Secrets Manager or temporary credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
@@ -208,6 +212,10 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #' @param Parameters The parameters for the SQL statement.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
+#' @param SessionId The session identifier of the query.
+#' @param SessionKeepAliveSeconds The number of seconds to keep the session alive after the query
+#' finishes. The maximum time a session can keep alive is 24 hours. After
+#' 24 hours, the session is forced closed and the query is terminated.
 #' @param Sql &#91;required&#93; The SQL statement text to run.
 #' @param StatementName The name of the SQL statement. You can name the SQL statement when you
 #' create it to identify the query.
@@ -220,7 +228,7 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_execute_statement
-redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database, DbUser = NULL, Parameters = NULL, SecretArn = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, Parameters = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
@@ -228,7 +236,7 @@ redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, Cluster
     host_prefix = "",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, SecretArn = SecretArn, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)

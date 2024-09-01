@@ -2,8 +2,7 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_untag_resource}
 \alias{pinpointsmsvoicev2_untag_resource}
-\title{Removes the association of the specified tags from an Amazon Pinpoint
-SMS Voice V2 resource}
+\title{Removes the association of the specified tags from a resource}
 \usage{
 pinpointsmsvoicev2_untag_resource(ResourceArn, TagKeys)
 }
@@ -13,7 +12,7 @@ pinpointsmsvoicev2_untag_resource(ResourceArn, TagKeys)
 \item{TagKeys}{[required] An array of tag key values to unassociate with the resource.}
 }
 \description{
-Removes the association of the specified tags from an Amazon Pinpoint SMS Voice V2 resource. For more information on tags see \href{https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html}{Tagging Amazon Pinpoint resources} in the \emph{Amazon Pinpoint Developer Guide}.
+Removes the association of the specified tags from a resource. For more information on tags see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html}{Tags} in the \emph{AWS End User Messaging SMS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/} for full documentation.
 }

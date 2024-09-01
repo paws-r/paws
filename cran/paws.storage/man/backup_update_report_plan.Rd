@@ -2,8 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_report_plan}
 \alias{backup_update_report_plan}
-\title{Updates an existing report plan identified by its ReportPlanName with
-the input document in JSON format}
+\title{Updates the specified report plan}
 \usage{
 backup_update_report_plan(
   ReportPlanName,
@@ -21,12 +20,11 @@ A-Z), numbers (0-9), and underscores (_).}
 \item{ReportPlanDescription}{An optional description of the report plan with a maximum 1,024
 characters.}
 
-\item{ReportDeliveryChannel}{A structure that contains information about where to deliver your
-reports, specifically your Amazon S3 bucket name, S3 key prefix, and the
-formats of your reports.}
+\item{ReportDeliveryChannel}{The information about where to deliver your reports, specifically your
+Amazon S3 bucket name, S3 key prefix, and the formats of your reports.}
 
-\item{ReportSetting}{Identifies the report template for the report. Reports are built using a
-report template. The report templates are:
+\item{ReportSetting}{The report template for the report. Reports are built using a report
+template. The report templates are:
 
 \code{RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT | COPY_JOB_REPORT | RESTORE_JOB_REPORT}
 
@@ -40,7 +38,7 @@ successful request with the same idempotency token results in a success
 message with no action taken.}
 }
 \description{
-Updates an existing report plan identified by its \code{ReportPlanName} with the input document in JSON format.
+Updates the specified report plan.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_update_report_plan/} for full documentation.
 }

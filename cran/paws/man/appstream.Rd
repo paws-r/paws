@@ -130,6 +130,7 @@ To learn more about AppStream 2.0, see the following resources:
 \link[paws.end.user.computing:appstream_create_image_builder_streaming_url]{create_image_builder_streaming_url} \tab Creates a URL to start an image builder streaming session\cr
 \link[paws.end.user.computing:appstream_create_stack]{create_stack} \tab Creates a stack to start streaming applications to users\cr
 \link[paws.end.user.computing:appstream_create_streaming_url]{create_streaming_url} \tab Creates a temporary URL to start an AppStream 2\cr
+\link[paws.end.user.computing:appstream_create_theme_for_stack]{create_theme_for_stack} \tab Creates custom branding that customizes the appearance of the streaming application catalog page\cr
 \link[paws.end.user.computing:appstream_create_updated_image]{create_updated_image} \tab Creates a new image with the latest Windows operating system updates, driver updates, and AppStream 2\cr
 \link[paws.end.user.computing:appstream_create_usage_report_subscription]{create_usage_report_subscription} \tab Creates a usage report subscription\cr
 \link[paws.end.user.computing:appstream_create_user]{create_user} \tab Creates a new user in the user pool\cr
@@ -143,6 +144,7 @@ To learn more about AppStream 2.0, see the following resources:
 \link[paws.end.user.computing:appstream_delete_image_builder]{delete_image_builder} \tab Deletes the specified image builder and releases the capacity\cr
 \link[paws.end.user.computing:appstream_delete_image_permissions]{delete_image_permissions} \tab Deletes permissions for the specified private image\cr
 \link[paws.end.user.computing:appstream_delete_stack]{delete_stack} \tab Deletes the specified stack\cr
+\link[paws.end.user.computing:appstream_delete_theme_for_stack]{delete_theme_for_stack} \tab Deletes custom branding that customizes the appearance of the streaming application catalog page\cr
 \link[paws.end.user.computing:appstream_delete_usage_report_subscription]{delete_usage_report_subscription} \tab Disables usage report generation\cr
 \link[paws.end.user.computing:appstream_delete_user]{delete_user} \tab Deletes a user from the user pool\cr
 \link[paws.end.user.computing:appstream_describe_app_block_builder_app_block_associations]{describe_app_block_builder_app_block_associations} \tab Retrieves a list that describes one or more app block builder associations\cr
@@ -158,6 +160,7 @@ To learn more about AppStream 2.0, see the following resources:
 \link[paws.end.user.computing:appstream_describe_images]{describe_images} \tab Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided\cr
 \link[paws.end.user.computing:appstream_describe_sessions]{describe_sessions} \tab Retrieves a list that describes the streaming sessions for a specified stack and fleet\cr
 \link[paws.end.user.computing:appstream_describe_stacks]{describe_stacks} \tab Retrieves a list that describes one or more specified stacks, if the stack names are provided\cr
+\link[paws.end.user.computing:appstream_describe_theme_for_stack]{describe_theme_for_stack} \tab Retrieves a list that describes the theme for a specified stack\cr
 \link[paws.end.user.computing:appstream_describe_usage_report_subscriptions]{describe_usage_report_subscriptions} \tab Retrieves a list that describes one or more usage report subscriptions\cr
 \link[paws.end.user.computing:appstream_describe_users]{describe_users} \tab Retrieves a list that describes one or more specified users in the user pool\cr
 \link[paws.end.user.computing:appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects\cr
@@ -186,7 +189,8 @@ To learn more about AppStream 2.0, see the following resources:
 \link[paws.end.user.computing:appstream_update_entitlement]{update_entitlement} \tab Updates the specified entitlement\cr
 \link[paws.end.user.computing:appstream_update_fleet]{update_fleet} \tab Updates the specified fleet\cr
 \link[paws.end.user.computing:appstream_update_image_permissions]{update_image_permissions} \tab Adds or updates permissions for the specified private image\cr
-\link[paws.end.user.computing:appstream_update_stack]{update_stack} \tab Updates the specified fields for the specified stack
+\link[paws.end.user.computing:appstream_update_stack]{update_stack} \tab Updates the specified fields for the specified stack\cr
+\link[paws.end.user.computing:appstream_update_theme_for_stack]{update_theme_for_stack} \tab Updates custom branding that customizes the appearance of the streaming application catalog page
 }
 }
 

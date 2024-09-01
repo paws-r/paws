@@ -266,7 +266,9 @@ Valid values include:
 \item \code{ENABLED} - This prevents user existence-related errors.
 \item \code{LEGACY} - This represents the early behavior of Amazon Cognito
 where user existence related errors aren't prevented.
-}}
+}
+
+Defaults to \code{LEGACY} when you don't provide a value.}
 
 \item{EnableTokenRevocation}{Activates or deactivates token revocation. For more information about
 revoking tokens, see

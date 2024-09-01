@@ -47,13 +47,13 @@ will be the VPC’s Default Security Group that is associated with the
 cluster VPC end-point.}
 
 \item{SnapshotArnsToRestore}{The ARN(s) of the snapshot that the new serverless cache will be created
-from. Available for Redis only.}
+from. Available for Redis OSS and Serverless Memcached only.}
 
 \item{Tags}{The list of tags (key, value) pairs to be added to the serverless cache
 resource. Default is NULL.}
 
 \item{UserGroupId}{The identifier of the UserGroup to be associated with the serverless
-cache. Available for Redis only. Default is NULL.}
+cache. Available for Redis OSS only. Default is NULL.}
 
 \item{SubnetIds}{A list of the identifiers of the subnets where the VPC endpoint for the
 serverless cache will be deployed. All the subnetIds must belong to the
@@ -62,11 +62,12 @@ same VPC.}
 \item{SnapshotRetentionLimit}{The number of snapshots that will be retained for the serverless cache
 that is being created. As new snapshots beyond this limit are added, the
 oldest snapshots will be deleted on a rolling basis. Available for Redis
-only.}
+OSS and Serverless Memcached only.}
 
 \item{DailySnapshotTime}{The daily time that snapshots will be created from the new serverless
 cache. By default this number is populated with 0, i.e. no snapshots
-will be created on an automatic daily basis. Available for Redis only.}
+will be created on an automatic daily basis. Available for Redis OSS and
+Serverless Memcached only.}
 }
 \description{
 Creates a serverless cache.

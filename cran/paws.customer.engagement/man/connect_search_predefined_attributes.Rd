@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_search_predefined_attributes}
 \alias{connect_search_predefined_attributes}
-\title{Predefined attributes that meet certain criteria}
+\title{Searches predefined attributes that meet certain criteria}
 \usage{
 connect_search_predefined_attributes(
   InstanceId,
@@ -24,7 +24,7 @@ results.}
 \item{SearchCriteria}{The search criteria to be used to return predefined attributes.}
 }
 \description{
-Predefined attributes that meet certain criteria.
+Searches predefined attributes that meet certain criteria. \emph{Predefined attributes} are attributes in an Amazon Connect instance that can be used to route contacts to an agent or pools of agents within a queue. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html}{Create predefined attributes for routing contacts to agents}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_search_predefined_attributes/} for full documentation.
 }

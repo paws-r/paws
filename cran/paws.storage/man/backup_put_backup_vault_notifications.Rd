@@ -14,8 +14,7 @@ backup_put_backup_vault_notifications(
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the Amazon Web Services Region where they are created. They
-consist of lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created.}
 
 \item{SNSTopicArn}{[required] The Amazon Resource Name (ARN) that specifies the topic for a backup
 vault’s events; for example,
@@ -35,10 +34,10 @@ The following events are supported:
 \item \code{S3_BACKUP_OBJECT_FAILED} | \code{S3_RESTORE_OBJECT_FAILED}
 }
 
-The list below shows items that are deprecated events (for reference)
-and are no longer in use. They are no longer supported and will not
-return statuses or notifications. Refer to the list above for current
-supported events.}
+The list below includes both supported events and deprecated events that
+are no longer in use (for reference). Deprecated events do not return
+statuses or notifications. Refer to the list above for the supported
+events.}
 }
 \description{
 Turns on notifications on a backup vault for the specified topic and events.

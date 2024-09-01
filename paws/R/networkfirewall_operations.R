@@ -861,13 +861,16 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' Creates an Network Firewall TLS inspection configuration
 #'
 #' @description
-#' Creates an Network Firewall TLS inspection configuration. A TLS
-#' inspection configuration contains Certificate Manager certificate
-#' associations between and the scope configurations that Network Firewall
-#' uses to decrypt and re-encrypt traffic traveling through your firewall.
-#' 
-#' After you create a TLS inspection configuration, you can associate it
-#' with a new firewall policy.
+#' Creates an Network Firewall TLS inspection configuration. Network
+#' Firewall uses TLS inspection configurations to decrypt your firewall's
+#' inbound and outbound SSL/TLS traffic. After decryption, Network Firewall
+#' inspects the traffic according to your firewall policy's stateful rules,
+#' and then re-encrypts it before sending it to its destination. You can
+#' enable inspection of your firewall's inbound traffic, outbound traffic,
+#' or both. To use TLS inspection with your firewall, you must first import
+#' or provision certificates using ACM, create a TLS inspection
+#' configuration, add that configuration to a new firewall policy, and then
+#' associate that policy with your firewall.
 #' 
 #' To update the settings for a TLS inspection configuration, use
 #' [`update_tls_inspection_configuration`][networkfirewall_update_tls_inspection_configuration].
@@ -1760,7 +1763,7 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
 #'   LoggingConfiguration = list(
 #'     LogDestinationConfigs = list(
 #'       list(
-#'         LogType = "ALERT"|"FLOW",
+#'         LogType = "ALERT"|"FLOW"|"TLS",
 #'         LogDestinationType = "S3"|"CloudWatchLogs"|"KinesisDataFirehose",
 #'         LogDestination = list(
 #'           "string"
@@ -3511,7 +3514,7 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 #'   LoggingConfiguration = list(
 #'     LogDestinationConfigs = list(
 #'       list(
-#'         LogType = "ALERT"|"FLOW",
+#'         LogType = "ALERT"|"FLOW"|"TLS",
 #'         LogDestinationType = "S3"|"CloudWatchLogs"|"KinesisDataFirehose",
 #'         LogDestination = list(
 #'           "string"
@@ -3530,7 +3533,7 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 #'   LoggingConfiguration = list(
 #'     LogDestinationConfigs = list(
 #'       list(
-#'         LogType = "ALERT"|"FLOW",
+#'         LogType = "ALERT"|"FLOW"|"TLS",
 #'         LogDestinationType = "S3"|"CloudWatchLogs"|"KinesisDataFirehose",
 #'         LogDestination = list(
 #'           "string"

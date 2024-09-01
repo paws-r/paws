@@ -43,7 +43,10 @@ of subscriptions.}
 
 \item{sortOrder}{Specifies the sort order for the results of this action.}
 
-\item{status}{The status of the subscriptions that you want to list.}
+\item{status}{The status of the subscriptions that you want to list.
+
+This is not a required parameter, but if not provided, by default,
+Amazon DataZone returns only \code{APPROVED} subscriptions.}
 
 \item{subscribedListingId}{The identifier of the subscribed listing for the subscriptions that you
 want to list.}

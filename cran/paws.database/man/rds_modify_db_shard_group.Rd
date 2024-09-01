@@ -4,12 +4,15 @@
 \alias{rds_modify_db_shard_group}
 \title{Modifies the settings of an Aurora Limitless Database DB shard group}
 \usage{
-rds_modify_db_shard_group(DBShardGroupIdentifier, MaxACU = NULL)
+rds_modify_db_shard_group(DBShardGroupIdentifier, MaxACU = NULL, MinACU = NULL)
 }
 \arguments{
 \item{DBShardGroupIdentifier}{[required] The name of the DB shard group to modify.}
 
 \item{MaxACU}{The maximum capacity of the DB shard group in Aurora capacity units
+(ACUs).}
+
+\item{MinACU}{The minimum capacity of the DB shard group in Aurora capacity units
 (ACUs).}
 }
 \description{

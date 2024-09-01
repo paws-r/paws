@@ -9,7 +9,14 @@ backup_tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] An ARN that uniquely identifies a resource. The format of the ARN
-depends on the type of the tagged resource.}
+depends on the type of the tagged resource.
+
+ARNs that do not include \code{backup} are incompatible with tagging.
+\code{\link[=backup_tag_resource]{tag_resource}} and
+\code{\link[=backup_untag_resource]{untag_resource}} with invalid ARNs will result
+in an error. Acceptable ARN content can include
+\code{arn:aws:backup:us-east}. Invalid ARN content may look like
+\code{arn:aws:ec2:us-east}.}
 
 \item{Tags}{[required] Key-value pairs that are used to help organize your resources. You can
 assign your own metadata to the resources you create. For clarity, this

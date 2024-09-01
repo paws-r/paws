@@ -2,16 +2,16 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_log_delivery_configuration}
 \alias{cognitoidentityprovider_get_log_delivery_configuration}
-\title{Gets the detailed activity logging configuration for a user pool}
+\title{Gets the logging configuration of a user pool}
 \usage{
 cognitoidentityprovider_get_log_delivery_configuration(UserPoolId)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool where you want to view detailed activity logging
-configuration.}
+\item{UserPoolId}{[required] The ID of the user pool that has the logging configuration that you want
+to view.}
 }
 \description{
-Gets the detailed activity logging configuration for a user pool.
+Gets the logging configuration of a user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_log_delivery_configuration/} for full documentation.
 }

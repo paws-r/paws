@@ -69,7 +69,7 @@ a unique identifier for that job to your task with the \code{startedBy}
 parameter. You can then identify which tasks belong to that job by
 filtering the results of a \code{\link[=ecs_list_tasks]{list_tasks}} call with the
 \code{startedBy} value. Up to 36 letters (uppercase and lowercase), numbers,
-hyphens (-), and underscores (_) are allowed.
+hyphens (-), forward slash (/), and underscores (_) are allowed.
 
 If a task is started by an Amazon ECS service, the \code{startedBy} parameter
 contains the deployment ID of the service that starts it.}

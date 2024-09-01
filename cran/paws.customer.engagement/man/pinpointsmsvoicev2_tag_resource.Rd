@@ -2,8 +2,7 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_tag_resource}
 \alias{pinpointsmsvoicev2_tag_resource}
-\title{Adds or overwrites only the specified tags for the specified Amazon
-Pinpoint SMS Voice, version 2 resource}
+\title{Adds or overwrites only the specified tags for the specified resource}
 \usage{
 pinpointsmsvoicev2_tag_resource(ResourceArn, Tags)
 }
@@ -14,7 +13,7 @@ pinpointsmsvoicev2_tag_resource(ResourceArn, Tags)
 resource.}
 }
 \description{
-Adds or overwrites only the specified tags for the specified Amazon Pinpoint SMS Voice, version 2 resource. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see \href{https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html}{Tagging Amazon Pinpoint resources} in the \emph{Amazon Pinpoint Developer Guide}.
+Adds or overwrites only the specified tags for the specified resource. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html}{Tags} in the \emph{AWS End User Messaging SMS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/} for full documentation.
 }

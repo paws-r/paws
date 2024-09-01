@@ -226,7 +226,13 @@ specified. Useful for downloading just a part of an object.}
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 
-\item{ChecksumMode}{To retrieve the checksum, this mode must be enabled.}
+\item{ChecksumMode}{To retrieve the checksum, this mode must be enabled.
+
+In addition, if you enable checksum mode and the object is uploaded with
+a
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html}{checksum}
+and encrypted with an Key Management Service (KMS) key, you must have
+permission to use the \code{kms:Decrypt} action to retrieve the checksum.}
 }
 \description{
 Retrieves an object from Amazon S3.

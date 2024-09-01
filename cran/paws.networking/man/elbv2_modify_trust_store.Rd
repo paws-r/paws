@@ -2,7 +2,7 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_modify_trust_store}
 \alias{elbv2_modify_trust_store}
-\title{Update the ca certificate bundle for a given trust store}
+\title{Update the ca certificate bundle for the specified trust store}
 \usage{
 elbv2_modify_trust_store(
   TrustStoreArn,
@@ -22,7 +22,7 @@ elbv2_modify_trust_store(
 undefined the current version is used.}
 }
 \description{
-Update the ca certificate bundle for a given trust store.
+Update the ca certificate bundle for the specified trust store.
 
 See \url{https://www.paws-r-sdk.com/docs/elbv2_modify_trust_store/} for full documentation.
 }

@@ -19,6 +19,12 @@ NULL
 #' @param condition A set of condition keys that you can use in key policies.
 #' @param effect &#91;required&#93; Determines whether the permissions specified in the policy are to be
 #' allowed (`Allow`) or denied (`Deny`).
+#' 
+#' If you set the value of the `effect` parameter to `Deny` for the
+#' [`add_policy_statement`][entityresolution_add_policy_statement]
+#' operation, you must also set the value of the `effect` parameter in the
+#' `policy` to `Deny` for the [`put_policy`][entityresolution_put_policy]
+#' operation.
 #' @param principal &#91;required&#93; The Amazon Web Services service or Amazon Web Services account that can
 #' access the resource defined as ARN.
 #' @param statementId &#91;required&#93; A statement identifier that differentiates the statement from others in
@@ -86,13 +92,13 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_id_mapping_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_create_id_mapping_workflow/) for full documentation.
 #'
 #' @param description A description of the workflow.
-#' @param idMappingTechniques &#91;required&#93; An object which defines the `idMappingType` and the
-#' `providerProperties`.
+#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
+#' configurations.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `IdMappingWorkflowOutputSource` objects, each of which
 #' contains fields `OutputS3Path` and `Output`.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.
 #' @param tags The tags used to organize, track, or control access for this resource.
@@ -102,7 +108,7 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
 #' @keywords internal
 #'
 #' @rdname entityresolution_create_id_mapping_workflow
-entityresolution_create_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn, tags = NULL, workflowName) {
+entityresolution_create_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn = NULL, tags = NULL, workflowName) {
   op <- new_operation(
     name = "CreateIdMappingWorkflow",
     http_method = "POST",
@@ -948,6 +954,12 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which the policy
 #' needs to be updated.
 #' @param policy &#91;required&#93; The resource-based policy.
+#' 
+#' If you set the value of the `effect` parameter in the `policy` to `Deny`
+#' for the [`put_policy`][entityresolution_put_policy] operation, you must
+#' also set the value of the `effect` parameter to `Deny` for the
+#' [`add_policy_statement`][entityresolution_add_policy_statement]
+#' operation.
 #' @param token A unique identifier for the current revision of the policy.
 #'
 #' @keywords internal
@@ -1103,13 +1115,13 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_update_id_mapping_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_update_id_mapping_workflow/) for full documentation.
 #'
 #' @param description A description of the workflow.
-#' @param idMappingTechniques &#91;required&#93; An object which defines the `idMappingType` and the
-#' `providerProperties`.
+#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
+#' configurations.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `OutputSource` objects, each of which contains fields
 #' `OutputS3Path` and `KMSArn`.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to access Amazon Web Services resources on your
 #' behalf.
 #' @param workflowName &#91;required&#93; The name of the workflow.
@@ -1117,7 +1129,7 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname entityresolution_update_id_mapping_workflow
-entityresolution_update_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn, workflowName) {
+entityresolution_update_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn = NULL, workflowName) {
   op <- new_operation(
     name = "UpdateIdMappingWorkflow",
     http_method = "PUT",

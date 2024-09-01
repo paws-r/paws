@@ -2,8 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_describe_trust_store_revocations}
 \alias{elbv2_describe_trust_store_revocations}
-\title{Describes the revocation files in use by the specified trust store arn,
-or revocation ID}
+\title{Describes the revocation files in use by the specified trust store or
+revocation files}
 \usage{
 elbv2_describe_trust_store_revocations(
   TrustStoreArn,
@@ -23,7 +23,7 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \description{
-Describes the revocation files in use by the specified trust store arn, or revocation ID.
+Describes the revocation files in use by the specified trust store or revocation files.
 
 See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_trust_store_revocations/} for full documentation.
 }

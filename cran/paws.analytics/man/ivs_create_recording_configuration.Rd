@@ -6,25 +6,19 @@
 Amazon S3}
 \usage{
 ivs_create_recording_configuration(
-  destinationConfiguration,
   name = NULL,
-  recordingReconnectWindowSeconds = NULL,
-  renditionConfiguration = NULL,
+  destinationConfiguration,
   tags = NULL,
-  thumbnailConfiguration = NULL
+  thumbnailConfiguration = NULL,
+  recordingReconnectWindowSeconds = NULL,
+  renditionConfiguration = NULL
 )
 }
 \arguments{
-\item{destinationConfiguration}{[required] A complex type that contains a destination configuration for where
-recorded video will be stored.}
-
 \item{name}{Recording-configuration name. The value does not need to be unique.}
 
-\item{recordingReconnectWindowSeconds}{If a broadcast disconnects and then reconnects within the specified
-interval, the multiple streams will be considered a single broadcast and
-merged together. Default: 0.}
-
-\item{renditionConfiguration}{Object that describes which renditions should be recorded for a stream.}
+\item{destinationConfiguration}{[required] A complex type that contains a destination configuration for where
+recorded video will be stored.}
 
 \item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}. See
 \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
@@ -35,6 +29,12 @@ constraints beyond what is documented there.}
 \item{thumbnailConfiguration}{A complex type that allows you to enable/disable the recording of
 thumbnails for a live session and modify the interval at which
 thumbnails are generated for the live session.}
+
+\item{recordingReconnectWindowSeconds}{If a broadcast disconnects and then reconnects within the specified
+interval, the multiple streams will be considered a single broadcast and
+merged together. Default: 0.}
+
+\item{renditionConfiguration}{Object that describes which renditions should be recorded for a stream.}
 }
 \description{
 Creates a new recording configuration, used to enable recording to Amazon S3.

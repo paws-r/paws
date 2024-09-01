@@ -7,6 +7,7 @@
 glue_create_job(
   Name,
   JobMode = NULL,
+  JobRunQueuingEnabled = NULL,
   Description = NULL,
   LogUri = NULL,
   Role,
@@ -45,6 +46,16 @@ notebook.
 
 When the \code{JobMode} field is missing or null, \code{SCRIPT} is assigned as the
 default value.}
+
+\item{JobRunQueuingEnabled}{Specifies whether job run queuing is enabled for the job runs for this
+job.
+
+A value of true means job run queuing is enabled for the job runs. If
+false or not populated, the job runs will not be considered for
+queueing.
+
+If this field does not match the value set in the job run, then the
+value from the job run field will be used.}
 
 \item{Description}{Description of the job being defined.}
 

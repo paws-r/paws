@@ -700,23 +700,28 @@ omics_create_reference_store <- function(name, description = NULL, sseConfig = N
 }
 .omics$operations$create_reference_store <- omics_create_reference_store
 
-#' Creates a run group
+#' You can optionally create a run group to limit the compute resources for
+#' the runs that you add to the group
 #'
 #' @description
-#' Creates a run group.
+#' You can optionally create a run group to limit the compute resources for
+#' the runs that you add to the group.
 #'
 #' @usage
 #' omics_create_run_group(name, maxCpus, maxRuns, maxDuration, tags,
 #'   requestId, maxGpus)
 #'
 #' @param name A name for the group.
-#' @param maxCpus The maximum number of CPUs to use in the group.
-#' @param maxRuns The maximum number of concurrent runs for the group.
-#' @param maxDuration A maximum run time for the group in minutes.
+#' @param maxCpus The maximum number of CPUs that can run concurrently across all active
+#' runs in the run group.
+#' @param maxRuns The maximum number of runs that can be running at the same time.
+#' @param maxDuration The maximum time for each run (in minutes). If a run exceeds the maximum
+#' run time, the run fails automatically.
 #' @param tags Tags for the group.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
-#' @param maxGpus The maximum GPUs that can be used by a run group.
+#' @param maxGpus The maximum number of GPUs that can run concurrently across all active
+#' runs in the run group.
 #'
 #' @return
 #' A list with the following syntax:
@@ -857,9 +862,9 @@ omics_create_sequence_store <- function(name, description = NULL, sseConfig = NU
 #' 
 #' The following resources support cross-account sharing:
 #' 
-#' -   Healthomics variant stores
+#' -   HealthOmics variant stores
 #' 
-#' -   Healthomics annotation stores
+#' -   HealthOmics annotation stores
 #' 
 #' -   Private workflows
 #'
@@ -1002,7 +1007,7 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #' @param definitionUri The URI of a definition for the workflow.
 #' @param main The path of the main definition file for the workflow.
 #' @param parameterTemplate A parameter template for the workflow.
-#' @param storageCapacity The storage capacity for the workflow in gibibytes.
+#' @param storageCapacity The default storage capacity for the workflow runs, in gibibytes.
 #' @param tags Tags for the workflow.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
@@ -2026,7 +2031,8 @@ omics_get_read_set_export_job <- function(sequenceStoreId, id) {
 #'       description = "string",
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       readSetId = "string"
 #'     )
 #'   )
 #' )
@@ -2129,7 +2135,8 @@ omics_get_read_set_import_job <- function(id, sequenceStoreId) {
 #'     algorithm = "FASTQ_MD5up"|"BAM_MD5up"|"CRAM_MD5up"|"FASTQ_SHA256up"|"BAM_SHA256up"|"CRAM_SHA256up"|"FASTQ_SHA512up"|"BAM_SHA512up"|"CRAM_SHA512up",
 #'     source1 = "string",
 #'     source2 = "string"
-#'   )
+#'   ),
+#'   creationJobId = "string"
 #' )
 #' ```
 #'
@@ -2255,7 +2262,8 @@ omics_get_reference <- function(id, referenceStoreId, range = NULL, partNumber, 
 #'       description = "string",
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       referenceId = "string"
 #'     )
 #'   )
 #' )
@@ -2337,7 +2345,9 @@ omics_get_reference_import_job <- function(id, referenceStoreId) {
 #'         s3Uri = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   creationType = "IMPORT",
+#'   creationJobId = "string"
 #' )
 #' ```
 #'

@@ -29,7 +29,7 @@ the custom model.
 }}
 }
 \description{
-Updates the name or associated model for a Provisioned Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the Amazon Bedrock User Guide.
+Updates the name or associated model for a Provisioned Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_update_provisioned_model_throughput/} for full documentation.
 }

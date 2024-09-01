@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_capacity_reservation}
 \alias{ec2_modify_capacity_reservation}
-\title{Modifies a Capacity Reservation's capacity and the conditions under
-which it is to be released}
+\title{Modifies a Capacity Reservation's capacity, instance eligibility, and
+the conditions under which it is to be released}
 \usage{
 ec2_modify_capacity_reservation(
   CapacityReservationId,
@@ -12,7 +12,8 @@ ec2_modify_capacity_reservation(
   EndDateType = NULL,
   Accept = NULL,
   DryRun = NULL,
-  AdditionalInfo = NULL
+  AdditionalInfo = NULL,
+  InstanceMatchCriteria = NULL
 )
 }
 \arguments{
@@ -55,9 +56,20 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{AdditionalInfo}{Reserved for future use.}
+
+\item{InstanceMatchCriteria}{The matching criteria (instance eligibility) that you want to use in the
+modified Capacity Reservation. If you change the instance eligibility of
+an existing Capacity Reservation from \code{targeted} to \code{open}, any running
+instances that match the attributes of the Capacity Reservation, have
+the \code{CapacityReservationPreference} set to \code{open}, and are not yet
+running in the Capacity Reservation, will automatically use the modified
+Capacity Reservation.
+
+To modify the instance eligibility, the Capacity Reservation must be
+completely idle (zero usage).}
 }
 \description{
-Modifies a Capacity Reservation's capacity and the conditions under which it is to be released. You cannot change a Capacity Reservation's instance type, EBS optimization, instance store settings, platform, Availability Zone, or instance eligibility. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes.
+Modifies a Capacity Reservation's capacity, instance eligibility, and the conditions under which it is to be released. You can't modify a Capacity Reservation's instance type, EBS optimization, platform, instance store settings, Availability Zone, or tenancy. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html}{Modify an active Capacity Reservation}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_modify_capacity_reservation/} for full documentation.
 }

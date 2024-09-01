@@ -83,7 +83,7 @@ stream. You don't need to provide the ARN when you are working with
 a logical destination for cross-account delivery.
 \item \strong{FilterPattern} A filter pattern for subscribing to a filtered
 stream of log events.
-\item \strong{Distribution}The method used to distribute log data to the
+\item \strong{Distribution} The method used to distribute log data to the
 destination. By default, log data is grouped by log stream, but the
 grouping can be set to \code{Random} for a more even distribution. This
 property is only applicable when the destination is an Kinesis Data

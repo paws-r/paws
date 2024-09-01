@@ -3,6 +3,18 @@
 #' @include bedrock_service.R
 NULL
 
+.bedrock$batch_delete_evaluation_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobIdentifiers = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$batch_delete_evaluation_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(errors = structure(list(structure(list(jobIdentifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), evaluationJobs = structure(list(structure(list(jobIdentifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), jobStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .bedrock$create_evaluation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), jobDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), customerEncryptionKeyId = structure(logical(0), tags = list(type = "string")), jobTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), evaluationConfig = structure(list(automated = structure(list(datasetMetricConfigs = structure(list(structure(list(taskType = structure(logical(0), tags = list(type = "string")), dataset = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datasetLocation = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), metricNames = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), human = structure(list(humanWorkflowConfig = structure(list(flowDefinitionArn = structure(logical(0), tags = list(type = "string")), instructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), customMetrics = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ratingMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), datasetMetricConfigs = structure(list(structure(list(taskType = structure(logical(0), tags = list(type = "string")), dataset = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datasetLocation = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), metricNames = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), inferenceConfig = structure(list(models = structure(list(structure(list(bedrockModel = structure(list(modelIdentifier = structure(logical(0), tags = list(type = "string")), inferenceParams = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -39,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.bedrock$create_model_copy_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(sourceModelArn = structure(logical(0), tags = list(type = "string")), targetModelName = structure(logical(0), tags = list(type = "string")), modelKmsKeyId = structure(logical(0), tags = list(type = "string")), targetModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$create_model_copy_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .bedrock$create_model_customization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), customModelName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), baseModelIdentifier = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string")), customModelKmsKeyId = structure(logical(0), tags = list(type = "string")), jobTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), customModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), trainingDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), validationDataConfig = structure(list(validators = structure(list(structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -46,6 +70,30 @@ NULL
 }
 
 .bedrock$create_model_customization_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$create_model_import_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), importedModelName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), modelDataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), jobTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), importedModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), importedModelKmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$create_model_import_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$create_model_invocation_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), modelId = structure(logical(0), tags = list(type = "string")), inputDataConfig = structure(list(s3InputDataConfig = structure(list(s3InputFormat = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3OutputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3EncryptionKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), timeoutDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$create_model_invocation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -82,6 +130,18 @@ NULL
 }
 
 .bedrock$delete_guardrail_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$delete_imported_model_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "modelIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$delete_imported_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -159,6 +219,42 @@ NULL
   return(populate(args, shape))
 }
 
+.bedrock$get_imported_model_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "modelIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_imported_model_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), jobArn = structure(logical(0), tags = list(type = "string")), modelDataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), modelArchitecture = structure(logical(0), tags = list(type = "string")), modelKmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_inference_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(inferenceProfileIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "inferenceProfileIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_inference_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(inferenceProfileName = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inferenceProfileArn = structure(logical(0), tags = list(type = "string")), inferenceProfileId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_model_copy_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobArn = structure(logical(0), tags = list(location = "uri", locationName = "jobArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_model_copy_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), targetModelArn = structure(logical(0), tags = list(type = "string")), targetModelName = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), sourceModelArn = structure(logical(0), tags = list(type = "string")), targetModelKmsKeyArn = structure(logical(0), tags = list(type = "string")), targetModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failureMessage = structure(logical(0), tags = list(type = "string")), sourceModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .bedrock$get_model_customization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
@@ -168,6 +264,30 @@ NULL
 .bedrock$get_model_customization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), outputModelName = structure(logical(0), tags = list(type = "string")), outputModelArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), baseModelArn = structure(logical(0), tags = list(type = "string")), hyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), trainingDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), validationDataConfig = structure(list(validators = structure(list(structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customizationType = structure(logical(0), tags = list(type = "string")), outputModelKmsKeyArn = structure(logical(0), tags = list(type = "string")), trainingMetrics = structure(list(trainingLoss = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), validationMetrics = structure(list(structure(list(validationLoss = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_model_import_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_model_import_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), importedModelName = structure(logical(0), tags = list(type = "string")), importedModelArn = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), modelDataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), importedModelKmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_model_invocation_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$get_model_invocation_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), submitTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inputDataConfig = structure(list(s3InputDataConfig = structure(list(s3InputFormat = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3OutputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3EncryptionKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), timeoutDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), jobExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -197,13 +317,13 @@ NULL
 
 .bedrock$list_custom_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), baseModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "baseModelArnEquals", type = "string")), foundationModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "foundationModelArnEquals", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), baseModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "baseModelArnEquals", type = "string")), foundationModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "foundationModelArnEquals", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string")), isOwned = structure(logical(0), tags = list(location = "querystring", locationName = "isOwned", type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .bedrock$list_custom_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelSummaries = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), baseModelArn = structure(logical(0), tags = list(type = "string")), baseModelName = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelSummaries = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), baseModelArn = structure(logical(0), tags = list(type = "string")), baseModelName = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string")), ownerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -243,6 +363,42 @@ NULL
   return(populate(args, shape))
 }
 
+.bedrock$list_imported_models_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_imported_models_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelSummaries = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_inference_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_inference_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(inferenceProfileSummaries = structure(list(structure(list(inferenceProfileName = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inferenceProfileArn = structure(logical(0), tags = list(type = "string")), inferenceProfileId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_model_copy_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), sourceAccountEquals = structure(logical(0), tags = list(location = "querystring", locationName = "sourceAccountEquals", type = "string")), sourceModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "sourceModelArnEquals", type = "string")), targetModelNameContains = structure(logical(0), tags = list(location = "querystring", locationName = "outputModelNameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_model_copy_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelCopyJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), targetModelArn = structure(logical(0), tags = list(type = "string")), targetModelName = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), sourceModelArn = structure(logical(0), tags = list(type = "string")), targetModelKmsKeyArn = structure(logical(0), tags = list(type = "string")), targetModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failureMessage = structure(logical(0), tags = list(type = "string")), sourceModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .bedrock$list_model_customization_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
@@ -252,6 +408,30 @@ NULL
 .bedrock$list_model_customization_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelCustomizationJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), baseModelArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customModelArn = structure(logical(0), tags = list(type = "string")), customModelName = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_model_import_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_model_import_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelImportJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), importedModelArn = structure(logical(0), tags = list(type = "string")), importedModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_model_invocation_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(submitTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "submitTimeAfter", type = "timestamp", timestampFormat = "iso8601")), submitTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "submitTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$list_model_invocation_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), invocationJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), submitTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inputDataConfig = structure(list(s3InputDataConfig = structure(list(s3InputFormat = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3OutputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3EncryptionKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), timeoutDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), jobExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -310,6 +490,18 @@ NULL
 }
 
 .bedrock$stop_model_customization_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$stop_model_invocation_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrock$stop_model_invocation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

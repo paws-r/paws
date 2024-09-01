@@ -20,7 +20,7 @@ pinpointsmsvoicev2_update_protect_configuration_country_rule_set(
 contain the details for the requested NumberCapability. The Key is the
 two-letter ISO country code. For a list of supported ISO country codes,
 see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html}{Supported countries and regions (SMS channel)}
-in the Amazon Pinpoint SMS user guide.}
+in the AWS End User Messaging SMS User Guide.}
 }
 \description{
 Update a country rule set to \code{ALLOW} or \code{BLOCK} messages to be sent to the specified destination counties. You can update one or multiple countries at a time. The updates are only applied to the specified NumberCapability type.

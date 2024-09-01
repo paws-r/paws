@@ -565,6 +565,37 @@ elbv2_delete_rule <- function(RuleArn) {
 }
 .elbv2$operations$delete_rule <- elbv2_delete_rule
 
+#' Deletes a shared trust store association
+#'
+#' @description
+#' Deletes a shared trust store association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elbv2_delete_shared_trust_store_association/](https://www.paws-r-sdk.com/docs/elbv2_delete_shared_trust_store_association/) for full documentation.
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_delete_shared_trust_store_association
+elbv2_delete_shared_trust_store_association <- function(TrustStoreArn, ResourceArn) {
+  op <- new_operation(
+    name = "DeleteSharedTrustStoreAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .elbv2$delete_shared_trust_store_association_input(TrustStoreArn = TrustStoreArn, ResourceArn = ResourceArn)
+  output <- .elbv2$delete_shared_trust_store_association_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$delete_shared_trust_store_association <- elbv2_delete_shared_trust_store_association
+
 #' Deletes the specified target group
 #'
 #' @description
@@ -1002,7 +1033,7 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets The targets.
-#' @param Include Used to inclue anomaly detection information.
+#' @param Include Used to include anomaly detection information.
 #'
 #' @keywords internal
 #'
@@ -1058,11 +1089,11 @@ elbv2_describe_trust_store_associations <- function(TrustStoreArn, Marker = NULL
 }
 .elbv2$operations$describe_trust_store_associations <- elbv2_describe_trust_store_associations
 
-#' Describes the revocation files in use by the specified trust store arn,
-#' or revocation ID
+#' Describes the revocation files in use by the specified trust store or
+#' revocation files
 #'
 #' @description
-#' Describes the revocation files in use by the specified trust store arn, or revocation ID.
+#' Describes the revocation files in use by the specified trust store or revocation files.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elbv2_describe_trust_store_revocations/](https://www.paws-r-sdk.com/docs/elbv2_describe_trust_store_revocations/) for full documentation.
 #'
@@ -1093,11 +1124,10 @@ elbv2_describe_trust_store_revocations <- function(TrustStoreArn, RevocationIds 
 }
 .elbv2$operations$describe_trust_store_revocations <- elbv2_describe_trust_store_revocations
 
-#' Describes all trust stores for a given account by trust store arn’s or
-#' name
+#' Describes all trust stores for the specified account
 #'
 #' @description
-#' Describes all trust stores for a given account by trust store arn’s or name.
+#' Describes all trust stores for the specified account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elbv2_describe_trust_stores/](https://www.paws-r-sdk.com/docs/elbv2_describe_trust_stores/) for full documentation.
 #'
@@ -1127,6 +1157,36 @@ elbv2_describe_trust_stores <- function(TrustStoreArns = NULL, Names = NULL, Mar
   return(response)
 }
 .elbv2$operations$describe_trust_stores <- elbv2_describe_trust_stores
+
+#' Retrieves the resource policy for a specified resource
+#'
+#' @description
+#' Retrieves the resource policy for a specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elbv2_get_resource_policy/](https://www.paws-r-sdk.com/docs/elbv2_get_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_get_resource_policy
+elbv2_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .elbv2$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .elbv2$get_resource_policy_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$get_resource_policy <- elbv2_get_resource_policy
 
 #' Retrieves the ca certificate bundle
 #'
@@ -1414,10 +1474,10 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 }
 .elbv2$operations$modify_target_group_attributes <- elbv2_modify_target_group_attributes
 
-#' Update the ca certificate bundle for a given trust store
+#' Update the ca certificate bundle for the specified trust store
 #'
 #' @description
-#' Update the ca certificate bundle for a given trust store.
+#' Update the ca certificate bundle for the specified trust store.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elbv2_modify_trust_store/](https://www.paws-r-sdk.com/docs/elbv2_modify_trust_store/) for full documentation.
 #'
@@ -1590,6 +1650,11 @@ elbv2_remove_trust_store_revocations <- function(TrustStoreArn, RevocationIds) {
 #' are `ipv4` (for only IPv4 addresses), `dualstack` (for IPv4 and IPv6
 #' addresses), and `dualstack-without-public-ipv4` (for IPv6 only public
 #' addresses, with private IPv4 and IPv6 addresses).
+#' 
+#' Note: Application Load Balancer authentication only supports IPv4
+#' addresses when connecting to an Identity Provider (IdP) or Amazon
+#' Cognito endpoint. Without a public IPv4 address the load balancer cannot
+#' complete the authentication process, resulting in HTTP 500 errors.
 #' 
 #' \[Network Load Balancers\] The IP address type. The possible values are
 #' `ipv4` (for only IPv4 addresses) and `dualstack` (for IPv4 and IPv6

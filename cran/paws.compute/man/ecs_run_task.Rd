@@ -118,7 +118,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition to the
 task. If no value is specified, the tags aren't propagated. Tags can
 only be propagated to the task during task creation. To add tags to a
-task after task creation, use the \code{\link[=ecs_tag_resource]{tag_resource}} API
+task after task creation, use the\code{\link[=ecs_tag_resource]{tag_resource}} API
 action.
 
 An error will be received if you specify the \code{SERVICE} option when
@@ -133,7 +133,7 @@ a unique identifier for that job to your task with the \code{startedBy}
 parameter. You can then identify which tasks belong to that job by
 filtering the results of a \code{\link[=ecs_list_tasks]{list_tasks}} call with the
 \code{startedBy} value. Up to 128 letters (uppercase and lowercase), numbers,
-hyphens (-), and underscores (_) are allowed.
+hyphens (-), forward slash (/), and underscores (_) are allowed.
 
 If a task is started by an Amazon ECS service, then the \code{startedBy}
 parameter contains the deployment ID of the service that starts it.}

@@ -3,6 +3,70 @@
 #' @include bedrock_service.R
 NULL
 
+#' Creates a batch deletion job
+#'
+#' @description
+#' Creates a batch deletion job. A model evaluation job can only be deleted
+#' if it has following status `FAILED`, `COMPLETED`, and `STOPPED`. You can
+#' request up to 25 model evaluation jobs be deleted in a single request.
+#'
+#' @usage
+#' bedrock_batch_delete_evaluation_job(jobIdentifiers)
+#'
+#' @param jobIdentifiers &#91;required&#93; An array of model evaluation job ARNs to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       jobIdentifier = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   ),
+#'   evaluationJobs = list(
+#'     list(
+#'       jobIdentifier = "string",
+#'       jobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"|"Deleting"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_evaluation_job(
+#'   jobIdentifiers = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_batch_delete_evaluation_job
+#'
+#' @aliases bedrock_batch_delete_evaluation_job
+bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
+  op <- new_operation(
+    name = "BatchDeleteEvaluationJob",
+    http_method = "POST",
+    http_path = "/evaluation-jobs/batch-delete",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$batch_delete_evaluation_job_input(jobIdentifiers = jobIdentifiers)
+  output <- .bedrock$batch_delete_evaluation_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$batch_delete_evaluation_job <- bedrock_batch_delete_evaluation_job
+
 #' API operation for creating and managing Amazon Bedrock automatic model
 #' evaluation jobs and model evaluation jobs that use human workers
 #'
@@ -11,7 +75,7 @@ NULL
 #' evaluation jobs and model evaluation jobs that use human workers. To
 #' learn more about the requirements for creating a model evaluation job
 #' see, [Model
-#' evaluations](https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html).
+#' evaluation](https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html).
 #'
 #' @usage
 #' bedrock_create_evaluation_job(jobName, jobDescription,
@@ -382,6 +446,79 @@ bedrock_create_guardrail_version <- function(guardrailIdentifier, description = 
 }
 .bedrock$operations$create_guardrail_version <- bedrock_create_guardrail_version
 
+#' Copies a model to another region so that it can be used there
+#'
+#' @description
+#' Copies a model to another region so that it can be used there. For more
+#' information, see [Copy models to be used in other
+#' regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#'
+#' @usage
+#' bedrock_create_model_copy_job(sourceModelArn, targetModelName,
+#'   modelKmsKeyId, targetModelTags, clientRequestToken)
+#'
+#' @param sourceModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the model to be copied.
+#' @param targetModelName &#91;required&#93; A name for the copied model.
+#' @param modelKmsKeyId The ARN of the KMS key that you use to encrypt the model copy.
+#' @param targetModelTags Tags to associate with the target model. For more information, see [Tag
+#' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_copy_job(
+#'   sourceModelArn = "string",
+#'   targetModelName = "string",
+#'   modelKmsKeyId = "string",
+#'   targetModelTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_model_copy_job
+#'
+#' @aliases bedrock_create_model_copy_job
+bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, modelKmsKeyId = NULL, targetModelTags = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateModelCopyJob",
+    http_method = "POST",
+    http_path = "/model-copy-jobs",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$create_model_copy_job_input(sourceModelArn = sourceModelArn, targetModelName = targetModelName, modelKmsKeyId = modelKmsKeyId, targetModelTags = targetModelTags, clientRequestToken = clientRequestToken)
+  output <- .bedrock$create_model_copy_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_model_copy_job <- bedrock_create_model_copy_job
+
 #' Creates a fine-tuning job to customize a base model
 #'
 #' @description
@@ -404,7 +541,8 @@ bedrock_create_guardrail_version <- function(guardrailIdentifier, description = 
 #' 
 #' For more information, see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_create_model_customization_job(jobName, customModelName,
@@ -520,6 +658,201 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 }
 .bedrock$operations$create_model_customization_job <- bedrock_create_model_customization_job
 
+#' Creates a model import job to import model that you have customized in
+#' other environments, such as Amazon SageMaker
+#'
+#' @description
+#' Creates a model import job to import model that you have customized in
+#' other environments, such as Amazon SageMaker. For more information, see
+#' [Import a customized
+#' model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html)
+#'
+#' @usage
+#' bedrock_create_model_import_job(jobName, importedModelName, roleArn,
+#'   modelDataSource, jobTags, importedModelTags, clientRequestToken,
+#'   vpcConfig, importedModelKmsKeyId)
+#'
+#' @param jobName &#91;required&#93; The name of the import job.
+#' @param importedModelName &#91;required&#93; The name of the imported model.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the model import job.
+#' @param modelDataSource &#91;required&#93; The data source for the imported model.
+#' @param jobTags Tags to attach to this import job.
+#' @param importedModelTags Tags to attach to the imported model.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param vpcConfig VPC configuration parameters for the private Virtual Private Cloud (VPC)
+#' that contains the resources you are using for the import job.
+#' @param importedModelKmsKeyId The imported model is encrypted at rest using this key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_import_job(
+#'   jobName = "string",
+#'   importedModelName = "string",
+#'   roleArn = "string",
+#'   modelDataSource = list(
+#'     s3DataSource = list(
+#'       s3Uri = "string"
+#'     )
+#'   ),
+#'   jobTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   importedModelTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   clientRequestToken = "string",
+#'   vpcConfig = list(
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   importedModelKmsKeyId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_model_import_job
+#'
+#' @aliases bedrock_create_model_import_job
+bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn, modelDataSource, jobTags = NULL, importedModelTags = NULL, clientRequestToken = NULL, vpcConfig = NULL, importedModelKmsKeyId = NULL) {
+  op <- new_operation(
+    name = "CreateModelImportJob",
+    http_method = "POST",
+    http_path = "/model-import-jobs",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$create_model_import_job_input(jobName = jobName, importedModelName = importedModelName, roleArn = roleArn, modelDataSource = modelDataSource, jobTags = jobTags, importedModelTags = importedModelTags, clientRequestToken = clientRequestToken, vpcConfig = vpcConfig, importedModelKmsKeyId = importedModelKmsKeyId)
+  output <- .bedrock$create_model_import_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_model_import_job <- bedrock_create_model_import_job
+
+#' Creates a batch inference job to invoke a model on multiple prompts
+#'
+#' @description
+#' Creates a batch inference job to invoke a model on multiple prompts.
+#' Format your data according to [Format your inference
+#' data](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-data.html)
+#' and upload it to an Amazon S3 bucket. For more information, see [Process
+#' multiple prompts with batch
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html).
+#' 
+#' The response returns a `jobArn` that you can use to stop or get details
+#' about the job.
+#'
+#' @usage
+#' bedrock_create_model_invocation_job(jobName, roleArn,
+#'   clientRequestToken, modelId, inputDataConfig, outputDataConfig,
+#'   timeoutDurationInHours, tags)
+#'
+#' @param jobName &#91;required&#93; A name to give the batch inference job.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the service role with permissions to
+#' carry out and manage batch inference. You can use the console to create
+#' a default service role or follow the steps at [Create a service role for
+#' batch
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-iam-sr.html).
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param modelId &#91;required&#93; The unique identifier of the foundation model to use for the batch
+#' inference job.
+#' @param inputDataConfig &#91;required&#93; Details about the location of the input to the batch inference job.
+#' @param outputDataConfig &#91;required&#93; Details about the location of the output of the batch inference job.
+#' @param timeoutDurationInHours The number of hours after which to force the batch inference job to time
+#' out.
+#' @param tags Any tags to associate with the batch inference job. For more
+#' information, see [Tagging Amazon Bedrock
+#' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_invocation_job(
+#'   jobName = "string",
+#'   roleArn = "string",
+#'   clientRequestToken = "string",
+#'   modelId = "string",
+#'   inputDataConfig = list(
+#'     s3InputDataConfig = list(
+#'       s3InputFormat = "JSONL",
+#'       s3Uri = "string"
+#'     )
+#'   ),
+#'   outputDataConfig = list(
+#'     s3OutputDataConfig = list(
+#'       s3Uri = "string",
+#'       s3EncryptionKeyId = "string"
+#'     )
+#'   ),
+#'   timeoutDurationInHours = 123,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_model_invocation_job
+#'
+#' @aliases bedrock_create_model_invocation_job
+bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestToken = NULL, modelId, inputDataConfig, outputDataConfig, timeoutDurationInHours = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateModelInvocationJob",
+    http_method = "POST",
+    http_path = "/model-invocation-job",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$create_model_invocation_job_input(jobName = jobName, roleArn = roleArn, clientRequestToken = clientRequestToken, modelId = modelId, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, timeoutDurationInHours = timeoutDurationInHours, tags = tags)
+  output <- .bedrock$create_model_invocation_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_model_invocation_job <- bedrock_create_model_invocation_job
+
 #' Creates dedicated throughput for a base or custom model with the model
 #' units and for the duration that you specify
 #'
@@ -529,7 +862,8 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 #' [Amazon Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/). For
 #' more information, see [Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_create_provisioned_model_throughput(clientRequestToken,
@@ -551,7 +885,8 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 #' 
 #' For model unit quotas, see [Provisioned Throughput
 #' quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html#prov-thru-quotas)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #' 
 #' For more information about what an MU specifies, contact your Amazon Web
 #' Services account manager.
@@ -561,7 +896,8 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 #' purchase Provisioned Throughput, see [Amazon Bedrock model IDs for
 #' purchasing Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#prov-throughput-models)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #' @param commitmentDuration The commitment duration requested for the Provisioned Throughput.
 #' Billing occurs hourly and is discounted for longer commitment terms. To
 #' request a no-commit Provisioned Throughput, omit this field.
@@ -569,7 +905,8 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 #' Custom models support all levels of commitment. To see which base models
 #' support no commitment, see [Supported regions and models for Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/pt-supported.html)
-#' in the Amazon Bedrock User Guide
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
 #' @param tags Tags to associate with this Provisioned Throughput.
 #'
 #' @return
@@ -626,7 +963,8 @@ bedrock_create_provisioned_model_throughput <- function(clientRequestToken = NUL
 #' Deletes a custom model that you created earlier. For more information,
 #' see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_delete_custom_model(modelIdentifier)
@@ -719,6 +1057,53 @@ bedrock_delete_guardrail <- function(guardrailIdentifier, guardrailVersion = NUL
 }
 .bedrock$operations$delete_guardrail <- bedrock_delete_guardrail
 
+#' Deletes a custom model that you imported earlier
+#'
+#' @description
+#' Deletes a custom model that you imported earlier. For more information,
+#' see [Import a customized
+#' model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#'
+#' @usage
+#' bedrock_delete_imported_model(modelIdentifier)
+#'
+#' @param modelIdentifier &#91;required&#93; Name of the imported model to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_imported_model(
+#'   modelIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_imported_model
+#'
+#' @aliases bedrock_delete_imported_model
+bedrock_delete_imported_model <- function(modelIdentifier) {
+  op <- new_operation(
+    name = "DeleteImportedModel",
+    http_method = "DELETE",
+    http_path = "/imported-models/{modelIdentifier}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$delete_imported_model_input(modelIdentifier = modelIdentifier)
+  output <- .bedrock$delete_imported_model_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_imported_model <- bedrock_delete_imported_model
+
 #' Delete the invocation logging
 #'
 #' @description
@@ -767,7 +1152,8 @@ bedrock_delete_model_invocation_logging_configuration <- function() {
 #' Throughput before the commitment term is over. For more information, see
 #' [Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_delete_provisioned_model_throughput(provisionedModelId)
@@ -814,7 +1200,8 @@ bedrock_delete_provisioned_model_throughput <- function(provisionedModelId) {
 #' Get the properties associated with a Amazon Bedrock custom model that
 #' you have created.For more information, see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_get_custom_model(modelIdentifier)
@@ -897,8 +1284,8 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #'
 #' @description
 #' Retrieves the properties associated with a model evaluation job,
-#' including the status of the job. For more information, see Model
-#' evaluations.
+#' including the status of the job. For more information, see [Model
+#' evaluation](https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html).
 #'
 #' @usage
 #' bedrock_get_evaluation_job(jobIdentifier)
@@ -910,7 +1297,7 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #' ```
 #' list(
 #'   jobName = "string",
-#'   status = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'   status = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"|"Deleting",
 #'   jobArn = "string",
 #'   jobDescription = "string",
 #'   roleArn = "string",
@@ -1215,6 +1602,201 @@ bedrock_get_guardrail <- function(guardrailIdentifier, guardrailVersion = NULL) 
 }
 .bedrock$operations$get_guardrail <- bedrock_get_guardrail
 
+#' Gets properties associated with a customized model you imported
+#'
+#' @description
+#' Gets properties associated with a customized model you imported.
+#'
+#' @usage
+#' bedrock_get_imported_model(modelIdentifier)
+#'
+#' @param modelIdentifier &#91;required&#93; Name or Amazon Resource Name (ARN) of the imported model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelArn = "string",
+#'   modelName = "string",
+#'   jobName = "string",
+#'   jobArn = "string",
+#'   modelDataSource = list(
+#'     s3DataSource = list(
+#'       s3Uri = "string"
+#'     )
+#'   ),
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   modelArchitecture = "string",
+#'   modelKmsKeyArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_imported_model(
+#'   modelIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_imported_model
+#'
+#' @aliases bedrock_get_imported_model
+bedrock_get_imported_model <- function(modelIdentifier) {
+  op <- new_operation(
+    name = "GetImportedModel",
+    http_method = "GET",
+    http_path = "/imported-models/{modelIdentifier}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$get_imported_model_input(modelIdentifier = modelIdentifier)
+  output <- .bedrock$get_imported_model_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_imported_model <- bedrock_get_imported_model
+
+#' Gets information about an inference profile
+#'
+#' @description
+#' Gets information about an inference profile. For more information, see
+#' the Amazon Bedrock User Guide.
+#'
+#' @usage
+#' bedrock_get_inference_profile(inferenceProfileIdentifier)
+#'
+#' @param inferenceProfileIdentifier &#91;required&#93; The unique identifier of the inference profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   inferenceProfileName = "string",
+#'   models = list(
+#'     list(
+#'       modelArn = "string"
+#'     )
+#'   ),
+#'   description = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   inferenceProfileArn = "string",
+#'   inferenceProfileId = "string",
+#'   status = "ACTIVE",
+#'   type = "SYSTEM_DEFINED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_inference_profile(
+#'   inferenceProfileIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_inference_profile
+#'
+#' @aliases bedrock_get_inference_profile
+bedrock_get_inference_profile <- function(inferenceProfileIdentifier) {
+  op <- new_operation(
+    name = "GetInferenceProfile",
+    http_method = "GET",
+    http_path = "/inference-profiles/{inferenceProfileIdentifier}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$get_inference_profile_input(inferenceProfileIdentifier = inferenceProfileIdentifier)
+  output <- .bedrock$get_inference_profile_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_inference_profile <- bedrock_get_inference_profile
+
+#' Retrieves information about a model copy job
+#'
+#' @description
+#' Retrieves information about a model copy job. For more information, see
+#' [Copy models to be used in other
+#' regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#'
+#' @usage
+#' bedrock_get_model_copy_job(jobArn)
+#'
+#' @param jobArn &#91;required&#93; The Amazon Resource Name (ARN) of the model copy job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   status = "InProgress"|"Completed"|"Failed",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   targetModelArn = "string",
+#'   targetModelName = "string",
+#'   sourceAccountId = "string",
+#'   sourceModelArn = "string",
+#'   targetModelKmsKeyArn = "string",
+#'   targetModelTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   failureMessage = "string",
+#'   sourceModelName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_model_copy_job(
+#'   jobArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_model_copy_job
+#'
+#' @aliases bedrock_get_model_copy_job
+bedrock_get_model_copy_job <- function(jobArn) {
+  op <- new_operation(
+    name = "GetModelCopyJob",
+    http_method = "GET",
+    http_path = "/model-copy-jobs/{jobArn}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$get_model_copy_job_input(jobArn = jobArn)
+  output <- .bedrock$get_model_copy_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_model_copy_job <- bedrock_get_model_copy_job
+
 #' Retrieves the properties associated with a model-customization job,
 #' including the status of the job
 #'
@@ -1222,7 +1804,8 @@ bedrock_get_guardrail <- function(guardrailIdentifier, guardrailVersion = NULL) 
 #' Retrieves the properties associated with a model-customization job,
 #' including the status of the job. For more information, see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_get_model_customization_job(jobIdentifier)
@@ -1318,6 +1901,169 @@ bedrock_get_model_customization_job <- function(jobIdentifier) {
 }
 .bedrock$operations$get_model_customization_job <- bedrock_get_model_customization_job
 
+#' Retrieves the properties associated with import model job, including the
+#' status of the job
+#'
+#' @description
+#' Retrieves the properties associated with import model job, including the
+#' status of the job. For more information, see [Import a customized
+#' model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#'
+#' @usage
+#' bedrock_get_model_import_job(jobIdentifier)
+#'
+#' @param jobIdentifier &#91;required&#93; The identifier of the import job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   jobName = "string",
+#'   importedModelName = "string",
+#'   importedModelArn = "string",
+#'   roleArn = "string",
+#'   modelDataSource = list(
+#'     s3DataSource = list(
+#'       s3Uri = "string"
+#'     )
+#'   ),
+#'   status = "InProgress"|"Completed"|"Failed",
+#'   failureMessage = "string",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   vpcConfig = list(
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   importedModelKmsKeyArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_model_import_job(
+#'   jobIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_model_import_job
+#'
+#' @aliases bedrock_get_model_import_job
+bedrock_get_model_import_job <- function(jobIdentifier) {
+  op <- new_operation(
+    name = "GetModelImportJob",
+    http_method = "GET",
+    http_path = "/model-import-jobs/{jobIdentifier}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$get_model_import_job_input(jobIdentifier = jobIdentifier)
+  output <- .bedrock$get_model_import_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_model_import_job <- bedrock_get_model_import_job
+
+#' Gets details about a batch inference job
+#'
+#' @description
+#' Gets details about a batch inference job. For more information, see
+#' [View details about a batch inference
+#' job](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view)
+#'
+#' @usage
+#' bedrock_get_model_invocation_job(jobIdentifier)
+#'
+#' @param jobIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the batch inference job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   jobName = "string",
+#'   modelId = "string",
+#'   clientRequestToken = "string",
+#'   roleArn = "string",
+#'   status = "Submitted"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"|"PartiallyCompleted"|"Expired"|"Validating"|"Scheduled",
+#'   message = "string",
+#'   submitTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   inputDataConfig = list(
+#'     s3InputDataConfig = list(
+#'       s3InputFormat = "JSONL",
+#'       s3Uri = "string"
+#'     )
+#'   ),
+#'   outputDataConfig = list(
+#'     s3OutputDataConfig = list(
+#'       s3Uri = "string",
+#'       s3EncryptionKeyId = "string"
+#'     )
+#'   ),
+#'   timeoutDurationInHours = 123,
+#'   jobExpirationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_model_invocation_job(
+#'   jobIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_model_invocation_job
+#'
+#' @aliases bedrock_get_model_invocation_job
+bedrock_get_model_invocation_job <- function(jobIdentifier) {
+  op <- new_operation(
+    name = "GetModelInvocationJob",
+    http_method = "GET",
+    http_path = "/model-invocation-job/{jobIdentifier}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$get_model_invocation_job_input(jobIdentifier = jobIdentifier)
+  output <- .bedrock$get_model_invocation_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_model_invocation_job <- bedrock_get_model_invocation_job
+
 #' Get the current configuration values for model invocation logging
 #'
 #' @description
@@ -1386,7 +2132,8 @@ bedrock_get_model_invocation_logging_configuration <- function() {
 #' Returns details for a Provisioned Throughput. For more information, see
 #' [Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_get_provisioned_model_throughput(provisionedModelId)
@@ -1459,12 +2206,13 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' 
 #' For more information, see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_list_custom_models(creationTimeBefore, creationTimeAfter,
 #'   nameContains, baseModelArnEquals, foundationModelArnEquals, maxResults,
-#'   nextToken, sortBy, sortOrder)
+#'   nextToken, sortBy, sortOrder, isOwned)
 #'
 #' @param creationTimeBefore Return custom models created before the specified time.
 #' @param creationTimeAfter Return custom models created after the specified time.
@@ -1473,11 +2221,17 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' matches this parameter.
 #' @param foundationModelArnEquals Return custom models only if the foundation model Amazon Resource Name
 #' (ARN) matches this parameter.
-#' @param maxResults Maximum number of results to return in the response.
-#' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
-#' list the next set of results.
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
 #' @param sortBy The field to sort by in the returned list of models.
 #' @param sortOrder The sort order of the results.
+#' @param isOwned Return custom models depending on if the current account owns them
+#' (`true`) or if they were shared with the current account (`false`).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1493,7 +2247,8 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #'       ),
 #'       baseModelArn = "string",
 #'       baseModelName = "string",
-#'       customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"
+#'       customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING",
+#'       ownerAccountId = "string"
 #'     )
 #'   )
 #' )
@@ -1514,7 +2269,8 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #'   maxResults = 123,
 #'   nextToken = "string",
 #'   sortBy = "CreationTime",
-#'   sortOrder = "Ascending"|"Descending"
+#'   sortOrder = "Ascending"|"Descending",
+#'   isOwned = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1523,7 +2279,7 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' @rdname bedrock_list_custom_models
 #'
 #' @aliases bedrock_list_custom_models
-bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAfter = NULL, nameContains = NULL, baseModelArnEquals = NULL, foundationModelArnEquals = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAfter = NULL, nameContains = NULL, baseModelArnEquals = NULL, foundationModelArnEquals = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL, isOwned = NULL) {
   op <- new_operation(
     name = "ListCustomModels",
     http_method = "GET",
@@ -1531,7 +2287,7 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries")
   )
-  input <- .bedrock$list_custom_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, baseModelArnEquals = baseModelArnEquals, foundationModelArnEquals = foundationModelArnEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .bedrock$list_custom_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, baseModelArnEquals = baseModelArnEquals, foundationModelArnEquals = foundationModelArnEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder, isOwned = isOwned)
   output <- .bedrock$list_custom_models_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -1571,7 +2327,7 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
 #'     list(
 #'       jobArn = "string",
 #'       jobName = "string",
-#'       status = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'       status = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"|"Deleting",
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1596,7 +2352,7 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
 #'   creationTimeBefore = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   statusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'   statusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"|"Deleting",
 #'   nameContains = "string",
 #'   maxResults = 123,
 #'   nextToken = "string",
@@ -1635,7 +2391,8 @@ bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #' the results with the request parameters. For more information, see
 #' [Foundation
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the
-#' Amazon Bedrock User Guide.
+#' [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_list_foundation_models(byProvider, byCustomizationType,
@@ -1645,12 +2402,14 @@ bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #' @param byCustomizationType Return models that support the customization type that you specify. For
 #' more information, see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #' @param byOutputModality Return models that support the output modality that you specify.
 #' @param byInferenceType Return models that support the inference type that you specify. For more
 #' information, see [Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1796,6 +2555,274 @@ bedrock_list_guardrails <- function(guardrailIdentifier = NULL, maxResults = NUL
 }
 .bedrock$operations$list_guardrails <- bedrock_list_guardrails
 
+#' Returns a list of models you've imported
+#'
+#' @description
+#' Returns a list of models you've imported. You can filter the results to
+#' return based on one or more criteria. For more information, see [Import
+#' a customized
+#' model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#'
+#' @usage
+#' bedrock_list_imported_models(creationTimeBefore, creationTimeAfter,
+#'   nameContains, maxResults, nextToken, sortBy, sortOrder)
+#'
+#' @param creationTimeBefore Return imported models that created before the specified time.
+#' @param creationTimeAfter Return imported models that were created after the specified time.
+#' @param nameContains Return imported models only if the model name contains these characters.
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#' @param sortBy The field to sort by in the returned list of imported models.
+#' @param sortOrder Specifies whetehr to sort the results in ascending or descending order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   modelSummaries = list(
+#'     list(
+#'       modelArn = "string",
+#'       modelName = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_imported_models(
+#'   creationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   creationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   nameContains = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortBy = "CreationTime",
+#'   sortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_imported_models
+#'
+#' @aliases bedrock_list_imported_models
+bedrock_list_imported_models <- function(creationTimeBefore = NULL, creationTimeAfter = NULL, nameContains = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListImportedModels",
+    http_method = "GET",
+    http_path = "/imported-models",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries")
+  )
+  input <- .bedrock$list_imported_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .bedrock$list_imported_models_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_imported_models <- bedrock_list_imported_models
+
+#' Returns a list of inference profiles that you can use
+#'
+#' @description
+#' Returns a list of inference profiles that you can use.
+#'
+#' @usage
+#' bedrock_list_inference_profiles(maxResults, nextToken)
+#'
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   inferenceProfileSummaries = list(
+#'     list(
+#'       inferenceProfileName = "string",
+#'       models = list(
+#'         list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       description = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       inferenceProfileArn = "string",
+#'       inferenceProfileId = "string",
+#'       status = "ACTIVE",
+#'       type = "SYSTEM_DEFINED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_inference_profiles(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_inference_profiles
+#'
+#' @aliases bedrock_list_inference_profiles
+bedrock_list_inference_profiles <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListInferenceProfiles",
+    http_method = "GET",
+    http_path = "/inference-profiles",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "inferenceProfileSummaries")
+  )
+  input <- .bedrock$list_inference_profiles_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrock$list_inference_profiles_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_inference_profiles <- bedrock_list_inference_profiles
+
+#' Returns a list of model copy jobs that you have submitted
+#'
+#' @description
+#' Returns a list of model copy jobs that you have submitted. You can
+#' filter the jobs to return based on one or more criteria. For more
+#' information, see [Copy models to be used in other
+#' regions](https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#'
+#' @usage
+#' bedrock_list_model_copy_jobs(creationTimeAfter, creationTimeBefore,
+#'   statusEquals, sourceAccountEquals, sourceModelArnEquals,
+#'   targetModelNameContains, maxResults, nextToken, sortBy, sortOrder)
+#'
+#' @param creationTimeAfter Filters for model copy jobs created after the specified time.
+#' @param creationTimeBefore Filters for model copy jobs created before the specified time.
+#' @param statusEquals Filters for model copy jobs whose status matches the value that you
+#' specify.
+#' @param sourceAccountEquals Filters for model copy jobs in which the account that the source model
+#' belongs to is equal to the value that you specify.
+#' @param sourceModelArnEquals Filters for model copy jobs in which the Amazon Resource Name (ARN) of
+#' the source model to is equal to the value that you specify.
+#' @param targetModelNameContains Filters for model copy jobs in which the name of the copied model
+#' contains the string that you specify.
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#' @param sortBy The field to sort by in the returned list of model copy jobs.
+#' @param sortOrder Specifies whether to sort the results in ascending or descending order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   modelCopyJobSummaries = list(
+#'     list(
+#'       jobArn = "string",
+#'       status = "InProgress"|"Completed"|"Failed",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       targetModelArn = "string",
+#'       targetModelName = "string",
+#'       sourceAccountId = "string",
+#'       sourceModelArn = "string",
+#'       targetModelKmsKeyArn = "string",
+#'       targetModelTags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       failureMessage = "string",
+#'       sourceModelName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_copy_jobs(
+#'   creationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   creationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   statusEquals = "InProgress"|"Completed"|"Failed",
+#'   sourceAccountEquals = "string",
+#'   sourceModelArnEquals = "string",
+#'   targetModelNameContains = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortBy = "CreationTime",
+#'   sortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_model_copy_jobs
+#'
+#' @aliases bedrock_list_model_copy_jobs
+bedrock_list_model_copy_jobs <- function(creationTimeAfter = NULL, creationTimeBefore = NULL, statusEquals = NULL, sourceAccountEquals = NULL, sourceModelArnEquals = NULL, targetModelNameContains = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListModelCopyJobs",
+    http_method = "GET",
+    http_path = "/model-copy-jobs",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelCopyJobSummaries")
+  )
+  input <- .bedrock$list_model_copy_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, sourceAccountEquals = sourceAccountEquals, sourceModelArnEquals = sourceModelArnEquals, targetModelNameContains = targetModelNameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .bedrock$list_model_copy_jobs_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_model_copy_jobs <- bedrock_list_model_copy_jobs
+
 #' Returns a list of model customization jobs that you have submitted
 #'
 #' @description
@@ -1804,7 +2831,8 @@ bedrock_list_guardrails <- function(guardrailIdentifier = NULL, maxResults = NUL
 #' 
 #' For more information, see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_list_model_customization_jobs(creationTimeAfter,
@@ -1816,9 +2844,13 @@ bedrock_list_guardrails <- function(guardrailIdentifier = NULL, maxResults = NUL
 #' @param statusEquals Return customization jobs with the specified status.
 #' @param nameContains Return customization jobs only if the job name contains these
 #' characters.
-#' @param maxResults Maximum number of results to return in the response.
-#' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
-#' list the next set of results.
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
 #' @param sortBy The field to sort by in the returned list of jobs.
 #' @param sortOrder The sort order of the results.
 #'
@@ -1891,13 +2923,225 @@ bedrock_list_model_customization_jobs <- function(creationTimeAfter = NULL, crea
 }
 .bedrock$operations$list_model_customization_jobs <- bedrock_list_model_customization_jobs
 
+#' Returns a list of import jobs you've submitted
+#'
+#' @description
+#' Returns a list of import jobs you've submitted. You can filter the
+#' results to return based on one or more criteria. For more information,
+#' see [Import a customized
+#' model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#'
+#' @usage
+#' bedrock_list_model_import_jobs(creationTimeAfter, creationTimeBefore,
+#'   statusEquals, nameContains, maxResults, nextToken, sortBy, sortOrder)
+#'
+#' @param creationTimeAfter Return import jobs that were created after the specified time.
+#' @param creationTimeBefore Return import jobs that were created before the specified time.
+#' @param statusEquals Return imported jobs with the specified status.
+#' @param nameContains Return imported jobs only if the job name contains these characters.
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#' @param sortBy The field to sort by in the returned list of imported jobs.
+#' @param sortOrder Specifies whether to sort the results in ascending or descending order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   modelImportJobSummaries = list(
+#'     list(
+#'       jobArn = "string",
+#'       jobName = "string",
+#'       status = "InProgress"|"Completed"|"Failed",
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       importedModelArn = "string",
+#'       importedModelName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_import_jobs(
+#'   creationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   creationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   statusEquals = "InProgress"|"Completed"|"Failed",
+#'   nameContains = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortBy = "CreationTime",
+#'   sortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_model_import_jobs
+#'
+#' @aliases bedrock_list_model_import_jobs
+bedrock_list_model_import_jobs <- function(creationTimeAfter = NULL, creationTimeBefore = NULL, statusEquals = NULL, nameContains = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListModelImportJobs",
+    http_method = "GET",
+    http_path = "/model-import-jobs",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelImportJobSummaries")
+  )
+  input <- .bedrock$list_model_import_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .bedrock$list_model_import_jobs_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_model_import_jobs <- bedrock_list_model_import_jobs
+
+#' Lists all batch inference jobs in the account
+#'
+#' @description
+#' Lists all batch inference jobs in the account. For more information, see
+#' [View details about a batch inference
+#' job](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view).
+#'
+#' @usage
+#' bedrock_list_model_invocation_jobs(submitTimeAfter, submitTimeBefore,
+#'   statusEquals, nameContains, maxResults, nextToken, sortBy, sortOrder)
+#'
+#' @param submitTimeAfter Specify a time to filter for batch inference jobs that were submitted
+#' after the time you specify.
+#' @param submitTimeBefore Specify a time to filter for batch inference jobs that were submitted
+#' before the time you specify.
+#' @param statusEquals Specify a status to filter for batch inference jobs whose statuses match
+#' the string you specify.
+#' @param nameContains Specify a string to filter for batch inference jobs whose names contain
+#' the string.
+#' @param maxResults The maximum number of results to return. If there are more results than
+#' the number that you specify, a `nextToken` value is returned. Use the
+#' `nextToken` in a request to return the next batch of results.
+#' @param nextToken If there were more results than the value you specified in the
+#' `maxResults` field in a previous
+#' [`list_model_invocation_jobs`][bedrock_list_model_invocation_jobs]
+#' request, the response would have returned a `nextToken` value. To see
+#' the next batch of results, send the `nextToken` value in another
+#' request.
+#' @param sortBy An attribute by which to sort the results.
+#' @param sortOrder Specifies whether to sort the results by ascending or descending order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   invocationJobSummaries = list(
+#'     list(
+#'       jobArn = "string",
+#'       jobName = "string",
+#'       modelId = "string",
+#'       clientRequestToken = "string",
+#'       roleArn = "string",
+#'       status = "Submitted"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"|"PartiallyCompleted"|"Expired"|"Validating"|"Scheduled",
+#'       message = "string",
+#'       submitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       inputDataConfig = list(
+#'         s3InputDataConfig = list(
+#'           s3InputFormat = "JSONL",
+#'           s3Uri = "string"
+#'         )
+#'       ),
+#'       outputDataConfig = list(
+#'         s3OutputDataConfig = list(
+#'           s3Uri = "string",
+#'           s3EncryptionKeyId = "string"
+#'         )
+#'       ),
+#'       timeoutDurationInHours = 123,
+#'       jobExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_invocation_jobs(
+#'   submitTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   submitTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   statusEquals = "Submitted"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"|"PartiallyCompleted"|"Expired"|"Validating"|"Scheduled",
+#'   nameContains = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortBy = "CreationTime",
+#'   sortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_model_invocation_jobs
+#'
+#' @aliases bedrock_list_model_invocation_jobs
+bedrock_list_model_invocation_jobs <- function(submitTimeAfter = NULL, submitTimeBefore = NULL, statusEquals = NULL, nameContains = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListModelInvocationJobs",
+    http_method = "GET",
+    http_path = "/model-invocation-jobs",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationJobSummaries")
+  )
+  input <- .bedrock$list_model_invocation_jobs_input(submitTimeAfter = submitTimeAfter, submitTimeBefore = submitTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .bedrock$list_model_invocation_jobs_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_model_invocation_jobs <- bedrock_list_model_invocation_jobs
+
 #' Lists the Provisioned Throughputs in the account
 #'
 #' @description
 #' Lists the Provisioned Throughputs in the account. For more information,
 #' see [Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_list_provisioned_model_throughputs(creationTimeAfter,
@@ -2003,7 +3247,8 @@ bedrock_list_provisioned_model_throughputs <- function(creationTimeAfter = NULL,
 #' 
 #' For more information, see [Tagging
 #' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_list_tags_for_resource(resourceARN)
@@ -2161,7 +3406,8 @@ bedrock_stop_evaluation_job <- function(jobIdentifier) {
 #' Stops an active model customization job. For more information, see
 #' [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_stop_model_customization_job(jobIdentifier)
@@ -2201,12 +3447,58 @@ bedrock_stop_model_customization_job <- function(jobIdentifier) {
 }
 .bedrock$operations$stop_model_customization_job <- bedrock_stop_model_customization_job
 
+#' Stops a batch inference job
+#'
+#' @description
+#' Stops a batch inference job. You're only charged for tokens that were
+#' already processed. For more information, see [Stop a batch inference
+#' job](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-stop).
+#'
+#' @usage
+#' bedrock_stop_model_invocation_job(jobIdentifier)
+#'
+#' @param jobIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the batch inference job to stop.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_model_invocation_job(
+#'   jobIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_stop_model_invocation_job
+#'
+#' @aliases bedrock_stop_model_invocation_job
+bedrock_stop_model_invocation_job <- function(jobIdentifier) {
+  op <- new_operation(
+    name = "StopModelInvocationJob",
+    http_method = "POST",
+    http_path = "/model-invocation-job/{jobIdentifier}/stop",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .bedrock$stop_model_invocation_job_input(jobIdentifier = jobIdentifier)
+  output <- .bedrock$stop_model_invocation_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$stop_model_invocation_job <- bedrock_stop_model_invocation_job
+
 #' Associate tags with a resource
 #'
 #' @description
 #' Associate tags with a resource. For more information, see [Tagging
 #' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_tag_resource(resourceARN, tags)
@@ -2259,7 +3551,8 @@ bedrock_tag_resource <- function(resourceARN, tags) {
 #' Remove one or more tags from a resource. For more information, see
 #' [Tagging
 #' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_untag_resource(resourceARN, tagKeys)
@@ -2476,7 +3769,8 @@ bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NU
 #' Updates the name or associated model for a Provisioned Throughput. For
 #' more information, see [Provisioned
 #' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html)
-#' in the Amazon Bedrock User Guide.
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrock_update_provisioned_model_throughput(provisionedModelId,

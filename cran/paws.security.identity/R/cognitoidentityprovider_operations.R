@@ -71,11 +71,11 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 }
 .cognitoidentityprovider$operations$admin_add_user_to_group <- cognitoidentityprovider_admin_add_user_to_group
 
-#' This IAM-authenticated API operation provides a code that Amazon Cognito
-#' sent to your user when they signed up in your user pool
+#' This IAM-authenticated API operation confirms user sign-up as an
+#' administrator
 #'
 #' @description
-#' This IAM-authenticated API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool. After your user enters their code, they confirm ownership of the email address or phone number that they provided, and their user account becomes active. Depending on your user pool configuration, your users will receive their confirmation code in an email or SMS message.
+#' This IAM-authenticated API operation confirms user sign-up as an administrator. Unlike [`confirm_sign_up`][cognitoidentityprovider_confirm_sign_up], your IAM credentials authorize user account confirmation. No confirmation code is required.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/) for full documentation.
 #'
@@ -2372,6 +2372,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' -   `LEGACY` - This represents the early behavior of Amazon Cognito
 #'     where user existence related errors aren't prevented.
+#' 
+#' Defaults to `LEGACY` when you don't provide a value.
 #' @param EnableTokenRevocation Activates or deactivates token revocation. For more information about
 #' revoking tokens, see
 #' [`revoke_token`][cognitoidentityprovider_revoke_token].
@@ -3170,15 +3172,15 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 }
 .cognitoidentityprovider$operations$get_identity_provider_by_identifier <- cognitoidentityprovider_get_identity_provider_by_identifier
 
-#' Gets the detailed activity logging configuration for a user pool
+#' Gets the logging configuration of a user pool
 #'
 #' @description
-#' Gets the detailed activity logging configuration for a user pool.
+#' Gets the logging configuration of a user pool.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_log_delivery_configuration/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_log_delivery_configuration/) for full documentation.
 #'
-#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to view detailed activity logging
-#' configuration.
+#' @param UserPoolId &#91;required&#93; The ID of the user pool that has the logging configuration that you want
+#' to view.
 #'
 #' @keywords internal
 #'
@@ -4249,18 +4251,15 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
 }
 .cognitoidentityprovider$operations$revoke_token <- cognitoidentityprovider_revoke_token
 
-#' Sets up or modifies the detailed activity logging configuration of a
-#' user pool
+#' Sets up or modifies the logging configuration of a user pool
 #'
 #' @description
-#' Sets up or modifies the detailed activity logging configuration of a user pool.
+#' Sets up or modifies the logging configuration of a user pool. User pools can export user notification logs and advanced security features user activity logs.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_log_delivery_configuration/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_log_delivery_configuration/) for full documentation.
 #'
-#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to configure detailed activity
-#' logging .
-#' @param LogConfigurations &#91;required&#93; A collection of all of the detailed activity logging configurations for
-#' a user pool.
+#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to configure logging.
+#' @param LogConfigurations &#91;required&#93; A collection of the logging configurations for a user pool.
 #'
 #' @keywords internal
 #'
@@ -5358,6 +5357,8 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' -   `LEGACY` - This represents the early behavior of Amazon Cognito
 #'     where user existence related errors aren't prevented.
+#' 
+#' Defaults to `LEGACY` when you don't provide a value.
 #' @param EnableTokenRevocation Activates or deactivates token revocation. For more information about
 #' revoking tokens, see
 #' [`revoke_token`][cognitoidentityprovider_revoke_token].

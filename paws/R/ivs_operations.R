@@ -21,23 +21,23 @@ NULL
 #'   channels = list(
 #'     list(
 #'       arn = "string",
-#'       authorized = TRUE|FALSE,
-#'       ingestEndpoint = "string",
-#'       insecureIngest = TRUE|FALSE,
-#'       latencyMode = "NORMAL"|"LOW",
 #'       name = "string",
-#'       playbackRestrictionPolicyArn = "string",
-#'       playbackUrl = "string",
-#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'       latencyMode = "NORMAL"|"LOW",
+#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
 #'       recordingConfigurationArn = "string",
+#'       ingestEndpoint = "string",
+#'       playbackUrl = "string",
+#'       authorized = TRUE|FALSE,
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       insecureIngest = TRUE|FALSE,
+#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'       srt = list(
 #'         endpoint = "string",
 #'         passphrase = "string"
 #'       ),
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'       playbackRestrictionPolicyArn = "string"
 #'     )
 #'   ),
 #'   errors = list(
@@ -97,21 +97,21 @@ ivs_batch_get_channel <- function(arns) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   streamKeys = list(
+#'     list(
+#'       arn = "string",
+#'       value = "string",
+#'       channelArn = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   errors = list(
 #'     list(
 #'       arn = "string",
 #'       code = "string",
 #'       message = "string"
-#'     )
-#'   ),
-#'   streamKeys = list(
-#'     list(
-#'       arn = "string",
-#'       channelArn = "string",
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       value = "string"
 #'     )
 #'   )
 #' )
@@ -169,9 +169,9 @@ ivs_batch_get_stream_key <- function(arns) {
 #'   errors = list(
 #'     list(
 #'       channelArn = "string",
+#'       viewerId = "string",
 #'       code = "string",
-#'       message = "string",
-#'       viewerId = "string"
+#'       message = "string"
 #'     )
 #'   )
 #' )
@@ -219,25 +219,21 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' Creates a new channel and an associated stream key to start streaming.
 #'
 #' @usage
-#' ivs_create_channel(authorized, insecureIngest, latencyMode, name,
-#'   playbackRestrictionPolicyArn, preset, recordingConfigurationArn, tags,
-#'   type)
+#' ivs_create_channel(name, latencyMode, type, authorized,
+#'   recordingConfigurationArn, tags, insecureIngest, preset,
+#'   playbackRestrictionPolicyArn)
 #'
-#' @param authorized Whether the channel is private (enabled for playback authorization).
-#' Default: `false`.
-#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
-#' `false`.
+#' @param name Channel name.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
 #' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
 #' Default: `LOW`.
-#' @param name Channel name.
-#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
-#' the ARN and enables playback restriction. Default: "" (empty string, no
-#' playback restriction policy is applied).
-#' @param preset Optional transcode preset for the channel. This is selectable only for
-#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
-#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
-#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
+#' @param type Channel type, which determines the allowable resolution and bitrate. *If
+#' you exceed the allowable input resolution or bitrate, the stream
+#' probably will disconnect immediately.* Default: `STANDARD`. For details,
+#' see [Channel
+#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html).
+#' @param authorized Whether the channel is private (enabled for playback authorization).
+#' Default: `false`.
 #' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
 #' ARN and enables recording. Default: "" (empty string, recording is
 #' disabled).
@@ -247,11 +243,15 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' for more information, including restrictions that apply to tags and "Tag
 #' naming limits and requirements"; Amazon IVS has no service-specific
 #' constraints beyond what is documented there.
-#' @param type Channel type, which determines the allowable resolution and bitrate. *If
-#' you exceed the allowable input resolution or bitrate, the stream
-#' probably will disconnect immediately.* Default: `STANDARD`. For details,
-#' see [Channel
-#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html).
+#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
+#' `false`.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
+#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
+#' the ARN and enables playback restriction. Default: "" (empty string, no
+#' playback restriction policy is applied).
 #'
 #' @return
 #' A list with the following syntax:
@@ -259,31 +259,31 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' list(
 #'   channel = list(
 #'     arn = "string",
-#'     authorized = TRUE|FALSE,
-#'     ingestEndpoint = "string",
-#'     insecureIngest = TRUE|FALSE,
-#'     latencyMode = "NORMAL"|"LOW",
 #'     name = "string",
-#'     playbackRestrictionPolicyArn = "string",
-#'     playbackUrl = "string",
-#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
 #'     recordingConfigurationArn = "string",
+#'     ingestEndpoint = "string",
+#'     playbackUrl = "string",
+#'     authorized = TRUE|FALSE,
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     insecureIngest = TRUE|FALSE,
+#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'     srt = list(
 #'       endpoint = "string",
 #'       passphrase = "string"
 #'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'     playbackRestrictionPolicyArn = "string"
 #'   ),
 #'   streamKey = list(
 #'     arn = "string",
+#'     value = "string",
 #'     channelArn = "string",
 #'     tags = list(
 #'       "string"
-#'     ),
-#'     value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -291,17 +291,17 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' @section Request syntax:
 #' ```
 #' svc$create_channel(
-#'   authorized = TRUE|FALSE,
-#'   insecureIngest = TRUE|FALSE,
-#'   latencyMode = "NORMAL"|"LOW",
 #'   name = "string",
-#'   playbackRestrictionPolicyArn = "string",
-#'   preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'   latencyMode = "NORMAL"|"LOW",
+#'   type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
+#'   authorized = TRUE|FALSE,
 #'   recordingConfigurationArn = "string",
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'   insecureIngest = TRUE|FALSE,
+#'   preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'   playbackRestrictionPolicyArn = "string"
 #' )
 #' ```
 #'
@@ -310,7 +310,7 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' @rdname ivs_create_channel
 #'
 #' @aliases ivs_create_channel
-ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, playbackRestrictionPolicyArn = NULL, preset = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
+ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, authorized = NULL, recordingConfigurationArn = NULL, tags = NULL, insecureIngest = NULL, preset = NULL, playbackRestrictionPolicyArn = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
@@ -318,7 +318,7 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
+  input <- .ivs$create_channel_input(name = name, latencyMode = latencyMode, type = type, authorized = authorized, recordingConfigurationArn = recordingConfigurationArn, tags = tags, insecureIngest = insecureIngest, preset = preset, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -362,13 +362,13 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
 #' ```
 #' list(
 #'   playbackRestrictionPolicy = list(
+#'     arn = "string",
 #'     allowedCountries = list(
 #'       "string"
 #'     ),
 #'     allowedOrigins = list(
 #'       "string"
 #'     ),
-#'     arn = "string",
 #'     enableStrictOriginEnforcement = TRUE|FALSE,
 #'     name = "string",
 #'     tags = list(
@@ -438,17 +438,13 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #' and create a new one with an S3 bucket from the correct region.
 #'
 #' @usage
-#' ivs_create_recording_configuration(destinationConfiguration, name,
-#'   recordingReconnectWindowSeconds, renditionConfiguration, tags,
-#'   thumbnailConfiguration)
+#' ivs_create_recording_configuration(name, destinationConfiguration, tags,
+#'   thumbnailConfiguration, recordingReconnectWindowSeconds,
+#'   renditionConfiguration)
 #'
+#' @param name Recording-configuration name. The value does not need to be unique.
 #' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where
 #' recorded video will be stored.
-#' @param name Recording-configuration name. The value does not need to be unique.
-#' @param recordingReconnectWindowSeconds If a broadcast disconnects and then reconnects within the specified
-#' interval, the multiple streams will be considered a single broadcast and
-#' merged together. Default: 0.
-#' @param renditionConfiguration Object that describes which renditions should be recorded for a stream.
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
 #' [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
@@ -458,6 +454,10 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #' @param thumbnailConfiguration A complex type that allows you to enable/disable the recording of
 #' thumbnails for a live session and modify the interval at which
 #' thumbnails are generated for the live session.
+#' @param recordingReconnectWindowSeconds If a broadcast disconnects and then reconnects within the specified
+#' interval, the multiple streams will be considered a single broadcast and
+#' merged together. Default: 0.
+#' @param renditionConfiguration Object that describes which renditions should be recorded for a stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -465,17 +465,10 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #' list(
 #'   recordingConfiguration = list(
 #'     arn = "string",
+#'     name = "string",
 #'     destinationConfiguration = list(
 #'       s3 = list(
 #'         bucketName = "string"
-#'       )
-#'     ),
-#'     name = "string",
-#'     recordingReconnectWindowSeconds = 123,
-#'     renditionConfiguration = list(
-#'       renditionSelection = "ALL"|"NONE"|"CUSTOM",
-#'       renditions = list(
-#'         "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
 #'       )
 #'     ),
 #'     state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
@@ -484,11 +477,18 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #'     ),
 #'     thumbnailConfiguration = list(
 #'       recordingMode = "DISABLED"|"INTERVAL",
-#'       resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'       targetIntervalSeconds = 123,
+#'       resolution = "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION",
 #'       storage = list(
 #'         "SEQUENTIAL"|"LATEST"
-#'       ),
-#'       targetIntervalSeconds = 123
+#'       )
+#'     ),
+#'     recordingReconnectWindowSeconds = 123,
+#'     renditionConfiguration = list(
+#'       renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'       renditions = list(
+#'         "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION"
+#'       )
 #'     )
 #'   )
 #' )
@@ -497,17 +497,10 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #' @section Request syntax:
 #' ```
 #' svc$create_recording_configuration(
+#'   name = "string",
 #'   destinationConfiguration = list(
 #'     s3 = list(
 #'       bucketName = "string"
-#'     )
-#'   ),
-#'   name = "string",
-#'   recordingReconnectWindowSeconds = 123,
-#'   renditionConfiguration = list(
-#'     renditionSelection = "ALL"|"NONE"|"CUSTOM",
-#'     renditions = list(
-#'       "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
 #'     )
 #'   ),
 #'   tags = list(
@@ -515,11 +508,18 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #'   ),
 #'   thumbnailConfiguration = list(
 #'     recordingMode = "DISABLED"|"INTERVAL",
-#'     resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'     targetIntervalSeconds = 123,
+#'     resolution = "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION",
 #'     storage = list(
 #'       "SEQUENTIAL"|"LATEST"
-#'     ),
-#'     targetIntervalSeconds = 123
+#'     )
+#'   ),
+#'   recordingReconnectWindowSeconds = 123,
+#'   renditionConfiguration = list(
+#'     renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'     renditions = list(
+#'       "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION"
+#'     )
 #'   )
 #' )
 #' ```
@@ -529,7 +529,7 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
 #' @rdname ivs_create_recording_configuration
 #'
 #' @aliases ivs_create_recording_configuration
-ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, recordingReconnectWindowSeconds = NULL, renditionConfiguration = NULL, tags = NULL, thumbnailConfiguration = NULL) {
+ivs_create_recording_configuration <- function(name = NULL, destinationConfiguration, tags = NULL, thumbnailConfiguration = NULL, recordingReconnectWindowSeconds = NULL, renditionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRecordingConfiguration",
     http_method = "POST",
@@ -537,7 +537,7 @@ ivs_create_recording_configuration <- function(destinationConfiguration, name = 
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, renditionConfiguration = renditionConfiguration, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
+  input <- .ivs$create_recording_configuration_input(name = name, destinationConfiguration = destinationConfiguration, tags = tags, thumbnailConfiguration = thumbnailConfiguration, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, renditionConfiguration = renditionConfiguration)
   output <- .ivs$create_recording_configuration_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -577,11 +577,11 @@ ivs_create_recording_configuration <- function(destinationConfiguration, name = 
 #' list(
 #'   streamKey = list(
 #'     arn = "string",
+#'     value = "string",
 #'     channelArn = "string",
 #'     tags = list(
 #'       "string"
-#'     ),
-#'     value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -871,23 +871,23 @@ ivs_delete_stream_key <- function(arn) {
 #' list(
 #'   channel = list(
 #'     arn = "string",
-#'     authorized = TRUE|FALSE,
-#'     ingestEndpoint = "string",
-#'     insecureIngest = TRUE|FALSE,
-#'     latencyMode = "NORMAL"|"LOW",
 #'     name = "string",
-#'     playbackRestrictionPolicyArn = "string",
-#'     playbackUrl = "string",
-#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
 #'     recordingConfigurationArn = "string",
+#'     ingestEndpoint = "string",
+#'     playbackUrl = "string",
+#'     authorized = TRUE|FALSE,
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     insecureIngest = TRUE|FALSE,
+#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'     srt = list(
 #'       endpoint = "string",
 #'       passphrase = "string"
 #'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'     playbackRestrictionPolicyArn = "string"
 #'   )
 #' )
 #' ```
@@ -944,8 +944,8 @@ ivs_get_channel <- function(arn) {
 #' list(
 #'   keyPair = list(
 #'     arn = "string",
-#'     fingerprint = "string",
 #'     name = "string",
+#'     fingerprint = "string",
 #'     tags = list(
 #'       "string"
 #'     )
@@ -998,13 +998,13 @@ ivs_get_playback_key_pair <- function(arn) {
 #' ```
 #' list(
 #'   playbackRestrictionPolicy = list(
+#'     arn = "string",
 #'     allowedCountries = list(
 #'       "string"
 #'     ),
 #'     allowedOrigins = list(
 #'       "string"
 #'     ),
-#'     arn = "string",
 #'     enableStrictOriginEnforcement = TRUE|FALSE,
 #'     name = "string",
 #'     tags = list(
@@ -1060,17 +1060,10 @@ ivs_get_playback_restriction_policy <- function(arn) {
 #' list(
 #'   recordingConfiguration = list(
 #'     arn = "string",
+#'     name = "string",
 #'     destinationConfiguration = list(
 #'       s3 = list(
 #'         bucketName = "string"
-#'       )
-#'     ),
-#'     name = "string",
-#'     recordingReconnectWindowSeconds = 123,
-#'     renditionConfiguration = list(
-#'       renditionSelection = "ALL"|"NONE"|"CUSTOM",
-#'       renditions = list(
-#'         "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
 #'       )
 #'     ),
 #'     state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
@@ -1079,11 +1072,18 @@ ivs_get_playback_restriction_policy <- function(arn) {
 #'     ),
 #'     thumbnailConfiguration = list(
 #'       recordingMode = "DISABLED"|"INTERVAL",
-#'       resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'       targetIntervalSeconds = 123,
+#'       resolution = "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION",
 #'       storage = list(
 #'         "SEQUENTIAL"|"LATEST"
-#'       ),
-#'       targetIntervalSeconds = 123
+#'       )
+#'     ),
+#'     recordingReconnectWindowSeconds = 123,
+#'     renditionConfiguration = list(
+#'       renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'       renditions = list(
+#'         "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1135,13 +1135,13 @@ ivs_get_recording_configuration <- function(arn) {
 #' list(
 #'   stream = list(
 #'     channelArn = "string",
-#'     health = "HEALTHY"|"STARVING"|"UNKNOWN",
+#'     streamId = "string",
 #'     playbackUrl = "string",
 #'     startTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     state = "LIVE"|"OFFLINE",
-#'     streamId = "string",
+#'     health = "HEALTHY"|"STARVING"|"UNKNOWN",
 #'     viewerCount = 123
 #'   )
 #' )
@@ -1193,11 +1193,11 @@ ivs_get_stream <- function(channelArn) {
 #' list(
 #'   streamKey = list(
 #'     arn = "string",
+#'     value = "string",
 #'     channelArn = "string",
 #'     tags = list(
 #'       "string"
-#'     ),
-#'     value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1250,60 +1250,57 @@ ivs_get_stream_key <- function(arn) {
 #' ```
 #' list(
 #'   streamSession = list(
-#'     channel = list(
-#'       arn = "string",
-#'       authorized = TRUE|FALSE,
-#'       ingestEndpoint = "string",
-#'       insecureIngest = TRUE|FALSE,
-#'       latencyMode = "NORMAL"|"LOW",
-#'       name = "string",
-#'       playbackRestrictionPolicyArn = "string",
-#'       playbackUrl = "string",
-#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
-#'       recordingConfigurationArn = "string",
-#'       srt = list(
-#'         endpoint = "string",
-#'         passphrase = "string"
-#'       ),
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'     streamId = "string",
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
 #'     endTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     ingestConfiguration = list(
-#'       audio = list(
-#'         channels = 123,
-#'         codec = "string",
-#'         sampleRate = 123,
-#'         targetBitrate = 123
+#'     channel = list(
+#'       arn = "string",
+#'       name = "string",
+#'       latencyMode = "NORMAL"|"LOW",
+#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
+#'       recordingConfigurationArn = "string",
+#'       ingestEndpoint = "string",
+#'       playbackUrl = "string",
+#'       authorized = TRUE|FALSE,
+#'       tags = list(
+#'         "string"
 #'       ),
+#'       insecureIngest = TRUE|FALSE,
+#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'       srt = list(
+#'         endpoint = "string",
+#'         passphrase = "string"
+#'       ),
+#'       playbackRestrictionPolicyArn = "string"
+#'     ),
+#'     ingestConfiguration = list(
 #'       video = list(
-#'         avcLevel = "string",
 #'         avcProfile = "string",
+#'         avcLevel = "string",
 #'         codec = "string",
 #'         encoder = "string",
 #'         targetBitrate = 123,
 #'         targetFramerate = 123,
 #'         videoHeight = 123,
 #'         videoWidth = 123
+#'       ),
+#'       audio = list(
+#'         codec = "string",
+#'         targetBitrate = 123,
+#'         sampleRate = 123,
+#'         channels = 123
 #'       )
 #'     ),
 #'     recordingConfiguration = list(
 #'       arn = "string",
+#'       name = "string",
 #'       destinationConfiguration = list(
 #'         s3 = list(
 #'           bucketName = "string"
-#'         )
-#'       ),
-#'       name = "string",
-#'       recordingReconnectWindowSeconds = 123,
-#'       renditionConfiguration = list(
-#'         renditionSelection = "ALL"|"NONE"|"CUSTOM",
-#'         renditions = list(
-#'           "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
 #'         )
 #'       ),
 #'       state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
@@ -1312,24 +1309,27 @@ ivs_get_stream_key <- function(arn) {
 #'       ),
 #'       thumbnailConfiguration = list(
 #'         recordingMode = "DISABLED"|"INTERVAL",
-#'         resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'         targetIntervalSeconds = 123,
+#'         resolution = "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION",
 #'         storage = list(
 #'           "SEQUENTIAL"|"LATEST"
-#'         ),
-#'         targetIntervalSeconds = 123
+#'         )
+#'       ),
+#'       recordingReconnectWindowSeconds = 123,
+#'       renditionConfiguration = list(
+#'         renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'         renditions = list(
+#'           "SD"|"HD"|"FULL_HD"|"LOWEST_RESOLUTION"
+#'         )
 #'       )
 #'     ),
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     streamId = "string",
 #'     truncatedEvents = list(
 #'       list(
+#'         name = "string",
+#'         type = "string",
 #'         eventTime = as.POSIXct(
 #'           "2015-01-01"
-#'         ),
-#'         name = "string",
-#'         type = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1379,10 +1379,10 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' in the *Amazon IVS User Guide*.
 #'
 #' @usage
-#' ivs_import_playback_key_pair(name, publicKeyMaterial, tags)
+#' ivs_import_playback_key_pair(publicKeyMaterial, name, tags)
 #'
-#' @param name Playback-key-pair name. The value does not need to be unique.
 #' @param publicKeyMaterial &#91;required&#93; The public portion of a customer-generated key pair.
+#' @param name Playback-key-pair name. The value does not need to be unique.
 #' @param tags Any tags provided with the request are added to the playback key pair
 #' tags. See [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
@@ -1396,8 +1396,8 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' list(
 #'   keyPair = list(
 #'     arn = "string",
-#'     fingerprint = "string",
 #'     name = "string",
+#'     fingerprint = "string",
 #'     tags = list(
 #'       "string"
 #'     )
@@ -1408,8 +1408,8 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$import_playback_key_pair(
-#'   name = "string",
 #'   publicKeyMaterial = "string",
+#'   name = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -1421,7 +1421,7 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' @rdname ivs_import_playback_key_pair
 #'
 #' @aliases ivs_import_playback_key_pair
-ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = NULL) {
+ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = NULL) {
   op <- new_operation(
     name = "ImportPlaybackKeyPair",
     http_method = "POST",
@@ -1429,7 +1429,7 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivs$import_playback_key_pair_input(name = name, publicKeyMaterial = publicKeyMaterial, tags = tags)
+  input <- .ivs$import_playback_key_pair_input(publicKeyMaterial = publicKeyMaterial, name = name, tags = tags)
   output <- .ivs$import_playback_key_pair_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1450,16 +1450,16 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' try to use both filters, you will get an error (409 ConflictException).
 #'
 #' @usage
-#' ivs_list_channels(filterByName, filterByPlaybackRestrictionPolicyArn,
-#'   filterByRecordingConfigurationArn, maxResults, nextToken)
+#' ivs_list_channels(filterByName, filterByRecordingConfigurationArn,
+#'   filterByPlaybackRestrictionPolicyArn, nextToken, maxResults)
 #'
 #' @param filterByName Filters the channel list to match the specified name.
-#' @param filterByPlaybackRestrictionPolicyArn Filters the channel list to match the specified policy.
 #' @param filterByRecordingConfigurationArn Filters the channel list to match the specified recording-configuration
 #' ARN.
-#' @param maxResults Maximum number of channels to return. Default: 100.
+#' @param filterByPlaybackRestrictionPolicyArn Filters the channel list to match the specified policy.
 #' @param nextToken The first channel to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of channels to return. Default: 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1468,17 +1468,17 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #'   channels = list(
 #'     list(
 #'       arn = "string",
-#'       authorized = TRUE|FALSE,
-#'       insecureIngest = TRUE|FALSE,
-#'       latencyMode = "NORMAL"|"LOW",
 #'       name = "string",
-#'       playbackRestrictionPolicyArn = "string",
-#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'       latencyMode = "NORMAL"|"LOW",
+#'       authorized = TRUE|FALSE,
 #'       recordingConfigurationArn = "string",
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'       insecureIngest = TRUE|FALSE,
+#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
+#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'       playbackRestrictionPolicyArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1489,10 +1489,10 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' ```
 #' svc$list_channels(
 #'   filterByName = "string",
-#'   filterByPlaybackRestrictionPolicyArn = "string",
 #'   filterByRecordingConfigurationArn = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   filterByPlaybackRestrictionPolicyArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1501,7 +1501,7 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' @rdname ivs_list_channels
 #'
 #' @aliases ivs_list_channels
-ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPolicyArn = NULL, filterByRecordingConfigurationArn = NULL, maxResults = NULL, nextToken = NULL) {
+ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfigurationArn = NULL, filterByPlaybackRestrictionPolicyArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListChannels",
     http_method = "POST",
@@ -1509,7 +1509,7 @@ ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPo
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_channels_input(filterByName = filterByName, filterByPlaybackRestrictionPolicyArn = filterByPlaybackRestrictionPolicyArn, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_channels_input(filterByName = filterByName, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, filterByPlaybackRestrictionPolicyArn = filterByPlaybackRestrictionPolicyArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_channels_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1528,12 +1528,12 @@ ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPo
 #' in the *Amazon IVS User Guide*.
 #'
 #' @usage
-#' ivs_list_playback_key_pairs(maxResults, nextToken)
+#' ivs_list_playback_key_pairs(nextToken, maxResults)
 #'
-#' @param maxResults Maximum number of key pairs to return. Default: your service quota or
-#' 100, whichever is smaller.
 #' @param nextToken The first key pair to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of key pairs to return. Default: your service quota or
+#' 100, whichever is smaller.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1555,8 +1555,8 @@ ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPo
 #' @section Request syntax:
 #' ```
 #' svc$list_playback_key_pairs(
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1565,7 +1565,7 @@ ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPo
 #' @rdname ivs_list_playback_key_pairs
 #'
 #' @aliases ivs_list_playback_key_pairs
-ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
+ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPlaybackKeyPairs",
     http_method = "POST",
@@ -1573,7 +1573,7 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_playback_key_pairs_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_playback_key_pairs_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_playback_key_pairs_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1589,41 +1589,41 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
 #' Gets summary information about playback restriction policies.
 #'
 #' @usage
-#' ivs_list_playback_restriction_policies(maxResults, nextToken)
+#' ivs_list_playback_restriction_policies(nextToken, maxResults)
 #'
-#' @param maxResults Maximum number of policies to return. Default: 1.
 #' @param nextToken The first policy to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of policies to return. Default: 1.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   playbackRestrictionPolicies = list(
 #'     list(
+#'       arn = "string",
 #'       allowedCountries = list(
 #'         "string"
 #'       ),
 #'       allowedOrigins = list(
 #'         "string"
 #'       ),
-#'       arn = "string",
 #'       enableStrictOriginEnforcement = TRUE|FALSE,
 #'       name = "string",
 #'       tags = list(
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_playback_restriction_policies(
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1632,7 +1632,7 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
 #' @rdname ivs_list_playback_restriction_policies
 #'
 #' @aliases ivs_list_playback_restriction_policies
-ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken = NULL) {
+ivs_list_playback_restriction_policies <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPlaybackRestrictionPolicies",
     http_method = "POST",
@@ -1640,7 +1640,7 @@ ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken 
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_playback_restriction_policies_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_playback_restriction_policies_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_playback_restriction_policies_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1660,41 +1660,41 @@ ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken 
 #' processed.
 #'
 #' @usage
-#' ivs_list_recording_configurations(maxResults, nextToken)
+#' ivs_list_recording_configurations(nextToken, maxResults)
 #'
-#' @param maxResults Maximum number of recording configurations to return. Default: your
-#' service quota or 100, whichever is smaller.
 #' @param nextToken The first recording configuration to retrieve. This is used for
 #' pagination; see the `nextToken` response field.
+#' @param maxResults Maximum number of recording configurations to return. Default: your
+#' service quota or 100, whichever is smaller.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   recordingConfigurations = list(
 #'     list(
 #'       arn = "string",
+#'       name = "string",
 #'       destinationConfiguration = list(
 #'         s3 = list(
 #'           bucketName = "string"
 #'         )
 #'       ),
-#'       name = "string",
 #'       state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
 #'       tags = list(
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_recording_configurations(
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1703,7 +1703,7 @@ ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken 
 #' @rdname ivs_list_recording_configurations
 #'
 #' @aliases ivs_list_recording_configurations
-ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NULL) {
+ivs_list_recording_configurations <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListRecordingConfigurations",
     http_method = "POST",
@@ -1711,7 +1711,7 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_recording_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_recording_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_recording_configurations_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1727,18 +1727,17 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #' Gets summary information about stream keys for the specified channel.
 #'
 #' @usage
-#' ivs_list_stream_keys(channelArn, maxResults, nextToken)
+#' ivs_list_stream_keys(channelArn, nextToken, maxResults)
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
-#' @param maxResults Maximum number of streamKeys to return. Default: 1.
 #' @param nextToken The first stream key to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of streamKeys to return. Default: 1.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   streamKeys = list(
 #'     list(
 #'       arn = "string",
@@ -1747,7 +1746,8 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1755,8 +1755,8 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #' ```
 #' svc$list_stream_keys(
 #'   channelArn = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1765,7 +1765,7 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #' @rdname ivs_list_stream_keys
 #'
 #' @aliases ivs_list_stream_keys
-ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL) {
+ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStreamKeys",
     http_method = "POST",
@@ -1773,7 +1773,7 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_stream_keys_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_stream_keys_input(channelArn = channelArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_stream_keys_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1791,30 +1791,30 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
 #' in your account, in the AWS region where the API request is processed.
 #'
 #' @usage
-#' ivs_list_stream_sessions(channelArn, maxResults, nextToken)
+#' ivs_list_stream_sessions(channelArn, nextToken, maxResults)
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
-#' @param maxResults Maximum number of streams to return. Default: 100.
 #' @param nextToken The first stream to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of streams to return. Default: 100.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   streamSessions = list(
 #'     list(
-#'       endTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       hasErrorEvent = TRUE|FALSE,
+#'       streamId = "string",
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       streamId = "string"
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       hasErrorEvent = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1822,8 +1822,8 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
 #' ```
 #' svc$list_stream_sessions(
 #'   channelArn = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1832,7 +1832,7 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
 #' @rdname ivs_list_stream_sessions
 #'
 #' @aliases ivs_list_stream_sessions
-ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = NULL) {
+ivs_list_stream_sessions <- function(channelArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStreamSessions",
     http_method = "POST",
@@ -1840,7 +1840,7 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_stream_sessions_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_stream_sessions_input(channelArn = channelArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_stream_sessions_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -1858,30 +1858,30 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
 #' Amazon Web Services region where the API request is processed.
 #'
 #' @usage
-#' ivs_list_streams(filterBy, maxResults, nextToken)
+#' ivs_list_streams(filterBy, nextToken, maxResults)
 #'
 #' @param filterBy Filters the stream list to match the specified criterion.
-#' @param maxResults Maximum number of streams to return. Default: 100.
 #' @param nextToken The first stream to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of streams to return. Default: 100.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   streams = list(
 #'     list(
 #'       channelArn = "string",
+#'       streamId = "string",
+#'       state = "LIVE"|"OFFLINE",
 #'       health = "HEALTHY"|"STARVING"|"UNKNOWN",
+#'       viewerCount = 123,
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       state = "LIVE"|"OFFLINE",
-#'       streamId = "string",
-#'       viewerCount = 123
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1891,8 +1891,8 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
 #'   filterBy = list(
 #'     health = "HEALTHY"|"STARVING"|"UNKNOWN"
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1901,7 +1901,7 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
 #' @rdname ivs_list_streams
 #'
 #' @aliases ivs_list_streams
-ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL) {
+ivs_list_streams <- function(filterBy = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListStreams",
     http_method = "POST",
@@ -1909,7 +1909,7 @@ ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NUL
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_streams_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_streams_input(filterBy = filterBy, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_streams_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -2245,31 +2245,32 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' for the changes to take effect.
 #'
 #' @usage
-#' ivs_update_channel(arn, authorized, insecureIngest, latencyMode, name,
-#'   playbackRestrictionPolicyArn, preset, recordingConfigurationArn, type)
+#' ivs_update_channel(arn, name, latencyMode, type, authorized,
+#'   recordingConfigurationArn, insecureIngest, preset,
+#'   playbackRestrictionPolicyArn)
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
-#' @param authorized Whether the channel is private (enabled for playback authorization).
-#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
-#' `false`.
+#' @param name Channel name.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
 #' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
-#' @param name Channel name.
-#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
-#' the ARN and enables playback restriction. If this is set to an empty
-#' string, playback restriction policy is disabled.
-#' @param preset Optional transcode preset for the channel. This is selectable only for
-#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
-#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
-#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
-#' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
-#' ARN and enables recording. If this is set to an empty string, recording
-#' is disabled.
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
 #' you exceed the allowable input resolution or bitrate, the stream
 #' probably will disconnect immediately.* Default: `STANDARD`. For details,
 #' see [Channel
 #' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html).
+#' @param authorized Whether the channel is private (enabled for playback authorization).
+#' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
+#' ARN and enables recording. If this is set to an empty string, recording
+#' is disabled.
+#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
+#' `false`.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
+#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
+#' the ARN and enables playback restriction. If this is set to an empty
+#' string, playback restriction policy is disabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2277,23 +2278,23 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' list(
 #'   channel = list(
 #'     arn = "string",
-#'     authorized = TRUE|FALSE,
-#'     ingestEndpoint = "string",
-#'     insecureIngest = TRUE|FALSE,
-#'     latencyMode = "NORMAL"|"LOW",
 #'     name = "string",
-#'     playbackRestrictionPolicyArn = "string",
-#'     playbackUrl = "string",
-#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
 #'     recordingConfigurationArn = "string",
+#'     ingestEndpoint = "string",
+#'     playbackUrl = "string",
+#'     authorized = TRUE|FALSE,
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     insecureIngest = TRUE|FALSE,
+#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'     srt = list(
 #'       endpoint = "string",
 #'       passphrase = "string"
 #'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'     playbackRestrictionPolicyArn = "string"
 #'   )
 #' )
 #' ```
@@ -2302,14 +2303,14 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' svc$update_channel(
 #'   arn = "string",
-#'   authorized = TRUE|FALSE,
-#'   insecureIngest = TRUE|FALSE,
-#'   latencyMode = "NORMAL"|"LOW",
 #'   name = "string",
-#'   playbackRestrictionPolicyArn = "string",
-#'   preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'   latencyMode = "NORMAL"|"LOW",
+#'   type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD",
+#'   authorized = TRUE|FALSE,
 #'   recordingConfigurationArn = "string",
-#'   type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
+#'   insecureIngest = TRUE|FALSE,
+#'   preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
+#'   playbackRestrictionPolicyArn = "string"
 #' )
 #' ```
 #'
@@ -2318,7 +2319,7 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname ivs_update_channel
 #'
 #' @aliases ivs_update_channel
-ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, playbackRestrictionPolicyArn = NULL, preset = NULL, recordingConfigurationArn = NULL, type = NULL) {
+ivs_update_channel <- function(arn, name = NULL, latencyMode = NULL, type = NULL, authorized = NULL, recordingConfigurationArn = NULL, insecureIngest = NULL, preset = NULL, playbackRestrictionPolicyArn = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
@@ -2326,7 +2327,7 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, type = type)
+  input <- .ivs$update_channel_input(arn = arn, name = name, latencyMode = latencyMode, type = type, authorized = authorized, recordingConfigurationArn = recordingConfigurationArn, insecureIngest = insecureIngest, preset = preset, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -2342,9 +2343,10 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
 #' Updates a specified playback restriction policy.
 #'
 #' @usage
-#' ivs_update_playback_restriction_policy(allowedCountries, allowedOrigins,
-#'   arn, enableStrictOriginEnforcement, name)
+#' ivs_update_playback_restriction_policy(arn, allowedCountries,
+#'   allowedOrigins, enableStrictOriginEnforcement, name)
 #'
+#' @param arn &#91;required&#93; ARN of the playback-restriction-policy to be updated.
 #' @param allowedCountries A list of country codes that control geoblocking restriction. Allowed
 #' values are the officially assigned [ISO 3166-1
 #' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes.
@@ -2353,7 +2355,6 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
 #' the same as valid values of the Origin header defined at
 #' <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin>.
 #' Default: All origins (an empty array).
-#' @param arn &#91;required&#93; ARN of the playback-restriction-policy to be updated.
 #' @param enableStrictOriginEnforcement Whether channel playback is constrained by origin site. Default:
 #' `false`.
 #' @param name Playback-restriction-policy name. The value does not need to be unique.
@@ -2363,13 +2364,13 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
 #' ```
 #' list(
 #'   playbackRestrictionPolicy = list(
+#'     arn = "string",
 #'     allowedCountries = list(
 #'       "string"
 #'     ),
 #'     allowedOrigins = list(
 #'       "string"
 #'     ),
-#'     arn = "string",
 #'     enableStrictOriginEnforcement = TRUE|FALSE,
 #'     name = "string",
 #'     tags = list(
@@ -2382,13 +2383,13 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
 #' @section Request syntax:
 #' ```
 #' svc$update_playback_restriction_policy(
+#'   arn = "string",
 #'   allowedCountries = list(
 #'     "string"
 #'   ),
 #'   allowedOrigins = list(
 #'     "string"
 #'   ),
-#'   arn = "string",
 #'   enableStrictOriginEnforcement = TRUE|FALSE,
 #'   name = "string"
 #' )
@@ -2399,7 +2400,7 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
 #' @rdname ivs_update_playback_restriction_policy
 #'
 #' @aliases ivs_update_playback_restriction_policy
-ivs_update_playback_restriction_policy <- function(allowedCountries = NULL, allowedOrigins = NULL, arn, enableStrictOriginEnforcement = NULL, name = NULL) {
+ivs_update_playback_restriction_policy <- function(arn, allowedCountries = NULL, allowedOrigins = NULL, enableStrictOriginEnforcement = NULL, name = NULL) {
   op <- new_operation(
     name = "UpdatePlaybackRestrictionPolicy",
     http_method = "POST",
@@ -2407,7 +2408,7 @@ ivs_update_playback_restriction_policy <- function(allowedCountries = NULL, allo
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivs$update_playback_restriction_policy_input(allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, arn = arn, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name)
+  input <- .ivs$update_playback_restriction_policy_input(arn = arn, allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name)
   output <- .ivs$update_playback_restriction_policy_output()
   config <- get_config()
   svc <- .ivs$service(config, op)

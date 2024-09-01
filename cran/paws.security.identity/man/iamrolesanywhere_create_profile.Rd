@@ -6,6 +6,7 @@
 trusted to assume}
 \usage{
 iamrolesanywhere_create_profile(
+  acceptRoleSessionName = NULL,
   durationSeconds = NULL,
   enabled = NULL,
   managedPolicyArns = NULL,
@@ -17,6 +18,9 @@ iamrolesanywhere_create_profile(
 )
 }
 \arguments{
+\item{acceptRoleSessionName}{Used to determine if a custom role session name will be accepted in a
+temporary credential request.}
+
 \item{durationSeconds}{Used to determine how long sessions vended using this profile are valid
 for. See the \code{Expiration} section of the \href{https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object}{CreateSession API documentation}
 page for more details. In requests, if this value is not provided, the

@@ -16,16 +16,16 @@ bedrock_list_foundation_models(
 
 \item{byCustomizationType}{Return models that support the customization type that you specify. For
 more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models}
-in the Amazon Bedrock User Guide.}
+in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
 
 \item{byOutputModality}{Return models that support the output modality that you specify.}
 
 \item{byInferenceType}{Return models that support the inference type that you specify. For more
 information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput}
-in the Amazon Bedrock User Guide.}
+in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
 }
 \description{
-Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Foundation models} in the Amazon Bedrock User Guide.
+Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Foundation models} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/} for full documentation.
 }

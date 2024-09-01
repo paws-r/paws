@@ -24,7 +24,7 @@ action.}
 \item{EventDestinationName}{[required] The name that identifies the event destination.}
 
 \item{MatchingEventTypes}{[required] An array of event types that determine which events to log. If "ALL" is
-used, then Amazon Pinpoint logs every event type.
+used, then AWS End User Messaging SMS and Voice logs every event type.
 
 The \code{TEXT_SENT} event type is not supported.}
 
@@ -32,7 +32,7 @@ The \code{TEXT_SENT} event type is not supported.}
 logging to Amazon CloudWatch Logs.}
 
 \item{KinesisFirehoseDestination}{An object that contains information about an event destination for
-logging to Amazon Kinesis Data Firehose.}
+logging to Amazon Data Firehose.}
 
 \item{SnsDestination}{An object that contains information about an event destination for
 logging to Amazon SNS.}

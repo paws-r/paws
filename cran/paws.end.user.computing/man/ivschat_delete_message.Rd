@@ -6,17 +6,17 @@
 specific message; that is, unrender it from view and delete it from the
 client’s chat history}
 \usage{
-ivschat_delete_message(id, reason = NULL, roomIdentifier)
+ivschat_delete_message(roomIdentifier, id, reason = NULL)
 }
 \arguments{
+\item{roomIdentifier}{[required] Identifier of the room where the message should be deleted. Currently
+this must be an ARN.}
+
 \item{id}{[required] ID of the message to be deleted. This is the \code{Id} field in the received
 message (see \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-message-subscribe.html}{Message (Subscribe)}
 in the Chat Messaging API).}
 
 \item{reason}{Reason for deleting the message.}
-
-\item{roomIdentifier}{[required] Identifier of the room where the message should be deleted. Currently
-this must be an ARN.}
 }
 \description{
 Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history. This event’s \code{EventName} is \code{aws:DELETE_MESSAGE}. This replicates the \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html}{DeleteMessage} WebSocket operation in the Amazon IVS Chat Messaging API.

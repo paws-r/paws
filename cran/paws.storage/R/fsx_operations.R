@@ -7,7 +7,7 @@ NULL
 #' aliases with an existing Amazon FSx for Windows File Server file system
 #'
 #' @description
-#' Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system. A file system can have a maximum of 50 DNS aliases associated with it at any one time. If you try to associate a DNS alias that is already associated with the file system, FSx takes no action on that alias in the request. For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html) and [Walkthrough 5: Using DNS aliases to access your file system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html), including additional steps you must take to be able to access your file system using a DNS alias.
+#' Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system. A file system can have a maximum of 50 DNS aliases associated with it at any one time. If you try to associate a DNS alias that is already associated with the file system, FSx takes no action on that alias in the request. For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html) and [Walkthrough 5: Using DNS aliases to access your file system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#dns-aliases), including additional steps you must take to be able to access your file system using a DNS alias.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_associate_file_system_aliases/](https://www.paws-r-sdk.com/docs/fsx_associate_file_system_aliases/) for full documentation.
 #'
@@ -524,7 +524,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
 #' Default value is `SSD`. For more information, see [Storage type
-#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/#storage-type-options)
+#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs)
 #' in the *FSx for Windows File Server User Guide* and [Multiple storage
 #' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
 #' in the *FSx for Lustre User Guide*.

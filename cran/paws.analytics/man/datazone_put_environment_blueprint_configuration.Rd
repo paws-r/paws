@@ -10,6 +10,7 @@ datazone_put_environment_blueprint_configuration(
   enabledRegions,
   environmentBlueprintIdentifier,
   manageAccessRoleArn = NULL,
+  provisioningConfigurations = NULL,
   provisioningRoleArn = NULL,
   regionalParameters = NULL
 )
@@ -22,6 +23,8 @@ datazone_put_environment_blueprint_configuration(
 \item{environmentBlueprintIdentifier}{[required] The identifier of the environment blueprint.}
 
 \item{manageAccessRoleArn}{The ARN of the manage access role.}
+
+\item{provisioningConfigurations}{The provisioning configuration of a blueprint.}
 
 \item{provisioningRoleArn}{The ARN of the provisioning role.}
 

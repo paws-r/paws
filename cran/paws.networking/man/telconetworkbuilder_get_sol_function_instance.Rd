@@ -3,7 +3,7 @@
 \name{telconetworkbuilder_get_sol_function_instance}
 \alias{telconetworkbuilder_get_sol_function_instance}
 \title{Gets the details of a network function instance, including the
-instantation state and metadata from the function package descriptor in
+instantiation state and metadata from the function package descriptor in
 the network function package}
 \usage{
 telconetworkbuilder_get_sol_function_instance(vnfInstanceId)
@@ -12,7 +12,7 @@ telconetworkbuilder_get_sol_function_instance(vnfInstanceId)
 \item{vnfInstanceId}{[required] ID of the network function.}
 }
 \description{
-Gets the details of a network function instance, including the instantation state and metadata from the function package descriptor in the network function package.
+Gets the details of a network function instance, including the instantiation state and metadata from the function package descriptor in the network function package.
 
 See \url{https://www.paws-r-sdk.com/docs/telconetworkbuilder_get_sol_function_instance/} for full documentation.
 }

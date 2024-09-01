@@ -13,7 +13,8 @@ sfn_create_state_machine(
   tags = NULL,
   tracingConfiguration = NULL,
   publish = NULL,
-  versionDescription = NULL
+  versionDescription = NULL,
+  encryptionConfiguration = NULL
 )
 }
 \arguments{
@@ -45,7 +46,7 @@ once it has been created.}
 \item{loggingConfiguration}{Defines what execution history events are logged and where they are
 logged.
 
-By default, the \code{level} is set to \code{OFF}. For more information see \href{https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html}{Log Levels}
+By default, the \code{level} is set to \code{OFF}. For more information see \href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Log Levels}
 in the Step Functions User Guide.}
 
 \item{tags}{Tags to be added when creating a state machine.
@@ -66,6 +67,8 @@ creation. The default is \code{false}.}
 description if the \code{publish} parameter is set to \code{true}. Otherwise, if
 you set \code{versionDescription}, but \code{publish} to \code{false}, this API action
 throws \code{ValidationException}.}
+
+\item{encryptionConfiguration}{Settings to configure server-side encryption.}
 }
 \description{
 Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language} in the Step Functions User Guide.

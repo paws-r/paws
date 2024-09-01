@@ -39,9 +39,8 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{executionRoleArn}{The Amazon Resource Name (ARN) of the task execution role that grants
 the Amazon ECS container agent permission to make Amazon Web Services
-API calls on your behalf. The task execution IAM role is required
-depending on the requirements of your task. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html}{Amazon ECS task execution IAM role}
+API calls on your behalf. For informationabout the required IAM roles
+for Amazon ECS, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-ecs-iam-role-overview.html}{IAM roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{networkMode}{The Docker networking mode to use for the containers in the task. The
@@ -69,17 +68,15 @@ the root user (UID 0). It is considered best practice to use a non-root
 user.
 
 If the network mode is \code{awsvpc}, the task is allocated an elastic
-network interface, and you must specify a NetworkConfiguration value
-when you create a service or run a task with the task definition. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+network interface, and you must specify a
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_NetworkConfiguration.html}{NetworkConfiguration}
+value when you create a service or run a task with the task definition.
+For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If the network mode is \code{host}, you cannot run multiple instantiations of
 the same task on a single container instance when port mappings are
-used.
-
-For more information, see \href{https://docs.docker.com/engine/reference/run/#network-settings}{Network settings}
-in the \emph{Docker run reference}.}
+used.}
 
 \item{containerDefinitions}{[required] A list of container definitions in JSON format that describe the
 different containers that make up your task.}
@@ -214,11 +211,10 @@ If \code{task} is specified, all containers within the specified task share
 the same process namespace.
 
 If no value is specified, the default is a private namespace for each
-container. For more information, see \href{https://docs.docker.com/engine/reference/run/#pid-settings---pid}{PID settings}
-in the \emph{Docker run reference}.
+container.
 
 If the \code{host} PID mode is used, there's a heightened risk of undesired
-process namespace exposure. For more information, see \href{https://docs.docker.com/engine/security/}{Docker security}.
+process namespace exposure.
 
 This parameter is not supported for Windows containers.
 
@@ -235,12 +231,10 @@ specified task share the same IPC resources. If \code{none} is specified,
 then IPC resources within the containers of a task are private and not
 shared with other containers in a task or on the container instance. If
 no value is specified, then the IPC resource namespace sharing depends
-on the Docker daemon setting on the container instance. For more
-information, see \href{https://docs.docker.com/engine/reference/run/#ipc-settings---ipc}{IPC settings}
-in the \emph{Docker run reference}.
+on the Docker daemon setting on the container instance.
 
 If the \code{host} IPC mode is used, be aware that there is a heightened risk
-of undesired IPC namespace expose. For more information, see \href{https://docs.docker.com/engine/security/}{Docker security}.
+of undesired IPC namespace expose.
 
 If you are setting namespaced kernel parameters using \code{systemControls}
 for the containers in the task, the following will apply to your IPC

@@ -128,7 +128,7 @@ build time you consume. For more information about CodeBuild, see the
 \link[paws.developer.tools:codebuild_describe_test_cases]{describe_test_cases} \tab Returns a list of details about test cases for a report\cr
 \link[paws.developer.tools:codebuild_get_report_group_trend]{get_report_group_trend} \tab Analyzes and accumulates test report values for the specified test reports\cr
 \link[paws.developer.tools:codebuild_get_resource_policy]{get_resource_policy} \tab Gets a resource policy that is identified by its resource ARN\cr
-\link[paws.developer.tools:codebuild_import_source_credentials]{import_source_credentials} \tab Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository\cr
+\link[paws.developer.tools:codebuild_import_source_credentials]{import_source_credentials} \tab Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, GitLab, GitLab Self Managed, or Bitbucket repository\cr
 \link[paws.developer.tools:codebuild_invalidate_project_cache]{invalidate_project_cache} \tab Resets the cache for a project\cr
 \link[paws.developer.tools:codebuild_list_build_batches]{list_build_batches} \tab Retrieves the identifiers of your build batches in the current region\cr
 \link[paws.developer.tools:codebuild_list_build_batches_for_project]{list_build_batches_for_project} \tab Retrieves the identifiers of the build batches for a specific project\cr
