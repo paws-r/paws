@@ -2,8 +2,7 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_describe_trust_stores}
 \alias{elbv2_describe_trust_stores}
-\title{Describes all trust stores for a given account by trust store arn’s or
-name}
+\title{Describes all trust stores for the specified account}
 \usage{
 elbv2_describe_trust_stores(
   TrustStoreArns = NULL,
@@ -23,7 +22,7 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \description{
-Describes all trust stores for a given account by trust store arn’s or name.
+Describes all trust stores for the specified account.
 
 See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_trust_stores/} for full documentation.
 }

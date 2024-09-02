@@ -83,28 +83,28 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 }
 .lambda$operations$add_layer_version_permission <- lambda_add_layer_version_permission
 
-#' Grants an Amazon Web Service, Amazon Web Services account, or Amazon Web
-#' Services organization permission to use a function
+#' Grants an Amazon Web Servicesservice, Amazon Web Services account, or
+#' Amazon Web Services organization permission to use a function
 #'
 #' @description
-#' Grants an Amazon Web Service, Amazon Web Services account, or Amazon Web
-#' Services organization permission to use a function. You can apply the
-#' policy at the function level, or specify a qualifier to restrict access
-#' to a single version or alias. If you use a qualifier, the invoker must
-#' use the full Amazon Resource Name (ARN) of that version or alias to
-#' invoke the function. Note: Lambda does not support adding policies to
-#' version $LATEST.
+#' Grants an Amazon Web Servicesservice, Amazon Web Services account, or
+#' Amazon Web Services organization permission to use a function. You can
+#' apply the policy at the function level, or specify a qualifier to
+#' restrict access to a single version or alias. If you use a qualifier,
+#' the invoker must use the full Amazon Resource Name (ARN) of that version
+#' or alias to invoke the function. Note: Lambda does not support adding
+#' policies to version $LATEST.
 #' 
 #' To grant permission to another account, specify the account ID as the
 #' `Principal`. To grant permission to an organization defined in
 #' Organizations, specify the organization ID as the `PrincipalOrgID`. For
-#' Amazon Web Services, the principal is a domain-style identifier that the
-#' service defines, such as `s3.amazonaws.com` or `sns.amazonaws.com`. For
-#' Amazon Web Services, you can also specify the ARN of the associated
-#' resource as the `SourceArn`. If you grant permission to a service
-#' principal without specifying the source, other accounts could
-#' potentially configure resources in their account to invoke your Lambda
-#' function.
+#' Amazon Web Servicesservices, the principal is a domain-style identifier
+#' that the service defines, such as `s3.amazonaws.com` or
+#' `sns.amazonaws.com`. For Amazon Web Servicesservices, you can also
+#' specify the ARN of the associated resource as the `SourceArn`. If you
+#' grant permission to a service principal without specifying the source,
+#' other accounts could potentially configure resources in their account to
+#' invoke your Lambda function.
 #' 
 #' This operation adds a statement to a resource-based permissions policy
 #' for the function. For more information about function policies, see
@@ -135,19 +135,21 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' the same policy.
 #' @param Action &#91;required&#93; The action that the principal can use on the function. For example,
 #' `lambda:InvokeFunction` or `lambda:GetFunction`.
-#' @param Principal &#91;required&#93; The Amazon Web Service or Amazon Web Services account that invokes the
-#' function. If you specify a service, use `SourceArn` or `SourceAccount`
-#' to limit who can invoke the function through that service.
-#' @param SourceArn For Amazon Web Services, the ARN of the Amazon Web Services resource
-#' that invokes the function. For example, an Amazon S3 bucket or Amazon
-#' SNS topic.
+#' @param Principal &#91;required&#93; The Amazon Web Servicesservice or Amazon Web Services account that
+#' invokes the function. If you specify a service, use `SourceArn` or
+#' `SourceAccount` to limit who can invoke the function through that
+#' service.
+#' @param SourceArn For Amazon Web Servicesservices, the ARN of the Amazon Web Services
+#' resource that invokes the function. For example, an Amazon S3 bucket or
+#' Amazon SNS topic.
 #' 
 #' Note that Lambda configures the comparison using the `StringLike`
 #' operator.
-#' @param SourceAccount For Amazon Web Service, the ID of the Amazon Web Services account that
-#' owns the resource. Use this together with `SourceArn` to ensure that the
-#' specified account owns the resource. It is possible for an Amazon S3
-#' bucket to be deleted by its owner and recreated by another account.
+#' @param SourceAccount For Amazon Web Servicesservice, the ID of the Amazon Web Services
+#' account that owns the resource. Use this together with `SourceArn` to
+#' ensure that the specified account owns the resource. It is possible for
+#' an Amazon S3 bucket to be deleted by its owner and recreated by another
+#' account.
 #' @param EventSourceToken For Alexa Smart Home functions, a token that the invoker must supply.
 #' @param Qualifier Specify a version or alias to add permissions to a published version of
 #' the function.
@@ -463,7 +465,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   TumblingWindowInSeconds, Topics, Queues, SourceAccessConfigurations,
 #'   SelfManagedEventSource, FunctionResponseTypes,
 #'   AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig,
-#'   ScalingConfig, DocumentDBEventSourceConfig)
+#'   ScalingConfig, DocumentDBEventSourceConfig, KMSKeyArn)
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -530,16 +532,17 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' `MaximumBatchingWindowInSeconds` to any value from 0 seconds to 300
 #' seconds in increments of seconds.
 #' 
-#' For streams and Amazon SQS event sources, the default batching window is
-#' 0 seconds. For Amazon MSK, Self-managed Apache Kafka, Amazon MQ, and
-#' DocumentDB event sources, the default batching window is 500 ms. Note
-#' that because you can only change `MaximumBatchingWindowInSeconds` in
-#' increments of seconds, you cannot revert back to the 500 ms default
-#' batching window after you have changed it. To restore the default
-#' batching window, you must create a new event source mapping.
+#' For Kinesis, DynamoDB, and Amazon SQS event sources, the default
+#' batching window is 0 seconds. For Amazon MSK, Self-managed Apache Kafka,
+#' Amazon MQ, and DocumentDB event sources, the default batching window is
+#' 500 ms. Note that because you can only change
+#' `MaximumBatchingWindowInSeconds` in increments of seconds, you cannot
+#' revert back to the 500 ms default batching window after you have changed
+#' it. To restore the default batching window, you must create a new event
+#' source mapping.
 #' 
-#' Related setting: For streams and Amazon SQS event sources, when you set
-#' `BatchSize` to a value greater than 10, you must set
+#' Related setting: For Kinesis, DynamoDB, and Amazon SQS event sources,
+#' when you set `BatchSize` to a value greater than 10, you must set
 #' `MaximumBatchingWindowInSeconds` to at least 1.
 #' @param ParallelizationFactor (Kinesis and DynamoDB Streams only) The number of batches to process
 #' from each shard concurrently.
@@ -578,6 +581,11 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' event
 #' sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
 #' @param DocumentDBEventSourceConfig Specific configuration settings for a DocumentDB event source.
+#' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that
+#' Lambda uses to encrypt your function's [filter
+#' criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics).
+#' By default, Lambda does not encrypt your filter criteria object. Specify
+#' this property to encrypt data using your own customer managed key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -653,6 +661,11 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
 #'   )
 #' )
 #' ```
@@ -724,7 +737,8 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
-#'   )
+#'   ),
+#'   KMSKeyArn = "string"
 #' )
 #' ```
 #'
@@ -733,7 +747,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @rdname lambda_create_event_source_mapping
 #'
 #' @aliases lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
@@ -741,7 +755,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     host_prefix = "",
     paginator = list()
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -760,8 +774,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role).
 #' The deployment package is a .zip file archive or container image that
 #' contains your function code. The execution role grants the function
-#' permission to use Amazon Web Services, such as Amazon CloudWatch Logs
-#' for log streaming and X-Ray for request tracing.
+#' permission to use Amazon Web Servicesservices, such as Amazon CloudWatch
+#' Logs for log streaming and X-Ray for request tracing.
 #' 
 #' If the deployment package is a [container
 #' image](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html),
@@ -814,15 +828,15 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' publisher. The code-signing configuration includes set of signing
 #' profiles, which define the trusted publishers for this function.
 #' 
-#' If another Amazon Web Services account or an Amazon Web Service invokes
-#' your function, use [`add_permission`][lambda_add_permission] to grant
-#' permission by creating a resource-based Identity and Access Management
-#' (IAM) policy. You can grant permissions at the function level, on a
-#' version, or on an alias.
+#' If another Amazon Web Services account or an Amazon Web Servicesservice
+#' invokes your function, use [`add_permission`][lambda_add_permission] to
+#' grant permission by creating a resource-based Identity and Access
+#' Management (IAM) policy. You can grant permissions at the function
+#' level, on a version, or on an alias.
 #' 
 #' To invoke your function directly, use [`invoke`][lambda_invoke]. To
-#' invoke your function in response to events in other Amazon Web Services,
-#' create an event source mapping
+#' invoke your function in response to events in other Amazon Web
+#' Servicesservices, create an event source mapping
 #' ([`create_event_source_mapping`][lambda_create_event_source_mapping]),
 #' or configure a function trigger in the other service. For more
 #' information, see [Invoking Lambda
@@ -851,10 +865,16 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @param Runtime The identifier of the function's
 #' [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 #' Runtime is required if the deployment package is a .zip file archive.
+#' Specifying a runtime results in an error if you're deploying a function
+#' using a container image.
 #' 
-#' The following list includes deprecated runtimes. For more information,
-#' see [Runtime deprecation
-#' policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
+#' The following list includes deprecated runtimes. Lambda blocks creating
+#' new functions and updating existing functions shortly after each runtime
+#' is deprecated. For more information, see [Runtime use after
+#' deprecation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels).
+#' 
+#' For a list of all currently supported runtimes, see [Supported
+#' runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported).
 #' @param Role &#91;required&#93; The Amazon Resource Name (ARN) of the function's execution role.
 #' @param Handler The name of the method within your code that Lambda calls to run your
 #' function. Handler is required if the deployment package is a .zip file
@@ -1459,6 +1479,11 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
 #'   )
 #' )
 #' ```
@@ -1503,8 +1528,9 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' 
 #' To delete Lambda event source mappings that invoke a function, use
 #' [`delete_event_source_mapping`][lambda_delete_event_source_mapping]. For
-#' Amazon Web Services and resources that invoke your function directly,
-#' delete the trigger in the service where you originally configured it.
+#' Amazon Web Servicesservices and resources that invoke your function
+#' directly, delete the trigger in the service where you originally
+#' configured it.
 #'
 #' @usage
 #' lambda_delete_function(FunctionName, Qualifier)
@@ -2178,6 +2204,11 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
 #'   )
 #' )
 #' ```
@@ -2771,6 +2802,56 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
   return(response)
 }
 .lambda$operations$get_function_event_invoke_config <- lambda_get_function_event_invoke_config
+
+#' Returns your function's recursive loop detection configuration
+#'
+#' @description
+#' Returns your function's [recursive loop
+#' detection](https://docs.aws.amazon.com/lambda/latest/dg/invocation-recursion.html)
+#' configuration.
+#'
+#' @usage
+#' lambda_get_function_recursion_config(FunctionName)
+#'
+#' @param FunctionName &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecursiveLoop = "Allow"|"Terminate"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_function_recursion_config(
+#'   FunctionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_function_recursion_config
+#'
+#' @aliases lambda_get_function_recursion_config
+lambda_get_function_recursion_config <- function(FunctionName) {
+  op <- new_operation(
+    name = "GetFunctionRecursionConfig",
+    http_method = "GET",
+    http_path = "/2024-08-31/functions/{FunctionName}/recursion-config",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .lambda$get_function_recursion_config_input(FunctionName = FunctionName)
+  output <- .lambda$get_function_recursion_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_function_recursion_config <- lambda_get_function_recursion_config
 
 #' Returns details about a Lambda function URL
 #'
@@ -3860,6 +3941,11 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #'         DatabaseName = "string",
 #'         CollectionName = "string",
 #'         FullDocument = "UpdateLookup"|"Default"
+#'       ),
+#'       KMSKeyArn = "string",
+#'       FilterCriteriaError = list(
+#'         ErrorCode = "string",
+#'         Message = "string"
 #'       )
 #'     )
 #'   )
@@ -4335,11 +4421,14 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
 #'   MaxItems, CompatibleArchitecture)
 #'
-#' @param CompatibleRuntime A runtime identifier. For example, `java21`.
+#' @param CompatibleRuntime A runtime identifier.
 #' 
 #' The following list includes deprecated runtimes. For more information,
-#' see [Runtime deprecation
-#' policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
+#' see [Runtime use after
+#' deprecation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels).
+#' 
+#' For a list of all currently supported runtimes, see [Supported
+#' runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported).
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of versions to return.
@@ -4421,11 +4510,14 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' lambda_list_layers(CompatibleRuntime, Marker, MaxItems,
 #'   CompatibleArchitecture)
 #'
-#' @param CompatibleRuntime A runtime identifier. For example, `java21`.
+#' @param CompatibleRuntime A runtime identifier.
 #' 
 #' The following list includes deprecated runtimes. For more information,
-#' see [Runtime deprecation
-#' policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
+#' see [Runtime use after
+#' deprecation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels).
+#' 
+#' For a list of all currently supported runtimes, see [Supported
+#' runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported).
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of layers to return.
 #' @param CompatibleArchitecture The compatible [instruction set
@@ -5367,6 +5459,102 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 }
 .lambda$operations$put_function_event_invoke_config <- lambda_put_function_event_invoke_config
 
+#' Sets your function's recursive loop detection configuration
+#'
+#' @description
+#' Sets your function's [recursive loop
+#' detection](https://docs.aws.amazon.com/lambda/latest/dg/invocation-recursion.html)
+#' configuration.
+#' 
+#' When you configure a Lambda function to output to the same service or
+#' resource that invokes the function, it's possible to create an infinite
+#' recursive loop. For example, a Lambda function might write a message to
+#' an Amazon Simple Queue Service (Amazon SQS) queue, which then invokes
+#' the same function. This invocation causes the function to write another
+#' message to the queue, which in turn invokes the function again.
+#' 
+#' Lambda can detect certain types of recursive loops shortly after they
+#' occur. When Lambda detects a recursive loop and your function's
+#' recursive loop detection configuration is set to `Terminate`, it stops
+#' your function being invoked and notifies you.
+#'
+#' @usage
+#' lambda_put_function_recursion_config(FunctionName, RecursiveLoop)
+#'
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** – `my-function`.
+#' 
+#' -   **Function ARN** –
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** – `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param RecursiveLoop &#91;required&#93; If you set your function's recursive loop detection configuration to
+#' `Allow`, Lambda doesn't take any action when it detects your function
+#' being invoked as part of a recursive loop. We recommend that you only
+#' use this setting if your design intentionally uses a Lambda function to
+#' write data back to the same Amazon Web Services resource that invokes
+#' it.
+#' 
+#' If you set your function's recursive loop detection configuration to
+#' `Terminate`, Lambda stops your function being invoked and notifies you
+#' when it detects your function being invoked as part of a recursive loop.
+#' 
+#' By default, Lambda sets your function's configuration to `Terminate`.
+#' 
+#' If your design intentionally uses a Lambda function to write data back
+#' to the same Amazon Web Services resource that invokes the function, then
+#' use caution and implement suitable guard rails to prevent unexpected
+#' charges being billed to your Amazon Web Services account. To learn more
+#' about best practices for using recursive invocation patterns, see
+#' [Recursive patterns that cause run-away Lambda
+#' functions](https://serverlessland.com/content/service/lambda/guides/aws-lambda-operator-guide/recursive-runaway)
+#' in Serverless Land.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecursiveLoop = "Allow"|"Terminate"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_function_recursion_config(
+#'   FunctionName = "string",
+#'   RecursiveLoop = "Allow"|"Terminate"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_put_function_recursion_config
+#'
+#' @aliases lambda_put_function_recursion_config
+lambda_put_function_recursion_config <- function(FunctionName, RecursiveLoop) {
+  op <- new_operation(
+    name = "PutFunctionRecursionConfig",
+    http_method = "PUT",
+    http_path = "/2024-08-31/functions/{FunctionName}/recursion-config",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .lambda$put_function_recursion_config_input(FunctionName = FunctionName, RecursiveLoop = RecursiveLoop)
+  output <- .lambda$put_function_recursion_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$put_function_recursion_config <- lambda_put_function_recursion_config
+
 #' Adds a provisioned concurrency configuration to a function's alias or
 #' version
 #'
@@ -5595,13 +5783,13 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 }
 .lambda$operations$remove_layer_version_permission <- lambda_remove_layer_version_permission
 
-#' Revokes function-use permission from an Amazon Web Service or another
-#' Amazon Web Services account
+#' Revokes function-use permission from an Amazon Web Servicesservice or
+#' another Amazon Web Services account
 #'
 #' @description
-#' Revokes function-use permission from an Amazon Web Service or another
-#' Amazon Web Services account. You can get the ID of the statement from
-#' the output of [`get_policy`][lambda_get_policy].
+#' Revokes function-use permission from an Amazon Web Servicesservice or
+#' another Amazon Web Services account. You can get the ID of the statement
+#' from the output of [`get_policy`][lambda_get_policy].
 #'
 #' @usage
 #' lambda_remove_permission(FunctionName, StatementId, Qualifier,
@@ -6008,7 +6196,8 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   DestinationConfig, MaximumRecordAgeInSeconds,
 #'   BisectBatchOnFunctionError, MaximumRetryAttempts, ParallelizationFactor,
 #'   SourceAccessConfigurations, TumblingWindowInSeconds,
-#'   FunctionResponseTypes, ScalingConfig, DocumentDBEventSourceConfig)
+#'   FunctionResponseTypes, ScalingConfig, DocumentDBEventSourceConfig,
+#'   KMSKeyArn)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #' @param FunctionName The name or ARN of the Lambda function.
@@ -6059,16 +6248,17 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' `MaximumBatchingWindowInSeconds` to any value from 0 seconds to 300
 #' seconds in increments of seconds.
 #' 
-#' For streams and Amazon SQS event sources, the default batching window is
-#' 0 seconds. For Amazon MSK, Self-managed Apache Kafka, Amazon MQ, and
-#' DocumentDB event sources, the default batching window is 500 ms. Note
-#' that because you can only change `MaximumBatchingWindowInSeconds` in
-#' increments of seconds, you cannot revert back to the 500 ms default
-#' batching window after you have changed it. To restore the default
-#' batching window, you must create a new event source mapping.
+#' For Kinesis, DynamoDB, and Amazon SQS event sources, the default
+#' batching window is 0 seconds. For Amazon MSK, Self-managed Apache Kafka,
+#' Amazon MQ, and DocumentDB event sources, the default batching window is
+#' 500 ms. Note that because you can only change
+#' `MaximumBatchingWindowInSeconds` in increments of seconds, you cannot
+#' revert back to the 500 ms default batching window after you have changed
+#' it. To restore the default batching window, you must create a new event
+#' source mapping.
 #' 
-#' Related setting: For streams and Amazon SQS event sources, when you set
-#' `BatchSize` to a value greater than 10, you must set
+#' Related setting: For Kinesis, DynamoDB, and Amazon SQS event sources,
+#' when you set `BatchSize` to a value greater than 10, you must set
 #' `MaximumBatchingWindowInSeconds` to at least 1.
 #' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
 #' configuration object that specifies the destination of an event after
@@ -6094,6 +6284,11 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' event
 #' sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
 #' @param DocumentDBEventSourceConfig Specific configuration settings for a DocumentDB event source.
+#' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that
+#' Lambda uses to encrypt your function's [filter
+#' criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics).
+#' By default, Lambda does not encrypt your filter criteria object. Specify
+#' this property to encrypt data using your own customer managed key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6169,6 +6364,11 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
+#'   ),
+#'   KMSKeyArn = "string",
+#'   FilterCriteriaError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
 #'   )
 #' )
 #' ```
@@ -6217,7 +6417,8 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
-#'   )
+#'   ),
+#'   KMSKeyArn = "string"
 #' )
 #' ```
 #'
@@ -6226,7 +6427,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @rdname lambda_update_event_source_mapping
 #'
 #' @aliases lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
@@ -6234,7 +6435,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     host_prefix = "",
     paginator = list()
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -6488,7 +6689,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' To configure function concurrency, use
 #' [`put_function_concurrency`][lambda_put_function_concurrency]. To grant
 #' invoke permissions to an Amazon Web Services account or Amazon Web
-#' Service, use [`add_permission`][lambda_add_permission].
+#' Servicesservice, use [`add_permission`][lambda_add_permission].
 #'
 #' @usage
 #' lambda_update_function_configuration(FunctionName, Role, Handler,
@@ -6538,10 +6739,16 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @param Runtime The identifier of the function's
 #' [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 #' Runtime is required if the deployment package is a .zip file archive.
+#' Specifying a runtime results in an error if you're deploying a function
+#' using a container image.
 #' 
-#' The following list includes deprecated runtimes. For more information,
-#' see [Runtime deprecation
-#' policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
+#' The following list includes deprecated runtimes. Lambda blocks creating
+#' new functions and updating existing functions shortly after each runtime
+#' is deprecated. For more information, see [Runtime use after
+#' deprecation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels).
+#' 
+#' For a list of all currently supported runtimes, see [Supported
+#' runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported).
 #' @param DeadLetterConfig A dead-letter queue configuration that specifies the queue or topic
 #' where Lambda sends asynchronous events when they fail processing. For
 #' more information, see [Dead-letter

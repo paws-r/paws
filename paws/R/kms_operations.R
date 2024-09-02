@@ -1277,7 +1277,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'     in a key policy because the new principal might not be immediately
 #'     visible to KMS. For more information, see [Changes that I make are
 #'     not always immediately
-#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
 #'     in the *Amazon Web Services Identity and Access Management User
 #'     Guide*.
 #' 
@@ -7030,7 +7030,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #'     in a key policy because the new principal might not be immediately
 #'     visible to KMS. For more information, see [Changes that I make are
 #'     not always immediately
-#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
 #'     in the *Amazon Web Services Identity and Access Management User
 #'     Guide*.
 #' 
@@ -7604,7 +7604,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #'     in a key policy because the new principal might not be immediately
 #'     visible to KMS. For more information, see [Changes that I make are
 #'     not always immediately
-#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
 #'     in the *Amazon Web Services Identity and Access Management User
 #'     Guide*.
 #' 

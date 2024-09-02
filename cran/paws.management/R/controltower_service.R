@@ -36,6 +36,8 @@ NULL
 #' 
 #'     -   [`list_landing_zones`][controltower_list_landing_zones]
 #' 
+#'     -   [`list_landing_zone_operations`][controltower_list_landing_zone_operations]
+#' 
 #'     -   [`reset_landing_zone`][controltower_reset_landing_zone]
 #' 
 #'     -   [`update_landing_zone`][controltower_update_landing_zone]
@@ -60,7 +62,7 @@ NULL
 #' 
 #'     -   [`update_enabled_baseline`][controltower_update_enabled_baseline]
 #' 
-#' -   [Tagging](https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html)
+#' -   [*Tagging*](https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html)
 #' 
 #'     -   [`list_tags_for_resource`][controltower_list_tags_for_resource]
 #' 
@@ -97,9 +99,12 @@ NULL
 #' You can view the `controlIdentifier` in the console on the **Control
 #' details** page, as well as in the documentation.
 #' 
-#' The `controlIdentifier` is unique in each Amazon Web Services Region for
-#' each control. You can find the `controlIdentifier` for each Region and
-#' control in the [Tables of control
+#' **About identifiers for Amazon Web Services Control Tower**
+#' 
+#' The Amazon Web Services Control Tower `controlIdentifier` is unique in
+#' each Amazon Web Services Region for each control. You can find the
+#' `controlIdentifier` for each Region and control in the [Tables of
+#' control
 #' metadata](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html)
 #' or the [Control availability by Region
 #' tables](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
@@ -113,11 +118,28 @@ NULL
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
 #' . Remember that *Mandatory* controls cannot be added or removed.
 #' 
-#' **ARN format:** `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}`
+#' **Some controls have two identifiers**
 #' 
-#' **Example:**
+#' -   **ARN format for Amazon Web Services Control Tower:**
+#'     `arn:aws:controltower:{REGION}::control/{CONTROL_TOWER_OPAQUE_ID}`
 #' 
-#' `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED`
+#'     **Example:**
+#' 
+#'     `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED`
+#' 
+#' -   **ARN format for Amazon Web Services Control Catalog:**
+#'     `arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}`
+#' 
+#' You can find the `{CONTROL_CATALOG_OPAQUE_ID}` in the [*Amazon Web
+#' Services Control Tower Controls Reference
+#' Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html)
+#' , or in the Amazon Web Services Control Tower console, on the **Control
+#' details** page.
+#' 
+#' The Amazon Web Services Control Tower APIs for enabled controls, such as
+#' [`get_enabled_control`][controltower_get_enabled_control] and
+#' [`list_enabled_controls`][controltower_list_enabled_controls] always
+#' return an ARN of the same type given when the control was enabled.
 #' 
 #' **To get the `targetIdentifier`:**
 #' 
@@ -166,6 +188,26 @@ NULL
 #' in the "Actions" section. For usage examples, see [Baseline API input
 #' and output examples with
 #' CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html).
+#' 
+#' **About Amazon Web Services Control Catalog identifiers**
+#' 
+#' -   The [`enable_control`][controltower_enable_control] and
+#'     [`disable_control`][controltower_disable_control] API operations can
+#'     be called by specifying either the Amazon Web Services Control Tower
+#'     identifer or the Amazon Web Services Control Catalog identifier. The
+#'     API response returns the same type of identifier that you specified
+#'     when calling the API.
+#' 
+#' -   If you use an Amazon Web Services Control Tower identifier to call
+#'     the [`enable_control`][controltower_enable_control] API, and then
+#'     call [`enable_control`][controltower_enable_control] again with an
+#'     Amazon Web Services Control Catalog identifier, Amazon Web Services
+#'     Control Tower returns an error message stating that the control is
+#'     already enabled. Similar behavior applies to the
+#'     [`disable_control`][controltower_disable_control] API operation.
+#' 
+#' -   Mandatory controls and the landing-zone-level Region deny control
+#'     have Amazon Web Services Control Tower identifiers only.
 #' 
 #' **Details and examples**
 #' 

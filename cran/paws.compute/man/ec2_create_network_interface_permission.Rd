@@ -18,7 +18,7 @@ ec2_create_network_interface_permission(
 
 \item{AwsAccountId}{The Amazon Web Services account ID.}
 
-\item{AwsService}{The Amazon Web Service. Currently not supported.}
+\item{AwsService}{The Amazon Web Services service. Currently not supported.}
 
 \item{Permission}{[required] The type of permission to grant.}
 

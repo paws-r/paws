@@ -72,8 +72,8 @@ network interface.
 \item \code{requester-id} - The alias or Amazon Web Services account ID of the
 principal or service that created the network interface.
 \item \code{requester-managed} - Indicates whether the network interface is
-being managed by an Amazon Web Service (for example, Amazon Web
-Services Management Console, Auto Scaling, and so on).
+being managed by an Amazon Web Services service (for example, Amazon
+Web Services Management Console, Auto Scaling, and so on).
 \item \code{source-dest-check} - Indicates whether the network interface
 performs source/destination checking. A value of \code{true} means
 checking is enabled, and \code{false} means checking is disabled. The

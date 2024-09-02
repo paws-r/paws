@@ -2,8 +2,8 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_recovery_points_by_resource}
 \alias{backup_list_recovery_points_by_resource}
-\title{Returns detailed information about all the recovery points of the type
-specified by a resource Amazon Resource Name (ARN)}
+\title{The information about the recovery points of the type specified by a
+resource Amazon Resource Name (ARN)}
 \usage{
 backup_list_recovery_points_by_resource(
   ResourceArn,
@@ -36,7 +36,7 @@ associated with the selected resource.
 Type: Boolean}
 }
 \description{
-Returns detailed information about all the recovery points of the type specified by a resource Amazon Resource Name (ARN).
+The information about the recovery points of the type specified by a resource Amazon Resource Name (ARN).
 
 See \url{https://www.paws-r-sdk.com/docs/backup_list_recovery_points_by_resource/} for full documentation.
 }

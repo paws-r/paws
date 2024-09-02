@@ -17,8 +17,7 @@ backup_start_restore_job(
 \item{RecoveryPointArn}{[required] An ARN that uniquely identifies a recovery point; for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 
-\item{Metadata}{[required] A set of metadata key-value pairs. Contains information, such as a
-resource name, required to restore a recovery point.
+\item{Metadata}{[required] A set of metadata key-value pairs.
 
 You can get configuration metadata about a resource at the time it was
 backed up by calling
@@ -28,28 +27,24 @@ However, values in addition to those provided by
 might be required to restore a resource. For example, you might need to
 provide a new resource name if the original already exists.
 
-You need to specify specific metadata to restore an Amazon Elastic File
-System (Amazon EFS) instance:
+For more information about the metadata for each resource, see the
+following:
 \itemize{
-\item \code{file-system-id}: The ID of the Amazon EFS file system that is
-backed up by Backup. Returned in
-\code{\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata}}.
-\item \code{Encrypted}: A Boolean value that, if true, specifies that the file
-system is encrypted. If \code{KmsKeyId} is specified, \code{Encrypted} must be
-set to \code{true}.
-\item \code{KmsKeyId}: Specifies the Amazon Web Services KMS key that is used
-to encrypt the restored file system. You can specify a key from
-another Amazon Web Services account provided that key it is properly
-shared with your account via Amazon Web Services KMS.
-\item \code{PerformanceMode}: Specifies the throughput mode of the file system.
-\item \code{CreationToken}: A user-supplied value that ensures the uniqueness
-(idempotency) of the request.
-\item \code{newFileSystem}: A Boolean value that, if true, specifies that the
-recovery point is restored to a new Amazon EFS file system.
-\item \code{ItemsToRestore}: An array of one to five strings where each string
-is a file path. Use \code{ItemsToRestore} to restore specific files or
-directories rather than the entire file system. This parameter is
-optional. For example, \verb{"itemsToRestore":"[\\"/my.test\\"]"}.
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-aur.html#aur-restore-cli}{Metadata for Amazon Aurora}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-docdb.html#docdb-restore-cli}{Metadata for Amazon DocumentDB}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-application-stacks.html#restoring-cfn-cli}{Metadata for CloudFormation}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-dynamodb.html#ddb-restore-cli}{Metadata for Amazon DynamoDB}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ebs.html#ebs-restore-cli}{Metadata for Amazon EBS}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ec2.html#restoring-ec2-cli}{Metadata for Amazon EC2}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-efs.html#efs-restore-cli}{Metadata for Amazon EFS}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-fsx.html#fsx-restore-cli}{Metadata for Amazon FSx}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-nep.html#nep-restore-cli}{Metadata for Amazon Neptune}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-rds.html#rds-restore-cli}{Metadata for Amazon RDS}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/redshift-restores.html#redshift-restore-api}{Metadata for Amazon Redshift}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-storage-gateway.html#restoring-sgw-cli}{Metadata for Storage Gateway}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-s3.html#s3-restore-cli}{Metadata for Amazon S3}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/timestream-restore.html#timestream-restore-api}{Metadata for Amazon Timestream}
+\item \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-vm.html#vm-restore-cli}{Metadata for virtual machines}
 }}
 
 \item{IamRoleArn}{The Amazon Resource Name (ARN) of the IAM role that Backup uses to
@@ -65,21 +60,21 @@ with no action taken.}
 \item{ResourceType}{Starts a job to restore a recovery point for one of the following
 resources:
 \itemize{
-\item \code{Aurora} for Amazon Aurora
-\item \code{DocumentDB} for Amazon DocumentDB (with MongoDB compatibility)
-\item \code{CloudFormation} for CloudFormation
-\item \code{DynamoDB} for Amazon DynamoDB
-\item \code{EBS} for Amazon Elastic Block Store
-\item \code{EC2} for Amazon Elastic Compute Cloud
-\item \code{EFS} for Amazon Elastic File System
-\item \code{FSx} for Amazon FSx
-\item \code{Neptune} for Amazon Neptune
-\item \code{RDS} for Amazon Relational Database Service
-\item \code{Redshift} for Amazon Redshift
-\item \verb{Storage Gateway} for Storage Gateway
-\item \code{S3} for Amazon S3
-\item \code{Timestream} for Amazon Timestream
-\item \code{VirtualMachine} for virtual machines
+\item \code{Aurora} - Amazon Aurora
+\item \code{DocumentDB} - Amazon DocumentDB
+\item \code{CloudFormation} - CloudFormation
+\item \code{DynamoDB} - Amazon DynamoDB
+\item \code{EBS} - Amazon Elastic Block Store
+\item \code{EC2} - Amazon Elastic Compute Cloud
+\item \code{EFS} - Amazon Elastic File System
+\item \code{FSx} - Amazon FSx
+\item \code{Neptune} - Amazon Neptune
+\item \code{RDS} - Amazon Relational Database Service
+\item \code{Redshift} - Amazon Redshift
+\item \verb{Storage Gateway} - Storage Gateway
+\item \code{S3} - Amazon Simple Storage Service
+\item \code{Timestream} - Amazon Timestream
+\item \code{VirtualMachine} - Virtual machines
 }}
 
 \item{CopySourceTagsToRestoredResource}{This is an optional parameter. If this equals \code{True}, tags included in

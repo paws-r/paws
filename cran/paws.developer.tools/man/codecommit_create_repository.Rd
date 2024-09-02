@@ -35,7 +35,8 @@ on a webpage.}
 \item{kmsKeyId}{The ID of the encryption key. You can view the ID of an encryption key
 in the KMS console, or use the KMS APIs to programmatically retrieve a
 key ID. For more information about acceptable values for kmsKeyID, see
-KeyId in the Decrypt API description in the \emph{Key Management Service API
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html#KMS-Decrypt-request-KeyId}{KeyId}
+in the Decrypt API description in the \emph{Key Management Service API
 Reference}.
 
 If no key is specified, the default \code{aws/codecommit} Amazon Web Services

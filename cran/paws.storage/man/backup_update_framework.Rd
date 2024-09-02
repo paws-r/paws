@@ -2,8 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_framework}
 \alias{backup_update_framework}
-\title{Updates an existing framework identified by its FrameworkName with the
-input document in JSON format}
+\title{Updates the specified framework}
 \usage{
 backup_update_framework(
   FrameworkName,
@@ -20,8 +19,8 @@ A-Z), numbers (0-9), and underscores (_).}
 \item{FrameworkDescription}{An optional description of the framework with a maximum 1,024
 characters.}
 
-\item{FrameworkControls}{A list of the controls that make up the framework. Each control in the
-list has a name, input parameters, and scope.}
+\item{FrameworkControls}{The controls that make up the framework. Each control in the list has a
+name, input parameters, and scope.}
 
 \item{IdempotencyToken}{A customer-chosen string that you can use to distinguish between
 otherwise identical calls to \code{UpdateFrameworkInput}. Retrying a
@@ -29,7 +28,7 @@ successful request with the same idempotency token results in a success
 message with no action taken.}
 }
 \description{
-Updates an existing framework identified by its \code{FrameworkName} with the input document in JSON format.
+Updates the specified framework.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_update_framework/} for full documentation.
 }

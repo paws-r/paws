@@ -8,10 +8,12 @@ data definition language (DDL)}
 redshiftdataapiservice_execute_statement(
   ClientToken = NULL,
   ClusterIdentifier = NULL,
-  Database,
+  Database = NULL,
   DbUser = NULL,
   Parameters = NULL,
   SecretArn = NULL,
+  SessionId = NULL,
+  SessionKeepAliveSeconds = NULL,
   Sql,
   StatementName = NULL,
   WithEvent = NULL,
@@ -26,7 +28,7 @@ idempotency of the request.}
 cluster and authenticating using either Secrets Manager or temporary
 credentials.}
 
-\item{Database}{[required] The name of the database. This parameter is required when authenticating
+\item{Database}{The name of the database. This parameter is required when authenticating
 using either Secrets Manager or temporary credentials.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
@@ -37,6 +39,12 @@ credentials.}
 
 \item{SecretArn}{The name or ARN of the secret that enables access to the database. This
 parameter is required when authenticating using Secrets Manager.}
+
+\item{SessionId}{The session identifier of the query.}
+
+\item{SessionKeepAliveSeconds}{The number of seconds to keep the session alive after the query
+finishes. The maximum time a session can keep alive is 24 hours. After
+24 hours, the session is forced closed and the query is terminated.}
 
 \item{Sql}{[required] The SQL statement text to run.}
 

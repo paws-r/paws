@@ -9,15 +9,15 @@ entityresolution_update_id_mapping_workflow(
   idMappingTechniques,
   inputSourceConfig,
   outputSourceConfig = NULL,
-  roleArn,
+  roleArn = NULL,
   workflowName
 )
 }
 \arguments{
 \item{description}{A description of the workflow.}
 
-\item{idMappingTechniques}{[required] An object which defines the \code{idMappingType} and the
-\code{providerProperties}.}
+\item{idMappingTechniques}{[required] An object which defines the ID mapping technique and any additional
+configurations.}
 
 \item{inputSourceConfig}{[required] A list of \code{InputSource} objects, which have the fields \code{InputSourceARN}
 and \code{SchemaName}.}
@@ -25,7 +25,7 @@ and \code{SchemaName}.}
 \item{outputSourceConfig}{A list of \code{OutputSource} objects, each of which contains fields
 \code{OutputS3Path} and \code{KMSArn}.}
 
-\item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+\item{roleArn}{The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 assumes this role to access Amazon Web Services resources on your
 behalf.}
 

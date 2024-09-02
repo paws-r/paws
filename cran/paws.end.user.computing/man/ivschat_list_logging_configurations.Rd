@@ -5,13 +5,13 @@
 \title{Gets summary information about all your logging configurations in the
 AWS region where the API request is processed}
 \usage{
-ivschat_list_logging_configurations(maxResults = NULL, nextToken = NULL)
+ivschat_list_logging_configurations(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{Maximum number of logging configurations to return. Default: 50.}
-
 \item{nextToken}{The first logging configurations to retrieve. This is used for
 pagination; see the \code{nextToken} response field.}
+
+\item{maxResults}{Maximum number of logging configurations to return. Default: 50.}
 }
 \description{
 Gets summary information about all your logging configurations in the AWS region where the API request is processed.

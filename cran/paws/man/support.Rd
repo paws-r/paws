@@ -92,8 +92,8 @@ you call the \code{create_case} operation.
 }
 
 You can also use the Amazon Web Services Support API to call the Trusted
-Advisor operations. For more information, see \href{https://docs.aws.amazon.com/}{Trusted Advisor} in the \emph{Amazon Web Services
-Support User Guide}.
+Advisor operations. For more information, see \href{https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html}{Trusted Advisor}
+in the \emph{Amazon Web Services Support User Guide}.
 
 For authentication of requests, Amazon Web Services Support uses
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.

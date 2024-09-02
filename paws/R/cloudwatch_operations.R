@@ -3283,7 +3283,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' called `AWSServiceRoleForCloudWatchEvents` and
 #' `AWSServiceRoleForCloudWatchAlarms_ActionSSM`. For more information, see
 #' [Amazon Web Services service-linked
-#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html#id_roles_terms-and-concepts).
 #' 
 #' Each [`put_metric_alarm`][cloudwatch_put_metric_alarm] action has a
 #' maximum uncompressed payload of 120 KB.

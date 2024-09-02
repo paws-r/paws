@@ -33,17 +33,16 @@ both.}
 
 \item{logStreamNames}{Filters the results to only logs from the log streams in this list.
 
-If you specify a value for both \code{logStreamNamePrefix} and
-\code{logStreamNames}, the action returns an \code{InvalidParameterException}
+If you specify a value for both \code{logStreamNames} and
+\code{logStreamNamePrefix}, the action returns an \code{InvalidParameterException}
 error.}
 
 \item{logStreamNamePrefix}{Filters the results to include only events from log streams that have
 names starting with this prefix.
 
 If you specify a value for both \code{logStreamNamePrefix} and
-\code{logStreamNames}, but the value for \code{logStreamNamePrefix} does not match
-any log stream names specified in \code{logStreamNames}, the action returns
-an \code{InvalidParameterException} error.}
+\code{logStreamNames}, the action returns an \code{InvalidParameterException}
+error.}
 
 \item{startTime}{The start of the time range, expressed as the number of milliseconds
 after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp before this

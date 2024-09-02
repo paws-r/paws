@@ -17,8 +17,7 @@ are identified by names that are unique to the account used to create
 them and the Amazon Web Services Region where they are created. They
 consist of letters, numbers, and hyphens.}
 
-\item{BackupVaultTags}{Metadata that you can assign to help organize the resources that you
-create. Each tag is a key-value pair.}
+\item{BackupVaultTags}{The tags to assign to the backup vault.}
 
 \item{EncryptionKeyArn}{The server-side encryption key that is used to protect your backups; for
 example,

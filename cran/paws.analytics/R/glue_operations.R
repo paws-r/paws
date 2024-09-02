@@ -495,6 +495,37 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
 }
 .glue$operations$batch_get_workflows <- glue_batch_get_workflows
 
+#' Annotate datapoints over time for a specific data quality statistic
+#'
+#' @description
+#' Annotate datapoints over time for a specific data quality statistic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_put_data_quality_statistic_annotation/](https://www.paws-r-sdk.com/docs/glue_batch_put_data_quality_statistic_annotation/) for full documentation.
+#'
+#' @param InclusionAnnotations &#91;required&#93; A list of `DatapointInclusionAnnotation`'s.
+#' @param ClientToken Client Token.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_put_data_quality_statistic_annotation
+glue_batch_put_data_quality_statistic_annotation <- function(InclusionAnnotations, ClientToken = NULL) {
+  op <- new_operation(
+    name = "BatchPutDataQualityStatisticAnnotation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$batch_put_data_quality_statistic_annotation_input(InclusionAnnotations = InclusionAnnotations, ClientToken = ClientToken)
+  output <- .glue$batch_put_data_quality_statistic_annotation_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_put_data_quality_statistic_annotation <- glue_batch_put_data_quality_statistic_annotation
+
 #' Stops one or more job runs for a specified job definition
 #'
 #' @description
@@ -935,6 +966,8 @@ glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NUL
 #' see the Glue developer guide.
 #' @param Tags A list of tags applied to the data quality ruleset.
 #' @param TargetTable A target table associated with the data quality ruleset.
+#' @param DataQualitySecurityConfiguration The name of the security configuration created with the data quality
+#' encryption option.
 #' @param ClientToken Used for idempotency and is recommended to be set to a random ID (such
 #' as a UUID) to avoid creating or starting multiple instances of the same
 #' resource.
@@ -942,7 +975,7 @@ glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NUL
 #' @keywords internal
 #'
 #' @rdname glue_create_data_quality_ruleset
-glue_create_data_quality_ruleset <- function(Name, Description = NULL, Ruleset, Tags = NULL, TargetTable = NULL, ClientToken = NULL) {
+glue_create_data_quality_ruleset <- function(Name, Description = NULL, Ruleset, Tags = NULL, TargetTable = NULL, DataQualitySecurityConfiguration = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateDataQualityRuleset",
     http_method = "POST",
@@ -950,7 +983,7 @@ glue_create_data_quality_ruleset <- function(Name, Description = NULL, Ruleset, 
     host_prefix = "",
     paginator = list()
   )
-  input <- .glue$create_data_quality_ruleset_input(Name = Name, Description = Description, Ruleset = Ruleset, Tags = Tags, TargetTable = TargetTable, ClientToken = ClientToken)
+  input <- .glue$create_data_quality_ruleset_input(Name = Name, Description = Description, Ruleset = Ruleset, Tags = Tags, TargetTable = TargetTable, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken)
   output <- .glue$create_data_quality_ruleset_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -1119,6 +1152,15 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' 
 #' When the `JobMode` field is missing or null, `SCRIPT` is assigned as the
 #' default value.
+#' @param JobRunQueuingEnabled Specifies whether job run queuing is enabled for the job runs for this
+#' job.
+#' 
+#' A value of true means job run queuing is enabled for the job runs. If
+#' false or not populated, the job runs will not be considered for
+#' queueing.
+#' 
+#' If this field does not match the value set in the job run, then the
+#' value from the job run field will be used.
 #' @param Description Description of the job being defined.
 #' @param LogUri This field is reserved for future use.
 #' @param Role &#91;required&#93; The name or Amazon Resource Name (ARN) of the IAM role associated with
@@ -1291,7 +1333,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @keywords internal
 #'
 #' @rdname glue_create_job
-glue_create_job <- function(Name, JobMode = NULL, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL, CodeGenConfigurationNodes = NULL, ExecutionClass = NULL, SourceControlDetails = NULL, MaintenanceWindow = NULL) {
+glue_create_job <- function(Name, JobMode = NULL, JobRunQueuingEnabled = NULL, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL, CodeGenConfigurationNodes = NULL, ExecutionClass = NULL, SourceControlDetails = NULL, MaintenanceWindow = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
@@ -1299,7 +1341,7 @@ glue_create_job <- function(Name, JobMode = NULL, Description = NULL, LogUri = N
     host_prefix = "",
     paginator = list()
   )
-  input <- .glue$create_job_input(Name = Name, JobMode = JobMode, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, CodeGenConfigurationNodes = CodeGenConfigurationNodes, ExecutionClass = ExecutionClass, SourceControlDetails = SourceControlDetails, MaintenanceWindow = MaintenanceWindow)
+  input <- .glue$create_job_input(Name = Name, JobMode = JobMode, JobRunQueuingEnabled = JobRunQueuingEnabled, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, CodeGenConfigurationNodes = CodeGenConfigurationNodes, ExecutionClass = ExecutionClass, SourceControlDetails = SourceControlDetails, MaintenanceWindow = MaintenanceWindow)
   output <- .glue$create_job_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -3433,6 +3475,69 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
 }
 .glue$operations$get_data_catalog_encryption_settings <- glue_get_data_catalog_encryption_settings
 
+#' Retrieve the training status of the model along with more information
+#' (CompletedOn, StartedOn, FailureReason)
+#'
+#' @description
+#' Retrieve the training status of the model along with more information (CompletedOn, StartedOn, FailureReason).
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_quality_model/](https://www.paws-r-sdk.com/docs/glue_get_data_quality_model/) for full documentation.
+#'
+#' @param StatisticId The Statistic ID.
+#' @param ProfileId &#91;required&#93; The Profile ID.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_data_quality_model
+glue_get_data_quality_model <- function(StatisticId = NULL, ProfileId) {
+  op <- new_operation(
+    name = "GetDataQualityModel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$get_data_quality_model_input(StatisticId = StatisticId, ProfileId = ProfileId)
+  output <- .glue$get_data_quality_model_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_data_quality_model <- glue_get_data_quality_model
+
+#' Retrieve a statistic's predictions for a given Profile ID
+#'
+#' @description
+#' Retrieve a statistic's predictions for a given Profile ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_quality_model_result/](https://www.paws-r-sdk.com/docs/glue_get_data_quality_model_result/) for full documentation.
+#'
+#' @param StatisticId &#91;required&#93; The Statistic ID.
+#' @param ProfileId &#91;required&#93; The Profile ID.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_data_quality_model_result
+glue_get_data_quality_model_result <- function(StatisticId, ProfileId) {
+  op <- new_operation(
+    name = "GetDataQualityModelResult",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$get_data_quality_model_result_input(StatisticId = StatisticId, ProfileId = ProfileId)
+  output <- .glue$get_data_quality_model_result_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_data_quality_model_result <- glue_get_data_quality_model_result
+
 #' Retrieves the result of a data quality rule evaluation
 #'
 #' @description
@@ -4689,11 +4794,13 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param IncludeStatusDetails Specifies whether to include status details related to a request to
+#' create or update an Glue Data Catalog view.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_table
-glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL) {
+glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, IncludeStatusDetails = NULL) {
   op <- new_operation(
     name = "GetTable",
     http_method = "POST",
@@ -4701,7 +4808,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
     host_prefix = "",
     paginator = list()
   )
-  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
+  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails)
   output <- .glue$get_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -4840,11 +4947,22 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param IncludeStatusDetails Specifies whether to include status details related to a request to
+#' create or update an Glue Data Catalog view.
+#' @param AttributesToGet Specifies the table fields returned by the
+#' [`get_tables`][glue_get_tables] call. This parameter doesn’t accept an
+#' empty list. The request must include `NAME`.
+#' 
+#' The following are the valid combinations of values:
+#' 
+#' -   `NAME` - Names of all tables in the database.
+#' 
+#' -   `NAME`, `TABLE_TYPE` - Names of all tables and the table types.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_tables
-glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL) {
+glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL, IncludeStatusDetails = NULL, AttributesToGet = NULL) {
   op <- new_operation(
     name = "GetTables",
     http_method = "POST",
@@ -4852,7 +4970,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
-  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
+  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
   output <- .glue$get_tables_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -5761,6 +5879,74 @@ glue_list_data_quality_rulesets <- function(NextToken = NULL, MaxResults = NULL,
 }
 .glue$operations$list_data_quality_rulesets <- glue_list_data_quality_rulesets
 
+#' Retrieve annotations for a data quality statistic
+#'
+#' @description
+#' Retrieve annotations for a data quality statistic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_data_quality_statistic_annotations/](https://www.paws-r-sdk.com/docs/glue_list_data_quality_statistic_annotations/) for full documentation.
+#'
+#' @param StatisticId The Statistic ID.
+#' @param ProfileId The Profile ID.
+#' @param TimestampFilter A timestamp filter.
+#' @param MaxResults The maximum number of results to return in this request.
+#' @param NextToken A pagination token to retrieve the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_data_quality_statistic_annotations
+glue_list_data_quality_statistic_annotations <- function(StatisticId = NULL, ProfileId = NULL, TimestampFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataQualityStatisticAnnotations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$list_data_quality_statistic_annotations_input(StatisticId = StatisticId, ProfileId = ProfileId, TimestampFilter = TimestampFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_data_quality_statistic_annotations_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_data_quality_statistic_annotations <- glue_list_data_quality_statistic_annotations
+
+#' Retrieves a list of data quality statistics
+#'
+#' @description
+#' Retrieves a list of data quality statistics.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_data_quality_statistics/](https://www.paws-r-sdk.com/docs/glue_list_data_quality_statistics/) for full documentation.
+#'
+#' @param StatisticId The Statistic ID.
+#' @param ProfileId The Profile ID.
+#' @param TimestampFilter A timestamp filter.
+#' @param MaxResults The maximum number of results to return in this request.
+#' @param NextToken A pagination token to request the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_data_quality_statistics
+glue_list_data_quality_statistics <- function(StatisticId = NULL, ProfileId = NULL, TimestampFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDataQualityStatistics",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$list_data_quality_statistics_input(StatisticId = StatisticId, ProfileId = ProfileId, TimestampFilter = TimestampFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_data_quality_statistics_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_data_quality_statistics <- glue_list_data_quality_statistics
+
 #' Retrieves the names of all DevEndpoint resources in this Amazon Web
 #' Services account, or the resources with the specified tag
 #'
@@ -6205,6 +6391,37 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 }
 .glue$operations$put_data_catalog_encryption_settings <- glue_put_data_catalog_encryption_settings
 
+#' Annotate all datapoints for a Profile
+#'
+#' @description
+#' Annotate all datapoints for a Profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_put_data_quality_profile_annotation/](https://www.paws-r-sdk.com/docs/glue_put_data_quality_profile_annotation/) for full documentation.
+#'
+#' @param ProfileId &#91;required&#93; The ID of the data quality monitoring profile to annotate.
+#' @param InclusionAnnotation &#91;required&#93; The inclusion annotation value to apply to the profile.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_data_quality_profile_annotation
+glue_put_data_quality_profile_annotation <- function(ProfileId, InclusionAnnotation) {
+  op <- new_operation(
+    name = "PutDataQualityProfileAnnotation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .glue$put_data_quality_profile_annotation_input(ProfileId = ProfileId, InclusionAnnotation = InclusionAnnotation)
+  output <- .glue$put_data_quality_profile_annotation_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_data_quality_profile_annotation <- glue_put_data_quality_profile_annotation
+
 #' Sets the Data Catalog resource policy for access control
 #'
 #' @description
@@ -6568,11 +6785,13 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #' 
 #' -   If set to `ALL`, will search the tables shared with your account, as
 #'     well as the tables in yor local account.
+#' @param IncludeStatusDetails Specifies whether to include status details related to a request to
+#' create or update an Glue Data Catalog view.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_search_tables
-glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NULL, SearchText = NULL, SortCriteria = NULL, MaxResults = NULL, ResourceShareType = NULL) {
+glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NULL, SearchText = NULL, SortCriteria = NULL, MaxResults = NULL, ResourceShareType = NULL, IncludeStatusDetails = NULL) {
   op <- new_operation(
     name = "SearchTables",
     http_method = "POST",
@@ -6580,7 +6799,7 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
-  input <- .glue$search_tables_input(CatalogId = CatalogId, NextToken = NextToken, Filters = Filters, SearchText = SearchText, SortCriteria = SortCriteria, MaxResults = MaxResults, ResourceShareType = ResourceShareType)
+  input <- .glue$search_tables_input(CatalogId = CatalogId, NextToken = NextToken, Filters = Filters, SearchText = SearchText, SortCriteria = SortCriteria, MaxResults = MaxResults, ResourceShareType = ResourceShareType, IncludeStatusDetails = IncludeStatusDetails)
   output <- .glue$search_tables_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -6740,6 +6959,8 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' can consume resources before it is terminated and enters `TIMEOUT`
 #' status. The default is 2,880 minutes (48 hours).
 #' @param CreatedRulesetName A name for the ruleset.
+#' @param DataQualitySecurityConfiguration The name of the security configuration created with the data quality
+#' encryption option.
 #' @param ClientToken Used for idempotency and is recommended to be set to a random ID (such
 #' as a UUID) to avoid creating or starting multiple instances of the same
 #' resource.
@@ -6747,7 +6968,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' @keywords internal
 #'
 #' @rdname glue_start_data_quality_rule_recommendation_run
-glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, NumberOfWorkers = NULL, Timeout = NULL, CreatedRulesetName = NULL, ClientToken = NULL) {
+glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, NumberOfWorkers = NULL, Timeout = NULL, CreatedRulesetName = NULL, DataQualitySecurityConfiguration = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "StartDataQualityRuleRecommendationRun",
     http_method = "POST",
@@ -6755,7 +6976,7 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
     host_prefix = "",
     paginator = list()
   )
-  input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, ClientToken = ClientToken)
+  input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken)
   output <- .glue$start_data_quality_rule_recommendation_run_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -6883,6 +7104,10 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' See [https://www.paws-r-sdk.com/docs/glue_start_job_run/](https://www.paws-r-sdk.com/docs/glue_start_job_run/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to use.
+#' @param JobRunQueuingEnabled Specifies whether job run queuing is enabled for the job run.
+#' 
+#' A value of true means job run queuing is enabled for the job run. If
+#' false or not populated, the job run will not be considered for queueing.
 #' @param JobRunId The ID of a previous `JobRun` to retry.
 #' @param Arguments The job arguments associated with this run. For this job run, they
 #' replace the default arguments set in the job definition itself.
@@ -7012,7 +7237,7 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' @keywords internal
 #'
 #' @rdname glue_start_job_run
-glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL) {
+glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL) {
   op <- new_operation(
     name = "StartJobRun",
     http_method = "POST",
@@ -7020,7 +7245,7 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
     host_prefix = "",
     paginator = list()
   )
-  input <- .glue$start_job_run_input(JobName = JobName, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass)
+  input <- .glue$start_job_run_input(JobName = JobName, JobRunQueuingEnabled = JobRunQueuingEnabled, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass)
   output <- .glue$start_job_run_output()
   config <- get_config()
   svc <- .glue$service(config, op)

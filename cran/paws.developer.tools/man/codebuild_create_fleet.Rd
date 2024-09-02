@@ -12,6 +12,7 @@ codebuild_create_fleet(
   scalingConfiguration = NULL,
   overflowBehavior = NULL,
   vpcConfig = NULL,
+  imageId = NULL,
   fleetServiceRole = NULL,
   tags = NULL
 )
@@ -38,6 +39,12 @@ Asia Pacific (Mumbai).
 regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
 (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
 (Sydney).
+\item The environment type \code{MAC_ARM} is available for Medium fleets only
+in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
+Asia Pacific (Sydney), and EU (Frankfurt)
+\item The environment type \code{MAC_ARM} is available for Large fleets only in
+regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
+Asia Pacific (Sydney).
 \item The environment type \code{WINDOWS_SERVER_2019_CONTAINER} is available
 only in regions US East (N. Virginia), US East (Ohio), US West
 (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
@@ -107,6 +114,8 @@ see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access
 }}
 
 \item{vpcConfig}{}
+
+\item{imageId}{The Amazon Machine Image (AMI) of the compute fleet.}
 
 \item{fleetServiceRole}{The service role associated with the compute fleet. For more
 information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-permission-policy-fleet-service-role.html}{Allow a user to add a permission policy for a fleet service role}

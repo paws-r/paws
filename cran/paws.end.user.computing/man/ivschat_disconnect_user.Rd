@@ -4,15 +4,15 @@
 \alias{ivschat_disconnect_user}
 \title{Disconnects all connections using a specified user ID from a room}
 \usage{
-ivschat_disconnect_user(reason = NULL, roomIdentifier, userId)
+ivschat_disconnect_user(roomIdentifier, userId, reason = NULL)
 }
 \arguments{
-\item{reason}{Reason for disconnecting the user.}
-
 \item{roomIdentifier}{[required] Identifier of the room from which the user's clients should be
 disconnected. Currently this must be an ARN.}
 
 \item{userId}{[required] ID of the user (connection) to disconnect from the room.}
+
+\item{reason}{Reason for disconnecting the user.}
 }
 \description{
 Disconnects all connections using a specified user ID from a room. This replicates the \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html}{DisconnectUser} WebSocket operation in the Amazon IVS Chat Messaging API.

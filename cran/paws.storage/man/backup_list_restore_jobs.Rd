@@ -41,13 +41,14 @@ resources:
 \item \code{EFS} for Amazon Elastic File System
 \item \code{FSx} for Amazon FSx
 \item \code{Neptune} for Amazon Neptune
-\item \code{Redshift} for Amazon Redshift
 \item \code{RDS} for Amazon Relational Database Service
-\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases
+\item \code{Redshift} for Amazon Redshift
+\item \code{S3} for Amazon Simple Storage Service (Amazon S3)
+\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases on Amazon Elastic
+Compute Cloud instances
 \item \verb{Storage Gateway} for Storage Gateway
-\item \code{S3} for Amazon S3
 \item \code{Timestream} for Amazon Timestream
-\item \code{VirtualMachine} for virtual machines
+\item \code{VirtualMachine} for VMware virtual machines
 }}
 
 \item{ByCreatedBefore}{Returns only restore jobs that were created before the specified date.}

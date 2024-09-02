@@ -106,6 +106,7 @@ Defines the public endpoint for the Glue service.
 \link[=glue_batch_get_table_optimizer]{batch_get_table_optimizer} \tab Returns the configuration for the specified table optimizers\cr
 \link[=glue_batch_get_triggers]{batch_get_triggers} \tab Returns a list of resource metadata for a given list of trigger names\cr
 \link[=glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names\cr
+\link[=glue_batch_put_data_quality_statistic_annotation]{batch_put_data_quality_statistic_annotation} \tab Annotate datapoints over time for a specific data quality statistic\cr
 \link[=glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition\cr
 \link[=glue_batch_update_partition]{batch_update_partition} \tab Updates one or more partitions in a batch operation\cr
 \link[=glue_cancel_data_quality_rule_recommendation_run]{cancel_data_quality_rule_recommendation_run} \tab Cancels the specified recommendation run that was being used to generate rules\cr
@@ -183,6 +184,8 @@ Defines the public endpoint for the Glue service.
 \link[=glue_get_databases]{get_databases} \tab Retrieves all databases defined in a given Data Catalog\cr
 \link[=glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog\cr
 \link[=glue_get_dataflow_graph]{get_dataflow_graph} \tab Transforms a Python script into a directed acyclic graph (DAG)\cr
+\link[=glue_get_data_quality_model]{get_data_quality_model} \tab Retrieve the training status of the model along with more information (CompletedOn, StartedOn, FailureReason)\cr
+\link[=glue_get_data_quality_model_result]{get_data_quality_model_result} \tab Retrieve a statistic's predictions for a given Profile ID\cr
 \link[=glue_get_data_quality_result]{get_data_quality_result} \tab Retrieves the result of a data quality rule evaluation\cr
 \link[=glue_get_data_quality_rule_recommendation_run]{get_data_quality_rule_recommendation_run} \tab Gets the specified recommendation run that was used to generate rules\cr
 \link[=glue_get_data_quality_ruleset]{get_data_quality_ruleset} \tab Returns an existing ruleset by identifier or name\cr
@@ -242,6 +245,8 @@ Defines the public endpoint for the Glue service.
 \link[=glue_list_data_quality_rule_recommendation_runs]{list_data_quality_rule_recommendation_runs} \tab Lists the recommendation runs meeting the filter criteria\cr
 \link[=glue_list_data_quality_ruleset_evaluation_runs]{list_data_quality_ruleset_evaluation_runs} \tab Lists all the runs meeting the filter criteria, where a ruleset is evaluated against a data source\cr
 \link[=glue_list_data_quality_rulesets]{list_data_quality_rulesets} \tab Returns a paginated list of rulesets for the specified list of Glue tables\cr
+\link[=glue_list_data_quality_statistic_annotations]{list_data_quality_statistic_annotations} \tab Retrieve annotations for a data quality statistic\cr
+\link[=glue_list_data_quality_statistics]{list_data_quality_statistics} \tab Retrieves a list of data quality statistics\cr
 \link[=glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[=glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[=glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag\cr
@@ -255,6 +260,7 @@ Defines the public endpoint for the Glue service.
 \link[=glue_list_usage_profiles]{list_usage_profiles} \tab List all the Glue usage profiles\cr
 \link[=glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
 \link[=glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
+\link[=glue_put_data_quality_profile_annotation]{put_data_quality_profile_annotation} \tab Annotate all datapoints for a Profile\cr
 \link[=glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control\cr
 \link[=glue_put_schema_version_metadata]{put_schema_version_metadata} \tab Puts the metadata key value pair for a specified schema version ID\cr
 \link[=glue_put_workflow_run_properties]{put_workflow_run_properties} \tab Puts the specified workflow run properties for the given workflow run\cr

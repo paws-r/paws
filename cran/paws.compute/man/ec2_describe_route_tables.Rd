@@ -34,7 +34,7 @@ route in the table.
 \item \code{route.destination-ipv6-cidr-block} - The IPv6 CIDR range specified
 in a route in the route table.
 \item \code{route.destination-prefix-list-id} - The ID (prefix) of the Amazon
-Web Service specified in a route in the table.
+Web Services service specified in a route in the table.
 \item \code{route.egress-only-internet-gateway-id} - The ID of an egress-only
 Internet gateway specified in a route in the route table.
 \item \code{route.gateway-id} - The ID of a gateway specified in a route in the

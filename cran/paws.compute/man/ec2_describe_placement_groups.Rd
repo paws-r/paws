@@ -39,13 +39,19 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupNames}{The names of the placement groups.
 
-Default: Describes all your placement groups, or only those otherwise
-specified.}
+Constraints:
+\itemize{
+\item You can specify a name only if the placement group is owned by your
+account.
+\item If a placement group is \emph{shared} with your account, specifying the
+name results in an error. You must use the \code{GroupId} parameter
+instead.
+}}
 
 \item{GroupIds}{The IDs of the placement groups.}
 }
 \description{
-Describes the specified placement groups or all of your placement groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups} in the \emph{Amazon EC2 User Guide}.
+Describes the specified placement groups or all of your placement groups.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_placement_groups/} for full documentation.
 }

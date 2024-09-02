@@ -129,6 +129,7 @@ that you use with MongoDB.
 \link[paws.database:docdb_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable instance options for the specified engine\cr
 \link[paws.database:docdb_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, instances) that have at least one pending maintenance action\cr
 \link[paws.database:docdb_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a cluster\cr
+\link[paws.database:docdb_failover_global_cluster]{failover_global_cluster} \tab Promotes the specified secondary DB cluster to be the primary DB cluster in the global cluster when failing over a global cluster occurs\cr
 \link[paws.database:docdb_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon DocumentDB resource\cr
 \link[paws.database:docdb_modify_db_cluster]{modify_db_cluster} \tab Modifies a setting for an Amazon DocumentDB cluster\cr
 \link[paws.database:docdb_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group} \tab Modifies the parameters of a cluster parameter group\cr

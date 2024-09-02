@@ -338,7 +338,92 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"
+#'           result = "ROLLBACK"|"FAIL",
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         onSuccess = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         beforeEntry = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -484,7 +569,92 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"
+#'           result = "ROLLBACK"|"FAIL",
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         onSuccess = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         beforeEntry = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1223,7 +1393,92 @@ codepipeline_get_job_details <- function(jobId) {
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"
+#'           result = "ROLLBACK"|"FAIL",
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         onSuccess = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         beforeEntry = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1511,6 +1766,147 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'         pipelineExecutionId = "string",
 #'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded",
 #'         type = "STANDARD"|"ROLLBACK"
+#'       ),
+#'       beforeEntryConditionState = list(
+#'         latestExecution = list(
+#'           status = "InProgress"|"Failed"|"Errored"|"Succeeded"|"Cancelled"|"Abandoned"|"Overridden",
+#'           summary = "string"
+#'         ),
+#'         conditionStates = list(
+#'           list(
+#'             latestExecution = list(
+#'               status = "InProgress"|"Failed"|"Errored"|"Succeeded"|"Cancelled"|"Abandoned"|"Overridden",
+#'               summary = "string",
+#'               lastStatusChange = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             ),
+#'             ruleStates = list(
+#'               list(
+#'                 ruleName = "string",
+#'                 currentRevision = list(
+#'                   revisionId = "string",
+#'                   revisionChangeId = "string",
+#'                   created = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 ),
+#'                 latestExecution = list(
+#'                   ruleExecutionId = "string",
+#'                   status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
+#'                   summary = "string",
+#'                   lastStatusChange = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   token = "string",
+#'                   lastUpdatedBy = "string",
+#'                   externalExecutionId = "string",
+#'                   externalExecutionUrl = "string",
+#'                   errorDetails = list(
+#'                     code = "string",
+#'                     message = "string"
+#'                   )
+#'                 ),
+#'                 entityUrl = "string",
+#'                 revisionUrl = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       onSuccessConditionState = list(
+#'         latestExecution = list(
+#'           status = "InProgress"|"Failed"|"Errored"|"Succeeded"|"Cancelled"|"Abandoned"|"Overridden",
+#'           summary = "string"
+#'         ),
+#'         conditionStates = list(
+#'           list(
+#'             latestExecution = list(
+#'               status = "InProgress"|"Failed"|"Errored"|"Succeeded"|"Cancelled"|"Abandoned"|"Overridden",
+#'               summary = "string",
+#'               lastStatusChange = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             ),
+#'             ruleStates = list(
+#'               list(
+#'                 ruleName = "string",
+#'                 currentRevision = list(
+#'                   revisionId = "string",
+#'                   revisionChangeId = "string",
+#'                   created = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 ),
+#'                 latestExecution = list(
+#'                   ruleExecutionId = "string",
+#'                   status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
+#'                   summary = "string",
+#'                   lastStatusChange = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   token = "string",
+#'                   lastUpdatedBy = "string",
+#'                   externalExecutionId = "string",
+#'                   externalExecutionUrl = "string",
+#'                   errorDetails = list(
+#'                     code = "string",
+#'                     message = "string"
+#'                   )
+#'                 ),
+#'                 entityUrl = "string",
+#'                 revisionUrl = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       onFailureConditionState = list(
+#'         latestExecution = list(
+#'           status = "InProgress"|"Failed"|"Errored"|"Succeeded"|"Cancelled"|"Abandoned"|"Overridden",
+#'           summary = "string"
+#'         ),
+#'         conditionStates = list(
+#'           list(
+#'             latestExecution = list(
+#'               status = "InProgress"|"Failed"|"Errored"|"Succeeded"|"Cancelled"|"Abandoned"|"Overridden",
+#'               summary = "string",
+#'               lastStatusChange = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             ),
+#'             ruleStates = list(
+#'               list(
+#'                 ruleName = "string",
+#'                 currentRevision = list(
+#'                   revisionId = "string",
+#'                   revisionChangeId = "string",
+#'                   created = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 ),
+#'                 latestExecution = list(
+#'                   ruleExecutionId = "string",
+#'                   status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
+#'                   summary = "string",
+#'                   lastStatusChange = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   token = "string",
+#'                   lastUpdatedBy = "string",
+#'                   externalExecutionId = "string",
+#'                   externalExecutionUrl = "string",
+#'                   errorDetails = list(
+#'                     code = "string",
+#'                     message = "string"
+#'                   )
+#'                 ),
+#'                 entityUrl = "string",
+#'                 revisionUrl = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2072,6 +2468,208 @@ codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
 }
 .codepipeline$operations$list_pipelines <- codepipeline_list_pipelines
 
+#' Lists the rule executions that have occurred in a pipeline configured
+#' for conditions with rules
+#'
+#' @description
+#' Lists the rule executions that have occurred in a pipeline configured
+#' for conditions with rules.
+#'
+#' @usage
+#' codepipeline_list_rule_executions(pipelineName, filter, maxResults,
+#'   nextToken)
+#'
+#' @param pipelineName &#91;required&#93; The name of the pipeline for which you want to get execution summary
+#' information.
+#' @param filter Input information used to filter rule execution history.
+#' @param maxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value. Pipeline history is limited to the most recent 12 months, based
+#' on pipeline execution start times. Default value is 100.
+#' @param nextToken The token that was returned from the previous
+#' [`list_rule_executions`][codepipeline_list_rule_executions] call, which
+#' can be used to return the next set of rule executions in the list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ruleExecutionDetails = list(
+#'     list(
+#'       pipelineExecutionId = "string",
+#'       ruleExecutionId = "string",
+#'       pipelineVersion = 123,
+#'       stageName = "string",
+#'       ruleName = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedBy = "string",
+#'       status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
+#'       input = list(
+#'         ruleTypeId = list(
+#'           category = "Rule",
+#'           owner = "AWS",
+#'           provider = "string",
+#'           version = "string"
+#'         ),
+#'         configuration = list(
+#'           "string"
+#'         ),
+#'         resolvedConfiguration = list(
+#'           "string"
+#'         ),
+#'         roleArn = "string",
+#'         region = "string",
+#'         inputArtifacts = list(
+#'           list(
+#'             name = "string",
+#'             s3location = list(
+#'               bucket = "string",
+#'               key = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       output = list(
+#'         executionResult = list(
+#'           externalExecutionId = "string",
+#'           externalExecutionSummary = "string",
+#'           externalExecutionUrl = "string",
+#'           errorDetails = list(
+#'             code = "string",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rule_executions(
+#'   pipelineName = "string",
+#'   filter = list(
+#'     pipelineExecutionId = "string",
+#'     latestInPipelineExecution = list(
+#'       pipelineExecutionId = "string",
+#'       startTimeRange = "Latest"|"All"
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_list_rule_executions
+#'
+#' @aliases codepipeline_list_rule_executions
+codepipeline_list_rule_executions <- function(pipelineName, filter = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListRuleExecutions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleExecutionDetails")
+  )
+  input <- .codepipeline$list_rule_executions_input(pipelineName = pipelineName, filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .codepipeline$list_rule_executions_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$list_rule_executions <- codepipeline_list_rule_executions
+
+#' Lists the rules for the condition
+#'
+#' @description
+#' Lists the rules for the condition.
+#'
+#' @usage
+#' codepipeline_list_rule_types(ruleOwnerFilter, regionFilter)
+#'
+#' @param ruleOwnerFilter The rule owner to filter on.
+#' @param regionFilter The rule Region to filter on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ruleTypes = list(
+#'     list(
+#'       id = list(
+#'         category = "Rule",
+#'         owner = "AWS",
+#'         provider = "string",
+#'         version = "string"
+#'       ),
+#'       settings = list(
+#'         thirdPartyConfigurationUrl = "string",
+#'         entityUrlTemplate = "string",
+#'         executionUrlTemplate = "string",
+#'         revisionUrlTemplate = "string"
+#'       ),
+#'       ruleConfigurationProperties = list(
+#'         list(
+#'           name = "string",
+#'           required = TRUE|FALSE,
+#'           key = TRUE|FALSE,
+#'           secret = TRUE|FALSE,
+#'           queryable = TRUE|FALSE,
+#'           description = "string",
+#'           type = "String"|"Number"|"Boolean"
+#'         )
+#'       ),
+#'       inputArtifactDetails = list(
+#'         minimumCount = 123,
+#'         maximumCount = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rule_types(
+#'   ruleOwnerFilter = "AWS",
+#'   regionFilter = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_list_rule_types
+#'
+#' @aliases codepipeline_list_rule_types
+codepipeline_list_rule_types <- function(ruleOwnerFilter = NULL, regionFilter = NULL) {
+  op <- new_operation(
+    name = "ListRuleTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .codepipeline$list_rule_types_input(ruleOwnerFilter = ruleOwnerFilter, regionFilter = regionFilter)
+  output <- .codepipeline$list_rule_types_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$list_rule_types <- codepipeline_list_rule_types
+
 #' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource
 #'
@@ -2222,6 +2820,58 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .codepipeline$operations$list_webhooks <- codepipeline_list_webhooks
+
+#' Used to override a stage condition
+#'
+#' @description
+#' Used to override a stage condition.
+#'
+#' @usage
+#' codepipeline_override_stage_condition(pipelineName, stageName,
+#'   pipelineExecutionId, conditionType)
+#'
+#' @param pipelineName &#91;required&#93; The name of the pipeline with the stage that will override the
+#' condition.
+#' @param stageName &#91;required&#93; The name of the stage for the override.
+#' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution for the override.
+#' @param conditionType &#91;required&#93; The type of condition to override for the stage, such as entry
+#' conditions, failure conditions, or success conditions.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$override_stage_condition(
+#'   pipelineName = "string",
+#'   stageName = "string",
+#'   pipelineExecutionId = "string",
+#'   conditionType = "BEFORE_ENTRY"|"ON_SUCCESS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_override_stage_condition
+#'
+#' @aliases codepipeline_override_stage_condition
+codepipeline_override_stage_condition <- function(pipelineName, stageName, pipelineExecutionId, conditionType) {
+  op <- new_operation(
+    name = "OverrideStageCondition",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .codepipeline$override_stage_condition_input(pipelineName = pipelineName, stageName = stageName, pipelineExecutionId = pipelineExecutionId, conditionType = conditionType)
+  output <- .codepipeline$override_stage_condition_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$override_stage_condition <- codepipeline_override_stage_condition
 
 #' Returns information about any jobs for CodePipeline to act on
 #'
@@ -3517,7 +4167,92 @@ codepipeline_update_action_type <- function(actionType) {
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"
+#'           result = "ROLLBACK"|"FAIL",
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         onSuccess = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         beforeEntry = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -3657,7 +4392,92 @@ codepipeline_update_action_type <- function(actionType) {
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"
+#'           result = "ROLLBACK"|"FAIL",
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         onSuccess = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         beforeEntry = list(
+#'           conditions = list(
+#'             list(
+#'               result = "ROLLBACK"|"FAIL",
+#'               rules = list(
+#'                 list(
+#'                   name = "string",
+#'                   ruleTypeId = list(
+#'                     category = "Rule",
+#'                     owner = "AWS",
+#'                     provider = "string",
+#'                     version = "string"
+#'                   ),
+#'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   inputArtifacts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   roleArn = "string",
+#'                   region = "string",
+#'                   timeoutInMinutes = 123
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),

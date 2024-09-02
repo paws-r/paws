@@ -2,7 +2,7 @@
 % Please edit documentation in R/personalize_operations.R
 \name{personalize_create_solution}
 \alias{personalize_create_solution}
-\title{After you create a solution, you can’t change its configuration}
+\title{By default, all new solutions use automatic training}
 \usage{
 personalize_create_solution(
   name,
@@ -46,9 +46,9 @@ the training frequency by specifying a \code{schedulingExpression} in the
 \code{AutoTrainingConfig} as part of solution configuration. For more
 information about automatic training, see \href{https://docs.aws.amazon.com/personalize/latest/dg/solution-config-auto-training.html}{Configuring automatic training}.
 
-Automatic solution version creation starts one hour after the solution
-is ACTIVE. If you manually create a solution version within the hour,
-the solution skips the first automatic training.
+Automatic solution version creation starts within one hour after the
+solution is ACTIVE. If you manually create a solution version within the
+hour, the solution skips the first automatic training.
 
 After training starts, you can get the solution version's Amazon
 Resource Name (ARN) with the
@@ -70,9 +70,9 @@ or 'like') is used for training the model.
 If you do not provide an \code{eventType}, Amazon Personalize will use all
 interactions for training with equal weight regardless of type.}
 
-\item{solutionConfig}{The configuration to use with the solution. When \code{performAutoML} is set
-to true, Amazon Personalize only evaluates the \code{autoMLConfig} section of
-the solution configuration.
+\item{solutionConfig}{The configuration properties for the solution. When \code{performAutoML} is
+set to true, Amazon Personalize only evaluates the \code{autoMLConfig}
+section of the solution configuration.
 
 Amazon Personalize doesn't support configuring the \code{hpoObjective} at
 this time.}
@@ -82,7 +82,7 @@ this time.}
 to apply to the solution.}
 }
 \description{
-After you create a solution, you can’t change its configuration. By default, all new solutions use automatic training. With automatic training, you incur training costs while your solution is active. You can't stop automatic training for a solution. To avoid unnecessary costs, make sure to delete the solution when you are finished. For information about training costs, see \href{https://aws.amazon.com/personalize/pricing/}{Amazon Personalize pricing}.
+By default, all new solutions use automatic training. With automatic training, you incur training costs while your solution is active. To avoid unnecessary costs, when you are finished you can \href{https://docs.aws.amazon.com/personalize/latest/dg/API_UpdateSolution.html}{update the solution} to turn off automatic training. For information about training costs, see \href{https://aws.amazon.com/personalize/pricing/}{Amazon Personalize pricing}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_create_solution/} for full documentation.
 }

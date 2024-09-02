@@ -11,7 +11,8 @@ ec2_allocate_address(
   NetworkBorderGroup = NULL,
   CustomerOwnedIpv4Pool = NULL,
   DryRun = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  IpamPoolId = NULL
 )
 }
 \arguments{
@@ -39,6 +40,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to assign to the Elastic IP address.}
+
+\item{IpamPoolId}{The ID of an IPAM pool.}
 }
 \description{
 Allocates an Elastic IP address to your Amazon Web Services account. After you allocate the Elastic IP address you can associate it with an instance or network interface. After you release an Elastic IP address, it is released to the IP address pool and can be allocated to a different Amazon Web Services account.

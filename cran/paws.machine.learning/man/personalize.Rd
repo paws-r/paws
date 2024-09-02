@@ -108,7 +108,7 @@ add individualized recommendations to customers.
 \link[=personalize_create_metric_attribution]{create_metric_attribution} \tab Creates a metric attribution\cr
 \link[=personalize_create_recommender]{create_recommender} \tab Creates a recommender with the recipe (a Domain dataset group use case) you specify\cr
 \link[=personalize_create_schema]{create_schema} \tab Creates an Amazon Personalize schema from the specified schema string\cr
-\link[=personalize_create_solution]{create_solution} \tab After you create a solution, you can’t change its configuration\cr
+\link[=personalize_create_solution]{create_solution} \tab By default, all new solutions use automatic training\cr
 \link[=personalize_create_solution_version]{create_solution_version} \tab Trains or retrains an active solution in a Custom dataset group\cr
 \link[=personalize_delete_campaign]{delete_campaign} \tab Removes a campaign by deleting the solution deployment\cr
 \link[=personalize_delete_dataset]{delete_dataset} \tab Deletes a dataset\cr
@@ -164,7 +164,8 @@ add individualized recommendations to customers.
 \link[=personalize_update_campaign]{update_campaign} \tab Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's minProvisionedTPS, or modify your campaign's configuration\cr
 \link[=personalize_update_dataset]{update_dataset} \tab Update a dataset to replace its schema with a new or existing one\cr
 \link[=personalize_update_metric_attribution]{update_metric_attribution} \tab Updates a metric attribution\cr
-\link[=personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration
+\link[=personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration\cr
+\link[=personalize_update_solution]{update_solution} \tab Updates an Amazon Personalize solution to use a different automatic training configuration
 }
 }
 

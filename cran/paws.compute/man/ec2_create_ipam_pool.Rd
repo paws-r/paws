@@ -32,14 +32,21 @@ you have the required permissions, the error response is
 
 \item{IpamScopeId}{[required] The ID of the scope in which you would like to create the IPAM pool.}
 
-\item{Locale}{In IPAM, the locale is the Amazon Web Services Region or, for IPAM IPv4
-pools in the public scope, the network border group for an Amazon Web
-Services Local Zone where you want to make an IPAM pool available for
-allocations (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail}{supported Local Zones}).
+\item{Locale}{The locale for the pool should be one of the following:
+\itemize{
+\item An Amazon Web Services Region where you want this IPAM pool to be
+available for allocations.
+\item The network border group for an Amazon Web Services Local Zone where
+you want this IPAM pool to be available for allocations (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail}{supported Local Zones}).
+This option is only available for IPAM IPv4 pools in the public
+scope.
+}
+
 If you do not choose a locale, resources in Regions others than the
 IPAM's home region cannot use CIDRs from this pool.
 
-Possible values: Any Amazon Web Services Region, such as us-east-1.}
+Possible values: Any Amazon Web Services Region or supported Amazon Web
+Services Local Zone.}
 
 \item{SourceIpamPoolId}{The ID of the source IPAM pool. Use this option to create a pool within
 an existing pool. Note that the CIDR you provision for the pool within

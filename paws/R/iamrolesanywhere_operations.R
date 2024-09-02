@@ -14,10 +14,12 @@ NULL
 #' **Required permissions:** `rolesanywhere:CreateProfile`.
 #'
 #' @usage
-#' iamrolesanywhere_create_profile(durationSeconds, enabled,
-#'   managedPolicyArns, name, requireInstanceProperties, roleArns,
+#' iamrolesanywhere_create_profile(acceptRoleSessionName, durationSeconds,
+#'   enabled, managedPolicyArns, name, requireInstanceProperties, roleArns,
 #'   sessionPolicy, tags)
 #'
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
@@ -40,6 +42,7 @@ NULL
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -77,6 +80,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_profile(
+#'   acceptRoleSessionName = TRUE|FALSE,
 #'   durationSeconds = 123,
 #'   enabled = TRUE|FALSE,
 #'   managedPolicyArns = list(
@@ -102,7 +106,7 @@ NULL
 #' @rdname iamrolesanywhere_create_profile
 #'
 #' @aliases iamrolesanywhere_create_profile
-iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NULL, managedPolicyArns = NULL, name, requireInstanceProperties = NULL, roleArns, sessionPolicy = NULL, tags = NULL) {
+iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, enabled = NULL, managedPolicyArns = NULL, name, requireInstanceProperties = NULL, roleArns, sessionPolicy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
@@ -110,7 +114,7 @@ iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NU
     host_prefix = "",
     paginator = list()
   )
-  input <- .iamrolesanywhere$create_profile_input(durationSeconds = durationSeconds, enabled = enabled, managedPolicyArns = managedPolicyArns, name = name, requireInstanceProperties = requireInstanceProperties, roleArns = roleArns, sessionPolicy = sessionPolicy, tags = tags)
+  input <- .iamrolesanywhere$create_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, enabled = enabled, managedPolicyArns = managedPolicyArns, name = name, requireInstanceProperties = requireInstanceProperties, roleArns = roleArns, sessionPolicy = sessionPolicy, tags = tags)
   output <- .iamrolesanywhere$create_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -251,6 +255,7 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -399,6 +404,7 @@ iamrolesanywhere_delete_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -621,6 +627,7 @@ iamrolesanywhere_disable_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -844,6 +851,7 @@ iamrolesanywhere_enable_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -1066,6 +1074,7 @@ iamrolesanywhere_get_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -1476,6 +1485,7 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
 #'   nextToken = "string",
 #'   profiles = list(
 #'     list(
+#'       acceptRoleSessionName = TRUE|FALSE,
 #'       attributeMappings = list(
 #'         list(
 #'           certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -1777,6 +1787,7 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -2208,9 +2219,11 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' **Required permissions:** `rolesanywhere:UpdateProfile`.
 #'
 #' @usage
-#' iamrolesanywhere_update_profile(durationSeconds, managedPolicyArns,
-#'   name, profileId, roleArns, sessionPolicy)
+#' iamrolesanywhere_update_profile(acceptRoleSessionName, durationSeconds,
+#'   managedPolicyArns, name, profileId, roleArns, sessionPolicy)
 #'
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
@@ -2230,6 +2243,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' ```
 #' list(
 #'   profile = list(
+#'     acceptRoleSessionName = TRUE|FALSE,
 #'     attributeMappings = list(
 #'       list(
 #'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
@@ -2267,6 +2281,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$update_profile(
+#'   acceptRoleSessionName = TRUE|FALSE,
 #'   durationSeconds = 123,
 #'   managedPolicyArns = list(
 #'     "string"
@@ -2285,7 +2300,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' @rdname iamrolesanywhere_update_profile
 #'
 #' @aliases iamrolesanywhere_update_profile
-iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolicyArns = NULL, name = NULL, profileId, roleArns = NULL, sessionPolicy = NULL) {
+iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, managedPolicyArns = NULL, name = NULL, profileId, roleArns = NULL, sessionPolicy = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "PATCH",
@@ -2293,7 +2308,7 @@ iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolic
     host_prefix = "",
     paginator = list()
   )
-  input <- .iamrolesanywhere$update_profile_input(durationSeconds = durationSeconds, managedPolicyArns = managedPolicyArns, name = name, profileId = profileId, roleArns = roleArns, sessionPolicy = sessionPolicy)
+  input <- .iamrolesanywhere$update_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, managedPolicyArns = managedPolicyArns, name = name, profileId = profileId, roleArns = roleArns, sessionPolicy = sessionPolicy)
   output <- .iamrolesanywhere$update_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)

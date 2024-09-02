@@ -10,7 +10,9 @@ ec2_provision_ipam_pool_cidr(
   Cidr = NULL,
   CidrAuthorizationContext = NULL,
   NetmaskLength = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  VerificationMethod = NULL,
+  IpamExternalResourceVerificationTokenId = NULL
 )
 }
 \arguments{
@@ -26,8 +28,8 @@ you have the required permissions, the error response is
 "NetmaskLength" and will be filled in during the provisioning process.}
 
 \item{CidrAuthorizationContext}{A signed document that proves that you are authorized to bring a
-specified IP address range to Amazon using BYOIP. This option applies to
-public pools only.}
+specified IP address range to Amazon using BYOIP. This option only
+applies to IPv4 and IPv6 pools in the public scope.}
 
 \item{NetmaskLength}{The netmask length of the CIDR you'd like to provision to a pool. Can be
 used for provisioning Amazon-provided IPv6 CIDRs to top-level pools and
@@ -37,6 +39,13 @@ provision BYOIP CIDRs to top-level pools. Either "NetmaskLength" or
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+
+\item{VerificationMethod}{The method for verifying control of a public IP address range. Defaults
+to \code{remarks-x509} if not specified. This option only applies to IPv4 and
+IPv6 pools in the public scope.}
+
+\item{IpamExternalResourceVerificationTokenId}{Verification token ID. This option only applies to IPv4 and IPv6 pools
+in the public scope.}
 }
 \description{
 Provision a CIDR to an IPAM pool. You can use this action to provision new CIDRs to a top-level pool or to transfer a CIDR from a top-level pool to a pool within it.

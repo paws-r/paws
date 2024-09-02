@@ -9,7 +9,8 @@ workspaces_describe_workspace_directories(
   DirectoryIds = NULL,
   WorkspaceDirectoryNames = NULL,
   Limit = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Filters = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ directories are retrieved.}
 
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
+
+\item{Filters}{The filter condition for the WorkSpaces.}
 }
 \description{
 Describes the available directories that are registered with Amazon WorkSpaces.

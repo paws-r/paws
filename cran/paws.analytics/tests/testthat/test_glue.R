@@ -64,6 +64,22 @@ test_that("list_data_quality_rulesets", {
   expect_error(svc$list_data_quality_rulesets(MaxResults = 20), NA)
 })
 
+test_that("list_data_quality_statistic_annotations", {
+  expect_error(svc$list_data_quality_statistic_annotations(), NA)
+})
+
+test_that("list_data_quality_statistic_annotations", {
+  expect_error(svc$list_data_quality_statistic_annotations(MaxResults = 20), NA)
+})
+
+test_that("list_data_quality_statistics", {
+  expect_error(svc$list_data_quality_statistics(), NA)
+})
+
+test_that("list_data_quality_statistics", {
+  expect_error(svc$list_data_quality_statistics(MaxResults = 20), NA)
+})
+
 test_that("list_dev_endpoints", {
   expect_error(svc$list_dev_endpoints(), NA)
 })

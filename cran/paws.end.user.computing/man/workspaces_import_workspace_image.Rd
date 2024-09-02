@@ -44,7 +44,9 @@ subscribing to Office for BYOL images, see \href{https://docs.aws.amazon.com/wor
 \itemize{
 \item Although this parameter is an array, only one item is allowed at
 this time.
-\item Windows 11 only supports \code{Microsoft_Office_2019}.
+\item During the image import process, non-GPU WSP WorkSpaces with Windows
+11 support only \code{Microsoft_Office_2019}. GPU WSP WorkSpaces with
+Windows 11 do not support Office installation.
 }}
 }
 \description{

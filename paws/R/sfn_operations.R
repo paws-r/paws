@@ -26,12 +26,12 @@ NULL
 #' be updated, even if they are different.
 #'
 #' @usage
-#' sfn_create_activity(name, tags)
+#' sfn_create_activity(name, tags, encryptionConfiguration)
 #'
 #' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your
 #' Amazon Web Services account and region for 90 days. For more
 #' information, see [Limits Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
@@ -59,6 +59,7 @@ NULL
 #' 
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
+#' @param encryptionConfiguration Settings to configure server-side encryption.
 #'
 #' @return
 #' A list with the following syntax:
@@ -80,6 +81,11 @@ NULL
 #'       key = "string",
 #'       value = "string"
 #'     )
+#'   ),
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsDataKeyReusePeriodSeconds = 123,
+#'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
 #'   )
 #' )
 #' ```
@@ -89,7 +95,7 @@ NULL
 #' @rdname sfn_create_activity
 #'
 #' @aliases sfn_create_activity
-sfn_create_activity <- function(name, tags = NULL) {
+sfn_create_activity <- function(name, tags = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateActivity",
     http_method = "POST",
@@ -97,7 +103,7 @@ sfn_create_activity <- function(name, tags = NULL) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .sfn$create_activity_input(name = name, tags = tags)
+  input <- .sfn$create_activity_input(name = name, tags = tags, encryptionConfiguration = encryptionConfiguration)
   output <- .sfn$create_activity_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -122,6 +128,12 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' If you set the `publish` parameter of this API action to `true`, it
 #' publishes version `1` as the first revision of the state machine.
 #' 
+#' For additional control over security, you can encrypt your data using a
+#' **customer-managed key** for Step Functions state machines. You can
+#' configure a symmetric KMS key and data key reuse period when creating or
+#' updating a **State Machine**. The execution history and state machine
+#' definition will be encrypted with the key applied to the State Machine.
+#' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
@@ -129,17 +141,17 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' Subsequent requests won’t create a duplicate resource if it was already
 #' created. [`create_state_machine`][sfn_create_state_machine]'s
 #' idempotency check is based on the state machine `name`, `definition`,
-#' `type`, `LoggingConfiguration`, and `TracingConfiguration`. The check is
-#' also based on the `publish` and `versionDescription` parameters. If a
-#' following request has a different `roleArn` or `tags`, Step Functions
-#' will ignore these differences and treat it as an idempotent request of
-#' the previous. In this case, `roleArn` and `tags` will not be updated,
-#' even if they are different.
+#' `type`, `LoggingConfiguration`, `TracingConfiguration`, and
+#' `EncryptionConfiguration` The check is also based on the `publish` and
+#' `versionDescription` parameters. If a following request has a different
+#' `roleArn` or `tags`, Step Functions will ignore these differences and
+#' treat it as an idempotent request of the previous. In this case,
+#' `roleArn` and `tags` will not be updated, even if they are different.
 #'
 #' @usage
 #' sfn_create_state_machine(name, definition, roleArn, type,
 #'   loggingConfiguration, tags, tracingConfiguration, publish,
-#'   versionDescription)
+#'   versionDescription, encryptionConfiguration)
 #'
 #' @param name &#91;required&#93; The name of the state machine.
 #' 
@@ -169,7 +181,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' logged.
 #' 
 #' By default, the `level` is set to `OFF`. For more information see [Log
-#' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html)
+#' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
 #' in the Step Functions User Guide.
 #' @param tags Tags to be added when creating a state machine.
 #' 
@@ -189,6 +201,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' description if the `publish` parameter is set to `true`. Otherwise, if
 #' you set `versionDescription`, but `publish` to `false`, this API action
 #' throws `ValidationException`.
+#' @param encryptionConfiguration Settings to configure server-side encryption.
 #'
 #' @return
 #' A list with the following syntax:
@@ -230,7 +243,12 @@ sfn_create_activity <- function(name, tags = NULL) {
 #'     enabled = TRUE|FALSE
 #'   ),
 #'   publish = TRUE|FALSE,
-#'   versionDescription = "string"
+#'   versionDescription = "string",
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsDataKeyReusePeriodSeconds = 123,
+#'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
+#'   )
 #' )
 #' ```
 #'
@@ -239,7 +257,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' @rdname sfn_create_state_machine
 #'
 #' @aliases sfn_create_state_machine
-sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, loggingConfiguration = NULL, tags = NULL, tracingConfiguration = NULL, publish = NULL, versionDescription = NULL) {
+sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, loggingConfiguration = NULL, tags = NULL, tracingConfiguration = NULL, publish = NULL, versionDescription = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateStateMachine",
     http_method = "POST",
@@ -247,7 +265,7 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
     host_prefix = "",
     paginator = list()
   )
-  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, type = type, loggingConfiguration = loggingConfiguration, tags = tags, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription)
+  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, type = type, loggingConfiguration = loggingConfiguration, tags = tags, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription, encryptionConfiguration = encryptionConfiguration)
   output <- .sfn$create_state_machine_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -626,6 +644,11 @@ sfn_delete_state_machine_version <- function(stateMachineVersionArn) {
 #'   name = "string",
 #'   creationDate = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsDataKeyReusePeriodSeconds = 123,
+#'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
 #'   )
 #' )
 #' ```
@@ -686,9 +709,14 @@ sfn_describe_activity <- function(activityArn) {
 #' dispatched them.
 #'
 #' @usage
-#' sfn_describe_execution(executionArn)
+#' sfn_describe_execution(executionArn, includedData)
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to describe.
+#' @param includedData If your state machine definition is encrypted with a KMS key, callers
+#' must have `kms:Decrypt` permission to decrypt the definition.
+#' Alternatively, you can call DescribeStateMachine API with
+#' `includedData = METADATA_ONLY` to get a successful response without the
+#' encrypted definition.
 #'
 #' @return
 #' A list with the following syntax:
@@ -730,7 +758,8 @@ sfn_describe_activity <- function(activityArn) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_execution(
-#'   executionArn = "string"
+#'   executionArn = "string",
+#'   includedData = "ALL_DATA"|"METADATA_ONLY"
 #' )
 #' ```
 #'
@@ -739,7 +768,7 @@ sfn_describe_activity <- function(activityArn) {
 #' @rdname sfn_describe_execution
 #'
 #' @aliases sfn_describe_execution
-sfn_describe_execution <- function(executionArn) {
+sfn_describe_execution <- function(executionArn, includedData = NULL) {
   op <- new_operation(
     name = "DescribeExecution",
     http_method = "POST",
@@ -747,7 +776,7 @@ sfn_describe_execution <- function(executionArn) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .sfn$describe_execution_input(executionArn = executionArn)
+  input <- .sfn$describe_execution_input(executionArn = executionArn, includedData = includedData)
   output <- .sfn$describe_execution_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -895,7 +924,7 @@ sfn_describe_map_run <- function(mapRunArn) {
 #' may not reflect very recent updates and changes.
 #'
 #' @usage
-#' sfn_describe_state_machine(stateMachineArn)
+#' sfn_describe_state_machine(stateMachineArn, includedData)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine for which you want
 #' the information.
@@ -904,6 +933,16 @@ sfn_describe_map_run <- function(mapRunArn) {
 #' about that version. The version ARN is a combination of state machine
 #' ARN and the version number separated by a colon (:). For example,
 #' `stateMachineARN:1`.
+#' @param includedData If your state machine definition is encrypted with a KMS key, callers
+#' must have `kms:Decrypt` permission to decrypt the definition.
+#' Alternatively, you can call the API with `includedData = METADATA_ONLY`
+#' to get a successful response without the encrypted definition.
+#' 
+#' When calling a labelled ARN for an encrypted state machine, the
+#' `includedData = METADATA_ONLY` parameter will not apply because Step
+#' Functions needs to decrypt the entire state machine definition to get
+#' the Distributed Map state’s definition. In this case, the API caller
+#' needs to have `kms:Decrypt` permission.
 #'
 #' @return
 #' A list with the following syntax:
@@ -934,14 +973,20 @@ sfn_describe_map_run <- function(mapRunArn) {
 #'   ),
 #'   label = "string",
 #'   revisionId = "string",
-#'   description = "string"
+#'   description = "string",
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsDataKeyReusePeriodSeconds = 123,
+#'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_state_machine(
-#'   stateMachineArn = "string"
+#'   stateMachineArn = "string",
+#'   includedData = "ALL_DATA"|"METADATA_ONLY"
 #' )
 #' ```
 #'
@@ -950,7 +995,7 @@ sfn_describe_map_run <- function(mapRunArn) {
 #' @rdname sfn_describe_state_machine
 #'
 #' @aliases sfn_describe_state_machine
-sfn_describe_state_machine <- function(stateMachineArn) {
+sfn_describe_state_machine <- function(stateMachineArn, includedData = NULL) {
   op <- new_operation(
     name = "DescribeStateMachine",
     http_method = "POST",
@@ -958,7 +1003,7 @@ sfn_describe_state_machine <- function(stateMachineArn) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .sfn$describe_state_machine_input(stateMachineArn = stateMachineArn)
+  input <- .sfn$describe_state_machine_input(stateMachineArn = stateMachineArn, includedData = includedData)
   output <- .sfn$describe_state_machine_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -1057,10 +1102,14 @@ sfn_describe_state_machine_alias <- function(stateMachineAliasArn) {
 #' This API action is not supported by `EXPRESS` state machines.
 #'
 #' @usage
-#' sfn_describe_state_machine_for_execution(executionArn)
+#' sfn_describe_state_machine_for_execution(executionArn, includedData)
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution you want state machine
 #' information for.
+#' @param includedData If your state machine definition is encrypted with a KMS key, callers
+#' must have `kms:Decrypt` permission to decrypt the definition.
+#' Alternatively, you can call the API with `includedData = METADATA_ONLY`
+#' to get a successful response without the encrypted definition.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1089,14 +1138,20 @@ sfn_describe_state_machine_alias <- function(stateMachineAliasArn) {
 #'   ),
 #'   mapRunArn = "string",
 #'   label = "string",
-#'   revisionId = "string"
+#'   revisionId = "string",
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsDataKeyReusePeriodSeconds = 123,
+#'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_state_machine_for_execution(
-#'   executionArn = "string"
+#'   executionArn = "string",
+#'   includedData = "ALL_DATA"|"METADATA_ONLY"
 #' )
 #' ```
 #'
@@ -1105,7 +1160,7 @@ sfn_describe_state_machine_alias <- function(stateMachineAliasArn) {
 #' @rdname sfn_describe_state_machine_for_execution
 #'
 #' @aliases sfn_describe_state_machine_for_execution
-sfn_describe_state_machine_for_execution <- function(executionArn) {
+sfn_describe_state_machine_for_execution <- function(executionArn, includedData = NULL) {
   op <- new_operation(
     name = "DescribeStateMachineForExecution",
     http_method = "POST",
@@ -1113,7 +1168,7 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .sfn$describe_state_machine_for_execution_input(executionArn = executionArn)
+  input <- .sfn$describe_state_machine_for_execution_input(executionArn = executionArn, includedData = includedData)
   output <- .sfn$describe_state_machine_for_execution_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -1144,7 +1199,7 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' Polling with [`get_activity_task`][sfn_get_activity_task] can cause
 #' latency in some implementations. See [Avoid Latency When Polling for
 #' Activity
-#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
+#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
 #' in the Step Functions Developer Guide.
 #'
 #' @usage
@@ -2215,16 +2270,16 @@ sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL
 #' machine definition and execution ARN as the original execution attempt.
 #' 
 #' For workflows that include an [Inline
-#' Map](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html)
+#' Map](https://docs.aws.amazon.com/step-functions/latest/dg/state-map.html)
 #' or
-#' [Parallel](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html)
+#' [Parallel](https://docs.aws.amazon.com/step-functions/latest/dg/state-parallel.html)
 #' state, [`redrive_execution`][sfn_redrive_execution] API action
 #' reschedules and redrives only the iterations and branches that failed or
 #' aborted.
 #' 
 #' To redrive a workflow that includes a Distributed Map state whose Map
 #' Run failed, you must redrive the [parent
-#' workflow](https://docs.aws.amazon.com/step-functions/latest/dg/use-dist-map-orchestrate-large-scale-parallel-workloads.html#dist-map-orchestrate-parallel-workloads-key-terms).
+#' workflow](https://docs.aws.amazon.com/step-functions/latest/dg/state-map-distributed.html#dist-map-orchestrate-parallel-workloads-key-terms).
 #' The parent workflow redrives all the unsuccessful states, including a
 #' failed Map Run. If a Map Run was not started in the original execution
 #' attempt, the redriven parent workflow starts the Map Run.
@@ -2251,7 +2306,7 @@ sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL
 #' -   The workflow execution has not exceeded the maximum open time of one
 #'     year. For more information about state machine quotas, see [Quotas
 #'     related to state machine
-#'     executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions).
+#'     executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions).
 #' 
 #' -   The execution event history count is less than 24,999. Redriven
 #'     executions append their event history to the existing event history.
@@ -2322,6 +2377,13 @@ sfn_redrive_execution <- function(executionArn, clientToken = NULL) {
 #' pattern, and optionally Task states using the [job
 #' run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
 #' pattern to report that the task identified by the `taskToken` failed.
+#' 
+#' For an execution with encryption enabled, Step Functions will encrypt
+#' the error and cause fields using the KMS key for the execution role.
+#' 
+#' A caller can mark a task as fail without using any KMS permissions in
+#' the execution role if the caller provides a null value for both `error`
+#' and `cause` fields because no data needs to be encrypted.
 #'
 #' @usage
 #' sfn_send_task_failure(taskToken, error, cause)
@@ -2594,7 +2656,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #' @param name Optional name of the execution. This name must be unique for your Amazon
 #' Web Services account, Region, and state machine for 90 days. For more
 #' information, see [Limits Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
 #' 
 #' If you don't provide a name for the execution, Step Functions
@@ -2689,7 +2751,8 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' This API action isn't logged in CloudTrail.
 #'
 #' @usage
-#' sfn_start_sync_execution(stateMachineArn, name, input, traceHeader)
+#' sfn_start_sync_execution(stateMachineArn, name, input, traceHeader,
+#'   includedData)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to execute.
 #' @param name The name of the execution.
@@ -2705,6 +2768,10 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' in UTF-8 encoding.
 #' @param traceHeader Passes the X-Ray trace header. The trace header can also be passed in
 #' the request payload.
+#' @param includedData If your state machine definition is encrypted with a KMS key, callers
+#' must have `kms:Decrypt` permission to decrypt the definition.
+#' Alternatively, you can call the API with `includedData = METADATA_ONLY`
+#' to get a successful response without the encrypted definition.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2744,7 +2811,8 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #'   stateMachineArn = "string",
 #'   name = "string",
 #'   input = "string",
-#'   traceHeader = "string"
+#'   traceHeader = "string",
+#'   includedData = "ALL_DATA"|"METADATA_ONLY"
 #' )
 #' ```
 #'
@@ -2753,7 +2821,7 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' @rdname sfn_start_sync_execution
 #'
 #' @aliases sfn_start_sync_execution
-sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL, traceHeader = NULL) {
+sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL, traceHeader = NULL, includedData = NULL) {
   op <- new_operation(
     name = "StartSyncExecution",
     http_method = "POST",
@@ -2761,7 +2829,7 @@ sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL,
     host_prefix = "sync-",
     paginator = list()
   )
-  input <- .sfn$start_sync_execution_input(stateMachineArn = stateMachineArn, name = name, input = input, traceHeader = traceHeader)
+  input <- .sfn$start_sync_execution_input(stateMachineArn = stateMachineArn, name = name, input = input, traceHeader = traceHeader, includedData = includedData)
   output <- .sfn$start_sync_execution_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -2777,6 +2845,13 @@ sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL,
 #' Stops an execution.
 #' 
 #' This API action is not supported by `EXPRESS` state machines.
+#' 
+#' For an execution with encryption enabled, Step Functions will encrypt
+#' the error and cause fields using the KMS key for the execution role.
+#' 
+#' A caller can stop an execution without using any KMS permissions in the
+#' execution role if the caller provides a null value for both `error` and
+#' `cause` fields because no data needs to be encrypted.
 #'
 #' @usage
 #' sfn_stop_execution(executionArn, error, cause)
@@ -2903,7 +2978,7 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'     data flow
 #' 
 #' -   An [Amazon Web Services service
-#'     integration](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-services.html)
+#'     integration](https://docs.aws.amazon.com/step-functions/latest/dg/integrate-services.html)
 #'     request and response
 #' 
 #' -   An [HTTP
@@ -2914,19 +2989,19 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' can test include the following:
 #' 
 #' -   [All Task
-#'     types](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-task-state.html#task-types)
+#'     types](https://docs.aws.amazon.com/step-functions/latest/dg/state-task.html#task-types)
 #'     except
 #'     [Activity](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html)
 #' 
-#' -   [Pass](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-pass-state.html)
+#' -   [Pass](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
 #' 
-#' -   [Wait](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-wait-state.html)
+#' -   [Wait](https://docs.aws.amazon.com/step-functions/latest/dg/state-wait.html)
 #' 
-#' -   [Choice](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html)
+#' -   [Choice](https://docs.aws.amazon.com/step-functions/latest/dg/state-choice.html)
 #' 
-#' -   [Succeed](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-succeed-state.html)
+#' -   [Succeed](https://docs.aws.amazon.com/step-functions/latest/dg/state-succeed.html)
 #' 
-#' -   [Fail](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-fail-state.html)
+#' -   [Fail](https://docs.aws.amazon.com/step-functions/latest/dg/state-fail.html)
 #' 
 #' The [`test_state`][sfn_test_state] API assumes an IAM role which must
 #' contain the required IAM permissions for the resources your state is
@@ -2942,9 +3017,9 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' tasks](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html),
 #' `.sync` or `.waitForTaskToken` [service integration
 #' patterns](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html),
-#' [Parallel](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html),
+#' [Parallel](https://docs.aws.amazon.com/step-functions/latest/dg/state-parallel.html),
 #' or
-#' [Map](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html)
+#' [Map](https://docs.aws.amazon.com/step-functions/latest/dg/state-map.html)
 #' states.
 #'
 #' @usage
@@ -3158,14 +3233,14 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 .sfn$operations$update_map_run <- sfn_update_map_run
 
 #' Updates an existing state machine by modifying its definition, roleArn,
-#' or loggingConfiguration
+#' loggingConfiguration, or EncryptionConfiguration
 #'
 #' @description
 #' Updates an existing state machine by modifying its `definition`,
-#' `roleArn`, or `loggingConfiguration`. Running executions will continue
-#' to use the previous `definition` and `roleArn`. You must include at
-#' least one of `definition` or `roleArn` or you will receive a
-#' `MissingRequiredParameter` error.
+#' `roleArn`, `loggingConfiguration`, or `EncryptionConfiguration`. Running
+#' executions will continue to use the previous `definition` and `roleArn`.
+#' You must include at least one of `definition` or `roleArn` or you will
+#' receive a `MissingRequiredParameter` error.
 #' 
 #' A qualified state machine ARN refers to a *Distributed Map state*
 #' defined within a state machine. For example, the qualified state machine
@@ -3220,7 +3295,8 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #'
 #' @usage
 #' sfn_update_state_machine(stateMachineArn, definition, roleArn,
-#'   loggingConfiguration, tracingConfiguration, publish, versionDescription)
+#'   loggingConfiguration, tracingConfiguration, publish, versionDescription,
+#'   encryptionConfiguration)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
 #' @param definition The Amazon States Language definition of the state machine. See [Amazon
@@ -3236,6 +3312,7 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #' 
 #' You can only specify the `versionDescription` parameter if you've set
 #' `publish` to `true`.
+#' @param encryptionConfiguration Settings to configure server-side encryption.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3270,7 +3347,12 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #'     enabled = TRUE|FALSE
 #'   ),
 #'   publish = TRUE|FALSE,
-#'   versionDescription = "string"
+#'   versionDescription = "string",
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsDataKeyReusePeriodSeconds = 123,
+#'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
+#'   )
 #' )
 #' ```
 #'
@@ -3279,7 +3361,7 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #' @rdname sfn_update_state_machine
 #'
 #' @aliases sfn_update_state_machine
-sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn = NULL, loggingConfiguration = NULL, tracingConfiguration = NULL, publish = NULL, versionDescription = NULL) {
+sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn = NULL, loggingConfiguration = NULL, tracingConfiguration = NULL, publish = NULL, versionDescription = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateStateMachine",
     http_method = "POST",
@@ -3287,7 +3369,7 @@ sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn
     host_prefix = "",
     paginator = list()
   )
-  input <- .sfn$update_state_machine_input(stateMachineArn = stateMachineArn, definition = definition, roleArn = roleArn, loggingConfiguration = loggingConfiguration, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription)
+  input <- .sfn$update_state_machine_input(stateMachineArn = stateMachineArn, definition = definition, roleArn = roleArn, loggingConfiguration = loggingConfiguration, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription, encryptionConfiguration = encryptionConfiguration)
   output <- .sfn$update_state_machine_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -3420,7 +3502,8 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 #' exception.
 #'
 #' @usage
-#' sfn_validate_state_machine_definition(definition, type)
+#' sfn_validate_state_machine_definition(definition, type, severity,
+#'   maxResults)
 #'
 #' @param definition &#91;required&#93; The Amazon States Language definition of the state machine. For more
 #' information, see [Amazon States
@@ -3428,6 +3511,16 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 #' (ASL).
 #' @param type The target type of state machine for this definition. The default is
 #' `STANDARD`.
+#' @param severity Minimum level of diagnostics to return. `ERROR` returns only `ERROR`
+#' diagnostics, whereas `WARNING` returns both `WARNING` and `ERROR`
+#' diagnostics. The default is `ERROR`.
+#' @param maxResults The maximum number of diagnostics that are returned per call. The
+#' default and maximum value is 100. Setting the value to 0 will also use
+#' the default of 100.
+#' 
+#' If the number of diagnostics returned in the response exceeds
+#' `maxResults`, the value of the `truncated` field in the response will be
+#' set to `true`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3436,12 +3529,13 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 #'   result = "OK"|"FAIL",
 #'   diagnostics = list(
 #'     list(
-#'       severity = "ERROR",
+#'       severity = "ERROR"|"WARNING",
 #'       code = "string",
 #'       message = "string",
 #'       location = "string"
 #'     )
-#'   )
+#'   ),
+#'   truncated = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3449,7 +3543,9 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 #' ```
 #' svc$validate_state_machine_definition(
 #'   definition = "string",
-#'   type = "STANDARD"|"EXPRESS"
+#'   type = "STANDARD"|"EXPRESS",
+#'   severity = "ERROR"|"WARNING",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -3458,7 +3554,7 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 #' @rdname sfn_validate_state_machine_definition
 #'
 #' @aliases sfn_validate_state_machine_definition
-sfn_validate_state_machine_definition <- function(definition, type = NULL) {
+sfn_validate_state_machine_definition <- function(definition, type = NULL, severity = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ValidateStateMachineDefinition",
     http_method = "POST",
@@ -3466,7 +3562,7 @@ sfn_validate_state_machine_definition <- function(definition, type = NULL) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .sfn$validate_state_machine_definition_input(definition = definition, type = type)
+  input <- .sfn$validate_state_machine_definition_input(definition = definition, type = type, severity = severity, maxResults = maxResults)
   output <- .sfn$validate_state_machine_definition_output()
   config <- get_config()
   svc <- .sfn$service(config, op)

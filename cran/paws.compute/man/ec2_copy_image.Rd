@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_copy_image}
 \alias{ec2_copy_image}
-\title{Initiates the copy of an AMI}
+\title{Initiates an AMI copy operation}
 \usage{
 ec2_copy_image(
   ClientToken = NULL,
@@ -30,8 +30,8 @@ be encrypted. You can encrypt a copy of an unencrypted snapshot, but you
 cannot create an unencrypted copy of an encrypted snapshot. The default
 KMS key for Amazon EBS is used unless you specify a non-default Key
 Management Service (KMS) KMS key using \code{KmsKeyId}. For more information,
-see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS encryption}
-in the \emph{Amazon EBS User Guide}.}
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html}{Use encryption with EBS-backed AMIs}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{KmsKeyId}{The identifier of the symmetric Key Management Service (KMS) KMS key to
 use when creating encrypted volumes. If this parameter is not specified,
@@ -102,7 +102,7 @@ To tag an AMI or snapshot after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
 }
 \description{
-Initiates the copy of an AMI. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see \code{\link[=ec2_create_store_image_task]{create_store_image_task}}.
+Initiates an AMI copy operation. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see \code{\link[=ec2_create_store_image_task]{create_store_image_task}}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_copy_image/} for full documentation.
 }

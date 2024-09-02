@@ -2,8 +2,8 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_list_allowed_node_type_modifications}
 \alias{elasticache_list_allowed_node_type_modifications}
-\title{Lists all available node types that you can scale your Redis cluster's
-or replication group's current node type}
+\title{Lists all available node types that you can scale your Redis OSS
+cluster's or replication group's current node type}
 \usage{
 elasticache_list_allowed_node_type_modifications(
   CacheClusterId = NULL,
@@ -28,7 +28,7 @@ You must provide a value for either the \code{CacheClusterId} or the
 \code{ReplicationGroupId}.}
 }
 \description{
-Lists all available node types that you can scale your Redis cluster's or replication group's current node type.
+Lists all available node types that you can scale your Redis OSS cluster's or replication group's current node type.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_list_allowed_node_type_modifications/} for full documentation.
 }

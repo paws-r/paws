@@ -4428,7 +4428,7 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' @param WebsiteURL &#91;required&#93; The URL of your website. This information helps us better understand the
 #' type of content that you plan to send.
 #' @param ContactLanguage The language you would prefer to be contacted with.
-#' @param UseCaseDescription &#91;required&#93; A description of the types of email that you plan to send.
+#' @param UseCaseDescription A description of the types of email that you plan to send.
 #' @param AdditionalContactEmailAddresses Additional email addresses that you would like to be notified regarding
 #' Amazon SES matters.
 #' @param ProductionAccessEnabled Indicates whether or not your account should have production access in
@@ -4465,7 +4465,7 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' @rdname sesv2_put_account_details
 #'
 #' @aliases sesv2_put_account_details
-sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NULL, UseCaseDescription, AdditionalContactEmailAddresses = NULL, ProductionAccessEnabled = NULL) {
+sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NULL, UseCaseDescription = NULL, AdditionalContactEmailAddresses = NULL, ProductionAccessEnabled = NULL) {
   op <- new_operation(
     name = "PutAccountDetails",
     http_method = "POST",

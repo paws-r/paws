@@ -16,7 +16,7 @@ connectcontactlens_list_realtime_contact_analysis_segments(
 
 \item{ContactId}{[required] The identifier of the contact.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

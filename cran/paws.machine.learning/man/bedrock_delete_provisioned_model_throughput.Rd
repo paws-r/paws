@@ -10,7 +10,7 @@ bedrock_delete_provisioned_model_throughput(provisionedModelId)
 \item{provisionedModelId}{[required] The Amazon Resource Name (ARN) or name of the Provisioned Throughput.}
 }
 \description{
-Deletes a Provisioned Throughput. You can't delete a Provisioned Throughput before the commitment term is over. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the Amazon Bedrock User Guide.
+Deletes a Provisioned Throughput. You can't delete a Provisioned Throughput before the commitment term is over. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_delete_provisioned_model_throughput/} for full documentation.
 }

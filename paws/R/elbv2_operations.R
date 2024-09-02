@@ -368,7 +368,8 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'       MutualAuthentication = list(
 #'         Mode = "string",
 #'         TrustStoreArn = "string",
-#'         IgnoreClientCertificateExpiry = TRUE|FALSE
+#'         IgnoreClientCertificateExpiry = TRUE|FALSE,
+#'         TrustStoreAssociationStatus = "active"|"removed"
 #'       )
 #'     )
 #'   )
@@ -460,7 +461,8 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'   MutualAuthentication = list(
 #'     Mode = "string",
 #'     TrustStoreArn = "string",
-#'     IgnoreClientCertificateExpiry = TRUE|FALSE
+#'     IgnoreClientCertificateExpiry = TRUE|FALSE,
+#'     TrustStoreAssociationStatus = "active"|"removed"
 #'   )
 #' )
 #' ```
@@ -1535,6 +1537,61 @@ elbv2_delete_rule <- function(RuleArn) {
 }
 .elbv2$operations$delete_rule <- elbv2_delete_rule
 
+#' Deletes a shared trust store association
+#'
+#' @description
+#' Deletes a shared trust store association.
+#'
+#' @usage
+#' elbv2_delete_shared_trust_store_association(TrustStoreArn, ResourceArn)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_shared_trust_store_association(
+#'   TrustStoreArn = "string",
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example deletes the association between the specified trust store
+#' # and the specified load balancer.
+#' svc$delete_shared_trust_store_association(
+#'   ResourceArn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadba...",
+#'   TrustStoreArn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:trus..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_delete_shared_trust_store_association
+#'
+#' @aliases elbv2_delete_shared_trust_store_association
+elbv2_delete_shared_trust_store_association <- function(TrustStoreArn, ResourceArn) {
+  op <- new_operation(
+    name = "DeleteSharedTrustStoreAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .elbv2$delete_shared_trust_store_association_input(TrustStoreArn = TrustStoreArn, ResourceArn = ResourceArn)
+  output <- .elbv2$delete_shared_trust_store_association_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$delete_shared_trust_store_association <- elbv2_delete_shared_trust_store_association
+
 #' Deletes the specified target group
 #'
 #' @description
@@ -1970,7 +2027,8 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #'       MutualAuthentication = list(
 #'         Mode = "string",
 #'         TrustStoreArn = "string",
-#'         IgnoreClientCertificateExpiry = TRUE|FALSE
+#'         IgnoreClientCertificateExpiry = TRUE|FALSE,
+#'         TrustStoreAssociationStatus = "active"|"removed"
 #'       )
 #'     )
 #'   ),
@@ -2741,7 +2799,7 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets The targets.
-#' @param Include Used to inclue anomaly detection information.
+#' @param Include Used to include anomaly detection information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2889,12 +2947,12 @@ elbv2_describe_trust_store_associations <- function(TrustStoreArn, Marker = NULL
 }
 .elbv2$operations$describe_trust_store_associations <- elbv2_describe_trust_store_associations
 
-#' Describes the revocation files in use by the specified trust store arn,
-#' or revocation ID
+#' Describes the revocation files in use by the specified trust store or
+#' revocation files
 #'
 #' @description
-#' Describes the revocation files in use by the specified trust store arn,
-#' or revocation ID.
+#' Describes the revocation files in use by the specified trust store or
+#' revocation files.
 #'
 #' @usage
 #' elbv2_describe_trust_store_revocations(TrustStoreArn, RevocationIds,
@@ -2957,12 +3015,10 @@ elbv2_describe_trust_store_revocations <- function(TrustStoreArn, RevocationIds 
 }
 .elbv2$operations$describe_trust_store_revocations <- elbv2_describe_trust_store_revocations
 
-#' Describes all trust stores for a given account by trust store arn’s or
-#' name
+#' Describes all trust stores for the specified account
 #'
 #' @description
-#' Describes all trust stores for a given account by trust store arn’s or
-#' name.
+#' Describes all trust stores for the specified account.
 #'
 #' @usage
 #' elbv2_describe_trust_stores(TrustStoreArns, Names, Marker, PageSize)
@@ -3026,6 +3082,63 @@ elbv2_describe_trust_stores <- function(TrustStoreArns = NULL, Names = NULL, Mar
   return(response)
 }
 .elbv2$operations$describe_trust_stores <- elbv2_describe_trust_stores
+
+#' Retrieves the resource policy for a specified resource
+#'
+#' @description
+#' Retrieves the resource policy for a specified resource.
+#'
+#' @usage
+#' elbv2_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example retrieves the resource policy for the specified trust
+#' # store.
+#' svc$get_resource_policy(
+#'   ResourceArn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:trusts..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_get_resource_policy
+#'
+#' @aliases elbv2_get_resource_policy
+elbv2_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .elbv2$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .elbv2$get_resource_policy_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$get_resource_policy <- elbv2_get_resource_policy
 
 #' Retrieves the ca certificate bundle
 #'
@@ -3270,7 +3383,8 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 #'       MutualAuthentication = list(
 #'         Mode = "string",
 #'         TrustStoreArn = "string",
-#'         IgnoreClientCertificateExpiry = TRUE|FALSE
+#'         IgnoreClientCertificateExpiry = TRUE|FALSE,
+#'         TrustStoreAssociationStatus = "active"|"removed"
 #'       )
 #'     )
 #'   )
@@ -3356,7 +3470,8 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 #'   MutualAuthentication = list(
 #'     Mode = "string",
 #'     TrustStoreArn = "string",
-#'     IgnoreClientCertificateExpiry = TRUE|FALSE
+#'     IgnoreClientCertificateExpiry = TRUE|FALSE,
+#'     TrustStoreAssociationStatus = "active"|"removed"
 #'   )
 #' )
 #' ```
@@ -4014,10 +4129,10 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 }
 .elbv2$operations$modify_target_group_attributes <- elbv2_modify_target_group_attributes
 
-#' Update the ca certificate bundle for a given trust store
+#' Update the ca certificate bundle for the specified trust store
 #'
 #' @description
-#' Update the ca certificate bundle for a given trust store.
+#' Update the ca certificate bundle for the specified trust store.
 #'
 #' @usage
 #' elbv2_modify_trust_store(TrustStoreArn, CaCertificatesBundleS3Bucket,
@@ -4362,6 +4477,11 @@ elbv2_remove_trust_store_revocations <- function(TrustStoreArn, RevocationIds) {
 #' are `ipv4` (for only IPv4 addresses), `dualstack` (for IPv4 and IPv6
 #' addresses), and `dualstack-without-public-ipv4` (for IPv6 only public
 #' addresses, with private IPv4 and IPv6 addresses).
+#' 
+#' Note: Application Load Balancer authentication only supports IPv4
+#' addresses when connecting to an Identity Provider (IdP) or Amazon
+#' Cognito endpoint. Without a public IPv4 address the load balancer cannot
+#' complete the authentication process, resulting in HTTP 500 errors.
 #' 
 #' \[Network Load Balancers\] The IP address type. The possible values are
 #' `ipv4` (for only IPv4 addresses) and `dualstack` (for IPv4 and IPv6

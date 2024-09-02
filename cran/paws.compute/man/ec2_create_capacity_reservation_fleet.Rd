@@ -76,7 +76,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Creates a Capacity Reservation Fleet. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet}{Create a Capacity Reservation Fleet} in the \emph{Amazon EC2 User Guide}.
+Creates a Capacity Reservation Fleet. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#create-crfleet}{Create a Capacity Reservation Fleet} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/} for full documentation.
 }

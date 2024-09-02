@@ -14,7 +14,7 @@ datazone_get_listing(domainIdentifier, identifier, listingRevision = NULL)
 \item{listingRevision}{The revision of the listing.}
 }
 \description{
-Gets a listing (a record of an asset at a given time).
+Gets a listing (a record of an asset at a given time). If you specify a listing version, only details that are specific to that version are returned.
 
 See \url{https://www.paws-r-sdk.com/docs/datazone_get_listing/} for full documentation.
 }

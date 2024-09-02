@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafv2_operations.R
 \name{wafv2_put_permission_policy}
 \alias{wafv2_put_permission_policy}
-\title{Attaches an IAM policy to the specified resource}
+\title{Use this to share a rule group with other accounts}
 \usage{
 wafv2_put_permission_policy(ResourceArn, Policy)
 }
@@ -28,7 +28,7 @@ actions in the policy.
 For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{IAM Policies}.}
 }
 \description{
-Attaches an IAM policy to the specified resource. Use this to share a rule group across accounts.
+Use this to share a rule group with other accounts.
 
 See \url{https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/} for full documentation.
 }

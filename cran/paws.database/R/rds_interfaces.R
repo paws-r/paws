@@ -299,13 +299,13 @@ NULL
 
 .rds$create_db_shard_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), MaxACU = structure(logical(0), tags = list(type = "double")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), MaxACU = structure(logical(0), tags = list(type = "double")), MinACU = structure(logical(0), tags = list(type = "double")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .rds$create_db_shard_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateDBShardGroupResult"))
+  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), MinACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateDBShardGroupResult"))
   return(populate(args, shape))
 }
 
@@ -551,7 +551,7 @@ NULL
 
 .rds$delete_db_shard_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DeleteDBShardGroupResult"))
+  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), MinACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DeleteDBShardGroupResult"))
   return(populate(args, shape))
 }
 
@@ -931,7 +931,7 @@ NULL
 
 .rds$describe_db_shard_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DBShardGroups = structure(list(structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "DBShardGroup", type = "structure"))), tags = list(locationNameList = "DBShardGroup", type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeDBShardGroupsResult"))
+  shape <- structure(list(DBShardGroups = structure(list(structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), MinACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "DBShardGroup", type = "structure"))), tags = list(locationNameList = "DBShardGroup", type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeDBShardGroupsResult"))
   return(populate(args, shape))
 }
 
@@ -1429,13 +1429,13 @@ NULL
 
 .rds$modify_db_shard_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
+  shape <- structure(list(DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), MinACU = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .rds$modify_db_shard_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ModifyDBShardGroupResult"))
+  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), MinACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ModifyDBShardGroupResult"))
   return(populate(args, shape))
 }
 
@@ -1603,7 +1603,7 @@ NULL
 
 .rds$reboot_db_shard_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "RebootDBShardGroupResult"))
+  shape <- structure(list(DBShardGroupResourceId = structure(logical(0), tags = list(type = "string")), DBShardGroupIdentifier = structure(logical(0), tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), MaxACU = structure(logical(0), tags = list(type = "double")), MinACU = structure(logical(0), tags = list(type = "double")), ComputeRedundancy = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "RebootDBShardGroupResult"))
   return(populate(args, shape))
 }
 

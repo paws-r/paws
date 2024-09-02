@@ -4,12 +4,12 @@
 \alias{sfn_create_activity}
 \title{Creates an activity}
 \usage{
-sfn_create_activity(name, tags = NULL)
+sfn_create_activity(name, tags = NULL, encryptionConfiguration = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the activity to create. This name must be unique for your
 Amazon Web Services account and region for 90 days. For more
-information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
+information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
 in the \emph{Step Functions Developer Guide}.
 
 A name must \emph{not} contain:
@@ -34,6 +34,8 @@ in the \emph{Amazon Web Services Billing and Cost Management User Guide}, and
 
 Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
+
+\item{encryptionConfiguration}{Settings to configure server-side encryption.}
 }
 \description{
 Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to Step Functions. Activities must poll Step Functions using the \code{\link[=sfn_get_activity_task]{get_activity_task}} API action and respond using \verb{SendTask*} API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.

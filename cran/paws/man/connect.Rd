@@ -196,7 +196,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[paws.customer.engagement:connect_describe_quick_connect]{describe_quick_connect} \tab Describes the quick connect\cr
 \link[paws.customer.engagement:connect_describe_routing_profile]{describe_routing_profile} \tab Describes the specified routing profile\cr
 \link[paws.customer.engagement:connect_describe_rule]{describe_rule} \tab Describes a rule for the specified Amazon Connect instance\cr
-\link[paws.customer.engagement:connect_describe_security_profile]{describe_security_profile} \tab Gets basic information about the security profle\cr
+\link[paws.customer.engagement:connect_describe_security_profile]{describe_security_profile} \tab Gets basic information about the security profile\cr
 \link[paws.customer.engagement:connect_describe_traffic_distribution_group]{describe_traffic_distribution_group} \tab Gets details and status of a traffic distribution group\cr
 \link[paws.customer.engagement:connect_describe_user]{describe_user} \tab Describes the specified user\cr
 \link[paws.customer.engagement:connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group\cr
@@ -281,18 +281,20 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[paws.customer.engagement:connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration information for Amazon Connect resources across Amazon Web Services Regions\cr
 \link[paws.customer.engagement:connect_resume_contact]{resume_contact} \tab Allows resuming a task contact in a paused state\cr
 \link[paws.customer.engagement:connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both\cr
+\link[paws.customer.engagement:connect_search_agent_statuses]{search_agent_statuses} \tab Searches AgentStatuses in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
 \link[paws.customer.engagement:connect_search_contact_flow_modules]{search_contact_flow_modules} \tab Searches the flow modules in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_contact_flows]{search_contact_flows} \tab Searches the contact flows in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_contacts]{search_contacts} \tab Searches contacts in an Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
-\link[paws.customer.engagement:connect_search_predefined_attributes]{search_predefined_attributes} \tab Predefined attributes that meet certain criteria\cr
+\link[paws.customer.engagement:connect_search_predefined_attributes]{search_predefined_attributes} \tab Searches predefined attributes that meet certain criteria\cr
 \link[paws.customer.engagement:connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_queues]{search_queues} \tab Searches queues in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_quick_connects]{search_quick_connects} \tab Searches quick connects in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_resource_tags]{search_resource_tags} \tab Searches tags used in an Amazon Connect instance using optional search criteria\cr
 \link[paws.customer.engagement:connect_search_routing_profiles]{search_routing_profiles} \tab Searches routing profiles in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_security_profiles]{search_security_profiles} \tab Searches security profiles in an Amazon Connect instance, with optional filtering\cr
+\link[paws.customer.engagement:connect_search_user_hierarchy_groups]{search_user_hierarchy_groups} \tab Searches UserHierarchyGroups in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
 \link[paws.customer.engagement:connect_search_vocabularies]{search_vocabularies} \tab Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode\cr
 \link[paws.customer.engagement:connect_send_chat_integration_event]{send_chat_integration_event} \tab Processes chat integration events from Amazon Web Services or external integrations to Amazon Connect\cr

@@ -12,7 +12,7 @@ backup_get_restore_testing_inferred_metadata(
 )
 }
 \arguments{
-\item{BackupVaultAccountId}{This is the account ID of the specified backup vault.}
+\item{BackupVaultAccountId}{The account ID of the specified backup vault.}
 
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create

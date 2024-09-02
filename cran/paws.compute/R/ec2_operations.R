@@ -338,11 +338,12 @@ ec2_advertise_byoip_cidr <- function(Cidr, Asn = NULL, DryRun = NULL, NetworkBor
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param TagSpecifications The tags to assign to the Elastic IP address.
+#' @param IpamPoolId The ID of an IPAM pool.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_allocate_address
-ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool = NULL, NetworkBorderGroup = NULL, CustomerOwnedIpv4Pool = NULL, DryRun = NULL, TagSpecifications = NULL) {
+ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool = NULL, NetworkBorderGroup = NULL, CustomerOwnedIpv4Pool = NULL, DryRun = NULL, TagSpecifications = NULL, IpamPoolId = NULL) {
   op <- new_operation(
     name = "AllocateAddress",
     http_method = "POST",
@@ -350,7 +351,7 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
     host_prefix = "",
     paginator = list()
   )
-  input <- .ec2$allocate_address_input(Domain = Domain, Address = Address, PublicIpv4Pool = PublicIpv4Pool, NetworkBorderGroup = NetworkBorderGroup, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, DryRun = DryRun, TagSpecifications = TagSpecifications)
+  input <- .ec2$allocate_address_input(Domain = Domain, Address = Address, PublicIpv4Pool = PublicIpv4Pool, NetworkBorderGroup = NetworkBorderGroup, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, DryRun = DryRun, TagSpecifications = TagSpecifications, IpamPoolId = IpamPoolId)
   output <- .ec2$allocate_address_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -2171,10 +2172,10 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 }
 .ec2$operations$copy_fpga_image <- ec2_copy_fpga_image
 
-#' Initiates the copy of an AMI
+#' Initiates an AMI copy operation
 #'
 #' @description
-#' Initiates the copy of an AMI. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see [`create_store_image_task`][ec2_create_store_image_task].
+#' Initiates an AMI copy operation. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see [`create_store_image_task`][ec2_create_store_image_task].
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_copy_image/](https://www.paws-r-sdk.com/docs/ec2_copy_image/) for full documentation.
 #'
@@ -2188,9 +2189,9 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' cannot create an unencrypted copy of an encrypted snapshot. The default
 #' KMS key for Amazon EBS is used unless you specify a non-default Key
 #' Management Service (KMS) KMS key using `KmsKeyId`. For more information,
-#' see [Amazon EBS
-#' encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html)
-#' in the *Amazon EBS User Guide*.
+#' see [Use encryption with EBS-backed
+#' AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html)
+#' in the *Amazon EC2 User Guide*.
 #' @param KmsKeyId The identifier of the symmetric Key Management Service (KMS) KMS key to
 #' use when creating encrypted volumes. If this parameter is not specified,
 #' your Amazon Web Services managed KMS key for Amazon EBS is used. If you
@@ -2483,10 +2484,51 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
 }
 .ec2$operations$create_capacity_reservation <- ec2_create_capacity_reservation
 
+#' Create a new Capacity Reservation by splitting the available capacity of
+#' the source Capacity Reservation
+#'
+#' @description
+#' Create a new Capacity Reservation by splitting the available capacity of the source Capacity Reservation. The new Capacity Reservation will have the same attributes as the source Capacity Reservation except for tags. The source Capacity Reservation must be `active` and owned by your Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_by_splitting/](https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_by_splitting/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. For more information, see [Ensure
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param SourceCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation from which you want to split the
+#' available capacity.
+#' @param InstanceCount &#91;required&#93; The number of instances to split from the source Capacity Reservation.
+#' @param TagSpecifications The tags to apply to the new Capacity Reservation.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_capacity_reservation_by_splitting
+ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientToken = NULL, SourceCapacityReservationId, InstanceCount, TagSpecifications = NULL) {
+  op <- new_operation(
+    name = "CreateCapacityReservationBySplitting",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ec2$create_capacity_reservation_by_splitting_input(DryRun = DryRun, ClientToken = ClientToken, SourceCapacityReservationId = SourceCapacityReservationId, InstanceCount = InstanceCount, TagSpecifications = TagSpecifications)
+  output <- .ec2$create_capacity_reservation_by_splitting_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_capacity_reservation_by_splitting <- ec2_create_capacity_reservation_by_splitting
+
 #' Creates a Capacity Reservation Fleet
 #'
 #' @description
-#' Creates a Capacity Reservation Fleet. For more information, see [Create a Capacity Reservation Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet) in the *Amazon EC2 User Guide*.
+#' Creates a Capacity Reservation Fleet. For more information, see [Create a Capacity Reservation Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#create-crfleet) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/](https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/) for full documentation.
 #'
@@ -3577,11 +3619,13 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' information about the features available in each tier and the costs
 #' associated with the tiers, see [Amazon VPC pricing \> IPAM
 #' tab](https://aws.amazon.com/vpc/pricing/).
+#' @param EnablePrivateGua Enable this option to use your own GUA ranges as private IPv6 addresses.
+#' This option is disabled by default.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_create_ipam
-ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions = NULL, TagSpecifications = NULL, ClientToken = NULL, Tier = NULL) {
+ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions = NULL, TagSpecifications = NULL, ClientToken = NULL, Tier = NULL, EnablePrivateGua = NULL) {
   op <- new_operation(
     name = "CreateIpam",
     http_method = "POST",
@@ -3589,7 +3633,7 @@ ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions 
     host_prefix = "",
     paginator = list()
   )
-  input <- .ec2$create_ipam_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken, Tier = Tier)
+  input <- .ec2$create_ipam_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
   output <- .ec2$create_ipam_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -3598,6 +3642,44 @@ ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions 
   return(response)
 }
 .ec2$operations$create_ipam <- ec2_create_ipam
+
+#' Create a verification token
+#'
+#' @description
+#' Create a verification token. A verification token is an Amazon Web Services-generated random value that you can use to prove ownership of an external resource. For example, you can use a verification token to validate that you control a public IP address range when you bring an IP address range to Amazon Web Services (BYOIP).
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_ipam_external_resource_verification_token/](https://www.paws-r-sdk.com/docs/ec2_create_ipam_external_resource_verification_token/) for full documentation.
+#'
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamId &#91;required&#93; The ID of the IPAM that will create the token.
+#' @param TagSpecifications Token tags.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_ipam_external_resource_verification_token
+ec2_create_ipam_external_resource_verification_token <- function(DryRun = NULL, IpamId, TagSpecifications = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateIpamExternalResourceVerificationToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ec2$create_ipam_external_resource_verification_token_input(DryRun = DryRun, IpamId = IpamId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
+  output <- .ec2$create_ipam_external_resource_verification_token_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_ipam_external_resource_verification_token <- ec2_create_ipam_external_resource_verification_token
 
 #' Create an IP address pool for Amazon VPC IP Address Manager (IPAM)
 #'
@@ -3611,15 +3693,23 @@ ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions 
 #' you have the required permissions, the error response is
 #' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param IpamScopeId &#91;required&#93; The ID of the scope in which you would like to create the IPAM pool.
-#' @param Locale In IPAM, the locale is the Amazon Web Services Region or, for IPAM IPv4
-#' pools in the public scope, the network border group for an Amazon Web
-#' Services Local Zone where you want to make an IPAM pool available for
-#' allocations ([supported Local
-#' Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail)).
+#' @param Locale The locale for the pool should be one of the following:
+#' 
+#' -   An Amazon Web Services Region where you want this IPAM pool to be
+#'     available for allocations.
+#' 
+#' -   The network border group for an Amazon Web Services Local Zone where
+#'     you want this IPAM pool to be available for allocations ([supported
+#'     Local
+#'     Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail)).
+#'     This option is only available for IPAM IPv4 pools in the public
+#'     scope.
+#' 
 #' If you do not choose a locale, resources in Regions others than the
 #' IPAM's home region cannot use CIDRs from this pool.
 #' 
-#' Possible values: Any Amazon Web Services Region, such as us-east-1.
+#' Possible values: Any Amazon Web Services Region or supported Amazon Web
+#' Services Local Zone.
 #' @param SourceIpamPoolId The ID of the source IPAM pool. Use this option to create a pool within
 #' an existing pool. Note that the CIDR you provision for the pool within
 #' the source pool must be available in the source pool's CIDR range.
@@ -4517,7 +4607,7 @@ ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Grou
 #'
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
 #' @param AwsAccountId The Amazon Web Services account ID.
-#' @param AwsService The Amazon Web Service. Currently not supported.
+#' @param AwsService The Amazon Web Services service. Currently not supported.
 #' @param Permission &#91;required&#93; The type of permission to grant.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -7187,6 +7277,40 @@ ec2_delete_ipam <- function(DryRun = NULL, IpamId, Cascade = NULL) {
   return(response)
 }
 .ec2$operations$delete_ipam <- ec2_delete_ipam
+
+#' Delete a verification token
+#'
+#' @description
+#' Delete a verification token. A verification token is an Amazon Web Services-generated random value that you can use to prove ownership of an external resource. For example, you can use a verification token to validate that you control a public IP address range when you bring an IP address range to Amazon Web Services (BYOIP).
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_ipam_external_resource_verification_token/](https://www.paws-r-sdk.com/docs/ec2_delete_ipam_external_resource_verification_token/) for full documentation.
+#'
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param IpamExternalResourceVerificationTokenId &#91;required&#93; The token ID.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_ipam_external_resource_verification_token
+ec2_delete_ipam_external_resource_verification_token <- function(DryRun = NULL, IpamExternalResourceVerificationTokenId) {
+  op <- new_operation(
+    name = "DeleteIpamExternalResourceVerificationToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ec2$delete_ipam_external_resource_verification_token_input(DryRun = DryRun, IpamExternalResourceVerificationTokenId = IpamExternalResourceVerificationTokenId)
+  output <- .ec2$delete_ipam_external_resource_verification_token_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_ipam_external_resource_verification_token <- ec2_delete_ipam_external_resource_verification_token
 
 #' Delete an IPAM pool
 #'
@@ -11615,7 +11739,7 @@ ec2_describe_id_format <- function(Resource = NULL) {
 #' user, IAM role, or root user
 #'
 #' @description
-#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_identity_id_format/](https://www.paws-r-sdk.com/docs/ec2_describe_identity_id_format/) for full documentation.
 #'
@@ -12260,6 +12384,10 @@ ec2_describe_instance_event_windows <- function(DryRun = NULL, InstanceEventWind
 #' -   `system-status.status` - The system status of the instance (`ok` |
 #'     `impaired` | `initializing` | `insufficient-data` |
 #'     `not-applicable`).
+#' 
+#' -   `attached-ebs-status.status` - The status of the attached EBS volume
+#'     for the instance (`ok` | `impaired` | `initializing` |
+#'     `insufficient-data` | `not-applicable`).
 #' @param InstanceIds The instance IDs.
 #' 
 #' Default: Describes all your instances.
@@ -13206,6 +13334,65 @@ ec2_describe_ipam_byoasn <- function(DryRun = NULL, MaxResults = NULL, NextToken
   return(response)
 }
 .ec2$operations$describe_ipam_byoasn <- ec2_describe_ipam_byoasn
+
+#' Describe verification tokens
+#'
+#' @description
+#' Describe verification tokens. A verification token is an Amazon Web Services-generated random value that you can use to prove ownership of an external resource. For example, you can use a verification token to validate that you control a public IP address range when you bring an IP address range to Amazon Web Services (BYOIP).
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_ipam_external_resource_verification_tokens/](https://www.paws-r-sdk.com/docs/ec2_describe_ipam_external_resource_verification_tokens/) for full documentation.
+#'
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param Filters One or more filters for the request. For more information about
+#' filtering, see [Filtering CLI
+#' output](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html).
+#' 
+#' Available filters:
+#' 
+#' -   `ipam-arn`
+#' 
+#' -   `ipam-external-resource-verification-token-arn`
+#' 
+#' -   `ipam-external-resource-verification-token-id`
+#' 
+#' -   `ipam-id`
+#' 
+#' -   `ipam-region`
+#' 
+#' -   `state`
+#' 
+#' -   `status`
+#' 
+#' -   `token-name`
+#' 
+#' -   `token-value`
+#' @param NextToken The token for the next page of results.
+#' @param MaxResults The maximum number of tokens to return in one page of results.
+#' @param IpamExternalResourceVerificationTokenIds Verification token IDs.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_ipam_external_resource_verification_tokens
+ec2_describe_ipam_external_resource_verification_tokens <- function(DryRun = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL, IpamExternalResourceVerificationTokenIds = NULL) {
+  op <- new_operation(
+    name = "DescribeIpamExternalResourceVerificationTokens",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ec2$describe_ipam_external_resource_verification_tokens_input(DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, IpamExternalResourceVerificationTokenIds = IpamExternalResourceVerificationTokenIds)
+  output <- .ec2$describe_ipam_external_resource_verification_tokens_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_ipam_external_resource_verification_tokens <- ec2_describe_ipam_external_resource_verification_tokens
 
 #' Get information about your IPAM pools
 #'
@@ -14592,7 +14779,8 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
 #' -   `network-interface-permission.aws-account-id` - The Amazon Web
 #'     Services account ID.
 #' 
-#' -   `network-interface-permission.aws-service` - The Amazon Web Service.
+#' -   `network-interface-permission.aws-service` - The Amazon Web Services
+#'     service.
 #' 
 #' -   `network-interface-permission.permission` - The type of permission
 #'     (`INSTANCE-ATTACH` | `EIP-ASSOCIATE`).
@@ -14718,8 +14906,8 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #'     principal or service that created the network interface.
 #' 
 #' -   `requester-managed` - Indicates whether the network interface is
-#'     being managed by an Amazon Web Service (for example, Amazon Web
-#'     Services Management Console, Auto Scaling, and so on).
+#'     being managed by an Amazon Web Services service (for example, Amazon
+#'     Web Services Management Console, Auto Scaling, and so on).
 #' 
 #' -   `source-dest-check` - Indicates whether the network interface
 #'     performs source/destination checking. A value of `true` means
@@ -14784,7 +14972,7 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #' Describes the specified placement groups or all of your placement groups
 #'
 #' @description
-#' Describes the specified placement groups or all of your placement groups. For more information, see [Placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon EC2 User Guide*.
+#' Describes the specified placement groups or all of your placement groups.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_placement_groups/](https://www.paws-r-sdk.com/docs/ec2_describe_placement_groups/) for full documentation.
 #'
@@ -14818,8 +15006,14 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param GroupNames The names of the placement groups.
 #' 
-#' Default: Describes all your placement groups, or only those otherwise
-#' specified.
+#' Constraints:
+#' 
+#' -   You can specify a name only if the placement group is owned by your
+#'     account.
+#' 
+#' -   If a placement group is *shared* with your account, specifying the
+#'     name results in an error. You must use the `GroupId` parameter
+#'     instead.
 #' @param GroupIds The IDs of the placement groups.
 #'
 #' @keywords internal
@@ -15414,7 +15608,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #'     in a route in the route table.
 #' 
 #' -   `route.destination-prefix-list-id` - The ID (prefix) of the Amazon
-#'     Web Service specified in a route in the table.
+#'     Web Services service specified in a route in the table.
 #' 
 #' -   `route.egress-only-internet-gateway-id` - The ID of an egress-only
 #'     Internet gateway specified in a route in the route table.
@@ -16371,7 +16565,7 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
 #' specified VPC
 #'
 #' @description
-#' Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in the same VPC or peered VPC. Rules can also be stale if they reference a security group in a peer VPC for which the VPC peering connection has been deleted.
+#' Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in a peered VPC. Rules can also be stale if they reference a security group in a peer VPC for which the VPC peering connection has been deleted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_stale_security_groups/](https://www.paws-r-sdk.com/docs/ec2_describe_stale_security_groups/) for full documentation.
 #'
@@ -20487,14 +20681,6 @@ ec2_enable_serial_console_access <- function(DryRun = NULL) {
 #'     publicly shared are treated as private and they are no longer
 #'     publicly available.
 #' 
-#'     If you enable block public access for snapshots in
-#'     `block-all-sharing` mode, it does not change the permissions for
-#'     snapshots that are already publicly shared. Instead, it prevents
-#'     these snapshots from be publicly visible and publicly accessible.
-#'     Therefore, the attributes for these snapshots still indicate that
-#'     they are publicly shared, even though they are not publicly
-#'     available.
-#' 
 #' -   `block-new-sharing` - Prevents only new public sharing of snapshots
 #'     in the Region. Users in the account will no longer be able to
 #'     request new public sharing. However, snapshots that are already
@@ -23222,7 +23408,7 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' Lists one or more AMIs that are currently in the Recycle Bin
 #'
 #' @description
-#' Lists one or more AMIs that are currently in the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html) in the *Amazon EC2 User Guide*.
+#' Lists one or more AMIs that are currently in the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/](https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/) for full documentation.
 #'
@@ -23469,11 +23655,11 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
 }
 .ec2$operations$modify_availability_zone_group <- ec2_modify_availability_zone_group
 
-#' Modifies a Capacity Reservation's capacity and the conditions under
-#' which it is to be released
+#' Modifies a Capacity Reservation's capacity, instance eligibility, and
+#' the conditions under which it is to be released
 #'
 #' @description
-#' Modifies a Capacity Reservation's capacity and the conditions under which it is to be released. You cannot change a Capacity Reservation's instance type, EBS optimization, instance store settings, platform, Availability Zone, or instance eligibility. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes.
+#' Modifies a Capacity Reservation's capacity, instance eligibility, and the conditions under which it is to be released. You can't modify a Capacity Reservation's instance type, EBS optimization, platform, instance store settings, Availability Zone, or tenancy. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes. For more information, see [Modify an active Capacity Reservation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_modify_capacity_reservation/](https://www.paws-r-sdk.com/docs/ec2_modify_capacity_reservation/) for full documentation.
 #'
@@ -23510,11 +23696,21 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param AdditionalInfo Reserved for future use.
+#' @param InstanceMatchCriteria The matching criteria (instance eligibility) that you want to use in the
+#' modified Capacity Reservation. If you change the instance eligibility of
+#' an existing Capacity Reservation from `targeted` to `open`, any running
+#' instances that match the attributes of the Capacity Reservation, have
+#' the `CapacityReservationPreference` set to `open`, and are not yet
+#' running in the Capacity Reservation, will automatically use the modified
+#' Capacity Reservation.
+#' 
+#' To modify the instance eligibility, the Capacity Reservation must be
+#' completely idle (zero usage).
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_modify_capacity_reservation
-ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount = NULL, EndDate = NULL, EndDateType = NULL, Accept = NULL, DryRun = NULL, AdditionalInfo = NULL) {
+ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount = NULL, EndDate = NULL, EndDateType = NULL, Accept = NULL, DryRun = NULL, AdditionalInfo = NULL, InstanceMatchCriteria = NULL) {
   op <- new_operation(
     name = "ModifyCapacityReservation",
     http_method = "POST",
@@ -23522,7 +23718,7 @@ ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount
     host_prefix = "",
     paginator = list()
   )
-  input <- .ec2$modify_capacity_reservation_input(CapacityReservationId = CapacityReservationId, InstanceCount = InstanceCount, EndDate = EndDate, EndDateType = EndDateType, Accept = Accept, DryRun = DryRun, AdditionalInfo = AdditionalInfo)
+  input <- .ec2$modify_capacity_reservation_input(CapacityReservationId = CapacityReservationId, InstanceCount = InstanceCount, EndDate = EndDate, EndDateType = EndDateType, Accept = Accept, DryRun = DryRun, AdditionalInfo = AdditionalInfo, InstanceMatchCriteria = InstanceMatchCriteria)
   output <- .ec2$modify_capacity_reservation_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -24139,7 +24335,7 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' be base64-encoded. Depending on the tool or SDK that you're using, the
 #' base64-encoding might be performed for you. For more information, see
 #' [Work with instance user
-#' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-add-user-data.html).
+#' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/).
 #' @param Value A new value for the attribute. Use only with the `kernel`, `ramdisk`,
 #' `userData`, `disableApiTermination`, or
 #' `instanceInitiatedShutdownBehavior` attribute.
@@ -24584,11 +24780,13 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
 #' information about the features available in each tier and the costs
 #' associated with the tiers, see [Amazon VPC pricing \> IPAM
 #' tab](https://aws.amazon.com/vpc/pricing/).
+#' @param EnablePrivateGua Enable this option to use your own GUA ranges as private IPv6 addresses.
+#' This option is disabled by default.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_modify_ipam
-ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperatingRegions = NULL, RemoveOperatingRegions = NULL, Tier = NULL) {
+ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperatingRegions = NULL, RemoveOperatingRegions = NULL, Tier = NULL, EnablePrivateGua = NULL) {
   op <- new_operation(
     name = "ModifyIpam",
     http_method = "POST",
@@ -24596,7 +24794,7 @@ ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperat
     host_prefix = "",
     paginator = list()
   )
-  input <- .ec2$modify_ipam_input(DryRun = DryRun, IpamId = IpamId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions, Tier = Tier)
+  input <- .ec2$modify_ipam_input(DryRun = DryRun, IpamId = IpamId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
   output <- .ec2$modify_ipam_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -25256,6 +25454,13 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
 #' @param EnableDns64 Indicates whether DNS queries made to the Amazon-provided DNS Resolver
 #' in this subnet should return synthetic IPv6 addresses for IPv4-only
 #' destinations.
+#' 
+#' You must first configure a NAT gateway in a public subnet (separate from
+#' the subnet containing the IPv6-only workloads). For example, the subnet
+#' containing the NAT gateway should have a `0.0.0.0/0` route pointing to
+#' the internet gateway. For more information, see [Configure DNS64 and
+#' NAT64](https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-nat64-dns64.html#nat-gateway-nat64-dns64-walkthrough)
+#' in the *Amazon VPC User Guide*.
 #' @param PrivateDnsHostnameTypeOnLaunch The type of hostname to assign to instances in the subnet at launch. For
 #' IPv4-only and dual-stack (IPv4 and IPv6) subnets, an instance DNS name
 #' can be based on the instance IPv4 address (ip-name) or the instance ID
@@ -26569,6 +26774,47 @@ ec2_move_byoip_cidr_to_ipam <- function(DryRun = NULL, Cidr, IpamPoolId, IpamPoo
 }
 .ec2$operations$move_byoip_cidr_to_ipam <- ec2_move_byoip_cidr_to_ipam
 
+#' Move available capacity from a source Capacity Reservation to a
+#' destination Capacity Reservation
+#'
+#' @description
+#' Move available capacity from a source Capacity Reservation to a destination Capacity Reservation. The source Capacity Reservation and the destination Capacity Reservation must be `active`, owned by your Amazon Web Services account, and share the following:
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_move_capacity_reservation_instances/](https://www.paws-r-sdk.com/docs/ec2_move_capacity_reservation_instances/) for full documentation.
+#'
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. For more information, see [Ensure
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param SourceCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation from which you want to move capacity.
+#' @param DestinationCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation that you want to move capacity into.
+#' @param InstanceCount &#91;required&#93; The number of instances that you want to move from the source Capacity
+#' Reservation.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_move_capacity_reservation_instances
+ec2_move_capacity_reservation_instances <- function(DryRun = NULL, ClientToken = NULL, SourceCapacityReservationId, DestinationCapacityReservationId, InstanceCount) {
+  op <- new_operation(
+    name = "MoveCapacityReservationInstances",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ec2$move_capacity_reservation_instances_input(DryRun = DryRun, ClientToken = ClientToken, SourceCapacityReservationId = SourceCapacityReservationId, DestinationCapacityReservationId = DestinationCapacityReservationId, InstanceCount = InstanceCount)
+  output <- .ec2$move_capacity_reservation_instances_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$move_capacity_reservation_instances <- ec2_move_capacity_reservation_instances
+
 #' Provisions an IPv4 or IPv6 address range for use with your Amazon Web
 #' Services resources through bring your own IP addresses (BYOIP) and
 #' creates a corresponding address pool
@@ -26690,8 +26936,8 @@ ec2_provision_ipam_byoasn <- function(DryRun = NULL, IpamId, Asn, AsnAuthorizati
 #' "Cidr" is required. This value will be null if you specify
 #' "NetmaskLength" and will be filled in during the provisioning process.
 #' @param CidrAuthorizationContext A signed document that proves that you are authorized to bring a
-#' specified IP address range to Amazon using BYOIP. This option applies to
-#' public pools only.
+#' specified IP address range to Amazon using BYOIP. This option only
+#' applies to IPv4 and IPv6 pools in the public scope.
 #' @param NetmaskLength The netmask length of the CIDR you'd like to provision to a pool. Can be
 #' used for provisioning Amazon-provided IPv6 CIDRs to top-level pools and
 #' for provisioning CIDRs to pools with source pools. Cannot be used to
@@ -26700,11 +26946,16 @@ ec2_provision_ipam_byoasn <- function(DryRun = NULL, IpamId, Asn, AsnAuthorizati
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param VerificationMethod The method for verifying control of a public IP address range. Defaults
+#' to `remarks-x509` if not specified. This option only applies to IPv4 and
+#' IPv6 pools in the public scope.
+#' @param IpamExternalResourceVerificationTokenId Verification token ID. This option only applies to IPv4 and IPv6 pools
+#' in the public scope.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_provision_ipam_pool_cidr
-ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL, CidrAuthorizationContext = NULL, NetmaskLength = NULL, ClientToken = NULL) {
+ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL, CidrAuthorizationContext = NULL, NetmaskLength = NULL, ClientToken = NULL, VerificationMethod = NULL, IpamExternalResourceVerificationTokenId = NULL) {
   op <- new_operation(
     name = "ProvisionIpamPoolCidr",
     http_method = "POST",
@@ -26712,7 +26963,7 @@ ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL,
     host_prefix = "",
     paginator = list()
   )
-  input <- .ec2$provision_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext, NetmaskLength = NetmaskLength, ClientToken = ClientToken)
+  input <- .ec2$provision_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext, NetmaskLength = NetmaskLength, ClientToken = ClientToken, VerificationMethod = VerificationMethod, IpamExternalResourceVerificationTokenId = IpamExternalResourceVerificationTokenId)
   output <- .ec2$provision_ipam_pool_cidr_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -26736,7 +26987,7 @@ ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL,
 #' @param IpamPoolId &#91;required&#93; The ID of the IPAM pool you would like to use to allocate this CIDR.
 #' @param PoolId &#91;required&#93; The ID of the public IPv4 pool you would like to use for this CIDR.
 #' @param NetmaskLength &#91;required&#93; The netmask length of the CIDR you would like to allocate to the public
-#' IPv4 pool.
+#' IPv4 pool. The least specific netmask length you can define is 24.
 #' @param NetworkBorderGroup The Availability Zone (AZ) or Local Zone (LZ) network border group that
 #' the resource that the IP address is assigned to is in. Defaults to an AZ
 #' network border group. For more information on available Local Zones, see
@@ -26962,7 +27213,7 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #' Registers an AMI
 #'
 #' @description
-#' Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI is the final step in the creation process. For more information about creating AMIs, see [Create your own AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI is the final step in the creation process. For more information about creating AMIs, see [Create an AMI from a snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot) and [Create an instance-store backed AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_register_image/](https://www.paws-r-sdk.com/docs/ec2_register_image/) for full documentation.
 #'
@@ -28258,7 +28509,7 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
 #' Restores an AMI from the Recycle Bin
 #'
 #' @description
-#' Restores an AMI from the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html) in the *Amazon EC2 User Guide*.
+#' Restores an AMI from the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_restore_image_from_recycle_bin/](https://www.paws-r-sdk.com/docs/ec2_restore_image_from_recycle_bin/) for full documentation.
 #'
@@ -28642,7 +28893,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' base64-encoded. Depending on the tool or SDK that you're using, the
 #' base64-encoding might be performed for you. For more information, see
 #' [Work with instance user
-#' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-add-user-data.html).
+#' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/).
 #' @param AdditionalInfo Reserved.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. If you do not specify a client token, a randomly

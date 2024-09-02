@@ -152,6 +152,22 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' @param IfNoneMatch Uploads the object only if the object key name does not already exist in
+#' the bucket specified. Otherwise, Amazon S3 returns a
+#' `412 Precondition Failed` error.
+#' 
+#' If a conflicting operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' re-initiate the multipart upload with
+#' [`create_multipart_upload`][s3_create_multipart_upload] and re-upload
+#' each part.
+#' 
+#' Expects the '*' (asterisk) character.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232), or [Conditional
+#' requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerAlgorithm The server-side encryption (SSE) algorithm used to encrypt the object.
 #' This parameter is required only when the object was created using a
 #' checksum algorithm or if your bucket policy requires the use of SSE-C.
@@ -178,7 +194,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @keywords internal
 #'
 #' @rdname s3_complete_multipart_upload
-s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
+s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
     name = "CompleteMultipartUpload",
     http_method = "POST",
@@ -186,7 +202,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
     host_prefix = "",
     paginator = list()
   )
-  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
+  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
   output <- .s3$complete_multipart_upload_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -3055,6 +3071,12 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumMode To retrieve the checksum, this mode must be enabled.
+#' 
+#' In addition, if you enable checksum mode and the object is uploaded with
+#' a
+#' [checksum](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html)
+#' and encrypted with an Key Management Service (KMS) key, you must have
+#' permission to use the `kms:Decrypt` action to retrieve the checksum.
 #'
 #' @keywords internal
 #'
@@ -3727,10 +3749,11 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumMode To retrieve the checksum, this parameter must be enabled.
 #' 
-#' In addition, if you enable `ChecksumMode` and the object is encrypted
-#' with Amazon Web Services Key Management Service (Amazon Web Services
-#' KMS), you must have permission to use the `kms:Decrypt` action for the
-#' request to succeed.
+#' In addition, if you enable checksum mode and the object is uploaded with
+#' a
+#' [checksum](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html)
+#' and encrypted with an Key Management Service (KMS) key, you must have
+#' permission to use the `kms:Decrypt` action to retrieve the checksum.
 #'
 #' @keywords internal
 #'
@@ -3905,20 +3928,30 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_buckets/](https://www.paws-r-sdk.com/docs/s3_list_buckets/) for full documentation.
 #'
-
+#' @param MaxBuckets Maximum number of buckets to be returned in response. When the number is
+#' more than the count of buckets that are owned by an Amazon Web Services
+#' account, return all the buckets in response.
+#' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
+#' continued on this bucket with a token. `ContinuationToken` is obfuscated
+#' and is not a real key. You can use this `ContinuationToken` for
+#' pagination of the list results.
+#' 
+#' Length Constraints: Minimum length of 0. Maximum length of 1024.
+#' 
+#' Required: No.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_buckets
-s3_list_buckets <- function() {
+s3_list_buckets <- function(MaxBuckets = NULL, ContinuationToken = NULL) {
   op <- new_operation(
     name = "ListBuckets",
     http_method = "GET",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Buckets")
+    paginator = list(input_token = "ContinuationToken", limit_key = "MaxBuckets", output_token = "ContinuationToken", result_key = "Buckets")
   )
-  input <- .s3$list_buckets_input()
+  input <- .s3$list_buckets_input(MaxBuckets = MaxBuckets, ContinuationToken = ContinuationToken)
   output <- .s3$list_buckets_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -3937,9 +3970,9 @@ s3_list_buckets <- function() {
 #' See [https://www.paws-r-sdk.com/docs/s3_list_directory_buckets/](https://www.paws-r-sdk.com/docs/s3_list_directory_buckets/) for full documentation.
 #'
 #' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
-#' continued on this bucket with a token. `ContinuationToken` is obfuscated
-#' and is not a real key. You can use this `ContinuationToken` for
-#' pagination of the list results.
+#' continued on buckets in this account with a token. `ContinuationToken`
+#' is obfuscated and is not a real bucket name. You can use this
+#' `ContinuationToken` for the pagination of the list results.
 #' @param MaxDirectoryBuckets Maximum number of buckets to be returned in response. When the number is
 #' more than the count of buckets that are owned by an Amazon Web Services
 #' account, return all the buckets in response.
@@ -4290,10 +4323,21 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'     uploads, see [Multipart Upload
 #'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
 #'     in the *Amazon S3 User Guide*.
-#' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
-#' If using `url`, non-ASCII characters used in an object's key name will
-#' be URL encoded. For example, the object `test_file(3).png` will appear
-#' as `test_file%283%29.png`.
+#' @param EncodingType Encoding type used by Amazon S3 to encode the [object
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html)
+#' in the response. Responses are encoded only in UTF-8. An object key can
+#' contain any Unicode character. However, the XML 1.0 parser can't parse
+#' certain characters, such as characters with an ASCII value from 0 to 10.
+#' For characters that aren't supported in XML 1.0, you can add this
+#' parameter to request that Amazon S3 encode the keys in the response. For
+#' more information about characters to avoid in object key names, see
+#' [Object key naming
+#' guidelines](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines).
+#' 
+#' When using the URL encoding type, non-ASCII characters that are used in
+#' an object's key name will be percent-encoded according to UTF-8 code
+#' values. For example, the object `test_file(3).png` will appear as
+#' `test_file%283%29.png`.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
 #' the action returns up to 1,000 key names. The response might contain
 #' fewer keys but will never contain more.
@@ -5611,6 +5655,20 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' in the *Amazon S3 User Guide*.
 #' @param Expires The date and time at which the object is no longer cacheable. For more
 #' information, see <https://www.rfc-editor.org/rfc/rfc7234#section-5.3>.
+#' @param IfNoneMatch Uploads the object only if the object key name does not already exist in
+#' the bucket specified. Otherwise, Amazon S3 returns a
+#' `412 Precondition Failed` error.
+#' 
+#' If a conflicting operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' retry the upload.
+#' 
+#' Expects the '*' (asterisk) character.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232), or [Conditional
+#' requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html)
+#' in the *Amazon S3 User Guide*.
 #' @param GrantFullControl Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 #' object.
 #' 
@@ -5760,7 +5818,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @keywords internal
 #'
 #' @rdname s3_put_object
-s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
+s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObject",
     http_method = "PUT",
@@ -5768,7 +5826,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
     host_prefix = "",
     paginator = list()
   )
-  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$put_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)

@@ -46,7 +46,7 @@ next batch of results, specify the \code{nextToken} value in this field.}
 \item{sortOrder}{The sort order of the results.}
 }
 \description{
-Lists the Provisioned Throughputs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the Amazon Bedrock User Guide.
+Lists the Provisioned Throughputs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_provisioned_model_throughputs/} for full documentation.
 }

@@ -15,7 +15,7 @@ NULL
 #' the request. For more information, see [Working with DNS
 #' Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
 #' and [Walkthrough 5: Using DNS aliases to access your file
-#' system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html),
+#' system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#dns-aliases),
 #' including additional steps you must take to be able to access your file
 #' system using a DNS alias.
 #' 
@@ -2765,7 +2765,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
 #' Default value is `SSD`. For more information, see [Storage type
-#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/#storage-type-options)
+#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs)
 #' in the *FSx for Windows File Server User Guide* and [Multiple storage
 #' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
 #' in the *FSx for Lustre User Guide*.

@@ -7,7 +7,7 @@ NULL
 #' stored in DynamoDB, using PartiQL
 #'
 #' @description
-#' This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL. Each read statement in a [`batch_execute_statement`][dynamodb_batch_execute_statement] must specify an equality condition on all key attributes. This enforces that each `SELECT` statement in a batch returns at most a single item.
+#' This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL. Each read statement in a [`batch_execute_statement`][dynamodb_batch_execute_statement] must specify an equality condition on all key attributes. This enforces that each `SELECT` statement in a batch returns at most a single item. For more information, see [Running batch operations with PartiQL for DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.multiplestatements.batching.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/dynamodb_batch_execute_statement/](https://www.paws-r-sdk.com/docs/dynamodb_batch_execute_statement/) for full documentation.
 #'

@@ -21,21 +21,21 @@ Constraints:
 }}
 
 \item{SkipFinalSnapshot}{Specifies whether to skip the creation of a final DB cluster snapshot
-before the DB cluster is deleted. If skip is specified, no DB cluster
-snapshot is created. If skip isn't specified, a DB cluster snapshot is
-created before the DB cluster is deleted. By default, skip isn't
-specified, and the DB cluster snapshot is created. By default, this
-parameter is disabled.
+before RDS deletes the DB cluster. If you set this value to \code{true}, RDS
+doesn't create a final DB cluster snapshot. If you set this value to
+\code{false} or don't specify it, RDS creates a DB cluster snapshot before it
+deletes the DB cluster. By default, this parameter is disabled, so RDS
+creates a final DB cluster snapshot.
 
-You must specify a \code{FinalDBSnapshotIdentifier} parameter if
-\code{SkipFinalSnapshot} is disabled.}
+If \code{SkipFinalSnapshot} is disabled, you must specify a value for the
+\code{FinalDBSnapshotIdentifier} parameter.}
 
 \item{FinalDBSnapshotIdentifier}{The DB cluster snapshot identifier of the new DB cluster snapshot
 created when \code{SkipFinalSnapshot} is disabled.
 
-Specifying this parameter and also skipping the creation of a final DB
-cluster snapshot with the \code{SkipFinalShapshot} parameter results in an
-error.
+If you specify this parameter and also skip the creation of a final DB
+cluster snapshot with the \code{SkipFinalShapshot} parameter, the request
+results in an error.
 
 Constraints:
 \itemize{

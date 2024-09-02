@@ -2586,16 +2586,15 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
 #' both.
 #' @param logStreamNames Filters the results to only logs from the log streams in this list.
 #' 
-#' If you specify a value for both `logStreamNamePrefix` and
-#' `logStreamNames`, the action returns an `InvalidParameterException`
+#' If you specify a value for both `logStreamNames` and
+#' `logStreamNamePrefix`, the action returns an `InvalidParameterException`
 #' error.
 #' @param logStreamNamePrefix Filters the results to include only events from log streams that have
 #' names starting with this prefix.
 #' 
 #' If you specify a value for both `logStreamNamePrefix` and
-#' `logStreamNames`, but the value for `logStreamNamePrefix` does not match
-#' any log stream names specified in `logStreamNames`, the action returns
-#' an `InvalidParameterException` error.
+#' `logStreamNames`, the action returns an `InvalidParameterException`
+#' error.
 #' @param startTime The start of the time range, expressed as the number of milliseconds
 #' after `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp before this
 #' time are not returned.
@@ -3770,9 +3769,9 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #'     cross-account delivery. Kinesis Data Streams and Firehose are
 #'     supported as logical destinations.
 #' 
-#' Each account can have one account-level subscription filter policy. If
-#' you are updating an existing filter, you must specify the correct name
-#' in `PolicyName`. To perform a
+#' Each account can have one account-level subscription filter policy per
+#' Region. If you are updating an existing filter, you must specify the
+#' correct name in `PolicyName`. To perform a
 #' [`put_account_policy`][cloudwatchlogs_put_account_policy] subscription
 #' filter operation for any destination except a Lambda function, you must
 #' also have the `iam:PassRole` permission.
@@ -3855,7 +3854,7 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' -   **FilterPattern** A filter pattern for subscribing to a filtered
 #'     stream of log events.
 #' 
-#' -   **Distribution**The method used to distribute log data to the
+#' -   **Distribution** The method used to distribute log data to the
 #'     destination. By default, log data is grouped by log stream, but the
 #'     grouping can be set to `Random` for a more even distribution. This
 #'     property is only applicable when the destination is an Kinesis Data
@@ -4308,9 +4307,11 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' `arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234`
 #' @param logType &#91;required&#93; Defines the type of log that the source is sending.
 #' 
+#' -   For Amazon Bedrock, the valid value is `APPLICATION_LOGS`.
+#' 
 #' -   For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
 #' 
-#' -   For IAM Identity Centerr, the valid value is `ERROR_LOGS`.
+#' -   For IAM Identity Center, the valid value is `ERROR_LOGS`.
 #' 
 #' -   For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`,
 #'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and
@@ -4580,7 +4581,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #'
 #' @usage
 #' cloudwatchlogs_put_log_events(logGroupName, logStreamName, logEvents,
-#'   sequenceToken)
+#'   sequenceToken, entity)
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param logStreamName &#91;required&#93; The name of the log stream.
@@ -4593,6 +4594,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' [`put_log_events`][cloudwatchlogs_put_log_events] actions are now
 #' accepted and never return `InvalidSequenceTokenException` or
 #' `DataAlreadyAcceptedException` even if the sequence token is not valid.
+#' @param entity Reserved for future use.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4603,6 +4605,9 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #'     tooNewLogEventStartIndex = 123,
 #'     tooOldLogEventEndIndex = 123,
 #'     expiredLogEventEndIndex = 123
+#'   ),
+#'   rejectedEntityInfo = list(
+#'     errorType = "InvalidEntity"|"InvalidTypeValue"|"InvalidKeyAttributes"|"InvalidAttributes"|"EntitySizeTooLarge"|"UnsupportedLogGroupType"|"MissingRequiredFields"
 #'   )
 #' )
 #' ```
@@ -4618,7 +4623,15 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #'       message = "string"
 #'     )
 #'   ),
-#'   sequenceToken = "string"
+#'   sequenceToken = "string",
+#'   entity = list(
+#'     keyAttributes = list(
+#'       "string"
+#'     ),
+#'     attributes = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4627,7 +4640,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' @rdname cloudwatchlogs_put_log_events
 #'
 #' @aliases cloudwatchlogs_put_log_events
-cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents, sequenceToken = NULL) {
+cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents, sequenceToken = NULL, entity = NULL) {
   op <- new_operation(
     name = "PutLogEvents",
     http_method = "POST",
@@ -4635,7 +4648,7 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
     host_prefix = "",
     paginator = list()
   )
-  input <- .cloudwatchlogs$put_log_events_input(logGroupName = logGroupName, logStreamName = logStreamName, logEvents = logEvents, sequenceToken = sequenceToken)
+  input <- .cloudwatchlogs$put_log_events_input(logGroupName = logGroupName, logStreamName = logStreamName, logEvents = logEvents, sequenceToken = sequenceToken, entity = entity)
   output <- .cloudwatchlogs$put_log_events_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -4656,6 +4669,14 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' 
 #' The maximum number of metric filters that can be associated with a log
 #' group is 100.
+#' 
+#' Using regular expressions to create metric filters is supported. For
+#' these filters, there is a quotas of quota of two regular expression
+#' patterns within a single filter pattern. There is also a quota of five
+#' regular expression patterns per log group. For more information about
+#' using regular expressions in metric filters, see [Filter pattern syntax
+#' for metric filters, subscription filters, filter log events, and Live
+#' Tail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 #' 
 #' When you create a metric filter, you can also optionally assign a unit
 #' and dimensions to the metric that is created.
@@ -4998,6 +5019,15 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' it. If you are updating an existing filter, you must specify the correct
 #' name in `filterName`.
 #' 
+#' Using regular expressions to create subscription filters is supported.
+#' For these filters, there is a quotas of quota of two regular expression
+#' patterns within a single filter pattern. There is also a quota of five
+#' regular expression patterns per log group. For more information about
+#' using regular expressions in subscription filters, see [Filter pattern
+#' syntax for metric filters, subscription filters, filter log events, and
+#' Live
+#' Tail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+#' 
 #' To perform a
 #' [`put_subscription_filter`][cloudwatchlogs_put_subscription_filter]
 #' operation for any destination except a Lambda function, you must also
@@ -5118,11 +5148,11 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #'     starts dropping the oldest events.
 #' 
 #' -   A
-#'     [SessionStreamingException](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/)
+#'     [SessionStreamingException](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartLiveTailResponseStream.html#CWL-Type-StartLiveTailResponseStream-SessionStreamingException)
 #'     object is returned if an unknown error occurs on the server side.
 #' 
 #' -   A
-#'     [SessionTimeoutException](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/)
+#'     [SessionTimeoutException](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartLiveTailResponseStream.html#CWL-Type-StartLiveTailResponseStream-SessionTimeoutException)
 #'     object is returned when the session times out, after it has been
 #'     kept open for three hours.
 #' 

@@ -16,7 +16,8 @@ eks_create_cluster(
   encryptionConfig = NULL,
   outpostConfig = NULL,
   accessConfig = NULL,
-  bootstrapSelfManagedAddons = NULL
+  bootstrapSelfManagedAddons = NULL,
+  upgradePolicy = NULL
 )
 }
 \arguments{
@@ -29,7 +30,7 @@ The default version might not be the latest version available.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that provides permissions
 for the Kubernetes control plane to make calls to Amazon Web Services
-API operations on your behalf. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role}
+API operations on your behalf. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/cluster_IAM_role.html}{Amazon EKS Service IAM Role}
 in the \emph{Amazon EKS User Guide} .}
 
 \item{resourcesVpcConfig}{[required] The VPC configuration that's used by the cluster control plane. Amazon
@@ -75,6 +76,10 @@ The default networking addons include vpc-cni, coredns, and kube-proxy.
 
 Use this option when you plan to install third-party alternative add-ons
 or self-manage the default networking add-ons.}
+
+\item{upgradePolicy}{New clusters, by default, have extended support enabled. You can disable
+extended support when creating a cluster by setting this value to
+\code{STANDARD}.}
 }
 \description{
 Creates an Amazon EKS control plane.

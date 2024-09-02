@@ -93,7 +93,7 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
 #' previously associated security groups.
 #' 
 #' For more information, see [Security Groups for Load Balancers in a
-#' VPC](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
+#' VPC](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/#elb-vpc-security-groups)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage

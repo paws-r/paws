@@ -6,10 +6,9 @@ NULL
 #' Cancels a job in an Batch job queue
 #'
 #' @description
-#' Cancels a job in an Batch job queue. Jobs that are in the `SUBMITTED` or
-#' `PENDING` are canceled. A job in`RUNNABLE` remains in `RUNNABLE` until
-#' it reaches the head of the job queue. Then the job status is updated to
-#' `FAILED`.
+#' Cancels a job in an Batch job queue. Jobs that are in a `SUBMITTED`,
+#' `PENDING`, or `RUNNABLE` state are cancelled and the job status is
+#' updated to `FAILED`.
 #' 
 #' A `PENDING` job is canceled after all dependency jobs are completed.
 #' Therefore, it may take longer than expected to cancel a job in `PENDING`
@@ -178,7 +177,8 @@ batch_cancel_job <- function(jobId, reason) {
 #'
 #' @usage
 #' batch_create_compute_environment(computeEnvironmentName, type, state,
-#'   unmanagedvCpus, computeResources, serviceRole, tags, eksConfiguration)
+#'   unmanagedvCpus, computeResources, serviceRole, tags, eksConfiguration,
+#'   context)
 #'
 #' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. It can be up to 128 characters
 #' long. It can contain uppercase and lowercase letters, numbers, hyphens
@@ -263,6 +263,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' don't propagate to the underlying compute resources.
 #' @param eksConfiguration The details for the Amazon EKS cluster that supports the compute
 #' environment.
+#' @param context Reserved.
 #'
 #' @return
 #' A list with the following syntax:
@@ -324,7 +325,8 @@ batch_cancel_job <- function(jobId, reason) {
 #'   eksConfiguration = list(
 #'     eksClusterArn = "string",
 #'     kubernetesNamespace = "string"
-#'   )
+#'   ),
+#'   context = "string"
 #' )
 #' ```
 #'
@@ -407,7 +409,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' @rdname batch_create_compute_environment
 #'
 #' @aliases batch_create_compute_environment
-batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL, eksConfiguration = NULL) {
+batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL, eksConfiguration = NULL, context = NULL) {
   op <- new_operation(
     name = "CreateComputeEnvironment",
     http_method = "POST",
@@ -415,7 +417,7 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
     host_prefix = "",
     paginator = list()
   )
-  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration)
+  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration, context = context)
   output <- .batch$create_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -973,7 +975,8 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'         kubernetesNamespace = "string"
 #'       ),
 #'       containerOrchestrationType = "ECS"|"EKS",
-#'       uuid = "string"
+#'       uuid = "string",
+#'       context = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4991,7 +4994,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @usage
 #' batch_update_compute_environment(computeEnvironment, state,
-#'   unmanagedvCpus, computeResources, serviceRole, updatePolicy)
+#'   unmanagedvCpus, computeResources, serviceRole, updatePolicy, context)
 #'
 #' @param computeEnvironment &#91;required&#93; The name or full Amazon Resource Name (ARN) of the compute environment
 #' to update.
@@ -5061,6 +5064,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' [Updating compute
 #' environments](https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html)
 #' in the *Batch User Guide*.
+#' @param context Reserved.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5118,7 +5122,8 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'   updatePolicy = list(
 #'     terminateJobsOnUpdate = TRUE|FALSE,
 #'     jobExecutionTimeoutMinutes = 123
-#'   )
+#'   ),
+#'   context = "string"
 #' )
 #' ```
 #'
@@ -5137,7 +5142,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname batch_update_compute_environment
 #'
 #' @aliases batch_update_compute_environment
-batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL) {
+batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL, context = NULL) {
   op <- new_operation(
     name = "UpdateComputeEnvironment",
     http_method = "POST",
@@ -5145,7 +5150,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
     host_prefix = "",
     paginator = list()
   )
-  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy)
+  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context)
   output <- .batch$update_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config, op)

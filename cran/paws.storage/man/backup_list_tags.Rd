@@ -2,8 +2,8 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_tags}
 \alias{backup_list_tags}
-\title{Returns a list of key-value pairs assigned to a target recovery point,
-backup plan, or backup vault}
+\title{Returns the tags assigned to the resource, such as a target recovery
+point, backup plan, or backup vault}
 \usage{
 backup_list_tags(ResourceArn, NextToken = NULL, MaxResults = NULL)
 }
@@ -21,7 +21,7 @@ pointed to by the next token.}
 \item{MaxResults}{The maximum number of items to be returned.}
 }
 \description{
-Returns a list of key-value pairs assigned to a target recovery point, backup plan, or backup vault.
+Returns the tags assigned to the resource, such as a target recovery point, backup plan, or backup vault.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_list_tags/} for full documentation.
 }

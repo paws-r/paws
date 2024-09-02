@@ -14,7 +14,7 @@ NULL
 #' OpsWorks Stacks is an application management service that provides an
 #' integrated experience for managing the complete application lifecycle.
 #' For information about OpsWorks, see the
-#' [OpsWorks](https://aws.amazon.com/opsworks/) information page.
+#' [OpsWorks](https://aws.amazon.com/) information page.
 #' 
 #' **SDKs and CLI**
 #' 

@@ -690,7 +690,13 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'       slotResolutionImprovement = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     ),
@@ -698,13 +704,25 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'       descriptiveBotBuilder = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       ),
 #'       sampleUtteranceGeneration = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     )
@@ -729,7 +747,13 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'       slotResolutionImprovement = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     ),
@@ -737,13 +761,25 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'       descriptiveBotBuilder = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       ),
 #'       sampleUtteranceGeneration = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     )
@@ -4837,11 +4873,21 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'         exactResponse = TRUE|FALSE
 #'       ),
 #'       bedrockKnowledgeStoreConfiguration = list(
-#'         bedrockKnowledgeBaseArn = "string"
+#'         bedrockKnowledgeBaseArn = "string",
+#'         exactResponse = TRUE|FALSE,
+#'         exactResponseFields = list(
+#'           answerField = "string"
+#'         )
 #'       )
 #'     ),
 #'     bedrockModelConfiguration = list(
-#'       modelArn = "string"
+#'       modelArn = "string",
+#'       guardrail = list(
+#'         identifier = "string",
+#'         version = "string"
+#'       ),
+#'       traceStatus = "ENABLED"|"DISABLED",
+#'       customPrompt = "string"
 #'     )
 #'   )
 #' )
@@ -8542,11 +8588,21 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'         exactResponse = TRUE|FALSE
 #'       ),
 #'       bedrockKnowledgeStoreConfiguration = list(
-#'         bedrockKnowledgeBaseArn = "string"
+#'         bedrockKnowledgeBaseArn = "string",
+#'         exactResponse = TRUE|FALSE,
+#'         exactResponseFields = list(
+#'           answerField = "string"
+#'         )
 #'       )
 #'     ),
 #'     bedrockModelConfiguration = list(
-#'       modelArn = "string"
+#'       modelArn = "string",
+#'       guardrail = list(
+#'         identifier = "string",
+#'         version = "string"
+#'       ),
+#'       traceStatus = "ENABLED"|"DISABLED",
+#'       customPrompt = "string"
 #'     )
 #'   )
 #' )
@@ -8643,6 +8699,11 @@ lexmodelsv2_create_resource_policy <- function(resourceArn, policy) {
 #' 
 #' You can't create a resource policy statement that allows cross-account
 #' access.
+#' 
+#' You need to add the
+#' [`create_resource_policy`][lexmodelsv2_create_resource_policy] or
+#' [`update_resource_policy`][lexmodelsv2_update_resource_policy] action to
+#' the bot role in order to call the API.
 #'
 #' @usage
 #' lexmodelsv2_create_resource_policy_statement(resourceArn, statementId,
@@ -13236,6 +13297,11 @@ lexmodelsv2_delete_resource_policy <- function(resourceArn, expectedRevisionId =
 #' last statement from a policy, the policy is deleted. If you specify a
 #' statement ID that doesn't exist in the policy, or if the bot or bot
 #' alias doesn't have a policy attached, Amazon Lex returns an exception.
+#' 
+#' You need to add the
+#' [`delete_resource_policy`][lexmodelsv2_delete_resource_policy] or
+#' [`update_resource_policy`][lexmodelsv2_update_resource_policy] action to
+#' the bot role in order to call the API.
 #'
 #' @usage
 #' lexmodelsv2_delete_resource_policy_statement(resourceArn, statementId,
@@ -13774,7 +13840,13 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #'       slotResolutionImprovement = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     ),
@@ -13782,13 +13854,25 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #'       descriptiveBotBuilder = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       ),
 #'       sampleUtteranceGeneration = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     )
@@ -18138,11 +18222,21 @@ lexmodelsv2_describe_import <- function(importId) {
 #'         exactResponse = TRUE|FALSE
 #'       ),
 #'       bedrockKnowledgeStoreConfiguration = list(
-#'         bedrockKnowledgeBaseArn = "string"
+#'         bedrockKnowledgeBaseArn = "string",
+#'         exactResponse = TRUE|FALSE,
+#'         exactResponseFields = list(
+#'           answerField = "string"
+#'         )
 #'       )
 #'     ),
 #'     bedrockModelConfiguration = list(
-#'       modelArn = "string"
+#'       modelArn = "string",
+#'       guardrail = list(
+#'         identifier = "string",
+#'         version = "string"
+#'       ),
+#'       traceStatus = "ENABLED"|"DISABLED",
+#'       customPrompt = "string"
 #'     )
 #'   )
 #' )
@@ -25222,7 +25316,13 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'       slotResolutionImprovement = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     ),
@@ -25230,13 +25330,25 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'       descriptiveBotBuilder = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       ),
 #'       sampleUtteranceGeneration = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     )
@@ -25261,7 +25373,13 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'       slotResolutionImprovement = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     ),
@@ -25269,13 +25387,25 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'       descriptiveBotBuilder = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       ),
 #'       sampleUtteranceGeneration = list(
 #'         enabled = TRUE|FALSE,
 #'         bedrockModelSpecification = list(
-#'           modelArn = "string"
+#'           modelArn = "string",
+#'           guardrail = list(
+#'             identifier = "string",
+#'             version = "string"
+#'           ),
+#'           traceStatus = "ENABLED"|"DISABLED",
+#'           customPrompt = "string"
 #'         )
 #'       )
 #'     )
@@ -29250,11 +29380,21 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'         exactResponse = TRUE|FALSE
 #'       ),
 #'       bedrockKnowledgeStoreConfiguration = list(
-#'         bedrockKnowledgeBaseArn = "string"
+#'         bedrockKnowledgeBaseArn = "string",
+#'         exactResponse = TRUE|FALSE,
+#'         exactResponseFields = list(
+#'           answerField = "string"
+#'         )
 #'       )
 #'     ),
 #'     bedrockModelConfiguration = list(
-#'       modelArn = "string"
+#'       modelArn = "string",
+#'       guardrail = list(
+#'         identifier = "string",
+#'         version = "string"
+#'       ),
+#'       traceStatus = "ENABLED"|"DISABLED",
+#'       customPrompt = "string"
 #'     )
 #'   )
 #' )
@@ -32962,11 +33102,21 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'         exactResponse = TRUE|FALSE
 #'       ),
 #'       bedrockKnowledgeStoreConfiguration = list(
-#'         bedrockKnowledgeBaseArn = "string"
+#'         bedrockKnowledgeBaseArn = "string",
+#'         exactResponse = TRUE|FALSE,
+#'         exactResponseFields = list(
+#'           answerField = "string"
+#'         )
 #'       )
 #'     ),
 #'     bedrockModelConfiguration = list(
-#'       modelArn = "string"
+#'       modelArn = "string",
+#'       guardrail = list(
+#'         identifier = "string",
+#'         version = "string"
+#'       ),
+#'       traceStatus = "ENABLED"|"DISABLED",
+#'       customPrompt = "string"
 #'     )
 #'   )
 #' )

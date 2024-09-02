@@ -477,18 +477,18 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Criticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Title = list(
@@ -5830,18 +5830,18 @@ securityhub_batch_import_findings <- function(Findings) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Criticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Title = list(
@@ -6614,18 +6614,18 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -7142,20 +7142,23 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 #' 
 #' The options are as follows:
 #' 
-#' -   `ALL_REGIONS` - Indicates to aggregate findings from all of the
-#'     Regions where Security Hub is enabled. When you choose this option,
-#'     Security Hub also automatically aggregates findings from new Regions
-#'     as Security Hub supports them and you opt into them.
+#' -   `ALL_REGIONS` - Aggregates findings from all of the Regions where
+#'     Security Hub is enabled. When you choose this option, Security Hub
+#'     also automatically aggregates findings from new Regions as Security
+#'     Hub supports them and you opt into them.
 #' 
-#' -   `ALL_REGIONS_EXCEPT_SPECIFIED` - Indicates to aggregate findings
-#'     from all of the Regions where Security Hub is enabled, except for
-#'     the Regions listed in the `Regions` parameter. When you choose this
-#'     option, Security Hub also automatically aggregates findings from new
-#'     Regions as Security Hub supports them and you opt into them.
+#' -   `ALL_REGIONS_EXCEPT_SPECIFIED` - Aggregates findings from all of the
+#'     Regions where Security Hub is enabled, except for the Regions listed
+#'     in the `Regions` parameter. When you choose this option, Security
+#'     Hub also automatically aggregates findings from new Regions as
+#'     Security Hub supports them and you opt into them.
 #' 
-#' -   `SPECIFIED_REGIONS` - Indicates to aggregate findings only from the
-#'     Regions listed in the `Regions` parameter. Security Hub does not
+#' -   `SPECIFIED_REGIONS` - Aggregates findings only from the Regions
+#'     listed in the `Regions` parameter. Security Hub does not
 #'     automatically aggregate findings from new Regions.
+#' 
+#' -   `NO_REGIONS` - Aggregates no data because no Regions are selected as
+#'     linked Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
 #' space-separated list of Regions that do not aggregate findings to the
 #' aggregation Region.
@@ -7163,6 +7166,9 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
 #' space-separated list of Regions that do aggregate findings to the
 #' aggregation Region.
+#' 
+#' An `InvalidInputException` error results if you populate this field
+#' while `RegionLinkingMode` is `NO_REGIONS`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7338,18 +7344,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -7362,18 +7368,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -7476,9 +7482,9 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -7507,9 +7513,9 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -7534,18 +7540,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -7849,18 +7855,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(
@@ -14833,18 +14839,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -14857,18 +14863,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -14971,9 +14977,9 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -15002,9 +15008,9 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -15029,18 +15035,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -15344,18 +15350,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(
@@ -15676,18 +15682,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         SeverityNormalized = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         SeverityLabel = list(
@@ -15700,18 +15706,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Criticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Title = list(
@@ -15814,9 +15820,9 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         NetworkSourceDomain = list(
@@ -15845,9 +15851,9 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         NetworkDestinationDomain = list(
@@ -15872,18 +15878,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         ProcessParentPid = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         ProcessLaunchedAt = list(
@@ -16187,18 +16193,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         FindingProviderFieldsCriticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
+#'             Eq = 123.0,
 #'             Gt = 123.0,
-#'             Lt = 123.0,
-#'             Eq = 123.0
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         FindingProviderFieldsRelatedFindingsId = list(
@@ -18297,20 +18303,23 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 #' 
 #' The options are as follows:
 #' 
-#' -   `ALL_REGIONS` - Indicates to aggregate findings from all of the
-#'     Regions where Security Hub is enabled. When you choose this option,
-#'     Security Hub also automatically aggregates findings from new Regions
-#'     as Security Hub supports them and you opt into them.
+#' -   `ALL_REGIONS` - Aggregates findings from all of the Regions where
+#'     Security Hub is enabled. When you choose this option, Security Hub
+#'     also automatically aggregates findings from new Regions as Security
+#'     Hub supports them and you opt into them.
 #' 
-#' -   `ALL_REGIONS_EXCEPT_SPECIFIED` - Indicates to aggregate findings
-#'     from all of the Regions where Security Hub is enabled, except for
-#'     the Regions listed in the `Regions` parameter. When you choose this
-#'     option, Security Hub also automatically aggregates findings from new
-#'     Regions as Security Hub supports them and you opt into them.
+#' -   `ALL_REGIONS_EXCEPT_SPECIFIED` - Aggregates findings from all of the
+#'     Regions where Security Hub is enabled, except for the Regions listed
+#'     in the `Regions` parameter. When you choose this option, Security
+#'     Hub also automatically aggregates findings from new Regions as
+#'     Security Hub supports them and you opt into them.
 #' 
-#' -   `SPECIFIED_REGIONS` - Indicates to aggregate findings only from the
-#'     Regions listed in the `Regions` parameter. Security Hub does not
+#' -   `SPECIFIED_REGIONS` - Aggregates findings only from the Regions
+#'     listed in the `Regions` parameter. Security Hub does not
 #'     automatically aggregate findings from new Regions.
+#' 
+#' -   `NO_REGIONS` - Aggregates no data because no Regions are selected as
+#'     linked Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
 #' space-separated list of Regions that do not aggregate findings to the
 #' aggregation Region.
@@ -18318,6 +18327,9 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
 #' space-separated list of Regions that do aggregate findings to the
 #' aggregation Region.
+#' 
+#' An `InvalidInputException` error results if you populate this field
+#' while `RegionLinkingMode` is `NO_REGIONS`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -18390,14 +18402,17 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #' use the [`batch_update_findings`][securityhub_batch_update_findings]
 #' operation.
 #' 
-#' Updates the `Note` and `RecordState` of the Security Hub-aggregated
-#' findings that the filter attributes specify. Any member account that can
-#' view the finding also sees the update to the finding.
+#' The [`update_findings`][securityhub_update_findings] operation updates
+#' the `Note` and `RecordState` of the Security Hub aggregated findings
+#' that the filter attributes specify. Any member account that can view the
+#' finding can also see the update to the finding.
 #' 
 #' Finding updates made with
-#' [`update_findings`][securityhub_update_findings] might not be persisted
-#' if the same finding is later updated by the finding provider through the
+#' [`update_findings`][securityhub_update_findings] aren't persisted if the
+#' same finding is later updated by the finding provider through the
 #' [`batch_import_findings`][securityhub_batch_import_findings] operation.
+#' In addition, Security Hub doesn't record updates made with
+#' [`update_findings`][securityhub_update_findings] in the finding history.
 #'
 #' @usage
 #' securityhub_update_findings(Filters, Note, RecordState)
@@ -18494,18 +18509,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -18518,18 +18533,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -18632,9 +18647,9 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -18663,9 +18678,9 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -18690,18 +18705,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -19005,18 +19020,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(
@@ -19243,18 +19258,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -19267,18 +19282,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -19381,9 +19396,9 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -19412,9 +19427,9 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -19439,18 +19454,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -19754,18 +19769,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
+#'         Eq = 123.0,
 #'         Gt = 123.0,
-#'         Lt = 123.0,
-#'         Eq = 123.0
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(

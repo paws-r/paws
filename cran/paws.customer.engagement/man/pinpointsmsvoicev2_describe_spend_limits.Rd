@@ -2,8 +2,8 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_describe_spend_limits}
 \alias{pinpointsmsvoicev2_describe_spend_limits}
-\title{Describes the current Amazon Pinpoint monthly spend limits for sending
-voice and text messages}
+\title{Describes the current monthly spend limits for sending voice and text
+messages}
 \usage{
 pinpointsmsvoicev2_describe_spend_limits(NextToken = NULL, MaxResults = NULL)
 }
@@ -14,7 +14,7 @@ need to supply a value for this field in the initial request.}
 \item{MaxResults}{The maximum number of results to return per each request.}
 }
 \description{
-Describes the current Amazon Pinpoint monthly spend limits for sending voice and text messages.
+Describes the current monthly spend limits for sending voice and text messages.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_spend_limits/} for full documentation.
 }

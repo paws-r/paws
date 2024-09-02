@@ -11,3 +11,7 @@ test_that("describe_registry", {
 test_that("describe_repositories", {
   expect_error(svc$describe_repositories(), NA)
 })
+
+test_that("describe_repository_creation_templates", {
+  expect_error(svc$describe_repository_creation_templates(), NA)
+})

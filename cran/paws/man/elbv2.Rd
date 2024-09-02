@@ -126,6 +126,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[paws.networking:elbv2_delete_listener]{delete_listener} \tab Deletes the specified listener\cr
 \link[paws.networking:elbv2_delete_load_balancer]{delete_load_balancer} \tab Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 \link[paws.networking:elbv2_delete_rule]{delete_rule} \tab Deletes the specified rule\cr
+\link[paws.networking:elbv2_delete_shared_trust_store_association]{delete_shared_trust_store_association} \tab Deletes a shared trust store association\cr
 \link[paws.networking:elbv2_delete_target_group]{delete_target_group} \tab Deletes the specified target group\cr
 \link[paws.networking:elbv2_delete_trust_store]{delete_trust_store} \tab Deletes a trust store\cr
 \link[paws.networking:elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
@@ -141,8 +142,9 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[paws.networking:elbv2_describe_target_groups]{describe_target_groups} \tab Describes the specified target groups or all of your target groups\cr
 \link[paws.networking:elbv2_describe_target_health]{describe_target_health} \tab Describes the health of the specified targets or all of your targets\cr
 \link[paws.networking:elbv2_describe_trust_store_associations]{describe_trust_store_associations} \tab Describes all resources associated with the specified trust store\cr
-\link[paws.networking:elbv2_describe_trust_store_revocations]{describe_trust_store_revocations} \tab Describes the revocation files in use by the specified trust store arn, or revocation ID\cr
-\link[paws.networking:elbv2_describe_trust_stores]{describe_trust_stores} \tab Describes all trust stores for a given account by trust store arn’s or name\cr
+\link[paws.networking:elbv2_describe_trust_store_revocations]{describe_trust_store_revocations} \tab Describes the revocation files in use by the specified trust store or revocation files\cr
+\link[paws.networking:elbv2_describe_trust_stores]{describe_trust_stores} \tab Describes all trust stores for the specified account\cr
+\link[paws.networking:elbv2_get_resource_policy]{get_resource_policy} \tab Retrieves the resource policy for a specified resource\cr
 \link[paws.networking:elbv2_get_trust_store_ca_certificates_bundle]{get_trust_store_ca_certificates_bundle} \tab Retrieves the ca certificate bundle\cr
 \link[paws.networking:elbv2_get_trust_store_revocation_content]{get_trust_store_revocation_content} \tab Retrieves the specified revocation file\cr
 \link[paws.networking:elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
@@ -150,7 +152,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[paws.networking:elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule\cr
 \link[paws.networking:elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group\cr
 \link[paws.networking:elbv2_modify_target_group_attributes]{modify_target_group_attributes} \tab Modifies the specified attributes of the specified target group\cr
-\link[paws.networking:elbv2_modify_trust_store]{modify_trust_store} \tab Update the ca certificate bundle for a given trust store\cr
+\link[paws.networking:elbv2_modify_trust_store]{modify_trust_store} \tab Update the ca certificate bundle for the specified trust store\cr
 \link[paws.networking:elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group\cr
 \link[paws.networking:elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener\cr
 \link[paws.networking:elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resources\cr

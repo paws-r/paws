@@ -198,7 +198,7 @@ it.
 \link[paws.security.identity:wafv2_list_web_ac_ls]{list_web_ac_ls} \tab Retrieves an array of WebACLSummary objects for the web ACLs that you manage\cr
 \link[paws.security.identity:wafv2_put_logging_configuration]{put_logging_configuration} \tab Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided\cr
 \link[paws.security.identity:wafv2_put_managed_rule_set_versions]{put_managed_rule_set_versions} \tab Defines the versions of your managed rule set that you are offering to the customers\cr
-\link[paws.security.identity:wafv2_put_permission_policy]{put_permission_policy} \tab Attaches an IAM policy to the specified resource\cr
+\link[paws.security.identity:wafv2_put_permission_policy]{put_permission_policy} \tab Use this to share a rule group with other accounts\cr
 \link[paws.security.identity:wafv2_tag_resource]{tag_resource} \tab Associates tags with the specified Amazon Web Services resource\cr
 \link[paws.security.identity:wafv2_untag_resource]{untag_resource} \tab Disassociates tags from an Amazon Web Services resource\cr
 \link[paws.security.identity:wafv2_update_ip_set]{update_ip_set} \tab Updates the specified IPSet\cr

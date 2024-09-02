@@ -358,9 +358,9 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param HealthCheckType A comma-separated value string of one or more health check types.
 #' 
-#' The valid values are `EC2`, `ELB`, and `VPC_LATTICE`. `EC2` is the
-#' default health check and cannot be disabled. For more information, see
-#' [Health checks for instances in an Auto Scaling
+#' The valid values are `EC2`, `EBS`, `ELB`, and `VPC_LATTICE`. `EC2` is
+#' the default health check and cannot be disabled. For more information,
+#' see [Health checks for instances in an Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
@@ -2942,9 +2942,9 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @param AvailabilityZones One or more Availability Zones for the group.
 #' @param HealthCheckType A comma-separated value string of one or more health check types.
 #' 
-#' The valid values are `EC2`, `ELB`, and `VPC_LATTICE`. `EC2` is the
-#' default health check and cannot be disabled. For more information, see
-#' [Health checks for instances in an Auto Scaling
+#' The valid values are `EC2`, `EBS`, `ELB`, and `VPC_LATTICE`. `EC2` is
+#' the default health check and cannot be disabled. For more information,
+#' see [Health checks for instances in an Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 

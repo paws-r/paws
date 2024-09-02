@@ -59,6 +59,9 @@ Amazon IVS Chat HTTPS service endpoints, see the Amazon IVS Chat
 information on the \href{https://docs.aws.amazon.com/general/latest/gr/ivs.html}{Amazon IVS page} in the
 \emph{AWS General Reference}.
 
+This document describes HTTP operations. There is a separate \emph{messaging}
+API for managing Chat resources; see the \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/}{Amazon IVS Chat Messaging API Reference}.
+
 \strong{Notes on terminology:}
 \itemize{
 \item You create service applications using the Amazon IVS Chat API. We
@@ -68,12 +71,16 @@ apps) using the Amazon IVS Chat Messaging API. We refer to these as
 \emph{clients}.
 }
 
-\strong{Key Concepts}
+\strong{Resources}
+
+The following resources are part of Amazon IVS Chat:
 \itemize{
 \item \strong{LoggingConfiguration} — A configuration that allows customers to
-store and record sent messages in a chat room.
+store and record sent messages in a chat room. See the Logging
+Configuration endpoints for more information.
 \item \strong{Room} — The central Amazon IVS Chat resource through which
-clients connect to and exchange chat messages.
+clients connect to and exchange chat messages. See the Room
+endpoints for more information.
 }
 
 \strong{Tagging}
@@ -143,77 +150,6 @@ ARNs uniquely identify AWS resources. An ARN is required when you need
 to specify a resource unambiguously across all of AWS, such as in IAM
 policies and API calls. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names}
 in the \emph{AWS General Reference}.
-
-\strong{Messaging Endpoints}
-\itemize{
-\item \code{delete_message} — Sends an event to a
-specific room which directs clients to delete a specific message;
-that is, unrender it from view and delete it from the client’s chat
-history. This event’s \code{EventName} is \code{aws:DELETE_MESSAGE}. This
-replicates the
-\href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html}{DeleteMessage}
-WebSocket operation in the Amazon IVS Chat Messaging API.
-\item \code{disconnect_user} — Disconnects all
-connections using a specified user ID from a room. This replicates
-the
-\href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html}{DisconnectUser}
-WebSocket operation in the Amazon IVS Chat Messaging API.
-\item \code{send_event} — Sends an event to a room. Use
-this within your application’s business logic to send events to
-clients of a room; e.g., to notify clients to change the way the
-chat UI is rendered.
-}
-
-\strong{Chat Token Endpoint}
-\itemize{
-\item \code{create_chat_token} — Creates an
-encrypted token that is used by a chat participant to establish an
-individual WebSocket chat connection to a room. When the token is
-used to connect to chat, the connection is valid for the session
-duration specified in the request. The token becomes invalid at the
-token-expiration timestamp included in the response.
-}
-
-\strong{Room Endpoints}
-\itemize{
-\item \code{create_room} — Creates a room that allows
-clients to connect and pass messages.
-\item \code{delete_room} — Deletes the specified room.
-\item \code{get_room} — Gets the specified room.
-\item \code{list_rooms} — Gets summary information about
-all your rooms in the AWS region where the API request is processed.
-\item \code{update_room} — Updates a room’s
-configuration.
-}
-
-\strong{Logging Configuration Endpoints}
-\itemize{
-\item \code{create_logging_configuration}
-— Creates a logging configuration that allows clients to store and
-record sent messages.
-\item \code{delete_logging_configuration}
-— Deletes the specified logging configuration.
-\item \code{get_logging_configuration} —
-Gets the specified logging configuration.
-\item \code{list_logging_configurations}
-— Gets summary information about all your logging configurations in
-the AWS region where the API request is processed.
-\item \code{update_logging_configuration}
-— Updates a specified logging configuration.
-}
-
-\strong{Tags Endpoints}
-\itemize{
-\item \code{list_tags_for_resource} — Gets
-information about AWS tags for the specified ARN.
-\item \code{tag_resource} — Adds or updates tags for
-the AWS resource with the specified ARN.
-\item \code{untag_resource} — Removes tags from the
-resource with the specified ARN.
-}
-
-All the above are HTTP operations. There is a separate \emph{messaging} API
-for managing Chat resources; see the \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/}{Amazon IVS Chat Messaging API Reference}.
 }
 \section{Service syntax}{
 

@@ -16,7 +16,8 @@ firehose_update_destination(
   SplunkDestinationUpdate = NULL,
   HttpEndpointDestinationUpdate = NULL,
   AmazonOpenSearchServerlessDestinationUpdate = NULL,
-  SnowflakeDestinationUpdate = NULL
+  SnowflakeDestinationUpdate = NULL,
+  IcebergDestinationUpdate = NULL
 )
 }
 \arguments{
@@ -50,6 +51,10 @@ configuration.}
 Amazon OpenSearch Service.}
 
 \item{SnowflakeDestinationUpdate}{Update to the Snowflake destination configuration settings.}
+
+\item{IcebergDestinationUpdate}{Describes an update for a destination in Apache Iceberg Tables.
+
+Amazon Data Firehose is in preview release and is subject to change.}
 }
 \description{
 Updates the specified destination of the specified delivery stream.

@@ -6,30 +6,30 @@
 \usage{
 ivschat_update_room(
   identifier,
-  loggingConfigurationIdentifiers = NULL,
-  maximumMessageLength = NULL,
+  name = NULL,
   maximumMessageRatePerSecond = NULL,
+  maximumMessageLength = NULL,
   messageReviewHandler = NULL,
-  name = NULL
+  loggingConfigurationIdentifiers = NULL
 )
 }
 \arguments{
 \item{identifier}{[required] Identifier of the room to be updated. Currently this must be an ARN.}
 
-\item{loggingConfigurationIdentifiers}{Array of logging-configuration identifiers attached to the room.}
+\item{name}{Room name. The value does not need to be unique.}
+
+\item{maximumMessageRatePerSecond}{Maximum number of messages per second that can be sent to the room (by
+all clients). Default: 10.}
 
 \item{maximumMessageLength}{The maximum number of characters in a single message. Messages are
 expected to be UTF-8 encoded and this limit applies specifically to
 rune/code-point count, not number of bytes. Default: 500.}
 
-\item{maximumMessageRatePerSecond}{Maximum number of messages per second that can be sent to the room (by
-all clients). Default: 10.}
-
 \item{messageReviewHandler}{Configuration information for optional review of messages. Specify an
 empty \code{uri} string to disassociate a message review handler from the
 specified room.}
 
-\item{name}{Room name. The value does not need to be unique.}
+\item{loggingConfigurationIdentifiers}{Array of logging-configuration identifiers attached to the room.}
 }
 \description{
 Updates a room’s configuration.

@@ -144,7 +144,7 @@ of the network interface instead of using this parameter.}
 \item{UserData}{The user data to make available to the instance. User data must be
 base64-encoded. Depending on the tool or SDK that you're using, the
 base64-encoding might be performed for you. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-add-user-data.html}{Work with instance user data}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Work with instance user data}.}
 
 \item{AdditionalInfo}{Reserved.}
 

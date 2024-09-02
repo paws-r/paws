@@ -108,7 +108,7 @@ with a PV instance can make it unreachable.}
 \item{UserData}{Changes the instance's user data to the specified value. User data must
 be base64-encoded. Depending on the tool or SDK that you're using, the
 base64-encoding might be performed for you. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-add-user-data.html}{Work with instance user data}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Work with instance user data}.}
 
 \item{Value}{A new value for the attribute. Use only with the \code{kernel}, \code{ramdisk},
 \code{userData}, \code{disableApiTermination}, or

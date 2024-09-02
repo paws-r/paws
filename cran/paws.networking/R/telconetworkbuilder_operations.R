@@ -226,11 +226,11 @@ telconetworkbuilder_delete_sol_network_package <- function(nsdInfoId) {
 .telconetworkbuilder$operations$delete_sol_network_package <- telconetworkbuilder_delete_sol_network_package
 
 #' Gets the details of a network function instance, including the
-#' instantation state and metadata from the function package descriptor in
+#' instantiation state and metadata from the function package descriptor in
 #' the network function package
 #'
 #' @description
-#' Gets the details of a network function instance, including the instantation state and metadata from the function package descriptor in the network function package.
+#' Gets the details of a network function instance, including the instantiation state and metadata from the function package descriptor in the network function package.
 #'
 #' See [https://www.paws-r-sdk.com/docs/telconetworkbuilder_get_sol_function_instance/](https://www.paws-r-sdk.com/docs/telconetworkbuilder_get_sol_function_instance/) for full documentation.
 #'
@@ -519,9 +519,9 @@ telconetworkbuilder_get_sol_network_package_descriptor <- function(nsdInfoId) {
 #' @param nsInstanceId &#91;required&#93; ID of the network instance.
 #' @param tags A tag is a label that you assign to an Amazon Web Services resource.
 #' Each tag consists of a key and an optional value. When you use this API,
-#' the tags are transferred to the network operation that is created. Use
-#' tags to search and filter your resources or track your Amazon Web
-#' Services costs.
+#' the tags are only applied to the network operation that is created.
+#' These tags are not applied to the network instance. Use tags to search
+#' and filter your resources or track your Amazon Web Services costs.
 #'
 #' @keywords internal
 #'
@@ -647,11 +647,13 @@ telconetworkbuilder_list_sol_network_instances <- function(maxResults = NULL, ne
 #'
 #' @param maxResults The maximum number of results to include in the response.
 #' @param nextToken The token for the next page of results.
+#' @param nsInstanceId Network instance id filter, to retrieve network operations associated to
+#' a network instance.
 #'
 #' @keywords internal
 #'
 #' @rdname telconetworkbuilder_list_sol_network_operations
-telconetworkbuilder_list_sol_network_operations <- function(maxResults = NULL, nextToken = NULL) {
+telconetworkbuilder_list_sol_network_operations <- function(maxResults = NULL, nextToken = NULL, nsInstanceId = NULL) {
   op <- new_operation(
     name = "ListSolNetworkOperations",
     http_method = "GET",
@@ -659,7 +661,7 @@ telconetworkbuilder_list_sol_network_operations <- function(maxResults = NULL, n
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "networkOperations")
   )
-  input <- .telconetworkbuilder$list_sol_network_operations_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .telconetworkbuilder$list_sol_network_operations_input(maxResults = maxResults, nextToken = nextToken, nsInstanceId = nsInstanceId)
   output <- .telconetworkbuilder$list_sol_network_operations_output()
   config <- get_config()
   svc <- .telconetworkbuilder$service(config, op)
@@ -838,9 +840,9 @@ telconetworkbuilder_tag_resource <- function(resourceArn, tags) {
 #' @param nsInstanceId &#91;required&#93; ID of the network instance.
 #' @param tags A tag is a label that you assign to an Amazon Web Services resource.
 #' Each tag consists of a key and an optional value. When you use this API,
-#' the tags are transferred to the network operation that is created. Use
-#' tags to search and filter your resources or track your Amazon Web
-#' Services costs.
+#' the tags are only applied to the network operation that is created.
+#' These tags are not applied to the network instance. Use tags to search
+#' and filter your resources or track your Amazon Web Services costs.
 #'
 #' @keywords internal
 #'
@@ -934,18 +936,31 @@ telconetworkbuilder_update_sol_function_package <- function(operationalState, vn
 #'
 #' @param modifyVnfInfoData Identifies the network function information parameters and/or the
 #' configurable properties of the network function to be modified.
+#' 
+#' Include this property only if the update type is
+#' `MODIFY_VNF_INFORMATION`.
 #' @param nsInstanceId &#91;required&#93; ID of the network instance.
 #' @param tags A tag is a label that you assign to an Amazon Web Services resource.
 #' Each tag consists of a key and an optional value. When you use this API,
-#' the tags are transferred to the network operation that is created. Use
-#' tags to search and filter your resources or track your Amazon Web
-#' Services costs.
+#' the tags are only applied to the network operation that is created.
+#' These tags are not applied to the network instance. Use tags to search
+#' and filter your resources or track your Amazon Web Services costs.
+#' @param updateNs Identifies the network service descriptor and the configurable
+#' properties of the descriptor, to be used for the update.
+#' 
+#' Include this property only if the update type is `UPDATE_NS`.
 #' @param updateType &#91;required&#93; The type of update.
+#' 
+#' -   Use the `MODIFY_VNF_INFORMATION` update type, to update a specific
+#'     network function configuration, in the network instance.
+#' 
+#' -   Use the `UPDATE_NS` update type, to update the network instance to a
+#'     new network service descriptor.
 #'
 #' @keywords internal
 #'
 #' @rdname telconetworkbuilder_update_sol_network_instance
-telconetworkbuilder_update_sol_network_instance <- function(modifyVnfInfoData = NULL, nsInstanceId, tags = NULL, updateType) {
+telconetworkbuilder_update_sol_network_instance <- function(modifyVnfInfoData = NULL, nsInstanceId, tags = NULL, updateNs = NULL, updateType) {
   op <- new_operation(
     name = "UpdateSolNetworkInstance",
     http_method = "POST",
@@ -953,7 +968,7 @@ telconetworkbuilder_update_sol_network_instance <- function(modifyVnfInfoData = 
     host_prefix = "",
     paginator = list()
   )
-  input <- .telconetworkbuilder$update_sol_network_instance_input(modifyVnfInfoData = modifyVnfInfoData, nsInstanceId = nsInstanceId, tags = tags, updateType = updateType)
+  input <- .telconetworkbuilder$update_sol_network_instance_input(modifyVnfInfoData = modifyVnfInfoData, nsInstanceId = nsInstanceId, tags = tags, updateNs = updateNs, updateType = updateType)
   output <- .telconetworkbuilder$update_sol_network_instance_output()
   config <- get_config()
   svc <- .telconetworkbuilder$service(config, op)

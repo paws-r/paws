@@ -105,7 +105,7 @@ Connect. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/l
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 }
 \description{
-Creates a new Amazon ECS cluster. By default, your account receives a \code{default} cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the \code{\link[=ecs_create_cluster]{create_cluster}} action.
+Creates a new Amazon ECS cluster. By default, your account receives a \code{default} cluster when you launch your first container instance. However, you can create your own cluster with a unique name.
 
 See \url{https://www.paws-r-sdk.com/docs/ecs_create_cluster/} for full documentation.
 }

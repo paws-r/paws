@@ -6,24 +6,24 @@
 the API request is processed}
 \usage{
 ivschat_list_rooms(
-  loggingConfigurationIdentifier = NULL,
+  name = NULL,
+  nextToken = NULL,
   maxResults = NULL,
   messageReviewHandlerUri = NULL,
-  name = NULL,
-  nextToken = NULL
+  loggingConfigurationIdentifier = NULL
 )
 }
 \arguments{
-\item{loggingConfigurationIdentifier}{Logging-configuration identifier.}
+\item{name}{Filters the list to match the specified room name.}
+
+\item{nextToken}{The first room to retrieve. This is used for pagination; see the
+\code{nextToken} response field.}
 
 \item{maxResults}{Maximum number of rooms to return. Default: 50.}
 
 \item{messageReviewHandlerUri}{Filters the list to match the specified message review handler URI.}
 
-\item{name}{Filters the list to match the specified room name.}
-
-\item{nextToken}{The first room to retrieve. This is used for pagination; see the
-\code{nextToken} response field.}
+\item{loggingConfigurationIdentifier}{Logging-configuration identifier.}
 }
 \description{
 Gets summary information about all your rooms in the AWS region where the API request is processed. Results are sorted in descending order of \code{updateTime}.

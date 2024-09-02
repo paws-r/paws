@@ -137,7 +137,7 @@ To tag an AMI after it has been registered, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
 }
 \description{
-Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI is the final step in the creation process. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Create your own AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI is the final step in the creation process. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot}{Create an AMI from a snapshot} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html}{Create an instance-store backed AMI} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_register_image/} for full documentation.
 }

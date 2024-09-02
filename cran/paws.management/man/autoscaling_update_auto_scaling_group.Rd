@@ -71,9 +71,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{HealthCheckType}{A comma-separated value string of one or more health check types.
 
-The valid values are \code{EC2}, \code{ELB}, and \code{VPC_LATTICE}. \code{EC2} is the
-default health check and cannot be disabled. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html}{Health checks for instances in an Auto Scaling group}
+The valid values are \code{EC2}, \code{EBS}, \code{ELB}, and \code{VPC_LATTICE}. \code{EC2} is
+the default health check and cannot be disabled. For more information,
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html}{Health checks for instances in an Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Only specify \code{EC2} if you must clear a value that was previously set.}

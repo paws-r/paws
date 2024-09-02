@@ -18,14 +18,23 @@ NULL
 #' for the part storage, you should call the [`list_parts`][s3_list_parts]
 #' API operation and ensure that the parts list is empty.
 #' 
-#' **Directory buckets** - For directory buckets, you must make requests
-#' for this API operation to the Zonal endpoint. These endpoints support
-#' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
-#' in the *Amazon S3 User Guide*.
+#' -   **Directory buckets** - If multipart uploads in a directory bucket
+#'     are in progress, you can't delete the bucket until all the
+#'     in-progress multipart uploads are aborted or completed. To delete
+#'     these in-progress multipart uploads, use the
+#'     [`list_multipart_uploads`][s3_list_multipart_uploads] operation to
+#'     list the in-progress multipart uploads in the bucket and use the
+#'     `AbortMultupartUpload` operation to abort all the in-progress
+#'     multipart uploads.
+#' 
+#' -   **Directory buckets** - For directory buckets, you must make
+#'     requests for this API operation to the Zonal endpoint. These
+#'     endpoints support virtual-hosted-style requests in the format
+#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information, see
+#'     [Regional and Zonal
+#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
 #' 
@@ -258,6 +267,14 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'     [`create_session`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html)
 #'     .
 #' 
+#' -   If you provide an [additional checksum
+#'     value](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html)
+#'     in your `MultipartUpload` requests and the object is encrypted with
+#'     Key Management Service, you must have permission to use the
+#'     `kms:Decrypt` action for the
+#'     [`complete_multipart_upload`][s3_complete_multipart_upload] request
+#'     to succeed.
+#' 
 #' ### Special errors
 #' 
 #' -   Error Code: `EntityTooSmall`
@@ -312,8 +329,8 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @usage
 #' s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 #'   ChecksumCRC32, ChecksumCRC32C, ChecksumSHA1, ChecksumSHA256,
-#'   RequestPayer, ExpectedBucketOwner, SSECustomerAlgorithm, SSECustomerKey,
-#'   SSECustomerKeyMD5)
+#'   RequestPayer, ExpectedBucketOwner, IfNoneMatch, SSECustomerAlgorithm,
+#'   SSECustomerKey, SSECustomerKeyMD5)
 #'
 #' @param Bucket &#91;required&#93; Name of the bucket to which the multipart upload was initiated.
 #' 
@@ -384,6 +401,22 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' @param IfNoneMatch Uploads the object only if the object key name does not already exist in
+#' the bucket specified. Otherwise, Amazon S3 returns a
+#' `412 Precondition Failed` error.
+#' 
+#' If a conflicting operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' re-initiate the multipart upload with
+#' [`create_multipart_upload`][s3_create_multipart_upload] and re-upload
+#' each part.
+#' 
+#' Expects the '*' (asterisk) character.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232), or [Conditional
+#' requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerAlgorithm The server-side encryption (SSE) algorithm used to encrypt the object.
 #' This parameter is required only when the object was created using a
 #' checksum algorithm or if your bucket policy requires the use of SSE-C.
@@ -452,6 +485,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'   ChecksumSHA256 = "string",
 #'   RequestPayer = "requester",
 #'   ExpectedBucketOwner = "string",
+#'   IfNoneMatch = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = raw,
 #'   SSECustomerKeyMD5 = "string"
@@ -485,7 +519,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @rdname s3_complete_multipart_upload
 #'
 #' @aliases s3_complete_multipart_upload
-s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
+s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
     name = "CompleteMultipartUpload",
     http_method = "POST",
@@ -493,7 +527,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
     host_prefix = "",
     paginator = list()
   )
-  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
+  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
   output <- .s3$complete_multipart_upload_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -519,14 +553,22 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' directory buckets, and between general purpose buckets and directory
 #' buckets.
 #' 
-#' **Directory buckets** - For directory buckets, you must make requests
-#' for this API operation to the Zonal endpoint. These endpoints support
-#' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
-#' in the *Amazon S3 User Guide*.
+#' -   Amazon S3 supports copy operations using Multi-Region Access Points
+#'     only as a destination when using the Multi-Region Access Point ARN.
+#' 
+#' -   **Directory buckets** - For directory buckets, you must make
+#'     requests for this API operation to the Zonal endpoint. These
+#'     endpoints support virtual-hosted-style requests in the format
+#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information, see
+#'     [Regional and Zonal
+#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' -   VPC endpoints don't support cross-Region requests (including
+#'     copies). If you're using VPC endpoints, your source and destination
+#'     buckets should be in the same Amazon Web Services Region as your VPC
+#'     endpoint.
 #' 
 #' Both the Region that you want to copy the object from and the Region
 #' that you want to copy the object to must be enabled for your account.
@@ -1627,18 +1669,18 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #' ### Permissions
 #' 
-#' -   **General purpose bucket permissions** - For information about the
-#'     permissions required to use the multipart upload API, see [Multipart
-#'     upload and
-#'     permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
-#'     in the *Amazon S3 User Guide*.
-#' 
-#'     To perform a multipart upload with encryption by using an Amazon Web
-#'     Services KMS key, the requester must have permission to the
-#'     `kms:Decrypt` and `kms:GenerateDataKey*` actions on the key. These
-#'     permissions are required because Amazon S3 must decrypt and read
-#'     data from the encrypted file parts before it completes the multipart
-#'     upload. For more information, see [Multipart upload API and
+#' -   **General purpose bucket permissions** - To perform a multipart
+#'     upload with encryption using an Key Management Service (KMS) KMS
+#'     key, the requester must have permission to the `kms:Decrypt` and
+#'     `kms:GenerateDataKey` actions on the key. The requester must also
+#'     have permissions for the `kms:GenerateDataKey` action for the
+#'     [`create_multipart_upload`][s3_create_multipart_upload] API. Then,
+#'     the requester needs permissions for the `kms:Decrypt` action on the
+#'     [`upload_part`][s3_upload_part] and
+#'     [`upload_part_copy`][s3_upload_part_copy] APIs. These permissions
+#'     are required because Amazon S3 must decrypt and read data from the
+#'     encrypted file parts before it completes the multipart upload. For
+#'     more information, see [Multipart upload API and
 #'     permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions)
 #'     and [Protecting data using server-side encryption with Amazon Web
 #'     Services
@@ -3684,16 +3726,16 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example deletes an object from an S3 bucket.
-#' svc$delete_object(
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey.jpg"
-#' )
-#' 
 #' # The following example deletes an object from a non-versioned bucket.
 #' svc$delete_object(
 #'   Bucket = "ExampleBucket",
 #'   Key = "HappyFace.jpg"
+#' )
+#' 
+#' # The following example deletes an object from an S3 bucket.
+#' svc$delete_object(
+#'   Bucket = "examplebucket",
+#'   Key = "objectkey.jpg"
 #' )
 #' }
 #'
@@ -6966,6 +7008,12 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumMode To retrieve the checksum, this mode must be enabled.
+#' 
+#' In addition, if you enable checksum mode and the object is uploaded with
+#' a
+#' [checksum](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html)
+#' and encrypted with an Key Management Service (KMS) key, you must have
+#' permission to use the `kms:Decrypt` action to retrieve the checksum.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7054,18 +7102,18 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
+#' # The following example retrieves an object for an S3 bucket.
+#' svc$get_object(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
 #' svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
-#' )
-#' 
-#' # The following example retrieves an object for an S3 bucket.
-#' svc$get_object(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -7890,18 +7938,18 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #'
 #' @examples
 #' \dontrun{
+#' # The following example retrieves tag set of an object.
+#' svc$get_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
 #' svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-#' )
-#' 
-#' # The following example retrieves tag set of an object.
-#' svc$get_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -8111,24 +8159,17 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' or `404 Not Found` code. A message body is not included, so you cannot
 #' determine the exception beyond these HTTP response codes.
 #' 
-#' **Directory buckets** - You must make requests for this API operation to
-#' the Zonal endpoint. These endpoints support virtual-hosted-style
-#' requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com`. Path-style
-#' requests are not supported. For more information, see [Regional and
-#' Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
-#' in the *Amazon S3 User Guide*.
-#' 
 #' ### Authentication and authorization
 #' 
-#' All [`head_bucket`][s3_head_bucket] requests must be authenticated and
+#' **General purpose buckets** - Request to public buckets that grant the
+#' s3:ListBucket permission publicly do not need to be signed. All other
+#' [`head_bucket`][s3_head_bucket] requests must be authenticated and
 #' signed by using IAM credentials (access key ID and secret access key for
 #' the IAM identities). All headers with the `x-amz-` prefix, including
 #' `x-amz-copy-source`, must be signed. For more information, see [REST
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
 #' 
-#' **Directory bucket** - You must use IAM credentials to authenticate and
+#' **Directory buckets** - You must use IAM credentials to authenticate and
 #' authorize your access to the [`head_bucket`][s3_head_bucket] API
 #' operation, instead of using the temporary security credentials through
 #' the [`create_session`][s3_create_session] API operation.
@@ -8164,6 +8205,14 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
 #' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' 
+#' You must make requests for this API operation to the Zonal endpoint.
+#' These endpoints support virtual-hosted-style requests in the format
+#' `https://bucket_name.s3express-az_id.region.amazonaws.com`. Path-style
+#' requests are not supported. For more information, see [Regional and
+#' Zonal
+#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*.
 #'
 #' @usage
 #' s3_head_bucket(Bucket, ExpectedBucketOwner)
@@ -8288,15 +8337,6 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' [Common Request
 #' Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html).
 #' 
-#' **Directory buckets** - For directory buckets, you must make requests
-#' for this API operation to the Zonal endpoint. These endpoints support
-#' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
-#' in the *Amazon S3 User Guide*.
-#' 
 #' ### Permissions
 #' 
 #' -   **General purpose bucket permissions** - To use `HEAD`, you must
@@ -8391,6 +8431,15 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
 #' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' 
+#' For directory buckets, you must make requests for this API operation to
+#' the Zonal endpoint. These endpoints support virtual-hosted-style
+#' requests in the format
+#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information, see
+#' [Regional and Zonal
+#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to [`head_object`][s3_head_object]:
 #' 
@@ -8541,10 +8590,11 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumMode To retrieve the checksum, this parameter must be enabled.
 #' 
-#' In addition, if you enable `ChecksumMode` and the object is encrypted
-#' with Amazon Web Services Key Management Service (Amazon Web Services
-#' KMS), you must have permission to use the `kms:Decrypt` action for the
-#' request to succeed.
+#' In addition, if you enable checksum mode and the object is uploaded with
+#' a
+#' [checksum](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html)
+#' and encrypted with an Key Management Service (KMS) key, you must have
+#' permission to use the `kms:Decrypt` action to retrieve the checksum.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9162,9 +9212,19 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html).
 #'
 #' @usage
-#' s3_list_buckets()
+#' s3_list_buckets(MaxBuckets, ContinuationToken)
 #'
-
+#' @param MaxBuckets Maximum number of buckets to be returned in response. When the number is
+#' more than the count of buckets that are owned by an Amazon Web Services
+#' account, return all the buckets in response.
+#' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
+#' continued on this bucket with a token. `ContinuationToken` is obfuscated
+#' and is not a real key. You can use this `ContinuationToken` for
+#' pagination of the list results.
+#' 
+#' Length Constraints: Minimum length of 0. Maximum length of 1024.
+#' 
+#' Required: No.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9181,11 +9241,18 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #'   Owner = list(
 #'     DisplayName = "string",
 #'     ID = "string"
-#'   )
+#'   ),
+#'   ContinuationToken = "string"
 #' )
 #' ```
 #'
-
+#' @section Request syntax:
+#' ```
+#' svc$list_buckets(
+#'   MaxBuckets = 123,
+#'   ContinuationToken = "string"
+#' )
+#' ```
 #'
 #' @examples
 #' \dontrun{
@@ -9199,15 +9266,15 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' @rdname s3_list_buckets
 #'
 #' @aliases s3_list_buckets
-s3_list_buckets <- function() {
+s3_list_buckets <- function(MaxBuckets = NULL, ContinuationToken = NULL) {
   op <- new_operation(
     name = "ListBuckets",
     http_method = "GET",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Buckets")
+    paginator = list(input_token = "ContinuationToken", limit_key = "MaxBuckets", output_token = "ContinuationToken", result_key = "Buckets")
   )
-  input <- .s3$list_buckets_input()
+  input <- .s3$list_buckets_input(MaxBuckets = MaxBuckets, ContinuationToken = ContinuationToken)
   output <- .s3$list_buckets_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -9257,9 +9324,9 @@ s3_list_buckets <- function() {
 #' s3_list_directory_buckets(ContinuationToken, MaxDirectoryBuckets)
 #'
 #' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
-#' continued on this bucket with a token. `ContinuationToken` is obfuscated
-#' and is not a real key. You can use this `ContinuationToken` for
-#' pagination of the list results.
+#' continued on buckets in this account with a token. `ContinuationToken`
+#' is obfuscated and is not a real bucket name. You can use this
+#' `ContinuationToken` for the pagination of the list results.
 #' @param MaxDirectoryBuckets Maximum number of buckets to be returned in response. When the number is
 #' more than the count of buckets that are owned by an Amazon Web Services
 #' account, return all the buckets in response.
@@ -9321,7 +9388,12 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' 
 #' **Directory buckets** - If multipart uploads in a directory bucket are
 #' in progress, you can't delete the bucket until all the in-progress
-#' multipart uploads are aborted or completed.
+#' multipart uploads are aborted or completed. To delete these in-progress
+#' multipart uploads, use the
+#' [`list_multipart_uploads`][s3_list_multipart_uploads] operation to list
+#' the in-progress multipart uploads in the bucket and use the
+#' `AbortMultupartUpload` operation to abort all the in-progress multipart
+#' uploads.
 #' 
 #' The [`list_multipart_uploads`][s3_list_multipart_uploads] operation
 #' returns a maximum of 1,000 multipart uploads in the response. The limit
@@ -9998,14 +10070,22 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' in the *Amazon S3 User Guide*. To get a list of your buckets, see
 #' [`list_buckets`][s3_list_buckets].
 #' 
-#' **Directory buckets** - For directory buckets, you must make requests
-#' for this API operation to the Zonal endpoint. These endpoints support
-#' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
-#' in the *Amazon S3 User Guide*.
+#' -   **General purpose bucket** - For general purpose buckets,
+#'     [`list_objects_v2`][s3_list_objects_v2] doesn't return prefixes that
+#'     are related only to in-progress multipart uploads.
+#' 
+#' -   **Directory buckets** - For directory buckets,
+#'     [`list_objects_v2`][s3_list_objects_v2] response includes the
+#'     prefixes that are related only to in-progress multipart uploads.
+#' 
+#' -   **Directory buckets** - For directory buckets, you must make
+#'     requests for this API operation to the Zonal endpoint. These
+#'     endpoints support virtual-hosted-style requests in the format
+#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information, see
+#'     [Regional and Zonal
+#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
 #' 
@@ -10121,10 +10201,21 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'     uploads, see [Multipart Upload
 #'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
 #'     in the *Amazon S3 User Guide*.
-#' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
-#' If using `url`, non-ASCII characters used in an object's key name will
-#' be URL encoded. For example, the object `test_file(3).png` will appear
-#' as `test_file%283%29.png`.
+#' @param EncodingType Encoding type used by Amazon S3 to encode the [object
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html)
+#' in the response. Responses are encoded only in UTF-8. An object key can
+#' contain any Unicode character. However, the XML 1.0 parser can't parse
+#' certain characters, such as characters with an ASCII value from 0 to 10.
+#' For characters that aren't supported in XML 1.0, you can add this
+#' parameter to request that Amazon S3 encode the keys in the response. For
+#' more information about characters to avoid in object key names, see
+#' [Object key naming
+#' guidelines](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines).
+#' 
+#' When using the URL encoding type, non-ASCII characters that are used in
+#' an object's key name will be percent-encoded according to UTF-8 code
+#' values. For example, the object `test_file(3).png` will appear as
+#' `test_file%283%29.png`.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
 #' the action returns up to 1,000 key names. The response might contain
 #' fewer keys but will never contain more.
@@ -11241,9 +11332,15 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' does not validate the KMS key ID provided in PutBucketEncryption
 #' requests.
 #' 
-#' This action requires Amazon Web Services Signature Version 4. For more
-#' information, see [Authenticating Requests (Amazon Web Services Signature
-#' Version
+#' If you're specifying a customer managed KMS key, we recommend using a
+#' fully qualified KMS key ARN. If you use a KMS key alias instead, then
+#' KMS resolves the key within the requester’s account. This behavior can
+#' result in data that's encrypted with a KMS key that belongs to the
+#' requester, and not the bucket owner.
+#' 
+#' Also, this action requires Amazon Web Services Signature Version 4. For
+#' more information, see [Authenticating Requests (Amazon Web Services
+#' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html).
 #' 
 #' To use this operation, you must have permission to perform the
@@ -13377,6 +13474,11 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @description
 #' This operation is not supported by directory buckets.
 #' 
+#' When you enable versioning on a bucket for the first time, it might take
+#' a short amount of time for the change to be fully propagated. We
+#' recommend that you wait for 15 minutes after enabling versioning before
+#' issuing write operations (`PUT` or `DELETE`) on objects in the bucket.
+#' 
 #' Sets the versioning state of an existing bucket.
 #' 
 #' You can set the versioning state with one of the following values:
@@ -13803,12 +13905,12 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
 #'   ContentEncoding, ContentLanguage, ContentLength, ContentMD5,
 #'   ContentType, ChecksumAlgorithm, ChecksumCRC32, ChecksumCRC32C,
-#'   ChecksumSHA1, ChecksumSHA256, Expires, GrantFullControl, GrantRead,
-#'   GrantReadACP, GrantWriteACP, Key, Metadata, ServerSideEncryption,
-#'   StorageClass, WebsiteRedirectLocation, SSECustomerAlgorithm,
-#'   SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
-#'   BucketKeyEnabled, RequestPayer, Tagging, ObjectLockMode,
-#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
+#'   ChecksumSHA1, ChecksumSHA256, Expires, IfNoneMatch, GrantFullControl,
+#'   GrantRead, GrantReadACP, GrantWriteACP, Key, Metadata,
+#'   ServerSideEncryption, StorageClass, WebsiteRedirectLocation,
+#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId,
+#'   SSEKMSEncryptionContext, BucketKeyEnabled, RequestPayer, Tagging,
+#'   ObjectLockMode, ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
 #'   ExpectedBucketOwner)
 #'
 #' @param ACL The canned ACL to apply to the object. For more information, see [Canned
@@ -13968,6 +14070,20 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' in the *Amazon S3 User Guide*.
 #' @param Expires The date and time at which the object is no longer cacheable. For more
 #' information, see <https://www.rfc-editor.org/rfc/rfc7234#section-5.3>.
+#' @param IfNoneMatch Uploads the object only if the object key name does not already exist in
+#' the bucket specified. Otherwise, Amazon S3 returns a
+#' `412 Precondition Failed` error.
+#' 
+#' If a conflicting operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' retry the upload.
+#' 
+#' Expects the '*' (asterisk) character.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232), or [Conditional
+#' requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html)
+#' in the *Amazon S3 User Guide*.
 #' @param GrantFullControl Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 #' object.
 #' 
@@ -14156,6 +14272,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Expires = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   IfNoneMatch = "string",
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
@@ -14186,27 +14303,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'
 #' @examples
 #' \dontrun{
-#' # The following example uploads an object to a versioning-enabled bucket.
-#' # The source file is specified using Windows file syntax. S3 returns
-#' # VersionId of the newly created object.
-#' svc$put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
-#' # The following example uploads an object. The request specifies the
-#' # optional server-side encryption option. The request also specifies
-#' # optional object tags. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   ServerSideEncryption = "AES256",
-#'   Tagging = "key1=value1&key2=value2"
-#' )
-#' 
 #' # The following example uploads an object. The request specifies optional
 #' # request headers to directs S3 to use specific storage class and use
 #' # server-side encryption.
@@ -14218,17 +14314,21 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   StorageClass = "STANDARD_IA"
 #' )
 #' 
-#' # The following example creates an object. The request also specifies
-#' # optional metadata. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
+#' # The following example creates an object. If the bucket is versioning
+#' # enabled, S3 returns version ID in response.
 #' svc$put_object(
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   Metadata = list(
-#'     metadata1 = "value1",
-#'     metadata2 = "value2"
-#'   )
+#'   Key = "objectkey"
+#' )
+#' 
+#' # The following example uploads an object to a versioning-enabled bucket.
+#' # The source file is specified using Windows file syntax. S3 returns
+#' # VersionId of the newly created object.
+#' svc$put_object(
+#'   Body = "HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' 
 #' # The following example uploads an object. The request specifies optional
@@ -14252,12 +14352,29 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Key = "exampleobject"
 #' )
 #' 
-#' # The following example creates an object. If the bucket is versioning
-#' # enabled, S3 returns version ID in response.
+#' # The following example creates an object. The request also specifies
+#' # optional metadata. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
 #' svc$put_object(
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
-#'   Key = "objectkey"
+#'   Key = "exampleobject",
+#'   Metadata = list(
+#'     metadata1 = "value1",
+#'     metadata2 = "value2"
+#'   )
+#' )
+#' 
+#' # The following example uploads an object. The request specifies the
+#' # optional server-side encryption option. The request also specifies
+#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   ServerSideEncryption = "AES256",
+#'   Tagging = "key1=value1&key2=value2"
 #' )
 #' }
 #'
@@ -14266,7 +14383,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @rdname s3_put_object
 #'
 #' @aliases s3_put_object
-s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
+s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObject",
     http_method = "PUT",
@@ -14274,7 +14391,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
     host_prefix = "",
     paginator = list()
   )
-  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$put_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -15216,6 +15333,11 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' @description
 #' This operation is not supported by directory buckets.
 #' 
+#' The `SELECT` job type for the RestoreObject operation is no longer
+#' available to new customers. Existing customers of Amazon S3 Select can
+#' continue to use the feature as usual. [Learn
+#' more](https://aws.amazon.com/blogs/storage/how-to-optimize-querying-your-data-in-amazon-s3/)
+#' 
 #' Restores an archived copy of an object back into Amazon S3
 #' 
 #' This functionality is not supported for Amazon S3 on Outposts.
@@ -15574,6 +15696,11 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' @description
 #' This operation is not supported by directory buckets.
 #' 
+#' The SelectObjectContent operation is no longer available to new
+#' customers. Existing customers of Amazon S3 Select can continue to use
+#' the operation as usual. [Learn
+#' more](https://aws.amazon.com/blogs/storage/how-to-optimize-querying-your-data-in-amazon-s3/)
+#' 
 #' This action filters the contents of an Amazon S3 object based on a
 #' simple structured query language (SQL) statement. In the request, along
 #' with the SQL expression, you must also specify a data serialization
@@ -15880,10 +16007,26 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' 
 #' ### Permissions
 #' 
-#' -   **General purpose bucket permissions** - For information on the
-#'     permissions required to use the multipart upload API, see [Multipart
-#'     Upload and
-#'     Permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#' -   **General purpose bucket permissions** - To perform a multipart
+#'     upload with encryption using an Key Management Service key, the
+#'     requester must have permission to the `kms:Decrypt` and
+#'     `kms:GenerateDataKey` actions on the key. The requester must also
+#'     have permissions for the `kms:GenerateDataKey` action for the
+#'     [`create_multipart_upload`][s3_create_multipart_upload] API. Then,
+#'     the requester needs permissions for the `kms:Decrypt` action on the
+#'     [`upload_part`][s3_upload_part] and
+#'     [`upload_part_copy`][s3_upload_part_copy] APIs.
+#' 
+#'     These permissions are required because Amazon S3 must decrypt and
+#'     read data from the encrypted file parts before it completes the
+#'     multipart upload. For more information about KMS permissions, see
+#'     [Protecting data using server-side encryption with
+#'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+#'     in the *Amazon S3 User Guide*. For information about the permissions
+#'     required to use the multipart upload API, see [Multipart upload and
+#'     permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#'     and [Multipart upload API and
+#'     permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' -   **Directory bucket permissions** - To grant access to this API
@@ -16260,10 +16403,27 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'         have the **`s3:PutObject`** permission to write the object copy
 #'         to the destination bucket.
 #' 
-#'     For information about permissions required to use the multipart
-#'     upload API, see [Multipart upload API and
-#'     permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions)
-#'     in the *Amazon S3 User Guide*.
+#'     -   To perform a multipart upload with encryption using an Key
+#'         Management Service key, the requester must have permission to
+#'         the `kms:Decrypt` and `kms:GenerateDataKey` actions on the key.
+#'         The requester must also have permissions for the
+#'         `kms:GenerateDataKey` action for the
+#'         [`create_multipart_upload`][s3_create_multipart_upload] API.
+#'         Then, the requester needs permissions for the `kms:Decrypt`
+#'         action on the [`upload_part`][s3_upload_part] and
+#'         [`upload_part_copy`][s3_upload_part_copy] APIs. These
+#'         permissions are required because Amazon S3 must decrypt and read
+#'         data from the encrypted file parts before it completes the
+#'         multipart upload. For more information about KMS permissions,
+#'         see [Protecting data using server-side encryption with
+#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+#'         in the *Amazon S3 User Guide*. For information about the
+#'         permissions required to use the multipart upload API, see
+#'         [Multipart upload and
+#'         permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#'         and [Multipart upload API and
+#'         permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions)
+#'         in the *Amazon S3 User Guide*.
 #' 
 #' -   **Directory bucket permissions** - You must have permissions in a
 #'     bucket policy or an IAM identity-based policy based on the source

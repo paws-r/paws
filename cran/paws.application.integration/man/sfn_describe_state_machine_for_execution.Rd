@@ -5,11 +5,16 @@
 \title{Provides information about a state machine's definition, its execution
 role ARN, and configuration}
 \usage{
-sfn_describe_state_machine_for_execution(executionArn)
+sfn_describe_state_machine_for_execution(executionArn, includedData = NULL)
 }
 \arguments{
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution you want state machine
 information for.}
+
+\item{includedData}{If your state machine definition is encrypted with a KMS key, callers
+must have \code{kms:Decrypt} permission to decrypt the definition.
+Alternatively, you can call the API with \code{includedData = METADATA_ONLY}
+to get a successful response without the encrypted definition.}
 }
 \description{
 Provides information about a state machine's definition, its execution role ARN, and configuration. If a Map Run dispatched the execution, this action returns the Map Run Amazon Resource Name (ARN) in the response. The state machine returned is the state machine associated with the Map Run.

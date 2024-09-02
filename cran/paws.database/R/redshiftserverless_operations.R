@@ -188,7 +188,7 @@ redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' For more information about the IAM role to use with the Amazon Redshift
 #' scheduler, see [Using Identity-Based Policies for Amazon
 #' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
-#' in the Amazon Redshift Cluster Management Guide
+#' in the Amazon Redshift Management Guide
 #' @param schedule &#91;required&#93; The schedule for a one-time (at timestamp format) or recurring (cron
 #' format) scheduled action. Schedule invocations must be separated by at
 #' least one hour. Times are in UTC.
@@ -362,6 +362,8 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC instead of over the internet.
+#' @param ipAddressType The IP address type that the workgroup supports. Possible values are
+#' `ipv4` and `dualstack`.
 #' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
 #' serve queries. The max capacity is specified in RPUs.
 #' @param namespaceName &#91;required&#93; The name of the namespace to associate with the workgroup.
@@ -377,7 +379,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, maxCapacity = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
@@ -385,7 +387,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
     host_prefix = "",
     paginator = list()
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -1837,7 +1839,7 @@ redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' For more information about the IAM role to use with the Amazon Redshift
 #' scheduler, see [Using Identity-Based Policies for Amazon
 #' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
-#' in the Amazon Redshift Cluster Management Guide
+#' in the Amazon Redshift Management Guide
 #' @param schedule The schedule for a one-time (at timestamp format) or recurring (cron
 #' format) scheduled action. Schedule invocations must be separated by at
 #' least one hour. Times are in UTC.
@@ -1995,6 +1997,8 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC.
+#' @param ipAddressType The IP address type that the workgroup supports. Possible values are
+#' `ipv4` and `dualstack`.
 #' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
 #' serve queries. The max capacity is specified in RPUs.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
@@ -2009,7 +2013,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, maxCapacity = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
@@ -2017,7 +2021,7 @@ redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParam
     host_prefix = "",
     paginator = list()
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)

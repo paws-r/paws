@@ -305,7 +305,7 @@ volume that is configured at launch time. Currently, the only supported
 volume type is an Amazon EBS volume.}
 }
 \description{
-Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the \code{desiredCount}, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, see the \code{\link[=ecs_update_service]{update_service}} action.
+Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the \code{desiredCount}, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, use \code{\link[=ecs_update_service]{update_service}}.
 
 See \url{https://www.paws-r-sdk.com/docs/ecs_create_service/} for full documentation.
 }

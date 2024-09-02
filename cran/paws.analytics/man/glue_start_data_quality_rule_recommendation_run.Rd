@@ -11,6 +11,7 @@ glue_start_data_quality_rule_recommendation_run(
   NumberOfWorkers = NULL,
   Timeout = NULL,
   CreatedRulesetName = NULL,
+  DataQualitySecurityConfiguration = NULL,
   ClientToken = NULL
 )
 }
@@ -26,6 +27,9 @@ can consume resources before it is terminated and enters \code{TIMEOUT}
 status. The default is 2,880 minutes (48 hours).}
 
 \item{CreatedRulesetName}{A name for the ruleset.}
+
+\item{DataQualitySecurityConfiguration}{The name of the security configuration created with the data quality
+encryption option.}
 
 \item{ClientToken}{Used for idempotency and is recommended to be set to a random ID (such
 as a UUID) to avoid creating or starting multiple instances of the same

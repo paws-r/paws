@@ -149,7 +149,7 @@ ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, regio
   service_id = "Ssm Sap",
   api_version = "2018-05-10",
   signing_name = "ssm-sap",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

@@ -5,19 +5,19 @@
 \title{Updates a specified logging configuration}
 \usage{
 ivschat_update_logging_configuration(
-  destinationConfiguration = NULL,
   identifier,
-  name = NULL
+  name = NULL,
+  destinationConfiguration = NULL
 )
 }
 \arguments{
-\item{destinationConfiguration}{A complex type that contains a destination configuration for where chat
-content will be logged. There can be only one type of destination
-(\code{cloudWatchLogs}, \code{firehose}, or \code{s3}) in a \code{destinationConfiguration}.}
-
 \item{identifier}{[required] Identifier of the logging configuration to be updated.}
 
 \item{name}{Logging-configuration name. The value does not need to be unique.}
+
+\item{destinationConfiguration}{A complex type that contains a destination configuration for where chat
+content will be logged. There can be only one type of destination
+(\code{cloudWatchLogs}, \code{firehose}, or \code{s3}) in a \code{destinationConfiguration}.}
 }
 \description{
 Updates a specified logging configuration.

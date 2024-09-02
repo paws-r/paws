@@ -661,13 +661,13 @@ NULL
 
 .cloudwatchlogs$put_log_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamName = structure(logical(0), tags = list(type = "string")), logEvents = structure(list(structure(list(timestamp = structure(logical(0), tags = list(type = "long")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), sequenceToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamName = structure(logical(0), tags = list(type = "string")), logEvents = structure(list(structure(list(timestamp = structure(logical(0), tags = list(type = "long")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), sequenceToken = structure(logical(0), tags = list(type = "string")), entity = structure(list(keyAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchlogs$put_log_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextSequenceToken = structure(logical(0), tags = list(type = "string")), rejectedLogEventsInfo = structure(list(tooNewLogEventStartIndex = structure(logical(0), tags = list(type = "integer")), tooOldLogEventEndIndex = structure(logical(0), tags = list(type = "integer")), expiredLogEventEndIndex = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(nextSequenceToken = structure(logical(0), tags = list(type = "string")), rejectedLogEventsInfo = structure(list(tooNewLogEventStartIndex = structure(logical(0), tags = list(type = "integer")), tooOldLogEventEndIndex = structure(logical(0), tags = list(type = "integer")), expiredLogEventEndIndex = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), rejectedEntityInfo = structure(list(errorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

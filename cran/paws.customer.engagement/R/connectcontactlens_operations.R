@@ -12,7 +12,7 @@ NULL
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
-#' @param MaxResults The maximimum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.

@@ -6,6 +6,7 @@
 \usage{
 glue_start_job_run(
   JobName,
+  JobRunQueuingEnabled = NULL,
   JobRunId = NULL,
   Arguments = NULL,
   AllocatedCapacity = NULL,
@@ -20,6 +21,11 @@ glue_start_job_run(
 }
 \arguments{
 \item{JobName}{[required] The name of the job definition to use.}
+
+\item{JobRunQueuingEnabled}{Specifies whether job run queuing is enabled for the job run.
+
+A value of true means job run queuing is enabled for the job run. If
+false or not populated, the job run will not be considered for queueing.}
 
 \item{JobRunId}{The ID of a previous \code{JobRun} to retry.}
 

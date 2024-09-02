@@ -1168,6 +1168,11 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
 #' information about the default quota for maxQueryTCU, see [Default
 #' quotas](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html#limits.default).
 #' @param QueryPricingModel The pricing model for queries in an account.
+#' 
+#' The `QueryPricingModel` parameter is used by several Timestream
+#' operations; however, the
+#' [`update_account_settings`][timestreamquery_update_account_settings] API
+#' operation doesn't recognize any values other than `COMPUTE_UNITS`.
 #'
 #' @return
 #' A list with the following syntax:

@@ -87,6 +87,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ecr$create_repository_creation_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(prefix = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), repositoryPolicy = structure(logical(0), tags = list(type = "string")), lifecyclePolicy = structure(logical(0), tags = list(type = "string")), appliedFor = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$create_repository_creation_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryCreationTemplate = structure(list(prefix = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), repositoryPolicy = structure(logical(0), tags = list(type = "string")), lifecyclePolicy = structure(logical(0), tags = list(type = "string")), appliedFor = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ecr$delete_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -132,6 +144,18 @@ NULL
 .ecr$delete_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repository = structure(list(repositoryArn = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryUri = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), imageTagMutability = structure(logical(0), tags = list(type = "string")), imageScanningConfiguration = structure(list(scanOnPush = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$delete_repository_creation_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$delete_repository_creation_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryCreationTemplate = structure(list(prefix = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), repositoryPolicy = structure(logical(0), tags = list(type = "string")), lifecyclePolicy = structure(logical(0), tags = list(type = "string")), appliedFor = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -216,6 +240,30 @@ NULL
 .ecr$describe_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositories = structure(list(structure(list(repositoryArn = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryUri = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), imageTagMutability = structure(logical(0), tags = list(type = "string")), imageScanningConfiguration = structure(list(scanOnPush = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$describe_repository_creation_templates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(prefixes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$describe_repository_creation_templates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryCreationTemplates = structure(list(structure(list(prefix = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), repositoryPolicy = structure(logical(0), tags = list(type = "string")), lifecyclePolicy = structure(logical(0), tags = list(type = "string")), appliedFor = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$get_account_setting_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$get_account_setting_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -336,6 +384,18 @@ NULL
 .ecr$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$put_account_setting_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$put_account_setting_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -492,6 +552,18 @@ NULL
 .ecr$update_pull_through_cache_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), credentialArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$update_repository_creation_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(prefix = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), repositoryPolicy = structure(logical(0), tags = list(type = "string")), lifecyclePolicy = structure(logical(0), tags = list(type = "string")), appliedFor = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$update_repository_creation_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryCreationTemplate = structure(list(prefix = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), repositoryPolicy = structure(logical(0), tags = list(type = "string")), lifecyclePolicy = structure(logical(0), tags = list(type = "string")), appliedFor = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

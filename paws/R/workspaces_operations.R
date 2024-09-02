@@ -1037,6 +1037,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' 
 #' -   User-decoupled WorkSpaces are only supported by Amazon WorkSpaces
 #'     Core.
+#' 
+#' -   Review your running mode to ensure you are using one that is optimal
+#'     for your needs and budget. For more information on switching running
+#'     modes, see [Can I switch between hourly and monthly
+#'     billing?](https://aws.amazon.com/workspaces-family/workspaces/faqs/#:~:text=Can%20I%20switch%20between%20hourly%20and%20monthly%20billing%20on%20WorkSpaces%20Personal?)
 #'
 #' @usage
 #' workspaces_create_workspaces(Workspaces)
@@ -2934,7 +2939,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'
 #' @usage
 #' workspaces_describe_workspace_directories(DirectoryIds,
-#'   WorkspaceDirectoryNames, Limit, NextToken)
+#'   WorkspaceDirectoryNames, Limit, NextToken, Filters)
 #'
 #' @param DirectoryIds The identifiers of the directories. If the value is null, all
 #' directories are retrieved.
@@ -2942,6 +2947,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' @param Limit The maximum number of directories to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
+#' @param Filters The filter condition for the WorkSpaces.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2961,7 +2967,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'       ),
 #'       CustomerUserName = "string",
 #'       IamRoleId = "string",
-#'       DirectoryType = "SIMPLE_AD"|"AD_CONNECTOR"|"CUSTOMER_MANAGED",
+#'       DirectoryType = "SIMPLE_AD"|"AD_CONNECTOR"|"CUSTOMER_MANAGED"|"AWS_IAM_IDENTITY_CENTER",
 #'       WorkspaceSecurityGroupId = "string",
 #'       State = "REGISTERING"|"REGISTERED"|"DEREGISTERING"|"DEREGISTERED"|"ERROR",
 #'       WorkspaceCreationProperties = list(
@@ -3003,10 +3009,18 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'         Status = "DISABLED"|"ENABLED",
 #'         CertificateAuthorityArn = "string"
 #'       ),
+#'       MicrosoftEntraConfig = list(
+#'         TenantId = "string",
+#'         ApplicationConfigSecretArn = "string"
+#'       ),
 #'       WorkspaceDirectoryName = "string",
 #'       WorkspaceDirectoryDescription = "string",
-#'       UserIdentityType = "CUSTOMER_MANAGED"|"AWS_DIRECTORY_SERVICE",
+#'       UserIdentityType = "CUSTOMER_MANAGED"|"AWS_DIRECTORY_SERVICE"|"AWS_IAM_IDENTITY_CENTER",
 #'       WorkspaceType = "PERSONAL"|"POOLS",
+#'       IDCConfig = list(
+#'         InstanceArn = "string",
+#'         ApplicationArn = "string"
+#'       ),
 #'       ActiveDirectoryConfig = list(
 #'         DomainName = "string",
 #'         ServiceAccountSecretArn = "string"
@@ -3044,7 +3058,15 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'     "string"
 #'   ),
 #'   Limit = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "USER_IDENTITY_TYPE"|"WORKSPACE_TYPE",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3053,7 +3075,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' @rdname workspaces_describe_workspace_directories
 #'
 #' @aliases workspaces_describe_workspace_directories
-workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, WorkspaceDirectoryNames = NULL, Limit = NULL, NextToken = NULL) {
+workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, WorkspaceDirectoryNames = NULL, Limit = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceDirectories",
     http_method = "POST",
@@ -3061,7 +3083,7 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Works
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Directories")
   )
-  input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, WorkspaceDirectoryNames = WorkspaceDirectoryNames, Limit = Limit, NextToken = NextToken)
+  input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, WorkspaceDirectoryNames = WorkspaceDirectoryNames, Limit = Limit, NextToken = NextToken, Filters = Filters)
   output <- .workspaces$describe_workspace_directories_output()
   config <- get_config()
   svc <- .workspaces$service(config, op)
@@ -4118,7 +4140,9 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' -   Although this parameter is an array, only one item is allowed at
 #'     this time.
 #' 
-#' -   Windows 11 only supports `Microsoft_Office_2019`.
+#' -   During the image import process, non-GPU WSP WorkSpaces with Windows
+#'     11 support only `Microsoft_Office_2019`. GPU WSP WorkSpaces with
+#'     Windows 11 do not support Office installation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4132,7 +4156,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' ```
 #' svc$import_workspace_image(
 #'   Ec2ImageId = "string",
-#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_GRAPHICS_G4DN"|"BYOL_REGULAR_WSP"|"BYOL_REGULAR_BYOP"|"BYOL_GRAPHICS_G4DN_BYOP",
+#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_GRAPHICS_G4DN"|"BYOL_REGULAR_WSP"|"BYOL_GRAPHICS_G4DN_WSP"|"BYOL_REGULAR_BYOP"|"BYOL_GRAPHICS_G4DN_BYOP",
 #'   ImageName = "string",
 #'   ImageDescription = "string",
 #'   Tags = list(
@@ -5085,7 +5109,8 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' workspaces_register_workspace_directory(DirectoryId, SubnetIds,
 #'   EnableWorkDocs, EnableSelfService, Tenancy, Tags,
 #'   WorkspaceDirectoryName, WorkspaceDirectoryDescription, UserIdentityType,
-#'   WorkspaceType, ActiveDirectoryConfig)
+#'   IdcInstanceArn, MicrosoftEntraConfig, WorkspaceType,
+#'   ActiveDirectoryConfig)
 #'
 #' @param DirectoryId The identifier of the directory. You cannot register a directory if it
 #' does not have a status of Active. If the directory does not have a
@@ -5114,6 +5139,8 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @param WorkspaceDirectoryName The name of the directory to register.
 #' @param WorkspaceDirectoryDescription Description of the directory to register.
 #' @param UserIdentityType The type of identity management the user is using.
+#' @param IdcInstanceArn The Amazon Resource Name (ARN) of the identity center instance.
+#' @param MicrosoftEntraConfig The details about Microsoft Entra config.
 #' @param WorkspaceType Indicates whether the directory's WorkSpace type is personal or pools.
 #' @param ActiveDirectoryConfig The active directory config of the directory.
 #'
@@ -5144,7 +5171,12 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #'   ),
 #'   WorkspaceDirectoryName = "string",
 #'   WorkspaceDirectoryDescription = "string",
-#'   UserIdentityType = "CUSTOMER_MANAGED"|"AWS_DIRECTORY_SERVICE",
+#'   UserIdentityType = "CUSTOMER_MANAGED"|"AWS_DIRECTORY_SERVICE"|"AWS_IAM_IDENTITY_CENTER",
+#'   IdcInstanceArn = "string",
+#'   MicrosoftEntraConfig = list(
+#'     TenantId = "string",
+#'     ApplicationConfigSecretArn = "string"
+#'   ),
 #'   WorkspaceType = "PERSONAL"|"POOLS",
 #'   ActiveDirectoryConfig = list(
 #'     DomainName = "string",
@@ -5158,7 +5190,7 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @rdname workspaces_register_workspace_directory
 #'
 #' @aliases workspaces_register_workspace_directory
-workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetIds = NULL, EnableWorkDocs = NULL, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL, WorkspaceDirectoryName = NULL, WorkspaceDirectoryDescription = NULL, UserIdentityType = NULL, WorkspaceType = NULL, ActiveDirectoryConfig = NULL) {
+workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetIds = NULL, EnableWorkDocs = NULL, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL, WorkspaceDirectoryName = NULL, WorkspaceDirectoryDescription = NULL, UserIdentityType = NULL, IdcInstanceArn = NULL, MicrosoftEntraConfig = NULL, WorkspaceType = NULL, ActiveDirectoryConfig = NULL) {
   op <- new_operation(
     name = "RegisterWorkspaceDirectory",
     http_method = "POST",
@@ -5166,7 +5198,7 @@ workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetId
     host_prefix = "",
     paginator = list()
   )
-  input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableWorkDocs = EnableWorkDocs, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags, WorkspaceDirectoryName = WorkspaceDirectoryName, WorkspaceDirectoryDescription = WorkspaceDirectoryDescription, UserIdentityType = UserIdentityType, WorkspaceType = WorkspaceType, ActiveDirectoryConfig = ActiveDirectoryConfig)
+  input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableWorkDocs = EnableWorkDocs, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags, WorkspaceDirectoryName = WorkspaceDirectoryName, WorkspaceDirectoryDescription = WorkspaceDirectoryDescription, UserIdentityType = UserIdentityType, IdcInstanceArn = IdcInstanceArn, MicrosoftEntraConfig = MicrosoftEntraConfig, WorkspaceType = WorkspaceType, ActiveDirectoryConfig = ActiveDirectoryConfig)
   output <- .workspaces$register_workspace_directory_output()
   config <- get_config()
   svc <- .workspaces$service(config, op)
@@ -5337,7 +5369,7 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
 #' Starts the specified WorkSpaces.
 #' 
 #' You cannot start a WorkSpace unless it has a running mode of `AutoStop`
-#' and a state of `STOPPED`.
+#' or `Manual` and a state of `STOPPED`.
 #'
 #' @usage
 #' workspaces_start_workspaces(StartWorkspaceRequests)
@@ -5444,7 +5476,8 @@ workspaces_start_workspaces_pool <- function(PoolId) {
 #' Stops the specified WorkSpaces.
 #' 
 #' You cannot stop a WorkSpace unless it has a running mode of `AutoStop`
-#' and a state of `AVAILABLE`, `IMPAIRED`, `UNHEALTHY`, or `ERROR`.
+#' or `Manual` and a state of `AVAILABLE`, `IMPAIRED`, `UNHEALTHY`, or
+#' `ERROR`.
 #'
 #' @usage
 #' workspaces_stop_workspaces(StopWorkspaceRequests)
