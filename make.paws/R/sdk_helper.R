@@ -98,8 +98,7 @@ paws_check_rhub <- function(in_dir = "../cran",
                             platforms = c("linux", "macos", "macos-arm64", "windows")) {
   paws_check_rhub_sub_cat(in_dir, pkg_list, platforms)
   paws_check_rhub_cat(in_dir, pkg_list, platforms)
-  pkg <- file.path(in_dir, "paws")
-  paws_rhub_action_check(pkgs, platforms)
+  paws_rhub_action_check("paws", platforms)
 }
 
 #' @name paws_check_rhub
@@ -109,7 +108,7 @@ paws_check_rhub_cat <- function(in_dir = "../cran",
                                 platforms = c("linux", "macos", "macos-arm64", "windows")) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
-  paws_rhub_action_check(pkgs, platforms)
+  paws_rhub_action_check(basename(pkgs), platforms)
 }
 
 #' @rdname paws_check_rhub
@@ -120,7 +119,7 @@ paws_check_rhub_sub_cat <- function(in_dir = "../cran",
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
-    paws_rhub_action_check(pkgs, platforms)
+    paws_rhub_action_check(basename(pkgs), platforms)
   } else {
     warning("No sub-categories released.")
   }
