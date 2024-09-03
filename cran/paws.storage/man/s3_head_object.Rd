@@ -177,10 +177,11 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{ChecksumMode}{To retrieve the checksum, this parameter must be enabled.
 
-In addition, if you enable \code{ChecksumMode} and the object is encrypted
-with Amazon Web Services Key Management Service (Amazon Web Services
-KMS), you must have permission to use the \code{kms:Decrypt} action for the
-request to succeed.}
+In addition, if you enable checksum mode and the object is uploaded with
+a
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html}{checksum}
+and encrypted with an Key Management Service (KMS) key, you must have
+permission to use the \code{kms:Decrypt} action to retrieve the checksum.}
 }
 \description{
 The \code{HEAD} operation retrieves metadata from an object without returning the object itself. This operation is useful if you're interested only in an object's metadata.

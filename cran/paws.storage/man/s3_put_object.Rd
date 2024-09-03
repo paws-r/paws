@@ -21,6 +21,7 @@ s3_put_object(
   ChecksumSHA1 = NULL,
   ChecksumSHA256 = NULL,
   Expires = NULL,
+  IfNoneMatch = NULL,
   GrantFullControl = NULL,
   GrantRead = NULL,
   GrantReadACP = NULL,
@@ -199,6 +200,19 @@ in the \emph{Amazon S3 User Guide}.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
 information, see \url{https://www.rfc-editor.org/rfc/rfc7234#section-5.3}.}
+
+\item{IfNoneMatch}{Uploads the object only if the object key name does not already exist in
+the bucket specified. Otherwise, Amazon S3 returns a
+\verb{412 Precondition Failed} error.
+
+If a conflicting operation occurs during the upload S3 returns a
+\verb{409 ConditionalRequestConflict} response. On a 409 failure you should
+retry the upload.
+
+Expects the '*' (asterisk) character.
+
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{GrantFullControl}{Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.

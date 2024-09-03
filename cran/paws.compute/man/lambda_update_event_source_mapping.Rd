@@ -20,7 +20,8 @@ lambda_update_event_source_mapping(
   TumblingWindowInSeconds = NULL,
   FunctionResponseTypes = NULL,
   ScalingConfig = NULL,
-  DocumentDBEventSourceConfig = NULL
+  DocumentDBEventSourceConfig = NULL,
+  KMSKeyArn = NULL
 )
 }
 \arguments{
@@ -70,16 +71,17 @@ records before invoking the function. You can configure
 \code{MaximumBatchingWindowInSeconds} to any value from 0 seconds to 300
 seconds in increments of seconds.
 
-For streams and Amazon SQS event sources, the default batching window is
-0 seconds. For Amazon MSK, Self-managed Apache Kafka, Amazon MQ, and
-DocumentDB event sources, the default batching window is 500 ms. Note
-that because you can only change \code{MaximumBatchingWindowInSeconds} in
-increments of seconds, you cannot revert back to the 500 ms default
-batching window after you have changed it. To restore the default
-batching window, you must create a new event source mapping.
+For Kinesis, DynamoDB, and Amazon SQS event sources, the default
+batching window is 0 seconds. For Amazon MSK, Self-managed Apache Kafka,
+Amazon MQ, and DocumentDB event sources, the default batching window is
+500 ms. Note that because you can only change
+\code{MaximumBatchingWindowInSeconds} in increments of seconds, you cannot
+revert back to the 500 ms default batching window after you have changed
+it. To restore the default batching window, you must create a new event
+source mapping.
 
-Related setting: For streams and Amazon SQS event sources, when you set
-\code{BatchSize} to a value greater than 10, you must set
+Related setting: For Kinesis, DynamoDB, and Amazon SQS event sources,
+when you set \code{BatchSize} to a value greater than 10, you must set
 \code{MaximumBatchingWindowInSeconds} to at least 1.}
 
 \item{DestinationConfig}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
@@ -113,6 +115,11 @@ type enums applied to the event source mapping.}
 more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency}{Configuring maximum concurrency for Amazon SQS event sources}.}
 
 \item{DocumentDBEventSourceConfig}{Specific configuration settings for a DocumentDB event source.}
+
+\item{KMSKeyArn}{The ARN of the Key Management Service (KMS) customer managed key that
+Lambda uses to encrypt your function's \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics}{filter criteria}.
+By default, Lambda does not encrypt your filter criteria object. Specify
+this property to encrypt data using your own customer managed key.}
 }
 \description{
 Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/datazone_operations.R
 \name{datazone_delete_asset}
 \alias{datazone_delete_asset}
-\title{Delets an asset in Amazon DataZone}
+\title{Deletes an asset in Amazon DataZone}
 \usage{
 datazone_delete_asset(domainIdentifier, identifier)
 }
@@ -12,7 +12,7 @@ datazone_delete_asset(domainIdentifier, identifier)
 \item{identifier}{[required] The identifier of the asset that is deleted.}
 }
 \description{
-Delets an asset in Amazon DataZone.
+Deletes an asset in Amazon DataZone.
 
 See \url{https://www.paws-r-sdk.com/docs/datazone_delete_asset/} for full documentation.
 }

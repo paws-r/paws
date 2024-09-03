@@ -48,9 +48,14 @@ the function name, it is limited to 64 characters in length.}
 \item{Runtime}{The identifier of the function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime}.
 Runtime is required if the deployment package is a .zip file archive.
+Specifying a runtime results in an error if you're deploying a function
+using a container image.
 
-The following list includes deprecated runtimes. For more information,
-see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy}{Runtime deprecation policy}.}
+The following list includes deprecated runtimes. Lambda blocks creating
+new functions and updating existing functions shortly after each runtime
+is deprecated. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels}{Runtime use after deprecation}.
+
+For a list of all currently supported runtimes, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported}{Supported runtimes}.}
 
 \item{Role}{[required] The Amazon Resource Name (ARN) of the function's execution role.}
 
@@ -138,7 +143,7 @@ setting.}
 \item{LoggingConfig}{The function's Amazon CloudWatch Logs configuration settings.}
 }
 \description{
-Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
+Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Servicesservices, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_create_function/} for full documentation.
 }

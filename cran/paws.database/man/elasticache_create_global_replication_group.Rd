@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_create_global_replication_group}
 \alias{elasticache_create_global_replication_group}
-\title{Global Datastore for Redis offers fully managed, fast, reliable and
+\title{Global Datastore for Redis OSS offers fully managed, fast, reliable and
 secure cross-region replication}
 \usage{
 elasticache_create_global_replication_group(
@@ -30,7 +30,7 @@ iD prefixes, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-
 updates to the secondary cluster.}
 }
 \description{
-Global Datastore for Redis offers fully managed, fast, reliable and secure cross-region replication. Using Global Datastore for Redis, you can create cross-region read replica clusters for ElastiCache for Redis to enable low-latency reads and disaster recovery across regions. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html}{Replication Across Regions Using Global Datastore}.
+Global Datastore for Redis OSS offers fully managed, fast, reliable and secure cross-region replication. Using Global Datastore for Redis OSS, you can create cross-region read replica clusters for ElastiCache (Redis OSS) to enable low-latency reads and disaster recovery across regions. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html}{Replication Across Regions Using Global Datastore}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_global_replication_group/} for full documentation.
 }

@@ -12,7 +12,8 @@ glue_search_tables(
   SearchText = NULL,
   SortCriteria = NULL,
   MaxResults = NULL,
-  ResourceShareType = NULL
+  ResourceShareType = NULL,
+  IncludeStatusDetails = NULL
 )
 }
 \arguments{
@@ -51,6 +52,9 @@ account.
 \item If set to \code{ALL}, will search the tables shared with your account, as
 well as the tables in yor local account.
 }}
+
+\item{IncludeStatusDetails}{Specifies whether to include status details related to a request to
+create or update an Glue Data Catalog view.}
 }
 \description{
 Searches a set of tables based on properties in the table metadata as well as on the parent database. You can search against text or filter conditions.

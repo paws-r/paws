@@ -9,6 +9,7 @@ datazone_list_subscription_grants(
   environmentId = NULL,
   maxResults = NULL,
   nextToken = NULL,
+  owningProjectId = NULL,
   sortBy = NULL,
   sortOrder = NULL,
   subscribedListingId = NULL,
@@ -36,6 +37,8 @@ response includes a pagination token named \code{NextToken}. You can specify
 this \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_subscription_grants]{list_subscription_grants}} to list
 the next set of subscription grants.}
+
+\item{owningProjectId}{The ID of the owning project of the subscription grants.}
 
 \item{sortBy}{Specifies the way of sorting the results of this action.}
 

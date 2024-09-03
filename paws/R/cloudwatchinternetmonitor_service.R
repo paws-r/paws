@@ -173,7 +173,7 @@ cloudwatchinternetmonitor <- function(config = list(), credentials = list(), end
   service_id = "InternetMonitor",
   api_version = "2021-06-03",
   signing_name = "internetmonitor",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

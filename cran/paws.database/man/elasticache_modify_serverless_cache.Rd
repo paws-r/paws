@@ -25,10 +25,11 @@ maximum length of 255 characters.}
 \item{CacheUsageLimits}{Modify the cache usage limit for the serverless cache.}
 
 \item{RemoveUserGroup}{The identifier of the UserGroup to be removed from association with the
-Redis serverless cache. Available for Redis only. Default is NULL.}
+Redis OSS serverless cache. Available for Redis OSS only. Default is
+NULL.}
 
 \item{UserGroupId}{The identifier of the UserGroup to be associated with the serverless
-cache. Available for Redis only. Default is NULL - the existing
+cache. Available for Redis OSS only. Default is NULL - the existing
 UserGroup is not removed.}
 
 \item{SecurityGroupIds}{The new list of VPC security groups to be associated with the serverless
@@ -38,14 +39,14 @@ the VPC end-point (private-link). Default = NULL - the existing list of
 VPC security groups is not removed.}
 
 \item{SnapshotRetentionLimit}{The number of days for which Elasticache retains automatic snapshots
-before deleting them. Available for Redis only. Default = NULL, i.e. the
-existing snapshot-retention-limit will not be removed or modified. The
-maximum value allowed is 35 days.}
+before deleting them. Available for Redis OSS and Serverless Memcached
+only. Default = NULL, i.e. the existing snapshot-retention-limit will
+not be removed or modified. The maximum value allowed is 35 days.}
 
 \item{DailySnapshotTime}{The daily time during which Elasticache begins taking a daily snapshot
-of the serverless cache. Available for Redis only. The default is NULL,
-i.e. the existing snapshot time configured for the cluster is not
-removed.}
+of the serverless cache. Available for Redis OSS and Serverless
+Memcached only. The default is NULL, i.e. the existing snapshot time
+configured for the cluster is not removed.}
 }
 \description{
 This API modifies the attributes of a serverless cache.

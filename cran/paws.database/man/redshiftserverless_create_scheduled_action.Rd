@@ -34,7 +34,7 @@ Redshift scheduler to schedule creating snapshots. (Principal
 scheduler.redshift.amazonaws.com) to assume permissions on your behalf.
 For more information about the IAM role to use with the Amazon Redshift
 scheduler, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html}{Using Identity-Based Policies for Amazon Redshift}
-in the Amazon Redshift Cluster Management Guide}
+in the Amazon Redshift Management Guide}
 
 \item{schedule}{[required] The schedule for a one-time (at timestamp format) or recurring (cron
 format) scheduled action. Schedule invocations must be separated by at

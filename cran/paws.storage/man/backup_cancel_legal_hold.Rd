@@ -2,7 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_cancel_legal_hold}
 \alias{backup_cancel_legal_hold}
-\title{This action removes the specified legal hold on a recovery point}
+\title{Removes the specified legal hold on a recovery point}
 \usage{
 backup_cancel_legal_hold(
   LegalHoldId,
@@ -11,16 +11,14 @@ backup_cancel_legal_hold(
 )
 }
 \arguments{
-\item{LegalHoldId}{[required] Legal hold ID required to remove the specified legal hold on a recovery
-point.}
+\item{LegalHoldId}{[required] The ID of the legal hold.}
 
-\item{CancelDescription}{[required] String describing the reason for removing the legal hold.}
+\item{CancelDescription}{[required] A string the describes the reason for removing the legal hold.}
 
-\item{RetainRecordInDays}{The integer amount in days specifying amount of days after this API
-operation to remove legal hold.}
+\item{RetainRecordInDays}{The integer amount, in days, after which to remove legal hold.}
 }
 \description{
-This action removes the specified legal hold on a recovery point. This action can only be performed by a user with sufficient permissions.
+Removes the specified legal hold on a recovery point. This action can only be performed by a user with sufficient permissions.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_cancel_legal_hold/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_backup_plans}
 \alias{backup_list_backup_plans}
-\title{Returns a list of all active backup plans for an authenticated account}
+\title{Lists the active backup plans for the account}
 \usage{
 backup_list_backup_plans(
   NextToken = NULL,
@@ -22,7 +22,7 @@ pointed to by the next token.}
 backup plans when set to \code{TRUE}.}
 }
 \description{
-Returns a list of all active backup plans for an authenticated account. The list contains information such as Amazon Resource Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan names, and creator request IDs.
+Lists the active backup plans for the account.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_list_backup_plans/} for full documentation.
 }

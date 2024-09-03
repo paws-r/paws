@@ -50,8 +50,8 @@ Operations section.
 \description{
 Step Functions
 
-Step Functions is a service that lets you coordinate the components of
-distributed applications and microservices using visual workflows.
+Step Functions coordinates the components of distributed applications
+and microservices using visual workflows.
 
 You can use Step Functions to build applications from individual
 components, each of which performs a discrete function, or \emph{task},
@@ -149,7 +149,7 @@ action \code{startSyncExecution} and specify its parameter as
 \link[=sfn_test_state]{test_state} \tab Accepts the definition of a single state and executes it\cr
 \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 \link[=sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
-\link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration\cr
+\link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, loggingConfiguration, or EncryptionConfiguration\cr
 \link[=sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration\cr
 \link[=sfn_validate_state_machine_definition]{validate_state_machine_definition} \tab Validates the syntax of a state machine definition
 }

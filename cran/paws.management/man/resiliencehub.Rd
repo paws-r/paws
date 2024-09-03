@@ -100,6 +100,7 @@ released into production.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=resiliencehub_accept_resource_grouping_recommendations]{accept_resource_grouping_recommendations} \tab Accepts the resource grouping recommendations suggested by Resilience Hub for your application\cr
 \link[=resiliencehub_add_draft_app_version_resource_mappings]{add_draft_app_version_resource_mappings} \tab Adds the source of resource-maps to the draft version of an application\cr
 \link[=resiliencehub_batch_update_recommendation_status]{batch_update_recommendation_status} \tab Enables you to include or exclude one or more operational recommendations\cr
 \link[=resiliencehub_create_app]{create_app} \tab Creates an Resilience Hub application\cr
@@ -123,6 +124,7 @@ released into production.
 \link[=resiliencehub_describe_app_version_template]{describe_app_version_template} \tab Describes details about an Resilience Hub application\cr
 \link[=resiliencehub_describe_draft_app_version_resources_import_status]{describe_draft_app_version_resources_import_status} \tab Describes the status of importing resources to an application version\cr
 \link[=resiliencehub_describe_resiliency_policy]{describe_resiliency_policy} \tab Describes a specified resiliency policy for an Resilience Hub application\cr
+\link[=resiliencehub_describe_resource_grouping_recommendation_task]{describe_resource_grouping_recommendation_task} \tab Describes the resource grouping recommendation tasks run by Resilience Hub for your application\cr
 \link[=resiliencehub_import_resources_to_draft_app_version]{import_resources_to_draft_app_version} \tab Imports resources to Resilience Hub application draft version from different input sources\cr
 \link[=resiliencehub_list_alarm_recommendations]{list_alarm_recommendations} \tab Lists the alarm recommendations for an Resilience Hub application\cr
 \link[=resiliencehub_list_app_assessment_compliance_drifts]{list_app_assessment_compliance_drifts} \tab List of compliance drifts that were detected while running an assessment\cr
@@ -138,6 +140,7 @@ released into production.
 \link[=resiliencehub_list_app_versions]{list_app_versions} \tab Lists the different versions for the Resilience Hub applications\cr
 \link[=resiliencehub_list_recommendation_templates]{list_recommendation_templates} \tab Lists the recommendation templates for the Resilience Hub applications\cr
 \link[=resiliencehub_list_resiliency_policies]{list_resiliency_policies} \tab Lists the resiliency policies for the Resilience Hub applications\cr
+\link[=resiliencehub_list_resource_grouping_recommendations]{list_resource_grouping_recommendations} \tab Lists the resource grouping recommendations suggested by Resilience Hub for your application\cr
 \link[=resiliencehub_list_sop_recommendations]{list_sop_recommendations} \tab Lists the standard operating procedure (SOP) recommendations for the Resilience Hub applications\cr
 \link[=resiliencehub_list_suggested_resiliency_policies]{list_suggested_resiliency_policies} \tab Lists the suggested resiliency policies for the Resilience Hub applications\cr
 \link[=resiliencehub_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for your resources in your Resilience Hub applications\cr
@@ -145,9 +148,11 @@ released into production.
 \link[=resiliencehub_list_unsupported_app_version_resources]{list_unsupported_app_version_resources} \tab Lists the resources that are not currently supported in Resilience Hub\cr
 \link[=resiliencehub_publish_app_version]{publish_app_version} \tab Publishes a new version of a specific Resilience Hub application\cr
 \link[=resiliencehub_put_draft_app_version_template]{put_draft_app_version_template} \tab Adds or updates the app template for an Resilience Hub application draft version\cr
+\link[=resiliencehub_reject_resource_grouping_recommendations]{reject_resource_grouping_recommendations} \tab Rejects resource grouping recommendations\cr
 \link[=resiliencehub_remove_draft_app_version_resource_mappings]{remove_draft_app_version_resource_mappings} \tab Removes resource mappings from a draft application version\cr
 \link[=resiliencehub_resolve_app_version_resources]{resolve_app_version_resources} \tab Resolves the resources for an application version\cr
 \link[=resiliencehub_start_app_assessment]{start_app_assessment} \tab Creates a new application assessment for an application\cr
+\link[=resiliencehub_start_resource_grouping_recommendation_task]{start_resource_grouping_recommendation_task} \tab Starts grouping recommendation task\cr
 \link[=resiliencehub_tag_resource]{tag_resource} \tab Applies one or more tags to a resource\cr
 \link[=resiliencehub_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
 \link[=resiliencehub_update_app]{update_app} \tab Updates an application\cr
@@ -161,7 +166,7 @@ released into production.
 \examples{
 \dontrun{
 svc <- resiliencehub()
-svc$add_draft_app_version_resource_mappings(
+svc$accept_resource_grouping_recommendations(
   Foo = 123
 )
 }

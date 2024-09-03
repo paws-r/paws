@@ -9,9 +9,9 @@ s3_list_directory_buckets(ContinuationToken = NULL, MaxDirectoryBuckets = NULL)
 }
 \arguments{
 \item{ContinuationToken}{\code{ContinuationToken} indicates to Amazon S3 that the list is being
-continued on this bucket with a token. \code{ContinuationToken} is obfuscated
-and is not a real key. You can use this \code{ContinuationToken} for
-pagination of the list results.}
+continued on buckets in this account with a token. \code{ContinuationToken}
+is obfuscated and is not a real bucket name. You can use this
+\code{ContinuationToken} for the pagination of the list results.}
 
 \item{MaxDirectoryBuckets}{Maximum number of buckets to be returned in response. When the number is
 more than the count of buckets that are owned by an Amazon Web Services

@@ -848,18 +848,27 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' `RejectedPackages` list.
 #' 
-#' -   **`ALLOW_AS_DEPENDENCY`** : A package in the `Rejected` patches list
-#'     is installed only if it is a dependency of another package. It is
-#'     considered compliant with the patch baseline, and its status is
-#'     reported as `InstalledOther`. This is the default action if no
-#'     option is specified.
+#' **ALLOW_AS_DEPENDENCY**
 #' 
-#' -   **BLOCK**: Packages in the **Rejected patches** list, and packages
-#'     that include them as dependencies, aren't installed by Patch Manager
-#'     under any circumstances. If a package was installed before it was
-#'     added to the **Rejected patches** list, or is installed outside of
-#'     Patch Manager afterward, it's considered noncompliant with the patch
-#'     baseline and its status is reported as *InstalledRejected*.
+#' **Linux and macOS**: A package in the rejected patches list is installed
+#' only if it is a dependency of another package. It is considered
+#' compliant with the patch baseline, and its status is reported as
+#' `INSTALLED_OTHER`. This is the default action if no option is specified.
+#' 
+#' **Windows Server**: Windows Server doesn't support the concept of
+#' package dependencies. If a package in the rejected patches list and
+#' already installed on the node, its status is reported as
+#' `INSTALLED_OTHER`. Any package not already installed on the node is
+#' skipped. This is the default action if no option is specified.
+#' 
+#' **BLOCK**
+#' 
+#' **All OSs**: Packages in the rejected patches list, and packages that
+#' include them as dependencies, aren't installed by Patch Manager under
+#' any circumstances. If a package was installed before it was added to the
+#' rejected patches list, or is installed outside of Patch Manager
+#' afterward, it's considered noncompliant with the patch baseline and its
+#' status is reported as `INSTALLED_REJECTED`.
 #' @param Description A description of the patch baseline.
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to
@@ -3063,7 +3072,7 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' or plugin
 #'
 #' @description
-#' Returns detailed information about command execution for an invocation or plugin.
+#' Returns detailed information about command execution for an invocation or plugin. The Run Command API follows an eventual consistency model, due to the distributed nature of the system supporting the API. This means that the result of an API command you run that affects your resources might not be immediately visible to all subsequent commands you run. You should keep this in mind when you carry out an API command that immediately follows a previous API command.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_get_command_invocation/](https://www.paws-r-sdk.com/docs/ssm_get_command_invocation/) for full documentation.
 #'
@@ -5172,7 +5181,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
 #' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html)
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskType &#91;required&#93; The type of task being registered.
 #' @param TaskParameters The parameters that should be passed to the task when it is run.
@@ -6391,7 +6400,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
 #' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html)
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskParameters The parameters to modify.
 #' 
@@ -6692,18 +6701,27 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' `RejectedPackages` list.
 #' 
-#' -   **`ALLOW_AS_DEPENDENCY`** : A package in the `Rejected` patches list
-#'     is installed only if it is a dependency of another package. It is
-#'     considered compliant with the patch baseline, and its status is
-#'     reported as `InstalledOther`. This is the default action if no
-#'     option is specified.
+#' **ALLOW_AS_DEPENDENCY**
 #' 
-#' -   **BLOCK**: Packages in the **Rejected patches** list, and packages
-#'     that include them as dependencies, aren't installed by Patch Manager
-#'     under any circumstances. If a package was installed before it was
-#'     added to the **Rejected patches** list, or is installed outside of
-#'     Patch Manager afterward, it's considered noncompliant with the patch
-#'     baseline and its status is reported as *InstalledRejected*.
+#' **Linux and macOS**: A package in the rejected patches list is installed
+#' only if it is a dependency of another package. It is considered
+#' compliant with the patch baseline, and its status is reported as
+#' `INSTALLED_OTHER`. This is the default action if no option is specified.
+#' 
+#' **Windows Server**: Windows Server doesn't support the concept of
+#' package dependencies. If a package in the rejected patches list and
+#' already installed on the node, its status is reported as
+#' `INSTALLED_OTHER`. Any package not already installed on the node is
+#' skipped. This is the default action if no option is specified.
+#' 
+#' **BLOCK**
+#' 
+#' **All OSs**: Packages in the rejected patches list, and packages that
+#' include them as dependencies, aren't installed by Patch Manager under
+#' any circumstances. If a package was installed before it was added to the
+#' rejected patches list, or is installed outside of Patch Manager
+#' afterward, it's considered noncompliant with the patch baseline and its
+#' status is reported as `INSTALLED_REJECTED`.
 #' @param Description A description of the patch baseline.
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to

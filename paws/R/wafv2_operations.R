@@ -13132,13 +13132,13 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 }
 .wafv2$operations$put_managed_rule_set_versions <- wafv2_put_managed_rule_set_versions
 
-#' Attaches an IAM policy to the specified resource
+#' Use this to share a rule group with other accounts
 #'
 #' @description
-#' Attaches an IAM policy to the specified resource. Use this to share a
-#' rule group across accounts.
+#' Use this to share a rule group with other accounts.
 #' 
-#' You must be the owner of the rule group to perform this operation.
+#' This action attaches an IAM policy to the specified resource. You must
+#' be the owner of the rule group to perform this operation.
 #' 
 #' This action is subject to the following restrictions:
 #' 
@@ -13149,6 +13149,12 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 #'     rule group must exist in the same Region.
 #' 
 #' -   The user making the request must be the owner of the rule group.
+#' 
+#' If a rule group has been shared with your account, you can access it
+#' through the call [`get_rule_group`][wafv2_get_rule_group], and you can
+#' reference it in [`create_web_acl`][wafv2_create_web_acl] and
+#' [`update_web_acl`][wafv2_update_web_acl]. Rule groups that are shared
+#' with you don't appear in your WAF console rule groups listing.
 #'
 #' @usage
 #' wafv2_put_permission_policy(ResourceArn, Policy)

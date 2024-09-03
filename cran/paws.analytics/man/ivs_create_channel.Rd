@@ -5,38 +5,31 @@
 \title{Creates a new channel and an associated stream key to start streaming}
 \usage{
 ivs_create_channel(
-  authorized = NULL,
-  insecureIngest = NULL,
-  latencyMode = NULL,
   name = NULL,
-  playbackRestrictionPolicyArn = NULL,
-  preset = NULL,
+  latencyMode = NULL,
+  type = NULL,
+  authorized = NULL,
   recordingConfigurationArn = NULL,
   tags = NULL,
-  type = NULL
+  insecureIngest = NULL,
+  preset = NULL,
+  playbackRestrictionPolicyArn = NULL
 )
 }
 \arguments{
-\item{authorized}{Whether the channel is private (enabled for playback authorization).
-Default: \code{false}.}
-
-\item{insecureIngest}{Whether the channel allows insecure RTMP and SRT ingest. Default:
-\code{false}.}
+\item{name}{Channel name.}
 
 \item{latencyMode}{Channel latency mode. Use \code{NORMAL} to broadcast and deliver live video
 up to Full HD. Use \code{LOW} for near-real-time interaction with viewers.
 Default: \code{LOW}.}
 
-\item{name}{Channel name.}
+\item{type}{Channel type, which determines the allowable resolution and bitrate. \emph{If
+you exceed the allowable input resolution or bitrate, the stream
+probably will disconnect immediately.} Default: \code{STANDARD}. For details,
+see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html}{Channel Types}.}
 
-\item{playbackRestrictionPolicyArn}{Playback-restriction-policy ARN. A valid ARN value here both specifies
-the ARN and enables playback restriction. Default: "" (empty string, no
-playback restriction policy is applied).}
-
-\item{preset}{Optional transcode preset for the channel. This is selectable only for
-\code{ADVANCED_HD} and \code{ADVANCED_SD} channel types. For those channel types,
-the default \code{preset} is \code{HIGHER_BANDWIDTH_DELIVERY}. For other channel
-types (\code{BASIC} and \code{STANDARD}), \code{preset} is the empty string (\code{""}).}
+\item{authorized}{Whether the channel is private (enabled for playback authorization).
+Default: \code{false}.}
 
 \item{recordingConfigurationArn}{Recording-configuration ARN. A valid ARN value here both specifies the
 ARN and enables recording. Default: "" (empty string, recording is
@@ -48,10 +41,17 @@ for more information, including restrictions that apply to tags and "Tag
 naming limits and requirements"; Amazon IVS has no service-specific
 constraints beyond what is documented there.}
 
-\item{type}{Channel type, which determines the allowable resolution and bitrate. \emph{If
-you exceed the allowable input resolution or bitrate, the stream
-probably will disconnect immediately.} Default: \code{STANDARD}. For details,
-see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html}{Channel Types}.}
+\item{insecureIngest}{Whether the channel allows insecure RTMP and SRT ingest. Default:
+\code{false}.}
+
+\item{preset}{Optional transcode preset for the channel. This is selectable only for
+\code{ADVANCED_HD} and \code{ADVANCED_SD} channel types. For those channel types,
+the default \code{preset} is \code{HIGHER_BANDWIDTH_DELIVERY}. For other channel
+types (\code{BASIC} and \code{STANDARD}), \code{preset} is the empty string (\code{""}).}
+
+\item{playbackRestrictionPolicyArn}{Playback-restriction-policy ARN. A valid ARN value here both specifies
+the ARN and enables playback restriction. Default: "" (empty string, no
+playback restriction policy is applied).}
 }
 \description{
 Creates a new channel and an associated stream key to start streaming.

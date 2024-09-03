@@ -10,7 +10,7 @@ ecr_put_replication_configuration(replicationConfiguration)
 \item{replicationConfiguration}{[required] An object representing the replication configuration for a registry.}
 }
 \description{
-Creates or updates the replication configuration for a registry. The existing replication configuration for a repository can be retrieved with the \code{\link[=ecr_describe_registry]{describe_registry}} API action. The first time the PutReplicationConfiguration API is called, a service-linked IAM role is created in your account for the replication process. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html}{Using service-linked roles for Amazon ECR} in the \emph{Amazon Elastic Container Registry User Guide}.
+Creates or updates the replication configuration for a registry. The existing replication configuration for a repository can be retrieved with the \code{\link[=ecr_describe_registry]{describe_registry}} API action. The first time the PutReplicationConfiguration API is called, a service-linked IAM role is created in your account for the replication process. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html}{Using service-linked roles for Amazon ECR} in the \emph{Amazon Elastic Container Registry User Guide}. For more information on the custom role for replication, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/#roles-creatingrole-user-console}{Creating an IAM role for replication}.
 
 See \url{https://www.paws-r-sdk.com/docs/ecr_put_replication_configuration/} for full documentation.
 }

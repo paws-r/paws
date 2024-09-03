@@ -3,7 +3,7 @@
 \name{sfn_update_state_machine}
 \alias{sfn_update_state_machine}
 \title{Updates an existing state machine by modifying its definition, roleArn,
-or loggingConfiguration}
+loggingConfiguration, or EncryptionConfiguration}
 \usage{
 sfn_update_state_machine(
   stateMachineArn,
@@ -12,7 +12,8 @@ sfn_update_state_machine(
   loggingConfiguration = NULL,
   tracingConfiguration = NULL,
   publish = NULL,
-  versionDescription = NULL
+  versionDescription = NULL,
+  encryptionConfiguration = NULL
 )
 }
 \arguments{
@@ -34,9 +35,11 @@ sfn_update_state_machine(
 
 You can only specify the \code{versionDescription} parameter if you've set
 \code{publish} to \code{true}.}
+
+\item{encryptionConfiguration}{Settings to configure server-side encryption.}
 }
 \description{
-Updates an existing state machine by modifying its \code{definition}, \code{roleArn}, or \code{loggingConfiguration}. Running executions will continue to use the previous \code{definition} and \code{roleArn}. You must include at least one of \code{definition} or \code{roleArn} or you will receive a \code{MissingRequiredParameter} error.
+Updates an existing state machine by modifying its \code{definition}, \code{roleArn}, \code{loggingConfiguration}, or \code{EncryptionConfiguration}. Running executions will continue to use the previous \code{definition} and \code{roleArn}. You must include at least one of \code{definition} or \code{roleArn} or you will receive a \code{MissingRequiredParameter} error.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_update_state_machine/} for full documentation.
 }

@@ -246,8 +246,11 @@ which provides details of a job success.
 \link[paws.developer.tools:codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all CodePipeline action types associated with your account\cr
 \link[paws.developer.tools:codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline\cr
 \link[paws.developer.tools:codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account\cr
+\link[paws.developer.tools:codepipeline_list_rule_executions]{list_rule_executions} \tab Lists the rule executions that have occurred in a pipeline configured for conditions with rules\cr
+\link[paws.developer.tools:codepipeline_list_rule_types]{list_rule_types} \tab Lists the rules for the condition\cr
 \link[paws.developer.tools:codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
 \link[paws.developer.tools:codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this Amazon Web Services Region for this account\cr
+\link[paws.developer.tools:codepipeline_override_stage_condition]{override_stage_condition} \tab Used to override a stage condition\cr
 \link[paws.developer.tools:codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for CodePipeline to act on\cr
 \link[paws.developer.tools:codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs} \tab Determines whether there are any third party jobs for a job worker to act on\cr
 \link[paws.developer.tools:codepipeline_put_action_revision]{put_action_revision} \tab Provides information to CodePipeline about new revisions to a source\cr

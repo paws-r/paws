@@ -19,6 +19,10 @@ NULL
 #' page](https://docs.aws.amazon.com/general/latest/gr/ivs.html) in the
 #' *AWS General Reference*.
 #' 
+#' This document describes HTTP operations. There is a separate *messaging*
+#' API for managing Chat resources; see the [Amazon IVS Chat Messaging API
+#' Reference](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/).
+#' 
 #' **Notes on terminology:**
 #' 
 #' -   You create service applications using the Amazon IVS Chat API. We
@@ -28,13 +32,17 @@ NULL
 #'     apps) using the Amazon IVS Chat Messaging API. We refer to these as
 #'     *clients*.
 #' 
-#' **Key Concepts**
+#' **Resources**
+#' 
+#' The following resources are part of Amazon IVS Chat:
 #' 
 #' -   **LoggingConfiguration** — A configuration that allows customers to
-#'     store and record sent messages in a chat room.
+#'     store and record sent messages in a chat room. See the Logging
+#'     Configuration endpoints for more information.
 #' 
 #' -   **Room** — The central Amazon IVS Chat resource through which
-#'     clients connect to and exchange chat messages.
+#'     clients connect to and exchange chat messages. See the Room
+#'     endpoints for more information.
 #' 
 #' **Tagging**
 #' 
@@ -109,85 +117,6 @@ NULL
 #' policies and API calls. For more information, see [Amazon Resource
 #' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
-#' 
-#' **Messaging Endpoints**
-#' 
-#' -   [`delete_message`][ivschat_delete_message] — Sends an event to a
-#'     specific room which directs clients to delete a specific message;
-#'     that is, unrender it from view and delete it from the client’s chat
-#'     history. This event’s `EventName` is `aws:DELETE_MESSAGE`. This
-#'     replicates the
-#'     [DeleteMessage](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html)
-#'     WebSocket operation in the Amazon IVS Chat Messaging API.
-#' 
-#' -   [`disconnect_user`][ivschat_disconnect_user] — Disconnects all
-#'     connections using a specified user ID from a room. This replicates
-#'     the
-#'     [DisconnectUser](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html)
-#'     WebSocket operation in the Amazon IVS Chat Messaging API.
-#' 
-#' -   [`send_event`][ivschat_send_event] — Sends an event to a room. Use
-#'     this within your application’s business logic to send events to
-#'     clients of a room; e.g., to notify clients to change the way the
-#'     chat UI is rendered.
-#' 
-#' **Chat Token Endpoint**
-#' 
-#' -   [`create_chat_token`][ivschat_create_chat_token] — Creates an
-#'     encrypted token that is used by a chat participant to establish an
-#'     individual WebSocket chat connection to a room. When the token is
-#'     used to connect to chat, the connection is valid for the session
-#'     duration specified in the request. The token becomes invalid at the
-#'     token-expiration timestamp included in the response.
-#' 
-#' **Room Endpoints**
-#' 
-#' -   [`create_room`][ivschat_create_room] — Creates a room that allows
-#'     clients to connect and pass messages.
-#' 
-#' -   [`delete_room`][ivschat_delete_room] — Deletes the specified room.
-#' 
-#' -   [`get_room`][ivschat_get_room] — Gets the specified room.
-#' 
-#' -   [`list_rooms`][ivschat_list_rooms] — Gets summary information about
-#'     all your rooms in the AWS region where the API request is processed.
-#' 
-#' -   [`update_room`][ivschat_update_room] — Updates a room’s
-#'     configuration.
-#' 
-#' **Logging Configuration Endpoints**
-#' 
-#' -   [`create_logging_configuration`][ivschat_create_logging_configuration]
-#'     — Creates a logging configuration that allows clients to store and
-#'     record sent messages.
-#' 
-#' -   [`delete_logging_configuration`][ivschat_delete_logging_configuration]
-#'     — Deletes the specified logging configuration.
-#' 
-#' -   [`get_logging_configuration`][ivschat_get_logging_configuration] —
-#'     Gets the specified logging configuration.
-#' 
-#' -   [`list_logging_configurations`][ivschat_list_logging_configurations]
-#'     — Gets summary information about all your logging configurations in
-#'     the AWS region where the API request is processed.
-#' 
-#' -   [`update_logging_configuration`][ivschat_update_logging_configuration]
-#'     — Updates a specified logging configuration.
-#' 
-#' **Tags Endpoints**
-#' 
-#' -   [`list_tags_for_resource`][ivschat_list_tags_for_resource] — Gets
-#'     information about AWS tags for the specified ARN.
-#' 
-#' -   [`tag_resource`][ivschat_tag_resource] — Adds or updates tags for
-#'     the AWS resource with the specified ARN.
-#' 
-#' -   [`untag_resource`][ivschat_untag_resource] — Removes tags from the
-#'     resource with the specified ARN.
-#' 
-#' All the above are HTTP operations. There is a separate *messaging* API
-#' for managing Chat resources; see the [Amazon IVS Chat Messaging API
-#' Reference](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/).
 #'
 #' @param
 #' config
@@ -324,7 +253,7 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
   service_id = "ivschat",
   api_version = "2020-07-14",
   signing_name = "ivschat",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

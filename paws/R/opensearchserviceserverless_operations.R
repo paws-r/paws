@@ -33,6 +33,8 @@ NULL
 #'       createdDate = 123,
 #'       dashboardEndpoint = "string",
 #'       description = "string",
+#'       failureCode = "string",
+#'       failureMessage = "string",
 #'       id = "string",
 #'       kmsKeyArn = "string",
 #'       lastModifiedDate = 123,
@@ -256,6 +258,8 @@ opensearchserviceserverless_batch_get_lifecycle_policy <- function(identifiers) 
 #'   vpcEndpointDetails = list(
 #'     list(
 #'       createdDate = 123,
+#'       failureCode = "string",
+#'       failureMessage = "string",
 #'       id = "string",
 #'       name = "string",
 #'       securityGroupIds = list(

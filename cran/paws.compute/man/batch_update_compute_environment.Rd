@@ -10,7 +10,8 @@ batch_update_compute_environment(
   unmanagedvCpus = NULL,
   computeResources = NULL,
   serviceRole = NULL,
-  updatePolicy = NULL
+  updatePolicy = NULL,
+  context = NULL
 )
 }
 \arguments{
@@ -82,6 +83,8 @@ environments.}
 environment. For more information about infrastructure updates, see
 \href{https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html}{Updating compute environments}
 in the \emph{Batch User Guide}.}
+
+\item{context}{Reserved.}
 }
 \description{
 Updates an Batch compute environment.

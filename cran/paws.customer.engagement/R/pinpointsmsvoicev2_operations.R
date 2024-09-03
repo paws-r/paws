@@ -126,13 +126,13 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
 #' action.
 #' @param EventDestinationName &#91;required&#93; The name that identifies the event destination.
 #' @param MatchingEventTypes &#91;required&#93; An array of event types that determine which events to log. If "ALL" is
-#' used, then Amazon Pinpoint logs every event type.
+#' used, then AWS End User Messaging SMS and Voice logs every event type.
 #' 
 #' The `TEXT_SENT` event type is not supported.
 #' @param CloudWatchLogsDestination An object that contains information about an event destination for
 #' logging to Amazon CloudWatch Logs.
 #' @param KinesisFirehoseDestination An object that contains information about an event destination for
-#' logging to Amazon Kinesis Data Firehose.
+#' logging to Amazon Data Firehose.
 #' @param SnsDestination An object that contains information about an event destination for
 #' logging to Amazon SNS.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
@@ -209,11 +209,16 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' find the values for PhoneNumberId and PhoneNumberArn while
 #' [`describe_sender_ids`][pinpointsmsvoicev2_describe_sender_ids] can be
 #' used to get the values for SenderId and SenderIdArn.
+#' 
+#' After the pool is created you can add more origination identities to the
+#' pool by using
+#' [`associate_origination_identity`][pinpointsmsvoicev2_associate_origination_identity].
 #' @param IsoCountryCode &#91;required&#93; The new two-character code, in ISO 3166-1 alpha-2 format, for the
 #' country or region of the new pool.
 #' @param MessageType &#91;required&#93; The type of message. Valid values are TRANSACTIONAL for messages that
 #' are critical or time-sensitive and PROMOTIONAL for messages that aren't
-#' critical or time-sensitive.
+#' critical or time-sensitive. After the pool is created the MessageType
+#' can't be changed.
 #' @param DeletionProtectionEnabled By default this is set to false. When set to true the pool can't be
 #' deleted. You can change this value using the
 #' [`update_pool`][pinpointsmsvoicev2_update_pool] action.
@@ -913,7 +918,7 @@ pinpointsmsvoicev2_delete_registration_field_value <- function(RegistrationId, F
 #' text messages
 #'
 #' @description
-#' Deletes an account-level monthly spending limit override for sending text messages. Deleting a spend limit override will set the `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spend limits (quotas) see [Amazon Pinpoint quotas](https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html) in the *Amazon Pinpoint Developer Guide*.
+#' Deletes an account-level monthly spending limit override for sending text messages. Deleting a spend limit override will set the `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spend limits (quotas) see [Quotas](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html) in the *AWS End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/) for full documentation.
 #'
@@ -974,7 +979,7 @@ pinpointsmsvoicev2_delete_verified_destination_number <- function(VerifiedDestin
 #' messages
 #'
 #' @description
-#' Deletes an account level monthly spend limit override for sending voice messages. Deleting a spend limit override sets the `EnforcedLimit` equal to the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spending limits (quotas) see [Amazon Pinpoint quotas](https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html) in the *Amazon Pinpoint Developer Guide*.
+#' Deletes an account level monthly spend limit override for sending voice messages. Deleting a spend limit override sets the `EnforcedLimit` equal to the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spending limits (quotas) see [Quotas](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html) in the *AWS End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/) for full documentation.
 #'
@@ -1033,11 +1038,11 @@ pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, Max
 }
 .pinpointsmsvoicev2$operations$describe_account_attributes <- pinpointsmsvoicev2_describe_account_attributes
 
-#' Describes the current Amazon Pinpoint SMS Voice V2 resource quotas for
-#' your account
+#' Describes the current AWS End User Messaging SMS and Voice SMS Voice V2
+#' resource quotas for your account
 #'
 #' @description
-#' Describes the current Amazon Pinpoint SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
+#' Describes the current AWS End User Messaging SMS and Voice SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/) for full documentation.
 #'
@@ -1610,11 +1615,11 @@ pinpointsmsvoicev2_describe_sender_ids <- function(SenderIds = NULL, Filters = N
 }
 .pinpointsmsvoicev2$operations$describe_sender_ids <- pinpointsmsvoicev2_describe_sender_ids
 
-#' Describes the current Amazon Pinpoint monthly spend limits for sending
-#' voice and text messages
+#' Describes the current monthly spend limits for sending voice and text
+#' messages
 #'
 #' @description
-#' Describes the current Amazon Pinpoint monthly spend limits for sending voice and text messages.
+#' Describes the current monthly spend limits for sending voice and text messages.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_spend_limits/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_spend_limits/) for full documentation.
 #'
@@ -2097,7 +2102,7 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #' Request an origination phone number for use in your account
 #'
 #' @description
-#' Request an origination phone number for use in your account. For more information on phone number request see [Requesting a number](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html) in the *Amazon Pinpoint User Guide*.
+#' Request an origination phone number for use in your account. For more information on phone number request see [Request a phone number](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html) in the *AWS End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/) for full documentation.
 #'
@@ -2290,7 +2295,7 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
 #' Creates a new text message and sends it to a recipient's phone number
 #'
 #' @description
-#' Creates a new text message and sends it to a recipient's phone number.
+#' Creates a new text message and sends it to a recipient's phone number. SendTextMessage only sends an SMS message to one recipient each time it is invoked.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_text_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_text_message/) for full documentation.
 #'
@@ -2307,8 +2312,11 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
 #' @param ConfigurationSetName The name of the configuration set to use. This can be either the
 #' ConfigurationSetName or ConfigurationSetArn.
 #' @param MaxPrice The maximum amount that you want to spend, in US dollars, per each text
-#' message part. A text message can contain multiple parts.
-#' @param TimeToLive How long the text message is valid for. By default this is 72 hours.
+#' message. If the calculated amount to send the text message is greater
+#' than `MaxPrice`, the message is not sent and an error is returned.
+#' @param TimeToLive How long the text message is valid for, in seconds. By default this is
+#' 72 hours. If the messages isn't handed off before the TTL expires we
+#' stop attempting to hand off the message and return `TTL_EXPIRED` event.
 #' @param Context You can specify custom data in this field. If you do, that data is
 #' logged to the event destination.
 #' @param DestinationCountryParameters This field is used for any country-specific registration requirements.
@@ -2316,8 +2324,26 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
 #' recipients in India using a sender ID. For more information see [Special
 #' requirements for sending SMS messages to recipients in
 #' India](https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html).
+#' 
+#' -   `IN_ENTITY_ID` The entity ID or Principal Entity (PE) ID that you
+#'     received after completing the sender ID registration process.
+#' 
+#' -   `IN_TEMPLATE_ID` The template ID that you received after completing
+#'     the sender ID registration process.
+#' 
+#'     Make sure that the Template ID that you specify matches your message
+#'     template exactly. If your message doesn't match the template that
+#'     you provided during the registration process, the mobile carriers
+#'     might reject your message.
 #' @param DryRun When set to true, the message is checked and validated, but isn't sent
-#' to the end recipient.
+#' to the end recipient. You are not charged for using `DryRun`.
+#' 
+#' The Message Parts per Second (MPS) limit when using `DryRun` is five. If
+#' your origination identity has a lower MPS limit then the lower MPS limit
+#' is used. For more information about MPS limits, see [Message Parts per
+#' Second (MPS)
+#' limits](https://docs.aws.amazon.com/sms-voice/latest/userguide/sms-limitations-mps.html)
+#' in the *AWS End User Messaging SMS User Guide*..
 #' @param ProtectConfigurationId The unique identifier for the protect configuration.
 #'
 #' @keywords internal
@@ -2341,11 +2367,10 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
 }
 .pinpointsmsvoicev2$operations$send_text_message <- pinpointsmsvoicev2_send_text_message
 
-#' Allows you to send a request that sends a voice message through Amazon
-#' Pinpoint
+#' Allows you to send a request that sends a voice message
 #'
 #' @description
-#' Allows you to send a request that sends a voice message through Amazon Pinpoint. This operation uses [Amazon Polly](https://aws.amazon.com/polly/) to convert a text script into a voice message.
+#' Allows you to send a request that sends a voice message. This operation uses [Amazon Polly](https://aws.amazon.com/polly/) to convert a text script into a voice message.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_voice_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_voice_message/) for full documentation.
 #'
@@ -2621,11 +2646,10 @@ pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId) {
 }
 .pinpointsmsvoicev2$operations$submit_registration_version <- pinpointsmsvoicev2_submit_registration_version
 
-#' Adds or overwrites only the specified tags for the specified Amazon
-#' Pinpoint SMS Voice, version 2 resource
+#' Adds or overwrites only the specified tags for the specified resource
 #'
 #' @description
-#' Adds or overwrites only the specified tags for the specified Amazon Pinpoint SMS Voice, version 2 resource. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see [Tagging Amazon Pinpoint resources](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html) in the *Amazon Pinpoint Developer Guide*.
+#' Adds or overwrites only the specified tags for the specified resource. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see [Tags](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html) in the *AWS End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/) for full documentation.
 #'
@@ -2654,11 +2678,10 @@ pinpointsmsvoicev2_tag_resource <- function(ResourceArn, Tags) {
 }
 .pinpointsmsvoicev2$operations$tag_resource <- pinpointsmsvoicev2_tag_resource
 
-#' Removes the association of the specified tags from an Amazon Pinpoint
-#' SMS Voice V2 resource
+#' Removes the association of the specified tags from a resource
 #'
 #' @description
-#' Removes the association of the specified tags from an Amazon Pinpoint SMS Voice V2 resource. For more information on tags see [Tagging Amazon Pinpoint resources](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html) in the *Amazon Pinpoint Developer Guide*.
+#' Removes the association of the specified tags from a resource. For more information on tags see [Tags](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html) in the *AWS End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/) for full documentation.
 #'
@@ -2689,7 +2712,7 @@ pinpointsmsvoicev2_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates an existing event destination in a configuration set
 #'
 #' @description
-#' Updates an existing event destination in a configuration set. You can update the IAM role ARN for CloudWatch Logs and Kinesis Data Firehose. You can also enable or disable the event destination.
+#' Updates an existing event destination in a configuration set. You can update the IAM role ARN for CloudWatch Logs and Firehose. You can also enable or disable the event destination.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_event_destination/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_event_destination/) for full documentation.
 #'
@@ -2703,7 +2726,7 @@ pinpointsmsvoicev2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param CloudWatchLogsDestination An object that contains information about an event destination that
 #' sends data to CloudWatch Logs.
 #' @param KinesisFirehoseDestination An object that contains information about an event destination for
-#' logging to Kinesis Data Firehose.
+#' logging to Firehose.
 #' @param SnsDestination An object that contains information about an event destination that
 #' sends data to Amazon SNS.
 #'
@@ -2743,11 +2766,11 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post
 #' inbound SMS messages.
 #' @param SelfManagedOptOutsEnabled By default this is set to false. When an end recipient sends a message
-#' that begins with HELP or STOP to one of your dedicated numbers, Amazon
-#' Pinpoint automatically replies with a customizable message and adds the
-#' end recipient to the OptOutList. When set to true you're responsible for
-#' responding to HELP and STOP requests. You're also responsible for
-#' tracking and honoring opt-out requests.
+#' that begins with HELP or STOP to one of your dedicated numbers, AWS End
+#' User Messaging SMS and Voice automatically replies with a customizable
+#' message and adds the end recipient to the OptOutList. When set to true
+#' you're responsible for responding to HELP and STOP requests. You're also
+#' responsible for tracking and honoring opt-out requests.
 #' @param OptOutListName The OptOutList to add the phone number to. Valid values for this field
 #' can be either the OutOutListName or OutOutListArn.
 #' @param DeletionProtectionEnabled By default this is set to false. When set to true the phone number can't
@@ -2789,11 +2812,11 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post
 #' inbound SMS messages.
 #' @param SelfManagedOptOutsEnabled By default this is set to false. When an end recipient sends a message
-#' that begins with HELP or STOP to one of your dedicated numbers, Amazon
-#' Pinpoint automatically replies with a customizable message and adds the
-#' end recipient to the OptOutList. When set to true you're responsible for
-#' responding to HELP and STOP requests. You're also responsible for
-#' tracking and honoring opt-out requests.
+#' that begins with HELP or STOP to one of your dedicated numbers, AWS End
+#' User Messaging SMS and Voice automatically replies with a customizable
+#' message and adds the end recipient to the OptOutList. When set to true
+#' you're responsible for responding to HELP and STOP requests. You're also
+#' responsible for tracking and honoring opt-out requests.
 #' @param OptOutListName The OptOutList to associate with the pool. Valid values are either
 #' OptOutListName or OptOutListArn.
 #' @param SharedRoutesEnabled Indicates whether shared routes are enabled for the pool.
@@ -2867,7 +2890,7 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 #' two-letter ISO country code. For a list of supported ISO country codes,
 #' see [Supported countries and regions (SMS
 #' channel)](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html)
-#' in the Amazon Pinpoint SMS user guide.
+#' in the AWS End User Messaging SMS User Guide.
 #'
 #' @keywords internal
 #'

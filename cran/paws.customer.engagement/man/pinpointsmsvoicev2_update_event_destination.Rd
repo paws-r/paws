@@ -30,13 +30,13 @@ The \code{TEXT_SENT} event type is not supported.}
 sends data to CloudWatch Logs.}
 
 \item{KinesisFirehoseDestination}{An object that contains information about an event destination for
-logging to Kinesis Data Firehose.}
+logging to Firehose.}
 
 \item{SnsDestination}{An object that contains information about an event destination that
 sends data to Amazon SNS.}
 }
 \description{
-Updates an existing event destination in a configuration set. You can update the IAM role ARN for CloudWatch Logs and Kinesis Data Firehose. You can also enable or disable the event destination.
+Updates an existing event destination in a configuration set. You can update the IAM role ARN for CloudWatch Logs and Firehose. You can also enable or disable the event destination.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_event_destination/} for full documentation.
 }

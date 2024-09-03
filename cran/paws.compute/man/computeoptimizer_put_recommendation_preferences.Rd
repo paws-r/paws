@@ -82,7 +82,13 @@ the Amazon Web Services resource are analyzed. When this preference
 isn't specified, we use the default value \code{DAYS_14}.
 
 You can only set this preference for the Amazon EC2 instance and Auto
-Scaling group resource types.}
+Scaling group resource types.
+\itemize{
+\item Amazon EC2 instance lookback preferences can be set at the
+organization, account, and resource levels.
+\item Auto Scaling group lookback preferences can only be set at the
+resource level.
+}}
 
 \item{utilizationPreferences}{The preference to control the resource’s CPU utilization threshold, CPU
 utilization headroom, and memory utilization headroom. When this

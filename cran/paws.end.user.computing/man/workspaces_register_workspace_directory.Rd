@@ -14,6 +14,8 @@ workspaces_register_workspace_directory(
   WorkspaceDirectoryName = NULL,
   WorkspaceDirectoryDescription = NULL,
   UserIdentityType = NULL,
+  IdcInstanceArn = NULL,
+  MicrosoftEntraConfig = NULL,
   WorkspaceType = NULL,
   ActiveDirectoryConfig = NULL
 )
@@ -53,6 +55,10 @@ images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-
 \item{WorkspaceDirectoryDescription}{Description of the directory to register.}
 
 \item{UserIdentityType}{The type of identity management the user is using.}
+
+\item{IdcInstanceArn}{The Amazon Resource Name (ARN) of the identity center instance.}
+
+\item{MicrosoftEntraConfig}{The details about Microsoft Entra config.}
 
 \item{WorkspaceType}{Indicates whether the directory's WorkSpace type is personal or pools.}
 

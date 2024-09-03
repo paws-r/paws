@@ -447,7 +447,8 @@ ses_create_receipt_filter <- function(Filter) {
 #'           TopicArn = "string",
 #'           BucketName = "string",
 #'           ObjectKeyPrefix = "string",
-#'           KmsKeyArn = "string"
+#'           KmsKeyArn = "string",
+#'           IamRoleArn = "string"
 #'         ),
 #'         BounceAction = list(
 #'           TopicArn = "string",
@@ -1304,7 +1305,8 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #'             TopicArn = "string",
 #'             BucketName = "string",
 #'             ObjectKeyPrefix = "string",
-#'             KmsKeyArn = "string"
+#'             KmsKeyArn = "string",
+#'             IamRoleArn = "string"
 #'           ),
 #'           BounceAction = list(
 #'             TopicArn = "string",
@@ -1508,7 +1510,8 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
 #'           TopicArn = "string",
 #'           BucketName = "string",
 #'           ObjectKeyPrefix = "string",
-#'           KmsKeyArn = "string"
+#'           KmsKeyArn = "string",
+#'           IamRoleArn = "string"
 #'         ),
 #'         BounceAction = list(
 #'           TopicArn = "string",
@@ -1625,7 +1628,8 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
 #'             TopicArn = "string",
 #'             BucketName = "string",
 #'             ObjectKeyPrefix = "string",
-#'             KmsKeyArn = "string"
+#'             KmsKeyArn = "string",
+#'             IamRoleArn = "string"
 #'           ),
 #'           BounceAction = list(
 #'             TopicArn = "string",
@@ -3426,7 +3430,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' [`send_bulk_templated_email`][ses_send_bulk_templated_email].
 #' @param Template &#91;required&#93; The template to use when sending this email.
 #' @param TemplateArn The ARN of the template to use when sending this email.
-#' @param DefaultTemplateData A list of replacement values to apply to the template when replacement
+#' @param DefaultTemplateData &#91;required&#93; A list of replacement values to apply to the template when replacement
 #' data is not specified in a Destination object. These values act as a
 #' default or fallback option when no other data is available.
 #' 
@@ -3501,7 +3505,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' @rdname ses_send_bulk_templated_email
 #'
 #' @aliases ses_send_bulk_templated_email
-ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddresses = NULL, ReturnPath = NULL, ReturnPathArn = NULL, ConfigurationSetName = NULL, DefaultTags = NULL, Template, TemplateArn = NULL, DefaultTemplateData = NULL, Destinations) {
+ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddresses = NULL, ReturnPath = NULL, ReturnPathArn = NULL, ConfigurationSetName = NULL, DefaultTags = NULL, Template, TemplateArn = NULL, DefaultTemplateData, Destinations) {
   op <- new_operation(
     name = "SendBulkTemplatedEmail",
     http_method = "POST",
@@ -5314,7 +5318,8 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #'           TopicArn = "string",
 #'           BucketName = "string",
 #'           ObjectKeyPrefix = "string",
-#'           KmsKeyArn = "string"
+#'           KmsKeyArn = "string",
+#'           IamRoleArn = "string"
 #'         ),
 #'         BounceAction = list(
 #'           TopicArn = "string",

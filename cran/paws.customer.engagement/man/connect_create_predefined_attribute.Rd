@@ -16,7 +16,7 @@ ID in the Amazon Resource Name (ARN) of the instance.}
 \item{Values}{[required] The values of the predefined attribute.}
 }
 \description{
-Creates a new predefined attribute for the specified Amazon Connect instance.
+Creates a new predefined attribute for the specified Amazon Connect instance. \emph{Predefined attributes} are attributes in an Amazon Connect instance that can be used to route contacts to an agent or pools of agents within a queue. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html}{Create predefined attributes for routing contacts to agents}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_predefined_attribute/} for full documentation.
 }

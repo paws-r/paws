@@ -1865,7 +1865,7 @@ codeartifact_get_associated_package_group <- function(domain, domainOwner = NULL
 #' 15-minute session duration.
 #' 
 #' See [Using IAM
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)
 #' for more information on controlling session duration.
 #'
 #' @usage

@@ -48,18 +48,19 @@ Name (ARN).}
 \item \code{EFS} for Amazon Elastic File System
 \item \code{FSx} for Amazon FSx
 \item \code{Neptune} for Amazon Neptune
-\item \code{Redshift} for Amazon Redshift
 \item \code{RDS} for Amazon Relational Database Service
-\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases
+\item \code{Redshift} for Amazon Redshift
+\item \code{S3} for Amazon Simple Storage Service (Amazon S3)
+\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases on Amazon Elastic
+Compute Cloud instances
 \item \verb{Storage Gateway} for Storage Gateway
-\item \code{S3} for Amazon S3
 \item \code{Timestream} for Amazon Timestream
-\item \code{VirtualMachine} for virtual machines
+\item \code{VirtualMachine} for VMware virtual machines
 }}
 
 \item{ByDestinationVaultArn}{An Amazon Resource Name (ARN) that uniquely identifies a source backup
 vault to copy from; for example,
-\code{arn:aws:backup:us-east-1:123456789012:vault:aBackupVault}.}
+\code{arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault}.}
 
 \item{ByAccountId}{The account ID to list the jobs from. Returns only copy jobs associated
 with the specified account ID.}

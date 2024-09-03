@@ -146,22 +146,22 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 }
 .cognitoidentityprovider$operations$admin_add_user_to_group <- cognitoidentityprovider_admin_add_user_to_group
 
-#' This IAM-authenticated API operation provides a code that Amazon Cognito
-#' sent to your user when they signed up in your user pool
+#' This IAM-authenticated API operation confirms user sign-up as an
+#' administrator
 #'
 #' @description
-#' This IAM-authenticated API operation provides a code that Amazon Cognito
-#' sent to your user when they signed up in your user pool. After your user
-#' enters their code, they confirm ownership of the email address or phone
-#' number that they provided, and their user account becomes active.
-#' Depending on your user pool configuration, your users will receive their
-#' confirmation code in an email or SMS message.
+#' This IAM-authenticated API operation confirms user sign-up as an
+#' administrator. Unlike
+#' [`confirm_sign_up`][cognitoidentityprovider_confirm_sign_up], your IAM
+#' credentials authorize user account confirmation. No confirmation code is
+#' required.
 #' 
-#' Local users who signed up in your user pool are the only type of user
-#' who can confirm sign-up with a code. Users who federate through an
-#' external identity provider (IdP) have already been confirmed by their
-#' IdP. Administrator-created users confirm their accounts when they
-#' respond to their invitation email message and choose a password.
+#' This request sets a user account active in a user pool that [requires
+#' confirmation of new user
+#' accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#signing-up-users-in-your-app-and-confirming-them-as-admin)
+#' before they can sign in. You can configure your user pool to not send
+#' confirmation codes to new users and instead confirm them with this API
+#' operation on the back end.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies
 #' in requests for this API operation. For this operation, you must use IAM
@@ -271,8 +271,8 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -1164,8 +1164,8 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -1905,8 +1905,8 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -2041,8 +2041,8 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -2684,8 +2684,8 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -2925,7 +2925,7 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
 #' doesn't require MFA, the user can then authenticate with user name and
 #' password credentials alone. If your user pool requires TOTP MFA, Amazon
 #' Cognito generates an `MFA_SETUP` or `SOFTWARE_TOKEN_SETUP` challenge
-#' each time your user signs. Complete setup with
+#' each time your user signs in. Complete setup with
 #' [`associate_software_token`][cognitoidentityprovider_associate_software_token]
 #' and
 #' [`verify_software_token`][cognitoidentityprovider_verify_software_token].
@@ -3828,8 +3828,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -3983,6 +3983,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'         RequireLowercase = TRUE|FALSE,
 #'         RequireNumbers = TRUE|FALSE,
 #'         RequireSymbols = TRUE|FALSE,
+#'         PasswordHistorySize = 123,
 #'         TemporaryPasswordValidityDays = 123
 #'       )
 #'     ),
@@ -4097,7 +4098,10 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'       )
 #'     ),
 #'     UserPoolAddOns = list(
-#'       AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+#'       AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED",
+#'       AdvancedSecurityAdditionalFlows = list(
+#'         CustomAuthMode = "AUDIT"|"ENFORCED"
+#'       )
 #'     ),
 #'     UsernameConfiguration = list(
 #'       CaseSensitive = TRUE|FALSE
@@ -4126,6 +4130,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'       RequireLowercase = TRUE|FALSE,
 #'       RequireNumbers = TRUE|FALSE,
 #'       RequireSymbols = TRUE|FALSE,
+#'       PasswordHistorySize = 123,
 #'       TemporaryPasswordValidityDays = 123
 #'     )
 #'   ),
@@ -4228,7 +4233,10 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'     )
 #'   ),
 #'   UserPoolAddOns = list(
-#'     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+#'     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED",
+#'     AdvancedSecurityAdditionalFlows = list(
+#'       CustomAuthMode = "AUDIT"|"ENFORCED"
+#'     )
 #'   ),
 #'   UsernameConfiguration = list(
 #'     CaseSensitive = TRUE|FALSE
@@ -4661,6 +4669,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' -   `LEGACY` - This represents the early behavior of Amazon Cognito
 #'     where user existence related errors aren't prevented.
+#' 
+#' Defaults to `LEGACY` when you don't provide a value.
 #' @param EnableTokenRevocation Activates or deactivates token revocation. For more information about
 #' revoking tokens, see
 #' [`revoke_token`][cognitoidentityprovider_revoke_token].
@@ -5712,6 +5722,7 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'         RequireLowercase = TRUE|FALSE,
 #'         RequireNumbers = TRUE|FALSE,
 #'         RequireSymbols = TRUE|FALSE,
+#'         PasswordHistorySize = 123,
 #'         TemporaryPasswordValidityDays = 123
 #'       )
 #'     ),
@@ -5826,7 +5837,10 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'       )
 #'     ),
 #'     UserPoolAddOns = list(
-#'       AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+#'       AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED",
+#'       AdvancedSecurityAdditionalFlows = list(
+#'         CustomAuthMode = "AUDIT"|"ENFORCED"
+#'       )
 #'     ),
 #'     UsernameConfiguration = list(
 #'       CaseSensitive = TRUE|FALSE
@@ -6158,8 +6172,8 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -6539,16 +6553,16 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 }
 .cognitoidentityprovider$operations$get_identity_provider_by_identifier <- cognitoidentityprovider_get_identity_provider_by_identifier
 
-#' Gets the detailed activity logging configuration for a user pool
+#' Gets the logging configuration of a user pool
 #'
 #' @description
-#' Gets the detailed activity logging configuration for a user pool.
+#' Gets the logging configuration of a user pool.
 #'
 #' @usage
 #' cognitoidentityprovider_get_log_delivery_configuration(UserPoolId)
 #'
-#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to view detailed activity logging
-#' configuration.
+#' @param UserPoolId &#91;required&#93; The ID of the user pool that has the logging configuration that you want
+#' to view.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6558,10 +6572,16 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 #'     UserPoolId = "string",
 #'     LogConfigurations = list(
 #'       list(
-#'         LogLevel = "ERROR",
-#'         EventSource = "userNotification",
+#'         LogLevel = "ERROR"|"INFO",
+#'         EventSource = "userNotification"|"userAuthEvents",
 #'         CloudWatchLogsConfiguration = list(
 #'           LogGroupArn = "string"
+#'         ),
+#'         S3Configuration = list(
+#'           BucketArn = "string"
+#'         ),
+#'         FirehoseConfiguration = list(
+#'           StreamArn = "string"
 #'         )
 #'       )
 #'     )
@@ -6825,8 +6845,8 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -7084,8 +7104,8 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -8282,8 +8302,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -8430,8 +8450,8 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -8693,21 +8713,19 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
 }
 .cognitoidentityprovider$operations$revoke_token <- cognitoidentityprovider_revoke_token
 
-#' Sets up or modifies the detailed activity logging configuration of a
-#' user pool
+#' Sets up or modifies the logging configuration of a user pool
 #'
 #' @description
-#' Sets up or modifies the detailed activity logging configuration of a
-#' user pool.
+#' Sets up or modifies the logging configuration of a user pool. User pools
+#' can export user notification logs and advanced security features user
+#' activity logs.
 #'
 #' @usage
 #' cognitoidentityprovider_set_log_delivery_configuration(UserPoolId,
 #'   LogConfigurations)
 #'
-#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to configure detailed activity
-#' logging .
-#' @param LogConfigurations &#91;required&#93; A collection of all of the detailed activity logging configurations for
-#' a user pool.
+#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to configure logging.
+#' @param LogConfigurations &#91;required&#93; A collection of the logging configurations for a user pool.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8717,10 +8735,16 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
 #'     UserPoolId = "string",
 #'     LogConfigurations = list(
 #'       list(
-#'         LogLevel = "ERROR",
-#'         EventSource = "userNotification",
+#'         LogLevel = "ERROR"|"INFO",
+#'         EventSource = "userNotification"|"userAuthEvents",
 #'         CloudWatchLogsConfiguration = list(
 #'           LogGroupArn = "string"
+#'         ),
+#'         S3Configuration = list(
+#'           BucketArn = "string"
+#'         ),
+#'         FirehoseConfiguration = list(
+#'           StreamArn = "string"
 #'         )
 #'       )
 #'     )
@@ -8734,10 +8758,16 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
 #'   UserPoolId = "string",
 #'   LogConfigurations = list(
 #'     list(
-#'       LogLevel = "ERROR",
-#'       EventSource = "userNotification",
+#'       LogLevel = "ERROR"|"INFO",
+#'       EventSource = "userNotification"|"userAuthEvents",
 #'       CloudWatchLogsConfiguration = list(
 #'         LogGroupArn = "string"
+#'       ),
+#'       S3Configuration = list(
+#'         BucketArn = "string"
+#'       ),
+#'       FirehoseConfiguration = list(
+#'         StreamArn = "string"
 #'       )
 #'     )
 #'   )
@@ -9115,8 +9145,8 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -9296,8 +9326,8 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -10199,8 +10229,8 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -10320,8 +10350,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' in.
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
-#' other Amazon Web Service, Amazon Simple Notification Service might place
-#' your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' other Amazon Web Services service, Amazon Simple Notification Service
+#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -10455,6 +10485,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'       RequireLowercase = TRUE|FALSE,
 #'       RequireNumbers = TRUE|FALSE,
 #'       RequireSymbols = TRUE|FALSE,
+#'       PasswordHistorySize = 123,
 #'       TemporaryPasswordValidityDays = 123
 #'     )
 #'   ),
@@ -10534,7 +10565,10 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'     )
 #'   ),
 #'   UserPoolAddOns = list(
-#'     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+#'     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED",
+#'     AdvancedSecurityAdditionalFlows = list(
+#'       CustomAuthMode = "AUDIT"|"ENFORCED"
+#'     )
 #'   ),
 #'   AccountRecoverySetting = list(
 #'     RecoveryMechanisms = list(
@@ -10838,6 +10872,8 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' -   `LEGACY` - This represents the early behavior of Amazon Cognito
 #'     where user existence related errors aren't prevented.
+#' 
+#' Defaults to `LEGACY` when you don't provide a value.
 #' @param EnableTokenRevocation Activates or deactivates token revocation. For more information about
 #' revoking tokens, see
 #' [`revoke_token`][cognitoidentityprovider_revoke_token].

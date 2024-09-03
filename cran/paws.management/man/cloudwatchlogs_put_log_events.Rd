@@ -8,7 +8,8 @@ cloudwatchlogs_put_log_events(
   logGroupName,
   logStreamName,
   logEvents,
-  sequenceToken = NULL
+  sequenceToken = NULL,
+  entity = NULL
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ The \code{sequenceToken} parameter is now ignored in
 \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} actions are now
 accepted and never return \code{InvalidSequenceTokenException} or
 \code{DataAlreadyAcceptedException} even if the sequence token is not valid.}
+
+\item{entity}{Reserved for future use.}
 }
 \description{
 Uploads a batch of log events to the specified log stream.

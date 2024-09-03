@@ -11,7 +11,10 @@ NULL
 #' stored in DynamoDB, using PartiQL. Each read statement in a
 #' [`batch_execute_statement`][dynamodb_batch_execute_statement] must
 #' specify an equality condition on all key attributes. This enforces that
-#' each `SELECT` statement in a batch returns at most a single item.
+#' each `SELECT` statement in a batch returns at most a single item. For
+#' more information, see [Running batch operations with PartiQL for
+#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.multiplestatements.batching.html)
+#' .
 #' 
 #' The entire batch must consist of either read statements or write
 #' statements, you cannot mix both in one batch.
@@ -567,10 +570,15 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' [`batch_write_item`][dynamodb_batch_write_item] request with those
 #' unprocessed items until all items have been processed.
 #' 
-#' If *none* of the items can be processed due to insufficient provisioned
-#' throughput on all of the tables in the request, then
+#' For tables and indexes with provisioned capacity, if none of the items
+#' can be processed due to insufficient provisioned throughput on all of
+#' the tables in the request, then
 #' [`batch_write_item`][dynamodb_batch_write_item] returns a
-#' `ProvisionedThroughputExceededException`.
+#' `ProvisionedThroughputExceededException`. For all tables and indexes, if
+#' none of the items can be processed due to other throttling scenarios
+#' (such as exceeding partition level limits), then
+#' [`batch_write_item`][dynamodb_batch_write_item] returns a
+#' `ThrottlingException`.
 #' 
 #' If DynamoDB returns any unprocessed items, you should retry the batch
 #' operation on those items. However, *we strongly recommend that you use
@@ -2370,6 +2378,8 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #' DynamoDB might continue to accept data read and write operations, such
 #' as [`get_item`][dynamodb_get_item] and [`put_item`][dynamodb_put_item],
 #' on a table in the `DELETING` state until the table deletion is complete.
+#' For the full list of table states, see
+#' [TableStatus](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TableDescription.html#DDB-Type-TableDescription-TableStatus).
 #' 
 #' When you delete a table, any indexes on that table are also deleted.
 #' 

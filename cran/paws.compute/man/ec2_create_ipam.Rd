@@ -10,7 +10,8 @@ ec2_create_ipam(
   OperatingRegions = NULL,
   TagSpecifications = NULL,
   ClientToken = NULL,
-  Tier = NULL
+  Tier = NULL,
+  EnablePrivateGua = NULL
 )
 }
 \arguments{
@@ -41,6 +42,9 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{Tier}{IPAM is offered in a Free Tier and an Advanced Tier. For more
 information about the features available in each tier and the costs
 associated with the tiers, see \href{https://aws.amazon.com/vpc/pricing/}{Amazon VPC pricing \> IPAM tab}.}
+
+\item{EnablePrivateGua}{Enable this option to use your own GUA ranges as private IPv6 addresses.
+This option is disabled by default.}
 }
 \description{
 Create an IPAM. Amazon VPC IP Address Manager (IPAM) is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across Amazon Web Services Regions and accounts throughout your Amazon Web Services Organization.

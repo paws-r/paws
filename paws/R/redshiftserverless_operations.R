@@ -198,6 +198,7 @@ redshiftserverless_create_custom_domain_association <- function(customDomainCert
 #'       networkInterfaces = list(
 #'         list(
 #'           availabilityZone = "string",
+#'           ipv6Address = "string",
 #'           networkInterfaceId = "string",
 #'           privateIpAddress = "string",
 #'           subnetId = "string"
@@ -399,7 +400,7 @@ redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' For more information about the IAM role to use with the Amazon Redshift
 #' scheduler, see [Using Identity-Based Policies for Amazon
 #' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
-#' in the Amazon Redshift Cluster Management Guide
+#' in the Amazon Redshift Management Guide
 #' @param schedule &#91;required&#93; The schedule for a one-time (at timestamp format) or recurring (cron
 #' format) scheduled action. Schedule invocations must be separated by at
 #' least one hour. Times are in UTC.
@@ -767,7 +768,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'
 #' @usage
 #' redshiftserverless_create_workgroup(baseCapacity, configParameters,
-#'   enhancedVpcRouting, maxCapacity, namespaceName, port,
+#'   enhancedVpcRouting, ipAddressType, maxCapacity, namespaceName, port,
 #'   publiclyAccessible, securityGroupIds, subnetIds, tags, workgroupName)
 #'
 #' @param baseCapacity The base data warehouse capacity of the workgroup in Redshift Processing
@@ -783,6 +784,8 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC instead of over the internet.
+#' @param ipAddressType The IP address type that the workgroup supports. Possible values are
+#' `ipv4` and `dualstack`.
 #' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
 #' serve queries. The max capacity is specified in RPUs.
 #' @param namespaceName &#91;required&#93; The name of the namespace to associate with the workgroup.
@@ -826,6 +829,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'           networkInterfaces = list(
 #'             list(
 #'               availabilityZone = "string",
+#'               ipv6Address = "string",
 #'               networkInterfaceId = "string",
 #'               privateIpAddress = "string",
 #'               subnetId = "string"
@@ -837,6 +841,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'       )
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
+#'     ipAddressType = "string",
 #'     maxCapacity = 123,
 #'     namespaceName = "string",
 #'     patchVersion = "string",
@@ -868,6 +873,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'     )
 #'   ),
 #'   enhancedVpcRouting = TRUE|FALSE,
+#'   ipAddressType = "string",
 #'   maxCapacity = 123,
 #'   namespaceName = "string",
 #'   port = 123,
@@ -893,7 +899,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @rdname redshiftserverless_create_workgroup
 #'
 #' @aliases redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, maxCapacity = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
@@ -901,7 +907,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
     host_prefix = "",
     paginator = list()
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -987,6 +993,7 @@ redshiftserverless_delete_custom_domain_association <- function(customDomainName
 #'       networkInterfaces = list(
 #'         list(
 #'           availabilityZone = "string",
+#'           ipv6Address = "string",
 #'           networkInterfaceId = "string",
 #'           privateIpAddress = "string",
 #'           subnetId = "string"
@@ -1471,6 +1478,7 @@ redshiftserverless_delete_usage_limit <- function(usageLimitId) {
 #'           networkInterfaces = list(
 #'             list(
 #'               availabilityZone = "string",
+#'               ipv6Address = "string",
 #'               networkInterfaceId = "string",
 #'               privateIpAddress = "string",
 #'               subnetId = "string"
@@ -1482,6 +1490,7 @@ redshiftserverless_delete_usage_limit <- function(usageLimitId) {
 #'       )
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
+#'     ipAddressType = "string",
 #'     maxCapacity = 123,
 #'     namespaceName = "string",
 #'     patchVersion = "string",
@@ -1706,6 +1715,7 @@ redshiftserverless_get_custom_domain_association <- function(customDomainName, w
 #'       networkInterfaces = list(
 #'         list(
 #'           availabilityZone = "string",
+#'           ipv6Address = "string",
 #'           networkInterfaceId = "string",
 #'           privateIpAddress = "string",
 #'           subnetId = "string"
@@ -2266,6 +2276,7 @@ redshiftserverless_get_usage_limit <- function(usageLimitId) {
 #'           networkInterfaces = list(
 #'             list(
 #'               availabilityZone = "string",
+#'               ipv6Address = "string",
 #'               networkInterfaceId = "string",
 #'               privateIpAddress = "string",
 #'               subnetId = "string"
@@ -2277,6 +2288,7 @@ redshiftserverless_get_usage_limit <- function(usageLimitId) {
 #'       )
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
+#'     ipAddressType = "string",
 #'     maxCapacity = 123,
 #'     namespaceName = "string",
 #'     patchVersion = "string",
@@ -2439,6 +2451,7 @@ redshiftserverless_list_custom_domain_associations <- function(customDomainCerti
 #'         networkInterfaces = list(
 #'           list(
 #'             availabilityZone = "string",
+#'             ipv6Address = "string",
 #'             networkInterfaceId = "string",
 #'             privateIpAddress = "string",
 #'             subnetId = "string"
@@ -3148,6 +3161,7 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #'             networkInterfaces = list(
 #'               list(
 #'                 availabilityZone = "string",
+#'                 ipv6Address = "string",
 #'                 networkInterfaceId = "string",
 #'                 privateIpAddress = "string",
 #'                 subnetId = "string"
@@ -3159,6 +3173,7 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #'         )
 #'       ),
 #'       enhancedVpcRouting = TRUE|FALSE,
+#'       ipAddressType = "string",
 #'       maxCapacity = 123,
 #'       namespaceName = "string",
 #'       patchVersion = "string",
@@ -3816,6 +3831,7 @@ redshiftserverless_update_custom_domain_association <- function(customDomainCert
 #'       networkInterfaces = list(
 #'         list(
 #'           availabilityZone = "string",
+#'           ipv6Address = "string",
 #'           networkInterfaceId = "string",
 #'           privateIpAddress = "string",
 #'           subnetId = "string"
@@ -3998,7 +4014,7 @@ redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' For more information about the IAM role to use with the Amazon Redshift
 #' scheduler, see [Using Identity-Based Policies for Amazon
 #' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
-#' in the Amazon Redshift Cluster Management Guide
+#' in the Amazon Redshift Management Guide
 #' @param schedule The schedule for a one-time (at timestamp format) or recurring (cron
 #' format) scheduled action. Schedule invocations must be separated by at
 #' least one hour. Times are in UTC.
@@ -4335,8 +4351,8 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'
 #' @usage
 #' redshiftserverless_update_workgroup(baseCapacity, configParameters,
-#'   enhancedVpcRouting, maxCapacity, port, publiclyAccessible,
-#'   securityGroupIds, subnetIds, workgroupName)
+#'   enhancedVpcRouting, ipAddressType, maxCapacity, port,
+#'   publiclyAccessible, securityGroupIds, subnetIds, workgroupName)
 #'
 #' @param baseCapacity The new base data warehouse capacity in Redshift Processing Units
 #' (RPUs).
@@ -4351,6 +4367,8 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC.
+#' @param ipAddressType The IP address type that the workgroup supports. Possible values are
+#' `ipv4` and `dualstack`.
 #' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
 #' serve queries. The max capacity is specified in RPUs.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
@@ -4393,6 +4411,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'           networkInterfaces = list(
 #'             list(
 #'               availabilityZone = "string",
+#'               ipv6Address = "string",
 #'               networkInterfaceId = "string",
 #'               privateIpAddress = "string",
 #'               subnetId = "string"
@@ -4404,6 +4423,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'       )
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
+#'     ipAddressType = "string",
 #'     maxCapacity = 123,
 #'     namespaceName = "string",
 #'     patchVersion = "string",
@@ -4435,6 +4455,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'     )
 #'   ),
 #'   enhancedVpcRouting = TRUE|FALSE,
+#'   ipAddressType = "string",
 #'   maxCapacity = 123,
 #'   port = 123,
 #'   publiclyAccessible = TRUE|FALSE,
@@ -4453,7 +4474,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @rdname redshiftserverless_update_workgroup
 #'
 #' @aliases redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, maxCapacity = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
@@ -4461,7 +4482,7 @@ redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParam
     host_prefix = "",
     paginator = list()
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)

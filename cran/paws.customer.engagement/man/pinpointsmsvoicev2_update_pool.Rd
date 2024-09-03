@@ -28,11 +28,11 @@ incoming text messages from your end recipients.}
 inbound SMS messages.}
 
 \item{SelfManagedOptOutsEnabled}{By default this is set to false. When an end recipient sends a message
-that begins with HELP or STOP to one of your dedicated numbers, Amazon
-Pinpoint automatically replies with a customizable message and adds the
-end recipient to the OptOutList. When set to true you're responsible for
-responding to HELP and STOP requests. You're also responsible for
-tracking and honoring opt-out requests.}
+that begins with HELP or STOP to one of your dedicated numbers, AWS End
+User Messaging SMS and Voice automatically replies with a customizable
+message and adds the end recipient to the OptOutList. When set to true
+you're responsible for responding to HELP and STOP requests. You're also
+responsible for tracking and honoring opt-out requests.}
 
 \item{OptOutListName}{The OptOutList to associate with the pool. Valid values are either
 OptOutListName or OptOutListArn.}

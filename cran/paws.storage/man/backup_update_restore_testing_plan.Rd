@@ -9,7 +9,7 @@ backup_update_restore_testing_plan(RestoreTestingPlan, RestoreTestingPlanName)
 \arguments{
 \item{RestoreTestingPlan}{[required] Specifies the body of a restore testing plan.}
 
-\item{RestoreTestingPlanName}{[required] This is the restore testing plan name you wish to update.}
+\item{RestoreTestingPlanName}{[required] The name of the restore testing plan name.}
 }
 \description{
 This request will send changes to your specified restore testing plan. \code{RestoreTestingPlanName} cannot be updated after it is created.

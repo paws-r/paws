@@ -47,13 +47,11 @@ The type of Amazon Web Services resource to be backed up; for example,
 an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon
 Relational Database Service (Amazon RDS) database.}
 
-\item{AggregationPeriod}{This is the period that sets the boundaries for returned results.
-
-Acceptable values include
+\item{AggregationPeriod}{The period for the returned results.
 \itemize{
-\item \code{ONE_DAY} for daily job count for the prior 14 days.
-\item \code{SEVEN_DAYS} for the aggregated job count for the prior 7 days.
-\item \code{FOURTEEN_DAYS} for aggregated job count for prior 14 days.
+\item \code{ONE_DAY} - The daily job count for the prior 14 days.
+\item \code{SEVEN_DAYS} - The aggregated job count for the prior 7 days.
+\item \code{FOURTEEN_DAYS} - The aggregated job count for prior 14 days.
 }}
 
 \item{MaxResults}{This parameter sets the maximum number of items to be returned.

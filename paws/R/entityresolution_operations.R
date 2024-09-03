@@ -22,6 +22,12 @@ NULL
 #' @param condition A set of condition keys that you can use in key policies.
 #' @param effect &#91;required&#93; Determines whether the permissions specified in the policy are to be
 #' allowed (`Allow`) or denied (`Deny`).
+#' 
+#' If you set the value of the `effect` parameter to `Deny` for the
+#' [`add_policy_statement`][entityresolution_add_policy_statement]
+#' operation, you must also set the value of the `effect` parameter in the
+#' `policy` to `Deny` for the [`put_policy`][entityresolution_put_policy]
+#' operation.
 #' @param principal &#91;required&#93; The Amazon Web Services service or Amazon Web Services account that can
 #' access the resource defined as ARN.
 #' @param statementId &#91;required&#93; A statement identifier that differentiates the statement from others in
@@ -161,13 +167,13 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
 #'   tags, workflowName)
 #'
 #' @param description A description of the workflow.
-#' @param idMappingTechniques &#91;required&#93; An object which defines the `idMappingType` and the
-#' `providerProperties`.
+#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
+#' configurations.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `IdMappingWorkflowOutputSource` objects, each of which
 #' contains fields `OutputS3Path` and `Output`.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.
 #' @param tags The tags used to organize, track, or control access for this resource.
@@ -180,13 +186,26 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
 #' list(
 #'   description = "string",
 #'   idMappingTechniques = list(
-#'     idMappingType = "PROVIDER",
+#'     idMappingType = "PROVIDER"|"RULE_BASED",
 #'     providerProperties = list(
 #'       intermediateSourceConfiguration = list(
 #'         intermediateS3Path = "string"
 #'       ),
 #'       providerConfiguration = list(),
 #'       providerServiceArn = "string"
+#'     ),
+#'     ruleBasedProperties = list(
+#'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       recordMatchingModel = "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET",
+#'       ruleDefinitionType = "SOURCE"|"TARGET",
+#'       rules = list(
+#'         list(
+#'           matchingKeys = list(
+#'             "string"
+#'           ),
+#'           ruleName = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   inputSourceConfig = list(
@@ -213,13 +232,26 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
 #' svc$create_id_mapping_workflow(
 #'   description = "string",
 #'   idMappingTechniques = list(
-#'     idMappingType = "PROVIDER",
+#'     idMappingType = "PROVIDER"|"RULE_BASED",
 #'     providerProperties = list(
 #'       intermediateSourceConfiguration = list(
 #'         intermediateS3Path = "string"
 #'       ),
 #'       providerConfiguration = list(),
 #'       providerServiceArn = "string"
+#'     ),
+#'     ruleBasedProperties = list(
+#'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       recordMatchingModel = "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET",
+#'       ruleDefinitionType = "SOURCE"|"TARGET",
+#'       rules = list(
+#'         list(
+#'           matchingKeys = list(
+#'             "string"
+#'           ),
+#'           ruleName = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   inputSourceConfig = list(
@@ -248,7 +280,7 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
 #' @rdname entityresolution_create_id_mapping_workflow
 #'
 #' @aliases entityresolution_create_id_mapping_workflow
-entityresolution_create_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn, tags = NULL, workflowName) {
+entityresolution_create_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn = NULL, tags = NULL, workflowName) {
   op <- new_operation(
     name = "CreateIdMappingWorkflow",
     http_method = "POST",
@@ -308,10 +340,27 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
 #'   description = "string",
 #'   idMappingWorkflowProperties = list(
 #'     list(
-#'       idMappingType = "PROVIDER",
+#'       idMappingType = "PROVIDER"|"RULE_BASED",
 #'       providerProperties = list(
 #'         providerConfiguration = list(),
 #'         providerServiceArn = "string"
+#'       ),
+#'       ruleBasedProperties = list(
+#'         attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'         recordMatchingModels = list(
+#'           "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET"
+#'         ),
+#'         ruleDefinitionTypes = list(
+#'           "SOURCE"|"TARGET"
+#'         ),
+#'         rules = list(
+#'           list(
+#'             matchingKeys = list(
+#'               "string"
+#'             ),
+#'             ruleName = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -340,10 +389,27 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
 #'   description = "string",
 #'   idMappingWorkflowProperties = list(
 #'     list(
-#'       idMappingType = "PROVIDER",
+#'       idMappingType = "PROVIDER"|"RULE_BASED",
 #'       providerProperties = list(
 #'         providerConfiguration = list(),
 #'         providerServiceArn = "string"
+#'       ),
+#'       ruleBasedProperties = list(
+#'         attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'         recordMatchingModels = list(
+#'           "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET"
+#'         ),
+#'         ruleDefinitionTypes = list(
+#'           "SOURCE"|"TARGET"
+#'         ),
+#'         rules = list(
+#'           list(
+#'             matchingKeys = list(
+#'               "string"
+#'             ),
+#'             ruleName = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -456,6 +522,7 @@ entityresolution_create_id_namespace <- function(description = NULL, idMappingWo
 #'     resolutionType = "RULE_MATCHING"|"ML_MATCHING"|"PROVIDER",
 #'     ruleBasedProperties = list(
 #'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       matchPurpose = "IDENTIFIER_GENERATION"|"INDEXING",
 #'       rules = list(
 #'         list(
 #'           matchingKeys = list(
@@ -510,6 +577,7 @@ entityresolution_create_id_namespace <- function(description = NULL, idMappingWo
 #'     resolutionType = "RULE_MATCHING"|"ML_MATCHING"|"PROVIDER",
 #'     ruleBasedProperties = list(
 #'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       matchPurpose = "IDENTIFIER_GENERATION"|"INDEXING",
 #'       rules = list(
 #'         list(
 #'           matchingKeys = list(
@@ -581,6 +649,7 @@ entityresolution_create_matching_workflow <- function(description = NULL, increm
 #'     list(
 #'       fieldName = "string",
 #'       groupName = "string",
+#'       hashed = TRUE|FALSE,
 #'       matchKey = "string",
 #'       subType = "string",
 #'       type = "NAME"|"NAME_FIRST"|"NAME_MIDDLE"|"NAME_LAST"|"ADDRESS"|"ADDRESS_STREET1"|"ADDRESS_STREET2"|"ADDRESS_STREET3"|"ADDRESS_CITY"|"ADDRESS_STATE"|"ADDRESS_COUNTRY"|"ADDRESS_POSTALCODE"|"PHONE"|"PHONE_NUMBER"|"PHONE_COUNTRYCODE"|"EMAIL_ADDRESS"|"UNIQUE_ID"|"DATE"|"STRING"|"PROVIDER_ID"
@@ -599,6 +668,7 @@ entityresolution_create_matching_workflow <- function(description = NULL, increm
 #'     list(
 #'       fieldName = "string",
 #'       groupName = "string",
+#'       hashed = TRUE|FALSE,
 #'       matchKey = "string",
 #'       subType = "string",
 #'       type = "NAME"|"NAME_FIRST"|"NAME_MIDDLE"|"NAME_LAST"|"ADDRESS"|"ADDRESS_STREET1"|"ADDRESS_STREET2"|"ADDRESS_STREET3"|"ADDRESS_CITY"|"ADDRESS_STATE"|"ADDRESS_COUNTRY"|"ADDRESS_POSTALCODE"|"PHONE"|"PHONE_NUMBER"|"PHONE_COUNTRYCODE"|"EMAIL_ADDRESS"|"UNIQUE_ID"|"DATE"|"STRING"|"PROVIDER_ID"
@@ -911,6 +981,9 @@ entityresolution_delete_schema_mapping <- function(schemaName) {
 #'   metrics = list(
 #'     inputRecords = 123,
 #'     recordsNotProcessed = 123,
+#'     totalMappedRecords = 123,
+#'     totalMappedSourceRecords = 123,
+#'     totalMappedTargetRecords = 123,
 #'     totalRecordsProcessed = 123
 #'   ),
 #'   outputSourceConfig = list(
@@ -977,13 +1050,26 @@ entityresolution_get_id_mapping_job <- function(jobId, workflowName) {
 #'   ),
 #'   description = "string",
 #'   idMappingTechniques = list(
-#'     idMappingType = "PROVIDER",
+#'     idMappingType = "PROVIDER"|"RULE_BASED",
 #'     providerProperties = list(
 #'       intermediateSourceConfiguration = list(
 #'         intermediateS3Path = "string"
 #'       ),
 #'       providerConfiguration = list(),
 #'       providerServiceArn = "string"
+#'     ),
+#'     ruleBasedProperties = list(
+#'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       recordMatchingModel = "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET",
+#'       ruleDefinitionType = "SOURCE"|"TARGET",
+#'       rules = list(
+#'         list(
+#'           matchingKeys = list(
+#'             "string"
+#'           ),
+#'           ruleName = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   inputSourceConfig = list(
@@ -1061,10 +1147,27 @@ entityresolution_get_id_mapping_workflow <- function(workflowName) {
 #'   description = "string",
 #'   idMappingWorkflowProperties = list(
 #'     list(
-#'       idMappingType = "PROVIDER",
+#'       idMappingType = "PROVIDER"|"RULE_BASED",
 #'       providerProperties = list(
 #'         providerConfiguration = list(),
 #'         providerServiceArn = "string"
+#'       ),
+#'       ruleBasedProperties = list(
+#'         attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'         recordMatchingModels = list(
+#'           "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET"
+#'         ),
+#'         ruleDefinitionTypes = list(
+#'           "SOURCE"|"TARGET"
+#'         ),
+#'         rules = list(
+#'           list(
+#'             matchingKeys = list(
+#'               "string"
+#'             ),
+#'             ruleName = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1304,6 +1407,7 @@ entityresolution_get_matching_job <- function(jobId, workflowName) {
 #'     resolutionType = "RULE_MATCHING"|"ML_MATCHING"|"PROVIDER",
 #'     ruleBasedProperties = list(
 #'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       matchPurpose = "IDENTIFIER_GENERATION"|"INDEXING",
 #'       rules = list(
 #'         list(
 #'           matchingKeys = list(
@@ -1525,6 +1629,7 @@ entityresolution_get_provider_service <- function(providerName, providerServiceN
 #'     list(
 #'       fieldName = "string",
 #'       groupName = "string",
+#'       hashed = TRUE|FALSE,
 #'       matchKey = "string",
 #'       subType = "string",
 #'       type = "NAME"|"NAME_FIRST"|"NAME_MIDDLE"|"NAME_LAST"|"ADDRESS"|"ADDRESS_STREET1"|"ADDRESS_STREET2"|"ADDRESS_STREET3"|"ADDRESS_CITY"|"ADDRESS_STATE"|"ADDRESS_COUNTRY"|"ADDRESS_POSTALCODE"|"PHONE"|"PHONE_NUMBER"|"PHONE_COUNTRYCODE"|"EMAIL_ADDRESS"|"UNIQUE_ID"|"DATE"|"STRING"|"PROVIDER_ID"
@@ -1721,6 +1826,11 @@ entityresolution_list_id_mapping_workflows <- function(maxResults = NULL, nextTo
 #'         "2015-01-01"
 #'       ),
 #'       description = "string",
+#'       idMappingWorkflowProperties = list(
+#'         list(
+#'           idMappingType = "PROVIDER"|"RULE_BASED"
+#'         )
+#'       ),
 #'       idNamespaceArn = "string",
 #'       idNamespaceName = "string",
 #'       type = "SOURCE"|"TARGET",
@@ -2085,6 +2195,12 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which the policy
 #' needs to be updated.
 #' @param policy &#91;required&#93; The resource-based policy.
+#' 
+#' If you set the value of the `effect` parameter in the `policy` to `Deny`
+#' for the [`put_policy`][entityresolution_put_policy] operation, you must
+#' also set the value of the `effect` parameter to `Deny` for the
+#' [`add_policy_statement`][entityresolution_add_policy_statement]
+#' operation.
 #' @param token A unique identifier for the current revision of the policy.
 #'
 #' @return
@@ -2368,13 +2484,13 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #'   workflowName)
 #'
 #' @param description A description of the workflow.
-#' @param idMappingTechniques &#91;required&#93; An object which defines the `idMappingType` and the
-#' `providerProperties`.
+#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
+#' configurations.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `OutputSource` objects, each of which contains fields
 #' `OutputS3Path` and `KMSArn`.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to access Amazon Web Services resources on your
 #' behalf.
 #' @param workflowName &#91;required&#93; The name of the workflow.
@@ -2385,13 +2501,26 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' list(
 #'   description = "string",
 #'   idMappingTechniques = list(
-#'     idMappingType = "PROVIDER",
+#'     idMappingType = "PROVIDER"|"RULE_BASED",
 #'     providerProperties = list(
 #'       intermediateSourceConfiguration = list(
 #'         intermediateS3Path = "string"
 #'       ),
 #'       providerConfiguration = list(),
 #'       providerServiceArn = "string"
+#'     ),
+#'     ruleBasedProperties = list(
+#'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       recordMatchingModel = "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET",
+#'       ruleDefinitionType = "SOURCE"|"TARGET",
+#'       rules = list(
+#'         list(
+#'           matchingKeys = list(
+#'             "string"
+#'           ),
+#'           ruleName = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   inputSourceConfig = list(
@@ -2418,13 +2547,26 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' svc$update_id_mapping_workflow(
 #'   description = "string",
 #'   idMappingTechniques = list(
-#'     idMappingType = "PROVIDER",
+#'     idMappingType = "PROVIDER"|"RULE_BASED",
 #'     providerProperties = list(
 #'       intermediateSourceConfiguration = list(
 #'         intermediateS3Path = "string"
 #'       ),
 #'       providerConfiguration = list(),
 #'       providerServiceArn = "string"
+#'     ),
+#'     ruleBasedProperties = list(
+#'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       recordMatchingModel = "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET",
+#'       ruleDefinitionType = "SOURCE"|"TARGET",
+#'       rules = list(
+#'         list(
+#'           matchingKeys = list(
+#'             "string"
+#'           ),
+#'           ruleName = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   inputSourceConfig = list(
@@ -2450,7 +2592,7 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname entityresolution_update_id_mapping_workflow
 #'
 #' @aliases entityresolution_update_id_mapping_workflow
-entityresolution_update_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn, workflowName) {
+entityresolution_update_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn = NULL, workflowName) {
   op <- new_operation(
     name = "UpdateIdMappingWorkflow",
     http_method = "PUT",
@@ -2498,10 +2640,27 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
 #'   description = "string",
 #'   idMappingWorkflowProperties = list(
 #'     list(
-#'       idMappingType = "PROVIDER",
+#'       idMappingType = "PROVIDER"|"RULE_BASED",
 #'       providerProperties = list(
 #'         providerConfiguration = list(),
 #'         providerServiceArn = "string"
+#'       ),
+#'       ruleBasedProperties = list(
+#'         attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'         recordMatchingModels = list(
+#'           "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET"
+#'         ),
+#'         ruleDefinitionTypes = list(
+#'           "SOURCE"|"TARGET"
+#'         ),
+#'         rules = list(
+#'           list(
+#'             matchingKeys = list(
+#'               "string"
+#'             ),
+#'             ruleName = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2527,10 +2686,27 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
 #'   description = "string",
 #'   idMappingWorkflowProperties = list(
 #'     list(
-#'       idMappingType = "PROVIDER",
+#'       idMappingType = "PROVIDER"|"RULE_BASED",
 #'       providerProperties = list(
 #'         providerConfiguration = list(),
 #'         providerServiceArn = "string"
+#'       ),
+#'       ruleBasedProperties = list(
+#'         attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'         recordMatchingModels = list(
+#'           "ONE_SOURCE_TO_ONE_TARGET"|"MANY_SOURCE_TO_ONE_TARGET"
+#'         ),
+#'         ruleDefinitionTypes = list(
+#'           "SOURCE"|"TARGET"
+#'         ),
+#'         rules = list(
+#'           list(
+#'             matchingKeys = list(
+#'               "string"
+#'             ),
+#'             ruleName = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2634,6 +2810,7 @@ entityresolution_update_id_namespace <- function(description = NULL, idMappingWo
 #'     resolutionType = "RULE_MATCHING"|"ML_MATCHING"|"PROVIDER",
 #'     ruleBasedProperties = list(
 #'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       matchPurpose = "IDENTIFIER_GENERATION"|"INDEXING",
 #'       rules = list(
 #'         list(
 #'           matchingKeys = list(
@@ -2687,6 +2864,7 @@ entityresolution_update_id_namespace <- function(description = NULL, idMappingWo
 #'     resolutionType = "RULE_MATCHING"|"ML_MATCHING"|"PROVIDER",
 #'     ruleBasedProperties = list(
 #'       attributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       matchPurpose = "IDENTIFIER_GENERATION"|"INDEXING",
 #'       rules = list(
 #'         list(
 #'           matchingKeys = list(
@@ -2753,6 +2931,7 @@ entityresolution_update_matching_workflow <- function(description = NULL, increm
 #'     list(
 #'       fieldName = "string",
 #'       groupName = "string",
+#'       hashed = TRUE|FALSE,
 #'       matchKey = "string",
 #'       subType = "string",
 #'       type = "NAME"|"NAME_FIRST"|"NAME_MIDDLE"|"NAME_LAST"|"ADDRESS"|"ADDRESS_STREET1"|"ADDRESS_STREET2"|"ADDRESS_STREET3"|"ADDRESS_CITY"|"ADDRESS_STATE"|"ADDRESS_COUNTRY"|"ADDRESS_POSTALCODE"|"PHONE"|"PHONE_NUMBER"|"PHONE_COUNTRYCODE"|"EMAIL_ADDRESS"|"UNIQUE_ID"|"DATE"|"STRING"|"PROVIDER_ID"
@@ -2771,6 +2950,7 @@ entityresolution_update_matching_workflow <- function(description = NULL, increm
 #'     list(
 #'       fieldName = "string",
 #'       groupName = "string",
+#'       hashed = TRUE|FALSE,
 #'       matchKey = "string",
 #'       subType = "string",
 #'       type = "NAME"|"NAME_FIRST"|"NAME_MIDDLE"|"NAME_LAST"|"ADDRESS"|"ADDRESS_STREET1"|"ADDRESS_STREET2"|"ADDRESS_STREET3"|"ADDRESS_CITY"|"ADDRESS_STATE"|"ADDRESS_COUNTRY"|"ADDRESS_POSTALCODE"|"PHONE"|"PHONE_NUMBER"|"PHONE_COUNTRYCODE"|"EMAIL_ADDRESS"|"UNIQUE_ID"|"DATE"|"STRING"|"PROVIDER_ID"

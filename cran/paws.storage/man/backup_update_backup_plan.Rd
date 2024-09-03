@@ -2,19 +2,18 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_backup_plan}
 \alias{backup_update_backup_plan}
-\title{Updates an existing backup plan identified by its backupPlanId with the
-input document in JSON format}
+\title{Updates the specified backup plan}
 \usage{
 backup_update_backup_plan(BackupPlanId, BackupPlan)
 }
 \arguments{
-\item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
+\item{BackupPlanId}{[required] The ID of the backup plan.}
 
-\item{BackupPlan}{[required] Specifies the body of a backup plan. Includes a \code{BackupPlanName} and one
-or more sets of \code{Rules}.}
+\item{BackupPlan}{[required] The body of a backup plan. Includes a \code{BackupPlanName} and one or more
+sets of \code{Rules}.}
 }
 \description{
-Updates an existing backup plan identified by its \code{backupPlanId} with the input document in JSON format. The new version is uniquely identified by a \code{VersionId}.
+Updates the specified backup plan. The new version is uniquely identified by its ID.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_update_backup_plan/} for full documentation.
 }

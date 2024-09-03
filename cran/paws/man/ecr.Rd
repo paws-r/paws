@@ -108,10 +108,12 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:ecr_complete_layer_upload]{complete_layer_upload} \tab Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID\cr
 \link[paws.compute:ecr_create_pull_through_cache_rule]{create_pull_through_cache_rule} \tab Creates a pull through cache rule\cr
 \link[paws.compute:ecr_create_repository]{create_repository} \tab Creates a repository\cr
+\link[paws.compute:ecr_create_repository_creation_template]{create_repository_creation_template} \tab Creates a repository creation template\cr
 \link[paws.compute:ecr_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the lifecycle policy associated with the specified repository\cr
 \link[paws.compute:ecr_delete_pull_through_cache_rule]{delete_pull_through_cache_rule} \tab Deletes a pull through cache rule\cr
 \link[paws.compute:ecr_delete_registry_policy]{delete_registry_policy} \tab Deletes the registry permissions policy\cr
 \link[paws.compute:ecr_delete_repository]{delete_repository} \tab Deletes a repository\cr
+\link[paws.compute:ecr_delete_repository_creation_template]{delete_repository_creation_template} \tab Deletes a repository creation template\cr
 \link[paws.compute:ecr_delete_repository_policy]{delete_repository_policy} \tab Deletes the repository policy associated with the specified repository\cr
 \link[paws.compute:ecr_describe_image_replication_status]{describe_image_replication_status} \tab Returns the replication status for a specified image\cr
 \link[paws.compute:ecr_describe_images]{describe_images} \tab Returns metadata about the images in a repository\cr
@@ -119,6 +121,8 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:ecr_describe_pull_through_cache_rules]{describe_pull_through_cache_rules} \tab Returns the pull through cache rules for a registry\cr
 \link[paws.compute:ecr_describe_registry]{describe_registry} \tab Describes the settings for a registry\cr
 \link[paws.compute:ecr_describe_repositories]{describe_repositories} \tab Describes image repositories in a registry\cr
+\link[paws.compute:ecr_describe_repository_creation_templates]{describe_repository_creation_templates} \tab Returns details about the repository creation templates in a registry\cr
+\link[paws.compute:ecr_get_account_setting]{get_account_setting} \tab Retrieves the basic scan type version name\cr
 \link[paws.compute:ecr_get_authorization_token]{get_authorization_token} \tab Retrieves an authorization token\cr
 \link[paws.compute:ecr_get_download_url_for_layer]{get_download_url_for_layer} \tab Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer\cr
 \link[paws.compute:ecr_get_lifecycle_policy]{get_lifecycle_policy} \tab Retrieves the lifecycle policy for the specified repository\cr
@@ -129,6 +133,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:ecr_initiate_layer_upload]{initiate_layer_upload} \tab Notifies Amazon ECR that you intend to upload an image layer\cr
 \link[paws.compute:ecr_list_images]{list_images} \tab Lists all the image IDs for the specified repository\cr
 \link[paws.compute:ecr_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECR resource\cr
+\link[paws.compute:ecr_put_account_setting]{put_account_setting} \tab Allows you to change the basic scan type version by setting the name parameter to either CLAIR to AWS_NATIVE\cr
 \link[paws.compute:ecr_put_image]{put_image} \tab Creates or updates the image manifest and tags associated with an image\cr
 \link[paws.compute:ecr_put_image_scanning_configuration]{put_image_scanning_configuration} \tab The PutImageScanningConfiguration API is being deprecated, in favor of specifying the image scanning configuration at the registry level\cr
 \link[paws.compute:ecr_put_image_tag_mutability]{put_image_tag_mutability} \tab Updates the image tag mutability settings for the specified repository\cr
@@ -142,6 +147,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:ecr_tag_resource]{tag_resource} \tab Adds specified tags to a resource with the specified ARN\cr
 \link[paws.compute:ecr_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 \link[paws.compute:ecr_update_pull_through_cache_rule]{update_pull_through_cache_rule} \tab Updates an existing pull through cache rule\cr
+\link[paws.compute:ecr_update_repository_creation_template]{update_repository_creation_template} \tab Updates an existing repository creation template\cr
 \link[paws.compute:ecr_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR\cr
 \link[paws.compute:ecr_validate_pull_through_cache_rule]{validate_pull_through_cache_rule} \tab Validates an existing pull through cache rule for an upstream registry that requires authentication
 }

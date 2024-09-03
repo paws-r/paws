@@ -1317,7 +1317,7 @@ health_describe_health_service_status_for_organization <- function() {
 #' management account in your organization. You must use the IAM console,
 #' API, or Command Line Interface (CLI) to remove the service-linked role.
 #' For more information, see [Deleting a Service-Linked
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#delete-service-linked-role)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html#delete-service-linked-role)
 #' in the *IAM User Guide*.
 #' 
 #' You can also disable the organizational feature by using the

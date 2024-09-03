@@ -312,6 +312,14 @@ test_that("describe_ipam_byoasn", {
   expect_error(svc$describe_ipam_byoasn(MaxResults = 20), NA)
 })
 
+test_that("describe_ipam_external_resource_verification_tokens", {
+  expect_error(svc$describe_ipam_external_resource_verification_tokens(), NA)
+})
+
+test_that("describe_ipam_external_resource_verification_tokens", {
+  expect_error(svc$describe_ipam_external_resource_verification_tokens(MaxResults = 20), NA)
+})
+
 test_that("describe_ipam_pools", {
   expect_error(svc$describe_ipam_pools(), NA)
 })

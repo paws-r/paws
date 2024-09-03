@@ -20,7 +20,12 @@ The maximum value supported for \code{MaxQueryTCU} is 1000. To request an
 increase to this soft limit, contact Amazon Web Services Support. For
 information about the default quota for maxQueryTCU, see \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html#limits.default}{Default quotas}.}
 
-\item{QueryPricingModel}{The pricing model for queries in an account.}
+\item{QueryPricingModel}{The pricing model for queries in an account.
+
+The \code{QueryPricingModel} parameter is used by several Timestream
+operations; however, the
+\code{\link[=timestreamquery_update_account_settings]{update_account_settings}} API
+operation doesn't recognize any values other than \code{COMPUTE_UNITS}.}
 }
 \description{
 Transitions your account to use TCUs for query pricing and modifies the maximum query compute units that you've configured. If you reduce the value of \code{MaxQueryTCU} to a desired configuration, the new value can take up to 24 hours to be effective.

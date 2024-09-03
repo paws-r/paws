@@ -43,6 +43,11 @@ in the Amazon Bedrock User Guide.
 it. Then specify the ARN of the resulting provisioned model. For
 more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html}{Use a custom model in Amazon Bedrock}
 in the Amazon Bedrock User Guide.
+\item If you use an \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{imported model},
+specify the ARN of the imported model. You can get the model ARN
+from a successful call to
+\href{https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html}{CreateModelImportJob}
+or from the Imported models page in the Amazon Bedrock console.
 }}
 
 \item{trace}{Specifies whether to enable or disable the Bedrock trace. If enabled,

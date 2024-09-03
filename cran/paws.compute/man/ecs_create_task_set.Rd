@@ -70,7 +70,7 @@ used.
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created. New capacity providers can be
 created with the
-\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/}{CreateCapacityProviderProvider}API
 operation.
 
 To use a Fargate capacity provider, specify either the \code{FARGATE} or

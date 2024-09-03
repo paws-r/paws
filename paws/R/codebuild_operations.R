@@ -118,7 +118,7 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -139,7 +139,7 @@ codebuild_batch_delete_builds <- function(ids) {
 #'           ),
 #'           buildspec = "string",
 #'           auth = list(
-#'             type = "OAUTH"|"CODECONNECTIONS",
+#'             type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'             resource = "string"
 #'           ),
 #'           reportBuildStatus = TRUE|FALSE,
@@ -185,7 +185,7 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'         image = "string",
 #'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'         fleet = list(
@@ -404,7 +404,7 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -425,7 +425,7 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'           ),
 #'           buildspec = "string",
 #'           auth = list(
-#'             type = "OAUTH"|"CODECONNECTIONS",
+#'             type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'             resource = "string"
 #'           ),
 #'           reportBuildStatus = TRUE|FALSE,
@@ -471,7 +471,7 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'         image = "string",
 #'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'         fleet = list(
@@ -620,11 +620,11 @@ codebuild_batch_get_builds <- function(ids) {
 #'       ),
 #'       status = list(
 #'         statusCode = "CREATING"|"UPDATING"|"ROTATING"|"PENDING_DELETION"|"DELETING"|"CREATE_FAILED"|"UPDATE_ROLLBACK_FAILED"|"ACTIVE",
-#'         context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED",
+#'         context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED"|"PENDING_DELETION"|"INSUFFICIENT_CAPACITY",
 #'         message = "string"
 #'       ),
 #'       baseCapacity = 123,
-#'       environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       scalingConfiguration = list(
 #'         scalingType = "TARGET_TRACKING_SCALING",
@@ -647,6 +647,7 @@ codebuild_batch_get_builds <- function(ids) {
 #'           "string"
 #'         )
 #'       ),
+#'       imageId = "string",
 #'       fleetServiceRole = "string",
 #'       tags = list(
 #'         list(
@@ -724,7 +725,7 @@ codebuild_batch_get_fleets <- function(names) {
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -745,7 +746,7 @@ codebuild_batch_get_fleets <- function(names) {
 #'           ),
 #'           buildspec = "string",
 #'           auth = list(
-#'             type = "OAUTH"|"CODECONNECTIONS",
+#'             type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'             resource = "string"
 #'           ),
 #'           reportBuildStatus = TRUE|FALSE,
@@ -798,7 +799,7 @@ codebuild_batch_get_fleets <- function(names) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'         image = "string",
 #'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'         fleet = list(
@@ -1136,8 +1137,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'
 #' @usage
 #' codebuild_create_fleet(name, baseCapacity, environmentType, computeType,
-#'   scalingConfiguration, overflowBehavior, vpcConfig, fleetServiceRole,
-#'   tags)
+#'   scalingConfiguration, overflowBehavior, vpcConfig, imageId,
+#'   fleetServiceRole, tags)
 #'
 #' @param name &#91;required&#93; The name of the compute fleet.
 #' @param baseCapacity &#91;required&#93; The initial number of machines allocated to the ﬂeet, which defines the
@@ -1160,6 +1161,14 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
 #'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
 #'     (Sydney).
+#' 
+#' -   The environment type `MAC_ARM` is available for Medium fleets only
+#'     in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
+#'     Asia Pacific (Sydney), and EU (Frankfurt)
+#' 
+#' -   The environment type `MAC_ARM` is available for Large fleets only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
+#'     Asia Pacific (Sydney).
 #' 
 #' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
 #'     only in regions US East (N. Virginia), US East (Ohio), US West
@@ -1235,6 +1244,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     Web Services services required to create a VPC network
 #'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
+#' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
 #' information, see [Allow a user to add a permission policy for a fleet
 #' service
@@ -1261,11 +1271,11 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     ),
 #'     status = list(
 #'       statusCode = "CREATING"|"UPDATING"|"ROTATING"|"PENDING_DELETION"|"DELETING"|"CREATE_FAILED"|"UPDATE_ROLLBACK_FAILED"|"ACTIVE",
-#'       context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED",
+#'       context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED"|"PENDING_DELETION"|"INSUFFICIENT_CAPACITY",
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
-#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'     scalingConfiguration = list(
 #'       scalingType = "TARGET_TRACKING_SCALING",
@@ -1288,6 +1298,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'         "string"
 #'       )
 #'     ),
+#'     imageId = "string",
 #'     fleetServiceRole = "string",
 #'     tags = list(
 #'       list(
@@ -1304,7 +1315,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' svc$create_fleet(
 #'   name = "string",
 #'   baseCapacity = 123,
-#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'   scalingConfiguration = list(
 #'     scalingType = "TARGET_TRACKING_SCALING",
@@ -1326,6 +1337,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       "string"
 #'     )
 #'   ),
+#'   imageId = "string",
 #'   fleetServiceRole = "string",
 #'   tags = list(
 #'     list(
@@ -1341,7 +1353,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @rdname codebuild_create_fleet
 #'
 #' @aliases codebuild_create_fleet
-codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, fleetServiceRole = NULL, tags = NULL) {
+codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
@@ -1349,7 +1361,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
     host_prefix = "",
     paginator = list()
   )
-  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, fleetServiceRole = fleetServiceRole, tags = tags)
+  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$create_fleet_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -1469,7 +1481,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -1490,7 +1502,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -1543,7 +1555,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -1674,7 +1686,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     ),
 #'     buildspec = "string",
 #'     auth = list(
-#'       type = "OAUTH"|"CODECONNECTIONS",
+#'       type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'       resource = "string"
 #'     ),
 #'     reportBuildStatus = TRUE|FALSE,
@@ -1695,7 +1707,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -1748,7 +1760,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     )
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'     image = "string",
 #'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'     fleet = list(
@@ -2790,13 +2802,13 @@ codebuild_get_resource_policy <- function(resourceArn) {
 .codebuild$operations$get_resource_policy <- codebuild_get_resource_policy
 
 #' Imports the source repository credentials for an CodeBuild project that
-#' has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
-#' repository
+#' has its source code stored in a GitHub, GitHub Enterprise, GitLab,
+#' GitLab Self Managed, or Bitbucket repository
 #'
 #' @description
 #' Imports the source repository credentials for an CodeBuild project that
-#' has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
-#' repository.
+#' has its source code stored in a GitHub, GitHub Enterprise, GitLab,
+#' GitLab Self Managed, or Bitbucket repository.
 #'
 #' @usage
 #' codebuild_import_source_credentials(username, token, serverType,
@@ -2806,13 +2818,13 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' is not valid for other types of source providers or connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
 #' Bitbucket, this is either the access token or the app password. For the
-#' `authType` CODECONNECTIONS, this is the `connectionArn`.
+#' `authType` CODECONNECTIONS, this is the `connectionArn`. For the
+#' `authType` SECRETS_MANAGER, this is the `secretArn`.
 #' @param serverType &#91;required&#93; The source provider used for this project.
 #' @param authType &#91;required&#93; The type of authentication used to connect to a GitHub, GitHub
 #' Enterprise, GitLab, GitLab Self Managed, or Bitbucket repository. An
 #' OAUTH connection is not supported by the API and must be created using
-#' the CodeBuild console. Note that CODECONNECTIONS is only valid for
-#' GitLab and GitLab Self Managed.
+#' the CodeBuild console.
 #' @param shouldOverwrite Set to `false` to prevent overwriting the repository source credentials.
 #' Set to `true` to overwrite the repository source credentials. The
 #' default value is `true`.
@@ -2831,7 +2843,7 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #'   username = "string",
 #'   token = "string",
 #'   serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"GITLAB"|"GITLAB_SELF_MANAGED",
-#'   authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"|"CODECONNECTIONS",
+#'   authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'   shouldOverwrite = TRUE|FALSE
 #' )
 #' ```
@@ -3802,7 +3814,7 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
 #'     list(
 #'       arn = "string",
 #'       serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"GITLAB"|"GITLAB_SELF_MANAGED",
-#'       authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"|"CODECONNECTIONS",
+#'       authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'       resource = "string"
 #'     )
 #'   )
@@ -3956,7 +3968,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -3977,7 +3989,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -4023,7 +4035,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -4206,7 +4218,7 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -4227,7 +4239,7 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -4273,7 +4285,7 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -4662,7 +4674,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -4683,7 +4695,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -4729,7 +4741,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -4829,7 +4841,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -4884,7 +4896,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'   sourceTypeOverride = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
 #'   sourceLocationOverride = "string",
 #'   sourceAuthOverride = list(
-#'     type = "OAUTH"|"CODECONNECTIONS",
+#'     type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'     resource = "string"
 #'   ),
 #'   gitCloneDepthOverride = 123,
@@ -4898,7 +4910,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     context = "string",
 #'     targetUrl = "string"
 #'   ),
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'   imageOverride = "string",
 #'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'   certificateOverride = "string",
@@ -5170,7 +5182,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -5191,7 +5203,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -5237,7 +5249,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -5376,7 +5388,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -5431,7 +5443,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'   sourceTypeOverride = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
 #'   sourceLocationOverride = "string",
 #'   sourceAuthOverride = list(
-#'     type = "OAUTH"|"CODECONNECTIONS",
+#'     type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'     resource = "string"
 #'   ),
 #'   gitCloneDepthOverride = 123,
@@ -5441,7 +5453,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'   buildspecOverride = "string",
 #'   insecureSslOverride = TRUE|FALSE,
 #'   reportBuildBatchStatusOverride = TRUE|FALSE,
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'   imageOverride = "string",
 #'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'   certificateOverride = "string",
@@ -5572,7 +5584,7 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -5593,7 +5605,7 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -5639,7 +5651,7 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -5811,7 +5823,7 @@ codebuild_stop_build <- function(id) {
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -5832,7 +5844,7 @@ codebuild_stop_build <- function(id) {
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -5878,7 +5890,7 @@ codebuild_stop_build <- function(id) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -6040,8 +6052,8 @@ codebuild_stop_build_batch <- function(id) {
 #'
 #' @usage
 #' codebuild_update_fleet(arn, baseCapacity, environmentType, computeType,
-#'   scalingConfiguration, overflowBehavior, vpcConfig, fleetServiceRole,
-#'   tags)
+#'   scalingConfiguration, overflowBehavior, vpcConfig, imageId,
+#'   fleetServiceRole, tags)
 #'
 #' @param arn &#91;required&#93; The ARN of the compute fleet.
 #' @param baseCapacity The initial number of machines allocated to the compute ﬂeet, which
@@ -6064,6 +6076,14 @@ codebuild_stop_build_batch <- function(id) {
 #'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
 #'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
 #'     (Sydney).
+#' 
+#' -   The environment type `MAC_ARM` is available for Medium fleets only
+#'     in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
+#'     Asia Pacific (Sydney), and EU (Frankfurt)
+#' 
+#' -   The environment type `MAC_ARM` is available for Large fleets only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
+#'     Asia Pacific (Sydney).
 #' 
 #' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
 #'     only in regions US East (N. Virginia), US East (Ohio), US West
@@ -6139,6 +6159,7 @@ codebuild_stop_build_batch <- function(id) {
 #'     Web Services services required to create a VPC network
 #'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
+#' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
 #' information, see [Allow a user to add a permission policy for a fleet
 #' service
@@ -6165,11 +6186,11 @@ codebuild_stop_build_batch <- function(id) {
 #'     ),
 #'     status = list(
 #'       statusCode = "CREATING"|"UPDATING"|"ROTATING"|"PENDING_DELETION"|"DELETING"|"CREATE_FAILED"|"UPDATE_ROLLBACK_FAILED"|"ACTIVE",
-#'       context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED",
+#'       context = "CREATE_FAILED"|"UPDATE_FAILED"|"ACTION_REQUIRED"|"PENDING_DELETION"|"INSUFFICIENT_CAPACITY",
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
-#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'     scalingConfiguration = list(
 #'       scalingType = "TARGET_TRACKING_SCALING",
@@ -6192,6 +6213,7 @@ codebuild_stop_build_batch <- function(id) {
 #'         "string"
 #'       )
 #'     ),
+#'     imageId = "string",
 #'     fleetServiceRole = "string",
 #'     tags = list(
 #'       list(
@@ -6208,7 +6230,7 @@ codebuild_stop_build_batch <- function(id) {
 #' svc$update_fleet(
 #'   arn = "string",
 #'   baseCapacity = 123,
-#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'   scalingConfiguration = list(
 #'     scalingType = "TARGET_TRACKING_SCALING",
@@ -6230,6 +6252,7 @@ codebuild_stop_build_batch <- function(id) {
 #'       "string"
 #'     )
 #'   ),
+#'   imageId = "string",
 #'   fleetServiceRole = "string",
 #'   tags = list(
 #'     list(
@@ -6245,7 +6268,7 @@ codebuild_stop_build_batch <- function(id) {
 #' @rdname codebuild_update_fleet
 #'
 #' @aliases codebuild_update_fleet
-codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, fleetServiceRole = NULL, tags = NULL) {
+codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
@@ -6253,7 +6276,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
     host_prefix = "",
     paginator = list()
   )
-  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, fleetServiceRole = fleetServiceRole, tags = tags)
+  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$update_fleet_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -6377,7 +6400,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -6398,7 +6421,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'         ),
 #'         buildspec = "string",
 #'         auth = list(
-#'           type = "OAUTH"|"CODECONNECTIONS",
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'           resource = "string"
 #'         ),
 #'         reportBuildStatus = TRUE|FALSE,
@@ -6451,7 +6474,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'       image = "string",
 #'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       fleet = list(
@@ -6582,7 +6605,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     ),
 #'     buildspec = "string",
 #'     auth = list(
-#'       type = "OAUTH"|"CODECONNECTIONS",
+#'       type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'       resource = "string"
 #'     ),
 #'     reportBuildStatus = TRUE|FALSE,
@@ -6603,7 +6626,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       ),
 #'       buildspec = "string",
 #'       auth = list(
-#'         type = "OAUTH"|"CODECONNECTIONS",
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
@@ -6656,7 +6679,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     )
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
 #'     image = "string",
 #'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'     fleet = list(

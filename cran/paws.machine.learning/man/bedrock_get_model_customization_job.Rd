@@ -11,7 +11,7 @@ bedrock_get_model_customization_job(jobIdentifier)
 \item{jobIdentifier}{[required] Identifier for the customization job.}
 }
 \description{
-Retrieves the properties associated with a model-customization job, including the status of the job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Amazon Bedrock User Guide.
+Retrieves the properties associated with a model-customization job, including the status of the job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_model_customization_job/} for full documentation.
 }

@@ -52,19 +52,28 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
 \code{RejectedPackages} list.
-\itemize{
-\item \strong{\code{ALLOW_AS_DEPENDENCY}} : A package in the \code{Rejected} patches list
-is installed only if it is a dependency of another package. It is
-considered compliant with the patch baseline, and its status is
-reported as \code{InstalledOther}. This is the default action if no
-option is specified.
-\item \strong{BLOCK}: Packages in the \strong{Rejected patches} list, and packages
-that include them as dependencies, aren't installed by Patch Manager
-under any circumstances. If a package was installed before it was
-added to the \strong{Rejected patches} list, or is installed outside of
-Patch Manager afterward, it's considered noncompliant with the patch
-baseline and its status is reported as \emph{InstalledRejected}.
-}}
+
+\strong{ALLOW_AS_DEPENDENCY}
+
+\strong{Linux and macOS}: A package in the rejected patches list is installed
+only if it is a dependency of another package. It is considered
+compliant with the patch baseline, and its status is reported as
+\code{INSTALLED_OTHER}. This is the default action if no option is specified.
+
+\strong{Windows Server}: Windows Server doesn't support the concept of
+package dependencies. If a package in the rejected patches list and
+already installed on the node, its status is reported as
+\code{INSTALLED_OTHER}. Any package not already installed on the node is
+skipped. This is the default action if no option is specified.
+
+\strong{BLOCK}
+
+\strong{All OSs}: Packages in the rejected patches list, and packages that
+include them as dependencies, aren't installed by Patch Manager under
+any circumstances. If a package was installed before it was added to the
+rejected patches list, or is installed outside of Patch Manager
+afterward, it's considered noncompliant with the patch baseline and its
+status is reported as \code{INSTALLED_REJECTED}.}
 
 \item{Description}{A description of the patch baseline.}
 

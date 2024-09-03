@@ -22,7 +22,8 @@ ID of the permission.
 network interface.
 \item \code{network-interface-permission.aws-account-id} - The Amazon Web
 Services account ID.
-\item \code{network-interface-permission.aws-service} - The Amazon Web Service.
+\item \code{network-interface-permission.aws-service} - The Amazon Web Services
+service.
 \item \code{network-interface-permission.permission} - The type of permission
 (\code{INSTANCE-ATTACH} | \code{EIP-ASSOCIATE}).
 }}

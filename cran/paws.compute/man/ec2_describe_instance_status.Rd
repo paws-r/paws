@@ -49,6 +49,9 @@ name is \code{reachability} (\code{passed} | \code{failed} | \code{initializing}
 \item \code{system-status.status} - The system status of the instance (\code{ok} |
 \code{impaired} | \code{initializing} | \code{insufficient-data} |
 \code{not-applicable}).
+\item \code{attached-ebs-status.status} - The status of the attached EBS volume
+for the instance (\code{ok} | \code{impaired} | \code{initializing} |
+\code{insufficient-data} | \code{not-applicable}).
 }}
 
 \item{InstanceIds}{The instance IDs.

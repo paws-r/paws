@@ -13,10 +13,12 @@ lambda_list_layer_versions(
 )
 }
 \arguments{
-\item{CompatibleRuntime}{A runtime identifier. For example, \code{java21}.
+\item{CompatibleRuntime}{A runtime identifier.
 
 The following list includes deprecated runtimes. For more information,
-see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy}{Runtime deprecation policy}.}
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels}{Runtime use after deprecation}.
+
+For a list of all currently supported runtimes, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported}{Supported runtimes}.}
 
 \item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
 

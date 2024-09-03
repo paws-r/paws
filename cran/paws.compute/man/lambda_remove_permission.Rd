@@ -2,8 +2,8 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_remove_permission}
 \alias{lambda_remove_permission}
-\title{Revokes function-use permission from an Amazon Web Service or another
-Amazon Web Services account}
+\title{Revokes function-use permission from an Amazon Web Servicesservice or
+another Amazon Web Services account}
 \usage{
 lambda_remove_permission(
   FunctionName,
@@ -38,7 +38,7 @@ specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
 }
 \description{
-Revokes function-use permission from an Amazon Web Service or another Amazon Web Services account. You can get the ID of the statement from the output of \code{\link[=lambda_get_policy]{get_policy}}.
+Revokes function-use permission from an Amazon Web Servicesservice or another Amazon Web Services account. You can get the ID of the statement from the output of \code{\link[=lambda_get_policy]{get_policy}}.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_remove_permission/} for full documentation.
 }

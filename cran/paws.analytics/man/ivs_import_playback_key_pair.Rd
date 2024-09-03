@@ -5,12 +5,12 @@
 \title{Imports the public portion of a new key pair and returns its arn and
 fingerprint}
 \usage{
-ivs_import_playback_key_pair(name = NULL, publicKeyMaterial, tags = NULL)
+ivs_import_playback_key_pair(publicKeyMaterial, name = NULL, tags = NULL)
 }
 \arguments{
-\item{name}{Playback-key-pair name. The value does not need to be unique.}
-
 \item{publicKeyMaterial}{[required] The public portion of a customer-generated key pair.}
+
+\item{name}{Playback-key-pair name. The value does not need to be unique.}
 
 \item{tags}{Any tags provided with the request are added to the playback key pair
 tags. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}

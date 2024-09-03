@@ -147,7 +147,7 @@ NULL
 
 .telconetworkbuilder$get_sol_network_operation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), error = structure(list(detail = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), lcmOperationType = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), operationState = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tasks = structure(list(structure(list(taskContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), taskEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), taskErrorDetails = structure(list(cause = structure(logical(0), tags = list(type = "string")), details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), taskName = structure(logical(0), tags = list(type = "string")), taskStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), taskStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), error = structure(list(detail = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), lcmOperationType = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), instantiateMetadata = structure(list(additionalParamsForNs = structure(list(), tags = list(type = "structure", document = TRUE)), nsdInfoId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), modifyVnfInfoMetadata = structure(list(vnfConfigurableProperties = structure(list(), tags = list(type = "structure", document = TRUE)), vnfInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), updateNsMetadata = structure(list(additionalParamsForNs = structure(list(), tags = list(type = "structure", document = TRUE)), nsdInfoId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), operationState = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tasks = structure(list(structure(list(taskContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), taskEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), taskErrorDetails = structure(list(cause = structure(logical(0), tags = list(type = "string")), details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), taskName = structure(logical(0), tags = list(type = "string")), taskStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), taskStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), updateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -237,13 +237,13 @@ NULL
 
 .telconetworkbuilder$list_sol_network_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextpage_opaque_marker", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextpage_opaque_marker", type = "string")), nsInstanceId = structure(logical(0), tags = list(location = "querystring", locationName = "nsInstanceId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .telconetworkbuilder$list_sol_network_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(networkOperations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), error = structure(list(detail = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), lcmOperationType = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), operationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(networkOperations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), error = structure(list(detail = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), lcmOperationType = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), nsdInfoId = structure(logical(0), tags = list(type = "string")), vnfInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), operationState = structure(logical(0), tags = list(type = "string")), updateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -273,7 +273,7 @@ NULL
 
 .telconetworkbuilder$put_sol_function_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob")), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure", payload = "file"))
+  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure", payload = "file"))
   return(populate(args, shape))
 }
 
@@ -285,7 +285,7 @@ NULL
 
 .telconetworkbuilder$put_sol_network_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob")), nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure", payload = "file"))
+  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure", payload = "file"))
   return(populate(args, shape))
 }
 
@@ -345,7 +345,7 @@ NULL
 
 .telconetworkbuilder$update_sol_network_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modifyVnfInfoData = structure(list(vnfConfigurableProperties = structure(list(), tags = list(type = "structure", document = TRUE)), vnfInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "nsInstanceId", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), updateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(modifyVnfInfoData = structure(list(vnfConfigurableProperties = structure(list(), tags = list(type = "structure", document = TRUE)), vnfInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "nsInstanceId", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), updateNs = structure(list(additionalParamsForNs = structure(list(), tags = list(type = "structure", document = TRUE)), nsdInfoId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), updateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -369,7 +369,7 @@ NULL
 
 .telconetworkbuilder$validate_sol_function_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob")), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure", payload = "file"))
+  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure", payload = "file"))
   return(populate(args, shape))
 }
 
@@ -381,7 +381,7 @@ NULL
 
 .telconetworkbuilder$validate_sol_network_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob")), nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure", payload = "file"))
+  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure", payload = "file"))
   return(populate(args, shape))
 }
 

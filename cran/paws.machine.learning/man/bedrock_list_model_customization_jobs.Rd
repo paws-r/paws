@@ -25,10 +25,14 @@ bedrock_list_model_customization_jobs(
 \item{nameContains}{Return customization jobs only if the job name contains these
 characters.}
 
-\item{maxResults}{Maximum number of results to return in the response.}
+\item{maxResults}{The maximum number of results to return in the response. If the total
+number of results is greater than this value, use the token returned in
+the response in the \code{nextToken} field when making another request to
+return the next batch of results.}
 
-\item{nextToken}{Continuation token from the previous response, for Amazon Bedrock to
-list the next set of results.}
+\item{nextToken}{If the total number of results is greater than the \code{maxResults} value
+provided in the request, enter the token returned in the \code{nextToken}
+field in the response in this field to return the next batch of results.}
 
 \item{sortBy}{The field to sort by in the returned list of jobs.}
 

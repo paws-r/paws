@@ -11,7 +11,7 @@ elbv2_describe_target_health(TargetGroupArn, Targets = NULL, Include = NULL)
 
 \item{Targets}{The targets.}
 
-\item{Include}{Used to inclue anomaly detection information.}
+\item{Include}{Used to include anomaly detection information.}
 }
 \description{
 Describes the health of the specified targets or all of your targets.

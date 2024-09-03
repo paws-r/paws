@@ -34,7 +34,7 @@ response so that the remaining results can be retrieved.}
 
 \item{reverseOrder}{The application list is sorted based on the values of
 \code{lastAppComplianceEvaluationTime} field. By default, application list is
-sorted in ascending order. To sort the appliation list in descending
+sorted in ascending order. To sort the application list in descending
 order, set this field to \code{True}.}
 
 \item{toLastAssessmentTime}{Indicates the upper limit of the range that is used to filter the

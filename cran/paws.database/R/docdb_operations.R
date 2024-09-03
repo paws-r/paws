@@ -1927,6 +1927,74 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 }
 .docdb$operations$failover_db_cluster <- docdb_failover_db_cluster
 
+#' Promotes the specified secondary DB cluster to be the primary DB cluster
+#' in the global cluster when failing over a global cluster occurs
+#'
+#' @description
+#' Promotes the specified secondary DB cluster to be the primary DB cluster in the global cluster when failing over a global cluster occurs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdb_failover_global_cluster/](https://www.paws-r-sdk.com/docs/docdb_failover_global_cluster/) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier of the Amazon DocumentDB global cluster to apply this
+#' operation. The identifier is the unique key assigned by the user when
+#' the cluster is created. In other words, it's the name of the global
+#' cluster.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing global cluster.
+#' 
+#' -   Minimum length of 1. Maximum length of 255.
+#' 
+#' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
+#' @param TargetDbClusterIdentifier &#91;required&#93; The identifier of the secondary Amazon DocumentDB cluster that you want
+#' to promote to the primary for the global cluster. Use the Amazon
+#' Resource Name (ARN) for the identifier so that Amazon DocumentDB can
+#' locate the cluster in its Amazon Web Services region.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing secondary cluster.
+#' 
+#' -   Minimum length of 1. Maximum length of 255.
+#' 
+#' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
+#' @param AllowDataLoss Specifies whether to allow data loss for this global cluster operation.
+#' Allowing data loss triggers a global failover operation.
+#' 
+#' If you don't specify `AllowDataLoss`, the global cluster operation
+#' defaults to a switchover.
+#' 
+#' Constraints:
+#' 
+#' -   Can't be specified together with the `Switchover` parameter.
+#' @param Switchover Specifies whether to switch over this global database cluster.
+#' 
+#' Constraints:
+#' 
+#' -   Can't be specified together with the `AllowDataLoss` parameter.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_failover_global_cluster
+docdb_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier, AllowDataLoss = NULL, Switchover = NULL) {
+  op <- new_operation(
+    name = "FailoverGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .docdb$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier, AllowDataLoss = AllowDataLoss, Switchover = Switchover)
+  output <- .docdb$failover_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$failover_global_cluster <- docdb_failover_global_cluster
+
 #' Lists all tags on an Amazon DocumentDB resource
 #'
 #' @description

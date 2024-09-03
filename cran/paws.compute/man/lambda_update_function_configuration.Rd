@@ -70,9 +70,14 @@ execution.}
 \item{Runtime}{The identifier of the function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime}.
 Runtime is required if the deployment package is a .zip file archive.
+Specifying a runtime results in an error if you're deploying a function
+using a container image.
 
-The following list includes deprecated runtimes. For more information,
-see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy}{Runtime deprecation policy}.}
+The following list includes deprecated runtimes. Lambda blocks creating
+new functions and updating existing functions shortly after each runtime
+is deprecated. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels}{Runtime use after deprecation}.
+
+For a list of all currently supported runtimes, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported}{Supported runtimes}.}
 
 \item{DeadLetterConfig}{A dead-letter queue configuration that specifies the queue or topic
 where Lambda sends asynchronous events when they fail processing. For

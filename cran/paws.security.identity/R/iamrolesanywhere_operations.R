@@ -11,6 +11,8 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/) for full documentation.
 #'
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
@@ -31,7 +33,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_create_profile
-iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NULL, managedPolicyArns = NULL, name, requireInstanceProperties = NULL, roleArns, sessionPolicy = NULL, tags = NULL) {
+iamrolesanywhere_create_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, enabled = NULL, managedPolicyArns = NULL, name, requireInstanceProperties = NULL, roleArns, sessionPolicy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
@@ -39,7 +41,7 @@ iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NU
     host_prefix = "",
     paginator = list()
   )
-  input <- .iamrolesanywhere$create_profile_input(durationSeconds = durationSeconds, enabled = enabled, managedPolicyArns = managedPolicyArns, name = name, requireInstanceProperties = requireInstanceProperties, roleArns = roleArns, sessionPolicy = sessionPolicy, tags = tags)
+  input <- .iamrolesanywhere$create_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, enabled = enabled, managedPolicyArns = managedPolicyArns, name = name, requireInstanceProperties = requireInstanceProperties, roleArns = roleArns, sessionPolicy = sessionPolicy, tags = tags)
   output <- .iamrolesanywhere$create_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)
@@ -909,6 +911,8 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/) for full documentation.
 #'
+#' @param acceptRoleSessionName Used to determine if a custom role session name will be accepted in a
+#' temporary credential request.
 #' @param durationSeconds Used to determine how long sessions vended using this profile are valid
 #' for. See the `Expiration` section of the [CreateSession API
 #' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
@@ -926,7 +930,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_update_profile
-iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolicyArns = NULL, name = NULL, profileId, roleArns = NULL, sessionPolicy = NULL) {
+iamrolesanywhere_update_profile <- function(acceptRoleSessionName = NULL, durationSeconds = NULL, managedPolicyArns = NULL, name = NULL, profileId, roleArns = NULL, sessionPolicy = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "PATCH",
@@ -934,7 +938,7 @@ iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolic
     host_prefix = "",
     paginator = list()
   )
-  input <- .iamrolesanywhere$update_profile_input(durationSeconds = durationSeconds, managedPolicyArns = managedPolicyArns, name = name, profileId = profileId, roleArns = roleArns, sessionPolicy = sessionPolicy)
+  input <- .iamrolesanywhere$update_profile_input(acceptRoleSessionName = acceptRoleSessionName, durationSeconds = durationSeconds, managedPolicyArns = managedPolicyArns, name = name, profileId = profileId, roleArns = roleArns, sessionPolicy = sessionPolicy)
   output <- .iamrolesanywhere$update_profile_output()
   config <- get_config()
   svc <- .iamrolesanywhere$service(config, op)

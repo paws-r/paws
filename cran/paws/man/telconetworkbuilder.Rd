@@ -105,7 +105,7 @@ activities.
 \link[paws.networking:telconetworkbuilder_delete_sol_function_package]{delete_sol_function_package} \tab Deletes a function package\cr
 \link[paws.networking:telconetworkbuilder_delete_sol_network_instance]{delete_sol_network_instance} \tab Deletes a network instance\cr
 \link[paws.networking:telconetworkbuilder_delete_sol_network_package]{delete_sol_network_package} \tab Deletes network package\cr
-\link[paws.networking:telconetworkbuilder_get_sol_function_instance]{get_sol_function_instance} \tab Gets the details of a network function instance, including the instantation state and metadata from the function package descriptor in the network function package\cr
+\link[paws.networking:telconetworkbuilder_get_sol_function_instance]{get_sol_function_instance} \tab Gets the details of a network function instance, including the instantiation state and metadata from the function package descriptor in the network function package\cr
 \link[paws.networking:telconetworkbuilder_get_sol_function_package]{get_sol_function_package} \tab Gets the details of an individual function package, such as the operational state and whether the package is in use\cr
 \link[paws.networking:telconetworkbuilder_get_sol_function_package_content]{get_sol_function_package_content} \tab Gets the contents of a function package\cr
 \link[paws.networking:telconetworkbuilder_get_sol_function_package_descriptor]{get_sol_function_package_descriptor} \tab Gets a function package descriptor in a function package\cr

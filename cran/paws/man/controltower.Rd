@@ -73,6 +73,7 @@ these types of resources:
 \item \code{get_landing_zone}
 \item \code{get_landing_zone_operation}
 \item \code{list_landing_zones}
+\item \code{list_landing_zone_operations}
 \item \code{reset_landing_zone}
 \item \code{update_landing_zone}
 }
@@ -88,7 +89,7 @@ these types of resources:
 \item \code{reset_enabled_baseline}
 \item \code{update_enabled_baseline}
 }
-\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html}{Tagging}
+\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html}{\emph{Tagging}}
 \itemize{
 \item \code{list_tags_for_resource}
 \item \code{tag_resource}
@@ -122,9 +123,11 @@ The \code{controlIdentifier} is an ARN that is specified for each control.
 You can view the \code{controlIdentifier} in the console on the \strong{Control
 details} page, as well as in the documentation.
 
-The \code{controlIdentifier} is unique in each Amazon Web Services Region for
-each control. You can find the \code{controlIdentifier} for each Region and
-control in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html}{Tables of control metadata}
+\strong{About identifiers for Amazon Web Services Control Tower}
+
+The Amazon Web Services Control Tower \code{controlIdentifier} is unique in
+each Amazon Web Services Region for each control. You can find the
+\code{controlIdentifier} for each Region and control in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html}{Tables of control metadata}
 or the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html}{Control availability by Region tables}
 in the \emph{Amazon Web Services Control Tower Controls Reference Guide}.
 
@@ -134,11 +137,26 @@ given in \href{https://docs.aws.amazon.com/controltower/latest/controlreference/
 in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html}{\emph{Amazon Web Services Control Tower Controls Reference Guide}}
 . Remember that \emph{Mandatory} controls cannot be added or removed.
 
-\strong{ARN format:} \verb{arn:aws:controltower:\{REGION\}::control/\{CONTROL_NAME\}}
+\strong{Some controls have two identifiers}
+\itemize{
+\item \strong{ARN format for Amazon Web Services Control Tower:}
+\verb{arn:aws:controltower:\{REGION\}::control/\{CONTROL_TOWER_OPAQUE_ID\}}
 
 \strong{Example:}
 
 \verb{arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED}
+\item \strong{ARN format for Amazon Web Services Control Catalog:}
+\code{arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}}
+}
+
+You can find the \code{{CONTROL_CATALOG_OPAQUE_ID}} in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html}{\emph{Amazon Web Services Control Tower Controls Reference Guide}}
+, or in the Amazon Web Services Control Tower console, on the \strong{Control
+details} page.
+
+The Amazon Web Services Control Tower APIs for enabled controls, such as
+\code{get_enabled_control} and
+\code{list_enabled_controls} always
+return an ARN of the same type given when the control was enabled.
 
 \strong{To get the \code{targetIdentifier}:}
 
@@ -177,6 +195,25 @@ baselines.
 The individual API operations for baselines are detailed in this
 document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual},
 in the "Actions" section. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{Baseline API input and output examples with CLI}.
+
+\strong{About Amazon Web Services Control Catalog identifiers}
+\itemize{
+\item The \code{enable_control} and
+\code{disable_control} API operations can
+be called by specifying either the Amazon Web Services Control Tower
+identifer or the Amazon Web Services Control Catalog identifier. The
+API response returns the same type of identifier that you specified
+when calling the API.
+\item If you use an Amazon Web Services Control Tower identifier to call
+the \code{enable_control} API, and then
+call \code{enable_control} again with an
+Amazon Web Services Control Catalog identifier, Amazon Web Services
+Control Tower returns an error message stating that the control is
+already enabled. Similar behavior applies to the
+\code{disable_control} API operation.
+\item Mandatory controls and the landing-zone-level Region deny control
+have Amazon Web Services Control Tower identifiers only.
+}
 
 \strong{Details and examples}
 \itemize{

@@ -2418,13 +2418,13 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #'     DB cluster.
 #' @param PubliclyAccessible Specifies whether the DB cluster is publicly accessible.
 #' 
-#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
-#' endpoint resolves to the private IP address from within the DB cluster's
-#' virtual private cloud (VPC). It resolves to the public IP address from
-#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
-#' controlled by the security group it uses. That public access isn't
-#' permitted if the security group assigned to the DB cluster doesn't
-#' permit it.
+#' When the DB cluster is publicly accessible and you connect from outside
+#' of the DB cluster's virtual private cloud (VPC), its Domain Name System
+#' (DNS) endpoint resolves to the public IP address. When you connect from
+#' within the same VPC as the DB cluster, the endpoint resolves to the
+#' private IP address. Access to the DB cluster is ultimately controlled by
+#' the security group it uses. That public access isn't permitted if the
+#' security group assigned to the DB cluster doesn't permit it.
 #' 
 #' When the DB cluster isn't publicly accessible, it is an internal DB
 #' cluster with a DNS name that resolves to a private IP address.
@@ -3983,13 +3983,13 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' This setting doesn't apply to RDS Custom DB instances.
 #' @param PubliclyAccessible Specifies whether the DB instance is publicly accessible.
 #' 
-#' When the DB instance is publicly accessible, its Domain Name System
-#' (DNS) endpoint resolves to the private IP address from within the DB
-#' instance's virtual private cloud (VPC). It resolves to the public IP
-#' address from outside of the DB instance's VPC. Access to the DB instance
-#' is ultimately controlled by the security group it uses. That public
-#' access is not permitted if the security group assigned to the DB
-#' instance doesn't permit it.
+#' When the DB instance is publicly accessible and you connect from outside
+#' of the DB instance's virtual private cloud (VPC), its Domain Name System
+#' (DNS) endpoint resolves to the public IP address. When you connect from
+#' within the same VPC as the DB instance, the endpoint resolves to the
+#' private IP address. Access to the DB instance is ultimately controlled
+#' by the security group it uses. That public access is not permitted if
+#' the security group assigned to the DB instance doesn't permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -6166,7 +6166,7 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #'
 #' @usage
 #' rds_create_db_shard_group(DBShardGroupIdentifier, DBClusterIdentifier,
-#'   ComputeRedundancy, MaxACU, PubliclyAccessible)
+#'   ComputeRedundancy, MaxACU, MinACU, PubliclyAccessible)
 #'
 #' @param DBShardGroupIdentifier &#91;required&#93; The name of the DB shard group.
 #' @param DBClusterIdentifier &#91;required&#93; The name of the primary DB cluster for the DB shard group.
@@ -6183,6 +6183,8 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #' -   2 - Creates a primary DB instance and two standby instances in
 #'     different AZs for each physical shard.
 #' @param MaxACU &#91;required&#93; The maximum capacity of the DB shard group in Aurora capacity units
+#' (ACUs).
+#' @param MinACU The minimum capacity of the DB shard group in Aurora capacity units
 #' (ACUs).
 #' @param PubliclyAccessible Specifies whether the DB shard group is publicly accessible.
 #' 
@@ -6226,6 +6228,7 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #'   DBShardGroupIdentifier = "string",
 #'   DBClusterIdentifier = "string",
 #'   MaxACU = 123.0,
+#'   MinACU = 123.0,
 #'   ComputeRedundancy = 123,
 #'   Status = "string",
 #'   PubliclyAccessible = TRUE|FALSE,
@@ -6240,6 +6243,7 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #'   DBClusterIdentifier = "string",
 #'   ComputeRedundancy = 123,
 #'   MaxACU = 123.0,
+#'   MinACU = 123.0,
 #'   PubliclyAccessible = TRUE|FALSE
 #' )
 #' ```
@@ -6249,7 +6253,7 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #' @rdname rds_create_db_shard_group
 #'
 #' @aliases rds_create_db_shard_group
-rds_create_db_shard_group <- function(DBShardGroupIdentifier, DBClusterIdentifier, ComputeRedundancy = NULL, MaxACU, PubliclyAccessible = NULL) {
+rds_create_db_shard_group <- function(DBShardGroupIdentifier, DBClusterIdentifier, ComputeRedundancy = NULL, MaxACU, MinACU = NULL, PubliclyAccessible = NULL) {
   op <- new_operation(
     name = "CreateDBShardGroup",
     http_method = "POST",
@@ -6257,7 +6261,7 @@ rds_create_db_shard_group <- function(DBShardGroupIdentifier, DBClusterIdentifie
     host_prefix = "",
     paginator = list()
   )
-  input <- .rds$create_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier, DBClusterIdentifier = DBClusterIdentifier, ComputeRedundancy = ComputeRedundancy, MaxACU = MaxACU, PubliclyAccessible = PubliclyAccessible)
+  input <- .rds$create_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier, DBClusterIdentifier = DBClusterIdentifier, ComputeRedundancy = ComputeRedundancy, MaxACU = MaxACU, MinACU = MinACU, PubliclyAccessible = PubliclyAccessible)
   output <- .rds$create_db_shard_group_output()
   config <- get_config()
   svc <- .rds$service(config, op)
@@ -7511,20 +7515,20 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
 #' 
 #' -   Must match an existing DBClusterIdentifier.
 #' @param SkipFinalSnapshot Specifies whether to skip the creation of a final DB cluster snapshot
-#' before the DB cluster is deleted. If skip is specified, no DB cluster
-#' snapshot is created. If skip isn't specified, a DB cluster snapshot is
-#' created before the DB cluster is deleted. By default, skip isn't
-#' specified, and the DB cluster snapshot is created. By default, this
-#' parameter is disabled.
+#' before RDS deletes the DB cluster. If you set this value to `true`, RDS
+#' doesn't create a final DB cluster snapshot. If you set this value to
+#' `false` or don't specify it, RDS creates a DB cluster snapshot before it
+#' deletes the DB cluster. By default, this parameter is disabled, so RDS
+#' creates a final DB cluster snapshot.
 #' 
-#' You must specify a `FinalDBSnapshotIdentifier` parameter if
-#' `SkipFinalSnapshot` is disabled.
+#' If `SkipFinalSnapshot` is disabled, you must specify a value for the
+#' `FinalDBSnapshotIdentifier` parameter.
 #' @param FinalDBSnapshotIdentifier The DB cluster snapshot identifier of the new DB cluster snapshot
 #' created when `SkipFinalSnapshot` is disabled.
 #' 
-#' Specifying this parameter and also skipping the creation of a final DB
-#' cluster snapshot with the `SkipFinalShapshot` parameter results in an
-#' error.
+#' If you specify this parameter and also skip the creation of a final DB
+#' cluster snapshot with the `SkipFinalShapshot` parameter, the request
+#' results in an error.
 #' 
 #' Constraints:
 #' 
@@ -8853,6 +8857,7 @@ rds_delete_db_security_group <- function(DBSecurityGroupName) {
 #'   DBShardGroupIdentifier = "string",
 #'   DBClusterIdentifier = "string",
 #'   MaxACU = 123.0,
+#'   MinACU = 123.0,
 #'   ComputeRedundancy = 123,
 #'   Status = "string",
 #'   PubliclyAccessible = TRUE|FALSE,
@@ -12847,6 +12852,7 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #'       DBShardGroupIdentifier = "string",
 #'       DBClusterIdentifier = "string",
 #'       MaxACU = 123.0,
+#'       MinACU = 123.0,
 #'       ComputeRedundancy = 123,
 #'       Status = "string",
 #'       PubliclyAccessible = TRUE|FALSE,
@@ -14938,6 +14944,15 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #' @description
 #' Returns a list of resources (for example, DB instances) that have at
 #' least one pending maintenance action.
+#' 
+#' This API follows an eventual consistency model. This means that the
+#' result of the
+#' [`describe_pending_maintenance_actions`][rds_describe_pending_maintenance_actions]
+#' command might not be immediately visible to all subsequent RDS commands.
+#' Keep this in mind when you use
+#' [`describe_pending_maintenance_actions`][rds_describe_pending_maintenance_actions]
+#' immediately after using a previous API command such as
+#' `ApplyPendingMaintenanceActions`.
 #'
 #' @usage
 #' rds_describe_pending_maintenance_actions(ResourceIdentifier, Filters,
@@ -18534,13 +18549,13 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'     `3260`, `3343`, `3389`, `47001`, or `49152-49156`.
 #' @param PubliclyAccessible Specifies whether the DB instance is publicly accessible.
 #' 
-#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
-#' endpoint resolves to the private IP address from within the DB cluster's
-#' virtual private cloud (VPC). It resolves to the public IP address from
-#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
-#' controlled by the security group it uses. That public access isn't
-#' permitted if the security group assigned to the DB cluster doesn't
-#' permit it.
+#' When the DB instance is publicly accessible and you connect from outside
+#' of the DB instance's virtual private cloud (VPC), its Domain Name System
+#' (DNS) endpoint resolves to the public IP address. When you connect from
+#' within the same VPC as the DB instance, the endpoint resolves to the
+#' private IP address. Access to the DB instance is ultimately controlled
+#' by the security group it uses. That public access isn't permitted if the
+#' security group assigned to the DB instance doesn't permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -19821,10 +19836,12 @@ rds_modify_db_recommendation <- function(RecommendationId, Locale = NULL, Status
 #' the new values in the request.
 #'
 #' @usage
-#' rds_modify_db_shard_group(DBShardGroupIdentifier, MaxACU)
+#' rds_modify_db_shard_group(DBShardGroupIdentifier, MaxACU, MinACU)
 #'
 #' @param DBShardGroupIdentifier &#91;required&#93; The name of the DB shard group to modify.
 #' @param MaxACU The maximum capacity of the DB shard group in Aurora capacity units
+#' (ACUs).
+#' @param MinACU The minimum capacity of the DB shard group in Aurora capacity units
 #' (ACUs).
 #'
 #' @return
@@ -19835,6 +19852,7 @@ rds_modify_db_recommendation <- function(RecommendationId, Locale = NULL, Status
 #'   DBShardGroupIdentifier = "string",
 #'   DBClusterIdentifier = "string",
 #'   MaxACU = 123.0,
+#'   MinACU = 123.0,
 #'   ComputeRedundancy = 123,
 #'   Status = "string",
 #'   PubliclyAccessible = TRUE|FALSE,
@@ -19846,7 +19864,8 @@ rds_modify_db_recommendation <- function(RecommendationId, Locale = NULL, Status
 #' ```
 #' svc$modify_db_shard_group(
 #'   DBShardGroupIdentifier = "string",
-#'   MaxACU = 123.0
+#'   MaxACU = 123.0,
+#'   MinACU = 123.0
 #' )
 #' ```
 #'
@@ -19855,7 +19874,7 @@ rds_modify_db_recommendation <- function(RecommendationId, Locale = NULL, Status
 #' @rdname rds_modify_db_shard_group
 #'
 #' @aliases rds_modify_db_shard_group
-rds_modify_db_shard_group <- function(DBShardGroupIdentifier, MaxACU = NULL) {
+rds_modify_db_shard_group <- function(DBShardGroupIdentifier, MaxACU = NULL, MinACU = NULL) {
   op <- new_operation(
     name = "ModifyDBShardGroup",
     http_method = "POST",
@@ -19863,7 +19882,7 @@ rds_modify_db_shard_group <- function(DBShardGroupIdentifier, MaxACU = NULL) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .rds$modify_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier, MaxACU = MaxACU)
+  input <- .rds$modify_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier, MaxACU = MaxACU, MinACU = MinACU)
   output <- .rds$modify_db_shard_group_output()
   config <- get_config()
   svc <- .rds$service(config, op)
@@ -20836,8 +20855,8 @@ rds_modify_tenant_database <- function(DBInstanceIdentifier, TenantDBName, Maste
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each Amazon Web Services Region. To see the time
 #' blocks available, see [Adjusting the Preferred Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in the
-#' *Amazon RDS User Guide.*
+#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+#' in the *Amazon RDS User Guide.*
 #' 
 #' Constraints:
 #' 
@@ -22076,6 +22095,7 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
 #'   DBShardGroupIdentifier = "string",
 #'   DBClusterIdentifier = "string",
 #'   MaxACU = 123.0,
+#'   MinACU = 123.0,
 #'   ComputeRedundancy = 123,
 #'   Status = "string",
 #'   PubliclyAccessible = TRUE|FALSE,

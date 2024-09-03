@@ -42,8 +42,8 @@ canceled.
 If you are removing cache nodes, you must use the \code{CacheNodeIdsToRemove}
 parameter to provide the IDs of the specific cache nodes to remove.
 
-For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 40.
+For clusters running Redis OSS, this value must be 1. For clusters
+running Memcached, this value must be between 1 and 40.
 
 Adding or removing Memcached cache nodes can be applied immediately or
 as a pending operation (see \code{ApplyImmediately}).
@@ -235,7 +235,7 @@ but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster and
 create it anew with the earlier engine version.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+\item{AutoMinorVersionUpgrade}{If you are running Redis OSS engine version 6.0 or later, set this
 parameter to yes if you want to opt-in to the next auto minor version
 upgrade campaign. This parameter is disabled for previous versions.}
 
@@ -274,14 +274,14 @@ must be specified with the \code{auth-token} parameter. Possible values:
 \item DELETE - allowed only when transitioning to RBAC
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis OSS AUTH}}
 
 \item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 
 \item{IpDiscovery}{The network type you choose when modifying a cluster, either \code{ipv4} |
-\code{ipv6}. IPv6 is supported for workloads using Redis engine version 6.2
-onward or Memcached engine version 1.6.6 on all instances built on the
-\href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+\code{ipv6}. IPv6 is supported for workloads using Redis OSS engine version
+6.2 onward or Memcached engine version 1.6.6 on all instances built on
+the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 }
 \description{
 Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration parameters by specifying the parameters and the new values.

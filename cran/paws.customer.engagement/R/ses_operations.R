@@ -1614,7 +1614,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' [`send_bulk_templated_email`][ses_send_bulk_templated_email].
 #' @param Template &#91;required&#93; The template to use when sending this email.
 #' @param TemplateArn The ARN of the template to use when sending this email.
-#' @param DefaultTemplateData A list of replacement values to apply to the template when replacement
+#' @param DefaultTemplateData &#91;required&#93; A list of replacement values to apply to the template when replacement
 #' data is not specified in a Destination object. These values act as a
 #' default or fallback option when no other data is available.
 #' 
@@ -1628,7 +1628,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' @keywords internal
 #'
 #' @rdname ses_send_bulk_templated_email
-ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddresses = NULL, ReturnPath = NULL, ReturnPathArn = NULL, ConfigurationSetName = NULL, DefaultTags = NULL, Template, TemplateArn = NULL, DefaultTemplateData = NULL, Destinations) {
+ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddresses = NULL, ReturnPath = NULL, ReturnPathArn = NULL, ConfigurationSetName = NULL, DefaultTags = NULL, Template, TemplateArn = NULL, DefaultTemplateData, Destinations) {
   op <- new_operation(
     name = "SendBulkTemplatedEmail",
     http_method = "POST",

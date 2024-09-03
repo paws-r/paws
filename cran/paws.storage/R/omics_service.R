@@ -104,7 +104,7 @@ NULL
 #'  \link[=omics_create_annotation_store_version]{create_annotation_store_version} \tab Creates a new version of an annotation store\cr
 #'  \link[=omics_create_multipart_read_set_upload]{create_multipart_read_set_upload} \tab Begins a multipart read set upload\cr
 #'  \link[=omics_create_reference_store]{create_reference_store} \tab Creates a reference store\cr
-#'  \link[=omics_create_run_group]{create_run_group} \tab Creates a run group\cr
+#'  \link[=omics_create_run_group]{create_run_group} \tab You can optionally create a run group to limit the compute resources for the runs that you add to the group\cr
 #'  \link[=omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
 #'  \link[=omics_create_share]{create_share} \tab Creates a cross-account shared resource\cr
 #'  \link[=omics_create_variant_store]{create_variant_store} \tab Creates a variant store\cr
@@ -210,7 +210,7 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
   service_id = "Omics",
   api_version = "2022-11-28",
   signing_name = "omics",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

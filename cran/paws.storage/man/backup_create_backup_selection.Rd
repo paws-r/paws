@@ -12,11 +12,9 @@ backup_create_backup_selection(
 )
 }
 \arguments{
-\item{BackupPlanId}{[required] Uniquely identifies the backup plan to be associated with the selection
-of resources.}
+\item{BackupPlanId}{[required] The ID of the backup plan.}
 
-\item{BackupSelection}{[required] Specifies the body of a request to assign a set of resources to a backup
-plan.}
+\item{BackupSelection}{[required] The body of a request to assign a set of resources to a backup plan.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
 to be retried without the risk of running the operation twice. This

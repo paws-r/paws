@@ -8,6 +8,10 @@ test_that("list_pipelines", {
   expect_error(svc$list_pipelines(), NA)
 })
 
+test_that("list_rule_types", {
+  expect_error(svc$list_rule_types(), NA)
+})
+
 test_that("list_webhooks", {
   expect_error(svc$list_webhooks(), NA)
 })

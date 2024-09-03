@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_delete_user}
 \alias{elasticache_delete_user}
-\title{For Redis engine version 6}
+\title{For Redis OSS engine version 6}
 \usage{
 elasticache_delete_user(UserId)
 }
@@ -10,7 +10,7 @@ elasticache_delete_user(UserId)
 \item{UserId}{[required] The ID of the user.}
 }
 \description{
-For Redis engine version 6.0 onwards: Deletes a user. The user will be removed from all user groups and in turn removed from all replication groups. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
+For Redis OSS engine version 6.0 onwards: Deletes a user. The user will be removed from all user groups and in turn removed from all replication groups. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_user/} for full documentation.
 }

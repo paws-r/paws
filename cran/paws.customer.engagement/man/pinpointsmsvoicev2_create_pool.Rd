@@ -20,14 +20,19 @@ SenderId or SenderIdArn. You can use
 \code{\link[=pinpointsmsvoicev2_describe_phone_numbers]{describe_phone_numbers}} to
 find the values for PhoneNumberId and PhoneNumberArn while
 \code{\link[=pinpointsmsvoicev2_describe_sender_ids]{describe_sender_ids}} can be
-used to get the values for SenderId and SenderIdArn.}
+used to get the values for SenderId and SenderIdArn.
+
+After the pool is created you can add more origination identities to the
+pool by using
+\code{\link[=pinpointsmsvoicev2_associate_origination_identity]{associate_origination_identity}}.}
 
 \item{IsoCountryCode}{[required] The new two-character code, in ISO 3166-1 alpha-2 format, for the
 country or region of the new pool.}
 
 \item{MessageType}{[required] The type of message. Valid values are TRANSACTIONAL for messages that
 are critical or time-sensitive and PROMOTIONAL for messages that aren't
-critical or time-sensitive.}
+critical or time-sensitive. After the pool is created the MessageType
+can't be changed.}
 
 \item{DeletionProtectionEnabled}{By default this is set to false. When set to true the pool can't be
 deleted. You can change this value using the

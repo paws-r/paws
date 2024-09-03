@@ -48,8 +48,8 @@ replication group to the primary role. The nodes of all other clusters
 in the replication group are read replicas.}
 
 \item{SnapshottingClusterId}{The cluster ID that is used as the daily snapshot source for the
-replication group. This parameter cannot be set for Redis (cluster mode
-enabled) replication groups.}
+replication group. This parameter cannot be set for Redis OSS (cluster
+mode enabled) replication groups.}
 
 \item{AutomaticFailoverEnabled}{Determines whether a read replica is automatically promoted to
 read/write primary if the existing primary encounters a failure.
@@ -131,7 +131,7 @@ but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing replication
 group and create it anew with the earlier engine version.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+\item{AutoMinorVersionUpgrade}{If you are running Redis OSS engine version 6.0 or later, set this
 parameter to yes if you want to opt-in to the next auto minor version
 upgrade campaign. This parameter is disabled for previous versions.}
 
@@ -177,7 +177,7 @@ must be specified with the \code{auth-token} parameter. Possible values:
 \item DELETE - allowed only when transitioning to RBAC
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis OSS AUTH}}
 
 \item{UserGroupIdsToAdd}{The ID of the user group you are associating with the replication group.}
 
@@ -190,9 +190,9 @@ group.}
 \item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 
 \item{IpDiscovery}{The network type you choose when modifying a cluster, either \code{ipv4} |
-\code{ipv6}. IPv6 is supported for workloads using Redis engine version 6.2
-onward or Memcached engine version 1.6.6 on all instances built on the
-\href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+\code{ipv6}. IPv6 is supported for workloads using Redis OSS engine version
+6.2 onward or Memcached engine version 1.6.6 on all instances built on
+the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to true. If you are
 enabling in-transit encryption for an existing cluster, you must also
@@ -204,7 +204,7 @@ encryption, with no downtime.
 You must set \code{TransitEncryptionEnabled} to \code{true}, for your existing
 cluster, and set \code{TransitEncryptionMode} to \code{preferred} in the same
 request to allow both encrypted and unencrypted connections at the same
-time. Once you migrate all your Redis clients to use encrypted
+time. Once you migrate all your Redis OSS clients to use encrypted
 connections you can set the value to \code{required} to allow encrypted
 connections only.
 
@@ -214,13 +214,13 @@ after that you can set \code{TransitEncryptionMode} to \code{required}.}
 
 \item{ClusterMode}{Enabled or Disabled. To modify cluster mode from Disabled to Enabled,
 you must first set the cluster mode to Compatible. Compatible mode
-allows your Redis clients to connect using both cluster mode enabled and
-cluster mode disabled. After you migrate all Redis clients to use
-cluster mode enabled, you can then complete cluster mode configuration
-and set the cluster mode to Enabled.}
+allows your Redis OSS clients to connect using both cluster mode enabled
+and cluster mode disabled. After you migrate all Redis OSS clients to
+use cluster mode enabled, you can then complete cluster mode
+configuration and set the cluster mode to Enabled.}
 }
 \description{
-Modifies the settings for a replication group. This is limited to Redis 7 and newer.
+Modifies the settings for a replication group. This is limited to Redis OSS 7 and newer.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group/} for full documentation.
 }

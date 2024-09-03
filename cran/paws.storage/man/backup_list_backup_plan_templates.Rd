@@ -2,8 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_backup_plan_templates}
 \alias{backup_list_backup_plan_templates}
-\title{Returns metadata of your saved backup plan templates, including the
-template ID, name, and the creation and deletion dates}
+\title{Lists the backup plan templates}
 \usage{
 backup_list_backup_plan_templates(NextToken = NULL, MaxResults = NULL)
 }
@@ -13,10 +12,10 @@ if a request is made to return \code{MaxResults} number of items, \code{NextToke
 allows you to return more items in your list starting at the location
 pointed to by the next token.}
 
-\item{MaxResults}{The maximum number of items to be returned.}
+\item{MaxResults}{The maximum number of items to return.}
 }
 \description{
-Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates.
+Lists the backup plan templates.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_list_backup_plan_templates/} for full documentation.
 }

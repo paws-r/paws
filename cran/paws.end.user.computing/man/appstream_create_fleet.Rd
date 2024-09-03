@@ -71,6 +71,13 @@ instance types are available:
 \item stream.graphics.g4dn.8xlarge
 \item stream.graphics.g4dn.12xlarge
 \item stream.graphics.g4dn.16xlarge
+\item stream.graphics.g5.xlarge
+\item stream.graphics.g5.2xlarge
+\item stream.graphics.g5.4xlarge
+\item stream.graphics.g5.8xlarge
+\item stream.graphics.g5.12xlarge
+\item stream.graphics.g5.16xlarge
+\item stream.graphics.g5.24xlarge
 \item stream.graphics-pro.4xlarge
 \item stream.graphics-pro.8xlarge
 \item stream.graphics-pro.16xlarge
@@ -121,7 +128,7 @@ disconnection or network interruption within this time interval, they
 are connected to their previous session. Otherwise, they are connected
 to a new session with a new streaming instance.
 
-Specify a value between 60 and 360000.}
+Specify a value between 60 and 36000.}
 
 \item{Description}{The description to display.}
 
@@ -160,7 +167,7 @@ user activity. If users continue to be idle after the time interval in
 \code{IdleDisconnectTimeoutInSeconds} elapses, they are disconnected.
 
 To prevent users from being disconnected due to inactivity, specify a
-value of 0. Otherwise, specify a value between 60 and 3600. The default
+value of 0. Otherwise, specify a value between 60 and 36000. The default
 value is 0.
 
 If you enable this feature, we recommend that you specify a value that

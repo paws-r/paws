@@ -10,7 +10,8 @@ ec2_modify_ipam(
   Description = NULL,
   AddOperatingRegions = NULL,
   RemoveOperatingRegions = NULL,
-  Tier = NULL
+  Tier = NULL,
+  EnablePrivateGua = NULL
 )
 }
 \arguments{
@@ -36,6 +37,9 @@ the \emph{Amazon VPC IPAM User Guide}.}
 \item{Tier}{IPAM is offered in a Free Tier and an Advanced Tier. For more
 information about the features available in each tier and the costs
 associated with the tiers, see \href{https://aws.amazon.com/vpc/pricing/}{Amazon VPC pricing \> IPAM tab}.}
+
+\item{EnablePrivateGua}{Enable this option to use your own GUA ranges as private IPv6 addresses.
+This option is disabled by default.}
 }
 \description{
 Modify the configurations of an IPAM.

@@ -1396,16 +1396,15 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
 #' both.
 #' @param logStreamNames Filters the results to only logs from the log streams in this list.
 #' 
-#' If you specify a value for both `logStreamNamePrefix` and
-#' `logStreamNames`, the action returns an `InvalidParameterException`
+#' If you specify a value for both `logStreamNames` and
+#' `logStreamNamePrefix`, the action returns an `InvalidParameterException`
 #' error.
 #' @param logStreamNamePrefix Filters the results to include only events from log streams that have
 #' names starting with this prefix.
 #' 
 #' If you specify a value for both `logStreamNamePrefix` and
-#' `logStreamNames`, but the value for `logStreamNamePrefix` does not match
-#' any log stream names specified in `logStreamNames`, the action returns
-#' an `InvalidParameterException` error.
+#' `logStreamNames`, the action returns an `InvalidParameterException`
+#' error.
 #' @param startTime The start of the time range, expressed as the number of milliseconds
 #' after `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp before this
 #' time are not returned.
@@ -2043,7 +2042,7 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' -   **FilterPattern** A filter pattern for subscribing to a filtered
 #'     stream of log events.
 #' 
-#' -   **Distribution**The method used to distribute log data to the
+#' -   **Distribution** The method used to distribute log data to the
 #'     destination. By default, log data is grouped by log stream, but the
 #'     grouping can be set to `Random` for a more even distribution. This
 #'     property is only applicable when the destination is an Kinesis Data
@@ -2238,9 +2237,11 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' `arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234`
 #' @param logType &#91;required&#93; Defines the type of log that the source is sending.
 #' 
+#' -   For Amazon Bedrock, the valid value is `APPLICATION_LOGS`.
+#' 
 #' -   For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
 #' 
-#' -   For IAM Identity Centerr, the valid value is `ERROR_LOGS`.
+#' -   For IAM Identity Center, the valid value is `ERROR_LOGS`.
 #' 
 #' -   For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`,
 #'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and
@@ -2373,11 +2374,12 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' [`put_log_events`][cloudwatchlogs_put_log_events] actions are now
 #' accepted and never return `InvalidSequenceTokenException` or
 #' `DataAlreadyAcceptedException` even if the sequence token is not valid.
+#' @param entity Reserved for future use.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_log_events
-cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents, sequenceToken = NULL) {
+cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents, sequenceToken = NULL, entity = NULL) {
   op <- new_operation(
     name = "PutLogEvents",
     http_method = "POST",
@@ -2385,7 +2387,7 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
     host_prefix = "",
     paginator = list()
   )
-  input <- .cloudwatchlogs$put_log_events_input(logGroupName = logGroupName, logStreamName = logStreamName, logEvents = logEvents, sequenceToken = sequenceToken)
+  input <- .cloudwatchlogs$put_log_events_input(logGroupName = logGroupName, logStreamName = logStreamName, logEvents = logEvents, sequenceToken = sequenceToken, entity = entity)
   output <- .cloudwatchlogs$put_log_events_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)

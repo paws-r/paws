@@ -104,7 +104,7 @@ appropriate time range.}
 
 \item{ACLName}{[required] The name of the Access Control List to associate with the cluster.}
 
-\item{EngineVersion}{The version number of the Redis engine to be used for the cluster.}
+\item{EngineVersion}{The version number of the Redis OSS engine to be used for the cluster.}
 
 \item{AutoMinorVersionUpgrade}{When set to true, the cluster will automatically receive minor engine
 version upgrades after launch.}

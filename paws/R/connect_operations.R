@@ -1940,6 +1940,10 @@ connect_create_hours_of_operation <- function(InstanceId, Name, Description = NU
 #' Service (Amazon S3) or Amazon Kinesis. It also does not allow for any
 #' configurations on features, such as Contact Lens for Amazon Connect.
 #' 
+#' For more information, see [Create an Amazon Connect
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-instances.html)
+#' in the *Amazon Connect Administrator Guide*.
+#' 
 #' Amazon Connect enforces a limit on the total number of instances that
 #' you can create or delete in 30 days. If you exceed this limit, you will
 #' get an error message indicating there has been an excessive number of
@@ -2294,7 +2298,11 @@ connect_create_persistent_contact_association <- function(InstanceId, InitialCon
 #'
 #' @description
 #' Creates a new predefined attribute for the specified Amazon Connect
-#' instance.
+#' instance. *Predefined attributes* are attributes in an Amazon Connect
+#' instance that can be used to route contacts to an agent or pools of
+#' agents within a queue. For more information, see [Create predefined
+#' attributes for routing contacts to
+#' agents](https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html).
 #'
 #' @usage
 #' connect_create_predefined_attribute(InstanceId, Name, Values)
@@ -2837,6 +2845,13 @@ connect_create_rule <- function(InstanceId, Name, TriggerEventSource, Function, 
 #'
 #' @description
 #' Creates a security profile.
+#' 
+#' For information about security profiles, see [Security
+#' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html)
+#' in the *Amazon Connect Administrator Guide*. For a mapping of the API
+#' name and user interface name of the security profile permissions, see
+#' [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
 #'
 #' @usage
 #' connect_create_security_profile(SecurityProfileName, Description,
@@ -4044,7 +4059,10 @@ connect_delete_hours_of_operation <- function(InstanceId, HoursOfOperationId) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
-#' Deletes the Amazon Connect instance.
+#' Deletes the Amazon Connect instance. For more information, see [Delete
+#' your Amazon Connect
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/delete-connect-instance.html)
+#' in the *Amazon Connect Administrator Guide*.
 #' 
 #' Amazon Connect enforces a limit on the total number of instances that
 #' you can create or delete in 30 days. If you exceed this limit, you will
@@ -4244,7 +4262,8 @@ connect_delete_prompt <- function(InstanceId, PromptId) {
 #' Deletes a queue
 #'
 #' @description
-#' Deletes a queue.
+#' Deletes a queue. It isn't possible to delete a queue by using the Amazon
+#' Connect admin website.
 #'
 #' @usage
 #' connect_delete_queue(InstanceId, QueueId)
@@ -6143,7 +6162,11 @@ connect_describe_phone_number <- function(PhoneNumberId) {
 #'
 #' @description
 #' Describes a predefined attribute for the specified Amazon Connect
-#' instance.
+#' instance. *Predefined attributes* are attributes in an Amazon Connect
+#' instance that can be used to route contacts to an agent or pools of
+#' agents within a queue. For more information, see [Create predefined
+#' attributes for routing contacts to
+#' agents](https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html).
 #'
 #' @usage
 #' connect_describe_predefined_attribute(InstanceId, Name)
@@ -6644,10 +6667,17 @@ connect_describe_rule <- function(InstanceId, RuleId) {
 }
 .connect$operations$describe_rule <- connect_describe_rule
 
-#' Gets basic information about the security profle
+#' Gets basic information about the security profile
 #'
 #' @description
-#' Gets basic information about the security profle.
+#' Gets basic information about the security profile.
+#' 
+#' For information about security profiles, see [Security
+#' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html)
+#' in the *Amazon Connect Administrator Guide*. For a mapping of the API
+#' name and user interface name of the security profile permissions, see
+#' [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
 #'
 #' @usage
 #' connect_describe_security_profile(SecurityProfileId, InstanceId)
@@ -9139,6 +9169,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' -   Agents
 #' 
+#' -   Campaigns
+#' 
 #' -   Channels
 #' 
 #' -   Feature
@@ -9154,6 +9186,9 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' At least one filter must be passed from queues, routing profiles,
 #' agents, or user hierarchy groups.
 #' 
+#' For metrics for outbound campaigns analytics, you can also use campaigns
+#' to satisfy at least one filter requirement.
+#' 
 #' To filter by phone number, see [Create a historical metrics
 #' report](https://docs.aws.amazon.com/connect/latest/adminguide/create-historical-metrics-report.html)
 #' in the *Amazon Connect Administrator Guide*.
@@ -9164,9 +9199,10 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #'     single request. Valid filter keys: `AGENT` |
 #'     `AGENT_HIERARCHY_LEVEL_ONE` | `AGENT_HIERARCHY_LEVEL_TWO` |
 #'     `AGENT_HIERARCHY_LEVEL_THREE` | `AGENT_HIERARCHY_LEVEL_FOUR` |
-#'     `AGENT_HIERARCHY_LEVEL_FIVE` | `CASE_TEMPLATE_ARN` | `CASE_STATUS` |
-#'     `CHANNEL` | `contact/segmentAttributes/connect:Subtype` | `FEATURE`
-#'     | `FLOW_TYPE` | `FLOWS_NEXT_RESOURCE_ID` |
+#'     `AGENT_HIERARCHY_LEVEL_FIVE` | `ANSWERING_MACHINE_DETECTION_STATUS`
+#'     | `CAMPAIGN` | `CASE_TEMPLATE_ARN` | `CASE_STATUS` | `CHANNEL` |
+#'     `contact/segmentAttributes/connect:Subtype` | `DISCONNECT_REASON` |
+#'     `FEATURE` | `FLOW_TYPE` | `FLOWS_NEXT_RESOURCE_ID` |
 #'     `FLOWS_NEXT_RESOURCE_QUEUE_ID` | `FLOWS_OUTCOME_TYPE` |
 #'     `FLOWS_RESOURCE_ID` | `INITIATION_METHOD` |
 #'     `RESOURCE_PUBLISHED_TIMESTAMP` | `ROUTING_PROFILE` |
@@ -9202,6 +9238,9 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #'         Connect enabled as part of the flow
 #' 
 #'     This filter is available only for contact record-driven metrics.
+#' 
+#'     [Campaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_Campaign.html)
+#'     ARNs are valid `filterValues` for the `CAMPAIGN` filter key.
 #' @param Groupings The grouping applied to the metrics that are returned. For example, when
 #' results are grouped by queue, the metrics returned are grouped by queue.
 #' The values that are returned apply to the metrics for each queue. They
@@ -9212,11 +9251,12 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid grouping keys: `AGENT` | `AGENT_HIERARCHY_LEVEL_ONE` |
 #' `AGENT_HIERARCHY_LEVEL_TWO` | `AGENT_HIERARCHY_LEVEL_THREE` |
 #' `AGENT_HIERARCHY_LEVEL_FOUR` | `AGENT_HIERARCHY_LEVEL_FIVE` |
-#' `CASE_TEMPLATE_ARN` | `CASE_STATUS` | `CHANNEL` |
-#' `contact/segmentAttributes/connect:Subtype` | `FLOWS_RESOURCE_ID` |
-#' `FLOWS_MODULE_RESOURCE_ID` | `FLOW_TYPE` | `FLOWS_OUTCOME_TYPE` |
-#' `INITIATION_METHOD` | `Q_CONNECT_ENABLED` | `QUEUE` |
-#' `RESOURCE_PUBLISHED_TIMESTAMP` | `ROUTING_PROFILE` |
+#' `ANSWERING_MACHINE_DETECTION_STATUS` | `CAMPAIGN` | `CASE_TEMPLATE_ARN`
+#' | `CASE_STATUS` | `CHANNEL` |
+#' `contact/segmentAttributes/connect:Subtype` | `DISCONNECT_REASON` |
+#' `FLOWS_RESOURCE_ID` | `FLOWS_MODULE_RESOURCE_ID` | `FLOW_TYPE` |
+#' `FLOWS_OUTCOME_TYPE` | `INITIATION_METHOD` | `Q_CONNECT_ENABLED` |
+#' `QUEUE` | `RESOURCE_PUBLISHED_TIMESTAMP` | `ROUTING_PROFILE` |
 #' `ROUTING_STEP_EXPRESSION`
 #' @param Metrics &#91;required&#93; The metrics to retrieve. Specify the name, groupings, and filters for
 #' each metric. The following historical metrics are available. For a
@@ -9441,6 +9481,18 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' UI name: [Average conversation
 #' duration](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-conversation-duration-historical)
 #' 
+#' **AVG_DIALS_PER_MINUTE**
+#' 
+#' This metric is available only for contacts analyzed by outbound
+#' campaigns analytics.
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Campaign, Agent, Queue, Routing Profile
+#' 
+#' UI name: [Average dials per
+#' minute](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-dials-historical)
+#' 
 #' **AVG_FLOW_TIME**
 #' 
 #' Unit: Seconds
@@ -9640,6 +9692,50 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' UI name: [Average customer talk
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-customer-historical)
 #' 
+#' **AVG_WAIT_TIME_AFTER_CUSTOMER_CONNECTION**
+#' 
+#' This metric is available only for contacts analyzed by outbound
+#' campaigns analytics.
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Campaign
+#' 
+#' UI name: [Average wait time after customer
+#' connection](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-wait-time-historical)
+#' 
+#' **CAMPAIGN_CONTACTS_ABANDONED_AFTER_X**
+#' 
+#' This metric is available only for contacts analyzed by outbound
+#' campaigns analytics.
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Campaign, Agent
+#' 
+#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
+#' (inclusive), in seconds. For `Comparison`, you must enter `GT` (for
+#' *Greater than*).
+#' 
+#' UI name: [Campaign contacts abandoned after
+#' X](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-contacts-abandoned-historical)
+#' 
+#' **CAMPAIGN_CONTACTS_ABANDONED_AFTER_X_RATE**
+#' 
+#' This metric is available only for contacts analyzed by outbound
+#' campaigns analytics.
+#' 
+#' Unit: Percent
+#' 
+#' Valid groupings and filters: Campaign, Agent
+#' 
+#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
+#' (inclusive), in seconds. For `Comparison`, you must enter `GT` (for
+#' *Greater than*).
+#' 
+#' UI name: [Campaign contacts abandoned after X
+#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-contacts-abandoned-rate-historical)
+#' 
 #' **CASES_CREATED**
 #' 
 #' Unit: Count
@@ -9649,7 +9745,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Cases
-#' created](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html##cases-created-historical)
+#' created](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-created-historical)
 #' 
 #' **CONTACTS_CREATED**
 #' 
@@ -9783,7 +9879,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
 #' "Less than").
 #' 
-#' UI name: This metric is not available in Amazon Connect admin website.
+#' UI name: [Contacts removed from queue in X
+#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-removed-historical)
 #' 
 #' **CONTACTS_RESOLVED_IN_X**
 #' 
@@ -9843,6 +9940,41 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' UI name: [Current
 #' cases](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#current-cases-historical)
 #' 
+#' **DELIVERY_ATTEMPTS**
+#' 
+#' This metric is available only for contacts analyzed by outbound
+#' campaigns analytics.
+#' 
+#' Unit: Count
+#' 
+#' Valid metric filter key: `ANSWERING_MACHINE_DETECTION_STATUS`,
+#' `DISCONNECT_REASON`
+#' 
+#' Valid groupings and filters: Campaign, Agent, Queue, Routing Profile,
+#' Answering Machine Detection Status, Disconnect Reason
+#' 
+#' UI name: [Delivery
+#' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempts-historical)
+#' 
+#' **DELIVERY_ATTEMPT_DISPOSITION_RATE**
+#' 
+#' This metric is available only for contacts analyzed by outbound
+#' campaigns analytics, and with the answering machine detection enabled.
+#' 
+#' Unit: Percent
+#' 
+#' Valid metric filter key: `ANSWERING_MACHINE_DETECTION_STATUS`,
+#' `DISCONNECT_REASON`
+#' 
+#' Valid groupings and filters: Campaign, Agent, Answering Machine
+#' Detection Status, Disconnect Reason
+#' 
+#' Answering Machine Detection Status and Disconnect Reason are valid
+#' filters but not valid groupings.
+#' 
+#' UI name: [Delivery attempt disposition
+#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempt-disposition-rate-historical)
+#' 
 #' **FLOWS_OUTCOME**
 #' 
 #' Unit: Count
@@ -9867,6 +9999,18 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' UI name: [Flows
 #' started](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-started-historical)
+#' 
+#' **HUMAN_ANSWERED_CALLS**
+#' 
+#' This metric is available only for contacts analyzed by outbound
+#' campaigns analytics, and with the answering machine detection enabled.
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Campaign, Agent
+#' 
+#' UI name: [Human
+#' answered](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#human-answered-historical)
 #' 
 #' **MAX_FLOW_TIME**
 #' 
@@ -12445,6 +12589,11 @@ connect_list_phone_numbers_v2 <- function(TargetArn = NULL, InstanceId = NULL, M
 #'
 #' @description
 #' Lists predefined attributes for the specified Amazon Connect instance.
+#' *Predefined attributes* are attributes in an Amazon Connect instance
+#' that can be used to route contacts to an agent or pools of agents within
+#' a queue. For more information, see [Create predefined attributes for
+#' routing contacts to
+#' agents](https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html).
 #'
 #' @usage
 #' connect_list_predefined_attributes(InstanceId, NextToken, MaxResults)
@@ -12937,6 +13086,11 @@ connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults
 #'             "2015-01-01"
 #'           )
 #'         )
+#'       ),
+#'       PostContactSummary = list(
+#'         Content = "string",
+#'         Status = "FAILED"|"COMPLETED",
+#'         FailureCode = "QUOTA_EXCEEDED"|"INSUFFICIENT_CONVERSATION_CONTENT"|"FAILED_SAFETY_GUIDELINES"|"INVALID_ANALYSIS_CONFIGURATION"|"INTERNAL_ERROR"
 #'       )
 #'     )
 #'   ),
@@ -12953,7 +13107,7 @@ connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults
 #'   NextToken = "string",
 #'   OutputType = "Raw"|"Redacted",
 #'   SegmentTypes = list(
-#'     "Transcript"|"Categories"|"Issues"|"Event"|"Attachments"
+#'     "Transcript"|"Categories"|"Issues"|"Event"|"Attachments"|"PostContactSummary"
 #'   )
 #' )
 #' ```
@@ -13364,6 +13518,13 @@ connect_list_security_profile_applications <- function(SecurityProfileId, Instan
 #'
 #' @description
 #' Lists the permissions granted to a security profile.
+#' 
+#' For information about security profiles, see [Security
+#' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html)
+#' in the *Amazon Connect Administrator Guide*. For a mapping of the API
+#' name and user interface name of the security profile permissions, see
+#' [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
 #'
 #' @usage
 #' connect_list_security_profile_permissions(SecurityProfileId, InstanceId,
@@ -13436,7 +13597,10 @@ connect_list_security_profile_permissions <- function(SecurityProfileId, Instanc
 #' 
 #' For more information about security profiles, see [Security
 #' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html)
-#' in the *Amazon Connect Administrator Guide*.
+#' in the *Amazon Connect Administrator Guide*. For a mapping of the API
+#' name and user interface name of the security profile permissions, see
+#' [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
 #'
 #' @usage
 #' connect_list_security_profiles(InstanceId, NextToken, MaxResults)
@@ -14638,6 +14802,124 @@ connect_resume_contact_recording <- function(InstanceId, ContactId, InitialConta
 }
 .connect$operations$resume_contact_recording <- connect_resume_contact_recording
 
+#' Searches AgentStatuses in an Amazon Connect instance, with optional
+#' filtering
+#'
+#' @description
+#' Searches AgentStatuses in an Amazon Connect instance, with optional
+#' filtering.
+#'
+#' @usage
+#' connect_search_agent_statuses(InstanceId, NextToken, MaxResults,
+#'   SearchFilter, SearchCriteria)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
+#' instanceId in the ARN of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return agent statuses.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AgentStatuses = list(
+#'     list(
+#'       AgentStatusARN = "string",
+#'       AgentStatusId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Type = "ROUTABLE"|"CUSTOM"|"OFFLINE",
+#'       DisplayOrder = 123,
+#'       State = "ENABLED"|"DISABLED",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedRegion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_agent_statuses(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchFilter = list(
+#'     AttributeFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           TagConditions = list(
+#'             list(
+#'               TagKey = "string",
+#'               TagValue = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       AndCondition = list(
+#'         TagConditions = list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_agent_statuses
+#'
+#' @aliases connect_search_agent_statuses
+connect_search_agent_statuses <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchAgentStatuses",
+    http_method = "POST",
+    http_path = "/search-agent-statuses",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "AgentStatuses")
+  )
+  input <- .connect$search_agent_statuses_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_agent_statuses_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_agent_statuses <- connect_search_agent_statuses
+
 #' Searches for available phone numbers that you can claim to your Amazon
 #' Connect instance or traffic distribution group
 #'
@@ -15240,10 +15522,15 @@ connect_search_hours_of_operations <- function(InstanceId, NextToken = NULL, Max
 }
 .connect$operations$search_hours_of_operations <- connect_search_hours_of_operations
 
-#' Predefined attributes that meet certain criteria
+#' Searches predefined attributes that meet certain criteria
 #'
 #' @description
-#' Predefined attributes that meet certain criteria.
+#' Searches predefined attributes that meet certain criteria. *Predefined
+#' attributes* are attributes in an Amazon Connect instance that can be
+#' used to route contacts to an agent or pools of agents within a queue.
+#' For more information, see [Create predefined attributes for routing
+#' contacts to
+#' agents](https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html).
 #'
 #' @usage
 #' connect_search_predefined_attributes(InstanceId, NextToken, MaxResults,
@@ -15703,6 +15990,24 @@ connect_search_quick_connects <- function(InstanceId, NextToken = NULL, MaxResul
 #' @param ResourceTypes The list of resource types to be used to search tags from. If not
 #' provided or if any empty list is provided, this API will search from all
 #' supported resource types.
+#' 
+#' **Supported resource types**
+#' 
+#' -   AGENT
+#' 
+#' -   ROUTING_PROFILE
+#' 
+#' -   STANDARD_QUEUE
+#' 
+#' -   SECURITY_PROFILE
+#' 
+#' -   OPERATING_HOURS
+#' 
+#' -   PROMPT
+#' 
+#' -   CONTACT_FLOW
+#' 
+#' -   FLOW_MODULE
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -15907,6 +16212,13 @@ connect_search_routing_profiles <- function(InstanceId, NextToken = NULL, MaxRes
 #' @description
 #' Searches security profiles in an Amazon Connect instance, with optional
 #' filtering.
+#' 
+#' For information about security profiles, see [Security
+#' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html)
+#' in the *Amazon Connect Administrator Guide*. For a mapping of the API
+#' name and user interface name of the security profile permissions, see
+#' [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
 #'
 #' @usage
 #' connect_search_security_profiles(InstanceId, NextToken, MaxResults,
@@ -16016,6 +16328,172 @@ connect_search_security_profiles <- function(InstanceId, NextToken = NULL, MaxRe
   return(response)
 }
 .connect$operations$search_security_profiles <- connect_search_security_profiles
+
+#' Searches UserHierarchyGroups in an Amazon Connect instance, with
+#' optional filtering
+#'
+#' @description
+#' Searches UserHierarchyGroups in an Amazon Connect instance, with
+#' optional filtering.
+#' 
+#' The UserHierarchyGroup with `"LevelId": "0"` is the foundation for
+#' building levels on top of an instance. It is not user-definable, nor is
+#' it visible in the UI.
+#'
+#' @usage
+#' connect_search_user_hierarchy_groups(InstanceId, NextToken, MaxResults,
+#'   SearchFilter, SearchCriteria)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
+#' instanceId in the ARN of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return UserHierarchyGroups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserHierarchyGroups = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       LevelId = "string",
+#'       HierarchyPath = list(
+#'         LevelOne = list(
+#'           Id = "string",
+#'           Arn = "string",
+#'           Name = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastModifiedRegion = "string"
+#'         ),
+#'         LevelTwo = list(
+#'           Id = "string",
+#'           Arn = "string",
+#'           Name = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastModifiedRegion = "string"
+#'         ),
+#'         LevelThree = list(
+#'           Id = "string",
+#'           Arn = "string",
+#'           Name = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastModifiedRegion = "string"
+#'         ),
+#'         LevelFour = list(
+#'           Id = "string",
+#'           Arn = "string",
+#'           Name = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastModifiedRegion = "string"
+#'         ),
+#'         LevelFive = list(
+#'           Id = "string",
+#'           Arn = "string",
+#'           Name = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastModifiedRegion = "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedRegion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_user_hierarchy_groups(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchFilter = list(
+#'     AttributeFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           TagConditions = list(
+#'             list(
+#'               TagKey = "string",
+#'               TagValue = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       AndCondition = list(
+#'         TagConditions = list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_user_hierarchy_groups
+#'
+#' @aliases connect_search_user_hierarchy_groups
+connect_search_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchUserHierarchyGroups",
+    http_method = "POST",
+    http_path = "/search-user-hierarchy-groups",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "ApproximateTotalCount"), output_token = "NextToken", result_key = "UserHierarchyGroups")
+  )
+  input <- .connect$search_user_hierarchy_groups_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_user_hierarchy_groups_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_user_hierarchy_groups <- connect_search_user_hierarchy_groups
 
 #' Searches users in an Amazon Connect instance, with optional filtering
 #'
@@ -16151,6 +16629,24 @@ connect_search_security_profiles <- function(InstanceId, NextToken = NULL, MaxRe
 #'       FieldName = "string",
 #'       Value = "string",
 #'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     ),
+#'     ListCondition = list(
+#'       TargetListType = "PROFICIENCIES",
+#'       Conditions = list(
+#'         list(
+#'           StringCondition = list(
+#'             FieldName = "string",
+#'             Value = "string",
+#'             ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'           ),
+#'           NumberCondition = list(
+#'             FieldName = "string",
+#'             MinValue = 123,
+#'             MaxValue = 123,
+#'             ComparisonType = "GREATER_OR_EQUAL"|"GREATER"|"LESSER_OR_EQUAL"|"LESSER"|"EQUAL"|"NOT_EQUAL"|"RANGE"
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     HierarchyGroupCondition = list(
 #'       Value = "string",
@@ -18636,7 +19132,7 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #'
 #' @usage
 #' connect_update_contact_routing_data(InstanceId, ContactId,
-#'   QueueTimeAdjustmentSeconds, QueuePriority)
+#'   QueueTimeAdjustmentSeconds, QueuePriority, RoutingCriteria)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -18651,6 +19147,8 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #' contacts is 5. You can raise the priority of a contact compared to other
 #' contacts in the queue by assigning them a higher priority, such as 1 or
 #' 2.
+#' @param RoutingCriteria Updates the routing criteria on the contact. These properties can be
+#' used to change how a contact is routed within the queue.
 #'
 #' @return
 #' An empty list.
@@ -18661,7 +19159,37 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #'   InstanceId = "string",
 #'   ContactId = "string",
 #'   QueueTimeAdjustmentSeconds = 123,
-#'   QueuePriority = 123
+#'   QueuePriority = 123,
+#'   RoutingCriteria = list(
+#'     Steps = list(
+#'       list(
+#'         Expiry = list(
+#'           DurationInSeconds = 123
+#'         ),
+#'         Expression = list(
+#'           AttributeCondition = list(
+#'             Name = "string",
+#'             Value = "string",
+#'             ProficiencyLevel = 123.0,
+#'             MatchCriteria = list(
+#'               AgentsCriteria = list(
+#'                 AgentIds = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ComparisonOperator = "string"
+#'           ),
+#'           AndExpression = list(
+#'             list()
+#'           ),
+#'           OrExpression = list(
+#'             list()
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -18670,7 +19198,7 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #' @rdname connect_update_contact_routing_data
 #'
 #' @aliases connect_update_contact_routing_data
-connect_update_contact_routing_data <- function(InstanceId, ContactId, QueueTimeAdjustmentSeconds = NULL, QueuePriority = NULL) {
+connect_update_contact_routing_data <- function(InstanceId, ContactId, QueueTimeAdjustmentSeconds = NULL, QueuePriority = NULL, RoutingCriteria = NULL) {
   op <- new_operation(
     name = "UpdateContactRoutingData",
     http_method = "POST",
@@ -18678,7 +19206,7 @@ connect_update_contact_routing_data <- function(InstanceId, ContactId, QueueTime
     host_prefix = "",
     paginator = list()
   )
-  input <- .connect$update_contact_routing_data_input(InstanceId = InstanceId, ContactId = ContactId, QueueTimeAdjustmentSeconds = QueueTimeAdjustmentSeconds, QueuePriority = QueuePriority)
+  input <- .connect$update_contact_routing_data_input(InstanceId = InstanceId, ContactId = ContactId, QueueTimeAdjustmentSeconds = QueueTimeAdjustmentSeconds, QueuePriority = QueuePriority, RoutingCriteria = RoutingCriteria)
   output <- .connect$update_contact_routing_data_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -19323,7 +19851,11 @@ connect_update_phone_number_metadata <- function(PhoneNumberId, PhoneNumberDescr
 #'
 #' @description
 #' Updates a predefined attribute for the specified Amazon Connect
-#' instance.
+#' instance. *Predefined attributes* are attributes in an Amazon Connect
+#' instance that can be used to route contacts to an agent or pools of
+#' agents within a queue. For more information, see [Create predefined
+#' attributes for routing contacts to
+#' agents](https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html).
 #'
 #' @usage
 #' connect_update_predefined_attribute(InstanceId, Name, Values)
@@ -20279,6 +20811,13 @@ connect_update_rule <- function(RuleId, InstanceId, Name, Function, Actions, Pub
 #'
 #' @description
 #' Updates a security profile.
+#' 
+#' For information about security profiles, see [Security
+#' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html)
+#' in the *Amazon Connect Administrator Guide*. For a mapping of the API
+#' name and user interface name of the security profile permissions, see
+#' [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
 #'
 #' @usage
 #' connect_update_security_profile(Description, Permissions,

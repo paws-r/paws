@@ -8,7 +8,7 @@ sesv2_put_account_details(
   MailType,
   WebsiteURL,
   ContactLanguage = NULL,
-  UseCaseDescription,
+  UseCaseDescription = NULL,
   AdditionalContactEmailAddresses = NULL,
   ProductionAccessEnabled = NULL
 )
@@ -21,7 +21,7 @@ type of content that you plan to send.}
 
 \item{ContactLanguage}{The language you would prefer to be contacted with.}
 
-\item{UseCaseDescription}{[required] A description of the types of email that you plan to send.}
+\item{UseCaseDescription}{A description of the types of email that you plan to send.}
 
 \item{AdditionalContactEmailAddresses}{Additional email addresses that you would like to be notified regarding
 Amazon SES matters.}

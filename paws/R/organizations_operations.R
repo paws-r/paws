@@ -2440,7 +2440,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' that is specified by `ServicePrincipal`) with Organizations. When you
 #' disable integration, the specified service no longer can create a
 #' [service-linked
-#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html)
 #' in *new* accounts in your organization. This means the service can't
 #' perform operations on your behalf on any new accounts in your
 #' organization. The service can still perform operations in older accounts
@@ -2659,7 +2659,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' that is specified by `ServicePrincipal`) with Organizations. When you
 #' enable integration, you allow the specified service to create a
 #' [service-linked
-#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html)
 #' in all the accounts in your organization. This allows the service to
 #' perform operations on your behalf in your organization and its accounts.
 #' 

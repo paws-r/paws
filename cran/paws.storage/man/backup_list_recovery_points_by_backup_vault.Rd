@@ -21,8 +21,7 @@ backup_list_recovery_points_by_backup_vault(
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the Amazon Web Services Region where they are created. They
-consist of lowercase letters, numbers, and hyphens.
+them and the Amazon Web Services Region where they are created.
 
 Backup vault name might not be available when a supported service
 creates the backup.}
@@ -50,13 +49,14 @@ Resource Name (ARN).}
 \item \code{EFS} for Amazon Elastic File System
 \item \code{FSx} for Amazon FSx
 \item \code{Neptune} for Amazon Neptune
-\item \code{Redshift} for Amazon Redshift
 \item \code{RDS} for Amazon Relational Database Service
-\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases
+\item \code{Redshift} for Amazon Redshift
+\item \code{S3} for Amazon Simple Storage Service (Amazon S3)
+\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases on Amazon Elastic
+Compute Cloud instances
 \item \verb{Storage Gateway} for Storage Gateway
-\item \code{S3} for Amazon S3
 \item \code{Timestream} for Amazon Timestream
-\item \code{VirtualMachine} for virtual machines
+\item \code{VirtualMachine} for VMware virtual machines
 }}
 
 \item{ByBackupPlanId}{Returns only recovery points that match the specified backup plan ID.}

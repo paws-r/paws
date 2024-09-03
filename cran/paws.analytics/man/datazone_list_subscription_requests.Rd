@@ -43,7 +43,10 @@ list the next set of subscription requests.}
 
 \item{sortOrder}{Specifies the sort order for the results of this action.}
 
-\item{status}{Specifies the status of the subscription requests.}
+\item{status}{Specifies the status of the subscription requests.
+
+This is not a required parameter, but if not specified, by default,
+Amazon DataZone returns only \code{PENDING} subscription requests.}
 
 \item{subscribedListingId}{The identifier of the subscribed listing.}
 }

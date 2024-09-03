@@ -19,7 +19,8 @@ firehose_create_delivery_stream(
   Tags = NULL,
   AmazonOpenSearchServerlessDestinationConfiguration = NULL,
   MSKSourceConfiguration = NULL,
-  SnowflakeDestinationConfiguration = NULL
+  SnowflakeDestinationConfiguration = NULL,
+  IcebergDestinationConfiguration = NULL
 )
 }
 \arguments{
@@ -95,6 +96,10 @@ Service. You can specify only one destination.}
 \item{MSKSourceConfiguration}{}
 
 \item{SnowflakeDestinationConfiguration}{Configure Snowflake destination}
+
+\item{IcebergDestinationConfiguration}{Configure Apache Iceberg Tables destination.
+
+Amazon Data Firehose is in preview release and is subject to change.}
 }
 \description{
 Creates a Firehose delivery stream.

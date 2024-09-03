@@ -27,8 +27,6 @@ each supported upstream registry.
 \item GitHub Container Registry (\code{github-container-registry}) - \code{ghcr.io}
 \item Microsoft Azure Container Registry (\code{azure-container-registry}) -
 \verb{<custom>.azurecr.io}
-\item GitLab Container Registry (\code{gitlab-container-registry}) -
-\code{registry.gitlab.com}
 }}
 
 \item{registryId}{The Amazon Web Services account ID associated with the registry to

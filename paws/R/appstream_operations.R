@@ -809,7 +809,7 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
 #'       S3Key = "string"
 #'     ),
 #'     Platforms = list(
-#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
+#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
 #'     ),
 #'     InstanceFamilies = list(
 #'       "string"
@@ -835,7 +835,7 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
 #'   WorkingDirectory = "string",
 #'   LaunchParameters = "string",
 #'   Platforms = list(
-#'     "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
+#'     "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
 #'   ),
 #'   InstanceFamilies = list(
 #'     "string"
@@ -1134,6 +1134,20 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' -   stream.graphics.g4dn.16xlarge
 #' 
+#' -   stream.graphics.g5.xlarge
+#' 
+#' -   stream.graphics.g5.2xlarge
+#' 
+#' -   stream.graphics.g5.4xlarge
+#' 
+#' -   stream.graphics.g5.8xlarge
+#' 
+#' -   stream.graphics.g5.12xlarge
+#' 
+#' -   stream.graphics.g5.16xlarge
+#' 
+#' -   stream.graphics.g5.24xlarge
+#' 
 #' -   stream.graphics-pro.4xlarge
 #' 
 #' -   stream.graphics-pro.8xlarge
@@ -1183,7 +1197,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' are connected to their previous session. Otherwise, they are connected
 #' to a new session with a new streaming instance.
 #' 
-#' Specify a value between 60 and 360000.
+#' Specify a value between 60 and 36000.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
@@ -1217,7 +1231,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' `IdleDisconnectTimeoutInSeconds` elapses, they are disconnected.
 #' 
 #' To prevent users from being disconnected due to inactivity, specify a
-#' value of 0. Otherwise, specify a value between 60 and 3600. The default
+#' value of 0. Otherwise, specify a value between 60 and 36000. The default
 #' value is 0.
 #' 
 #' If you enable this feature, we recommend that you specify a value that
@@ -1308,7 +1322,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     IdleDisconnectTimeoutInSeconds = 123,
 #'     IamRoleArn = "string",
 #'     StreamView = "APP"|"DESKTOP",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     MaxConcurrentSessions = 123,
 #'     UsbDeviceFilterStrings = list(
 #'       "string"
@@ -1357,7 +1371,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   IdleDisconnectTimeoutInSeconds = 123,
 #'   IamRoleArn = "string",
 #'   StreamView = "APP"|"DESKTOP",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'   MaxConcurrentSessions = 123,
 #'   UsbDeviceFilterStrings = list(
 #'     "string"
@@ -1537,7 +1551,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -1571,7 +1585,8 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'         EndpointType = "STREAMING",
 #'         VpceId = "string"
 #'       )
-#'     )
+#'     ),
+#'     LatestAppstreamAgentVersion = "TRUE"|"FALSE"
 #'   )
 #' )
 #' ```
@@ -1935,6 +1950,103 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 }
 .appstream$operations$create_streaming_url <- appstream_create_streaming_url
 
+#' Creates custom branding that customizes the appearance of the streaming
+#' application catalog page
+#'
+#' @description
+#' Creates custom branding that customizes the appearance of the streaming
+#' application catalog page.
+#'
+#' @usage
+#' appstream_create_theme_for_stack(StackName, FooterLinks, TitleText,
+#'   ThemeStyling, OrganizationLogoS3Location, FaviconS3Location)
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#' @param FooterLinks The links that are displayed in the footer of the streaming application
+#' catalog page. These links are helpful resources for users, such as the
+#' organization's IT support and product marketing sites.
+#' @param TitleText &#91;required&#93; The title that is displayed at the top of the browser tab during users'
+#' application streaming sessions.
+#' @param ThemeStyling &#91;required&#93; The color theme that is applied to website links, text, and buttons.
+#' These colors are also applied as accents in the background for the
+#' streaming application catalog page.
+#' @param OrganizationLogoS3Location &#91;required&#93; The organization logo that appears on the streaming application catalog
+#' page.
+#' @param FaviconS3Location &#91;required&#93; The S3 location of the favicon. The favicon enables users to recognize
+#' their application streaming site in a browser full of tabs or bookmarks.
+#' It is displayed at the top of the browser tab for the application
+#' streaming site during users' streaming sessions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Theme = list(
+#'     StackName = "string",
+#'     State = "ENABLED"|"DISABLED",
+#'     ThemeTitleText = "string",
+#'     ThemeStyling = "LIGHT_BLUE"|"BLUE"|"PINK"|"RED",
+#'     ThemeFooterLinks = list(
+#'       list(
+#'         DisplayName = "string",
+#'         FooterLinkURL = "string"
+#'       )
+#'     ),
+#'     ThemeOrganizationLogoURL = "string",
+#'     ThemeFaviconURL = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_theme_for_stack(
+#'   StackName = "string",
+#'   FooterLinks = list(
+#'     list(
+#'       DisplayName = "string",
+#'       FooterLinkURL = "string"
+#'     )
+#'   ),
+#'   TitleText = "string",
+#'   ThemeStyling = "LIGHT_BLUE"|"BLUE"|"PINK"|"RED",
+#'   OrganizationLogoS3Location = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   FaviconS3Location = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_theme_for_stack
+#'
+#' @aliases appstream_create_theme_for_stack
+appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, TitleText, ThemeStyling, OrganizationLogoS3Location, FaviconS3Location) {
+  op <- new_operation(
+    name = "CreateThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$create_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location)
+  output <- .appstream$create_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_theme_for_stack <- appstream_create_theme_for_stack
+
 #' Creates a new image with the latest Windows operating system updates,
 #' driver updates, and AppStream 2
 #'
@@ -1990,7 +2102,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'     ImageBuilderSupported = TRUE|FALSE,
 #'     ImageBuilderName = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     Description = "string",
 #'     StateChangeReason = list(
 #'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -2016,7 +2128,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'           S3Key = "string"
 #'         ),
 #'         Platforms = list(
-#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
+#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
 #'         ),
 #'         InstanceFamilies = list(
 #'           "string"
@@ -2045,7 +2157,13 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'           "2015-01-01"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     LatestAppstreamAgentVersion = "TRUE"|"FALSE",
+#'     SupportedInstanceFamilies = list(
+#'       "string"
+#'     ),
+#'     DynamicAppProvidersEnabled = "ENABLED"|"DISABLED",
+#'     ImageSharedWithOthers = "TRUE"|"FALSE"
 #'   ),
 #'   canUpdateImage = TRUE|FALSE
 #' )
@@ -2489,7 +2607,7 @@ appstream_delete_fleet <- function(Name) {
 #'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'     ImageBuilderSupported = TRUE|FALSE,
 #'     ImageBuilderName = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     Description = "string",
 #'     StateChangeReason = list(
 #'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -2515,7 +2633,7 @@ appstream_delete_fleet <- function(Name) {
 #'           S3Key = "string"
 #'         ),
 #'         Platforms = list(
-#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
+#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
 #'         ),
 #'         InstanceFamilies = list(
 #'           "string"
@@ -2544,7 +2662,13 @@ appstream_delete_fleet <- function(Name) {
 #'           "2015-01-01"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     LatestAppstreamAgentVersion = "TRUE"|"FALSE",
+#'     SupportedInstanceFamilies = list(
+#'       "string"
+#'     ),
+#'     DynamicAppProvidersEnabled = "ENABLED"|"DISABLED",
+#'     ImageSharedWithOthers = "TRUE"|"FALSE"
 #'   )
 #' )
 #' ```
@@ -2608,7 +2732,7 @@ appstream_delete_image <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -2642,7 +2766,8 @@ appstream_delete_image <- function(Name) {
 #'         EndpointType = "STREAMING",
 #'         VpceId = "string"
 #'       )
-#'     )
+#'     ),
+#'     LatestAppstreamAgentVersion = "TRUE"|"FALSE"
 #'   )
 #' )
 #' ```
@@ -2770,6 +2895,51 @@ appstream_delete_stack <- function(Name) {
   return(response)
 }
 .appstream$operations$delete_stack <- appstream_delete_stack
+
+#' Deletes custom branding that customizes the appearance of the streaming
+#' application catalog page
+#'
+#' @description
+#' Deletes custom branding that customizes the appearance of the streaming
+#' application catalog page.
+#'
+#' @usage
+#' appstream_delete_theme_for_stack(StackName)
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_theme_for_stack(
+#'   StackName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_delete_theme_for_stack
+#'
+#' @aliases appstream_delete_theme_for_stack
+appstream_delete_theme_for_stack <- function(StackName) {
+  op <- new_operation(
+    name = "DeleteThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$delete_theme_for_stack_input(StackName = StackName)
+  output <- .appstream$delete_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$delete_theme_for_stack <- appstream_delete_theme_for_stack
 
 #' Disables usage report generation
 #'
@@ -3218,7 +3388,7 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
 #'         S3Key = "string"
 #'       ),
 #'       Platforms = list(
-#'         "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
+#'         "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
 #'       ),
 #'       InstanceFamilies = list(
 #'         "string"
@@ -3491,7 +3661,7 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
 #'       IdleDisconnectTimeoutInSeconds = 123,
 #'       IamRoleArn = "string",
 #'       StreamView = "APP"|"DESKTOP",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'       MaxConcurrentSessions = 123,
 #'       UsbDeviceFilterStrings = list(
 #'         "string"
@@ -3576,7 +3746,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #'         )
 #'       ),
 #'       InstanceType = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'       IamRoleArn = "string",
 #'       State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'       StateChangeReason = list(
@@ -3610,7 +3780,8 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #'           EndpointType = "STREAMING",
 #'           VpceId = "string"
 #'         )
-#'       )
+#'       ),
+#'       LatestAppstreamAgentVersion = "TRUE"|"FALSE"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3755,7 +3926,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'       Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'       ImageBuilderSupported = TRUE|FALSE,
 #'       ImageBuilderName = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'       Description = "string",
 #'       StateChangeReason = list(
 #'         Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -3781,7 +3952,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'             S3Key = "string"
 #'           ),
 #'           Platforms = list(
-#'             "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
+#'             "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
 #'           ),
 #'           InstanceFamilies = list(
 #'             "string"
@@ -3810,7 +3981,13 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'             "2015-01-01"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       LatestAppstreamAgentVersion = "TRUE"|"FALSE",
+#'       SupportedInstanceFamilies = list(
+#'         "string"
+#'       ),
+#'       DynamicAppProvidersEnabled = "ENABLED"|"DISABLED",
+#'       ImageSharedWithOthers = "TRUE"|"FALSE"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4055,6 +4232,72 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
   return(response)
 }
 .appstream$operations$describe_stacks <- appstream_describe_stacks
+
+#' Retrieves a list that describes the theme for a specified stack
+#'
+#' @description
+#' Retrieves a list that describes the theme for a specified stack. A theme
+#' is custom branding that customizes the appearance of the streaming
+#' application catalog page.
+#'
+#' @usage
+#' appstream_describe_theme_for_stack(StackName)
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Theme = list(
+#'     StackName = "string",
+#'     State = "ENABLED"|"DISABLED",
+#'     ThemeTitleText = "string",
+#'     ThemeStyling = "LIGHT_BLUE"|"BLUE"|"PINK"|"RED",
+#'     ThemeFooterLinks = list(
+#'       list(
+#'         DisplayName = "string",
+#'         FooterLinkURL = "string"
+#'       )
+#'     ),
+#'     ThemeOrganizationLogoURL = "string",
+#'     ThemeFaviconURL = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_theme_for_stack(
+#'   StackName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_theme_for_stack
+#'
+#' @aliases appstream_describe_theme_for_stack
+appstream_describe_theme_for_stack <- function(StackName) {
+  op <- new_operation(
+    name = "DescribeThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$describe_theme_for_stack_input(StackName = StackName)
+  output <- .appstream$describe_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_theme_for_stack <- appstream_describe_theme_for_stack
 
 #' Retrieves a list that describes one or more usage report subscriptions
 #'
@@ -4992,7 +5235,7 @@ appstream_start_fleet <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -5026,7 +5269,8 @@ appstream_start_fleet <- function(Name) {
 #'         EndpointType = "STREAMING",
 #'         VpceId = "string"
 #'       )
-#'     )
+#'     ),
+#'     LatestAppstreamAgentVersion = "TRUE"|"FALSE"
 #'   )
 #' )
 #' ```
@@ -5225,7 +5469,7 @@ appstream_stop_fleet <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -5259,7 +5503,8 @@ appstream_stop_fleet <- function(Name) {
 #'         EndpointType = "STREAMING",
 #'         VpceId = "string"
 #'       )
-#'     )
+#'     ),
+#'     LatestAppstreamAgentVersion = "TRUE"|"FALSE"
 #'   )
 #' )
 #' ```
@@ -5529,7 +5774,7 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Name = "string",
 #'   Description = "string",
 #'   DisplayName = "string",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'   InstanceType = "string",
 #'   VpcConfig = list(
 #'     SubnetIds = list(
@@ -5621,7 +5866,7 @@ appstream_update_app_block_builder <- function(Name, Description = NULL, Display
 #'       S3Key = "string"
 #'     ),
 #'     Platforms = list(
-#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
+#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
 #'     ),
 #'     InstanceFamilies = list(
 #'       "string"
@@ -5988,7 +6233,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' are connected to their previous session. Otherwise, they are connected
 #' to a new session with a new streaming instance.
 #' 
-#' Specify a value between 60 and 360000.
+#' Specify a value between 60 and 36000.
 #' @param DeleteVpcConfig Deletes the VPC association for the specified fleet.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.
@@ -6008,7 +6253,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' `IdleDisconnectTimeoutInSeconds` elapses, they are disconnected.
 #' 
 #' To prevent users from being disconnected due to inactivity, specify a
-#' value of 0. Otherwise, specify a value between 60 and 3600. The default
+#' value of 0. Otherwise, specify a value between 60 and 36000. The default
 #' value is 0.
 #' 
 #' If you enable this feature, we recommend that you specify a value that
@@ -6099,7 +6344,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     IdleDisconnectTimeoutInSeconds = 123,
 #'     IamRoleArn = "string",
 #'     StreamView = "APP"|"DESKTOP",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'     MaxConcurrentSessions = 123,
 #'     UsbDeviceFilterStrings = list(
 #'       "string"
@@ -6148,7 +6393,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   ),
 #'   IamRoleArn = "string",
 #'   StreamView = "APP"|"DESKTOP",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
 #'   MaxConcurrentSessions = 123,
 #'   UsbDeviceFilterStrings = list(
 #'     "string"
@@ -6397,3 +6642,108 @@ appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name,
   return(response)
 }
 .appstream$operations$update_stack <- appstream_update_stack
+
+#' Updates custom branding that customizes the appearance of the streaming
+#' application catalog page
+#'
+#' @description
+#' Updates custom branding that customizes the appearance of the streaming
+#' application catalog page.
+#'
+#' @usage
+#' appstream_update_theme_for_stack(StackName, FooterLinks, TitleText,
+#'   ThemeStyling, OrganizationLogoS3Location, FaviconS3Location, State,
+#'   AttributesToDelete)
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#' @param FooterLinks The links that are displayed in the footer of the streaming application
+#' catalog page. These links are helpful resources for users, such as the
+#' organization's IT support and product marketing sites.
+#' @param TitleText The title that is displayed at the top of the browser tab during users'
+#' application streaming sessions.
+#' @param ThemeStyling The color theme that is applied to website links, text, and buttons.
+#' These colors are also applied as accents in the background for the
+#' streaming application catalog page.
+#' @param OrganizationLogoS3Location The organization logo that appears on the streaming application catalog
+#' page.
+#' @param FaviconS3Location The S3 location of the favicon. The favicon enables users to recognize
+#' their application streaming site in a browser full of tabs or bookmarks.
+#' It is displayed at the top of the browser tab for the application
+#' streaming site during users' streaming sessions.
+#' @param State Specifies whether custom branding should be applied to catalog page or
+#' not.
+#' @param AttributesToDelete The attributes to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Theme = list(
+#'     StackName = "string",
+#'     State = "ENABLED"|"DISABLED",
+#'     ThemeTitleText = "string",
+#'     ThemeStyling = "LIGHT_BLUE"|"BLUE"|"PINK"|"RED",
+#'     ThemeFooterLinks = list(
+#'       list(
+#'         DisplayName = "string",
+#'         FooterLinkURL = "string"
+#'       )
+#'     ),
+#'     ThemeOrganizationLogoURL = "string",
+#'     ThemeFaviconURL = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_theme_for_stack(
+#'   StackName = "string",
+#'   FooterLinks = list(
+#'     list(
+#'       DisplayName = "string",
+#'       FooterLinkURL = "string"
+#'     )
+#'   ),
+#'   TitleText = "string",
+#'   ThemeStyling = "LIGHT_BLUE"|"BLUE"|"PINK"|"RED",
+#'   OrganizationLogoS3Location = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   FaviconS3Location = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   State = "ENABLED"|"DISABLED",
+#'   AttributesToDelete = list(
+#'     "FOOTER_LINKS"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_update_theme_for_stack
+#'
+#' @aliases appstream_update_theme_for_stack
+appstream_update_theme_for_stack <- function(StackName, FooterLinks = NULL, TitleText = NULL, ThemeStyling = NULL, OrganizationLogoS3Location = NULL, FaviconS3Location = NULL, State = NULL, AttributesToDelete = NULL) {
+  op <- new_operation(
+    name = "UpdateThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$update_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location, State = State, AttributesToDelete = AttributesToDelete)
+  output <- .appstream$update_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$update_theme_for_stack <- appstream_update_theme_for_stack

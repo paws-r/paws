@@ -59,7 +59,7 @@ assume when invoking the extension.
 For CloudFormation to assume the specified execution role, the role must
 contain a trust relationship with the CloudFormation service principal
 (\code{resources.cloudformation.amazonaws.com}). For more information about
-adding trust relationships, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-managingrole_edit-trust-policy}{Modifying a role trust policy}
+adding trust relationships, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage.html#roles-managingrole_edit-trust-policy}{Modifying a role trust policy}
 in the \emph{Identity and Access Management User Guide}.
 
 If your extension calls Amazon Web Services APIs in any of its handlers,

@@ -21,8 +21,10 @@ period that the vault retains its recovery points. This setting can be
 useful if, for example, your organization's policies require you to
 retain certain data for at least seven years (2555 days).
 
-If this parameter is not specified, Vault Lock will not enforce a
-minimum retention period.
+This parameter is required when a vault lock is created through
+CloudFormation; otherwise, this parameter is optional. If this parameter
+is not specified, Vault Lock will not enforce a minimum retention
+period.
 
 If this parameter is specified, any backup or copy job to the vault must
 have a lifecycle policy with a retention period equal to or longer than

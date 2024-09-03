@@ -16,14 +16,6 @@ the Region. Users in the account will no longer be able to request
 new public sharing. Additionally, snapshots that are already
 publicly shared are treated as private and they are no longer
 publicly available.
-
-If you enable block public access for snapshots in
-\code{block-all-sharing} mode, it does not change the permissions for
-snapshots that are already publicly shared. Instead, it prevents
-these snapshots from be publicly visible and publicly accessible.
-Therefore, the attributes for these snapshots still indicate that
-they are publicly shared, even though they are not publicly
-available.
 \item \code{block-new-sharing} - Prevents only new public sharing of snapshots
 in the Region. Users in the account will no longer be able to
 request new public sharing. However, snapshots that are already

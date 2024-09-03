@@ -188,7 +188,7 @@ specify \code{IMPORT}.
 If you create a change set for a new stack, CloudFormation creates a
 stack with a unique stack ID, but no template or resources. The stack
 will be in the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995}{REVIEW_IN_PROGRESS}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/service_code_examples.html#d0e11995}{REVIEW_IN_PROGRESS}
 state until you execute the change set.
 
 By default, CloudFormation specifies \code{UPDATE}. You can't use the

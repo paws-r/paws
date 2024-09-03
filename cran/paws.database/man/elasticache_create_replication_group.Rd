@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_create_replication_group}
 \alias{elasticache_create_replication_group}
-\title{Creates a Redis (cluster mode disabled) or a Redis (cluster mode
+\title{Creates a Redis OSS (cluster mode disabled) or a Redis OSS (cluster mode
 enabled) replication group}
 \usage{
 elasticache_create_replication_group(
@@ -72,7 +72,7 @@ or \code{ReplicasPerNodeGroup} is specified.}
 \item{AutomaticFailoverEnabled}{Specifies whether a read-only replica is automatically promoted to
 read/write primary if the existing primary fails.
 
-\code{AutomaticFailoverEnabled} must be enabled for Redis (cluster mode
+\code{AutomaticFailoverEnabled} must be enabled for Redis OSS (cluster mode
 enabled) replication groups.
 
 Default: false}
@@ -111,8 +111,8 @@ The number of Availability Zones listed must equal the value of
 Default: system chosen Availability Zones.}
 
 \item{NumNodeGroups}{An optional parameter that specifies the number of node groups (shards)
-for this Redis (cluster mode enabled) replication group. For Redis
-(cluster mode disabled) either omit this parameter or set it to 1.
+for this Redis OSS (cluster mode enabled) replication group. For Redis
+OSS (cluster mode disabled) either omit this parameter or set it to 1.
 
 Default: 1}
 
@@ -124,13 +124,13 @@ node group (shard). Valid values are 0 to 5.}
 \code{PrimaryAvailabilityZone}, \code{ReplicaAvailabilityZones}, \code{ReplicaCount},
 and \code{Slots}.
 
-If you're creating a Redis (cluster mode disabled) or a Redis (cluster
-mode enabled) replication group, you can use this parameter to
+If you're creating a Redis OSS (cluster mode disabled) or a Redis OSS
+(cluster mode enabled) replication group, you can use this parameter to
 individually configure each node group (shard), or you can omit this
-parameter. However, it is required when seeding a Redis (cluster mode
-enabled) cluster from a S3 rdb file. You must configure each node group
-(shard) using this parameter because you must specify the slots for each
-node group.}
+parameter. However, it is required when seeding a Redis OSS (cluster
+mode enabled) cluster from a S3 rdb file. You must configure each node
+group (shard) using this parameter because you must specify the slots
+for each node group.}
 
 \item{CacheNodeType}{The compute and memory capacity of the nodes in the node group (shard).
 
@@ -149,7 +149,7 @@ previous generation counterparts.
 
 For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
-\strong{M6g node types} (available only for Redis engine version
+\strong{M6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
@@ -162,7 +162,7 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
-\strong{T4g node types} (available only for Redis engine version
+\strong{T4g node types} (available only for Redis OSS engine version
 5.0.6 onward and Memcached engine version 1.5.16 onward):
 \code{cache.t4g.micro}, \code{cache.t4g.small}, \code{cache.t4g.medium}
 
@@ -201,7 +201,7 @@ for these types.)
 
 For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
-\strong{R6g node types} (available only for Redis engine version
+\strong{R6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.r6g.large}, \code{cache.r6g.xlarge}, \code{cache.r6g.2xlarge},
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
@@ -230,12 +230,12 @@ for these types.)
 \itemize{
 \item All current generation instance types are created in Amazon VPC by
 default.
-\item Redis append-only files (AOF) are not supported for T1 or T2
+\item Redis OSS append-only files (AOF) are not supported for T1 or T2
 instances.
-\item Redis Multi-AZ with automatic failover is not supported on T1
+\item Redis OSS Multi-AZ with automatic failover is not supported on T1
 instances.
-\item Redis configuration variables \code{appendonly} and \code{appendfsync} are not
-supported on Redis version 2.8.22 and later.
+\item Redis OSS configuration variables \code{appendonly} and \code{appendfsync} are
+not supported on Redis OSS version 2.8.22 and later.
 }}
 
 \item{Engine}{The name of the cache engine to be used for the clusters in this
@@ -257,13 +257,13 @@ the earlier engine version.}
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
 
-If you are running Redis version 3.2.4 or later, only one node group
+If you are running Redis OSS version 3.2.4 or later, only one node group
 (shard), and want to use a default parameter group, we recommend that
 you specify the parameter group by name.
 \itemize{
-\item To create a Redis (cluster mode disabled) replication group, use
+\item To create a Redis OSS (cluster mode disabled) replication group, use
 \code{CacheParameterGroupName=default.redis3.2}.
-\item To create a Redis (cluster mode enabled) replication group, use
+\item To create a Redis OSS (cluster mode enabled) replication group, use
 \code{CacheParameterGroupName=default.redis3.2.cluster.on}.
 }}
 
@@ -289,9 +289,9 @@ Key=\code{mySecondKey}, Value=\code{mySecondKeyValue}. Tags on replication group
 will be replicated to all nodes.}
 
 \item{SnapshotArns}{A list of Amazon Resource Names (ARN) that uniquely identify the Redis
-RDB snapshot files stored in Amazon S3. The snapshot files are used to
-populate the new replication group. The Amazon S3 object name in the ARN
-cannot contain any commas. The new replication group will have the
+OSS RDB snapshot files stored in Amazon S3. The snapshot files are used
+to populate the new replication group. The Amazon S3 object name in the
+ARN cannot contain any commas. The new replication group will have the
 number of node groups (console: shards) specified by the parameter
 \emph{NumNodeGroups} or the number of node groups configured by
 \emph{NodeGroupConfiguration} regardless of the number of ARNs specified
@@ -329,7 +329,7 @@ connections.}
 
 The Amazon SNS topic owner must be the same as the cluster owner.}
 
-\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+\item{AutoMinorVersionUpgrade}{If you are running Redis OSS engine version 6.0 or later, set this
 parameter to yes if you want to opt-in to the next auto minor version
 upgrade campaign. This parameter is disabled for previous versions.}
 
@@ -380,7 +380,7 @@ If you enable in-transit encryption, you must also specify a value for
 \code{CacheSubnetGroup}.
 
 \strong{Required:} Only available when creating a replication group in an
-Amazon VPC using redis version \verb{3.2.6}, \verb{4.x} or later.
+Amazon VPC using Redis OSS version \verb{3.2.6}, \verb{4.x} or later.
 
 Default: \code{false}
 
@@ -395,7 +395,7 @@ replication group you must set \code{AtRestEncryptionEnabled} to \code{true} whe
 you create the replication group.
 
 \strong{Required:} Only available when creating a replication group in an
-Amazon VPC using redis version \verb{3.2.6}, \verb{4.x} or later.
+Amazon VPC using Redis OSS version \verb{3.2.6}, \verb{4.x} or later.
 
 Default: \code{false}}
 
@@ -410,11 +410,11 @@ groups using the r6gd node type. This parameter must be set to true when
 using r6gd nodes. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html}{Data tiering}.}
 
 \item{NetworkType}{Must be either \code{ipv4} | \code{ipv6} | \code{dual_stack}. IPv6 is supported for
-workloads using Redis engine version 6.2 onward or Memcached engine
+workloads using Redis OSS engine version 6.2 onward or Memcached engine
 version 1.6.6 on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 
 \item{IpDiscovery}{The network type you choose when creating a replication group, either
-\code{ipv4} | \code{ipv6}. IPv6 is supported for workloads using Redis engine
+\code{ipv4} | \code{ipv6}. IPv6 is supported for workloads using Redis OSS engine
 version 6.2 onward or Memcached engine version 1.6.6 on all instances
 built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 
@@ -424,7 +424,7 @@ encryption, with no downtime.
 When setting \code{TransitEncryptionEnabled} to \code{true}, you can set your
 \code{TransitEncryptionMode} to \code{preferred} in the same request, to allow
 both encrypted and unencrypted connections at the same time. Once you
-migrate all your Redis clients to use encrypted connections you can
+migrate all your Redis OSS clients to use encrypted connections you can
 modify the value to \code{required} to allow encrypted connections only.
 
 Setting \code{TransitEncryptionMode} to \code{required} is a two-step process that
@@ -435,16 +435,16 @@ This process will not trigger the replacement of the replication group.}
 
 \item{ClusterMode}{Enabled or Disabled. To modify cluster mode from Disabled to Enabled,
 you must first set the cluster mode to Compatible. Compatible mode
-allows your Redis clients to connect using both cluster mode enabled and
-cluster mode disabled. After you migrate all Redis clients to use
-cluster mode enabled, you can then complete cluster mode configuration
-and set the cluster mode to Enabled.}
+allows your Redis OSS clients to connect using both cluster mode enabled
+and cluster mode disabled. After you migrate all Redis OSS clients to
+use cluster mode enabled, you can then complete cluster mode
+configuration and set the cluster mode to Enabled.}
 
 \item{ServerlessCacheSnapshotName}{The name of the snapshot used to create a replication group. Available
-for Redis only.}
+for Redis OSS only.}
 }
 \description{
-Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group.
+Creates a Redis OSS (cluster mode disabled) or a Redis OSS (cluster mode enabled) replication group.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_replication_group/} for full documentation.
 }

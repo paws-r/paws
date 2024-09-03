@@ -4,16 +4,16 @@
 \alias{ivschat_send_event}
 \title{Sends an event to a room}
 \usage{
-ivschat_send_event(attributes = NULL, eventName, roomIdentifier)
+ivschat_send_event(roomIdentifier, eventName, attributes = NULL)
 }
 \arguments{
-\item{attributes}{Application-defined metadata to attach to the event sent to clients. The
-maximum length of the metadata is 1 KB total.}
+\item{roomIdentifier}{[required] Identifier of the room to which the event will be sent. Currently this
+must be an ARN.}
 
 \item{eventName}{[required] Application-defined name of the event to send to clients.}
 
-\item{roomIdentifier}{[required] Identifier of the room to which the event will be sent. Currently this
-must be an ARN.}
+\item{attributes}{Application-defined metadata to attach to the event sent to clients. The
+maximum length of the metadata is 1 KB total.}
 }
 \description{
 Sends an event to a room. Use this within your application’s business logic to send events to clients of a room; e.g., to notify clients to change the way the chat UI is rendered.

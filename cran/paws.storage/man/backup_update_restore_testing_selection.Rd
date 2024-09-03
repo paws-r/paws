@@ -2,8 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_restore_testing_selection}
 \alias{backup_update_restore_testing_selection}
-\title{Most elements except the RestoreTestingSelectionName can be updated with
-this request}
+\title{Updates the specified restore testing selection}
 \usage{
 backup_update_restore_testing_selection(
   RestoreTestingPlanName,
@@ -20,11 +19,11 @@ resource ARNs or conditions, but not both. That is, if your selection
 has \code{ProtectedResourceArns}, requesting an update with the parameter
 \code{ProtectedResourceConditions} will be unsuccessful.}
 
-\item{RestoreTestingSelectionName}{[required] This is the required restore testing selection name of the restore
-testing selection you wish to update.}
+\item{RestoreTestingSelectionName}{[required] The required restore testing selection name of the restore testing
+selection you wish to update.}
 }
 \description{
-Most elements except the \code{RestoreTestingSelectionName} can be updated with this request.
+Updates the specified restore testing selection.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_update_restore_testing_selection/} for full documentation.
 }

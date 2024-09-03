@@ -325,7 +325,7 @@ iam_create_access_key <- function(UserName = NULL) {
 #' Creates an alias for your Amazon Web Services account
 #'
 #' @description
-#' Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon Web Services Sign-In User Guide*.
+#' Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html) in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_create_account_alias/](https://www.paws-r-sdk.com/docs/iam_create_account_alias/) for full documentation.
 #'
@@ -517,7 +517,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' supports OpenID Connect (OIDC)
 #'
 #' @description
-#' Creates an IAM entity to describe an identity provider (IdP) that supports OpenID Connect (OIDC).
+#' Creates an IAM entity to describe an identity provider (IdP) that supports [OpenID Connect (OIDC)](https://openid.net/developers/how-connect-works/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_create_open_id_connect_provider/](https://www.paws-r-sdk.com/docs/iam_create_open_id_connect_provider/) for full documentation.
 #'
@@ -839,7 +839,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
 #' operations to create a console URL. For more information, see [Using IAM
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)
 #' in the *IAM User Guide*.
 #' @param PermissionsBoundary The ARN of the managed policy that is used to set the permissions
 #' boundary for the role.
@@ -945,7 +945,7 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
 #' service
 #'
 #' @description
-#' Creates an IAM role that is linked to a specific Amazon Web Services service. The service controls the attached policies and when the role can be deleted. This helps ensure that the service is not broken by an unexpectedly changed or deleted role, which could put your Amazon Web Services resources into an unknown state. Allowing the service to control the role helps improve service stability and proper cleanup when a service and its role are no longer needed. For more information, see [Using service-linked roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in the *IAM User Guide*.
+#' Creates an IAM role that is linked to a specific Amazon Web Services service. The service controls the attached policies and when the role can be deleted. This helps ensure that the service is not broken by an unexpectedly changed or deleted role, which could put your Amazon Web Services resources into an unknown state. Allowing the service to control the role helps improve service stability and proper cleanup when a service and its role are no longer needed. For more information, see [Using service-linked roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html) in the *IAM User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_create_service_linked_role/](https://www.paws-r-sdk.com/docs/iam_create_service_linked_role/) for full documentation.
 #'
@@ -1252,7 +1252,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' Deletes the specified Amazon Web Services account alias
 #'
 #' @description
-#' Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon Web Services Sign-In User Guide*.
+#' Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html) in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_delete_account_alias/](https://www.paws-r-sdk.com/docs/iam_delete_account_alias/) for full documentation.
 #'
@@ -1910,7 +1910,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' Deletes the specified IAM user
 #'
 #' @description
-#' Deletes the specified IAM user. Unlike the Amazon Web Services Management Console, when you delete a user programmatically, you must delete the items attached to the user manually, or the deletion fails. For more information, see [Deleting an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli). Before attempting to delete a user, remove the following items:
+#' Deletes the specified IAM user. Unlike the Amazon Web Services Management Console, when you delete a user programmatically, you must delete the items attached to the user manually, or the deletion fails. For more information, see [Deleting an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_rename.html#id_users_deleting_cli). Before attempting to delete a user, remove the following items:
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_delete_user/](https://www.paws-r-sdk.com/docs/iam_delete_user/) for full documentation.
 #'
@@ -3461,7 +3461,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' (Note: you can have only one)
 #'
 #' @description
-#' Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon Web Services Sign-In User Guide*.
+#' Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#CreateAccountAlias) in the *IAM User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_list_account_aliases/](https://www.paws-r-sdk.com/docs/iam_list_account_aliases/) for full documentation.
 #'
@@ -7111,7 +7111,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
 #' operations to create a console URL. For more information, see [Using IAM
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)
 #' in the *IAM User Guide*.
 #' 
 #' IAM role credentials provided by Amazon EC2 instances assigned to the

@@ -1081,7 +1081,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' encrypt new secret versions as well as any existing versions with the
 #' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. If you
 #' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
-#' not re-ecrypt existing secret versions with the new key. For more
+#' not re-encrypt existing secret versions with the new key. For more
 #' information about versions and staging labels, see [Concepts:
 #' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 

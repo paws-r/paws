@@ -11,23 +11,23 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_create_chat_token/](https://www.paws-r-sdk.com/docs/ivschat_create_chat_token/) for full documentation.
 #'
-#' @param attributes Application-provided attributes to encode into the token and attach to a
-#' chat session. Map keys and values can contain UTF-8 encoded text. The
-#' maximum length of this field is 1 KB total.
+#' @param roomIdentifier &#91;required&#93; Identifier of the room that the client is trying to access. Currently
+#' this must be an ARN.
+#' @param userId &#91;required&#93; Application-provided ID that uniquely identifies the user associated
+#' with this token. This can be any UTF-8 encoded text.
 #' @param capabilities Set of capabilities that the user is allowed to perform in the room.
 #' Default: None (the capability to view messages is implicitly included in
 #' all requests).
-#' @param roomIdentifier &#91;required&#93; Identifier of the room that the client is trying to access. Currently
-#' this must be an ARN.
 #' @param sessionDurationInMinutes Session duration (in minutes), after which the session expires. Default:
 #' 60 (1 hour).
-#' @param userId &#91;required&#93; Application-provided ID that uniquely identifies the user associated
-#' with this token. This can be any UTF-8 encoded text.
+#' @param attributes Application-provided attributes to encode into the token and attach to a
+#' chat session. Map keys and values can contain UTF-8 encoded text. The
+#' maximum length of this field is 1 KB total.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_create_chat_token
-ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, roomIdentifier, sessionDurationInMinutes = NULL, userId) {
+ivschat_create_chat_token <- function(roomIdentifier, userId, capabilities = NULL, sessionDurationInMinutes = NULL, attributes = NULL) {
   op <- new_operation(
     name = "CreateChatToken",
     http_method = "POST",
@@ -35,7 +35,7 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$create_chat_token_input(attributes = attributes, capabilities = capabilities, roomIdentifier = roomIdentifier, sessionDurationInMinutes = sessionDurationInMinutes, userId = userId)
+  input <- .ivschat$create_chat_token_input(roomIdentifier = roomIdentifier, userId = userId, capabilities = capabilities, sessionDurationInMinutes = sessionDurationInMinutes, attributes = attributes)
   output <- .ivschat$create_chat_token_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -53,10 +53,10 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_create_logging_configuration/](https://www.paws-r-sdk.com/docs/ivschat_create_logging_configuration/) for full documentation.
 #'
+#' @param name Logging-configuration name. The value does not need to be unique.
 #' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where chat
 #' content will be logged. There can be only one type of destination
 #' (`cloudWatchLogs`, `firehose`, or `s3`) in a `destinationConfiguration`.
-#' @param name Logging-configuration name. The value does not need to be unique.
 #' @param tags Tags to attach to the resource. Array of maps, each of the form
 #' `string:string (key:value)`. See [Tagging AWS
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
@@ -67,7 +67,7 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #' @keywords internal
 #'
 #' @rdname ivschat_create_logging_configuration
-ivschat_create_logging_configuration <- function(destinationConfiguration, name = NULL, tags = NULL) {
+ivschat_create_logging_configuration <- function(name = NULL, destinationConfiguration, tags = NULL) {
   op <- new_operation(
     name = "CreateLoggingConfiguration",
     http_method = "POST",
@@ -75,7 +75,7 @@ ivschat_create_logging_configuration <- function(destinationConfiguration, name 
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$create_logging_configuration_input(destinationConfiguration = destinationConfiguration, name = name, tags = tags)
+  input <- .ivschat$create_logging_configuration_input(name = name, destinationConfiguration = destinationConfiguration, tags = tags)
   output <- .ivschat$create_logging_configuration_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -92,25 +92,25 @@ ivschat_create_logging_configuration <- function(destinationConfiguration, name 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_create_room/](https://www.paws-r-sdk.com/docs/ivschat_create_room/) for full documentation.
 #'
-#' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
+#' @param name Room name. The value does not need to be unique.
+#' @param maximumMessageRatePerSecond Maximum number of messages per second that can be sent to the room (by
+#' all clients). Default: 10.
 #' @param maximumMessageLength Maximum number of characters in a single message. Messages are expected
 #' to be UTF-8 encoded and this limit applies specifically to
 #' rune/code-point count, not number of bytes. Default: 500.
-#' @param maximumMessageRatePerSecond Maximum number of messages per second that can be sent to the room (by
-#' all clients). Default: 10.
 #' @param messageReviewHandler Configuration information for optional review of messages.
-#' @param name Room name. The value does not need to be unique.
 #' @param tags Tags to attach to the resource. Array of maps, each of the form
 #' `string:string (key:value)`. See [Tagging AWS
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' for details, including restrictions that apply to tags and "Tag naming
 #' limits and requirements"; Amazon IVS Chat has no constraints beyond what
 #' is documented there.
+#' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_create_room
-ivschat_create_room <- function(loggingConfigurationIdentifiers = NULL, maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL, tags = NULL) {
+ivschat_create_room <- function(name = NULL, maximumMessageRatePerSecond = NULL, maximumMessageLength = NULL, messageReviewHandler = NULL, tags = NULL, loggingConfigurationIdentifiers = NULL) {
   op <- new_operation(
     name = "CreateRoom",
     http_method = "POST",
@@ -118,7 +118,7 @@ ivschat_create_room <- function(loggingConfigurationIdentifiers = NULL, maximumM
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$create_room_input(loggingConfigurationIdentifiers = loggingConfigurationIdentifiers, maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name, tags = tags)
+  input <- .ivschat$create_room_input(name = name, maximumMessageRatePerSecond = maximumMessageRatePerSecond, maximumMessageLength = maximumMessageLength, messageReviewHandler = messageReviewHandler, tags = tags, loggingConfigurationIdentifiers = loggingConfigurationIdentifiers)
   output <- .ivschat$create_room_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -167,18 +167,18 @@ ivschat_delete_logging_configuration <- function(identifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_delete_message/](https://www.paws-r-sdk.com/docs/ivschat_delete_message/) for full documentation.
 #'
+#' @param roomIdentifier &#91;required&#93; Identifier of the room where the message should be deleted. Currently
+#' this must be an ARN.
 #' @param id &#91;required&#93; ID of the message to be deleted. This is the `Id` field in the received
 #' message (see [Message
 #' (Subscribe)](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-message-subscribe.html)
 #' in the Chat Messaging API).
 #' @param reason Reason for deleting the message.
-#' @param roomIdentifier &#91;required&#93; Identifier of the room where the message should be deleted. Currently
-#' this must be an ARN.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_delete_message
-ivschat_delete_message <- function(id, reason = NULL, roomIdentifier) {
+ivschat_delete_message <- function(roomIdentifier, id, reason = NULL) {
   op <- new_operation(
     name = "DeleteMessage",
     http_method = "POST",
@@ -186,7 +186,7 @@ ivschat_delete_message <- function(id, reason = NULL, roomIdentifier) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$delete_message_input(id = id, reason = reason, roomIdentifier = roomIdentifier)
+  input <- .ivschat$delete_message_input(roomIdentifier = roomIdentifier, id = id, reason = reason)
   output <- .ivschat$delete_message_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -233,15 +233,15 @@ ivschat_delete_room <- function(identifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_disconnect_user/](https://www.paws-r-sdk.com/docs/ivschat_disconnect_user/) for full documentation.
 #'
-#' @param reason Reason for disconnecting the user.
 #' @param roomIdentifier &#91;required&#93; Identifier of the room from which the user's clients should be
 #' disconnected. Currently this must be an ARN.
 #' @param userId &#91;required&#93; ID of the user (connection) to disconnect from the room.
+#' @param reason Reason for disconnecting the user.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_disconnect_user
-ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
+ivschat_disconnect_user <- function(roomIdentifier, userId, reason = NULL) {
   op <- new_operation(
     name = "DisconnectUser",
     http_method = "POST",
@@ -249,7 +249,7 @@ ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$disconnect_user_input(reason = reason, roomIdentifier = roomIdentifier, userId = userId)
+  input <- .ivschat$disconnect_user_input(roomIdentifier = roomIdentifier, userId = userId, reason = reason)
   output <- .ivschat$disconnect_user_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -328,14 +328,14 @@ ivschat_get_room <- function(identifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_list_logging_configurations/](https://www.paws-r-sdk.com/docs/ivschat_list_logging_configurations/) for full documentation.
 #'
-#' @param maxResults Maximum number of logging configurations to return. Default: 50.
 #' @param nextToken The first logging configurations to retrieve. This is used for
 #' pagination; see the `nextToken` response field.
+#' @param maxResults Maximum number of logging configurations to return. Default: 50.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_list_logging_configurations
-ivschat_list_logging_configurations <- function(maxResults = NULL, nextToken = NULL) {
+ivschat_list_logging_configurations <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListLoggingConfigurations",
     http_method = "POST",
@@ -343,7 +343,7 @@ ivschat_list_logging_configurations <- function(maxResults = NULL, nextToken = N
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivschat$list_logging_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .ivschat$list_logging_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivschat$list_logging_configurations_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -361,17 +361,17 @@ ivschat_list_logging_configurations <- function(maxResults = NULL, nextToken = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_list_rooms/](https://www.paws-r-sdk.com/docs/ivschat_list_rooms/) for full documentation.
 #'
-#' @param loggingConfigurationIdentifier Logging-configuration identifier.
-#' @param maxResults Maximum number of rooms to return. Default: 50.
-#' @param messageReviewHandlerUri Filters the list to match the specified message review handler URI.
 #' @param name Filters the list to match the specified room name.
 #' @param nextToken The first room to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
+#' @param maxResults Maximum number of rooms to return. Default: 50.
+#' @param messageReviewHandlerUri Filters the list to match the specified message review handler URI.
+#' @param loggingConfigurationIdentifier Logging-configuration identifier.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_list_rooms
-ivschat_list_rooms <- function(loggingConfigurationIdentifier = NULL, maxResults = NULL, messageReviewHandlerUri = NULL, name = NULL, nextToken = NULL) {
+ivschat_list_rooms <- function(name = NULL, nextToken = NULL, maxResults = NULL, messageReviewHandlerUri = NULL, loggingConfigurationIdentifier = NULL) {
   op <- new_operation(
     name = "ListRooms",
     http_method = "POST",
@@ -379,7 +379,7 @@ ivschat_list_rooms <- function(loggingConfigurationIdentifier = NULL, maxResults
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivschat$list_rooms_input(loggingConfigurationIdentifier = loggingConfigurationIdentifier, maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, name = name, nextToken = nextToken)
+  input <- .ivschat$list_rooms_input(name = name, nextToken = nextToken, maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, loggingConfigurationIdentifier = loggingConfigurationIdentifier)
   output <- .ivschat$list_rooms_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -426,16 +426,16 @@ ivschat_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_send_event/](https://www.paws-r-sdk.com/docs/ivschat_send_event/) for full documentation.
 #'
-#' @param attributes Application-defined metadata to attach to the event sent to clients. The
-#' maximum length of the metadata is 1 KB total.
-#' @param eventName &#91;required&#93; Application-defined name of the event to send to clients.
 #' @param roomIdentifier &#91;required&#93; Identifier of the room to which the event will be sent. Currently this
 #' must be an ARN.
+#' @param eventName &#91;required&#93; Application-defined name of the event to send to clients.
+#' @param attributes Application-defined metadata to attach to the event sent to clients. The
+#' maximum length of the metadata is 1 KB total.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_send_event
-ivschat_send_event <- function(attributes = NULL, eventName, roomIdentifier) {
+ivschat_send_event <- function(roomIdentifier, eventName, attributes = NULL) {
   op <- new_operation(
     name = "SendEvent",
     http_method = "POST",
@@ -443,7 +443,7 @@ ivschat_send_event <- function(attributes = NULL, eventName, roomIdentifier) {
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$send_event_input(attributes = attributes, eventName = eventName, roomIdentifier = roomIdentifier)
+  input <- .ivschat$send_event_input(roomIdentifier = roomIdentifier, eventName = eventName, attributes = attributes)
   output <- .ivschat$send_event_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -532,16 +532,16 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ivschat_update_logging_configuration/](https://www.paws-r-sdk.com/docs/ivschat_update_logging_configuration/) for full documentation.
 #'
+#' @param identifier &#91;required&#93; Identifier of the logging configuration to be updated.
+#' @param name Logging-configuration name. The value does not need to be unique.
 #' @param destinationConfiguration A complex type that contains a destination configuration for where chat
 #' content will be logged. There can be only one type of destination
 #' (`cloudWatchLogs`, `firehose`, or `s3`) in a `destinationConfiguration`.
-#' @param identifier &#91;required&#93; Identifier of the logging configuration to be updated.
-#' @param name Logging-configuration name. The value does not need to be unique.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_update_logging_configuration
-ivschat_update_logging_configuration <- function(destinationConfiguration = NULL, identifier, name = NULL) {
+ivschat_update_logging_configuration <- function(identifier, name = NULL, destinationConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateLoggingConfiguration",
     http_method = "POST",
@@ -549,7 +549,7 @@ ivschat_update_logging_configuration <- function(destinationConfiguration = NULL
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$update_logging_configuration_input(destinationConfiguration = destinationConfiguration, identifier = identifier, name = name)
+  input <- .ivschat$update_logging_configuration_input(identifier = identifier, name = name, destinationConfiguration = destinationConfiguration)
   output <- .ivschat$update_logging_configuration_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)
@@ -567,21 +567,21 @@ ivschat_update_logging_configuration <- function(destinationConfiguration = NULL
 #' See [https://www.paws-r-sdk.com/docs/ivschat_update_room/](https://www.paws-r-sdk.com/docs/ivschat_update_room/) for full documentation.
 #'
 #' @param identifier &#91;required&#93; Identifier of the room to be updated. Currently this must be an ARN.
-#' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
+#' @param name Room name. The value does not need to be unique.
+#' @param maximumMessageRatePerSecond Maximum number of messages per second that can be sent to the room (by
+#' all clients). Default: 10.
 #' @param maximumMessageLength The maximum number of characters in a single message. Messages are
 #' expected to be UTF-8 encoded and this limit applies specifically to
 #' rune/code-point count, not number of bytes. Default: 500.
-#' @param maximumMessageRatePerSecond Maximum number of messages per second that can be sent to the room (by
-#' all clients). Default: 10.
 #' @param messageReviewHandler Configuration information for optional review of messages. Specify an
 #' empty `uri` string to disassociate a message review handler from the
 #' specified room.
-#' @param name Room name. The value does not need to be unique.
+#' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
 #'
 #' @keywords internal
 #'
 #' @rdname ivschat_update_room
-ivschat_update_room <- function(identifier, loggingConfigurationIdentifiers = NULL, maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL) {
+ivschat_update_room <- function(identifier, name = NULL, maximumMessageRatePerSecond = NULL, maximumMessageLength = NULL, messageReviewHandler = NULL, loggingConfigurationIdentifiers = NULL) {
   op <- new_operation(
     name = "UpdateRoom",
     http_method = "POST",
@@ -589,7 +589,7 @@ ivschat_update_room <- function(identifier, loggingConfigurationIdentifiers = NU
     host_prefix = "",
     paginator = list()
   )
-  input <- .ivschat$update_room_input(identifier = identifier, loggingConfigurationIdentifiers = loggingConfigurationIdentifiers, maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name)
+  input <- .ivschat$update_room_input(identifier = identifier, name = name, maximumMessageRatePerSecond = maximumMessageRatePerSecond, maximumMessageLength = maximumMessageLength, messageReviewHandler = messageReviewHandler, loggingConfigurationIdentifiers = loggingConfigurationIdentifiers)
   output <- .ivschat$update_room_output()
   config <- get_config()
   svc <- .ivschat$service(config, op)

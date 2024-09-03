@@ -2,9 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_create_restore_testing_plan}
 \alias{backup_create_restore_testing_plan}
-\title{This is the first of two steps to create a restore testing plan; once
-this request is successful, finish the procedure with request
-CreateRestoreTestingSelection}
+\title{Creates a restore testing plan}
 \usage{
 backup_create_restore_testing_plan(
   CreatorRequestId = NULL,
@@ -27,13 +25,10 @@ The \code{RestoreTestingPlanName} is a unique string that is the name of the
 restore testing plan. This cannot be changed after creation, and it must
 consist of only alphanumeric characters and underscores.}
 
-\item{Tags}{Optional tags to include. A tag is a key-value pair you can use to
-manage, filter, and search for your resources. Allowed characters
-include UTF-8 letters,numbers, spaces, and the following characters: + -
-= . _ : /.}
+\item{Tags}{The tags to assign to the restore testing plan.}
 }
 \description{
-This is the first of two steps to create a restore testing plan; once this request is successful, finish the procedure with request CreateRestoreTestingSelection.
+Creates a restore testing plan.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_create_restore_testing_plan/} for full documentation.
 }

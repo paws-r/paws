@@ -19,8 +19,7 @@ backup_start_backup_job(
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the Amazon Web Services Region where they are created. They
-consist of lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created.}
 
 \item{ResourceArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a resource. The
 format of the ARN depends on the resource type.}
@@ -69,17 +68,16 @@ greater than the “transition to cold after days” setting. The
 “transition to cold after days” setting cannot be changed after a backup
 has been transitioned to cold.
 
-Resource types that are able to be transitioned to cold storage are
-listed in the "Lifecycle to cold storage" section of the \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource}{Feature availability by resource}
+Resource types that can transition to cold storage are listed in the
+\href{https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-resource}{Feature availability by resource}
 table. Backup ignores this expression for other resource types.
 
 This parameter has a maximum value of 100 years (36,500 days).}
 
-\item{RecoveryPointTags}{To help organize your resources, you can assign your own metadata to the
-resources that you create. Each tag is a key-value pair.}
+\item{RecoveryPointTags}{The tags to assign to the resources.}
 
-\item{BackupOptions}{Specifies the backup option for a selected resource. This option is only
-available for Windows Volume Shadow Copy Service (VSS) backup jobs.
+\item{BackupOptions}{The backup option for a selected resource. This option is only available
+for Windows Volume Shadow Copy Service (VSS) backup jobs.
 
 Valid values: Set to \code{"WindowsVSS":"enabled"} to enable the \code{WindowsVSS}
 backup option and create a Windows VSS backup. Set to

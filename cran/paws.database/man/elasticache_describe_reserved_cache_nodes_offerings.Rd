@@ -39,7 +39,7 @@ previous generation counterparts.
 
 For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
-\strong{M6g node types} (available only for Redis engine version
+\strong{M6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
@@ -52,7 +52,7 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
-\strong{T4g node types} (available only for Redis engine version
+\strong{T4g node types} (available only for Redis OSS engine version
 5.0.6 onward and Memcached engine version 1.5.16 onward):
 \code{cache.t4g.micro}, \code{cache.t4g.small}, \code{cache.t4g.medium}
 
@@ -91,7 +91,7 @@ for these types.)
 
 For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
-\strong{R6g node types} (available only for Redis engine version
+\strong{R6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.r6g.large}, \code{cache.r6g.xlarge}, \code{cache.r6g.2xlarge},
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
@@ -120,12 +120,12 @@ for these types.)
 \itemize{
 \item All current generation instance types are created in Amazon VPC by
 default.
-\item Redis append-only files (AOF) are not supported for T1 or T2
+\item Redis OSS append-only files (AOF) are not supported for T1 or T2
 instances.
-\item Redis Multi-AZ with automatic failover is not supported on T1
+\item Redis OSS Multi-AZ with automatic failover is not supported on T1
 instances.
-\item Redis configuration variables \code{appendonly} and \code{appendfsync} are not
-supported on Redis version 2.8.22 and later.
+\item Redis OSS configuration variables \code{appendonly} and \code{appendfsync} are
+not supported on Redis OSS version 2.8.22 and later.
 }}
 
 \item{Duration}{Duration filter value, specified in years or seconds. Use this parameter

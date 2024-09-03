@@ -208,9 +208,6 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' 
 #' -   Microsoft Azure Container Registry (`azure-container-registry`) -
 #'     `<custom>.azurecr.io`
-#' 
-#' -   GitLab Container Registry (`gitlab-container-registry`) -
-#'     `registry.gitlab.com`
 #' @param registryId The Amazon Web Services account ID associated with the registry to
 #' create the pull through cache rule for. If you do not specify a
 #' registry, the default registry is assumed.
@@ -292,6 +289,73 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
   return(response)
 }
 .ecr$operations$create_repository <- ecr_create_repository
+
+#' Creates a repository creation template
+#'
+#' @description
+#' Creates a repository creation template. This template is used to define the settings for repositories created by Amazon ECR on your behalf. For example, repositories created through pull through cache actions. For more information, see [Private repository creation templates](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-creation-templates.html) in the *Amazon Elastic Container Registry User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_create_repository_creation_template/](https://www.paws-r-sdk.com/docs/ecr_create_repository_creation_template/) for full documentation.
+#'
+#' @param prefix &#91;required&#93; The repository namespace prefix to associate with the template. All
+#' repositories created using this namespace prefix will have the settings
+#' defined in this template applied. For example, a prefix of `prod` would
+#' apply to all repositories beginning with `prod/`. Similarly, a prefix of
+#' `prod/team` would apply to all repositories beginning with `prod/team/`.
+#' 
+#' To apply a template to all repositories in your registry that don't have
+#' an associated creation template, you can use `ROOT` as the prefix.
+#' 
+#' There is always an assumed `/` applied to the end of the prefix. If you
+#' specify `ecr-public` as the prefix, Amazon ECR treats that as
+#' `ecr-public/`. When using a pull through cache rule, the repository
+#' prefix you specify during rule creation is what you should specify as
+#' your repository creation template prefix as well.
+#' @param description A description for the repository creation template.
+#' @param encryptionConfiguration The encryption configuration to use for repositories created using the
+#' template.
+#' @param resourceTags The metadata to apply to the repository to help you categorize and
+#' organize. Each tag consists of a key and an optional value, both of
+#' which you define. Tag keys can have a maximum character length of 128
+#' characters, and tag values can have a maximum length of 256 characters.
+#' @param imageTagMutability The tag mutability setting for the repository. If this parameter is
+#' omitted, the default setting of `MUTABLE` will be used which will allow
+#' image tags to be overwritten. If `IMMUTABLE` is specified, all image
+#' tags within the repository will be immutable which will prevent them
+#' from being overwritten.
+#' @param repositoryPolicy The repository policy to apply to repositories created using the
+#' template. A repository policy is a permissions policy associated with a
+#' repository to control access permissions.
+#' @param lifecyclePolicy The lifecycle policy to use for repositories created using the template.
+#' @param appliedFor &#91;required&#93; A list of enumerable strings representing the Amazon ECR repository
+#' creation scenarios that this template will apply towards. The two
+#' supported scenarios are `PULL_THROUGH_CACHE` and `REPLICATION`
+#' @param customRoleArn The ARN of the role to be assumed by Amazon ECR. This role must be in
+#' the same account as the registry that you are configuring. Amazon ECR
+#' will assume your supplied role when the customRoleArn is specified. When
+#' this field isn't specified, Amazon ECR will use the service-linked role
+#' for the repository creation template.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_create_repository_creation_template
+ecr_create_repository_creation_template <- function(prefix, description = NULL, encryptionConfiguration = NULL, resourceTags = NULL, imageTagMutability = NULL, repositoryPolicy = NULL, lifecyclePolicy = NULL, appliedFor, customRoleArn = NULL) {
+  op <- new_operation(
+    name = "CreateRepositoryCreationTemplate",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ecr$create_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
+  output <- .ecr$create_repository_creation_template_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$create_repository_creation_template <- ecr_create_repository_creation_template
 
 #' Deletes the lifecycle policy associated with the specified repository
 #'
@@ -425,6 +489,37 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
   return(response)
 }
 .ecr$operations$delete_repository <- ecr_delete_repository
+
+#' Deletes a repository creation template
+#'
+#' @description
+#' Deletes a repository creation template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_delete_repository_creation_template/](https://www.paws-r-sdk.com/docs/ecr_delete_repository_creation_template/) for full documentation.
+#'
+#' @param prefix &#91;required&#93; The repository namespace prefix associated with the repository creation
+#' template.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_delete_repository_creation_template
+ecr_delete_repository_creation_template <- function(prefix) {
+  op <- new_operation(
+    name = "DeleteRepositoryCreationTemplate",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ecr$delete_repository_creation_template_input(prefix = prefix)
+  output <- .ecr$delete_repository_creation_template_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$delete_repository_creation_template <- ecr_delete_repository_creation_template
 
 #' Deletes the repository policy associated with the specified repository
 #'
@@ -735,6 +830,88 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
   return(response)
 }
 .ecr$operations$describe_repositories <- ecr_describe_repositories
+
+#' Returns details about the repository creation templates in a registry
+#'
+#' @description
+#' Returns details about the repository creation templates in a registry. The `prefixes` request parameter can be used to return the details for a specific repository creation template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_describe_repository_creation_templates/](https://www.paws-r-sdk.com/docs/ecr_describe_repository_creation_templates/) for full documentation.
+#'
+#' @param prefixes The repository namespace prefixes associated with the repository
+#' creation templates to describe. If this value is not specified, all
+#' repository creation templates are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`describe_repository_creation_templates`][ecr_describe_repository_creation_templates]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value. This value is `null` when
+#' there are no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#' @param maxResults The maximum number of repository results returned by
+#' `DescribeRepositoryCreationTemplatesRequest` in paginated output. When
+#' this parameter is used, `DescribeRepositoryCreationTemplatesRequest`
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another
+#' `DescribeRepositoryCreationTemplatesRequest` request with the returned
+#' `nextToken` value. This value can be between 1 and 1000. If this
+#' parameter is not used, then `DescribeRepositoryCreationTemplatesRequest`
+#' returns up to 100 results and a `nextToken` value, if applicable.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_describe_repository_creation_templates
+ecr_describe_repository_creation_templates <- function(prefixes = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRepositoryCreationTemplates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "registryId"), output_token = "nextToken", result_key = "repositoryCreationTemplates")
+  )
+  input <- .ecr$describe_repository_creation_templates_input(prefixes = prefixes, nextToken = nextToken, maxResults = maxResults)
+  output <- .ecr$describe_repository_creation_templates_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$describe_repository_creation_templates <- ecr_describe_repository_creation_templates
+
+#' Retrieves the basic scan type version name
+#'
+#' @description
+#' Retrieves the basic scan type version name.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_account_setting/](https://www.paws-r-sdk.com/docs/ecr_get_account_setting/) for full documentation.
+#'
+#' @param name &#91;required&#93; Basic scan type version name.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_get_account_setting
+ecr_get_account_setting <- function(name) {
+  op <- new_operation(
+    name = "GetAccountSetting",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ecr$get_account_setting_input(name = name)
+  output <- .ecr$get_account_setting_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$get_account_setting <- ecr_get_account_setting
 
 #' Retrieves an authorization token
 #'
@@ -1102,6 +1279,39 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 }
 .ecr$operations$list_tags_for_resource <- ecr_list_tags_for_resource
 
+#' Allows you to change the basic scan type version by setting the name
+#' parameter to either CLAIR to AWS_NATIVE
+#'
+#' @description
+#' Allows you to change the basic scan type version by setting the `name` parameter to either `CLAIR` to `AWS_NATIVE`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_account_setting/](https://www.paws-r-sdk.com/docs/ecr_put_account_setting/) for full documentation.
+#'
+#' @param name &#91;required&#93; Basic scan type version name.
+#' @param value &#91;required&#93; Setting value that determines what basic scan type is being used:
+#' `AWS_NATIVE` or `CLAIR`.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_put_account_setting
+ecr_put_account_setting <- function(name, value) {
+  op <- new_operation(
+    name = "PutAccountSetting",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ecr$put_account_setting_input(name = name, value = value)
+  output <- .ecr$put_account_setting_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$put_account_setting <- ecr_put_account_setting
+
 #' Creates or updates the image manifest and tags associated with an image
 #'
 #' @description
@@ -1335,7 +1545,7 @@ ecr_put_registry_scanning_configuration <- function(scanType = NULL, rules = NUL
 #' Creates or updates the replication configuration for a registry
 #'
 #' @description
-#' Creates or updates the replication configuration for a registry. The existing replication configuration for a repository can be retrieved with the [`describe_registry`][ecr_describe_registry] API action. The first time the PutReplicationConfiguration API is called, a service-linked IAM role is created in your account for the replication process. For more information, see [Using service-linked roles for Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html) in the *Amazon Elastic Container Registry User Guide*.
+#' Creates or updates the replication configuration for a registry. The existing replication configuration for a repository can be retrieved with the [`describe_registry`][ecr_describe_registry] API action. The first time the PutReplicationConfiguration API is called, a service-linked IAM role is created in your account for the replication process. For more information, see [Using service-linked roles for Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html) in the *Amazon Elastic Container Registry User Guide*. For more information on the custom role for replication, see [Creating an IAM role for replication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/#roles-creatingrole-user-console).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_put_replication_configuration/](https://www.paws-r-sdk.com/docs/ecr_put_replication_configuration/) for full documentation.
 #'
@@ -1576,6 +1786,68 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
   return(response)
 }
 .ecr$operations$update_pull_through_cache_rule <- ecr_update_pull_through_cache_rule
+
+#' Updates an existing repository creation template
+#'
+#' @description
+#' Updates an existing repository creation template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_update_repository_creation_template/](https://www.paws-r-sdk.com/docs/ecr_update_repository_creation_template/) for full documentation.
+#'
+#' @param prefix &#91;required&#93; The repository namespace prefix that matches an existing repository
+#' creation template in the registry. All repositories created using this
+#' namespace prefix will have the settings defined in this template
+#' applied. For example, a prefix of `prod` would apply to all repositories
+#' beginning with `prod/`. This includes a repository named `prod/team1` as
+#' well as a repository named `prod/repository1`.
+#' 
+#' To apply a template to all repositories in your registry that don't have
+#' an associated creation template, you can use `ROOT` as the prefix.
+#' @param description A description for the repository creation template.
+#' @param encryptionConfiguration 
+#' @param resourceTags The metadata to apply to the repository to help you categorize and
+#' organize. Each tag consists of a key and an optional value, both of
+#' which you define. Tag keys can have a maximum character length of 128
+#' characters, and tag values can have a maximum length of 256 characters.
+#' @param imageTagMutability Updates the tag mutability setting for the repository. If this parameter
+#' is omitted, the default setting of `MUTABLE` will be used which will
+#' allow image tags to be overwritten. If `IMMUTABLE` is specified, all
+#' image tags within the repository will be immutable which will prevent
+#' them from being overwritten.
+#' @param repositoryPolicy Updates the repository policy created using the template. A repository
+#' policy is a permissions policy associated with a repository to control
+#' access permissions.
+#' @param lifecyclePolicy Updates the lifecycle policy associated with the specified repository
+#' creation template.
+#' @param appliedFor Updates the list of enumerable strings representing the Amazon ECR
+#' repository creation scenarios that this template will apply towards. The
+#' two supported scenarios are `PULL_THROUGH_CACHE` and `REPLICATION`
+#' @param customRoleArn The ARN of the role to be assumed by Amazon ECR. This role must be in
+#' the same account as the registry that you are configuring. Amazon ECR
+#' will assume your supplied role when the customRoleArn is specified. When
+#' this field isn't specified, Amazon ECR will use the service-linked role
+#' for the repository creation template.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_update_repository_creation_template
+ecr_update_repository_creation_template <- function(prefix, description = NULL, encryptionConfiguration = NULL, resourceTags = NULL, imageTagMutability = NULL, repositoryPolicy = NULL, lifecyclePolicy = NULL, appliedFor = NULL, customRoleArn = NULL) {
+  op <- new_operation(
+    name = "UpdateRepositoryCreationTemplate",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .ecr$update_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
+  output <- .ecr$update_repository_creation_template_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$update_repository_creation_template <- ecr_update_repository_creation_template
 
 #' Uploads an image layer part to Amazon ECR
 #'

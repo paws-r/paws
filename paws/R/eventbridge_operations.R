@@ -3025,8 +3025,8 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 #' calculated including the event and any necessary characters and keys of
 #' the JSON representation of the event. To learn more, see [Calculating
 #' PutEvents event entry
-#' size](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevent-size.html)
-#' in the *Amazon EventBridge User Guide*
+#' size](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in the
+#' *Amazon EventBridge User Guide*
 #' 
 #' PutEvents accepts the data in JSON format. For the JSON number (integer)
 #' data type, the constraints are: a minimum value of
@@ -3116,8 +3116,8 @@ eventbridge_put_events <- function(Entries, EndpointId = NULL) {
 #' 
 #' For information on calculating event batch size, see [Calculating
 #' EventBridge PutEvents event entry
-#' size](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevent-size.html)
-#' in the *EventBridge User Guide*.
+#' size](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in the
+#' *EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_put_partner_events(Entries)

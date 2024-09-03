@@ -54,7 +54,7 @@ However, for an improved security posture, we strongly recommend
 creating a custom policy and custom service role for running your
 maintenance window tasks. The policy can be crafted to provide only the
 permissions needed for your particular maintenance window tasks. For
-more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html}{Setting up maintenance windows}
+more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Setting up maintenance windows}
 in the in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{TaskParameters}{The parameters to modify.

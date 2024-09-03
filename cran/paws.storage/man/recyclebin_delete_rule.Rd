@@ -10,7 +10,7 @@ recyclebin_delete_rule(Identifier)
 \item{Identifier}{[required] The unique ID of the retention rule.}
 }
 \description{
-Deletes a Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule}{Delete Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Deletes a Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule}{Delete Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/recyclebin_delete_rule/} for full documentation.
 }

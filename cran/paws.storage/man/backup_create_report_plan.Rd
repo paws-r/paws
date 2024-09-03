@@ -34,8 +34,7 @@ If the report template is \code{RESOURCE_COMPLIANCE_REPORT} or
 \code{CONTROL_COMPLIANCE_REPORT}, this API resource also describes the report
 coverage by Amazon Web Services Regions and frameworks.}
 
-\item{ReportPlanTags}{Metadata that you can assign to help organize the report plans that you
-create. Each tag is a key-value pair.}
+\item{ReportPlanTags}{The tags to assign to the report plan.}
 
 \item{IdempotencyToken}{A customer-chosen string that you can use to distinguish between
 otherwise identical calls to \code{CreateReportPlanInput}. Retrying a

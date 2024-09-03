@@ -2,23 +2,23 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_create_user_group}
 \alias{elasticache_create_user_group}
-\title{For Redis engine version 6}
+\title{For Redis OSS engine version 6}
 \usage{
 elasticache_create_user_group(UserGroupId, Engine, UserIds = NULL, Tags = NULL)
 }
 \arguments{
 \item{UserGroupId}{[required] The ID of the user group.}
 
-\item{Engine}{[required] The current supported value is Redis.}
+\item{Engine}{[required] The current supported value is Redis user.}
 
 \item{UserIds}{The list of user IDs that belong to the user group.}
 
 \item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
 A tag key must be accompanied by a tag value, although null is accepted.
-Available for Redis only.}
+Available for Redis OSS only.}
 }
 \description{
-For Redis engine version 6.0 onwards: Creates a Redis user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
+For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_user_group/} for full documentation.
 }

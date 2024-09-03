@@ -15,7 +15,7 @@ it. This message is returned by future
 message is also recorded in the Batch activity logs.}
 }
 \description{
-Cancels a job in an Batch job queue. Jobs that are in the \code{SUBMITTED} or \code{PENDING} are canceled. A job in\code{RUNNABLE} remains in \code{RUNNABLE} until it reaches the head of the job queue. Then the job status is updated to \code{FAILED}.
+Cancels a job in an Batch job queue. Jobs that are in a \code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are cancelled and the job status is updated to \code{FAILED}.
 
 See \url{https://www.paws-r-sdk.com/docs/batch_cancel_job/} for full documentation.
 }

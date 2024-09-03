@@ -68,7 +68,7 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' Creates a new Amazon ECS cluster
 #'
 #' @description
-#' Creates a new Amazon ECS cluster. By default, your account receives a `default` cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the [`create_cluster`][ecs_create_cluster] action.
+#' Creates a new Amazon ECS cluster. By default, your account receives a `default` cluster when you launch your first container instance. However, you can create your own cluster with a unique name.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_create_cluster/](https://www.paws-r-sdk.com/docs/ecs_create_cluster/) for full documentation.
 #'
@@ -186,7 +186,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' definition
 #'
 #' @description
-#' Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the `desiredCount`, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, see the [`update_service`][ecs_update_service] action.
+#' Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the `desiredCount`, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, use [`update_service`][ecs_update_service].
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_create_service/](https://www.paws-r-sdk.com/docs/ecs_create_service/) for full documentation.
 #'
@@ -528,7 +528,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
 #' created with the
-#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' [CreateCapacityProviderProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/)API
 #' operation.
 #' 
 #' To use a Fargate capacity provider, specify either the `FARGATE` or
@@ -2395,10 +2395,9 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role that grants
 #' the Amazon ECS container agent permission to make Amazon Web Services
-#' API calls on your behalf. The task execution IAM role is required
-#' depending on the requirements of your task. For more information, see
-#' [Amazon ECS task execution IAM
-#' role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+#' API calls on your behalf. For informationabout the required IAM roles
+#' for Amazon ECS, see [IAM roles for Amazon
+#' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-ecs-iam-role-overview.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param networkMode The Docker networking mode to use for the containers in the task. The
 #' valid values are `none`, `bridge`, `awsvpc`, and `host`. If no network
@@ -2425,19 +2424,16 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' user.
 #' 
 #' If the network mode is `awsvpc`, the task is allocated an elastic
-#' network interface, and you must specify a NetworkConfiguration value
-#' when you create a service or run a task with the task definition. For
-#' more information, see [Task
+#' network interface, and you must specify a
+#' [NetworkConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_NetworkConfiguration.html)
+#' value when you create a service or run a task with the task definition.
+#' For more information, see [Task
 #' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' If the network mode is `host`, you cannot run multiple instantiations of
 #' the same task on a single container instance when port mappings are
 #' used.
-#' 
-#' For more information, see [Network
-#' settings](https://docs.docker.com/engine/reference/run/#network-settings)
-#' in the *Docker run reference*.
 #' @param containerDefinitions &#91;required&#93; A list of container definitions in JSON format that describe the
 #' different containers that make up your task.
 #' @param volumes A list of volume definitions in JSON format that containers in your task
@@ -2579,13 +2575,10 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' the same process namespace.
 #' 
 #' If no value is specified, the default is a private namespace for each
-#' container. For more information, see [PID
-#' settings](https://docs.docker.com/engine/reference/run/#pid-settings---pid)
-#' in the *Docker run reference*.
+#' container.
 #' 
 #' If the `host` PID mode is used, there's a heightened risk of undesired
-#' process namespace exposure. For more information, see [Docker
-#' security](https://docs.docker.com/engine/security/).
+#' process namespace exposure.
 #' 
 #' This parameter is not supported for Windows containers.
 #' 
@@ -2601,14 +2594,10 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' then IPC resources within the containers of a task are private and not
 #' shared with other containers in a task or on the container instance. If
 #' no value is specified, then the IPC resource namespace sharing depends
-#' on the Docker daemon setting on the container instance. For more
-#' information, see [IPC
-#' settings](https://docs.docker.com/engine/reference/run/#ipc-settings---ipc)
-#' in the *Docker run reference*.
+#' on the Docker daemon setting on the container instance.
 #' 
 #' If the `host` IPC mode is used, be aware that there is a heightened risk
-#' of undesired IPC namespace expose. For more information, see [Docker
-#' security](https://docs.docker.com/engine/security/).
+#' of undesired IPC namespace expose.
 #' 
 #' If you are setting namespaced kernel parameters using `systemControls`
 #' for the containers in the task, the following will apply to your IPC
@@ -2765,7 +2754,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
 #' only be propagated to the task during task creation. To add tags to a
-#' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
+#' task after task creation, use the[`tag_resource`][ecs_tag_resource] API
 #' action.
 #' 
 #' An error will be received if you specify the `SERVICE` option when
@@ -2778,7 +2767,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' parameter. You can then identify which tasks belong to that job by
 #' filtering the results of a [`list_tasks`][ecs_list_tasks] call with the
 #' `startedBy` value. Up to 128 letters (uppercase and lowercase), numbers,
-#' hyphens (-), and underscores (_) are allowed.
+#' hyphens (-), forward slash (/), and underscores (_) are allowed.
 #' 
 #' If a task is started by an Amazon ECS service, then the `startedBy`
 #' parameter contains the deployment ID of the service that starts it.
@@ -2910,7 +2899,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' parameter. You can then identify which tasks belong to that job by
 #' filtering the results of a [`list_tasks`][ecs_list_tasks] call with the
 #' `startedBy` value. Up to 36 letters (uppercase and lowercase), numbers,
-#' hyphens (-), and underscores (_) are allowed.
+#' hyphens (-), forward slash (/), and underscores (_) are allowed.
 #' 
 #' If a task is started by an Amazon ECS service, the `startedBy` parameter
 #' contains the deployment ID of the service that starts it.
@@ -2986,8 +2975,8 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @param reason An optional message specified when a task is stopped. For example, if
 #' you're using a custom scheduler, you can use this parameter to specify
 #' the reason for stopping the task here, and the message appears in
-#' subsequent [`describe_tasks`][ecs_describe_tasks] API operations on this
-#' task.
+#' subsequent [`describe_tasks`][ecs_describe_tasks]\> API operations on
+#' this task.
 #'
 #' @keywords internal
 #'
@@ -3450,8 +3439,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
 #' created with the
-#' [`create_capacity_provider`][ecs_create_capacity_provider] API
-#' operation.
+#' [CreateClusterCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/)
+#' API operation.
 #' 
 #' To use a Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The Fargate capacity providers are
@@ -3459,9 +3448,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' to be used.
 #' 
 #' The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API operation is used to update the list of available capacity providers
-#' for a cluster after the cluster is created.
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]API
+#' operation is used to update the list of available capacity providers for
+#' a cluster after the cluster is created.
 #' @param deploymentConfiguration Optional deployment parameters that control how many tasks run during
 #' the deployment and the ordering of stopping and starting tasks.
 #' @param networkConfiguration An object representing the network configuration for the service.

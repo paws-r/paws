@@ -52,7 +52,7 @@ evaluation job that use human workers support two models.}
 saved in Amazon S3.}
 }
 \description{
-API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers. To learn more about the requirements for creating a model evaluation job see, \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html}{Model evaluations}.
+API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers. To learn more about the requirements for creating a model evaluation job see, \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html}{Model evaluation}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_create_evaluation_job/} for full documentation.
 }

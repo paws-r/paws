@@ -576,6 +576,20 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' -   stream.graphics.g4dn.16xlarge
 #' 
+#' -   stream.graphics.g5.xlarge
+#' 
+#' -   stream.graphics.g5.2xlarge
+#' 
+#' -   stream.graphics.g5.4xlarge
+#' 
+#' -   stream.graphics.g5.8xlarge
+#' 
+#' -   stream.graphics.g5.12xlarge
+#' 
+#' -   stream.graphics.g5.16xlarge
+#' 
+#' -   stream.graphics.g5.24xlarge
+#' 
 #' -   stream.graphics-pro.4xlarge
 #' 
 #' -   stream.graphics-pro.8xlarge
@@ -625,7 +639,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' are connected to their previous session. Otherwise, they are connected
 #' to a new session with a new streaming instance.
 #' 
-#' Specify a value between 60 and 360000.
+#' Specify a value between 60 and 36000.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
@@ -659,7 +673,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' `IdleDisconnectTimeoutInSeconds` elapses, they are disconnected.
 #' 
 #' To prevent users from being disconnected due to inactivity, specify a
-#' value of 0. Otherwise, specify a value between 60 and 3600. The default
+#' value of 0. Otherwise, specify a value between 60 and 36000. The default
 #' value is 0.
 #' 
 #' If you enable this feature, we recommend that you specify a value that
@@ -995,6 +1009,51 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
   return(response)
 }
 .appstream$operations$create_streaming_url <- appstream_create_streaming_url
+
+#' Creates custom branding that customizes the appearance of the streaming
+#' application catalog page
+#'
+#' @description
+#' Creates custom branding that customizes the appearance of the streaming application catalog page.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_theme_for_stack/](https://www.paws-r-sdk.com/docs/appstream_create_theme_for_stack/) for full documentation.
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#' @param FooterLinks The links that are displayed in the footer of the streaming application
+#' catalog page. These links are helpful resources for users, such as the
+#' organization's IT support and product marketing sites.
+#' @param TitleText &#91;required&#93; The title that is displayed at the top of the browser tab during users'
+#' application streaming sessions.
+#' @param ThemeStyling &#91;required&#93; The color theme that is applied to website links, text, and buttons.
+#' These colors are also applied as accents in the background for the
+#' streaming application catalog page.
+#' @param OrganizationLogoS3Location &#91;required&#93; The organization logo that appears on the streaming application catalog
+#' page.
+#' @param FaviconS3Location &#91;required&#93; The S3 location of the favicon. The favicon enables users to recognize
+#' their application streaming site in a browser full of tabs or bookmarks.
+#' It is displayed at the top of the browser tab for the application
+#' streaming site during users' streaming sessions.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_theme_for_stack
+appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, TitleText, ThemeStyling, OrganizationLogoS3Location, FaviconS3Location) {
+  op <- new_operation(
+    name = "CreateThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$create_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location)
+  output <- .appstream$create_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_theme_for_stack <- appstream_create_theme_for_stack
 
 #' Creates a new image with the latest Windows operating system updates,
 #' driver updates, and AppStream 2
@@ -1429,6 +1488,37 @@ appstream_delete_stack <- function(Name) {
   return(response)
 }
 .appstream$operations$delete_stack <- appstream_delete_stack
+
+#' Deletes custom branding that customizes the appearance of the streaming
+#' application catalog page
+#'
+#' @description
+#' Deletes custom branding that customizes the appearance of the streaming application catalog page.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_theme_for_stack/](https://www.paws-r-sdk.com/docs/appstream_delete_theme_for_stack/) for full documentation.
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_delete_theme_for_stack
+appstream_delete_theme_for_stack <- function(StackName) {
+  op <- new_operation(
+    name = "DeleteThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$delete_theme_for_stack_input(StackName = StackName)
+  output <- .appstream$delete_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$delete_theme_for_stack <- appstream_delete_theme_for_stack
 
 #' Disables usage report generation
 #'
@@ -1944,6 +2034,36 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
   return(response)
 }
 .appstream$operations$describe_stacks <- appstream_describe_stacks
+
+#' Retrieves a list that describes the theme for a specified stack
+#'
+#' @description
+#' Retrieves a list that describes the theme for a specified stack. A theme is custom branding that customizes the appearance of the streaming application catalog page.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_theme_for_stack/](https://www.paws-r-sdk.com/docs/appstream_describe_theme_for_stack/) for full documentation.
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_theme_for_stack
+appstream_describe_theme_for_stack <- function(StackName) {
+  op <- new_operation(
+    name = "DescribeThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$describe_theme_for_stack_input(StackName = StackName)
+  output <- .appstream$describe_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_theme_for_stack <- appstream_describe_theme_for_stack
 
 #' Retrieves a list that describes one or more usage report subscriptions
 #'
@@ -2955,7 +3075,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' are connected to their previous session. Otherwise, they are connected
 #' to a new session with a new streaming instance.
 #' 
-#' Specify a value between 60 and 360000.
+#' Specify a value between 60 and 36000.
 #' @param DeleteVpcConfig Deletes the VPC association for the specified fleet.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.
@@ -2975,7 +3095,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' `IdleDisconnectTimeoutInSeconds` elapses, they are disconnected.
 #' 
 #' To prevent users from being disconnected due to inactivity, specify a
-#' value of 0. Otherwise, specify a value between 60 and 3600. The default
+#' value of 0. Otherwise, specify a value between 60 and 36000. The default
 #' value is 0.
 #' 
 #' If you enable this feature, we recommend that you specify a value that
@@ -3120,3 +3240,51 @@ appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name,
   return(response)
 }
 .appstream$operations$update_stack <- appstream_update_stack
+
+#' Updates custom branding that customizes the appearance of the streaming
+#' application catalog page
+#'
+#' @description
+#' Updates custom branding that customizes the appearance of the streaming application catalog page.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_theme_for_stack/](https://www.paws-r-sdk.com/docs/appstream_update_theme_for_stack/) for full documentation.
+#'
+#' @param StackName &#91;required&#93; The name of the stack for the theme.
+#' @param FooterLinks The links that are displayed in the footer of the streaming application
+#' catalog page. These links are helpful resources for users, such as the
+#' organization's IT support and product marketing sites.
+#' @param TitleText The title that is displayed at the top of the browser tab during users'
+#' application streaming sessions.
+#' @param ThemeStyling The color theme that is applied to website links, text, and buttons.
+#' These colors are also applied as accents in the background for the
+#' streaming application catalog page.
+#' @param OrganizationLogoS3Location The organization logo that appears on the streaming application catalog
+#' page.
+#' @param FaviconS3Location The S3 location of the favicon. The favicon enables users to recognize
+#' their application streaming site in a browser full of tabs or bookmarks.
+#' It is displayed at the top of the browser tab for the application
+#' streaming site during users' streaming sessions.
+#' @param State Specifies whether custom branding should be applied to catalog page or
+#' not.
+#' @param AttributesToDelete The attributes to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_update_theme_for_stack
+appstream_update_theme_for_stack <- function(StackName, FooterLinks = NULL, TitleText = NULL, ThemeStyling = NULL, OrganizationLogoS3Location = NULL, FaviconS3Location = NULL, State = NULL, AttributesToDelete = NULL) {
+  op <- new_operation(
+    name = "UpdateThemeForStack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .appstream$update_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location, State = State, AttributesToDelete = AttributesToDelete)
+  output <- .appstream$update_theme_for_stack_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$update_theme_for_stack <- appstream_update_theme_for_stack

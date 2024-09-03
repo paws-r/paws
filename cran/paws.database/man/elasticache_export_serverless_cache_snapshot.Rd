@@ -12,14 +12,14 @@ elasticache_export_serverless_cache_snapshot(
 }
 \arguments{
 \item{ServerlessCacheSnapshotName}{[required] The identifier of the serverless cache snapshot to be exported to S3.
-Available for Redis only.}
+Available for Redis OSS only.}
 
 \item{S3BucketName}{[required] Name of the Amazon S3 bucket to export the snapshot to. The Amazon S3
 bucket must also be in same region as the snapshot. Available for Redis
-only.}
+OSS only.}
 }
 \description{
-Provides the functionality to export the serverless cache snapshot data to Amazon S3. Available for Redis only.
+Provides the functionality to export the serverless cache snapshot data to Amazon S3. Available for Redis OSS only.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_export_serverless_cache_snapshot/} for full documentation.
 }

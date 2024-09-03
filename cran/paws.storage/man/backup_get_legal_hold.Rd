@@ -7,9 +7,7 @@
 backup_get_legal_hold(LegalHoldId)
 }
 \arguments{
-\item{LegalHoldId}{[required] This is the ID required to use
-\code{\link[=backup_get_legal_hold]{get_legal_hold}}. This unique ID is associated
-with a specific legal hold.}
+\item{LegalHoldId}{[required] The ID of the legal hold.}
 }
 \description{
 This action returns details for a specified legal hold. The details are the body of a legal hold in JSON format, in addition to metadata.

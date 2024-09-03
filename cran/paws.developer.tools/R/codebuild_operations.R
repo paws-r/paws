@@ -244,6 +244,14 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
 #'     (Sydney).
 #' 
+#' -   The environment type `MAC_ARM` is available for Medium fleets only
+#'     in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
+#'     Asia Pacific (Sydney), and EU (Frankfurt)
+#' 
+#' -   The environment type `MAC_ARM` is available for Large fleets only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
+#'     Asia Pacific (Sydney).
+#' 
 #' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
 #'     only in regions US East (N. Virginia), US East (Ohio), US West
 #'     (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
@@ -318,6 +326,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     Web Services services required to create a VPC network
 #'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
+#' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
 #' information, see [Allow a user to add a permission policy for a fleet
 #' service
@@ -331,7 +340,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @keywords internal
 #'
 #' @rdname codebuild_create_fleet
-codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, fleetServiceRole = NULL, tags = NULL) {
+codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
@@ -339,7 +348,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
     host_prefix = "",
     paginator = list()
   )
-  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, fleetServiceRole = fleetServiceRole, tags = tags)
+  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$create_fleet_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -1002,11 +1011,11 @@ codebuild_get_resource_policy <- function(resourceArn) {
 .codebuild$operations$get_resource_policy <- codebuild_get_resource_policy
 
 #' Imports the source repository credentials for an CodeBuild project that
-#' has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
-#' repository
+#' has its source code stored in a GitHub, GitHub Enterprise, GitLab,
+#' GitLab Self Managed, or Bitbucket repository
 #'
 #' @description
-#' Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
+#' Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, GitLab, GitLab Self Managed, or Bitbucket repository.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codebuild_import_source_credentials/](https://www.paws-r-sdk.com/docs/codebuild_import_source_credentials/) for full documentation.
 #'
@@ -1014,13 +1023,13 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' is not valid for other types of source providers or connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
 #' Bitbucket, this is either the access token or the app password. For the
-#' `authType` CODECONNECTIONS, this is the `connectionArn`.
+#' `authType` CODECONNECTIONS, this is the `connectionArn`. For the
+#' `authType` SECRETS_MANAGER, this is the `secretArn`.
 #' @param serverType &#91;required&#93; The source provider used for this project.
 #' @param authType &#91;required&#93; The type of authentication used to connect to a GitHub, GitHub
 #' Enterprise, GitLab, GitLab Self Managed, or Bitbucket repository. An
 #' OAUTH connection is not supported by the API and must be created using
-#' the CodeBuild console. Note that CODECONNECTIONS is only valid for
-#' GitLab and GitLab Self Managed.
+#' the CodeBuild console.
 #' @param shouldOverwrite Set to `false` to prevent overwriting the repository source credentials.
 #' Set to `true` to overwrite the repository source credentials. The
 #' default value is `true`.
@@ -2229,6 +2238,14 @@ codebuild_stop_build_batch <- function(id) {
 #'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
 #'     (Sydney).
 #' 
+#' -   The environment type `MAC_ARM` is available for Medium fleets only
+#'     in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
+#'     Asia Pacific (Sydney), and EU (Frankfurt)
+#' 
+#' -   The environment type `MAC_ARM` is available for Large fleets only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
+#'     Asia Pacific (Sydney).
+#' 
 #' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
 #'     only in regions US East (N. Virginia), US East (Ohio), US West
 #'     (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
@@ -2303,6 +2320,7 @@ codebuild_stop_build_batch <- function(id) {
 #'     Web Services services required to create a VPC network
 #'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
+#' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
 #' information, see [Allow a user to add a permission policy for a fleet
 #' service
@@ -2316,7 +2334,7 @@ codebuild_stop_build_batch <- function(id) {
 #' @keywords internal
 #'
 #' @rdname codebuild_update_fleet
-codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, fleetServiceRole = NULL, tags = NULL) {
+codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
@@ -2324,7 +2342,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
     host_prefix = "",
     paginator = list()
   )
-  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, fleetServiceRole = fleetServiceRole, tags = tags)
+  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$update_fleet_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
