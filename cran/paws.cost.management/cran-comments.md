@@ -1,5 +1,3 @@
-Fixed R documentation (removed unicode character)
-
 ## Test environments
 
 * local macOS install, R 4.2.1
@@ -10,7 +8,7 @@ Fixed R documentation (removed unicode character)
 
 There were no ERRORs, WARNINGs, or Notes.
 
-Maintainer Notes: tarball package size:  131.48K
+Maintainer Notes: tarball package size:  133.17K
 
 ## Downstream dependencies
 

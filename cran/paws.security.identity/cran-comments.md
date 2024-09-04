@@ -1,5 +1,3 @@
-Fixed R documentation
-
 ## Test environments
 
 * local macOS install, R 4.2.1
@@ -8,9 +6,15 @@ Fixed R documentation
 
 ## R CMD check results
 
-There were no ERRORs, WARNINGs, or Notes.
+There were no ERRORs, or WARNINGs.
+Notes:
+checking installed package size ... NOTE
+  installed size is  6.8Mb
+  sub-directories of 1Mb or more:
+    R      3.1Mb
+    help   3.5Mb
 
-Maintainer Notes: tarball package size:  981.5K
+Maintainer Notes: tarball package size:  996.31K
 
 ## Downstream dependencies
 
