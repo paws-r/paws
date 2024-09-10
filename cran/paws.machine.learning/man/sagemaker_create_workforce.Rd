@@ -16,7 +16,7 @@ sagemaker_create_workforce(
 \arguments{
 \item{CognitoConfig}{Use this parameter to configure an Amazon Cognito private workforce. A
 single Cognito workforce is created using and corresponds to a single
-\href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito user pool}.
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html}{Amazon Cognito user pool}.
 
 Do not use \code{OidcConfig} if you specify values for \code{CognitoConfig}.}
 

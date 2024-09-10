@@ -53,7 +53,7 @@ include the following permissions:
 
 \item{OutputFormat}{[required] The output format for the stream. Valid values are \code{json},
 \code{opentelemetry1.0}, and \code{opentelemetry0.7}. For more information about
-metric stream output formats, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html}{Metric streams output formats}.}
+metric stream output formats, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html}{Metric streams output formats}.}
 
 \item{Tags}{A list of key-value pairs to associate with the metric stream. You can
 associate as many as 50 tags with a metric stream.

@@ -121,14 +121,14 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' ARN for each access entry. You can't specify the same ARN in more than
 #' one access entry. This value can't be changed after access entry
 #' creation.
-#' 
+#'
 #' The valid principals differ depending on the type of the access entry in
 #' the `type` field. The only valid ARN is IAM roles for the types of
 #' access entries for nodes: `` ``. You can use every IAM principal type
 #' for `STANDARD` access entries. You can't use the STS session principal
 #' type with access entries because this is a temporary principal for each
 #' session and not a permanent identity that can be assigned permissions.
-#' 
+#'
 #' [IAM best
 #' practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp)
 #' recommend using IAM roles with temporary credentials, rather than IAM
@@ -137,7 +137,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' `subject` in a Kubernetes `RoleBinding` or `ClusterRoleBinding` object.
 #' Amazon EKS doesn't confirm that the value for `name` exists in any
 #' bindings on your cluster. You can specify one or more names.
-#' 
+#'
 #' Kubernetes authorizes the `principalArn` of the access entry to access
 #' any cluster objects that you've specified in a Kubernetes `Role` or
 #' `ClusterRole` object that is also specified in a binding's `roleRef`.
@@ -145,7 +145,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' `ClusterRoleBinding`, `Role`, or `ClusterRole` objects, see [Using RBAC
 #' Authorization in the Kubernetes
 #' documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
-#' 
+#'
 #' If you want Amazon EKS to authorize the `principalArn` (instead of, or
 #' in addition to Kubernetes authorizing the `principalArn`), you can
 #' associate one or more access policies to the access entry using
@@ -167,7 +167,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' in the *Amazon EKS User Guide*.
 #' @param type The type of the new access entry. Valid values are `Standard`,
 #' `FARGATE_LINUX`, `EC2_LINUX`, and `EC2_WINDOWS`.
-#' 
+#'
 #' If the `principalArn` is for an IAM role that's used for self-managed
 #' Amazon EC2 nodes, specify `EC2_LINUX` or `EC2_WINDOWS`. Amazon EKS
 #' grants the necessary permissions to the node for you. If the
@@ -177,7 +177,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' profiles or managed Amazon EC2 nodes, because Amazon EKS creates entries
 #' in the `aws-auth` `ConfigMap` for the roles. You can't change this value
 #' once you've created the access entry.
-#' 
+#'
 #' If you set the value to `EC2_LINUX` or `EC2_WINDOWS`, you can't specify
 #' values for `kubernetesGroups`, or associate an `AccessPolicy` to the
 #' access entry.
@@ -224,7 +224,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' information, see [Amazon EKS node IAM
 #' role](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
 #' in the *Amazon EKS User Guide*.
-#' 
+#'
 #' To specify an existing IAM role, you must have an IAM OpenID Connect
 #' (OIDC) provider created for your cluster. For more information, see
 #' [Enabling IAM roles for service accounts on your
@@ -232,23 +232,23 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' in the *Amazon EKS User Guide*.
 #' @param resolveConflicts How to resolve field value conflicts for an Amazon EKS add-on. Conflicts
 #' are handled based on the value you choose:
-#' 
+#'
 #' -   **None** – If the self-managed version of the add-on is installed on
 #'     your cluster, Amazon EKS doesn't change the value. Creation of the
 #'     add-on might fail.
-#' 
+#'
 #' -   **Overwrite** – If the self-managed version of the add-on is
 #'     installed on your cluster and the Amazon EKS default value is
 #'     different than the existing value, Amazon EKS changes the value to
 #'     the Amazon EKS default value.
-#' 
+#'
 #' -   **Preserve** – This is similar to the NONE option. If the
 #'     self-managed version of the add-on is installed on your cluster
 #'     Amazon EKS doesn't change the add-on resource properties. Creation
 #'     of the add-on might fail if conflicts are detected. This option
 #'     works differently during the update operation. For more information,
 #'     see [`update_addon`][eks_update_addon].
-#' 
+#'
 #' If you don't currently have the self-managed version of the add-on
 #' installed on your cluster, the Amazon EKS add-on is installed. Amazon
 #' EKS sets all values to default values, regardless of the option that you
@@ -263,7 +263,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' [`describe_addon_configuration`][eks_describe_addon_configuration].
 #' @param podIdentityAssociations An array of Pod Identity Assocations to be created. Each EKS Pod
 #' Identity association maps a Kubernetes service account to an IAM Role.
-#' 
+#'
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
 #' using Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
@@ -300,18 +300,18 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a
 #' value here, the default version available in Amazon EKS is used.
-#' 
+#'
 #' The default version might not be the latest version available.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions
 #' for the Kubernetes control plane to make calls to Amazon Web Services
 #' API operations on your behalf. For more information, see [Amazon EKS
 #' Service IAM
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/cluster_IAM_role.html)
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/cluster-iam-role.html)
 #' in the *Amazon EKS User Guide* .
 #' @param resourcesVpcConfig &#91;required&#93; The VPC configuration that's used by the cluster control plane. Amazon
 #' EKS VPC resources have specific requirements to work properly with
 #' Kubernetes. For more information, see [Cluster VPC
-#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
+#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network-reqs.html)
 #' and [Cluster Security Group
 #' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 #' in the *Amazon EKS User Guide*. You must specify at least two subnets.
@@ -324,7 +324,7 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' EKS Cluster control plane
 #' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
-#' 
+#'
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
@@ -344,9 +344,9 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param accessConfig The access configuration for the cluster.
 #' @param bootstrapSelfManagedAddons If you set this value to `False` when creating a cluster, the default
 #' networking add-ons will not be installed.
-#' 
+#'
 #' The default networking addons include vpc-cni, coredns, and kube-proxy.
-#' 
+#'
 #' Use this option when you plan to install third-party alternative add-ons
 #' or self-manage the default networking add-ons.
 #' @param upgradePolicy New clusters, by default, have extended support enabled. You can disable
@@ -586,7 +586,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' AMI
 #' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
 #' in the *Amazon EKS User Guide*.
-#' 
+#'
 #' If you specify `launchTemplate`, and your launch template uses a custom
 #' AMI, then don't specify `releaseVersion`, or the node group deployment
 #' will fail. For more information about using launch templates with Amazon
@@ -638,26 +638,26 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' @param tags Metadata that assists with categorization and organization. Each tag
 #' consists of a key and an optional value. You define both. Tags don't
 #' propagate to any other cluster or Amazon Web Services resources.
-#' 
+#'
 #' The following basic restrictions apply to tags:
-#' 
+#'
 #' -   Maximum number of tags per resource – 50
-#' 
+#'
 #' -   For each resource, each tag key must be unique, and each tag key can
 #'     have only one value.
-#' 
+#'
 #' -   Maximum key length – 128 Unicode characters in UTF-8
-#' 
+#'
 #' -   Maximum value length – 256 Unicode characters in UTF-8
-#' 
+#'
 #' -   If your tagging schema is used across multiple services and
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
 #'     characters: + - = . _ : / @@.
-#' 
+#'
 #' -   Tag keys and values are case-sensitive.
-#' 
+#'
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
 #'     such as a prefix for either keys or values as it is reserved for
 #'     Amazon Web Services use. You cannot edit or delete tag keys or
@@ -1054,7 +1054,7 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1430,7 +1430,7 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1474,7 +1474,7 @@ eks_list_access_entries <- function(clusterName, associatedPolicyArn = NULL, max
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1519,7 +1519,7 @@ eks_list_access_policies <- function(maxResults = NULL, nextToken = NULL) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1565,7 +1565,7 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1579,7 +1579,7 @@ eks_list_associated_access_policies <- function(clusterName, principalArn, maxRe
     http_method = "GET",
     http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "clusterName", "principalArn"), output_token = "nextToken", result_key = "associatedAccessPolicies")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list("clusterName", "principalArn"), output_token = "nextToken", result_key = "associatedAccessPolicies")
   )
   input <- .eks$list_associated_access_policies_input(clusterName = clusterName, principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_associated_access_policies_output()
@@ -1610,7 +1610,7 @@ eks_list_associated_access_policies <- function(clusterName, principalArn, maxRe
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1705,7 +1705,7 @@ eks_list_eks_anywhere_subscriptions <- function(maxResults = NULL, nextToken = N
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1750,7 +1750,7 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1844,7 +1844,7 @@ eks_list_insights <- function(clusterName, filter = NULL, maxResults = NULL, nex
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1898,7 +1898,7 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #' and the results exceeded the value of that parameter. Pagination
 #' continues from the end of the previous results that returned the
 #' `nextToken` value.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -1971,7 +1971,7 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#' 
+#'
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -2118,7 +2118,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' `subject` in a Kubernetes `RoleBinding` or `ClusterRoleBinding` object.
 #' Amazon EKS doesn't confirm that the value for `name` exists in any
 #' bindings on your cluster. You can specify one or more names.
-#' 
+#'
 #' Kubernetes authorizes the `principalArn` of the access entry to access
 #' any cluster objects that you've specified in a Kubernetes `Role` or
 #' `ClusterRole` object that is also specified in a binding's `roleRef`.
@@ -2126,7 +2126,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' `ClusterRoleBinding`, `Role`, or `ClusterRole` objects, see [Using RBAC
 #' Authorization in the Kubernetes
 #' documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
-#' 
+#'
 #' If you want Amazon EKS to authorize the `principalArn` (instead of, or
 #' in addition to Kubernetes authorizing the `principalArn`), you can
 #' associate one or more access policies to the access entry using
@@ -2187,7 +2187,7 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' information, see [Amazon EKS node IAM
 #' role](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
 #' in the *Amazon EKS User Guide*.
-#' 
+#'
 #' To specify an existing IAM role, you must have an IAM OpenID Connect
 #' (OIDC) provider created for your cluster. For more information, see
 #' [Enabling IAM roles for service accounts on your
@@ -2196,13 +2196,13 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @param resolveConflicts How to resolve field value conflicts for an Amazon EKS add-on if you've
 #' changed a value from the Amazon EKS default value. Conflicts are handled
 #' based on the option you choose:
-#' 
+#'
 #' -   **None** – Amazon EKS doesn't change the value. The update might
 #'     fail.
-#' 
+#'
 #' -   **Overwrite** – Amazon EKS overwrites the changed value back to the
 #'     Amazon EKS default value.
-#' 
+#'
 #' -   **Preserve** – Amazon EKS preserves the value. If you choose this
 #'     option, we recommend that you test any field and value changes on a
 #'     non-production cluster before updating the add-on on your production
@@ -2216,7 +2216,7 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' Identity association maps a Kubernetes service account to an IAM Role.
 #' If this value is left blank, no change. If an empty array is provided,
 #' existing Pod Identity Assocations owned by the Addon are deleted.
-#' 
+#'
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
 #' using Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
@@ -2251,14 +2251,14 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' See [https://www.paws-r-sdk.com/docs/eks_update_cluster_config/](https://www.paws-r-sdk.com/docs/eks_update_cluster_config/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
-#' @param resourcesVpcConfig 
+#' @param resourcesVpcConfig
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
 #' cluster to CloudWatch Logs. By default, cluster control plane logs
 #' aren't exported to CloudWatch Logs. For more information, see [Amazon
 #' EKS cluster control plane
 #' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
-#' 
+#'
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
@@ -2430,7 +2430,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' AMI
 #' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
 #' in the *Amazon EKS User Guide*.
-#' 
+#'
 #' If you specify `launchTemplate`, and your launch template uses a custom
 #' AMI, then don't specify `releaseVersion`, or the node group update will
 #' fail. For more information about using launch templates with Amazon EKS,
