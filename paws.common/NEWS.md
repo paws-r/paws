@@ -1,3 +1,6 @@
+# paws.common 0.7.7
+* add credential caching for `container_credentials_provider`
+
 # paws.common 0.7.6
 * fix `handle_copy_source_param` encoding redirected calls.
 * fix `handle_copy_source_param` removing attributes

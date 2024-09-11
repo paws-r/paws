@@ -293,17 +293,18 @@ sso_credential_process <- function(sso_session,
   return(cred_refresh_cache[[sso_role_name]])
 }
 
-check_if_cred_needs_refresh <- function(sso_role_name) {
-  if (!is.null(cred <- cred_refresh_cache[[sso_role_name]])) {
+check_if_cred_needs_refresh <- function(key) {
+  if (!is.null(cred <- cred_refresh_cache[[key]])) {
     if (!length(expire <- cred$expiration)) {
       return(TRUE)
     }
     if (is.infinite(expire)) {
       return(TRUE)
+    } else if (is.numeric(expire)) {
+      expire <- expire / 1000
     }
-    expiration <- expire / 1000
     now <- as.numeric(Sys.time())
-    return(now > expiration)
+    return(now > expire)
   }
   return(TRUE)
 }
@@ -391,7 +392,6 @@ get_assume_role_with_web_identity_creds <- function(role_arn, role_session_name,
 container_credentials_provider <- function() {
   # Initialize to NULL
   credentials_response <- NULL
-
   container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
   container_credentials_full_uri <- get_env("AWS_CONTAINER_CREDENTIALS_FULL_URI")
   container_credentials_token <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
@@ -434,6 +434,12 @@ container_credentials_provider <- function() {
 
 # Gets the job role credentials by making an http request
 get_container_credentials <- function(credentials_uri, credentials_full_uri) {
+  if (!check_if_cred_needs_refresh(credentials_uri)) {
+    return(cred_refresh_cache[[credentials_uri]])
+  }
+  if (!is.null(credentials_list <- cred_refresh_cache[[credentials_uri]])) {
+    return (credentials_list)
+  }
   if (credentials_uri != "") {
     metadata_url <- file.path("http://169.254.170.2", credentials_uri)
   } else {
@@ -460,14 +466,14 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
   credentials_response_body <-
     jsonlite::fromJSON(raw_to_utf8(metadata_response$body))
 
-  credentials_list <- list(
+  cred_refresh_cache[[credentials_uri]] <- list(
     access_key_id = credentials_response_body$AccessKeyId,
     secret_access_key = credentials_response_body$SecretAccessKey,
     session_token = credentials_response_body$Token,
     expiration = as_timestamp(credentials_response_body$Expiration, "iso8601")
   )
 
-  return(credentials_list)
+  return(cred_refresh_cache[[credentials_uri]])
 }
 
 # Developed from:
@@ -492,13 +498,17 @@ set_container_credentails_headers <- function() {
 }
 
 get_container_credentials_eks <- function() {
-  credentials_list <- get_assume_role_with_web_identity_creds(
+  if (!check_if_cred_needs_refresh("eks")) {
+    return(cred_refresh_cache[["eks"]])
+  }
+
+  cred_refresh_cache[["eks"]] <- get_assume_role_with_web_identity_creds(
     role_arn = get_role_arn(),
     role_session_name = get_role_session_name(),
     web_identity_token = get_web_identity_token()
   )
 
-  return(credentials_list)
+  return(cred_refresh_cache[["eks"]])
 }
 
 # Retrieve credentials for EC2 IAM Role
