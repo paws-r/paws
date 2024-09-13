@@ -203,7 +203,7 @@ get_instance_metadata <- function(query_path = "") {
     timeout = 1,
     header = c("X-aws-ec2-metadata-token-ttl-seconds" = token_ttl)
   )
-
+  metadata_token_request <- sdk_version_user_agent_handler(metadata_token_request)
   metadata_token_response <- tryCatch(
     {
       issue(metadata_token_request)
@@ -231,6 +231,7 @@ get_instance_metadata <- function(query_path = "") {
   } else {
     metadata_request <- new_http_request("GET", metadata_url, timeout = 1)
   }
+  metadata_request <- sdk_version_user_agent_handler(metadata_request)
   metadata_response <- tryCatch(
     {
       issue(metadata_request)
