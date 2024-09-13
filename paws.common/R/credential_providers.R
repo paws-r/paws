@@ -422,6 +422,7 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
   kwargs <- list(method = "GET", url = metadata_url, timeout = 1)
   kwargs[["header"]] <- headers
   metadata_request <- do.call(new_http_request, kwargs)
+  metadata_request <- sdk_version_user_agent_handler(metadata_request)
   metadata_response <- tryCatch(
     {
       issue(metadata_request)
