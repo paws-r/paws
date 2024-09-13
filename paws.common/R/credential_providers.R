@@ -283,8 +283,7 @@ sso_credential_process <- function(sso_session,
     access_key_id = resp$roleCredentials$accessKeyId,
     secret_access_key = resp$roleCredentials$secretAccessKey,
     session_token = resp$roleCredentials$sessionToken,
-    expiration = resp$roleCredentials$expiration,
-    access_token = cache_creds$accessToken
+    expiration = resp$roleCredentials$expiration
   ))
 }
 
