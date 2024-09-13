@@ -103,10 +103,8 @@ valid_method <- function(method) {
 # Issue an HTTP request.
 issue <- function(http_request) {
   method <- http_request$method
-  print(method)
   url <- build_url(http_request$url)
   headers <- unlist(http_request$header)
-  print(headers)
   if (http_request$close) {
     headers["Connection"] <- "close"
   }
