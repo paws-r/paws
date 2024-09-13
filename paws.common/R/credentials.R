@@ -69,8 +69,15 @@ is_credentials_provided <- function(creds, window = 5 * 60) {
   if (is.null(creds$secret_access_key) || creds$secret_access_key == "") {
     return(FALSE)
   }
-  if (length(creds$expiration) == 1 && is.finite(creds$expiration) && Sys.time() > creds$expiration - window) {
+  if (check_if_cred_needs_refresh(creds, window)) {
     return(FALSE)
   }
   return(TRUE)
+}
+
+check_if_cred_needs_refresh <- function(creds, window) {
+  if (is.numeric(expire <- creds$expiration)) {
+    expire <- expire / 1000
+  }
+  return(length(expire) == 1 && is.finite(expire) && Sys.time() > expire - window)
 }

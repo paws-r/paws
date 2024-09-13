@@ -1,3 +1,8 @@
+# paws.common 0.7.7
+* fix unix time expiration check
+* remove redundant caching method
+* ensure all calls has paws user-agent string attached
+
 # paws.common 0.7.6
 * fix `handle_copy_source_param` encoding redirected calls.
 * fix `handle_copy_source_param` removing attributes

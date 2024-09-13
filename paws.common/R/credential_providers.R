@@ -240,10 +240,6 @@ sso_credential_process <- function(sso_session,
                                    sso_account_id,
                                    sso_region,
                                    sso_role_name) {
-  if (!check_if_cred_needs_refresh(sso_role_name)) {
-    return(cred_refresh_cache[[sso_role_name]])
-  }
-
   input_str <- sso_session %||% sso_start_url
   cache_key <- digest::digest(enc2utf8(input_str), algo = "sha1", serialize = FALSE)
   json_file <- paste0(cache_key, ".json")
@@ -283,29 +279,12 @@ sso_credential_process <- function(sso_session,
     return(NULL)
   }
 
-  creds <- Creds(
+  return(Creds(
     access_key_id = resp$roleCredentials$accessKeyId,
     secret_access_key = resp$roleCredentials$secretAccessKey,
     session_token = resp$roleCredentials$sessionToken,
     expiration = resp$roleCredentials$expiration
-  )
-  cred_refresh_cache[[sso_role_name]] <- creds
-  return(cred_refresh_cache[[sso_role_name]])
-}
-
-check_if_cred_needs_refresh <- function(sso_role_name) {
-  if (!is.null(cred <- cred_refresh_cache[[sso_role_name]])) {
-    if (!length(expire <- cred$expiration)) {
-      return(TRUE)
-    }
-    if (is.infinite(expire)) {
-      return(TRUE)
-    }
-    expiration <- expire / 1000
-    now <- as.numeric(Sys.time())
-    return(now > expiration)
-  }
-  return(TRUE)
+  ))
 }
 
 # Get STS temporary credentials for the role with ARN `role_arn` using
@@ -391,7 +370,6 @@ get_assume_role_with_web_identity_creds <- function(role_arn, role_session_name,
 container_credentials_provider <- function() {
   # Initialize to NULL
   credentials_response <- NULL
-
   container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
   container_credentials_full_uri <- get_env("AWS_CONTAINER_CREDENTIALS_FULL_URI")
   container_credentials_token <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
@@ -460,45 +438,44 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
   credentials_response_body <-
     jsonlite::fromJSON(raw_to_utf8(metadata_response$body))
 
-  credentials_list <- list(
-    access_key_id = credentials_response_body$AccessKeyId,
-    secret_access_key = credentials_response_body$SecretAccessKey,
-    session_token = credentials_response_body$Token,
-    expiration = as_timestamp(credentials_response_body$Expiration, "iso8601")
+  return(
+    list(
+      access_key_id = credentials_response_body$AccessKeyId,
+      secret_access_key = credentials_response_body$SecretAccessKey,
+      session_token = credentials_response_body$Token,
+      expiration = as_timestamp(credentials_response_body$Expiration, "iso8601")
+    )
   )
-
-  return(credentials_list)
 }
 
 # Developed from:
 # https://github.com/boto/botocore/blob/ba7da3497853ac83e9b8552f41de83cb27932fe9/botocore/credentials.py#L1945-L1955C22
 set_container_credentails_headers <- function() {
-  auth_token <- NULL
+  auth_token <- list()
   ENV_VAR_AUTH_TOKEN <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN")
   ENV_VAR_AUTH_TOKEN_FILE <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE")
   if (ENV_VAR_AUTH_TOKEN_FILE != "") {
-    auth_token <- readLines("token_file", encoding = "utf-8", warn = FALSE)
+    auth_token[["Authorization"]] <- readLines(ENV_VAR_AUTH_TOKEN_FILE, encoding = "utf-8", warn = FALSE)
   } else if (ENV_VAR_AUTH_TOKEN != "") {
-    auth_token <- ENV_VAR_AUTH_TOKEN
+    auth_token[["Authorization"]] <- ENV_VAR_AUTH_TOKEN
   }
   # validate auth token
-  if (!is.null(auth_token)) {
-    if (grepl("\r|\n", auth_token)) {
+  if (!is.null(auth_token[["Authorization"]])) {
+    if (grepl("\r|\n", auth_token[["Authorization"]])) {
       stop("Auth token value is not a legal header value")
     }
-    names(auth_token) <- "Authorization"
   }
   return(auth_token)
 }
 
 get_container_credentials_eks <- function() {
-  credentials_list <- get_assume_role_with_web_identity_creds(
-    role_arn = get_role_arn(),
-    role_session_name = get_role_session_name(),
-    web_identity_token = get_web_identity_token()
+  return(
+    get_assume_role_with_web_identity_creds(
+      role_arn = get_role_arn(),
+      role_session_name = get_role_session_name(),
+      web_identity_token = get_web_identity_token()
+    )
   )
-
-  return(credentials_list)
 }
 
 # Retrieve credentials for EC2 IAM Role

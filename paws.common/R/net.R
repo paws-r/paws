@@ -66,6 +66,7 @@ new_http_request <- function(method, url, body = NULL, close = FALSE, connect_ti
   if (!valid_method(method)) {
     stopf("invalid method: %s", method)
   }
+  header["User-Agent"] <- PAWS_USER_AGENT
   u <- parse_url(url)
   req <- HttpRequest(
     method = method,
