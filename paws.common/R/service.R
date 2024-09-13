@@ -23,7 +23,6 @@ new_handlers <- function(protocol, signer) {
       validate_parameters_handler
     ),
     build = HandlerList(
-      sdk_version_user_agent_handler,
       add_host_exec_env_user_agent_handler,
       handler(protocol, "build")
     ),

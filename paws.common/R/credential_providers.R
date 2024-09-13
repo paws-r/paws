@@ -452,7 +452,7 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
 # https://github.com/boto/botocore/blob/ba7da3497853ac83e9b8552f41de83cb27932fe9/botocore/credentials.py#L1945-L1955C22
 set_container_credentails_headers <- function() {
   auth_token <- list()
-  auth_token[["User-Agent"]] <- user_agent()
+  auth_token[["User-Agent"]] <- PAWS_USER_AGENT
   ENV_VAR_AUTH_TOKEN <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN")
   ENV_VAR_AUTH_TOKEN_FILE <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE")
   if (ENV_VAR_AUTH_TOKEN_FILE != "") {

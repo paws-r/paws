@@ -2,22 +2,6 @@
 
 #' @include util.R
 
-# Add the name/version to the User-Agent request header.
-
-user_agent <- function() {
-  paws_version <- .__NAMESPACE__.[["spec"]]["version"] %||% packageVersion("paws.common")
-  user_agent <- sprintf(
-    "paws/%s (R%s; %s; %s)",
-    paws_version, getRversion(), R.version$os, R.version$arch
-  )
-  return(user_agent)
-}
-
-sdk_version_user_agent_handler <- function(request) {
-  request$http_request$header["User-Agent"] <- user_agent()
-  return(request)
-}
-
 # Add the execution environment to the User-Agent request header.
 # TODO: Implement.
 add_host_exec_env_user_agent_handler <- function(request) {
