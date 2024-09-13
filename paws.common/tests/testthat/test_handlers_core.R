@@ -71,13 +71,14 @@ expect_user_agent <- function(request) {
     "paws/%s (R%s; %s; %s)",
     paws_version, r_version, r_os, r_arch
   )
-  request$http_request$header["User-Agent"] <- user_agent
-  return(request)
+  return(user_agent)
 }
 
 test_that("check if user agent string is built correctly", {
-  request <- list(http_request = list(header = list()))
-  actual <- sdk_version_user_agent_handler(request)
-  expected <- expect_user_agent(request)
+  mock_assign <- mock2()
+  mockery::stub(set_user_agent, "assign", mock_assign)
+  set_user_agent("paws.common")
+  expected <- expect_user_agent()
+  actual <- mockery::mock_args(mock_assign)[[1]][[2]]
   expect_equal(actual, expected)
 })
