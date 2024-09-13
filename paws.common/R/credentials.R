@@ -76,13 +76,8 @@ is_credentials_provided <- function(creds, window = 5 * 60) {
 }
 
 check_if_cred_needs_refresh <- function(creds, window) {
-  if (is.numeric(creds$expiration)) {
-    creds$expiration <- creds$expiration / 1000
+  if (is.numeric(expire <- creds$expiration)) {
+    expire <- expire / 1000
   }
-  return(
-    length(creds$expiration) == 1 &&
-    is.finite(creds$expiration) &&
-    Sys.time() > creds$expiration - window
-  )
+  return(length(expire) == 1 && is.finite(expire) && Sys.time() > expire - window)
 }
-
