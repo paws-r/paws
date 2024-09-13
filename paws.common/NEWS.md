@@ -1,5 +1,6 @@
 # paws.common 0.7.7
-* add credential caching for `container_credentials_provider`
+* fix unix time expiration check
+* remove redundant caching method
 
 # paws.common 0.7.6
 * fix `handle_copy_source_param` encoding redirected calls.
