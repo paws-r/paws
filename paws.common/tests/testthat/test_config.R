@@ -363,7 +363,8 @@ test_that("sso_credential_process legacy", {
     access_key_id = "hello",
     secret_access_key = "world",
     session_token = "foo_hello",
-    expiration = "foo_world"
+    expiration = "foo_world",
+    access_token = "foo"
   ))
 })
 
@@ -408,7 +409,8 @@ test_that("sso_credential_process", {
     access_key_id = "hello",
     secret_access_key = "world",
     session_token = "foo_hello",
-    expiration = "foo_world"
+    expiration = "foo_world",
+    access_token = "foo"
   ))
 })
 
