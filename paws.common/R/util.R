@@ -249,7 +249,5 @@ set_user_agent <- function(pkgname) {
     "paws/%s (R%s; %s; %s)",
     paws_version, getRversion(), R.version$os, R.version$arch
   )
-  assign("PAWS_USER_AGENT", user_agent, envir =getNamespace(pkgname))
+  assign("PAWS_USER_AGENT", user_agent, envir = getNamespace(pkgname))
 }
-
-
