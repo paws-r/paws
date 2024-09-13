@@ -4,8 +4,6 @@ ini_cache <- new.env(parent = emptyenv())
 
 os_env_cache <- new.env(parent = emptyenv())
 
-cred_refresh_cache <- new.env(parent = emptyenv())
-
 set_os_env_cache <- function() {
   env_vars <- system("printenv", intern = TRUE)
 
