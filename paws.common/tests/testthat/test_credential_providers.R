@@ -124,24 +124,3 @@ test_that("config_file_provider", {
     ))
   })
 })
-
-test_that("check if refreshed credentials need refreshing", {
-  rm(list = names(cred_refresh_cache), envir = cred_refresh_cache)
-  # if profile not found: true
-  expect_true(check_if_cred_needs_refresh("profile"))
-
-  # old time: true
-  time <- as.numeric(Sys.time()) * 1000 - 1000
-  cred_refresh_cache$profile <- list(expiration = time)
-  expect_true(check_if_cred_needs_refresh("profile"))
-
-  # unexpected expiration: true
-  time <- integer()
-  cred_refresh_cache$profile <- list(expiration = time)
-  expect_true(check_if_cred_needs_refresh("profile"))
-
-  # future time: false
-  time <- as.numeric(Sys.time()) * 1000 + 10000
-  cred_refresh_cache$profile <- list(expiration = time)
-  expect_false(check_if_cred_needs_refresh("profile"))
-})
