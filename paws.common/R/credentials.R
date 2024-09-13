@@ -69,20 +69,20 @@ is_credentials_provided <- function(creds, window = 5 * 60) {
   if (is.null(creds$secret_access_key) || creds$secret_access_key == "") {
     return(FALSE)
   }
-  if (!check_if_cred_needs_refresh(creds, window)) {
+  if (check_if_cred_needs_refresh(creds, window)) {
     return(FALSE)
   }
   return(TRUE)
 }
 
 check_if_cred_needs_refresh <- function(creds, window) {
-  if (!length(expire <- creds$expiration)) {
-    return(TRUE)
-  } else if (is.infinite(expire)) {
-    return(TRUE)
-  } else if (is.numeric(expire)) {
-    expire <- expire / 1000
+  if (is.numeric(creds$expiration)) {
+    creds$expiration <- creds$expiration / 1000
   }
-  now <- as.numeric(Sys.time())
-  return(now > expire - window)
+  return(
+    length(creds$expiration) == 1 &&
+    is.finite(creds$expiration) &&
+    Sys.time() > creds$expiration - window
+  )
 }
+
