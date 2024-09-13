@@ -422,7 +422,6 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
   kwargs <- list(method = "GET", url = metadata_url, timeout = 1)
   kwargs[["header"]] <- headers
   metadata_request <- do.call(new_http_request, kwargs)
-  metadata_request <- sdk_version_user_agent_handler(metadata_request)
   metadata_response <- tryCatch(
     {
       issue(metadata_request)
@@ -452,20 +451,20 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
 # Developed from:
 # https://github.com/boto/botocore/blob/ba7da3497853ac83e9b8552f41de83cb27932fe9/botocore/credentials.py#L1945-L1955C22
 set_container_credentails_headers <- function() {
-  auth_token <- NULL
+  auth_token <- list()
+  auth_token[["User-Agent"]] <- user_agent()
   ENV_VAR_AUTH_TOKEN <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN")
   ENV_VAR_AUTH_TOKEN_FILE <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE")
   if (ENV_VAR_AUTH_TOKEN_FILE != "") {
-    auth_token <- readLines("token_file", encoding = "utf-8", warn = FALSE)
+    auth_token[["Authorization"]] <- readLines(ENV_VAR_AUTH_TOKEN_FILE, encoding = "utf-8", warn = FALSE)
   } else if (ENV_VAR_AUTH_TOKEN != "") {
-    auth_token <- ENV_VAR_AUTH_TOKEN
+    auth_token[["Authorization"]] <- ENV_VAR_AUTH_TOKEN
   }
   # validate auth token
-  if (!is.null(auth_token)) {
-    if (grepl("\r|\n", auth_token)) {
+  if (!is.null(auth_token[["Authorization"]])) {
+    if (grepl("\r|\n", auth_token[["Authorization"]])) {
       stop("Auth token value is not a legal header value")
     }
-    names(auth_token) <- "Authorization"
   }
   return(auth_token)
 }
