@@ -232,7 +232,7 @@ get_instance_metadata <- function(query_path = "") {
       "GET",
       metadata_url,
       timeout = 1,
-      header = "User-Agent" = user_agent_handler()
+      header = c("User-Agent" = user_agent_handler())
     )
   }
   metadata_response <- tryCatch(
