@@ -35,13 +35,29 @@ test_that("credentials not provided", {
 })
 
 test_that("credentials expired", {
-  creds <- Creds(
+  creds <- paws.common:::Creds(
     access_key_id = "foo",
     secret_access_key = "bar",
-    expiration = 0
+    expiration = 1000
   )
 
   expect_false(is_credentials_provided(creds))
+
+  creds <- paws.common:::Creds(
+    access_key_id = "foo",
+    secret_access_key = "bar",
+    expiration = Sys.time() - 5*60
+  )
+
+  expect_false(is_credentials_provided(creds))
+
+  creds <- Creds(
+    access_key_id = "foo",
+    secret_access_key = "bar",
+    expiration = Sys.time() + 30*60
+  )
+
+  expect_true(is_credentials_provided(creds))
 
   creds <- Creds(
     access_key_id = "foo",
