@@ -1037,7 +1037,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 The \code{Negate} key in Metric Level Filters is not applicable for this
 metric.
 
-\strong{SUM_CONTACTS_ABANDONED}
+\strong{CONTACTS_ABANDONED}
 
 Unit: Count
 

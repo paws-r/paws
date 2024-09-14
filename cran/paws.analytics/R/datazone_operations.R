@@ -50,6 +50,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_accept_subscription_request/](https://www.paws-r-sdk.com/docs/datazone_accept_subscription_request/) for full documentation.
 #'
+#' @param assetScopes The asset scopes of the accept subscription request.
 #' @param decisionComment A description that specifies the reason for accepting the specified
 #' subscription request.
 #' @param domainIdentifier &#91;required&#93; The Amazon DataZone domain where the specified subscription request is
@@ -60,7 +61,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #' @keywords internal
 #'
 #' @rdname datazone_accept_subscription_request
-datazone_accept_subscription_request <- function(decisionComment = NULL, domainIdentifier, identifier) {
+datazone_accept_subscription_request <- function(assetScopes = NULL, decisionComment = NULL, domainIdentifier, identifier) {
   op <- new_operation(
     name = "AcceptSubscriptionRequest",
     http_method = "PUT",
@@ -68,7 +69,7 @@ datazone_accept_subscription_request <- function(decisionComment = NULL, domainI
     host_prefix = "",
     paginator = list()
   )
-  input <- .datazone$accept_subscription_request_input(decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$accept_subscription_request_input(assetScopes = assetScopes, decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$accept_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)

@@ -147,6 +147,7 @@ NULL
 #'  \link[=cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
 #'  \link[=cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
 #'  \link[=cloudwatchlogs_describe_account_policies]{describe_account_policies} \tab Returns a list of all CloudWatch Logs account policies in the account\cr
+#'  \link[=cloudwatchlogs_describe_configuration_templates]{describe_configuration_templates} \tab Use this operation to return the valid and default values that are used when creating delivery sources, delivery destinations, and deliveries\cr
 #'  \link[=cloudwatchlogs_describe_deliveries]{describe_deliveries} \tab Retrieves a list of the deliveries that have been created in the account\cr
 #'  \link[=cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations} \tab Retrieves a list of the delivery destinations that have been created in the account\cr
 #'  \link[=cloudwatchlogs_describe_delivery_sources]{describe_delivery_sources} \tab Retrieves a list of the delivery sources that have been created in the account\cr
@@ -197,6 +198,7 @@ NULL
 #'  \link[=cloudwatchlogs_untag_log_group]{untag_log_group} \tab The UntagLogGroup operation is on the path to deprecation\cr
 #'  \link[=cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 #'  \link[=cloudwatchlogs_update_anomaly]{update_anomaly} \tab Use this operation to suppress anomaly detection for a specified anomaly or pattern\cr
+#'  \link[=cloudwatchlogs_update_delivery_configuration]{update_delivery_configuration} \tab Use this operation to update the configuration of a delivery to change either the S3 path pattern or the format of the delivered logs\cr
 #'  \link[=cloudwatchlogs_update_log_anomaly_detector]{update_log_anomaly_detector} \tab Updates an existing log anomaly detector
 #' }
 #'

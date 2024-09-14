@@ -5622,6 +5622,7 @@ s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'  \link[paws.storage:s3control_list_access_grants_locations]{list_access_grants_locations} \tab Returns a list of the locations registered in your S3 Access Grants instance\cr
 #'  \link[paws.storage:s3control_list_access_points]{list_access_points} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_list_caller_access_grants]{list_caller_access_grants} \tab Returns a list of the access grants that were given to the caller using S3 Access Grants and that allow the caller to access the S3 data of the Amazon Web Services account specified in the request\cr
 #'  \link[paws.storage:s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 90 days for the Amazon Web Services account making the request\cr
 #'  \link[paws.storage:s3control_list_multi_region_access_points]{list_multi_region_access_points} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_list_regional_buckets]{list_regional_buckets} \tab This operation is not supported by directory buckets\cr
@@ -11379,6 +11380,7 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.networking:elbv2_delete_trust_store]{delete_trust_store} \tab Deletes a trust store\cr
 #'  \link[paws.networking:elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
 #'  \link[paws.networking:elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account\cr
+#'  \link[paws.networking:elbv2_describe_listener_attributes]{describe_listener_attributes} \tab Describes the attributes for the specified listener\cr
 #'  \link[paws.networking:elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener\cr
 #'  \link[paws.networking:elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
@@ -11396,6 +11398,7 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.networking:elbv2_get_trust_store_ca_certificates_bundle]{get_trust_store_ca_certificates_bundle} \tab Retrieves the ca certificate bundle\cr
 #'  \link[paws.networking:elbv2_get_trust_store_revocation_content]{get_trust_store_revocation_content} \tab Retrieves the specified revocation file\cr
 #'  \link[paws.networking:elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
+#'  \link[paws.networking:elbv2_modify_listener_attributes]{modify_listener_attributes} \tab Modifies the specified attributes of the specified listener\cr
 #'  \link[paws.networking:elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule\cr
 #'  \link[paws.networking:elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group\cr
@@ -16949,6 +16952,7 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.developer.tools:fis_get_experiment]{get_experiment} \tab Gets information about the specified experiment\cr
 #'  \link[paws.developer.tools:fis_get_experiment_target_account_configuration]{get_experiment_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment\cr
 #'  \link[paws.developer.tools:fis_get_experiment_template]{get_experiment_template} \tab Gets information about the specified experiment template\cr
+#'  \link[paws.developer.tools:fis_get_safety_lever]{get_safety_lever} \tab Gets information about the specified safety lever\cr
 #'  \link[paws.developer.tools:fis_get_target_account_configuration]{get_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment template\cr
 #'  \link[paws.developer.tools:fis_get_target_resource_type]{get_target_resource_type} \tab Gets information about the specified resource type\cr
 #'  \link[paws.developer.tools:fis_list_actions]{list_actions} \tab Lists the available FIS actions\cr
@@ -16964,6 +16968,7 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.developer.tools:fis_tag_resource]{tag_resource} \tab Applies the specified tags to the specified resource\cr
 #'  \link[paws.developer.tools:fis_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 #'  \link[paws.developer.tools:fis_update_experiment_template]{update_experiment_template} \tab Updates the specified experiment template\cr
+#'  \link[paws.developer.tools:fis_update_safety_lever_state]{update_safety_lever_state} \tab Updates the specified safety lever state\cr
 #'  \link[paws.developer.tools:fis_update_target_account_configuration]{update_target_account_configuration} \tab Updates the target account configuration for the specified experiment template
 #' }
 #'
@@ -20957,6 +20962,7 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
 #'  \link[paws.management:cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
 #'  \link[paws.management:cloudwatchlogs_describe_account_policies]{describe_account_policies} \tab Returns a list of all CloudWatch Logs account policies in the account\cr
+#'  \link[paws.management:cloudwatchlogs_describe_configuration_templates]{describe_configuration_templates} \tab Use this operation to return the valid and default values that are used when creating delivery sources, delivery destinations, and deliveries\cr
 #'  \link[paws.management:cloudwatchlogs_describe_deliveries]{describe_deliveries} \tab Retrieves a list of the deliveries that have been created in the account\cr
 #'  \link[paws.management:cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations} \tab Retrieves a list of the delivery destinations that have been created in the account\cr
 #'  \link[paws.management:cloudwatchlogs_describe_delivery_sources]{describe_delivery_sources} \tab Retrieves a list of the delivery sources that have been created in the account\cr
@@ -21007,6 +21013,7 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_untag_log_group]{untag_log_group} \tab The UntagLogGroup operation is on the path to deprecation\cr
 #'  \link[paws.management:cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 #'  \link[paws.management:cloudwatchlogs_update_anomaly]{update_anomaly} \tab Use this operation to suppress anomaly detection for a specified anomaly or pattern\cr
+#'  \link[paws.management:cloudwatchlogs_update_delivery_configuration]{update_delivery_configuration} \tab Use this operation to update the configuration of a delivery to change either the S3 path pattern or the format of the delivered logs\cr
 #'  \link[paws.management:cloudwatchlogs_update_log_anomaly_detector]{update_log_anomaly_detector} \tab Updates an existing log anomaly detector
 #' }
 #'
@@ -42039,7 +42046,7 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' tracking their progress and maintaining their state.
 #' 
 #' This documentation serves as reference only. For a broader overview of
-#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html}{Amazon SWF Developer Guide}* .
+#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
 #'
 #' @param
 #' config
@@ -43224,7 +43231,7 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #' records with the `eventName` of
 #' `batch_meter_usage`. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#' see the *\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
 #' @param
 #' config

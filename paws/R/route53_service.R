@@ -217,7 +217,7 @@ route53 <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .route53$metadata <- list(
   service_name = "route53",
-  endpoints = list("*" = list(endpoint = "https://route53.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "route53.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "route53.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "route53.c2s.ic.gov", global = TRUE), "us-isob-*" = list(endpoint = "route53.sc2s.sgov.gov", global = TRUE), "eu-isoe-*" = list(endpoint = "route53.{region}.cloud.adc-e.uk", global = FALSE), "us-isof-*" = list(endpoint = "route53.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "https://route53.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "route53.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "route53.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "route53.c2s.ic.gov", global = TRUE), "us-isob-*" = list(endpoint = "route53.sc2s.sgov.gov", global = TRUE), "us-isof-*" = list(endpoint = "route53.csp.hci.ic.gov", global = TRUE), "eu-isoe-*" = list(endpoint = "route53.cloud.adc-e.uk", global = TRUE)),
   service_id = "Route 53",
   api_version = "2013-04-01",
   signing_name = "route53",

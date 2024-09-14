@@ -15,9 +15,8 @@ NULL
 #' 
 #' For more information about PERSONALIZED_ACTIONS recipes, see
 #' [PERSONALIZED_ACTIONS
-#' recipes](https://docs.aws.amazon.com/personalize/latest/dg/nexts-best-action-recipes.html).
-#' For more information about getting action recommendations, see [Getting
-#' action
+#' recipes](https://docs.aws.amazon.com/personalize/latest/dg/). For more
+#' information about getting action recommendations, see [Getting action
 #' recommendations](https://docs.aws.amazon.com/personalize/latest/dg/get-action-recommendations.html).
 #'
 #' @usage

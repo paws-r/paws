@@ -546,7 +546,7 @@ fis_get_action <- function(id) {
 #'     experimentTemplateId = "string",
 #'     roleArn = "string",
 #'     state = list(
-#'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
+#'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed"|"cancelled",
 #'       reason = "string",
 #'       error = list(
 #'         accountId = "string",
@@ -846,6 +846,61 @@ fis_get_experiment_template <- function(id) {
   return(response)
 }
 .fis$operations$get_experiment_template <- fis_get_experiment_template
+
+#' Gets information about the specified safety lever
+#'
+#' @description
+#' Gets information about the specified safety lever.
+#'
+#' @usage
+#' fis_get_safety_lever(id)
+#'
+#' @param id &#91;required&#93; The ID of the safety lever.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   safetyLever = list(
+#'     id = "string",
+#'     arn = "string",
+#'     state = list(
+#'       status = "disengaged"|"engaged"|"engaging",
+#'       reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_safety_lever(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fis_get_safety_lever
+#'
+#' @aliases fis_get_safety_lever
+fis_get_safety_lever <- function(id) {
+  op <- new_operation(
+    name = "GetSafetyLever",
+    http_method = "GET",
+    http_path = "/safetyLevers/{id}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .fis$get_safety_lever_input(id = id)
+  output <- .fis$get_safety_lever_output()
+  config <- get_config()
+  svc <- .fis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$get_safety_lever <- fis_get_safety_lever
 
 #' Gets information about the specified target account configuration of the
 #' experiment template
@@ -1243,7 +1298,7 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #'       arn = "string",
 #'       experimentTemplateId = "string",
 #'       state = list(
-#'         status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
+#'         status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed"|"cancelled",
 #'         reason = "string",
 #'         error = list(
 #'           accountId = "string",
@@ -1497,7 +1552,7 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #'     experimentTemplateId = "string",
 #'     roleArn = "string",
 #'     state = list(
-#'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
+#'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed"|"cancelled",
 #'       reason = "string",
 #'       error = list(
 #'         accountId = "string",
@@ -1648,7 +1703,7 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, experimentOp
 #'     experimentTemplateId = "string",
 #'     roleArn = "string",
 #'     state = list(
-#'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
+#'       status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed"|"cancelled",
 #'       reason = "string",
 #'       error = list(
 #'         accountId = "string",
@@ -2054,6 +2109,66 @@ fis_update_experiment_template <- function(id, description = NULL, stopCondition
   return(response)
 }
 .fis$operations$update_experiment_template <- fis_update_experiment_template
+
+#' Updates the specified safety lever state
+#'
+#' @description
+#' Updates the specified safety lever state.
+#'
+#' @usage
+#' fis_update_safety_lever_state(id, state)
+#'
+#' @param id &#91;required&#93; The ID of the safety lever.
+#' @param state &#91;required&#93; The state of the safety lever.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   safetyLever = list(
+#'     id = "string",
+#'     arn = "string",
+#'     state = list(
+#'       status = "disengaged"|"engaged"|"engaging",
+#'       reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_safety_lever_state(
+#'   id = "string",
+#'   state = list(
+#'     status = "disengaged"|"engaged",
+#'     reason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fis_update_safety_lever_state
+#'
+#' @aliases fis_update_safety_lever_state
+fis_update_safety_lever_state <- function(id, state) {
+  op <- new_operation(
+    name = "UpdateSafetyLeverState",
+    http_method = "PATCH",
+    http_path = "/safetyLevers/{id}/state",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .fis$update_safety_lever_state_input(id = id, state = state)
+  output <- .fis$update_safety_lever_state_output()
+  config <- get_config()
+  svc <- .fis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$update_safety_lever_state <- fis_update_safety_lever_state
 
 #' Updates the target account configuration for the specified experiment
 #' template

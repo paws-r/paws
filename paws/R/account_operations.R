@@ -92,7 +92,7 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
 #' 
 #' For complete details about how to use the alternate contact operations,
 #' see [Access or updating the alternate
-#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/).
 #' 
 #' Before you can update the alternate contact information for an Amazon
 #' Web Services account that is managed by Organizations, you must first
@@ -328,7 +328,7 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
 #' 
 #' For complete details about how to use the alternate contact operations,
 #' see [Access or updating the alternate
-#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/).
 #' 
 #' Before you can update the alternate contact information for an Amazon
 #' Web Services account that is managed by Organizations, you must first
@@ -423,7 +423,7 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' 
 #' For complete details about how to use the primary contact operations,
 #' see [Update the primary and alternate contact
-#' information](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' information](https://docs.aws.amazon.com/accounts/latest/reference/).
 #'
 #' @usage
 #' account_get_contact_information(AccountId)
@@ -761,7 +761,7 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #' 
 #' For complete details about how to use the alternate contact operations,
 #' see [Access or updating the alternate
-#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/).
 #' 
 #' Before you can update the alternate contact information for an Amazon
 #' Web Services account that is managed by Organizations, you must first
@@ -854,7 +854,7 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' 
 #' For complete details about how to use the primary contact operations,
 #' see [Update the primary and alternate contact
-#' information](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' information](https://docs.aws.amazon.com/accounts/latest/reference/).
 #'
 #' @usage
 #' account_put_contact_information(AccountId, ContactInformation)

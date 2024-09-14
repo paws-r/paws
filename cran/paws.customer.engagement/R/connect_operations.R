@@ -464,7 +464,7 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
-#' @param Key &#91;required&#93; A valid security key in PEM format.
+#' @param Key &#91;required&#93; A valid security key in PEM format as a String.
 #'
 #' @keywords internal
 #'
@@ -5871,7 +5871,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' The `Negate` key in Metric Level Filters is not applicable for this
 #' metric.
 #' 
-#' **SUM_CONTACTS_ABANDONED**
+#' **CONTACTS_ABANDONED**
 #' 
 #' Unit: Count
 #' 

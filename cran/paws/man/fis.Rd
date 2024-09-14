@@ -99,6 +99,7 @@ Services workloads. For more information, see the \href{https://docs.aws.amazon.
 \link[paws.developer.tools:fis_get_experiment]{get_experiment} \tab Gets information about the specified experiment\cr
 \link[paws.developer.tools:fis_get_experiment_target_account_configuration]{get_experiment_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment\cr
 \link[paws.developer.tools:fis_get_experiment_template]{get_experiment_template} \tab Gets information about the specified experiment template\cr
+\link[paws.developer.tools:fis_get_safety_lever]{get_safety_lever} \tab Gets information about the specified safety lever\cr
 \link[paws.developer.tools:fis_get_target_account_configuration]{get_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment template\cr
 \link[paws.developer.tools:fis_get_target_resource_type]{get_target_resource_type} \tab Gets information about the specified resource type\cr
 \link[paws.developer.tools:fis_list_actions]{list_actions} \tab Lists the available FIS actions\cr
@@ -114,6 +115,7 @@ Services workloads. For more information, see the \href{https://docs.aws.amazon.
 \link[paws.developer.tools:fis_tag_resource]{tag_resource} \tab Applies the specified tags to the specified resource\cr
 \link[paws.developer.tools:fis_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 \link[paws.developer.tools:fis_update_experiment_template]{update_experiment_template} \tab Updates the specified experiment template\cr
+\link[paws.developer.tools:fis_update_safety_lever_state]{update_safety_lever_state} \tab Updates the specified safety lever state\cr
 \link[paws.developer.tools:fis_update_target_account_configuration]{update_target_account_configuration} \tab Updates the target account configuration for the specified experiment template
 }
 }

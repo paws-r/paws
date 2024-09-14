@@ -26,8 +26,8 @@ locationservice_calculate_route(
 \item{CalculatorName}{[required] The name of the route calculator resource that you want to use to
 calculate the route.}
 
-\item{DeparturePosition}{[required] The start position for the route. Defined in \href{https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84}{World Geodetic System (WGS 84)}
-format: \verb{[longitude, latitude]}.
+\item{DeparturePosition}{[required] The start position for the route. Defined in World Geodetic System (WGS
+84) format: \verb{[longitude, latitude]}.
 \itemize{
 \item For example, \verb{[-123.115, 49.285]}
 }

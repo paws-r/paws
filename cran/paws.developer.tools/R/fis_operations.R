@@ -262,6 +262,36 @@ fis_get_experiment_template <- function(id) {
 }
 .fis$operations$get_experiment_template <- fis_get_experiment_template
 
+#' Gets information about the specified safety lever
+#'
+#' @description
+#' Gets information about the specified safety lever.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_get_safety_lever/](https://www.paws-r-sdk.com/docs/fis_get_safety_lever/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the safety lever.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_get_safety_lever
+fis_get_safety_lever <- function(id) {
+  op <- new_operation(
+    name = "GetSafetyLever",
+    http_method = "GET",
+    http_path = "/safetyLevers/{id}",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .fis$get_safety_lever_input(id = id)
+  output <- .fis$get_safety_lever_output()
+  config <- get_config()
+  svc <- .fis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$get_safety_lever <- fis_get_safety_lever
+
 #' Gets information about the specified target account configuration of the
 #' experiment template
 #'
@@ -751,6 +781,37 @@ fis_update_experiment_template <- function(id, description = NULL, stopCondition
   return(response)
 }
 .fis$operations$update_experiment_template <- fis_update_experiment_template
+
+#' Updates the specified safety lever state
+#'
+#' @description
+#' Updates the specified safety lever state.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_update_safety_lever_state/](https://www.paws-r-sdk.com/docs/fis_update_safety_lever_state/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the safety lever.
+#' @param state &#91;required&#93; The state of the safety lever.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_update_safety_lever_state
+fis_update_safety_lever_state <- function(id, state) {
+  op <- new_operation(
+    name = "UpdateSafetyLeverState",
+    http_method = "PATCH",
+    http_path = "/safetyLevers/{id}/state",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .fis$update_safety_lever_state_input(id = id, state = state)
+  output <- .fis$update_safety_lever_state_output()
+  config <- get_config()
+  svc <- .fis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$update_safety_lever_state <- fis_update_safety_lever_state
 
 #' Updates the target account configuration for the specified experiment
 #' template

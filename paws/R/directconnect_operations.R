@@ -915,7 +915,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' 
 #' For information about MAC Security (MACsec) key considerations, see
 #' [MACsec pre-shared CKN/CAK key
-#' considerations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-key-consideration)
+#' considerations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-key-consideration)
 #' in the *Direct Connect User Guide*.
 #'
 #' @usage
@@ -1554,7 +1554,7 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' 
 #' MAC Security (MACsec) is only available on dedicated connections. For
 #' information about MAC Security (MACsec) prerequisties, see [MACsec
-#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites)
 #' in the *Direct Connect User Guide*.
 #'
 #' @return
@@ -2061,7 +2061,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' All connections in the LAG must be capable of supporting MAC Security
 #' (MACsec). For information about MAC Security (MACsec) prerequisties, see
 #' [MACsec
-#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites)
 #' in the *Direct Connect User Guide*.
 #'
 #' @return

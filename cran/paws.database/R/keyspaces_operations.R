@@ -149,7 +149,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' @param defaultTimeToLive The default Time to Live setting in seconds for the table.
 #' 
 #' For more information, see [Setting the default TTL value for a
-#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl)
+#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/#ttl-howitworks_default_ttl)
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param tags A list of key-value pair tags to be attached to the resource.
 #' 
@@ -712,7 +712,7 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @param defaultTimeToLive The default Time to Live setting in seconds for the table.
 #' 
 #' For more information, see [Setting the default TTL value for a
-#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl)
+#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/#ttl-howitworks_default_ttl)
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param clientSideTimestamps Enables client-side timestamps for the table. By default, the setting is
 #' disabled. You can enable client-side timestamps with the following

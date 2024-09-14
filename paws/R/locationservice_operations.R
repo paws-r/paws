@@ -618,9 +618,8 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
 #' calculate the route.
-#' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in [World Geodetic System (WGS
-#' 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
-#' format: `[longitude, latitude]`.
+#' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in World Geodetic System (WGS
+#' 84) format: `[longitude, latitude]`.
 #' 
 #' -   For example, `[-123.115, 49.285]`
 #' 

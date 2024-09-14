@@ -1853,6 +1853,67 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 }
 .elbv2$operations$describe_account_limits <- elbv2_describe_account_limits
 
+#' Describes the attributes for the specified listener
+#'
+#' @description
+#' Describes the attributes for the specified listener.
+#'
+#' @usage
+#' elbv2_describe_listener_attributes(ListenerArn)
+#'
+#' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_listener_attributes(
+#'   ListenerArn = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example describes the attributes of the specified listener.
+#' svc$describe_listener_attributes(
+#'   ListenerArn = "aws:elasticloadbalancing:us-east-1:123456789012:listener/n..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_describe_listener_attributes
+#'
+#' @aliases elbv2_describe_listener_attributes
+elbv2_describe_listener_attributes <- function(ListenerArn) {
+  op <- new_operation(
+    name = "DescribeListenerAttributes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .elbv2$describe_listener_attributes_input(ListenerArn = ListenerArn)
+  output <- .elbv2$describe_listener_attributes_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$describe_listener_attributes <- elbv2_describe_listener_attributes
+
 #' Describes the default certificate and the certificate list for the
 #' specified HTTPS or TLS listener
 #'
@@ -3524,6 +3585,66 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 }
 .elbv2$operations$modify_listener <- elbv2_modify_listener
 
+#' Modifies the specified attributes of the specified listener
+#'
+#' @description
+#' Modifies the specified attributes of the specified listener.
+#'
+#' @usage
+#' elbv2_modify_listener_attributes(ListenerArn, Attributes)
+#'
+#' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
+#' @param Attributes &#91;required&#93; The listener attributes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_listener_attributes(
+#'   ListenerArn = "string",
+#'   Attributes = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_modify_listener_attributes
+#'
+#' @aliases elbv2_modify_listener_attributes
+elbv2_modify_listener_attributes <- function(ListenerArn, Attributes) {
+  op <- new_operation(
+    name = "ModifyListenerAttributes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .elbv2$modify_listener_attributes_input(ListenerArn = ListenerArn, Attributes = Attributes)
+  output <- .elbv2$modify_listener_attributes_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$modify_listener_attributes <- elbv2_modify_listener_attributes
+
 #' Modifies the specified attributes of the specified Application Load
 #' Balancer, Network Load Balancer, or Gateway Load Balancer
 #'
@@ -4063,7 +4184,7 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 #' elbv2_modify_target_group_attributes(TargetGroupArn, Attributes)
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
-#' @param Attributes &#91;required&#93; The attributes.
+#' @param Attributes &#91;required&#93; The target group attributes.
 #'
 #' @return
 #' A list with the following syntax:

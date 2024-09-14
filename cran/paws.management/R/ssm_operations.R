@@ -5181,7 +5181,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
 #' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskType &#91;required&#93; The type of task being registered.
 #' @param TaskParameters The parameters that should be passed to the task when it is run.
@@ -6400,7 +6400,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
 #' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskParameters The parameters to modify.
 #' 

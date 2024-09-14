@@ -85,9 +85,10 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #' Accepts a subscription request to a specific asset.
 #'
 #' @usage
-#' datazone_accept_subscription_request(decisionComment, domainIdentifier,
-#'   identifier)
+#' datazone_accept_subscription_request(assetScopes, decisionComment,
+#'   domainIdentifier, identifier)
 #'
+#' @param assetScopes The asset scopes of the accept subscription request.
 #' @param decisionComment A description that specifies the reason for accepting the specified
 #' subscription request.
 #' @param domainIdentifier &#91;required&#93; The Amazon DataZone domain where the specified subscription request is
@@ -115,6 +116,14 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'       id = "string",
 #'       item = list(
 #'         assetListing = list(
+#'           assetScope = list(
+#'             assetId = "string",
+#'             errorMessage = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string"
+#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -170,6 +179,14 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #' @section Request syntax:
 #' ```
 #' svc$accept_subscription_request(
+#'   assetScopes = list(
+#'     list(
+#'       assetId = "string",
+#'       filterIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   decisionComment = "string",
 #'   domainIdentifier = "string",
 #'   identifier = "string"
@@ -181,7 +198,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #' @rdname datazone_accept_subscription_request
 #'
 #' @aliases datazone_accept_subscription_request
-datazone_accept_subscription_request <- function(decisionComment = NULL, domainIdentifier, identifier) {
+datazone_accept_subscription_request <- function(assetScopes = NULL, decisionComment = NULL, domainIdentifier, identifier) {
   op <- new_operation(
     name = "AcceptSubscriptionRequest",
     http_method = "PUT",
@@ -189,7 +206,7 @@ datazone_accept_subscription_request <- function(decisionComment = NULL, domainI
     host_prefix = "",
     paginator = list()
   )
-  input <- .datazone$accept_subscription_request_input(decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$accept_subscription_request_input(assetScopes = assetScopes, decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$accept_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -499,6 +516,14 @@ datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier
 #'     id = "string",
 #'     item = list(
 #'       assetListing = list(
+#'         assetScope = list(
+#'           assetId = "string",
+#'           errorMessage = "string",
+#'           filterIds = list(
+#'             "string"
+#'           ),
+#'           status = "string"
+#'         ),
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         entityType = "string",
@@ -2614,6 +2639,14 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
 #'     list(
 #'       assetId = "string",
 #'       assetRevision = "string",
+#'       assetScope = list(
+#'         assetId = "string",
+#'         errorMessage = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string"
+#'       ),
 #'       failureCause = list(
 #'         message = "string"
 #'       ),
@@ -2732,6 +2765,14 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'       id = "string",
 #'       item = list(
 #'         assetListing = list(
+#'           assetScope = list(
+#'             assetId = "string",
+#'             errorMessage = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string"
+#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -3950,6 +3991,14 @@ datazone_delete_project_membership <- function(domainIdentifier, member, project
 #'     list(
 #'       assetId = "string",
 #'       assetRevision = "string",
+#'       assetScope = list(
+#'         assetId = "string",
+#'         errorMessage = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string"
+#'       ),
 #'       failureCause = list(
 #'         message = "string"
 #'       ),
@@ -6174,6 +6223,14 @@ datazone_get_project <- function(domainIdentifier, identifier) {
 #'     id = "string",
 #'     item = list(
 #'       assetListing = list(
+#'         assetScope = list(
+#'           assetId = "string",
+#'           errorMessage = "string",
+#'           filterIds = list(
+#'             "string"
+#'           ),
+#'           status = "string"
+#'         ),
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         entityType = "string",
@@ -6275,6 +6332,14 @@ datazone_get_subscription <- function(domainIdentifier, identifier) {
 #'     list(
 #'       assetId = "string",
 #'       assetRevision = "string",
+#'       assetScope = list(
+#'         assetId = "string",
+#'         errorMessage = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string"
+#'       ),
 #'       failureCause = list(
 #'         message = "string"
 #'       ),
@@ -6373,6 +6438,14 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
 #'       id = "string",
 #'       item = list(
 #'         assetListing = list(
+#'           assetScope = list(
+#'             assetId = "string",
+#'             errorMessage = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string"
+#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -8569,6 +8642,14 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #'         list(
 #'           assetId = "string",
 #'           assetRevision = "string",
+#'           assetScope = list(
+#'             assetId = "string",
+#'             errorMessage = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string"
+#'           ),
 #'           failureCause = list(
 #'             message = "string"
 #'           ),
@@ -8703,6 +8784,14 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #'           id = "string",
 #'           item = list(
 #'             assetListing = list(
+#'               assetScope = list(
+#'                 assetId = "string",
+#'                 errorMessage = "string",
+#'                 filterIds = list(
+#'                   "string"
+#'                 ),
+#'                 status = "string"
+#'               ),
 #'               entityId = "string",
 #'               entityRevision = "string",
 #'               entityType = "string",
@@ -8957,6 +9046,14 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
 #'         id = "string",
 #'         item = list(
 #'           assetListing = list(
+#'             assetScope = list(
+#'               assetId = "string",
+#'               errorMessage = "string",
+#'               filterIds = list(
+#'                 "string"
+#'               ),
+#'               status = "string"
+#'             ),
 #'             entityId = "string",
 #'             entityRevision = "string",
 #'             entityType = "string",
@@ -9539,6 +9636,14 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #'       id = "string",
 #'       item = list(
 #'         assetListing = list(
+#'           assetScope = list(
+#'             assetId = "string",
+#'             errorMessage = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string"
+#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",
@@ -9795,6 +9900,14 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
 #'     id = "string",
 #'     item = list(
 #'       assetListing = list(
+#'         assetScope = list(
+#'           assetId = "string",
+#'           errorMessage = "string",
+#'           filterIds = list(
+#'             "string"
+#'           ),
+#'           status = "string"
+#'         ),
 #'         entityId = "string",
 #'         entityRevision = "string",
 #'         entityType = "string",
@@ -12099,6 +12212,14 @@ datazone_update_project <- function(description = NULL, domainIdentifier, glossa
 #'     list(
 #'       assetId = "string",
 #'       assetRevision = "string",
+#'       assetScope = list(
+#'         assetId = "string",
+#'         errorMessage = "string",
+#'         filterIds = list(
+#'           "string"
+#'         ),
+#'         status = "string"
+#'       ),
 #'       failureCause = list(
 #'         message = "string"
 #'       ),
@@ -12207,6 +12328,14 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
 #'       id = "string",
 #'       item = list(
 #'         assetListing = list(
+#'           assetScope = list(
+#'             assetId = "string",
+#'             errorMessage = "string",
+#'             filterIds = list(
+#'               "string"
+#'             ),
+#'             status = "string"
+#'           ),
 #'           entityId = "string",
 #'           entityRevision = "string",
 #'           entityType = "string",

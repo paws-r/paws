@@ -11,7 +11,7 @@ s3control_put_access_grants_instance_resource_policy(
 )
 }
 \arguments{
-\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
+\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
 
 \item{Policy}{[required] The resource policy of the S3 Access Grants instance that you are
 updating.}

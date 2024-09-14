@@ -11,7 +11,7 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_associate_access_grants_identity_center/](https://www.paws-r-sdk.com/docs/s3control_associate_access_grants_identity_center/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param IdentityCenterArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
 #' Center instance that you are associating with your S3 Access Grants
 #' instance. An IAM Identity Center instance is your corporate identity
@@ -48,7 +48,7 @@ s3control_associate_access_grants_identity_center <- function(AccountId, Identit
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grant/](https://www.paws-r-sdk.com/docs/s3control_create_access_grant/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location to which you are granting access. S3
 #' Access Grants assigns this ID when you register the location. S3 Access
 #' Grants assigns the ID `default` to the default location `s3://` and
@@ -115,7 +115,7 @@ s3control_create_access_grant <- function(AccountId, AccessGrantsLocationId, Acc
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_create_access_grants_instance/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param IdentityCenterArn If you would like to associate your S3 Access Grants instance with an
 #' Amazon Web Services IAM Identity Center instance, use this field to pass
 #' the Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
@@ -159,7 +159,7 @@ s3control_create_access_grants_instance <- function(AccountId, IdentityCenterArn
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_create_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param LocationScope &#91;required&#93; The S3 path to the location that you are registering. The location scope
 #' can be the default S3 location `s3://`, the S3 path to a bucket
 #' `s3://<bucket>`, or the S3 path to a bucket and prefix
@@ -483,7 +483,7 @@ s3control_create_storage_lens_group <- function(AccountId, StorageLensGroup, Tag
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grant/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grant/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
 #' you create the access grant.
 #'
@@ -515,7 +515,7 @@ s3control_delete_access_grant <- function(AccountId, AccessGrantId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @keywords internal
 #'
@@ -545,7 +545,7 @@ s3control_delete_access_grants_instance <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance_resource_policy/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @keywords internal
 #'
@@ -575,7 +575,7 @@ s3control_delete_access_grants_instance_resource_policy <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are deregistering from your
 #' S3 Access Grants instance. S3 Access Grants assigned this ID when you
 #' registered the location. S3 Access Grants assigns the ID `default` to
@@ -1250,7 +1250,7 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_dissociate_access_grants_identity_center/](https://www.paws-r-sdk.com/docs/s3control_dissociate_access_grants_identity_center/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @keywords internal
 #'
@@ -1280,7 +1280,7 @@ s3control_dissociate_access_grants_identity_center <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grant/](https://www.paws-r-sdk.com/docs/s3control_get_access_grant/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
 #' you create the access grant.
 #'
@@ -1312,7 +1312,7 @@ s3control_get_access_grant <- function(AccountId, AccessGrantId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @keywords internal
 #'
@@ -1373,7 +1373,7 @@ s3control_get_access_grants_instance_for_prefix <- function(AccountId, S3Prefix)
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_resource_policy/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @keywords internal
 #'
@@ -1404,7 +1404,7 @@ s3control_get_access_grants_instance_resource_policy <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are retrieving. S3 Access
 #' Grants assigns this ID when you register the location. S3 Access Grants
 #' assigns the ID `default` to the default location `s3://` and assigns an
@@ -1943,7 +1943,7 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_data_access/](https://www.paws-r-sdk.com/docs/s3control_get_data_access/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param Target &#91;required&#93; The S3 URI path of the data to which you are requesting temporary access
 #' credentials. If the requesting account has an access grant for this
 #' data, S3 Access Grants vends temporary access credentials in the
@@ -2305,7 +2305,7 @@ s3control_get_storage_lens_group <- function(Name, AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants` request in order to retrieve the
 #' next page of results.
@@ -2376,7 +2376,7 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants_instances/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants_instances/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants Instances` request in order to
 #' retrieve the next page of results.
@@ -2414,7 +2414,7 @@ s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants_locations/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants_locations/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants Locations` request in order to
 #' retrieve the next page of results.
@@ -2544,6 +2544,53 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
   return(response)
 }
 .s3control$operations$list_access_points_for_object_lambda <- s3control_list_access_points_for_object_lambda
+
+#' Returns a list of the access grants that were given to the caller using
+#' S3 Access Grants and that allow the caller to access the S3 data of the
+#' Amazon Web Services account specified in the request
+#'
+#' @description
+#' Returns a list of the access grants that were given to the caller using S3 Access Grants and that allow the caller to access the S3 data of the Amazon Web Services account specified in the request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_caller_access_grants/](https://www.paws-r-sdk.com/docs/s3control_list_caller_access_grants/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param GrantScope The S3 path of the data that you would like to access. Must start with
+#' `s3://`. You can optionally pass only the beginning characters of a
+#' path, and S3 Access Grants will search for all applicable grants for the
+#' path fragment.
+#' @param NextToken A pagination token to request the next page of results. Pass this value
+#' into a subsequent `List Caller Access Grants` request in order to
+#' retrieve the next page of results.
+#' @param MaxResults The maximum number of access grants that you would like returned in the
+#' `List Caller Access Grants` response. If the results include the
+#' pagination token `NextToken`, make another call using the `NextToken` to
+#' determine if there are more results.
+#' @param AllowedByApplication If this optional parameter is passed in the request, a filter is applied
+#' to the results. The results will include only the access grants for the
+#' caller's Identity Center application or for any other applications
+#' (`ALL`).
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_caller_access_grants
+s3control_list_caller_access_grants <- function(AccountId, GrantScope = NULL, NextToken = NULL, MaxResults = NULL, AllowedByApplication = NULL) {
+  op <- new_operation(
+    name = "ListCallerAccessGrants",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/caller/grants",
+    host_prefix = "{AccountId}.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CallerAccessGrantsList")
+  )
+  input <- .s3control$list_caller_access_grants_input(AccountId = AccountId, GrantScope = GrantScope, NextToken = NextToken, MaxResults = MaxResults, AllowedByApplication = AllowedByApplication)
+  output <- .s3control$list_caller_access_grants_output()
+  config <- get_config()
+  svc <- .s3control$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_caller_access_grants <- s3control_list_caller_access_grants
 
 #' Lists current S3 Batch Operations jobs as well as the jobs that have
 #' ended within the last 90 days for the Amazon Web Services account making
@@ -2759,7 +2806,7 @@ s3control_list_tags_for_resource <- function(AccountId, ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_put_access_grants_instance_resource_policy/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param Policy &#91;required&#93; The resource policy of the S3 Access Grants instance that you are
 #' updating.
 #' @param Organization The Organization of the resource policy of the S3 Access Grants
@@ -3396,7 +3443,7 @@ s3control_untag_resource <- function(AccountId, ResourceArn, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_update_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_update_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are updating. S3 Access
 #' Grants assigns this ID when you register the location. S3 Access Grants
 #' assigns the ID `default` to the default location `s3://` and assigns an

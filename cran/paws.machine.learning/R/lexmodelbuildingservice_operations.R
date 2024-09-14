@@ -666,9 +666,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/) for full documentation.
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
-#' an intent, see [Standard Built-in
-#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
-#' in the *Alexa Skills Kit*.
+#' an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
 #'
 #' @keywords internal
 #'
@@ -702,9 +700,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @param signatureContains Substring to match in built-in intent signatures. An intent will be
 #' returned if any part of its signature matches the substring. For
 #' example, "xyz" matches both "xyzabc" and "abcxyz." To find the signature
-#' for an intent, see [Standard Built-in
-#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
-#' in the *Alexa Skills Kit*.
+#' for an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
 #' @param nextToken A pagination token that fetches the next page of intents. If this API
 #' call is truncated, Amazon Lex returns a pagination token in the
 #' response. To fetch the next page of intents, use the pagination token in

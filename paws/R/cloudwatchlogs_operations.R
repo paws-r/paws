@@ -231,10 +231,18 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #'
 #' @usage
 #' cloudwatchlogs_create_delivery(deliverySourceName,
-#'   deliveryDestinationArn, tags)
+#'   deliveryDestinationArn, recordFields, fieldDelimiter,
+#'   s3DeliveryConfiguration, tags)
 #'
 #' @param deliverySourceName &#91;required&#93; The name of the delivery source to use for this delivery.
 #' @param deliveryDestinationArn &#91;required&#93; The ARN of the delivery destination to use for this delivery.
+#' @param recordFields The list of record fields to be delivered to the destination, in order.
+#' If the delivery’s log source has mandatory fields, they must be included
+#' in this list.
+#' @param fieldDelimiter The field delimiter to use between record fields when the final output
+#' format of a delivery is in `Plain`, `W3C`, or `Raw` format.
+#' @param s3DeliveryConfiguration This structure contains parameters that are valid only when the
+#' delivery’s delivery destination is an S3 bucket.
 #' @param tags An optional list of key-value pairs to associate with the resource.
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services
@@ -250,6 +258,14 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #'     deliverySourceName = "string",
 #'     deliveryDestinationArn = "string",
 #'     deliveryDestinationType = "S3"|"CWL"|"FH",
+#'     recordFields = list(
+#'       "string"
+#'     ),
+#'     fieldDelimiter = "string",
+#'     s3DeliveryConfiguration = list(
+#'       suffixPath = "string",
+#'       enableHiveCompatiblePath = TRUE|FALSE
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     )
@@ -262,6 +278,14 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' svc$create_delivery(
 #'   deliverySourceName = "string",
 #'   deliveryDestinationArn = "string",
+#'   recordFields = list(
+#'     "string"
+#'   ),
+#'   fieldDelimiter = "string",
+#'   s3DeliveryConfiguration = list(
+#'     suffixPath = "string",
+#'     enableHiveCompatiblePath = TRUE|FALSE
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   )
@@ -273,7 +297,7 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' @rdname cloudwatchlogs_create_delivery
 #'
 #' @aliases cloudwatchlogs_create_delivery
-cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinationArn, tags = NULL) {
+cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinationArn, recordFields = NULL, fieldDelimiter = NULL, s3DeliveryConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDelivery",
     http_method = "POST",
@@ -281,7 +305,7 @@ cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinati
     host_prefix = "",
     paginator = list()
   )
-  input <- .cloudwatchlogs$create_delivery_input(deliverySourceName = deliverySourceName, deliveryDestinationArn = deliveryDestinationArn, tags = tags)
+  input <- .cloudwatchlogs$create_delivery_input(deliverySourceName = deliverySourceName, deliveryDestinationArn = deliveryDestinationArn, recordFields = recordFields, fieldDelimiter = fieldDelimiter, s3DeliveryConfiguration = s3DeliveryConfiguration, tags = tags)
   output <- .cloudwatchlogs$create_delivery_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -1483,6 +1507,118 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
 }
 .cloudwatchlogs$operations$describe_account_policies <- cloudwatchlogs_describe_account_policies
 
+#' Use this operation to return the valid and default values that are used
+#' when creating delivery sources, delivery destinations, and deliveries
+#'
+#' @description
+#' Use this operation to return the valid and default values that are used
+#' when creating delivery sources, delivery destinations, and deliveries.
+#' For more information about deliveries, see
+#' [`create_delivery`][cloudwatchlogs_create_delivery].
+#'
+#' @usage
+#' cloudwatchlogs_describe_configuration_templates(service, logTypes,
+#'   resourceTypes, deliveryDestinationTypes, nextToken, limit)
+#'
+#' @param service Use this parameter to filter the response to include only the
+#' configuration templates that apply to the Amazon Web Services service
+#' that you specify here.
+#' @param logTypes Use this parameter to filter the response to include only the
+#' configuration templates that apply to the log types that you specify
+#' here.
+#' @param resourceTypes Use this parameter to filter the response to include only the
+#' configuration templates that apply to the resource types that you
+#' specify here.
+#' @param deliveryDestinationTypes Use this parameter to filter the response to include only the
+#' configuration templates that apply to the delivery destination types
+#' that you specify here.
+#' @param nextToken 
+#' @param limit Use this parameter to limit the number of configuration templates that
+#' are returned in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurationTemplates = list(
+#'     list(
+#'       service = "string",
+#'       logType = "string",
+#'       resourceType = "string",
+#'       deliveryDestinationType = "S3"|"CWL"|"FH",
+#'       defaultDeliveryConfigValues = list(
+#'         recordFields = list(
+#'           "string"
+#'         ),
+#'         fieldDelimiter = "string",
+#'         s3DeliveryConfiguration = list(
+#'           suffixPath = "string",
+#'           enableHiveCompatiblePath = TRUE|FALSE
+#'         )
+#'       ),
+#'       allowedFields = list(
+#'         list(
+#'           name = "string",
+#'           mandatory = TRUE|FALSE
+#'         )
+#'       ),
+#'       allowedOutputFormats = list(
+#'         "json"|"plain"|"w3c"|"raw"|"parquet"
+#'       ),
+#'       allowedActionForAllowVendedLogsDeliveryForResource = "string",
+#'       allowedFieldDelimiters = list(
+#'         "string"
+#'       ),
+#'       allowedSuffixPathFields = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_configuration_templates(
+#'   service = "string",
+#'   logTypes = list(
+#'     "string"
+#'   ),
+#'   resourceTypes = list(
+#'     "string"
+#'   ),
+#'   deliveryDestinationTypes = list(
+#'     "S3"|"CWL"|"FH"
+#'   ),
+#'   nextToken = "string",
+#'   limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_configuration_templates
+#'
+#' @aliases cloudwatchlogs_describe_configuration_templates
+cloudwatchlogs_describe_configuration_templates <- function(service = NULL, logTypes = NULL, resourceTypes = NULL, deliveryDestinationTypes = NULL, nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeConfigurationTemplates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "configurationTemplates")
+  )
+  input <- .cloudwatchlogs$describe_configuration_templates_input(service = service, logTypes = logTypes, resourceTypes = resourceTypes, deliveryDestinationTypes = deliveryDestinationTypes, nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_configuration_templates_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_configuration_templates <- cloudwatchlogs_describe_configuration_templates
+
 #' Retrieves a list of the deliveries that have been created in the account
 #'
 #' @description
@@ -1520,6 +1656,14 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
 #'       deliverySourceName = "string",
 #'       deliveryDestinationArn = "string",
 #'       deliveryDestinationType = "S3"|"CWL"|"FH",
+#'       recordFields = list(
+#'         "string"
+#'       ),
+#'       fieldDelimiter = "string",
+#'       s3DeliveryConfiguration = list(
+#'         suffixPath = "string",
+#'         enableHiveCompatiblePath = TRUE|FALSE
+#'       ),
 #'       tags = list(
 #'         "string"
 #'       )
@@ -2775,6 +2919,14 @@ cloudwatchlogs_get_data_protection_policy <- function(logGroupIdentifier) {
 #'     deliverySourceName = "string",
 #'     deliveryDestinationArn = "string",
 #'     deliveryDestinationType = "S3"|"CWL"|"FH",
+#'     recordFields = list(
+#'       "string"
+#'     ),
+#'     fieldDelimiter = "string",
+#'     s3DeliveryConfiguration = list(
+#'       suffixPath = "string",
+#'       enableHiveCompatiblePath = TRUE|FALSE
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     )
@@ -4594,7 +4746,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' [`put_log_events`][cloudwatchlogs_put_log_events] actions are now
 #' accepted and never return `InvalidSequenceTokenException` or
 #' `DataAlreadyAcceptedException` even if the sequence token is not valid.
-#' @param entity Reserved for future use.
+#' @param entity Reserved for internal use.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5858,6 +6010,70 @@ cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, an
   return(response)
 }
 .cloudwatchlogs$operations$update_anomaly <- cloudwatchlogs_update_anomaly
+
+#' Use this operation to update the configuration of a delivery to change
+#' either the S3 path pattern or the format of the delivered logs
+#'
+#' @description
+#' Use this operation to update the configuration of a
+#' [delivery](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_Delivery.html)
+#' to change either the S3 path pattern or the format of the delivered
+#' logs. You can't use this operation to change the source or destination
+#' of the delivery.
+#'
+#' @usage
+#' cloudwatchlogs_update_delivery_configuration(id, recordFields,
+#'   fieldDelimiter, s3DeliveryConfiguration)
+#'
+#' @param id &#91;required&#93; The ID of the delivery to be updated by this request.
+#' @param recordFields The list of record fields to be delivered to the destination, in order.
+#' If the delivery’s log source has mandatory fields, they must be included
+#' in this list.
+#' @param fieldDelimiter The field delimiter to use between record fields when the final output
+#' format of a delivery is in `Plain`, `W3C`, or `Raw` format.
+#' @param s3DeliveryConfiguration This structure contains parameters that are valid only when the
+#' delivery’s delivery destination is an S3 bucket.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_delivery_configuration(
+#'   id = "string",
+#'   recordFields = list(
+#'     "string"
+#'   ),
+#'   fieldDelimiter = "string",
+#'   s3DeliveryConfiguration = list(
+#'     suffixPath = "string",
+#'     enableHiveCompatiblePath = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_update_delivery_configuration
+#'
+#' @aliases cloudwatchlogs_update_delivery_configuration
+cloudwatchlogs_update_delivery_configuration <- function(id, recordFields = NULL, fieldDelimiter = NULL, s3DeliveryConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateDeliveryConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$update_delivery_configuration_input(id = id, recordFields = recordFields, fieldDelimiter = fieldDelimiter, s3DeliveryConfiguration = s3DeliveryConfiguration)
+  output <- .cloudwatchlogs$update_delivery_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$update_delivery_configuration <- cloudwatchlogs_update_delivery_configuration
 
 #' Updates an existing log anomaly detector
 #'

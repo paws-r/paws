@@ -271,7 +271,7 @@ connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
 #' ```
 #' svc$associate_default_vocabulary(
 #'   InstanceId = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"|"ca-ES"|"da-DK"|"fi-FI"|"id-ID"|"ms-MY"|"nl-NL"|"no-NO"|"pl-PL"|"sv-SE"|"tl-PH",
 #'   VocabularyId = "string"
 #' )
 #' ```
@@ -766,7 +766,7 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
-#' @param Key &#91;required&#93; A valid security key in PEM format.
+#' @param Key &#91;required&#93; A valid security key in PEM format as a String.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3653,7 +3653,7 @@ connect_create_view_version <- function(InstanceId, ViewId, VersionDescription =
 #'   ClientToken = "string",
 #'   InstanceId = "string",
 #'   VocabularyName = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"|"ca-ES"|"da-DK"|"fi-FI"|"id-ID"|"ms-MY"|"nl-NL"|"no-NO"|"pl-PL"|"sv-SE"|"tl-PH",
 #'   Content = "string",
 #'   Tags = list(
 #'     "string"
@@ -5899,6 +5899,17 @@ connect_describe_hours_of_operation <- function(InstanceId, HoursOfOperationId) 
 #'     Tags = list(
 #'       "string"
 #'     )
+#'   ),
+#'   ReplicationConfiguration = list(
+#'     ReplicationStatusSummaryList = list(
+#'       list(
+#'         Region = "string",
+#'         ReplicationStatus = "INSTANCE_REPLICATION_COMPLETE"|"INSTANCE_REPLICATION_IN_PROGRESS"|"INSTANCE_REPLICATION_FAILED"|"INSTANCE_REPLICA_DELETING"|"INSTANCE_REPLICATION_DELETION_FAILED"|"RESOURCE_REPLICATION_NOT_STARTED",
+#'         ReplicationStatusReason = "string"
+#'       )
+#'     ),
+#'     SourceRegion = "string",
+#'     GlobalSignInEndpoint = "string"
 #'   )
 #' )
 #' ```
@@ -7223,7 +7234,7 @@ connect_describe_view <- function(InstanceId, ViewId) {
 #'     Name = "string",
 #'     Id = "string",
 #'     Arn = "string",
-#'     LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
+#'     LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"|"ca-ES"|"da-DK"|"fi-FI"|"id-ID"|"ms-MY"|"nl-NL"|"no-NO"|"pl-PL"|"sv-SE"|"tl-PH",
 #'     State = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"DELETE_IN_PROGRESS",
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
@@ -10220,7 +10231,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' The `Negate` key in Metric Level Filters is not applicable for this
 #' metric.
 #' 
-#' **SUM_CONTACTS_ABANDONED**
+#' **CONTACTS_ABANDONED**
 #' 
 #' Unit: Count
 #' 
@@ -11384,7 +11395,7 @@ connect_list_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxR
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #' 
 #' For more information about flows, see
-#' [Flows](https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html)
+#' [Flows](https://docs.aws.amazon.com/connect/latest/adminguide/connect-contact-flows.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
@@ -11584,7 +11595,7 @@ connect_list_contact_references <- function(InstanceId, ContactId, ReferenceType
 #'   DefaultVocabularyList = list(
 #'     list(
 #'       InstanceId = "string",
-#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
+#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"|"ca-ES"|"da-DK"|"fi-FI"|"id-ID"|"ms-MY"|"nl-NL"|"no-NO"|"pl-PL"|"sv-SE"|"tl-PH",
 #'       VocabularyId = "string",
 #'       VocabularyName = "string"
 #'     )
@@ -11597,7 +11608,7 @@ connect_list_contact_references <- function(InstanceId, ContactId, ReferenceType
 #' ```
 #' svc$list_default_vocabularies(
 #'   InstanceId = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"|"ca-ES"|"da-DK"|"fi-FI"|"id-ID"|"ms-MY"|"nl-NL"|"no-NO"|"pl-PL"|"sv-SE"|"tl-PH",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -16713,7 +16724,7 @@ connect_search_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL
 #'       Name = "string",
 #'       Id = "string",
 #'       Arn = "string",
-#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
+#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"|"ca-ES"|"da-DK"|"fi-FI"|"id-ID"|"ms-MY"|"nl-NL"|"no-NO"|"pl-PL"|"sv-SE"|"tl-PH",
 #'       State = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"DELETE_IN_PROGRESS",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -16733,7 +16744,7 @@ connect_search_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL
 #'   NextToken = "string",
 #'   State = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"DELETE_IN_PROGRESS",
 #'   NameStartsWith = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"|"ca-ES"|"da-DK"|"fi-FI"|"id-ID"|"ms-MY"|"nl-NL"|"no-NO"|"pl-PL"|"sv-SE"|"tl-PH"
 #' )
 #' ```
 #'

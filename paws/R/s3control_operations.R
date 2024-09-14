@@ -28,7 +28,7 @@ NULL
 #' s3control_associate_access_grants_identity_center(AccountId,
 #'   IdentityCenterArn)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param IdentityCenterArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
 #' Center instance that you are associating with your S3 Access Grants
 #' instance. An IAM Identity Center instance is your corporate identity
@@ -103,7 +103,7 @@ s3control_associate_access_grants_identity_center <- function(AccountId, Identit
 #'   AccessGrantsLocationConfiguration, Grantee, Permission, ApplicationArn,
 #'   S3PrefixType, Tags)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location to which you are granting access. S3
 #' Access Grants assigns this ID when you register the location. S3 Access
 #' Grants assigns the ID `default` to the default location `s3://` and
@@ -235,7 +235,7 @@ s3control_create_access_grant <- function(AccountId, AccessGrantsLocationId, Acc
 #' s3control_create_access_grants_instance(AccountId, IdentityCenterArn,
 #'   Tags)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param IdentityCenterArn If you would like to associate your S3 Access Grants instance with an
 #' Amazon Web Services IAM Identity Center instance, use this field to pass
 #' the Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
@@ -259,7 +259,9 @@ s3control_create_access_grant <- function(AccountId, AccessGrantsLocationId, Acc
 #'   ),
 #'   AccessGrantsInstanceId = "string",
 #'   AccessGrantsInstanceArn = "string",
-#'   IdentityCenterArn = "string"
+#'   IdentityCenterArn = "string",
+#'   IdentityCenterInstanceArn = "string",
+#'   IdentityCenterApplicationArn = "string"
 #' )
 #' ```
 #'
@@ -335,7 +337,7 @@ s3control_create_access_grants_instance <- function(AccountId, IdentityCenterArn
 #' s3control_create_access_grants_location(AccountId, LocationScope,
 #'   IAMRoleArn, Tags)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param LocationScope &#91;required&#93; The S3 path to the location that you are registering. The location scope
 #' can be the default S3 location `s3://`, the S3 path to a bucket
 #' `s3://<bucket>`, or the S3 path to a bucket and prefix
@@ -1302,7 +1304,7 @@ s3control_create_storage_lens_group <- function(AccountId, StorageLensGroup, Tag
 #' @usage
 #' s3control_delete_access_grant(AccountId, AccessGrantId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
 #' you create the access grant.
 #'
@@ -1363,7 +1365,7 @@ s3control_delete_access_grant <- function(AccountId, AccessGrantId) {
 #' @usage
 #' s3control_delete_access_grants_instance(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @return
 #' An empty list.
@@ -1414,7 +1416,7 @@ s3control_delete_access_grants_instance <- function(AccountId) {
 #' @usage
 #' s3control_delete_access_grants_instance_resource_policy(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @return
 #' An empty list.
@@ -1469,7 +1471,7 @@ s3control_delete_access_grants_instance_resource_policy <- function(AccountId) {
 #' s3control_delete_access_grants_location(AccountId,
 #'   AccessGrantsLocationId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are deregistering from your
 #' S3 Access Grants instance. S3 Access Grants assigned this ID when you
 #' registered the location. S3 Access Grants assigns the ID `default` to
@@ -3062,7 +3064,7 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
 #' @usage
 #' s3control_dissociate_access_grants_identity_center(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @return
 #' An empty list.
@@ -3109,7 +3111,7 @@ s3control_dissociate_access_grants_identity_center <- function(AccountId) {
 #' @usage
 #' s3control_get_access_grant(AccountId, AccessGrantId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
 #' you create the access grant.
 #'
@@ -3176,11 +3178,15 @@ s3control_get_access_grant <- function(AccountId, AccessGrantId) {
 #' 
 #' You must have the `s3:GetAccessGrantsInstance` permission to use this
 #' operation.
+#' 
+#' [`get_access_grants_instance`][s3control_get_access_grants_instance] is
+#' not supported for cross-account access. You can only call the API from
+#' the account that owns the S3 Access Grants instance.
 #'
 #' @usage
 #' s3control_get_access_grants_instance(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3189,6 +3195,8 @@ s3control_get_access_grant <- function(AccountId, AccessGrantId) {
 #'   AccessGrantsInstanceArn = "string",
 #'   AccessGrantsInstanceId = "string",
 #'   IdentityCenterArn = "string",
+#'   IdentityCenterInstanceArn = "string",
+#'   IdentityCenterApplicationArn = "string",
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -3300,7 +3308,7 @@ s3control_get_access_grants_instance_for_prefix <- function(AccountId, S3Prefix)
 #' @usage
 #' s3control_get_access_grants_instance_resource_policy(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3359,7 +3367,7 @@ s3control_get_access_grants_instance_resource_policy <- function(AccountId) {
 #' @usage
 #' s3control_get_access_grants_location(AccountId, AccessGrantsLocationId)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are retrieving. S3 Access
 #' Grants assigns this ID when you register the location. S3 Access Grants
 #' assigns the ID `default` to the default location `s3://` and assigns an
@@ -4693,7 +4701,7 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #' s3control_get_data_access(AccountId, Target, Permission,
 #'   DurationSeconds, Privilege, TargetType)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param Target &#91;required&#93; The S3 URI path of the data to which you are requesting temporary access
 #' credentials. If the requesting account has an access grant for this
 #' data, S3 Access Grants vends temporary access credentials in the
@@ -5603,7 +5611,7 @@ s3control_get_storage_lens_group <- function(Name, AccountId) {
 #' s3control_list_access_grants(AccountId, NextToken, MaxResults,
 #'   GranteeType, GranteeIdentifier, Permission, GrantScope, ApplicationArn)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants` request in order to retrieve the
 #' next page of results.
@@ -5726,7 +5734,7 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
 #' @usage
 #' s3control_list_access_grants_instances(AccountId, NextToken, MaxResults)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants Instances` request in order to
 #' retrieve the next page of results.
@@ -5747,7 +5755,9 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       IdentityCenterArn = "string"
+#'       IdentityCenterArn = "string",
+#'       IdentityCenterInstanceArn = "string",
+#'       IdentityCenterApplicationArn = "string"
 #'     )
 #'   )
 #' )
@@ -5801,7 +5811,7 @@ s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, 
 #' s3control_list_access_grants_locations(AccountId, NextToken, MaxResults,
 #'   LocationScope)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants Locations` request in order to
 #' retrieve the next page of results.
@@ -6068,6 +6078,90 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
   return(response)
 }
 .s3control$operations$list_access_points_for_object_lambda <- s3control_list_access_points_for_object_lambda
+
+#' Returns a list of the access grants that were given to the caller using
+#' S3 Access Grants and that allow the caller to access the S3 data of the
+#' Amazon Web Services account specified in the request
+#'
+#' @description
+#' Returns a list of the access grants that were given to the caller using
+#' S3 Access Grants and that allow the caller to access the S3 data of the
+#' Amazon Web Services account specified in the request.
+#' 
+#' ### Permissions
+#' 
+#' You must have the `s3:ListCallerAccessGrants` permission to use this
+#' operation.
+#'
+#' @usage
+#' s3control_list_caller_access_grants(AccountId, GrantScope, NextToken,
+#'   MaxResults, AllowedByApplication)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param GrantScope The S3 path of the data that you would like to access. Must start with
+#' `s3://`. You can optionally pass only the beginning characters of a
+#' path, and S3 Access Grants will search for all applicable grants for the
+#' path fragment.
+#' @param NextToken A pagination token to request the next page of results. Pass this value
+#' into a subsequent `List Caller Access Grants` request in order to
+#' retrieve the next page of results.
+#' @param MaxResults The maximum number of access grants that you would like returned in the
+#' `List Caller Access Grants` response. If the results include the
+#' pagination token `NextToken`, make another call using the `NextToken` to
+#' determine if there are more results.
+#' @param AllowedByApplication If this optional parameter is passed in the request, a filter is applied
+#' to the results. The results will include only the access grants for the
+#' caller's Identity Center application or for any other applications
+#' (`ALL`).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CallerAccessGrantsList = list(
+#'     list(
+#'       Permission = "READ"|"WRITE"|"READWRITE",
+#'       GrantScope = "string",
+#'       ApplicationArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_caller_access_grants(
+#'   AccountId = "string",
+#'   GrantScope = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   AllowedByApplication = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_caller_access_grants
+#'
+#' @aliases s3control_list_caller_access_grants
+s3control_list_caller_access_grants <- function(AccountId, GrantScope = NULL, NextToken = NULL, MaxResults = NULL, AllowedByApplication = NULL) {
+  op <- new_operation(
+    name = "ListCallerAccessGrants",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/caller/grants",
+    host_prefix = "{AccountId}.",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CallerAccessGrantsList")
+  )
+  input <- .s3control$list_caller_access_grants_input(AccountId = AccountId, GrantScope = GrantScope, NextToken = NextToken, MaxResults = MaxResults, AllowedByApplication = AllowedByApplication)
+  output <- .s3control$list_caller_access_grants_output()
+  config <- get_config()
+  svc <- .s3control$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_caller_access_grants <- s3control_list_caller_access_grants
 
 #' Lists current S3 Batch Operations jobs as well as the jobs that have
 #' ended within the last 90 days for the Amazon Web Services account making
@@ -6587,7 +6681,7 @@ s3control_list_tags_for_resource <- function(AccountId, ResourceArn) {
 #' s3control_put_access_grants_instance_resource_policy(AccountId, Policy,
 #'   Organization)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param Policy &#91;required&#93; The resource policy of the S3 Access Grants instance that you are
 #' updating.
 #' @param Organization The Organization of the resource policy of the S3 Access Grants
@@ -8309,7 +8403,7 @@ s3control_untag_resource <- function(AccountId, ResourceArn, TagKeys) {
 #' s3control_update_access_grants_location(AccountId,
 #'   AccessGrantsLocationId, IAMRoleArn)
 #'
-#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are updating. S3 Access
 #' Grants assigns this ID when you register the location. S3 Access Grants
 #' assigns the ID `default` to the default location `s3://` and assigns an

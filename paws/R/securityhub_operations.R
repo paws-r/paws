@@ -221,7 +221,7 @@ securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
 #' `StandardsSubscriptionArns`.
 #' 
 #' For more information, see [Security
-#' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html)
+#' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/standards-view-manage.html)
 #' section of the *Security Hub User Guide*.
 #'
 #' @usage
@@ -299,7 +299,7 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #' [`describe_standards`][securityhub_describe_standards] operation.
 #' 
 #' For more information, see the [Security
-#' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html)
+#' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/standards-view-manage.html)
 #' section of the *Security Hub User Guide*.
 #'
 #' @usage

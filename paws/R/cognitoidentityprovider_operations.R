@@ -6139,7 +6139,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' method used to send the confirmation code is sent according to the
 #' specified AccountRecoverySetting. For more information, see [Recovering
 #' User
-#' Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html)
+#' Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/managing-users-passwords.html)
 #' in the *Amazon Cognito Developer Guide*. To use the confirmation code
 #' for resetting the password, call
 #' [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
