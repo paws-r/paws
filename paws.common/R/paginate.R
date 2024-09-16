@@ -67,8 +67,8 @@ paginate <- function(Operation,
     # Exit paginator if previous token matches current token
     # https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/src/pagination/createPaginator.ts#L53
     if (isTRUE(StopOnSameToken)) {
-      previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
-      if (identical(previous_token, unlist(new_tokens, use.names = F))) {
+      previous_token <- unlist(fn[[paginator$input_token]], use.names = FALSE)
+      if (identical(previous_token, unlist(new_tokens, use.names = FALSE))) {
         break
       }
     }
@@ -176,7 +176,7 @@ paginate_update_fn <- function(
   pkg_name <- environmentName(environment(fn_call))
 
   # Ensure method can be found.
-  if (!grepl("^paws", pkg_name, perl = T)) {
+  if (!grepl("^paws", pkg_name, perl = TRUE)) {
     stopf(
       "Unknown method: `%s`. Please check service methods and try again.",
       as.character(fn)[1]
@@ -239,7 +239,7 @@ is_paginators <- function(fn) {
       fn_body[[2]][[3]]$paginator
     },
     error = function(err) {
-      if (grepl("subscript out of bounds", err, perl = T)) {
+      if (grepl("subscript out of bounds", err, perl = TRUE)) {
         character()
       } else {
         stop(err)
@@ -267,8 +267,8 @@ paginate_xapply <- function(
     # Exit paginator if previous token matches current token
     # https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/src/pagination/createPaginator.ts#L53
     if (isTRUE(StopOnSameToken)) {
-      previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
-      if (identical(previous_token, unlist(new_tokens, use.names = F))) {
+      previous_token <- unlist(fn[[paginator$input_token]], use.names = FALSE)
+      if (identical(previous_token, unlist(new_tokens, use.names = FALSE))) {
         break
       }
     }
@@ -309,7 +309,7 @@ get_tokens <- function(resp, token, caller_env) {
       },
       error = function(err) {
         # Return default character(0) for empty lists
-        if (grepl(token_error_msg, err[["message"]], perl = T)) {
+        if (grepl(token_error_msg, err[["message"]], perl = TRUE)) {
           character(0)
         } else {
           stop(err)
@@ -321,9 +321,9 @@ get_tokens <- function(resp, token, caller_env) {
 }
 
 split_token <- function(token) {
-  token_prts <- unlist(strsplit(token, ".", fixed = T))
-  token_prts <- unlist(strsplit(token_prts, "[", fixed = T))
-  return(unlist(strsplit(token_prts, "]", fixed = T)))
+  token_prts <- unlist(strsplit(token, ".", fixed = TRUE))
+  token_prts <- unlist(strsplit(token_prts, "[", fixed = TRUE))
+  return(unlist(strsplit(token_prts, "]", fixed = TRUE)))
 }
 
 # This is a simple implementation of jmespath for R list: i.e.
@@ -342,7 +342,7 @@ jmespath_index <- function(token, caller_env) {
   # Format character strings
   token_prts[found_alpha] <- paste0('"', token_prts[found_alpha], '"')
 
-  found <- grep("-", token_prts, fixed = T)
+  found <- grep("-", token_prts, fixed = TRUE)
   if (length(found) > 0) {
     # Path.To[-1].Token
     position <- found - 1

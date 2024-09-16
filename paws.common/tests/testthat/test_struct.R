@@ -1,7 +1,7 @@
 test_that("struct constructors", {
   Foo <- struct(a = "", b = NULL)
   bar <- Foo()
-  expect_identical(names(bar), c("a", "b"))
+  expect_named(bar, c("a", "b"))
 })
 
 test_that("struct extract", {

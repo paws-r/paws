@@ -183,7 +183,7 @@ check_dns_name <- function(bucket_name) {
   if (n < 3 || n > 63) {
     return(FALSE)
   }
-  m <- regexpr(LABEL_RE, bucket_name, perl = T)
+  m <- regexpr(LABEL_RE, bucket_name, perl = TRUE)
   match <- regmatches(bucket_name, m)
   if (identical(match, character(0)) || nchar(match) != n) {
     return(FALSE)

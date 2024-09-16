@@ -47,7 +47,7 @@ test_that("check exponential back off", {
 
   mockery::stub(exp_back_off, "Sys.sleep", mock_sys_sleep)
   exp_back_off(error, 1, 2)
-  expect_true(mock_arg(mock_sys_sleep)[[1]] < 20)
+  expect_lt(mock_arg(mock_sys_sleep)[[1]], 20)
 })
 
 test_that("check exponential back off iteration greater 20", {

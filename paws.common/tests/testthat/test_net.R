@@ -74,7 +74,7 @@ test_that("don't decompress the body when already decompressed", {
   if (resp$status_code == 200) {
     expect_equal(resp$status_code, 200)
     expect_error(body <- jsonlite::fromJSON(rawToChar(resp$body)), NA)
-    expect_equal(body$gzipped, TRUE)
+    expect_true(body$gzipped)
   }
 })
 

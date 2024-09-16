@@ -432,12 +432,12 @@ test_that("unmarshal scalar members", {
   out <- req$data
   expect_equal(out$Char, "a")
   expect_equal(out$Double, 1.3)
-  expect_equal(out$FalseBool, FALSE)
+  expect_false(out$FalseBool)
   expect_equal(out$Float, 1.2)
   expect_equal(out$Long, 200L)
   expect_equal(out$Num, 123L)
   expect_equal(out$Str, "myname")
-  expect_equal(out$TrueBool, TRUE)
+  expect_true(out$TrueBool)
 })
 
 test_that("unmarshal scalar members", {

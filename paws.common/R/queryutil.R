@@ -106,7 +106,7 @@ query_parse_map <- function(values, value, prefix, tag, is_ec2 = FALSE) {
   # will be one R list element with no name, which we shouldn't process.
   map_entries <- !is.null(names(value))
   if (map_entries) {
-    value[1:length(value)] <- value[names(value)]
+    value[seq_along(value)] <- value[names(value)]
 
     for (i in seq_along(value)) {
       map_key <- names(value)[i]

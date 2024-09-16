@@ -8,7 +8,7 @@ test_that("new_handlers", {
   expect_false(contains(example, 3))
 
   handlers <- new_handlers("ec2query", "v4")
-  expect_equal(names(handlers), names(Handlers()))
+  expect_named(handlers, names(Handlers()))
   expect_true(contains(handlers$unmarshal, ec2query_unmarshal))
   expect_true(contains(handlers$sign, v4_sign_request_handler))
 
@@ -36,9 +36,9 @@ test_that("new_service", {
   Sys.setenv("AWS_REGION" = "region")
   service <- new_service(metadata, handlers, cfgs)
 
-  expect_equal(names(service$client_info), names(ClientInfo()))
-  expect_equal(names(service$config), names(Config()))
-  expect_equal(names(service$handlers), names(Handlers()))
+  expect_named(service$client_info, names(ClientInfo()))
+  expect_named(service$config, names(Config()))
+  expect_named(service$handlers, names(Handlers()))
 
   expect_equal(service$client_info$service_name, metadata$service_name)
   expect_equal(service$client_info$service_id, metadata$service_id)
@@ -60,7 +60,7 @@ test_that("new_service null cfgs", {
   Sys.setenv("AWS_REGION" = "region")
   service <- new_service(metadata, handlers)
 
-  expect_equal(names(service$config), names(Config()))
+  expect_named(service$config, names(Config()))
   expect_equal(service$config$region, "region")
 })
 
@@ -116,7 +116,7 @@ test_that("test custom config credentials take priority", {
 })
 
 test_that("test service endpoint config file with service present", {
-  mock_get_config_file_path <- mock2("data_ini", cycle = T)
+  mock_get_config_file_path <- mock2("data_ini", cycle = TRUE)
   mockery::stub(check_config_file_endpoint, "get_config_file_path", mock_get_config_file_path)
 
   s3_endpoint <- check_config_file_endpoint("localstack", "s3")

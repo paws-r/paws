@@ -32,13 +32,13 @@ test_that("setting and adding handlers", {
 
   g <- function(x) 2
   handlers$validate <- handlers_add_back(handlers$validate, g)
-  expect_equal(length(handlers$validate$list), 2)
+  expect_length(handlers$validate$list, 2)
   expect_equal(handlers$validate$list[[1]]$fn, f)
   expect_equal(handlers$validate$list[[2]]$fn, g)
 
   h <- function(x) 3
   handlers$validate <- handlers_add_front(handlers$validate, h)
-  expect_equal(length(handlers$validate$list), 3)
+  expect_length(handlers$validate$list, 3)
   expect_equal(handlers$validate$list[[1]]$fn, h)
   expect_equal(handlers$validate$list[[2]]$fn, f)
   expect_equal(handlers$validate$list[[3]]$fn, g)

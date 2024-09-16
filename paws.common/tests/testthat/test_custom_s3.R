@@ -271,7 +271,7 @@ test_that("update url endpoint with new endpoint", {
 test_that("update url endpoint with new endpoint without new scheme", {
   org_ep <- "https://s3.eu-east-2.amazonaws.com"
   new_ep <- "sftp://s3.amazonaws.com"
-  actual <- set_request_url(org_ep, new_ep, F)
+  actual <- set_request_url(org_ep, new_ep, FALSE)
   expect_equal(actual, "https://s3.amazonaws.com")
 })
 

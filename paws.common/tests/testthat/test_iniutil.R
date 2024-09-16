@@ -20,8 +20,8 @@ test_that("Ignores lines starting with # and ;", {
   # clear down cache
   paws_reset_cache()
   content <- read_ini("data_ini")
-  expect_true(!("ignore1" %in% names(content)))
-  expect_true(!("ignore2" %in% names(content)))
+  expect_false(("ignore1" %in% names(content)))
+  expect_false(("ignore2" %in% names(content)))
 })
 
 test_that("Reads in profile with space in name", {

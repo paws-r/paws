@@ -30,7 +30,7 @@ test_that("check if non-ascci characters are correctly encoded", {
 test_that("check if encoded url is correctly decoded", {
   string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~`!@#$%^&*()=+[{]}\\|;:'\",<>/? "
 
-  url <- paste0(sample(strsplit(string, "")[[1]], 1e4, replace = T), collapse = "")
+  url <- paste0(sample(strsplit(string, "")[[1]], 1e4, replace = TRUE), collapse = "")
   url_encode <- paws_url_encoder(url)
   actual <- unescape(url_encode)
 
@@ -41,7 +41,7 @@ test_that("check if encoded url is correctly decoded", {
 test_that("check if non-encoded url is correctly decoded", {
   string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~"
 
-  url <- paste(sample(strsplit(string, "")[[1]], 1e4, replace = T), collapse = "")
+  url <- paste(sample(strsplit(string, "")[[1]], 1e4, replace = TRUE), collapse = "")
   url_encode <- paws_url_encoder(url)
   actual <- unescape(url_encode)
 
@@ -51,6 +51,6 @@ test_that("check if non-encoded url is correctly decoded", {
 
 test_that("check if json string is converted correctly", {
   expect <- "\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\\n\\u000b\\f\\r\\u000e\\u000f\\u0010\\u0011\\u0012\\u0013\\u0014\\u0015\\u0016\\u0017\\u0018\\u0019\\u001a\\u001b\\u001c\\u001d\\u001e\\u001f\\\\\\\"\\b\\f\\r\\t\\n\""
-  string <- paste0(c(letters, LETTERS, intToUtf8(1:31, multiple = T), "\\", '"', "\b", "\f", "\r", "\t", "\n"), collapse = "")
+  string <- paste0(c(letters, LETTERS, intToUtf8(1:31, multiple = TRUE), "\\", '"', "\b", "\f", "\r", "\t", "\n"), collapse = "")
   expect_equal(json_convert_string(string), expect)
 })
