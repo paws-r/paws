@@ -4,7 +4,7 @@ test_that("validate_endpoint_handler no endpoint", {
   svc$handlers$validate <- HandlerList(validate_endpoint_handler)
   req <- new_request(svc, Operation(name = "Operation"), NULL, NULL)
   ret <- build(req)
-  expect_true(!is.null(ret$error))
+  expect_false(is.null(ret$error))
 })
 
 test_that("validate_endpoint_handler no region", {
@@ -12,7 +12,7 @@ test_that("validate_endpoint_handler no region", {
   svc$handlers$validate <- HandlerList(validate_endpoint_handler)
   req <- new_request(svc, Operation(name = "Operation"), NULL, NULL)
   ret <- build(req)
-  expect_true(!is.null(ret$error))
+  expect_false(is.null(ret$error))
 })
 
 test_that("build_content_length_handler", {
@@ -54,12 +54,12 @@ test_that("validate_response_handler", {
   r <- Request()
   r$http_response <- HttpResponse(status_code = 400)
   out <- validate_response_handler(r)
-  expect_true(!is.null(out$error))
+  expect_false(is.null(out$error))
 
   r <- Request()
   r$http_response <- HttpResponse(status_code = "500")
   out <- validate_response_handler(r)
-  expect_true(!is.null(out$error))
+  expect_false(is.null(out$error))
 })
 
 expect_user_agent <- function(request) {

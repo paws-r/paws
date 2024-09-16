@@ -36,7 +36,7 @@ read_ini <- function(file_name) {
   profile_nms <- gsub(
     "^[ \t\r\n]+|[ \t\r\n]+$", "",
     gsub("\\[|\\]", "", content[found]),
-    perl = T
+    perl = TRUE
   )
   profiles <- vector("list", length = length(profile_nms))
   names(profiles) <- profile_nms
@@ -71,13 +71,13 @@ nested_ini_content <- function(sub_content, found_nested_content, sub_grp) {
 
   position <- which(found_nested_content)
   non_nest <- !(sub_grp %in% position)
-  profiles[non_nest] <- sub_content[sub_grp[non_nest], 2, drop = T]
+  profiles[non_nest] <- sub_content[sub_grp[non_nest], 2, drop = TRUE]
 
   start <- (sub_grp + 1)
   end <- c(sub_grp[-1] - 1, nrow(sub_content))
   for (i in which(start <= end)) {
     items <- seq.int(start[i], end[i])
-    profiles[[profile_nms[i]]] <- extract_ini_parameter(sub_content[items, , drop = F])
+    profiles[[profile_nms[i]]] <- extract_ini_parameter(sub_content[items, , drop = FALSE])
   }
   return(profiles)
 }

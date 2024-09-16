@@ -481,12 +481,12 @@ test_that("unmarshal scalar members", {
   out <- req$data
   expect_equal(out$Char, "a")
   expect_equal(out$Double, 1.3)
-  expect_equal(out$FalseBool, FALSE)
+  expect_false(out$FalseBool)
   expect_equal(out$Float, 1.2)
   expect_equal(out$Long, 200L)
   expect_equal(out$Num, 123L)
   expect_equal(out$Str, "myname")
-  expect_equal(out$TrueBool, TRUE)
+  expect_true(out$TrueBool)
 })
 
 op_output2 <- Structure(
@@ -556,14 +556,14 @@ test_that("unmarshal list", {
   out <- req$data
   expect_equal(out$ListMember[1], "a")
   expect_equal(out$ListMember[2], NA_character_)
-  expect_equal(out$ListMemberMap[[1]], NULL)
-  expect_equal(out$ListMemberMap[[2]], NULL)
-  expect_equal(out$ListMemberMap[[3]], NULL)
-  expect_equal(out$ListMemberMap[[4]], NULL)
-  expect_equal(out$ListMemberStruct[[1]], NULL)
-  expect_equal(out$ListMemberStruct[[2]], NULL)
-  expect_equal(out$ListMemberStruct[[3]], NULL)
-  expect_equal(out$ListMemberStruct[[4]], NULL)
+  expect_null(out$ListMemberMap[[1]])
+  expect_null(out$ListMemberMap[[2]])
+  expect_null(out$ListMemberMap[[3]])
+  expect_null(out$ListMemberMap[[4]])
+  expect_null(out$ListMemberStruct[[1]])
+  expect_null(out$ListMemberStruct[[2]])
+  expect_null(out$ListMemberStruct[[3]])
+  expect_null(out$ListMemberStruct[[4]])
 })
 
 op_output5 <- Structure(
@@ -596,7 +596,7 @@ test_that("unmarshal ignores extra data", {
   )
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(names(out), "StrType")
+  expect_named(out, "StrType")
   expect_equal(out$StrType, character(0), ignore_attr = TRUE)
 })
 

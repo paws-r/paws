@@ -65,7 +65,7 @@ dns_compatible_bucket_name <- function(bucket) {
   return(
     grepl(domain, bucket) &&
       !grepl(ip_address, bucket) &&
-      !grepl("..", bucket, fixed = T)
+      !grepl("..", bucket, fixed = TRUE)
   )
 }
 
@@ -499,7 +499,7 @@ handle_copy_source_param <- function(request) {
 }
 
 quote_source_header <- function(source, tags) {
-  result <- strsplit(source, VERSION_ID_SUFFIX, fixed = T)[[1]]
+  result <- strsplit(source, VERSION_ID_SUFFIX, fixed = TRUE)[[1]]
   if (is.na(result[2])) {
     return(tag_add(paws_url_encoder(result[1], "/"), tags))
   } else {
@@ -514,7 +514,7 @@ quote_source_header_from_list <- function(source, tags) {
   if (is.null(key <- source[["Key"]])) {
     stopf("CopySource list is missing required parameter: Key")
   }
-  if (grepl(VALID_S3_ARN, bucket, perl = T)) {
+  if (grepl(VALID_S3_ARN, bucket, perl = TRUE)) {
     final <- sprintf("%s/object/%s", bucket, key)
   } else {
     final <- sprintf("%s/%s", bucket, key)
