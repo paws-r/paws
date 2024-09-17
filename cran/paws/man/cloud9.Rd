@@ -57,32 +57,32 @@ For more information about Cloud9, see the \href{https://docs.aws.amazon.com/clo
 
 Cloud9 supports these operations:
 \itemize{
-\item \code{\link[=cloud9_create_environment_ec2]{create_environment_ec2}}: Creates
+\item \code{\link[paws.developer.tools:cloud9_create_environment_ec2]{create_environment_ec2}}: Creates
 an Cloud9 development environment, launches an Amazon EC2 instance,
 and then connects from the instance to the environment.
-\item \code{\link[=cloud9_create_environment_membership]{create_environment_membership}}:
+\item \code{\link[paws.developer.tools:cloud9_create_environment_membership]{create_environment_membership}}:
 Adds an environment member to an environment.
-\item \code{\link[=cloud9_delete_environment]{delete_environment}}: Deletes an
+\item \code{\link[paws.developer.tools:cloud9_delete_environment]{delete_environment}}: Deletes an
 environment. If an Amazon EC2 instance is connected to the
 environment, also terminates the instance.
-\item \code{\link[=cloud9_delete_environment_membership]{delete_environment_membership}}:
+\item \code{\link[paws.developer.tools:cloud9_delete_environment_membership]{delete_environment_membership}}:
 Deletes an environment member from an environment.
-\item \code{\link[=cloud9_describe_environment_memberships]{describe_environment_memberships}}:
+\item \code{\link[paws.developer.tools:cloud9_describe_environment_memberships]{describe_environment_memberships}}:
 Gets information about environment members for an environment.
-\item \code{\link[=cloud9_describe_environments]{describe_environments}}: Gets
+\item \code{\link[paws.developer.tools:cloud9_describe_environments]{describe_environments}}: Gets
 information about environments.
-\item \code{\link[=cloud9_describe_environment_status]{describe_environment_status}}:
+\item \code{\link[paws.developer.tools:cloud9_describe_environment_status]{describe_environment_status}}:
 Gets status information for an environment.
-\item \code{\link[=cloud9_list_environments]{list_environments}}: Gets a list of
+\item \code{\link[paws.developer.tools:cloud9_list_environments]{list_environments}}: Gets a list of
 environment identifiers.
-\item \code{\link[=cloud9_list_tags_for_resource]{list_tags_for_resource}}: Gets the
+\item \code{\link[paws.developer.tools:cloud9_list_tags_for_resource]{list_tags_for_resource}}: Gets the
 tags for an environment.
-\item \code{\link[=cloud9_tag_resource]{tag_resource}}: Adds tags to an environment.
-\item \code{\link[=cloud9_untag_resource]{untag_resource}}: Removes tags from an
+\item \code{\link[paws.developer.tools:cloud9_tag_resource]{tag_resource}}: Adds tags to an environment.
+\item \code{\link[paws.developer.tools:cloud9_untag_resource]{untag_resource}}: Removes tags from an
 environment.
-\item \code{\link[=cloud9_update_environment]{update_environment}}: Changes the
+\item \code{\link[paws.developer.tools:cloud9_update_environment]{update_environment}}: Changes the
 settings of an existing environment.
-\item \code{\link[=cloud9_update_environment_membership]{update_environment_membership}}:
+\item \code{\link[paws.developer.tools:cloud9_update_environment_membership]{update_environment_membership}}:
 Changes the settings of an existing environment member for an
 environment.
 }
