@@ -5,7 +5,6 @@
 # Error messages only shown
 # Levels: 4 = DEBUG, 3 = INFO/MSG, 2 = WARNING, 1 = ERROR
 
-#' @importFrom httr config with_config
 #' @importFrom utils modifyList flush.console
 
 #' @title paws logging system
@@ -116,44 +115,26 @@ log_color <- function(lvl) {
   color(lvl)
 }
 
-# paws https verbose wrapper
-with_paws_verbose <- function(expr, ...) {
-  # skip if log level <= 2L
-  if (isTRUE(getOption("paws.log_level") >= 3L)) {
-    with_config(paws_verbose(...), expr)
-  } else {
-    expr
-  }
+# modified httr2::req_verbose to align with paws logging system
+# https://github.com/r-lib/httr2/blob/8e9f8588e66378f1f419158cd1810a82a4dad022/R/req-options.R#L167-L187
+paws_debug <- function(type, msg) {
+  switch(type + 1,
+         text = prefix_debug("*  ", msg),
+         headerIn = prefix_info("<- ", msg),
+         headerOut = prefix_info("-> ", msg)
+  )
 }
 
-# modified httr::verbose to align with paws logging system
-# https://github.com/r-lib/httr/blob/21ff69f219ad11298854a63b8f753389088cf382/R/verbose.r
-paws_verbose <- function(data_out = TRUE, data_in = FALSE, ssl = FALSE) {
-  Debug <- function(type, msg) {
-    switch(type + 1,
-      text = prefix_debug("*  ", msg),
-      headerIn = prefix_info("<- ", msg),
-      headerOut = prefix_info("-> ", msg),
-      dataIn = if (data_in) prefix_info("<<  ", msg, TRUE),
-      dataOut = if (data_out) prefix_info(">> ", msg, TRUE),
-      sslDataIn = if (ssl && data_in) prefix_info("*< ", msg, TRUE),
-      sslDataOut = if (ssl && data_out) prefix_info("*> ", msg, TRUE)
-    )
-  }
-  httr::config(debugfunction = Debug, verbose = TRUE)
-}
-
-prefix_info <- function(prefix, x, blank_line = FALSE) {
+prefix_info <- function(prefix, x) {
   x <- readBin(x, character())
-  lines <- unlist(strsplit(x, "\n", fixed = TRUE, useBytes = TRUE))
+  lines <- unlist(strsplit(x, "\r?\n", useBytes = TRUE))
   out <- paste0(prefix, lines, collapse = "\n")
   log_info(out)
-  if (blank_line) cat("\n")
 }
 
 prefix_debug <- function(prefix, x) {
   x <- readBin(x, character())
-  lines <- unlist(strsplit(x, "\n", fixed = TRUE, useBytes = TRUE))
+  lines <- unlist(strsplit(x, "\r?\n", useBytes = TRUE))
   out <- paste0(prefix, lines, collapse = "\n")
   log_debug(out)
 }
