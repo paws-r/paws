@@ -256,5 +256,14 @@ set_paws_options <- function() {
   paws_options <- list(
     paws.aws_sso_creds = TRUE
   )
+  paws_options_names <- names(paws_options)
+
+  # check R options for log settings
+  r_options <- lapply(paws_options_names, getOption)
+  names(r_options) <- paws_options_names
+  paws_options <- modifyList(
+    paws_options, Filter(Negate(is.null), r_options)
+  )
+
   do.call(options, paws_options)
 }
