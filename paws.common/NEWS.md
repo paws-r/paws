@@ -1,3 +1,6 @@
+# paws.common 0.7.7.9000
+* migrate backend from httr to httr2
+
 # paws.common 0.7.7
 * fix unix time expiration check
 * remove redundant caching method
