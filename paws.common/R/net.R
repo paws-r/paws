@@ -1,4 +1,4 @@
-#' @importFrom httr2 request req_body_raw req_options req_perform
+#' @importFrom httr2 request req_options req_perform
 
 #' @include struct.R
 #' @include url.R
@@ -137,7 +137,7 @@ request_aws <- function(url, http_request) {
   req$method <- http_request$method
   req$headers <- http_request$header
   req$policies$error_is_error <- function(resp) FALSE
-  req <- req_body_raw(req, http_request$body)
+  req$body <- list(data = http_request$body, type = "raw", content_type = "", params = list())
   req <- req_options(
     .req = req,
     timeout_ms = http_request$timeout * 1000,
