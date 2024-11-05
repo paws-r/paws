@@ -237,7 +237,7 @@ aws_sso_cmd <- function(profile_name, msg) {
   cmd <- sprintf("aws sso login --profile %s", profile_name)
   log_warn(msg, cmd)
   log_info(
-    "Please set `options(paws.aws_sso_creds = FALSE)` to turn off sso credentials automation"
+    "Set `options(paws.aws_sso_creds = FALSE)` to turn off sso credentials automation"
   )
   system(cmd, intern = T)
 }
