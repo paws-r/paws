@@ -1,5 +1,6 @@
 # paws.common 0.7.7.9000
 * migrate backend from httr to httr2
+* enrich sso message (#844). Thanks to @hadley for raising issue.
 
 # paws.common 0.7.7
 * fix unix time expiration check

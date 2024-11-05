@@ -136,7 +136,8 @@ config_file_provider <- function(profile = "") {
       sso_start_url,
       sso_account_id,
       sso_region,
-      sso_role_name
+      sso_role_name,
+      profile_name
     )
     if (!is.null(creds)) {
       return(creds)
@@ -239,7 +240,8 @@ sso_credential_process <- function(sso_session,
                                    sso_start_url,
                                    sso_account_id,
                                    sso_region,
-                                   sso_role_name) {
+                                   sso_role_name,
+                                   profile_name) {
   input_str <- sso_session %||% sso_start_url
   cache_key <- digest::digest(enc2utf8(input_str), algo = "sha1", serialize = FALSE)
   json_file <- paste0(cache_key, ".json")
@@ -274,7 +276,19 @@ sso_credential_process <- function(sso_session,
       disable_rest_protocol_uri_cleaning = TRUE
     )
   )
-  resp <- svc$get_role_credentials(sso_role_name, sso_account_id, cache_creds$accessToken)
+  tryCatch(
+    resp <- svc$get_role_credentials(sso_role_name, sso_account_id, cache_creds$accessToken),
+    http_401 = function(err) {
+      if (grepl("Session token not found or invalid", err$error_response$message )) {
+        enrich_msg <- sprintf(
+          "Try refreshing your sso credentails: `aws sso login --profile %s`",
+          sub("profile ", "", profile_name, fixed = T)
+        )
+        err$message <- paste(err$message, enrich_msg, sep = "\n")
+        stop(err)
+      }
+    }
+  )
   if (is.null(resp)) {
     return(NULL)
   }
