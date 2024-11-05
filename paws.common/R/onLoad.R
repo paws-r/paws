@@ -2,6 +2,7 @@
 #' @include logging.R
 
 .onLoad <- function(libname, pkgname) {
+  set_paws_options()
   init_log_config()
   init_log_styles()
   set_user_agent(pkgname)

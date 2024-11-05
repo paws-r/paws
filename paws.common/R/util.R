@@ -251,3 +251,10 @@ set_user_agent <- function(pkgname) {
   )
   assign("PAWS_USER_AGENT", user_agent, envir = getNamespace(pkgname))
 }
+
+set_paws_options <- function() {
+  paws_options <- list(
+    paws.aws_sso_creds = TRUE
+  )
+  do.call(options, paws_options)
+}
