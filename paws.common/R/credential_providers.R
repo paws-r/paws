@@ -236,9 +236,6 @@ config_file_credential_source <- function(role_arn, role_session_name, mfa_seria
 aws_sso_cmd <- function(profile_name, msg) {
   cmd <- sprintf("aws sso login --profile %s", profile_name)
   log_warn(msg, cmd)
-  log_info(
-    "Set `options(paws.aws_sso_creds = FALSE)` to turn off sso credentials automation"
-  )
   system(cmd, intern = T)
 }
 
@@ -263,6 +260,9 @@ sso_credential_process <- function(sso_session,
   if (!file.exists(sso_cache)) {
     msg <- "Error loading SSO Token: Token for %s does not exist"
     if (!isTRUE(getOption("paws.aws_sso_creds"))) {
+      log_info(
+        "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
+      )
       stopf(msg, input_str)
     }
     log_error(msg, input_str)
@@ -302,6 +302,9 @@ sso_credential_process <- function(sso_session,
             "Try refreshing sso credentials: `aws sso login --profile %s`", profile
           )
           err$message <- paste(err$message, enrich_msg, sep = "\n")
+          log_info(
+            "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
+          )
           stop(err)
         }
         log_error(err$error_response$message)

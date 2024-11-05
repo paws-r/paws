@@ -254,7 +254,7 @@ set_user_agent <- function(pkgname) {
 
 set_paws_options <- function() {
   paws_options <- list(
-    paws.aws_sso_creds = TRUE
+    paws.aws_sso_creds = FALSE
   )
   paws_options_names <- names(paws_options)
 
