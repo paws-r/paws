@@ -236,7 +236,7 @@ config_file_credential_source <- function(role_arn, role_session_name, mfa_seria
 aws_sso_cmd <- function(profile_name, msg) {
   cmd <- sprintf("aws sso login --profile %s", profile_name)
   log_warn(msg, cmd)
-  system(cmd, intern = T)
+  system(cmd, intern = TRUE)
 }
 
 # Get credentials from profile associated with an SSO login.  Assumes
@@ -267,7 +267,7 @@ sso_credential_process <- function(sso_session,
     }
     log_error(msg, input_str)
     aws_sso_cmd(
-      sub("profile ", "", profile_name, fixed = T),
+      sub("profile ", "", profile_name, fixed = TRUE),
       "Attempting to set credentials using: `%s`"
     )
   }
@@ -296,7 +296,7 @@ sso_credential_process <- function(sso_session,
     resp <- svc$get_role_credentials(sso_role_name, sso_account_id, cache_creds$accessToken),
     http_401 = function(err) {
       if (grepl("Session token not found or invalid", err$error_response$message)) {
-        profile <- sub("profile ", "", profile_name, fixed = T)
+        profile <- sub("profile ", "", profile_name, fixed = TRUE)
         if (retry_no == 1 || (!isTRUE(getOption("paws.aws_sso_creds")))) {
           enrich_msg <- sprintf(
             "Try refreshing sso credentials: `aws sso login --profile %s`", profile
