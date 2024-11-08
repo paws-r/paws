@@ -305,7 +305,7 @@ get_tokens <- function(resp, token, caller_env) {
     jmes_path <- caller_env[["jmes_path_token"]][[tkn]] %||% jmespath_index(tkn, caller_env)
     tokens[[tkn]] <- tryCatch(
       {
-        eval(parse(text = jmes_path, keep.source = FALSE), envir = environment())
+        eval(str2expression(jmes_path), envir = environment())
       },
       error = function(err) {
         # Return default character(0) for empty lists

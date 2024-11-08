@@ -60,12 +60,12 @@ test_request <- function(url) {
 
 test_that("check if http paws log are being tracked", {
   temp_file <- tempfile()
-  options("paws.log_level" = 3L)
+  options("paws.log_level" = 4L)
   options("paws.log_file" = temp_file)
 
   resp <- test_request("http://google.com/")
   actual <- readLines(temp_file)
-  expect_true(any(grepl("INFO", actual)))
+  expect_true(any(grepl("DEBUG", actual)))
   unlink(temp_file)
 })
 

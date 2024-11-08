@@ -136,7 +136,8 @@ config_file_provider <- function(profile = "") {
       sso_start_url,
       sso_account_id,
       sso_region,
-      sso_role_name
+      sso_role_name,
+      profile_name
     )
     if (!is.null(creds)) {
       return(creds)
@@ -232,6 +233,12 @@ config_file_credential_source <- function(role_arn, role_session_name, mfa_seria
   return(role_creds)
 }
 
+aws_sso_cmd <- function(profile_name, msg) {
+  cmd <- sprintf("aws sso login --profile %s", profile_name)
+  log_warn(msg, cmd)
+  system(cmd, intern = TRUE)
+}
+
 # Get credentials from profile associated with an SSO login.  Assumes
 # the user has already logged in via e.g. the aws cli so that a cached
 # access token is available.
@@ -239,7 +246,9 @@ sso_credential_process <- function(sso_session,
                                    sso_start_url,
                                    sso_account_id,
                                    sso_region,
-                                   sso_role_name) {
+                                   sso_role_name,
+                                   profile_name,
+                                   retry_no = 0) {
   input_str <- sso_session %||% sso_start_url
   cache_key <- digest::digest(enc2utf8(input_str), algo = "sha1", serialize = FALSE)
   json_file <- paste0(cache_key, ".json")
@@ -249,9 +258,17 @@ sso_credential_process <- function(sso_session,
   )
   sso_cache <- file.path(root, ".aws", "sso", "cache", json_file)
   if (!file.exists(sso_cache)) {
-    stopf(
-      "Error loading SSO Token: Token for %s does not exist",
-      input_str
+    msg <- "Error loading SSO Token: Token for %s does not exist"
+    if (!isTRUE(getOption("paws.aws_sso_creds"))) {
+      log_info(
+        "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
+      )
+      stopf(msg, input_str)
+    }
+    log_error(msg, input_str)
+    aws_sso_cmd(
+      sub("profile ", "", profile_name, fixed = TRUE),
+      "Attempting to set credentials using: `%s`"
     )
   }
   cache_creds <- jsonlite::fromJSON(sso_cache)
@@ -274,7 +291,40 @@ sso_credential_process <- function(sso_session,
       disable_rest_protocol_uri_cleaning = TRUE
     )
   )
-  resp <- svc$get_role_credentials(sso_role_name, sso_account_id, cache_creds$accessToken)
+  retry_resp <- NULL
+  tryCatch(
+    resp <- svc$get_role_credentials(sso_role_name, sso_account_id, cache_creds$accessToken),
+    http_401 = function(err) {
+      if (grepl("Session token not found or invalid", err$error_response$message)) {
+        profile <- sub("profile ", "", profile_name, fixed = TRUE)
+        if (retry_no == 1 || (!isTRUE(getOption("paws.aws_sso_creds")))) {
+          enrich_msg <- sprintf(
+            "Try refreshing sso credentials: `aws sso login --profile %s`", profile
+          )
+          err$message <- paste(err$message, enrich_msg, sep = "\n")
+          log_info(
+            "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
+          )
+          stop(err)
+        }
+        log_error(err$error_response$message)
+        aws_sso_cmd(profile, "Attempting to refresh credentials using: `%s`")
+        retry_resp <<- sso_credential_process(
+          sso_session,
+          sso_start_url,
+          sso_account_id,
+          sso_region,
+          sso_role_name,
+          profile_name,
+          1
+        )
+      }
+    }
+  )
+  if (!is.null(retry_resp)) {
+    return(retry_resp)
+  }
+
   if (is.null(resp)) {
     return(NULL)
   }

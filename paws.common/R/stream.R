@@ -79,7 +79,7 @@ stream_decode_chunk <- function(message, template) {
   for (element in template) {
     name <- element$name
     length <- element$length
-    if (is.character(length)) length <- eval(parse(text = length), envir = result)
+    if (is.character(length)) length <- eval(str2expression(length), envir = result)
     stop <- start + length - 1
     data <- message[start:stop]
     data <- switch(element$type,
