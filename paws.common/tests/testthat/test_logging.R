@@ -48,16 +48,24 @@ test_that("check if file created in none existing directory", {
   unlink(temp_file)
 })
 
+test_request <- function(url) {
+  httr2::req_perform(
+    httr2::req_options(
+      httr2::request(url),
+      debugfunction = paws_debug,
+      verbose = isTRUE(getOption("paws.log_level") >= 3L)
+    )
+  )
+}
+
 test_that("check if http paws log are being tracked", {
   temp_file <- tempfile()
-  options("paws.log_level" = 3L)
+  options("paws.log_level" = 4L)
   options("paws.log_file" = temp_file)
 
-  resp <- with_paws_verbose(
-    httr::GET("http://google.com/")
-  )
+  resp <- test_request("http://google.com/")
   actual <- readLines(temp_file)
-  expect_true(any(grepl("INFO", actual)))
+  expect_true(any(grepl("DEBUG", actual)))
   unlink(temp_file)
 })
 
@@ -66,9 +74,7 @@ test_that("check if http logs aren't being tracked", {
   options("paws.log_level" = 2L)
   options("paws.log_file" = temp_file)
 
-  resp <- with_paws_verbose(
-    httr::GET("http://google.com/")
-  )
+  resp <- test_request("http://google.com/")
   expect_false(file.exists(temp_file))
   unlink(temp_file)
 })

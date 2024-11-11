@@ -1,3 +1,9 @@
+# paws.common 0.7.7.9000
+* migrate backend from httr to httr2
+* enrich sso message (#844). Thanks to @hadley for raising issue.
+* attempt to automatically set/refresh `sso` credentials by calling `aws cli` (#844)
+* moved api log level to `debug` and `trace`. This is to prevent `info` level being saturated by api calls.
+
 # paws.common 0.7.7
 * fix unix time expiration check
 * remove redundant caching method

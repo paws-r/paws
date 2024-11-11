@@ -1,3 +1,5 @@
+For a more comprehensive list, please see the paws.common NEWS
+
 # paws 0.1.12
 
 * Make the following services available on CRAN:

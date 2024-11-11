@@ -3,9 +3,8 @@
 
 # basic paws logging system
 # Error messages only shown
-# Levels: 4 = DEBUG, 3 = INFO/MSG, 2 = WARNING, 1 = ERROR
+# Levels: 5 = TRACE, 4 = DEBUG, 3 = INFO/MSG, 2 = WARNING, 1 = ERROR
 
-#' @importFrom httr config with_config
 #' @importFrom utils modifyList flush.console
 
 #' @title paws logging system
@@ -18,6 +17,7 @@
 #' * `paws.log_timestamp_fmt` (character): see [format.POSIXct()]
 #'
 #' @param level (integer) to determine the level logging threshold.
+#' * `5L`: TRACE
 #' * `4L`: DEBUG
 #' * `3L`: INFO
 #' * `2L`: WARNING
@@ -70,6 +70,12 @@ parse_msg <- function(...) {
   if (length(list(...)) == 1) paste(...) else sprintf(...)
 }
 
+log_trace <- function(...) {
+  if (isTRUE(getOption("paws.log_level") >= 5L)) {
+    log_msg("TRACE", parse_msg(...))
+  }
+}
+
 log_debug <- function(...) {
   if (isTRUE(getOption("paws.log_level") >= 4L)) {
     log_msg("DEBUG", parse_msg(...))
@@ -107,6 +113,7 @@ log_msg <- function(lvl, msg) {
 
 log_color <- function(lvl) {
   color <- switch(lvl,
+    TRACE = style_trace,
     DEBUG = style_debug,
     INFO = style_info,
     WARN = style_warn,
@@ -116,46 +123,28 @@ log_color <- function(lvl) {
   color(lvl)
 }
 
-# paws https verbose wrapper
-with_paws_verbose <- function(expr, ...) {
-  # skip if log level <= 2L
-  if (isTRUE(getOption("paws.log_level") >= 3L)) {
-    with_config(paws_verbose(...), expr)
-  } else {
-    expr
-  }
-}
-
-# modified httr::verbose to align with paws logging system
-# https://github.com/r-lib/httr/blob/21ff69f219ad11298854a63b8f753389088cf382/R/verbose.r
-paws_verbose <- function(data_out = TRUE, data_in = FALSE, ssl = FALSE) {
-  Debug <- function(type, msg) {
-    switch(type + 1,
-      text = prefix_debug("*  ", msg),
-      headerIn = prefix_info("<- ", msg),
-      headerOut = prefix_info("-> ", msg),
-      dataIn = if (data_in) prefix_info("<<  ", msg, TRUE),
-      dataOut = if (data_out) prefix_info(">> ", msg, TRUE),
-      sslDataIn = if (ssl && data_in) prefix_info("*< ", msg, TRUE),
-      sslDataOut = if (ssl && data_out) prefix_info("*> ", msg, TRUE)
-    )
-  }
-  httr::config(debugfunction = Debug, verbose = TRUE)
-}
-
-prefix_info <- function(prefix, x, blank_line = FALSE) {
-  x <- readBin(x, character())
-  lines <- unlist(strsplit(x, "\n", fixed = TRUE, useBytes = TRUE))
-  out <- paste0(prefix, lines, collapse = "\n")
-  log_info(out)
-  if (blank_line) cat("\n")
+# modified httr2::req_verbose to align with paws logging system
+# https://github.com/r-lib/httr2/blob/8e9f8588e66378f1f419158cd1810a82a4dad022/R/req-options.R#L167-L187
+paws_debug <- function(type, msg) {
+  switch(type + 1,
+         text = prefix_trace("*  ", msg),
+         headerIn = prefix_debug("<- ", msg),
+         headerOut = prefix_debug("-> ", msg)
+  )
 }
 
 prefix_debug <- function(prefix, x) {
   x <- readBin(x, character())
-  lines <- unlist(strsplit(x, "\n", fixed = TRUE, useBytes = TRUE))
+  lines <- unlist(strsplit(x, "\r?\n", useBytes = TRUE))
   out <- paste0(prefix, lines, collapse = "\n")
   log_debug(out)
+}
+
+prefix_trace <- function(prefix, x) {
+  x <- readBin(x, character())
+  lines <- unlist(strsplit(x, "\r?\n", useBytes = TRUE))
+  out <- paste0(prefix, lines, collapse = "\n")
+  log_trace(out)
 }
 
 init_log_config <- function() {
@@ -192,11 +181,13 @@ init_log_styles <- function() {
     style_warn <- crayon::make_style("#EEBB50", colors = 256)
     style_info <- function(...) paste(...)
     style_debug <- crayon::make_style("#808080", grey = TRUE)
+    style_trace <- style_debug
   } else {
     style_error <- function(...) paste(...)
     style_warn <- style_error
     style_info <- style_error
     style_debug <- style_error
+    style_trace <- style_error
   }
 
   # make color functions available inside the package
@@ -204,4 +195,5 @@ init_log_styles <- function() {
   assign("style_warn", style_warn, envir = parent.env(environment()))
   assign("style_info", style_info, envir = parent.env(environment()))
   assign("style_debug", style_debug, envir = parent.env(environment()))
+  assign("style_trace", style_trace, envir = parent.env(environment()))
 }

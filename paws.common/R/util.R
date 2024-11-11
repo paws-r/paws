@@ -251,3 +251,19 @@ set_user_agent <- function(pkgname) {
   )
   assign("PAWS_USER_AGENT", user_agent, envir = getNamespace(pkgname))
 }
+
+set_paws_options <- function() {
+  paws_options <- list(
+    paws.aws_sso_creds = FALSE
+  )
+  paws_options_names <- names(paws_options)
+
+  # check R options for log settings
+  r_options <- lapply(paws_options_names, getOption)
+  names(r_options) <- paws_options_names
+  paws_options <- modifyList(
+    paws_options, Filter(Negate(is.null), r_options)
+  )
+
+  do.call(options, paws_options)
+}

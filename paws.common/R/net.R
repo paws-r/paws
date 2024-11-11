@@ -1,6 +1,9 @@
+#' @importFrom httr2 request req_options req_perform
+
 #' @include struct.R
 #' @include url.R
 #' @include util.R
+#' @include logging.R
 NULL
 
 # Construct an HTTP request object.
@@ -40,6 +43,7 @@ HttpResponse <- struct(
   proto_minor = NA,
   header = list(),
   body = NULL,
+  connection = NULL,
   content_length = NA,
   transfer_encoding = list(),
   close = logical(0),
@@ -102,45 +106,21 @@ valid_method <- function(method) {
 
 # Issue an HTTP request.
 issue <- function(http_request) {
-  method <- http_request$method
   url <- build_url(http_request$url)
-  headers <- unlist(http_request$header)
   if (http_request$close) {
-    headers["Connection"] <- "close"
+    http_request$header$Connection <- "close"
   }
-  body <- http_request$body
-
-  timeout_config <- Filter(
-    Negate(is.null),
-    list(connecttimeout = http_request$connect_timeout, timeout = http_request$timeout)
-  )
-  timeout <- do.call(httr::config, timeout_config)
 
   if (url == "") {
     stop("no url provided")
   }
-
-  # utilize httr to write to disk
-  dest <- NULL
-  if (!is.null(http_request$dest)) {
-    dest <- httr::write_disk(http_request$dest, TRUE)
-  }
-  r <- with_paws_verbose(
-    httr::VERB(
-      method,
-      url = url,
-      config = c(httr::add_headers(.headers = headers), dest),
-      body = body,
-      timeout
-    )
-  )
-
+  resp <- request_aws(url, http_request)
   response <- HttpResponse(
-    status_code = r$status_code,
-    header = r$headers,
-    content_length = as.integer(r$headers$`content-length`),
+    status_code = resp$status_code,
+    header = resp$headers,
+    content_length = as.integer(resp$headers$`content-length`),
     # Prevent reading in data when output is set
-    body = resp_body(r, http_request$dest)
+    body = resp_body(resp, http_request$dest)
   )
 
   # Decode gzipped response bodies that are not automatically decompressed
@@ -152,9 +132,25 @@ issue <- function(http_request) {
   return(response)
 }
 
+request_aws <- function(url, http_request) {
+  req <- request(url)
+  req$method <- http_request$method
+  req$headers <- http_request$header
+  req$policies$error_is_error <- function(resp) FALSE
+  req$body <- list(data = http_request$body, type = "raw", content_type = "", params = list())
+  req <- req_options(
+    .req = req,
+    timeout_ms = http_request$timeout * 1000,
+    connecttimeout = http_request$connect_timeout,
+    debugfunction = paws_debug,
+    verbose = isTRUE(getOption("paws.log_level") >= 3L)
+  )
+  return(req_perform(req, path = http_request$dest))
+}
+
 resp_body <- function(resp, path) {
   if (is.null(path)) {
-    body <- resp$content
+    body <- resp$body
     # return error message if call has failed or needs redirecting
   } else if (resp$status_code %in% c(301, 400)) {
     body <- readBin(path, "raw", file.info(path)$size)

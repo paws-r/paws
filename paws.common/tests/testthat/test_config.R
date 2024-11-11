@@ -306,7 +306,7 @@ test_that("get sso legacy credentials", {
   config_file_provider("legacy_sso")
 
   expect_equal(mock_arg(mock_sso_credential_process), list(
-    NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+    NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly", "profile legacy_sso"
   ))
 })
 
@@ -318,7 +318,7 @@ test_that("get sso credentials", {
   config_file_provider("sso")
 
   expect_equal(mock_arg(mock_sso_credential_process), list(
-    "my-sso", "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+    "my-sso", "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly", "profile sso"
   ))
 })
 
