@@ -3012,8 +3012,8 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' @param voiceId The Amazon Polly voice ID that you want Amazon Lex to use for voice
 #' interactions with the user. The locale configured for the voice must
 #' match the locale of the bot. For more information, see [Voices in Amazon
-#' Polly](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in
-#' the *Amazon Polly Developer Guide*.
+#' Polly](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
+#' in the *Amazon Polly Developer Guide*.
 #' @param checksum Identifies a specific revision of the `$LATEST` version.
 #' 
 #' When you create a new bot, leave the `checksum` field blank. If you

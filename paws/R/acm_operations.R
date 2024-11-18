@@ -1190,7 +1190,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' your original request or since your last attempt to resend validation
 #' mail, you must request a new certificate. For more information about
 #' setting up your contact email addresses, see [Configure Email for your
-#' Domain](https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
+#' Domain](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html).
 #'
 #' @usage
 #' acm_resend_validation_email(CertificateArn, Domain, ValidationDomain)

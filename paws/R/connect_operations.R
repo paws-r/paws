@@ -11519,7 +11519,7 @@ connect_list_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxR
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #' 
 #' For more information about flows, see
-#' [Flows](https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html)
+#' [Flows](https://docs.aws.amazon.com/connect/latest/adminguide/connect-contact-flows.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
@@ -17162,13 +17162,13 @@ connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, F
 #' @description
 #' Initiates a flow to start a new chat for the customer. Response of this
 #' API provides a token required to obtain credentials from the
-#' [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+#' [CreateParticipantConnection](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html)
 #' API in the Amazon Connect Participant Service.
 #' 
 #' When a new chat contact is successfully created, clients must subscribe
 #' to the participant’s connection for the created chat within 5 minutes.
 #' This is achieved by invoking
-#' [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+#' [CreateParticipantConnection](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html)
 #' with WEBSOCKET and CONNECTION_CREDENTIALS.
 #' 
 #' A 429 error occurs in the following situations:

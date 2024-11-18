@@ -697,7 +697,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each Amazon Region. To see the time blocks available,
 #' see [Neptune Maintenance
-#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window)
+#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window)
 #' in the *Amazon Neptune User Guide.*
 #' 
 #' Constraints:
@@ -717,7 +717,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each Amazon Region, occurring on a random day of the
 #' week. To see the time blocks available, see [Neptune Maintenance
-#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window)
+#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window)
 #' in the *Amazon Neptune User Guide.*
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.

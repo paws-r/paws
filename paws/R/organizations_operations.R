@@ -479,7 +479,7 @@ organizations_close_account <- function(AccountId) {
 #'   your organization later, you can do so only after you provide the
 #'   missing information. For more information, see [Considerations before
 #'   removing an account from an
-#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
+#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
 #'   in the *Organizations User Guide*.
 #' 
 #' - If you get an exception that indicates that you exceeded your account
@@ -775,7 +775,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'   organization later, you can do so only after you provide the missing
 #'   information. For more information, see [Considerations before removing
 #'   an account from an
-#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
+#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
 #'   in the *Organizations User Guide*.
 #' 
 #' - If you get an exception that indicates that you exceeded your account
@@ -2459,7 +2459,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' that is specified by `ServicePrincipal`) with Organizations. When you
 #' disable integration, the specified service no longer can create a
 #' [service-linked
-#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html)
 #' in *new* accounts in your organization. This means the service can't
 #' perform operations on your behalf on any new accounts in your
 #' organization. The service can still perform operations in older accounts
@@ -2678,7 +2678,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' that is specified by `ServicePrincipal`) with Organizations. When you
 #' enable integration, you allow the specified service to create a
 #' [service-linked
-#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html)
 #' in all the accounts in your organization. This allows the service to
 #' perform operations on your behalf in your organization and its accounts.
 #' 
@@ -3162,7 +3162,7 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #'   (not free tier) Amazon Web Services activity that occurs while the
 #'   account isn't attached to an organization. For more information, see
 #'   [Considerations before removing an account from an
-#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
+#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
 #'   in the *Organizations User Guide*.
 #' 
 #' - The account that you want to leave must not be a delegated
@@ -5168,7 +5168,7 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #'   Organizations console, API, or CLI commands, the information required
 #'   of standalone accounts is *not* automatically collected. For more
 #'   information, see [Considerations before removing an account from an
-#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
+#'   organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
 #'   in the *Organizations User Guide*.
 #' 
 #' - The account that you want to leave must not be a delegated

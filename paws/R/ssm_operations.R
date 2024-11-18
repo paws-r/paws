@@ -308,7 +308,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' requirements for managing on-premises machines using Systems Manager,
 #' see [Setting up Amazon Web Services Systems Manager for hybrid and
 #' multicloud
-#' environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html)
+#' environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-hybrid-multicloud.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Amazon Elastic Compute Cloud (Amazon EC2) instances, edge devices, and
@@ -333,7 +333,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
 #' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
+#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You
@@ -1972,7 +1972,7 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' Amazon Web Services Regions to a single Amazon Simple Storage Service
 #' (Amazon S3) bucket. For more information, see [Configuring resource data
 #' sync for
-#' Inventory](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
+#' Inventory](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can configure Systems Manager Explorer to use the `SyncFromSource`
@@ -14487,7 +14487,7 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
 #' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
+#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You

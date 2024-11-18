@@ -424,7 +424,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' 
 #' For more information, see [Accessing Amazon S3 on Outposts using virtual
 #' private cloud (VPC) only access
-#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -638,7 +638,7 @@ s3control_create_access_point_for_object_lambda <- function(AccountId, Name, Con
 #' Creates a new Outposts bucket. By creating the bucket, you become the
 #' bucket owner. To create an Outposts bucket, you must have S3 on
 #' Outposts. For more information, see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in *Amazon S3 User Guide*.
 #' 
 #' Not every string is an acceptable bucket name. For information on bucket
@@ -653,7 +653,7 @@ s3control_create_access_point_for_object_lambda <- function(AccountId, Name, Con
 #' 
 #' For a complete list of restrictions and Amazon S3 feature limitations on
 #' S3 on Outposts, see [Amazon S3 on Outposts Restrictions and
-#' Limitations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OnOutpostsRestrictionsLimitations.html).
+#' Limitations](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OnOutpostsRestrictionsLimitations.html).
 #' 
 #' For an example of the request syntax for Amazon S3 on Outposts that uses
 #' the S3 on Outposts endpoint hostname prefix and `x-amz-outpost-id` in
@@ -1811,7 +1811,7 @@ s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Na
 #' object versions and delete markers) in the bucket must be deleted before
 #' the bucket itself can be deleted. For more information, see [Using
 #' Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in *Amazon S3 User Guide*.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -1901,7 +1901,7 @@ s3control_delete_bucket <- function(AccountId, Bucket) {
 #' expire, and Amazon S3 on Outposts no longer automatically deletes any
 #' objects on the basis of rules contained in the deleted lifecycle
 #' configuration. For more information, see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in *Amazon S3 User Guide*.
 #' 
 #' To use this operation, you must have permission to perform the
@@ -1998,7 +1998,7 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' the `s3-outposts:DeleteBucketPolicy` permissions on the specified
 #' Outposts bucket and belong to the bucket owner's account to use this
 #' action. For more information, see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in *Amazon S3 User Guide*.
 #' 
 #' If you don't have
@@ -2014,7 +2014,7 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' 
 #' For more information about bucket policies, see [Using Bucket Policies
 #' and User
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -2103,9 +2103,9 @@ s3control_delete_bucket_policy <- function(AccountId, Bucket) {
 #' `s3-outposts:PutReplicationConfiguration` action. The Outposts bucket
 #' owner has this permission by default and can grant it to others. For
 #' more information about permissions, see [Setting up IAM with S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsIAM.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsIAM.html)
 #' and [Managing access to S3 on Outposts
-#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsBucketPolicy.html)
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsBucketPolicy.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' It can take a while to propagate `PUT` or `DELETE` requests for a
@@ -2127,7 +2127,7 @@ s3control_delete_bucket_policy <- function(AccountId, Bucket) {
 #' 
 #' For information about S3 replication on Outposts configuration, see
 #' [Replicating objects for S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsReplication.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsReplication.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' The following operations are related to
@@ -2203,7 +2203,7 @@ s3control_delete_bucket_replication <- function(AccountId, Bucket) {
 #' 
 #' Deletes the tags from the Outposts bucket. For more information, see
 #' [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in *Amazon S3 User Guide*.
 #' 
 #' To use this action, you must have permission to perform the
@@ -3976,7 +3976,7 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
 #' @description
 #' Gets an Amazon S3 on Outposts bucket. For more information, see [Using
 #' Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you are using an identity other than the root user of the Amazon Web
@@ -4083,7 +4083,7 @@ s3control_get_bucket <- function(AccountId, Bucket) {
 #' 
 #' Returns the lifecycle configuration information set on the Outposts
 #' bucket. For more information, see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' and for information about lifecycle configuration, see [Object Lifecycle
 #' Management](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)
 #' in *Amazon S3 User Guide*.
@@ -4093,9 +4093,9 @@ s3control_get_bucket <- function(AccountId, Bucket) {
 #' owner has this permission, by default. The bucket owner can grant this
 #' permission to others. For more information about permissions, see
 #' [Permissions Related to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -4248,7 +4248,7 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' 
 #' Returns the policy of a specified Outposts bucket. For more information,
 #' see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you are using an identity other than the root user of the Amazon Web
@@ -4270,7 +4270,7 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' 
 #' For more information about bucket policies, see [Using Bucket Policies
 #' and User
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -4361,10 +4361,10 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
 #' 
 #' Returns the replication configuration of an S3 on Outposts bucket. For
 #' more information about S3 on Outposts, see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*. For information about S3 replication on
 #' Outposts configuration, see [Replicating objects for S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsReplication.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsReplication.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' It can take a while to propagate `PUT` or `DELETE` requests for a
@@ -4378,9 +4378,9 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
 #' `s3-outposts:GetReplicationConfiguration` action. The Outposts bucket
 #' owner has this permission by default and can grant it to others. For
 #' more information about permissions, see [Setting up IAM with S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsIAM.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsIAM.html)
 #' and [Managing access to S3 on Outposts
-#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsBucketPolicy.html)
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsBucketPolicy.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -4399,7 +4399,7 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
 #' 
 #' For information about S3 on Outposts replication failure reasons, see
 #' [Replication failure
-#' reasons](https://docs.aws.amazon.com/AmazonS3/latest/userguide/outposts-replication-eventbridge.html#outposts-replication-failure-codes)
+#' reasons](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/outposts-replication-eventbridge.html#outposts-replication-failure-codes)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' The following operations are related to
@@ -4541,7 +4541,7 @@ s3control_get_bucket_replication <- function(AccountId, Bucket) {
 #' 
 #' Returns the tag set associated with the Outposts bucket. For more
 #' information, see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' To use this action, you must have permission to perform the
@@ -6444,7 +6444,7 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
 #' Returns a list of all Outposts buckets in an Outpost that are owned by
 #' the authenticated sender of the request. For more information, see
 #' [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' For an example of the request syntax for Amazon S3 on Outposts that uses
@@ -7171,7 +7171,7 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
 #' 
 #' Applies an Amazon S3 bucket policy to an Outposts bucket. For more
 #' information, see [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you are using an identity other than the root user of the Amazon Web
@@ -7193,7 +7193,7 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
 #' 
 #' For more information about bucket policies, see [Using Bucket Policies
 #' and User
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -7286,7 +7286,7 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
 #' Creates a replication configuration or replaces an existing one. For
 #' information about S3 replication on Outposts configuration, see
 #' [Replicating objects for S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsReplication.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsReplication.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' It can take a while to propagate `PUT` or `DELETE` requests for a
@@ -7324,11 +7324,11 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
 #' Outposts requires that both the source and destination buckets must have
 #' versioning enabled. For information about enabling versioning on a
 #' bucket, see [Managing S3 Versioning for your S3 on Outposts
-#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsManagingVersioning.html).
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsManagingVersioning.html).
 #' 
 #' For information about S3 on Outposts replication failure reasons, see
 #' [Replication failure
-#' reasons](https://docs.aws.amazon.com/AmazonS3/latest/userguide/outposts-replication-eventbridge.html#outposts-replication-failure-codes)
+#' reasons](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/outposts-replication-eventbridge.html#outposts-replication-failure-codes)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' **Handling Replication of Encrypted Objects**
@@ -7345,9 +7345,9 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
 #' permissions for the bucket. The Outposts bucket owner has this
 #' permission by default and can grant it to others. For more information
 #' about permissions, see [Setting up IAM with S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsIAM.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsIAM.html)
 #' and [Managing access to S3 on Outposts
-#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsBucketPolicy.html).
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsBucketPolicy.html).
 #' 
 #' To perform this operation, the user or role must also have the
 #' `iam:CreateRole` and `iam:PassRole` permissions. For more information,
@@ -7502,7 +7502,7 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
 #' 
 #' Sets the tags for an S3 on Outposts bucket. For more information, see
 #' [Using Amazon S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' Use tags to organize your Amazon Web Services bill to reflect your own
@@ -7525,9 +7525,9 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
 #' this permission by default and can grant this permission to others. For
 #' more information about permissions, see [Permissions Related to Bucket
 #' Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing access permissions to your Amazon S3
-#' resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' [`put_bucket_tagging`][s3control_put_bucket_tagging] has the following
 #' special errors:
@@ -7537,9 +7537,9 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
 #'   - Description: The tag provided was not a valid tag. This error can
 #'     occur if the tag did not pass input validation. For information
 #'     about tag restrictions, see [User-Defined Tag
-#'     Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#'     Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)
 #'     and [Amazon Web Services-Generated Cost Allocation Tag
-#'     Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tag-restrictions.html).
+#'     Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tags.html).
 #' 
 #' - Error code: `MalformedXMLError`
 #' 
@@ -7665,7 +7665,7 @@ s3control_put_bucket_tagging <- function(AccountId, Bucket, Tagging) {
 #' configure your bucket S3 Lifecycle rules to expire noncurrent versions
 #' after a specified time period. For more information, see [Creating and
 #' managing a lifecycle configuration for your S3 on Outposts
-#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsLifecycleManaging.html)
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3OutpostsLifecycleManaging.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you have an object expiration lifecycle configuration in your
@@ -7787,7 +7787,7 @@ s3control_put_bucket_versioning <- function(AccountId, Bucket, MFA = NULL, Versi
 #' 
 #'   - For tagging-related restrictions related to characters and
 #'     encodings, see [User-Defined Tag
-#'     Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#'     Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)
 #'     in the *Billing and Cost Management User Guide*.
 #' 
 #' ### Permissions

@@ -44,7 +44,7 @@ NULL
 #' Services
 #' Credentials](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-setting-up.html#create-iam-user)
 #' and [Never Modify or Delete the Amazon MQ Elastic Network
-#' Interface](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/connecting-to-amazon-mq.html#never-modify-delete-elastic-network-interface)
+#' Interface](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/#never-modify-delete-elastic-network-interface)
 #' in the *Amazon MQ Developer Guide*.
 #'
 #' @usage
@@ -1551,7 +1551,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' the broker.
 #' @param HostInstanceType The broker's host instance type to upgrade to. For a list of supported
 #' instance types, see [Broker instance
-#' types](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker.html#broker-instance-types).
+#' types](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/#broker-instance-types).
 #' @param LdapServerMetadata Optional. The metadata of the LDAP server used to authenticate and
 #' authorize connections to the broker. Does not apply to RabbitMQ brokers.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.

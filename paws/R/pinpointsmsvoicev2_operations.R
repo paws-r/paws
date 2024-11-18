@@ -4759,7 +4759,7 @@ pinpointsmsvoicev2_request_sender_id <- function(SenderId, IsoCountryCode, Messa
 #' Currently, this setting is only used when you send messages to
 #' recipients in India using a sender ID. For more information see [Special
 #' requirements for sending SMS messages to recipients in
-#' India](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html).
+#' India](https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4947,7 +4947,7 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
 #' Currently, this setting is only used when you send messages to
 #' recipients in India using a sender ID. For more information see [Special
 #' requirements for sending SMS messages to recipients in
-#' India](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html).
+#' India](https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html).
 #' 
 #' - `IN_ENTITY_ID` The entity ID or Principal Entity (PE) ID that you
 #'   received after completing the sender ID registration process.

@@ -3403,9 +3403,8 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' 
 #' Note that the role specified in the `DataAccessRoleArn` request
 #' parameter must have permission to use the specified location. You can
-#' change Amazon S3 permissions using the [Amazon Web Services Management
-#' Console](https://console.aws.amazon.com/s3/home). See also [Permissions
-#' Required for IAM User
+#' change Amazon S3 permissions using the Amazon Web Services Management
+#' Console. See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your Medical Scribe output.
 #' 
@@ -3683,9 +3682,8 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
 #' `DOC-EXAMPLE-BUCKET` and `OutputKey` to `test-files/`.
 #' 
 #' Note that Amazon Transcribe must have permission to use the specified
-#' location. You can change Amazon S3 permissions using the [Amazon Web
-#' Services Management Console](https://console.aws.amazon.com/s3/home).
-#' See also [Permissions Required for IAM User
+#' location. You can change Amazon S3 permissions using the Amazon Web
+#' Services Management Console. See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' @param OutputKey Use in combination with `OutputBucketName` to specify the output
 #' location of your transcript and, optionally, a unique name for your
@@ -3989,9 +3987,8 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' `DOC-EXAMPLE-BUCKET` and `OutputKey` to `test-files/`.
 #' 
 #' Note that Amazon Transcribe must have permission to use the specified
-#' location. You can change Amazon S3 permissions using the [Amazon Web
-#' Services Management Console](https://console.aws.amazon.com/s3/home).
-#' See also [Permissions Required for IAM User
+#' location. You can change Amazon S3 permissions using the Amazon Web
+#' Services Management Console. See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
 #' If you do not specify `OutputBucketName`, your transcript is placed in a

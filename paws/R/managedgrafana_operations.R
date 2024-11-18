@@ -11,7 +11,7 @@ NULL
 #' Labs token for the `grafanaToken`. Upgrading to Grafana Enterprise
 #' incurs additional fees. For more information, see [Upgrade a workspace
 #' to Grafana
-#' Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html).
+#' Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html).
 #'
 #' @usage
 #' managedgrafana_associate_license(grafanaToken, licenseType, workspaceId)

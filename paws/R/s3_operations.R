@@ -119,7 +119,7 @@ NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
 #' @param UploadId &#91;required&#93; Upload ID that identifies the multipart upload.
@@ -219,7 +219,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' fails, applications should be prepared to retry any failed requests
 #' (including 500 error responses). For more information, see [Amazon S3
 #' Error Best
-#' Practices](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ErrorBestPractices.html).
+#' Practices](https://docs.aws.amazon.com/AmazonS3/latest/userguide/).
 #' 
 #' You can't use `Content-Type: application/x-www-form-urlencoded` for the
 #' CompleteMultipartUpload requests. Also, if you don't provide a
@@ -371,7 +371,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MultipartUpload The container for the multipart upload request information.
@@ -591,7 +591,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' signed by using IAM credentials (access key ID and secret access key for
 #' the IAM identities). All headers with the `x-amz-` prefix, including
 #' `x-amz-copy-source`, must be signed. For more information, see [REST
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
 #' 
 #' **Directory buckets** - You must use the IAM credentials to authenticate
 #' and authorize your access to the [`copy_object`][s3_copy_object] API
@@ -782,7 +782,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies the caching behavior along the request/reply chain.
 #' @param ChecksumAlgorithm Indicates the algorithm that you want Amazon S3 to use to create the
@@ -1154,7 +1154,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' information about configuring any of the officially supported Amazon Web
 #' Services SDKs and Amazon Web Services CLI, see [Specifying the Signature
 #' Version in Request
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' **Directory buckets** - If you specify `x-amz-server-side-encryption`
@@ -1846,7 +1846,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'       information about configuring any of the officially supported
 #'       Amazon Web Services SDKs and Amazon Web Services CLI, see
 #'       [Specifying the Signature Version in Request
-#'       Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
+#'       Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/#specify-signature-version)
 #'       in the *Amazon S3 User Guide*.
 #' 
 #'     For more information about server-side encryption with KMS keys
@@ -2006,7 +2006,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ContentDisposition Specifies presentational information for the object.
@@ -2915,9 +2915,9 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about the Amazon S3 analytics feature, see [Amazon S3
 #' Analytics – Storage Class
@@ -3078,9 +3078,9 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   The bucket owner has this permission by default. The bucket owner can
 #'   grant this permission to others. For more information about
 #'   permissions, see [Permissions Related to Bucket
-#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #'   and [Managing Access Permissions to Your Amazon S3
-#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' - **Directory bucket permissions** - To grant access to this API
 #'   operation, you must have the `s3express:PutEncryptionConfiguration`
@@ -3257,9 +3257,9 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about the Amazon S3 inventory feature, see [Amazon S3
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html).
@@ -3414,9 +3414,9 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about CloudWatch request metrics for Amazon S3, see
 #' [Monitoring Metrics with Amazon
@@ -3490,7 +3490,7 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 #' operation, you must have the `s3:PutBucketOwnershipControls` permission.
 #' For more information about Amazon S3 permissions, see [Specifying
 #' Permissions in a
-#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' For information about Amazon S3 Object Ownership, see [Using Object
 #' Ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html).
@@ -3587,7 +3587,7 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' - **General purpose bucket permissions** - The `s3:DeleteBucketPolicy`
 #'   permission is required in a policy. For more information about general
 #'   purpose buckets bucket policies, see [Using Bucket Policies and User
-#'   Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html)
+#'   Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
 #'   in the *Amazon S3 User Guide*.
 #' 
 #' - **Directory bucket permissions** - To grant access to this API
@@ -3690,9 +3690,9 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' `s3:PutReplicationConfiguration` action. The bucket owner has these
 #' permissions by default and can grant it to others. For more information
 #' about permissions, see [Permissions Related to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' It can take a while for the deletion of a replication configuration to
 #' fully propagate.
@@ -4022,7 +4022,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -4155,7 +4155,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
 #' all tags.
@@ -4377,7 +4377,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -4557,9 +4557,9 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' To use this operation, you must have the `s3:PutBucketPublicAccessBlock`
 #' permission. For more information about permissions, see [Permissions
 #' Related to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' The following operations are related to
 #' [`delete_public_access_block`][s3_delete_public_access_block]:
@@ -4633,9 +4633,9 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' You set the Transfer Acceleration state of an existing bucket to
@@ -4831,9 +4831,9 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' For information about Amazon S3 analytics feature, see [Amazon S3
@@ -5076,9 +5076,9 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   The bucket owner has this permission by default. The bucket owner can
 #'   grant this permission to others. For more information about
 #'   permissions, see [Permissions Related to Bucket
-#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #'   and [Managing Access Permissions to Your Amazon S3
-#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' - **Directory bucket permissions** - To grant access to this API
 #'   operation, you must have the `s3express:GetEncryptionConfiguration`
@@ -5299,9 +5299,9 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' permission by default and can grant this permission to others. For more
 #' information about permissions, see [Permissions Related to Bucket
 #' Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about the Amazon S3 inventory feature, see [Amazon S3
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html).
@@ -5413,9 +5413,9 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle] has the following
 #' special error:
@@ -5551,9 +5551,9 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' permission, by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' has the following special error:
@@ -5886,9 +5886,9 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about CloudWatch request metrics for Amazon S3, see
 #' [Monitoring Metrics with Amazon
@@ -6114,7 +6114,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' configuration on a bucket, see [Setting Up Notification of Bucket
 #' Events](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html).
 #' For more information about bucket policies, see [Using Bucket
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' The following action is related to
 #' [`get_bucket_notification`][s3_get_bucket_notification]:
@@ -6246,7 +6246,7 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 #' operation, you must have the `s3:GetBucketOwnershipControls` permission.
 #' For more information about Amazon S3 permissions, see [Specifying
 #' permissions in a
-#' policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' For information about Amazon S3 Object Ownership, see [Using Object
 #' Ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html).
@@ -6355,7 +6355,7 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' - **General purpose bucket permissions** - The `s3:GetBucketPolicy`
 #'   permission is required in a policy. For more information about general
 #'   purpose buckets bucket policies, see [Using Bucket Policies and User
-#'   Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html)
+#'   Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
 #'   in the *Amazon S3 User Guide*.
 #' 
 #' - **Directory bucket permissions** - To grant access to this API
@@ -6485,7 +6485,7 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' the bucket is public. In order to use this operation, you must have the
 #' `s3:GetBucketPolicyStatus` permission. For more information about Amazon
 #' S3 permissions, see [Specifying Permissions in a
-#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' For more information about when Amazon S3 considers a bucket public, see
 #' [The Meaning of
@@ -6572,7 +6572,7 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' This action requires permissions for the
 #' `s3:GetReplicationConfiguration` action. For more information about
 #' permissions, see [Using Bucket Policies and User
-#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html).
+#' Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' If you include the `Filter` element in a replication configuration, you
 #' must also include the `DeleteMarkerReplication` and `Priority` elements.
@@ -7092,7 +7092,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   `READ` access to the anonymous user, the [`get_object`][s3_get_object]
 #'   operation returns the object without using an authorization header.
 #'   For more information, see [Specifying permissions in a
-#'   policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html)
+#'   policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #'   in the *Amazon S3 User Guide*.
 #' 
 #'   If you include a `versionId` in your request header, you must have the
@@ -7271,7 +7271,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified in this header; otherwise, return a `412 Precondition Failed`
@@ -7724,7 +7724,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #'   bucket is not versioned, you need the `s3:GetObject` and
 #'   `s3:GetObjectAttributes` permissions. For more information, see
 #'   [Specifying Permissions in a
-#'   Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html)
+#'   Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #'   in the *Amazon S3 User Guide*. If the object that you request does not
 #'   exist, the error Amazon S3 returns depends on whether you also have
 #'   the `s3:ListBucket` permission.
@@ -7900,7 +7900,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
 #' @param VersionId The version ID used to reference a specific version of the object.
@@ -8338,7 +8338,7 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
 #' @param VersionId The versionId of the object for which to get the tagging information.
@@ -8506,7 +8506,7 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' To use this operation, you must have the `s3:GetBucketPublicAccessBlock`
 #' permission. For more information about Amazon S3 permissions, see
 #' [Specifying Permissions in a
-#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a
 #' bucket or an object, it checks the `PublicAccessBlock` configuration for
@@ -8606,7 +8606,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' signed by using IAM credentials (access key ID and secret access key for
 #' the IAM identities). All headers with the `x-amz-` prefix, including
 #' `x-amz-copy-source`, must be signed. For more information, see [REST
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
 #' 
 #' **Directory buckets** - You must use IAM credentials to authenticate and
 #' authorize your access to the [`head_bucket`][s3_head_bucket] API
@@ -8623,7 +8623,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   bucket owner has this permission by default and can grant this
 #'   permission to others. For more information about permissions, see
 #'   [Managing access permissions to your Amazon S3
-#'   resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#'   resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #'   in the *Amazon S3 User Guide*.
 #' 
 #' - **Directory bucket permissions** - You must have the
@@ -8700,7 +8700,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
@@ -8783,7 +8783,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   the `s3:GetObject` permission. You need the relevant read object (or
 #'   version) permission for this operation. For more information, see
 #'   [Actions, resources, and condition keys for Amazon
-#'   S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/list_amazons3.html)
+#'   S3](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html)
 #'   in the *Amazon S3 User Guide*. For more information about the
 #'   permissions to S3 API operations by S3 resource types, see Required
 #'   permissions for Amazon S3 API operations in the *Amazon S3 User
@@ -8942,7 +8942,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
@@ -9191,9 +9191,9 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about Amazon S3 analytics feature, see [Amazon S3
 #' Analytics – Storage Class
@@ -9436,9 +9436,9 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about the Amazon S3 inventory feature, see [Amazon S3
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html)
@@ -9563,9 +9563,9 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For more information about metrics configurations and CloudWatch request
 #' metrics, see [Monitoring Metrics with Amazon
@@ -10016,7 +10016,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter Character you use to group keys.
 #' 
@@ -10424,7 +10424,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
 #' @param EncodingType 
@@ -10578,9 +10578,9 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'   permission by default and can grant this permission to others. For
 #'   more information about permissions, see [Permissions Related to Bucket
 #'   Subresource
-#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #'   and [Managing Access Permissions to Your Amazon S3
-#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #'   in the *Amazon S3 User Guide*.
 #' 
 #' - **Directory bucket permissions** - To grant access to this API
@@ -10668,7 +10668,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
 #' 
@@ -10959,7 +10959,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MaxParts Sets the maximum number of parts to return.
@@ -11101,9 +11101,9 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' The Transfer Acceleration state of a bucket can be set to one of the
 #' following two values:
@@ -11496,9 +11496,9 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' [`put_bucket_analytics_configuration`][s3_put_bucket_analytics_configuration]
 #' has the following special errors:
@@ -11897,9 +11897,9 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #'   The bucket owner has this permission by default. The bucket owner can
 #'   grant this permission to others. For more information about
 #'   permissions, see [Permissions Related to Bucket
-#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#'   Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #'   and [Managing Access Permissions to Your Amazon S3
-#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#'   Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #'   in the *Amazon S3 User Guide*.
 #' 
 #' - **Directory bucket permissions** - To grant access to this API
@@ -12213,9 +12213,9 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #' lists](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html#storage-inventory-contents)
 #' in the *Amazon S3 User Guide*. For more information about permissions,
 #' see [Permissions related to bucket subresource
-#' operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Identity and access management in Amazon
-#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
@@ -12361,7 +12361,7 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' 
 #' For more information about permissions, see [Managing Access Permissions
 #' to your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' For more examples of transitioning objects to storage classes such as
@@ -12384,10 +12384,10 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #'   following topics in the Amazon S3 User Guide:
 #' 
 #'   - [Specifying Permissions in a
-#'     Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html)
+#'     Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' 
 #'   - [Managing Access Permissions to your Amazon S3
-#'     Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#'     Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #'
 #' @usage
 #' s3_put_bucket_lifecycle(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -12557,7 +12557,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' 
 #' For more information about permissions, see [Managing Access Permissions
 #' to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' The following operations are related to
 #' [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]:
@@ -12935,9 +12935,9 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' permission by default. The bucket owner can grant this permission to
 #' others. For more information about permissions, see [Permissions Related
 #' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' For information about CloudWatch request metrics for Amazon S3, see
 #' [Monitoring Metrics with Amazon
@@ -13336,7 +13336,7 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' this operation, you must have the `s3:PutBucketOwnershipControls`
 #' permission. For more information about Amazon S3 permissions, see
 #' [Specifying permissions in a
-#' policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide//using-with-s3-actions.html).
+#' policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' For information about Amazon S3 Object Ownership, see [Using object
 #' ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide//about-object-ownership.html).
@@ -13450,7 +13450,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' - **General purpose bucket permissions** - The `s3:PutBucketPolicy`
 #'   permission is required in a policy. For more information about general
 #'   purpose buckets bucket policies, see [Using Bucket Policies and User
-#'   Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html)
+#'   Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html)
 #'   in the *Amazon S3 User Guide*.
 #' 
 #' - **Directory bucket permissions** - To grant access to this API
@@ -13669,9 +13669,9 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' resource owner can also grant others permissions to perform the
 #' operation. For more information about permissions, see [Specifying
 #' Permissions in a
-#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html)
+#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' To perform this operation, the user or role performing the action must
 #' have the
@@ -13965,9 +13965,9 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' `s3:PutBucketTagging` action. The bucket owner has this permission by
 #' default and can grant this permission to others. For more information
 #' about permissions, see [Permissions Related to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
 #' [`put_bucket_tagging`][s3_put_bucket_tagging] has the following special
 #' errors. For more Amazon S3 errors see, [Error
@@ -14605,7 +14605,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain.
 #' For more information, see
@@ -14626,7 +14626,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' originally sent. Although it is optional, we recommend using the
 #' Content-MD5 mechanism as an end-to-end integrity check. For more
 #' information about REST request authentication, see [REST
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
 #' 
 #' The `Content-MD5` or `x-amz-sdk-checksum-algorithm` header is required
 #' for any request to upload an object with a retention period configured
@@ -15303,7 +15303,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
@@ -15775,7 +15775,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' 
 #' For tagging-related restrictions related to characters and encodings,
 #' see [Tag
-#' Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html).
+#' Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/).
 #' Note that Amazon S3 limits the maximum number of tags to 10 tags per
 #' object.
 #' 
@@ -15836,7 +15836,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Name of the object key.
 #' @param VersionId The versionId of the object that the tag-set will be added to.
@@ -15945,7 +15945,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' S3 bucket. To use this operation, you must have the
 #' `s3:PutBucketPublicAccessBlock` permission. For more information about
 #' Amazon S3 permissions, see [Specifying Permissions in a
-#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a
 #' bucket or an object, it checks the `PublicAccessBlock` configuration for
@@ -16078,9 +16078,9 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' `s3:RestoreObject` action. The bucket owner has this permission by
 #' default and can grant this permission to others. For more information
 #' about permissions, see [Permissions Related to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Restoring objects
@@ -16240,7 +16240,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the action was initiated.
 #' @param VersionId VersionId used to reference a specific version of the object.
@@ -16428,7 +16428,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' You must have the `s3:GetObject` permission for this operation. Amazon
 #' S3 Select does not support anonymous access. For more information about
 #' permissions, see [Specifying Permissions in a
-#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html)
+#' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Object Data Formats
@@ -16652,7 +16652,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
     http_path = "/{Bucket}/{Key+}?select&select-type=2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = TRUE
   )
   input <- .s3$select_object_content_input(Bucket = Bucket, Key = Key, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, Expression = Expression, ExpressionType = ExpressionType, RequestProgress = RequestProgress, InputSerialization = InputSerialization, OutputSerialization = OutputSerialization, ScanRange = ScanRange, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$select_object_content_output()
@@ -16887,7 +16887,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
@@ -17086,7 +17086,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' secret access key for the IAM identities). All headers with the `x-amz-`
 #' prefix, including `x-amz-copy-source`, must be signed. For more
 #' information, see [REST
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
 #' 
 #' **Directory buckets** - You must use IAM credentials to authenticate and
 #' authorize your access to the [`upload_part_copy`][s3_upload_part_copy]
@@ -17275,7 +17275,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
 #' value in one of two formats, depending on whether you want to access the

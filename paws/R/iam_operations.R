@@ -103,7 +103,8 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #'
 #' @param InstanceProfileName &#91;required&#93; The name of the instance profile to update.
 #' 
-#' This parameter allows (through its regex pattern) a string of characters
+#' This parameter allows (through its [regex
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to add.
@@ -644,8 +645,8 @@ iam_create_access_key <- function(UserName = NULL) {
 #' Creates an alias for your Amazon Web Services account. For information
 #' about using an Amazon Web Services account alias, see [Creating,
 #' deleting, and listing an Amazon Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon
-#' Web Services Sign-In User Guide*.
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/account-alias-create.html)
+#' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_create_account_alias(AccountAlias)
@@ -1576,7 +1577,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
 #' operations to create a console URL. For more information, see [Using IAM
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)
 #' in the *IAM User Guide*.
 #' @param PermissionsBoundary The ARN of the managed policy that is used to set the permissions
 #' boundary for the role.
@@ -1713,7 +1714,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' that is used as your organization's IdP.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' For more information, see [Enabling SAML 2.0 federated users to access
 #' the Amazon Web Services Management
@@ -1815,7 +1816,7 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
 #' control the role helps improve service stability and proper cleanup when
 #' a service and its role are no longer needed. For more information, see
 #' [Using service-linked
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html)
 #' in the *IAM User Guide*.
 #' 
 #' To attach a policy to this service-linked role, you must make the
@@ -2420,8 +2421,8 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' Deletes the specified Amazon Web Services account alias. For information
 #' about using an Amazon Web Services account alias, see [Creating,
 #' deleting, and listing an Amazon Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon
-#' Web Services Sign-In User Guide*.
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/account-alias-create.html)
+#' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_delete_account_alias(AccountAlias)
@@ -3211,7 +3212,7 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #' provider resource ARN fails.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' iam_delete_saml_provider(SAMLProviderArn)
@@ -3407,7 +3408,7 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #' 
 #' For more information about service-linked roles, see [Roles terms and
 #' concepts: Amazon Web Services service-linked
-#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role)
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html#id_roles_terms-and-concepts)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -3593,7 +3594,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' Management Console, when you delete a user programmatically, you must
 #' delete the items attached to the user manually, or the deletion fails.
 #' For more information, see [Deleting an IAM
-#' user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli).
+#' user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_rename.html#id_users_deleting_cli).
 #' Before attempting to delete a user, remove the following items:
 #' 
 #' - Password ([`delete_login_profile`][iam_delete_login_profile])
@@ -4193,7 +4194,7 @@ iam_generate_credential_report <- function() {
 #' role. SCPs must be enabled for your organization root. You must have the
 #' required IAM and Organizations permissions. For more information, see
 #' [Refining permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can generate a service last accessed data report for entities by
@@ -4211,7 +4212,7 @@ iam_generate_credential_report <- function() {
 #' entity or the entity's children. For important information about the
 #' data, reporting period, permissions required, troubleshooting, and
 #' supported Regions see [Reducing permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
 #' in the *IAM User Guide*.
 #' 
 #' The data includes all attempts to access Amazon Web Services, not just
@@ -4310,7 +4311,7 @@ iam_generate_credential_report <- function() {
 #' 
 #' For more information about service last accessed data, see [Reducing
 #' policy scope by viewing user
-#' activity](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+#' activity](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -4391,11 +4392,11 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' four hours. IAM reports activity for at least the last 400 days, or less
 #' if your Region began supporting this feature within the last year. For
 #' more information, see [Regions where data is
-#' tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period).
+#' tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html#access-advisor_tracking-period).
 #' For more information about services and actions for which action last
 #' accessed information is displayed, see [IAM action last accessed
 #' information services and
-#' actions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-action-last-accessed.html).
+#' actions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed-action-last-accessed.html).
 #' 
 #' The service last accessed data includes all attempts to access an Amazon
 #' Web Services API, not just the successful ones. This includes all
@@ -4451,7 +4452,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' 
 #' For more information about service and action last accessed data, see
 #' [Reducing permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -5741,7 +5742,7 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' in your organization. SCPs must be enabled for your organization root.
 #' You must have permissions to perform this operation. For more
 #' information, see [Refining permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
 #' in the *IAM User Guide*.
 #' 
 #' For each service that principals in an account (root user, IAM users, or
@@ -6240,7 +6241,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' SAML provider resource object was created or updated.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' iam_get_saml_provider(SAMLProviderArn)
@@ -6525,7 +6526,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' 
 #' For more information about service and action last accessed data, see
 #' [Reducing permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -9429,7 +9430,7 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
 #' [`get_saml_provider`][iam_get_saml_provider].
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' iam_list_saml_providers()
@@ -10951,7 +10952,8 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #'
 #' @param InstanceProfileName &#91;required&#93; The name of the instance profile to update.
 #' 
-#' This parameter allows (through its regex pattern) a string of characters
+#' This parameter allows (through its [regex
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to remove.
@@ -13996,7 +13998,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
 #' operations to create a console URL. For more information, see [Using IAM
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)
 #' in the *IAM User Guide*.
 #' 
 #' IAM role credentials provided by Amazon EC2 instances assigned to the
@@ -14128,7 +14130,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' object.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' iam_update_saml_provider(SAMLMetadataDocument, SAMLProviderArn)
@@ -14499,7 +14501,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' 
 #' You should understand the implications of changing an IAM user's path or
 #' name. For more information, see [Renaming an IAM
-#' user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming)
+#' user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_rename.html#id_users_renaming)
 #' and [Renaming an IAM
 #' group](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html)
 #' in the *IAM User Guide*.
@@ -14705,7 +14707,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' calling [`upload_server_certificate`][iam_upload_server_certificate].
 #' For information about setting up signatures and authorization through
 #' the API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Calling the API by making HTTP
 #' query
@@ -14898,7 +14900,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' [`upload_signing_certificate`][iam_upload_signing_certificate]. For
 #' information about setting up signatures and authorization through the
 #' API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Making query
 #' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)

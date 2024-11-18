@@ -12,7 +12,7 @@ NULL
 #' Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
 #' For information about using Amazon Data Lifecycle Manager with Amazon
 #' EBS, see [Amazon Data Lifecycle
-#' Manager](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
+#' Manager](https://docs.aws.amazon.com/ebs/latest/userguide/snapshot-lifecycle.html)
 #' in the *Amazon EC2 User Guide*.
 #'
 #' @param

@@ -102,8 +102,8 @@ kms_cancel_key_deletion <- function(KeyId) {
 #'
 #' @description
 #' Connects or reconnects a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' to its backing key store. For an CloudHSM key store,
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/) to its
+#' backing key store. For an CloudHSM key store,
 #' [`connect_custom_key_store`][kms_connect_custom_key_store] connects the
 #' key store to its associated CloudHSM cluster. For an external key store,
 #' [`connect_custom_key_store`][kms_connect_custom_key_store] connects the
@@ -124,10 +124,9 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' operation.
 #' 
 #' This operation is part of the [custom key
-#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' feature in KMS, which combines the convenience and extensive integration
-#' of KMS with the isolation and control of a key store that you own and
-#' manage.
+#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/) feature
+#' in KMS, which combines the convenience and extensive integration of KMS
+#' with the isolation and control of a key store that you own and manage.
 #' 
 #' The [`connect_custom_key_store`][kms_connect_custom_key_store] operation
 #' might fail for various reasons. To find the reason, use the
@@ -418,11 +417,11 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #'
 #' @description
 #' Creates a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' backed by a key store that you own and manage. When you use a KMS key in
-#' a custom key store for a cryptographic operation, the cryptographic
-#' operation is actually performed in your key store using your keys. KMS
-#' supports [CloudHSM key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/) backed by
+#' a key store that you own and manage. When you use a KMS key in a custom
+#' key store for a cryptographic operation, the cryptographic operation is
+#' actually performed in your key store using your keys. KMS supports
+#' [CloudHSM key
 #' stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html)
 #' backed by an [CloudHSM
 #' cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html)
@@ -432,10 +431,9 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' of Amazon Web Services.
 #' 
 #' This operation is part of the [custom key
-#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' feature in KMS, which combines the convenience and extensive integration
-#' of KMS with the isolation and control of a key store that you own and
-#' manage.
+#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/) feature
+#' in KMS, which combines the convenience and extensive integration of KMS
+#' with the isolation and control of a key store that you own and manage.
 #' 
 #' Before you create the custom key store, the required elements must be in
 #' place and operational. We recommend that you use the test tools that KMS
@@ -663,7 +661,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' endpoint service for communication with KMS, specify
 #' `VPC_ENDPOINT_SERVICE`. For help making this choice, see [Choosing a
 #' connectivity
-#' option](https://docs.aws.amazon.com/kms/latest/developerguide/plan-xks-keystore.html#choose-xks-connectivity)
+#' option](https://docs.aws.amazon.com/kms/latest/developerguide/choose-xks-connectivity.html#choose-xks-connectivity)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' An Amazon VPC endpoint service keeps your communication with KMS in a
@@ -789,7 +787,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html)
 #' in the *Key Management Service Developer Guide* . For examples of
 #' working with grants in several programming languages, see [Programming
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html).
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' The [`create_grant`][kms_create_grant] operation returns a `GrantToken`
 #' and a `GrantId`.
@@ -803,7 +801,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #'   However, to use the permissions in the grant immediately, use the
 #'   `GrantToken` that [`create_grant`][kms_create_grant] returns. For
 #'   details, see [Using a grant
-#'   token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#'   token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #'   in the *Key Management Service Developer Guide* .
 #' 
 #' - The [`create_grant`][kms_create_grant] operation also returns a
@@ -881,7 +879,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' The grant determines the retiring principal. Other principals might have
 #' permission to retire the grant or revoke the grant. For details, see
 #' [`revoke_grant`][kms_revoke_grant] and [Retiring and revoking
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete)
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete)
 #' in the *Key Management Service Developer Guide*.
 #' @param Operations &#91;required&#93; A list of operations that the grant permits.
 #' 
@@ -936,7 +934,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param Name A friendly name for the grant. Use this value to prevent the unintended
 #' creation of duplicate grants when retrying this request.
@@ -960,7 +958,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -1050,8 +1048,8 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' addition to the key material used in cryptographic operations, a KMS key
 #' includes metadata, such as the key ID, key policy, creation date,
 #' description, and key state. For details, see [Managing
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html)
-#' in the *Key Management Service Developer Guide*
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
+#' *Key Management Service Developer Guide*
 #' 
 #' Use the parameters of [`create_key`][kms_create_key] to specify the type
 #' of KMS key, the source of its key material, its key policy, description,
@@ -1184,12 +1182,11 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' ### Custom key store
 #' 
 #' A [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' lets you protect your Amazon Web Services resources using keys in a
-#' backing key store that you own and manage. When you request a
-#' cryptographic operation with a KMS key in a custom key store, the
-#' operation is performed in the backing key store using its cryptographic
-#' keys.
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/) lets you
+#' protect your Amazon Web Services resources using keys in a backing key
+#' store that you own and manage. When you request a cryptographic
+#' operation with a KMS key in a custom key store, the operation is
+#' performed in the backing key store using its cryptographic keys.
 #' 
 #' KMS supports [CloudHSM key
 #' stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html)
@@ -1280,7 +1277,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'   enforce a delay before including the new principal in a key policy
 #'   because the new principal might not be immediately visible to KMS. For
 #'   more information, see [Changes that I make are not always immediately
-#'   visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+#'   visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
 #'   in the *Amazon Web Services Identity and Access Management User
 #'   Guide*.
 #' 
@@ -1340,7 +1337,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' is used for encryption and decryption, except in China Regions, where it
 #' creates a 128-bit symmetric key that uses SM4 encryption. For help
 #' choosing a key spec for your KMS key, see [Choosing a KMS key
-#' type](https://docs.aws.amazon.com/kms/latest/developerguide/key-types.html#symm-asymm-choose)
+#' type](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symm-asymm-choose)
 #' in the *Key Management Service Developer Guide* .
 #' 
 #' The `KeySpec` determines whether the KMS key contains a symmetric key or
@@ -1428,9 +1425,9 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' `XksKeyId` parameter to identify the associated external key. The
 #' `KeySpec` value must be `SYMMETRIC_DEFAULT`.
 #' @param CustomKeyStoreId Creates the KMS key in the specified [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' The `ConnectionState` of the custom key store must be `CONNECTED`. To
-#' find the CustomKeyStoreID and ConnectionState use the
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). The
+#' `ConnectionState` of the custom key store must be `CONNECTED`. To find
+#' the CustomKeyStoreID and ConnectionState use the
 #' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' operation.
 #' 
@@ -1849,7 +1846,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param KeyId Specifies the KMS key that KMS uses to decrypt the ciphertext.
 #' 
@@ -1919,7 +1916,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -2113,18 +2110,17 @@ kms_delete_alias <- function(AliasName) {
 #'
 #' @description
 #' Deletes a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' This operation does not affect any backing elements of the custom key
-#' store. It does not delete the CloudHSM cluster that is associated with
-#' an CloudHSM key store, or affect any users or keys in the cluster. For
-#' an external key store, it does not affect the external key store proxy,
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). This
+#' operation does not affect any backing elements of the custom key store.
+#' It does not delete the CloudHSM cluster that is associated with an
+#' CloudHSM key store, or affect any users or keys in the cluster. For an
+#' external key store, it does not affect the external key store proxy,
 #' external key manager, or any external keys.
 #' 
 #' This operation is part of the [custom key
-#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' feature in KMS, which combines the convenience and extensive integration
-#' of KMS with the isolation and control of a key store that you own and
-#' manage.
+#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/) feature
+#' in KMS, which combines the convenience and extensive integration of KMS
+#' with the isolation and control of a key store that you own and manage.
 #' 
 #' The custom key store that you delete cannot contain any [KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#kms_keys).
@@ -2478,12 +2474,12 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
@@ -2583,14 +2579,13 @@ kms_derive_shared_secret <- function(KeyId, KeyAgreementAlgorithm, PublicKey, Gr
 #'
 #' @description
 #' Gets information about [custom key
-#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' in the account and Region.
+#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
+#' account and Region.
 #' 
 #' This operation is part of the [custom key
-#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' feature in KMS, which combines the convenience and extensive integration
-#' of KMS with the isolation and control of a key store that you own and
-#' manage.
+#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/) feature
+#' in KMS, which combines the convenience and extensive integration of KMS
+#' with the isolation and control of a key store that you own and manage.
 #' 
 #' By default, this operation returns information about all custom key
 #' stores in the account and Region. To get only information about a
@@ -2891,7 +2886,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -3133,10 +3128,9 @@ kms_disable_key <- function(KeyId) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' To enable or disable automatic rotation of a set of related
-#' [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
+#' enable or disable automatic rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
 #' set the property on the primary key.
 #' 
 #' You can enable ([`enable_key_rotation`][kms_enable_key_rotation]) and
@@ -3190,7 +3184,7 @@ kms_disable_key <- function(KeyId) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -3251,17 +3245,16 @@ kms_disable_key_rotation <- function(KeyId) {
 #'
 #' @description
 #' Disconnects the [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' from its backing key store. This operation disconnects an CloudHSM key
-#' store from its associated CloudHSM cluster or disconnects an external
-#' key store from the external key store proxy that communicates with your
-#' external key manager.
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/) from its
+#' backing key store. This operation disconnects an CloudHSM key store from
+#' its associated CloudHSM cluster or disconnects an external key store
+#' from the external key store proxy that communicates with your external
+#' key manager.
 #' 
 #' This operation is part of the [custom key
-#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' feature in KMS, which combines the convenience and extensive integration
-#' of KMS with the isolation and control of a key store that you own and
-#' manage.
+#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/) feature
+#' in KMS, which combines the convenience and extensive integration of KMS
+#' with the isolation and control of a key store that you own and manage.
 #' 
 #' While a custom key store is disconnected, you can manage the custom key
 #' store and its KMS keys, but you cannot create or use its KMS keys. You
@@ -3481,10 +3474,9 @@ kms_enable_key <- function(KeyId) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' To enable or disable automatic rotation of a set of related
-#' [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
+#' enable or disable automatic rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
 #' set the property on the primary key.
 #' 
 #' You cannot enable or disable automatic rotation of [Amazon Web Services
@@ -3547,10 +3539,9 @@ kms_enable_key <- function(KeyId) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' To enable or disable automatic rotation of a set of related
-#' [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
+#' enable or disable automatic rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
 #' set the property on the primary key.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
@@ -3769,7 +3760,7 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param EncryptionAlgorithm Specifies the encryption algorithm that KMS will use to encrypt the
 #' plaintext message. The algorithm must be compatible with the KMS key
@@ -3784,7 +3775,7 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -4045,7 +4036,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
@@ -4076,7 +4067,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -4331,7 +4322,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
@@ -4365,7 +4356,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -4589,12 +4580,12 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -4805,12 +4796,12 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -4948,12 +4939,12 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -5276,10 +5267,9 @@ kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' To enable or disable automatic rotation of a set of related
-#' [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
+#' enable or disable automatic rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
 #' set the property on the primary key..
 #' 
 #' You can enable ([`enable_key_rotation`][kms_enable_key_rotation]) and
@@ -5446,10 +5436,9 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
 #' of any supported type. However, you can't import key material into a KMS
 #' key in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' You can also use
-#' [`get_parameters_for_import`][kms_get_parameters_for_import] to get a
-#' public key and import token to [reimport the original key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). You can
+#' also use [`get_parameters_for_import`][kms_get_parameters_for_import] to
+#' get a public key and import token to [reimport the original key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material)
 #' into a KMS key whose key material expired or was deleted.
 #' 
@@ -5716,7 +5705,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' Regions only), you must specify the distinguishing ID. By default, KMS
 #' uses `1234567812345678` as the distinguishing ID. For more information,
 #' see [Offline verification with SM2 key
-#' pairs](https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification).
+#' pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
 #' 
 #' The KMS key that you use for this operation must be in a compatible key
 #' state. For details, see [Key states of KMS
@@ -5769,7 +5758,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -5886,7 +5875,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #'   key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
 #'   of any supported type. However, you can't import key material into a
 #'   KMS key in a [custom key
-#'   store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+#'   store](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' - Use the [`describe_key`][kms_describe_key] operation to verify that
 #'   the `KeyState` of the KMS key is `PendingImport`, which indicates that
@@ -5913,8 +5902,8 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #'   key material. Its `Origin` must be `EXTERNAL` and its `KeyState` must
 #'   be `PendingImport`. You cannot perform this operation on a KMS key in
 #'   a [custom key
-#'   store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html),
-#'   or on a KMS key in a different Amazon Web Services account. To get the
+#'   store](https://docs.aws.amazon.com/kms/latest/developerguide/), or on
+#'   a KMS key in a different Amazon Web Services account. To get the
 #'   `Origin` and `KeyState` of a KMS key, call
 #'   [`describe_key`][kms_describe_key].
 #' 
@@ -6258,7 +6247,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html)
 #' in the *Key Management Service Developer Guide* . For examples of
 #' working with grants in several programming languages, see [Programming
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html).
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' The `GranteePrincipal` field in the [`list_grants`][kms_list_grants]
 #' response usually contains the user or role designated as the grantee
@@ -6856,7 +6845,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html)
 #' in the *Key Management Service Developer Guide* . For examples of
 #' working with grants in several programming languages, see [Programming
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html).
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' **Cross-account use**: You must specify a principal in your Amazon Web
 #' Services account. This operation returns a list of grants where the
@@ -7005,7 +6994,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' in the *Identity and Access Management User Guide* . For examples of
 #' adding a key policy in multiple programming languages, see [Setting a
 #' key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/programming-key-policies.html#put-policy)
+#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/#put-policy)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' **Cross-account use**: No. You cannot perform this operation on a KMS
@@ -7058,7 +7047,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #'   enforce a delay before including the new principal in a key policy
 #'   because the new principal might not be immediately visible to KMS. For
 #'   more information, see [Changes that I make are not always immediately
-#'   visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+#'   visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
 #'   in the *Amazon Web Services Identity and Access Management User
 #'   Guide*.
 #' 
@@ -7372,12 +7361,12 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -7522,8 +7511,8 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' the replica key is created with no key material. You must import the
 #' same key material that you imported into the primary key. For details,
 #' see [Importing key material into multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-import.html)
-#' in the *Key Management Service Developer Guide*.
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
+#' *Key Management Service Developer Guide*.
 #' 
 #' To convert a replica key to a primary key, use the
 #' [`update_primary_region`][kms_update_primary_region] operation.
@@ -7631,7 +7620,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #'   enforce a delay before including the new principal in a key policy
 #'   because the new principal might not be immediately visible to KMS. For
 #'   more information, see [Changes that I make are not always immediately
-#'   visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+#'   visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
 #'   in the *Amazon Web Services Identity and Access Management User
 #'   Guide*.
 #' 
@@ -7843,7 +7832,7 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' Services account in which the grant is created. It can also be called by
 #' principals to whom permission for retiring a grant is delegated. For
 #' details, see [Retiring and revoking
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete)
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' For detailed information about grants, including grant terminology, see
@@ -7851,14 +7840,14 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html)
 #' in the *Key Management Service Developer Guide* . For examples of
 #' working with grants in several programming languages, see [Programming
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html).
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' **Cross-account use**: Yes. You can retire a grant on a KMS key in a
 #' different Amazon Web Services account.
 #' 
 #' **Required permissions**: Permission to retire a grant is determined
 #' primarily by the grant. For details, see [Retiring and revoking
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete)
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' **Related operations:**
@@ -7901,7 +7890,7 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -7956,7 +7945,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' Deletes the specified grant. You revoke a grant to terminate the
 #' permissions that the grant allows. For more information, see [Retiring
 #' and revoking
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete)
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete)
 #' in the *Key Management Service Developer Guide* .
 #' 
 #' When you create, retire, or revoke a grant, there might be a brief
@@ -7971,7 +7960,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html)
 #' in the *Key Management Service Developer Guide* . For examples of
 #' working with grants in several programming languages, see [Programming
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html).
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' **Cross-account use**: Yes. To perform this operation on a KMS key in a
 #' different Amazon Web Services account, specify the key ARN in the value
@@ -8020,7 +8009,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -8107,9 +8096,9 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' To perform on-demand rotation of a set of related [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
+#' perform on-demand rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
 #' invoke the on-demand rotation on the primary key.
 #' 
 #' You cannot initiate on-demand rotation of [Amazon Web Services managed
@@ -8157,9 +8146,9 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' To perform on-demand rotation of a set of related [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
+#' perform on-demand rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
 #' invoke the on-demand rotation on the primary key.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
@@ -8239,9 +8228,9 @@ kms_rotate_key_on_demand <- function(KeyId) {
 #' Deleting a KMS key is a destructive and potentially dangerous operation.
 #' When a KMS key is deleted, all data that was encrypted under the KMS key
 #' is unrecoverable. (The only exception is a [multi-Region replica
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-delete.html),
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#deleting-mrks),
 #' or an [asymmetric or HMAC KMS key with imported key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-managing.html#import-delete-key).)
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/imported-key-material-expiration-alarm.html#import-delete-key).)
 #' To prevent the use of a KMS key without deleting it, use
 #' [`disable_key`][kms_disable_key].
 #' 
@@ -8255,18 +8244,18 @@ kms_rotate_key_on_demand <- function(KeyId) {
 #' state of the primary key changes to `PendingDeletion` and its waiting
 #' period (`PendingWindowInDays`) begins. For details, see [Deleting
 #' multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-delete.html)
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#deleting-mrks)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' When KMS [deletes a KMS key from an CloudHSM key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/delete-cmk-keystore.html),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#delete-cmk-keystore),
 #' it makes a best effort to delete the associated key material from the
 #' associated CloudHSM cluster. However, you might need to manually [delete
 #' the orphaned key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key)
 #' from the cluster and its backups. [Deleting a KMS key from an external
 #' key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/delete-xks-key.html)
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#delete-xks-key)
 #' has no effect on the associated external key. However, for both types of
 #' custom key stores, deleting a KMS key is destructive and irreversible.
 #' You cannot decrypt ciphertext encrypted under the KMS key by using only
@@ -8523,7 +8512,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' 
 #' - SM2DSA uses the SM3 hashing algorithm. For details, see [Offline
 #'   verification with SM2 key
-#'   pairs](https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification).
+#'   pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
 #' @param GrantTokens A list of grant tokens.
 #' 
 #' Use a grant token when your permission to call this operation comes from
@@ -8531,7 +8520,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param SigningAlgorithm &#91;required&#93; Specifies the signing algorithm to use when signing the message.
 #' 
@@ -8542,7 +8531,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -9042,10 +9031,9 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' operation.
 #' 
 #' This operation is part of the [custom key
-#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#' feature in KMS, which combines the convenience and extensive integration
-#' of KMS with the isolation and control of a key store that you own and
-#' manage.
+#' stores](https://docs.aws.amazon.com/kms/latest/developerguide/) feature
+#' in KMS, which combines the convenience and extensive integration of KMS
+#' with the isolation and control of a key store that you own and manage.
 #' 
 #' When updating the properties of an external key store, verify that the
 #' updated settings connect your key store, via the external key store
@@ -9460,7 +9448,7 @@ kms_update_key_description <- function(KeyId, Description) {
 #' `PrimaryRegion` value of `eu-west-2`, the primary key is now the key in
 #' `eu-west-2`, and the key in `us-east-1` becomes a replica key. For
 #' details, see [Updating the primary
-#' Region](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-update)
+#' Region](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-update)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' This operation supports *multi-Region keys*, an KMS feature that lets
@@ -9659,7 +9647,7 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' Regions only), you must specify the distinguishing ID. By default, KMS
 #' uses `1234567812345678` as the distinguishing ID. For more information,
 #' see [Offline verification with SM2 key
-#' pairs](https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification).
+#' pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
 #' 
 #' The KMS key that you use for this operation must be in a compatible key
 #' state. For details, see [Key states of KMS
@@ -9751,7 +9739,7 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' 
 #' - SM2DSA uses the SM3 hashing algorithm. For details, see [Offline
 #'   verification with SM2 key
-#'   pairs](https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification).
+#'   pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
 #' @param Signature &#91;required&#93; The signature that the [`sign`][kms_sign] operation generated.
 #' @param SigningAlgorithm &#91;required&#93; The signing algorithm that was used to sign the message. If you submit a
 #' different algorithm, the signature verification fails.
@@ -9762,12 +9750,12 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return
@@ -9915,12 +9903,12 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
 #' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @return

@@ -268,7 +268,7 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #' you make using this view include only resources that match the view's
 #' `Filters`. For more information about Amazon Web Services Resource
 #' Explorer views, see [Managing
-#' views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views.html)
+#' views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/)
 #' in the *Amazon Web Services Resource Explorer User Guide*.
 #' 
 #' Only the principals with an IAM identity-based policy that grants

@@ -73,7 +73,7 @@ NULL
 #' 
 #' All API actions are logged as CloudTrail events. See [Logging Detective
 #' API Calls with
-#' CloudTrail](https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html).
+#' CloudTrail](https://docs.aws.amazon.com/detective/latest/userguide/).
 #' 
 #' We replaced the term "master account" with the term "administrator
 #' account". An administrator account is used to centrally manage multiple

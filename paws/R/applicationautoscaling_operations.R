@@ -237,7 +237,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' scalable target.
 #' 
 #' For more information, see [Delete a scheduled
-#' action](https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html#delete-scheduled-action)
+#' action](https://docs.aws.amazon.com/autoscaling/application/userguide/#delete-scheduled-action)
 #' in the *Application Auto Scaling User Guide*.
 #'
 #' @usage
@@ -2923,7 +2923,7 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
 #' 
 #' For information about the rules that apply to tag keys and tag values,
 #' see [User-defined tag
-#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)
 #' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @return

@@ -411,7 +411,7 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
 #' 
 #' For an example of ingesting inline documents using Python and Java SDKs,
 #' see [Adding files directly to an
-#' index](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-binary-doc.html).
+#' index](https://docs.aws.amazon.com/kendra/latest/dg/).
 #'
 #' @usage
 #' kendra_batch_put_document(IndexId, RoleArn, Documents,

@@ -298,8 +298,8 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' Services Availability Zone in which to create the file system. Use the
 #' format `us-east-1a` to specify the Availability Zone. For more
 #' information about One Zone file systems, see [Using EFS storage
-#' classes](https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html)
-#' in the *Amazon EFS User Guide*.
+#' classes](https://docs.aws.amazon.com/efs/latest/ug/) in the *Amazon EFS
+#' User Guide*.
 #' 
 #' One Zone file systems are not available in all Availability Zones in
 #' Amazon Web Services Regions where Amazon EFS is available.
@@ -663,9 +663,8 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #'   - **Availability Zone** – If you want the destination file system to
 #'     use One Zone storage, you must specify the Availability Zone to
 #'     create the file system in. For more information, see [EFS file
-#'     system
-#'     types](https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html)
-#'     in the *Amazon EFS User Guide*.
+#'     system types](https://docs.aws.amazon.com/efs/latest/ug/) in the
+#'     *Amazon EFS User Guide*.
 #' 
 #'   - **Encryption** – All destination file systems are created with
 #'     encryption at rest enabled. You can specify the Key Management
@@ -2359,7 +2358,7 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' policy definition. EFS file system policies have a 20,000 character
 #' limit. To find out more about the elements that make up a file system
 #' policy, see [EFS Resource-based
-#' Policies](https://docs.aws.amazon.com/efs/latest/ug/#access-control-manage-access-intro-resource-policies).
+#' Policies](https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#access-control-manage-access-intro-resource-policies).
 #' @param BypassPolicyLockoutSafetyCheck (Optional) A boolean that specifies whether or not to bypass the
 #' `FileSystemPolicy` lockout safety check. The lockout safety check
 #' determines whether the policy in the request will lock out, or prevent,

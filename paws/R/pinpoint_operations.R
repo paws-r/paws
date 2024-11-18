@@ -4544,7 +4544,7 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
     http_path = "/v1/apps/{application-id}/eventstream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = FALSE
   )
   input <- .pinpoint$delete_event_stream_input(ApplicationId = ApplicationId)
   output <- .pinpoint$delete_event_stream_output()
@@ -9551,7 +9551,7 @@ pinpoint_get_event_stream <- function(ApplicationId) {
     http_path = "/v1/apps/{application-id}/eventstream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = FALSE
   )
   input <- .pinpoint$get_event_stream_input(ApplicationId = ApplicationId)
   output <- .pinpoint$get_event_stream_output()
@@ -14136,7 +14136,7 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
     http_path = "/v1/apps/{application-id}/eventstream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = FALSE
   )
   input <- .pinpoint$put_event_stream_input(ApplicationId = ApplicationId, WriteEventStream = WriteEventStream)
   output <- .pinpoint$put_event_stream_output()

@@ -1273,8 +1273,8 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' Lists the calling Amazon Web Services account's dedicated origination
 #' numbers and their metadata. For more information about origination
 #' numbers, see [Origination
-#' numbers](https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html)
-#' in the *Amazon SNS Developer Guide*.
+#' numbers](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
+#' Developer Guide*.
 #'
 #' @usage
 #' sns_list_origination_numbers(NextToken, MaxResults)
@@ -2473,8 +2473,8 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' use the [`publish`][sns_publish] action with the
 #' `MessageAttributes.entry.N` parameter. For more information, see
 #' [Publishing to a mobile
-#' phone](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)
-#' in the *Amazon SNS Developer Guide*.
+#' phone](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
+#' Developer Guide*.
 #' 
 #' To use this operation, you must grant the Amazon SNS service principal
 #' (`sns.amazonaws.com`) permission to perform the `s3:ListBucket` action.

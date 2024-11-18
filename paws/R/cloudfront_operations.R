@@ -10804,7 +10804,7 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #' object) in the response. The response also contains function logs and
 #' error messages, if any exist. For more information about testing
 #' functions, see [Testing
-#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function)
+#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/create-function.html#test-function)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
 #' To test a function, you provide the function's name and version (`ETag`
@@ -10823,7 +10823,7 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #' `LIVE`.
 #' @param EventObject &#91;required&#93; The event object to test the function with. For more information about
 #' the structure of the event object, see [Testing
-#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function)
+#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/create-function.html#test-function)
 #' in the *Amazon CloudFront Developer Guide*.
 #'
 #' @return

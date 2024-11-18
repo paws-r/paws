@@ -3309,7 +3309,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' called `AWSServiceRoleForCloudWatchEvents` and
 #' `AWSServiceRoleForCloudWatchAlarms_ActionSSM`. For more information, see
 #' [Amazon Web Services service-linked
-#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html#id_roles_terms-and-concepts).
 #' 
 #' Each [`put_metric_alarm`][cloudwatch_put_metric_alarm] action has a
 #' maximum uncompressed payload of 120 KB.
@@ -3974,7 +3974,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' @param OutputFormat &#91;required&#93; The output format for the stream. Valid values are `json`,
 #' `opentelemetry1.0`, and `opentelemetry0.7`. For more information about
 #' metric stream output formats, see [Metric streams output
-#' formats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html).
+#' formats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html).
 #' @param Tags A list of key-value pairs to associate with the metric stream. You can
 #' associate as many as 50 tags with a metric stream.
 #' 

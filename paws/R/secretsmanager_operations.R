@@ -30,7 +30,7 @@ NULL
 #' Services managed key `aws/secretsmanager`, then you also need
 #' `kms:Decrypt` permissions for the keys. For more information, see [IAM
 #' policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -170,7 +170,7 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
 #' 
 #' **Required permissions:** `secretsmanager:CancelRotateSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -289,7 +289,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' replica Regions, you must also have
 #' `secretsmanager:ReplicateSecretToRegions`. For more information, see
 #' [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' 
@@ -356,7 +356,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' encrypt the secret value in the secret. An alias is always prefixed by
 #' `alias/`, for example `alias/aws/secretsmanager`. For more information,
 #' see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
 #' 
 #' To use a KMS key in a different account, use the key ARN or the alias
 #' ARN.
@@ -409,9 +409,9 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' for this secret, then Secrets Manager blocks the operation and returns
 #' an `Access Denied` error. For more information, see [Control access to
 #' secrets using
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#tag-secrets-abac)
+#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#tag-secrets-abac)
 #' and [Limit access to identities with tags that match secrets'
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_tags2).
+#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#auth-and-access_tags2).
 #' 
 #' For information about how to format a JSON parameter for the various
 #' command line tool environments, see [Using JSON for
@@ -525,7 +525,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' 
 #' **Required permissions:** `secretsmanager:DeleteResourcePolicy`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -638,7 +638,7 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:DeleteSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -747,7 +747,7 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' 
 #' **Required permissions:** `secretsmanager:DescribeSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -873,7 +873,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:GetRandomPassword`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -977,7 +977,7 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' 
 #' **Required permissions:** `secretsmanager:GetResourcePolicy`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1073,7 +1073,7 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' Services managed key `aws/secretsmanager`, then you also need
 #' `kms:Decrypt` permissions for that key. For more information, see [IAM
 #' policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1168,7 +1168,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' Lists the versions of a secret. Secrets Manager uses staging labels to
 #' indicate the different versions of a secret. For more information, see
 #' [Secrets Manager concepts:
-#' Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
 #' To list the secrets in the account, use
 #' [`list_secrets`][secretsmanager_list_secrets].
@@ -1181,7 +1181,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' 
 #' **Required permissions:** `secretsmanager:ListSecretVersionIds`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1312,7 +1312,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' 
 #' **Required permissions:** `secretsmanager:ListSecrets`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1457,7 +1457,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' 
 #' **Required permissions:** `secretsmanager:PutResourcePolicy`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1472,7 +1472,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based
 #' policy. For example policies, see [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
+#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
 #' principal. By default, public policies aren't blocked.
@@ -1589,7 +1589,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' **Required permissions:** `secretsmanager:PutSecretValue`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' 
@@ -1766,7 +1766,7 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' 
 #' **Required permissions:** `secretsmanager:RemoveRegionsFromReplication`.
 #' For more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1834,7 +1834,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #'
 #' @description
 #' Replicates the secret to a new Regions. See [Multi-Region
-#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html).
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/replicate-secrets.html).
 #' 
 #' Secrets Manager generates a CloudTrail log entry when you call this
 #' action. Do not include sensitive information in request parameters
@@ -1848,7 +1848,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' To encrypt the replicated secret with a KMS key other than
 #' `aws/secretsmanager`, you need `kms:GenerateDataKey` and `kms:Encrypt`
 #' to the key. For more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1948,7 +1948,7 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
 #' 
 #' **Required permissions:** `secretsmanager:RestoreSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2042,7 +2042,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:RotateSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' You also need `lambda:InvokeFunction` permissions on the rotation
@@ -2190,7 +2190,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' 
 #' **Required permissions:** `secretsmanager:StopReplicationToReplica`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2263,7 +2263,7 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:TagResource`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2366,7 +2366,7 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' 
 #' **Required permissions:** `secretsmanager:UntagResource`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2487,7 +2487,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' **Required permissions:** `secretsmanager:UpdateSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' If you use a customer managed key, you must also have
@@ -2539,11 +2539,11 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
 #' not re-encrypt existing secret versions with the new key. For more
 #' information about versions and staging labels, see [Concepts:
-#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
 #' A key alias is always prefixed by `alias/`, for example
 #' `alias/aws/secretsmanager`. For more information, see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
 #' 
 #' If you set this to an empty string, Secrets Manager uses the Amazon Web
 #' Services managed key `aws/secretsmanager`. If this key doesn't already
@@ -2663,7 +2663,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' already attached to another version, Secrets Manager first removes it
 #' from the other version first and then attaches it to this one. For more
 #' information about versions and staging labels, see [Concepts:
-#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
 #' The staging labels that you specify in the `VersionStage` parameter are
 #' added to the existing list of staging labels for the version.
@@ -2686,7 +2686,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' 
 #' **Required permissions:** `secretsmanager:UpdateSecretVersionStage`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2819,7 +2819,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' **Required permissions:** `secretsmanager:ValidateResourcePolicy` and
 #' `secretsmanager:PutResourcePolicy`. For more information, see [IAM
 #' policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2832,7 +2832,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' resource-based policy. The policy in the string identifies who can
 #' access or manage this secret and its versions. For example policies, see
 #' [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
+#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
 #'
 #' @return
 #' A list with the following syntax:

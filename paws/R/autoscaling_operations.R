@@ -1282,7 +1282,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' information, see [Instance metadata and user
 #' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 #' (Linux) and [Instance metadata and user
-#' data](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html)
+#' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 #' (Windows). If you are using a command line tool, base64-encoding is
 #' performed for you, and you can load the text from a file. Otherwise, you
 #' must provide base64-encoded text. User data is limited to 16 KB.
@@ -1306,13 +1306,13 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see [User provided
-#' kernels](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
+#' kernels](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param RamdiskId The ID of the RAM disk to select.
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see [User provided
-#' kernels](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
+#' kernels](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param BlockDeviceMappings The block device mapping entries that define the block devices to attach
 #' to the instances at launch. By default, the block devices specified in

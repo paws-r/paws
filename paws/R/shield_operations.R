@@ -303,7 +303,7 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' information see [Getting Started with Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
 #' and [Adding Shield Advanced protection to Amazon Web Services
-#' resources](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).
 #'
 #' @usage
 #' shield_create_protection(Name, ResourceArn, Tags)

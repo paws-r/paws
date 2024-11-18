@@ -15,7 +15,7 @@ NULL
 #' You should always retry requests that receive server (`5xx`) error
 #' responses, and `ThrottlingException` and `RequestThrottledException`
 #' client error responses. For more information see [Error
-#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' retries](https://docs.aws.amazon.com/ebs/latest/userguide/error-retries.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
@@ -87,7 +87,7 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #' You should always retry requests that receive server (`5xx`) error
 #' responses, and `ThrottlingException` and `RequestThrottledException`
 #' client error responses. For more information see [Error
-#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' retries](https://docs.aws.amazon.com/ebs/latest/userguide/error-retries.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
@@ -98,7 +98,7 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #' If the specified snapshot is encrypted, you must have permission to use
 #' the KMS key that was used to encrypt the snapshot. For more information,
 #' see [Using
-#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param BlockIndex &#91;required&#93; The block index of the block in which to read the data. A block index is
 #' a logical index in units of `512` KiB blocks. To identify the block
@@ -165,7 +165,7 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #' You should always retry requests that receive server (`5xx`) error
 #' responses, and `ThrottlingException` and `RequestThrottledException`
 #' client error responses. For more information see [Error
-#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' retries](https://docs.aws.amazon.com/ebs/latest/userguide/error-retries.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
@@ -264,7 +264,7 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 #' You should always retry requests that receive server (`5xx`) error
 #' responses, and `ThrottlingException` and `RequestThrottledException`
 #' client error responses. For more information see [Error
-#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' retries](https://docs.aws.amazon.com/ebs/latest/userguide/error-retries.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
@@ -355,7 +355,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' You should always retry requests that receive server (`5xx`) error
 #' responses, and `ThrottlingException` and `RequestThrottledException`
 #' client error responses. For more information see [Error
-#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' retries](https://docs.aws.amazon.com/ebs/latest/userguide/error-retries.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
@@ -367,7 +367,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' If the specified snapshot is encrypted, you must have permission to use
 #' the KMS key that was used to encrypt the snapshot. For more information,
 #' see [Using
-#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*..
 #' @param BlockIndex &#91;required&#93; The block index of the block in which to write the data. A block index
 #' is a logical index in units of `512` KiB blocks. To identify the block
@@ -386,7 +386,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' authenticity of the data. If the checksums do not correspond, the
 #' request fails. For more information, see [Using checksums with the EBS
 #' direct
-#' APIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html#ebsapis-using-checksums)
+#' APIs](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-accessing-snapshot.html#ebsapis-using-checksums)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param DataLength &#91;required&#93; The size of the data to write to the block, in bytes. Currently, the
 #' only supported size is `524288` bytes.
@@ -457,7 +457,7 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' You should always retry requests that receive server (`5xx`) error
 #' responses, and `ThrottlingException` and `RequestThrottledException`
 #' client error responses. For more information see [Error
-#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' retries](https://docs.aws.amazon.com/ebs/latest/userguide/error-retries.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
@@ -477,15 +477,15 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' The encryption status of the snapshot depends on the values that you
 #' specify for **Encrypted**, **KmsKeyArn**, and **ParentSnapshotId**, and
 #' whether your Amazon Web Services account is enabled for [encryption by
-#' default](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default).
+#' default](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html#encryption-by-default).
 #' For more information, see [Using
-#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' If you specify an encrypted parent snapshot, you must have permission to
 #' use the KMS key that was used to encrypt the parent snapshot. For more
 #' information, see [Permissions to use Key Management Service
-#' keys](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapi-permissions.html#ebsapi-kms-permissions)
+#' keys](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapi-permissions.html#ebsapi-kms-permissions)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Tags The tags to apply to the snapshot.
 #' @param Description A description for the snapshot.
@@ -500,7 +500,7 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' the Amazon Web Services SDK.
 #' 
 #' For more information, see [Idempotency for StartSnapshot
-#' API](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-direct-api-idempotency.html)
+#' API](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-direct-api-idempotency.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Encrypted Indicates whether to encrypt the snapshot.
 #' 
@@ -511,15 +511,15 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' The encryption status of the snapshot depends on the values that you
 #' specify for **Encrypted**, **KmsKeyArn**, and **ParentSnapshotId**, and
 #' whether your Amazon Web Services account is enabled for [encryption by
-#' default](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default).
+#' default](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html#encryption-by-default).
 #' For more information, see [Using
-#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' To create an encrypted snapshot, you must have permission to use the KMS
 #' key. For more information, see [Permissions to use Key Management
 #' Service
-#' keys](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapi-permissions.html#ebsapi-kms-permissions)
+#' keys](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapi-permissions.html#ebsapi-kms-permissions)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param KmsKeyArn The Amazon Resource Name (ARN) of the Key Management Service (KMS) key
 #' to be used to encrypt the snapshot.
@@ -527,15 +527,15 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' The encryption status of the snapshot depends on the values that you
 #' specify for **Encrypted**, **KmsKeyArn**, and **ParentSnapshotId**, and
 #' whether your Amazon Web Services account is enabled for [encryption by
-#' default](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default).
+#' default](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html#encryption-by-default).
 #' For more information, see [Using
-#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' To create an encrypted snapshot, you must have permission to use the KMS
 #' key. For more information, see [Permissions to use Key Management
 #' Service
-#' keys](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapi-permissions.html#ebsapi-kms-permissions)
+#' keys](https://docs.aws.amazon.com/ebs/latest/userguide/ebsapi-permissions.html#ebsapi-kms-permissions)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Timeout The amount of time (in minutes) after which the snapshot is
 #' automatically cancelled if:

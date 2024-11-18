@@ -253,8 +253,8 @@ redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntire
 #' clients running on these IP addresses or the EC2 instance are authorized
 #' to connect to the cluster. For information about managing security
 #' groups, go to [Working with Security
-#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
-#' in the *Amazon Redshift Cluster Management Guide*.
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the
+#' *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_authorize_cluster_security_group_ingress(
@@ -1747,8 +1747,8 @@ redshift_create_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' 
 #' For information about managing security groups, go to [Amazon Redshift
 #' Cluster Security
-#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
-#' in the *Amazon Redshift Cluster Management Guide*.
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the
+#' *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_create_cluster_security_group(ClusterSecurityGroupName,
@@ -3669,8 +3669,8 @@ redshift_delete_cluster_parameter_group <- function(ParameterGroupName) {
 #' 
 #' For information about managing security groups, go to [Amazon Redshift
 #' Cluster Security
-#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
-#' in the *Amazon Redshift Cluster Management Guide*.
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the
+#' *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_delete_cluster_security_group(ClusterSecurityGroupName)
@@ -4955,8 +4955,8 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' 
 #' For information about managing security groups, go to [Amazon Redshift
 #' Cluster Security
-#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
-#' in the *Amazon Redshift Cluster Management Guide*.
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the
+#' *Amazon Redshift Cluster Management Guide*.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
 #' Redshift returns all security groups that match any combination of the
@@ -10586,8 +10586,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' must also specify the number of nodes parameter.
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters
-#' in Amazon
-#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html)
+#' in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge`
@@ -10596,8 +10595,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' nodes, you must also specify the node type parameter.
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters
-#' in Amazon
-#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html)
+#' in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: Integer greater than `0`.
@@ -15090,8 +15088,8 @@ redshift_resume_cluster <- function(ClusterIdentifier) {
 #' [`authorize_cluster_security_group_ingress`][redshift_authorize_cluster_security_group_ingress].
 #' For information about managing security groups, go to [Amazon Redshift
 #' Cluster Security
-#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
-#' in the *Amazon Redshift Cluster Management Guide*.
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the
+#' *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_revoke_cluster_security_group_ingress(ClusterSecurityGroupName,

@@ -5566,7 +5566,7 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' valid delegated administrator.
 #' 
 #' To register a delegated administrator, see [Register a Delegated
-#' Administrator](https://docs.aws.amazon.com/config/latest/developerguide/set-up-aggregator-cli.html#register-a-delegated-administrator-cli)
+#' Administrator](https://docs.aws.amazon.com/config/latest/developerguide/#register-a-delegated-administrator-cli)
 #' in the *Config developer guide*.
 #' 
 #' [`put_configuration_aggregator`][configservice_put_configuration_aggregator]

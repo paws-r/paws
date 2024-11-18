@@ -204,7 +204,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' Compute environments in a `DISABLED` state may continue to incur billing
 #' charges. To prevent additional charges, turn off and then delete the
 #' compute environment. For more information, see
-#' [State](https://docs.aws.amazon.com/batch/latest/userguide/compute_environment_parameters.html#compute_environment_state)
+#' [State](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobQueueDetail.html#compute_environment_state)
 #' in the *Batch User Guide*.
 #' 
 #' When an instance is idle, the instance scales down to the `minvCpus`
@@ -227,7 +227,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' @param serviceRole The full Amazon Resource Name (ARN) of the IAM role that allows Batch to
 #' make calls to other Amazon Web Services services on your behalf. For
 #' more information, see [Batch service IAM
-#' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
+#' role](https://docs.aws.amazon.com/batch/latest/userguide/using-service-linked-roles.html)
 #' in the *Batch User Guide*.
 #' 
 #' If your account already created the Batch service-linked role, that role
@@ -5036,7 +5036,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' Compute environments in a `DISABLED` state may continue to incur billing
 #' charges. To prevent additional charges, turn off and then delete the
 #' compute environment. For more information, see
-#' [State](https://docs.aws.amazon.com/batch/latest/userguide/compute_environment_parameters.html#compute_environment_state)
+#' [State](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobQueueDetail.html#compute_environment_state)
 #' in the *Batch User Guide*.
 #' 
 #' When an instance is idle, the instance scales down to the `minvCpus`
@@ -5057,7 +5057,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @param serviceRole The full Amazon Resource Name (ARN) of the IAM role that allows Batch to
 #' make calls to other Amazon Web Services services on your behalf. For
 #' more information, see [Batch service IAM
-#' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
+#' role](https://docs.aws.amazon.com/batch/latest/userguide/using-service-linked-roles.html)
 #' in the *Batch User Guide*.
 #' 
 #' If the compute environment has a service-linked role, it can't be

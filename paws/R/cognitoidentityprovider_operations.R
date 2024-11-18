@@ -16,7 +16,7 @@ NULL
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -95,7 +95,7 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -173,7 +173,7 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -202,7 +202,7 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -303,7 +303,7 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -425,7 +425,7 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -566,7 +566,7 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -630,7 +630,7 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -734,7 +734,7 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -801,7 +801,7 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -864,7 +864,7 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -927,7 +927,7 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -993,7 +993,7 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1082,7 +1082,7 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1194,7 +1194,7 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1301,7 +1301,7 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' - Define auth challenge
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -1433,7 +1433,7 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1551,7 +1551,7 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1649,7 +1649,7 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1741,7 +1741,7 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1851,7 +1851,7 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1952,7 +1952,7 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -1982,7 +1982,7 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -2080,7 +2080,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -2210,7 +2210,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' `clientMetadata` value to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -2323,7 +2323,7 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -2423,7 +2423,7 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -2496,7 +2496,7 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -2572,7 +2572,7 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -2645,7 +2645,7 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -2740,7 +2740,7 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -2789,7 +2789,7 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' value to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -2887,7 +2887,7 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -3213,7 +3213,7 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -3348,7 +3348,7 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -3425,7 +3425,7 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -3526,7 +3526,7 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -3687,7 +3687,7 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -3779,7 +3779,7 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -3891,7 +3891,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -3928,7 +3928,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' Lambda function.
 #' 
 #' For more information on using the Lambda API to add permission, see
-#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html)
+#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/api/API_AddPermission.html)
 #' .
 #' 
 #' For adding permission using the CLI, see
@@ -4460,7 +4460,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -4950,7 +4950,7 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -5753,7 +5753,7 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -5959,7 +5959,7 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -6198,7 +6198,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' method used to send the confirmation code is sent according to the
 #' specified AccountRecoverySetting. For more information, see [Recovering
 #' User
-#' Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html)
+#' Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/managing-users-passwords.html)
 #' in the *Amazon Cognito Developer Guide*. To use the confirmation code
 #' for resetting the password, call
 #' [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
@@ -6274,7 +6274,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -6946,7 +6946,7 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -7281,7 +7281,7 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' - Define auth challenge
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -7505,7 +7505,7 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -7588,7 +7588,7 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -7667,7 +7667,7 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -7805,7 +7805,7 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -7901,7 +7901,7 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -7979,7 +7979,7 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -8084,7 +8084,7 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -8278,7 +8278,7 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -8430,7 +8430,7 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -8656,7 +8656,7 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -9484,7 +9484,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -9980,7 +9980,7 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -10066,7 +10066,7 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -10227,7 +10227,7 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -10376,7 +10376,7 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -10483,7 +10483,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -10738,7 +10738,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
@@ -11187,7 +11187,7 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' **Learn more**
 #' 
 #' - [Signing Amazon Web Services API
-#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' - [Using the Amazon Cognito user pools API and user pool
 #'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)

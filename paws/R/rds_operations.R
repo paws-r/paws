@@ -906,7 +906,7 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -1240,7 +1240,7 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -2226,7 +2226,7 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -5100,7 +5100,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -27986,7 +27986,7 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of

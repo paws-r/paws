@@ -15,7 +15,7 @@ NULL
 #' the request. For more information, see [Working with DNS
 #' Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
 #' and [Walkthrough 5: Using DNS aliases to access your file
-#' system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html),
+#' system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#dns-aliases),
 #' including additional steps you must take to be able to access your file
 #' system using a DNS alias.
 #' 
@@ -2773,7 +2773,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'   and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
 #' Default value is `SSD`. For more information, see [Storage type
-#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options)
+#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs)
 #' in the *FSx for Windows File Server User Guide* and [Multiple storage
 #' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
 #' in the *FSx for Lustre User Guide*.
@@ -10265,7 +10265,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' least 10 percent greater than the current storage capacity value. To
 #' increase storage capacity, the file system must have at least 16 MBps of
 #' throughput capacity. For more information, see [Managing storage
-#' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html)
+#' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#managing-storage-capacity)
 #' in the *Amazon FSxfor Windows File Server User Guide*.
 #' 
 #' For ONTAP file systems, the storage capacity target value must be at

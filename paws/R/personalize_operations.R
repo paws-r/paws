@@ -145,7 +145,7 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' Creates a batch segment job. The operation can handle up to 50 million
 #' records and the input file must be in JSON format. For more information,
 #' see [Getting batch recommendations and user
-#' segments](https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html).
+#' segments](https://docs.aws.amazon.com/personalize/latest/dg/).
 #'
 #' @usage
 #' personalize_create_batch_segment_job(jobName, solutionVersionArn,

@@ -587,11 +587,11 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'
 #' @description
 #' [Calculates a
-#' route](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html)
+#' route](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' given the following required parameters: `DeparturePosition` and
 #' `DestinationPosition`. Requires that you first [create a route
 #' calculator
-#' resource](https://docs.aws.amazon.com/location/latest/APIReference/API_CreateRouteCalculator.html).
+#' resource](https://docs.aws.amazon.com/location/latest/APIReference/).
 #' 
 #' By default, a request that doesn't specify a departure time uses the
 #' best time of day to travel with the best traffic conditions when
@@ -600,7 +600,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' Additional options include:
 #' 
 #' - [Specifying a departure
-#'   time](https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html)
+#'   time](https://docs.aws.amazon.com/location/latest/developerguide/)
 #'   using either `DepartureTime` or `DepartNow`. This calculates a route
 #'   based on predictive traffic data at the given time.
 #' 
@@ -608,7 +608,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'   request. Specifying both parameters returns a validation error.
 #' 
 #' - [Specifying a travel
-#'   mode](https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html)
+#'   mode](https://docs.aws.amazon.com/location/latest/developerguide/)
 #'   using TravelMode sets the transportation mode used to calculate the
 #'   routes. This also lets you specify additional route preferences in
 #'   `CarModeOptions` if traveling by `Car`, or `TruckModeOptions` if
@@ -625,27 +625,28 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
 #' calculate the route.
-#' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in World Geodetic System (WGS
-#' 84) format: `[longitude, latitude]`.
+#' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in [World Geodetic System (WGS
+#' 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
+#' format: `[longitude, latitude]`.
 #' 
 #' - For example, `[-123.115, 49.285]`
 #' 
 #' If you specify a departure that's not located on a road, Amazon Location
 #' [moves the position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
-#' If Esri is the provider for your route calculator, specifying a route
-#' that is longer than 400 km returns a `400 RoutesValidationException`
-#' error.
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/). If
+#' Esri is the provider for your route calculator, specifying a route that
+#' is longer than 400 km returns a `400 RoutesValidationException` error.
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
-#' @param DestinationPosition &#91;required&#93; The finish position for the route. Defined in World Geodetic System (WGS
-#' 84) format: `[longitude, latitude]`.
+#' @param DestinationPosition &#91;required&#93; The finish position for the route. Defined in [World Geodetic System
+#' (WGS 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
+#' format: `[longitude, latitude]`.
 #' 
 #' - For example, `[-122.339, 47.615]`
 #' 
 #' If you specify a destination that's not located on a road, Amazon
 #' Location [moves the position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/).
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param WaypointPositions Specifies an ordered list of up to 23 intermediate positions to include
@@ -657,7 +658,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' 
 #' If you specify a waypoint position that's not located on a road, Amazon
 #' Location [moves the position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/).
 #' 
 #' Specifying more than 23 waypoints returns a `400 ValidationException`
 #' error.
@@ -679,7 +680,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' 
 #' For more details on the using Grab for routing, including areas of
 #' coverage, see
-#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)
+#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' in the *Amazon Location Service Developer Guide*.
 #' 
 #' The `TravelMode` you specify also determines how you specify route
@@ -875,7 +876,7 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' requests.
 #' 
 #' Requires that you first [create a route calculator
-#' resource](https://docs.aws.amazon.com/location/latest/APIReference/API_CreateRouteCalculator.html).
+#' resource](https://docs.aws.amazon.com/location/latest/APIReference/).
 #' 
 #' By default, a request that doesn't specify a departure time uses the
 #' best time of day to travel with the best traffic conditions when
@@ -884,7 +885,7 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' Additional options include:
 #' 
 #' - [Specifying a departure
-#'   time](https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html)
+#'   time](https://docs.aws.amazon.com/location/latest/developerguide/)
 #'   using either `DepartureTime` or `DepartNow`. This calculates routes
 #'   based on predictive traffic data at the given time.
 #' 
@@ -892,7 +893,7 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #'   request. Specifying both parameters returns a validation error.
 #' 
 #' - [Specifying a travel
-#'   mode](https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html)
+#'   mode](https://docs.aws.amazon.com/location/latest/developerguide/)
 #'   using TravelMode sets the transportation mode used to calculate the
 #'   routes. This also lets you specify additional route preferences in
 #'   `CarModeOptions` if traveling by `Car`, or `TruckModeOptions` if
@@ -906,8 +907,9 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
 #' calculate the route matrix.
 #' @param DeparturePositions &#91;required&#93; The list of departure (origin) positions for the route matrix. An array
-#' of points, each of which is itself a 2-value array defined in WGS 84
-#' format: `[longitude, latitude]`. For example, `[-123.115, 49.285]`.
+#' of points, each of which is itself a 2-value array defined in [WGS
+#' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
+#' `[longitude, latitude]`. For example, `[-123.115, 49.285]`.
 #' 
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See
@@ -918,14 +920,14 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' For route calculators that use Esri as the data provider, if you specify
 #' a departure that's not located on a road, Amazon Location [moves the
 #' position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
-#' The snapped value is available in the result in
-#' `SnappedDeparturePositions`.
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/). The
+#' snapped value is available in the result in `SnappedDeparturePositions`.
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DestinationPositions &#91;required&#93; The list of destination positions for the route matrix. An array of
-#' points, each of which is itself a 2-value array defined in WGS 84
-#' format: `[longitude, latitude]`. For example, `[-122.339, 47.615]`
+#' points, each of which is itself a 2-value array defined in [WGS
+#' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
+#' `[longitude, latitude]`. For example, `[-122.339, 47.615]`
 #' 
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See
@@ -936,8 +938,8 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' For route calculators that use Esri as the data provider, if you specify
 #' a destination that's not located on a road, Amazon Location [moves the
 #' position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
-#' The snapped value is available in the result in
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/). The
+#' snapped value is available in the result in
 #' `SnappedDestinationPositions`.
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
@@ -957,7 +959,7 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' `Truck` is not available for Grab.
 #' 
 #' For more information about using Grab as a data provider, see
-#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)
+#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' in the *Amazon Location Service Developer Guide*.
 #' 
 #' Default Value: `Car`
@@ -1462,30 +1464,30 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
 #' Valid values include:
 #' 
 #' - `Esri` – For additional information about
-#'   [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)'s
+#'   [Esri](https://docs.aws.amazon.com/location/latest/developerguide/)'s
 #'   coverage in your region of interest, see [Esri details on geocoding
 #'   coverage](https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm).
 #' 
 #' - `Grab` – Grab provides place index functionality for Southeast Asia.
 #'   For additional information about
-#'   [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)'
+#'   [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)'
 #'   coverage, see [GrabMaps countries and areas
-#'   covered](https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area).
+#'   covered](https://docs.aws.amazon.com/location/latest/developerguide/#grab-coverage-area).
 #' 
 #' - `Here` – For additional information about [HERE
-#'   Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
+#'   Technologies](https://docs.aws.amazon.com/location/latest/developerguide/)'
 #'   coverage in your region of interest, see HERE details on goecoding
 #'   coverage.
 #' 
 #'   If you specify HERE Technologies (`Here`) as the data provider, you
 #'   may not [store
-#'   results](https://docs.aws.amazon.com/location/latest/APIReference/API_DataSourceConfiguration.html)
+#'   results](https://docs.aws.amazon.com/location/latest/APIReference/)
 #'   for locations in Japan. For more information, see the [Amazon Web
 #'   Services Service Terms](https://aws.amazon.com/service-terms/) for
 #'   Amazon Location Service.
 #' 
 #' For additional information , see [Data
-#' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
+#' providers](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' on the *Amazon Location Service Developer Guide*.
 #' @param PricingPlan No longer used. If included, the only allowed value is
 #' `RequestBasedUsage`.
@@ -1601,7 +1603,7 @@ locationservice_create_place_index <- function(IndexName, DataSource, PricingPla
 #' Valid values include:
 #' 
 #' - `Esri` – For additional information about
-#'   [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)'s
+#'   [Esri](https://docs.aws.amazon.com/location/latest/developerguide/)'s
 #'   coverage in your region of interest, see [Esri details on street
 #'   networks and traffic
 #'   coverage](https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm).
@@ -1611,19 +1613,17 @@ locationservice_create_place_index <- function(IndexName, DataSource, PricingPla
 #' 
 #' - `Grab` – Grab provides routing functionality for Southeast Asia. For
 #'   additional information about
-#'   [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)'
+#'   [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)'
 #'   coverage, see [GrabMaps countries and areas
-#'   covered](https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area).
+#'   covered](https://docs.aws.amazon.com/location/latest/developerguide/#grab-coverage-area).
 #' 
 #' - `Here` – For additional information about [HERE
-#'   Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
-#'   coverage in your region of interest, see [HERE car routing
-#'   coverage](https://developer.here.com/documentation/routing-api/dev_guide/topics/coverage/car-routing.html)
-#'   and [HERE truck routing
-#'   coverage](https://developer.here.com/documentation/routing-api/dev_guide/topics/coverage/truck-routing.html).
+#'   Technologies](https://docs.aws.amazon.com/location/latest/developerguide/)'
+#'   coverage in your region of interest, see HERE car routing coverage and
+#'   HERE truck routing coverage.
 #' 
 #' For additional information , see [Data
-#' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
+#' providers](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' on the *Amazon Location Service Developer Guide*.
 #' @param PricingPlan No longer used. If included, the only allowed value is
 #' `RequestBasedUsage`.
@@ -2990,7 +2990,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' preference. For example, `Noto Sans Regular, Arial Unicode`.
 #' 
 #' Valid font stacks for
-#' [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)
+#' [Esri](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' styles:
 #' 
 #' - VectorEsriDarkGrayCanvas – `Ubuntu Medium Italic` | `Ubuntu Medium` |
@@ -3008,7 +3008,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' - VectorEsriNavigation – `Arial Regular` | `Arial Italic` | `Arial Bold`
 #' 
 #' Valid font stacks for [HERE
-#' Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)
+#' Technologies](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' styles:
 #' 
 #' - VectorHereContrast – `Fira GO Regular` | `Fira GO Bold`
@@ -3019,14 +3019,14 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #'   `Noto Sans CJK JP Regular`
 #' 
 #' Valid font stacks for
-#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)
+#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' styles:
 #' 
 #' - VectorGrabStandardLight, VectorGrabStandardDark – `Noto Sans Regular`
 #'   | `Noto Sans Medium` | `Noto Sans Bold`
 #' 
 #' Valid font stacks for [Open
-#' Data](https://docs.aws.amazon.com/location/latest/developerguide/open-data.html)
+#' Data](https://docs.aws.amazon.com/location/latest/developerguide/)
 #' styles:
 #' 
 #' - VectorOpenDataStandardLight, VectorOpenDataStandardDark,
@@ -4166,9 +4166,9 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' multiple selections will return a validation error.
 #' 
 #' The [geofence
-#' polygon](https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html)
+#' polygon](https://docs.aws.amazon.com/location/latest/APIReference/)
 #' format supports a maximum of 1,000 vertices. The [Geofence
-#' Geobuf](https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html)
+#' Geobuf](https://docs.aws.amazon.com/location/latest/APIReference/)
 #' format supports a maximum of 100,000 vertices.
 #' @param GeofenceProperties Associates one of more properties with the geofence. A property is a
 #' key-value pair stored with the geofence and added to any geofence event
@@ -4460,7 +4460,7 @@ locationservice_search_place_index_for_position <- function(IndexName, Position,
 #' 
 #' For more information about using categories, including a list of Amazon
 #' Location categories, see [Categories and
-#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html),
+#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/),
 #' in the *Amazon Location Service Developer Guide*.
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
@@ -4636,7 +4636,7 @@ locationservice_search_place_index_for_suggestions <- function(IndexName, Text, 
 #' 
 #' For more information about using categories, including a list of Amazon
 #' Location categories, see [Categories and
-#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html),
+#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/),
 #' in the *Amazon Location Service Developer Guide*.
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)

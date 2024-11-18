@@ -869,9 +869,9 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #'
 #' @description
 #' Lists all tags that have been added to a resource (either an
-#' [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities)
+#' [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities)
 #' or [change
-#' set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#' set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
 #'
 #' @usage
 #' marketplacecatalog_list_tags_for_resource(ResourceArn)
@@ -984,19 +984,19 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' is already locked, you will receive a `ResourceInUseException` error.
 #' 
 #' For example, you can't start the `ChangeSet` described in the
-#' [example](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples)
+#' [example](https://docs.aws.amazon.com/marketplace/latest/APIReference/API_StartChangeSet.html#API_StartChangeSet_Examples)
 #' later in this topic because it contains two changes to run the same
 #' change type (`AddRevisions`) against the same entity (`entity-id@@1`).
 #' 
 #' For more information about working with change sets, see [Working with
 #' change
-#' sets](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
+#' sets](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets).
 #' For information about change types for single-AMI products, see [Working
 #' with single-AMI
-#' products](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/ami-products.html#working-with-single-AMI-products).
+#' products](https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-single-ami-products.html#working-with-single-AMI-products).
 #' Also, for more information about change types available for
 #' container-based products, see [Working with container
-#' products](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products).
+#' products](https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-container-products.html#working-with-container-products).
 #'
 #' @usage
 #' marketplacecatalog_start_change_set(Catalog, ChangeSet, ChangeSetName,
@@ -1086,9 +1086,9 @@ marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetNam
 #'
 #' @description
 #' Tags a resource (either an
-#' [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities)
+#' [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities)
 #' or [change
-#' set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#' set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
 #'
 #' @usage
 #' marketplacecatalog_tag_resource(ResourceArn, Tags)
@@ -1143,9 +1143,9 @@ marketplacecatalog_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @description
 #' Removes a tag or list of tags from a resource (either an
-#' [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities)
+#' [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities)
 #' or [change
-#' set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#' set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
 #'
 #' @usage
 #' marketplacecatalog_untag_resource(ResourceArn, TagKeys)

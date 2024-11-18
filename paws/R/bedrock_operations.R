@@ -90,7 +90,7 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM service role that Amazon
 #' Bedrock can assume to perform tasks on your behalf. The service role
 #' must have Amazon Bedrock as the service principal, and provide access to
@@ -273,7 +273,7 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' completes no more than once. If this token matches a previous request,
 #' Amazon Bedrock ignores the request, but does not return an error. For
 #' more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon S3 User Guide*.
 #'
 #' @return
@@ -405,7 +405,7 @@ bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig
 #' completes no more than once. If this token matches a previous request,
 #' Amazon Bedrock ignores the request, but does not return an error. For
 #' more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon S3 User Guide*.
 #'
 #' @return
@@ -474,7 +474,7 @@ bedrock_create_guardrail_version <- function(guardrailIdentifier, description = 
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -567,7 +567,7 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param baseModelIdentifier &#91;required&#93; Name of the base model.
 #' @param customizationType The customization type.
 #' @param customModelKmsKeyId The custom model is encrypted at rest using this key.
@@ -688,7 +688,7 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param vpcConfig VPC configuration parameters for the private Virtual Private Cloud (VPC)
 #' that contains the resources you are using for the import job.
 #' @param importedModelKmsKeyId The imported model is encrypted at rest using this key.
@@ -789,7 +789,7 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param modelId &#91;required&#93; The unique identifier of the foundation model to use for the batch
 #' inference job.
 #' @param inputDataConfig &#91;required&#93; Details about the location of the input to the batch inference job.
@@ -881,7 +881,7 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the Amazon S3 User Guide.
 #' @param modelUnits &#91;required&#93; Number of model units to allocate. A model unit delivers a specific
 #' throughput level for the specified model. The throughput level of a
@@ -2418,8 +2418,8 @@ bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #' Lists Amazon Bedrock foundation models that you can use. You can filter
 #' the results with the request parameters. For more information, see
 #' [Foundation
-#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html)
-#' in the [Amazon Bedrock User
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the
+#' [Amazon Bedrock User
 #' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage

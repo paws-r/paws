@@ -772,8 +772,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'
 #' @description
 #' Creates a Lambda function. To create a function, you need a [deployment
-#' package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html)
-#' and an [execution
+#' package](https://docs.aws.amazon.com/lambda/latest/dg/) and an
+#' [execution
 #' role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role).
 #' The deployment package is a .zip file archive or container image that
 #' contains your function code. The execution role grants the function
@@ -788,7 +788,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' properties.
 #' 
 #' If the deployment package is a [.zip file
-#' archive](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip),
+#' archive](https://docs.aws.amazon.com/lambda/latest/dg/#gettingstarted-package-zip),
 #' then you set the package type to `Zip`. For a .zip file archive, the
 #' code property specifies the location of the .zip file. You must also
 #' specify the handler and runtime properties. The code in the deployment
@@ -892,7 +892,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' is 900 seconds. For more information, see [Lambda execution
 #' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
 #' @param MemorySize The amount of [memory available to the
-#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console)
 #' at runtime. Increasing the function memory also increases its CPU
 #' allocation. The default value is 128 MB. The value can be any multiple
 #' of 1 MB.
@@ -3685,7 +3685,7 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
     http_path = "/2021-11-15/functions/{FunctionName}/response-streaming-invocations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = TRUE
   )
   input <- .lambda$invoke_with_response_stream_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, Qualifier = Qualifier, Payload = Payload)
   output <- .lambda$invoke_with_response_stream_output()
@@ -6520,7 +6520,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' 
 #' If the function's package type is `Zip`, then you must specify the
 #' deployment package as a [.zip file
-#' archive](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip).
+#' archive](https://docs.aws.amazon.com/lambda/latest/dg/#gettingstarted-package-zip).
 #' Enter the Amazon S3 bucket and key of the code .zip file location. You
 #' can also provide the function code inline using the `ZipFile` field.
 #' 
@@ -6785,7 +6785,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' is 900 seconds. For more information, see [Lambda execution
 #' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
 #' @param MemorySize The amount of [memory available to the
-#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console)
 #' at runtime. Increasing the function memory also increases its CPU
 #' allocation. The default value is 128 MB. The value can be any multiple
 #' of 1 MB.
